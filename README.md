@@ -268,6 +268,22 @@ This generates a fully static site in the `/out` directory, including:
 
 ---
 
+### Useful Scripts
+
+#### Fix Markdown Headings
+If you have markdown files with incorrect heading hierarchies (e.g., starting with `###` or `####` instead of `##`), you can use the `fix_headings.py` script to automatically correct them in a directory.
+
+```bash
+python scripts/fix_headings.py <path_to_directory>
+```
+Example:
+```bash
+python scripts/fix_headings.py content/es/books/backend-en-python
+```
+The script will analyze each markdown file, find the first heading, and if it has too many `#` characters (more than 2), it will remove the extra `#` from all headings in the file, ignoring code blocks. If the first heading is already `#` or `##`, it skips the file.
+
+---
+
 ## ☁️ Deployment
 
 ### Cloudflare Workers / Pages
