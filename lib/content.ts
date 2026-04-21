@@ -78,16 +78,20 @@ export async function getChapterContent(
 
   const raw = fs.readFileSync(mdPath, "utf-8");
 
-  // Extract TOC from headings before processing
+  // Extract TOC from headings before processing (strip fenced code blocks first)
   const toc: TocItem[] = [];
+  const contentWithoutFencedCode = raw.replace(/```[\s\S]*?```/g, "");
   const headingRegex = /^(#{1,6})\s+(.+)$/gm;
   let match;
-  while ((match = headingRegex.exec(raw)) !== null) {
+  while ((match = headingRegex.exec(contentWithoutFencedCode)) !== null) {
     const level = match[1].length;
     const text = match[2].trim();
+    // Generate ID: remove backticks from inline code then slugify
     const id = text
+      .replace(/`/g, "")
       .toLowerCase()
       .replace(/[^a-z0-9\s-]/g, "")
+      .trim()
       .replace(/\s+/g, "-");
     if (level <= 3) {
       toc.push({ id, text, level });
@@ -104,9 +108,10 @@ export async function getChapterContent(
   let html = result.toString();
   html = html.replace(/<(h[1-3])>(.*?)<\/h[1-3]>/g, (_, tag, content) => {
     const id = content
-      .replace(/<[^>]+>/g, "")
+      .replace(/<[^>]+>/g, "") // Strip HTML tags like <code>
       .toLowerCase()
       .replace(/[^a-z0-9\s-]/g, "")
+      .trim()
       .replace(/\s+/g, "-");
     return `<${tag} id="${id}">${content}</${tag}>`;
   });
