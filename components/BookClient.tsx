@@ -65,21 +65,46 @@ export default function BookClient({
     } catch {}
   }, [activeChapter, book.slug, locale]);
 
+  // Restore last read chapter from localStorage on mount
+  useEffect(() => {
+    try {
+      const savedChapter = localStorage.getItem(`wordsus-chapter-${locale}-${book.slug}`);
+      if (savedChapter && savedChapter !== initialChapterSlug) {
+        const chapterExists = allChapers.some((ch) => ch.slug === savedChapter);
+        if (chapterExists) {
+          loadChapter(savedChapter, true); // true means it's an auto-load
+          return;
+        }
+      }
+      // If no saved chapter or same as initial, just sync URL once
+      const newUrl = `/${locale}/${book.slug}/${activeChapter}`;
+      if (window.location.pathname !== newUrl) {
+        window.history.replaceState(null, "", newUrl);
+      }
+    } catch {}
+  }, []); // Only on mount
+
   // Fetch chapter content
   const loadChapter = useCallback(
-    async (slug: string) => {
-      if (slug === initialChapterSlug) {
-        setChapterHtml(initialChapterHtml);
-        setToc(initialToc);
-        setActiveChapter(slug);
-        return;
-      }
+    async (slug: string, isAutoLoad = false) => {
+      if (slug === activeChapter && chapterHtml !== initialChapterHtml) return;
+      
       setLoading(true);
       try {
         const res = await fetch(`/chapter-content/${locale}/${book.slug}/${slug}.json`);
         const data = await res.json();
         setChapterHtml(data.html);
         setToc(data.toc);
+        
+        // Update URL
+        const newUrl = `/${locale}/${book.slug}/${slug}`;
+        if (window.location.pathname !== newUrl) {
+          if (isAutoLoad) {
+            window.history.replaceState(null, "", newUrl);
+          } else {
+            window.history.pushState(null, "", newUrl);
+          }
+        }
       } catch {
         setChapterHtml("<p>Error loading chapter.</p>");
         setToc([]);
@@ -89,7 +114,7 @@ export default function BookClient({
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
     },
-    [initialChapterSlug, initialChapterHtml, initialToc, locale, book.slug]
+    [activeChapter, chapterHtml, initialChapterHtml, locale, book.slug]
   );
 
   const toggleFavorite = () => {
