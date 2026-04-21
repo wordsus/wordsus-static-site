@@ -63,9 +63,7 @@ export default function Header({ locale }: HeaderProps) {
   }, []);
 
   const switchLocale = (newLocale: Locale) => {
-    const segments = pathname.split("/");
-    segments[1] = newLocale;
-    router.push(segments.join("/"));
+    router.push(`/${newLocale}`);
   };
 
   const otherLocale: Locale = locale === "en" ? "es" : "en";

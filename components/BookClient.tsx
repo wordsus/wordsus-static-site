@@ -28,7 +28,20 @@ export default function BookClient({
   allChapers,
 }: BookClientProps) {
   const t = useTranslations("book");
-  const [activeChapter, setActiveChapter] = useState(initialChapterSlug);
+
+  // Initialise from localStorage immediately (before first render) so the
+  // correct chapter is known without waiting for a useEffect.
+  const [activeChapter, setActiveChapter] = useState<string>(() => {
+    if (typeof window === "undefined") return initialChapterSlug;
+    try {
+      const saved = localStorage.getItem(`wordsus-chapter-${locale}-${book.slug}`);
+      if (saved && allChapers.some((ch) => ch.slug === saved)) {
+        return saved;
+      }
+    } catch {}
+    return initialChapterSlug;
+  });
+
   const [chapterHtml, setChapterHtml] = useState(initialChapterHtml);
   const [toc, setToc] = useState<TocItem[]>(initialToc);
   const [loading, setLoading] = useState(false);
@@ -58,30 +71,26 @@ export default function BookClient({
     } catch {}
   }, [book.slug, locale]);
 
-  // Persist current chapter per book
+  // Persist current chapter per book every time it changes
   useEffect(() => {
     try {
       localStorage.setItem(`wordsus-chapter-${locale}-${book.slug}`, activeChapter);
     } catch {}
   }, [activeChapter, book.slug, locale]);
 
-  // Restore last read chapter from localStorage on mount
+  // On mount: if localStorage gave us a chapter that differs from the SSR
+  // initial chapter, fetch its content now.
   useEffect(() => {
-    try {
-      const savedChapter = localStorage.getItem(`wordsus-chapter-${locale}-${book.slug}`);
-      if (savedChapter && savedChapter !== initialChapterSlug) {
-        const chapterExists = allChapers.some((ch) => ch.slug === savedChapter);
-        if (chapterExists) {
-          loadChapter(savedChapter, true); // true means it's an auto-load
-          return;
-        }
-      }
-      // If no saved chapter or same as initial, just sync URL once
+    if (activeChapter !== initialChapterSlug) {
+      loadChapter(activeChapter, true);
+    } else {
+      // Same chapter — just sync the URL
       const newUrl = `/${locale}/${book.slug}/${activeChapter}`;
-      if (window.location.pathname !== newUrl) {
+      if (window.location.pathname.replace(/\/$/, "") !== newUrl) {
         window.history.replaceState(null, "", newUrl);
       }
-    } catch {}
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // Only on mount
 
   // Fetch chapter content
