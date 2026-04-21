@@ -288,8 +288,8 @@ export default function BookClient({
       </div>
 
       {/* ─── Right sidebar: ToC ────────────────────────── */}
-      <aside className="hidden xl:block w-60 shrink-0">
-        <div className="sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto p-6">
+      <aside className="hidden xl:block w-80 shrink-0">
+        <div className="sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto p-8">
           <TableOfContents toc={toc} />
         </div>
       </aside>

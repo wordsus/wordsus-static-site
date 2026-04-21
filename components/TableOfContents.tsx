@@ -33,29 +33,36 @@ export default function TableOfContents({ toc }: TableOfContentsProps) {
   if (toc.length === 0) return null;
 
   return (
-    <nav className="text-sm space-y-0.5">
-      <p className="text-xs font-semibold text-[hsl(var(--muted-foreground))] uppercase tracking-wider mb-3">
+    <nav className="space-y-1">
+      <p className="text-xs font-bold text-[hsl(var(--muted-foreground))] uppercase tracking-[0.2em] mb-6">
         {t("tableOfContents")}
       </p>
-      {toc.map((item) => (
-        <a
-          key={item.id}
-          href={`#${item.id}`}
-          className={clsx(
-            "block py-1 border-l-2 transition-all duration-150 text-xs leading-relaxed",
-            item.level === 1
-              ? "pl-3"
-              : item.level === 2
-              ? "pl-5"
-              : "pl-7",
-            activeId === item.id
-              ? "border-[hsl(var(--primary))] text-[hsl(var(--primary))] font-medium"
-              : "border-transparent text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] hover:border-[hsl(var(--border))]"
-          )}
-        >
-          {item.text}
-        </a>
-      ))}
+      <div className="flex flex-col space-y-1">
+        {toc
+          .filter((item) => item.level >= 2 && item.level <= 3)
+          .map((item) => (
+          <a
+            key={item.id}
+            href={`#${item.id}`}
+            className={clsx(
+              "group flex items-start py-1.5 transition-all duration-200 border-l-2",
+              item.level === 2 
+                ? "pl-4 text-[13px] font-semibold mt-4 first:mt-0" 
+                : "pl-8 text-[12px] font-normal text-[hsl(var(--muted-foreground))]",
+              activeId === item.id
+                ? "border-[hsl(var(--primary))] text-[hsl(var(--primary))]"
+                : "border-transparent hover:border-[hsl(var(--border))] hover:text-[hsl(var(--foreground))]"
+            )}
+          >
+            <span className={clsx(
+              "transition-transform duration-200",
+              activeId === item.id ? "translate-x-1" : "group-hover:translate-x-1"
+            )}>
+              {item.text}
+            </span>
+          </a>
+        ))}
+      </div>
     </nav>
   );
 }
