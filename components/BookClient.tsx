@@ -127,6 +127,63 @@ export default function BookClient({
     } catch {}
   };
 
+  useEffect(() => {
+    const pres = document.querySelectorAll('.prose-wordsus pre');
+    pres.forEach((pre) => {
+      if (pre.querySelector('.mac-header')) return;
+
+      const code = pre.querySelector('code');
+      const languageClass = code?.className || '';
+      const languageMatch = languageClass.match(/language-(\w+)/);
+      const language = languageMatch ? languageMatch[1] : '';
+
+      const header = document.createElement('div');
+      header.className = 'mac-header flex items-center justify-between px-4 py-2 border-b border-white/5 bg-[#1a1b26] rounded-t-xl absolute top-0 left-0 right-0 h-11';
+      
+      const dots = document.createElement('div');
+      dots.className = 'flex gap-2 w-16';
+      dots.innerHTML = `
+        <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
+        <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+        <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+      `;
+
+      const langSpan = document.createElement('span');
+      langSpan.className = 'text-[11px] text-[#a9b1d6] font-mono uppercase font-semibold flex-1 text-center tracking-wider';
+      langSpan.innerText = language;
+
+      const btnContainer = document.createElement('div');
+      btnContainer.className = 'w-16 flex justify-end';
+
+      const copyBtn = document.createElement('button');
+      copyBtn.className = 'text-xs text-[#a9b1d6] hover:text-white transition-colors flex items-center justify-center p-1.5 rounded-md hover:bg-white/10';
+      copyBtn.title = t('copyCode') || 'Copy';
+      copyBtn.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+      `;
+
+      copyBtn.onclick = () => {
+        const text = code?.innerText || '';
+        navigator.clipboard.writeText(text);
+        copyBtn.innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#27c93f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        `;
+        setTimeout(() => {
+          copyBtn.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+          `;
+        }, 2000);
+      };
+
+      btnContainer.appendChild(copyBtn);
+      header.appendChild(dots);
+      header.appendChild(langSpan);
+      header.appendChild(btnContainer);
+
+      pre.insertBefore(header, pre.firstChild);
+    });
+  }, [chapterHtml, t]);
+
   return (
     <div className="relative flex min-h-[calc(100vh-4rem)]">
       {/* ─── Mobile sidebar overlay ─────────────────────── */}

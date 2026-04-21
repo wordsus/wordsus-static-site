@@ -47,7 +47,8 @@
     "by": "by",
     "lastRead": "Last read",
     "minuteRead": "min read",
-    "backToCategory": "Back to Category"
+    "backToCategory": "Back to Category",
+    "copyCode": "Copy code"
   },
   "category": {
     "books": "books",

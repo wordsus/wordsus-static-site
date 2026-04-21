@@ -26,7 +26,7 @@ def fix_headings_in_file(filepath):
 
     # 2. If the first heading is # or ##, do not modify anything in this file
     if first_heading_level <= 2:
-        print(f"[{os.path.basename(filepath)}] First heading is level {first_heading_level}. Skipping without modification.")
+        # print(f"[{os.path.basename(filepath)}] First heading is level {first_heading_level}. Skipping without modification.")
         return
 
     extra_hashes = first_heading_level - 2

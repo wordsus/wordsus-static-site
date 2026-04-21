@@ -47,7 +47,8 @@
     "by": "por",
     "lastRead": "Última lectura",
     "minuteRead": "min de lectura",
-    "backToCategory": "Volver a la Categoría"
+    "backToCategory": "Volver a la Categoría",
+    "copyCode": "Copiar código"
   },
   "category": {
     "books": "libros",

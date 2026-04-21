@@ -167,22 +167,10 @@
       background: hsl(222 47% 10%);
       border: 1px solid hsl(var(--border));
       border-radius: 0.75rem;
-      padding: 1.25em 1.5em;
+      padding: 3.5em 1.5em 1.25em; /* Increased top padding for the new header */
       overflow-x: auto;
       margin: 1.75em 0;
       position: relative;
-
-      &::before {
-        content: "";
-        position: absolute;
-        top: 12px;
-        left: 16px;
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: #ff5f56;
-        box-shadow: 18px 0 0 #ffbd2e, 36px 0 0 #27c93f;
-      }
 
       code {
         background: transparent;
@@ -190,7 +178,6 @@
         padding: 0;
         font-size: 0.85em;
         color: #e2e8f0;
-        margin-top: 0.5em;
         display: block;
       }
     }
