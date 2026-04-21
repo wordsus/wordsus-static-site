@@ -4,9 +4,13 @@
   "title": "Introduction to Python",
   "author": "Wordsus Team",
   "description": "A comprehensive beginner's guide to Python programming. Learn variables, control flow, functions, and more.",
-  "cover": "/images/books/intro-python-cover.jpg",
+  "cover": "/images/books/default-cover.jpg",
   "category": "programming",
-  "tags": ["python", "programming", "beginner"],
+  "tags": [
+    "python",
+    "programming",
+    "beginner"
+  ],
   "featured": true,
   "publishedAt": "2024-01-15",
   "language": "en",

@@ -4,9 +4,13 @@
   "title": "Introducción a Python",
   "author": "Equipo Wordsus",
   "description": "Una guía completa para principiantes sobre programación en Python. Aprende variables, control de flujo, funciones y más.",
-  "cover": "/images/books/intro-python-cover.jpg",
+  "cover": "/images/books/default-cover.jpg",
   "category": "programacion",
-  "tags": ["python", "programacion", "principiantes"],
+  "tags": [
+    "python",
+    "programacion",
+    "principiantes"
+  ],
   "featured": true,
   "publishedAt": "2024-01-15",
   "language": "es",

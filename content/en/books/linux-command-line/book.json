@@ -4,9 +4,14 @@
   "title": "The Linux Command Line",
   "author": "Wordsus Team",
   "description": "Become proficient with the Linux command line. From basic navigation to shell scripting.",
-  "cover": "/images/books/linux-cli-cover.jpg",
+  "cover": "/images/books/default-cover.jpg",
   "category": "programming",
-  "tags": ["linux", "bash", "terminal", "command line"],
+  "tags": [
+    "linux",
+    "bash",
+    "terminal",
+    "command line"
+  ],
   "featured": true,
   "publishedAt": "2024-03-01",
   "language": "en",

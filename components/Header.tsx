@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 import {
-  BookOpen,
   Search,
   Heart,
   Sun,
@@ -92,14 +92,20 @@ export default function Header({ locale }: HeaderProps) {
             : "border-transparent bg-[hsl(var(--background))]"
         )}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+        <div className="w-full px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
           {/* Logo */}
           <Link
             href={`/${locale}`}
             className="flex items-center gap-2 font-bold text-xl text-[hsl(var(--foreground))] shrink-0"
           >
-            <div className="w-8 h-8 rounded-lg bg-[hsl(var(--primary))] flex items-center justify-center">
-              <BookOpen size={16} className="text-white" />
+            <div className="w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center">
+              <Image 
+                src="/images/wordsus-logo.png" 
+                alt="Wordsus" 
+                width={32} 
+                height={32}
+                className="w-full h-full object-cover"
+              />
             </div>
             <span className="hidden sm:inline">Wordsus</span>
           </Link>
