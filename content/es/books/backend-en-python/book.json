@@ -136,5 +136,57 @@
       "order": 20,
       "audioUrl": ""
     }
+  ],
+  "parts": [
+    {
+      "title": "Parte I: Fundamentos del Lenguaje",
+      "chapterSlugs": [
+        "primeros-pasos-y-entorno",
+        "flujo-de-control-y-logica",
+        "estructuras-de-datos-integradas",
+        "funciones"
+      ]
+    },
+    {
+      "title": "Parte II: Paradigmas y Herramientas Intermedias",
+      "chapterSlugs": [
+        "programacion-orientada-a-objetos",
+        "gestion-de-errores-y-recursos",
+        "ecosistema-y-modularidad",
+        "persistencia-de-datos-basica"
+      ]
+    },
+    {
+      "title": "Parte III: Python Avanzado",
+      "chapterSlugs": [
+        "iteracion-avanzada",
+        "metaprogramacion-y-decoradores",
+        "tipado-estatico"
+      ]
+    },
+    {
+      "title": "Parte IV: Concurrencia y Rendimiento",
+      "chapterSlugs": [
+        "modelos-de-concurrencia",
+        "optimizacion-y-diagnostico"
+      ]
+    },
+    {
+      "title": "Parte V: Desarrollo Backend Core",
+      "chapterSlugs": [
+        "fundamentos-de-red-y-apis",
+        "bases-de-datos-y-orms",
+        "frameworks-de-aplicacion"
+      ]
+    },
+    {
+      "title": "Parte VI: Ingeniería Senior, Arquitectura y DevOps",
+      "chapterSlugs": [
+        "testing-y-calidad-de-codigo",
+        "seguridad-en-el-backend",
+        "arquitectura-de-software",
+        "despliegue-y-operaciones-devops"
+      ]
+    }
   ]
 }

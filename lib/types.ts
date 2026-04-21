@@ -9,6 +9,11 @@ export interface ChapterMeta {
   audioUrl?: string;
 }
 
+export interface BookPart {
+  title: string;
+  chapterSlugs: string[];
+}
+
 export interface BookMeta {
   slug: string;
   locale: Locale;
@@ -22,6 +27,7 @@ export interface BookMeta {
   publishedAt: string;
   language: string;
   chapters: ChapterMeta[];
+  parts?: BookPart[];
 }
 
 export interface CategoryMeta {

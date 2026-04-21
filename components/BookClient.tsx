@@ -192,29 +192,64 @@ export default function BookClient({
 
         {/* Chapter list */}
         <div className="p-2">
-          <p className="px-2 py-1.5 text-xs font-semibold text-[hsl(var(--muted-foreground))] uppercase tracking-wider">
+          <p className="px-2 py-1.5 text-xs font-semibold text-[hsl(var(--muted-foreground))] uppercase tracking-wider mb-2">
             {t("chapters")}
           </p>
-          {allChapers.map((ch) => (
-            <button
-              key={ch.slug}
-              onClick={() => {
-                loadChapter(ch.slug);
-                setSidebarOpen(false);
-              }}
-              className={clsx(
-                "w-full text-left px-3 py-2.5 rounded-lg text-xs transition-colors leading-snug",
-                activeChapter === ch.slug
-                  ? "bg-[hsl(var(--accent))] text-[hsl(var(--accent-foreground))] font-medium"
-                  : "text-[hsl(var(--muted-foreground))] hover:bg-[hsl(var(--muted))] hover:text-[hsl(var(--foreground))]"
-              )}
-            >
-              <span className="text-[hsl(var(--primary)/0.6)] mr-1.5 font-mono">
-                {String(ch.order).padStart(2, "0")}.
-              </span>
-              {ch.title}
-            </button>
-          ))}
+
+          {book.parts ? (
+            book.parts.map((part) => (
+              <div key={part.title} className="mt-6 first:mt-2 mb-2">
+                <p className="px-3 py-1 text-[10px] font-bold text-[hsl(var(--primary))] uppercase tracking-widest mb-2 border-b border-[hsl(var(--primary)/0.1)] pb-1">
+                  {part.title}
+                </p>
+                {part.chapterSlugs.map((slug) => {
+                  const ch = allChapers.find((c) => c.slug === slug);
+                  if (!ch) return null;
+                  return (
+                    <button
+                      key={ch.slug}
+                      onClick={() => {
+                        loadChapter(ch.slug);
+                        setSidebarOpen(false);
+                      }}
+                      className={clsx(
+                        "w-full text-left px-3 py-2.5 rounded-lg text-xs transition-colors leading-snug",
+                        activeChapter === ch.slug
+                          ? "bg-[hsl(var(--accent))] text-[hsl(var(--accent-foreground))] font-medium"
+                          : "text-[hsl(var(--muted-foreground))] hover:bg-[hsl(var(--muted))] hover:text-[hsl(var(--foreground))]"
+                      )}
+                    >
+                      <span className="text-[hsl(var(--primary)/0.6)] mr-1.5 font-mono">
+                        {String(ch.order).padStart(2, "0")}.
+                      </span>
+                      {ch.title}
+                    </button>
+                  );
+                })}
+              </div>
+            ))
+          ) : (
+            allChapers.map((ch) => (
+              <button
+                key={ch.slug}
+                onClick={() => {
+                  loadChapter(ch.slug);
+                  setSidebarOpen(false);
+                }}
+                className={clsx(
+                  "w-full text-left px-3 py-2.5 rounded-lg text-xs transition-colors leading-snug",
+                  activeChapter === ch.slug
+                    ? "bg-[hsl(var(--accent))] text-[hsl(var(--accent-foreground))] font-medium"
+                    : "text-[hsl(var(--muted-foreground))] hover:bg-[hsl(var(--muted))] hover:text-[hsl(var(--foreground))]"
+                )}
+              >
+                <span className="text-[hsl(var(--primary)/0.6)] mr-1.5 font-mono">
+                  {String(ch.order).padStart(2, "0")}.
+                </span>
+                {ch.title}
+              </button>
+            ))
+          )}
         </div>
       </aside>
 
