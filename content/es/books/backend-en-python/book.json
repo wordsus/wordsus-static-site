@@ -1,0 +1,140 @@
+{
+  "slug": "backend-en-python",
+  "locale": "es",
+  "title": "Desarrollo Backend en Python: La Guía Definitiva",
+  "author": "Equipo Wordsus",
+  "description": "Domina el desarrollo backend con Python. Una ruta completa desde los fundamentos del lenguaje hasta la arquitectura de microservicios, seguridad avanzada y despliegue profesional.",
+  "cover": "/images/books/default-cover.jpg",
+  "category": "programacion",
+  "tags": [
+    "python",
+    "backend",
+    "desarrollo-web",
+    "arquitectura"
+  ],
+  "featured": true,
+  "publishedAt": "2024-04-21",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "primeros-pasos-y-entorno",
+      "title": "Primeros Pasos y Entorno",
+      "order": 1,
+      "audioUrl": ""
+    },
+    {
+      "slug": "flujo-de-control-y-logica",
+      "title": "Flujo de Control y Lógica",
+      "order": 2,
+      "audioUrl": ""
+    },
+    {
+      "slug": "estructuras-de-datos-integradas",
+      "title": "Estructuras de Datos Integradas",
+      "order": 3,
+      "audioUrl": ""
+    },
+    {
+      "slug": "funciones",
+      "title": "Funciones",
+      "order": 4,
+      "audioUrl": ""
+    },
+    {
+      "slug": "programacion-orientada-a-objetos",
+      "title": "Programación Orientada a Objetos (POO)",
+      "order": 5,
+      "audioUrl": ""
+    },
+    {
+      "slug": "gestion-de-errores-y-recursos",
+      "title": "Gestión de Errores y Recursos",
+      "order": 6,
+      "audioUrl": ""
+    },
+    {
+      "slug": "ecosistema-y-modularidad",
+      "title": "Ecosistema y Modularidad",
+      "order": 7,
+      "audioUrl": ""
+    },
+    {
+      "slug": "persistencia-de-datos-basica",
+      "title": "Persistencia de Datos Básica",
+      "order": 8,
+      "audioUrl": ""
+    },
+    {
+      "slug": "iteracion-avanzada",
+      "title": "Iteración Avanzada",
+      "order": 9,
+      "audioUrl": ""
+    },
+    {
+      "slug": "metaprogramacion-y-decoradores",
+      "title": "Metaprogramación y Decoradores",
+      "order": 10,
+      "audioUrl": ""
+    },
+    {
+      "slug": "tipado-estatico",
+      "title": "Tipado Estático",
+      "order": 11,
+      "audioUrl": ""
+    },
+    {
+      "slug": "modelos-de-concurrencia",
+      "title": "Modelos de Concurrencia",
+      "order": 12,
+      "audioUrl": ""
+    },
+    {
+      "slug": "optimizacion-y-diagnostico",
+      "title": "Optimización y Diagnóstico",
+      "order": 13,
+      "audioUrl": ""
+    },
+    {
+      "slug": "fundamentos-de-red-y-apis",
+      "title": "Fundamentos de Red y APIs",
+      "order": 14,
+      "audioUrl": ""
+    },
+    {
+      "slug": "bases-de-datos-y-orms",
+      "title": "Bases de Datos y ORMs",
+      "order": 15,
+      "audioUrl": ""
+    },
+    {
+      "slug": "frameworks-de-aplicacion",
+      "title": "Frameworks de Aplicación",
+      "order": 16,
+      "audioUrl": ""
+    },
+    {
+      "slug": "testing-y-calidad-de-codigo",
+      "title": "Testing y Calidad de Código",
+      "order": 17,
+      "audioUrl": ""
+    },
+    {
+      "slug": "seguridad-en-el-backend",
+      "title": "Seguridad en el Backend",
+      "order": 18,
+      "audioUrl": ""
+    },
+    {
+      "slug": "arquitectura-de-software",
+      "title": "Arquitectura de Software",
+      "order": 19,
+      "audioUrl": ""
+    },
+    {
+      "slug": "despliegue-y-operaciones-devops",
+      "title": "Despliegue y Operaciones (DevOps)",
+      "order": 20,
+      "audioUrl": ""
+    }
+  ]
+}

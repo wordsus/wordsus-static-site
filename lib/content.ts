@@ -52,13 +52,25 @@ export async function getChapterContent(
   chapterSlug: string,
   locale: Locale
 ): Promise<{ html: string; toc: TocItem[] }> {
-  const mdPath = path.join(
+  let mdPath = path.join(
     contentDir,
     locale,
     "books",
     bookSlug,
     `${chapterSlug}.md`
   );
+
+  // If the file doesn't exist, try to find one with an order prefix (e.g., "1-slug.md")
+  if (!fs.existsSync(mdPath)) {
+    const bookDir = path.join(contentDir, locale, "books", bookSlug);
+    if (fs.existsSync(bookDir)) {
+      const files = fs.readdirSync(bookDir);
+      const matchingFile = files.find(f => f.endsWith(`-${chapterSlug}.md`));
+      if (matchingFile) {
+        mdPath = path.join(bookDir, matchingFile);
+      }
+    }
+  }
 
   if (!fs.existsSync(mdPath)) {
     return { html: "<p>Chapter not found.</p>", toc: [] };
