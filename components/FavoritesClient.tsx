@@ -66,7 +66,7 @@ export default function FavoritesClient({ locale, allBooks }: FavoritesClientPro
           {[...Array(4)].map((_, i) => (
             <div
               key={i}
-              className="rounded-2xl bg-[hsl(var(--muted))] animate-pulse aspect-[3/4]"
+              className="rounded-2xl bg-[hsl(var(--muted))] animate-pulse aspect-3/4"
             />
           ))}
         </div>

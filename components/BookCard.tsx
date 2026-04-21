@@ -86,7 +86,7 @@ export default function BookCard({
       className="group relative flex flex-col rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] overflow-hidden hover:border-[hsl(var(--primary)/0.5)] hover:shadow-lg hover:shadow-[hsl(var(--primary)/0.08)] transition-all duration-250"
     >
       {/* Cover */}
-      <div className="relative aspect-[3/4] bg-gradient-to-br from-[hsl(var(--muted))] to-[hsl(var(--accent))] overflow-hidden">
+      <div className="relative aspect-3/4 bg-linear-to-br from-[hsl(var(--muted))] to-[hsl(var(--accent))] overflow-hidden">
         {book.cover ? (
           <Image
             src={book.cover}

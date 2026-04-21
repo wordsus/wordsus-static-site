@@ -128,7 +128,7 @@ export default function AudioPlayer({ audioUrl, chapterTitle }: AudioPlayerProps
           id="audio-speed"
           onClick={cycleSpeed}
           aria-label={t("playbackSpeed")}
-          className="px-2 py-1 rounded-md text-xs font-medium bg-[hsl(var(--muted))] text-[hsl(var(--foreground))] hover:bg-[hsl(var(--accent))] transition-colors min-w-[3rem] text-center"
+          className="px-2 py-1 rounded-md text-xs font-medium bg-[hsl(var(--muted))] text-[hsl(var(--foreground))] hover:bg-[hsl(var(--accent))] transition-colors min-w-12 text-center"
         >
           {speed}x
         </button>

@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 import type { Locale } from "@/lib/types";
 import { clsx } from "clsx";
-import SearchModal from "./SearchModal";
+import SearchModal from "@/components/SearchModal";
 
 type Theme = "light" | "dark" | "system";
 
