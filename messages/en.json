@@ -1,0 +1,74 @@
+{
+  "nav": {
+    "home": "Home",
+    "books": "Books",
+    "courses": "Courses",
+    "favorites": "Favorites",
+    "search": "Search",
+    "searchPlaceholder": "Search books and courses...",
+    "noResults": "No results found for",
+    "results": "results for"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "toggle": "Toggle theme"
+  },
+  "language": {
+    "en": "English",
+    "es": "Spanish",
+    "toggle": "Change language"
+  },
+  "home": {
+    "heroTitle": "Free Books & Courses",
+    "heroSubtitle": "Discover a curated library of free educational books and courses across multiple categories. Read online, save your progress, and learn at your own pace.",
+    "startReading": "Start Reading",
+    "browseCategories": "Browse Categories",
+    "recentlyRead": "Continue Reading",
+    "recentlyReadSubtitle": "Pick up where you left off",
+    "categories": "Categories",
+    "categoriesSubtitle": "Explore our collection by topic",
+    "featuredBooks": "Featured Books",
+    "viewAll": "View all",
+    "noRecentBooks": "No recently read books yet. Start exploring!",
+    "browseNow": "Browse Now"
+  },
+  "book": {
+    "chapters": "Chapters",
+    "tableOfContents": "On this page",
+    "readChapter": "Read Chapter",
+    "addToFavorites": "Add to Favorites",
+    "removeFromFavorites": "Remove from Favorites",
+    "playAudio": "Play Audio",
+    "pauseAudio": "Pause Audio",
+    "playbackSpeed": "Playback Speed",
+    "chapter": "Chapter",
+    "by": "by",
+    "lastRead": "Last read",
+    "minuteRead": "min read",
+    "backToCategory": "Back to Category"
+  },
+  "category": {
+    "books": "books",
+    "allBooks": "All Books",
+    "filterBy": "Filter by",
+    "sortBy": "Sort by",
+    "newest": "Newest",
+    "oldest": "Oldest",
+    "alphabetical": "A-Z"
+  },
+  "favorites": {
+    "title": "My Favorites",
+    "subtitle": "Books you've saved for later",
+    "empty": "No favorites yet",
+    "emptySubtitle": "Add books to your favorites to see them here.",
+    "added": "Added to favorites",
+    "removed": "Removed from favorites"
+  },
+  "footer": {
+    "tagline": "Free knowledge for everyone.",
+    "rights": "All rights reserved.",
+    "builtWith": "Built with"
+  }
+}

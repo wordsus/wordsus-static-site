@@ -1,0 +1,27 @@
+{
+  "slug": "web-design-fundamentals",
+  "locale": "en",
+  "title": "Web Design Fundamentals",
+  "author": "Wordsus Team",
+  "description": "Master the core principles of web design including layout, typography, color theory, and responsive design.",
+  "cover": "/images/books/web-design-cover.jpg",
+  "category": "design",
+  "tags": ["web design", "css", "html", "responsive"],
+  "featured": true,
+  "publishedAt": "2024-02-10",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "chapter-1-design-principles",
+      "title": "Core Design Principles",
+      "order": 1,
+      "audioUrl": "https://pub-example.s3.amazonaws.com/web-design/chapter-1.mp3"
+    },
+    {
+      "slug": "chapter-2-color-theory",
+      "title": "Color Theory for the Web",
+      "order": 2,
+      "audioUrl": "https://pub-example.s3.amazonaws.com/web-design/chapter-2.mp3"
+    }
+  ]
+}

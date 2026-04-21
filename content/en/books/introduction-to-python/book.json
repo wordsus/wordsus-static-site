@@ -1,0 +1,33 @@
+{
+  "slug": "introduction-to-python",
+  "locale": "en",
+  "title": "Introduction to Python",
+  "author": "Wordsus Team",
+  "description": "A comprehensive beginner's guide to Python programming. Learn variables, control flow, functions, and more.",
+  "cover": "/images/books/intro-python-cover.jpg",
+  "category": "programming",
+  "tags": ["python", "programming", "beginner"],
+  "featured": true,
+  "publishedAt": "2024-01-15",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "chapter-1-getting-started",
+      "title": "Getting Started with Python",
+      "order": 1,
+      "audioUrl": "https://pub-example.s3.amazonaws.com/intro-python/chapter-1.mp3"
+    },
+    {
+      "slug": "chapter-2-variables-and-types",
+      "title": "Variables and Data Types",
+      "order": 2,
+      "audioUrl": "https://pub-example.s3.amazonaws.com/intro-python/chapter-2.mp3"
+    },
+    {
+      "slug": "chapter-3-control-flow",
+      "title": "Control Flow",
+      "order": 3,
+      "audioUrl": "https://pub-example.s3.amazonaws.com/intro-python/chapter-3.mp3"
+    }
+  ]
+}

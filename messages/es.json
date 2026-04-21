@@ -1,0 +1,74 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "books": "Libros",
+    "courses": "Cursos",
+    "favorites": "Favoritos",
+    "search": "Buscar",
+    "searchPlaceholder": "Buscar libros y cursos...",
+    "noResults": "No se encontraron resultados para",
+    "results": "resultados para"
+  },
+  "theme": {
+    "light": "Claro",
+    "dark": "Oscuro",
+    "system": "Sistema",
+    "toggle": "Cambiar tema"
+  },
+  "language": {
+    "en": "Inglés",
+    "es": "Español",
+    "toggle": "Cambiar idioma"
+  },
+  "home": {
+    "heroTitle": "Libros y Cursos Gratuitos",
+    "heroSubtitle": "Descubre una biblioteca curada de libros educativos y cursos gratuitos en múltiples categorías. Lee en línea, guarda tu progreso y aprende a tu ritmo.",
+    "startReading": "Empezar a Leer",
+    "browseCategories": "Explorar Categorías",
+    "recentlyRead": "Continuar Leyendo",
+    "recentlyReadSubtitle": "Retoma donde lo dejaste",
+    "categories": "Categorías",
+    "categoriesSubtitle": "Explora nuestra colección por tema",
+    "featuredBooks": "Libros Destacados",
+    "viewAll": "Ver todos",
+    "noRecentBooks": "Aún no has leído ningún libro. ¡Empieza a explorar!",
+    "browseNow": "Explorar Ahora"
+  },
+  "book": {
+    "chapters": "Capítulos",
+    "tableOfContents": "En esta página",
+    "readChapter": "Leer Capítulo",
+    "addToFavorites": "Añadir a Favoritos",
+    "removeFromFavorites": "Quitar de Favoritos",
+    "playAudio": "Reproducir Audio",
+    "pauseAudio": "Pausar Audio",
+    "playbackSpeed": "Velocidad de Reproducción",
+    "chapter": "Capítulo",
+    "by": "por",
+    "lastRead": "Última lectura",
+    "minuteRead": "min de lectura",
+    "backToCategory": "Volver a la Categoría"
+  },
+  "category": {
+    "books": "libros",
+    "allBooks": "Todos los Libros",
+    "filterBy": "Filtrar por",
+    "sortBy": "Ordenar por",
+    "newest": "Más recientes",
+    "oldest": "Más antiguos",
+    "alphabetical": "A-Z"
+  },
+  "favorites": {
+    "title": "Mis Favoritos",
+    "subtitle": "Libros que has guardado para después",
+    "empty": "Sin favoritos aún",
+    "emptySubtitle": "Añade libros a tus favoritos para verlos aquí.",
+    "added": "Añadido a favoritos",
+    "removed": "Eliminado de favoritos"
+  },
+  "footer": {
+    "tagline": "Conocimiento gratuito para todos.",
+    "rights": "Todos los derechos reservados.",
+    "builtWith": "Construido con"
+  }
+}

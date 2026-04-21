@@ -1,0 +1,27 @@
+{
+  "slug": "introduccion-a-python",
+  "locale": "es",
+  "title": "Introducción a Python",
+  "author": "Equipo Wordsus",
+  "description": "Una guía completa para principiantes sobre programación en Python. Aprende variables, control de flujo, funciones y más.",
+  "cover": "/images/books/intro-python-cover.jpg",
+  "category": "programacion",
+  "tags": ["python", "programacion", "principiantes"],
+  "featured": true,
+  "publishedAt": "2024-01-15",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "capitulo-1-primeros-pasos",
+      "title": "Primeros Pasos con Python",
+      "order": 1,
+      "audioUrl": "https://pub-example.s3.amazonaws.com/intro-python-es/capitulo-1.mp3"
+    },
+    {
+      "slug": "capitulo-2-variables-y-tipos",
+      "title": "Variables y Tipos de Datos",
+      "order": 2,
+      "audioUrl": "https://pub-example.s3.amazonaws.com/intro-python-es/capitulo-2.mp3"
+    }
+  ]
+}
