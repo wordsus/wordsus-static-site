@@ -2,7 +2,9 @@ import fs from "fs";
 import path from "path";
 import { remark } from "remark";
 import remarkGfm from "remark-gfm";
-import remarkHtml from "remark-html";
+import remarkRehype from "remark-rehype";
+import rehypeHighlight from "rehype-highlight";
+import rehypeStringify from "rehype-stringify";
 import type { BookMeta, CategoryMeta, TocItem, Locale } from "./types";
 
 const contentDir = path.join(process.cwd(), "content");
@@ -101,7 +103,9 @@ export async function getChapterContent(
   // Process Markdown to HTML
   const result = await remark()
     .use(remarkGfm)
-    .use(remarkHtml, { sanitize: false })
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeHighlight)
+    .use(rehypeStringify, { allowDangerousHtml: true })
     .process(raw);
 
   // Add IDs to headings in HTML
