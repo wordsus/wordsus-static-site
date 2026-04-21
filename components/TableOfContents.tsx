@@ -40,28 +40,44 @@ export default function TableOfContents({ toc }: TableOfContentsProps) {
       <div className="flex flex-col space-y-1">
         {toc
           .filter((item) => item.level >= 2 && item.level <= 3)
-          .map((item) => (
-          <a
-            key={item.id}
-            href={`#${item.id}`}
-            className={clsx(
-              "group flex items-start py-1.5 transition-all duration-200 border-l-2",
-              item.level === 2 
-                ? "pl-4 text-[13px] font-semibold mt-4 first:mt-0" 
-                : "pl-8 text-[12px] font-normal text-[hsl(var(--muted-foreground))]",
-              activeId === item.id
-                ? "border-[hsl(var(--primary))] text-[hsl(var(--primary))]"
-                : "border-transparent hover:border-[hsl(var(--border))] hover:text-[hsl(var(--foreground))]"
-            )}
-          >
-            <span className={clsx(
-              "transition-transform duration-200",
-              activeId === item.id ? "translate-x-1" : "group-hover:translate-x-1"
-            )}>
-              {item.text}
-            </span>
-          </a>
-        ))}
+          .map((item) => {
+            const renderText = (text: string) => {
+              const parts = text.split(/(`[^`]+`)/g);
+              return parts.map((part, i) => {
+                if (part.startsWith("`") && part.endsWith("`")) {
+                  return (
+                    <code key={i} className="bg-[hsl(var(--muted))] px-1 rounded font-mono text-[0.95em] text-[hsl(var(--primary))]">
+                      {part.slice(1, -1)}
+                    </code>
+                  );
+                }
+                return part;
+              });
+            };
+
+            return (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                className={clsx(
+                  "group flex items-start py-1.5 transition-all duration-200 border-l-2",
+                  item.level === 2 
+                    ? "pl-4 text-[13px] font-semibold mt-4 first:mt-0" 
+                    : "pl-8 text-[12px] font-normal text-[hsl(var(--muted-foreground))]",
+                  activeId === item.id
+                    ? "border-[hsl(var(--primary))] text-[hsl(var(--primary))]"
+                    : "border-transparent hover:border-[hsl(var(--border))] hover:text-[hsl(var(--foreground))]"
+                )}
+              >
+                <span className={clsx(
+                  "transition-transform duration-200",
+                  activeId === item.id ? "translate-x-1" : "group-hover:translate-x-1"
+                )}>
+                  {renderText(item.text)}
+                </span>
+              </a>
+            );
+          })}
       </div>
     </nav>
   );
