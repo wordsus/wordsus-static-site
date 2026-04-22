@@ -47,7 +47,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
             <ArrowRight size={16} />
           </Link>
           <Link
-            href={`/${locale}/favorites`}
+            href={`/${locale}#categories`}
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] text-[hsl(var(--foreground))] font-semibold text-sm hover:bg-[hsl(var(--muted))] transition-colors"
           >
             {t("browseCategories")}

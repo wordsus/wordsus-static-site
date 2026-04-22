@@ -142,7 +142,7 @@ export default function HomeClient({
       )}
 
       {/* ─── Categories + featured books ────────────────────────── */}
-      <section>
+      <section id="categories">
         <div className="flex items-center gap-2 mb-8">
           <BookOpen size={18} className="text-[hsl(var(--primary))]" />
           <div>
