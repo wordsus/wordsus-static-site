@@ -147,25 +147,28 @@ export default function BookClient({
       const language = languageMatch ? languageMatch[1] : '';
 
       const header = document.createElement('div');
-      header.className = 'mac-header flex items-center justify-between px-4 py-2 border-b border-white/5 bg-[#1a1b26] rounded-t-xl absolute top-0 left-0 right-0 h-11';
+      header.className = 'mac-header';
+      header.style.cssText = 'display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background-color: #1a1b26; border-top-left-radius: 0.75rem; border-top-right-radius: 0.75rem; position: absolute; top: 0; left: 0; right: 0; height: 2.75rem; z-index: 10;';
       
       const dots = document.createElement('div');
-      dots.className = 'flex gap-2 w-16';
+      dots.style.cssText = 'display: flex; gap: 0.5rem; width: 4rem;';
       dots.innerHTML = `
-        <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
-        <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
-        <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+        <div style="width: 0.75rem; height: 0.75rem; border-radius: 9999px; background-color: #ff5f56;"></div>
+        <div style="width: 0.75rem; height: 0.75rem; border-radius: 9999px; background-color: #ffbd2e;"></div>
+        <div style="width: 0.75rem; height: 0.75rem; border-radius: 9999px; background-color: #27c93f;"></div>
       `;
 
       const langSpan = document.createElement('span');
-      langSpan.className = 'text-[11px] text-[#a9b1d6] font-mono uppercase font-semibold flex-1 text-center tracking-wider';
+      langSpan.style.cssText = 'font-size: 11px; color: #a9b1d6; font-family: monospace; text-transform: uppercase; font-weight: 600; flex: 1; text-align: center; letter-spacing: 0.05em;';
       langSpan.innerText = language;
 
       const btnContainer = document.createElement('div');
-      btnContainer.className = 'w-16 flex justify-end';
+      btnContainer.style.cssText = 'width: 4rem; display: flex; justify-content: flex-end;';
 
       const copyBtn = document.createElement('button');
-      copyBtn.className = 'text-xs text-[#a9b1d6] hover:text-white transition-colors flex items-center justify-center p-1.5 rounded-md hover:bg-white/10';
+      copyBtn.style.cssText = 'font-size: 0.75rem; color: #a9b1d6; display: flex; align-items: center; justify-content: center; padding: 0.375rem; border-radius: 0.375rem; cursor: pointer; border: none; background: transparent; transition: color 0.2s, background-color 0.2s;';
+      copyBtn.onmouseover = () => { copyBtn.style.color = 'white'; copyBtn.style.backgroundColor = 'rgba(255,255,255,0.1)'; };
+      copyBtn.onmouseout = () => { copyBtn.style.color = '#a9b1d6'; copyBtn.style.backgroundColor = 'transparent'; };
       copyBtn.title = t('copyCode') || 'Copy';
       copyBtn.innerHTML = `
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
