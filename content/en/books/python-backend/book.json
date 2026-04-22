@@ -20,150 +20,175 @@
       "slug": "environment-architecture-and-tooling",
       "title": "Environment Architecture and Tooling",
       "order": 1,
+      "description": "Learn how to set up your professional Python development environment using modern tools like Poetry, Docker, and virtual environments.",
       "audioUrl": ""
     },
     {
       "slug": "core-data-mechanics-and-type-systems",
       "title": "Core Data Mechanics and Type Systems",
       "order": 2,
+      "description": "Explore Python's dynamic typing, memory management, and how core data structures work under the hood.",
       "audioUrl": ""
     },
     {
       "slug": "advanced-control-flow-and-logic-design",
       "title": "Advanced Control Flow and Logic Design",
       "order": 3,
+      "description": "Master complex control flow mechanisms: match-case, advanced loop structures, and context managers for clean logic.",
       "audioUrl": ""
     },
     {
       "slug": "function-architecture-and-modular-design",
       "title": "Function Architecture and Modular Design",
       "order": 4,
+      "description": "Deep dive into function scopes, closures, decorators, and building reusable, modular code structures.",
       "audioUrl": ""
     },
     {
       "slug": "deep-dive-into-collections-and-data-structures",
       "title": "Deep Dive into Collections and Data Structures",
       "order": 5,
+      "description": "Leverage advanced collections like namedtuples, deque, Counter, and memory-efficient data structures for robust applications.",
       "audioUrl": ""
     },
     {
       "slug": "robust-io-and-error-state-handling",
       "title": "Robust I/O and Error State Handling",
       "order": 6,
+      "description": "Build resilient systems by mastering file operations, standard streams, and comprehensive exception handling patterns.",
       "audioUrl": ""
     },
     {
       "slug": "advanced-object-oriented-programming",
       "title": "Advanced Object-Oriented Programming",
       "order": 7,
+      "description": "Implement multiple inheritance, mixins, properties, and encapsulation to build scalable object-oriented architectures.",
       "audioUrl": ""
     },
     {
       "slug": "the-python-data-model-and-dunder-methods",
       "title": "The Python Data Model and Dunder Methods",
       "order": 8,
+      "description": "Unlock Python's magic methods to create highly pythonic, intuitive, and seamlessly integrated custom objects.",
       "audioUrl": ""
     },
     {
       "slug": "generators-iterators-and-state-preservation",
       "title": "Generators, Iterators, and State Preservation",
       "order": 9,
+      "description": "Optimize memory usage and processing speed by mastering the iterator protocol and writing efficient generator functions.",
       "audioUrl": ""
     },
     {
       "slug": "functional-paradigms-and-metaprogramming",
       "title": "Functional Paradigms and Metaprogramming",
       "order": 10,
+      "description": "Apply functional programming concepts like map, filter, and reduce, alongside high-level metaprogramming techniques.",
       "audioUrl": ""
     },
     {
       "slug": "metaclasses-and-dynamic-execution",
       "title": "Metaclasses and Dynamic Execution",
       "order": 11,
+      "description": "Take control of class creation using metaclasses and dynamic execution environments for powerful framework-level design.",
       "audioUrl": ""
     },
     {
       "slug": "concurrency-parallelism-and-async-architectures",
       "title": "Concurrency, Parallelism, and Async Architectures",
       "order": 12,
+      "description": "Scale your applications by understanding the Global Interpreter Lock (GIL), threading, multiprocessing, and asyncio.",
       "audioUrl": ""
     },
     {
       "slug": "networking-fundamentals-for-backend-developers",
       "title": "Networking Fundamentals for Backend Developers",
       "order": 13,
+      "description": "Understand TCP/IP, HTTP protocols, sockets, and how to interact with the network layer effectively.",
       "audioUrl": ""
     },
     {
       "slug": "monolithic-frameworks-django-architecture",
       "title": "Monolithic Frameworks: Django Architecture",
       "order": 14,
+      "description": "Build comprehensive web applications using Django's robust monolithic architecture and \"batteries-included\" philosophy.",
       "audioUrl": ""
     },
     {
       "slug": "modern-microframeworks-fastapi-and-flask",
       "title": "Modern Microframeworks: FastAPI and Flask",
       "order": 15,
+      "description": "Develop high-performance, asynchronous REST APIs utilizing modern microframeworks like FastAPI and Flask.",
       "audioUrl": ""
     },
     {
       "slug": "api-design-patterns-and-data-serialization",
       "title": "API Design Patterns and Data Serialization",
       "order": 16,
+      "description": "Design RESTful APIs, implement pagination, authentication, and master data serialization with JSON and Pydantic.",
       "audioUrl": ""
     },
     {
       "slug": "relational-databases-and-sql-mastery",
       "title": "Relational Databases and SQL Mastery",
       "order": 17,
+      "description": "Master SQL operations, database normalization, indexing, and connection pooling for robust backend systems.",
       "audioUrl": ""
     },
     {
       "slug": "object-relational-mappers-orms",
       "title": "Object-Relational Mappers (ORMs)",
       "order": 18,
+      "description": "Connect your Python code to relational databases efficiently using SQLAlchemy and Django ORM.",
       "audioUrl": ""
     },
     {
       "slug": "nosql-stores-and-caching-topologies",
       "title": "NoSQL Stores and Caching Topologies",
       "order": 19,
+      "description": "Implement Redis and MongoDB to handle unstructured data, build high-speed caching layers, and manage sessions.",
       "audioUrl": ""
     },
     {
       "slug": "asynchronous-task-queues-and-event-streaming",
       "title": "Asynchronous Task Queues and Event Streaming",
       "order": 20,
+      "description": "Decouple backend processes using message brokers like RabbitMQ, Kafka, and task queues such as Celery.",
       "audioUrl": ""
     },
     {
       "slug": "comprehensive-testing-methodologies",
       "title": "Comprehensive Testing Methodologies",
       "order": 21,
+      "description": "Ensure software reliability with unit testing, integration testing, mocking, and tools like Pytest and Tox.",
       "audioUrl": ""
     },
     {
       "slug": "profiling-optimization-and-memory-management",
       "title": "Profiling, Optimization, and Memory Management",
       "order": 22,
+      "description": "Identify performance bottlenecks using profilers, manage memory leaks, and optimize your Python code for speed.",
       "audioUrl": ""
     },
     {
       "slug": "application-security-and-cryptography",
       "title": "Application Security and Cryptography",
       "order": 23,
+      "description": "Secure your APIs against common vulnerabilities (OWASP), implement JWT authentication, and use cryptography safely.",
       "audioUrl": ""
     },
     {
       "slug": "distributed-systems-and-software-architecture",
       "title": "Distributed Systems and Software Architecture",
       "order": 24,
+      "description": "Design scalable distributed systems using Domain-Driven Design (DDD), microservices, and Hexagonal Architecture.",
       "audioUrl": ""
     },
     {
       "slug": "cloud-native-deployment-and-observability",
       "title": "Cloud-Native Deployment and Observability",
       "order": 25,
+      "description": "Deploy Python applications to production using Docker, Kubernetes, CI/CD pipelines, and implement robust monitoring.",
       "audioUrl": ""
     }
   ],

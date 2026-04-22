@@ -6,6 +6,7 @@ export interface ChapterMeta {
   slug: string;
   title: string;
   order: number;
+  description?: string;
   audioUrl?: string;
 }
 

@@ -157,15 +157,35 @@ export default async function SlugPage({ params }: Props) {
       loc
     );
 
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "Book",
+      name: book.title,
+      author: {
+        "@type": "Person",
+        name: book.author,
+      },
+      description: book.description,
+      inLanguage: locale,
+      url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://wordsus.org"}/${locale}/${book.slug}`,
+      image: book.cover ? `${process.env.NEXT_PUBLIC_SITE_URL || "https://wordsus.org"}${book.cover}` : undefined,
+    };
+
     return (
-      <BookClient
-        book={book}
-        locale={loc}
-        initialChapterSlug={firstChapter.slug}
-        initialChapterHtml={html}
-        initialToc={toc}
-        allChapers={book.chapters}
-      />
+      <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <BookClient
+          book={book}
+          locale={loc}
+          initialChapterSlug={firstChapter.slug}
+          initialChapterHtml={html}
+          initialToc={toc}
+          allChapers={book.chapters}
+        />
+      </>
     );
   }
 
@@ -174,7 +194,24 @@ export default async function SlugPage({ params }: Props) {
   if (category) {
     const { getBooksByCategory } = await import("@/lib/content");
     const books = getBooksByCategory(slug, loc);
-    return <CategoryPage category={category} books={books} locale={loc} />;
+
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: category.title,
+      description: category.description,
+      url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://wordsus.org"}/${locale}/${category.slug}`,
+    };
+
+    return (
+      <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <CategoryPage category={category} books={books} locale={loc} />
+      </>
+    );
   }
 
   notFound();

@@ -20,120 +20,140 @@
       "slug": "primeros-pasos-y-entorno",
       "title": "Primeros Pasos y Entorno",
       "order": 1,
+      "description": "Aprende a configurar tu entorno de desarrollo en Python de forma profesional utilizando herramientas modernas como Poetry y Docker.",
       "audioUrl": ""
     },
     {
       "slug": "flujo-de-control-y-logica",
       "title": "Flujo de Control y Lógica",
       "order": 2,
+      "description": "Domina las estructuras de control en Python: condicionales, bucles avanzados y manejo del flujo de ejecución en aplicaciones backend.",
       "audioUrl": ""
     },
     {
       "slug": "estructuras-de-datos-integradas",
       "title": "Estructuras de Datos Integradas",
       "order": 3,
+      "description": "Descubre cómo utilizar eficientemente listas, diccionarios, tuplas y sets para procesar información compleja en tus APIs.",
       "audioUrl": ""
     },
     {
       "slug": "funciones",
       "title": "Funciones",
       "order": 4,
+      "description": "Domina la creación de funciones modulares, parámetros dinámicos, lambdas y el ámbito de variables (scope) para un código limpio.",
       "audioUrl": ""
     },
     {
       "slug": "programacion-orientada-a-objetos",
       "title": "Programación Orientada a Objetos (POO)",
       "order": 5,
+      "description": "Implementa clases, herencia, polimorfismo y encapsulamiento para estructurar proyectos escalables de Python.",
       "audioUrl": ""
     },
     {
       "slug": "gestion-de-errores-y-recursos",
       "title": "Gestión de Errores y Recursos",
       "order": 6,
+      "description": "Escribe código robusto aprendiendo a manejar excepciones (try/except) y a gestionar recursos con context managers (with).",
       "audioUrl": ""
     },
     {
       "slug": "ecosistema-y-modularidad",
       "title": "Ecosistema y Modularidad",
       "order": 7,
+      "description": "Organiza tu código en módulos y paquetes, y aprende a gestionar dependencias y librerías externas de forma segura.",
       "audioUrl": ""
     },
     {
       "slug": "persistencia-de-datos-basica",
       "title": "Persistencia de Datos Básica",
       "order": 8,
+      "description": "Aprende a leer y escribir archivos, trabajar con JSON, CSV y manejar sistemas de archivos de manera eficiente en Python.",
       "audioUrl": ""
     },
     {
       "slug": "iteracion-avanzada",
       "title": "Iteración Avanzada",
       "order": 9,
+      "description": "Lleva tus bucles al siguiente nivel dominando generadores, iteradores y la poderosa librería itertools de Python.",
       "audioUrl": ""
     },
     {
       "slug": "metaprogramacion-y-decoradores",
       "title": "Metaprogramación y Decoradores",
       "order": 10,
+      "description": "Descubre la magia detrás de los decoradores, modificando dinámicamente el comportamiento de funciones y clases.",
       "audioUrl": ""
     },
     {
       "slug": "tipado-estatico",
       "title": "Tipado Estático",
       "order": 11,
+      "description": "Mejora la calidad de tu código backend utilizando type hints, mypy y Pydantic para validación estricta de datos.",
       "audioUrl": ""
     },
     {
       "slug": "modelos-de-concurrencia",
       "title": "Modelos de Concurrencia",
       "order": 12,
+      "description": "Escala tus aplicaciones entendiendo las diferencias entre hilos (threading), multiprocesamiento (multiprocessing) y asyncio.",
       "audioUrl": ""
     },
     {
       "slug": "optimizacion-y-diagnostico",
       "title": "Optimización y Diagnóstico",
       "order": 13,
+      "description": "Identifica cuellos de botella mediante profiling y aplica técnicas de optimización para un rendimiento extremo en Python.",
       "audioUrl": ""
     },
     {
       "slug": "fundamentos-de-red-y-apis",
       "title": "Fundamentos de Red y APIs",
       "order": 14,
+      "description": "Comprende el protocolo HTTP, los métodos RESTful y cómo interactuar con APIs externas usando requests y httpx.",
       "audioUrl": ""
     },
     {
       "slug": "bases-de-datos-y-orms",
       "title": "Bases de Datos y ORMs",
       "order": 15,
+      "description": "Conecta tu backend a bases de datos relacionales usando SQLAlchemy y domina la persistencia de datos con ORMs.",
       "audioUrl": ""
     },
     {
       "slug": "frameworks-de-aplicacion",
       "title": "Frameworks de Aplicación",
       "order": 16,
+      "description": "Iníciate en el desarrollo web con Python explorando frameworks líderes como FastAPI, Django y Flask.",
       "audioUrl": ""
     },
     {
       "slug": "testing-y-calidad-de-codigo",
       "title": "Testing y Calidad de Código",
       "order": 17,
+      "description": "Garantiza la fiabilidad de tu software escribiendo pruebas unitarias y de integración con pytest y mock.",
       "audioUrl": ""
     },
     {
       "slug": "seguridad-en-el-backend",
       "title": "Seguridad en el Backend",
       "order": 18,
+      "description": "Protege tus APIs implementando autenticación JWT, hashing de contraseñas y mitigando vulnerabilidades comunes (OWASP).",
       "audioUrl": ""
     },
     {
       "slug": "arquitectura-de-software",
       "title": "Arquitectura de Software",
       "order": 19,
+      "description": "Aplica principios SOLID, Arquitectura Hexagonal y patrones de diseño para construir sistemas fáciles de mantener.",
       "audioUrl": ""
     },
     {
       "slug": "despliegue-y-operaciones-devops",
       "title": "Despliegue y Operaciones (DevOps)",
       "order": 20,
+      "description": "Lleva tu aplicación a producción dominando el empaquetado, integración continua (CI/CD) y contenedores.",
       "audioUrl": ""
     }
   ],

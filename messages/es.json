@@ -49,7 +49,8 @@
     "lastRead": "Última lectura",
     "minuteRead": "min de lectura",
     "backToCategory": "Volver a la Categoría",
-    "copyCode": "Copiar código"
+    "copyCode": "Copiar código",
+    "chapterDescription": "Lee el Capítulo {order}: {chapterTitle} del libro {bookTitle} en línea gratis."
   },
   "category": {
     "books": "libros",

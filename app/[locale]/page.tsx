@@ -43,8 +43,19 @@ export default async function HomePage({ params }: Props) {
     getAllBooks(l as Locale)
   );
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Wordsus",
+    url: process.env.NEXT_PUBLIC_SITE_URL || "https://wordsus.org",
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <HeroSection locale={loc} />
       <HomeClient
         locale={loc}
