@@ -1,20 +1,12 @@
 {
   "name": "wordsus-static-site",
   "compatibility_date": "2024-09-23",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  "main": ".open-next/worker.js",
   "assets": {
-    "binding": "ASSETS",
-    "directory": ".open-next/assets"
+    "directory": "out"
   },
   "observability": {
     "enabled": true
   },
-  // Production Environment (default)
-  // Note: these are run-time variable, not build-time variables
-  "vars": {},
   "routes": [
     {
       "pattern": "wordsus.com",
