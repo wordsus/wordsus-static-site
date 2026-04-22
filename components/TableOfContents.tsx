@@ -8,9 +8,10 @@ import { useTranslations } from "next-intl";
 
 interface TableOfContentsProps {
   toc: TocItem[];
+  onClick?: () => void;
 }
 
-export default function TableOfContents({ toc }: TableOfContentsProps) {
+export default function TableOfContents({ toc, onClick }: TableOfContentsProps) {
   const t = useTranslations("book");
   const [activeId, setActiveId] = useState<string>("");
 
@@ -59,6 +60,7 @@ export default function TableOfContents({ toc }: TableOfContentsProps) {
               <a
                 key={item.id}
                 href={`#${item.id}`}
+                onClick={onClick}
                 className={clsx(
                   "group flex items-start py-1.5 transition-all duration-200 border-l-2",
                   item.level === 2 

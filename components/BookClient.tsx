@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { clsx } from "clsx";
 import { useTranslations } from "next-intl";
-import { ChevronLeft, ChevronRight, Heart, Menu, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, Heart, Menu, List, X } from "lucide-react";
 import type { BookMeta, TocItem, Locale } from "@/lib/types";
 import TableOfContents from "@/components/TableOfContents";
 import AudioPlayer from "@/components/AudioPlayer";
@@ -39,6 +39,7 @@ export default function BookClient({
   const [loading, setLoading] = useState(false);
   const [isFav, setIsFav] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [tocOpen, setTocOpen] = useState(false);
 
   const currentChapterMeta = allChapers.find((ch) => ch.slug === activeChapter);
   const currentIdx = allChapers.findIndex((ch) => ch.slug === activeChapter);
@@ -321,16 +322,25 @@ export default function BookClient({
       {/* ─── Main content ──────────────────────────────── */}
       <div className="flex-1 min-w-0">
         {/* Mobile controls */}
-        <div className="lg:hidden sticky top-16 z-30 flex items-center gap-2 bg-[hsl(var(--background)/0.9)] backdrop-blur-sm px-4 py-2 border-b border-[hsl(var(--border))]">
+        <div className="xl:hidden sticky top-16 z-30 flex items-center justify-between gap-2 bg-[hsl(var(--background)/0.9)] backdrop-blur-sm px-4 py-2 border-b border-[hsl(var(--border))]">
+          <div className="flex items-center gap-2 min-w-0">
+            <button
+              onClick={() => setSidebarOpen(true)}
+              className="p-2 rounded-md hover:bg-[hsl(var(--muted))] text-[hsl(var(--muted-foreground))] lg:hidden"
+            >
+              <Menu size={18} />
+            </button>
+            <span className="text-sm font-medium text-[hsl(var(--foreground))] truncate">
+              {currentChapterMeta?.title}
+            </span>
+          </div>
           <button
-            onClick={() => setSidebarOpen(true)}
+            onClick={() => setTocOpen(true)}
             className="p-2 rounded-md hover:bg-[hsl(var(--muted))] text-[hsl(var(--muted-foreground))]"
+            aria-label="Table of Contents"
           >
-            <Menu size={18} />
+            <List size={18} />
           </button>
-          <span className="text-sm font-medium text-[hsl(var(--foreground))] truncate">
-            {currentChapterMeta?.title}
-          </span>
         </div>
 
         {/* Chapter content */}
@@ -345,7 +355,7 @@ export default function BookClient({
           ) : (
             <div className="animate-fade-in">
               <h1 className="text-4xl font-extrabold mb-10 text-[hsl(var(--foreground))] tracking-tight">
-                {currentChapterMeta?.order}. {currentChapterMeta?.title}
+                {currentChapterMeta?.title}
               </h1>
               <div
                 className="prose-wordsus"
@@ -398,10 +408,31 @@ export default function BookClient({
         )}
       </div>
 
+      {/* ─── Mobile TOC overlay ─────────────────────── */}
+      {tocOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-black/50 xl:hidden"
+          onClick={() => setTocOpen(false)}
+        />
+      )}
+
       {/* ─── Right sidebar: ToC ────────────────────────── */}
-      <aside className="hidden xl:block w-80 shrink-0">
-        <div className="sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto p-8">
-          <TableOfContents toc={toc} />
+      <aside
+        className={clsx(
+          "fixed xl:sticky top-16 right-0 z-40 xl:z-auto h-[calc(100vh-4rem)] overflow-y-auto",
+          "w-80 bg-[hsl(var(--card))] border-l border-[hsl(var(--border))]",
+          "transition-transform duration-300 shrink-0",
+          tocOpen ? "translate-x-0" : "translate-x-full xl:translate-x-0"
+        )}
+      >
+        <div className="p-8 pt-16 xl:pt-8 relative">
+          <button
+            onClick={() => setTocOpen(false)}
+            className="xl:hidden absolute top-4 right-4 p-2 text-[hsl(var(--muted-foreground))] hover:bg-[hsl(var(--muted))] rounded-md"
+          >
+            <X size={18} />
+          </button>
+          <TableOfContents toc={toc} onClick={() => setTocOpen(false)} />
         </div>
       </aside>
     </div>
