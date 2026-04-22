@@ -79,16 +79,17 @@ async function generateChapterFiles() {
             book.slug
           );
           mkdirSync(dir, { recursive: true });
+          const outPath = join(dir, `${chapter.slug}.json`);
           writeFileSync(
-            join(dir, `${chapter.slug}.json`),
+            outPath,
             JSON.stringify({ html, toc }),
             "utf-8"
           );
         }
       }
     }
-  } catch {
-    // Ignored in dev
+  } catch (err) {
+    console.error("Error generating chapter files:", err);
   }
 }
 

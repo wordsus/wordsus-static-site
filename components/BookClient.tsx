@@ -31,16 +31,8 @@ export default function BookClient({
 
   // Initialise from localStorage immediately (before first render) so the
   // correct chapter is known without waiting for a useEffect.
-  const [activeChapter, setActiveChapter] = useState<string>(() => {
-    if (typeof window === "undefined") return initialChapterSlug;
-    try {
-      const saved = localStorage.getItem(`wordsus-chapter-${locale}-${book.slug}`);
-      if (saved && allChapers.some((ch) => ch.slug === saved)) {
-        return saved;
-      }
-    } catch {}
-    return initialChapterSlug;
-  });
+  const [activeChapter, setActiveChapter] = useState<string>(initialChapterSlug);
+  const [isMounted, setIsMounted] = useState(false);
 
   const [chapterHtml, setChapterHtml] = useState(initialChapterHtml);
   const [toc, setToc] = useState<TocItem[]>(initialToc);
@@ -78,21 +70,6 @@ export default function BookClient({
     } catch {}
   }, [activeChapter, book.slug, locale]);
 
-  // On mount: if localStorage gave us a chapter that differs from the SSR
-  // initial chapter, fetch its content now.
-  useEffect(() => {
-    if (activeChapter !== initialChapterSlug) {
-      loadChapter(activeChapter, true);
-    } else {
-      // Same chapter — just sync the URL
-      const newUrl = `/${locale}/${book.slug}/${activeChapter}`;
-      if (window.location.pathname.replace(/\/$/, "") !== newUrl) {
-        window.history.replaceState(null, "", newUrl);
-      }
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // Only on mount
-
   // Fetch chapter content
   const loadChapter = useCallback(
     async (slug: string, isAutoLoad = false) => {
@@ -125,6 +102,28 @@ export default function BookClient({
     },
     [activeChapter, chapterHtml, initialChapterHtml, locale, book.slug]
   );
+
+  useEffect(() => {
+    setIsMounted(true);
+    let savedChapter = initialChapterSlug;
+    try {
+      const saved = localStorage.getItem(`wordsus-chapter-${locale}-${book.slug}`);
+      if (saved && saved !== initialChapterSlug && allChapers.some((ch) => ch.slug === saved)) {
+        savedChapter = saved;
+      }
+    } catch {}
+
+    if (savedChapter !== initialChapterSlug) {
+      setActiveChapter(savedChapter);
+      loadChapter(savedChapter, true);
+    } else {
+      const newUrl = `/${locale}/${book.slug}/${initialChapterSlug}`;
+      if (window.location.pathname.replace(/\/$/, "") !== newUrl) {
+        window.history.replaceState(null, "", newUrl);
+      }
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [book.slug, locale, initialChapterSlug]);
 
   const toggleFavorite = () => {
     try {
