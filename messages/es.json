@@ -32,6 +32,7 @@
     "featuredBooks": "Libros Destacados",
     "viewAll": "Ver todos",
     "noRecentBooks": "Aún no has leído ningún libro. ¡Empieza a explorar!",
+    "removeFromReading": "Quitar de la lista",
     "browseNow": "Explorar Ahora"
   },
   "book": {

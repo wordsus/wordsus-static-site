@@ -38,12 +38,18 @@ export default async function HomePage({ params }: Props) {
     );
   }
 
+  // Collect books from all locales for the cross-locale "Continue Reading" list
+  const allBooksAllLocales = routing.locales.flatMap((l) =>
+    getAllBooks(l as Locale)
+  );
+
   return (
     <>
       <HeroSection locale={loc} />
       <HomeClient
         locale={loc}
         allBooks={allBooks}
+        allBooksAllLocales={allBooksAllLocales}
         categories={categories}
         booksByCategory={booksByCategory}
       />

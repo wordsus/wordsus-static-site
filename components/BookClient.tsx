@@ -67,7 +67,7 @@ export default function BookClient({
       const key = `${locale}:${book.slug}`;
       const recent: string[] = JSON.parse(localStorage.getItem("wordsus-recent") || "[]");
       const filtered = recent.filter((r) => r !== key);
-      localStorage.setItem("wordsus-recent", JSON.stringify([key, ...filtered].slice(0, 10)));
+      localStorage.setItem("wordsus-recent", JSON.stringify([key, ...filtered]));
     } catch {}
   }, [book.slug, locale]);
 
@@ -360,10 +360,13 @@ export default function BookClient({
             {prevChapter ? (
               <button
                 onClick={() => loadChapter(prevChapter.slug)}
-                className="flex items-center gap-2 text-sm text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors"
+                className="flex items-center gap-2 text-sm text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors group"
               >
-                <ChevronLeft size={16} />
-                <span className="line-clamp-1 max-w-[200px]">{prevChapter.title}</span>
+                <ChevronLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
+                <span className="line-clamp-1 max-w-[200px]">
+                  <span className="font-mono text-[hsl(var(--primary)/0.7)] mr-1">{prevChapter.order}.</span>
+                  {prevChapter.title}
+                </span>
               </button>
             ) : (
               <div />
@@ -371,10 +374,13 @@ export default function BookClient({
             {nextChapter ? (
               <button
                 onClick={() => loadChapter(nextChapter.slug)}
-                className="flex items-center gap-2 text-sm text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors"
+                className="flex items-center gap-2 text-sm text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors group text-right"
               >
-                <span className="line-clamp-1 max-w-[200px]">{nextChapter.title}</span>
-                <ChevronRight size={16} />
+                <span className="line-clamp-1 max-w-[200px]">
+                  <span className="font-mono text-[hsl(var(--primary)/0.7)] mr-1">{nextChapter.order}.</span>
+                  {nextChapter.title}
+                </span>
+                <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </button>
             ) : (
               <div />

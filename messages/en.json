@@ -32,6 +32,7 @@
     "featuredBooks": "Featured Books",
     "viewAll": "View all",
     "noRecentBooks": "No recently read books yet. Start exploring!",
+    "removeFromReading": "Remove from list",
     "browseNow": "Browse Now"
   },
   "book": {
