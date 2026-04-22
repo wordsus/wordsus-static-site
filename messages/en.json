@@ -66,7 +66,10 @@
     "empty": "No favorites yet",
     "emptySubtitle": "Add books to your favorites to see them here.",
     "added": "Added to favorites",
-    "removed": "Removed from favorites"
+    "removed": "Removed from favorites",
+    "browseBooks": "Browse Books",
+    "bookSingular": "book",
+    "bookPlural": "books"
   },
   "footer": {
     "tagline": "Free knowledge for everyone.",

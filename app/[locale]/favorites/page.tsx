@@ -26,7 +26,11 @@ export default async function FavoritesPage({ params }: Props) {
   const { locale } = await params;
   const loc = locale as Locale;
   setRequestLocale(locale);
-  const allBooks = getAllBooks(loc);
 
-  return <FavoritesClient locale={loc} allBooks={allBooks} />;
+  // Collect books from every locale so FavoritesClient can resolve cross-locale favourites
+  const allBooksAllLocales = routing.locales.flatMap((l) =>
+    getAllBooks(l as Locale)
+  );
+
+  return <FavoritesClient locale={loc} allBooksAllLocales={allBooksAllLocales} />;
 }

@@ -9,12 +9,18 @@ import BookCard from "@/components/BookCard";
 
 interface FavoritesClientProps {
   locale: Locale;
-  allBooks: BookMeta[];
+  allBooksAllLocales: BookMeta[];
 }
 
-export default function FavoritesClient({ locale, allBooks }: FavoritesClientProps) {
+// Friendly locale label map — populated from translations at render time
+const LOCALE_ORDER: Locale[] = ["es", "en"];
+
+export default function FavoritesClient({ locale, allBooksAllLocales }: FavoritesClientProps) {
   const t = useTranslations("favorites");
-  const [favorites, setFavorites] = useState<BookMeta[]>([]);
+  const tLang = useTranslations("language");
+
+  // Map locale -> BookMeta[] for favorites
+  const [byLocale, setByLocale] = useState<Record<string, BookMeta[]>>({});
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -22,20 +28,38 @@ export default function FavoritesClient({ locale, allBooks }: FavoritesClientPro
       const favKeys: string[] = JSON.parse(
         localStorage.getItem("wordsus-favorites") || "[]"
       );
-      const books = favKeys
-        .map((key) => {
-          const [loc, slug] = key.split(":");
-          if (loc !== locale) return null;
-          return allBooks.find((b) => b.slug === slug) || null;
-        })
-        .filter(Boolean) as BookMeta[];
-      setFavorites(books);
+
+      // Group by locale, preserving the order the user favourited them (most recent first)
+      const grouped: Record<string, BookMeta[]> = {};
+      for (const key of favKeys) {
+        const colonIdx = key.indexOf(":");
+        const loc = key.slice(0, colonIdx) as Locale;
+        const slug = key.slice(colonIdx + 1);
+        const book = allBooksAllLocales.find(
+          (b) => b.slug === slug && b.locale === loc
+        );
+        if (book) {
+          if (!grouped[loc]) grouped[loc] = [];
+          grouped[loc].push(book);
+        }
+      }
+      setByLocale(grouped);
     } catch {
-      setFavorites([]);
+      setByLocale({});
     } finally {
       setLoaded(true);
     }
-  }, [allBooks, locale]);
+  }, [allBooksAllLocales]);
+
+  const totalCount = Object.values(byLocale).reduce((acc, arr) => acc + arr.length, 0);
+
+  // Locale sections ordered by LOCALE_ORDER, then any remaining locales
+  const orderedLocales = [
+    ...LOCALE_ORDER.filter((l) => byLocale[l]?.length),
+    ...Object.keys(byLocale).filter(
+      (l) => !LOCALE_ORDER.includes(l as Locale) && byLocale[l]?.length
+    ),
+  ] as Locale[];
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
@@ -61,6 +85,7 @@ export default function FavoritesClient({ locale, allBooks }: FavoritesClientPro
         </div>
       </div>
 
+      {/* Loading skeleton */}
       {!loaded ? (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
           {[...Array(4)].map((_, i) => (
@@ -70,7 +95,8 @@ export default function FavoritesClient({ locale, allBooks }: FavoritesClientPro
             />
           ))}
         </div>
-      ) : favorites.length === 0 ? (
+      ) : totalCount === 0 ? (
+        /* Empty state */
         <div className="text-center py-24">
           <div className="w-16 h-16 rounded-2xl bg-[hsl(var(--muted))] flex items-center justify-center mx-auto mb-4">
             <Heart size={28} className="text-[hsl(var(--muted-foreground))]" />
@@ -86,14 +112,48 @@ export default function FavoritesClient({ locale, allBooks }: FavoritesClientPro
             className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[hsl(var(--primary))] text-white text-sm font-medium hover:bg-[hsl(var(--primary)/0.85)] transition-colors"
           >
             <BookOpen size={14} />
-            Browse Books
+            {t("browseBooks")}
           </Link>
         </div>
       ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5">
-          {favorites.map((book) => (
-            <BookCard key={book.slug} book={book} locale={locale} />
-          ))}
+        /* Sections per locale */
+        <div className="space-y-12">
+          {orderedLocales.map((loc) => {
+            const books = byLocale[loc];
+            // Friendly locale name from translations; fall back to the code itself
+            let localeLabel: string;
+            try {
+              localeLabel = tLang(loc);
+            } catch {
+              localeLabel = loc.toUpperCase();
+            }
+
+            return (
+              <section key={loc}>
+                {/* Section header — only show if there are multiple locale sections */}
+                {orderedLocales.length > 1 && (
+                  <div className="flex items-center gap-3 mb-5">
+                    <span className="px-2.5 py-1 rounded-lg text-xs font-semibold uppercase tracking-wider bg-[hsl(var(--accent))] text-[hsl(var(--accent-foreground))]">
+                      {loc}
+                    </span>
+                    <h2 className="text-base font-semibold text-[hsl(var(--foreground))]">
+                      {localeLabel}
+                    </h2>
+                    <div className="flex-1 h-px bg-[hsl(var(--border))]" />
+                    <span className="text-xs text-[hsl(var(--muted-foreground))]">
+                      {books.length} {books.length === 1 ? t("bookSingular") : t("bookPlural")}
+                    </span>
+                  </div>
+                )}
+
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5">
+                  {books.map((book) => (
+                    <BookCard key={`${loc}:${book.slug}`} book={book} locale={loc} />
+                  ))}
+                </div>
+              </section>
+            );
+          })}
         </div>
       )}
     </div>
