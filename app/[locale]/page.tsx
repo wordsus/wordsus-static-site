@@ -47,7 +47,7 @@ export default async function HomePage({ params }: Props) {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Wordsus",
-    url: process.env.NEXT_PUBLIC_SITE_URL || "https://wordsus.org",
+    url: process.env.NEXT_PUBLIC_SITE_URL || "https://wordsus.com",
   };
 
   return (

@@ -167,8 +167,8 @@ export default async function SlugPage({ params }: Props) {
       },
       description: book.description,
       inLanguage: locale,
-      url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://wordsus.org"}/${locale}/${book.slug}`,
-      image: book.cover ? `${process.env.NEXT_PUBLIC_SITE_URL || "https://wordsus.org"}${book.cover}` : undefined,
+      url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://wordsus.com"}/${locale}/${book.slug}`,
+      image: book.cover ? `${process.env.NEXT_PUBLIC_SITE_URL || "https://wordsus.com"}${book.cover}` : undefined,
     };
 
     return (
@@ -200,7 +200,7 @@ export default async function SlugPage({ params }: Props) {
       "@type": "CollectionPage",
       name: category.title,
       description: category.description,
-      url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://wordsus.org"}/${locale}/${category.slug}`,
+      url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://wordsus.com"}/${locale}/${category.slug}`,
     };
 
     return (

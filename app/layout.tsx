@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://wordsus.org"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://wordsus.com"),
   title: {
     default: "Wordsus | Free Online Books and Courses",
     template: "%s | Wordsus",

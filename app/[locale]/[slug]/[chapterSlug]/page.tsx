@@ -78,10 +78,10 @@ export default async function ChapterPage({ params }: Props) {
     isPartOf: {
       "@type": "Book",
       name: book.title,
-      url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://wordsus.org"}/${locale}/${book.slug}`,
+      url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://wordsus.com"}/${locale}/${book.slug}`,
     },
     inLanguage: locale,
-    url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://wordsus.org"}/${locale}/${book.slug}/${chapter.slug}`,
+    url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://wordsus.com"}/${locale}/${book.slug}/${chapter.slug}`,
   };
 
   return (

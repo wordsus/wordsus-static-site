@@ -3,8 +3,10 @@ import { routing } from '@/i18n/routing';
 import { getAllBooks, getAllCategories } from '@/lib/content';
 import type { Locale } from '@/lib/types';
 
+export const dynamic = 'force-static';
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://wordsus.org';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://wordsus.com';
   const entries: MetadataRoute.Sitemap = [];
 
   // Home and categories
