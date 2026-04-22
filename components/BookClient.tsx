@@ -137,63 +137,79 @@ export default function BookClient({
   };
 
   useEffect(() => {
-    const pres = document.querySelectorAll('.prose-wordsus pre');
-    pres.forEach((pre) => {
-      if (pre.querySelector('.mac-header')) return;
+    const addHeaders = () => {
+      const pres = document.querySelectorAll('.prose-wordsus pre');
+      pres.forEach((pre) => {
+        if (pre.querySelector('.mac-header')) return;
 
-      const code = pre.querySelector('code');
-      const languageClass = code?.className || '';
-      const languageMatch = languageClass.match(/language-(\w+)/);
-      const language = languageMatch ? languageMatch[1] : '';
+        const code = pre.querySelector('code');
+        const languageClass = code?.className || '';
+        const languageMatch = languageClass.match(/language-(\w+)/);
+        const language = languageMatch ? languageMatch[1] : '';
 
-      const header = document.createElement('div');
-      header.className = 'mac-header';
-      header.style.cssText = 'display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background-color: #1a1b26; border-top-left-radius: 0.75rem; border-top-right-radius: 0.75rem; position: absolute; top: 0; left: 0; right: 0; height: 2.75rem; z-index: 10;';
-      
-      const dots = document.createElement('div');
-      dots.style.cssText = 'display: flex; gap: 0.5rem; width: 4rem;';
-      dots.innerHTML = `
-        <div style="width: 0.75rem; height: 0.75rem; border-radius: 9999px; background-color: #ff5f56;"></div>
-        <div style="width: 0.75rem; height: 0.75rem; border-radius: 9999px; background-color: #ffbd2e;"></div>
-        <div style="width: 0.75rem; height: 0.75rem; border-radius: 9999px; background-color: #27c93f;"></div>
-      `;
-
-      const langSpan = document.createElement('span');
-      langSpan.style.cssText = 'font-size: 11px; color: #a9b1d6; font-family: monospace; text-transform: uppercase; font-weight: 600; flex: 1; text-align: center; letter-spacing: 0.05em;';
-      langSpan.innerText = language;
-
-      const btnContainer = document.createElement('div');
-      btnContainer.style.cssText = 'width: 4rem; display: flex; justify-content: flex-end;';
-
-      const copyBtn = document.createElement('button');
-      copyBtn.style.cssText = 'font-size: 0.75rem; color: #a9b1d6; display: flex; align-items: center; justify-content: center; padding: 0.375rem; border-radius: 0.375rem; cursor: pointer; border: none; background: transparent; transition: color 0.2s, background-color 0.2s;';
-      copyBtn.onmouseover = () => { copyBtn.style.color = 'white'; copyBtn.style.backgroundColor = 'rgba(255,255,255,0.1)'; };
-      copyBtn.onmouseout = () => { copyBtn.style.color = '#a9b1d6'; copyBtn.style.backgroundColor = 'transparent'; };
-      copyBtn.title = t('copyCode') || 'Copy';
-      copyBtn.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-      `;
-
-      copyBtn.onclick = () => {
-        const text = code?.innerText || '';
-        navigator.clipboard.writeText(text);
-        copyBtn.innerHTML = `
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#27c93f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        const header = document.createElement('div');
+        header.className = 'mac-header';
+        header.style.cssText = 'display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background-color: #1a1b26; border-top-left-radius: 0.75rem; border-top-right-radius: 0.75rem; position: absolute; top: 0; left: 0; right: 0; height: 2.75rem; z-index: 10;';
+        
+        const dots = document.createElement('div');
+        dots.style.cssText = 'display: flex; gap: 0.5rem; width: 4rem;';
+        dots.innerHTML = `
+          <div style="width: 0.75rem; height: 0.75rem; border-radius: 9999px; background-color: #ff5f56;"></div>
+          <div style="width: 0.75rem; height: 0.75rem; border-radius: 9999px; background-color: #ffbd2e;"></div>
+          <div style="width: 0.75rem; height: 0.75rem; border-radius: 9999px; background-color: #27c93f;"></div>
         `;
-        setTimeout(() => {
+
+        const langSpan = document.createElement('span');
+        langSpan.style.cssText = 'font-size: 11px; color: #a9b1d6; font-family: monospace; text-transform: uppercase; font-weight: 600; flex: 1; text-align: center; letter-spacing: 0.05em;';
+        langSpan.innerText = language;
+
+        const btnContainer = document.createElement('div');
+        btnContainer.style.cssText = 'width: 4rem; display: flex; justify-content: flex-end;';
+
+        const copyBtn = document.createElement('button');
+        copyBtn.style.cssText = 'font-size: 0.75rem; color: #a9b1d6; display: flex; align-items: center; justify-content: center; padding: 0.375rem; border-radius: 0.375rem; cursor: pointer; border: none; background: transparent; transition: color 0.2s, background-color 0.2s;';
+        copyBtn.onmouseover = () => { copyBtn.style.color = 'white'; copyBtn.style.backgroundColor = 'rgba(255,255,255,0.1)'; };
+        copyBtn.onmouseout = () => { copyBtn.style.color = '#a9b1d6'; copyBtn.style.backgroundColor = 'transparent'; };
+        copyBtn.title = t('copyCode') || 'Copy';
+        copyBtn.innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+        `;
+
+        copyBtn.onclick = () => {
+          const text = code?.innerText || '';
+          navigator.clipboard.writeText(text);
           copyBtn.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#27c93f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           `;
-        }, 2000);
-      };
+          setTimeout(() => {
+            copyBtn.innerHTML = `
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            `;
+          }, 2000);
+        };
 
-      btnContainer.appendChild(copyBtn);
-      header.appendChild(dots);
-      header.appendChild(langSpan);
-      header.appendChild(btnContainer);
+        btnContainer.appendChild(copyBtn);
+        header.appendChild(dots);
+        header.appendChild(langSpan);
+        header.appendChild(btnContainer);
 
-      pre.insertBefore(header, pre.firstChild);
-    });
+        pre.insertBefore(header, pre.firstChild);
+      });
+    };
+
+    // Run initially
+    addHeaders();
+
+    // Observe for any DOM changes that might remove the headers (like React re-renders)
+    const observer = new MutationObserver(addHeaders);
+    const container = document.querySelector('.prose-wordsus');
+    if (container) {
+      observer.observe(container, { childList: true, subtree: true });
+    }
+
+    return () => {
+      observer.disconnect();
+    };
   }, [chapterHtml, t]);
 
   return (
