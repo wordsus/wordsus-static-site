@@ -1,0 +1,222 @@
+{
+  "slug": "python-backend",
+  "locale": "en",
+  "title": "Mastering the Python Backend: A Step-by-Step Evolution",
+  "author": "Wordsus Team",
+  "description": "Master backend development with Python. A comprehensive journey from language fundamentals to microservices architecture, advanced security, and professional deployment.",
+  "cover": "/images/books/default-cover.jpg",
+  "category": "programming",
+  "tags": [
+    "python",
+    "backend",
+    "web-development",
+    "architecture"
+  ],
+  "featured": true,
+  "publishedAt": "2024-04-21",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "environment-architecture-and-tooling",
+      "title": "Environment Architecture and Tooling",
+      "order": 1,
+      "audioUrl": ""
+    },
+    {
+      "slug": "core-data-mechanics-and-type-systems",
+      "title": "Core Data Mechanics and Type Systems",
+      "order": 2,
+      "audioUrl": ""
+    },
+    {
+      "slug": "advanced-control-flow-and-logic-design",
+      "title": "Advanced Control Flow and Logic Design",
+      "order": 3,
+      "audioUrl": ""
+    },
+    {
+      "slug": "function-architecture-and-modular-design",
+      "title": "Function Architecture and Modular Design",
+      "order": 4,
+      "audioUrl": ""
+    },
+    {
+      "slug": "deep-dive-into-collections-and-data-structures",
+      "title": "Deep Dive into Collections and Data Structures",
+      "order": 5,
+      "audioUrl": ""
+    },
+    {
+      "slug": "robust-io-and-error-state-handling",
+      "title": "Robust I/O and Error State Handling",
+      "order": 6,
+      "audioUrl": ""
+    },
+    {
+      "slug": "advanced-object-oriented-programming",
+      "title": "Advanced Object-Oriented Programming",
+      "order": 7,
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-python-data-model-and-dunder-methods",
+      "title": "The Python Data Model and Dunder Methods",
+      "order": 8,
+      "audioUrl": ""
+    },
+    {
+      "slug": "generators-iterators-and-state-preservation",
+      "title": "Generators, Iterators, and State Preservation",
+      "order": 9,
+      "audioUrl": ""
+    },
+    {
+      "slug": "functional-paradigms-and-metaprogramming",
+      "title": "Functional Paradigms and Metaprogramming",
+      "order": 10,
+      "audioUrl": ""
+    },
+    {
+      "slug": "metaclasses-and-dynamic-execution",
+      "title": "Metaclasses and Dynamic Execution",
+      "order": 11,
+      "audioUrl": ""
+    },
+    {
+      "slug": "concurrency-parallelism-and-async-architectures",
+      "title": "Concurrency, Parallelism, and Async Architectures",
+      "order": 12,
+      "audioUrl": ""
+    },
+    {
+      "slug": "networking-fundamentals-for-backend-developers",
+      "title": "Networking Fundamentals for Backend Developers",
+      "order": 13,
+      "audioUrl": ""
+    },
+    {
+      "slug": "monolithic-frameworks-django-architecture",
+      "title": "Monolithic Frameworks: Django Architecture",
+      "order": 14,
+      "audioUrl": ""
+    },
+    {
+      "slug": "modern-microframeworks-fastapi-and-flask",
+      "title": "Modern Microframeworks: FastAPI and Flask",
+      "order": 15,
+      "audioUrl": ""
+    },
+    {
+      "slug": "api-design-patterns-and-data-serialization",
+      "title": "API Design Patterns and Data Serialization",
+      "order": 16,
+      "audioUrl": ""
+    },
+    {
+      "slug": "relational-databases-and-sql-mastery",
+      "title": "Relational Databases and SQL Mastery",
+      "order": 17,
+      "audioUrl": ""
+    },
+    {
+      "slug": "object-relational-mappers-orms",
+      "title": "Object-Relational Mappers (ORMs)",
+      "order": 18,
+      "audioUrl": ""
+    },
+    {
+      "slug": "nosql-stores-and-caching-topologies",
+      "title": "NoSQL Stores and Caching Topologies",
+      "order": 19,
+      "audioUrl": ""
+    },
+    {
+      "slug": "asynchronous-task-queues-and-event-streaming",
+      "title": "Asynchronous Task Queues and Event Streaming",
+      "order": 20,
+      "audioUrl": ""
+    },
+    {
+      "slug": "comprehensive-testing-methodologies",
+      "title": "Comprehensive Testing Methodologies",
+      "order": 21,
+      "audioUrl": ""
+    },
+    {
+      "slug": "profiling-optimization-and-memory-management",
+      "title": "Profiling, Optimization, and Memory Management",
+      "order": 22,
+      "audioUrl": ""
+    },
+    {
+      "slug": "application-security-and-cryptography",
+      "title": "Application Security and Cryptography",
+      "order": 23,
+      "audioUrl": ""
+    },
+    {
+      "slug": "distributed-systems-and-software-architecture",
+      "title": "Distributed Systems and Software Architecture",
+      "order": 24,
+      "audioUrl": ""
+    },
+    {
+      "slug": "cloud-native-deployment-and-observability",
+      "title": "Cloud-Native Deployment and Observability",
+      "order": 25,
+      "audioUrl": ""
+    }
+  ],
+  "parts": [
+    {
+      "title": "Part I: The Foundations of Python",
+      "chapterSlugs": [
+        "environment-architecture-and-tooling",
+        "core-data-mechanics-and-type-systems",
+        "advanced-control-flow-and-logic-design",
+        "function-architecture-and-modular-design",
+        "deep-dive-into-collections-and-data-structures",
+        "robust-io-and-error-state-handling"
+      ]
+    },
+    {
+      "title": "Part II: Object-Oriented Mastery and Python Internals",
+      "chapterSlugs": [
+        "advanced-object-oriented-programming",
+        "the-python-data-model-and-dunder-methods",
+        "generators-iterators-and-state-preservation",
+        "functional-paradigms-and-metaprogramming",
+        "metaclasses-and-dynamic-execution",
+        "concurrency-parallelism-and-async-architectures"
+      ]
+    },
+    {
+      "title": "Part III: Web Frameworks and Network Protocols",
+      "chapterSlugs": [
+        "networking-fundamentals-for-backend-developers",
+        "monolithic-frameworks-django-architecture",
+        "modern-microframeworks-fastapi-and-flask",
+        "api-design-patterns-and-data-serialization"
+      ]
+    },
+    {
+      "title": "Part IV: Data Persistence, Caching, and Message Brokers",
+      "chapterSlugs": [
+        "relational-databases-and-sql-mastery",
+        "object-relational-mappers-orms",
+        "nosql-stores-and-caching-topologies",
+        "asynchronous-task-queues-and-event-streaming"
+      ]
+    },
+    {
+      "title": "Part V: Engineering Quality, Security, and Scale",
+      "chapterSlugs": [
+        "comprehensive-testing-methodologies",
+        "profiling-optimization-and-memory-management",
+        "application-security-and-cryptography",
+        "distributed-systems-and-software-architecture",
+        "cloud-native-deployment-and-observability"
+      ]
+    }
+  ]
+}
