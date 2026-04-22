@@ -344,10 +344,15 @@ export default function BookClient({
               <div className="h-4 bg-[hsl(var(--muted))] rounded w-4/6" />
             </div>
           ) : (
-            <div
-              className="prose-wordsus animate-fade-in"
-              dangerouslySetInnerHTML={{ __html: chapterHtml }}
-            />
+            <div className="animate-fade-in">
+              <h1 className="text-4xl font-extrabold mb-10 text-[hsl(var(--foreground))] tracking-tight">
+                {currentChapterMeta?.order}. {currentChapterMeta?.title}
+              </h1>
+              <div
+                className="prose-wordsus"
+                dangerouslySetInnerHTML={{ __html: chapterHtml }}
+              />
+            </div>
           )}
 
           {/* Chapter navigation */}
