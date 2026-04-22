@@ -1,3 +1,5 @@
+Dominar la ejecución en Python exige entender que el rendimiento no solo depende de la elegancia del código, sino de cómo este interactúa con los recursos del sistema. En este capítulo, desmitificamos el **GIL**, la pieza clave de CPython que dicta las reglas del juego. Aprenderás a discernir cuándo tu aplicación está limitada por el procesador (**CPU-bound**) o por esperas externas (**I/O-bound**). Exploraremos el **Multithreading** para latencias de red, el **Multiprocessing** para exprimir cada núcleo de tu hardware y la **Programación Asíncrona** con `asyncio` para escalar a miles de conexiones simultáneas. Al finalizar, tendrás el criterio de un ingeniero Senior para elegir el modelo de concurrencia óptimo para cada desafío arquitectónico.
+
 ## 12.1 Entendiendo el GIL (Global Interpreter Lock) de CPython
 
 Antes de sumergirnos en la creación de hilos, procesos o bucles de eventos asíncronos, debemos abordar el concepto más incomprendido y debatido del ecosistema de Python: el **Global Interpreter Lock** (GIL). 

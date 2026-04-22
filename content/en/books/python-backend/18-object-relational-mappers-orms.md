@@ -1,5 +1,171 @@
 We now bridge the gap between relational SQL and object-oriented Python using Object-Relational Mappers (ORMs), focusing entirely on SQLAlchemy. As Python's premier ORM, it utilizes the Data Mapper pattern to decouple database schemas from domain logic. We will explore its dual architecture: starting with the low-level SQL Expression Language of SQLAlchemy Core, before advancing to the declarative mapping and Session lifecycle of the ORM. Crucially, we will also tackle the infamous N+1 query problem by mastering eager loading strategies, and finally, implement robust schema version control for production environments using Alembic.
 
+## 18.1 SQLAlchemy Core: Table Metadata and SQL Expression Language
+
+While SQLAlchemy is most widely known for its Object-Relational Mapper (ORM), the ORM itself is an abstraction layer built upon a powerful, lower-level foundation: **SQLAlchemy Core**. Core provides a Pythonic, schema-centric paradigm for interacting with databases. Instead of mapping classes to tables, Core treats the database strictly as a collection of tables, rows, and relationships, allowing you to construct SQL queries programmatically using the **SQL Expression Language**.
+
+By using Core, you gain fine-grained control over query construction and execution, bypassing the overhead of the ORM's state tracking while still benefiting from SQL injection protection, dialect abstraction, and connection pooling.
+
+### The Core Architecture
+
+To understand SQLAlchemy Core, it helps to visualize the hierarchy of its components. The architecture separates the definition of your database schema from the execution of queries against it.
+
+```text
++-------------------------------------------------------------+
+|                     SQLAlchemy Core                         |
++-------------------------------------------------------------+
+|                                                             |
+|  1. Metadata Registry          2. SQL Expression Language   |
+|  +--------------------+        +-------------------------+  |
+|  | MetaData           |        | select(), insert(),     |  |
+|  |  |                 |        | update(), delete()      |  |
+|  |  +-- Table         | <----- | (Constructs SQL Strings)|  |
+|  |       |            |        +-------------------------+  |
+|  |       +-- Column   |                     |               |
+|  +--------------------+                     v               |
+|                                3. Execution Environment     |
+|                                +-------------------------+  |
+|                                | Engine                  |  |
+|                                |  +-- Dialect (e.g., PG) |  |
+|                                |  +-- Connection Pool    |  |
+|                                |         |               |  |
+|                                |         v               |  |
+|                                | Connection.execute()    |  |
+|                                +-------------------------+  |
++-------------------------------------------------------------+
+```
+
+### Table Metadata: Defining the Schema
+
+In SQLAlchemy Core, the database schema is represented by a collection of Python objects. The `MetaData` object acts as a central registry, holding a collection of `Table` objects and their associated `Column` objects.
+
+Because we are working in Core, we define tables explicitly rather than using declarative classes.
+
+```python
+from sqlalchemy import MetaData, Table, Column, Integer, String, ForeignKey, DateTime
+from datetime import datetime, timezone
+
+# 1. Initialize the metadata registry
+metadata = MetaData()
+
+# 2. Define tables explicitly
+users_table = Table(
+    "users",
+    metadata,
+    Column("id", Integer, primary_key=True),
+    Column("username", String(50), nullable=False, unique=True),
+    Column("email", String(120), nullable=False),
+    Column("created_at", DateTime, default=lambda: datetime.now(timezone.utc))
+)
+
+addresses_table = Table(
+    "addresses",
+    metadata,
+    Column("id", Integer, primary_key=True),
+    Column("user_id", Integer, ForeignKey("users.id"), nullable=False),
+    Column("email_address", String(120), nullable=False)
+)
+```
+
+In this setup, `users_table` and `addresses_table` are purely representational. They do not hold data; they represent the *structure* of the database. The `ForeignKey` constraint instructs SQLAlchemy on how these tables relate to one another, which becomes crucial when constructing table joins.
+
+### The SQL Expression Language
+
+The SQL Expression Language allows you to write SQL queries using Python objects and operators. When executed, SQLAlchemy compiles these expressions into the specific SQL dialect of your target database (e.g., PostgreSQL, MySQL, or SQLite).
+
+To execute these expressions, we require an `Engine` and a `Connection`. Relying on the context manager concepts from Chapter 6, we use `engine.begin()` to automatically handle transaction commits and rollbacks.
+
+#### 1. Inserting Data
+To insert data, we use the `insert()` construct.
+
+```python
+from sqlalchemy import create_engine, insert
+
+# Create an in-memory SQLite engine for demonstration
+engine = create_engine("sqlite:///:memory:")
+
+# Emit DDL to create the tables in the database
+metadata.create_all(engine)
+
+# Constructing an INSERT expression
+stmt = insert(users_table).values(
+    username="grace_hopper", 
+    email="grace@navy.mil"
+)
+
+# Executing the expression
+with engine.begin() as conn:
+    result = conn.execute(stmt)
+    print(f"Inserted primary key: {result.inserted_primary_key}")
+    
+    # Bulk insert
+    conn.execute(
+        insert(addresses_table),
+        [
+            {"user_id": 1, "email_address": "grace.hopper@example.com"},
+            {"user_id": 1, "email_address": "ghopper@history.org"},
+        ]
+    )
+```
+
+#### 2. Selecting Data
+The `select()` construct replaces the SQL `SELECT` keyword. Notice how Python's standard comparison operators (`==`, `>`, `<`) are overloaded (leveraging the dunder methods discussed in Chapter 8) to generate SQL `WHERE` clauses.
+
+```python
+from sqlalchemy import select
+
+# Construct a SELECT expression
+stmt = select(users_table.c.username, addresses_table.c.email_address).select_from(
+    users_table.join(addresses_table)
+).where(
+    users_table.c.username == "grace_hopper"
+)
+
+with engine.connect() as conn:
+    # Execute and fetch all results
+    result = conn.execute(stmt)
+    
+    # The result object is an iterable of Row objects
+    for row in result:
+        # Rows can be accessed by tuple index or by column name/attribute
+        print(f"User: {row.username}, Address: {row.email_address}")
+```
+
+*Note the use of `.c` (e.g., `users_table.c.username`). The `.c` attribute is an alias for the `columns` collection on the `Table` object, providing namespace access to all columns defined on that table.*
+
+#### 3. Updating and Deleting Data
+Updates and deletes follow the same chainable, expression-based syntax, combining `.where()` and `.values()`.
+
+```python
+from sqlalchemy import update, delete
+
+# UPDATE Expression
+update_stmt = (
+    update(users_table)
+    .where(users_table.c.username == "grace_hopper")
+    .values(email="admiral_grace@navy.mil")
+)
+
+# DELETE Expression
+delete_stmt = (
+    delete(addresses_table)
+    .where(addresses_table.c.email_address.like("%@example.com"))
+)
+
+with engine.begin() as conn:
+    conn.execute(update_stmt)
+    del_result = conn.execute(delete_stmt)
+    print(f"Deleted {del_result.rowcount} rows.")
+```
+
+### Why Use Core over the ORM?
+
+While the declarative ORM (covered in 18.2) is ideal for complex business logic and state management, Core shines in specific architectural scenarios:
+
+1.  **Bulk Operations:** Core bypasses the identity map and unit-of-work mechanics, making it exponentially faster for bulk inserts, updates, and ETL (Extract, Transform, Load) pipelines.
+2.  **Complex Analytics:** When writing massive, multi-table aggregate queries with complex window functions, Core's Expression Language is often easier to reason about and tune than the ORM.
+3.  **Schema Reflection:** Core excels at dynamically reading an existing database schema and mapping it at runtime, which is highly useful for building database administration tools or reporting dashboards.
+
 ## 18.2 SQLAlchemy ORM: Declarative Mapping and Session Lifecycle
 
 While SQLAlchemy Core provides a schema-centric view of your database, the **SQLAlchemy ORM (Object-Relational Mapper)** provides a domain-centric view. It leverages the Data Mapper pattern to bridge the gap between relational database paradigms and object-oriented Python. Instead of writing SQL expressions against tables, you interact with Python classes and objects, while the ORM handles the underlying SQL translation and state management.

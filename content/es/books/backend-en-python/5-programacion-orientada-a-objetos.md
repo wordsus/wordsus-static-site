@@ -1,3 +1,5 @@
+La Programación Orientada a Objetos (POO) en Python no es solo una forma de organizar código, sino una filosofía para modelar la realidad. Mientras que la programación procedimental se centra en "qué debe pasar" (funciones), la POO se enfoca en "qué es esto" (objetos). Una clase actúa como el plano arquitectónico que define estructura y comportamiento, mientras que las instancias son las construcciones reales en memoria. A través del uso de `self`, los métodos mágicos y la herencia, Python nos permite crear sistemas donde el estado y la lógica conviven de forma coherente. Este capítulo te llevará desde los cimientos del objeto hasta la eficiencia moderna de las *dataclasses*.
+
 ## 5.1 Clases, instancias, y el uso de `self`
 
 Hasta este punto en el libro, hemos manejado el estado y la lógica de nuestros programas utilizando tipos de datos integrados (como diccionarios y listas) y agrupando operaciones en funciones. Este enfoque imperativo y procedimental es poderoso, pero a medida que las aplicaciones crecen en complejidad, modelar entidades del mundo real únicamente con diccionarios y funciones independientes puede volverse frágil y difícil de mantener.

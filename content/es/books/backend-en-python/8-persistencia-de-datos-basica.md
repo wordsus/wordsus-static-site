@@ -1,3 +1,5 @@
+La persistencia transforma scripts efímeros en aplicaciones útiles. Hasta ahora, tus datos morían al cerrar el proceso; aquí aprenderás a grabarlos en el disco duro. Empezaremos dominando la lectura y escritura de archivos locales con `open()` y el robusto `pathlib`, aplicando siempre gestores de contexto para evitar fugas de memoria. Luego, daremos el salto a la serialización profesional: desde la universalidad de **JSON**, la eficiencia tabular de **CSV** y la elegancia de **YAML** para configuraciones, hasta el poder (y los riesgos) de **pickle** para objetos nativos. Este capítulo es el puente entre la lógica pura y el almacenamiento de datos en el mundo real.
+
 ## 8.1 Lectura y escritura de archivos locales
 
 Hasta este punto del libro, los datos con los que hemos trabajado vivían exclusivamente en la memoria RAM. Esto significa que al terminar la ejecución del script, la información desaparecía. Para lograr la **persistencia**, el primer paso fundamental es aprender a interactuar con el sistema de archivos del sistema operativo mediante operaciones de entrada y salida (I/O).

@@ -1,3 +1,5 @@
+Las funciones son el corazón de la arquitectura en Python. En esta sección, descubrirás cómo transformar bloques de código aislados en herramientas reutilizables y predecibles. Aprenderás que una función es mucho más que un grupo de instrucciones: es un ecosistema con sus propias reglas de visibilidad, donde la **Regla LEGB** dicta cómo se resuelven los nombres de las variables. Exploraremos la flexibilidad extrema del lenguaje para inyectar datos mediante argumentos posicionales, nombrados y empaquetados (`*args` y `**kwargs`). Finalmente, elevaremos tu nivel al tratar las funciones como "objetos de primera clase", sentando las bases para el paradigma funcional y el código limpio.
+
 ## 4.1 Definición, retorno y el alcance de las variables (Regla LEGB)
 
 A medida que tus scripts en Python crecen más allá de unas pocas líneas, la necesidad de estructurar y reutilizar la lógica se vuelve primordial. Las funciones son el bloque de construcción fundamental para lograr esta modularidad. En esta sección, no solo veremos cómo crearlas, sino también cómo Python gestiona el ciclo de vida y la visibilidad de las variables que viven dentro y fuera de ellas.

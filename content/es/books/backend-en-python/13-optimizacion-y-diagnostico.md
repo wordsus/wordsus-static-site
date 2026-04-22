@@ -1,3 +1,5 @@
+Optimizar código no es una cuestión de instinto, sino de rigor científico. Como ingeniero senior, tu labor no es escribir el código más rápido a la primera, sino el más legible, y luego usar herramientas de diagnóstico para atacar los cuellos de botella reales. En este capítulo, aprenderás a trascender las conjeturas mediante el perfilado de precisión. Utilizaremos `timeit` para micro-optimizaciones, `cProfile` para identificar las funciones que ralentizan tu flujo de ejecución y `tracemalloc` para cazar retenciones de memoria. Finalmente, veremos cómo el uso estratégico del módulo `collections` puede transformar un algoritmo ineficiente en una solución de alto rendimiento.
+
 ## 13.1 Perfilado de código (Profiling) con `cProfile` y `timeit`
 
 Uno de los mayores errores en el desarrollo de software es la optimización prematura. Como desarrolladores, nuestra intuición sobre qué parte del código es lenta suele ser sorprendentemente inexacta. Antes de reescribir un algoritmo, implementar multiprocesamiento (como vimos en el Capítulo 12) o refactorizar estructuras de datos, debemos seguir una regla de oro fundamental: **no adivines, mide**.

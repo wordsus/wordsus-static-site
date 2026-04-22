@@ -1,3 +1,5 @@
+En el Capítulo 19, damos el salto de la sintaxis a la estrategia. Un ingeniero senior no solo escribe código que funciona, sino que diseña sistemas capaces de evolucionar, escalar y resistir el paso del tiempo. Exploraremos cómo los patrones del GoF se simplifican en un lenguaje dinámico como Python y por qué la Arquitectura Limpia es el escudo definitivo contra el acoplamiento técnico. Analizaremos con pragmatismo cuándo fragmentar un monolito y cómo el procesamiento asíncrono mediante colas de mensajes transforma una aplicación saturada en un sistema de alto rendimiento. Aquí aprenderás a tomar decisiones arquitectónicas basadas en compromisos reales y no en modas.
+
 ## 19.1 Implementación de Patrones de Diseño del GoF en Python
 
 Cuando el clásico libro *Design Patterns: Elements of Reusable Object-Oriented Software* (la "Banda de los Cuatro" o GoF) se publicó en 1994, los ejemplos estaban escritos en C++ y Smalltalk. Muchos de estos patrones nacieron para sortear las limitaciones de lenguajes estáticamente tipados y sin funciones de primera clase. 

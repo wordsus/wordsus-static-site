@@ -1,3 +1,5 @@
+Dominar Python implica entender que el código no vive en el vacío. En este capítulo, exploraremos cómo transformar scripts aislados en sistemas profesionales mediante el **Ecosistema y la Modularidad**. Aprenderás a organizar la lógica en **módulos y paquetes**, diseñando interfaces limpias con `__init__.py`. Además, abordaremos la higiene del entorno: desde el aislamiento físico mediante **entornos virtuales (venv)** para evitar conflictos de versiones, hasta la gestión avanzada con **Poetry**, garantizando que tu software sea reproducible y escalable. Es el paso definitivo del código artesanal a la ingeniería de software robusta, preparándote para colaborar en proyectos de alto nivel.
+
 ## 7.1 Importaciones de módulos y estructura de paquetes (`__init__.py`)
 
 A medida que tus proyectos superan la barrera de los cientos o miles de líneas de código, mantener toda la lógica en un único archivo se vuelve insostenible. En los capítulos anteriores dominamos la creación de funciones (Capítulo 4) y la abstracción mediante clases (Capítulo 5). Ahora, el siguiente paso natural hacia la arquitectura de software es organizar esas piezas.

@@ -1,3 +1,5 @@
+Este capítulo explora la capacidad de Python para trascender la ejecución de código lineal y adentrarse en la **metaprogramación**: el arte de escribir código que manipula código. Comenzaremos con los **closures**, donde las funciones aprenden a "recordar" su entorno, permitiendo una retención de estado elegante sin recurrir a clases. Esta base nos permitirá dominar los **decoradores**, herramientas esenciales para inyectar lógica transversal de forma limpia y profesional. Finalmente, llegaremos a las **metaclases**, la capa más profunda del lenguaje, donde tomaremos el control del proceso de creación de clases para imponer reglas arquitectónicas y automatizar comportamientos complejos.
+
 ## 10.1 Closures (Cierres) y retención de estado
 
 En el Capítulo 4 establecimos dos pilares fundamentales: la regla LEGB para la resolución de alcances (sección 4.1) y el hecho de que en Python las funciones son ciudadanas de primera clase (sección 4.4). Un *closure* (o cierre) es la culminación elegante de estos dos conceptos y representa el puente conceptual necesario para dominar los decoradores en la próxima sección.

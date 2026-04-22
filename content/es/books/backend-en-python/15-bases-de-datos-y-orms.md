@@ -1,3 +1,5 @@
+En este capítulo, elevamos la persistencia de datos al estándar de la ingeniería moderna. No basta con guardar información; en sistemas de alto tráfico, la eficiencia y la integridad son los pilares que separan a un desarrollador junior de un senior. Exploraremos cómo la asincronía transforma la interacción con bases de datos relacionales mediante `asyncpg`, eliminando bloqueos en el Event Loop. Analizaremos cuándo el dinamismo de MongoDB o la velocidad de Redis superan al modelo SQL tradicional. Finalmente, aprenderás a dominar abstracciones de alto nivel con SQLAlchemy y el control de versiones de esquemas con Alembic, garantizando que tu arquitectura sea escalable, segura y profesional.
+
 ## 15.1 Bases de datos relacionales y drivers asíncronos (`asyncpg`)
 
 Hasta ahora, hemos visto cómo el *Event Loop* de Python (Capítulo 12) nos permite manejar miles de conexiones I/O sin bloquear el hilo principal. Sin embargo, en el desarrollo backend, la operación I/O por excelencia es la comunicación con la base de datos. 

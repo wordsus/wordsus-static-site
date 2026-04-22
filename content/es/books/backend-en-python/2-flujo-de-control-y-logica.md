@@ -1,3 +1,5 @@
+El Capítulo 2 es el puente entre escribir código y construir lógica. En Python, el flujo de control no es solo una cuestión de sintaxis, sino de legibilidad y eficiencia. A diferencia de otros lenguajes cargados de llaves y paréntesis, aquí el diseño se basa en la **indentación obligatoria**, lo que fuerza una estructura visual limpia. Dominarás desde la toma de decisiones con `if-elif-else` hasta la potencia de los bucles `for` y `while`, comprendiendo por qué la cláusula `else` en un bucle es una de las herramientas más subestimadas del lenguaje. Este capítulo te enseñará a pensar de forma pragmática, evitando la anidación excesiva para escribir código que se lee como prosa.
+
 ## 2.1 Condicionales (if, elif, else) y expresiones condicionales
 
 Hasta este punto, hemos visto cómo Python ejecuta las instrucciones de manera secuencial, línea por línea. Sin embargo, en el mundo real, los programas necesitan tomar decisiones y reaccionar de manera diferente según el estado de los datos. Aquí es donde entra el flujo de control, siendo las estructuras condicionales su bloque de construcción más fundamental.

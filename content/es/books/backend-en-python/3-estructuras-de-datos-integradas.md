@@ -1,3 +1,5 @@
+En este capítulo exploraremos las herramientas que transforman a Python en un lenguaje capaz de gestionar datos a gran escala: las estructuras integradas. Comenzaremos por las **listas** y **tuplas**, entendiendo cómo la mutabilidad de una y la inmutabilidad de la otra dictan su uso en memoria. Luego, descenderemos al corazón del rendimiento con **diccionarios** y **sets**, desvelando cómo las **tablas hash** permiten búsquedas instantáneas. Finalmente, dominaremos la elegancia del código "Pythonic" mediante las **comprensiones** de datos y técnicas de **desempaquetado avanzado**, herramientas esenciales para cualquier desarrollador que aspire a la eficiencia y la arquitectura senior.
+
 ## 3.1 Listas y Tuplas: Uso, diferencias y métodos
 
 Hasta ahora hemos trabajado con tipos de datos primitivos y estructuras de control. Sin embargo, en el mundo real, los programas necesitan gestionar colecciones de datos. Python nos ofrece varias estructuras integradas para este propósito, siendo las **secuencias** las más fundamentales. 

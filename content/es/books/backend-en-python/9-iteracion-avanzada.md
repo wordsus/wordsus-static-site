@@ -1,3 +1,5 @@
+Dominar Python a nivel senior exige dejar de ver a las colecciones como simples contenedores de datos y empezar a entenderlas como flujos de comportamiento. En este capítulo, profundizaremos en el **Protocolo de Iteración**, el motor que permite a Python procesar información de forma eficiente. Descubrirás cómo transformar objetos comunes en iterables personalizados y cómo la **evaluación perezosa** (lazy evaluation) te permite manipular volúmenes masivos de datos sin colapsar la memoria RAM. Desde el uso estratégico de `yield` hasta la potencia algorítmica de `itertools`, aprenderás a diseñar arquitecturas donde el rendimiento y la elegibilidad convergen de forma magistral.
+
 ## 9.1 El protocolo de iteración: `__iter__` y `__next__`
 
 En el Capítulo 2 exploramos cómo utilizar bucles `for` para recorrer estructuras de datos, y en el Capítulo 3 dominamos el uso de colecciones como listas, diccionarios y sets. Sin embargo, como desarrollador senior, no basta con saber *usar* un bucle; necesitas entender exactamente **qué ocurre a nivel de la máquina virtual de Python (CPython)** cuando iteras sobre un objeto. 
