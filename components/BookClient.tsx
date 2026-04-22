@@ -207,7 +207,7 @@ export default function BookClient({
       <aside
         className={clsx(
           "fixed lg:sticky top-16 z-40 lg:z-auto h-[calc(100vh-4rem)] overflow-y-auto",
-          "w-72 bg-[hsl(var(--card))] border-r border-[hsl(var(--border))]",
+          "w-72 bg-[hsl(var(--background))] border-r border-[hsl(var(--border))]",
           "transition-transform duration-300 shrink-0",
           sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         )}
@@ -420,7 +420,7 @@ export default function BookClient({
       <aside
         className={clsx(
           "fixed xl:sticky top-16 right-0 z-40 xl:z-auto h-[calc(100vh-4rem)] overflow-y-auto",
-          "w-80 bg-[hsl(var(--card))] border-l border-[hsl(var(--border))]",
+          "w-80 bg-[hsl(var(--background))] border-l border-[hsl(var(--border))]",
           "transition-transform duration-300 shrink-0",
           tocOpen ? "translate-x-0" : "translate-x-full xl:translate-x-0"
         )}

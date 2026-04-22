@@ -29,7 +29,7 @@ export default function TableOfContents({ toc, onClick }: TableOfContentsProps) 
     );
     headings.forEach((h) => observer.observe(h));
     return () => observer.disconnect();
-  }, []);
+  }, [toc]);
 
   if (toc.length === 0) return null;
 
