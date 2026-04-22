@@ -16,12 +16,10 @@
 }
 // --- COMMANDS ---
 //
+// Note: Since the website is static, I don't 
+// need `opennextjs-cloudflare` at the moment.
+// 
 // -- For production environment application:
-// Build command: pnpm opennextjs-cloudflare build
-// Deploy command: pnpm opennextjs-cloudflare deploy
-// Path: /
-//
-// -- For staging environment application:
-// Build command: pnpm opennextjs-cloudflare build
-// Deploy command: pnpm opennextjs-cloudflare deploy --env=staging
+// Build command: pnpm run build
+// Deploy command: pnpm wrangler deploy
 // Path: /
