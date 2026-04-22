@@ -22,22 +22,6 @@
     }
   ]
 }
-// --- SETUP BUILD-TIME VARIABLES ---
-//
-// You must set them in the Cloudflare dashboard (Settings -> Build -> Variables and Secrets)
-// 
-// -- For production environment application:
-// "NEXT_PUBLIC_API_URL": "https://api.wordsus.com",
-// "NEXT_PUBLIC_ENVIRONMENT": "prod",
-// "NEXT_PUBLIC_SUPABASE_URL": "https://sdiivlaxyqnleiucvobv.supabase.co",
-// "NEXT_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNkaWl2bGF4eXFubGVpdWN2b2J2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ3MDE3NTYsImV4cCI6MjA4MDI3Nzc1Nn0.72mKQiNuCGVjMOALt-WvXL4vA08Udg8RkgSiekicl18"
-// 
-// -- For staging environment application:
-// "NEXT_PUBLIC_API_URL": "https://staging-api.wordsus.com",
-// "NEXT_PUBLIC_ENVIRONMENT": "staging",
-// "NEXT_PUBLIC_SUPABASE_URL": "https://giunwdssxflpeqcygzne.supabase.co",
-// "NEXT_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdpdW53ZHNzeGZscGVxY3lnem5lIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ3MDIzMTYsImV4cCI6MjA4MDI3ODMxNn0.4DwuWkN3kkw5A0Fq6Qwh3h9pIj3fYaN0qEtxPd7QGHs"
-//
 // --- COMMANDS ---
 //
 // -- For production environment application:

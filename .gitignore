@@ -46,6 +46,3 @@ next-env.d.ts
 # generated at build time
 /public/search-index/
 /public/chapter-content/
-
-# pnpm
-pnpm-lock.yaml
