@@ -1,0 +1,481 @@
+{
+  "slug": "golang",
+  "locale": "es",
+  "title": "Go para el Backend: De los Fundamentos a la Maestría",
+  "author": "Equipo Wordsus",
+  "description": "Domina el desarrollo backend con Go (Golang). Una ruta completa desde la sintaxis básica y concurrencia avanzada hasta microservicios, gRPC y despliegue en entornos cloud.",
+  "cover": "/images/books/default-cover.jpg",
+  "category": "programacion",
+  "tags": [
+    "go",
+    "golang",
+    "backend",
+    "desarrollo-web",
+    "arquitectura",
+    "concurrencia"
+  ],
+  "featured": true,
+  "publishedAt": "2026-04-23",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "introduccion-y-entorno-de-desarrollo",
+      "title": "Introducción y Entorno de Desarrollo",
+      "order": 1,
+      "description": "Historia, filosofía y configuración del entorno de desarrollo en Go.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "sintaxis-basica-y-tipos-de-datos-primarios",
+      "title": "Sintaxis Básica y Tipos de Datos Primarios",
+      "order": 2,
+      "description": "Fundamentos de sintaxis, variables y tipos de datos primarios.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "flujo-de-control",
+      "title": "Flujo de Control",
+      "order": 3,
+      "description": "Estructuras condicionales y el versátil bucle for en Go.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "funciones-y-manejo-basico-de-errores",
+      "title": "Funciones y Manejo Básico de Errores",
+      "order": 4,
+      "description": "Definición de funciones, cierres y el paradigma idiomático de errores.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "estructuras-de-datos-integradas",
+      "title": "Estructuras de Datos Integradas",
+      "order": 5,
+      "description": "Slices, arrays y mapas: el corazón de la gestión de datos en Go.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "punteros-y-estructuras-structs",
+      "title": "Punteros y Estructuras (Structs)",
+      "order": 6,
+      "description": "Punteros, estructuras y composición sobre herencia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "metodos-e-interfaces",
+      "title": "Métodos e Interfaces",
+      "order": 7,
+      "description": "Implementación de métodos e interfaces para el polimorfismo implícito.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "goroutines",
+      "title": "Goroutines",
+      "order": 8,
+      "description": "El modelo de concurrencia ligera de Go y el uso de Goroutines.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "canales-channels",
+      "title": "Canales (Channels)",
+      "order": 9,
+      "description": "Comunicación segura entre procesos mediante canales con y sin búfer.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "sincronizacion-y-data-races",
+      "title": "Sincronización y Data Races",
+      "order": 10,
+      "description": "Primitivas de sincronización, exclusión mutua y prevención de data races.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "patrones-de-concurrencia",
+      "title": "Patrones de Concurrencia",
+      "order": 11,
+      "description": "Implementación de patrones avanzados como Worker Pools y Pipelines.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fundamentos-de-io",
+      "title": "Fundamentos de I/O",
+      "order": 12,
+      "description": "Abstracciones maestras de entrada y salida con io.Reader e io.Writer.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-paquete-context",
+      "title": "El Paquete Context",
+      "order": 13,
+      "description": "Gestión del ciclo de vida y cancelación de procesos con el paquete Context.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fechas-utilidades-y-reflexion",
+      "title": "Fechas, Utilidades y Reflexión",
+      "order": 14,
+      "description": "Utilidades esenciales para tiempo, expresiones regulares y reflexión.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "criptografia-basica-y-codificacion",
+      "title": "Criptografía Básica y Codificación",
+      "order": 15,
+      "description": "Serialización JSON/XML y fundamentos de criptografía y hashing.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fundamentos-de-testing-en-go",
+      "title": "Fundamentos de Testing en Go",
+      "order": 16,
+      "description": "Escritura de pruebas unitarias idiomáticas y análisis de cobertura.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "mocks-stubs-fakes-y-tdd",
+      "title": "Mocks, Stubs, Fakes y TDD",
+      "order": 17,
+      "description": "Inyección de dependencias y uso de mocks para pruebas desacopladas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "testing-de-integracion-y-testcontainers",
+      "title": "Testing de Integración y Testcontainers",
+      "order": 18,
+      "description": "Pruebas de integración reales utilizando Testcontainers para dependencias externas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "benchmarking-y-fuzzing",
+      "title": "Benchmarking y Fuzzing",
+      "order": 19,
+      "description": "Medición de rendimiento con benchmarks y descubrimiento de bugs con Fuzzing.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "principios-de-diseno-y-clean-code-en-go",
+      "title": "Principios de Diseño y Clean Code en Go",
+      "order": 20,
+      "description": "Aplicación de principios SOLID y organización idiomática de paquetes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "arquitectura-limpia-y-hexagonal",
+      "title": "Arquitectura Limpia y Hexagonal",
+      "order": 21,
+      "description": "Implementación de arquitecturas desacopladas mediante Puertos y Adaptadores.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "domain-driven-design-ddd-basico",
+      "title": "Domain-Driven Design (DDD) Básico",
+      "order": 22,
+      "description": "Modelado del dominio y aplicación del lenguaje ubicuo en el código.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "patrones-de-diseno-clasicos-en-go",
+      "title": "Patrones de Diseño Clásicos en Go",
+      "order": 23,
+      "description": "Adaptación de patrones de diseño clásicos a la filosofía de Go.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fundamentos-http-en-go",
+      "title": "Fundamentos HTTP en Go",
+      "order": 24,
+      "description": "Construcción de servidores y clientes HTTP robustos con la librería estándar.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "enrutamiento-routers-y-middlewares",
+      "title": "Enrutamiento (Routers) y Middlewares",
+      "order": 25,
+      "description": "Estrategias de enrutamiento moderno y creación de middlewares reutilizables.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "validacion-paginacion-y-respuestas",
+      "title": "Validación, Paginación y Respuestas",
+      "order": 26,
+      "description": "Validación de datos, técnicas de paginación y respuestas estandarizadas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "documentacion-de-apis",
+      "title": "Documentación de APIs",
+      "order": 27,
+      "description": "Documentación profesional de APIs con OpenAPI y versionado.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "sql-y-el-paquete-database-sql",
+      "title": "SQL y el paquete database/sql",
+      "order": 28,
+      "description": "Interacción con bases de datos SQL utilizando el paquete database/sql.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "herramientas-sql-avanzadas-query-builders-y-orms",
+      "title": "Herramientas SQL Avanzadas, Query Builders y ORMs",
+      "order": 29,
+      "description": "Uso de sqlx, sqlc y análisis de ORMs como GORM en proyectos reales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "transacciones-y-migraciones",
+      "title": "Transacciones y Migraciones",
+      "order": 30,
+      "description": "Gestión de transacciones ACID y estrategias de migración de esquemas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "bases-de-datos-nosql-y-cache",
+      "title": "Bases de Datos NoSQL y Caché",
+      "order": 31,
+      "description": "Persistencia NoSQL con Redis, MongoDB y bases de datos embebidas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "de-monolito-a-microservicios",
+      "title": "De Monolito a Microservicios",
+      "order": 32,
+      "description": "Estrategias para la transición de arquitecturas monolíticas a microservicios.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "grpc-y-protocol-buffers",
+      "title": "gRPC y Protocol Buffers",
+      "order": 33,
+      "description": "Comunicación de alto rendimiento con gRPC y Protocol Buffers.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "message-brokers-y-event-driven-architecture",
+      "title": "Message Brokers y Event-Driven Architecture",
+      "order": 34,
+      "description": "Integración de Message Brokers como RabbitMQ, Kafka y NATS.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "graphql-en-go",
+      "title": "GraphQL en Go",
+      "order": 35,
+      "description": "Implementación de servidores GraphQL eficientes con gqlgen.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "vulnerabilidades-comunes-y-mitigacion",
+      "title": "Vulnerabilidades Comunes y Mitigación",
+      "order": 36,
+      "description": "Identificación y mitigación de vulnerabilidades siguiendo el OWASP Top 10.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "autenticacion-autorizacion-y-criptografia-aplicada",
+      "title": "Autenticación, Autorización y Criptografía Aplicada",
+      "order": 37,
+      "description": "Implementación de autenticación JWT/PASETO y autorización con Casbin.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "seguridad-a-nivel-de-red-y-aplicacion",
+      "title": "Seguridad a Nivel de Red y Aplicación",
+      "order": 38,
+      "description": "Configuración de servidores HTTPS seguros (TLS moderno), gestión de secretos y Rate Limiting.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "logging-estructurado",
+      "title": "Logging Estructurado",
+      "order": 39,
+      "description": "Transición al logging estructurado moderno con el paquete log/slog.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "metricas",
+      "title": "Métricas",
+      "order": 40,
+      "description": "Instrumentación de código Go para Prometheus y visualización en Grafana.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "tracing-distribuido",
+      "title": "Tracing Distribuido",
+      "order": 41,
+      "description": "Implementación de trazas distribuidas con OpenTelemetry y Jaeger.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "health-checks-y-probes",
+      "title": "Health Checks y Probes",
+      "order": 42,
+      "description": "Diseño de health checks profundos para orquestadores como Kubernetes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-garbage-collector-gc-de-go",
+      "title": "El Garbage Collector (GC) de Go",
+      "order": 43,
+      "description": "Funcionamiento interno y sintonización del Garbage Collector de Go.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gestion-de-memoria-y-compilador",
+      "title": "Gestión de Memoria y Compilador",
+      "order": 44,
+      "description": "Análisis de escape, gestión del Stack/Heap y optimización de memoria.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "profiling-avanzado-pprof-y-trace",
+      "title": "Profiling Avanzado (pprof y trace)",
+      "order": 45,
+      "description": "Diagnóstico profundo de rendimiento con herramientas pprof y trace.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cgo-llamadas-al-sistema-e-inseguridad",
+      "title": "Cgo, Llamadas al Sistema e Inseguridad",
+      "order": 46,
+      "description": "Interoperabilidad con C, syscalls y uso seguro del paquete unsafe.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "contenedores-y-dockerizacion",
+      "title": "Contenedores y Dockerización",
+      "order": 47,
+      "description": "Empaquetado eficiente de aplicaciones Go en imágenes Docker mínimas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cicd-y-calidad-continua-del-codigo",
+      "title": "CI/CD y Calidad Continua del Código",
+      "order": 48,
+      "description": "Automatización de pipelines de CI/CD y control de calidad con linters.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "go-en-entornos-cloud-native-y-kubernetes",
+      "title": "Go en entornos Cloud Native y Kubernetes",
+      "order": 49,
+      "description": "Despliegue en Kubernetes, Serverless y apagado elegante de servicios.",
+      "audioUrl": ""
+    }
+  ],
+  "parts": [
+    {
+      "title": "Parte I: Fundamentos del Lenguaje Go",
+      "chapterSlugs": [
+        "introduccion-y-entorno-de-desarrollo",
+        "sintaxis-basica-y-tipos-de-datos-primarios",
+        "flujo-de-control",
+        "funciones-y-manejo-basico-de-errores"
+      ]
+    },
+    {
+      "title": "Parte II: Tipos Compuestos y Orientación a Objetos en Go",
+      "chapterSlugs": [
+        "estructuras-de-datos-integradas",
+        "punteros-y-estructuras-structs",
+        "metodos-e-interfaces"
+      ]
+    },
+    {
+      "title": "Parte III: Concurrencia en Go",
+      "chapterSlugs": [
+        "goroutines",
+        "canales-channels",
+        "sincronizacion-y-data-races",
+        "patrones-de-concurrencia"
+      ]
+    },
+    {
+      "title": "Parte IV: La Standard Library de Go",
+      "chapterSlugs": [
+        "fundamentos-de-io",
+        "el-paquete-context",
+        "fechas-utilidades-y-reflexion",
+        "criptografia-basica-y-codificacion"
+      ]
+    },
+    {
+      "title": "Parte V: Testing a Fondo",
+      "chapterSlugs": [
+        "fundamentos-de-testing-en-go",
+        "mocks-stubs-fakes-y-tdd",
+        "testing-de-integracion-y-testcontainers",
+        "benchmarking-y-fuzzing"
+      ]
+    },
+    {
+      "title": "Parte VI: Arquitectura y Diseño de Software",
+      "chapterSlugs": [
+        "principios-de-diseno-y-clean-code-en-go",
+        "arquitectura-limpia-y-hexagonal",
+        "domain-driven-design-ddd-basico",
+        "patrones-de-diseno-clasicos-en-go"
+      ]
+    },
+    {
+      "title": "Parte VII: Desarrollo de APIs RESTful",
+      "chapterSlugs": [
+        "fundamentos-http-en-go",
+        "enrutamiento-routers-y-middlewares",
+        "validacion-paginacion-y-respuestas",
+        "documentacion-de-apis"
+      ]
+    },
+    {
+      "title": "Parte VIII: Persistencia de Datos y Bases de Datos",
+      "chapterSlugs": [
+        "sql-y-el-paquete-database-sql",
+        "herramientas-sql-avanzadas-query-builders-y-orms",
+        "transacciones-y-migraciones",
+        "bases-de-datos-nosql-y-cache"
+      ]
+    },
+    {
+      "title": "Parte IX: Comunicación Avanzada y Microservicios",
+      "chapterSlugs": [
+        "de-monolito-a-microservicios",
+        "grpc-y-protocol-buffers",
+        "message-brokers-y-event-driven-architecture",
+        "graphql-en-go"
+      ]
+    },
+    {
+      "title": "Parte X: Seguridad en Aplicaciones Backend",
+      "chapterSlugs": [
+        "vulnerabilidades-comunes-y-mitigacion",
+        "autenticacion-autorizacion-y-criptografia-aplicada",
+        "seguridad-a-nivel-de-red-y-aplicacion"
+      ]
+    },
+    {
+      "title": "Parte XI: Observabilidad y Monitoreo",
+      "chapterSlugs": [
+        "logging-estructurado",
+        "metricas",
+        "tracing-distribuido",
+        "health-checks-y-probes"
+      ]
+    },
+    {
+      "title": "Parte XII: Internals y Optimización",
+      "chapterSlugs": [
+        "el-garbage-collector-gc-de-go",
+        "gestion-de-memoria-y-compilador",
+        "profiling-avanzado-pprof-y-trace",
+        "cgo-llamadas-al-sistema-e-inseguridad"
+      ]
+    },
+    {
+      "title": "Parte XIII: Despliegue y Herramientas del Ecosistema",
+      "chapterSlugs": [
+        "contenedores-y-dockerizacion",
+        "cicd-y-calidad-continua-del-codigo",
+        "go-en-entornos-cloud-native-y-kubernetes"
+      ]
+    }
+  ]
+}
