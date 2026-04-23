@@ -1,0 +1,230 @@
+{
+  "slug": "opentofu",
+  "locale": "en",
+  "title": "The OpenTofu Handbook: From Basics to Advanced Infrastructure Automation",
+  "author": "Wordsus Team",
+  "description": "Master infrastructure as code with OpenTofu. A comprehensive guide covering everything from HCL fundamentals and state management to advanced modularity, CI/CD integration, and custom provider development.",
+  "cover": "/images/books/default-cover.jpg",
+  "category": "cloud-infrastructure-devops",
+  "tags": [
+    "opentofu",
+    "iac",
+    "infrastructure",
+    "devops",
+    "cloud",
+    "terraform"
+  ],
+  "featured": true,
+  "publishedAt": "2024-04-23",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "introduction-to-infrastructure-as-code-iac",
+      "title": "Introduction to Infrastructure as Code (IaC)",
+      "order": 1,
+      "description": "Explore the evolution of IT infrastructure management, declarative paradigms, and the tangible benefits of IaC in modern engineering.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-opentofu-manifesto",
+      "title": "The OpenTofu Manifesto",
+      "order": 2,
+      "description": "Understand the history of the OpenTofu fork, its open-source governance, and the future roadmap of the community-driven project.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "setting-up-your-workspace",
+      "title": "Setting Up Your Workspace",
+      "order": 3,
+      "description": "Step-by-step guide to installing OpenTofu, configuring your IDE, and executing your first infrastructure deployment.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "hashicorp-configuration-language-hcl-fundamentals",
+      "title": "HashiCorp Configuration Language (HCL) Fundamentals",
+      "order": 4,
+      "description": "Master the syntax and structure of HCL, including blocks, arguments, and code organization best practices.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "providers-and-authentication",
+      "title": "Providers and Authentication",
+      "order": 5,
+      "description": "Learn how to use the OpenTofu Registry, configure provider aliases, and manage dependency lock files.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "resources-and-data-sources",
+      "title": "Resources and Data Sources",
+      "order": 6,
+      "description": "Define physical infrastructure, manage dependencies, and query existing resources using data sources.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "variables-and-outputs",
+      "title": "Variables and Outputs",
+      "order": 7,
+      "description": "Implement input variables with strict validation and define outputs while protecting sensitive data.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "expressions-and-functions",
+      "title": "Expressions and Functions",
+      "order": 8,
+      "description": "Leverage built-in functions, conditional expressions, and complex data transformations with for-each and filters.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-anatomy-of-opentofu-state",
+      "title": "The Anatomy of OpenTofu State",
+      "order": 9,
+      "description": "Deep dive into state files, mapping code to real-world infrastructure, and understanding the security implications of state.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "remote-state-and-locking",
+      "title": "Remote State and Locking",
+      "order": 10,
+      "description": "Configure remote backends like S3 or GCS, implement state locking with DynamoDB, and ensure team collaboration safety.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "workspaces-and-multi-environment-deployments",
+      "title": "Workspaces and Multi-Environment Deployments",
+      "order": 11,
+      "description": "Manage development, staging, and production environments efficiently using CLI workspaces and directory layouts.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "advanced-state-manipulation",
+      "title": "Advanced State Manipulation",
+      "order": 12,
+      "description": "Safely refactor resources, import existing infrastructure, and handle state corruption or drift recovery.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "introduction-to-modules",
+      "title": "Introduction to Modules",
+      "order": 13,
+      "description": "Understand the importance of modularity and learn the standard structure for building reusable IaC components.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "building-reusable-and-robust-modules",
+      "title": "Building Reusable and Robust Modules",
+      "order": 14,
+      "description": "Implement custom validation rules, handle complex nested architectures, and master module versioning.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "public-and-private-module-registries",
+      "title": "Public and Private Module Registries",
+      "order": 15,
+      "description": "Consume modules from the public registry or set up your own private registry for internal organizational use.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "dynamic-configurations-at-scale",
+      "title": "Dynamic Configurations at Scale",
+      "order": 16,
+      "description": "Master advanced iteration techniques using count, for_each, and dynamic blocks for scalable infrastructure.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "provisioners-and-local-executions",
+      "title": "Provisioners and Local Executions",
+      "order": 17,
+      "description": "Understand the role of provisioners, their limitations, and when to use local-exec or remote-exec as a last resort.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "testing-opentofu-code",
+      "title": "Testing OpenTofu Code",
+      "order": 18,
+      "description": "Ensure reliability with static analysis, native tofu test commands, and integration testing frameworks like Terratest.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cicd-integration-for-opentofu",
+      "title": "CI/CD Integration for OpenTofu",
+      "order": 19,
+      "description": "Design reliable pipelines for automated plans, manual approvals, and safe deployments in a multi-user environment.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "security-and-policy-as-code",
+      "title": "Security and Policy as Code",
+      "order": 20,
+      "description": "Enforce compliance and security rules using Open Policy Agent (OPA) and continuous scanning tools like Checkov.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "migrating-from-terraform-to-opentofu",
+      "title": "Migrating from Terraform to OpenTofu",
+      "order": 21,
+      "description": "A comprehensive guide to transitioning your existing Terraform codebase and state to OpenTofu smoothly.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "developing-custom-providers",
+      "title": "Developing Custom Providers",
+      "order": 22,
+      "description": "Learn the Go architecture behind providers and implement your own custom plugin framework and schema.",
+      "audioUrl": ""
+    }
+  ],
+  "parts": [
+    {
+      "title": "Part I: The Foundations of Infrastructure as Code",
+      "chapterSlugs": [
+        "introduction-to-infrastructure-as-code-iac",
+        "the-opentofu-manifesto",
+        "setting-up-your-workspace"
+      ]
+    },
+    {
+      "title": "Part II: Mastering the OpenTofu Language",
+      "chapterSlugs": [
+        "hashicorp-configuration-language-hcl-fundamentals",
+        "providers-and-authentication",
+        "resources-and-data-sources",
+        "variables-and-outputs",
+        "expressions-and-functions"
+      ]
+    },
+    {
+      "title": "Part III: State and Environment Management",
+      "chapterSlugs": [
+        "the-anatomy-of-opentofu-state",
+        "remote-state-and-locking",
+        "workspaces-and-multi-environment-deployments",
+        "advanced-state-manipulation"
+      ]
+    },
+    {
+      "title": "Part IV: Modularity and Scalability",
+      "chapterSlugs": [
+        "introduction-to-modules",
+        "building-reusable-and-robust-modules",
+        "public-and-private-module-registries",
+        "dynamic-configurations-at-scale"
+      ]
+    },
+    {
+      "title": "Part V: Advanced Workflows and Automation",
+      "chapterSlugs": [
+        "provisioners-and-local-executions",
+        "testing-opentofu-code",
+        "cicd-integration-for-opentofu",
+        "security-and-policy-as-code"
+      ]
+    },
+    {
+      "title": "Part VI: Ecosystem and Migration",
+      "chapterSlugs": [
+        "migrating-from-terraform-to-opentofu",
+        "developing-custom-providers"
+      ]
+    }
+  ]
+}
