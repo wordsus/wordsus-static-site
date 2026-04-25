@@ -1,0 +1,232 @@
+{
+  "slug": "pulumi",
+  "locale": "en",
+  "title": "Mastering Pulumi: The Definitive Guide to Infrastructure as Code",
+  "author": "Wordsus Team",
+  "description": "Unlock the full potential of cloud infrastructure using familiar programming languages. This guide covers everything from Pulumi fundamentals and state management to advanced multi-language components, Automation API, and enterprise-grade security.",
+  "cover": "/images/books/default-cover.jpg",
+  "category": "cloud-infrastructure-devops",
+  "tags": [
+    "pulumi",
+    "iac",
+    "infrastructure",
+    "devops",
+    "cloud",
+    "typescript",
+    "python",
+    "go"
+  ],
+  "featured": true,
+  "publishedAt": "2024-04-24",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "the-evolution-of-infrastructure-as-code",
+      "title": "The Evolution of Infrastructure as Code",
+      "order": 1,
+      "description": "Learn about the shift from manual provisioning to declarative IaC and why Pulumi's multi-language approach is revolutionary.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "getting-started-with-pulumi",
+      "title": "Getting Started with Pulumi",
+      "order": 2,
+      "description": "Set up your environment, install the Pulumi CLI, and choose your preferred programming language for infrastructure development.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-pulumi-programming-model",
+      "title": "The Pulumi Programming Model",
+      "order": 3,
+      "description": "Understand the core concepts of projects, stacks, and resources, and how the Pulumi engine manages infrastructure.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "your-first-pulumi-project",
+      "title": "Your First Pulumi Project",
+      "order": 4,
+      "description": "Step-by-step guide to bootstrapping, writing, and deploying your first infrastructure project with the Pulumi CLI.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "understanding-pulumi-state",
+      "title": "Understanding Pulumi State",
+      "order": 5,
+      "description": "Deep dive into state files, concurrency management, and the advantages of using the Pulumi Service for backend storage.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "configuration-and-secrets-management",
+      "title": "Configuration and Secrets Management",
+      "order": 6,
+      "description": "Master Pulumi's configuration system to manage settings and securely encrypt sensitive data across environments.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "stacks-and-environments",
+      "title": "Stacks and Environments",
+      "order": 7,
+      "description": "Learn how to manage development, staging, and production environments using stacks and cross-stack communication.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "project-structure-and-organization",
+      "title": "Project Structure and Organization",
+      "order": 8,
+      "description": "Best practices for organizing infrastructure code, managing dependencies, and choosing between monorepo and polyrepo strategies.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "aws-provisioning-with-pulumi",
+      "title": "AWS Provisioning with Pulumi",
+      "order": 9,
+      "description": "Configure the AWS provider and deploy networking, compute, and storage resources using Pulumi's modern APIs.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "microsoft-azure-integration",
+      "title": "Microsoft Azure Integration",
+      "order": 10,
+      "description": "Master the Azure Native provider to manage resource groups, RBAC, and serverless components like Azure Functions.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "google-cloud-platform-gcp-fundamentals",
+      "title": "Google Cloud Platform (GCP) Fundamentals",
+      "order": 11,
+      "description": "Set up GCP authentication and deploy Cloud Run, GKE clusters, and Cloud SQL with ease.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "kubernetes-management-and-helm",
+      "title": "Kubernetes Management and Helm",
+      "order": 12,
+      "description": "Use Pulumi to manage Kubernetes resources, deploy Helm charts, and implement GitOps workflows directly in code.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "componentresources-and-abstractions",
+      "title": "ComponentResources and Abstractions",
+      "order": 13,
+      "description": "Create reusable, higher-level infrastructure abstractions to encapsulate organization-wide best practices.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "dynamic-providers",
+      "title": "Dynamic Providers",
+      "order": 14,
+      "description": "Learn when and how to implement custom resource providers to manage entities not covered by standard cloud providers.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "crossguard-and-policy-as-code",
+      "title": "CrossGuard and Policy as Code",
+      "order": 15,
+      "description": "Enforce security, compliance, and cost controls across your organization using Pulumi CrossGuard.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "pulumi-packages-and-multi-language-components",
+      "title": "Pulumi Packages and Multi-Language Components",
+      "order": 16,
+      "description": "Understand the architecture behind Pulumi packages and how to publish multi-language infrastructure SDKs.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "testing-infrastructure-code",
+      "title": "Testing Infrastructure Code",
+      "order": 17,
+      "description": "Implement unit, property-based, and integration tests to ensure the reliability of your infrastructure programs.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "continuous-integration-and-delivery-cicd",
+      "title": "Continuous Integration and Delivery (CI/CD)",
+      "order": 18,
+      "description": "Design robust automation pipelines using GitHub Actions, GitLab CI, and other modern CI/CD tools.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-pulumi-automation-api",
+      "title": "The Pulumi Automation API",
+      "order": 19,
+      "description": "Move beyond the CLI to build custom internal developer platforms and embed Pulumi directly into your applications.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "migration-and-importing-existing-infrastructure",
+      "title": "Migration and Importing Existing Infrastructure",
+      "order": 20,
+      "description": "Strategies for adopting Pulumi, importing brownfield resources, and converting Terraform code to Pulumi.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "security-compliance-and-rbac",
+      "title": "Security, Compliance, and RBAC",
+      "order": 21,
+      "description": "Secure your enterprise Pulumi environment with SSO, team permissions, and comprehensive audit logs.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "performance-optimization-and-troubleshooting",
+      "title": "Performance Optimization and Troubleshooting",
+      "order": 22,
+      "description": "Analyze deployment times, perform zero-downtime refactoring, and debug the Pulumi engine effectively.",
+      "audioUrl": ""
+    }
+  ],
+  "parts": [
+    {
+      "title": "Part I: Foundations of Infrastructure as Code and Pulumi",
+      "chapterSlugs": [
+        "the-evolution-of-infrastructure-as-code",
+        "getting-started-with-pulumi",
+        "the-pulumi-programming-model",
+        "your-first-pulumi-project"
+      ]
+    },
+    {
+      "title": "Part II: Core Mechanics and State Management",
+      "chapterSlugs": [
+        "understanding-pulumi-state",
+        "configuration-and-secrets-management",
+        "stacks-and-environments",
+        "project-structure-and-organization"
+      ]
+    },
+    {
+      "title": "Part III: Cloud Providers and Resource Provisioning",
+      "chapterSlugs": [
+        "aws-provisioning-with-pulumi",
+        "microsoft-azure-integration",
+        "google-cloud-platform-gcp-fundamentals",
+        "kubernetes-management-and-helm"
+      ]
+    },
+    {
+      "title": "Part IV: Advanced Configuration and Architecture",
+      "chapterSlugs": [
+        "componentresources-and-abstractions",
+        "dynamic-providers",
+        "crossguard-and-policy-as-code",
+        "pulumi-packages-and-multi-language-components"
+      ]
+    },
+    {
+      "title": "Part V: Testing, Automation, and CI/CD",
+      "chapterSlugs": [
+        "testing-infrastructure-code",
+        "continuous-integration-and-delivery-cicd",
+        "the-pulumi-automation-api"
+      ]
+    },
+    {
+      "title": "Part VI: Enterprise Pulumi and Best Practices",
+      "chapterSlugs": [
+        "migration-and-importing-existing-infrastructure",
+        "security-compliance-and-rbac",
+        "performance-optimization-and-troubleshooting"
+      ]
+    }
+  ]
+}
