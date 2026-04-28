@@ -2,7 +2,9 @@ import fs from "fs";
 import path from "path";
 import { remark } from "remark";
 import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
 import remarkRehype from "remark-rehype";
+import rehypeKatex from "rehype-katex";
 import rehypeHighlight from "rehype-highlight";
 import rehypeStringify from "rehype-stringify";
 import type { BookMeta, CategoryMeta, TocItem, Locale } from "./types";
@@ -103,7 +105,9 @@ export async function getChapterContent(
   // Process Markdown to HTML
   const result = await remark()
     .use(remarkGfm)
+    .use(remarkMath)
     .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeKatex)
     .use(rehypeHighlight)
     .use(rehypeStringify, { allowDangerousHtml: true })
     .process(raw);
