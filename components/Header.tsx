@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next-image-export-optimizer";
 import { useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 import {

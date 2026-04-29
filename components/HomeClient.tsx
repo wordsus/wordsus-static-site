@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next-image-export-optimizer";
 import { useTranslations } from "next-intl";
 import BookCard from "@/components/BookCard";
 import type { BookMeta, Locale } from "@/lib/types";

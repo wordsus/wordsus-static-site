@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { Search, X, BookOpen } from "lucide-react";
 import type { Locale, SearchableBook } from "@/lib/types";
-import Image from "next/image";
+import Image from "next-image-export-optimizer";
 
 interface SearchModalProps {
   locale: Locale;

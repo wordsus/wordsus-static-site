@@ -270,6 +270,17 @@ This generates a fully static site in the `/out` directory, including:
 
 ### Useful Scripts
 
+#### Automatic Image Optimization
+This project uses `next-image-export-optimizer` to automatically resize and optimize images during the build process. Images are optimized and exported to `out/nextImageExportOptimizer` without modifying the original source images in `public/`.
+
+You don't need to run any manual scripts. Just run:
+
+```bash
+pnpm build
+```
+
+This will run `next build` followed by the optimizer. The generated images will automatically be served with responsive `srcset` tags for fast load times.
+
 #### Fix Markdown Headings
 If you have markdown files with incorrect heading hierarchies (e.g., starting with `###` or `####` instead of `##`), you can use the `fix_headings.py` script to automatically correct them in a directory.
 

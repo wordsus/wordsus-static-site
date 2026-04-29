@@ -8,7 +8,7 @@ import { ChevronLeft, ChevronRight, Heart, Menu, List, X } from "lucide-react";
 import type { BookMeta, TocItem, Locale } from "@/lib/types";
 import TableOfContents from "@/components/TableOfContents";
 import AudioPlayer from "@/components/AudioPlayer";
-import Image from "next/image";
+import Image from "next-image-export-optimizer";
 
 interface BookClientProps {
   book: BookMeta;
