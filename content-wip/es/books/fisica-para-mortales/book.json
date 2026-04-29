@@ -1,0 +1,2366 @@
+{
+  "slug": "fisica-para-mortales",
+  "locale": "es",
+  "title": "Física para Mortales: El Universo en tus Manos",
+  "author": "Equipo Wordsus",
+  "description": "Descubre los secretos del universo en esta guía completa de 365 lecciones de física. Desde las leyes de Newton hasta la mecánica cuántica y el multiverso, explicado de forma sencilla para todos.",
+  "cover": "/images/books/fisica-para-mortales-es-cover.jpeg",
+  "category": "ciencia",
+  "tags": [
+    "fisica",
+    "ciencia",
+    "divulgacion",
+    "universo",
+    "educacion"
+  ],
+  "featured": true,
+  "publishedAt": "2024-04-29",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "friccion-estatica-y-dinamica-el-roce-de-las-cosas",
+      "title": "Fricción estática y dinámica: el roce de las cosas",
+      "order": 31,
+      "description": "Analizamos por qué los objetos rozan y resisten el movimiento. Entiende la física de la fricción, clave para caminar, frenar o encender un fósforo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "resonancia-acustica-puentes-que-vibran-al-viento",
+      "title": "Resonancia acústica: puentes que vibran al viento",
+      "order": 32,
+      "description": "Descubre cómo frecuencias naturales pueden amplificar enormes vibraciones. Exploramos el impacto de la resonancia en instrumentos musicales y puentes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-antimateria-explicada-el-espejo-de-lo-visible",
+      "title": "La antimateria explicada: el espejo de lo visible",
+      "order": 33,
+      "description": "Indagamos en la misteriosa antimateria. Aprende qué son los positrones y antiprotones, y por qué se aniquilan al entrar en contacto con la materia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ley-de-faraday-generar-electricidad-con-imanes-hoy",
+      "title": "Ley de Faraday: generar electricidad con imanes hoy",
+      "order": 34,
+      "description": "Comprendemos el principio de inducción electromagnética. Descubre cómo el movimiento de un imán dentro de una bobina produce la luz de tu habitación.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "agujeros-de-gusano-atajos-por-el-tejido-espacial",
+      "title": "Agujeros de gusano: atajos por el tejido espacial",
+      "order": 35,
+      "description": "Exploramos la teoría de los puentes de Einstein-Rosen. Analizamos si realmente es posible cruzar el universo entero usando estos portales hipotéticos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "espejos-y-reflexion-la-fisica-de-nuestra-imagen",
+      "title": "Espejos y reflexión: la física de nuestra imagen",
+      "order": 36,
+      "description": "Entiende la física detrás del cristal de tu baño. Explicamos cómo las superficies pulidas rebotan los fotones para crear imágenes perfectamente claras.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "centro-de-masa-el-secreto-del-perfecto-equilibrio",
+      "title": "Centro de masa: el secreto del perfecto equilibrio",
+      "order": 37,
+      "description": "Descubre cómo los objetos distribuyen su peso. Aplicamos estos principios geométricos para entender la estabilidad, desde equilibristas hasta planetas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "expansion-termica-por-que-el-calor-dilata-cuerpos",
+      "title": "Expansión térmica: por qué el calor dilata cuerpos",
+      "order": 38,
+      "description": "Analizamos cómo las moléculas se separan al subir la temperatura. Un vistazo a por qué las vías del tren necesitan pequeños espacios para no doblarse.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "radiactividad-natural-energia-del-nucleo-atomico",
+      "title": "Radiactividad natural: energía del núcleo atómico",
+      "order": 39,
+      "description": "Investigamos la desintegración de elementos inestables. Aprenderás sobre las emisiones alfa, beta y gamma que transforman un tipo de átomo en otro.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "superconductores-flujo-electrico-sin-resistencia",
+      "title": "Superconductores: flujo eléctrico sin resistencia",
+      "order": 40,
+      "description": "Nos adentramos en materiales que alcanzan la resistencia cero a temperaturas extremas. Conoce cómo esta tecnología impulsa trenes magnéticos ahora.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "paradoja-de-los-gemelos-un-viaje-por-la-relatividad",
+      "title": "Paradoja de los gemelos: un viaje por la relatividad",
+      "order": 41,
+      "description": "Explicamos la consecuencia más fascinante de la relatividad especial. Entiende por qué un viajero espacial regresaría más joven que su hermano gemelo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "efecto-fotoelectrico-la-genialidad-de-a-einstein",
+      "title": "Efecto fotoeléctrico: la genialidad de A. Einstein",
+      "order": 42,
+      "description": "Descubre cómo la luz puede arrancar electrones de los metales. Explicamos este experimento clave que demostró la existencia de los cuantos de energía.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "presion-atmosferica-el-peso-del-aire-sobre-nosotros",
+      "title": "Presión atmosférica: el peso del aire sobre nosotros",
+      "order": 43,
+      "description": "Exploramos la inmensa fuerza invisible de la atmósfera terrestre. Aprende cómo esta presión afecta el clima, la ebullición del agua y nuestra salud.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fuerzas-fundamentales-las-cuatro-leyes-del-universo",
+      "title": "Fuerzas fundamentales: las cuatro leyes del universo",
+      "order": 44,
+      "description": "Resumimos las fuerzas que controlan todo: gravedad, electromagnetismo, fuerza nuclear fuerte y débil. Descubre cómo construyen la realidad que habitas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "supernovas-estelares-forjadores-de-los-elementos",
+      "title": "Supernovas estelares: forjadores de los elementos",
+      "order": 45,
+      "description": "Viajamos al evento más violento del cosmos profundo. Analizamos cómo la muerte de estrellas gigantes disemina todos los ingredientes para crear vida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "capilaridad-hidrica-liquidos-que-vencen-gravedad",
+      "title": "Capilaridad hídrica: líquidos que vencen gravedad",
+      "order": 46,
+      "description": "Analizamos el fenómeno que permite al agua desafiar a la gravedad. Descubre cómo las plantas transportan nutrientes desde sus raíces hasta las hojas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-principio-de-arquimedes-la-ciencia-de-flotar",
+      "title": "El principio de Arquímedes: la ciencia de flotar",
+      "order": 47,
+      "description": "Desentrañamos la fuerza de empuje en fluidos. Entiende la física exacta que permite a pesados cruceros de acero mantenerse a flote sobre el océano azul.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-cero-absoluto-el-limite-extremo-del-frio-cosmico",
+      "title": "El cero absoluto: el límite extremo del frío cósmico",
+      "order": 48,
+      "description": "Nos acercamos a la temperatura más baja del universo. Exploramos qué le sucede a la materia cuando todas sus partículas detienen su movimiento interno.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "resistencia-electrica-el-freno-de-los-electrones",
+      "title": "Resistencia eléctrica: el freno de los electrones",
+      "order": 49,
+      "description": "Comprendemos por qué los cables se calientan al usarse. Descubre la Ley de Ohm y cómo controlar la corriente es esencial para toda nuestra tecnología.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fisica-de-particulas-un-viaje-por-el-modelo-estandar",
+      "title": "Física de partículas: un viaje por el modelo estándar",
+      "order": 50,
+      "description": "Clasificamos los ladrillos fundamentales que componen nuestro universo. Aprende sobre quarks, leptones y bosones de manera sencilla y muy fascinante.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-horizonte-de-sucesos-el-punto-sin-retorno-estelar",
+      "title": "El horizonte de sucesos: el punto sin retorno estelar",
+      "order": 51,
+      "description": "Estudiamos la frontera definitiva de todo agujero negro. Analizamos qué ocurriría si una nave espacial cruzara esta misteriosa línea espacial invisible.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "reflexion-interna-total-el-secreto-de-la-fibra-optica",
+      "title": "Reflexión interna total: el secreto de la fibra óptica",
+      "order": 52,
+      "description": "Analizamos cómo la luz puede quedar atrapada en el agua o vidrio. Conoce la maravilla tecnológica que permite las telecomunicaciones globales de hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "conservacion-del-momento-choques-y-billar-cientifico",
+      "title": "Conservación del momento: choques y billar científico",
+      "order": 53,
+      "description": "Exploramos la física tras las colisiones elásticas y los rebotes. Entiende cómo se transfiere la cantidad de movimiento entre objetos al chocar fuerte.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fusion-nuclear-controlada-la-energia-oculta-del-sol",
+      "title": "Fusión nuclear controlada: la energía oculta del Sol",
+      "order": 54,
+      "description": "Descubrimos el enorme poder térmico de las estrellas. Entiende el reto científico de replicar esta energía limpia e inagotable aquí en nuestro planeta.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "materia-y-antimateria-la-gran-asimetria-del-universo",
+      "title": "Materia y antimateria: la gran asimetría del universo",
+      "order": 55,
+      "description": "Investigamos uno de los mayores enigmas de toda la cosmología. Explicamos por qué el universo que observamos está compuesto casi totalmente de materia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "aerodinamica-cotidiana-la-resistencia-del-viento",
+      "title": "Aerodinámica cotidiana: la resistencia del viento",
+      "order": 56,
+      "description": "Comprendemos cómo el aire frena los autos en pleno movimiento. Descubre las fuerzas de arrastre y por qué el diseño de los vehículos modernos es curvo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "pendulos-y-oscilaciones-como-medir-nuestro-tiempo",
+      "title": "Péndulos y oscilaciones: cómo medir nuestro tiempo",
+      "order": 57,
+      "description": "Nos sumergimos en el movimiento armónico de los relojes. Aprende cómo la gravedad afecta la oscilación de un peso suspendido y marcó un hito histórico.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-calor-especifico-la-capacidad-termica-del-agua",
+      "title": "El calor específico: la capacidad térmica del agua",
+      "order": 58,
+      "description": "Analizamos por qué distintos materiales se calientan a diferentes ritmos. Explicamos cómo los inmensos océanos logran regular todo el clima terrestre.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "condensado-de-bose-einstein-el-nuevo-estado-material",
+      "title": "Condensado de Bose-Einstein: el nuevo estado material",
+      "order": 59,
+      "description": "Profundizamos en el exótico quinto estado de la materia cósmica. Descubre cómo los átomos se fusionan en una sola entidad cuántica a un frío extremo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "radiacion-cosmica-de-fondo-el-eco-lejano-del-big-bang",
+      "title": "Radiación cósmica de fondo: el eco lejano del Big Bang",
+      "order": 60,
+      "description": "Exploramos la luz más antigua de toda nuestra vasta galaxia. Aprende cómo los radiotelescopios escuchan literalmente los primeros momentos del universo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "tecnologia-laser-la-luz-amplificada-y-su-gran-poder",
+      "title": "Tecnología láser: la luz amplificada y su gran poder",
+      "order": 61,
+      "description": "Descubre cómo la amplificación de la luz genera haces súper precisos. Desde su uso en delicadas cirugías hasta lectores ópticos de uso diario.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-concepto-de-torque-la-fuerza-de-rotacion-diaria",
+      "title": "El concepto de torque: la fuerza de rotación diaria",
+      "order": 62,
+      "description": "Analizamos la mecánica detrás de palancas y engranajes mecánicos. Aprende cómo esta fuerza giratoria multiplica el esfuerzo humano en tu rutina.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "pulsares-espaciales-los-faros-extremos-del-universo",
+      "title": "Púlsares espaciales: los faros extremos del universo",
+      "order": 63,
+      "description": "Viajamos a los restos de estrellas de neutrones que giran velozmente. Descubre cómo emiten pulsos exactos de radiación hacia el espacio infinito.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "calor-latente-natural-la-fisica-tras-cambiar-de-fase",
+      "title": "Calor latente natural: la física tras cambiar de fase",
+      "order": 64,
+      "description": "Exploramos la energía térmica que transforma el hielo sólido en agua pura. Aprende por qué la temperatura no cambia durante la transición de fase.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "principio-de-incertidumbre-limites-cuanticos-reales",
+      "title": "Principio de incertidumbre: límites cuánticos reales",
+      "order": 65,
+      "description": "Nos adentramos en la regla de Heisenberg sobre medición subatómica. Entiende por qué nunca podemos saber la posición y velocidad al mismo tiempo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "capacitores-electricos-almacenar-energia-al-instante",
+      "title": "Capacitores eléctricos: almacenar energía al instante",
+      "order": 66,
+      "description": "Comprendemos cómo almacenan carga eléctrica los circuitos de tu teléfono móvil. La física que hace brillar el flash de las cámaras fotográficas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ondas-gravitacionales-temblores-del-espaciotiempo",
+      "title": "Ondas gravitacionales: temblores del espaciotiempo",
+      "order": 67,
+      "description": "Investigamos las ondas originadas por choques cósmicos formidables. Aprende cómo los astrónomos detectan estas sutiles vibraciones en la Tierra.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "principio-de-bernoulli-la-magia-de-fluidos-en-accion",
+      "title": "Principio de Bernoulli: la magia de fluidos en acción",
+      "order": 68,
+      "description": "Descubrimos la relación inversamente proporcional entre presión y velocidad. Una explicación física para comprender desde chimeneas hasta pelotas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-efecto-giroscopico-por-que-tu-bicicleta-no-cae",
+      "title": "El efecto giroscópico: por qué tu bicicleta no cae",
+      "order": 69,
+      "description": "Analizamos la conservación del momento angular rotacional en objetos. Descubre el mecanismo secreto que estabiliza satélites y trompos infantiles.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "nebulosas-estelares-las-inmensas-cunas-de-estrellas",
+      "title": "Nebulosas estelares: las inmensas cunas de estrellas",
+      "order": 70,
+      "description": "Exploramos las nubes de polvo y gas que flotan en las galaxias. Aprende cómo la gravedad comprime este colorido material para formar nuevos soles.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-fisica-del-color-como-percibimos-los-pigmentos",
+      "title": "La física del color: cómo percibimos los pigmentos",
+      "order": 71,
+      "description": "Estudiamos la absorción y reflexión visual de la luz sobre objetos. Descubre por qué una manzana nos parece roja y el océano profundo se ve azul.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "transformadores-de-red-controlando-voltajes-altos",
+      "title": "Transformadores de red: controlando voltajes altos",
+      "order": 72,
+      "description": "Entiende cómo modulamos la energía eléctrica que viaja grandes distancias. La física inductiva esencial para evitar cortocircuitos en las casas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "efecto-tunel-cuantico-atravesando-barreras-solidas",
+      "title": "Efecto túnel cuántico: atravesando barreras sólidas",
+      "order": 73,
+      "description": "Descubrimos cómo las partículas subatómicas logran cruzar muros imposibles. Entiende este fenómeno que hace brillar al Sol y hace funcionar tu PC.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ley-de-hooke-elemental-la-fuerza-oculta-en-resortes",
+      "title": "Ley de Hooke elemental: la fuerza oculta en resortes",
+      "order": 74,
+      "description": "Analizamos cómo reacciona la materia frente al estiramiento físico. Aprende sobre elasticidad y cómo diseñamos suspensiones o fuertes rascacielos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "estructuras-de-galaxias-colosos-en-la-red-cosmica",
+      "title": "Estructuras de galaxias: colosos en la red cósmica",
+      "order": 75,
+      "description": "Viajamos por las espirales y galaxias elípticas del inmenso universo. Aprende cómo millones de estrellas orbitan agujeros negros supermasivos hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gravedad-lunar-y-mareas-los-latidos-de-cada-oceano",
+      "title": "Gravedad lunar y mareas: los latidos de cada océano",
+      "order": 76,
+      "description": "Investigamos la sutil atracción gravitatoria entre nuestro planeta y su Luna. Entiende el mecanismo diario que hace subir y bajar todos los mares.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cuerpo-negro-termico-absorcion-total-de-la-energia",
+      "title": "Cuerpo negro térmico: absorción total de la energía",
+      "order": 77,
+      "description": "Exploramos el concepto ideal en termodinámica sobre radiación electromagnética. Descubre cómo esta simple idea revolucionó por completo a la física.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fuerza-de-lorentz-pura-electrones-en-campo-magnetico",
+      "title": "Fuerza de Lorentz pura: electrones en campo magnético",
+      "order": 78,
+      "description": "Comprendemos cómo las partículas cargadas reaccionan al moverse en imanes. La fuerza fundamental detrás de los antiguos televisores e imponentes auroras.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "teoria-de-cuerdas-hoy-vibraciones-en-otra-dimension",
+      "title": "Teoría de cuerdas hoy: vibraciones en otra dimensión",
+      "order": 79,
+      "description": "Nos asomamos a la hipótesis que busca unir la gravedad con lo cuántico. Descubre si el universo entero está hecho de pequeños hilos de energía pura.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ultrasonido-invisible-ondas-mas-alla-del-oido-humano",
+      "title": "Ultrasonido invisible: ondas más allá del oído humano",
+      "order": 80,
+      "description": "Estudiamos frecuencias acústicas tan elevadas que escapan a nuestra audición. Aprende cómo la medicina y los submarinos utilizan estas ecografías.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fuerza-centripeta-real-movimiento-en-giros-cerrados",
+      "title": "Fuerza centrípeta real: movimiento en giros cerrados",
+      "order": 81,
+      "description": "Analizamos la tensión que mantiene a los objetos rotando en trayectorias curvas. Entiende por qué un satélite no sale despedido hacia el espacio.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-ecuacion-famosa-emc2-masa-y-energia-equivalentes",
+      "title": "La ecuación famosa E=mc2: masa y energía equivalentes",
+      "order": 82,
+      "description": "Desentrañamos la fórmula matemática más icónica de todo el mundo moderno. Aprende cómo una pequeña cantidad de materia encierra energía colosal.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "polarizacion-optica-como-logramos-filtrar-fotones",
+      "title": "Polarización óptica: cómo logramos filtrar fotones",
+      "order": 83,
+      "description": "Descubrimos cómo orientar las ondas de la luz visible en una sola dirección. La ciencia detrás de los anteojos de sol y todas las pantallas modernas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-fuerza-de-la-energia-oscura-el-universo-acelerado",
+      "title": "La fuerza de la energía oscura: el universo acelerado",
+      "order": 84,
+      "description": "Investigamos el misterio expansivo más grande que afronta la cosmología actual. Conoce la fuerza repulsiva que está separando velozmente a las galaxias.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "microondas-culinario-calentando-comida-por-friccion",
+      "title": "Microondas culinario: calentando comida por fricción",
+      "order": 85,
+      "description": "Comprendemos las ondas electromagnéticas invisibles de nuestra cocina. Descubre cómo hacen vibrar velozmente a las moléculas de agua en tus alimentos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-ciclo-de-carnot-ideal-eficiencia-de-las-maquinas",
+      "title": "El ciclo de Carnot ideal: eficiencia de las máquinas",
+      "order": 86,
+      "description": "Analizamos el límite físico absoluto de eficiencia térmica en cualquier motor. Entiende los principios que rigen la producción global de energía útil.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "semiconductores-modernos-la-magia-del-transistor-hoy",
+      "title": "Semiconductores modernos: la magia del transistor hoy",
+      "order": 87,
+      "description": "Descubrimos los materiales sólidos que revolucionaron nuestra era informática. Aprende cómo controlan la corriente dentro del núcleo de un ordenador.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "neutrinos-fantasmales-particulas-que-cruzan-planetas",
+      "title": "Neutrinos fantasmales: partículas que cruzan planetas",
+      "order": 88,
+      "description": "Viajamos junto a la partícula subatómica más esquiva que hay en la naturaleza. Conoce cómo millones de ellos atraviesan todo tu cuerpo en cada instante.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-viscosidad-de-fluidos-resistencia-en-movimiento",
+      "title": "La viscosidad de fluidos: resistencia en movimiento",
+      "order": 89,
+      "description": "Estudiamos la fricción interna existente dentro de diferentes tipos de líquidos. Descubre por qué la miel fría fluye muy distinto al agua del río.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "rayos-cosmicos-extremos-bombardeo-desde-el-espacio",
+      "title": "Rayos cósmicos extremos: bombardeo desde el espacio",
+      "order": 90,
+      "description": "Exploramos los núcleos atómicos acelerados que chocan contra nuestra atmósfera. Aprende cómo influyen en el clima terrestre y la exploración humana.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-vacio-cuantico-la-inmensa-energia-oculta-en-la-nada",
+      "title": "El vacío cuántico: la inmensa energía oculta en la nada",
+      "order": 91,
+      "description": "Exploramos el espacio aparentemente vacío de nuestro universo. Descubre cómo las partículas virtuales aparecen y desaparecen de forma constante y fugaz.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "lentes-gravitacionales-galaxias-como-gigantescas-lupas",
+      "title": "Lentes gravitacionales: galaxias como gigantescas lupas",
+      "order": 92,
+      "description": "Explicamos cómo la luz se curva alrededor de inmensos cúmulos de galaxias. Aprende cómo esta distorsión permite a los astrónomos ver mucho más allá.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ondas-de-choque-rompiendo-la-mitica-barrera-del-sonido",
+      "title": "Ondas de choque: rompiendo la mítica barrera del sonido",
+      "order": 93,
+      "description": "Analizamos la explosión sónica generada por aviones supersónicos. Entiende la física detrás del estampido cuando cruzan la velocidad máxima en el aire.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-efecto-coriolis-la-fisica-de-un-planeta-en-rotacion",
+      "title": "El efecto Coriolis: la física de un planeta en rotación",
+      "order": 94,
+      "description": "Descubrimos cómo el giro continuo de la Tierra desvía las corrientes de aire y agua. Una fuerza invisible que determina el clima y la ruta de huracanes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "agujeros-blancos-las-fuentes-de-luz-del-espaciotiempo",
+      "title": "Agujeros blancos: las fuentes de luz del espaciotiempo",
+      "order": 95,
+      "description": "Investigamos la contraparte teórica de los agujeros negros. Analizamos si existen regiones espaciales que expulsan materia y luz de forma incontrolable.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-cuarto-estado-de-la-materia-la-fisica-de-los-plasmas",
+      "title": "El cuarto estado de la materia: la física de los plasmas",
+      "order": 96,
+      "description": "Nos adentramos en el estado material más abundante de todo el cosmos. Aprende sobre los gases ionizados que componen a las estrellas y luces de neón.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "interferencia-de-ondas-auriculares-con-cero-ruido-externo",
+      "title": "Interferencia de ondas: auriculares con cero ruido externo",
+      "order": 97,
+      "description": "Comprendemos cómo dos ondas sonoras pueden sumarse o anularse por completo. La ingeniosa ciencia física detrás de los auriculares de cancelación activa.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "termometria-cientifica-como-medimos-realmente-el-calor",
+      "title": "Termometría científica: cómo medimos realmente el calor",
+      "order": 98,
+      "description": "Exploramos la dilatación de los líquidos y los cambios de resistencia. Descubre cómo funcionan los diversos termómetros desde Galilei hasta el presente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "enanas-blancas-estelares-el-denso-final-de-nuestro-sol",
+      "title": "Enanas blancas estelares: el denso final de nuestro Sol",
+      "order": 99,
+      "description": "Viajamos al futuro distante para conocer el destino final del sistema solar. Entiende cómo la materia degenerada evita que las estrellas se derrumben.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-teoria-del-multiverso-universos-mas-alla-del-nuestro",
+      "title": "La teoría del multiverso: universos más allá del nuestro",
+      "order": 100,
+      "description": "Evaluamos las diferentes hipótesis científicas sobre los universos paralelos. Descubre si las matemáticas sugieren la existencia de infinitas realidades.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fluorescencia-natural-la-materia-que-brilla-en-la-sombra",
+      "title": "Fluorescencia natural: la materia que brilla en la sombra",
+      "order": 101,
+      "description": "Analizamos cómo ciertos materiales absorben radiación para luego emitir luz visible. Explicamos la física atómica responsable de los objetos que brillan.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "datacion-por-carbono-relojes-atomicos-del-pasado-remoto",
+      "title": "Datación por carbono: relojes atómicos del pasado remoto",
+      "order": 102,
+      "description": "Estudiamos la desintegración de isótopos radiactivos en el entorno natural. Descubre cómo calculamos la antigüedad exacta de los fósiles prehistóricos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "radiacion-de-rayos-x-logrando-ver-el-interior-humano-hoy",
+      "title": "Radiación de rayos X: logrando ver el interior humano hoy",
+      "order": 103,
+      "description": "Descubrimos cómo esta radiación de altísima energía atraviesa los tejidos blandos. Conoce la historia y el gran impacto de este hallazgo en la medicina.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "presion-hidrostatica-oceanica-fisica-de-las-profundidades",
+      "title": "Presión hidrostática oceánica: física de las profundidades",
+      "order": 104,
+      "description": "Exploramos el inmenso peso del agua sobre los submarinos y buceadores. Aprende cómo la fuerza se incrementa brutalmente con cada metro que descendemos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "radiacion-de-hawking-agujeros-negros-que-se-evaporan-hoy",
+      "title": "Radiación de Hawking: agujeros negros que se evaporan hoy",
+      "order": 105,
+      "description": "Nos adentramos en la genial idea de Stephen Hawking. Entiende cómo los inmensos agujeros negros pueden perder su inmensa masa y terminar evaporándose.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "celdas-electroquimicas-iones-que-almacenan-energia-total",
+      "title": "Celdas electroquímicas: iones que almacenan energía total",
+      "order": 106,
+      "description": "Comprendemos el flujo de los iones dentro de las modernas baterías de litio. Descubre la increíble química y física que mantiene encendido tu celular.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "levitacion-cuantica-asombrosa-el-efecto-meissner-visual",
+      "title": "Levitación cuántica asombrosa: el efecto Meissner visual",
+      "order": 107,
+      "description": "Investigamos cómo los materiales superconductores expulsan campos magnéticos internos. Aprende por qué logran levitar perfectamente sobre algunos imanes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "orbitas-geosincronicas-satelites-aparcados-en-el-cielo",
+      "title": "Órbitas geosincrónicas: satélites aparcados en el cielo",
+      "order": 108,
+      "description": "Explicamos la velocidad exacta requerida para igualar la rotación del planeta. La majestuosa física orbital que hace posible la televisión satelital.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "superfluidos-extranos-liquidos-que-carecen-de-friccion",
+      "title": "Superfluidos extraños: líquidos que carecen de fricción",
+      "order": 109,
+      "description": "Descubrimos las raras propiedades del helio líquido al estar súper frío. Observa mentalmente cómo un fluido puede escalar paredes sin perder energía.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-sistema-satelital-gps-la-relatividad-dentro-de-tu-auto",
+      "title": "El sistema satelital GPS: la relatividad dentro de tu auto",
+      "order": 110,
+      "description": "Analizamos cómo la gravedad terrestre y la alta velocidad afectan el tiempo. Descubre por qué los relojes de los satélites corren más rápido que aquí.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "quasares-espaciales-los-motores-mas-brillantes-del-cosmos",
+      "title": "Quásares espaciales: los motores más brillantes del cosmos",
+      "order": 111,
+      "description": "Viajamos a los núcleos de antiguas galaxias activas y extremadamente lejanas. Aprende cómo el gas sobrecalentado genera un brillo que cruza el cosmos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "propulsion-de-cohetes-fisica-pura-para-escapar-del-mundo",
+      "title": "Propulsión de cohetes: física pura para escapar del mundo",
+      "order": 112,
+      "description": "Entiende la aplicación directa del principio de conservación del momento. Descubrimos la enorme fuerza necesaria para llevar grandes humanos a la órbita.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "elasticidad-de-materiales-tension-y-extrema-compresion",
+      "title": "Elasticidad de materiales: tensión y extrema compresión",
+      "order": 113,
+      "description": "Exploramos las fuerzas internas que mantienen unidas a nuestras edificaciones. Aprende cómo calculamos el límite de resistencia del acero en los puentes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "principio-de-pauli-por-que-la-materia-es-realmente-solida",
+      "title": "Principio de Pauli: por qué la materia es realmente sólida",
+      "order": 114,
+      "description": "Nos adentramos en la regla cuántica que evita el completo colapso atómico. Entiende por qué tus manos jamás lograrán atravesar una simple mesa de madera.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "auroras-polares-brillantes-el-viento-solar-en-la-tierra",
+      "title": "Auroras polares brillantes: el viento solar en la Tierra",
+      "order": 115,
+      "description": "Disfrutamos del hermoso espectáculo lumínico de los cielos polares hoy. Comprendemos cómo nuestro inmenso escudo magnético frena el gran viento solar.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cristalografia-fisica-explorando-las-estructuras-atomicas",
+      "title": "Cristalografía física: explorando las estructuras atómicas",
+      "order": 116,
+      "description": "Estudiamos cómo el orden repetitivo en cristales nos permite mapear sus átomos. La misma técnica empleada para revelar la doble hélice de nuestro ADN.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gigantes-rojas-estelares-inmensas-estrellas-moribundas",
+      "title": "Gigantes rojas estelares: inmensas estrellas moribundas",
+      "order": 117,
+      "description": "Analizamos la última etapa vital de astros de masa regular o intermedia. Aprende cómo sus núcleos se contraen mucho mientras su gas externo se expande.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "metabolismo-humano-natural-la-termodinamica-del-cuerpo",
+      "title": "Metabolismo humano natural: la termodinámica del cuerpo",
+      "order": 118,
+      "description": "Aplicamos los principios de la energía térmica directamente a la biología. Descubre cómo convertimos los alimentos en trabajo mecánico cada día de la vida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "teletransportacion-cuantica-el-envio-de-la-informacion",
+      "title": "Teletransportación cuántica: el envío de la información",
+      "order": 119,
+      "description": "Investigamos este increíble avance científico experimental de nuestro siglo. Entiende por qué no transportamos cuerpos físicos sino estados subatómicos hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-efecto-magnus-trayectorias-curvas-en-balones-al-aire",
+      "title": "El efecto Magnus: trayectorias curvas en balones al aire",
+      "order": 120,
+      "description": "Desentrañamos el secreto detrás de los increíbles tiros libres del fútbol. Comprendemos cómo la rotación del balón altera la presión y desvía la trayectoria.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-principio-holografico-nuestro-cosmos-bidimensional",
+      "title": "El principio holográfico: nuestro cosmos bidimensional",
+      "order": 121,
+      "description": "Exploramos la teoría que sugiere que toda la información tridimensional de nuestro universo podría estar contenida en una superficie límite bidimensional.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gravedad-y-masa-los-centros-invisibles-de-los-cuerpos",
+      "title": "Gravedad y masa: los centros invisibles de los cuerpos",
+      "order": 122,
+      "description": "Entiende la diferencia crucial entre el centro de gravedad y el centro de masa. Analizamos cómo estos puntos de equilibrio dictan la estabilidad de objetos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-limite-de-velocidad-cosmica-viajando-a-la-luz-maxima",
+      "title": "El límite de velocidad cósmica: viajando a la luz máxima",
+      "order": 123,
+      "description": "Analizamos por qué nada en el universo puede superar la velocidad de la luz en el vacío. Descubre las consecuencias físicas de intentar acelerar al máximo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ecos-del-fondo-marino-la-fisica-del-sonar-y-la-acustica",
+      "title": "Ecos del fondo marino: la física del sonar y la acústica",
+      "order": 124,
+      "description": "Descubrimos cómo el sonido viaja a través del océano profundo. Aprende cómo el sonar permite a los submarinos navegar y cartografiar el relieve submarino.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "biologia-cuantica-efectos-subatomicos-en-la-naturaleza",
+      "title": "Biología cuántica: efectos subatómicos en la naturaleza",
+      "order": 125,
+      "description": "Exploramos la frontera donde la física cuántica se encuentra con la biología. Aprende cómo la fotosíntesis y la mutación del ADN dependen de leyes cuánticas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-pendulo-de-foucault-viendo-la-rotacion-de-la-tierra",
+      "title": "El péndulo de Foucault: viendo la rotación de la Tierra",
+      "order": 126,
+      "description": "Nos adentramos en el majestuoso experimento de Foucault. Entiende de manera visual y mecánica cómo este péndulo demuestra que nuestro planeta está girando.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "lluvia-de-muones-la-dilatacion-temporal-en-tu-jardin-hoy",
+      "title": "Lluvia de muones: la dilatación temporal en tu jardín hoy",
+      "order": 127,
+      "description": "Comprendemos cómo las partículas cósmicas sobreviven al viaje hacia la Tierra. Una demostración brillante de cómo funciona la relatividad en la naturaleza.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-ley-de-stokes-esferas-que-caen-lentamente-en-fluidos",
+      "title": "La ley de Stokes: esferas que caen lentamente en fluidos",
+      "order": 128,
+      "description": "Analizamos la resistencia que experimentan los objetos redondos en líquidos y gases viscosos. Entiende cómo la lluvia fina logra flotar en el aire terrestre.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "espectroscopia-espacial-leyendo-la-luz-de-otros-mundos",
+      "title": "Espectroscopia espacial: leyendo la luz de otros mundos",
+      "order": 129,
+      "description": "Viajamos a otros sistemas solares a través de los telescopios. Aprende cómo analizamos la luz estelar para descubrir de qué están hechas sus atmósferas hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-tension-de-hubble-la-crisis-expansiva-de-la-galaxia",
+      "title": "La tensión de Hubble: la crisis expansiva de la galaxia",
+      "order": 130,
+      "description": "Exploramos el mayor debate en la cosmología moderna actual. Explicamos por qué las mediciones de la expansión del universo no coinciden y qué significa hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "trenes-de-levitacion-magnetica-volando-sobre-las-vias",
+      "title": "Trenes de levitación magnética: volando sobre las vías",
+      "order": 131,
+      "description": "Descubrimos la tecnología electromagnética detrás de los trenes bala. Analizamos cómo logran velocidades extremas sin generar ninguna fricción con los rieles.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "teoria-del-caos-el-aleteo-que-provoca-grandes-huracanes",
+      "title": "Teoría del caos: el aleteo que provoca grandes huracanes",
+      "order": 132,
+      "description": "Nos adentramos en la imprevisibilidad matemática del mundo físico real. Entiende por qué pequeñas variaciones iniciales producen resultados muy impredecibles.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-ley-de-wien-el-color-exacto-de-las-estrellas-lejanas",
+      "title": "La ley de Wien: el color exacto de las estrellas lejanas",
+      "order": 133,
+      "description": "Estudiamos cómo la temperatura determina el color de las estrellas. Descubre por qué las llamas azules son muchísimo más calientes que las típicas llamas rojas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "empuje-aerostatico-globos-gigantes-que-surcan-los-cielos",
+      "title": "Empuje aerostático: globos gigantes que surcan los cielos",
+      "order": 134,
+      "description": "Aplicamos el principio de flotabilidad directamente a los gases atmosféricos. Comprendemos cómo y por qué inmensos globos de aire caliente consiguen elevarse.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-flecha-del-tiempo-y-el-futuro-de-todo-el-universo-hoy",
+      "title": "La flecha del tiempo y el futuro de todo el universo hoy",
+      "order": 135,
+      "description": "Indagamos por qué el tiempo siempre avanza hacia adelante de manera ineludible. Descubrimos la fuerte conexión entre la entropía térmica y nuestro futuro fin.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "rayos-y-tormentas-el-inmenso-poder-de-la-electrostatica",
+      "title": "Rayos y tormentas: el inmenso poder de la electrostática",
+      "order": 136,
+      "description": "Analizamos las descargas eléctricas más colosales de la Tierra. Entiende cómo se ioniza el aire para formar brillantes canales de plasma durante la tormenta.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "computacion-cuantica-los-super-cerebros-del-manana-hoy",
+      "title": "Computación cuántica: los súper cerebros del mañana hoy",
+      "order": 137,
+      "description": "Exploramos la revolución tecnológica de los qubits simultáneos. Aprende cómo el entrelazamiento y la superposición resolverán problemas matemáticos complejos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "pelotas-y-fisica-la-ciencia-secreta-del-deporte-moderno",
+      "title": "Pelotas y física: la ciencia secreta del deporte moderno",
+      "order": 138,
+      "description": "Comprendemos las fuerzas aerodinámicas que actúan en el golf y el béisbol. Descubre cómo los pequeños hoyuelos reducen el arrastre del viento drásticamente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-gran-impacto-teorias-fisicas-sobre-la-luna-terrestre",
+      "title": "El gran impacto: teorías físicas sobre la luna terrestre",
+      "order": 139,
+      "description": "Viajamos al caótico sistema solar primitivo. Evaluamos las pruebas físicas que sugieren que un planeta antiguo chocó violentamente con la Tierra prehistórica.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "particulas-taquionicas-los-viajeros-veloces-de-la-luz",
+      "title": "Partículas taquiónicas: los viajeros veloces de la luz",
+      "order": 140,
+      "description": "Analizamos estas partículas hipotéticas que desafían todo límite de velocidad. Descubre qué implicarían para la causalidad del tiempo si realmente existieran.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "sistemas-de-referencia-la-base-de-todo-nuestro-movimiento",
+      "title": "Sistemas de referencia: la base de todo nuestro movimiento",
+      "order": 141,
+      "description": "Entiende por qué el movimiento siempre debe medirse desde una perspectiva única. Analizamos los sistemas inerciales frente a los que se aceleran drásticamente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "candelas-estandar-midiendo-distancias-en-todo-el-cosmos",
+      "title": "Candelas estándar: midiendo distancias en todo el cosmos",
+      "order": 142,
+      "description": "Explicamos cómo los astrónomos calculan cuán lejos están las galaxias. Aprende por qué ciertas explosiones estelares actúan como perfectos faros universales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-jaula-de-faraday-escudos-contra-campos-electricos-hoy",
+      "title": "La jaula de Faraday: escudos contra campos eléctricos hoy",
+      "order": 143,
+      "description": "Descubrimos cómo ciertas mallas metálicas bloquean ondas y fuertes descargas. La ciencia que protege los aviones en vuelo y el horno microondas de tu cocina.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-experimento-de-la-doble-rendija-materia-desconcertada",
+      "title": "El experimento de la doble rendija: materia desconcertada",
+      "order": 144,
+      "description": "Nos sumergimos en el experimento más famoso del mundo de la cuántica. Observa cómo los electrones se comportan como ondas hasta el momento en que son medidos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "estrellas-de-neutrones-la-materia-mas-densa-del-universo",
+      "title": "Estrellas de neutrones: la materia más densa del universo",
+      "order": 145,
+      "description": "Exploramos núcleos estelares colapsados tan densos que desafían la imaginación. Entiende cómo la presión cuántica evita que se conviertan en agujeros negros.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "termodinamica-global-el-motor-fisico-de-los-huracanes",
+      "title": "Termodinámica global: el motor físico de los huracanes",
+      "order": 146,
+      "description": "Analizamos cómo el calor latente del océano alimenta a las peores tormentas. La pura conversión masiva de energía térmica en energía cinética sobre las aguas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-efecto-casimir-la-fuerza-invisible-del-vacio-cuantico",
+      "title": "El efecto Casimir: la fuerza invisible del vacío cuántico",
+      "order": 147,
+      "description": "Indagamos en la sorprendente fuerza que atrae dos placas de metal en el vacío. Descubre cómo las fluctuaciones subatómicas empujan objetos de manera medible.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "patinaje-sobre-hielo-la-conservacion-del-momento-angular",
+      "title": "Patinaje sobre hielo: la conservación del momento angular",
+      "order": 148,
+      "description": "Comprendemos la física detrás de los giros veloces de atletas olímpicos. Aprende por qué encoger los brazos incrementa dramáticamente su velocidad de rotación.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "radiacion-de-cherenkov-destellos-azules-en-el-agua-pura",
+      "title": "Radiación de Cherenkov: destellos azules en el agua pura",
+      "order": 149,
+      "description": "Descubrimos por qué los reactores nucleares brillan con hermosa luz azulada. Entiende qué ocurre cuando ciertas partículas superan la luz dentro de un fluido.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "dimensiones-ocultas-el-secreto-plegado-del-espaciotiempo",
+      "title": "Dimensiones ocultas: el secreto plegado del espaciotiempo",
+      "order": 150,
+      "description": "Nos asomamos a la posibilidad de que existan once dimensiones en el universo. Entiende cómo la teoría M sugiere que algunas dimensiones están súper comprimidas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "coeficiente-de-restitucion-la-ciencia-del-rebote",
+      "title": "Coeficiente de restitución: la ciencia del rebote",
+      "order": 151,
+      "description": "Exploramos la física tras el choque y rebote de los objetos cotidianos. Entiende cómo la energía cinética se conserva o disipa al golpear una superficie sólida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-punto-triple-donde-coexisten-hielo-agua-y-vapor",
+      "title": "El punto triple: donde coexisten hielo, agua y vapor",
+      "order": 152,
+      "description": "Analizamos el equilibrio exacto de temperatura y presión para este fenómeno. Entiende por qué esta peculiaridad térmica es clave para calibrar todo termómetro.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-bobinas-magneticas-y-el-flujo-de-la-electricidad",
+      "title": "Las bobinas magnéticas y el flujo de la electricidad",
+      "order": 153,
+      "description": "Descubrimos cómo unas simples espirales de alambre almacenan energía magnética. Analizamos su tremenda importancia para estabilizar las corrientes modernas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "dispersion-de-rayleigh-los-colores-de-nuestro-cielo",
+      "title": "Dispersión de Rayleigh: los colores de nuestro cielo",
+      "order": 154,
+      "description": "Analizamos por qué el cielo de nuestro planeta es azul y el atardecer rojizo. Descubre cómo los gases atmosféricos desvían continuamente las ondas de luz solar.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-gran-nube-de-oort-el-refugio-helado-de-los-cometas",
+      "title": "La gran nube de Oort: el refugio helado de los cometas",
+      "order": 155,
+      "description": "Viajamos al confín más frío y distante de todo nuestro sistema solar. Conoce el oscuro y helado reservorio de donde provienen los cometas que cruzan el cielo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-boson-de-higgs-revelado-el-secreto-de-la-masa",
+      "title": "El bosón de Higgs revelado: el secreto de la masa",
+      "order": 156,
+      "description": "Nos adentramos en el fascinante modelo estándar subatómico. Entiende de forma sencilla cómo este campo fundamental le otorga el peso físico a toda la materia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-fuerza-de-tension-fisica-el-limite-de-las-cuerdas",
+      "title": "La fuerza de tensión física: el límite de las cuerdas",
+      "order": 157,
+      "description": "Comprendemos cómo inmensos cables son capaces de transmitir fuerzas extremas. Exploramos la exacta mecánica física que sostiene a los majestuosos puentes de hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "motores-de-frio-la-termodinamica-en-tu-refrigerador",
+      "title": "Motores de frío: la termodinámica en tu refrigerador",
+      "order": 158,
+      "description": "Analizamos el asombroso ciclo termodinámico que enfría tu heladera. Entiende cómo la veloz expansión de un gas especial extrae el calor cuidando cada alimento.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "celulas-fotovoltaicas-convirtiendo-luz-en-poder-util",
+      "title": "Células fotovoltaicas: convirtiendo luz en poder útil",
+      "order": 159,
+      "description": "Analizamos la inmensa tecnología detrás del panel fotovoltaico. Descubre cómo la captura de los veloces fotones permite generar inagotable electricidad limpia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "viajes-temporales-analizando-la-ciencia-detras-del-mito",
+      "title": "Viajes temporales: analizando la ciencia detrás del mito",
+      "order": 160,
+      "description": "Estudiamos las reglas físicas de los traslados hacia el lejano futuro. Conoce por qué alterar el pasado es complejo mientras saltar siglos adelante es viable.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-criptografia-cuantica-el-cifrado-impenetrable-hoy",
+      "title": "La criptografía cuántica: el cifrado impenetrable hoy",
+      "order": 161,
+      "description": "Descubrimos el enorme poder de usar las partículas para blindar la gran red. Entiende cómo la física ayuda a crear modernos códigos cibernéticos inquebrantables.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "principio-de-pascal-el-inmenso-poder-en-los-fluidos",
+      "title": "Principio de Pascal: el inmenso poder en los fluidos",
+      "order": 162,
+      "description": "Analizamos la exacta transmisión de la inmensa fuerza a través de los líquidos. Descubre el maravilloso principio hidráulico tras las enormes prensas y frenos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-enfriador-perfecto-la-termodinamica-en-tu-sudor",
+      "title": "El enfriador perfecto: la termodinámica en tu sudor",
+      "order": 163,
+      "description": "Explicamos la pura y maravillosa física corporal al realizar arduo esfuerzo físico. Aprende cómo el calor vital interno se disipa velozmente mediante evaporación.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "maquinas-invertidas-motores-ruidosos-y-generadores",
+      "title": "Máquinas invertidas: motores ruidosos y generadores",
+      "order": 164,
+      "description": "Analizamos la asombrosa simetría magnética entre los grandes motores y generadores. Descubre por qué ambas pesadas máquinas son exactamente lo mismo en reversa.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "telescopios-reflectores-la-optica-curva-de-nuestro-cielo",
+      "title": "Telescopios reflectores: la óptica curva de nuestro cielo",
+      "order": 165,
+      "description": "Estudiamos el brillante diseño reflexivo en gigantescos observatorios astronómicos. Descubre cómo geniales espejos curvos potenciaron para siempre la exploración.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "atmosferas-distantes-el-clima-en-los-lejanos-exoplanetas",
+      "title": "Atmósferas distantes: el clima en los lejanos exoplanetas",
+      "order": 166,
+      "description": "Analizamos cómo los radiotelescopios revelan el aire en enormes gigantes gaseosos. Descubre la alucinante técnica óptica para estudiar planetas inexplorados.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "dilatacion-gravitatoria-la-curvatura-temporal-cosmica",
+      "title": "Dilatación gravitatoria: la curvatura temporal cósmica",
+      "order": 167,
+      "description": "Exploramos los asombrosos cambios en tu propio reloj cerca a gigantes estelares. Analizamos por qué el fluir de cada segundo disminuye ante inmensas gravedades.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fuerza-nuclear-fuerte-el-enorme-pegamento-atomico",
+      "title": "Fuerza nuclear fuerte: el enorme pegamento atómico",
+      "order": 168,
+      "description": "Estudiamos la poderosa interacción física y natural que domina en el micromundo. Entiende la asombrosa tracción que evita que toda la materia se desintegre hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cifras-significativas-el-arte-de-medir-con-precision",
+      "title": "Cifras significativas: el arte de medir con precisión",
+      "order": 169,
+      "description": "Adentrémonos en la física de campo y la resolución de las matemáticas aplicadas. Entiende cómo sabemos cuántos números usar al registrar valiosos datos diarios.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-superenfriamiento-agua-liquida-a-temperaturas-bajo-cero",
+      "title": "El superenfriamiento: agua líquida a temperaturas bajo cero",
+      "order": 170,
+      "description": "Exploramos las raras ocasiones en las que los inmensos fríos no congelan fluidos. Aprende este genial fenómeno térmico donde falta un núcleo de cristalización.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "transformadores-electricos-el-control-del-gran-voltaje",
+      "title": "Transformadores eléctricos: el control del gran voltaje",
+      "order": 171,
+      "description": "Analizamos las majestuosas estructuras en nuestras esquinas y oscuros postes. Comprendemos la inducción clave responsable de evitar inmensos e ígneos cortocircuitos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-mundo-de-la-fibra-optica-los-fotones-rebotando-en-red",
+      "title": "El mundo de la fibra óptica: los fotones rebotando en red",
+      "order": 172,
+      "description": "Estudiamos las puras líneas de vidrio en el fondo del oscuro océano. Descubre la reflexión interna que ilumina todo el gran internet con velocidades lumínicas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "mareas-galacticas-la-furiosa-batalla-de-las-estrellas",
+      "title": "Mareas galácticas: la furiosa batalla de las estrellas",
+      "order": 173,
+      "description": "Analizamos los gigantescos y silenciosos choques en la red estelar moderna del vacío. Entiende la atracción mutua que llega a distorsionar inmensas constelaciones.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "radiacion-hawking-teorica-agujeros-que-pierden-fuerza",
+      "title": "Radiación Hawking teórica: agujeros que pierden fuerza",
+      "order": 174,
+      "description": "Analizamos el asombroso fenómeno que condena a los monstruos de nuestra galaxia. Aprende las causas que lograrían evaporar por completo el gran horizonte estelar.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "espuma-cuantica-subatomica-las-profundidades-del-espacio",
+      "title": "Espuma cuántica subatómica: las profundidades del espacio",
+      "order": 175,
+      "description": "Estudiamos las turbulencias invisibles sucediendo a enorme profundidad cósmica. Descubre cómo las partículas y antipartículas se aniquilan en plena obscuridad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "centro-de-equilibrio-la-inmensa-fisica-del-cuerpo-humano",
+      "title": "Centro de equilibrio: la inmensa física del cuerpo humano",
+      "order": 176,
+      "description": "Comprendemos cómo el propio peso corporal está concentrado en puntos vitales invisibles. Aprende sobre grandes torques que te evitan caer velozmente hoy mismo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "aislantes-termicos-diarios-como-el-vacio-atrapa-temperaturas",
+      "title": "Aislantes térmicos diarios: cómo el vacío atrapa temperaturas",
+      "order": 177,
+      "description": "Exploramos la física tras el simple termo guardando el asombroso calor matutino. Entiende cómo bloqueamos eficientemente la gran propagación energética de hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "piezoelectricidad-real-el-choque-que-produce-hermosas-chispas",
+      "title": "Piezoelectricidad real: el choque que produce hermosas chispas",
+      "order": 178,
+      "description": "Adentrémonos en el misterio atómico de encendedores y potentes transductores vibrantes. Descubre los cristales que producen brillante electricidad al apretarse.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "dispersion-del-arcoiris-la-refraccion-en-las-nubes-grises",
+      "title": "Dispersión del arcoíris: la refracción en las nubes grises",
+      "order": 179,
+      "description": "Analizamos cómo pequeñísimas y geniales gotas esféricas dividen a toda onda blanca estelar. Descubre el secreto del maravilloso y hermoso espectro visible del día.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-cumulos-globulares-reliquias-de-soles-muy-antiguos",
+      "title": "Los cúmulos globulares: reliquias de soles muy antiguos",
+      "order": 180,
+      "description": "Viajamos a esferas densas repletas de inmensas luces gravitacionales antiguas. Conoce estos geniales y luminosos enjambres situados alrededor de nuestra galaxia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "espejismos-del-calido-desierto-refraccion-optica",
+      "title": "Espejismos del cálido desierto: refracción óptica",
+      "order": 181,
+      "description": "Analizamos cómo el aire caliente sobre la arena desvía los rayos de luz. Entiende por qué nuestros ojos ven charcos de agua ilusorios donde solo hay tierra.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "efecto-mpemba-el-agua-caliente-que-se-congela-hoy",
+      "title": "Efecto Mpemba: el agua caliente que se congela hoy",
+      "order": 182,
+      "description": "Exploramos la aparente y extraña paradoja donde fluidos calientes logran cristalizarse mucho más rápido. Descubre las teorías detrás de este enigma térmico.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fisica-del-sonido-en-el-vacio-el-silencio-espacial",
+      "title": "Física del sonido en el vacío: el silencio espacial",
+      "order": 183,
+      "description": "Comprendemos por qué las grandes explosiones en el espacio exterior son mudas. Analizamos la necesidad vital de un medio material para propagar ondas acústicas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "inercia-rotacional-el-bello-giro-del-patinaje-hoy",
+      "title": "Inercia rotacional: el bello giro del patinaje hoy",
+      "order": 184,
+      "description": "Exploramos cómo la distribución de masa afecta la velocidad de rotación. Aprende la física que permite a los atletas olímpicos girar como trompos en el hielo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fisica-de-los-agujeros-negros-supermasivos-activos",
+      "title": "Física de los agujeros negros supermasivos activos",
+      "order": 185,
+      "description": "Viajamos al centro de galaxias donde habitan colosos devoradores de materia. Descubre cómo su inmensa gravedad moldea todo el vecindario estelar a su paso.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "corrientes-de-foucault-frenos-magneticos-precisos",
+      "title": "Corrientes de Foucault: frenos magnéticos precisos",
+      "order": 186,
+      "description": "Analizamos los curiosos remolinos de electricidad que frenan atracciones mecánicas. Entiende el poder de inducir fuerzas invisibles en bloques de metal puro.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-paradoja-de-fermi-el-gran-silencio-del-cosmos",
+      "title": "La paradoja de Fermi: el gran silencio del cosmos",
+      "order": 187,
+      "description": "Evaluamos la contradicción entre la altísima probabilidad de vida extraterrestre y la nula evidencia física. Descubre las fascinantes teorías que la explican.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "tension-superficial-y-jabon-destruyendo-la-barrera",
+      "title": "Tensión superficial y jabón: destruyendo la barrera",
+      "order": 188,
+      "description": "Comprendemos cómo los detergentes logran separar la suciedad del agua cotidiana. La ciencia de tensoactivos que aplicas siempre al lavar tus propios platos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "termodinamica-estelar-el-equilibrio-de-los-soles",
+      "title": "Termodinámica estelar: el equilibrio de los soles",
+      "order": 189,
+      "description": "Estudiamos la feroz batalla entre la gravedad aplastante y la explosión nuclear continua. Aprende cómo nuestro Sol logra mantenerse estable durante milenios.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "levitacion-acustica-moviendo-materia-con-el-sonido",
+      "title": "Levitación acústica: moviendo materia con el sonido",
+      "order": 190,
+      "description": "Exploramos el poder increíble de ondas estacionarias cruzadas en el laboratorio. Descubre cómo levitamos pequeñas gotas y objetos empleando solo frecuencias.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "constante-de-planck-el-limite-absoluto-del-detalle",
+      "title": "Constante de Planck: el límite absoluto del detalle",
+      "order": 191,
+      "description": "Nos adentramos en el número fundamental que marca la frontera del mundo cuántico. Aprende cómo la energía se divide en pequeños e indivisibles paquetes puros.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-resonancia-magnetica-nuclear-en-los-hospitales",
+      "title": "La resonancia magnética nuclear en los hospitales",
+      "order": 192,
+      "description": "Analizamos cómo campos magnéticos enormes alinean los protones del cuerpo humano. Conoce la física maravillosa que revolucionó el diagnóstico médico moderno.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fuerzas-de-marea-lunas-destrozadas-por-la-gravedad",
+      "title": "Fuerzas de marea: lunas destrozadas por la gravedad",
+      "order": 193,
+      "description": "Descubrimos qué ocurre cuando cuerpos celestes cruzan el peligroso límite de Roche. Aprende cómo la tracción diferencial deforma y tritura asteroides enteros.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "electromagnetismo-en-aves-la-brujula-biologica-hoy",
+      "title": "Electromagnetismo en aves: la brújula biológica hoy",
+      "order": 194,
+      "description": "Investigamos cómo ciertas especies perciben mágicamente el campo magnético del planeta. Entiende la asombrosa navegación cuántica durante sus grandes vuelos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-efecto-fotoacustico-escuchar-la-luz-en-directo",
+      "title": "El efecto fotoacústico: escuchar la luz en directo",
+      "order": 195,
+      "description": "Exploramos cómo ciertos materiales expuestos a destellos absorben calor y generan vibraciones sonoras instantáneas. Descubre el increíble audífono de luz.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fisica-de-las-nubes-gotas-suspendidas-en-el-cielo",
+      "title": "Física de las nubes: gotas suspendidas en el cielo",
+      "order": 196,
+      "description": "Comprendemos por qué millones de toneladas de agua logran flotar por encima de nosotros. Analizamos la condensación, corrientes cálidas y presión atmosférica.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fotosintesis-cuantica-la-eficiencia-de-las-plantas",
+      "title": "Fotosíntesis cuántica: la eficiencia de las plantas",
+      "order": 197,
+      "description": "Analizamos el proceso subatómico permitiendo a las hojas aprovechar toda la luz solar. Descubre la increíble superposición detrás de la gran energía biológica.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "erupcion-solar-masiva-el-peligro-para-nuestro-hogar",
+      "title": "Erupción solar masiva: el peligro para nuestro hogar",
+      "order": 198,
+      "description": "Viajamos al caótico clima espacial que golpea veloz nuestra atmósfera protectora. Aprende cómo las eyecciones de plasma amenazan nuestras telecomunicaciones.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "reflexion-difusa-en-la-pintura-los-tonos-vibrantes",
+      "title": "Reflexión difusa en la pintura: los tonos vibrantes",
+      "order": 199,
+      "description": "Exploramos cómo las superficies ásperas dispersan todos los fotones aleatoriamente. Entiende por qué las paredes pintadas jamás devuelven una imagen nítida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "materia-barionica-y-oscura-el-peso-real-del-cosmos",
+      "title": "Materia bariónica y oscura: el peso real del cosmos",
+      "order": 200,
+      "description": "Hacemos el recuento masivo de la estructura en nuestro enigmático universo veloz. Comprendemos la diferencia de la materia que brilla y la que se oculta hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "conveccion-del-manto-terrestre-tectonica-movible",
+      "title": "Convección del manto terrestre: tectónica movible",
+      "order": 201,
+      "description": "Analizamos el flujo inmenso de roca fundida en el interior de nuestro gran planeta. Descubre cómo las diferencias térmicas causan brutales terremotos diarios.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "lentes-convergentes-y-divergentes-la-luz-moldeada",
+      "title": "Lentes convergentes y divergentes: la luz moldeada",
+      "order": 202,
+      "description": "Exploramos la elegante geometría óptica que corrige bien nuestra fallida visión. Entiende cómo los geniales cristales desvían la luz adentro de tus anteojos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "paradoja-de-olbers-por-que-la-noche-es-muy-oscura",
+      "title": "Paradoja de Olbers: por qué la noche es muy oscura",
+      "order": 203,
+      "description": "Evaluamos el antiguo enigma astronómico que cuestionaba un universo infinito estelar. Conoce cómo la expansión cósmica enfrió la luz de galaxias muy lejanas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-camara-de-niebla-visualizando-el-rastro-atomico",
+      "title": "La cámara de niebla: visualizando el rastro atómico",
+      "order": 204,
+      "description": "Descubrimos el brillante y maravilloso aparato que hace visibles a las partículas. Analizamos las tenues líneas de condensación que dejan los veloces muones.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-efecto-zeeman-luz-dividida-por-campos-magneticos",
+      "title": "El efecto Zeeman: luz dividida por campos magnéticos",
+      "order": 205,
+      "description": "Investigamos cómo intensos imanes logran dividir las líneas espectrales de un gas. Entiende la técnica usada para estudiar a los poderosos soles lejanos hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "presion-de-radiacion-luminosa-velas-en-el-espacio",
+      "title": "Presión de radiación luminosa: velas en el espacio",
+      "order": 206,
+      "description": "Analizamos el sutil empuje que ejercen los inagotables fotones al chocar con un muro. Descubre cómo viajaremos a otras estrellas sin usar combustible químico.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fisica-del-buceo-extremo-descompresion-en-el-agua",
+      "title": "Física del buceo extremo: descompresión en el agua",
+      "order": 207,
+      "description": "Comprendemos los mortales riesgos físicos tras una subida veloz hacia la superficie. Entiende por qué los gases disueltos en la sangre burbujean en el abismo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cuerdas-vocales-el-genial-instrumento-sonoro-humano",
+      "title": "Cuerdas vocales: el genial instrumento sonoro humano",
+      "order": 208,
+      "description": "Exploramos las ondas acústicas creadas por la compleja vibración del aire en la glotis. Aprende la maravillosa mecánica que nos permite cantar en mil idiomas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-diagramas-de-feynman-el-arte-del-choque-atomico",
+      "title": "Los diagramas de Feynman: el arte del choque atómico",
+      "order": 209,
+      "description": "Nos adentramos en los increíbles dibujos que simplificaron toda la física de campo. Entiende cómo visualizar interacciones complejas de fotones y electrones.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ley-del-cuadrado-inverso-la-luz-en-atenuacion-pura",
+      "title": "Ley del cuadrado inverso: la luz en atenuación pura",
+      "order": 210,
+      "description": "Explicamos el implacable mecanismo matemático por el cual las fuerzas se debilitan. Aprende por qué una estrella distante apenas nos ilumina en la noche real.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-fisica-del-fuego-ardiente-plasmas-y-combustion",
+      "title": "La física del fuego ardiente: plasmas y combustión",
+      "order": 211,
+      "description": "Analizamos el fascinante proceso químico y térmico de las llamas. Descubre por qué el fuego emite luz y cómo el calor sostiene la reacción.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-pendulo-doble-en-accion-la-belleza-de-lo-caotico",
+      "title": "El péndulo doble en acción: la belleza de lo caótico",
+      "order": 212,
+      "description": "Exploramos este sistema mecánico que pasa del orden al caos absoluto. Entiende por qué un movimiento simple se vuelve imposible de predecir.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "sismologia-fisica-las-ondas-que-atraviesan-la-tierra",
+      "title": "Sismología física: las ondas que atraviesan la Tierra",
+      "order": 213,
+      "description": "Comprendemos cómo las vibraciones de los terremotos viajan por nuestro planeta. Aprende cómo esta ciencia nos revela el núcleo terrestre hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-fuerza-centrifuga-ficticia-inercia-en-las-curvas",
+      "title": "La fuerza centrífuga ficticia: inercia en las curvas",
+      "order": 214,
+      "description": "Desmitificamos la sensación de ser empujados hacia afuera al girar en un auto. Descubre por qué esta fuerza es solo una ilusión de la inercia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "relojes-atomicos-modernos-midiendo-el-tiempo-exacto",
+      "title": "Relojes atómicos modernos: midiendo el tiempo exacto",
+      "order": 215,
+      "description": "Investigamos las máquinas más precisas creadas por el ser humano. Analizamos cómo las vibraciones de los átomos de cesio definen cada segundo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-gran-guerra-de-las-corrientes-edison-contra-tesla",
+      "title": "La gran guerra de las corrientes: Edison contra Tesla",
+      "order": 216,
+      "description": "Revivimos el conflicto histórico por el control eléctrico mundial. Entiende las diferencias físicas entre corriente alterna y también continua.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "dinamica-de-fluidos-esfericos-la-fisica-de-las-gotas",
+      "title": "Dinámica de fluidos esféricos: la física de las gotas",
+      "order": 217,
+      "description": "Analizamos las fuerzas moleculares que moldean cada diminuta gota de lluvia. Descubre cómo la tensión superficial busca la forma más perfecta.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "sistemas-estelares-binarios-dos-soles-en-un-gran-vals",
+      "title": "Sistemas estelares binarios: dos soles en un gran vals",
+      "order": 218,
+      "description": "Exploramos la inmensa mayoría de sistemas solares en nuestra galaxia. Aprende cómo la gravedad mutua mantiene a dos inmensas estrellas unidas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "holografia-optica-pura-capturando-las-tres-dimensiones",
+      "title": "Holografía óptica pura: capturando las tres dimensiones",
+      "order": 219,
+      "description": "Descubrimos cómo el láser y la interferencia lumínica logran crear imágenes con asombrosa profundidad. La física real detrás de los hologramas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fision-nuclear-controlada-dividiendo-nucleos-pesados",
+      "title": "Fisión nuclear controlada: dividiendo núcleos pesados",
+      "order": 220,
+      "description": "Estudiamos el inmenso poder contenido en la desintegración del uranio. Comprendemos cómo las modernas centrales nucleares generan su energía.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "acustica-musical-vibrante-las-ondas-estacionarias-hoy",
+      "title": "Acústica musical vibrante: las ondas estacionarias hoy",
+      "order": 221,
+      "description": "Explicamos la exacta geometría del sonido en cuerdas y tubos de viento. Entiende cómo los nodos y antinodos crean las notas de cada instrumento.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "radiacion-ultravioleta-espacial-el-poder-invisible-hoy",
+      "title": "Radiación ultravioleta espacial: el poder invisible hoy",
+      "order": 222,
+      "description": "Analizamos las ondas electromagnéticas que broncean y queman nuestra piel. Descubre cómo la capa de ozono actúa como un escudo vital en lo alto.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-fin-del-eter-luminoso-un-experimento-muy-decisivo",
+      "title": "El fin del éter luminoso: un experimento muy decisivo",
+      "order": 223,
+      "description": "Viajamos al pasado para revivir la prueba que cambió a la física para siempre. Aprende cómo se demostró que la luz viaja sin necesitar un medio.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-misterio-de-las-manchas-solares-y-el-gran-magnetismo",
+      "title": "El misterio de las manchas solares y el gran magnetismo",
+      "order": 224,
+      "description": "Exploramos las frías y oscuras regiones en la superficie de nuestra estrella. Comprendemos cómo los campos magnéticos enredados bloquean el calor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "sopa-de-quarks-y-gluones-el-estado-primordial-cosmico",
+      "title": "Sopa de quarks y gluones: el estado primordial cósmico",
+      "order": 225,
+      "description": "Nos adentramos en el plasma extremo que existió justo tras el inmenso Big Bang. Aprende cómo los físicos lo recrean usando inmensos colisionadores.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-fisica-del-tubo-de-vacio-el-origen-de-la-electronica",
+      "title": "La física del tubo de vacío: el origen de la electrónica",
+      "order": 226,
+      "description": "Analizamos las antiguas válvulas que permitieron las primeras telecomunicaciones. Entiende cómo controlaban a los electrones en absoluto vacío.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "isostasia-terrestre-firme-montanas-que-logran-flotar",
+      "title": "Isostasia terrestre firme: montañas que logran flotar",
+      "order": 227,
+      "description": "Comprendemos el equilibrio gravitatorio de la corteza de la Tierra. Descubre cómo las inmensas cordilleras flotan sobre el denso manto interior.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "radiacion-de-sincrotron-la-luz-de-electrones-muy-veloces",
+      "title": "Radiación de sincrotrón: la luz de electrones muy veloces",
+      "order": 228,
+      "description": "Exploramos la inmensa energía emitida por partículas al girar magnéticamente. Conoce cómo esta radiación nos ayuda a ver maravillas moleculares.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "calorimetria-exacta-hoy-midiendo-la-transferencia-pura",
+      "title": "Calorimetría exacta hoy: midiendo la transferencia pura",
+      "order": 229,
+      "description": "Estudiamos cómo los científicos logran calcular con gran precisión el calor liberado en fuertes reacciones. Un pilar de la termodinámica moderna.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-inmensa-heliosfera-cosmica-nuestra-gran-burbuja",
+      "title": "La inmensa heliosfera cósmica: nuestra gran burbuja",
+      "order": 230,
+      "description": "Analizamos el gran escudo magnético generado por el Sol que abarca los planetas. Aprende cómo detiene a los letales y oscuros rayos galácticos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "espectrometria-de-masas-pura-pesando-atomos-veloces",
+      "title": "Espectrometría de masas pura: pesando átomos veloces",
+      "order": 231,
+      "description": "Descubrimos cómo un simple campo magnético logra curvar las trayectorias atómicas. Aprende esta increíble técnica para detectar las sustancias.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "principio-de-landauer-hoy-el-costo-termico-de-los-datos",
+      "title": "Principio de Landauer hoy: el costo térmico de los datos",
+      "order": 232,
+      "description": "Exploramos la conexión profunda entre la información y la moderna termodinámica. Entiende por qué borrar un archivo inevitablemente genera calor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-red-cosmica-universal-filamentos-de-materia-oscura",
+      "title": "La red cósmica universal: filamentos de materia oscura",
+      "order": 233,
+      "description": "Viajamos a la escala más inmensa de nuestro universo. Descubre las largas hebras de materia invisible que conectan todos los cúmulos de galaxias.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ecos-y-reverberaciones-el-constante-rebote-del-sonido",
+      "title": "Ecos y reverberaciones: el constante rebote del sonido",
+      "order": 234,
+      "description": "Analizamos cómo la acústica de interiores moldea lo que realmente escuchamos. Comprendemos la diferencia física clave entre un eco y resonancia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "problema-de-los-tres-cuerpos-caos-gravitatorio-estelar",
+      "title": "Problema de los tres cuerpos: caos gravitatorio estelar",
+      "order": 235,
+      "description": "Evaluamos este clásico enigma de la pura mecánica celeste y matemática. Descubre por qué predecir las órbitas de tres astros es casi imposible.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "tomografia-por-emision-de-positrones-la-antimateria",
+      "title": "Tomografía por emisión de positrones: la antimateria",
+      "order": 236,
+      "description": "Investigamos cómo los hospitales utilizan de manera muy segura minúsculas cantidades de antimateria para detectar complejas enfermedades mortales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "refraccion-del-aire-el-sol-que-observamos-en-el-ocaso",
+      "title": "Refracción del aire: el sol que observamos en el ocaso",
+      "order": 237,
+      "description": "Descubrimos por qué el Sol real ya cruzó por debajo del horizonte cuando lo vemos ponerse. La inmensa atmósfera curva los lentos fotones de luz.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-capa-limite-del-aire-friccion-en-vuelos-comerciales",
+      "title": "La capa límite del aire: fricción en vuelos comerciales",
+      "order": 238,
+      "description": "Analizamos la finísima y delgada lámina de aire que se adhiere fuertemente a las alas de avión. Entiende cómo controla el flujo y toda resistencia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "isotopos-artificiales-de-hoy-alquimia-del-siglo-veinte",
+      "title": "Isótopos artificiales de hoy: alquimia del siglo veinte",
+      "order": 239,
+      "description": "Explicamos cómo los científicos físicos aprendieron a transmutar grandes elementos. El increíble proceso de forjar nuevos átomos en laboratorios.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-gran-metrica-del-espaciotiempo-un-cosmos-expandido",
+      "title": "La gran métrica del espaciotiempo: un cosmos expandido",
+      "order": 240,
+      "description": "Nos asomamos a las matemáticas maestras detrás de un inmenso universo en puro crecimiento. Entiende cómo el propio espacio vacío logra estirarse.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "pantallas-tactiles-la-fisica-detras-de-tus-dedos-hoy",
+      "title": "Pantallas táctiles: la física detrás de tus dedos hoy",
+      "order": 241,
+      "description": "Analizamos la capacitancia eléctrica en los dispositivos inteligentes. Descubre cómo tu propio cuerpo altera el campo para registrar cada toque.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "planetas-errantes-solitarios-mundos-sin-una-estrella",
+      "title": "Planetas errantes solitarios: mundos sin una estrella",
+      "order": 242,
+      "description": "Exploramos los misteriosos cuerpos celestes que vagan por el espacio oscuro. Conoce la física de los planetas expulsados de sus sistemas solares.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "reactores-tokamak-de-hoy-el-sol-dentro-de-una-botella",
+      "title": "Reactores Tokamak de hoy: el sol dentro de una botella",
+      "order": 243,
+      "description": "Comprendemos el enorme desafío magnético para contener plasma súper caliente. Descubre cómo la humanidad intenta lograr una fusión estable y limpia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "arrastre-del-espaciotiempo-rotacion-de-cuerpos-masivos",
+      "title": "Arrastre del espaciotiempo: rotación de cuerpos masivos",
+      "order": 244,
+      "description": "Analizamos cómo la rotación extrema de un planeta o agujero negro tuerce el tejido espacial a su alrededor. Un efecto relativista muy fascinante.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "muerte-termica-cosmica-el-destino-final-del-universo",
+      "title": "Muerte térmica cósmica: el destino final del universo",
+      "order": 245,
+      "description": "Indagamos en la inevitable consecuencia de la máxima entropía universal. Aprende qué sucederá cuando toda la energía se distribuya uniformemente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "giroscopos-de-navegacion-orientacion-sin-ver-el-mundo",
+      "title": "Giróscopos de navegación: orientación sin ver el mundo",
+      "order": 246,
+      "description": "Exploramos los complejos mecanismos inerciales que guían a naves y submarinos. Entiende cómo la rotación constante mantiene el rumbo garantizado.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "birefringencia-cristalina-luz-tomando-dos-caminos-hoy",
+      "title": "Birefringencia cristalina: luz tomando dos caminos hoy",
+      "order": 247,
+      "description": "Estudiamos ciertos minerales asombrosos que logran dividir la luz en dos rayos distintos. Aprende cómo la estructura interna afecta a los fotones.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-inmenso-campo-magnetico-del-enorme-planeta-jupiter",
+      "title": "El inmenso campo magnético del enorme planeta Júpiter",
+      "order": 248,
+      "description": "Viajamos al entorno electromagnético más poderoso del sistema solar. Conoce cómo este coloso genera auroras brutales y letales cinturones de luz.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fisica-de-los-ascensores-poleas-y-fuertes-contrapesos",
+      "title": "Física de los ascensores: poleas y fuertes contrapesos",
+      "order": 249,
+      "description": "Analizamos la mecánica vital que nos permite construir enormes rascacielos. Entiende cómo las máquinas simples logran mover toneladas cada segundo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "magnetares-del-espacio-los-imanes-mas-fuertes-de-todos",
+      "title": "Magnetares del espacio: los imanes más fuertes de todos",
+      "order": 250,
+      "description": "Descubrimos estrellas de neutrones con campos magnéticos tan extremos que podrían borrar tu tarjeta de crédito desde la distancia de nuestra luna.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "decoherencia-cuantica-cuando-lo-subatomico-se-hace-real",
+      "title": "Decoherencia cuántica: cuando lo subatómico se hace real",
+      "order": 251,
+      "description": "Exploramos la frontera exacta donde las extrañas propiedades cuánticas desaparecen. Aprende por qué no vemos el entrelazamiento en nuestra rutina.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-asombroso-efecto-leidenfrost-gotas-que-logran-levitar",
+      "title": "El asombroso efecto Leidenfrost: gotas que logran levitar",
+      "order": 252,
+      "description": "Comprendemos por qué el agua fría logra flotar mágicamente sobre una plancha muy ardiente. Una barrera de vapor instantánea que evita la ebullición.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "aberracion-cromatica-el-desafio-de-los-lentes-de-cristal",
+      "title": "Aberración cromática: el desafío de los lentes de cristal",
+      "order": 253,
+      "description": "Estudiamos por qué los bordes de algunas fotografías presentan franjas de colores. Entiende cómo la luz se refracta a velocidades un poco diversas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-ecuaciones-de-maxwell-la-union-de-la-luz-y-energia",
+      "title": "Las ecuaciones de Maxwell: la unión de la luz y energía",
+      "order": 254,
+      "description": "Nos adentramos en las fórmulas elegantes que revolucionaron la ciencia moderna. Conoce cómo unificaron electricidad y magnetismo de forma suprema.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "aerodinamica-del-bumeran-el-vuelo-que-siempre-regresa",
+      "title": "Aerodinámica del bumerán: el vuelo que siempre regresa",
+      "order": 255,
+      "description": "Desentrañamos la física inercial detrás de esta famosa y antigua arma arrojadiza. Descubre cómo la sustentación desigual logra curvar su camino.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-inmensa-inflacion-cosmica-el-inicio-super-expansivo",
+      "title": "La inmensa inflación cósmica: el inicio súper expansivo",
+      "order": 256,
+      "description": "Viajamos a la minúscula fracción de segundo posterior a la creación. Analizamos cómo el universo temprano multiplicó su tamaño de manera muy veloz.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-estallido-del-latigo-real-rompiendo-la-barrera-sonica",
+      "title": "El estallido del látigo real: rompiendo la barrera sónica",
+      "order": 257,
+      "description": "Exploramos la transmisión de la energía cinética en una cuerda estrecha. Entiende por qué el pequeño extremo logra superar la velocidad del sonido.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "superposicion-cuantica-pura-estar-en-muchos-sitios-hoy",
+      "title": "Superposición cuántica pura: estar en muchos sitios hoy",
+      "order": 258,
+      "description": "Nos sumergimos de lleno en la base de la mecánica probabilística atómica. Conoce cómo un único electrón explora múltiples rutas de forma simultánea.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "energia-geotermica-profunda-aprovechando-el-calor-global",
+      "title": "Energía geotérmica profunda: aprovechando el calor global",
+      "order": 259,
+      "description": "Analizamos la inmensa reserva térmica natural debajo de nuestra firme corteza. Aprende cómo el planeta Tierra genera y libera vapor constantemente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "materiales-ultra-negros-absorbiendo-la-luz-por-completo",
+      "title": "Materiales ultra negros: absorbiendo la luz por completo",
+      "order": 260,
+      "description": "Estudiamos los nanomateriales sintéticos que tragan virtualmente cada fotón visible. Descubre la increíble ilusión óptica que crean al observarlos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "balistica-de-inmensa-precision-la-rotacion-nos-desvia",
+      "title": "Balística de inmensa precisión: la rotación nos desvía",
+      "order": 261,
+      "description": "Comprendemos cómo el propio giro terrestre afecta directamente a los proyectiles rápidos. Descubre el increíble cálculo físico detrás del movimiento.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-zona-de-habitabilidad-el-equilibrio-perfecto-cosmico",
+      "title": "La zona de habitabilidad: el equilibrio perfecto cósmico",
+      "order": 262,
+      "description": "Evaluamos la precisa banda térmica orbital que permite la existencia de agua líquida. Aprende cómo buscamos la distancia adecuada para la gran vida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-efecto-hall-atomico-midiendo-los-campos-magneticos",
+      "title": "El efecto Hall atómico: midiendo los campos magnéticos",
+      "order": 263,
+      "description": "Descubrimos cómo un simple campo lateral desplaza la corriente en los conductores puros. La física detrás de los precisos sensores de proximidad hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fluidos-no-newtonianos-liquidos-que-parecen-piedra-hoy",
+      "title": "Fluidos no newtonianos: líquidos que parecen piedra hoy",
+      "order": 264,
+      "description": "Analizamos la extraña mezcla de elementos que desafía toda viscosidad constante. Aprende por qué logramos correr sobre ellos si aplicamos alta fuerza.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "antimateria-en-la-cocina-radiacion-en-nuestra-comida",
+      "title": "Antimateria en la cocina: radiación en nuestra comida",
+      "order": 265,
+      "description": "Investigamos la desintegración natural que sucede muy dentro de los plátanos diarios. Conoce cómo el potasio inestable genera positrones diminutos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "diagramas-de-fase-materiales-los-mapas-de-estado-puros",
+      "title": "Diagramas de fase materiales: los mapas de estado puros",
+      "order": 266,
+      "description": "Exploramos los gráficos esenciales que muestran cuándo hierve o se congela la materia. Entiende la delicada danza entre la gran presión y el calor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "sonoluminiscencia-acuatica-burbujas-que-emiten-luz-hoy",
+      "title": "Sonoluminiscencia acuática: burbujas que emiten luz hoy",
+      "order": 267,
+      "description": "Nos adentramos en uno de los grandes misterios que unen el sonido brutal y el gran calor. Descubre el colapso que genera pequeños destellos de luz.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-fisica-de-grandes-arcos-distribuyendo-pesos-enormes",
+      "title": "La física de grandes arcos: distribuyendo pesos enormes",
+      "order": 268,
+      "description": "Comprendemos el genial principio arquitectónico capaz de sostener catedrales inmensas. Aprende cómo la geometría dirige toda fuerza hacia el suelo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "velas-solares-espaciales-surcando-el-vacio-de-la-noche",
+      "title": "Velas solares espaciales: surcando el vacío de la noche",
+      "order": 269,
+      "description": "Analizamos la increíble tecnología que utiliza el sutil impulso de los fotones estelares. Descubre cómo las naves logran navegar sin llevar motores.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "tecnologia-rfid-cotidiana-antenas-que-no-usan-baterias",
+      "title": "Tecnología RFID cotidiana: antenas que no usan baterías",
+      "order": 270,
+      "description": "Explicamos la inducción que permite pagar o abrir puertas tan solo acercando una tarjeta. Conoce la física veloz detrás de las ondas de radio de hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "anillos-planetarios-la-fisica-del-hielo-en-orbita",
+      "title": "Anillos planetarios: la física del hielo en órbita",
+      "order": 271,
+      "description": "Exploramos las hermosas estructuras que rodean a gigantes como Saturno. Descubre la gravedad y las colisiones que mantienen estas pistas de hielo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-precesion-mecanica-por-que-la-tierra-se-bambolea",
+      "title": "La precesión mecánica: por qué la Tierra se bambolea",
+      "order": 272,
+      "description": "Analizamos el movimiento sutil del eje de rotación de nuestro planeta. Entiende cómo la gravedad del Sol y la Luna generan este giro a largo plazo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-espin-subatomico-el-giro-que-en-realidad-no-es",
+      "title": "El espín subatómico: el giro que en realidad no es",
+      "order": 273,
+      "description": "Nos adentramos en esta extraña propiedad cuántica de las partículas. Aprende por qué el espín define el magnetismo y la estructura de toda materia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "entalpia-pura-midiendo-la-energia-total-del-calor",
+      "title": "Entalpía pura: midiendo la energía total del calor",
+      "order": 274,
+      "description": "Comprendemos esta magnitud clave para las reacciones químicas diarias. Descubre cómo la presión y el volumen afectan directamente el flujo de energía.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "termoelectricidad-cuando-el-calor-crea-la-energia",
+      "title": "Termoelectricidad: cuando el calor crea la energía",
+      "order": 275,
+      "description": "Exploramos la asombrosa conversión directa de diferencias térmicas en corriente eléctrica útil. La física secreta en los pequeños refrigeradores.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-fisica-de-los-sifones-desafiando-a-la-gravedad",
+      "title": "La física de los sifones: desafiando a la gravedad",
+      "order": 276,
+      "description": "Explicamos cómo logramos vaciar inmensos tanques de líquido utilizando una simple manguera. Entiende el maravilloso papel de la presión atmosférica.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-brotes-de-rayos-gamma-la-mayor-explosion-cosmica",
+      "title": "Los brotes de rayos gamma: la mayor explosión cósmica",
+      "order": 277,
+      "description": "Viajamos a los confines del universo para atestiguar estos destellos de altísima energía. Conoce los cataclismos que logran eclipsar a las galaxias.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "monopolos-magneticos-el-gran-misterio-de-la-carga",
+      "title": "Monopolos magnéticos: el gran misterio de la carga",
+      "order": 278,
+      "description": "Investigamos la hipotética partícula que poseería un único polo magnético aislado. Entiende por qué las ecuaciones de Maxwell aún esperan su hallazgo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "colores-iridiscentes-interferencia-en-las-burbujas",
+      "title": "Colores iridiscentes: interferencia en las burbujas",
+      "order": 279,
+      "description": "Analizamos cómo las capas delgadas de jabón o aceite filtran la luz blanca. Aprende cómo el rebote de las ondas genera brillantes patrones de color.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-centro-de-percusion-el-golpe-perfecto-del-bate",
+      "title": "El centro de percusión: el golpe perfecto del bate",
+      "order": 280,
+      "description": "Comprendemos la maravillosa física de los impactos deportivos de precisión. Descubre el punto exacto donde la molesta vibración se anula por completo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-puntos-de-lagrange-aparcamiento-en-el-espacio",
+      "title": "Los puntos de Lagrange: aparcamiento en el espacio",
+      "order": 281,
+      "description": "Exploramos las misteriosas zonas de equilibrio gravitatorio perfecto. Aprende cómo posicionamos telescopios en lugares inamovibles del sistema solar.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "efecto-joule-thomson-por-que-el-gas-se-enfria-hoy",
+      "title": "Efecto Joule-Thomson: por qué el gas se enfría hoy",
+      "order": 282,
+      "description": "Analizamos qué ocurre termodinámicamente cuando forzamos un gas a través de una válvula. Entiende el maravilloso principio crucial de la licuefacción.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-energia-de-enlace-atomica-y-el-defecto-de-masas",
+      "title": "La energía de enlace atómica y el defecto de masas",
+      "order": 283,
+      "description": "Estudiamos por qué el peso final de un núcleo atómico es menor que la suma total de sus partes. Entiende dónde se oculta realmente la inmensa fuerza.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "contraccion-de-la-longitud-el-espacio-se-comprime",
+      "title": "Contracción de la longitud: el espacio se comprime",
+      "order": 284,
+      "description": "Nos adentramos en esta fascinante consecuencia relativista real. Aprende cómo los objetos se acortan visualmente a medida que se acercan a la luz pura.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-asombroso-efecto-coanda-y-los-fluidos-en-accion",
+      "title": "El asombroso efecto Coandă y los fluidos en acción",
+      "order": 285,
+      "description": "Comprendemos por qué el chorro de agua o el aire siguen perfectamente una superficie curva. Aprende cómo este mecanismo mejora los autos aerodinámicos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "aerodinamica-naval-navegando-en-contra-del-viento",
+      "title": "Aerodinámica naval: navegando en contra del viento",
+      "order": 286,
+      "description": "Analizamos cómo los grandes veleros avanzan empleando ángulos astutos físicos. Entiende cómo la forma especial de la vela genera elevación como un ala.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "efecto-zenon-cuantico-congelando-atomos-al-mirarlos",
+      "title": "Efecto Zenón cuántico: congelando átomos al mirarlos",
+      "order": 287,
+      "description": "Exploramos cómo la observación continua puede paralizar por completo la evolución de un sistema atómico. Entiende esta genial rareza probabilística hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "espaguetizacion-el-estiramiento-en-un-agujero-negro",
+      "title": "Espaguetización: el estiramiento en un agujero negro",
+      "order": 288,
+      "description": "Evaluamos los letales efectos que tendrían las extremas fuerzas de marea en tu frágil cuerpo. Un asombroso e intenso viaje de terror gravitatorio real.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fosforescencia-la-luz-que-persiste-en-la-oscuridad",
+      "title": "Fosforescencia: la luz que persiste en la oscuridad",
+      "order": 289,
+      "description": "Diferenciamos la fosforescencia de la fluorescencia cotidiana de la materia. Aprende por qué los electrones quedan atrapados emitiendo un brillo sutil.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-ferromagnetismo-oculto-por-que-los-imanes-atraen",
+      "title": "El ferromagnetismo oculto: por qué los imanes atraen",
+      "order": 290,
+      "description": "Nos adentramos en la inmensa física profunda de la materia magnetizada permanente. Descubre cómo trillones de electrones alinean todo su espín atómico.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "aerogeles-modernos-la-asombrosa-fisica-de-la-nada",
+      "title": "Aerogeles modernos: la asombrosa física de la nada",
+      "order": 291,
+      "description": "Estudiamos este material ultra ligero compuesto mayormente por el aire puro ambiental. Aprende por qué es un aislante térmico perfecto para la NASA hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-gravedad-de-bucles-el-tejido-discreto-del-cosmos",
+      "title": "La gravedad de bucles: el tejido discreto del cosmos",
+      "order": 292,
+      "description": "Exploramos la principal alternativa actual frente a la conocida teoría de las cuerdas cósmicas. Entiende si el mismo espaciotiempo está cuantizado hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "esferas-de-dyson-geniales-capturando-estrellas-hoy",
+      "title": "Esferas de Dyson geniales: capturando estrellas hoy",
+      "order": 293,
+      "description": "Analizamos la grandiosa y colosal megaestructura teórica propuesta por astrofísicos reales. Entiende cómo una civilización extraería toda la energía.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "turbulencia-en-fluidos-la-matematica-del-caos-total",
+      "title": "Turbulencia en fluidos: la matemática del caos total",
+      "order": 294,
+      "description": "Nos enfrentamos al enorme problema físico no resuelto de la dinámica de los grandes fluidos. Aprende cómo se estudian los torbellinos más impredecibles.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "carga-inalambrica-hoy-la-induccion-magnetica-diaria",
+      "title": "Carga inalámbrica hoy: la inducción magnética diaria",
+      "order": 295,
+      "description": "Comprendemos el brillante sistema resonante detrás de los cargadores de la telefonía móvil moderna. Descubre cómo la corriente viaja por el aire limpio.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "pulsaciones-sonoras-cuando-dos-frecuencias-combaten",
+      "title": "Pulsaciones sonoras: cuando dos frecuencias combaten",
+      "order": 296,
+      "description": "Estudiamos el curioso fenómeno auditivo que ocurre al mezclar ondas muy parecidas. Aprende cómo logran afinar instrumentos complejos usando esta técnica.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "principio-de-equivalencia-la-gravedad-en-movimiento",
+      "title": "Principio de equivalencia: la gravedad en movimiento",
+      "order": 297,
+      "description": "Nos adentramos en la grandiosa idea inicial que inspiró plenamente a Einstein de joven. Entiende por qué el caer libremente se siente como flotar suave.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-gran-fisica-del-grafeno-el-material-bidimensional",
+      "title": "La gran física del grafeno: el material bidimensional",
+      "order": 298,
+      "description": "Exploramos las propiedades eléctricas y mecánicas del cristal de carbono puro. Descubre por qué esta diminuta lámina transformará toda nuestra era actual.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-enanas-marrones-hermosos-soles-que-no-brillaron",
+      "title": "Las enanas marrones: hermosos soles que no brillaron",
+      "order": 299,
+      "description": "Viajamos a los cuerpos cósmicos intermedios entre planetas gigantes y estrellas. Entiende por qué no lograron encender un constante fuego termonuclear.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-optica-biologica-visual-la-fisica-del-ojo-humano",
+      "title": "La óptica biológica visual: la física del ojo humano",
+      "order": 300,
+      "description": "Celebramos nuestro episodio trescientos analizando este complejo instrumento óptico natural. Aprende cómo el cristalino y la gran retina enfocan la luz.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-fisica-del-wi-fi-como-viaja-nuestro-internet-hoy",
+      "title": "La física del Wi-Fi: cómo viaja nuestro internet hoy",
+      "order": 301,
+      "description": "Analizamos las ondas de radio invisibles que cruzan constantemente tus paredes. Descubre la brillante física pura que te mantiene conectado hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "estrellas-de-quarks-nucleos-densos-inexplorados",
+      "title": "Estrellas de quarks: núcleos densos inexplorados",
+      "order": 302,
+      "description": "Viajamos a los hipotéticos astros superdensos formados tras una supernova. Entiende cómo la materia se comprime hasta su nivel más elemental.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-cristales-de-tiempo-un-nuevo-estado-atomico",
+      "title": "Los cristales de tiempo: un nuevo estado atómico",
+      "order": 303,
+      "description": "Exploramos la materia que se mueve rítmicamente sin consumir energía alguna. Conoce el extraño sistema cuántico que desafía la termodinámica.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "motores-de-stirling-calor-que-crea-el-movimiento",
+      "title": "Motores de Stirling: calor que crea el movimiento",
+      "order": 304,
+      "description": "Analizamos la silenciosa máquina de ciclo cerrado y altísima eficiencia. Descubre cómo la expansión y compresión del gas limpio generan energía.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-metamateriales-la-fisica-de-la-invisibilidad",
+      "title": "Los metamateriales: la física de la invisibilidad",
+      "order": 305,
+      "description": "Nos adentramos en la asombrosa ingeniería óptica que logra curvar toda la luz. Entiende cómo estas geniales estructuras pueden ocultar objetos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-fisica-del-karate-golpes-que-rompen-la-madera",
+      "title": "La física del karate: golpes que rompen la madera",
+      "order": 306,
+      "description": "Comprendemos la transferencia de energía cinética durante los impactos marciales. Aprende cómo la inmensa velocidad vence la tensión mecánica.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-proceso-de-penrose-robar-energia-a-un-abismo",
+      "title": "El proceso de Penrose: robar energía a un abismo",
+      "order": 307,
+      "description": "Evaluamos la genial teoría para extraer poder de un agujero negro en rotación. Entiende cómo la humanidad futura conseguiría energía ilimitada.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "tubos-de-rayos-catodicos-la-television-antigua-hoy",
+      "title": "Tubos de rayos catódicos: la televisión antigua hoy",
+      "order": 308,
+      "description": "Estudiamos cómo los electrones disparados hacia el vacío crearon imágenes en pantallas. La física electromagnética que formó a nuestra infancia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "hemodinamica-la-fluidez-de-la-sangre-en-el-cuerpo",
+      "title": "Hemodinámica: la fluidez de la sangre en el cuerpo",
+      "order": 309,
+      "description": "Aplicamos los grandiosos principios de la dinámica de fluidos al sistema humano. Descubre cómo la presión y la viscosidad mantienen tu pulso.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-teorema-de-bell-probando-la-rareza-del-cosmos",
+      "title": "El teorema de Bell: probando la rareza del cosmos",
+      "order": 310,
+      "description": "Analizamos la genial prueba matemática que desafió a todo el universo clásico. Aprende cómo logramos demostrar que el entrelazamiento es real.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fluidos-supercriticos-entre-el-gas-y-el-liquido",
+      "title": "Fluidos supercríticos: entre el gas y el líquido",
+      "order": 311,
+      "description": "Exploramos el misterioso y asombroso estado material a presiones gigantescas. Entiende cómo esta gran física ayuda a descafeinar el café moderno.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-motor-de-alcubierre-viajar-doblando-el-cosmos",
+      "title": "El motor de Alcubierre: viajar doblando el cosmos",
+      "order": 312,
+      "description": "Investigamos la majestuosa matemática métrica para viajar más rápido que la luz. Descubre cómo comprimir el espaciotiempo delante de tu nave.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-retrorreflectores-espejos-en-la-luna-de-hoy",
+      "title": "Los retrorreflectores: espejos en la luna de hoy",
+      "order": 313,
+      "description": "Comprendemos los geniales cristales que devuelven todo rayo de luz a su gran origen. La física que nos permite medir la distancia lunar exacta.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-aerodinamica-del-surf-montando-las-grandes-olas",
+      "title": "La aerodinámica del surf: montando las grandes olas",
+      "order": 314,
+      "description": "Analizamos el asombroso equilibrio dinámico entre la gravedad y la flotabilidad. Aprende cómo los surfistas logran acelerar por el puro mar.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-chorros-relativistas-el-canon-de-la-galaxia",
+      "title": "Los chorros relativistas: el cañón de la galaxia",
+      "order": 315,
+      "description": "Viajamos a los asombrosos haces de materia expulsados por monstruosos agujeros negros. Entiende cómo alcanzan velocidades casi lumínicas hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-efecto-triboelectrico-el-roce-que-crea-rayos",
+      "title": "El efecto triboeléctrico: el roce que crea rayos",
+      "order": 316,
+      "description": "Explicamos la inmensa física del frotamiento que arranca los frágiles electrones. Conoce el gran principio original de la estática cotidiana.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "condensados-fermionicos-el-extrano-y-gran-frio",
+      "title": "Condensados fermiónicos: el extraño y gran frío",
+      "order": 317,
+      "description": "Nos adentramos en el sexto estado de nuestra materia atómica conocida hoy mismo. Descubre cómo las partículas solitarias se agrupan en el abismo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "bombas-de-calor-eficientes-moviendo-el-gran-frio",
+      "title": "Bombas de calor eficientes: moviendo el gran frío",
+      "order": 318,
+      "description": "Analizamos cómo tu moderno aire acondicionado invierte todo el flujo natural. La excelente física termodinámica que climatiza nuestros hogares.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-optica-no-lineal-fusionando-potentes-fotones",
+      "title": "La óptica no lineal: fusionando potentes fotones",
+      "order": 319,
+      "description": "Estudiamos qué ocurre cuando la luz láser intensísima altera al propio medio sólido. Aprende cómo la asombrosa física cambia el color del rayo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-gran-desgarro-cosmico-el-violento-fin-absoluto",
+      "title": "El Gran Desgarro cósmico: el violento fin absoluto",
+      "order": 320,
+      "description": "Evaluamos la inquietante posibilidad de que la energía oscura acelere sin límite. Entiende cómo las galaxias y átomos podrían ser destruidos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-fisica-de-tensegridad-magia-en-la-arquitectura",
+      "title": "La física de tensegridad: magia en la arquitectura",
+      "order": 321,
+      "description": "Comprendemos las complejas estructuras modernas que parecen flotar en el denso aire. Descubre la genial y asombrosa fuerza de la pura tensión.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ecolocalizacion-animal-viendo-con-ondas-de-sonido",
+      "title": "Ecolocalización animal: viendo con ondas de sonido",
+      "order": 322,
+      "description": "Exploramos la asombrosa acústica interna de los murciélagos y grandes delfines. Aprende cómo los ecos rebotados construyen precisas imágenes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-fuerza-nuclear-debil-desintegracion-de-atomos",
+      "title": "La fuerza nuclear débil: desintegración de átomos",
+      "order": 323,
+      "description": "Investigamos la fundamental y sutil interacción que permite la fusión de los astros. Conoce la responsable exclusiva de toda radiactividad beta.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "vortices-y-tornados-la-furia-del-aire-en-rotacion",
+      "title": "Vórtices y tornados: la furia del aire en rotación",
+      "order": 324,
+      "description": "Analizamos las gigantescas columnas de aire giratorio que destruyen los campos. Entiende el colosal momento angular y las inmensas corrientes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "diamagnetismo-repulsivo-ranas-que-logran-levitar",
+      "title": "Diamagnetismo repulsivo: ranas que logran levitar",
+      "order": 325,
+      "description": "Descubrimos cómo todos los objetos poseen un débil campo natural que repele los imanes. La asombrosa fuerza que se oculta en el vital líquido.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cristalizacion-de-la-nieve-la-geometria-del-hielo",
+      "title": "Cristalización de la nieve: la geometría del hielo",
+      "order": 326,
+      "description": "Nos adentramos en la formación molecular microscópica de cada copo invernal. Aprende cómo la humedad y el frío diseñan hexágonos irrepetibles.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-inmenso-cinturon-de-kuiper-la-frontera-helada",
+      "title": "El inmenso cinturón de Kuiper: la frontera helada",
+      "order": 327,
+      "description": "Viajamos más allá del gran Neptuno para observar los antiguos restos del sistema solar. Conoce el oscuro reino de Plutón y los planetas enanos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-fotografia-optica-schlieren-ver-el-aire-fluir",
+      "title": "La fotografía óptica Schlieren: ver el aire fluir",
+      "order": 328,
+      "description": "Comprendemos el asombroso sistema visual que permite fotografiar cambios de densidad. Entiende cómo logramos ver el intenso calor en movimiento.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "transformaciones-de-lorentz-las-reglas-del-cosmos",
+      "title": "Transformaciones de Lorentz: las reglas del cosmos",
+      "order": 329,
+      "description": "Estudiamos las complejas ecuaciones precisas que unen para siempre el espacio y tiempo. La inmensa base matemática que sostiene a la relatividad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "acustica-de-los-metales-trompetas-y-sus-armonias",
+      "title": "Acústica de los metales: trompetas y sus armonías",
+      "order": 330,
+      "description": "Exploramos la inmensa física del sonido vibratorio viajando por tubos de bronce hoy. Entiende cómo los hábiles labios crean poderosas melodías.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "solidos-amorfos-la-extrana-fisica-del-vidrio-puro",
+      "title": "Sólidos amorfos: la extraña física del vidrio puro",
+      "order": 331,
+      "description": "Analizamos la peculiar estructura atómica de los cristales de nuestras ventanas. Entiende por qué el vidrio no es un líquido que fluye lentamente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "propulsion-de-antimateria-el-viaje-interestelar",
+      "title": "Propulsión de antimateria: el viaje interestelar",
+      "order": 332,
+      "description": "Exploramos la inmensa energía liberada al aniquilar materia con antimateria. Aprende cómo este combustible supremo nos llevaría a estrellas lejanas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-gran-efecto-peltier-enfriar-con-electricidad",
+      "title": "El gran efecto Peltier: enfriar con electricidad",
+      "order": 333,
+      "description": "Descubrimos cómo una simple corriente eléctrica puede enfriar metales sin partes móviles. La física detrás de las pequeñas neveras portátiles modernas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-fisica-de-los-tambores-membranas-en-vibracion",
+      "title": "La física de los tambores: membranas en vibración",
+      "order": 334,
+      "description": "Estudiamos la propagación de ondas bidimensionales sobre las superficies tensas. Entiende cómo los modos de vibración crean el ritmo de la percusión.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "burbujas-de-fermi-los-inmensos-globos-galacticos",
+      "title": "Burbujas de Fermi: los inmensos globos galácticos",
+      "order": 335,
+      "description": "Viajamos al centro de la Vía Láctea para observar colosales estructuras de rayos gamma. Descubre qué explosión antigua creó estos misteriosos globos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "corrimiento-al-rojo-gravitatorio-luz-que-se-cansa",
+      "title": "Corrimiento al rojo gravitatorio: luz que se cansa",
+      "order": 336,
+      "description": "Analizamos cómo los fotones pierden su energía al escapar de campos gravitatorios intensos. Una asombrosa prueba de la relatividad de Albert Einstein.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "diodos-emisores-de-luz-la-fisica-del-brillo-led",
+      "title": "Diodos emisores de luz: la física del brillo LED",
+      "order": 337,
+      "description": "Exploramos la inmensa revolución de la iluminación moderna. Descubre cómo los pequeños semiconductores liberan brillantes fotones de manera eficiente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-colapso-de-la-funcion-de-onda-el-acto-de-medir",
+      "title": "El colapso de la función de onda: el acto de medir",
+      "order": 338,
+      "description": "Nos adentramos en el gran enigma sobre cómo las posibilidades cuánticas se vuelven realidad. Entiende el inmenso impacto que tiene el observador real.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "redes-de-difraccion-separando-la-luz-en-colores",
+      "title": "Redes de difracción: separando la luz en colores",
+      "order": 339,
+      "description": "Estudiamos cómo minúsculas rendijas logran dividir la luz mucho mejor que los prismas. Descubre la técnica secreta de los discos compactos brillantes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "metales-con-memoria-de-forma-la-magia-del-nitinol",
+      "title": "Metales con memoria de forma: la magia del nitinol",
+      "order": 340,
+      "description": "Analizamos las asombrosas aleaciones que recuerdan perfectamente su geometría original. Descubre cómo el calor transforma su red cristalina en segundos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cavitacion-acustica-burbujas-que-rompen-el-acero",
+      "title": "Cavitación acústica: burbujas que rompen el acero",
+      "order": 341,
+      "description": "Comprendemos el destructivo y fascinante fenómeno de la rápida ebullición por bajas presiones. Conoce cómo estas implosiones dañan inmensas hélices hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-fisica-de-los-asteroides-rocas-de-la-creacion",
+      "title": "La física de los asteroides: rocas de la creación",
+      "order": 342,
+      "description": "Viajamos a los escombros flotantes que no lograron formar planetas gigantes. Aprende cómo estudiamos sus órbitas para evitar colisiones catastróficas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-gran-fisica-de-la-arqueria-el-arco-y-la-flecha",
+      "title": "La gran física de la arquería: el arco y la flecha",
+      "order": 343,
+      "description": "Analizamos cómo la tensión humana se transforma en altísima energía cinética letal. Descubre por qué la flecha logra curvarse en vuelo sin romperse.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-fisica-de-los-tsunamis-ondas-en-el-gran-oceano",
+      "title": "La física de los tsunamis: ondas en el gran océano",
+      "order": 344,
+      "description": "Exploramos la inmensa transferencia de la energía sísmica hacia el agua oceánica. Entiende por qué estas mortales olas crecen al acercarse a las costas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-misterio-del-muon-veloz-desafiando-a-la-fisica",
+      "title": "El misterio del muón veloz: desafiando a la física",
+      "order": 345,
+      "description": "Nos adentramos en el intrigante comportamiento de la partícula hermana del electrón. Descubre cómo su ligero bamboleo sugiere nuevas fuerzas del cosmos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "detectores-de-metales-magnetismo-oculto-en-tierra",
+      "title": "Detectores de metales: magnetismo oculto en tierra",
+      "order": 346,
+      "description": "Comprendemos el genial proceso de la inducción electromagnética para hallar objetos. La ciencia detrás de los buscadores de tesoros en nuestras playas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "biomecanica-del-salto-extremo-la-fisica-animal-hoy",
+      "title": "Biomecánica del salto extremo: la física animal hoy",
+      "order": 347,
+      "description": "Analizamos los músculos como asombrosos resortes biológicos de gran poder. Descubre cómo diminutos insectos vencen la gravedad con aceleración brutal.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "choques-de-inmensas-galaxias-la-gran-danza-cosmica",
+      "title": "Choques de inmensas galaxias: la gran danza cósmica",
+      "order": 348,
+      "description": "Viajamos a través del tiempo para observar cómo colisionan miles de millones de soles. Aprende qué le espera a la Vía Láctea al chocar contra Andrómeda.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-aumento-de-la-masa-la-velocidad-frente-a-la-luz",
+      "title": "El aumento de la masa: la velocidad frente a la luz",
+      "order": 349,
+      "description": "Analizamos qué le sucede a la materia cuando aceleramos a velocidades inmensas. Descubre por qué un objeto gana inercia infinita al rozar el gran límite.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-fisica-de-las-ilusiones-opticas-enganando-al-ojo",
+      "title": "La física de las ilusiones ópticas: engañando al ojo",
+      "order": 350,
+      "description": "Estudiamos cómo nuestro cerebro y la luz colaboran para deformar la gran realidad. Aprende por qué vemos el inmenso sol deformado cerca del horizonte.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-friccion-en-los-nudos-la-topologia-del-gran-roce",
+      "title": "La fricción en los nudos: la topología del gran roce",
+      "order": 351,
+      "description": "Exploramos la inmensa física matemática que impide que nuestros zapatos se desaten. Entiende las precisas fuerzas capilares y de roce en largas cuerdas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-particulas-wimp-el-gran-misterio-de-lo-invisible",
+      "title": "Las partículas WIMP: el gran misterio de lo invisible",
+      "order": 352,
+      "description": "Nos adentramos en la inmensa búsqueda de los pesados componentes de la materia oscura. Descubre cómo intentamos detectarlos usando gigantescos tanques.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "propulsion-ionica-los-lentos-motores-del-gran-futuro",
+      "title": "Propulsión iónica: los lentos motores del gran futuro",
+      "order": 353,
+      "description": "Analizamos cómo las modernas sondas espaciales se mueven disparando átomos cargados. Entiende por qué esta eficiencia constante supera a todo explosivo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "materiales-granulares-la-extrana-fisica-de-la-arena",
+      "title": "Materiales granulares: la extraña física de la arena",
+      "order": 354,
+      "description": "Comprendemos por qué grandes montones de granos actúan a veces como un sólido y otras como líquido. La física de los relojes de arena y de avalanchas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "tubos-de-gran-calor-enfriando-todas-las-computadoras",
+      "title": "Tubos de gran calor: enfriando todas las computadoras",
+      "order": 355,
+      "description": "Explicamos la inmensa y silenciosa termodinámica que evita que tu moderno ordenador portátil se queme. Descubre la evaporación en su pequeño interior.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "resonancia-en-el-cristal-la-gran-copa-que-canta-hoy",
+      "title": "Resonancia en el cristal: la gran copa que canta hoy",
+      "order": 356,
+      "description": "Exploramos la inmensa física del frotamiento circular que hace vibrar finas copas de vidrio. Entiende los geniales modos de vibración y tonos puros hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "discos-protoplanetarios-cunas-de-los-nuevos-mundos",
+      "title": "Discos protoplanetarios: cunas de los nuevos mundos",
+      "order": 357,
+      "description": "Viajamos a las grandes nubes de polvo giratorias donde nacen planetas. Descubre cómo la enorme gravedad agrupa pequeñas rocas en colosos esféricos hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "inercia-rotacional-en-accion-la-gran-fisica-del-yoyo",
+      "title": "Inercia rotacional en acción: la gran física del yoyó",
+      "order": 358,
+      "description": "Analizamos el fascinante almacenamiento de gran energía en uno de los juguetes más antiguos. Conoce el hermoso equilibrio entre el giro y pura fricción.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-dominios-magneticos-guardando-los-datos-masivos",
+      "title": "Los dominios magnéticos: guardando los datos masivos",
+      "order": 359,
+      "description": "Descubrimos cómo alineamos minúsculas áreas magnéticas para guardar ceros y unos. La física increíble de los gigantescos discos duros de la actualidad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-gran-rebote-cosmico-universo-que-recicla-su-forma",
+      "title": "El gran rebote cósmico: universo que recicla su forma",
+      "order": 360,
+      "description": "Evaluamos la hipótesis de que el gran universo jamás tuvo principio absoluto. Entiende cómo esta gran expansión surgiría tras la inmensa compresión real.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ruptura-espontanea-de-simetria-ordenando-el-vacio",
+      "title": "Ruptura espontánea de simetría: ordenando el vacío",
+      "order": 361,
+      "description": "Nos sumergimos en el concepto matemático que explica ciertas transiciones de fase. Descubre cómo la naturaleza y el vacío logran elegir un único camino.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "termodinamica-veloz-del-maiz-explosion-de-palomitas",
+      "title": "Termodinámica veloz del maíz: explosión de palomitas",
+      "order": 362,
+      "description": "Analizamos las altísimas presiones acumuladas en el húmedo interior de estos diminutos granos. La ciencia de los pequeños estallidos de puro sabor hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "mecanica-celeste-de-la-sizigia-el-eclipse-perfecto",
+      "title": "Mecánica celeste de la sizigia: el eclipse perfecto",
+      "order": 363,
+      "description": "Explicamos la asombrosa alineación orbital de cuerpos masivos en el sistema solar. Entiende por qué las enormes sombras proyectadas son eventos raros.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "supremacia-cuantica-real-resolviendo-lo-imposible-hoy",
+      "title": "Supremacía cuántica real: resolviendo lo imposible hoy",
+      "order": 364,
+      "description": "Exploramos el punto de inflexión donde las computadoras subatómicas superan a cualquier superordenador. El asombroso poder del cálculo paralelo puro.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-teoria-del-todo-definitiva-uniendo-nuestro-cosmos",
+      "title": "La teoría del todo definitiva: uniendo nuestro cosmos",
+      "order": 365,
+      "description": "Analizamos la inmensa búsqueda de la ecuación maestra. El intento por lograr unificar la gravedad con la física atómica.",
+      "audioUrl": ""
+    }
+  ]
+}
