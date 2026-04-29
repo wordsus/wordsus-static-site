@@ -4,7 +4,7 @@
   "title": "Mastering Pulumi: The Definitive Guide to Infrastructure as Code",
   "author": "Wordsus Team",
   "description": "Unlock the full potential of cloud infrastructure using familiar programming languages. This guide covers everything from Pulumi fundamentals and state management to advanced multi-language components, Automation API, and enterprise-grade security.",
-  "cover": "/images/books/default-cover.jpg",
+  "cover": "/images/books/pulumi-en-cover.jpeg",
   "category": "cloud-infrastructure-devops",
   "tags": [
     "pulumi",
