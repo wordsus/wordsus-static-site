@@ -107,13 +107,13 @@ export default function HomeClient({
                   href={`/${bookLocale}/${book.slug}`}
                   className="group flex items-center gap-3 p-3 rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] hover:border-[hsl(var(--primary)/0.4)] hover:bg-[hsl(var(--accent)/0.3)] transition-all duration-200 pr-10"
                 >
-                  <div className="w-10 h-14 rounded-lg overflow-hidden bg-[hsl(var(--muted))] shrink-0 flex items-center justify-center">
+                  <div className="w-12 h-16 rounded-lg overflow-hidden bg-[hsl(var(--muted))] shrink-0 flex items-center justify-center">
                     {book.cover ? (
                       <Image
                         src={book.cover}
                         alt={book.title}
-                        width={40}
-                        height={56}
+                        width={48}
+                        height={64}
                         className="w-full h-full object-cover"
                       />
                     ) : (
@@ -178,7 +178,7 @@ export default function HomeClient({
                     <ArrowRight size={14} />
                   </Link>
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4">
                   {books.map((book) => (
                     <BookCard key={book.slug} book={book} locale={locale} />
                   ))}

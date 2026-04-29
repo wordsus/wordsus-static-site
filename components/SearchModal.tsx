@@ -123,13 +123,13 @@ export default function SearchModal({ locale, isOpen, onClose }: SearchModalProp
               onClick={onClose}
               className="flex items-center gap-3 px-4 py-3 hover:bg-[hsl(var(--muted))] transition-colors"
             >
-              <div className="w-10 h-14 rounded-lg overflow-hidden bg-[hsl(var(--muted))] shrink-0 flex items-center justify-center">
+              <div className="w-12 h-16 rounded-lg overflow-hidden bg-[hsl(var(--muted))] shrink-0 flex items-center justify-center">
                 {book.cover ? (
                   <Image
                     src={book.cover}
                     alt={book.title}
-                    width={40}
-                    height={56}
+                    width={48}
+                    height={64}
                     className="w-full h-full object-cover"
                   />
                 ) : (
