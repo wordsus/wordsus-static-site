@@ -87,7 +87,7 @@ export default function FavoritesClient({ locale, allBooksAllLocales }: Favorite
 
       {/* Loading skeleton */}
       {!loaded ? (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           {[...Array(4)].map((_, i) => (
             <div
               key={i}
@@ -146,7 +146,7 @@ export default function FavoritesClient({ locale, allBooksAllLocales }: Favorite
                   </div>
                 )}
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                   {books.map((book) => (
                     <BookCard key={`${loc}:${book.slug}`} book={book} locale={loc} />
                   ))}

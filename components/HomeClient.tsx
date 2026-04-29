@@ -161,7 +161,7 @@ export default function HomeClient({
             if (books.length === 0) return null;
             return (
               <div key={cat.slug}>
-                <div className="flex items-center justify-between mb-5">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-5">
                   <div>
                     <h3 className="font-semibold text-[hsl(var(--foreground))]">
                       {cat.title}
@@ -178,7 +178,7 @@ export default function HomeClient({
                     <ArrowRight size={14} />
                   </Link>
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                   {books.map((book) => (
                     <BookCard key={book.slug} book={book} locale={locale} />
                   ))}
