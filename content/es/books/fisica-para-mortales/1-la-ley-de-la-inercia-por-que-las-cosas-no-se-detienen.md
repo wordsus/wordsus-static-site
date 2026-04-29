@@ -10,8 +10,6 @@ Pero el sentido común, a veces, es la peor herramienta para comprender el unive
 
 Bienvenidos a "Física para mortales". En esta entrega, vamos a desaprender todo lo que nuestra intuición terrestre nos ha enseñado. Vamos a viajar al pasado, a la mente de genios como Galileo Galilei e Isaac Newton, y al espacio profundo, donde las verdaderas leyes del cosmos se revelan sin los trucos de magia de la atmósfera terrestre. Vamos a entender la **Primera Ley de Newton**, también conocida como la **Ley de la Inercia**.
 
----
-
 ## 1. El gran engaño de Aristóteles
 
 Para entender lo revolucionaria que es la Ley de la Inercia, primero debemos entender contra qué estaba luchando. En la antigua Grecia, Aristóteles, uno de los filósofos más brillantes de la historia, formuló una teoría del movimiento que dominó el pensamiento occidental durante casi dos milenios.
@@ -23,8 +21,6 @@ Aristóteles dividió el movimiento en dos categorías:
 Según la visión aristotélica, el movimiento violento requería una fuerza continua. Si la fuerza desaparecía, el objeto inmediatamente buscaría su estado de reposo. Esto parecía explicar perfectamente la experiencia cotidiana. Nadie cuestionó seriamente esto hasta el siglo XVII. Después de todo, ¿quién podría argumentar contra la evidencia de sus propios ojos? Si dejas de remar, el bote se detiene. Fin de la historia.
 
 El problema era que Aristóteles vivía en un planeta cubierto de aire y superficies rugosas. No podía ver a los "enemigos invisibles" del movimiento eterno.
-
----
 
 ## 2. Galileo y el plano inclinado: El nacimiento de una idea
 
@@ -72,8 +68,6 @@ Y aquí viene el salto mental que cambió la historia: ¿Qué pasaría si el seg
 
 La respuesta de Galileo fue asombrosa: **la bola rodaría para siempre**. Nunca alcanzaría su altura original, por lo que nunca tendría una razón para detenerse. Galileo había descubierto la inercia: la tendencia de los objetos a mantener su estado de movimiento.
 
----
-
 ## 3. Isaac Newton y la formulación final
 
 Unas décadas más tarde, nacido el mismo año en que murió Galileo (1642), un físico y matemático inglés llamado Isaac Newton tomó los conceptos de Galileo y los formalizó en su obra magna, *Philosophiæ Naturalis Principia Mathematica* (1687). 
@@ -92,8 +86,6 @@ Esta es la parte contraintuitiva. Newton dice que el reposo y el movimiento cons
 
 ### C. "...a no ser que sea obligado a cambiar su estado por fuerzas impresas sobre él."
 Aquí está la clave. Newton introduce el concepto de **Fuerza Neta Externa**. La única forma de romper el hechizo de la inercia es aplicando una fuerza neta (un empuje o un tirón) que no sea cancelada por ninguna otra fuerza.
-
----
 
 ## 4. Diagramando las Fuerzas: ¿Por qué las cosas se detienen en la Tierra?
 
@@ -152,8 +144,6 @@ Para visualizar esto mejor, observemos cómo se comporta la velocidad de un obje
                                     El objeto se frena hasta que Velocidad = 0.
 ```
 
----
-
 ## 5. La Masa: La medida cuantificable de la Inercia
 
 Hasta ahora, hemos hablado de la inercia como una propiedad conceptual, una especie de "pereza" cósmica de los objetos para cambiar lo que están haciendo. Pero en física, necesitamos medir las cosas. ¿Cómo medimos cuánta inercia tiene un objeto?
@@ -174,8 +164,6 @@ Si le das el mismo golpecito a la bola de bolos con el mismo dedo, probablemente
 De manera inversa, si ambos objetos vinieran flotando hacia ti a 10 km/h y tuvieras que detenerlos, detener el globo sería trivial. Detener la bola de bolos requeriría que apliques una fuerza inmensa, de lo contrario, su inercia te arrastraría con ella.
 
 **Regla de oro de la física para mortales:** A mayor masa, mayor inercia. Más difícil es ponerlo en movimiento, más difícil es detenerlo, y más difícil es hacerlo cambiar de dirección.
-
----
 
 ## 6. La Primera Ley de Newton en tu vida diaria (o por qué no debes ser un proyectil humano)
 
@@ -211,8 +199,6 @@ Esto ilustra la parte profunda de la Primera Ley: no hay diferencia física disc
 
 Sin embargo, si el tren dobla repentinamente (un cambio en la dirección es una aceleración, lo que requiere una fuerza neta), la inercia de tu café querrá seguir en línea recta, saliéndose de la taza y arruinando tus pantalones.
 
----
-
 ## 7. Sistemas de Referencia: El truco de las "fuerzas ficticias"
 
 Para profundizar un nivel más en la "Física para mortales", debemos hablar brevemente de los **sistemas de referencia**. Las Leyes de Newton, estrictamente hablando, solo funcionan de manera perfecta en lo que los físicos llaman *sistemas de referencia inerciales* (sistemas que no están acelerando).
@@ -231,8 +217,6 @@ La respuesta asombrosa de la física inercial es que **esa fuerza no existe**. E
 Lo que realmente está sucediendo, de acuerdo a la Primera Ley de Newton, es que tu cuerpo (debido a su masa e inercia) quiere quedarse en reposo en el espacio exacto donde estaba en el semáforo. Es el respaldo del asiento del automóvil el que está acelerando hacia adelante y *chocando* contra tu espalda. Tú no te mueves hacia atrás; el asiento se mueve hacia ti e intenta llevarte con él. Esta resistencia inercial se percibe sensorialmente como una "fuerza ficticia". 
 
 Lo mismo ocurre en una rotonda. Cuando el auto gira a la izquierda, sientes que eres arrojado hacia la puerta derecha. No hay ningún campo de fuerza magnética atrayéndote hacia la puerta. Simplemente, tu cuerpo inercial quiere seguir moviéndose en línea recta, y es el auto el que está doblando debajo tuyo, interponiendo la puerta en tu camino rectilíneo.
-
----
 
 ## 8. La inercia a escala cósmica: Un universo en movimiento perpetuo
 
@@ -258,8 +242,6 @@ La Tierra intenta ir en línea recta (por inercia), pero el Sol la tira hacia ad
 
 Si en este instante cósmico el Sol desapareciera mágicamente (llevándose su fuerza gravitacional a cero), la cuerda invisible se rompería. Sin la fuerza externa, la Tierra obedecería de inmediato la Primera Ley de Newton de forma pura, dejando su órbita y disparándose en línea recta hacia la inmensidad galáctica a 107,000 km/h.
 
----
-
 ## 9. Aplicaciones tecnológicas: Haciendo que la inercia trabaje para nosotros
 
 Una vez que los mortales entendimos la Ley de la Inercia, dejamos de ser víctimas de ella en accidentes de tráfico para convertirla en una herramienta tecnológica.
@@ -267,8 +249,6 @@ Una vez que los mortales entendimos la Ley de la Inercia, dejamos de ser víctim
 *   **Bolsas de Aire (Airbags):** Funcionan reconociendo la inercia en el momento de un choque frontal. Cuando el sensor de aceleración del auto detecta una detención brusca que no es un frenado normal, despliega una bolsa llena de nitrógeno en milésimas de segundo. Su objetivo es aumentar el tiempo sobre el cual se detiene tu cabeza inercial, disminuyendo la fuerza máxima del impacto.
 *   **Lavadoras (Centrifugado):** Cuando tu lavadora gira a miles de revoluciones por minuto para secar la ropa, utiliza la inercia. Las paredes del tambor empujan la ropa hacia adentro para que gire en círculo (fuerza centrípeta). El agua de la ropa, debido a su inercia, quiere salir en línea recta tangencialmente. Como el tambor tiene cientos de pequeños agujeros, el agua encuentra un camino libre para seguir su trayectoria inercial en línea recta hacia el desagüe, abandonando la ropa. ¡Secado inercial!
 *   **Volantes de inercia (Flywheels):** Se utilizan en ingeniería y almacenamiento de energía. Son discos inmensamente pesados que se hacen girar a gran velocidad. Al tener mucha masa y estar girando muy rápido, tienen una cantidad de inercia colosal. Si hay un corte de energía en un centro de datos o una fábrica, este volante pesado no quiere dejar de girar. Esa rotación residual inercial se conecta a un generador para proporcionar energía estable durante unos minutos críticos hasta que se enciendan los generadores de respaldo.
-
----
 
 ## 10. Reflexiones finales: La profunda belleza de la inercia
 
