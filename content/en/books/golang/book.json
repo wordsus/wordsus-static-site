@@ -1,0 +1,221 @@
+{
+  "slug": "golang",
+  "locale": "en",
+  "title": "Mastering Go: From Fundamentals to Cloud-Native Architecture",
+  "author": "Wordsus Team",
+  "description": "Master Go (Golang) from the ground up. A comprehensive guide covering language fundamentals, core mechanics, concurrency, APIs, distributed systems, and cloud-native architecture.",
+  "cover": "/images/books/default-cover.jpg",
+  "category": "programming",
+  "tags": [
+    "go",
+    "golang",
+    "backend",
+    "cloud-native",
+    "concurrency"
+  ],
+  "featured": true,
+  "publishedAt": "2026-04-28",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "introduction-and-environment-setup",
+      "title": "Introduction and Environment Setup",
+      "order": 1,
+      "description": "Explore Go's history and design philosophy, set up your development environment, and master the essential Go toolchain.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "variables-data-types-and-operators",
+      "title": "Variables, Data Types, and Operators",
+      "order": 2,
+      "description": "Learn how to declare variables and constants, work with primitive data types, and master arithmetic, logical, and bitwise operators.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "control-structures-and-error-handling-basics",
+      "title": "Control Structures and Error Handling Basics",
+      "order": 3,
+      "description": "Master conditional branching, loops, and Go's unique approach to error handling using the error value paradigm.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "complex-data-types-arrays-slices-and-maps",
+      "title": "Complex Data Types: Arrays, Slices, and Maps",
+      "order": 4,
+      "description": "Deep dive into Go's composite types, including fixed-size arrays, dynamic slices, and unordered maps, with a focus on memory implications.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "functions-pointers-and-memory-basics",
+      "title": "Functions, Pointers, and Memory Basics",
+      "order": 5,
+      "description": "Understand function declarations, closures, pointer syntax, and the mechanics of stack vs. heap allocation.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "structs-methods-and-interfaces",
+      "title": "Structs, Methods, and Interfaces",
+      "order": 6,
+      "description": "Explore object-oriented patterns in Go through structs, methods, composition, and implicit interface implementation.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-go-standard-library",
+      "title": "The Go Standard Library",
+      "order": 7,
+      "description": "Master essential packages for I/O, string manipulation, time management, file system interactions, and data encoding.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "dependency-management-and-project-structure",
+      "title": "Dependency Management and Project Structure",
+      "order": 8,
+      "description": "Learn professional project organization using Go modules, semantic versioning, and standard project layouts.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "goroutines-and-the-go-scheduler",
+      "title": "Goroutines and the Go Scheduler",
+      "order": 9,
+      "description": "Understand Go's concurrency model, the M:P:N scheduler, and how to manage the lifecycle of goroutines.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "channels-and-synchronization-primitives",
+      "title": "Channels and Synchronization Primitives",
+      "order": 10,
+      "description": "Learn to share memory by communicating using channels and synchronization primitives like Mutexes and WaitGroups.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "advanced-concurrency-patterns",
+      "title": "Advanced Concurrency Patterns",
+      "order": 11,
+      "description": "Design robust worker pools, pipelines, and manage timeouts and cancellations using the context package.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "data-persistence-and-databases",
+      "title": "Data Persistence and Databases",
+      "order": 12,
+      "description": "Connect to relational and NoSQL databases, manage transactions, and implement database migrations in Go.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "restful-api-development",
+      "title": "RESTful API Development",
+      "order": 13,
+      "description": "Build high-performance RESTful APIs using net/http, routing strategies, and middleware design.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "advanced-communication-and-microservices",
+      "title": "Advanced Communication and Microservices",
+      "order": 14,
+      "description": "Explore gRPC, event-driven systems with Kafka, WebSockets, and service discovery in a microservices architecture.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "in-depth-testing",
+      "title": "In-Depth Testing",
+      "order": 15,
+      "description": "Master unit testing, mocking, integration testing with Testcontainers, and fuzzing to ensure software reliability.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "observability-and-monitoring",
+      "title": "Observability and Monitoring",
+      "order": 16,
+      "description": "Implement structured logging, distributed tracing with OpenTelemetry, and instrument your code for Prometheus monitoring.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "backend-application-security",
+      "title": "Backend Application Security",
+      "order": 17,
+      "description": "Secure your applications with TLS, JWT authentication, RBAC, and defense against common web vulnerabilities.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "software-architecture-and-design",
+      "title": "Software Architecture and Design",
+      "order": 18,
+      "description": "Apply SOLID principles, Domain-Driven Design, Hexagonal Architecture, and Clean Architecture to your Go projects.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "internals-and-optimization",
+      "title": "Internals and Optimization",
+      "order": 19,
+      "description": "Deep dive into Go's garbage collector, escape analysis, and write high-performance, zero-allocation code.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cloud-native-go-and-deployment",
+      "title": "Cloud-Native Go and Deployment",
+      "order": 20,
+      "description": "Containerize applications, write Kubernetes operators, and build CI/CD pipelines for cloud-native deployment.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "advanced-language-features-and-interoperability",
+      "title": "Advanced Language Features and Interoperability",
+      "order": 21,
+      "description": "Explore generics, reflection, the unsafe package, CGO, and compiling Go to WebAssembly.",
+      "audioUrl": ""
+    }
+  ],
+  "parts": [
+    {
+      "title": "Part I: The Foundations of Go",
+      "chapterSlugs": [
+        "introduction-and-environment-setup",
+        "variables-data-types-and-operators",
+        "control-structures-and-error-handling-basics",
+        "complex-data-types-arrays-slices-and-maps"
+      ]
+    },
+    {
+      "title": "Part II: Core Language Mechanics",
+      "chapterSlugs": [
+        "functions-pointers-and-memory-basics",
+        "structs-methods-and-interfaces",
+        "the-go-standard-library",
+        "dependency-management-and-project-structure"
+      ]
+    },
+    {
+      "title": "Part III: Concurrency and Parallelism",
+      "chapterSlugs": [
+        "goroutines-and-the-go-scheduler",
+        "channels-and-synchronization-primitives",
+        "advanced-concurrency-patterns"
+      ]
+    },
+    {
+      "title": "Part IV: Data, APIs, and Communication",
+      "chapterSlugs": [
+        "data-persistence-and-databases",
+        "restful-api-development",
+        "advanced-communication-and-microservices"
+      ]
+    },
+    {
+      "title": "Part V: Quality Assurance and Operations",
+      "chapterSlugs": [
+        "in-depth-testing",
+        "observability-and-monitoring",
+        "backend-application-security"
+      ]
+    },
+    {
+      "title": "Part VI: Architecture, Internals, and Mastery",
+      "chapterSlugs": [
+        "software-architecture-and-design",
+        "internals-and-optimization",
+        "cloud-native-go-and-deployment",
+        "advanced-language-features-and-interoperability"
+      ]
+    }
+  ]
+}
