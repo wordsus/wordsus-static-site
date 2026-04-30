@@ -129,7 +129,7 @@ content/en/books/<your-book-slug>/
   "category": "programming",
   "tags": ["python", "beginner"],
   "featured": true,
-  "publishedAt": "2024-06-01",
+  "publishedAt": "2026-06-01",
   "language": "en",
   "chapters": [
     {
