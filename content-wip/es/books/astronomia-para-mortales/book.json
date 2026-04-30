@@ -17,20 +17,6 @@
   "language": "es",
   "chapters": [
     {
-      "slug": "agujeros-negros:-los-devoradores-de-luz-del-universo",
-      "title": "Agujeros negros: Los devoradores de luz del universo.",
-      "order": 4,
-      "description": "Desmitificamos a los monstruos más famosos del cosmos. Aprende qué son los agujeros negros, cómo se forman al morir estrellas y por qué nada escapa.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "planetas-rocosos:-vecinos-cercanos-en-nuestro-sistema",
-      "title": "Planetas rocosos: Vecinos cercanos en nuestro sistema.",
-      "order": 5,
-      "description": "Un recorrido detallado por Mercurio, Venus, Tierra y Marte. Analizamos sus superficies sólidas, sus atmósferas y qué los hace planetas tan singulares.",
-      "audioUrl": ""
-    },
-    {
       "slug": "gigantes-gaseosos:-colosos-majestuosos-del-sistema-solar",
       "title": "Gigantes gaseosos: Colosos majestuosos del sistema solar.",
       "order": 6,

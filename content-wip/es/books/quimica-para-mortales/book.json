@@ -17,20 +17,6 @@
   "language": "es",
   "chapters": [
     {
-      "slug": "introduccion-a-la-tabla-periodica-de-los-elementos",
-      "title": "Introducción a la tabla periódica de los elementos",
-      "order": 4,
-      "description": "Exploramos cómo se organizan los elementos químicos en la tabla periódica, su fascinante historia y qué información podemos obtener de cada pequeña casilla.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "metales-frente-a-los-no-metales-diferencias-basicas",
-      "title": "Metales frente a los no metales: diferencias básicas",
-      "order": 5,
-      "description": "Descubre las marcadas diferencias químicas entre los metales y los no metales, sus variadas propiedades físicas y cómo interactúan entre sí en la naturaleza.",
-      "audioUrl": ""
-    },
-    {
       "slug": "enlaces-covalentes-compartiendo-electrones-con-exito",
       "title": "Enlaces covalentes: compartiendo electrones con éxito",
       "order": 6,

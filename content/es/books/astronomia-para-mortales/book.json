@@ -18,23 +18,37 @@
   "chapters": [
     {
       "slug": "que-es-la-astronomia-una-introduccion-al-cosmos",
-      "title": "¿Qué es la astronomía? Una introducción al cosmos.",
+      "title": "¿Qué es la astronomía? Una introducción al cosmos",
       "order": 1,
       "description": "Iniciamos nuestro viaje estelar definiendo qué es exactamente la astronomía, su fascinante historia y por qué observar el cielo nocturno nos cautiva tanto.",
       "audioUrl": ""
     },
     {
       "slug": "el-sol:-nuestra-estrella-el-corazon-del-sistema-solar",
-      "title": "El Sol: Nuestra estrella, el corazón del sistema solar.",
+      "title": "El Sol: Nuestra estrella, el corazón del sistema solar",
       "order": 2,
       "description": "Descubre cómo funciona nuestra estrella madre. Exploramos su composición, temperaturas y cómo su enorme energía hace posible la vida en la Tierra.",
       "audioUrl": ""
     },
     {
       "slug": "la-luna:-nuestro-unico-e-inseparable-satelite-natural",
-      "title": "La Luna: Nuestro único e inseparable satélite natural.",
+      "title": "La Luna: Nuestro único e inseparable satélite natural",
       "order": 3,
       "description": "Conoce los secretos de nuestro satélite natural. Analizamos sus misteriosas fases, los cráteres que adornan su superficie y su influencia en las mareas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "agujeros-negros:-los-devoradores-de-luz-del-universo",
+      "title": "Agujeros negros: Los devoradores de luz del universo",
+      "order": 4,
+      "description": "Desmitificamos a los monstruos más famosos del cosmos. Aprende qué son los agujeros negros, cómo se forman al morir estrellas y por qué nada escapa.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "planetas-rocosos:-vecinos-cercanos-en-nuestro-sistema",
+      "title": "Planetas rocosos: Vecinos cercanos en nuestro sistema",
+      "order": 5,
+      "description": "Un recorrido detallado por Mercurio, Venus, Tierra y Marte. Analizamos sus superficies sólidas, sus atmósferas y qué los hace planetas tan singulares.",
       "audioUrl": ""
     }
   ]
