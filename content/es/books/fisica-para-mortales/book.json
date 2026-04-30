@@ -37,6 +37,20 @@
       "order": 3,
       "description": "Descubre cómo la electricidad y el magnetismo se unen. Exploramos esta fuerza fundamental que ilumina nuestras ciudades y hace funcionar la tecnología hoy.",
       "audioUrl": ""
+    },
+    {
+      "slug": "la-naturaleza-de-la-luz-como-se-comportan-los-fotones",
+      "title": "La naturaleza de la luz: cómo se comportan los fotones",
+      "order": 4,
+      "description": "¿La luz es una onda o una partícula? Desentrañamos el comportamiento dual de la luz y cómo los fotones interactúan con la materia en el universo visible.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-misterio-de-los-agujeros-negros-en-nuestra-galaxia",
+      "title": "El misterio de los agujeros negros en nuestra galaxia",
+      "order": 5,
+      "description": "Adéntrate en el fascinante mundo de los agujeros negros. Analizamos qué son, cómo se forman en el espacio y qué sucede si la materia cruza su horizonte.",
+      "audioUrl": ""
     }
   ]
 }
