@@ -1,0 +1,55 @@
+{
+  "slug": "astronomy-for-mortals",
+  "locale": "en",
+  "title": "Astronomy for Mortals: Where infinity becomes understandable",
+  "author": "Wordsus Team",
+  "description": "A fascinating journey through the cosmos in 365 daily lessons. From the solar system to the far reaches of the observable universe, discover how space-time works, the stars and the great mysteries of astronomy explained in a simple way.",
+  "cover": "/images/books/astronomy-for-mortals-en-cover.jpeg",
+  "category": "sciences",
+  "tags": [
+    "astronomy",
+    "science",
+    "cosmos",
+    "space"
+  ],
+  "featured": true,
+  "publishedAt": "2024-04-29",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "what-is-astronomy-an-introduction-to-the-cosmos",
+      "title": "What is astronomy? An introduction to the cosmos",
+      "order": 1,
+      "description": "We begin our stellar journey by defining what exactly astronomy is, its fascinating history, and why observing the night sky captivates us so much.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-sun-our-star-the-heart-of-the-solar-system",
+      "title": "The Sun: Our star, the heart of the solar system",
+      "order": 2,
+      "description": "Discover how our mother star works. We explore its composition, temperatures and how its enormous energy makes life on Earth possible.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-moon-our-only-and-inseparable-natural-satellite",
+      "title": "The Moon: Our only and inseparable natural satellite",
+      "order": 3,
+      "description": "Learn the secrets of our natural satellite. We analyze its mysterious phases, the craters that adorn its surface and its influence on the tides.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "black-holes-the-light-devourers-of-the-universe",
+      "title": "Black holes: The light devourers of the universe",
+      "order": 4,
+      "description": "We demystify the most famous monsters in the cosmos. Learn what black holes are, how they form when stars die, and why nothing escapes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "rocky-planets-close-neighbors-in-our-system",
+      "title": "Rocky planets: Close neighbors in our system",
+      "order": 5,
+      "description": "A detailed tour of Mercury, Venus, Earth and Mars. We analyze their solid surfaces, their atmospheres and what makes them planets so unique.",
+      "audioUrl": ""
+    }
+  ]
+}

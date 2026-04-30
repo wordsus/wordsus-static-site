@@ -1,0 +1,57 @@
+{
+  "slug": "biology-for-mortals",
+  "locale": "en",
+  "title": "Biology for Mortals: Exploring Nature's Hidden Code",
+  "author": "Wordsus Team",
+  "description": "Explore the mysteries of life through 365 fascinating lessons. From DNA and genetics to evolution and deep ecology, explained simply for everyone.",
+  "cover": "/images/books/biology-for-mortals-en-cover.jpeg",
+  "category": "science",
+  "tags": [
+    "biology",
+    "science",
+    "divulgation",
+    "life",
+    "genetics",
+    "evolution"
+  ],
+  "featured": true,
+  "publishedAt": "2024-04-30",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "what-is-life-definition-and-key-characteristics",
+      "title": "What is life? Definition and key characteristics",
+      "order": 1,
+      "description": "Discover the fundamental biological concepts that separate living beings from inert matter and how science defines the beginning of life.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "dna-revealed-the-great-molecule-of-heredity",
+      "title": "DNA revealed: The great molecule of heredity",
+      "order": 2,
+      "description": "We explore the structure of deoxyribonucleic acid, its famous double helix design, and how it stores our most essential genetic information.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-eukaryotic-cell-its-structure-and-functions",
+      "title": "The eukaryotic cell: Its structure and functions",
+      "order": 3,
+      "description": "We travel inside our own cells to learn about their organelles, their vital functions and how they cooperate to keep us alive every day.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "biological-evolution-the-mechanism-of-adaptation",
+      "title": "Biological evolution: The mechanism of adaptation",
+      "order": 4,
+      "description": "We analyze the foundations of natural selection proposed by Darwin and how organisms slowly change over geological eras.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-kingdom-of-bacteria-ubiquitous-microorganisms",
+      "title": "The Kingdom of Bacteria: Ubiquitous Microorganisms",
+      "order": 5,
+      "description": "Learn about the fascinating world of bacteria, the most abundant living beings on the planet, and understand their vital importance for all ecosystems.",
+      "audioUrl": ""
+    }
+  ]
+}

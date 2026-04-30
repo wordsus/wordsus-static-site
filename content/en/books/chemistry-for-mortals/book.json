@@ -1,0 +1,55 @@
+{
+  "slug": "chemistry-for-mortals",
+  "locale": "en",
+  "title": "Chemistry for Mortals: An atomic look around you",
+  "author": "Wordsus Team",
+  "description": "A fascinating 365-day journey through the world of chemistry. From the structure of the atom to the most modern applications of nanotechnology, explained in a simple and entertaining way.",
+  "cover": "/images/books/chemistry-for-mortals-en-cover.jpeg",
+  "category": "science",
+  "tags": [
+    "chemistry",
+    "science",
+    "divulgation",
+    "subject"
+  ],
+  "featured": true,
+  "publishedAt": "2024-04-29",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "the-atom-the-fundamental-unit-of-all-matter",
+      "title": "The atom: the fundamental unit of all matter",
+      "order": 1,
+      "description": "Discover what atoms are, how they are formed inside and why understanding their structure is essential to understanding all the chemistry that surrounds us.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "states-of-matter-solids-liquids-and-gases",
+      "title": "States of matter: solids, liquids and gases",
+      "order": 2,
+      "description": "Learn the characteristics that differentiate solids, liquids and gases, and how changes in temperature affect molecular behavior.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-water-anomaly-why-ice-manages-to-float",
+      "title": "The water anomaly: why ice manages to float",
+      "order": 3,
+      "description": "Water has unique and essential properties for life. We analyze its curious molecular structure and the reason why ice is less dense.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "introduction-to-the-periodic-table-of-the-elements",
+      "title": "Introduction to the periodic table of the elements",
+      "order": 4,
+      "description": "We explore how the chemical elements are arranged in the periodic table, their fascinating history, and what information we can glean from each little box.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "metals-vs-non-metals-basic-differences",
+      "title": "Metals vs. Non-Metals: Basic Differences",
+      "order": 5,
+      "description": "Discover the marked chemical differences between metals and non-metals, their varied physical properties, and how they interact with each other in nature.",
+      "audioUrl": ""
+    }
+  ]
+}

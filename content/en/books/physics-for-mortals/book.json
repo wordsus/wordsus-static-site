@@ -1,0 +1,56 @@
+{
+  "slug": "physics-for-mortals",
+  "locale": "en",
+  "title": "Physics for Mortals: We unravel the mysteries of the universe",
+  "author": "Wordsus Team",
+  "description": "Discover the secrets of the universe in this complete guide to 365 physics lessons. From Newton's laws to quantum mechanics and the multiverse, explained in a simple way for everyone.",
+  "cover": "/images/books/physics-for-mortals-en-cover.jpeg",
+  "category": "science",
+  "tags": [
+    "physics",
+    "science",
+    "divulgation",
+    "universe",
+    "education"
+  ],
+  "featured": true,
+  "publishedAt": "2024-04-29",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "the-law-of-inertia-why-things-dont-stop",
+      "title": "The law of inertia: why things don't stop",
+      "order": 1,
+      "description": "We explore Newton's first law of motion. Discover why an object stays in motion until an external force stops it.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "heat-and-energy-fundamentals-of-thermodynamics",
+      "title": "Heat and energy: fundamentals of thermodynamics",
+      "order": 2,
+      "description": "We analyze the basic principles of heat and temperature. You will learn how thermal energy flows and affects all the materials in our environment.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "electromagnetism-the-invisible-force-that-moves-the-world",
+      "title": "Electromagnetism: the invisible force that moves the world",
+      "order": 3,
+      "description": "Discover how electricity and magnetism come together. We explore this fundamental force that lights up our cities and makes technology work today.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-nature-of-light-how-photons-behave",
+      "title": "The nature of light: how photons behave",
+      "order": 4,
+      "description": "Is light a wave or a particle? We unravel the dual behavior of light and how photons interact with matter in the visible universe.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-mystery-of-black-holes-in-our-galaxy",
+      "title": "The mystery of black holes in our galaxy",
+      "order": 5,
+      "description": "Enter the fascinating world of black holes. We analyze what they are, how they form in space and what happens if matter crosses their horizon.",
+      "audioUrl": ""
+    }
+  ]
+}
