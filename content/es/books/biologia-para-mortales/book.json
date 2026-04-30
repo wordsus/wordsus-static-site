@@ -1,0 +1,57 @@
+{
+  "slug": "biologia-para-mortales",
+  "locale": "es",
+  "title": "Biología para Mortales: Explorando el código oculto de la naturaleza",
+  "author": "Wordsus Team",
+  "description": "Explora los misterios de la vida a través de 365 lecciones fascinantes. Desde el ADN y la genética hasta la evolución y la ecología profunda, explicado de forma sencilla para todos.",
+  "cover": "/images/books/biologia-para-mortales-es-cover.jpeg",
+  "category": "ciencia",
+  "tags": [
+    "biologia",
+    "ciencia",
+    "divulgacion",
+    "vida",
+    "genetica",
+    "evolucion"
+  ],
+  "featured": true,
+  "publishedAt": "2024-04-30",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "que-es-la-vida-definicion-y-caracteristicas-clave",
+      "title": "¿Qué es la vida? Definición y características clave",
+      "order": 1,
+      "description": "Descubre los conceptos biológicos fundamentales que separan a los seres vivos de la materia inerte y cómo la ciencia define el inicio de la vida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-adn-al-descubierto-la-gran-molecula-de-la-herencia",
+      "title": "El ADN al descubierto: La gran molécula de la herencia",
+      "order": 2,
+      "description": "Exploramos la estructura del ácido desoxirribonucleico, su famoso diseño en doble hélice y cómo almacena nuestra información genética más esencial.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-celula-eucariota-su-estructura-y-sus-funciones",
+      "title": "La célula eucariota: Su estructura y sus funciones",
+      "order": 3,
+      "description": "Viajamos al interior de nuestras propias células para conocer sus organelas, sus funciones vitales y cómo cooperan para mantenernos vivos a diario.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "evolucion-biologica-el-mecanismo-de-la-adaptacion",
+      "title": "Evolución biológica: El mecanismo de la adaptación",
+      "order": 4,
+      "description": "Analizamos los fundamentos de la selección natural propuesta por Darwin y cómo los organismos cambian lentamente a lo largo de las eras geológicas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-reino-de-las-bacterias-microorganismos-ubicuos",
+      "title": "El reino de las bacterias: Microorganismos ubicuos",
+      "order": 5,
+      "description": "Conoce el fascinante mundo de las bacterias, los seres vivos más abundantes del planeta, y comprende su vital importancia para todos los ecosistemas.",
+      "audioUrl": ""
+    }
+  ]
+}

@@ -1,0 +1,2542 @@
+{
+  "slug": "biologia-para-mortales",
+  "locale": "es",
+  "title": "Biología para Mortales: Explorando el código oculto de la naturaleza",
+  "author": "Wordsus Team",
+  "description": "Explora los misterios de la vida a través de 365 lecciones fascinantes. Desde el ADN y la genética hasta la evolución y la ecología profunda, explicado de forma sencilla para todos.",
+  "cover": "/images/books/biologia-para-mortales-es-cover.jpeg",
+  "category": "ciencia",
+  "tags": [
+    "biologia",
+    "ciencia",
+    "divulgacion",
+    "vida",
+    "genetica",
+    "evolucion"
+  ],
+  "featured": true,
+  "publishedAt": "2024-04-30",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "son-vivos-los-virus-su-particular-ciclo-biologico",
+      "title": "¿Son vivos los virus? Su particular ciclo biológico",
+      "order": 6,
+      "description": "Debatimos la verdadera naturaleza biológica de los virus, sus métodos para invadir células huésped y cómo logran multiplicarse de forma tan efectiva.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fungi-el-fascinante-reino-de-los-hongos-y-levaduras",
+      "title": "Fungi: El fascinante reino de los hongos y levaduras",
+      "order": 7,
+      "description": "Descubrimos la biología de los hongos, desde las levaduras unicelulares hasta las complejas redes de micelio que conectan los grandes bosques naturales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-genetica-del-color-de-ojos-en-los-seres-humanos",
+      "title": "La genética del color de ojos en los seres humanos",
+      "order": 8,
+      "description": "Desglosamos cómo interactúan nuestros genes heredados para determinar la cantidad de melanina en el iris y generar los distintos colores de nuestros ojos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fotosintesis-como-las-plantas-generan-su-alimento",
+      "title": "Fotosíntesis: Cómo las plantas generan su alimento",
+      "order": 9,
+      "description": "Estudiamos el proceso bioquímico mediante el cual las plantas capturan la luz solar y el dióxido de carbono para producir su propia energía y el oxígeno.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-migracion-animal-biologia-de-los-grandes-viajes",
+      "title": "La migración animal: Biología de los grandes viajes",
+      "order": 10,
+      "description": "Exploramos los increíbles mecanismos biológicos y fisiológicos que permiten a diversas especies navegar y sobrevivir en viajes de miles de kilómetros.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-grupos-sanguineos-humanos-y-su-base-hereditaria",
+      "title": "Los grupos sanguíneos humanos y su base hereditaria",
+      "order": 11,
+      "description": "Entiende la diferencia genética entre los grupos sanguíneos del sistema ABO y el factor Rh, y por qué esta compatibilidad es crucial en la medicina actual.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-sistema-inmunologico-las-defensas-del-organismo",
+      "title": "El sistema inmunológico: Las defensas del organismo",
+      "order": 12,
+      "description": "Analizamos las células y procesos que componen nuestro sistema inmune, el cual nos protege de patógenos y enfermedades de manera constante y silenciosa.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-del-sueno-por-que-dormimos-y-sus-fases",
+      "title": "La biología del sueño: Por qué dormimos y sus fases",
+      "order": 13,
+      "description": "Revisamos los procesos neuronales, los ritmos circadianos y la gran importancia biológica de dormir bien para mantener una salud física y mental óptima.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-proceso-de-la-digestion-y-absorcion-de-nutrientes",
+      "title": "El proceso de la digestión y absorción de nutrientes",
+      "order": 14,
+      "description": "Acompañamos a los alimentos en su recorrido por el sistema digestivo humano para entender cómo extraemos y asimilamos la energía necesaria para vivir.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "crispr-cas9-la-revolucion-en-la-edicion-genetica",
+      "title": "CRISPR-Cas9: La revolución en la edición genética",
+      "order": 15,
+      "description": "Conoce la herramienta de edición genética inspirada en el sistema inmune bacteriano que permite a los científicos modificar secuencias de ADN con precisión.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "metamorfosis-transformaciones-biologicas-extremas",
+      "title": "Metamorfosis: Transformaciones biológicas extremas",
+      "order": 16,
+      "description": "Descubre los impresionantes cambios morfológicos y fisiológicos que atraviesan los insectos y anfibios durante su profundo desarrollo hasta la fase adulta.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-del-envejecimiento-humano-a-nivel-celular",
+      "title": "La biología del envejecimiento humano a nivel celular",
+      "order": 17,
+      "description": "Analizamos el acortamiento de los telómeros y el estrés oxidativo para comprender los factores celulares y genéticos que causan nuestro envejecimiento.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-bases-biologicas-de-la-memoria-y-el-aprendizaje",
+      "title": "Las bases biológicas de la memoria y el aprendizaje",
+      "order": 18,
+      "description": "Exploramos cómo nuestras neuronas crean nuevas conexiones sinápticas en el cerebro para poder procesar, almacenar y recuperar la información que aprendemos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "simbiosis-la-cooperacion-entre-distintas-especies",
+      "title": "Simbiosis: La cooperación entre distintas especies",
+      "order": 19,
+      "description": "Estudiamos las fascinantes relaciones simbióticas, donde diferentes organismos evolucionan en conjunto para beneficiarse mutuamente y lograr sobrevivir.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-extremofilos-vida-en-los-ambientes-mas-hostiles",
+      "title": "Los extremófilos: Vida en los ambientes más hostiles",
+      "order": 20,
+      "description": "Conoce a los sorprendentes microorganismos adaptados genética y biológicamente para prosperar en condiciones de calor extremo, alta acidez o radiación.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "evolucion-de-los-hominidos-nuestro-linaje-humano",
+      "title": "Evolución de los homínidos: Nuestro linaje humano",
+      "order": 21,
+      "description": "Trazamos el largo recorrido evolutivo desde nuestros ancestros primates más antiguos hasta la consolidación del Homo sapiens moderno en el planeta Tierra.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-dinosaurios-emplumados-y-el-origen-de-las-aves",
+      "title": "Los dinosaurios emplumados y el origen de las aves",
+      "order": 22,
+      "description": "Examinamos las contundentes pruebas biológicas y paleontológicas que demuestran cómo las aves modernas descienden directamente de los dinosaurios terópodos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "epigenetica-como-el-entorno-influye-en-los-genes",
+      "title": "Epigenética: Cómo el entorno influye en los genes",
+      "order": 23,
+      "description": "Descubre cómo ciertos factores externos y ambientales logran activar o desactivar nuestros genes sin alterar la secuencia fundamental de nuestro ADN humano.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-microbioma-humano-somos-un-ecosistema-andante",
+      "title": "El microbioma humano: Somos un ecosistema andante",
+      "order": 24,
+      "description": "Analizamos a los billones de microorganismos que habitan sobre nuestra piel y dentro del intestino, y su crucial impacto biológico en nuestra salud general.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-celulas-madre-humanas-potencial-y-desarrollo",
+      "title": "Las células madre humanas: Potencial y desarrollo",
+      "order": 25,
+      "description": "Explicamos qué son exactamente las células madre, su increíble capacidad para especializarse en distintos tejidos y su enorme potencial en la medicina actual.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "bioluminiscencia-animales-que-producen-luz-propia",
+      "title": "Bioluminiscencia: Animales que producen luz propia",
+      "order": 26,
+      "description": "Estudiamos los procesos químicos que permiten a ciertas medusas, insectos y peces abisales generar su propia luz para lograr cazar, comunicarse o defenderse.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "biologia-de-las-alergias-el-sistema-inmune-activo",
+      "title": "Biología de las alergias: El sistema inmune activo",
+      "order": 27,
+      "description": "Comprende qué ocurre biológicamente en nuestro cuerpo cuando el sistema inmunológico reacciona de forma exagerada e innecesaria ante sustancias inofensivas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-trifosfato-de-adenosina-la-moneda-de-la-energia",
+      "title": "El trifosfato de adenosina: La moneda de la energía",
+      "order": 28,
+      "description": "Nos adentramos en la bioquímica celular para comprender la función de la molécula ATP, responsable de almacenar y transferir energía vital en los seres vivos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-mutaciones-geneticas-errores-que-traen-cambio",
+      "title": "Las mutaciones genéticas: Errores que traen cambio",
+      "order": 29,
+      "description": "Aclaramos cómo suceden los cambios espontáneos en nuestra secuencia genética, provocando enfermedades hereditarias o impulsando la diversidad evolutiva natural.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-de-los-gemelos-la-identidad-compartida",
+      "title": "La biología de los gemelos: La identidad compartida",
+      "order": 30,
+      "description": "Diferenciamos la formación biológica entre los gemelos idénticos y fraternos, explorando cómo comparten la información genética en el desarrollo temprano.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "biologia-de-la-polinizacion-y-reproduccion-vegetal",
+      "title": "Biología de la polinización y reproducción vegetal",
+      "order": 31,
+      "description": "Analizamos cómo las plantas con flor logran reproducirse gracias a la intervención crucial de los insectos polinizadores y otros factores ambientales clave.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-adn-neandertal-en-los-humanos-modernos-actuales",
+      "title": "El ADN neandertal en los humanos modernos actuales",
+      "order": 32,
+      "description": "Descubre la fascinante evidencia genética que demuestra cómo nuestros antepasados se cruzaron con los neandertales y qué genes hemos heredado de ellos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fisiologia-del-sistema-cardiovascular-de-los-humanos",
+      "title": "Fisiología del sistema cardiovascular de los humanos",
+      "order": 33,
+      "description": "Analizamos la impresionante biología del corazón y los vasos sanguíneos, entendiendo cómo logran bombear la sangre para nutrir todas y cada una de las células.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "apoptosis-la-muerte-celular-programada-y-su-funcion",
+      "title": "Apoptosis: La muerte celular programada y su función",
+      "order": 34,
+      "description": "Comprendemos el mecanismo biológico esencial por el cual nuestras células deciden autodestruirse ordenadamente para proteger la salud de todo el organismo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-de-la-dopamina-y-el-sistema-de-recompensa",
+      "title": "La biología de la dopamina y el sistema de recompensa",
+      "order": 35,
+      "description": "Exploramos la neurobiología detrás del placer y la motivación, desentrañando el papel fundamental de los neurotransmisores en nuestras conductas diarias.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "redes-troficas-el-flujo-de-la-energia-en-la-ecologia",
+      "title": "Redes tróficas: El flujo de la energía en la ecología",
+      "order": 36,
+      "description": "Explicamos las dinámicas biológicas que conectan a los organismos productores, consumidores y descomponedores, manteniendo el gran equilibrio ecosistémico.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "animales-venenosos-y-ponzonosos-diferencias-biologicas",
+      "title": "Animales venenosos y ponzoñosos: Diferencias biológicas",
+      "order": 37,
+      "description": "Diferenciamos los complejos mecanismos evolutivos que los animales utilizan para inyectar o secretar toxinas letales como método de caza o de supervivencia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-clonacion-genetica-historia-ciencia-y-sus-limites",
+      "title": "La clonación genética: Historia, ciencia y sus límites",
+      "order": 38,
+      "description": "Repasamos la asombrosa biología detrás de la clonación de mamíferos, desde el caso histórico de la oveja Dolly hasta las aplicaciones genéticas modernas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "homeostasis-el-equilibrio-interno-de-los-seres-vivos",
+      "title": "Homeostasis: El equilibrio interno de los seres vivos",
+      "order": 39,
+      "description": "Descubre cómo los organismos vivos logran regular activamente su temperatura, el pH y otros factores biológicos internos ante los fuertes cambios externos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-sorprendentes-estrategias-de-defensa-de-las-plantas",
+      "title": "Las sorprendentes estrategias de defensa de las plantas",
+      "order": 40,
+      "description": "Exploramos las fascinantes adaptaciones químicas y estructurales que la flora silvestre desarrolló evolutivamente para protegerse de múltiples herbívoros.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-bacteriofagos-virus-biologicos-que-cazan-bacterias",
+      "title": "Los bacteriófagos: Virus biológicos que cazan bacterias",
+      "order": 41,
+      "description": "Adéntrate en la biología de los fagos, las entidades más letales del planeta que infectan exclusivamente bacterias y revolucionan las terapias genéticas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-sistema-endocrino-humano-y-el-poder-de-las-hormonas",
+      "title": "El sistema endocrino humano y el poder de las hormonas",
+      "order": 42,
+      "description": "Analizamos cómo el cuerpo utiliza complejas señales químicas en el torrente sanguíneo para regular el crecimiento, nuestro metabolismo y la reproducción.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "meiosis-la-division-celular-clave-para-la-reproduccion",
+      "title": "Meiosis: La división celular clave para la reproducción",
+      "order": 43,
+      "description": "Comprendemos el minucioso proceso biológico que reduce a la mitad nuestros cromosomas para formar óvulos y espermatozoides, garantizando la variabilidad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "evolucion-convergente-cuando-la-biologia-repite-disenos",
+      "title": "Evolución convergente: Cuando la biología repite diseños",
+      "order": 44,
+      "description": "Descubrimos por qué especies de linajes completamente distintos terminan desarrollando rasgos anatómicos similares para enfrentar retos ambientales iguales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-ciclo-del-carbono-motor-quimico-de-toda-la-biosfera",
+      "title": "El ciclo del carbono: Motor químico de toda la biosfera",
+      "order": 45,
+      "description": "Trazamos el asombroso viaje de los átomos de carbono a través de nuestra atmósfera, la tierra firme y los seres vivos que sostienen la vida ecosistémica.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-genetica-forense-y-la-lectura-de-la-huella-del-adn",
+      "title": "La genética forense y la lectura de la huella del ADN",
+      "order": 46,
+      "description": "Explicamos con detalle biológico cómo los especialistas analizan fragmentos de material genético para lograr identificar individuos con suma precisión.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-enzimas-biologicas-los-grandes-motores-del-cuerpo",
+      "title": "Las enzimas biológicas: Los grandes motores del cuerpo",
+      "order": 47,
+      "description": "Exploramos la crucial función fisiológica de estas sofisticadas proteínas encargadas de acelerar todas y cada una de nuestras reacciones químicas vitales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-compleja-biologia-del-ojo-y-la-maravilla-de-la-vision",
+      "title": "La compleja biología del ojo y la maravilla de la visión",
+      "order": 48,
+      "description": "Desglosamos la anatomía ocular humana para comprender cómo capturamos la luz del entorno y la transformamos en claros impulsos eléctricos neurobiológicos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "plantas-carnivoras-adaptaciones-biologicas-sorprendentes",
+      "title": "Plantas carnívoras: Adaptaciones biológicas sorprendentes",
+      "order": 49,
+      "description": "Adéntrate en la fascinante evolución de aquellas plantas que habitan suelos carentes de nutrientes y han aprendido a capturar y devorar pequeños insectos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "membrana-plasmatica-la-frontera-de-las-celulas-humanas",
+      "title": "Membrana plasmática: La frontera de las células humanas",
+      "order": 50,
+      "description": "Analizamos la dinámica y vital barrera de lípidos que envuelve a nuestras células, decidiendo exactamente qué moléculas pueden entrar y cuáles deben salir.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ecolocalizacion-la-percepcion-acustica-de-la-naturaleza",
+      "title": "Ecolocalización: La percepción acústica de la naturaleza",
+      "order": 51,
+      "description": "Comprende la asombrosa biología anatómica detrás del sonar natural que emplean los murciélagos y cetáceos marinos para cazar y navegar en plena oscuridad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-neurobiologia-de-los-suenos-por-que-la-mente-crea",
+      "title": "La neurobiología de los sueños: Por qué la mente crea",
+      "order": 52,
+      "description": "Exploramos qué ocurre exactamente en nuestros complejos circuitos cerebrales durante la fase REM del sueño y cuáles son las teorías biológicas al respecto.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-especies-invasoras-y-su-devastador-impacto-biologico",
+      "title": "Las especies invasoras y su devastador impacto biológico",
+      "order": 53,
+      "description": "Analizamos las graves consecuencias ecológicas que suceden cuando un organismo ajeno es introducido accidentalmente en un ecosistema que no está preparado.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "luca-el-fascinante-ancestro-comun-de-toda-la-vida-actual",
+      "title": "LUCA: El fascinante ancestro común de toda la vida actual",
+      "order": 54,
+      "description": "Retrocedemos miles de millones de años en la evolución biológica para indagar sobre las características de la primera población celular de nuestro planeta.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-del-metabolismo-genetica-del-peso-corporal",
+      "title": "La biología del metabolismo: Genética del peso corporal",
+      "order": 55,
+      "description": "Desmitificamos cómo influyen verdaderamente nuestros genes hereditarios y el entorno bioquímico en el control de la energía y en nuestro peso físico real.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "arrecifes-de-coral-las-grandes-ciudades-de-los-oceanos",
+      "title": "Arrecifes de coral: Las grandes ciudades de los océanos",
+      "order": 56,
+      "description": "Sumérgete en la asombrosa biología de estos cnidarios marinos formadores de complejas estructuras calcáreas que sostienen la rica biodiversidad oceánica.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-hemoglobina-y-el-milagro-del-transporte-del-oxigeno",
+      "title": "La hemoglobina y el milagro del transporte del oxígeno",
+      "order": 57,
+      "description": "Estudiamos al detalle la valiosa proteína de nuestros glóbulos rojos, su asombrosa afinidad química por los gases y su enorme rol para la supervivencia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "neuroplasticidad-el-cerebro-humano-que-siempre-se-moldea",
+      "title": "Neuroplasticidad: El cerebro humano que siempre se moldea",
+      "order": 58,
+      "description": "Descubre cómo la biología neuronal nos permite readaptar constantemente nuestras vías cognitivas frente al aprendizaje, nuevas experiencias e inclemencias.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "parasitismo-biologico-y-la-manipulacion-de-los-huespedes",
+      "title": "Parasitismo biológico y la manipulación de los huéspedes",
+      "order": 59,
+      "description": "Adéntrate en las inquietantes estrategias adaptativas de organismos que invaden a otros seres vivos para arrebatar nutrientes y controlar comportamientos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-sistema-linfatico-la-red-de-limpieza-del-cuerpo-humano",
+      "title": "El sistema linfático: La red de limpieza del cuerpo humano",
+      "order": 60,
+      "description": "Analizamos esta silenciosa red de conductos paralela al sistema circulatorio, esencial biológicamente para regular fluidos y mantener la defensa inmune.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-feromonas-y-la-biologia-de-la-atraccion-sexual",
+      "title": "Las feromonas y la biología de la atracción sexual",
+      "order": 61,
+      "description": "Exploramos las complejas señales químicas invisibles que muchos animales y quizás nosotros utilizamos para comunicarnos y atraer a nuestras parejas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "mitosis-como-nuestras-celulas-logran-multiplicarse",
+      "title": "Mitosis: Cómo nuestras células logran multiplicarse",
+      "order": 62,
+      "description": "Analizamos el fundamental proceso biológico de división celular que nos permite crecer desde un solo cigoto y reparar nuestros tejidos constantemente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-de-la-hibernacion-y-el-letargo-animal",
+      "title": "La biología de la hibernación y el letargo animal",
+      "order": 63,
+      "description": "Descubre los asombrosos cambios metabólicos y fisiológicos que permiten a diversas especies sobrevivir a los inviernos más crudos sin probar alimento.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-arn-mensajero-el-gran-traductor-de-la-genetica",
+      "title": "El ARN mensajero: El gran traductor de la genética",
+      "order": 64,
+      "description": "Estudiamos la vital molécula que copia la información del ADN nuclear y la transporta para fabricar las proteínas esenciales para nuestra propia vida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "biologia-del-sistema-muscular-y-el-movimiento-fisico",
+      "title": "Biología del sistema muscular y el movimiento físico",
+      "order": 65,
+      "description": "Desglosamos la fascinante interacción bioquímica entre la actina y miosina que hace posible la contracción de nuestros músculos para poder movernos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "biologia-del-cancer-cuando-las-celulas-se-rebelan",
+      "title": "Biología del cáncer: Cuando las células se rebelan",
+      "order": 66,
+      "description": "Comprendemos los errores genéticos y moleculares que provocan que nuestras propias células pierdan el control y comiencen a dividirse de forma caótica.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "eusocialidad-la-compleja-biologia-de-las-colmenas",
+      "title": "Eusocialidad: La compleja biología de las colmenas",
+      "order": 67,
+      "description": "Adéntrate en las estructuras sociales biológicas de hormigas y abejas, donde el sacrificio individual y la genética garantizan la vida de la colonia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-adrenalina-y-la-respuesta-biologica-de-la-huida",
+      "title": "La adrenalina y la respuesta biológica de la huida",
+      "order": 68,
+      "description": "Exploramos la cascada fisiológica que inunda nuestro cuerpo en fracciones de segundo para prepararnos instintivamente ante una situación de gran peligro.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "teoria-endosimbiotica-el-origen-celular-complejo",
+      "title": "Teoría endosimbiótica: El origen celular complejo",
+      "order": 69,
+      "description": "Analizamos la fascinante teoría que explica cómo las antiguas células asimilaron bacterias enteras, originando las imprescindibles mitocondrias de hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "genetica-de-los-zurdos-la-asimetria-en-el-cerebro",
+      "title": "Genética de los zurdos: La asimetría en el cerebro",
+      "order": 70,
+      "description": "Descubrimos las variables genéticas y neurológicas que determinan por qué una minoría de la población mundial humana tiene dominancia del lado izquierdo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-higado-humano-nuestro-gran-laboratorio-biologico",
+      "title": "El hígado humano: Nuestro gran laboratorio biológico",
+      "order": 71,
+      "description": "Estudiamos las múltiples funciones metabólicas y desintoxicantes de este sorprendente órgano interno capaz de regenerarse de forma biológica increíble.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-mimetismo-animal-el-arte-evolutivo-del-engano",
+      "title": "El mimetismo animal: El arte evolutivo del engaño",
+      "order": 72,
+      "description": "Observamos las extraordinarias adaptaciones genéticas que permiten a ciertas presas camuflarse perfectamente en el entorno para evadir a sus depredadores.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-telomeros-y-su-vinculo-con-la-esperanza-de-vida",
+      "title": "Los telómeros y su vínculo con la esperanza de vida",
+      "order": 73,
+      "description": "Desglosamos la vital función biológica de los extremos de nuestros cromosomas y su profunda conexión molecular con el proceso de envejecimiento general.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "especiacion-el-origen-biologico-de-las-nuevas-especies",
+      "title": "Especiación: El origen biológico de las nuevas especies",
+      "order": 74,
+      "description": "Comprendemos los mecanismos evolutivos y genéticos que dividen a una sola población original hasta volverlas entidades reproductivamente muy aisladas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "biologia-del-oido-interno-y-la-magia-de-la-audicion",
+      "title": "Biología del oído interno y la magia de la audición",
+      "order": 75,
+      "description": "Exploramos las delicadas estructuras mecánicas y nerviosas que captan las ondas sonoras invisibles y las transforman en señales rítmicas para el cerebro.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-evolucion-biologica-del-color-de-la-piel-humana",
+      "title": "La evolución biológica del color de la piel humana",
+      "order": 76,
+      "description": "Analizamos la historia evolutiva de la melanina y cómo nuestros ancestros se adaptaron biológicamente a los niveles de radiación ultravioleta del sol.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fisiologia-de-los-rinones-y-nuestro-sistema-excretor",
+      "title": "Fisiología de los riñones y nuestro sistema excretor",
+      "order": 77,
+      "description": "Nos adentramos en el complejo sistema de filtración de nuestro cuerpo vital, encargado de purificar la sangre y regular el sano equilibrio de los líquidos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-determinacion-genetica-del-sexo-humano-y-animal",
+      "title": "La determinación genética del sexo humano y animal",
+      "order": 78,
+      "description": "Comprendemos el papel de los cromosomas sexuales en el desarrollo fetal y descubrimos otras asombrosas estrategias biológicas dentro del reino animal vivo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-ajolote-y-el-milagro-de-la-regeneracion-celular",
+      "title": "El ajolote y el milagro de la regeneración celular",
+      "order": 79,
+      "description": "Exploramos la asombrosa capacidad de este anfibio capaz de regenerar extremidades completas, importantes órganos y hasta partes fundamentales de su cerebro.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "biologia-de-la-fermentacion-y-las-bacterias-utiles",
+      "title": "Biología de la fermentación y las bacterias útiles",
+      "order": 80,
+      "description": "Estudiamos cómo ciertos microorganismos transforman los alimentos biológicamente sin usar oxígeno, permitiendo la creación milenaria de pan, quesos y vinos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "neurobiologia-del-sentido-del-olfato-y-sus-receptores",
+      "title": "Neurobiología del sentido del olfato y sus receptores",
+      "order": 81,
+      "description": "Desglosamos cómo nuestras neuronas logran identificar miles de moléculas en el aire para desencadenar respuestas biológicas y recuerdos profundamente vivos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-neurobiologia-vegetal-y-la-comunicacion-oculta",
+      "title": "La neurobiología vegetal y la comunicación oculta",
+      "order": 82,
+      "description": "Analizamos la evidencia científica sobre cómo las plantas perciben el entorno real, se advierten de graves peligros y envían señales químicas subterráneas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-genetica-del-cabello-humano-y-la-calvicie-comun",
+      "title": "La genética del cabello humano y la calvicie común",
+      "order": 83,
+      "description": "Descubrimos la base hereditaria y biológica que determina la textura folicular, el grosor capilar y por qué tantos humanos pierden todo el cabello al crecer.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "magnetorrecepcion-el-sexto-sentido-de-los-animales",
+      "title": "Magnetorrecepción: El sexto sentido de los animales",
+      "order": 84,
+      "description": "Exploramos el asombroso sentido biológico que permite a las aves migratorias, tortugas y varios insectos percibir todos los campos magnéticos de la Tierra.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "retrovirus-endogenos-genes-virales-en-nuestro-adn",
+      "title": "Retrovirus endógenos: Genes virales en nuestro ADN",
+      "order": 85,
+      "description": "Comprendemos el impactante descubrimiento biológico de que una gran parte de nuestro genoma humano proviene directamente de antiguas infecciones virológicas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "biologia-del-sentido-del-gusto-y-nuestras-papilas",
+      "title": "Biología del sentido del gusto y nuestras papilas",
+      "order": 86,
+      "description": "Analizamos la química fascinante que ocurre en nuestra lengua para distinguir sabores y cómo esta gran evolución biológica nos protegió de venenos mortales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "terapia-genica-la-cura-reescribiendo-nuestro-adn",
+      "title": "Terapia génica: La cura reescribiendo nuestro ADN",
+      "order": 87,
+      "description": "Exploramos los prometedores avances médicos que buscan curar graves enfermedades hereditarias mediante la inserción directa de genes biológicamente sanos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "embriologia-basica-el-asombroso-origen-del-feto",
+      "title": "Embriología básica: El asombroso origen del feto",
+      "order": 88,
+      "description": "Recorremos las vitales etapas del desarrollo biológico humano en el útero materno, observando cómo un simple grupo de células forma órganos tan complejos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gigantismo-abisal-la-biologia-de-las-profundidades",
+      "title": "Gigantismo abisal: La biología de las profundidades",
+      "order": 89,
+      "description": "Descubrimos por qué los calamares y crustáceos que habitan en las oscuras y gélidas trincheras oceánicas desarrollan tamaños biológicos tan descomunales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-plancton-marino-y-su-inmenso-impacto-ecologico",
+      "title": "El plancton marino y su inmenso impacto ecológico",
+      "order": 90,
+      "description": "Estudiamos a los imprescindibles microorganismos que flotan libremente en nuestros mares, responsables de producir gran parte del oxígeno que hoy respiramos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fisiologia-pulmonar-la-biologia-de-la-respiracion",
+      "title": "Fisiología pulmonar: La biología de la respiración",
+      "order": 91,
+      "description": "Comprendemos el vital intercambio de gases en nuestros alvéolos pulmonares y cómo el oxígeno logra llegar eficientemente al torrente sanguíneo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-enanismo-insular-y-la-biologia-del-homo-floresiensis",
+      "title": "El enanismo insular y la biología del Homo floresiensis",
+      "order": 92,
+      "description": "Descubrimos cómo la limitación de recursos en islas aisladas provoca asombrosas reducciones de tamaño evolutivas en diversas especies animales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "partenogenesis-la-reproduccion-animal-sin-fecundacion",
+      "title": "Partenogénesis: La reproducción animal sin fecundación",
+      "order": 93,
+      "description": "Estudiamos el asombroso fenómeno biológico mediante el cual algunas hembras de reptiles y de peces logran concebir crías sin material masculino.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-eje-intestino-cerebro-y-su-impacto-neurobiologico",
+      "title": "El eje intestino-cerebro y su impacto neurobiológico",
+      "order": 94,
+      "description": "Analizamos la constante comunicación química entre nuestras bacterias intestinales y el sistema nervioso central para regular el estado de ánimo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-tejido-oseo-la-dinamica-biologia-del-esqueleto-humano",
+      "title": "El tejido óseo: La dinámica biología del esqueleto humano",
+      "order": 95,
+      "description": "Exploramos la estructura viva de nuestros huesos, cómo se remodelan continuamente durante nuestra vida y su función vital en la salud metabólica.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-anticuerpos-proteinas-clave-en-nuestra-inmunidad",
+      "title": "Los anticuerpos: Proteínas clave en nuestra inmunidad",
+      "order": 96,
+      "description": "Desglosamos la estructura biológica de las inmunoglobulinas y cómo logran identificar de forma altamente específica a los patógenos invasores.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-de-los-monotremas-y-el-ornitorrinco-austral",
+      "title": "La biología de los monotremas y el ornitorrinco austral",
+      "order": 97,
+      "description": "Adéntrate en las extrañas características evolutivas de estos primitivos mamíferos únicos en el mundo biológico que todavía logran poner huevos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "desextincion-genetica-es-posible-revivir-especies",
+      "title": "Desextinción genética: ¿Es posible revivir especies?",
+      "order": 98,
+      "description": "Examinamos los grandes esfuerzos científicos y las enormes barreras genéticas que existen para intentar traer de regreso al mamut lanudo extinto.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-neurobiologia-del-dolor-corporal-y-su-funcion-vital",
+      "title": "La neurobiología del dolor corporal y su función vital",
+      "order": 99,
+      "description": "Comprendemos los complejos receptores nerviosos que nos alertan sobre daños en los tejidos biológicos y por qué sufrir dolor resulta tan crucial.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-deriva-genica-el-papel-del-azar-en-la-evolucion-real",
+      "title": "La deriva génica: El papel del azar en la evolución real",
+      "order": 100,
+      "description": "Estudiamos cómo las fluctuaciones aleatorias en las poblaciones biológicas pueden eliminar o fijar genes independientemente de la adaptación.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-del-pancreas-y-la-regulacion-de-la-glucosa",
+      "title": "La biología del páncreas y la regulación de la glucosa",
+      "order": 101,
+      "description": "Analizamos la vital producción de insulina y glucagón celular para mantener un perfecto equilibrio de azúcar disponible en el torrente sanguíneo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-marsupiales-y-el-desarrollo-biologico-de-sus-crias",
+      "title": "Los marsupiales y el desarrollo biológico de sus crías",
+      "order": 102,
+      "description": "Descubrimos cómo los canguros y koalas dan a luz fetos inmaduros que deben culminar su crecimiento dentro de una bolsa biológica especializada.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-del-estres-cronico-y-la-hormona-del-cortisol",
+      "title": "La biología del estrés crónico y la hormona del cortisol",
+      "order": 103,
+      "description": "Exploramos las graves consecuencias fisiológicas que sufre nuestro organismo cuando la vital respuesta adaptativa de alarma no logra desactivarse.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-proteina-verde-fluorescente-y-la-revolucion-celular",
+      "title": "La proteína verde fluorescente y la revolución celular",
+      "order": 104,
+      "description": "Conoce cómo una brillante molécula biológica extraída de las medusas permitió a los genetistas observar los complejos procesos vivos en tiempo real.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "pruebas-geneticas-de-ancestria-leyendo-nuestro-pasado",
+      "title": "Pruebas genéticas de ancestría: Leyendo nuestro pasado",
+      "order": 105,
+      "description": "Aclaramos cómo los laboratorios secuencian el genoma humano para intentar rastrear nuestras antiguas migraciones biológicas a lo largo del globo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-ribosomas-la-fabrica-biologica-de-las-proteinas",
+      "title": "Los ribosomas: La fábrica biológica de las proteínas",
+      "order": 106,
+      "description": "Nos adentramos en la maquinaria molecular que se encarga de leer el código genético humano para poder ensamblar cada parte estructural del cuerpo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-seleccion-sexual-biologica-y-la-cola-del-pavo-real",
+      "title": "La selección sexual biológica y la cola del pavo real",
+      "order": 107,
+      "description": "Analizamos las fuerzas evolutivas que impulsan el desarrollo de rasgos físicos muy extravagantes y costosos biológicamente para atraer a la pareja.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-de-la-voz-humana-y-de-las-cuerdas-vocales",
+      "title": "La biología de la voz humana y de las cuerdas vocales",
+      "order": 108,
+      "description": "Explicamos el sofisticado mecanismo anatómico de nuestra laringe que nos permite articular sonidos complejos y desarrollar nuestro lenguaje único.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-de-la-piel-humana-nuestro-organo-mas-grande",
+      "title": "La biología de la piel humana: Nuestro órgano más grande",
+      "order": 109,
+      "description": "Estudiamos las complejas capas celulares de la epidermis y la dermis, responsables de protegernos físicamente y de regular nuestra temperatura.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-denisovanos-la-otra-gran-rama-humana-que-se-extinguio",
+      "title": "Los denisovanos: La otra gran rama humana que se extinguió",
+      "order": 110,
+      "description": "Exploramos la fascinante evidencia genética que nos revela la antigua existencia de estos misteriosos parientes humanos en el continente asiático.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "neurotoxinas-biologicas-un-ataque-al-sistema-nervioso",
+      "title": "Neurotoxinas biológicas: Un ataque al sistema nervioso",
+      "order": 111,
+      "description": "Comprendemos exactamente cómo los venenos letales de serpientes y escorpiones logran bloquear las señales nerviosas para paralizar a sus presas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-de-la-sinestesia-sensorial-en-el-ser-humano",
+      "title": "La biología de la sinestesia sensorial en el ser humano",
+      "order": 112,
+      "description": "Descubrimos el peculiar cruce neurológico y biológico que provoca que ciertas personas puedan saborear palabras, ver la música o escuchar colores.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-exoesqueleto-de-los-artropodos-armaduras-biologicas",
+      "title": "El exoesqueleto de los artrópodos: Armaduras biológicas",
+      "order": 113,
+      "description": "Analizamos las ventajas evolutivas de poseer un caparazón de quitina y las vulnerabilidades que enfrentan los insectos durante su gran muda vital.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "biologia-del-cartilago-y-el-vital-funcionamiento-articular",
+      "title": "Biología del cartílago y el vital funcionamiento articular",
+      "order": 114,
+      "description": "Exploramos este vital tejido biológico que actúa como gran amortiguador de nuestro cuerpo humano permitiendo un fluido deslizamiento de los huesos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-oxitocina-y-la-compleja-neurobiologia-del-apego-humano",
+      "title": "La oxitocina y la compleja neurobiología del apego humano",
+      "order": 115,
+      "description": "Estudiamos esta fascinante hormona responsable de afianzar los vínculos biológicos maternos, las relaciones de pareja y fomentar la gran empatía.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-aparato-de-golgi-el-gran-centro-de-envios-celular",
+      "title": "El aparato de Golgi: El gran centro de envíos celular",
+      "order": 116,
+      "description": "Nos adentramos en este crucial orgánulo celular responsable de modificar, empaquetar y distribuir grandes proteínas a todo nuestro cuerpo humano.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "nuestros-relojes-biologicos-y-la-genetica-del-ritmo-vital",
+      "title": "Nuestros relojes biológicos y la genética del ritmo vital",
+      "order": 117,
+      "description": "Analizamos cómo ciertos genes regulan nuestros ciclos internos diarios y los enormes desafíos fisiológicos que nos provoca atravesar zonas horarias.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-de-los-liquenes-una-alianza-extraordinaria",
+      "title": "La biología de los líquenes: Una alianza extraordinaria",
+      "order": 118,
+      "description": "Descubrimos la increíble y resistente simbiosis entre un hongo y un alga que origina estos seres biológicos capaces de colonizar rocas desnudas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-plaquetas-humanas-y-el-milagro-de-la-coagulacion",
+      "title": "Las plaquetas humanas y el milagro de la coagulación",
+      "order": 119,
+      "description": "Comprendemos el vital y complejo mecanismo biológico que detiene nuestras hemorragias y cómo nuestra sangre logra solidificarse de forma correcta.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-cuello-de-botella-genetico-y-el-riesgo-de-extincion",
+      "title": "El cuello de botella genético y el riesgo de extinción",
+      "order": 120,
+      "description": "Explicamos las terribles consecuencias de la drástica pérdida de la diversidad genética y cómo afectó severamente a los guepardos de África actual.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-priones-y-las-increibles-proteinas-infecciosas",
+      "title": "Los priones y las increíbles proteínas infecciosas",
+      "order": 121,
+      "description": "Descubrimos la extraña biología de estas proteínas mal plegadas que logran causar graves enfermedades neurológicas sin poseer ningún material genético.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-neurobiologia-de-la-serotonina-y-el-estado-de-animo",
+      "title": "La neurobiología de la serotonina y el estado de ánimo",
+      "order": 122,
+      "description": "Exploramos el rol fundamental de este neurotransmisor en la gran regulación química de nuestras emociones, el apetito diario y nuestro bienestar mental.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "radiacion-adaptativa-la-veloz-evolucion-de-las-especies",
+      "title": "Radiación adaptativa: La veloz evolución de las especies",
+      "order": 123,
+      "description": "Analizamos cómo una sola especie ancestral logra diversificarse rápidamente en múltiples formas biológicas para poder conquistar nuevos nichos ecológicos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-bazo-humano-un-organo-biologico-vital-muy-ignorado",
+      "title": "El bazo humano: Un órgano biológico vital muy ignorado",
+      "order": 124,
+      "description": "Estudiamos las cruciales funciones inmunológicas y de filtrado sanguíneo que este silencioso órgano abdominal realiza para proteger la salud del cuerpo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "celulas-gliales-el-vital-soporte-biologico-del-cerebro",
+      "title": "Células gliales: El vital soporte biológico del cerebro",
+      "order": 125,
+      "description": "Nos adentramos en el tejido nervioso para conocer a las compañeras de las neuronas, esenciales para la nutrición celular y la defensa de nuestro cerebro.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "anemia-falciforme-y-su-vinculo-biologico-con-la-malaria",
+      "title": "Anemia falciforme y su vínculo biológico con la malaria",
+      "order": 126,
+      "description": "Comprendemos el fascinante caso evolutivo de cómo una mutación genética que deforma nuestros glóbulos rojos brindó resistencia biológica ante el paludismo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "tropismos-vegetales-como-las-plantas-deciden-moverse",
+      "title": "Tropismos vegetales: Cómo las plantas deciden moverse",
+      "order": 127,
+      "description": "Analizamos los sorprendentes mecanismos biológicos mediante los cuales las plantas detectan la luz y la gravedad para guiar el crecimiento de todos sus tallos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-viroma-humano-los-miles-de-virus-que-viven-en-ti",
+      "title": "El viroma humano: Los miles de virus que viven en ti",
+      "order": 128,
+      "description": "Estudiamos la enorme población de agentes virales inofensivos que habitan en nuestro organismo de forma natural y su crucial papel en la gran salud biológica.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-grasa-parda-el-maravilloso-tejido-biologico-termico",
+      "title": "La grasa parda: El maravilloso tejido biológico térmico",
+      "order": 129,
+      "description": "Descubrimos la función fisiológica de este tejido celular que quema energía metabólica velozmente para poder mantener el vital calor de todos los mamíferos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "herencia-epigenetica-el-impacto-biologico-del-trauma",
+      "title": "Herencia epigenética: El impacto biológico del trauma",
+      "order": 130,
+      "description": "Exploramos la fascinante evidencia genética que sugiere que las experiencias traumáticas pueden alterar la expresión del ADN y heredarse a futuras generaciones.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "redes-micorricicas-el-internet-biologico-subterraneo",
+      "title": "Redes micorrícicas: El internet biológico subterráneo",
+      "order": 131,
+      "description": "Nos adentramos en la asombrosa asociación biológica y simbiótica entre los árboles y hongos del bosque que les permite compartir nutrientes y señales químicas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "biomimetica-la-tecnologia-humana-inspirada-en-la-vida",
+      "title": "Biomimética: La tecnología humana inspirada en la vida",
+      "order": 132,
+      "description": "Analizamos cómo los científicos modernos logran copiar los brillantes diseños evolutivos de nuestra naturaleza viva para lograr crear tecnologías muy asombrosas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cilios-y-flagelos-los-pequenos-motores-de-las-celulas",
+      "title": "Cilios y flagelos: Los pequeños motores de las células",
+      "order": 133,
+      "description": "Comprendemos la compleja y eficiente estructura microscópica que le permite a muchas células impulsarse vigorosamente y lograr nadar en los fluidos biológicos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-glandula-pineal-y-la-biologia-de-nuestra-melatonina",
+      "title": "La glándula pineal y la biología de nuestra melatonina",
+      "order": 134,
+      "description": "Estudiamos cómo este pequeño órgano del cerebro responde a la luz natural para regular nuestro ritmo biológico y permitirnos alcanzar un gran descanso nocturno.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-blanqueamiento-coralino-y-su-gran-crisis-ecologica",
+      "title": "El blanqueamiento coralino y su gran crisis ecológica",
+      "order": 135,
+      "description": "Explicamos la biología del estrés térmico oceánico que causa la ruptura simbiótica mortal entre los maravillosos corales marinos y sus vitales algas nutritivas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "disruptores-endocrinos-un-reto-biologico-y-ambiental",
+      "title": "Disruptores endocrinos: Un reto biológico y ambiental",
+      "order": 136,
+      "description": "Exploramos cómo ciertas sustancias químicas modernas logran imitar a nuestras hormonas naturales, confundiendo las señales vitales de nuestro cuerpo y la salud.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "biologia-de-la-placenta-el-organo-humano-descartable",
+      "title": "Biología de la placenta: El órgano humano descartable",
+      "order": 137,
+      "description": "Analizamos el desarrollo de este asombroso tejido biológico temporal que nutre al feto y también lo defiende inmunológicamente a lo largo de toda la gestación.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-endorfinas-biologicas-y-el-gran-alivio-del-dolor",
+      "title": "Las endorfinas biológicas y el gran alivio del dolor",
+      "order": 138,
+      "description": "Descubrimos la neurobiología de estos analgésicos naturales que nuestro cuerpo produce para poder mitigar el sufrimiento físico y brindarnos una profunda calma.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-hermafroditismo-animal-biologia-de-los-sexos-unidos",
+      "title": "El hermafroditismo animal: Biología de los sexos unidos",
+      "order": 139,
+      "description": "Estudiamos las extraordinarias especies de nuestro planeta que desarrollaron biológicamente sistemas reproductores masculinos y femeninos en un mismo organismo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "senescencia-vegetal-la-biologia-de-las-hojas-de-otono",
+      "title": "Senescencia vegetal: La biología de las hojas de otoño",
+      "order": 140,
+      "description": "Comprendemos el ordenado proceso celular y químico mediante el cual nuestros árboles caducifolios deciden reabsorber sus nutrientes antes de soltar cada hoja.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-de-la-adiccion-y-el-secuestro-neurologico",
+      "title": "La biología de la adicción y el secuestro neurológico",
+      "order": 141,
+      "description": "Analizamos las fuertes alteraciones neuroquímicas que las sustancias generan en nuestros circuitos biológicos de recompensa para crear gran dependencia crónica.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-apendice-humano-un-organo-biologico-inutil-o-no",
+      "title": "El apéndice humano: ¿Un órgano biológico inútil o no?",
+      "order": 142,
+      "description": "Desmitificamos la biología de este apéndice intestinal revisando la nueva evidencia que lo considera un vital refugio biológico para las bacterias beneficiosas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "biofluorescencia-animal-la-luz-secreta-de-la-ecologia",
+      "title": "Biofluorescencia animal: La luz secreta de la ecología",
+      "order": 143,
+      "description": "Explicamos la diferencia biológica entre producir luz químicamente y la asombrosa capacidad celular de absorber fotones para brillar en la oscuridad oceánica.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-macrofagos-y-el-vital-escuadron-de-limpieza-humana",
+      "title": "Los macrófagos y el vital escuadrón de limpieza humana",
+      "order": 144,
+      "description": "Nos adentramos en el frente de batalla celular para conocer a los grandes glóbulos blancos especializados en engullir agentes patógenos y restos biológicos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "biologia-del-picante-por-que-nos-fascina-este-ardor",
+      "title": "Biología del picante: ¿Por qué nos fascina este ardor?",
+      "order": 145,
+      "description": "Descubrimos cómo la capsaicina engaña químicamente a nuestros receptores térmicos corporales provocando esa ilusión de gran calor físico que a muchos fascina.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "genes-hox-los-arquitectos-biologicos-del-cuerpo-humano",
+      "title": "Genes Hox: Los arquitectos biológicos del cuerpo humano",
+      "order": 146,
+      "description": "Estudiamos este fascinante grupo de genes que regulan el enorme desarrollo embrionario y dictan exactamente dónde debe ir cada extremidad en los seres vivos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "celulas-hela-la-biologia-del-extrano-linaje-inmortal",
+      "title": "Células HeLa: La biología del extraño linaje inmortal",
+      "order": 147,
+      "description": "Analizamos el histórico caso biológico de unas células oncológicas humanas que jamás dejan de dividirse y que revolucionaron por completo la ciencia genética.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "comunicacion-quimica-el-lenguaje-biologico-de-hormigas",
+      "title": "Comunicación química: El lenguaje biológico de hormigas",
+      "order": 148,
+      "description": "Exploramos las sofisticadas feromonas y señales olfativas que utilizan estos complejos insectos sociales para organizar biológicamente toda su colonia diaria.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "linfocitos-t-las-fuerzas-especiales-del-sistema-inmune",
+      "title": "Linfocitos T: Las fuerzas especiales del sistema inmune",
+      "order": 149,
+      "description": "Comprendemos cómo estas complejas células maduran en nuestro timo humano para lograr destruir amenazas virales ocultas de una forma altamente especializada.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "miembro-fantasma-la-neurobiologia-de-una-gran-ilusion",
+      "title": "Miembro fantasma: La neurobiología de una gran ilusión",
+      "order": 150,
+      "description": "Exploramos el misterioso y complejo fenómeno cerebral por el cual muchísimos pacientes perciben sensaciones físicas en sus extremidades que han sido amputadas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-tardigrados-y-la-resistencia-biologica-extrema",
+      "title": "Los tardígrados y la resistencia biológica extrema",
+      "order": 151,
+      "description": "Descubre los secretos moleculares de los osos de agua, seres microscópicos capaces de sobrevivir al vacío del espacio y a la radiación letal.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-del-sudor-y-el-control-de-la-temperatura",
+      "title": "La biología del sudor y el control de la temperatura",
+      "order": 152,
+      "description": "Analizamos el crucial mecanismo fisiológico de la transpiración humana y cómo nuestras glándulas nos protegen de sufrir un grave golpe de calor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "daltonismo-la-genetica-detras-de-la-percepcion-visual",
+      "title": "Daltonismo: La genética detrás de la percepción visual",
+      "order": 153,
+      "description": "Comprendemos las mutaciones hereditarias en nuestros fotorreceptores retinianos que alteran la capacidad biológica para distinguir los colores.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fitoquimica-letal-la-biologia-de-las-plantas-toxicas",
+      "title": "Fitoquímica letal: La biología de las plantas tóxicas",
+      "order": 154,
+      "description": "Exploramos las complejas moléculas defensivas que ha desarrollado la botánica evolutiva para intoxicar y paralizar a sus grandes depredadores.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "bioelectrogenesis-los-animales-que-generan-electricidad",
+      "title": "Bioelectrogénesis: Los animales que generan electricidad",
+      "order": 155,
+      "description": "Descubrimos la anatomía celular de las anguilas y rayas marinas capaces de emitir fuertes descargas eléctricas para cazar y lograr defenderse.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "reparacion-del-adn-nuestro-sistema-de-control-genetico",
+      "title": "Reparación del ADN: Nuestro sistema de control genético",
+      "order": 156,
+      "description": "Estudiamos a los diligentes complejos enzimáticos encargados de revisar y corregir diariamente los letales errores en nuestro código biológico.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-vesicula-biliar-y-la-biologia-quimica-de-la-digestion",
+      "title": "La vesícula biliar y la biología química de la digestión",
+      "order": 157,
+      "description": "Analizamos el funcionamiento del pequeño órgano que almacena la bilis hepática, una sustancia biológica vital para degradar las grasas que ingerimos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-lisosomas-el-sistema-de-reciclaje-de-la-gran-celula",
+      "title": "Los lisosomas: El sistema de reciclaje de la gran célula",
+      "order": 158,
+      "description": "Nos sumergimos en las vesículas celulares llenas de potentes enzimas que degradan los desechos biológicos para mantener un interior muy limpio.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-neurobiologia-de-los-pulpos-y-su-gran-inteligencia",
+      "title": "La neurobiología de los pulpos y su gran inteligencia",
+      "order": 159,
+      "description": "Exploramos el fascinante cerebro distribuido de estos invertebrados marinos, sus increíbles capacidades cognitivas y resolución de problemas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "dendrocronologia-la-biologia-del-crecimiento-arboreo",
+      "title": "Dendrocronología: La biología del crecimiento arbóreo",
+      "order": 160,
+      "description": "Comprendemos cómo el cambium vegetal forma anillos concéntricos anuales que revelan la historia climática y las heridas vitales de los bosques.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "latencia-viral-los-virus-que-duermen-en-nuestro-adn",
+      "title": "Latencia viral: Los virus que duermen en nuestro ADN",
+      "order": 161,
+      "description": "Analizamos las insidiosas estrategias del herpes y el VIH humano para ocultarse silenciosamente en las células y reactivarse con gran fuerza.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "especies-clave-los-grandes-arquitectos-del-ecosistema",
+      "title": "Especies clave: Los grandes arquitectos del ecosistema",
+      "order": 162,
+      "description": "Descubrimos por qué la desaparición biológica de lobos y castores puede provocar el colapso repentino de vastos e intrincados entornos naturales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "epistasia-genetica-cuando-los-genes-silencian-a-otros",
+      "title": "Epistasia genética: Cuando los genes silencian a otros",
+      "order": 163,
+      "description": "Estudiamos la asombrosa y compleja interacción biológica donde un gen específico logra bloquear la expresión visible de otras secuencias del ADN.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fatiga-olfativa-por-que-dejamos-de-percibir-los-olores",
+      "title": "Fatiga olfativa: Por qué dejamos de percibir los olores",
+      "order": 164,
+      "description": "Comprendemos el mecanismo neurobiológico por el cual nuestros receptores nasales se saturan rápidamente y cancelan estímulos aromáticos diarios.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fuentes-hidrotermales-la-oscura-biologia-del-abismo-marino",
+      "title": "Fuentes hidrotermales: La oscura biología del abismo marino",
+      "order": 165,
+      "description": "Exploramos los extraordinarios ecosistemas que prosperan en la oscuridad oceánica, sostenidos biológicamente por bacterias quimiosintéticas vitales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-de-la-fiebre-el-calor-para-matar-patogenos",
+      "title": "La biología de la fiebre: El calor para matar patógenos",
+      "order": 166,
+      "description": "Analizamos la crucial respuesta del hipotálamo humano para elevar nuestra temperatura interna y crear un entorno hostil para infecciones biológicas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fotoperiodicidad-como-miden-el-tiempo-las-plantas",
+      "title": "Fotoperiodicidad: ¿Cómo miden el tiempo las plantas?",
+      "order": 167,
+      "description": "Descubrimos los impresionantes fotorreceptores botánicos que miden las horas exactas de luz y oscuridad para detonar la vital época de floración.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ranas-congeladas-la-biologia-de-la-criopreservacion",
+      "title": "Ranas congeladas: La biología de la criopreservación",
+      "order": 168,
+      "description": "Estudiamos a los increíbles anfibios biológicos que logran sobrevivir al invierno extremo fabricando un asombroso anticongelante celular interno.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-quimerismo-genetico-dos-adn-distintos-en-un-solo-cuerpo",
+      "title": "El quimerismo genético: Dos ADN distintos en un solo cuerpo",
+      "order": 169,
+      "description": "Comprendemos el impactante fenómeno biológico donde dos gemelos embrionarios se fusionan temprano, originando adultos con secuencias genéticas dobles.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "neuronas-espejo-la-neurobiologia-de-la-gran-empatia",
+      "title": "Neuronas espejo: La neurobiología de la gran empatía",
+      "order": 170,
+      "description": "Analizamos las fascinantes células cerebrales que se activan biológicamente tanto cuando actuamos como cuando observamos las acciones de otros seres.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "alelopatia-vegetal-la-incesante-guerra-quimica-botanica",
+      "title": "Alelopatía vegetal: La incesante guerra química botánica",
+      "order": 171,
+      "description": "Descubrimos cómo ciertas especies botánicas liberan potentes toxinas naturales al suelo para inhibir activamente el crecimiento de plantas rivales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "pleiotropia-biologica-un-solo-gen-para-muchos-rasgos",
+      "title": "Pleiotropía biológica: Un solo gen para muchos rasgos",
+      "order": 172,
+      "description": "Exploramos el intrigante fenómeno hereditario donde un único gen en nuestra secuencia logra afectar características corporales totalmente inconexas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-de-las-aranas-y-la-resistencia-de-su-gran-seda",
+      "title": "La biología de las arañas y la resistencia de su gran seda",
+      "order": 173,
+      "description": "Estudiamos la asombrosa química de las glándulas arácnidas que producen esta fibra biológica, mucho más resistente que el acero y súper flexible.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-de-las-lagrimas-emocion-y-proteccion-visual",
+      "title": "La biología de las lágrimas: Emoción y protección visual",
+      "order": 174,
+      "description": "Comprendemos los tres diferentes tipos de fluidos lacrimales que nuestros ojos logran generar y la increíble composición química celular de cada uno.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "diatomeas-fitoplancton-con-caparazon-de-puro-cristal",
+      "title": "Diatomeas: Fitoplancton con caparazón de puro cristal",
+      "order": 175,
+      "description": "Analizamos a estas maravillosas y microscópicas algas fotosintéticas unicelulares responsables de producir gran parte de nuestro oxígeno planetario.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "telomerasa-la-increible-enzima-de-la-juventud-humana",
+      "title": "Telomerasa: La increíble enzima de la juventud humana",
+      "order": 176,
+      "description": "Nos adentramos en la asombrosa biología de la proteína que repara nuestros cromosomas y su inmenso potencial médico para retrasar el envejecimiento.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "alfred-wallace-la-otra-gran-historia-de-la-evolucion",
+      "title": "Alfred Wallace: La otra gran historia de la evolución",
+      "order": 177,
+      "description": "Descubrimos la vida del gran naturalista que formuló la teoría vital de la selección natural biológica de forma paralela a los trabajos de Darwin.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-peroxisomas-y-el-control-de-la-toxicidad-celular",
+      "title": "Los peroxisomas y el control de la toxicidad celular",
+      "order": 178,
+      "description": "Exploramos las orgánelas microscópicas fundamentales que protegen a nuestras frágiles células humanas de la peligrosa acumulación de agua oxigenada.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "foliculos-pilosos-la-biologia-del-crecimiento-capilar",
+      "title": "Folículos pilosos: La biología del crecimiento capilar",
+      "order": 179,
+      "description": "Estudiamos los mini-órganos cíclicos de nuestra piel, responsables de formar el cabello humano a través de asombrosas y activas fases celulares.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "corredores-biologicos-uniendo-la-naturaleza-aislada",
+      "title": "Corredores biológicos: Uniendo la naturaleza aislada",
+      "order": 180,
+      "description": "Comprendemos la importancia vital de estas franjas ecológicas que logran reconectar poblaciones aisladas salvando la rica diversidad genética animal.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-medula-osea-y-la-gran-fabrica-de-celulas-sanguineas",
+      "title": "La médula ósea y la gran fábrica de células sanguíneas",
+      "order": 181,
+      "description": "Descubrimos el vital tejido esponjoso en el interior de nuestros huesos que genera diariamente millones de glóbulos rojos y blancos para mantenernos vivos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cromatoforos-la-biologia-del-camuflaje-animal-perfecto",
+      "title": "Cromatóforos: La biología del camuflaje animal perfecto",
+      "order": 182,
+      "description": "Analizamos cómo pulpos y camaleones utilizan complejas células pigmentarias para lograr mimetizarse instantáneamente con cualquier entorno que los rodee.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-del-hipo-humano-y-nuestros-reflejos-perdidos",
+      "title": "La biología del hipo humano y nuestros reflejos perdidos",
+      "order": 183,
+      "description": "Exploramos la curiosa base anatómica y evolutiva detrás de este espasmo diafragmático involuntario que parece provenir de nuestros antiguos ancestros.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "reaccion-en-cadena-de-la-polimerasa-y-el-analisis-de-adn",
+      "title": "Reacción en cadena de la polimerasa y el análisis de ADN",
+      "order": 184,
+      "description": "Comprendemos el asombroso método de laboratorio biológico que permite multiplicar millones de veces una diminuta muestra genética para poder estudiarla.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-cuerpo-calloso-y-la-biologia-de-los-dos-hemisferios",
+      "title": "El cuerpo calloso y la biología de los dos hemisferios",
+      "order": 185,
+      "description": "Estudiamos la vital carretera de fibras nerviosas que conecta y coordina constantemente las mitades de nuestro cerebro para unificar nuestra percepción.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-colibri-y-su-increible-metabolismo-hiperactivo-diario",
+      "title": "El colibrí y su increíble metabolismo hiperactivo diario",
+      "order": 186,
+      "description": "Nos adentramos en la asombrosa biología de estas veloces aves que deben consumir néctar continuamente y entrar en torpor nocturno para no morir de hambre.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-ganglios-linfaticos-filtros-del-sistema-inmunologico",
+      "title": "Los ganglios linfáticos: Filtros del sistema inmunológico",
+      "order": 187,
+      "description": "Analizamos las vitales estaciones de control de nuestro organismo, responsables de atrapar bacterias y activar a los linfocitos ante cualquier infección.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "poliploidia-genetica-el-secreto-evolutivo-de-las-plantas",
+      "title": "Poliploidía genética: El secreto evolutivo de las plantas",
+      "order": 188,
+      "description": "Descubrimos cómo la multiplicación de los conjuntos cromosómicos completos ha sido una enorme ventaja biológica para crear nuevas especies en la botánica.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "batracotoxina-la-letal-biologia-de-las-ranas-venenosas",
+      "title": "Batracotoxina: La letal biología de las ranas venenosas",
+      "order": 189,
+      "description": "Exploramos cómo estos coloridos anfibios logran asimilar potentes toxinas de su dieta insectívora para secretarlas por la piel como defensa biológica.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "microbioma-cutaneo-el-escudo-bacteriano-sobre-la-piel",
+      "title": "Microbioma cutáneo: El escudo bacteriano sobre la piel",
+      "order": 190,
+      "description": "Estudiamos a los millones de microorganismos beneficiosos que colonizan nuestra superficie corporal para protegernos activamente de patógenos invasivos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "neurogenesis-adulta-la-creacion-de-nuevas-neuronas-hoy",
+      "title": "Neurogénesis adulta: La creación de nuevas neuronas hoy",
+      "order": 191,
+      "description": "Desmitificamos el antiguo dogma cerebral para comprender cómo ciertas regiones de nuestra mente humana logran generar neuronas nuevas a lo largo de la vida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "mecanorreceptores-y-la-maravillosa-biologia-del-tacto",
+      "title": "Mecanorreceptores y la maravillosa biología del tacto",
+      "order": 192,
+      "description": "Analizamos las complejas terminales nerviosas de nuestra piel humana que nos permiten sentir la presión corporal, las texturas físicas y las vibraciones.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "enfermedad-celiaca-una-guerra-inmunologica-en-el-intestino",
+      "title": "Enfermedad celíaca: Una guerra inmunológica en el intestino",
+      "order": 193,
+      "description": "Comprendemos exactamente qué ocurre a nivel biológico cuando el consumo de la proteína del gluten desencadena una grave respuesta autoinmune en el cuerpo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-auxinas-vegetales-hormonas-del-crecimiento-botanico",
+      "title": "Las auxinas vegetales: Hormonas del crecimiento botánico",
+      "order": 194,
+      "description": "Exploramos las fundamentales sustancias químicas biológicas que guían el alargamiento celular, la formación de raíces y la adaptación vital de las plantas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-fascinante-biologia-de-la-bacteria-mas-resistente",
+      "title": "La fascinante biología de la bacteria más resistente",
+      "order": 195,
+      "description": "Nos asombramos con los increíbles mecanismos de reparación genética del Deinococcus radiodurans, capaz de sobrevivir a extremas dosis de radiación letal.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "albinismo-biologico-la-genetica-detras-de-la-falta-de-color",
+      "title": "Albinismo biológico: La genética detrás de la falta de color",
+      "order": 196,
+      "description": "Analizamos las mutaciones enzimáticas que impiden la síntesis biológica de la melanina, afectando la pigmentación en humanos y en muchas otras especies.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "reticulo-endoplasmatico-la-red-de-transporte-celular",
+      "title": "Retículo endoplasmático: La red de transporte celular",
+      "order": 197,
+      "description": "Estudiamos al vital orgánulo membranoso responsable de sintetizar grandes lípidos y ayudar a plegar las proteínas necesarias para nuestra función celular.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-glandulas-salivales-y-el-inicio-de-la-digestion-humana",
+      "title": "Las glándulas salivales y el inicio de la digestión humana",
+      "order": 198,
+      "description": "Descubrimos cómo la producción biológica de nuestra saliva descompone alimentos químicamente, protege nuestros dientes y defiende activamente nuestra boca.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "especies-en-anillo-la-evolucion-biologica-en-camara-lenta",
+      "title": "Especies en anillo: La evolución biológica en cámara lenta",
+      "order": 199,
+      "description": "Exploramos este fascinante concepto evolutivo donde poblaciones vecinas pueden cruzarse, pero los extremos del anillo biológico son totalmente incompatibles.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-organo-de-jacobson-y-el-sentido-oculto-de-los-animales",
+      "title": "El órgano de Jacobson y el sentido oculto de los animales",
+      "order": 200,
+      "description": "Comprendemos la sofisticada biología olfativa que permite a serpientes y mamíferos captar importantes señales químicas y reproductivas del medio ambiente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-hemofilia-humana-genetica-de-los-coagulos-fallidos",
+      "title": "La hemofilia humana: Genética de los coágulos fallidos",
+      "order": 201,
+      "description": "Analizamos la histórica mutación en el cromosoma X que impide la correcta coagulación biológica de la sangre y su enorme impacto en las familias reales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "biomagnificacion-como-las-toxinas-suben-en-la-red-trofica",
+      "title": "Biomagnificación: Cómo las toxinas suben en la red trófica",
+      "order": 202,
+      "description": "Estudiamos el peligroso proceso biológico mediante el cual los metales pesados y pesticidas se acumulan letalmente en los grandes depredadores naturales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-del-esmalte-dental-y-la-evolucion-de-los-dientes",
+      "title": "La biología del esmalte dental y la evolución de los dientes",
+      "order": 203,
+      "description": "Descubrimos el tejido más duro de todo el cuerpo humano, su particular composición mineral química y cómo nos ha permitido procesar alimentos y sobrevivir.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-danza-de-las-abejas-el-lenguaje-biologico-espacial",
+      "title": "La danza de las abejas: El lenguaje biológico espacial",
+      "order": 204,
+      "description": "Exploramos la compleja coreografía que estos insectos sociales utilizan para comunicar vectores exactos de dirección y gran distancia hacia varias flores.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-ciclo-ovarico-humano-y-la-biologia-de-la-fertilidad",
+      "title": "El ciclo ovárico humano y la biología de la fertilidad",
+      "order": 205,
+      "description": "Analizamos los precisos y complejos cambios hormonales que orquestan la maduración folicular y preparan biológicamente al cuerpo para una gran gestación.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-cerebelo-humano-nuestro-gran-coordinador-motriz-vital",
+      "title": "El cerebelo humano: Nuestro gran coordinador motriz vital",
+      "order": 206,
+      "description": "Nos adentramos en la región del encéfalo que contiene más de la mitad de nuestras neuronas, esencial para el equilibrio corporal y la memoria muscular.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-plantas-parasitas-y-la-biologia-del-gran-robo-botanico",
+      "title": "Las plantas parásitas y la biología del gran robo botánico",
+      "order": 207,
+      "description": "Estudiamos a las intrigantes especies vegetales que han perdido la capacidad biológica de hacer fotosíntesis y ahora extraen la savia de otros árboles.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "organos-vestigiales-los-ecos-fisicos-de-nuestra-evolucion",
+      "title": "Órganos vestigiales: Los ecos físicos de nuestra evolución",
+      "order": 208,
+      "description": "Comprendemos por qué los humanos todavía conservamos estructuras anatómicas biológicas como el coxis o las muelas del juicio que ya no resultan útiles hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-trisomias-geneticas-y-el-cromosoma-extra-en-humanos",
+      "title": "Las trisomías genéticas y el cromosoma extra en humanos",
+      "order": 209,
+      "description": "Analizamos el fenómeno celular de la no disyunción durante la meiosis y cómo la presencia de un cromosoma biológico extra afecta al desarrollo general.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gigantismo-insular-cuando-los-animales-pequenos-crecen",
+      "title": "Gigantismo insular: Cuando los animales pequeños crecen",
+      "order": 210,
+      "description": "Exploramos la asombrosa biología evolutiva que impulsa a las pequeñas especies aisladas a alcanzar tamaños colosales debido a la falta de depredadores.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-citoesqueleto-la-gran-arquitectura-interna-celular",
+      "title": "El citoesqueleto: La gran arquitectura interna celular",
+      "order": 211,
+      "description": "Comprendemos la dinámica red de microtúbulos y filamentos que otorgan la forma, resistencia estructural y gran movilidad a todas nuestras células.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-microbiota-del-tracto-reproductivo-humano-femenino",
+      "title": "La microbiota del tracto reproductivo humano femenino",
+      "order": 212,
+      "description": "Analizamos el delicado ecosistema de lactobacilos biológicos que mantienen un pH ácido vital para proteger la salud y prevenir fuertes infecciones.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "autofagia-el-asombroso-sistema-de-reciclaje-celular",
+      "title": "Autofagia: El asombroso sistema de reciclaje celular",
+      "order": 213,
+      "description": "Estudiamos el proceso biológico fundamental donde la célula degrada activamente sus propios componentes dañados para poder sobrevivir y rejuvenecerse.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-nervio-vago-humano-y-su-inmensa-red-neurobiologica",
+      "title": "El nervio vago humano y su inmensa red neurobiológica",
+      "order": 214,
+      "description": "Exploramos el supercable biológico que conecta nuestro cerebro humano con los grandes órganos, controlando el ritmo cardíaco y la vital digestión.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-tolerancia-inmunologica-y-la-prevencion-autoinmune",
+      "title": "La tolerancia inmunológica y la prevención autoinmune",
+      "order": 215,
+      "description": "Descubrimos cómo nuestro sistema de defensas biológicas aprende tempranamente a no atacar a los tejidos propios, evitando graves daños fisiológicos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "entomologia-forense-insectos-en-la-biologia-criminal",
+      "title": "Entomología forense: Insectos en la biología criminal",
+      "order": 216,
+      "description": "Analizamos cómo el ciclo vital y biológico de las moscas ayuda a los científicos forenses a determinar con gran precisión el momento del fallecimiento.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-mioglobina-y-el-gran-almacenamiento-de-oxigeno-vital",
+      "title": "La mioglobina y el gran almacenamiento de oxígeno vital",
+      "order": 217,
+      "description": "Estudiamos la proteína esencial que acumula oxígeno directamente dentro de nuestros músculos, permitiendo una inmensa resistencia en mamíferos marinos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "tigmotropismo-vegetal-las-plantas-que-sienten-el-tacto",
+      "title": "Tigmotropismo vegetal: Las plantas que sienten el tacto",
+      "order": 218,
+      "description": "Exploramos el sorprendente crecimiento biológico guiado por el contacto físico, permitiendo a las grandes enredaderas trepar para buscar la luz solar.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-metabolismo-basal-y-la-energia-humana-en-pleno-reposo",
+      "title": "El metabolismo basal y la energía humana en pleno reposo",
+      "order": 219,
+      "description": "Comprendemos exactamente la cantidad de calorías biológicas que nuestros órganos internos requieren diariamente solo para mantenernos con vida natural.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "celulas-de-schwann-el-vital-aislamiento-del-gran-nervio",
+      "title": "Células de Schwann: El vital aislamiento del gran nervio",
+      "order": 220,
+      "description": "Descubrimos la función indispensable de la mielina biológica creada por estas grandes células para acelerar el impulso nervioso en todo el cuerpo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-mutaciones-silenciosas-y-la-variabilidad-genetica",
+      "title": "Las mutaciones silenciosas y la variabilidad genética",
+      "order": 221,
+      "description": "Analizamos aquellos cambios aleatorios en nuestra secuencia de ADN que no alteran la proteína final pero impulsan la diversidad evolutiva de la especie.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-evolutiva-de-la-lactasa-en-el-ser-humano",
+      "title": "La biología evolutiva de la lactasa en el ser humano",
+      "order": 222,
+      "description": "Estudiamos la asombrosa mutación genética reciente que permitió a gran parte de la población biológica humana seguir digiriendo la leche de mamíferos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-tapetum-lucidum-y-la-biologia-de-la-vision-nocturna",
+      "title": "El tapetum lucidum y la biología de la visión nocturna",
+      "order": 223,
+      "description": "Comprendemos la increíble capa reflectante ocular que permite a felinos y otros grandes depredadores amplificar la escasa luz durante la noche oscura.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "bacteriomas-y-la-asombrosa-simbiosis-en-los-insectos",
+      "title": "Bacteriomas y la asombrosa simbiosis en los insectos",
+      "order": 224,
+      "description": "Exploramos los órganos especializados que ciertos insectos biológicos desarrollaron exclusivamente para alojar a sus vitales bacterias colaboradoras.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-hormona-del-crecimiento-desarrollo-biologico-vital",
+      "title": "La hormona del crecimiento: Desarrollo biológico vital",
+      "order": 225,
+      "description": "Analizamos cómo la glándula pituitaria segrega esta sustancia química para estimular constantemente la reproducción celular y el crecimiento del cuerpo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-dimorfismo-sexual-extremo-y-las-ventajas-biologicas",
+      "title": "El dimorfismo sexual extremo y las ventajas biológicas",
+      "order": 226,
+      "description": "Descubrimos las fuertes razones evolutivas por las cuales machos y hembras de una misma especie biológica pueden presentar apariencias tan divergentes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "estomas-botanicos-las-pequenas-bocas-de-cada-gran-hoja",
+      "title": "Estomas botánicos: Las pequeñas bocas de cada gran hoja",
+      "order": 227,
+      "description": "Nos adentramos en la epidermis vegetal para estudiar los microscópicos poros que regulan activamente el agua y la vital entrada del dióxido de carbono.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-chaperonas-moleculares-asistentes-de-las-proteinas",
+      "title": "Las chaperonas moleculares: Asistentes de las proteínas",
+      "order": 228,
+      "description": "Comprendemos la labor biológica de estas increíbles enzimas que garantizan que las demás proteínas se plieguen correctamente para lograr su gran función.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-herencia-mitocondrial-el-adn-exclusivo-de-tu-madre",
+      "title": "La herencia mitocondrial: El ADN exclusivo de tu madre",
+      "order": 229,
+      "description": "Exploramos por qué todo el material genético de nuestras propias mitocondrias humanas proviene biológicamente de la línea materna en la gran gestación.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-mutualismo-defensivo-guardaespaldas-en-la-ecologia",
+      "title": "El mutualismo defensivo: Guardaespaldas en la ecología",
+      "order": 230,
+      "description": "Analizamos las extraordinarias relaciones biológicas donde una especie animal o vegetal ofrece valioso alimento a cambio de protección física muy letal.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-espermatogenesis-celular-y-la-gran-creacion-de-vida",
+      "title": "La espermatogénesis celular y la gran creación de vida",
+      "order": 231,
+      "description": "Estudiamos el complejo ciclo biológico en los testículos masculinos que logra producir ininterrumpidamente millones de células reproductivas cada día.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "termogenesis-humana-el-vital-movimiento-para-el-calor",
+      "title": "Termogénesis humana: El vital movimiento para el calor",
+      "order": 232,
+      "description": "Descubrimos la respuesta neurológica involuntaria que hace contraer a nuestros músculos rápidamente para generar calor biológico y evitar la hipotermia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-sudor-apocrino-y-la-biologia-de-las-fuertes-emociones",
+      "title": "El sudor apocrino y la biología de las fuertes emociones",
+      "order": 233,
+      "description": "Comprendemos la diferencia celular entre las glándulas sudoríparas comunes y aquellas que reaccionan biológicamente ante el estrés o ansiedad humana.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "genomica-comparada-leyendo-las-diferencias-evolutivas",
+      "title": "Genómica comparada: Leyendo las diferencias evolutivas",
+      "order": 234,
+      "description": "Exploramos cómo el análisis masivo del ADN de múltiples especies revela cuáles genes biológicos son muy antiguos y cómo hemos evolucionado enormemente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-astrocitos-la-inmensa-red-de-control-neurologico",
+      "title": "Los astrocitos: La inmensa red de control neurológico",
+      "order": 235,
+      "description": "Analizamos estas vitales células gliales con forma de estrellas que regulan el gran flujo sanguíneo y modulan las sinapsis de nuestro cerebro biológico.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-reloj-molecular-y-la-datacion-de-nuestras-especies",
+      "title": "El reloj molecular y la datación de nuestras especies",
+      "order": 236,
+      "description": "Estudiamos el método genético que cuenta mutaciones acumuladas en el ADN para calcular biológicamente cuándo se separaron dos grandes linajes naturales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "biologia-de-las-garras-y-las-pezunas-de-los-mamiferos",
+      "title": "Biología de las garras y las pezuñas de los mamíferos",
+      "order": 237,
+      "description": "Descubrimos la evolución biológica de estas duras estructuras de queratina y cómo se adaptaron físicamente a la caza, la defensa y las grandes carreras.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-osmorregulacion-marina-y-la-biologia-de-la-gran-sal",
+      "title": "La osmorregulación marina y la biología de la gran sal",
+      "order": 238,
+      "description": "Comprendemos los desafíos bioquímicos que enfrentan los grandes peces de mar para evitar la severa deshidratación biológica en aguas altamente salinas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-mimetismo-batesiano-copiando-a-los-seres-peligrosos",
+      "title": "El mimetismo batesiano: Copiando a los seres peligrosos",
+      "order": 239,
+      "description": "Exploramos la asombrosa estrategia evolutiva donde una especie inofensiva imita los colores brillantes de un animal tóxico para lograr evadir el peligro.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "splicing-alternativo-creando-grandes-proteinas-unicas",
+      "title": "Splicing alternativo: Creando grandes proteínas únicas",
+      "order": 240,
+      "description": "Analizamos el ingenioso mecanismo genético que le permite a un solo gen biológico producir múltiples proteínas biológicas diferentes de forma asombrosa.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-genoma-oscuro-y-los-misterios-del-adn-no-codificante",
+      "title": "El genoma oscuro y los misterios del ADN no codificante",
+      "order": 241,
+      "description": "Exploramos la inmensa porción de nuestro material genético que no produce proteínas, pero regula activamente las funciones biológicas más esenciales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "barrera-hematoencefalica-la-gran-fortaleza-del-cerebro",
+      "title": "Barrera hematoencefálica: La gran fortaleza del cerebro",
+      "order": 242,
+      "description": "Estudiamos la vital y selectiva frontera celular que protege fuertemente a nuestro cerebro humano de los peligrosos patógenos presentes en la sangre.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-transferencia-horizontal-de-genes-en-la-gran-naturaleza",
+      "title": "La transferencia horizontal de genes en la gran naturaleza",
+      "order": 243,
+      "description": "Analizamos cómo las bacterias y otros organismos logran intercambiar secuencias genéticas directamente sin necesidad de la reproducción celular natural.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "celulas-natural-killer-sicarios-del-sistema-inmunologico",
+      "title": "Células Natural Killer: Sicarios del sistema inmunológico",
+      "order": 244,
+      "description": "Nos adentramos en la fascinante biología de estos glóbulos blancos humanos especializados en detectar y destruir rápidamente a las células cancerígenas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "propiocepcion-humana-el-sexto-sentido-de-nuestro-cuerpo",
+      "title": "Propiocepción humana: El sexto sentido de nuestro cuerpo",
+      "order": 245,
+      "description": "Comprendemos el vital y complejo sistema neurológico que permite a nuestro cerebro humano conocer la posición exacta de cada extremidad física diaria.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-biofilms-bacterianos-las-grandes-ciudades-microbianas",
+      "title": "Los biofilms bacterianos: Las grandes ciudades microbianas",
+      "order": 246,
+      "description": "Descubrimos cómo las bacterias logran agruparse para formar comunidades sumamente resistentes que las protegen de nuestros potentes antibióticos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-genetica-de-grupos-sanguineos-raros-y-la-sangre-dorada",
+      "title": "La genética de grupos sanguíneos raros y la sangre dorada",
+      "order": 247,
+      "description": "Exploramos las asombrosas mutaciones genéticas que dan origen a fenotipos sanguíneos únicos en el mundo y los enormes retos médicos que traen siempre.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-del-cordon-umbilical-el-gran-vinculo-vital",
+      "title": "La biología del cordón umbilical: El gran vínculo vital",
+      "order": 248,
+      "description": "Analizamos la compleja red de vasos sanguíneos que transporta vitales nutrientes y valioso oxígeno desde la madre hacia el feto en gran desarrollo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-gen-supresor-de-tumores-p53-el-gran-guardian-del-genoma",
+      "title": "El gen supresor de tumores p53: El gran guardián del genoma",
+      "order": 249,
+      "description": "Estudiamos la asombrosa proteína celular encargada de vigilar nuestro ADN y detener la perjudicial división de cualquier célula con mutaciones letales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-fisiologia-de-la-sed-humana-y-el-equilibrio-de-liquidos",
+      "title": "La fisiología de la sed humana y el equilibrio de líquidos",
+      "order": 250,
+      "description": "Comprendemos los sensibles receptores cerebrales que detectan la deshidratación y nos impulsan instintivamente a beber agua para lograr sobrevivir.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "adaptaciones-biologicas-extremas-a-las-grandes-altitudes",
+      "title": "Adaptaciones biológicas extremas a las grandes altitudes",
+      "order": 251,
+      "description": "Descubrimos los impresionantes cambios genéticos y celulares que permiten a ciertas poblaciones prosperar donde el oxígeno vital resulta muy escaso.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-sistema-del-complemento-minas-del-sistema-inmunologico",
+      "title": "El sistema del complemento: Minas del sistema inmunológico",
+      "order": 252,
+      "description": "Nos adentramos en la compleja cascada de proteínas plasmáticas que circulan en la sangre listas para perforar y destruir membranas patógenas hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-quorum-sensing-la-sorprendente-comunicacion-bacteriana",
+      "title": "El Quorum sensing: La sorprendente comunicación bacteriana",
+      "order": 253,
+      "description": "Exploramos cómo los microorganismos liberan constantes moléculas químicas para contar su población y coordinar enormes ataques biológicos coordinados.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-tipos-de-fibras-musculares-y-la-gran-genetica-deportiva",
+      "title": "Los tipos de fibras musculares y la gran genética deportiva",
+      "order": 254,
+      "description": "Analizamos la enorme diferencia metabólica entre las células musculares de rápida y lenta contracción y su impacto real en el rendimiento atlético.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-de-las-esponjas-marinas-animales-primordiales",
+      "title": "La biología de las esponjas marinas: Animales primordiales",
+      "order": 255,
+      "description": "Estudiamos la anatomía celular de estos fascinantes organismos carentes de tejidos verdaderos que filtran incansablemente el agua del inmenso océano.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-fisiologia-del-equilibrio-y-el-vital-sistema-vestibular",
+      "title": "La fisiología del equilibrio y el vital sistema vestibular",
+      "order": 256,
+      "description": "Comprendemos los complejos canales semicirculares dentro de nuestro oído interno que son responsables de mantenernos en pie y detectar la gravedad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "optogenetica-el-arte-de-controlar-neuronas-usando-la-luz",
+      "title": "Optogenética: El arte de controlar neuronas usando la luz",
+      "order": 257,
+      "description": "Descubrimos la revolucionaria técnica biológica que emplea proteínas sensibles a la luz para encender o apagar circuitos cerebrales muy precisos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-equilibrio-puntuado-grandes-saltos-de-la-evolucion-hoy",
+      "title": "El equilibrio puntuado: Grandes saltos de la evolución hoy",
+      "order": 258,
+      "description": "Analizamos la fascinante teoría evolutiva que sugiere que las especies cambian biológicamente en ráfagas rápidas tras periodos de estancamiento.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "poliginia-y-poliandria-la-biologia-del-apareamiento-animal",
+      "title": "Poliginia y poliandria: La biología del apareamiento animal",
+      "order": 259,
+      "description": "Exploramos las diferentes e intrigantes estrategias evolutivas que impulsan a muchos grandes animales a formar asombrosos harenes reproductivos reales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-terapia-de-celulas-car-t-y-el-avance-contra-los-tumores",
+      "title": "La terapia de células CAR-T y el avance contra los tumores",
+      "order": 260,
+      "description": "Estudiamos cómo la biotecnología moderna logra rediseñar genéticamente los propios linfocitos del paciente para que aniquilen al cáncer letal hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-de-la-menopausia-y-el-gran-agotamiento-ovarico",
+      "title": "La biología de la menopausia y el gran agotamiento ovárico",
+      "order": 261,
+      "description": "Comprendemos los enormes cambios endocrinos que ocurren cuando los ovarios humanos detienen su ciclo biológico y finaliza la etapa reproductiva.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-celulas-de-kupffer-los-grandes-guardianes-de-tu-higado",
+      "title": "Las células de Kupffer: Los grandes guardianes de tu hígado",
+      "order": 262,
+      "description": "Nos adentramos en el tejido hepático para conocer a estos macrófagos especializados en purificar la sangre de peligrosas toxinas y bacterias graves.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-de-los-ronquidos-y-la-gran-apnea-del-sueno-hoy",
+      "title": "La biología de los ronquidos y la gran apnea del sueño hoy",
+      "order": 263,
+      "description": "Analizamos qué ocurre físicamente en nuestras vías respiratorias relajadas durante la noche oscura y por qué este bloqueo biológico es tan peligroso.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-evolucion-del-bipedismo-cuando-aprendimos-a-caminar-bien",
+      "title": "La evolución del bipedismo: Cuando aprendimos a caminar bien",
+      "order": 264,
+      "description": "Descubrimos los impresionantes y drásticos cambios anatómicos en la columna y pelvis que permitieron a nuestros ancestros erguirse sobre dos pies.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-de-la-fiebre-del-heno-y-la-rinitis-alergica-hoy",
+      "title": "La biología de la fiebre del heno y la rinitis alérgica hoy",
+      "order": 265,
+      "description": "Exploramos la exagerada respuesta inmunológica de nuestras mucosas nasales ante la inofensiva presencia del polen botánico flotando en el aire.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-supercentenarios-y-la-gran-genetica-de-la-longevidad",
+      "title": "Los supercentenarios y la gran genética de la longevidad",
+      "order": 266,
+      "description": "Estudiamos las increíbles secuencias de ADN de aquellas personas que logran superar los ciento diez años de vida con una salud biológica envidiable.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-barrera-placentaria-y-la-gran-inmunidad-del-feto-humano",
+      "title": "La barrera placentaria y la gran inmunidad del feto humano",
+      "order": 267,
+      "description": "Comprendemos cómo este extraordinario y temporal órgano filtra selectivamente los patógenos maternos mientras permite el paso de los anticuerpos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "biologia-de-las-plumas-la-gran-obra-maestra-evolutiva-hoy",
+      "title": "Biología de las plumas: La gran obra maestra evolutiva hoy",
+      "order": 268,
+      "description": "Analizamos la compleja estructura celular que evolucionó inicialmente para dar calor vital y que luego terminó permitiendo el asombroso vuelo aviar.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "nociceptores-y-las-grandes-vias-biologicas-del-dolor-agudo",
+      "title": "Nociceptores y las grandes vías biológicas del dolor agudo",
+      "order": 269,
+      "description": "Descubrimos cómo las terminaciones nerviosas desnudas detectan daños físicos y térmicos para enviar alertas químicas urgentes a nuestro cerebro humano.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-endotoxinas-bacterianas-y-el-peligroso-choque-septico",
+      "title": "Las endotoxinas bacterianas y el peligroso choque séptico",
+      "order": 270,
+      "description": "Estudiamos los graves y muy rápidos efectos inflamatorios sistémicos que ocurren cuando las bacterias gramnegativas liberan sus membranas al morir.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-metabolismo-del-colesterol-y-la-biologia-lipidica",
+      "title": "El metabolismo del colesterol y la biología lipídica",
+      "order": 271,
+      "description": "Analizamos cómo nuestro hígado sintetiza y regula las vitales moléculas de grasa necesarias para construir las células y producir muchas hormonas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-celulas-de-purkinje-el-control-motor-del-cerebro",
+      "title": "Las células de Purkinje: El control motor del cerebro",
+      "order": 272,
+      "description": "Descubrimos a estas inmensas neuronas con forma de árbol que habitan el cerebelo y resultan esenciales para orquestar la precisión del movimiento.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-genetica-del-lenguaje-y-la-evolucion-del-gen-foxp2",
+      "title": "La genética del lenguaje y la evolución del gen FOXP2",
+      "order": 273,
+      "description": "Exploramos la fascinante mutación evolutiva que permitió a nuestros ancestros desarrollar una inmensa capacidad cognitiva para el habla articulada.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "troglobios-las-asombrosas-criaturas-de-las-cavernas",
+      "title": "Troglobios: Las asombrosas criaturas de las cavernas",
+      "order": 274,
+      "description": "Estudiamos las drásticas adaptaciones biológicas de los animales que habitan en perpetua oscuridad perdiendo sus ojos y pigmentación para siempre.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-del-bostezo-un-enigma-fisiologico-actual",
+      "title": "La biología del bostezo: Un enigma fisiológico actual",
+      "order": 275,
+      "description": "Comprendemos las principales teorías neurológicas y biológicas que intentan explicar este contagioso reflejo respiratorio presente en los mamíferos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fecundacion-in-vitro-la-ciencia-de-la-reproduccion",
+      "title": "Fecundación in vitro: La ciencia de la reproducción",
+      "order": 276,
+      "description": "Nos adentramos en el maravilloso proceso de laboratorio clínico que permite la milagrosa unión del óvulo y espermatozoide fuera del cuerpo materno.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-vitamina-d-el-impacto-biologico-de-la-luz-solar",
+      "title": "La vitamina D: El impacto biológico de la luz solar",
+      "order": 277,
+      "description": "Analizamos cómo los rayos ultravioleta desencadenan la síntesis química de esta vital hormona en la piel para fortalecer todo el esqueleto humano.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "linfocitos-b-y-la-gran-memoria-inmunologica-celular",
+      "title": "Linfocitos B y la gran memoria inmunológica celular",
+      "order": 278,
+      "description": "Descubrimos cómo nuestro asombroso sistema de defensas biológicas logra recordar patógenos específicos durante décadas para evitar reinfecciones.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "glandulas-suprarrenales-las-fabricas-de-la-energia",
+      "title": "Glándulas suprarrenales: Las fábricas de la energía",
+      "order": 279,
+      "description": "Exploramos estos pequeños pero potentes órganos endocrinos que regulan nuestro estrés fisiológico produciendo el cortisol y la fuerte adrenalina.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-evolucion-de-los-cetaceos-y-el-regreso-a-los-mares",
+      "title": "La evolución de los cetáceos y el regreso a los mares",
+      "order": 280,
+      "description": "Estudiamos los contundentes registros fósiles que demuestran cómo un grupo de mamíferos terrestres se adaptó gradualmente a la vida acuática total.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "arterias-y-venas-el-inmenso-circuito-cardiovascular",
+      "title": "Arterias y venas: El inmenso circuito cardiovascular",
+      "order": 281,
+      "description": "Comprendemos las diferencias estructurales y biológicas entre los elásticos vasos que alejan la sangre del corazón y las válvulas que la retornan.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "genetica-ligada-al-cromosoma-x-la-herencia-maternal",
+      "title": "Genética ligada al cromosoma X: La herencia maternal",
+      "order": 282,
+      "description": "Analizamos cómo las mutaciones biológicas ubicadas en los cromosomas sexuales afectan de manera desproporcionada y frecuente a los varones de hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fitocromos-los-increibles-fotorreceptores-botanicos",
+      "title": "Fitocromos: Los increíbles fotorreceptores botánicos",
+      "order": 283,
+      "description": "Descubrimos cómo las plantas logran detectar el color exacto y la calidad biológica de la luz ambiental para guiar su gran desarrollo estructural.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-liquido-cefalorraquideo-el-gran-mar-de-la-mente",
+      "title": "El líquido cefalorraquídeo: El gran mar de la mente",
+      "order": 284,
+      "description": "Exploramos la vital función protectora y limpiadora de este fluido biológico transparente que amortigua nuestro delicado cerebro contra los golpes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-del-orgasmo-neuroquimica-de-la-respuesta",
+      "title": "La biología del orgasmo: Neuroquímica de la respuesta",
+      "order": 285,
+      "description": "Estudiamos la intensa cascada de neurotransmisores y las fuertes contracciones rítmicas que ocurren biológicamente en el clímax sexual del humano.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "resistencia-bacteriana-la-crisis-de-los-antibioticos",
+      "title": "Resistencia bacteriana: La crisis de los antibióticos",
+      "order": 286,
+      "description": "Analizamos el peligroso proceso evolutivo que permite a los microorganismos desarrollar inmensas defensas genéticas frente a los fármacos modernos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "neutrofilos-humanos-los-kamikazes-del-sistema-inmune",
+      "title": "Neutrófilos humanos: Los kamikazes del sistema inmune",
+      "order": 287,
+      "description": "Nos adentramos en la agresiva biología de estos abundantes glóbulos blancos que devoran patógenos y mueren formando el tejido que llamamos pus hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "enzimas-de-restriccion-las-grandes-tijeras-del-adn",
+      "title": "Enzimas de restricción: Las grandes tijeras del ADN",
+      "order": 288,
+      "description": "Comprendemos el asombroso mecanismo de defensa bacteriano biológico que revolucionó por completo a la ingeniería genética y la clonación celular.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "microbiota-bucal-humana-el-gran-ecosistema-salival",
+      "title": "Microbiota bucal humana: El gran ecosistema salival",
+      "order": 289,
+      "description": "Descubrimos la inmensa diversidad de bacterias que habitan nuestra boca y su profundo impacto biológico en el desarrollo de peligrosas caries hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "especiacion-alopatrica-la-gran-barrera-geografica-hoy",
+      "title": "Especiación alopátrica: La gran barrera geográfica hoy",
+      "order": 290,
+      "description": "Exploramos cómo la separación física biológica por inmensas montañas o ríos profundos impulsa a las poblaciones naturales a divergir genéticamente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "biologia-del-tejido-adiposo-blanco-y-la-gran-obesidad",
+      "title": "Biología del tejido adiposo blanco y la gran obesidad",
+      "order": 291,
+      "description": "Estudiamos las complejas funciones endocrinas de las inmensas reservas grasas humanas que van mucho más allá de almacenar energía para el cuerpo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "evolucion-convergente-de-los-ojos-en-grandes-especies",
+      "title": "Evolución convergente de los ojos en grandes especies",
+      "order": 292,
+      "description": "Analizamos cómo los pulpos y los humanos lograron desarrollar órganos visuales estructuralmente idénticos a través de linajes biológicos distintos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-del-timo-y-la-maduracion-de-los-linfocitos",
+      "title": "La biología del timo y la maduración de los linfocitos",
+      "order": 293,
+      "description": "Nos adentramos en el pequeño pero vital órgano linfático biológico donde nuestras células inmunes aprenden rigurosamente a proteger todo el cuerpo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fisiologia-del-ayuno-la-adaptacion-metabolica-extrema",
+      "title": "Fisiología del ayuno: La adaptación metabólica extrema",
+      "order": 294,
+      "description": "Comprendemos los dramáticos y vitales cambios hormonales y biológicos que ocurren en nuestras células cuando pasamos muchas horas sin ingerir comida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-colageno-y-la-gran-resistencia-estructural-del-cuerpo",
+      "title": "El colágeno y la gran resistencia estructural del cuerpo",
+      "order": 295,
+      "description": "Descubrimos la inmensa importancia de la proteína celular abundante del cuerpo humano que da firmeza a la piel y elasticidad a tendones biológicos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cromosomas-zw-la-determinacion-genetica-en-las-aves",
+      "title": "Cromosomas ZW: La determinación genética en las aves",
+      "order": 296,
+      "description": "Exploramos el fascinante sistema genético reproductivo donde las hembras emplumadas son las grandes responsables de determinar el sexo biológico.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "prostaglandinas-las-grandes-senales-de-inflamacion-hoy",
+      "title": "Prostaglandinas: Las grandes señales de inflamación hoy",
+      "order": 297,
+      "description": "Analizamos los importantes mensajeros lipídicos que median fuertemente el dolor celular biológico y las vitales contracciones uterinas en los partos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "biologia-del-cartilago-hialino-y-su-desgaste-articular",
+      "title": "Biología del cartílago hialino y su desgaste articular",
+      "order": 298,
+      "description": "Estudiamos el denso y vital tejido conectivo biológico que recubre nuestros fuertes huesos y su peligrosa incapacidad natural para poder regenerarse.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-de-la-endorfina-y-la-gran-euforia-fisica",
+      "title": "La biología de la endorfina y la gran euforia física",
+      "order": 299,
+      "description": "Comprendemos la poderosa liberación de grandes analgésicos naturales durante el estrés extremo biológico y los potentes ejercicios de resistencia hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "receptores-trpv1-y-la-percepcion-termica-del-picante",
+      "title": "Receptores TRPV1 y la percepción térmica del picante",
+      "order": 300,
+      "description": "Nos adentramos en la inmensa biología molecular de los grandes canales iónicos que logran confundir el letal calor físico con la fuerte capsaicina.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-de-feromonas-y-nuestra-conducta-animal",
+      "title": "La biología de feromonas y nuestra conducta animal",
+      "order": 301,
+      "description": "Estudiamos cómo estas potentes señales químicas biológicas logran alterar el comportamiento reproductivo y social de las especies en la naturaleza.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "globulos-rojos-los-grandes-transportistas-de-vida",
+      "title": "Glóbulos rojos: Los grandes transportistas de vida",
+      "order": 302,
+      "description": "Analizamos la asombrosa estructura carente de núcleo celular de los eritrocitos y su incansable viaje por nuestros inmensos vasos sanguíneos diarios.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "polimorfismos-biologicos-la-diversidad-de-nuestro-adn",
+      "title": "Polimorfismos biológicos: La diversidad de nuestro ADN",
+      "order": 303,
+      "description": "Descubrimos cómo las minúsculas variaciones en nuestra secuencia genética determinan rasgos únicos y predisponen el desarrollo biológico de patologías.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-plantas-epifitas-y-el-gran-ecosistema-de-altura",
+      "title": "Las plantas epífitas y el gran ecosistema de altura",
+      "order": 304,
+      "description": "Exploramos la fascinante biología de las orquídeas y los helechos que crecen sobre inmensos árboles gigantes para poder alcanzar la luz solar de hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-neurobiologia-de-los-recuerdos-y-el-gran-olvido",
+      "title": "La neurobiología de los recuerdos y el gran olvido",
+      "order": 305,
+      "description": "Nos adentramos en el hipocampo humano para comprender cómo nuestras sinapsis cerebrales logran almacenar información vital y por qué también olvidamos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ciclo-del-nitrogeno-la-gran-nutricion-de-la-tierra",
+      "title": "Ciclo del nitrógeno: La gran nutrición de la tierra",
+      "order": 306,
+      "description": "Comprendemos el fundamental papel de las grandes bacterias fijadoras que transforman este inmenso gas atmosférico en nutrientes botánicos muy vitales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-actina-y-miosina-en-la-gran-contraccion-muscular",
+      "title": "La actina y miosina en la gran contracción muscular",
+      "order": 307,
+      "description": "Estudiamos a fondo la inmensa danza molecular de estas valiosas proteínas fibrosas que nos permite caminar, correr y mantener el latido de la vida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "biologia-de-las-venas-varicosas-y-el-flujo-vascular",
+      "title": "Biología de las venas varicosas y el flujo vascular",
+      "order": 308,
+      "description": "Analizamos los fallos valvulares dentro del inmenso sistema venoso humano que impiden el retorno sanguíneo generando inflamación y problemas de salud.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-pez-pulmonado-y-las-transiciones-evolutivas-hoy",
+      "title": "El pez pulmonado y las transiciones evolutivas hoy",
+      "order": 309,
+      "description": "Descubrimos la increíble adaptación fisiológica de los fascinantes animales acuáticos capaces de respirar aire atmosférico puro y evitar la gran asfixia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-de-la-respuesta-inmune-frente-al-asma",
+      "title": "La biología de la respuesta inmune frente al asma",
+      "order": 310,
+      "description": "Exploramos la grave constricción de las vías respiratorias causada por la masiva liberación de potentes sustancias químicas como la gran histamina.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-cianobacterias-y-el-gran-evento-de-oxigenacion",
+      "title": "Las cianobacterias y el gran evento de oxigenación",
+      "order": 311,
+      "description": "Nos remontamos miles de millones de años en la evolución terrestre para estudiar a los diminutos seres biológicos que lograron llenar el aire de vida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-genetica-de-los-perros-y-la-domesticacion-humana",
+      "title": "La genética de los perros y la domesticación humana",
+      "order": 312,
+      "description": "Comprendemos cómo la inmensa presión selectiva artificial moldeó drásticamente el genoma del lobo gris para generar todas las razas caninas de hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-bilis-hepatica-el-gran-jabon-de-nuestro-cuerpo",
+      "title": "La bilis hepática: El gran jabón de nuestro cuerpo",
+      "order": 313,
+      "description": "Analizamos la compleja y fascinante síntesis de los ácidos biliares y su indispensable rol biológico para lograr digerir y absorber grasas esenciales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-mutualismo-de-corales-y-sus-valiosas-zooxantelas",
+      "title": "El mutualismo de corales y sus valiosas zooxantelas",
+      "order": 314,
+      "description": "Estudiamos la asombrosa dependencia nutritiva de estos pólipos marinos con las inmensas microalgas vitales que les otorgan hermosos y vivos colores.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-anticuerpos-monoclonales-y-la-ciencia-celular",
+      "title": "Los anticuerpos monoclonales y la ciencia celular",
+      "order": 315,
+      "description": "Descubrimos cómo los asombrosos laboratorios biológicos replican nuestras defensas naturales para atacar células tumorales de forma altamente precisa.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "biologia-de-las-aves-migratorias-y-su-magnetismo-hoy",
+      "title": "Biología de las aves migratorias y su magnetismo hoy",
+      "order": 316,
+      "description": "Exploramos la fascinante capacidad de los grandes pájaros silvestres para lograr recorrer inmensos hemisferios siguiendo nuestro gran polo terrestre.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-sistema-de-renina-angiotensina-y-la-gran-presion",
+      "title": "El sistema de renina angiotensina y la gran presión",
+      "order": 317,
+      "description": "Nos adentramos en la inmensa y compleja cascada bioquímica que nuestros riñones humanos utilizan diariamente para lograr regular la tensión arterial.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "genetica-bacteriana-plasmidos-y-sus-grandes-genes",
+      "title": "Genética bacteriana: Plásmidos y sus grandes genes",
+      "order": 318,
+      "description": "Comprendemos las increíbles moléculas circulares de ADN extra cromosómico que otorgan a la población bacteriana inmensos superpoderes de resistencia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-proteinas-de-choque-termico-y-la-biologia-celular",
+      "title": "Las proteínas de choque térmico y la biología celular",
+      "order": 319,
+      "description": "Analizamos cómo estas valientes moléculas guardianas biológicas rescatan a otras grandes proteínas humanas cuando nuestra temperatura corporal se eleva.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-mimetismo-mulleriano-la-union-de-los-venenosos",
+      "title": "El mimetismo mülleriano: La unión de los venenosos",
+      "order": 320,
+      "description": "Estudiamos la estrategia ecológica evolutiva donde muchas distintas especies letales comparten un patrón visual similar para educar a sus depredadores.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fisiologia-del-estornudo-nuestro-reflejo-explosivo",
+      "title": "Fisiología del estornudo: Nuestro reflejo explosivo",
+      "order": 321,
+      "description": "Descubrimos la inmensa coreografía muscular y respiratoria biológica que se desata al percibir grandes elementos extraños y molestos en la vía nasal.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "biologia-de-la-dentina-y-el-gran-nucleo-del-diente",
+      "title": "Biología de la dentina y el gran núcleo del diente",
+      "order": 322,
+      "description": "Exploramos la inmensa matriz celular viva debajo de nuestro duro esmalte biológico y su fuerte capacidad sensitiva frente al calor y el terrible dolor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "microarn-y-la-vital-regulacion-genetica-silenciosa",
+      "title": "MicroARN y la vital regulación genética silenciosa",
+      "order": 323,
+      "description": "Nos adentramos en las maravillosas cadenas cortas biológicas de ácido ribonucleico encargadas de destruir otros grandes mensajes genéticos corporales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-del-bipedismo-de-nuestros-antepasados",
+      "title": "La biología del bipedismo de nuestros antepasados",
+      "order": 324,
+      "description": "Comprendemos los dramáticos y vitales cambios anatómicos en la antigua columna vertebral y gran pelvis que nos permitieron correr grandes distancias hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-acuaporinas-los-grandes-canales-de-agua-vital",
+      "title": "Las acuaporinas: Los grandes canales de agua vital",
+      "order": 325,
+      "description": "Analizamos el asombroso descubrimiento biológico celular de estas complejas proteínas transmembranales que facilitan la veloz ósmosis por todo el cuerpo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-basofilos-y-la-fuerte-respuesta-alergica-humana",
+      "title": "Los basófilos y la fuerte respuesta alérgica humana",
+      "order": 326,
+      "description": "Estudiamos a los inmensos glóbulos blancos más escasos de nuestra propia sangre y su crucial liberación biológica de la heparina contra los parásitos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "hibernacion-profunda-el-letargo-del-oso-pardo-hoy",
+      "title": "Hibernación profunda: El letargo del oso pardo hoy",
+      "order": 327,
+      "description": "Descubrimos los fuertes ajustes fisiológicos cardiovasculares que impiden el daño en los grandes órganos durante el inmenso congelamiento del invierno.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "genetica-del-vitiligo-y-la-perdida-de-nuestra-piel",
+      "title": "Genética del vitiligo y la pérdida de nuestra piel",
+      "order": 328,
+      "description": "Exploramos la inmensa biología autoinmune detrás de la progresiva destrucción celular de los grandes melanocitos corporales en todo el ser humano de hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "biologia-de-las-feromonas-sociales-de-las-hormigas",
+      "title": "Biología de las feromonas sociales de las hormigas",
+      "order": 329,
+      "description": "Comprendemos las complejas rutas olfativas y los poderosos mensajes químicos biológicos que organizan la gran vida social y el trabajo de este insecto.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-metabolismo-del-calcio-y-la-vitamina-d-corporal",
+      "title": "El metabolismo del calcio y la vitamina D corporal",
+      "order": 330,
+      "description": "Analizamos el vital equilibrio bioquímico mediado por importantes glándulas paratiroideas que evitan los grandes colapsos nerviosos y los fallos óseos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-de-la-risa-y-su-inmenso-poder-corporal",
+      "title": "La biología de la risa y su inmenso poder corporal",
+      "order": 331,
+      "description": "Estudiamos los fuertes cambios neuroquímicos y la gran reducción del estrés celular biológico que experimentamos durante nuestras enormes carcajadas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-adn-chatarra-y-su-gran-y-oculta-funcion-biologica",
+      "title": "El ADN chatarra y su gran y oculta función biológica",
+      "order": 332,
+      "description": "Descubrimos cómo inmensas secuencias genéticas repetitivas que considerábamos inútiles regulan el vital funcionamiento de todos nuestros grandes genes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "astrocitos-reactivos-y-la-gran-cicatriz-del-cerebro",
+      "title": "Astrocitos reactivos y la gran cicatriz del cerebro",
+      "order": 333,
+      "description": "Analizamos cómo las valientes células gliales de nuestro sistema nervioso logran reparar rápidamente los graves daños neurológicos tras fuertes lesiones.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-glandula-tiroides-y-el-vital-metabolismo-corporal",
+      "title": "La glándula tiroides y el vital metabolismo corporal",
+      "order": 334,
+      "description": "Comprendemos el inmenso impacto biológico de las hormonas tiroideas humanas sobre el rápido crecimiento celular y el consumo energético de nuestro cuerpo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-priones-humanos-y-el-peligro-del-canibalismo-hoy",
+      "title": "Los priones humanos y el peligro del canibalismo hoy",
+      "order": 335,
+      "description": "Exploramos la letal propagación de proteínas infecciosas degenerativas en el cerebro humano originadas por extremas y raras prácticas alimenticias.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "simbiosis-en-las-profundidades-del-vasto-lecho-marino",
+      "title": "Simbiosis en las profundidades del vasto lecho marino",
+      "order": 336,
+      "description": "Estudiamos a los inmensos gusanos de tubo que logran sobrevivir sin sistema digestivo gracias a valiosas bacterias biológicas y químicas en su interior.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-genetica-de-los-telomeros-y-el-final-de-la-vida-hoy",
+      "title": "La genética de los telómeros y el final de la vida hoy",
+      "order": 337,
+      "description": "Analizamos el desgaste molecular de los fuertes cromosomas durante la continua división celular y su relación biológica con la inmensa vejez humana.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-maravillosa-biologia-del-sistema-olfativo-canino",
+      "title": "La maravillosa biología del sistema olfativo canino",
+      "order": 338,
+      "description": "Nos asombramos con la increíble arquitectura neurológica y la enorme densidad de receptores químicos que permiten a nuestros canes oler enfermedades.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fisiologia-de-la-hibernacion-en-las-grandes-tortugas",
+      "title": "Fisiología de la hibernación en las grandes tortugas",
+      "order": 339,
+      "description": "Descubrimos cómo estos asombrosos y longevos reptiles logran ralentizar drásticamente su ritmo cardíaco biológico para sobrevivir al letal frío invernal.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "evolucion-de-las-garras-retractiles-de-los-felinos-hoy",
+      "title": "Evolución de las garras retráctiles de los felinos hoy",
+      "order": 340,
+      "description": "Comprendemos las fuertes ventajas anatómicas y biomecánicas que le permiten a los grandes gatos resguardar sus letales armas para mantenerlas afiladas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "celulas-caliciformes-y-la-gran-mucosa-de-los-humanos",
+      "title": "Células caliciformes y la gran mucosa de los humanos",
+      "order": 341,
+      "description": "Exploramos las vitales células epiteliales en forma de copa que fabrican constantemente el protector moco biológico dentro de nuestros grandes intestinos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-gran-desarrollo-embrionario-del-corazon-palpitante",
+      "title": "El gran desarrollo embrionario del corazón palpitante",
+      "order": 342,
+      "description": "Analizamos las asombrosas etapas donde un frágil tubo de valiosas células biológicas se pliega magistralmente para formar nuestro gran motor de la vida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "dinamica-de-poblaciones-y-el-control-de-depredadores",
+      "title": "Dinámica de poblaciones y el control de depredadores",
+      "order": 343,
+      "description": "Estudiamos los vitales ciclos de crecimiento y caída que sufren las diferentes especies cuando hay fuertes desequilibrios letales en las redes tróficas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "biologia-del-oido-medio-y-la-magia-de-los-huesecillos",
+      "title": "Biología del oído medio y la magia de los huesecillos",
+      "order": 344,
+      "description": "Nos adentramos en la diminuta pero inmensa mecánica celular del martillo y el yunque para comprender la gran amplificación sonora de nuestra audición.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cromosomas-homologos-y-nuestra-gran-diversidad-sexual",
+      "title": "Cromosomas homólogos y nuestra gran diversidad sexual",
+      "order": 345,
+      "description": "Descubrimos cómo el fascinante cruce de largas secuencias genéticas durante la vital meiosis garantiza seres humanos con defensas biológicas formidables.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-toxinas-paralizantes-y-la-gran-caza-de-aracnidos",
+      "title": "Las toxinas paralizantes y la gran caza de arácnidos",
+      "order": 346,
+      "description": "Comprendemos exactamente cómo el potente veneno neurológico de las letales viudas negras bloquea las complejas sinapsis para poder digerir a sus presas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "microbioma-vaginal-humano-y-la-inmensa-salud-femenina",
+      "title": "Microbioma vaginal humano y la inmensa salud femenina",
+      "order": 347,
+      "description": "Exploramos el valioso ecosistema dominado fuertemente por bacterias lácticas que mantienen el equilibrio del pH para evitar graves infecciones internas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fotorreceptores-botanicos-y-la-fototaxis-de-las-algas",
+      "title": "Fotorreceptores botánicos y la fototaxis de las algas",
+      "order": 348,
+      "description": "Analizamos cómo simples organismos vegetales unicelulares logran moverse hábilmente buscando grandes fuentes luminosas para maximizar su fotosíntesis.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "biomarcadores-geneticos-en-el-gran-diagnostico-actual",
+      "title": "Biomarcadores genéticos en el gran diagnóstico actual",
+      "order": 349,
+      "description": "Estudiamos el asombroso uso de las singulares firmas moleculares de nuestro valioso ADN para detectar complejas enfermedades en fases muy tempranas hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "regulacion-osmotica-del-salmon-en-su-gran-migracion",
+      "title": "Regulación osmótica del salmón en su gran migración",
+      "order": 350,
+      "description": "Descubrimos el extremo y rápido ajuste fisiológico en las grandes branquias de estos maravillosos peces al pasar del agua salada marina a los ríos fríos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-complejo-principal-de-histocompatibilidad-humana",
+      "title": "El complejo principal de histocompatibilidad humana",
+      "order": 351,
+      "description": "Nos adentramos en las maravillosas proteínas que exhiben fragmentos de los virus invasores para alertar de inmediato a los grandes linfocitos del cuerpo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "genetica-de-la-agresividad-y-nuestra-fuerte-conducta",
+      "title": "Genética de la agresividad y nuestra fuerte conducta",
+      "order": 352,
+      "description": "Comprendemos la inmensa influencia neurobiológica que ciertas mutaciones en los fuertes genes enzimáticos ejercen sobre los grandes ataques de ira humana.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "organos-bioluminiscentes-de-la-inmensa-fauna-abisal",
+      "title": "Órganos bioluminiscentes de la inmensa fauna abisal",
+      "order": 353,
+      "description": "Exploramos la precisa estructura química celular de los grandes fotóforos y la asombrosa unión simbiótica que permite iluminar la terrible oscuridad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "celulas-madre-hematopoyeticas-y-la-gran-renovacion",
+      "title": "Células madre hematopoyéticas y la gran renovación",
+      "order": 354,
+      "description": "Analizamos la infinita y valiosa producción de grandes glóbulos rojos diarios y cómo los trasplantes logran curar letales enfermedades de nuestra sangre.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-gran-biologia-de-las-vocalizaciones-de-los-simios",
+      "title": "La gran biología de las vocalizaciones de los simios",
+      "order": 355,
+      "description": "Estudiamos las enormes estructuras laríngeas que permiten a estos fascinantes y fuertes parientes evolutivos comunicarse a largas distancias en la selva.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-glandulas-de-bowman-y-nuestra-mucosa-olfatoria",
+      "title": "Las glándulas de Bowman y nuestra mucosa olfatoria",
+      "order": 356,
+      "description": "Descubrimos el valioso moco solvente que disuelve las invisibles moléculas químicas del inmenso aire para permitir el contacto directo con cada neurona.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "evolucion-convergente-de-las-espinas-en-las-plantas",
+      "title": "Evolución convergente de las espinas en las plantas",
+      "order": 357,
+      "description": "Exploramos cómo distintas inmensas familias botánicas aisladas desarrollaron genéticamente formidables y agudas hojas para repeler grandes herbívoros.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "neurotransmisores-inhibitorios-y-el-acido-gamma-hoy",
+      "title": "Neurotransmisores inhibitorios y el ácido gamma hoy",
+      "order": 358,
+      "description": "Comprendemos el inmenso impacto calmante de la maravillosa molécula biológica GABA para frenar la extrema excitación neuronal y evitar la ansiedad letal.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "polinizacion-por-murcielagos-en-los-tropicos-calidos",
+      "title": "Polinización por murciélagos en los trópicos cálidos",
+      "order": 359,
+      "description": "Analizamos las maravillosas adaptaciones botánicas donde las grandes flores nocturnas brindan abundante néctar vital a cambio del gran transporte del polen.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "epigenomica-celular-y-la-programacion-del-desarrollo",
+      "title": "Epigenómica celular y la programación del desarrollo",
+      "order": 360,
+      "description": "Estudiamos cómo el inmenso patrón de marcas químicas celulares se establece magistralmente durante la vital fase embrionaria de cada gran tejido humano.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-celular-de-los-macrofagos-alveolares-hoy",
+      "title": "La biología celular de los macrófagos alveolares hoy",
+      "order": 361,
+      "description": "Nos adentramos en el inmenso sistema pulmonar para conocer a los grandes devoradores de polvo que barren constantemente nuestras vías respiratorias hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "hermafroditismo-secuencial-en-la-gran-fauna-acuatica",
+      "title": "Hermafroditismo secuencial en la gran fauna acuática",
+      "order": 362,
+      "description": "Descubrimos las fuertes señales sociales y vitales hormonas que ordenan a muchos asombrosos peces marinos cambiar de sexo natural durante toda su vida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fisiologia-y-biologia-de-las-inmensas-cuerdas-vocales",
+      "title": "Fisiología y biología de las inmensas cuerdas vocales",
+      "order": 363,
+      "description": "Exploramos la inmensa elasticidad de las maravillosas bandas musculares de la laringe que nos permiten lograr emitir tonos agudos y muy profundos graves.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "especiacion-simpatrica-en-el-mismo-ecosistema-salvaje",
+      "title": "Especiación simpátrica en el mismo ecosistema salvaje",
+      "order": 364,
+      "description": "Comprendemos el asombroso aislamiento reproductivo biológico que ocurre cuando valiosos organismos deciden explotar grandes nichos sin separación física.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-vida-eterna-del-asombroso-polipo-turritopsis-hoy",
+      "title": "La vida eterna del asombroso pólipo Turritopsis hoy",
+      "order": 365,
+      "description": "Analizamos el increíble misterio genético de la asombrosa medusa biológica que revierte sus potentes células maduras hacia un gran estado juvenil vital.",
+      "audioUrl": ""
+    }
+  ]
+}
