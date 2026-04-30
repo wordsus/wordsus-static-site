@@ -1,0 +1,2575 @@
+{
+  "slug": "quimica-para-mortales",
+  "locale": "es",
+  "title": "Química para Mortales: Una mirada atómica a tu alrededor",
+  "author": "Equipo Wordsus",
+  "description": "Un viaje fascinante de 365 días por el mundo de la química. Desde la estructura del átomo hasta las aplicaciones más modernas de la nanotecnología, explicado de forma sencilla y amena.",
+  "cover": "/images/books/quimica-para-mortales-es-cover.jpeg",
+  "category": "ciencia",
+  "tags": [
+    "quimica",
+    "ciencia",
+    "divulgacion",
+    "materia"
+  ],
+  "featured": true,
+  "publishedAt": "2024-04-29",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "el-atomo-la-unidad-fundamental-de-toda-la-materia",
+      "title": "El átomo: la unidad fundamental de toda la materia",
+      "order": 1,
+      "description": "Descubre qué son los átomos, cómo están formados por dentro y por qué comprender su estructura es esencial para entender toda la química que nos rodea.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-estados-de-la-materia-solidos-liquidos-y-gases",
+      "title": "Los estados de la materia: sólidos, líquidos y gases",
+      "order": 2,
+      "description": "Conoce las características que diferencian a los sólidos, los líquidos y los gases, y cómo los cambios de temperatura afectan el comportamiento molecular.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-anomalia-del-agua-por-que-el-hielo-logra-flotar",
+      "title": "La anomalía del agua: por qué el hielo logra flotar",
+      "order": 3,
+      "description": "El agua tiene propiedades únicas e indispensables para la vida. Analizamos su curiosa estructura molecular y la razón por la que el hielo es menos denso.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "introduccion-a-la-tabla-periodica-de-los-elementos",
+      "title": "Introducción a la tabla periódica de los elementos",
+      "order": 4,
+      "description": "Exploramos cómo se organizan los elementos químicos en la tabla periódica, su fascinante historia y qué información podemos obtener de cada pequeña casilla.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "metales-frente-a-los-no-metales-diferencias-basicas",
+      "title": "Metales frente a los no metales: diferencias básicas",
+      "order": 5,
+      "description": "Descubre las marcadas diferencias químicas entre los metales y los no metales, sus variadas propiedades físicas y cómo interactúan entre sí en la naturaleza.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "enlaces-covalentes-compartiendo-electrones-con-exito",
+      "title": "Enlaces covalentes: compartiendo electrones con éxito",
+      "order": 6,
+      "description": "Entiende cómo los átomos se unen compartiendo sus electrones para formar moléculas estables y por qué este tipo de enlace es clave para los seres vivos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-quimica-del-fuego-descubriendo-la-combustion-real",
+      "title": "La química del fuego: descubriendo la combustión real",
+      "order": 7,
+      "description": "Desarmamos el fascinante proceso de la combustión. Conoce qué elementos se requieren para generar una llama, cómo se mantiene el fuego y cómo extinguirlo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "iones-y-enlaces-ionicos-la-atraccion-de-los-opuestos",
+      "title": "Iones y enlaces iónicos: la atracción de los opuestos",
+      "order": 8,
+      "description": "Analizamos qué ocurre cuando los átomos ceden o ganan electrones, creando iones cargados que se atraen fuertemente para formar cristales como la sal común.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "acidos-y-bases-entendiendo-el-importante-concepto-de-ph",
+      "title": "Ácidos y bases: entendiendo el importante concepto de pH",
+      "order": 9,
+      "description": "Profundizamos en la naturaleza de los compuestos ácidos y básicos, el significado preciso de la escala de pH y su gran importancia en nuestra vida diaria.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "reacciones-quimicas-el-arte-de-transformar-la-materia",
+      "title": "Reacciones químicas: el arte de transformar la materia",
+      "order": 10,
+      "description": "Observa detalladamente cómo interactúan distintas sustancias para crear compuestos completamente nuevos, rompiendo enlaces y liberando o absorbiendo energía.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-quimica-del-cafe-la-molecula-que-nos-mantiene-alerta",
+      "title": "La química del café: la molécula que nos mantiene alerta",
+      "order": 11,
+      "description": "Exploramos la estructura de la cafeína, el alcaloide más consumido en todo el mundo, sus efectos directos en el sistema nervioso y su proceso de extracción.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "balanceo-de-ecuaciones-el-orden-perfecto-en-la-quimica",
+      "title": "Balanceo de ecuaciones: el orden perfecto en la química",
+      "order": 12,
+      "description": "Aprende por qué la materia no se crea ni se destruye, y cómo los químicos utilizan el balanceo matemático para representar fielmente las reacciones exactas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "soluciones-y-mezclas-lo-homogeneo-contra-lo-heterogeneo",
+      "title": "Soluciones y mezclas: lo homogéneo contra lo heterogéneo",
+      "order": 13,
+      "description": "Diferenciamos claramente las soluciones químicas de las simples mezclas, analizando solutos, solventes y cómo la concentración afecta las propiedades finales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "oxidacion-y-reduccion-por-que-los-metales-se-corroen",
+      "title": "Oxidación y reducción: por qué los metales se corroen",
+      "order": 14,
+      "description": "Conoce las famosas reacciones redox, un intercambio constante de electrones que causa la corrosión del hierro pero también permite el uso de las baterías.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fuerzas-intermoleculares-el-pegamento-oculto-del-mundo",
+      "title": "Fuerzas intermoleculares: el pegamento oculto del mundo",
+      "order": 15,
+      "description": "Descubre cómo las moléculas se atraen entre sí mediante puentes de hidrógeno y fuerzas de Van der Waals, determinando estados físicos y puntos de ebullición.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "compuestos-organicos-la-quimica-del-carbono-en-la-vida",
+      "title": "Compuestos orgánicos: la química del carbono en la vida",
+      "order": 16,
+      "description": "Nos adentramos en la química orgánica para entender por qué el átomo de carbono es tan versátil y conforma la estructura básica de todos los seres vivientes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "alcanos-alquenos-y-alquinos-cadenas-de-hidrocarburos",
+      "title": "Alcanos, alquenos y alquinos: cadenas de hidrocarburos",
+      "order": 17,
+      "description": "Exploramos los hidrocarburos más simples, analizando las diferencias de reactividad entre enlaces simples, dobles y triples que sostienen a esta industria.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-inalterabilidad-del-oro-un-metal-noble-muy-resistente",
+      "title": "La inalterabilidad del oro: un metal noble muy resistente",
+      "order": 18,
+      "description": "Estudiamos por qué el oro no pierde su brillo ni se corroe con el paso de los siglos. Conoce su configuración electrónica y su escasa reactividad química.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "estequiometria-las-matematicas-detras-de-las-reacciones",
+      "title": "Estequiometría: las matemáticas detrás de las reacciones",
+      "order": 19,
+      "description": "Aprende cómo calcular las cantidades exactas de reactivos y productos. Esta herramienta fundamental evita el desperdicio de sustancias a nivel industrial.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "velocidad-de-reaccion-acelerando-los-procesos-quimicos",
+      "title": "Velocidad de reacción: acelerando los procesos químicos",
+      "order": 20,
+      "description": "Analizamos la cinética química y cómo factores como la temperatura, la presión, la concentración y los catalizadores pueden acelerar las transformaciones.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-diamante-y-el-grafito-las-multiples-caras-del-carbono",
+      "title": "El diamante y el grafito: las múltiples caras del carbono",
+      "order": 21,
+      "description": "Descubre el concepto de alotropía comparando dos minerales formados solo por carbono, pero con propiedades diametralmente opuestas debido a su geometría.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gases-ideales-las-leyes-de-boyle-charles-y-gay-lussac",
+      "title": "Gases ideales: las leyes de Boyle, Charles y Gay-Lussac",
+      "order": 22,
+      "description": "Exploramos cómo responden los gases a los cambios de presión, volumen y temperatura, deduciendo las fórmulas históricas que explican su comportamiento vital.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "termoquimica-en-accion-las-reacciones-que-nos-dan-calor",
+      "title": "Termoquímica en acción: las reacciones que nos dan calor",
+      "order": 23,
+      "description": "Analizamos el flujo de calor durante los procesos químicos, diferenciando las reacciones exotérmicas que nos calientan de las endotérmicas que absorben calor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-quimica-en-la-cocina-reacciones-de-maillard-y-sabores",
+      "title": "La química en la cocina: reacciones de Maillard y sabores",
+      "order": 24,
+      "description": "Transformamos tu cocina en un laboratorio. Descubre la fantástica serie de reacciones que dotan de aromas, colores y sabores tostados a todos tus alimentos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "polimeros-sinteticos-el-amplio-universo-de-los-plasticos",
+      "title": "Polímeros sintéticos: el amplio universo de los plásticos",
+      "order": 25,
+      "description": "Desde envases hasta fibras textiles, estudiamos cómo pequeñas moléculas se unen formando enormes cadenas que revolucionaron la vida moderna para siempre.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-equilibrio-quimico-las-reacciones-que-nunca-se-detienen",
+      "title": "El equilibrio químico: las reacciones que nunca se detienen",
+      "order": 26,
+      "description": "Comprendemos por qué muchas reacciones químicas no se completan totalmente, sino que alcanzan un estado dinámico donde reactivos y productos conviven en paz.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "electrolitos-en-solucion-la-conduccion-de-la-electricidad",
+      "title": "Electrolitos en solución: la conducción de la electricidad",
+      "order": 27,
+      "description": "Investigamos qué sucede cuando ciertas sales se disuelven en agua pura, separándose en iones móviles que permiten el libre paso de la corriente eléctrica.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-quimica-del-adn-el-codigo-molecular-de-todos-los-seres",
+      "title": "La química del ADN: el código molecular de todos los seres",
+      "order": 28,
+      "description": "Exploramos los nucleótidos y puentes de hidrógeno que forman la famosa doble hélice del ADN, almacenando la vasta información genética de la humanidad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "coloides-y-suspensiones-las-fronteras-de-las-disoluciones",
+      "title": "Coloides y suspensiones: las fronteras de las disoluciones",
+      "order": 29,
+      "description": "Analizamos esas mezclas especiales que parecen homogéneas pero no lo son. Desde la niebla hasta la leche, descubre las fascinantes propiedades de los coloides.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "radiactividad-natural-isotopos-inestables-y-sus-misterios",
+      "title": "Radiactividad natural: isótopos inestables y sus misterios",
+      "order": 30,
+      "description": "Analizamos por qué algunos núcleos atómicos se rompen de manera espontánea, liberando grandes dosis de energía y radiación invisible.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-numero-de-avogadro-y-el-concepto-de-mol-en-quimica",
+      "title": "El número de Avogadro y el concepto de mol en química",
+      "order": 31,
+      "description": "Descubre cómo los químicos cuentan átomos y moléculas usando el concepto de mol, una herramienta vital que conecta la masa visible con las partículas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gases-nobles-los-elementos-mas-solitarios-de-la-tabla",
+      "title": "Gases nobles: los elementos más solitarios de la tabla",
+      "order": 32,
+      "description": "Exploramos el helio, neón y argón. Conoce por qué estos elementos son tan estables, su nula reactividad y cómo se emplean en la iluminación moderna.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-quimica-del-jabon-como-logramos-limpiar-la-suciedad",
+      "title": "La química del jabón: cómo logramos limpiar la suciedad",
+      "order": 33,
+      "description": "Analizamos la estructura molecular de los jabones y detergentes, descubriendo cómo sus moléculas logran atrapar la grasa y disolverla fácilmente en agua.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "isomeros-moleculas-con-formulas-iguales-y-formas-duales",
+      "title": "Isómeros: moléculas con fórmulas iguales y formas duales",
+      "order": 34,
+      "description": "Conoce por qué compuestos con exactamente los mismos átomos pueden tener propiedades físicas y químicas completamente diferentes según su forma espacial.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "metales-alcalinos-reactividad-extrema-al-tocar-el-agua",
+      "title": "Metales alcalinos: reactividad extrema al tocar el agua",
+      "order": 35,
+      "description": "Nos enfocamos en el sodio y el potasio, metales tan reactivos que deben guardarse en aceite. Descubre por qué liberan tanta energía al contacto acuoso.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cristalografia-la-geometria-perfecta-oculta-en-la-sal",
+      "title": "Cristalografía: la geometría perfecta oculta en la sal",
+      "order": 36,
+      "description": "Estudiamos cómo los átomos se ordenan en redes tridimensionales perfectas, formando hermosos cristales sólidos con propiedades ópticas sorprendentes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-fermentacion-el-milagro-quimico-detras-de-la-levadura",
+      "title": "La fermentación: el milagro químico detrás de la levadura",
+      "order": 37,
+      "description": "Desglosamos el proceso metabólico anaeróbico donde los azúcares se transforman en alcohol y dióxido de carbono, fundamental en la panadería y bebidas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "halogenos-elementos-formadores-de-sales-muy-reactivos",
+      "title": "Halógenos: elementos formadores de sales muy reactivos",
+      "order": 38,
+      "description": "Desde el flúor hasta el yodo, analizamos este grupo de no metales altamente tóxicos en estado puro, pero esenciales para la vida al formar compuestos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "enzimas-los-catalizadores-biologicos-de-nuestro-cuerpo",
+      "title": "Enzimas: los catalizadores biológicos de nuestro cuerpo",
+      "order": 39,
+      "description": "Descubre cómo estas proteínas especializadas logran acelerar drásticamente las reacciones químicas vitales, permitiendo que la vida fluya sin demoras.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "destilacion-separando-liquidos-mediante-la-temperatura",
+      "title": "Destilación: separando líquidos mediante la temperatura",
+      "order": 40,
+      "description": "Exploramos esta antigua técnica de laboratorio e industrial que aprovecha los distintos puntos de ebullición para purificar mezclas líquidas complejas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-quimica-del-chocolate-la-deliciosa-molecula-del-cacao",
+      "title": "La química del chocolate: la deliciosa molécula del cacao",
+      "order": 41,
+      "description": "Analizamos la teobromina y otras complejas sustancias presentes en el chocolate, responsables de su sabor único y sus agradables efectos estimulantes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "geometria-molecular-la-forma-tridimensional-de-la-materia",
+      "title": "Geometría molecular: la forma tridimensional de la materia",
+      "order": 42,
+      "description": "Explicamos la teoría de repulsión de pares de electrones, que determina por qué las moléculas adoptan formas lineales, angulares o tetraédricas únicas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "alcoholes-en-quimica-mucho-mas-que-solo-bebidas-comunes",
+      "title": "Alcoholes en química: mucho más que solo bebidas comunes",
+      "order": 43,
+      "description": "Estudiamos el grupo hidroxilo y las propiedades de los alcoholes, desde el peligroso metanol hasta el etanol y su uso clave como solvente industrial.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "baterias-y-pilas-celdas-electroquimicas-de-uso-diario",
+      "title": "Baterías y pilas: celdas electroquímicas de uso diario",
+      "order": 44,
+      "description": "Descubre cómo almacenamos energía química para convertirla en electricidad portátil, analizando el funcionamiento interno de las celdas de iones de litio.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-metales-de-transicion-el-bloque-central-de-la-tabla",
+      "title": "Los metales de transición: el bloque central de la tabla",
+      "order": 45,
+      "description": "Nos adentramos en metales como el cobre, el hierro y el titanio. Entiende sus múltiples estados de oxidación y por qué forman compuestos tan coloridos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "soluciones-amortiguadoras-manteniendo-el-ph-estabilizado",
+      "title": "Soluciones amortiguadoras: manteniendo el pH estabilizado",
+      "order": 46,
+      "description": "Conoce el vital funcionamiento de los sistemas buffer, mezclas químicas especializadas que resisten cambios drásticos de acidez en la sangre y la industria.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-quimica-de-los-perfumes-esteres-y-aromas-sinteticos",
+      "title": "La química de los perfumes: ésteres y aromas sintéticos",
+      "order": 47,
+      "description": "Descubrimos cómo la química orgánica crea deliciosas fragancias frutales y florales sintéticas utilizando ésteres, imitando los olores de la naturaleza.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "principio-de-le-chatelier-el-equilibrio-bajo-presion-real",
+      "title": "Principio de Le Chatelier: el equilibrio bajo presión real",
+      "order": 48,
+      "description": "Analizamos cómo los sistemas químicos reaccionan y se ajustan de manera automática para contrarrestar cualquier cambio de temperatura, presión o volumen.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "carbohidratos-el-dulce-combustible-de-los-seres-humanos",
+      "title": "Carbohidratos: el dulce combustible de los seres humanos",
+      "order": 49,
+      "description": "Exploramos la estructura química de los azúcares y almidones, comprendiendo cómo almacenan energía solar y actúan como fuente principal de nuestro cuerpo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "espectroscopia-estudiando-la-materia-mediante-luz-y-color",
+      "title": "Espectroscopia: estudiando la materia mediante luz y color",
+      "order": 50,
+      "description": "Aprende cómo los químicos modernos utilizan diferentes longitudes de onda de luz para identificar compuestos desconocidos y revelar su estructura interna.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fuegos-artificiales-la-colorida-quimica-de-la-pirotecnia",
+      "title": "Fuegos artificiales: la colorida química de la pirotecnia",
+      "order": 51,
+      "description": "Desglosamos la composición de los explosivos festivos y cómo las sales de diferentes metales generan colores brillantes al arder a altas temperaturas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "titulacion-quimica-el-arte-de-medir-concentraciones-hoy",
+      "title": "Titulación química: el arte de medir concentraciones hoy",
+      "order": 52,
+      "description": "Exploramos la técnica volumétrica clásica usada en laboratorios para determinar la cantidad exacta de una sustancia disuelta usando un reactivo estándar.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "lipidos-y-grasas-almacenamiento-de-energia-a-largo-plazo",
+      "title": "Lípidos y grasas: almacenamiento de energía a largo plazo",
+      "order": 53,
+      "description": "Analizamos la estructura de los ácidos grasos, diferenciando entre grasas saturadas e insaturadas, y su rol vital en la protección celular de los seres.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "tension-superficial-por-que-los-insectos-caminan-en-agua",
+      "title": "Tensión superficial: por qué los insectos caminan en agua",
+      "order": 54,
+      "description": "Profundizamos en la cohesión de las moléculas de agua en la superficie, creando una membrana invisible pero fuerte que desafía los conceptos de gravedad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "aminoacidos-los-bloques-constructores-de-las-proteinas",
+      "title": "Aminoácidos: los bloques constructores de las proteínas",
+      "order": 55,
+      "description": "Conoce las pequeñas moléculas orgánicas que se enlazan formando complejas cadenas proteicas, esenciales para todos los procesos biológicos de nuestro ser.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "corrosion-de-metales-el-gran-enemigo-de-la-infraestructura",
+      "title": "Corrosión de metales: el gran enemigo de la infraestructura",
+      "order": 56,
+      "description": "Estudiamos el proceso de oxidación que deteriora barcos y puentes, analizando los métodos químicos efectivos para prevenir la formación del temido óxido.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-vidrio-un-solido-amorfo-con-propiedades-excepcionales",
+      "title": "El vidrio: un sólido amorfo con propiedades excepcionales",
+      "order": 57,
+      "description": "Descubrimos la fascinante estructura del vidrio, un material de sílice fundida que se enfría tan rápido que sus moléculas no logran formar un cristal.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cromatografia-separando-los-colores-y-mezclas-complejas",
+      "title": "Cromatografía: separando los colores y mezclas complejas",
+      "order": 58,
+      "description": "Aprende cómo esta técnica analítica fundamental permite separar los componentes individuales de una mezcla haciéndolos viajar a distintas velocidades de fase.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-quimica-del-veneno-toxicologia-basica-y-sus-antidotos",
+      "title": "La química del veneno: toxicología básica y sus antídotos",
+      "order": 59,
+      "description": "Analizamos cómo ciertas moléculas pueden interrumpir procesos bioquímicos vitales en mínimas dosis, y cómo la ciencia moderna busca neutralizarlas con éxito.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "hibridacion-orbital-como-los-atomos-preparan-sus-enlaces",
+      "title": "Hibridación orbital: cómo los átomos preparan sus enlaces",
+      "order": 60,
+      "description": "Explicamos el complejo modelo que justifica por qué el carbono puede formar cuatro enlaces idénticos, reorganizando sus electrones en orbitales híbridos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fluorescencia-la-magica-quimica-que-brilla-de-noche",
+      "title": "Fluorescencia: la mágica química que brilla de noche",
+      "order": 61,
+      "description": "Descubre los fascinantes compuestos que absorben luz invisible y la emiten lentamente, creando ese brillo verdoso en la oscuridad sin generar calor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "aleaciones-metalicas-acero-bronce-y-nuevas-mezclas",
+      "title": "Aleaciones metálicas: acero, bronce y nuevas mezclas",
+      "order": 62,
+      "description": "Exploramos cómo la mezcla estratégica de diferentes metales mejora la resistencia, dureza y durabilidad de los materiales que sostienen nuestro mundo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-quimica-del-picante-la-molecula-capsaicina-y-su-ardor",
+      "title": "La química del picante: la molécula capsaicina y su ardor",
+      "order": 63,
+      "description": "Analizamos por qué los chiles nos provocan esa intensa sensación de calor y dolor, desglosando la estructura química que engaña a nuestro cerebro.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-ciclo-del-nitrogeno-el-nutriente-vital-de-las-plantas",
+      "title": "El ciclo del nitrógeno: el nutriente vital de las plantas",
+      "order": 64,
+      "description": "Conoce el complejo viaje químico del nitrógeno desde la atmósfera hasta el suelo, y cómo la síntesis de amoníaco revolucionó la agricultura mundial.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "acido-acetilsalicilico-la-ciencia-detras-de-la-aspirina",
+      "title": "Ácido acetilsalicílico: la ciencia detrás de la aspirina",
+      "order": 65,
+      "description": "Desentrañamos la historia y la estructura molecular del analgésico más famoso del mundo, descubriendo cómo interactúa para calmar nuestros dolores.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "tierras-raras-los-elementos-secretos-de-la-tecnologia",
+      "title": "Tierras raras: los elementos secretos de la tecnología",
+      "order": 66,
+      "description": "Estudiamos a los lantánidos, ese grupo de metales poco conocidos pero absolutamente esenciales para fabricar imanes potentes y teléfonos inteligentes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cosmetica-quimica-la-formulacion-de-cremas-y-labiales",
+      "title": "Cosmética química: la formulación de cremas y labiales",
+      "order": 67,
+      "description": "Adéntrate en la química de los productos de belleza, analizando cómo las emulsiones, pigmentos y ceras se combinan para el cuidado de nuestra piel.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "destruccion-del-ozono-los-temidos-clorofluorocarbonos",
+      "title": "Destrucción del ozono: los temidos clorofluorocarbonos",
+      "order": 68,
+      "description": "Analizamos la reacción química en la alta atmósfera que puso en grave peligro nuestro escudo solar, y cómo la ciencia logró frenar el daño inminente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "osmosis-inversa-la-gran-solucion-para-purificar-el-agua",
+      "title": "Ósmosis inversa: la gran solución para purificar el agua",
+      "order": 69,
+      "description": "Comprendemos la química de las membranas semipermeables y cómo la presión obliga a las moléculas de agua a abandonar sus solutos para purificarse.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-quimica-forense-descubriendo-sangre-con-el-luminol",
+      "title": "La química forense: descubriendo sangre con el luminol",
+      "order": 70,
+      "description": "Exploramos el fascinante mundo investigativo enfocándonos en la reacción quimioluminiscente que permite a los forenses revelar evidencia hoy oculta.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "metales-pesados-la-toxicidad-oculta-del-plomo-y-mercurio",
+      "title": "Metales pesados: la toxicidad oculta del plomo y mercurio",
+      "order": 71,
+      "description": "Descubre por qué estos densos elementos de la tabla periódica resultan tan peligrosos para el ser humano y cómo alteran nuestro sistema neurológico.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "edulcorantes-artificiales-enganando-al-sentido-del-gusto",
+      "title": "Edulcorantes artificiales: engañando al sentido del gusto",
+      "order": 72,
+      "description": "Analizamos la dulce química de la sacarina y el aspartamo, moléculas que nuestros receptores perciben como azúcar pero que no aportan calorías hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "teflon-y-polimeros-la-ciencia-de-las-ollas-antiadherentes",
+      "title": "Teflón y polímeros: la ciencia de las ollas antiadherentes",
+      "order": 73,
+      "description": "Explora los fuertes enlaces entre el carbono y el flúor que crean un material tan resbaladizo y resistente al calor que nada logra pegarse jamás.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "antioxidantes-combatiendo-a-los-terribles-radicales-libres",
+      "title": "Antioxidantes: combatiendo a los terribles radicales libres",
+      "order": 74,
+      "description": "Comprendemos el daño celular causado por especies moleculares inestables y cómo la vitamina C u otros antioxidantes donan electrones para sanarnos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-hielo-seco-la-asombrosa-sublimacion-del-dioxido-solido",
+      "title": "El hielo seco: la asombrosa sublimación del dióxido sólido",
+      "order": 75,
+      "description": "Adéntrate en el proceso físico y químico donde este compuesto helado pasa directamente de estado sólido a gas sin dejar rastro de líquido en absoluto.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "metaloides-el-silicio-y-los-modernos-semiconductores",
+      "title": "Metaloides: el silicio y los modernos semiconductores",
+      "order": 76,
+      "description": "Estudiamos los elementos fronterizos que comparten propiedades entre metales y no metales, base fundamental para crear toda la electrónica moderna.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "aguas-duras-por-que-cuesta-tanto-generar-espuma-al-lavar",
+      "title": "Aguas duras: por qué cuesta tanto generar espuma al lavar",
+      "order": 77,
+      "description": "Analizamos las sales de calcio y magnesio disueltas en el agua de red que interfieren con la acción de los jabones y dañan tuberías con incrustaciones.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "adhesivos-y-pegamentos-la-quimica-que-une-nuestro-mundo",
+      "title": "Adhesivos y pegamentos: la química que une nuestro mundo",
+      "order": 78,
+      "description": "Descubrimos cómo interactúan los polímeros para crear fuerzas de atracción mecánicas y químicas tan fuertes que logran unir materiales imposibles.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "bioluminiscencia-las-reacciones-quimicas-en-las-luciernagas",
+      "title": "Bioluminiscencia: las reacciones químicas en las luciérnagas",
+      "order": 79,
+      "description": "Exploramos la enzima luciferasa y cómo la naturaleza aprovecha la oxidación para crear luces de advertencia y atracción sin generar nada de calor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "convertidores-cataliticos-limpiando-los-gases-de-escape",
+      "title": "Convertidores catalíticos: limpiando los gases de escape",
+      "order": 80,
+      "description": "Conoce los increíbles metales raros que transforman gases vehiculares muy tóxicos en compuestos inofensivos antes de salir al medio ambiente hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "acido-lactico-el-intenso-dolor-quimico-en-los-musculos",
+      "title": "Ácido láctico: el intenso dolor químico en los músculos",
+      "order": 81,
+      "description": "Desglosamos la ruta metabólica anaeróbica de tu cuerpo cuando requiere energía rápida, generando un subproducto que produce dolor al hacer ejercicio.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cloro-y-lavandina-el-intenso-poder-oxidante-para-limpiar",
+      "title": "Cloro y lavandina: el intenso poder oxidante para limpiar",
+      "order": 82,
+      "description": "Estudiaremos la química detrás de este compuesto blanqueador y desinfectante, analizando cómo logra destruir bacterias y alterar moléculas de color.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fibras-sinteticas-la-quimica-del-nailon-y-del-poliester",
+      "title": "Fibras sintéticas: la química del nailon y del poliéster",
+      "order": 83,
+      "description": "Nos adentramos en el enorme mundo de los textiles creados en laboratorio, analizando las fuertes cadenas poliméricas que visten al mundo moderno hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fotosintesis-la-reaccion-que-atrapa-la-luz-del-universo",
+      "title": "Fotosíntesis: la reacción que atrapa la luz del universo",
+      "order": 84,
+      "description": "Explicamos la cascada de reacciones químicas dentro de las plantas, transformando el dióxido de carbono y el agua vital en azúcares y oxígeno puro.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "vitaminas-moleculas-esenciales-para-nuestra-supervivencia",
+      "title": "Vitaminas: moléculas esenciales para nuestra supervivencia",
+      "order": 85,
+      "description": "Conoce la compleja estructura química de estas sustancias orgánicas que nuestro cuerpo no puede fabricar, pero son vitales para catalizar reacciones.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "kevlar-y-para-aramidas-la-quimica-detras-de-los-blindajes",
+      "title": "Kevlar y para-aramidas: la química detrás de los blindajes",
+      "order": 86,
+      "description": "Descubrimos cómo los potentes enlaces químicos de esta fibra logran detener el impacto directo de una bala siendo un material sumamente ligero hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "decaimiento-radiactivo-vida-media-y-el-carbono-catorce",
+      "title": "Decaimiento radiactivo: vida media y el carbono catorce",
+      "order": 87,
+      "description": "Analizamos cómo la química nuclear ayuda a la arqueología a determinar con extrema precisión la edad de antiguos fósiles y reliquias de la humanidad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-quimica-del-papel-de-la-dura-madera-a-las-suaves-hojas",
+      "title": "La química del papel: de la dura madera a las suaves hojas",
+      "order": 88,
+      "description": "Explora cómo los agresivos procesos industriales separan la celulosa de la lignina, blanqueando las fibras químicas para crear los libros que lees.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "aleacion-con-memoria-el-asombroso-metal-llamado-nitinol",
+      "title": "Aleación con memoria: el asombroso metal llamado nitinol",
+      "order": 89,
+      "description": "Estudiamos la inteligente combinación de níquel y titanio, capaz de recuperar su forma original tras ser deformada con tan solo aplicar algo de calor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "patina-y-oxido-verde-protegiendo-a-la-estatua-de-libertad",
+      "title": "Pátina y óxido verde: protegiendo a la Estatua de Libertad",
+      "order": 90,
+      "description": "Comprendemos las lentas reacciones atmosféricas del cobre al aire libre, formando una fuerte capa verde de carbonato que evita una corrosión total.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-quimica-fotografica-revelando-imagenes-con-plata",
+      "title": "La química fotográfica: revelando imágenes con plata",
+      "order": 91,
+      "description": "Explora cómo los haluros de plata reaccionan a la luz para capturar momentos y el delicado proceso de revelado que transformó nuestra visión del mundo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "feromonas-en-accion-la-comunicacion-quimica-animal",
+      "title": "Feromonas en acción: la comunicación química animal",
+      "order": 92,
+      "description": "Analizamos las moléculas volátiles que muchos animales e insectos liberan al medio ambiente para enviar poderosos mensajes sexuales y de alerta vital.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "siliconas-y-polisiloxanos-polimeros-muy-versatiles",
+      "title": "Siliconas y polisiloxanos: polímeros muy versátiles",
+      "order": 93,
+      "description": "Descubre la estructura única de estos materiales basados en enlaces de silicio y oxígeno, fundamentales para fabricar implantes y selladores modernos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "zeolitas-naturales-las-esponjas-moleculares-de-roca",
+      "title": "Zeolitas naturales: las esponjas moleculares de roca",
+      "order": 94,
+      "description": "Estudiamos estos fascinantes minerales porosos capaces de atrapar iones y moléculas específicas, siendo vitales para purificar el agua que consumimos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-bicarbonato-de-sodio-la-levadura-quimica-del-pan",
+      "title": "El bicarbonato de sodio: la levadura química del pan",
+      "order": 95,
+      "description": "Comprendemos la reacción ácido-base que ocurre dentro de tu horno, liberando el vital gas carbónico que logra inflar deliciosos pasteles y bizcochos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "peroxido-de-hidrogeno-un-agente-oxidante-muy-eficaz",
+      "title": "Peróxido de hidrógeno: un agente oxidante muy eficaz",
+      "order": 96,
+      "description": "Profundizamos en el agua oxigenada, inestable molécula que libera radicales libres para desinfectar heridas, blanquear telas y hasta teñir el cabello.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "petricor-y-geosmina-el-inconfundible-aroma-a-lluvia",
+      "title": "Petricor y geosmina: el inconfundible aroma a lluvia",
+      "order": 97,
+      "description": "Desglosamos la curiosa molécula producida por bacterias en el suelo reseco, responsable de generar ese agradable y nostálgico olor tras una tormenta.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "vulcanizacion-el-azufre-endureciendo-al-caucho-hoy",
+      "title": "Vulcanización: el azufre endureciendo al caucho hoy",
+      "order": 98,
+      "description": "Conoce cómo el calentamiento del látex natural junto al azufre crea fuertes puentes cruzados, obteniendo neumáticos extremadamente duros y duraderos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "colesterol-y-esteroides-anillos-de-carbono-vitales",
+      "title": "Colesterol y esteroides: anillos de carbono vitales",
+      "order": 99,
+      "description": "Nos adentramos en la compleja estructura de estos lípidos especiales, que forman membranas celulares y sintetizan hormonas fundamentales para la vida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-grafeno-la-milagrosa-red-hexagonal-de-puro-carbono",
+      "title": "El grafeno: la milagrosa red hexagonal de puro carbono",
+      "order": 100,
+      "description": "Descubrimos las excepcionales propiedades de esta capa atómica bidimensional, un material sumamente fuerte y conductor que lidera el futuro tecnológico.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fluidos-supercriticos-cuando-un-gas-parece-liquido",
+      "title": "Fluidos supercríticos: cuando un gas parece líquido",
+      "order": 101,
+      "description": "Analizamos el estado de la materia donde las sustancias superan su punto crítico, siendo disolventes perfectos para descafeinar café sin usar tóxicos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "anticongelantes-como-evitar-que-el-agua-se-congele",
+      "title": "Anticongelantes: cómo evitar que el agua se congele",
+      "order": 102,
+      "description": "Explora cómo moléculas como el etilenglicol logran interrumpir los enlaces de hidrógeno en el agua, bajando drásticamente su punto de solidificación.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "protectores-solares-moleculas-contra-la-luz-solar",
+      "title": "Protectores solares: moléculas contra la luz solar",
+      "order": 103,
+      "description": "Entiende cómo los compuestos químicos de tu bloqueador absorben y dispersan la radiación ultravioleta, salvando tu piel de graves daños estructurales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-quimica-del-cianuro-un-veneno-asfixiante-y-letal",
+      "title": "La química del cianuro: un veneno asfixiante y letal",
+      "order": 104,
+      "description": "Desentrañamos el oscuro mecanismo de acción de esta pequeña molécula tóxica, que bloquea ferozmente la respiración celular en todos los seres vivos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "espectrometria-de-masas-pesando-atomos-individuales",
+      "title": "Espectrometría de masas: pesando átomos individuales",
+      "order": 105,
+      "description": "Conoce esta sofisticada técnica analítica moderna que ioniza las moléculas y las desvía magnéticamente para calcular su peso y determinar su pureza.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "quimica-del-dentifrico-el-fluor-y-nuestro-esmalte",
+      "title": "Química del dentífrico: el flúor y nuestro esmalte",
+      "order": 106,
+      "description": "Analizamos cómo los iones de fluoruro se incorporan directamente en la estructura dental, formando fluorapatita para resistir ácidos y duras caries.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "asfalto-y-betun-los-hidrocarburos-mas-pesados-hoy",
+      "title": "Asfalto y betún: los hidrocarburos más pesados hoy",
+      "order": 107,
+      "description": "Descubre el residuo más denso de la refinación petrolera, una mezcla viscosa y negra de largas cadenas de carbono que hoy pavimentan nuestras calles.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "celdas-de-combustible-la-gran-energia-del-hidrogeno",
+      "title": "Celdas de combustible: la gran energía del hidrógeno",
+      "order": 108,
+      "description": "Estudiamos la reacción controlada entre hidrógeno y oxígeno que produce electricidad limpia y eficiente, dejando como único y puro residuo simple agua.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-quimica-de-las-tintas-colores-resinas-y-medios",
+      "title": "La química de las tintas: colores, resinas y medios",
+      "order": 109,
+      "description": "Explora la compleja mezcla de pigmentos colorantes, solventes orgánicos y espesantes que permiten a la humanidad escribir y fijar ideas en un papel.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "conservantes-quimicos-evitando-el-deterioro-natural",
+      "title": "Conservantes químicos: evitando el deterioro natural",
+      "order": 110,
+      "description": "Nos enfocamos en moléculas como los benzoatos y sorbatos, analizando cómo alteran el pH celular de los hongos y bacterias para preservar la comida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-quimica-del-litio-extrayendo-el-oro-blanco-hoy",
+      "title": "La química del litio: extrayendo el oro blanco hoy",
+      "order": 111,
+      "description": "Descubre cómo se purifica y concentra este ligero metal alcalino a partir de enormes salmueras naturales, siendo clave para todas nuestras baterías.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fosforo-rojo-y-blanco-la-quimica-tras-los-cerillos",
+      "title": "Fósforo rojo y blanco: la química tras los cerillos",
+      "order": 112,
+      "description": "Analizamos la evolución histórica de las cerillas y cómo la fricción logra transformar el fósforo inestable para iniciar la combustión controlada hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "colorantes-alimentarios-tenimos-lo-que-consumimos",
+      "title": "Colorantes alimentarios: teñimos lo que consumimos",
+      "order": 113,
+      "description": "Entiende la estructura de compuestos azoicos brillantes como la tartrazina, creados en laboratorios químicos para hacer nuestros alimentos deseables.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "alcaloides-naturales-las-defensas-de-la-vegetacion",
+      "title": "Alcaloides naturales: las defensas de la vegetación",
+      "order": 114,
+      "description": "Estudiamos estos compuestos nitrogenados vegetales, desde la morfina hasta la quinina, que la naturaleza creó como tóxicos y usamos como medicinas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "agua-pesada-y-deuterio-un-isotopo-de-gran-utilidad",
+      "title": "Agua pesada y deuterio: un isótopo de gran utilidad",
+      "order": 115,
+      "description": "Exploramos las propiedades del óxido de deuterio, un líquido diez por ciento más denso que el agua común, usado para frenar neutrones en reactores.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "resinas-epoxicas-polimerizacion-de-gran-resistencia",
+      "title": "Resinas epóxicas: polimerización de gran resistencia",
+      "order": 116,
+      "description": "Adéntrate en la química de estos adhesivos bicomponentes. Conoce cómo la resina y su endurecedor reaccionan cruzando enlaces para crear plásticos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "melatonina-y-triptofano-la-quimica-del-buen-dormir",
+      "title": "Melatonina y triptófano: la química del buen dormir",
+      "order": 117,
+      "description": "Analizamos la síntesis bioquímica de la hormona del sueño en nuestro cerebro y cómo regula el ritmo circadiano frente a la ausencia de luz natural.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "espumas-de-poliuretano-quimica-del-maximo-confort",
+      "title": "Espumas de poliuretano: química del máximo confort",
+      "order": 118,
+      "description": "Descubrimos la expansión química que genera pequeñas burbujas atrapadas en una fuerte matriz plástica, creando suaves colchones y aislantes térmicos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gases-lacrimogenos-moleculas-irritantes-de-control",
+      "title": "Gases lacrimógenos: moléculas irritantes de control",
+      "order": 119,
+      "description": "Conoce estos agresivos agentes químicos que atacan los receptores nerviosos en las mucosas del rostro, provocando un intenso lagrimeo y fuerte ardor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-proceso-haber-bosch-sacando-el-pan-desde-el-aire",
+      "title": "El proceso Haber-Bosch: sacando el pan desde el aire",
+      "order": 120,
+      "description": "Analizamos la unión del nitrógeno atmosférico y el gas hidrógeno bajo gran presión y calor, logrando generar fertilizantes que nutren a la humanidad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-quimica-del-peligro-mezclar-amoniaco-y-el-cloro",
+      "title": "La química del peligro: mezclar amoníaco y el cloro",
+      "order": 121,
+      "description": "Descubre las reacciones químicas que ocurren al combinar limpiadores comunes, liberando vapores tóxicos de cloramina que afectan el sistema respiratorio.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "desalinizacion-como-quitamos-la-sal-al-agua-de-mar",
+      "title": "Desalinización: cómo quitamos la sal al agua de mar",
+      "order": 122,
+      "description": "Exploramos los procesos físico-químicos y la energía requerida para purificar el agua salada mediante membranas, aliviando la escasez de agua potable.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "por-que-lloramos-al-cortar-una-cebolla-en-la-cocina",
+      "title": "Por qué lloramos al cortar una cebolla en la cocina",
+      "order": 123,
+      "description": "Analizamos el gas irritante a base de azufre que las cebollas liberan como defensa natural al ser cortadas y cómo se transforma en ácido en los ojos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-poder-de-la-acetona-disolviendo-lo-indisoluble",
+      "title": "El poder de la acetona: disolviendo lo indisoluble",
+      "order": 124,
+      "description": "Adéntrate en las propiedades de este solvente orgánico polar y no polar, capaz de disolver esmaltes, plásticos y resinas sin dejar ningún residuo hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-lluvia-acida-cuando-los-gases-danan-la-ecologia",
+      "title": "La lluvia ácida: cuando los gases dañan la ecología",
+      "order": 125,
+      "description": "Comprendemos cómo los óxidos de nitrógeno y azufre se mezclan con la humedad atmosférica, generando precipitaciones ácidas que corroen todo el entorno.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-endorfinas-las-moleculas-naturales-del-placer",
+      "title": "Las endorfinas: las moléculas naturales del placer",
+      "order": 126,
+      "description": "Conoce los péptidos opiáceos producidos por tu propio cerebro para aliviar el dolor físico, generar enorme bienestar y mantener nuestro estado de ánimo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-boro-y-el-borax-un-elemento-con-multiples-usos",
+      "title": "El boro y el bórax: un elemento con múltiples usos",
+      "order": 127,
+      "description": "Estudiamos este metaloide excepcional y cómo sus compuestos se utilizan cotidianamente para crear cristales resistentes al calor y productos de limpieza.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "caramelizacion-la-oxidacion-del-azucar-por-el-calor",
+      "title": "Caramelización: la oxidación del azúcar por el calor",
+      "order": 128,
+      "description": "Desglosamos la compleja serie de reacciones químicas donde el azúcar puro se descompone a altas temperaturas para crear hermosos colores y ricos sabores.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-quimica-del-cemento-endurecimiento-paso-a-paso",
+      "title": "La química del cemento: endurecimiento paso a paso",
+      "order": 129,
+      "description": "Exploramos la fascinante reacción de hidratación, donde el polvo de silicato de calcio forma fuertes enlaces con el agua para construir grandes ciudades.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-taninos-astringencia-en-las-infusiones-y-vinos",
+      "title": "Los taninos: astringencia en las infusiones y vinos",
+      "order": 130,
+      "description": "Analizamos estas enormes moléculas vegetales antioxidantes que provocan esa sensación de sequedad en tu boca al beber una rica copa de vino tinto o un té.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "polimeros-absorbentes-quimica-oculta-en-los-panales",
+      "title": "Polímeros absorbentes: química oculta en los pañales",
+      "order": 131,
+      "description": "Descubrimos cómo el poliacrilato de sodio logra atrapar moléculas de agua a través de puentes de hidrógeno, absorbiendo cientos de veces su propio peso.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "sulfuro-de-plata-por-que-nuestras-joyas-se-oscurecen",
+      "title": "Sulfuro de plata: por qué nuestras joyas se oscurecen",
+      "order": 132,
+      "description": "Entiende las reacciones lentas entre tus preciados objetos de plata y los rastros de azufre ambiental, formando una opaca capa negra difícil de limpiar.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-acido-citrico-la-acidez-natural-de-todos-los-limones",
+      "title": "El ácido cítrico: la acidez natural de todos los limones",
+      "order": 133,
+      "description": "Estudiamos el ácido orgánico responsable del sabor agrio en frutas cítricas, su rol vital en el metabolismo celular y sus usos como conservante efectivo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-yodo-y-la-glandula-tiroides-la-quimica-de-la-vida",
+      "title": "El yodo y la glándula tiroides: la química de la vida",
+      "order": 134,
+      "description": "Adéntrate en este halógeno indispensable para la síntesis de hormonas, comprendiendo por qué su deficiencia causa graves problemas en el cuerpo humano.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cloracion-del-agua-el-tratamiento-que-salva-poblaciones",
+      "title": "Cloración del agua: el tratamiento que salva poblaciones",
+      "order": 135,
+      "description": "Conoce cómo el cloro interactúa con microorganismos nocivos, destruyendo sus membranas celulares para asegurar que el agua de red sea potable y segura.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-ozono-y-el-oxigeno-alotropia-que-protege-al-planeta",
+      "title": "El ozono y el oxígeno: alotropía que protege al planeta",
+      "order": 136,
+      "description": "Comparamos el oxígeno que respiramos con el ozono estratosférico, dos formas del mismo elemento químico con funciones radicalmente distintas en la Tierra.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-quimica-del-queso-coagulando-la-leche-paso-a-paso",
+      "title": "La química del queso: coagulando la leche paso a paso",
+      "order": 137,
+      "description": "Descubrimos cómo las enzimas de la enzima cuajo rompen las micelas de la caseína, alterando las proteínas de la leche para formar quesos muy deliciosos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "galvanizado-el-zinc-sacrificado-para-proteger-metales",
+      "title": "Galvanizado: el zinc sacrificado para proteger metales",
+      "order": 138,
+      "description": "Estudiamos el proceso electrolítico donde una capa externa de zinc se oxida primero de forma deliberada para salvar y proteger al hierro subyacente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "antiacidos-estomacales-neutralizando-el-fuego-interior",
+      "title": "Antiácidos estomacales: neutralizando el fuego interior",
+      "order": 139,
+      "description": "Conoce cómo bases simples como el bicarbonato o hidróxido de magnesio reaccionan con el ácido clorhídrico de tu estómago para brindarte rápido alivio.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "glutamato-monosodico-el-quinto-sabor-de-nuestra-comida",
+      "title": "Glutamato monosódico: el quinto sabor de nuestra comida",
+      "order": 140,
+      "description": "Descubrimos la molécula responsable del umami, ese sabor profundo y sabroso, analizando su origen natural y por qué su síntesis revolucionó la cocina.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "lavado-en-seco-limpiar-tu-ropa-delicada-sin-usar-agua",
+      "title": "Lavado en seco: limpiar tu ropa delicada sin usar agua",
+      "order": 141,
+      "description": "Exploramos solventes orgánicos como el percloroetileno, sustancias capaces de disolver manchas de grasa sin encoger ni causar daño a tus telas delicadas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "emulsionantes-en-accion-mezclando-el-agua-con-el-aceite",
+      "title": "Emulsionantes en acción: mezclando el agua con el aceite",
+      "order": 142,
+      "description": "Adéntrate en moléculas bifásicas como la lecitina de huevo, que logran estabilizar gotas microscópicas de grasa en agua para fabricar una rica mayonesa.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-extraccion-del-aluminio-de-la-bauxita-al-metal-puro",
+      "title": "La extracción del aluminio: de la bauxita al metal puro",
+      "order": 143,
+      "description": "Analizamos el intensivo proceso Hall-Héroult que utiliza grandes corrientes eléctricas para aislar este metal ligero a partir de óxidos de rocas duras.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fosforescencia-los-materiales-brillando-en-la-oscuridad",
+      "title": "Fosforescencia: los materiales brillando en la oscuridad",
+      "order": 144,
+      "description": "Entiende la diferencia química con la fluorescencia, analizando electrones que quedan atrapados y liberan su luz acumulada de forma muy lenta de noche.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "antitranspirantes-aluminio-contra-el-sudor-de-tu-cuerpo",
+      "title": "Antitranspirantes: aluminio contra el sudor de tu cuerpo",
+      "order": 145,
+      "description": "Exploramos cómo las sales de aluminio se disuelven con la humedad para formar un gel temporal que bloquea los poros, logrando frenar tu sudor corporal.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-penicilina-la-molecula-que-destruye-paredes-celulares",
+      "title": "La penicilina: la molécula que destruye paredes celulares",
+      "order": 146,
+      "description": "Conoce el anillo betalactámico de este antibiótico vital, que impide a las bacterias nocivas sintetizar sus fuertes paredes celulares logrando sanarnos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "tinturas-capilares-la-quimica-de-los-cambios-de-color",
+      "title": "Tinturas capilares: la química de los cambios de color",
+      "order": 147,
+      "description": "Adéntrate en la reacción permanente donde el amoníaco abre la cutícula del pelo, permitiendo que nuevos pigmentos oxidados reemplacen a la melanina hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-hemoglobina-el-transporte-quimico-dentro-de-la-sangre",
+      "title": "La hemoglobina: el transporte químico dentro de la sangre",
+      "order": 148,
+      "description": "Estudiamos la enorme proteína rica en hierro que se une de forma reversible al oxígeno en los pulmones para distribuirlo a todas las células del cuerpo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "papel-tornasol-moleculas-cambiando-de-color-segun-el-ph",
+      "title": "Papel tornasol: moléculas cambiando de color según el pH",
+      "order": 149,
+      "description": "Descubrimos cómo ciertas sustancias orgánicas complejas ganan o pierden protones rápidamente, alterando su estructura molecular y revelando colores vivos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "monoxido-de-carbono-el-terrible-asesino-quimico-invisible",
+      "title": "Monóxido de carbono: el terrible asesino químico invisible",
+      "order": 150,
+      "description": "Analizamos cómo la combustión incompleta genera este temible gas inodoro, que se adhiere a la sangre con mucha mayor fuerza que el oxígeno que respiras.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "etileno-el-gas-invisible-que-madura-nuestras-frutas",
+      "title": "Etileno: el gas invisible que madura nuestras frutas",
+      "order": 151,
+      "description": "Descubrimos la fitohormona volátil que desata una cascada de enzimas celulares, degradando pectinas para lograr la dulzura de la fruta en maduración.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "mentol-la-molecula-que-engana-con-una-falsa-frescura",
+      "title": "Mentol: la molécula que engaña con una falsa frescura",
+      "order": 152,
+      "description": "Analizamos cómo este compuesto orgánico activa los receptores de frío en nuestra boca y piel, generando una ilusión térmica sin bajar la temperatura.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "serotonina-el-neurotransmisor-regulador-de-tu-humor",
+      "title": "Serotonina: el neurotransmisor regulador de tu humor",
+      "order": 153,
+      "description": "Adéntrate en la fascinante estructura química de la hormona del bienestar, comprendiendo cómo modula nuestro estado de ánimo, apetito y digestión diaria.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "oxitocina-la-poderosa-quimica-del-amor-y-los-apegos",
+      "title": "Oxitocina: la poderosa química del amor y los apegos",
+      "order": 154,
+      "description": "Explora el neuropéptido fundamental que fomenta los lazos sociales y maternales, analizando su liberación bioquímica durante abrazos y afecto genuino.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "formaldehido-la-preservacion-de-los-tejidos-muertos",
+      "title": "Formaldehído: la preservación de los tejidos muertos",
+      "order": 155,
+      "description": "Conoce el gas letal y reactivo que se disuelve en agua formando formalina, usado históricamente para frenar la descomposición celular cruzando proteínas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "propano-y-butano-hidrocarburos-de-la-cocina-hogarena",
+      "title": "Propano y butano: hidrocarburos de la cocina hogareña",
+      "order": 156,
+      "description": "Estudiamos la refinación de los alcanos de cadena corta que se licúan a baja presión, brindando gran energía calórica limpia en cocinas y calefactores.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "aluminio-anodizado-oxidar-metales-para-embellecerlos",
+      "title": "Aluminio anodizado: oxidar metales para embellecerlos",
+      "order": 157,
+      "description": "Profundizamos en el proceso electrolítico que engrosa la capa de óxido natural del aluminio, creando superficies porosas que aceptan colores y resisten.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "lignina-degradada-el-agradable-olor-de-los-libros-viejos",
+      "title": "Lignina degradada: el agradable olor de los libros viejos",
+      "order": 158,
+      "description": "Desglosamos cómo el ácido en el papel rompe lentamente los polímeros de la madera, liberando aromáticos como el benzaldehído y la dulce vainillina hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "paracetamol-la-inhibicion-quimica-del-dolor-corporal",
+      "title": "Paracetamol: la inhibición química del dolor corporal",
+      "order": 159,
+      "description": "Analizamos el mecanismo analgésico de este popular fármaco sintético, bloqueando la síntesis de prostaglandinas en el cerebro para bajar dolores y fiebre.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cianocrilato-el-polimero-detras-del-pegamento-rapido",
+      "title": "Cianocrilato: el polímero detrás del pegamento rápido",
+      "order": 160,
+      "description": "Descubre cómo una simple gota de agua activa la rápida reacción en cadena de esta resina acrílica, creando fuertes enlaces plásticos de forma casi mágica.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "histaminas-la-exagerada-reaccion-quimica-alergica-hoy",
+      "title": "Histaminas: la exagerada reacción química alérgica hoy",
+      "order": 161,
+      "description": "Entendemos las moléculas nitrogenadas que tu sistema inmune libera al detectar polen, causando inflamación, picazón y fluidos para expulsar las amenazas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "trinitrotolueno-la-energia-liberada-por-los-explosivos",
+      "title": "Trinitrotolueno: la energía liberada por los explosivos",
+      "order": 162,
+      "description": "Exploramos la inestable molécula de TNT, comprendiendo cómo la rápida rotura de sus enlaces nitrogenados libera enormes volúmenes de gas a gran presión.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "acido-urico-cristales-dolorosos-en-las-articulaciones",
+      "title": "Ácido úrico: cristales dolorosos en las articulaciones",
+      "order": 163,
+      "description": "Analizamos el subproducto metabólico de las purinas que, al acumularse en la sangre por mala filtración, precipita formando afilados y dolorosos cristales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "esteviosidos-las-dulces-moleculas-de-origen-vegetal",
+      "title": "Esteviósidos: las dulces moléculas de origen vegetal",
+      "order": 164,
+      "description": "Adéntrate en los glucósidos extraídos de la hoja de estevia, endulzantes naturales sumamente potentes que no son metabolizados y aportan cero calorías.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "oxido-nitroso-el-gas-hilarante-en-la-odontologia-hoy",
+      "title": "Óxido nitroso: el gas hilarante en la odontología hoy",
+      "order": 165,
+      "description": "Estudiamos el incoloro compuesto químico que ralentiza las respuestas neurológicas, reduciendo eficazmente el dolor y generando gran euforia en pacientes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cortisol-las-hormonas-quimicas-que-desatan-tu-estres",
+      "title": "Cortisol: las hormonas químicas que desatan tu estrés",
+      "order": 166,
+      "description": "Conoce el esteroide liberado por las glándulas suprarrenales ante peligros, alterando nuestro metabolismo celular para darnos energía de escape inmediata.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "melanina-los-pigmentos-que-colorean-nuestra-piel-hoy",
+      "title": "Melanina: los pigmentos que colorean nuestra piel hoy",
+      "order": 167,
+      "description": "Descubrimos las macromoléculas complejas derivadas de la tirosina, encargadas de absorber la radiación solar para defender tus células del grave daño.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "arsenico-el-famoso-veneno-indetectable-del-medioevo",
+      "title": "Arsénico: el famoso veneno indetectable del medioevo",
+      "order": 168,
+      "description": "Profundizamos en el metaloide tóxico que simulaba los síntomas del cólera, bloqueando enzimas celulares vitales para la producción energética del cuerpo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "terpenos-los-aromaticos-compuestos-de-aceites-puros",
+      "title": "Terpenos: los aromáticos compuestos de aceites puros",
+      "order": 169,
+      "description": "Exploramos los hidrocarburos orgánicos presentes en resinas florales, responsables de dotar con aromas característicos al pino, el limón y la lavanda hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "celuloide-y-rayon-los-primeros-plasticos-semisinteticos",
+      "title": "Celuloide y rayón: los primeros plásticos semisintéticos",
+      "order": 170,
+      "description": "Analizamos la manipulación química de la celulosa vegetal mediante ácidos agresivos para crear películas fotográficas y textiles suaves y muy brillantes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "sulfato-de-bario-metales-pesados-en-radiografias-hoy",
+      "title": "Sulfato de bario: metales pesados en radiografías hoy",
+      "order": 171,
+      "description": "Estudiamos esta densa sal insoluble que los pacientes ingieren sin riesgo de toxicidad, permitiendo a los médicos bloquear rayos X y observar el esófago.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ibuprofeno-combatiendo-la-inflamacion-desde-su-raiz",
+      "title": "Ibuprofeno: combatiendo la inflamación desde su raíz",
+      "order": 172,
+      "description": "Conoce la estructura y el potente mecanismo de acción de este ácido propiónico, fundamental para bloquear las enzimas celulares que generan la inflamación.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "nitritos-en-carnes-conservantes-de-embutidos-curados",
+      "title": "Nitritos en carnes: conservantes de embutidos curados",
+      "order": 173,
+      "description": "Desglosamos las sales de los embutidos, que evitan la letal toxina botulínica pero pueden formar nitrosaminas dañinas al calentarse a altas temperaturas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "poliestireno-el-plastico-inflado-de-un-solo-uso-diario",
+      "title": "Poliestireno: el plástico inflado de un solo uso diario",
+      "order": 174,
+      "description": "Adéntrate en este polímero expandido térmicamente con gases hasta lograr un material aislante que lamentablemente tarda cientos de años en degradarse hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "clorofila-el-vital-anillo-de-magnesio-que-pinta-al-mundo",
+      "title": "Clorofila: el vital anillo de magnesio que pinta al mundo",
+      "order": 175,
+      "description": "Explora la compleja molécula fotorreceptora verde, analizando su núcleo metálico que captura fotones solares para iniciar la síntesis de nuevos azúcares.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "dihidroxiacetona-lograr-bronceados-sin-luz-solar-directa",
+      "title": "Dihidroxiacetona: lograr bronceados sin luz solar directa",
+      "order": 176,
+      "description": "Descubrimos el carbohidrato simple que reacciona con los aminoácidos muertos de la epidermis, creando pigmentos pardos inofensivos sin daño ultravioleta.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ninhidrina-revelando-las-huellas-dactilares-invisibles",
+      "title": "Ninhidrina: revelando las huellas dactilares invisibles",
+      "order": 177,
+      "description": "Analizamos el reactivo químico forense que reacciona específicamente con los aminoácidos del sudor humano, generando un intenso y claro color púrpura.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "acido-hialuronico-reteniendo-el-agua-de-nuestra-piel",
+      "title": "Ácido hialurónico: reteniendo el agua de nuestra piel",
+      "order": 178,
+      "description": "Estudiamos este gran polisacárido estructural, capaz de retener mil veces su peso molecular en agua pura para lograr mantener toda nuestra piel hidratada.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "queratina-la-proteina-dura-en-nuestras-unas-y-cabellos",
+      "title": "Queratina: la proteína dura en nuestras uñas y cabellos",
+      "order": 179,
+      "description": "Comprendemos la estructura helicoidal rica en el elemento azufre celular, cuyos fuertes puentes disulfuro le confieren increíble resistencia al cabello.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fermentacion-lactica-la-acida-creacion-de-los-yogures",
+      "title": "Fermentación láctica: la ácida creación de los yogures",
+      "order": 180,
+      "description": "Exploramos el proceso anaeróbico donde las bacterias convierten la lactosa pura en ácido láctico, alterando las proteínas para lograr un postre cremoso.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "pectina-vegetal-la-estructura-detras-de-las-mermeladas",
+      "title": "Pectina vegetal: la estructura detrás de las mermeladas",
+      "order": 181,
+      "description": "Descubre el polisacárido natural presente en las frutas que, al combinarse con azúcar y ácido, forma una red tridimensional que espesa todas tus jaleas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "feromonas-humanas-los-mitos-de-la-atraccion-quimica",
+      "title": "Feromonas humanas: los mitos de la atracción química",
+      "order": 182,
+      "description": "Analizamos la compleja búsqueda de moléculas volátiles humanas, desmintiendo mitos comerciales y explorando la verdadera comunicación química entre nosotros.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "dioxido-de-titanio-el-pigmento-blanco-mas-usado-hoy",
+      "title": "Dióxido de titanio: el pigmento blanco más usado hoy",
+      "order": 183,
+      "description": "Estudiamos el óxido metálico que aporta gran opacidad y un blanco brillante a pinturas, plásticos e incluso productos cosméticos como los filtros solares.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "salitre-y-polvora-la-quimica-de-los-antiguos-imperios",
+      "title": "Salitre y pólvora: la química de los antiguos imperios",
+      "order": 184,
+      "description": "Exploramos cómo el nitrato de potasio reacciona violentamente con el carbón y el azufre, creando la primera mezcla explosiva que cambió toda la historia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "dopamina-biologica-los-circuitos-del-placer-y-deseo",
+      "title": "Dopamina biológica: los circuitos del placer y deseo",
+      "order": 185,
+      "description": "Conoce el neurotransmisor clave que impulsa nuestro sistema de recompensas, motivando a nuestro cerebro mediante complejas y vitales reacciones bioquímicas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "acido-ascorbico-protegiendo-a-las-celulas-de-la-vejez",
+      "title": "Ácido ascórbico: protegiendo a las células de la vejez",
+      "order": 186,
+      "description": "Profundizamos en la vitamina C, una potente molécula reductora que cede sus electrones para neutralizar el grave daño causado por los radicales libres hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "neodimio-y-magnetismo-los-imanes-permanentes-fuertes",
+      "title": "Neodimio y magnetismo: los imanes permanentes fuertes",
+      "order": 187,
+      "description": "Descubrimos la aleación de este metal de tierras raras con hierro y boro, logrando alinear sus electrones para crear campos magnéticos sumamente potentes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "adrenalina-pura-quimica-para-la-huida-o-la-lucha-hoy",
+      "title": "Adrenalina pura: química para la huida o la lucha hoy",
+      "order": 188,
+      "description": "Analizamos la rápida síntesis de esta hormona ante situaciones extremas, acelerando tu ritmo cardíaco y enviando gran energía química directo a los músculos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "silice-cristalina-la-abundante-arena-que-hace-el-vidrio",
+      "title": "Sílice cristalina: la abundante arena que hace el vidrio",
+      "order": 189,
+      "description": "Estudiamos la fuerte red espacial de silicio y oxígeno, el compuesto más abundante en la corteza terrestre y la base principal de toda nuestra tecnología.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "vulcanizacion-fria-reparando-tus-neumaticos-pinchados",
+      "title": "Vulcanización fría: reparando tus neumáticos pinchados",
+      "order": 190,
+      "description": "Desglosamos el proceso químico donde los parches reaccionan con el caucho usando un acelerador especial, formando enlaces cruzados sin necesitar calor hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cera-de-abejas-la-perfecta-quimica-de-las-colmenas",
+      "title": "Cera de abejas: la perfecta química de las colmenas",
+      "order": 191,
+      "description": "Explora la compleja mezcla de ésteres, ácidos grasos y alcoholes que las abejas sintetizan naturalmente para construir sus resistentes y exactos panales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "saponinas-naturales-el-jabon-ecologico-de-las-plantas",
+      "title": "Saponinas naturales: el jabón ecológico de las plantas",
+      "order": 192,
+      "description": "Conoce estos fascinantes glucósidos vegetales que disminuyen la tensión superficial del agua natural, generando una gran espuma limpiadora libre de tóxicos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "acido-folico-y-embarazo-la-creacion-celular-vital-hoy",
+      "title": "Ácido fólico y embarazo: la creación celular vital hoy",
+      "order": 193,
+      "description": "Analizamos la vitamina B9 y su papel insustituible en la síntesis de nuevo ADN, previniendo así graves defectos genéticos en el temprano desarrollo fetal.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "lluvia-dorada-y-plomo-reacciones-de-precipitacion-hoy",
+      "title": "Lluvia dorada y plomo: reacciones de precipitación hoy",
+      "order": 194,
+      "description": "Descubre una de las reacciones visuales más hermosas en química, donde iones de yoduro y plomo se unen formando brillantes cristales sólidos de color oro.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "toxina-botulinica-el-veneno-letal-que-paraliza-rostros",
+      "title": "Toxina botulínica: el veneno letal que paraliza rostros",
+      "order": 195,
+      "description": "Estudiamos la neurotoxina más potente del mundo, analizando cómo interrumpe drásticamente la liberación de acetilcolina celular para relajar los músculos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "amalgamas-dentales-la-antigua-quimica-de-los-metales",
+      "title": "Amalgamas dentales: la antigua química de los metales",
+      "order": 196,
+      "description": "Adéntrate en la polémica mezcla de metales líquidos y sólidos que durante siglos rellenaron nuestras caries dentales gracias a su fuerte cristalización.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fenol-y-antisepsia-desinfectando-los-quirofanos-hoy",
+      "title": "Fenol y antisepsia: desinfectando los quirófanos hoy",
+      "order": 197,
+      "description": "Conoce la histórica molécula aromática que revolucionó la medicina moderna, destruyendo las membranas de las bacterias para lograr cirugías muy seguras hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "salinidad-oceanica-por-que-el-mar-esta-lleno-de-cloro",
+      "title": "Salinidad oceánica: por qué el mar está lleno de cloro",
+      "order": 198,
+      "description": "Desglosamos el largo proceso geológico y químico donde la lluvia disolvió iones terrestres durante eones enteros, arrastrándolos lentamente hacia el mar.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "isotopos-medicos-la-radiacion-para-curar-enfermedades",
+      "title": "Isótopos médicos: la radiación para curar enfermedades",
+      "order": 199,
+      "description": "Exploramos cómo la química nuclear sintetiza núcleos inestables como el yodo-131, usados clínicamente para atacar con gran precisión las células dañadas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "glifosato-y-herbicidas-la-quimica-en-la-agricultura",
+      "title": "Glifosato y herbicidas: la química en la agricultura",
+      "order": 200,
+      "description": "Analizamos el controversial compuesto que inhibe una enzima vegetal exclusiva, logrando erradicar malezas indeseables y asegurando el máximo rendimiento.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "luces-de-neon-electrones-saltando-en-tubos-de-vidrio",
+      "title": "Luces de neón: electrones saltando en tubos de vidrio",
+      "order": 201,
+      "description": "Descubrimos cómo el alto voltaje excita los electrones del gas noble puro, emitiendo brillantes fotones rojos y anaranjados al regresar a su estado base.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-quimica-del-llanto-lagrimas-basales-y-emocionales",
+      "title": "La química del llanto: lágrimas basales y emocionales",
+      "order": 202,
+      "description": "Comparamos la composición química de nuestras lágrimas biológicas, descubriendo cómo aquellas causadas por emociones contienen altos niveles de hormonas hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "propoleos-de-abeja-la-gran-resina-antimicrobiana-hoy",
+      "title": "Propóleos de abeja: la gran resina antimicrobiana hoy",
+      "order": 203,
+      "description": "Estudiamos esta compleja mezcla de resinas botánicas ricas en flavonoides, utilizada por las abejas de la colmena para sellar y defender su frágil hogar.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "acido-sulfurico-el-poderoso-rey-de-toda-la-industria",
+      "title": "Ácido sulfúrico: el poderoso rey de toda la industria",
+      "order": 204,
+      "description": "Adéntrate en la enorme producción y el inmenso uso de este corrosivo ácido fuerte, vital para fabricar fertilizantes, limpiar metales y crear baterías.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "vaselina-purificada-los-petroquimicos-sobre-tu-piel",
+      "title": "Vaselina purificada: los petroquímicos sobre tu piel",
+      "order": 205,
+      "description": "Analizamos la refinación química de esta densa mezcla de hidrocarburos saturados, creando una gran barrera impermeable que evita la pérdida de agua vital.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "enzimas-digestivas-rompiendo-la-comida-que-ingerimos",
+      "title": "Enzimas digestivas: rompiendo la comida que ingerimos",
+      "order": 206,
+      "description": "Conoce las precisas proteínas como la pepsina o amilasa, que fragmentan lentamente las macromoléculas complejas en útiles nutrientes para nuestra sangre.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "nitrogeno-liquido-congelacion-quimica-a-gran-escala",
+      "title": "Nitrógeno líquido: congelación química a gran escala",
+      "order": 207,
+      "description": "Explora la destilación fraccionada del aire que produce este fluido extremadamente frío, deteniendo por completo todas las reacciones químicas celulares.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fibras-de-carbono-la-maxima-resistencia-sin-gran-peso",
+      "title": "Fibras de carbono: la máxima resistencia sin gran peso",
+      "order": 208,
+      "description": "Descubre el proceso térmico extremo que elimina casi todo excepto el carbono puro, formando láminas súper fuertes para usar en aviones modernos y en autos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "lupulo-y-cerveza-los-acidos-amargos-de-tu-bebida-hoy",
+      "title": "Lúpulo y cerveza: los ácidos amargos de tu bebida hoy",
+      "order": 209,
+      "description": "Desglosamos las complejas resinas orgánicas del lúpulo, analizando cómo el proceso de hervor transforma químicamente los alfa ácidos y aporta el amargor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "superabsorbencia-molecular-reteniendo-todo-el-agua",
+      "title": "Superabsorbencia molecular: reteniendo todo el agua",
+      "order": 210,
+      "description": "Profundizamos en el mecanismo del poliacrilato, un increíble polímero cruzado capaz de absorber grandes sumas de agua para usarla lento en agricultura.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-olor-del-ajo-la-alicina-y-sus-potentes-defensas",
+      "title": "El olor del ajo: la alicina y sus potentes defensas",
+      "order": 211,
+      "description": "Analizamos cómo las células del ajo machacado liberan una enzima que crea rápidamente la alicina, un fuerte compuesto orgánico de defensa natural hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "quimioluminiscencia-las-barras-de-luz-que-no-queman",
+      "title": "Quimioluminiscencia: las barras de luz que no queman",
+      "order": 212,
+      "description": "Descubrimos la increíble reacción entre el peróxido de hidrógeno y un éster que excita moléculas fluorescentes para emitir mucha luz sin dar calor hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-aerogel-la-asombrosa-quimica-del-humo-congelado",
+      "title": "El aerogel: la asombrosa química del humo congelado",
+      "order": 213,
+      "description": "Estudiamos el material sólido más ligero que existe, un gel al que se le extrajo todo el líquido dejando un fuerte y casi mágico aislante térmico hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-quimica-del-gluten-proteinas-unidas-en-la-masa",
+      "title": "La química del gluten: proteínas unidas en la masa",
+      "order": 214,
+      "description": "Desglosamos cómo las proteínas glutenina y gliadina se hidratan al amasar la harina, creando una elástica red que atrapa el gas carbónico del pan crudo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "hidroxiapatita-el-resistente-cristal-de-tus-huesos",
+      "title": "Hidroxiapatita: el resistente cristal de tus huesos",
+      "order": 215,
+      "description": "Conoce la asombrosa estructura del mineral de fosfato de calcio que otorga enorme dureza a todos los huesos y los fuertes dientes de los seres vivos hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "reaccion-termita-el-polvo-de-metal-fundiendo-hierro",
+      "title": "Reacción termita: el polvo de metal fundiendo hierro",
+      "order": 216,
+      "description": "Adéntrate en esta intensa reacción de óxido-reducción donde el aluminio reduce al óxido de hierro con tanto calor que logra derretir el metal sólido hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-acetilcolina-el-mensajero-de-los-impulsos-vitales",
+      "title": "La acetilcolina: el mensajero de los impulsos vitales",
+      "order": 217,
+      "description": "Analizamos el neurotransmisor indispensable que permite la contracción de nuestros músculos y regula la memoria gracias a rápidas reacciones bioquímicas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "insulina-biologica-la-llave-quimica-del-azucar-hoy",
+      "title": "Insulina biológica: la llave química del azúcar hoy",
+      "order": 218,
+      "description": "Exploramos la gran proteína secretada por el páncreas que permite a nuestras células absorber toda la glucosa del torrente sanguíneo para darnos energía.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "esferificacion-el-alginato-en-la-cocina-molecular",
+      "title": "Esferificación: el alginato en la cocina molecular",
+      "order": 219,
+      "description": "Descubrimos cómo el alginato de sodio reacciona rápidamente con sales de calcio para formar cápsulas de gel perfectas, revolucionando la alta cocina de hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "floculacion-atrapando-suciedad-con-sales-de-aluminio",
+      "title": "Floculación: atrapando suciedad con sales de aluminio",
+      "order": 220,
+      "description": "Estudiamos cómo ciertos coagulantes químicos neutralizan las cargas eléctricas de pequeñas partículas suspendidas en agua pura, permitiendo filtrarlas hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "microondas-y-agua-la-alta-friccion-por-polaridad-hoy",
+      "title": "Microondas y agua: la alta fricción por polaridad hoy",
+      "order": 221,
+      "description": "Comprende cómo la radiación electromagnética hace rotar velozmente las moléculas polares del agua, generando intensa fricción y gran calor en toda tu comida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "conservantes-bht-evitando-la-oxidacion-en-grasas-hoy",
+      "title": "Conservantes BHT: evitando la oxidación en grasas hoy",
+      "order": 222,
+      "description": "Desentrañamos el funcionamiento de los fenoles sintéticos que atrapan a los radicales libres, evitando que tus alimentos lípidos se vuelvan muy rancios.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "teflon-expandido-la-gran-quimica-de-la-ropa-seca-hoy",
+      "title": "Teflón expandido: la gran química de la ropa seca hoy",
+      "order": 223,
+      "description": "Explora el material microporoso celular que bloquea perfectamente el agua desde su exterior pero permite que todo el vapor de tu sudor salga muy libremente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "retinol-y-piel-la-quimica-de-la-regeneracion-celular",
+      "title": "Retinol y piel: la química de la regeneración celular",
+      "order": 224,
+      "description": "Conoce cómo este potente derivado de la vitamina A estimula la veloz producción de nuevo colágeno, logrando mejorar enormemente el tejido de tu epidermis.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-bolsas-de-aire-la-rapida-explosion-del-nitrogeno",
+      "title": "Las bolsas de aire: la rápida explosión del nitrógeno",
+      "order": 225,
+      "description": "Analizamos cómo un choque detona la veloz descomposición de la azida de sodio, llenando inmensas bolsas salvavidas con gas nitrógeno en milisegundos hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-smog-fotoquimico-la-densa-contaminacion-urbana-hoy",
+      "title": "El smog fotoquímico: la densa contaminación urbana hoy",
+      "order": 226,
+      "description": "Descubre cómo los óxidos de nitrógeno reaccionan con los fuertes rayos solares para formar un nivel de ozono muy tóxico que ahoga a las grandes ciudades.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "vapores-de-pegamento-revelando-las-huellas-latentes",
+      "title": "Vapores de pegamento: revelando las huellas latentes",
+      "order": 227,
+      "description": "Adéntrate en el preciso proceso forense que utiliza vapores de cianocrilato para cristalizar los aminoácidos del sudor, fijando de blanco pistas ocultas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "plastico-pet-el-inmenso-imperio-de-las-botellas-hoy",
+      "title": "Plástico PET: el inmenso imperio de las botellas hoy",
+      "order": 228,
+      "description": "Estudiamos el polietileno tereftalato, un plástico transparente muy resistente y clave, detallando cómo se sintetiza y sus complejos procesos de reciclaje.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-fresco-aroma-verde-cuando-el-cesped-sufre-estres",
+      "title": "El fresco aroma verde: cuando el césped sufre estrés",
+      "order": 229,
+      "description": "Analizamos las señales de alerta químicas de hojas y pastos que, al ser fuertemente cortados, emiten compuestos volátiles para avisar a todo su entorno.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "azul-indigo-la-rica-molecula-que-tine-tus-pantalones",
+      "title": "Azul índigo: la rica molécula que tiñe tus pantalones",
+      "order": 230,
+      "description": "Explora la profunda química del colorante insoluble más famoso que requiere de una fuerte reducción química temporal para poder adherirse al denso algodón.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "acero-inoxidable-el-cromo-que-logra-evitar-el-oxido",
+      "title": "Acero inoxidable: el cromo que logra evitar el óxido",
+      "order": 231,
+      "description": "Conoce cómo el cromo adicionado al hierro forma una microscópica capa pasivadora, reparándose mágicamente a sí misma y bloqueando la fuerte corrosión hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-agua-regia-la-acida-mezcla-que-disuelve-puro-oro",
+      "title": "El agua regia: la ácida mezcla que disuelve puro oro",
+      "order": 232,
+      "description": "Desglosamos la extremadamente corrosiva alianza entre ácidos nítrico y clorhídrico, la única mezcla capaz de disolver a los inalterables metales nobles.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "propilenglicol-el-util-y-denso-solvente-humectante",
+      "title": "Propilenglicol: el útil y denso solvente humectante",
+      "order": 233,
+      "description": "Analizamos este seguro compuesto químico capaz de disolver ricos aromas en los vaporizadores y también ayuda a retener la humedad en alimentos envasados.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "vainillina-pura-el-dulce-aroma-molecular-del-postre",
+      "title": "Vainillina pura: el dulce aroma molecular del postre",
+      "order": 234,
+      "description": "Descubrimos la molécula fenólica de ese delicioso olor y por qué se puede sintetizar económicamente usando la celulosa en vez de delicadas orquídeas puras.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gas-radon-el-elemento-radiactivo-oculto-en-los-pisos",
+      "title": "Gas radón: el elemento radiactivo oculto en los pisos",
+      "order": 235,
+      "description": "Estudiamos cómo la lenta y natural desintegración del uranio en el subsuelo libera este denso gas inerte, acumulando mucha radiación en zonas cerradas hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cristales-liquidos-la-quimica-en-tu-pantalla-digital",
+      "title": "Cristales líquidos: la química en tu pantalla digital",
+      "order": 236,
+      "description": "Adéntrate en el estado intermedio de la materia que fluye tranquilamente como un líquido, pero tiene sus grandes moléculas orientadas como sólidos puros.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "baterias-de-plomo-la-ruda-energia-de-los-automoviles",
+      "title": "Baterías de plomo: la ruda energía de los automóviles",
+      "order": 237,
+      "description": "Comprendemos las potentes reacciones reversibles entre densas placas de plomo y ácido sulfúrico concentrado, permitiendo el fácil arranque de los motores.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cianuracion-del-oro-la-extraccion-en-la-gran-mineria",
+      "title": "Cianuración del oro: la extracción en la gran minería",
+      "order": 238,
+      "description": "Explora cómo las mineras modernas usan soluciones de cianuro para disolver, oxidar y extraer las mínimas y valiosas trazas de oro desde rocas trituradas hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "enriquecer-uranio-aislando-el-isotopo-mas-fisionable",
+      "title": "Enriquecer uranio: aislando el isótopo más fisionable",
+      "order": 239,
+      "description": "Analizamos el extremadamente complejo proceso químico que logra separar ligeramente el escaso uranio doscientos treinta y cinco con grandes centrifugadoras.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "amonio-cuaternario-el-potente-agente-desinfectante",
+      "title": "Amonio cuaternario: el potente agente desinfectante",
+      "order": 240,
+      "description": "Conoce las sales catiónicas de superficie que rompen y desarman las membranas lipídicas celulares de todos los virus y bacterias sin blanquear las ropas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-mercaptanos-el-olor-oculto-del-gas-natural-hoy",
+      "title": "Los mercaptanos: el olor oculto del gas natural hoy",
+      "order": 241,
+      "description": "Descubre los compuestos de azufre altamente olorosos añadidos al gas inodoro para alertarnos de peligrosas fugas y así evitar graves explosiones en el hogar.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-acido-acetico-la-util-quimica-de-los-vinagres",
+      "title": "El ácido acético: la útil química de los vinagres",
+      "order": 242,
+      "description": "Exploramos la oxidación bacteriana del etanol que produce este ácido débil, fundamental para aliñar ensaladas, conservar alimentos y limpiar el hogar hoy mismo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-antocianinas-el-color-del-otono-en-las-hojas",
+      "title": "Las antocianinas: el color del otoño en las hojas",
+      "order": 243,
+      "description": "Conoce los pigmentos que cambian de color según el pH, revelando brillantes tonos rojos y púrpuras cuando la clorofila de las plantas se degrada con el frío.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "dinamita-y-alfred-nobel-domando-la-nitroglicerina",
+      "title": "Dinamita y Alfred Nobel: domando la nitroglicerina",
+      "order": 244,
+      "description": "Estudiamos cómo la absorción de este líquido muy explosivo en tierra de diatomeas permitió crear cargas seguras que revolucionaron la minería y construcción.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-plomo-en-la-gasolina-un-gran-error-ambiental",
+      "title": "El plomo en la gasolina: un gran error ambiental",
+      "order": 245,
+      "description": "Analizamos el uso histórico del tetraetilo de plomo para mejorar el octanaje de los motores, desatando una severa crisis de salud global por su gran toxicidad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "resina-de-baquelita-el-primer-plastico-sintetico",
+      "title": "Resina de baquelita: el primer plástico sintético",
+      "order": 246,
+      "description": "Adéntrate en la reacción entre el fenol y el formaldehído que creó el primer polímero artificial, revolucionando el diseño industrial y las comunicaciones hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "luminiscencia-del-tritio-relojes-que-brillan-hoy",
+      "title": "Luminiscencia del tritio: relojes que brillan hoy",
+      "order": 247,
+      "description": "Descubrimos cómo este isótopo radiactivo del hidrógeno emite electrones continuos que excitan el fósforo, iluminando esferas de relojes sin necesitar energía.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-colageno-celular-proteina-que-sostiene-tu-piel",
+      "title": "El colágeno celular: proteína que sostiene tu piel",
+      "order": 248,
+      "description": "Explora la compleja triple hélice de aminoácidos que actúa como el andamiaje principal de nuestro cuerpo, otorgando firmeza y gran elasticidad a los tejidos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "bilirrubina-el-pigmento-amarillo-de-nuestra-bilis",
+      "title": "Bilirrubina: el pigmento amarillo de nuestra bilis",
+      "order": 249,
+      "description": "Desglosamos el ciclo químico de descomposición de los glóbulos rojos viejos, generando este compuesto responsable del color de los hematomas y de la ictericia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-sulfitos-del-vino-quimica-contra-la-oxidacion",
+      "title": "Los sulfitos del vino: química contra la oxidación",
+      "order": 250,
+      "description": "Analizamos cómo estas sales de azufre previenen el crecimiento de bacterias y levaduras indeseadas, asegurando que tu deliciosa bebida mantenga su buen sabor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fullerenos-esferas-de-carbono-jugando-al-futbol",
+      "title": "Fullerenos: esferas de carbono jugando al fútbol",
+      "order": 251,
+      "description": "Estudiamos estas fascinantes macromoléculas de sesenta átomos de carbono con forma de balón, que prometen grandes avances en la medicina y nanotecnología hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gas-mostaza-la-temible-quimica-de-las-trincheras",
+      "title": "Gas mostaza: la temible química de las trincheras",
+      "order": 252,
+      "description": "Conoce el agente vesicante utilizado durante las guerras mundiales, una molécula que destruye lentamente las membranas celulares y el ADN causando gran dolor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-cisplatino-clinico-metales-combatiendo-tumores",
+      "title": "El cisplatino clínico: metales combatiendo tumores",
+      "order": 253,
+      "description": "Adéntrate en este histórico fármaco basado en platino, capaz de unirse fuertemente al ADN de las células cancerosas para lograr detener su veloz reproducción.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "borosilicato-los-vidrios-que-resisten-gran-calor",
+      "title": "Borosilicato: los vidrios que resisten gran calor",
+      "order": 254,
+      "description": "Descubrimos cómo la adición de óxido de boro altera drásticamente la estructura de los vidrios, evitando que se expandan y rompan al someterlos a fuego alto.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "piperina-y-el-estornudo-la-quimica-de-la-pimienta",
+      "title": "Piperina y el estornudo: la química de la pimienta",
+      "order": 255,
+      "description": "Analizamos el alcaloide responsable del picor que irrita las terminaciones nerviosas de la nariz, provocando fuertes reflejos y estornudos de forma instantánea.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-eter-etilico-la-quimica-de-las-anestesias-hoy",
+      "title": "El éter etílico: la química de las anestesias hoy",
+      "order": 256,
+      "description": "Exploramos las propiedades de este líquido altamente volátil e inflamable que revolucionó todas las cirugías médicas al bloquear el dolor en los pacientes hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "octanaje-del-motor-la-resistencia-de-la-gasolina",
+      "title": "Octanaje del motor: la resistencia de la gasolina",
+      "order": 257,
+      "description": "Estudiamos cómo la química califica a los combustibles mediante el isooctano, evitando detonaciones prematuras que destruyen los cilindros del automóvil hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "acido-tartarico-los-cristales-rotos-de-tu-botella",
+      "title": "Ácido tartárico: los cristales rotos de tu botella",
+      "order": 258,
+      "description": "Desentrañamos el origen de esos pequeños cristales inofensivos que aparecen en los corchos de los vinos maduros al precipitarse sus ácidos por el frío intenso.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "arena-fluidizada-solidos-que-actuan-como-liquidos",
+      "title": "Arena fluidizada: sólidos que actúan como líquidos",
+      "order": 259,
+      "description": "Adéntrate en el proceso físico y químico donde un gas a presión constante separa las partículas de arena haciéndolas comportarse como el agua burbujeante hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gas-fluor-puro-el-elemento-mas-agresivo-de-todos",
+      "title": "Gas flúor puro: el elemento más agresivo de todos",
+      "order": 260,
+      "description": "Conoce el halógeno tan extremadamente reactivo y peligroso que es capaz de encender metales, agua e incluso el fuerte vidrio en llamas sin necesidad de calor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "energia-de-activacion-el-empujon-para-reaccionar",
+      "title": "Energía de activación: el empujón para reaccionar",
+      "order": 261,
+      "description": "Analizamos la inmensa barrera termodinámica invisible que los reactivos deben superar para romper todos sus enlaces iniciales y formar los deseados productos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-resina-de-poliester-endureciendo-al-mundo-hoy",
+      "title": "La resina de poliéster: endureciendo al mundo hoy",
+      "order": 262,
+      "description": "Exploramos los polímeros termoestables que se combinan con fibras de vidrio para construir de todo, desde pequeños kayaks hasta las piscinas de nuestras casas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-nitratos-agricolas-explosiones-industriales-hoy",
+      "title": "Los nitratos agrícolas: explosiones industriales hoy",
+      "order": 263,
+      "description": "Descubre cómo las grandes acumulaciones del útil nitrato de amonio pueden volverse mortalmente inestables bajo fuerte calor, causando enormes daños y tragedias.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gases-refrigerantes-bajando-el-calor-con-freones",
+      "title": "Gases refrigerantes: bajando el calor con freones",
+      "order": 264,
+      "description": "Estudiamos cómo los compuestos halogenados se comprimen y expanden repetidamente, absorbiendo grandes cantidades de calor para mantener nuestros alimentos fríos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-acido-salicilico-la-limpieza-de-nuestros-poros",
+      "title": "El ácido salicílico: la limpieza de nuestros poros",
+      "order": 265,
+      "description": "Conoce este compuesto beta hidroxiácido que disuelve lentamente el exceso de sebo incrustado en nuestra epidermis celular, evitando la formación del fuerte acné.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "reacciones-oscilantes-el-reloj-quimico-de-yodo-hoy",
+      "title": "Reacciones oscilantes: el reloj químico de yodo hoy",
+      "order": 266,
+      "description": "Adéntrate en los espectaculares sistemas químicos que cambian visualmente de colores en bucles hipnóticos hasta alcanzar su esperado equilibrio final de fases.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "electrolisis-del-agua-rompiendo-el-liquido-vital",
+      "title": "Electrólisis del agua: rompiendo el líquido vital",
+      "order": 267,
+      "description": "Analizamos la aplicación de la corriente directa a través del agua para separar y aislar con gran eficacia las valiosas burbujas de oxígeno y de hidrógeno puro.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "goma-xantana-los-espesantes-en-nuestra-comida-hoy",
+      "title": "Goma xantana: los espesantes en nuestra comida hoy",
+      "order": 268,
+      "description": "Explora el curioso polisacárido que bacterias fermentadoras logran producir en el laboratorio, otorgando gran textura y viscosidad a salsas y helados cremosos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "quimica-corporal-por-que-nuestro-sudor-huele-mal",
+      "title": "Química corporal: por qué nuestro sudor huele mal",
+      "order": 269,
+      "description": "Descubrimos cómo nuestro sudor inodoro es velozmente descompuesto por bacterias que habitan tu piel, generando los ácidos volátiles de aroma muy desagradable.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fluidos-no-newtonianos-quimica-de-la-maicena-hoy",
+      "title": "Fluidos no newtonianos: química de la maicena hoy",
+      "order": 270,
+      "description": "Adéntrate en las mezclas espesas cuya viscosidad celular aumenta velozmente al recibir fuertes golpes, actuando al instante como un sólido muy duro y resistente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "lignina-estructural-la-rigidez-quimica-de-la-madera",
+      "title": "Lignina estructural: la rigidez química de la madera",
+      "order": 271,
+      "description": "Estudiamos este complejo polímero orgánico que otorga la enorme resistencia a las plantas terrestres, permitiendo el crecimiento de inmensos árboles hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "acido-fosforico-como-removemos-el-oxido-de-los-metales",
+      "title": "Ácido fosfórico: cómo removemos el óxido de los metales",
+      "order": 272,
+      "description": "Analizamos la reacción química donde este ácido convierte el hierro oxidado en fosfato de hierro oscuro, una fuerte capa protectora y muy fácil de remover.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-platino-un-metal-precioso-y-catalizador-industrial",
+      "title": "El platino: un metal precioso y catalizador industrial",
+      "order": 273,
+      "description": "Conoce cómo este denso elemento noble acelera drásticamente complejas reacciones sin consumirse, siendo absolutamente vital para la refinación del petróleo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-quimica-de-la-kombucha-el-cultivo-simbiotico-activo",
+      "title": "La química de la kombucha: el cultivo simbiótico activo",
+      "order": 274,
+      "description": "Desglosamos la compleja comunidad biológica de bacterias y levaduras que fermentan el té dulce, creando orgánicos ácidos que benefician tu salud digestiva.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "acetato-de-isoamilo-el-quimico-sabor-a-platano-maduro",
+      "title": "Acetato de isoamilo: el químico sabor a plátano maduro",
+      "order": 275,
+      "description": "Adéntrate en el fascinante mundo de los ésteres sintéticos, comprendiendo cómo los laboratorios replican el dulce olor frutal usando alcoholes y un ácido.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-diclorodifeniltricloroetano-la-caida-del-famoso-ddt",
+      "title": "El diclorodifeniltricloroetano: la caída del famoso DDT",
+      "order": 276,
+      "description": "Exploramos la historia del poderoso insecticida sintético que salvó a muchos, pero cuya lenta degradación química causó gravísimos daños al medio ambiente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "tensioactivos-en-tu-champu-limpiando-el-cuero-cabelludo",
+      "title": "Tensioactivos en tu champú: limpiando el cuero cabelludo",
+      "order": 277,
+      "description": "Estudiamos cómo las moléculas anfifílicas de tus productos de higiene logran atrapar la grasa capilar, formando útiles micelas que el agua luego arrastra.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "yoduro-de-plata-la-siembra-de-nubes-para-atraer-lluvia",
+      "title": "Yoduro de plata: la siembra de nubes para atraer lluvia",
+      "order": 278,
+      "description": "Analizamos cómo las partículas de esta sal inorgánica actúan como excelentes núcleos de condensación, forzando la precipitación vital en zonas muy secas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "titanio-medico-la-perfecta-integracion-con-tus-huesos",
+      "title": "Titanio médico: la perfecta integración con tus huesos",
+      "order": 279,
+      "description": "Descubre cómo la capa protectora de dióxido de titanio permite que este metal sea completamente biocompatible, fusionándose de manera natural con el tejido.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-lidocaina-el-bloqueo-temporal-del-dolor-localizado",
+      "title": "La lidocaína: el bloqueo temporal del dolor localizado",
+      "order": 280,
+      "description": "Desglosamos la estructura química de este útil anestésico que impide el flujo de iones de sodio en tus nervios, deteniendo los fuertes mensajes de tu dolor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "acido-malico-la-intensa-acidez-de-las-manzanas-verdes",
+      "title": "Ácido málico: la intensa acidez de las manzanas verdes",
+      "order": 281,
+      "description": "Conoce el compuesto orgánico responsable del sabor agrio en frutas inmaduras, sumamente vital para el ciclo de producción energética celular en tu cuerpo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-tungsteno-el-metal-de-las-clasicas-luces-de-filamento",
+      "title": "El tungsteno: el metal de las clásicas luces de filamento",
+      "order": 282,
+      "description": "Exploramos el fascinante elemento con el mayor punto de fusión de toda la tabla periódica, capaz de resistir intenso calor extremo para iluminar tus noches.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-cortisona-sintetica-el-freno-a-la-gran-inflamacion",
+      "title": "La cortisona sintética: el freno a la gran inflamación",
+      "order": 283,
+      "description": "Estudiamos cómo este poderoso esteroide logra inhibir las respuestas de tu sistema inmunológico, brindando gran alivio a terribles enfermedades autoinmunes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-dioxinas-los-temibles-subproductos-muy-venenosos",
+      "title": "Las dioxinas: los temibles subproductos muy venenosos",
+      "order": 284,
+      "description": "Analizamos estas moléculas orgánicas altamente tóxicas creadas involuntariamente durante la combustión química, que se acumulan peligrosamente en la grasa.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "betacarotenos-el-pigmento-naranja-de-tus-zanahorias",
+      "title": "Betacarotenos: el pigmento naranja de tus zanahorias",
+      "order": 285,
+      "description": "Adéntrate en los fuertes hidrocarburos responsables de los colores vibrantes en varios vegetales, que tu hígado logra romper para producir gran vitamina A.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fuerzas-de-van-der-waals-como-logran-trepar-los-geckos",
+      "title": "Fuerzas de Van der Waals: cómo logran trepar los geckos",
+      "order": 286,
+      "description": "Descubrimos las débiles atracciones intermoleculares temporales que, al sumarse por millones, permiten a estos pequeños reptiles caminar por techos lisos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "poliuretano-elastomerico-la-gran-quimica-del-elastano",
+      "title": "Poliuretano elastomérico: la gran química del elastano",
+      "order": 287,
+      "description": "Explora la creación de las largas cadenas de polímeros sintéticos que permiten a tus prendas deportivas estirarse enormemente y recuperar siempre su forma.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "trifosfato-de-adenosina-la-gran-moneda-de-energia-hoy",
+      "title": "Trifosfato de adenosina: la gran moneda de energía hoy",
+      "order": 288,
+      "description": "Analizamos el nucleótido fundamental encargado de almacenar y transportar toda la energía química necesaria para absolutamente cada función de tus células.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-proceso-ostwald-la-sintesis-del-gran-acido-nitrico",
+      "title": "El proceso Ostwald: la síntesis del gran ácido nítrico",
+      "order": 289,
+      "description": "Estudiamos la vital oxidación catalítica del amoníaco a grandes temperaturas para fabricar el ácido indispensable en la enorme producción de fertilizantes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-gel-de-silice-atrapando-la-humedad-en-sobres-secos",
+      "title": "El gel de sílice: atrapando la humedad en sobres secos",
+      "order": 290,
+      "description": "Conoce cómo este fuerte dióxido de silicio altamente poroso utiliza la adsorción capilar para lograr retener el agua del aire y proteger tus aparatos hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-asbesto-el-silicato-fibroso-resistente-y-muy-letal",
+      "title": "El asbesto: el silicato fibroso resistente y muy letal",
+      "order": 291,
+      "description": "Desglosamos la estructura cristalina de este aislante incombustible, comprendiendo cómo sus fibras microscópicas logran causar daños pulmonares muy graves.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-ricina-vegetal-la-proteina-toxica-en-las-semillas",
+      "title": "La ricina vegetal: la proteína tóxica en las semillas",
+      "order": 292,
+      "description": "Adéntrate en el poderoso mecanismo de esta toxina letal del ricino, capaz de inactivar tus ribosomas y frenar por completo la síntesis celular vital hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-masa-madre-las-bacterias-lacticas-haciendo-tu-pan",
+      "title": "La masa madre: las bacterias lácticas haciendo tu pan",
+      "order": 293,
+      "description": "Descubrimos la antigua simbiosis química entre levaduras salvajes y lactobacilos que degradan almidones complejos, otorgando texturas y un enorme sabor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-agar-natural-la-gelatina-quimica-extraida-del-mar",
+      "title": "El agar natural: la gelatina química extraída del mar",
+      "order": 294,
+      "description": "Exploramos la composición de estos fuertes polisacáridos de las algas rojas que logran crear grandes geles termo-reversibles para la ciencia y la comida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-radio-radiactivo-la-triste-historia-en-los-relojes",
+      "title": "El radio radiactivo: la triste historia en los relojes",
+      "order": 295,
+      "description": "Analizamos cómo este peligroso elemento alcalinotérreo fue usado equivocadamente para pintar brillantes esferas, cambiando las estrictas leyes laborales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "datacion-por-potasio-y-argon-la-edad-de-los-volcanes",
+      "title": "Datación por potasio y argón: la edad de los volcanes",
+      "order": 296,
+      "description": "Estudiamos cómo la lenta descomposición de potasio inestable encerrado en rocas permite a los científicos calcular con suma exactitud la edad del planeta.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "pilas-alcalinas-gran-energia-portatil-de-larga-accion",
+      "title": "Pilas alcalinas: gran energía portátil de larga acción",
+      "order": 297,
+      "description": "Conoce la fuerte reacción de óxido-reducción entre el zinc y el manganeso dentro de un medio muy básico, brindando energía constante a todos tus aparatos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-celofan-transparente-celulosa-vegetal-regenerada",
+      "title": "El celofán transparente: celulosa vegetal regenerada",
+      "order": 298,
+      "description": "Desentrañamos el baño ácido que transforma las opacas fibras de madera en una brillante y delgada película impermeable que revolucionó todos los envases.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-policarbonato-puro-los-cristales-que-frenan-balas",
+      "title": "El policarbonato puro: los cristales que frenan balas",
+      "order": 299,
+      "description": "Adéntrate en los fuertes enlaces de este polímero termoplástico muy resistente a los impactos directos, utilizado para fabricar pantallas y blindajes hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fosfato-monoamonico-sofocando-el-fuego-quimico-al-ras",
+      "title": "Fosfato monoamónico: sofocando el fuego químico al ras",
+      "order": 300,
+      "description": "Analizamos el fino polvo químico seco de los extintores comunes, que se funde con el enorme calor aislando el oxígeno para apagar fuegos de forma rápida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-seda-de-arana-un-fuerte-polimero-natural-de-hoy",
+      "title": "La seda de araña: un fuerte polímero natural de hoy",
+      "order": 301,
+      "description": "Descubrimos la increíble y compleja estructura de las fuertes proteínas secretadas por los arácnidos, que logran superar la tenacidad del acero.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-cloraminas-desinfeccion-del-agua-a-largo-plazo",
+      "title": "Las cloraminas: desinfección del agua a largo plazo",
+      "order": 302,
+      "description": "Analizamos cómo la mezcla controlada de cloro y amoníaco crea un compuesto residual muy estable, manteniendo nuestra agua potable limpia por días.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-salicilato-de-metilo-el-fuerte-aroma-del-alivio",
+      "title": "El salicilato de metilo: el fuerte aroma del alivio",
+      "order": 303,
+      "description": "Estudiamos el potente éster orgánico producido naturalmente por varias plantas de invierno, utilizado frecuentemente para calmar dolores musculares.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fenolftaleina-forense-la-prueba-quimica-de-sangre",
+      "title": "Fenolftaleína forense: la prueba química de sangre",
+      "order": 304,
+      "description": "Conoce cómo el clásico indicador de acidez reacciona velozmente junto al peróxido y la hemoglobina para revelar rastros hemáticos en las escenas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "azul-de-metileno-la-reaccion-que-respira-y-cambia",
+      "title": "Azul de metileno: la reacción que respira y cambia",
+      "order": 305,
+      "description": "Adéntrate en el asombroso experimento de la botella azul, donde agitar el líquido disuelve oxígeno atmosférico y oxida el colorante instantáneamente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-aldehidos-moleculas-con-olores-muy-penetrantes",
+      "title": "Los aldehídos: moléculas con olores muy penetrantes",
+      "order": 306,
+      "description": "Exploramos la reactiva familia química del carbono y oxígeno que nos brinda la deliciosa fragancia a canela, las almendras y el icónico Chanel N°5.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "agua-micelar-las-pequenas-esferas-de-la-limpieza",
+      "title": "Agua micelar: las pequeñas esferas de la limpieza",
+      "order": 307,
+      "description": "Desglosamos la suave química superficial de los modernos desmaquillantes, donde diminutas micelas atrapan eficientemente aceites sin dañar la piel.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-minoxidil-el-gran-compuesto-estimulante-capilar",
+      "title": "El minoxidil: el gran compuesto estimulante capilar",
+      "order": 308,
+      "description": "Analizamos cómo este famoso fármaco vasodilatador altera químicamente los folículos pilosos en reposo, impulsando sorpresivamente el flujo celular.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "adhesivos-sensibles-la-quimica-de-las-notas-papel",
+      "title": "Adhesivos sensibles: la química de las notas papel",
+      "order": 309,
+      "description": "Descubre el fallido pegamento de acrilato que forma microesferas invisibles, permitiendo unir y despegar fácilmente tus recordatorios sin dejar marca.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-l-teanina-el-aminoacido-relajante-del-te-verde",
+      "title": "La L-teanina: el aminoácido relajante del té verde",
+      "order": 310,
+      "description": "Estudiamos la asombrosa molécula natural presente en las hojas de té que logra cruzar la barrera cerebral, induciendo profunda calma sin causar sueño.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "pavonado-quimico-el-oxido-negro-que-protege-armas",
+      "title": "Pavonado químico: el óxido negro que protege armas",
+      "order": 311,
+      "description": "Conoce el proceso alcalino controlado que transforma la superficie del hierro en magnetita pura, previniendo así la temida corrosión roja oxidativa.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-bengalas-festivas-la-lluvia-de-chispas-de-luz",
+      "title": "Las bengalas festivas: la lluvia de chispas de luz",
+      "order": 312,
+      "description": "Adéntrate en la mezcla combustible de polvo de hierro o aluminio junto a fuertes oxidantes y aglutinantes que arde lentamente liberando gran brillo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "reactivo-de-tollens-la-brillante-quimica-del-espejo",
+      "title": "Reactivo de Tollens: la brillante química del espejo",
+      "order": 313,
+      "description": "Exploramos la fascinante reducción de los iones de plata sobre el vidrio transparente, creando una perfecta capa reflectante utilizada por la ciencia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-cloruro-de-polivinilo-el-fuerte-plastico-rigido",
+      "title": "El cloruro de polivinilo: el fuerte plástico rígido",
+      "order": 314,
+      "description": "Analizamos la enorme versatilidad del PVC industrial, un polímero barato que requiere útiles plastificantes químicos para lograr ser muy flexible hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "desincrustantes-caseros-acidos-limpiando-tu-hogar",
+      "title": "Desincrustantes caseros: ácidos limpiando tu hogar",
+      "order": 315,
+      "description": "Desglosamos la reacción ácido-base donde el vinagre logra disolver lentamente los fuertes depósitos minerales de carbonato de calcio en tus tuberías.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "isotiocianato-de-alilo-el-fuerte-fuego-en-tu-mostaza",
+      "title": "Isotiocianato de alilo: el fuerte fuego en tu mostaza",
+      "order": 316,
+      "description": "Descubre la volátil y picante molécula liberada por el wasabi o el rábano picante, que vaporiza rápidamente atacando los receptores de tu misma nariz.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-tioles-apestosos-la-defensa-pura-del-zorrillo",
+      "title": "Los tioles apestosos: la defensa pura del zorrillo",
+      "order": 317,
+      "description": "Estudiamos los compuestos volátiles a base de azufre que generan el insoportable aroma defensivo, y cómo el peróxido puede oxidarlos para limpiarlos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-fulminato-de-mercurio-los-detonadores-quimicos",
+      "title": "El fulminato de mercurio: los detonadores químicos",
+      "order": 318,
+      "description": "Conoce la peligrosa sal altamente sensible a la fricción y al mínimo impacto, que fue usada durante siglos para iniciar fuertes explosiones mayores.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-blanqueamiento-dental-peroxido-oxidando-manchas",
+      "title": "El blanqueamiento dental: peróxido oxidando manchas",
+      "order": 319,
+      "description": "Adéntrate en el tratamiento estético donde radicales libres de oxígeno penetran el fuerte esmalte poroso, rompiendo complejas moléculas pigmentadas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "enzimas-y-aguacates-por-que-se-oscurece-la-comida",
+      "title": "Enzimas y aguacates: por qué se oscurece la comida",
+      "order": 320,
+      "description": "Exploramos la veloz oxidación fenólica que sufre la pulpa al exponerse al aire puro, y cómo el jugo del limón logra inhibir esta enzima rápidamente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "intercambio-ionico-los-fuertes-vidrios-de-tu-movil",
+      "title": "Intercambio iónico: los fuertes vidrios de tu móvil",
+      "order": 321,
+      "description": "Analizamos el baño químico de sales hirviendo donde grandes iones de potasio reemplazan al sodio del vidrio, creando gran compresión muy resistente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-sulfato-de-calcio-quimica-del-yeso-en-medicina",
+      "title": "El sulfato de calcio: química del yeso en medicina",
+      "order": 322,
+      "description": "Desglosamos el rápido proceso exotérmico de hidratación, donde este blanco polvo absorbe su agua perdida endureciéndose para sanar graves fracturas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-elementos-sinteticos-extendiendo-toda-la-tabla",
+      "title": "Los elementos sintéticos: extendiendo toda la tabla",
+      "order": 323,
+      "description": "Descubre cómo los científicos logran colisionar pesados núcleos atómicos a grandes velocidades para sintetizar elementos efímeros y muy radiactivos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-arena-hidrofobica-el-polvo-que-rechaza-al-agua",
+      "title": "La arena hidrofóbica: el polvo que rechaza al agua",
+      "order": 324,
+      "description": "Estudiamos la modificación química superficial con vapores de trimetilsilanol, creando curiosos granos impermeables que jamás se logran mojar hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-ambar-gris-los-fijadores-de-fragancias-lujosas",
+      "title": "El ámbar gris: los fijadores de fragancias lujosas",
+      "order": 325,
+      "description": "Conoce el extrañísimo y costoso subproducto intestinal del cachalote, fundamental para ralentizar la veloz evaporación de los perfumes en tu piel.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-acetato-de-sodio-un-solido-que-brinda-gran-calor",
+      "title": "El acetato de sodio: un sólido que brinda gran calor",
+      "order": 326,
+      "description": "Adéntrate en la cristalización instantánea de las soluciones súper saturadas, un proceso físico y químico exotérmico usado en los calentadores de mano.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-yoduro-de-potasio-el-escudo-contra-la-radiacion",
+      "title": "El yoduro de potasio: el escudo contra la radiación",
+      "order": 327,
+      "description": "Exploramos cómo la saturación total de tu pequeña glándula tiroides con este isótopo estable logra bloquear de forma segura al temible yodo radiactivo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-fructosa-vegetal-el-intenso-dulzor-de-la-fruta",
+      "title": "La fructosa vegetal: el intenso dulzor de la fruta",
+      "order": 328,
+      "description": "Analizamos el carbohidrato simple que tu hígado procesa de forma diferente a la glucosa, debatiendo su complejo impacto real en el metabolismo humano.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-masilla-elastica-los-polimeros-de-silicona-hoy",
+      "title": "La masilla elástica: los polímeros de silicona hoy",
+      "order": 329,
+      "description": "Desglosamos los asombrosos enlaces dinámicos cruzados con ácido bórico que permiten a este material estirarse o rebotar según toda la fuerza aplicada.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "antihistaminicos-los-bloqueos-de-la-gran-alergia",
+      "title": "Antihistamínicos: los bloqueos de la gran alergia",
+      "order": 330,
+      "description": "Descubre el preciso diseño molecular de estos eficaces fármacos que ocupan los receptores celulares para detener los molestos síntomas del gran polen.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-quimica-de-la-gelatina-colageno-en-los-postres",
+      "title": "La química de la gelatina: colágeno en los postres",
+      "order": 331,
+      "description": "Descubrimos cómo el colágeno se desnaturaliza por el calor extremo, desenredando sus fibras proteicas para formar una red gelatinosa al enfriarse hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "polvo-de-hornear-la-reaccion-acida-de-los-pasteles",
+      "title": "Polvo de hornear: la reacción ácida de los pasteles",
+      "order": 332,
+      "description": "Analizamos la mezcla exacta de bicarbonato y ácidos secos que solo reaccionan al hidratarse, liberando el gas necesario para esponjar los postres.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-enjuagues-bucales-quimica-contra-la-placa-dental",
+      "title": "Los enjuagues bucales: química contra la placa dental",
+      "order": 333,
+      "description": "Exploramos la acción de los antisépticos como la clorhexidina, moléculas que logran adherirse a los tejidos orales para destruir bacterias nocivas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "lactosa-y-lactasa-la-quimica-en-tu-digestion-hoy",
+      "title": "Lactosa y lactasa: la química en tu digestión hoy",
+      "order": 334,
+      "description": "Estudiamos cómo la enzima lactasa rompe el azúcar de la leche en azúcares más simples, y qué ocurre químicamente cuando nuestro cuerpo no la produce.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "quimica-de-la-nicotina-un-gran-alcaloide-adictivo",
+      "title": "Química de la nicotina: un gran alcaloide adictivo",
+      "order": 335,
+      "description": "Analizamos cómo esta molécula logra imitar a neurotransmisores naturales en el cerebro humano, provocando una inmensa liberación de dopamina veloz.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "aldehidos-del-cilantro-por-que-sabe-a-puro-jabon",
+      "title": "Aldehídos del cilantro: por qué sabe a puro jabón",
+      "order": 336,
+      "description": "Descubrimos la fascinante genética y química detrás de esa fuerte aversión, donde receptores olfativos específicos detectan compuestos muy similares.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-sulfato-de-cobre-los-bellos-cristales-azules",
+      "title": "El sulfato de cobre: los bellos cristales azules",
+      "order": 337,
+      "description": "Conoce la fuerte sal inorgánica ampliamente utilizada como un fungicida agrícola, destacando por su asombroso y brillante color azul en laboratorio.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-rastro-de-las-hormigas-comunicacion-molecular",
+      "title": "El rastro de las hormigas: comunicación molecular",
+      "order": 338,
+      "description": "Exploramos la precisa estela de feromonas volátiles que depositan estos insectos, marcando un claro camino químico que sus compañeras logran seguir.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "mucinas-de-los-caracoles-las-resinas-biologicas",
+      "title": "Mucinas de los caracoles: las resinas biológicas",
+      "order": 339,
+      "description": "Adéntrate en el asombroso mundo de las glicoproteínas naturales que otorgan una enorme lubricación y capacidad regenerativa a la piel de los moluscos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "sal-de-mesa-frente-a-sal-marina-diferencias-hoy",
+      "title": "Sal de mesa frente a sal marina: diferencias hoy",
+      "order": 340,
+      "description": "Desglosamos la composición real de estos condimentos básicos, revelando que ambos son cloruro de sodio con minúsculas variaciones en sus minerales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-carbon-activado-las-esponjas-de-los-venenos",
+      "title": "El carbón activado: las esponjas de los venenos",
+      "order": 341,
+      "description": "Analizamos la inmensa red porosa del carbón tratado térmicamente, capaz de atrapar peligrosas moléculas tóxicas en los modernos filtros purificadores.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cristal-de-plomo-la-densa-quimica-de-las-copas",
+      "title": "Cristal de plomo: la densa química de las copas",
+      "order": 342,
+      "description": "Estudiamos cómo añadir óxido de plomo a la mezcla fundida incrementa el índice de refracción, creando un pesado material que brilla de forma hermosa.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-neopreno-sintetico-el-caucho-de-los-buzos-hoy",
+      "title": "El neopreno sintético: el caucho de los buzos hoy",
+      "order": 343,
+      "description": "Descubrimos la polimerización del cloropreno, generando un resistente material aislante térmico con microburbujas cerradas para soportar el mar frío.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "toxinas-de-cianobacterias-el-peligro-en-los-lagos",
+      "title": "Toxinas de cianobacterias: el peligro en los lagos",
+      "order": 344,
+      "description": "Conoce los temibles compuestos hepatotóxicos generados por la excesiva floración de algas, alimentada por los derrames de fertilizantes agrícolas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-magnesio-metalico-la-luz-blanca-mas-brillante",
+      "title": "El magnesio metálico: la luz blanca más brillante",
+      "order": 345,
+      "description": "Exploramos la inmensa reacción exotérmica de este elemento alcalinotérreo puro que genera una intensa llama blanca cegadora e imposible de apagar.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-helio-en-la-voz-quimica-de-un-gas-muy-ligero",
+      "title": "El helio en la voz: química de un gas muy ligero",
+      "order": 346,
+      "description": "Adéntrate en la física y química de los gases nobles. Entiende por qué respirar esta inerte sustancia altera drásticamente el tono de tus palabras.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-cloroformo-puro-un-antiguo-agente-somnifero",
+      "title": "El cloroformo puro: un antiguo agente somnífero",
+      "order": 347,
+      "description": "Analizamos el pesado compuesto halogenado utilizado por los pioneros de la anestesia y cómo su toxicidad hepática obligó a buscar nuevas alternativas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "acido-peracetico-mezclas-peligrosas-en-el-hogar",
+      "title": "Ácido peracético: mezclas peligrosas en el hogar",
+      "order": 348,
+      "description": "Desglosamos la intensa y corrosiva reacción que ocurre al mezclar vinagre blanco con agua oxigenada pura, produciendo un grave daño respiratorio hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-nucleacion-fisica-gaseosas-y-dulces-de-menta",
+      "title": "La nucleación física: gaseosas y dulces de menta",
+      "order": 349,
+      "description": "Estudiamos la violenta y rápida desgasificación física del dióxido de carbono atrapado al entrar en contacto con las rugosas superficies de un caramelo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-grasas-trans-la-hidrogenacion-de-los-aceites",
+      "title": "Las grasas trans: la hidrogenación de los aceites",
+      "order": 350,
+      "description": "Descubrimos el método industrial que inyecta gas hidrógeno a lípidos líquidos para endurecerlos, creando enlaces que el cuerpo no logra asimilar bien.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-olestra-quimica-el-falso-lipido-sin-calorias",
+      "title": "La olestra química: el falso lípido sin calorías",
+      "order": 351,
+      "description": "Analizamos la enorme molécula de sacarosa rodeada de ácidos grasos que las enzimas digestivas no pueden cortar, pasando intacta por el intestino humano.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "celulosa-natural-la-fibra-indigestible-vital-hoy",
+      "title": "Celulosa natural: la fibra indigestible vital hoy",
+      "order": 352,
+      "description": "Conoce la enorme pared estructural de todos los vegetales, un polímero de glucosa que los humanos no pueden digerir pero que limpia el tracto digestivo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "acido-fitico-y-los-antinutrientes-de-las-semillas",
+      "title": "Ácido fítico y los antinutrientes de las semillas",
+      "order": 353,
+      "description": "Exploramos la inmensa molécula capaz de quelar importantes metales en nuestro sistema digestivo, bloqueando la correcta absorción de hierro y de zinc.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-calor-controlado-quimica-de-la-coccion-al-vacio",
+      "title": "El calor controlado: química de la cocción al vacío",
+      "order": 354,
+      "description": "Adéntrate en la ruptura precisa de los duros enlaces proteicos en las carnes mediante temperaturas bajas muy exactas para lograr gran ternura y sabor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-ollas-a-presion-la-ley-de-gay-lussac-en-casa",
+      "title": "Las ollas a presión: la ley de Gay-Lussac en casa",
+      "order": 355,
+      "description": "Estudiamos cómo el incremento de presión atmosférica eleva el punto de ebullición del líquido, acelerando velozmente las reacciones térmicas del guiso.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "descongelando-el-hielo-cloruros-sobre-las-calles",
+      "title": "Descongelando el hielo: cloruros sobre las calles",
+      "order": 356,
+      "description": "Descubrimos la fascinante depresión del punto de congelación al agregar sal, interrumpiendo los fuertes puentes de hidrógeno para derretir la gruesa nieve.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "compresas-frias-quimica-endotermica-instantanea",
+      "title": "Compresas frías: química endotérmica instantánea",
+      "order": 357,
+      "description": "Analizamos la disolución del nitrato de amonio en agua natural, una veloz reacción que absorbe intensamente el calor circundante para lograr gran frío.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "espuma-contra-incendios-ahogando-un-gran-fuego-hoy",
+      "title": "Espuma contra incendios: ahogando un gran fuego hoy",
+      "order": 358,
+      "description": "Conoce los densos fluorosurfactantes acuosos que forman una inmensa capa impenetrable sobre combustibles líquidos, bloqueando por completo la oxidación.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "bombas-de-humo-combustion-lenta-y-azucar-refinado",
+      "title": "Bombas de humo: combustión lenta y azúcar refinado",
+      "order": 359,
+      "description": "Exploramos la incesante mezcla de nitrato de potasio junto a la sacarosa que se oxida suavemente generando inmensas y densas columnas de gas opaco hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "blanqueadores-opticos-enganando-nuestra-vision",
+      "title": "Blanqueadores ópticos: engañando nuestra visión",
+      "order": 360,
+      "description": "Adéntrate en las grandes moléculas fluorescentes de tu detergente que absorben luz ultravioleta y emiten luz azulada, logrando que la ropa se vea blanca.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "enzimas-en-el-lavado-la-destruccion-de-las-manchas",
+      "title": "Enzimas en el lavado: la destrucción de las manchas",
+      "order": 361,
+      "description": "Estudiamos las fuertes lipasas y proteasas sintéticas de los detergentes, cortando minuciosamente grasas y proteínas molestas a baja temperatura de red.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "suavizantes-de-ropa-cubriendo-fibras-con-lipidos",
+      "title": "Suavizantes de ropa: cubriendo fibras con lípidos",
+      "order": 362,
+      "description": "Descubrimos cómo los compuestos catiónicos neutralizan toda la carga negativa del tejido limpio, recubriéndolo con suaves grasas de tacto muy agradable.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-notas-del-perfume-la-quimica-de-la-evaporacion",
+      "title": "Las notas del perfume: la química de la evaporación",
+      "order": 363,
+      "description": "Analizamos las marcadas diferencias de volatilidad química entre los aceites esenciales ligeros cítricos y las grandes moléculas resinosas de fondo denso.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-tinta-invisible-revelando-mensajes-muy-ocultos",
+      "title": "La tinta invisible: revelando mensajes muy ocultos",
+      "order": 364,
+      "description": "Exploramos las sustancias ácidas caseras como el limón que debilitan el fino papel localmente, carbonizándose con mayor rapidez al aplicarle mucho calor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-futuro-molecular-un-ano-descubriendo-la-quimica",
+      "title": "El futuro molecular: un año descubriendo la química",
+      "order": 365,
+      "description": "Cerramos nuestro gran ciclo anual resumiendo los inmensos pilares invisibles de la materia y vislumbrando las asombrosas promesas de la nanotecnología.",
+      "audioUrl": ""
+    }
+  ]
+}

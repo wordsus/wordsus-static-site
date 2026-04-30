@@ -1,0 +1,41 @@
+{
+  "slug": "quimica-para-mortales",
+  "locale": "es",
+  "title": "Química para Mortales: Una mirada atómica a tu alrededor",
+  "author": "Wordsus Team",
+  "description": "Un viaje fascinante de 365 días por el mundo de la química. Desde la estructura del átomo hasta las aplicaciones más modernas de la nanotecnología, explicado de forma sencilla y amena.",
+  "cover": "/images/books/quimica-para-mortales-es-cover.jpeg",
+  "category": "ciencia",
+  "tags": [
+    "quimica",
+    "ciencia",
+    "divulgacion",
+    "materia"
+  ],
+  "featured": true,
+  "publishedAt": "2024-04-29",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "el-atomo-la-unidad-fundamental-de-toda-la-materia",
+      "title": "El átomo: la unidad fundamental de toda la materia",
+      "order": 1,
+      "description": "Descubre qué son los átomos, cómo están formados por dentro y por qué comprender su estructura es esencial para entender toda la química que nos rodea.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-estados-de-la-materia-solidos-liquidos-y-gases",
+      "title": "Los estados de la materia: sólidos, líquidos y gases",
+      "order": 2,
+      "description": "Conoce las características que diferencian a los sólidos, los líquidos y los gases, y cómo los cambios de temperatura afectan el comportamiento molecular.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-anomalia-del-agua-por-que-el-hielo-logra-flotar",
+      "title": "La anomalía del agua: por qué el hielo logra flotar",
+      "order": 3,
+      "description": "El agua tiene propiedades únicas e indispensables para la vida. Analizamos su curiosa estructura molecular y la razón por la que el hielo es menos denso.",
+      "audioUrl": ""
+    }
+  ]
+}

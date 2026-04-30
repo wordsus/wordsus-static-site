@@ -1,0 +1,41 @@
+{
+  "slug": "astronomia-para-mortales",
+  "locale": "es",
+  "title": "Astronomía para Mortales: Donde el infinito se vuelve comprensible",
+  "author": "Wordsus Team",
+  "description": "Un viaje fascinante a través del cosmos en 365 lecciones diarias. Desde el sistema solar hasta los confines del universo observable, descubre cómo funciona el espacio-tiempo, las estrellas y los grandes misterios de la astronomía explicados de forma sencilla.",
+  "cover": "/images/books/astronomia-para-mortales-es-cover.jpeg",
+  "category": "ciencia",
+  "tags": [
+    "astronomia",
+    "ciencia",
+    "cosmos",
+    "espacio"
+  ],
+  "featured": true,
+  "publishedAt": "2024-04-29",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "que-es-la-astronomia-una-introduccion-al-cosmos",
+      "title": "¿Qué es la astronomía? Una introducción al cosmos.",
+      "order": 1,
+      "description": "Iniciamos nuestro viaje estelar definiendo qué es exactamente la astronomía, su fascinante historia y por qué observar el cielo nocturno nos cautiva tanto.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-sol:-nuestra-estrella-el-corazon-del-sistema-solar",
+      "title": "El Sol: Nuestra estrella, el corazón del sistema solar.",
+      "order": 2,
+      "description": "Descubre cómo funciona nuestra estrella madre. Exploramos su composición, temperaturas y cómo su enorme energía hace posible la vida en la Tierra.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-luna:-nuestro-unico-e-inseparable-satelite-natural",
+      "title": "La Luna: Nuestro único e inseparable satélite natural.",
+      "order": 3,
+      "description": "Conoce los secretos de nuestro satélite natural. Analizamos sus misteriosas fases, los cráteres que adornan su superficie y su influencia en las mareas.",
+      "audioUrl": ""
+    }
+  ]
+}

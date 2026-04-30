@@ -1,0 +1,2575 @@
+{
+  "slug": "astronomia-para-mortales",
+  "locale": "es",
+  "title": "Astronomía para Mortales: Donde el infinito se vuelve comprensible",
+  "author": "Equipo Wordsus",
+  "description": "Un viaje fascinante a través del cosmos en 365 lecciones diarias. Desde el sistema solar hasta los confines del universo observable, descubre cómo funciona el espacio-tiempo, las estrellas y los grandes misterios de la astronomía explicados de forma sencilla.",
+  "cover": "/images/books/astronomia-para-mortales-es-cover.jpeg",
+  "category": "ciencias",
+  "tags": [
+    "astronomia",
+    "ciencia",
+    "cosmos",
+    "espacio"
+  ],
+  "featured": true,
+  "publishedAt": "2024-04-29",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "que-es-la-astronomia-una-introduccion-al-cosmos",
+      "title": "¿Qué es la astronomía? Una introducción al cosmos.",
+      "order": 1,
+      "description": "Iniciamos nuestro viaje estelar definiendo qué es exactamente la astronomía, su fascinante historia y por qué observar el cielo nocturno nos cautiva tanto.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-sol:-nuestra-estrella-el-corazon-del-sistema-solar",
+      "title": "El Sol: Nuestra estrella, el corazón del sistema solar.",
+      "order": 2,
+      "description": "Descubre cómo funciona nuestra estrella madre. Exploramos su composición, temperaturas y cómo su enorme energía hace posible la vida en la Tierra.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-luna:-nuestro-unico-e-inseparable-satelite-natural",
+      "title": "La Luna: Nuestro único e inseparable satélite natural.",
+      "order": 3,
+      "description": "Conoce los secretos de nuestro satélite natural. Analizamos sus misteriosas fases, los cráteres que adornan su superficie y su influencia en las mareas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "agujeros-negros:-los-devoradores-de-luz-del-universo",
+      "title": "Agujeros negros: Los devoradores de luz del universo.",
+      "order": 4,
+      "description": "Desmitificamos a los monstruos más famosos del cosmos. Aprende qué son los agujeros negros, cómo se forman al morir estrellas y por qué nada escapa.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "planetas-rocosos:-vecinos-cercanos-en-nuestro-sistema",
+      "title": "Planetas rocosos: Vecinos cercanos en nuestro sistema.",
+      "order": 5,
+      "description": "Un recorrido detallado por Mercurio, Venus, Tierra y Marte. Analizamos sus superficies sólidas, sus atmósferas y qué los hace planetas tan singulares.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gigantes-gaseosos:-colosos-majestuosos-del-sistema-solar",
+      "title": "Gigantes gaseosos: Colosos majestuosos del sistema solar.",
+      "order": 6,
+      "description": "Exploramos la inmensidad de Júpiter, Saturno, Urano y Neptuno. Conoce los asombrosos secretos de sus densas atmósferas, anillos y sus numerosas lunas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "constelaciones:-las-antiguas-figuras-que-guian-la-noche",
+      "title": "Constelaciones: Las antiguas figuras que guían la noche.",
+      "order": 7,
+      "description": "Aprende a identificar las constelaciones más famosas del cielo nocturno. Descubre sus hermosos mitos y cómo usarlas para orientarte entre las estrellas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "exoplanetas-fascinantes:-nuevos-mundos-mas-alla-del-sol",
+      "title": "Exoplanetas fascinantes: Nuevos mundos más allá del sol.",
+      "order": 8,
+      "description": "Analizamos la búsqueda de planetas fuera del sistema solar. Conoce las técnicas para descubrirlos y cuáles tienen grandes posibilidades de tener vida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "telescopios-modernos:-ojos-gigantes-mirando-hacia-el-cielo",
+      "title": "Telescopios modernos: Ojos gigantes mirando hacia el cielo.",
+      "order": 9,
+      "description": "Repasamos el funcionamiento de los instrumentos que revolucionaron la astronomía, desde los ópticos simples hasta los enormes observatorios espaciales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "asteroides-y-meteoritos:-las-rocas-errantes-de-la-galaxia",
+      "title": "Asteroides y meteoritos: Las rocas errantes de la galaxia.",
+      "order": 10,
+      "description": "Diferenciamos estos escombros espaciales antiguos. Entiende qué ocurre cuando ingresan a la atmósfera terrestre y si representan una verdadera amenaza.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-via-lactea:-un-paseo-detallado-por-nuestra-casa-espiral",
+      "title": "La Vía Láctea: Un paseo detallado por nuestra casa espiral.",
+      "order": 11,
+      "description": "Viajamos a través de nuestra gigantesca galaxia. Exploramos su forma espiral, su denso núcleo central y la increíble cantidad de estrellas que contiene.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-ano-luz:-entendiendo-las-enormes-distancias-del-espacio",
+      "title": "El año luz: Entendiendo las enormes distancias del espacio.",
+      "order": 12,
+      "description": "Explicamos cómo medimos la inmensidad del universo. Descubre por qué al mirar ciertas estrellas lejanas, estamos asomándonos literalmente hacia el pasado.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cometas-majestuosos:-antiguas-bolas-de-nieve-en-el-espacio",
+      "title": "Cometas majestuosos: Antiguas bolas de nieve en el espacio.",
+      "order": 13,
+      "description": "Acompaña a estos nómadas helados en su órbita. Conoce sus componentes principales y cómo forman sus espectaculares y brillantes colas junto al sol.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-big-bang:-la-increible-explosion-que-origino-todo-esto",
+      "title": "El Big Bang: La increíble explosión que originó todo esto.",
+      "order": 14,
+      "description": "Retrocedemos miles de millones de años para narrar el inicio absoluto del universo. Desgranamos cómo surgió repentinamente la materia, luz y el tiempo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "nebulosas-brillantes:-cunas-maravillosas-de-las-estrellas",
+      "title": "Nebulosas brillantes: Cunas maravillosas de las estrellas.",
+      "order": 15,
+      "description": "Adéntrate en las inmensas nubes de gas cósmico y polvo interestelar. Contempla estos viveros donde nacen las estrellas con formas y colores hermosos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "enanas-rojas:-las-estrellas-mas-comunes-de-nuestra-galaxia",
+      "title": "Enanas rojas: Las estrellas más comunes de nuestra galaxia.",
+      "order": 16,
+      "description": "Conoce a los astros más abundantes y longevos del cosmos. Explicamos por qué son tan pequeñas, frías y fundamentales para buscar planetas habitables.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "materia-oscura:-el-gran-e-invisible-misterio-del-universo",
+      "title": "Materia oscura: El gran e invisible misterio del universo.",
+      "order": 17,
+      "description": "Abordamos uno de los mayores enigmas de la ciencia. Analizamos cómo sabemos que la materia invisible existe y cómo logra mantener unidas a las galaxias.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-fuerza-de-gravedad:-el-pegamento-que-sostiene-al-cosmos",
+      "title": "La fuerza de gravedad: El pegamento que sostiene al cosmos.",
+      "order": 18,
+      "description": "Descubre la fuerza principal que moldea el universo. Explicamos fácilmente cómo los cuerpos más masivos logran curvar el espacio y el tiempo a su alrededor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "supernovas:-las-explosiones-mas-violentas-del-cosmos-entero",
+      "title": "Supernovas: Las explosiones más violentas del cosmos entero.",
+      "order": 19,
+      "description": "Presencia el último suspiro de estrellas masivas. Aprende cómo estas potentes e inmensas explosiones siembran el espacio con todos los elementos pesados.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "galaxia-de-andromeda:-nuestro-inmenso-y-lejano-vecino-real",
+      "title": "Galaxia de Andrómeda: Nuestro inmenso y lejano vecino real.",
+      "order": 20,
+      "description": "Viajamos a la galaxia enorme más cercana a nuestra Vía Láctea. Analizamos su gran tamaño colosal y su inevitable e increíble colisión futura con nosotros.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "eclipses-totales:-la-perfecta-danza-de-sombras-en-el-cielo",
+      "title": "Eclipses totales: La perfecta danza de sombras en el cielo.",
+      "order": 21,
+      "description": "Entiende la mecánica detrás de estos hermosos eventos astronómicos. Te enseñamos por qué ocurren exactamente y cómo puedes observarlos de forma segura.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "basura-espacial:-el-preocupante-anillo-artificial-terrestre",
+      "title": "Basura espacial: El preocupante anillo artificial terrestre.",
+      "order": 22,
+      "description": "Examinamos los miles de fragmentos de satélites inactivos que orbitan la Tierra. Conoce los riesgos actuales del anillo artificial y las posibles curas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "pulsares-y-estrellas-de-neutrones:-los-faros-del-universo",
+      "title": "Púlsares y estrellas de neutrones: Los faros del universo.",
+      "order": 23,
+      "description": "Acércate a los remanentes estelares densos y más extremos. Explicamos cómo giran vertiginosamente, emitiendo pulsos de radiación constantes como faros.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "agujeros-de-gusano:-los-atajos-teoricos-a-traves-del-cosmos",
+      "title": "Agujeros de gusano: Los atajos teóricos a través del cosmos.",
+      "order": 24,
+      "description": "Nos adentramos en la física teórica para hablar de los extraños puentes en el espacio-tiempo. Conoce si en realidad será posible usarlos para viajar pronto.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-enano-pluton:-la-entranable-roca-helada-en-los-confines",
+      "title": "El enano Plutón: La entrañable roca helada en los confines.",
+      "order": 25,
+      "description": "Revisitamos la rica historia de nuestro antiguo noveno planeta. Discutimos por qué lo reclasificaron y los asombrosos datos recientes que hemos descubierto.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-universo-en-expansion:-el-misterioso-alejamiento-estelar",
+      "title": "El universo en expansión: El misterioso alejamiento estelar.",
+      "order": 26,
+      "description": "Descubre por qué todos los astros del cosmos se alejan entre sí. Explicamos el corrimiento al rojo y la fuerza enigmática conocida como energía oscura.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "energia-oscura:-el-acelerador-invisible-del-vasto-universo",
+      "title": "Energía oscura: El acelerador invisible del vasto universo.",
+      "order": 27,
+      "description": "Profundizamos en el extraño motor constante que acelera la expansión cósmica. Conoce las hipótesis de esta energía que domina la mayor parte del cosmos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-sondas-voyager:-nuestros-viajeros-humanos-mas-lejanos",
+      "title": "Las sondas Voyager: Nuestros viajeros humanos más lejanos.",
+      "order": 28,
+      "description": "Celebramos la misión pionera de gran exploración. Hablamos de su viaje por planetas exteriores, su famoso disco dorado y la salida final del sistema.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "radiotelescopios-gigantes:-escuchando-los-ecos-del-cosmos",
+      "title": "Radiotelescopios gigantes: Escuchando los ecos del cosmos.",
+      "order": 29,
+      "description": "Exploramos cómo los astrónomos observan frecuencias invisibles de luz. Entiende cómo estas grandes antenas captan galaxias distantes y ondas de radio.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-teoria-del-multiverso:-existen-otros-mundos-paralelos",
+      "title": "La teoría del multiverso: ¿Existen otros mundos paralelos?",
+      "order": 30,
+      "description": "Abordamos un tema sumamente alucinante en cosmología. Discutimos las increíbles probabilidades teóricas de que este universo sea solo uno entre muchos otros.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-cinturon-de-asteroides:-la-frontera-rocosa-interior",
+      "title": "El Cinturón de Asteroides: La frontera rocosa interior.",
+      "order": 31,
+      "description": "Exploramos la región que separa los planetas rocosos de los gaseosos. Descubre por qué este anillo de escombros nunca logró formar un planeta completo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "telescopio-james-webb:-una-nueva-era-de-descubrimientos",
+      "title": "Telescopio James Webb: Una nueva era de descubrimientos.",
+      "order": 32,
+      "description": "Analizamos la maravilla tecnológica que está reescribiendo la astronomía. Conoce cómo sus sensores infrarrojos revelan las primeras galaxias del cosmos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "auroras-boreales:-el-majestuoso-baile-solar-en-la-tierra",
+      "title": "Auroras boreales: El majestuoso baile solar en la Tierra.",
+      "order": 33,
+      "description": "Entiende la ciencia detrás de las luces danzantes del norte. Explicamos cómo el viento solar interactúa con el campo magnético de nuestro planeta azul.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ceres:-el-planeta-enano-mas-cercano-a-nuestro-hogar-azul",
+      "title": "Ceres: El planeta enano más cercano a nuestro hogar azul.",
+      "order": 34,
+      "description": "Viajamos al corazón del cinturón de asteroides para conocer a su rey. Descubre los misterios de Ceres, sus puntos brillantes y su posible agua oculta.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-nube-de-oort:-el-inmenso-y-gelido-limite-del-sistema",
+      "title": "La Nube de Oort: El inmenso y gélido límite del sistema.",
+      "order": 35,
+      "description": "Adéntrate en la frontera teórica y final del sistema solar. Conoce la inmensa burbuja de hielo y cometas inactivos que envuelve a nuestra estrella madre.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cuasares-luminosos:-los-faros-mas-brillantes-del-cosmos",
+      "title": "Cuásares luminosos: Los faros más brillantes del cosmos.",
+      "order": 36,
+      "description": "Descubre los núcleos galácticos activos alimentados por agujeros negros supermasivos. Explicamos cómo logran emitir más luz que toda su galaxia entera.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "espectroscopia:-como-leemos-el-codigo-de-las-estrellas",
+      "title": "Espectroscopía: Cómo leemos el código de las estrellas.",
+      "order": 37,
+      "description": "Aprende cómo los astrónomos descubren de qué están hechos los astros lejanos. Explicamos cómo descomponer la luz revela la química del universo entero.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gigantes-rojas:-el-ineludible-y-furioso-futuro-del-sol",
+      "title": "Gigantes rojas: El ineludible y furioso futuro del Sol.",
+      "order": 38,
+      "description": "Analizamos la etapa final en la vida de estrellas medianas. Conoce qué sucederá cuando nuestro Sol agote su combustible y se expanda por el sistema solar.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "europa-y-encelado:-oceanos-alienigenas-bajo-el-hielo",
+      "title": "Europa y Encélado: Océanos alienígenas bajo el hielo.",
+      "order": 39,
+      "description": "Exploramos las lunas heladas de Júpiter y Saturno. Descubre por qué sus inmensos océanos subterráneos son lugares ideales para buscar vida microbiana.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "estrellas-binarias:-sistemas-con-dos-soles-en-el-cielo",
+      "title": "Estrellas binarias: Sistemas con dos soles en el cielo.",
+      "order": 40,
+      "description": "Conoce cómo funciona la mayoría de las estrellas de nuestra galaxia. Exploramos la compleja danza gravitacional entre dos o más astros atados entre sí.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "radiacion-cosmica-de-fondo:-el-ultimo-eco-del-big-bang",
+      "title": "Radiación cósmica de fondo: El último eco del Big Bang.",
+      "order": 41,
+      "description": "Descubre la primera luz emitida en la historia del universo entero. Explicamos cómo esta débil radiación confirma el origen explosivo de todo el cosmos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-nubes-de-magallanes:-las-galaxias-satelites-vecinas",
+      "title": "Las Nubes de Magallanes: Las galaxias satélites vecinas.",
+      "order": 42,
+      "description": "Viajamos a las dos pequeñas galaxias irregulares que orbitan la Vía Láctea. Conoce sus hermosos cúmulos estelares y cómo interactúan con nuestra casa.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "enanas-blancas:-el-nucleo-muerto-de-antiguas-estrellas",
+      "title": "Enanas blancas: El núcleo muerto de antiguas estrellas.",
+      "order": 43,
+      "description": "Analizamos los restos densos y calientes de astros similares al Sol. Aprende cómo esta materia comprimida brilla débilmente hasta apagarse lentamente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ecuacion-de-drake:-estimando-civilizaciones-en-el-cosmos",
+      "title": "Ecuación de Drake: Estimando civilizaciones en el cosmos.",
+      "order": 44,
+      "description": "Repasamos la fórmula científica más famosa sobre la posible vida inteligente. Entiende sus variables y las probabilidades reales de no estar solos hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "viento-solar:-la-tormenta-constante-de-nuestra-estrella",
+      "title": "Viento solar: La tormenta constante de nuestra estrella.",
+      "order": 45,
+      "description": "Descubre el flujo incesante de partículas que brotan del Sol. Explicamos cómo el clima espacial afecta a todos los planetas y satélites del sistema.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cumulos-globulares:-las-antiguas-ciudades-de-estrellas",
+      "title": "Cúmulos globulares: Las antiguas ciudades de estrellas.",
+      "order": 46,
+      "description": "Exploramos las inmensas agrupaciones esféricas de estrellas muy viejas. Conoce cómo se formaron estos enjambres gigantes en los inicios de la galaxia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "magnetares:-los-imanes-mas-extremos-y-potentes-del-cosmos",
+      "title": "Magnetares: Los imanes más extremos y potentes del cosmos.",
+      "order": 47,
+      "description": "Adéntrate en el extraño mundo de las estrellas de neutrones hiper-magnéticas. Descubre cómo sus feroces campos logran deformar todo a su alrededor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "titan-y-sus-lagos:-la-luna-de-saturno-similar-a-la-tierra",
+      "title": "Titán y sus lagos: La luna de Saturno similar a la Tierra.",
+      "order": 48,
+      "description": "Acompaña nuestra visita al satélite con densa atmósfera y ríos de metano líquido. Analizamos por qué es uno de los mundos más fascinantes del sistema.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "planetas-huerfanos:-los-oscuros-mundos-errantes-y-frios",
+      "title": "Planetas huérfanos: Los oscuros mundos errantes y fríos.",
+      "order": 49,
+      "description": "Conoce a los planetas solitarios que flotan en la negrura interestelar. Explicamos cómo fueron expulsados de sus sistemas y si podrían albergar vida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-grupo-local:-el-pequeno-vecindario-de-nuestra-galaxia",
+      "title": "El Grupo Local: El pequeño vecindario de nuestra galaxia.",
+      "order": 50,
+      "description": "Ubicamos a la Vía Láctea en su contexto cósmico más cercano. Descubre las galaxias enanas y gigantes que viajan atadas por la gravedad en nuestra región.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-zona-habitable:-el-delicado-limite-para-albergar-vida",
+      "title": "La zona habitable: El delicado límite para albergar vida.",
+      "order": 51,
+      "description": "Analizamos la distancia perfecta entre un planeta y su estrella madre. Entiende por qué es crucial para mantener agua en estado líquido en la superficie.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "lluvia-de-meteoros:-las-lagrimas-luminosas-de-los-cometas",
+      "title": "Lluvia de meteoros: Las lágrimas luminosas de los cometas.",
+      "order": 52,
+      "description": "Explicamos por qué vemos decenas de estrellas fugaces en ciertas épocas del año. Aprende cómo la Tierra cruza los antiguos rastros de polvo interestelar.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "muerte-termica:-el-inevitable-y-gelido-final-del-universo",
+      "title": "Muerte térmica: El inevitable y gélido final del universo.",
+      "order": 53,
+      "description": "Exploramos el destino último del cosmos según la termodinámica. Discutimos qué sucederá cuando la última estrella se apague y solo quede una total negrura.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "paralaje-estelar:-el-astuto-metodo-para-medir-el-cosmos",
+      "title": "Paralaje estelar: El astuto método para medir el cosmos.",
+      "order": 54,
+      "description": "Descubre cómo los científicos calculan la distancia de estrellas cercanas. Aprende la sencilla pero brillante trigonometría que permite mapear la galaxia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cinturon-de-kuiper:-la-extensa-region-de-mundos-helados",
+      "title": "Cinturón de Kuiper: La extensa región de mundos helados.",
+      "order": 55,
+      "description": "Viajamos más allá de Neptuno hacia el frío reino de los planetas enanos. Conoce los restos congelados de la misma formación temprana del sistema solar.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "horizonte-de-sucesos:-el-aterrador-borde-del-agujero-negro",
+      "title": "Horizonte de sucesos: El aterrador borde del agujero negro.",
+      "order": 56,
+      "description": "Nos acercamos al límite de no retorno astronómico. Entiende exactamente qué ocurre con el tiempo y la luz justo antes de caer hacia la gran singularidad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "io-y-el-vulcanismo-extremo:-el-infierno-helado-de-jupiter",
+      "title": "Io y el vulcanismo extremo: El infierno helado de Júpiter.",
+      "order": 57,
+      "description": "Observamos la luna más volcánicamente activa del sistema solar entero. Descubre cómo la intensa gravedad de Júpiter estruja a Io hasta derretir su roca.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "formacion-del-sistema-solar:-del-polvo-cosmico-a-planetas",
+      "title": "Formación del sistema solar: Del polvo cósmico a planetas.",
+      "order": 58,
+      "description": "Retrocedemos casi cinco mil millones de años. Describimos el caótico proceso que transformó una inmensa nebulosa en nuestra radiante estrella y sus mundos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "supercumulos-de-galaxias:-las-inmensas-redes-del-universo",
+      "title": "Supercúmulos de galaxias: Las inmensas redes del universo.",
+      "order": 59,
+      "description": "Ampliamos nuestra visión para contemplar gigantescas estructuras cósmicas. Analizamos cómo las galaxias forman extensos hilos brillantes y grandes vacíos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "teoria-del-gran-impacto:-el-violento-origen-de-la-luna",
+      "title": "Teoría del gran impacto: El violento origen de la Luna.",
+      "order": 60,
+      "description": "Explicamos la hipótesis principal sobre el nacimiento de nuestro satélite. Conoce la historia de Tea, el antiguo protoplaneta que chocó contra la Tierra.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "lentes-gravitacionales:-lupas-gigantes-en-el-cosmos",
+      "title": "Lentes gravitacionales: Lupas gigantes en el cosmos.",
+      "order": 61,
+      "description": "Descubre cómo la gravedad extrema deforma la luz de galaxias lejanas. Aprende cómo este increíble fenómeno visual nos permite ver astros muy ocultos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "urano:-el-gigante-de-hielo-que-gira-de-lado-al-sol",
+      "title": "Urano: El gigante de hielo que gira de lado al sol.",
+      "order": 62,
+      "description": "Viajamos al séptimo planeta del sistema solar para entender su extraña rotación. Conoce sus oscuros anillos y por qué sus polos tienen luz por décadas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "entendiendo-las-orbitas:-la-caida-constante-espacial",
+      "title": "Entendiendo las órbitas: La caída constante espacial.",
+      "order": 63,
+      "description": "Explicamos la física del movimiento planetario y de satélites artificiales. Entiende por qué las cosas en órbita no flotan sino que caen eternamente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "enanas-marrones:-las-estrellas-fallidas-de-la-galaxia",
+      "title": "Enanas marrones: Las estrellas fallidas de la galaxia.",
+      "order": 64,
+      "description": "Analizamos estos extraños objetos que no son planetas gigantes ni verdaderas estrellas. Descubre por qué jamás lograron encender un fuego nuclear interno.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-catalogo-messier:-guia-clasica-del-cielo-profundo",
+      "title": "El catálogo Messier: Guía clásica del cielo profundo.",
+      "order": 65,
+      "description": "Repasamos la curiosa historia del famoso cazador de cometas. Conoce por qué su lista de objetos molestos se convirtió en la guía ideal para astrónomos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "super-tierras:-mundos-rocosos-colosales-en-el-cosmos",
+      "title": "Súper-Tierras: Mundos rocosos colosales en el cosmos.",
+      "order": 66,
+      "description": "Descubre una clase de planeta que no existe en nuestro vecindario estelar. Analizamos si estos gigantescos mundos rocosos podrían ser aptos para la vida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-gran-enigma-de-la-antimateria-en-nuestro-universo",
+      "title": "El gran enigma de la antimateria en nuestro universo.",
+      "order": 67,
+      "description": "Exploramos la sustancia que se aniquila al chocar con la materia ordinaria. Discutimos por qué el cosmos no está lleno de ella después del gran Big Bang.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "exploracion-de-marte:-buscando-huellas-de-vida-pasada",
+      "title": "Exploración de Marte: Buscando huellas de vida pasada.",
+      "order": 68,
+      "description": "Acompaña a los asombrosos vehículos robóticos en su viaje por el planeta rojo. Entiende qué evidencias científicas buscan sobre antiguos océanos marcianos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "contaminacion-luminica:-el-velo-que-oculta-el-cielo",
+      "title": "Contaminación lumínica: El velo que oculta el cielo.",
+      "order": 69,
+      "description": "Discutimos cómo la iluminación artificial de nuestras ciudades nos roba el maravilloso espectáculo cósmico. Conoce cómo proteger la oscuridad de la noche.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "velocidad-de-la-luz:-el-limite-absoluto-del-universo",
+      "title": "Velocidad de la luz: El límite absoluto del universo.",
+      "order": 70,
+      "description": "Profundizamos en el límite de velocidad cósmica insuperable. Explicamos qué pasaría físicamente si intentaras viajar tan rápido como un brillante fotón.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cumulos-estelares-abiertos:-hermandades-en-el-cosmos",
+      "title": "Cúmulos estelares abiertos: Hermandades en el cosmos.",
+      "order": 71,
+      "description": "Viajamos hacia las hermosas agrupaciones de estrellas jóvenes como las Pléyades. Descubre cómo nacen de la misma nebulosa y por qué terminarán separándose.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-esfera-celeste:-trazando-mapas-sobre-el-firmamento",
+      "title": "La esfera celeste: Trazando mapas sobre el firmamento.",
+      "order": 72,
+      "description": "Aprende cómo los astrónomos dividen el cielo nocturno para encontrar planetas. Explicamos de forma sencilla cómo funcionan las coordenadas celestes hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "agujeros-blancos:-los-asombrosos-surtidores-cosmicos",
+      "title": "Agujeros blancos: Los asombrosos surtidores cósmicos.",
+      "order": 73,
+      "description": "Exploramos el extremo opuesto a los agujeros negros. Analizamos qué postulan las ecuaciones sobre estos lugares teóricos de donde solo puede salir materia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fases-de-venus:-un-ciclo-luminoso-tras-nubes-espesas",
+      "title": "Fases de Venus: Un ciclo luminoso tras nubes espesas.",
+      "order": 74,
+      "description": "Explicamos por qué el planeta más caliente de todos tiene fases similares a las de nuestra luna. Conoce cómo este simple descubrimiento cambió la historia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "transitos-planetarios:-diminutas-sombras-sobre-el-sol",
+      "title": "Tránsitos planetarios: Diminutas sombras sobre el Sol.",
+      "order": 75,
+      "description": "Acompaña a Mercurio y Venus cuando logran cruzar frente al brillante disco solar. Entiende la gran importancia científica de estos asombrosos eventos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "galaxias-elipticas:-las-esferas-antiguas-del-universo",
+      "title": "Galaxias elípticas: Las esferas antiguas del universo.",
+      "order": 76,
+      "description": "Analizamos las gigantescas galaxias que perdieron su estructura en espiral. Descubre por qué están pobladas principalmente por estrellas viejas y rojizas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "interferometria:-telescopios-uniendo-sus-grandes-ojos",
+      "title": "Interferometría: Telescopios uniendo sus grandes ojos.",
+      "order": 77,
+      "description": "Conoce la increíble técnica que permite conectar antenas distantes. Así logran crear un observatorio virtual que posee el tamaño mismo de todo el planeta.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "paradoja-de-fermi:-donde-se-esconde-la-vida-inteligente",
+      "title": "Paradoja de Fermi: ¿Dónde se esconde la vida inteligente?",
+      "order": 78,
+      "description": "Enfrentamos la inquietante pregunta sobre la falta de contacto extraterrestre. Discutimos las hipótesis científicas que intentan dar una respuesta sensata.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "edad-del-universo:-calculando-el-nacimiento-del-cosmos",
+      "title": "Edad del universo: Calculando el nacimiento del cosmos.",
+      "order": 79,
+      "description": "Explicamos detalladamente cómo los astrofísicos lograron determinar que todo el cosmos comenzó a existir hace exactamente catorce mil millones de años.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "luz-zodiacal:-el-tenue-resplandor-del-polvo-planetario",
+      "title": "Luz zodiacal: El tenue resplandor del polvo planetario.",
+      "order": 80,
+      "description": "Observamos el sutil brillo triangular que adorna el horizonte tras el ocaso. Descubre cómo las partículas interplanetarias reflejan la luz de nuestro Sol.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-gigantes-azules:-estrellas-masivas-de-vida-efimera",
+      "title": "Las gigantes azules: Estrellas masivas de vida efímera.",
+      "order": 81,
+      "description": "Conoce a los astros más calientes y luminosos del espacio sideral. Entiende por qué consumen su combustible muy rápido y van hacia un épico final oscuro.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "tormentas-solares:-el-peligro-magnetico-de-la-estrella",
+      "title": "Tormentas solares: El peligro magnético de la estrella.",
+      "order": 82,
+      "description": "Analizamos las gigantescas explosiones en la superficie de nuestro Sol. Conoce sus verdaderos efectos sobre nuestros satélites, redes eléctricas y la vida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "inflacion-cosmica:-el-crecimiento-extremo-del-universo",
+      "title": "Inflación cósmica: El crecimiento extremo del universo.",
+      "order": 83,
+      "description": "Profundizamos en la increíble fracción de segundo tras el gran estallido original. Aprende cómo el espacio mismo se expandió más rápido que la luz misma.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-origen-de-los-cometas:-dos-enormes-depositos-helados",
+      "title": "El origen de los cometas: Dos enormes depósitos helados.",
+      "order": 84,
+      "description": "Diferenciamos el origen exacto de los cometas periódicos. Viaja nuevamente hacia las dos mayores fuentes de estas heladas y hermosas reliquias espaciales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-gran-atractor:-la-misteriosa-fuerza-que-nos-arrastra",
+      "title": "El Gran Atractor: La misteriosa fuerza que nos arrastra.",
+      "order": 85,
+      "description": "Descubre la anomalía gravitacional invisible que tira de la Vía Láctea y miles de galaxias vecinas. Analizamos qué colosal objeto podría estar oculto allí.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fases-lunares-a-fondo:-los-mitos-comunes-y-su-realidad",
+      "title": "Fases lunares a fondo: Los mitos comunes y su realidad.",
+      "order": 86,
+      "description": "Aclaramos conceptos errórones sobre el lado oscuro de la luna. Entiende cómo la geometría espacial básica crea los hermosos ciclos que vemos mes tras mes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "jupiteres-calientes:-los-mundos-colosales-del-infierno",
+      "title": "Júpiteres calientes: Los mundos colosales del infierno.",
+      "order": 87,
+      "description": "Exploramos astros gaseosos que orbitan angustiosamente cerca de sus estrellas maternas. Descubre cómo algunos logran soportar increíbles temperaturas hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "microlentes-espaciales:-cazando-exoplanetas-muy-ocultos",
+      "title": "Microlentes espaciales: Cazando exoplanetas muy ocultos.",
+      "order": 88,
+      "description": "Conoce un ingenioso y asombroso método para hallar mundos extraños y astros nómadas. Explicamos cómo estrellas pequeñas actúan como rápidas lupas visuales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "sistemas-estelares-multiples:-el-baile-con-varios-soles",
+      "title": "Sistemas estelares múltiples: El baile con varios soles.",
+      "order": 89,
+      "description": "Vamos más allá de los sistemas binarios clásicos para observar grupos complejos. Analizamos la inestable y muy frágil mecánica física de estas órbitas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "lactomeda:-la-colosal-fusion-de-dos-galaxias-majestuosas",
+      "title": "Lactómeda: La colosal fusión de dos galaxias majestuosas.",
+      "order": 90,
+      "description": "Nos proyectamos miles de millones de años hacia adelante. Analizamos paso a paso la grandiosa colisión inminente entre nuestra galaxia y la gran Andrómeda.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-anillos-de-saturno:-un-sistema-de-joyas-heladas",
+      "title": "Los anillos de Saturno: Un sistema de joyas heladas.",
+      "order": 91,
+      "description": "Descubre de qué están hechos los famosos anillos del sexto planeta. Explicamos cómo se formaron y por qué podrían desaparecer en el futuro lejano.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ondas-gravitacionales:-escuchando-las-arrugas-del-cosmos",
+      "title": "Ondas gravitacionales: Escuchando las arrugas del cosmos.",
+      "order": 92,
+      "description": "Profundizamos en las vibraciones del espacio-tiempo. Conoce cómo los choques de inmensos agujeros negros nos permiten percibir el universo invisible.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "asterismos:-las-figuras-no-oficiales-del-cielo-nocturno",
+      "title": "Asterismos: Las figuras no oficiales del cielo nocturno.",
+      "order": 93,
+      "description": "Diferenciamos estas figuras de las clásicas constelaciones. Aprende a encontrar el Gran Carro o el Triángulo de Verano en tus noches de observación.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-monte-olimpo:-el-inmenso-volcan-del-planeta-marte",
+      "title": "El Monte Olimpo: El inmenso volcán del planeta Marte.",
+      "order": 94,
+      "description": "Visitamos la montaña más grande de todo nuestro sistema solar. Analizamos por qué Marte pudo formar un volcán colosal que empequeñece a los terrestres.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-limite-de-roche:-la-frontera-de-destruccion-espacial",
+      "title": "El límite de Roche: La frontera de destrucción espacial.",
+      "order": 95,
+      "description": "Explicamos el límite invisible alrededor de los planetas gigantes. Descubre por qué las lunas que se acercan demasiado terminan destrozadas por gravedad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "rayos-cosmicos:-particulas-de-alta-energia-del-espacio",
+      "title": "Rayos cósmicos: Partículas de alta energía del espacio.",
+      "order": 96,
+      "description": "Analizamos los veloces proyectiles microscópicos que bombardean la Tierra. Conoce su misterioso origen y cómo nuestra atmósfera logra protegernos hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-albedo-cosmico:-el-brillo-reflectante-de-los-mundos",
+      "title": "El albedo cósmico: El brillo reflectante de los mundos.",
+      "order": 97,
+      "description": "Entiende por qué algunos planetas brillan más que otros en el cielo. Explicamos cómo las superficies de hielo o roca reflejan la intensa luz del Sol.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "oumuamua:-el-primer-y-extrano-visitante-interestelar",
+      "title": "Oumuamua: El primer y extraño visitante interestelar.",
+      "order": 98,
+      "description": "Repasamos el misterio del objeto con forma de cigarro que cruzó nuestro sistema. Analizamos las teorías sobre su verdadero origen en otra estrella.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-secuencia-de-hubble:-clasificando-todas-las-galaxias",
+      "title": "La secuencia de Hubble: Clasificando todas las galaxias.",
+      "order": 99,
+      "description": "Conoce el famoso diagrama de diapasón creado para organizar el cosmos. Aprende a distinguir visualmente entre las formas espirales y las elípticas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "neutrinos:-atrapando-las-particulas-fantasma-cosmicas",
+      "title": "Neutrinos: Atrapando las partículas fantasma cósmicas.",
+      "order": 100,
+      "description": "Descubre cómo los astrónomos observan partículas que atraviesan la materia. Entiende qué nos revelan sobre el núcleo del Sol y las supernovas lejanas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "bolidos-de-fuego:-los-meteoros-mas-brillantes-del-cielo",
+      "title": "Bólidos de fuego: Los meteoros más brillantes del cielo.",
+      "order": 101,
+      "description": "Diferenciamos las estrellas fugaces comunes de estas rocas mayores. Explicamos por qué generan potentes destellos y explosiones al tocar la atmósfera.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "acoplamiento-de-mareas:-el-anclaje-de-nuestra-luna",
+      "title": "Acoplamiento de mareas: El anclaje de nuestra Luna.",
+      "order": 102,
+      "description": "Explicamos por qué siempre vemos la misma cara de nuestro satélite natural. Aprende cómo la inmensa gravedad de la Tierra frenó su rotación hace siglos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-burbuja-local:-el-inmenso-vacio-donde-viaja-el-sol",
+      "title": "La Burbuja Local: El inmenso vacío donde viaja el Sol.",
+      "order": 103,
+      "description": "Exploramos la cavidad de gas caliente que rodea nuestro vecindario estelar. Conoce cómo antiguas supernovas despejaron esta gran zona de la Vía Láctea.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "astronomia-de-rayos-x:-observando-el-universo-violento",
+      "title": "Astronomía de rayos X: Observando el universo violento.",
+      "order": 104,
+      "description": "Descubre qué vemos cuando miramos las frecuencias más energéticas. Aprende cómo esta luz revela gas súper caliente alrededor de feroces agujeros negros.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "espaguetizacion:-el-extrano-destino-final-al-caer",
+      "title": "Espaguetización: El extraño destino final al caer.",
+      "order": 105,
+      "description": "Adéntrate en la física teórica de los agujeros negros. Entiende paso a paso por qué la enorme diferencia gravitacional estiraría cualquier objeto físico.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "triton:-la-gran-luna-rebelde-y-congelada-de-neptuno",
+      "title": "Tritón: La gran luna rebelde y congelada de Neptuno.",
+      "order": 106,
+      "description": "Visitamos el enorme satélite que orbita en dirección contraria a su planeta. Analizamos sus extraños géiseres de nitrógeno y su posible origen lejano.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "eje-de-inclinacion:-el-verdadero-motor-de-las-estaciones",
+      "title": "Eje de inclinación: El verdadero motor de las estaciones.",
+      "order": 107,
+      "description": "Explicamos fácilmente por qué experimentamos invierno y verano. Descubre cómo la ligera inclinación terrestre cambia dramáticamente nuestro clima global.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "esferas-de-dyson:-megaestructuras-para-estrellas",
+      "title": "Esferas de Dyson: Megaestructuras para estrellas.",
+      "order": 108,
+      "description": "Discutimos un popular concepto teórico para civilizaciones avanzadas. Analizamos cómo podrían rodear sus astros para capturar toda su inmensa energía.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-baricentro:-el-equilibrio-de-las-orbitas-estelares",
+      "title": "El baricentro: El equilibrio de las órbitas estelares.",
+      "order": 109,
+      "description": "Descubre que los planetas en realidad no orbitan el centro exacto del Sol. Entiende este increíble punto de equilibrio gravitacional en los sistemas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "proxima-centauri:-visitando-a-nuestra-estrella-vecina",
+      "title": "Próxima Centauri: Visitando a nuestra estrella vecina.",
+      "order": 110,
+      "description": "Viajamos imaginariamente al sistema estelar más cercano a la Tierra. Conoce a esta enana roja y los planetas rocosos que orbitan a su alrededor hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "curvatura-espacial:-el-asombroso-tejido-del-universo",
+      "title": "Curvatura espacial: El asombroso tejido del universo.",
+      "order": 111,
+      "description": "Profundizamos en la gravedad moderna explicada por el gran Albert Einstein. Imagina cómo la masa deforma el espacio creando hundimientos invisibles.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "dilatacion-temporal:-cuando-el-reloj-marcha-distinto",
+      "title": "Dilatación temporal: Cuando el reloj marcha distinto.",
+      "order": 112,
+      "description": "Entiende por qué el tiempo no fluye igual para todos los observadores. Explicamos cómo la inmensa velocidad o gravedad intensa alteran tu propio reloj.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ceres-y-vesta:-los-reyes-del-gran-cinturon-rocoso",
+      "title": "Ceres y Vesta: Los reyes del gran cinturón rocoso.",
+      "order": 113,
+      "description": "Retomamos los mundos menores para comparar estos dos fascinantes cuerpos. Descubre las grandes diferencias en su composición, geología y forma final.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-gran-mancha-roja:-la-tormenta-eterna-de-jupiter",
+      "title": "La Gran Mancha Roja: La tormenta eterna de Júpiter.",
+      "order": 114,
+      "description": "Observamos el gigantesco y feroz huracán que lleva siglos activo. Analizamos por qué sus vientos no se detienen y cómo su enorme tamaño se reduce hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-largo-viaje-del-foton:-desde-el-nucleo-hasta-ti",
+      "title": "El largo viaje del fotón: Desde el núcleo hasta ti.",
+      "order": 115,
+      "description": "Sigue la épica travesía de una sola partícula de luz. Conoce cómo tarda miles de años en salir del Sol para cruzar el espacio y llegar a tus propios ojos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-escala-de-kardashev:-clasificando-alienigenas",
+      "title": "La Escala de Kardashev: Clasificando alienígenas.",
+      "order": 116,
+      "description": "Exploramos el método teórico para medir el avance de posibles civilizaciones. Analizamos sus tres tipos basados en la enorme cantidad de energía usada.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "binarias-eclipsantes:-las-estrellas-que-se-ocultan",
+      "title": "Binarias eclipsantes: Las estrellas que se ocultan.",
+      "order": 117,
+      "description": "Conoce los sistemas dobles que varían su brillo regularmente. Explicamos cómo una estrella bloquea la luz de su compañera desde nuestra perspectiva.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "halos-galacticos:-la-extensa-esfera-de-materia-oscura",
+      "title": "Halos galácticos: La extensa esfera de materia oscura.",
+      "order": 118,
+      "description": "Expandimos nuestra visión de las galaxias. Descubre la colosal estructura invisible que rodea los discos espirales y los mantiene perfectamente unidos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-vacio-de-boötes:-la-zona-mas-solitaria-del-cosmos",
+      "title": "El Vacío de Boötes: La zona más solitaria del cosmos.",
+      "order": 119,
+      "description": "Viajamos a una región inmensa que contiene asombrosamente pocas galaxias. Discutimos cómo se formaron estas gigantescas burbujas de la red cósmica.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-heliopausa:-el-lejano-y-turbulento-limite-solar",
+      "title": "La heliopausa: El lejano y turbulento límite solar.",
+      "order": 120,
+      "description": "Alcanzamos la frontera exacta donde el viento solar pierde su inmensa fuerza. Conoce el punto preciso donde oficialmente comienza el espacio interestelar.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "sagitario-a-estrella:-el-monstruo-central-de-la-galaxia",
+      "title": "Sagitario A estrella: El monstruo central de la galaxia.",
+      "order": 121,
+      "description": "Exploramos el inmenso agujero negro supermasivo que habita en el corazón de la Vía Láctea. Descubre cómo los astrónomos lograron mapear su poderoso entorno.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "eclipses-lunares:-el-misterio-de-la-luna-de-sangre",
+      "title": "Eclipses lunares: El misterio de la luna de sangre.",
+      "order": 122,
+      "description": "Entiende por qué nuestro satélite se tiñe de un intenso rojo ocasionalmente. Explicamos la alineación exacta y el papel de la atmósfera en este gran fenómeno.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-sistema-trappist-1:-siete-mundos-muy-prometedores",
+      "title": "El sistema TRAPPIST-1: Siete mundos muy prometedores.",
+      "order": 123,
+      "description": "Viajamos a la famosa estrella enana que alberga varios planetas de tamaño terrestre. Discutimos sus órbitas cercanas y las reales posibilidades de tener vida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "kilonovas:-la-explosiva-colision-de-astros-pesados",
+      "title": "Kilonovas: La explosiva colisión de astros pesados.",
+      "order": 124,
+      "description": "Conoce qué sucede cuando dos estrellas de neutrones chocan violentamente. Descubre cómo estos eventos forjan metales preciosos como el oro de nuestro planeta.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ciclos-solares:-los-latidos-magneticos-de-nuestra-estrella",
+      "title": "Ciclos solares: Los latidos magnéticos de nuestra estrella.",
+      "order": 125,
+      "description": "Analizamos los cambios periódicos en la actividad de nuestro Sol. Aprende cómo el aumento y descenso de las manchas solares afecta el clima de todo el sistema.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "canibalismo-galactico:-cuando-las-galaxias-se-fusionan",
+      "title": "Canibalismo galáctico: Cuando las galaxias se fusionan.",
+      "order": 126,
+      "description": "Observamos cómo grandes galaxias crecen devorando a sus vecinas menores. Entiende las fuerzas gravitacionales que destrozan asimilando incontables astros hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "puntos-de-lagrange:-las-zonas-de-aparcamiento-cosmico",
+      "title": "Puntos de Lagrange: Las zonas de aparcamiento cósmico.",
+      "order": 127,
+      "description": "Explicamos las áreas espaciales donde la gravedad de dos grandes cuerpos se equilibra. Conoce por qué ubicamos allí a nuestros satélites y telescopios clave.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-caso-betelgeuse:-una-inminente-explosion-estelar",
+      "title": "El caso Betelgeuse: Una inminente explosión estelar.",
+      "order": 128,
+      "description": "Analizamos el extraño oscurecimiento de esta supergigante roja de Orión. Discutimos si estamos a punto de presenciar su espectacular muerte como gran supernova.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cazadores-de-exoplanetas:-misiones-kepler-y-tess-hoy",
+      "title": "Cazadores de exoplanetas: Misiones Kepler y TESS hoy.",
+      "order": 129,
+      "description": "Celebramos los impresionantes telescopios diseñados para buscar nuevos mundos. Descubre las ingeniosas técnicas que han revelado miles de sistemas planetarios.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cuerdas-cosmicas:-las-fisuras-del-universo-primitivo",
+      "title": "Cuerdas cósmicas: Las fisuras del universo primitivo.",
+      "order": 130,
+      "description": "Nos adentramos en la cosmología teórica para estudiar estas grietas espaciales. Aprende cómo defectos microscópicos en el vacío albergan energía inimaginable.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-enigmaticos-blazares:-rayos-de-luz-hacia-la-tierra",
+      "title": "Los enigmáticos blázares: Rayos de luz hacia la Tierra.",
+      "order": 131,
+      "description": "Conoce las galaxias activas que apuntan sus jets de energía hacia la Tierra. Explicamos cómo los potentes agujeros negros disparan estos rayos de radiación.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-noveno-planeta:-en-la-busqueda-del-gigante-oculto",
+      "title": "El noveno planeta: En la búsqueda del gigante oculto.",
+      "order": 132,
+      "description": "Exploramos intrigantes pistas gravitacionales en los confines de nuestro sistema. Discutimos la gran posibilidad de tener un enorme planeta oscuro por descubrir.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "valles-marineris:-la-enorme-gran-cicatriz-de-marte-hoy",
+      "title": "Valles Marineris: La enorme gran cicatriz de Marte hoy.",
+      "order": 133,
+      "description": "Visitamos el sistema de cañones más grande y espectacular del sistema solar. Analizamos los misteriosos procesos tectónicos que lograron desgarrar al planeta.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "planetas-globo-ocular:-mundos-de-fuego-y-hielo-eterno",
+      "title": "Planetas globo ocular: Mundos de fuego y hielo eterno.",
+      "order": 134,
+      "description": "Descubre peculiares exoplanetas anclados a su estrella por fuerte gravedad. Explicamos cómo sus caras extremas y opuestas generan climas de asombroso contraste.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-teoria-de-la-panspermia:-semillas-de-vida-espaciales",
+      "title": "La teoría de la panspermia: Semillas de vida espaciales.",
+      "order": 135,
+      "description": "Abordamos la fascinante idea de que la vida no se originó en la Tierra. Discutimos cómo los cometas podrían transportar microorganismos viajando por el cosmos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-diagrama-estelar:-trazando-la-vida-de-las-estrellas",
+      "title": "El diagrama estelar: Trazando la vida de las estrellas.",
+      "order": 136,
+      "description": "Conoce la principal herramienta visual que cambió radicalmente la astrofísica. Aprende a interpretar el ciclo vital completo de un astro midiendo luz y calor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "crateres-de-impacto:-las-cicatrices-rocosas-terrestres",
+      "title": "Cráteres de impacto: Las cicatrices rocosas terrestres.",
+      "order": 137,
+      "description": "Analizamos cómo las brutales colisiones de grandes asteroides moldearon nuestro mundo. Repasamos las huellas visibles y su gran impacto en la vida planetaria.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "magnetosfera:-nuestro-vital-escudo-protector-invisible",
+      "title": "Magnetosfera: Nuestro vital escudo protector invisible.",
+      "order": 138,
+      "description": "Descubre la enorme e invisible burbuja magnética que envuelve a la Tierra entera. Explicamos cómo nos defiende constantemente del peligroso bombardeo espacial.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "planetas-pulsar:-extranos-mundos-en-un-entorno-letal",
+      "title": "Planetas púlsar: Extraños mundos en un entorno letal.",
+      "order": 139,
+      "description": "Viajamos hacia los primeros exoplanetas que fueron descubiertos en la historia. Sorpréndete con astros muertos que giran emitiendo altísimas dosis de energía.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "telescopio-espacial-hubble:-un-legado-cosmico-hermoso",
+      "title": "Telescopio espacial Hubble: Un legado cósmico hermoso.",
+      "order": 140,
+      "description": "Rendimos homenaje al icónico observatorio que revolucionó el conocimiento humano. Repasamos sus grandes hallazgos visuales y cómo transformó la ciencia actual.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "exolunas-fascinantes:-satelites-mas-alla-del-sistema",
+      "title": "Exolunas fascinantes: Satélites más allá del sistema.",
+      "order": 141,
+      "description": "Ampliamos la incansable búsqueda astronómica hacia las posibles lunas lejanas. Discutimos si estos satélites extrasolares podrían albergar una nueva biósfera.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "flujo-oscuro:-el-extrano-movimiento-conjunto-galactico",
+      "title": "Flujo oscuro: El extraño movimiento conjunto galáctico.",
+      "order": 142,
+      "description": "Exploramos el misterioso desplazamiento masivo de agrupaciones galácticas juntas. Analizamos qué fuerza exterior invisible podría atraerlas de forma constante.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-pleyades:-el-hermoso-y-brillante-rebano-de-estrellas",
+      "title": "Las Pléyades: El hermoso y brillante rebaño de estrellas.",
+      "order": 143,
+      "description": "Analizamos el cúmulo estelar joven más famoso del cielo estrellado nocturno. Aprende su enorme importancia cultural y qué nos revela de la formación de soles.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-super-saturno:-un-exoplaneta-con-anillos-gigantescos",
+      "title": "El súper Saturno: Un exoplaneta con anillos gigantescos.",
+      "order": 144,
+      "description": "Maravíllate con el asombroso planeta lejano que posee discos miles de veces mayores. Explicamos cómo la inmensidad de sus anillos desafía nuestras teorías.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "astroquimica-vital:-los-elementos-basicos-del-universo",
+      "title": "Astroquímica vital: Los elementos básicos del universo.",
+      "order": 145,
+      "description": "Nos adentramos en inmensas y frías nubes moleculares repletas de oscuro polvo. Descubre cómo se forman componentes fundamentales de la vida en pleno vacío.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "pilares-de-la-creacion:-un-majestuoso-vivero-estelar",
+      "title": "Pilares de la Creación: Un majestuoso vivero estelar.",
+      "order": 146,
+      "description": "Observamos en detalle la imagen espacial más icónica de la historia astronómica. Entiende los destructivos y hermosos procesos físicos en esta nebulosa enorme.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "galaxias-enanas:-pequenos-bloques-cosmicos-olvidados",
+      "title": "Galaxias enanas: Pequeños bloques cósmicos olvidados.",
+      "order": 147,
+      "description": "Conoce a los minúsculos y abundantes sistemas estelares de nuestro gran universo. Explicamos su rol esencial en la formación gravitacional de galaxias mayores.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "estrellas-vampiro:-robo-de-materia-en-el-espacio-final",
+      "title": "Estrellas vampiro: Robo de materia en el espacio final.",
+      "order": 148,
+      "description": "Descubre el oscuro fenómeno físico presente en varios sistemas estelares dobles. Aprende cómo una estrella densa extrae gas y vida de su compañera moribunda.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-geiseres-de-encelado:-disparando-hielo-al-cosmos",
+      "title": "Los géiseres de Encélado: Disparando hielo al cosmos.",
+      "order": 149,
+      "description": "Analizamos los espectaculares chorros de vapor de agua en el satélite de Saturno. Conoce por qué estos rápidos brotes alimentan directamente un anillo externo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-gran-filtro:-la-dificil-supervivencia-en-la-galaxia",
+      "title": "El gran filtro: La difícil supervivencia en la galaxia.",
+      "order": 150,
+      "description": "Retomamos el enigma alienígena abordando un concepto de probabilidad estadística. Analizamos qué barreras evolutivas o astrofísicas impiden ver imperios vivos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "solsticios-y-equinoccios:-danza-estacional-orbital",
+      "title": "Solsticios y equinoccios: Danza estacional orbital",
+      "order": 151,
+      "description": "Descubre cómo la posición exacta de nuestro planeta azul respecto al Sol marca el inicio preciso de cada temporada. Un ciclo celestial vital para nosotros.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-rafagas-rapidas-de-radio:-destellos-del-cosmos",
+      "title": "Las ráfagas rápidas de radio: Destellos del cosmos",
+      "order": 152,
+      "description": "Analizamos las misteriosas y potentes emisiones energéticas de milisegundos que llegan desde galaxias muy lejanas. Conoce las teorías sobre este gran enigma.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "haumea-y-makemake:-extranos-mundos-en-los-confines",
+      "title": "Haumea y Makemake: Extraños mundos en los confines",
+      "order": 153,
+      "description": "Exploramos dos de los planetas enanos más peculiares de nuestro sistema. Conoce el asombroso aspecto ovalado de Haumea y cómo giran a gran velocidad hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-gran-singularidad:-el-corazon-del-agujero-negro",
+      "title": "La gran singularidad: El corazón del agujero negro",
+      "order": 154,
+      "description": "Adéntrate en el punto exacto donde la gravedad infinita aplasta toda la materia. Entiende por qué nuestras actuales leyes de la física colapsan por completo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "astrofotografia-basica:-capturando-la-luz-antigua",
+      "title": "Astrofotografía básica: Capturando la luz antigua",
+      "order": 155,
+      "description": "Aprende los principios fundamentales para fotografiar maravillas celestes. Descubre cómo simples exposiciones largas revelan colores ocultos del gran cosmos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "lobulo-de-roche:-el-limite-de-las-estrellas-dobles",
+      "title": "Lóbulo de Roche: El límite de las estrellas dobles",
+      "order": 156,
+      "description": "Conoce la frontera gravitacional invisible que rodea a cada estrella en un sistema binario. Explicamos qué sucede cuando un astro supera su propio volumen.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "agujeros-negros-supermasivos:-monstruos-primigenios",
+      "title": "Agujeros negros supermasivos: Monstruos primigenios",
+      "order": 157,
+      "description": "Discutimos cómo lograron crecer tanto estos titanes en el centro de cada galaxia. Analizamos las teorías sobre su rápido nacimiento en el universo temprano.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-famoso-cometa-halley:-un-fiel-visitante-helado",
+      "title": "El famoso cometa Halley: Un fiel visitante helado",
+      "order": 158,
+      "description": "Repasamos la gran historia de este hermoso cuerpo celeste periódico. Descubre cuándo nos volverá a visitar y cómo su órbita constante fascinó a la humanidad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "calentamiento-de-marea:-mundos-moldeados-por-calor",
+      "title": "Calentamiento de marea: Mundos moldeados por calor",
+      "order": 159,
+      "description": "Entiende cómo la fricción gravitacional interna logra derretir núcleos enteros de lunas heladas. Explicamos este proceso clave para buscar océanos líquidos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "filamentos-galacticos:-los-hilos-de-la-red-cosmica",
+      "title": "Filamentos galácticos: Los hilos de la red cósmica",
+      "order": 160,
+      "description": "Ampliamos la escala al máximo para observar las inmensas columnas de materia que conectan enormes cúmulos galácticos, dejando oscuros vacíos entre ellas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "grandes-observatorios-terrestres-y-los-espaciales",
+      "title": "Grandes observatorios terrestres y los espaciales",
+      "order": 161,
+      "description": "Comparamos las inmensas ventajas de colocar potentes telescopios en órbita con respecto a los gigantes espejos que seguimos construyendo sobre las montañas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-gran-asteroide-psyche:-un-nucleo-de-metal-puro",
+      "title": "El gran asteroide Psyche: Un núcleo de metal puro",
+      "order": 162,
+      "description": "Viajamos hacia un mundo menor único que podría ser el núcleo intacto de un planeta antiguo. Analizamos su composición de hierro y su gran valor científico.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "estrellas-cefeidas:-los-faros-ritmicos-del-espacio",
+      "title": "Estrellas cefeidas: Los faros rítmicos del espacio",
+      "order": 163,
+      "description": "Descubre a estas maravillosas estrellas pulsantes cuyo brillo cambia de forma constante. Aprende cómo nos permiten medir enormes distancias en el universo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "candidatos-misteriosos-a-la-materia-oscura-cosmica",
+      "title": "Candidatos misteriosos a la materia oscura cósmica",
+      "order": 164,
+      "description": "Analizamos las partículas microscópicas y los cuerpos masivos ocultos que podrían resolver el gran enigma de la materia invisible de nuestro universo hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "climas-extraterrestres:-las-estaciones-en-el-cosmos",
+      "title": "Climas extraterrestres: Las estaciones en el cosmos",
+      "order": 165,
+      "description": "Descubre cómo son el invierno y el verano en otros mundos. Analizamos los increíbles cambios climáticos generados por órbitas extremas y ejes inclinados.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "chorros-relativistas:-los-disparos-a-la-luz-misma",
+      "title": "Chorros relativistas: Los disparos a la luz misma",
+      "order": 166,
+      "description": "Observamos las inmensas columnas de plasma expulsadas por furiosos agujeros negros supermasivos. Entiende por qué alcanzan casi la velocidad de la luz hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-nube-interestelar-local:-nuestro-viaje-nuboso",
+      "title": "La nube interestelar local: Nuestro viaje nuboso",
+      "order": 167,
+      "description": "Acompaña a nuestro sistema solar mientras atraviesa una peculiar nube espacial. Descubre de qué está compuesta y cómo influye sutilmente en la heliósfera.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "nebulosas-de-reflexion-y-emision:-el-color-estelar",
+      "title": "Nebulosas de reflexión y emisión: El color estelar",
+      "order": 168,
+      "description": "Diferenciamos los hermosos tipos de nubes de gas espacial. Aprende por qué algunas nubes brillan intensamente por sí solas mientras otras solo reflejan luz.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "agujeros-negros-primordiales:-ecos-del-gran-inicio",
+      "title": "Agujeros negros primordiales: Ecos del gran inicio",
+      "order": 169,
+      "description": "Exploramos los diminutos y misteriosos agujeros formados fracciones de segundo después del Big Bang. Discutimos si todavía existen vagando por la galaxia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-cumulo-de-las-hiades:-vecinos-estelares-cercanos",
+      "title": "El cúmulo de las Híades: Vecinos estelares cercanos",
+      "order": 170,
+      "description": "Conocemos otra famosa agrupación de jóvenes estrellas visibles a simple vista en el cielo. Analizamos su curiosa forma y su brillante evolución estelar hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "condritas-milenarias:-las-rocas-del-sistema-solar",
+      "title": "Condritas milenarias: Las rocas del sistema solar",
+      "order": 171,
+      "description": "Analizamos los meteoritos más antiguos e inalterados que han caído a nuestro planeta. Entiende por qué son cápsulas del tiempo del joven sistema planetario.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "anillos-oscuros:-rodeando-a-jupiter-urano-y-neptuno",
+      "title": "Anillos oscuros: Rodeando a Júpiter, Urano y Neptuno",
+      "order": 172,
+      "description": "Revelamos los sutiles sistemas de anillos que poseen todos los planetas gigantes gaseosos. Descubre por qué Saturno no es el único adornado con escombros.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-planeta-proxima-b:-nuestro-mundo-vecino-cercano",
+      "title": "El planeta Próxima b: Nuestro mundo vecino cercano",
+      "order": 173,
+      "description": "Viajamos al exoplaneta rocoso más cercano a la Tierra. Analizamos su capacidad de mantener agua en estado líquido bajo el intenso brillo de su estrella enana.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "galaxias-seyfert:-los-nucleos-activos-misteriosos",
+      "title": "Galaxias Seyfert: Los núcleos activos misteriosos",
+      "order": 174,
+      "description": "Adéntrate en estas galaxias espirales que poseen un centro extremadamente luminoso. Explicamos cómo sus agujeros negros se alimentan sin destruir sus discos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "viajes-en-el-tiempo-cosmico:-la-fisica-del-espacio",
+      "title": "Viajes en el tiempo cósmico: La física del espacio",
+      "order": 175,
+      "description": "Discutimos qué nos dice la relatividad general de Einstein sobre retroceder o avanzar en la línea temporal espacial, analizando paradojas físicas complejas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "miranda:-la-luna-mas-destrozada-de-todo-el-sistema",
+      "title": "Miranda: La luna más destrozada de todo el sistema",
+      "order": 176,
+      "description": "Visitamos el peculiar satélite del planeta Urano. Conoce su superficie caótica llena de inmensos cañones que parece haber sido armada con piezas muy rotas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "eta-carinae:-la-inmensa-bomba-de-tiempo-galactica",
+      "title": "Eta Carinae: La inmensa bomba de tiempo galáctica",
+      "order": 177,
+      "description": "Observamos el increíble sistema estelar hipermasivo envuelto en una nebulosa expansiva hermosa. Entiende por qué es candidato principal a estallar velozmente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "discos-de-acrecion:-remolinos-de-fuego-en-el-cosmos",
+      "title": "Discos de acreción: Remolinos de fuego en el cosmos",
+      "order": 178,
+      "description": "Explicamos la formación de inmensos discos de gas brillante girando alrededor de agujeros negros. Conoce cómo la enorme fricción genera temperaturas extremas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-corrimiento-al-rojo:-la-luz-que-se-aleja-rapido",
+      "title": "El corrimiento al rojo: La luz que se aleja rápido",
+      "order": 179,
+      "description": "Profundizamos en un fenómeno óptico de vital valor. Aprende cómo el estiramiento de las ondas de luz confirma que el universo entero se expande constantemente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "zona-habitable-galactica:-nuestro-lugar-en-el-disco",
+      "title": "Zona habitable galáctica: Nuestro lugar en el disco",
+      "order": 180,
+      "description": "Ampliamos el concepto central de habitabilidad. Descubre por qué no cualquier zona galáctica resulta ideal y apta para sostener maravillosas formas de vida hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ganimedes:-la-luna-magnetica-mas-grande-del-sistema",
+      "title": "Ganimedes: La luna magnética más grande del sistema.",
+      "order": 181,
+      "description": "Descubre el satélite joviano que supera el tamaño del planeta Mercurio. Explicamos por qué es la única luna con su propio campo magnético interno hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "laniakea:-el-inmenso-cielo-inabarcable-que-habitamos",
+      "title": "Laniakea: El inmenso cielo inabarcable que habitamos.",
+      "order": 182,
+      "description": "Navegamos por el gigantesco supercúmulo de galaxias que contiene a nuestra Vía Láctea. Descubre cómo miles de galaxias fluyen unidas por la gravedad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "mundos-de-carbono:-el-extrano-planeta-hecho-de-diamante",
+      "title": "Mundos de carbono: El extraño planeta hecho de diamante.",
+      "order": 183,
+      "description": "Viajamos a exoplanetas masivos con composiciones químicas sorprendentes. Entiende las extremas presiones que podrían cristalizar sus núcleos rocosos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "estrellas-wolf-rayet:-los-astros-ardientes-y-furiosos",
+      "title": "Estrellas Wolf-Rayet: Los astros ardientes y furiosos.",
+      "order": 184,
+      "description": "Observamos a las estrellas más masivas y calientes en su etapa final de vida. Conoce cómo sus potentes vientos expulsan sus capas externas al cosmos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "unidad-astronomica-y-parsec:-la-regla-para-medir-todo",
+      "title": "Unidad astronómica y pársec: La regla para medir todo.",
+      "order": 185,
+      "description": "Abandonamos los kilómetros para entender las verdaderas medidas espaciales. Aprende cómo los astrónomos usan estas unidades para mapear el vasto universo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "movimiento-retrogrado:-la-ilusion-optica-de-los-astros",
+      "title": "Movimiento retrógrado: La ilusión óptica de los astros.",
+      "order": 186,
+      "description": "Explicamos por qué algunos planetas parecen retroceder misteriosamente en el cielo nocturno. Conoce cómo este raro efecto visual confundió a los antiguos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fobos-y-deimos:-las-diminutas-lunas-capturadas-de-marte",
+      "title": "Fobos y Deimos: Las diminutas lunas capturadas de Marte.",
+      "order": 187,
+      "description": "Analizamos los dos oscuros asteroides que orbitan al gran planeta rojo. Descubre su trágico destino final a medida que su órbita se encoge lentamente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-punto-frio:-la-gran-anomalia-del-fondo-cosmico-hoy",
+      "title": "El Punto Frío: La gran anomalía del fondo cósmico hoy.",
+      "order": 188,
+      "description": "Exploramos una misteriosa y vasta región del universo que posee temperaturas más bajas de lo normal. Analizamos las increíbles teorías de su gran origen.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "planetas-hileanicos:-mundos-de-oceanos-globales-inmensos",
+      "title": "Planetas hileánicos: Mundos de océanos globales inmensos.",
+      "order": 189,
+      "description": "Profundizamos en una nueva clase de exoplaneta templado cubierto por completo de agua líquida y envuelto en hidrógeno, siendo muy aptos para la vida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "asimetria-cosmica:-por-que-domino-la-materia-ordinaria",
+      "title": "Asimetría cósmica: Por qué dominó la materia ordinaria.",
+      "order": 190,
+      "description": "Retrocedemos al instante inicial para entender por qué la materia le ganó la gran batalla a la antimateria, permitiendo que existamos todos nosotros.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "japeto:-la-extrana-luna-bicolor-del-sistema-de-saturno",
+      "title": "Jápeto: La extraña luna bicolor del sistema de Saturno.",
+      "order": 191,
+      "description": "Visitamos un satélite misterioso que posee un hemisferio oscuro como el carbón y otro muy brillante. Analizamos el polvo cósmico que pinta su gran cara.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "platos-colosales:-los-inmensos-radiotelescopios-fijos",
+      "title": "Platos colosales: Los inmensos radiotelescopios fijos.",
+      "order": 192,
+      "description": "Descubre cómo funcionan las enormes antenas construidas dentro de valles naturales. Repasamos la historia de Arecibo y el nuevo y gigantesco FAST chino.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "poblaciones-estelares:-las-diferentes-generaciones-de-luz",
+      "title": "Poblaciones estelares: Las diferentes generaciones de luz.",
+      "order": 193,
+      "description": "Explicamos cómo la composición química del universo fue evolucionando. Conoce a las misteriosas y primeras estrellas sin metales que iluminaron el cosmos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "velocidad-radial:-observando-el-bamboleo-de-las-estrellas",
+      "title": "Velocidad radial: Observando el bamboleo de las estrellas.",
+      "order": 194,
+      "description": "Conoce otra técnica fundamental para descubrir planetas muy lejanos. Explicamos cómo la atracción gravitacional mutua altera sutilmente la luz que vemos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-centauros:-los-astros-hibridos-en-el-sistema-externo",
+      "title": "Los Centauros: Los astros híbridos en el sistema externo.",
+      "order": 195,
+      "description": "Analizamos estos inestables cuerpos celestes que comparten características de asteroides rocosos y cometas helados, orbitando entre los mundos gigantes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "hipergigantes-rojas:-los-astros-mas-grandes-del-universo",
+      "title": "Hipergigantes rojas: Los astros más grandes del universo.",
+      "order": 196,
+      "description": "Nos maravillamos con dimensiones incomprensibles estudiando a estrellas colosales. Entiende qué pasaría si colocáramos una en el centro de nuestro sistema.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "precesion-de-los-equinoccios:-el-trompo-de-la-tierra-hoy",
+      "title": "Precesión de los equinoccios: El trompo de la Tierra hoy.",
+      "order": 197,
+      "description": "Descubre el lento bamboleo del eje de rotación de nuestro planeta azul. Explicamos cómo este largo movimiento cambia nuestra gran estrella polar del norte.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "campo-profundo:-mirando-al-vacio-para-ver-muchas-galaxias",
+      "title": "Campo Profundo: Mirando al vacío para ver muchas galaxias.",
+      "order": 198,
+      "description": "Repasamos uno de los experimentos astronómicos más arriesgados. Conoce qué sucedió cuando apuntamos un telescopio hacia una zona oscura y pequeña del cielo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "planetas-ctonicos:-los-nucleos-de-antiguos-gigantes-hoy",
+      "title": "Planetas ctónicos: Los núcleos de antiguos gigantes hoy.",
+      "order": 199,
+      "description": "Exploramos las ardientes cenizas de exoplanetas gaseosos que orbitaron demasiado cerca de su sol, perdiendo sus densas atmósferas y dejando rocas secas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "corriente-magallanica:-el-inmenso-rio-de-gas-espacial-hoy",
+      "title": "Corriente magallánica: El inmenso río de gas espacial hoy.",
+      "order": 200,
+      "description": "Observamos la estela de materia que conecta las nubes vecinas con nuestra Vía Láctea. Analizamos esta clara evidencia de fuerte interacción gravitatoria.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "nucleosintesis:-la-gran-fabrica-de-elementos-del-cosmos",
+      "title": "Nucleosíntesis: La gran fábrica de elementos del cosmos.",
+      "order": 201,
+      "description": "Explicamos detalladamente cómo el carbono en tu cuerpo fue forjado en los hornos estelares. Sigue el fantástico viaje desde el simple hidrógeno a la vida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "calisto:-la-antigua-y-callada-luna-plagada-de-crateres",
+      "title": "Calisto: La antigua y callada luna plagada de cráteres.",
+      "order": 202,
+      "description": "Viajamos al satélite más alejado de Júpiter para observar la superficie más antigua del sistema solar. Entiende por qué es un paraíso para los geólogos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-plano-ecliptico:-las-doce-constelaciones-del-zodiaco",
+      "title": "El plano eclíptico: Las doce constelaciones del zodiaco.",
+      "order": 203,
+      "description": "Separamos la ciencia moderna de las antiguas creencias astrológicas. Descubre por qué el Sol parece cruzar específicamente este grupo de agrupaciones siempre.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "pulsares-acelerados:-entendiendo-los-repentinos-temblores",
+      "title": "Púlsares acelerados: Entendiendo los repentinos temblores.",
+      "order": 204,
+      "description": "Nos adentramos en el extraño interior de las estrellas de neutrones. Conoce el fenómeno físico donde estos densos astros aceleran su rápido giro de golpe.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "punto-de-lagrange-l2:-el-mirador-oculto-tras-la-tierra",
+      "title": "Punto de Lagrange L2: El mirador oculto tras la Tierra.",
+      "order": 205,
+      "description": "Analizamos el frío punto orbital ideal para los telescopios espaciales modernos. Descubre cómo esta inestable región nos protege del intenso brillo del sol.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "nebulosas-planetarias:-los-hermosos-fantasmas-estelares",
+      "title": "Nebulosas planetarias: Los hermosos fantasmas estelares.",
+      "order": 206,
+      "description": "Contemplamos las maravillosas nubes de gas brillante que dejan las estrellas similares a nuestro Sol cuando sus tranquilos días llegan finalmente a su fin.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "supercumulo-de-shapley:-la-gran-masa-galactica-del-cosmos",
+      "title": "Supercúmulo de Shapley: La gran masa galáctica del cosmos.",
+      "order": 207,
+      "description": "Viajamos a la mayor concentración de materia observable en todo nuestro universo cercano. Analizamos su potente influencia atrayendo miles de galaxias juntas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "eyecciones-de-masa-coronal:-el-gran-bombardeo-del-sol-hoy",
+      "title": "Eyecciones de masa coronal: El gran bombardeo del sol hoy.",
+      "order": 208,
+      "description": "Diferenciamos el suave viento solar constante de estas violentas y enormes erupciones de plasma veloz. Conoce cómo logran alterar todo el clima del sistema.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "agujeros-negros-errantes:-los-oscuros-depredadores-sueltos",
+      "title": "Agujeros negros errantes: Los oscuros depredadores sueltos.",
+      "order": 209,
+      "description": "Hablamos de los remanentes estelares que deambulan solitarios por el medio interestelar. Entiende cómo la gravedad de otras estrellas los expulsa al vacío.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cometas-de-largo-periodo:-visitantes-helados-muy-lejanos",
+      "title": "Cometas de largo periodo: Visitantes helados muy lejanos.",
+      "order": 210,
+      "description": "Exploramos la majestuosa y enorme trayectoria de los cometas que tardan milenios en visitar el Sol. Aprende cómo nos brindan pistas del origen planetario.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "frente-de-choque:-el-escudo-magnetico-del-sistema",
+      "title": "Frente de choque: El escudo magnético del sistema.",
+      "order": 211,
+      "description": "Observamos la inmensa región turbulenta donde el viento estelar frena de forma abrupta al chocar contra el denso y frío gas interestelar hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "galaxia-enana-de-sagitario:-la-vecina-devorada-hoy",
+      "title": "Galaxia Enana de Sagitario: La vecina devorada hoy",
+      "order": 212,
+      "description": "Analizamos a la pequeña galaxia compañera que está siendo destrozada y asimilada lentamente por la inmensa gravedad espiral de la gran Vía Láctea.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "burbujas-de-fermi:-los-inmensos-dos-globos-de-luz",
+      "title": "Burbujas de Fermi: Los inmensos dos globos de luz.",
+      "order": 213,
+      "description": "Descubre las colosales estructuras de energía que se alzan majestuosamente desde el centro galáctico, revelando el festín de nuestro gran núcleo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "asteroides-cercanos:-rocas-que-rozan-nuestro-mundo",
+      "title": "Asteroides cercanos: Rocas que rozan nuestro mundo",
+      "order": 214,
+      "description": "Exploramos la inestable naturaleza de las rocas espaciales cuyas órbitas cruzan peligrosamente la trayectoria terrestre y su gran riesgo real hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "esfera-de-hill:-el-inmenso-dominio-gravitacional",
+      "title": "Esfera de Hill: El inmenso dominio gravitacional.",
+      "order": 215,
+      "description": "Explicamos la región exacta donde un cuerpo celeste logra mantener satélites a su alrededor antes de que la inmensa gravedad estelar se los arrebate.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-resplandor-gegenschein:-un-fantasma-en-la-noche",
+      "title": "El resplandor Gegenschein: Un fantasma en la noche",
+      "order": 216,
+      "description": "Maravíllate con este sutil resplandor nocturno estelar. Entiende cómo la luz solar se refleja en una inmensa banda de polvo interplanetario opuesto.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "galaxias-starburst:-los-freneticos-viveros-de-luz",
+      "title": "Galaxias Starburst: Los frenéticos viveros de luz.",
+      "order": 217,
+      "description": "Viajamos a caóticas formaciones galácticas que están creando nuevas y brillantes estrellas a un ritmo excepcionalmente acelerado e insostenible hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "estrellas-de-clase-o:-ardientes-titanes-del-cielo",
+      "title": "Estrellas de clase O: Ardientes titanes del cielo.",
+      "order": 218,
+      "description": "Conoce a los astros estelares más raros, luminosos y calientes del universo. Analizamos por qué su extrema radiación moldea densas nebulosas cósmicas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ariel-y-los-profundos-valles-de-la-gran-luna-fria",
+      "title": "Ariel y los profundos valles de la gran luna fría.",
+      "order": 219,
+      "description": "Visitamos el brillante satélite de Urano que presenta una red de enormes cañones interconectados. Descubre el origen de sus hermosas llanuras blancas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "principio-holografico:-vivimos-en-una-proyeccion",
+      "title": "Principio holográfico: ¿Vivimos en una proyección?",
+      "order": 220,
+      "description": "Nos sumergimos en las complejas teorías físicas de vanguardia. Discutimos la posibilidad matemática de que nuestro inmenso universo sea una ilusión.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-satelite-gaia:-construyendo-el-mapa-galactico",
+      "title": "El satélite Gaia: Construyendo el mapa galáctico.",
+      "order": 221,
+      "description": "Acompaña la ambiciosa misión espacial que está registrando la posición exacta y el rápido movimiento de más de mil millones de estrellas muy lejanas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "bombardeo-intenso-tardio:-la-gran-lluvia-de-rocas",
+      "title": "Bombardeo intenso tardío: La gran lluvia de rocas.",
+      "order": 222,
+      "description": "Retrocedemos miles de millones de años para analizar el violento periodo donde inmensos asteroides impactaron masivamente a los sistemas interiores.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "estrellas-de-quarks:-el-estado-extremo-de-la-masa",
+      "title": "Estrellas de quarks: El estado extremo de la masa.",
+      "order": 223,
+      "description": "Exploramos la extraña hipótesis de astros aún más densos que los de neutrones, donde la materia se descompone en sus diminutas partículas subatómicas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-hipernovas:-las-explosiones-de-energia-colosal",
+      "title": "Las hipernovas: Las explosiones de energía colosal",
+      "order": 224,
+      "description": "Analizamos los eventos estelares más destructivos del cosmos enorme. Descubre cómo las estrellas masivas colapsan formando veloces agujeros negros.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "mundos-sincronicos:-vida-entre-la-luz-y-la-sombra",
+      "title": "Mundos sincrónicos: Vida entre la luz y la sombra.",
+      "order": 225,
+      "description": "Entiende los inmensos desafíos en planetas extrasolares que muestran siempre la misma cara a su sol ardiente y mantienen un frío lado en la oscuridad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-densa-atmosfera-de-venus:-el-infierno-planetario",
+      "title": "La densa atmósfera de Venus: El infierno planetario",
+      "order": 226,
+      "description": "Descendemos a través de las asfixiantes nubes densas de ácido sulfúrico. Explicamos cómo este mundo terminó convirtiéndose en un gran infierno oscuro.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-gran-hexagono-de-saturno:-la-inmensa-tormenta",
+      "title": "El gran hexágono de Saturno: La inmensa tormenta.",
+      "order": 227,
+      "description": "Observamos el fascinante patrón nuboso con forma geométrica perfecta que domina el polo norte saturniano. Analizamos la gran física de sus feroces vientos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "granulacion-solar:-la-asombrosa-cara-burbujeante",
+      "title": "Granulación solar: La asombrosa cara burbujeante.",
+      "order": 228,
+      "description": "Acercamos nuestro enfoque a la brillante fotosfera de nuestra estrella madre. Conoce las enormes corrientes de plasma que le dan un aspecto granular.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "corrientes-estelares:-rios-espectrales-del-cosmos",
+      "title": "Corrientes estelares: Ríos espectrales del cosmos.",
+      "order": 229,
+      "description": "Descubre las inmensas alineaciones de estrellas que orbitan nuestra galaxia, formando antiguos restos de agrupaciones destruidas por su gran gravedad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-gran-desgarro:-un-final-apocaliptico-del-cosmos",
+      "title": "El Gran Desgarro: Un final apocalíptico del cosmos",
+      "order": 230,
+      "description": "Retomamos el destino del universo analizando qué sucedería si la enigmática energía oscura se vuelve demasiado potente y destroza toda nuestra materia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "objetos-herbig-haro:-los-intensos-chorros-estelares",
+      "title": "Objetos Herbig-Haro: Los intensos chorros estelares",
+      "order": 231,
+      "description": "Contempla las maravillosas estructuras de nebulosidad brillante creadas por estrellas nacientes cuando expulsan rápidos y finos flujos de gas muy puro.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "libracion-lunar:-el-pequeno-gran-balanceo-orbital",
+      "title": "Libración lunar: El pequeño gran balanceo orbital.",
+      "order": 232,
+      "description": "Explicamos la sutil y asombrosa oscilación de nuestro satélite natural. Entiende por qué este curioso bamboleo permite ver partes de su cara oculta.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-onda-de-radcliffe:-la-enorme-ondulacion-de-gas",
+      "title": "La Onda de Radcliffe: La enorme ondulación de gas.",
+      "order": 233,
+      "description": "Viajamos a lo largo de la inmensa estructura gaseosa con extraña forma de onda gigante que conecta múltiples y brillantes regiones de formación estelar.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-agua-en-el-vasto-espacio:-el-anhelado-compuesto",
+      "title": "El agua en el vasto espacio: El anhelado compuesto",
+      "order": 234,
+      "description": "Rastrearemos las sorprendentes moléculas hídricas esparcidas por todo el gran universo, desde las densas nubes interestelares hasta los mundos lejanos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-helado-planeta-enano-eris:-diosa-de-la-discordia",
+      "title": "El helado planeta enano Eris: Diosa de la discordia",
+      "order": 235,
+      "description": "Viajamos al helado cuerpo celeste que desató la reclasificación planetaria mundial. Descubre a su inmensa luna y su órbita en extremo inclinada hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-gran-catalogo-ngc:-el-extenso-registro-del-cielo",
+      "title": "El gran Catálogo NGC: El extenso registro del cielo",
+      "order": 236,
+      "description": "Repasamos la colosal lista de observación que incluye miles de asombrosos objetos de cielo profundo, siendo una valiosa herramienta estelar moderna.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-hermosas-perseidas:-la-espectacular-gran-lluvia",
+      "title": "Las hermosas Perseidas: La espectacular gran lluvia",
+      "order": 237,
+      "description": "Nos preparamos para observar de cerca uno de los eventos astronómicos más confiables. Conoce el antiguo cometa responsable de estas luces brillantes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "eventos-de-disrupcion:-el-voraz-gran-festin-oscuro",
+      "title": "Eventos de disrupción: El voraz gran festín oscuro",
+      "order": 238,
+      "description": "Analizamos el brillante destello que ocurre cuando un gran astro se acerca al enorme agujero negro central, siendo despedazado por su fuerza extrema.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "extremofilos:-la-tenaz-y-sorprendente-resistencia",
+      "title": "Extremófilos: La tenaz y sorprendente resistencia.",
+      "order": 239,
+      "description": "Estudiamos los asombrosos organismos terrestres que sobreviven en ambientes hostiles extremos, ampliando las esperanzas de hallar vida cósmica celular.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-brazos-espirales:-los-grandes-senderos-de-luz",
+      "title": "Los brazos espirales: Los grandes senderos de luz.",
+      "order": 240,
+      "description": "Exploramos la dinámica física de los grandes brazos galácticos estelares. Descubre por qué son ondas de densidad llenas de gas puro y no estructuras.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ley-de-titius-bode:-el-patron-oculto-de-los-mundos",
+      "title": "Ley de Titius-Bode: El patrón oculto de los mundos",
+      "order": 241,
+      "description": "Analizamos la curiosa fórmula matemática que parecía predecir la posición exacta de cada planeta antes del increíble descubrimiento de Urano.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "galaxias-lenticulares:-los-raros-discos-sin-brazos",
+      "title": "Galaxias lenticulares: Los raros discos sin brazos",
+      "order": 242,
+      "description": "Exploramos el punto intermedio galáctico. Descubre por qué estas inmensas agrupaciones perdieron el gas necesario para formar nuevas estrellas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "evento-carrington:-la-gran-tormenta-solar-historica",
+      "title": "Evento Carrington: La gran tormenta solar histórica",
+      "order": 243,
+      "description": "Retrocedemos al siglo diecinueve para revivir la llamarada estelar que colapsó los telégrafos. Discutimos qué ocurriría si pasara nuevamente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "clases-de-supernovas:-muertes-estelares-diferentes",
+      "title": "Clases de supernovas: Muertes estelares diferentes",
+      "order": 244,
+      "description": "Diferenciamos los asombrosos colapsos de los astros súper masivos y las explosiones termonucleares de las densas enanas blancas compañeras.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "espacio-intergalactico:-el-inmenso-vacio-profundo",
+      "title": "Espacio intergaláctico: El inmenso vacío profundo",
+      "order": 245,
+      "description": "Nos adentramos en las regiones increíblemente oscuras y frías que separan las galaxias. Conoce qué misteriosa materia se esconde en esa nada.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-ano-galactico:-nuestra-larga-orbita-en-el-disco",
+      "title": "El año galáctico: Nuestra larga órbita en el disco",
+      "order": 246,
+      "description": "Acompaña a nuestro sistema solar en su majestuoso y prolongado viaje alrededor del gran centro espiral. Entiende su asombrosa escala temporal.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-mares-lunares:-cicatrices-oscuras-en-la-piedra",
+      "title": "Los mares lunares: Cicatrices oscuras en la piedra",
+      "order": 247,
+      "description": "Observamos las grandes llanuras basálticas de nuestra luna. Aprende cómo inmensos impactos y antiguas lavas formaron las figuras que vemos hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-asteroide-arrokoth:-el-extrano-muneco-de-nieve",
+      "title": "El asteroide Arrokoth: El extraño muñeco de nieve",
+      "order": 248,
+      "description": "Viajamos más allá del lejano Plutón para conocer la roca espacial binaria de contacto más prístina jamás visitada por nuestras frías sondas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "polvo-cosmico-interestelar:-las-cenizas-de-la-vida",
+      "title": "Polvo cósmico interestelar: Las cenizas de la vida",
+      "order": 249,
+      "description": "Descubre cómo las minúsculas partículas que flotan oscureciendo el fondo estrellado resultan absolutamente esenciales para construir planetas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-objeto-de-hoag:-el-extrano-misterio-del-anillo",
+      "title": "El Objeto de Hoag: El extraño misterio del anillo",
+      "order": 250,
+      "description": "Analizamos una de las formaciones galácticas más desconcertantes y bellas de todo el cielo. Explicamos las teorías sobre su anillo perfecto.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "asteroides-troyanos:-los-grandes-guardias-orbitales",
+      "title": "Asteroides troyanos: Los grandes guardias orbitales",
+      "order": 251,
+      "description": "Exploramos las rocas espaciales atrapadas permanentemente por la gravedad de un enorme planeta, gravitando siempre juntos alrededor de su Sol.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "prominencias-solares:-inmensos-arcos-en-la-corona",
+      "title": "Prominencias solares: Inmensos arcos en la corona",
+      "order": 252,
+      "description": "Contempla las enormes y espectaculares líneas magnéticas que logran suspender toneladas de plasma incandescente sobre la superficie de la estrella.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-corona-solar:-el-asombroso-enigma-de-su-calor",
+      "title": "La corona solar: El asombroso enigma de su calor",
+      "order": 253,
+      "description": "Discutimos un gran misterio vigente de la astrofísica solar actual. Entiende por qué la atmósfera externa resulta mil veces más ardiente hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "exoplanetas-de-puro-hierro:-mundos-pesados-oscuros",
+      "title": "Exoplanetas de puro hierro: Mundos pesados oscuros",
+      "order": 254,
+      "description": "Viajamos hacia los asombrosos planetas rocosos donde el manto ha desaparecido. Conoce cómo colisiones brutales desnudaron sus densos núcleos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "exocometas-helados:-estelas-en-otros-lejanos-soles",
+      "title": "Exocometas helados: Estelas en otros lejanos soles",
+      "order": 255,
+      "description": "Ampliamos la incansable búsqueda hacia pequeños cuerpos de hielo orbitando sistemas estelares ajenos y entendiendo qué nos dicen de su origen.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "calendario-cosmico:-la-vasta-historia-en-doce-meses",
+      "title": "Calendario cósmico: La vasta historia en doce meses",
+      "order": 256,
+      "description": "Comprimimos los asombrosos catorce mil millones de años del universo en un solo año terrestre para visualizar nuestra fugaz existencia actual.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "galaxias-irregulares:-las-formas-caoticas-del-cielo",
+      "title": "Galaxias irregulares: Las formas caóticas del cielo",
+      "order": 257,
+      "description": "Observamos estas peculiares estructuras carentes de toda simetría. Entiende cómo los graves tirones gravitacionales de sus vecinas las rompen.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "astrometria-estelar:-midiendo-cambios-milimetricos",
+      "title": "Astrometría estelar: Midiendo cambios milimétricos",
+      "order": 258,
+      "description": "Conoce la meticulosa y exacta disciplina que mapea de forma precisa todos los sutiles movimientos celestes a través del oscuro cielo nocturno.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-gran-apice-solar:-el-rumbo-de-nuestro-sistema-hoy",
+      "title": "El gran ápice solar: El rumbo de nuestro sistema hoy",
+      "order": 259,
+      "description": "Descubre el punto exacto hacia donde el gigantesco Sol arrastra a todos sus planetas durante nuestro veloz trayecto por el amplio vecindario.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "discos-de-escombros:-las-antiguas-cunas-estelares",
+      "title": "Discos de escombros: Las antiguas cunas estelares",
+      "order": 260,
+      "description": "Observamos los anillos densos llenos de grandes rocas girando alrededor de las incipientes estrellas jóvenes formando un nuevo sistema estelar.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "meteoritos-de-gran-hierro:-nucleos-celestes-puros",
+      "title": "Meteoritos de gran hierro: Núcleos celestes puros",
+      "order": 261,
+      "description": "Analizamos los pesados fragmentos oscuros de metal puro que aterrizan velozmente sobre nuestra azul Tierra provenientes del joven universo hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "efecto-yarkovsky:-asteroides-empujados-por-la-luz",
+      "title": "Efecto Yarkovsky: Asteroides empujados por la luz",
+      "order": 262,
+      "description": "Explicamos un curioso mecanismo espacial continuo. Aprende cómo la suave y tenue luz estelar logra alterar las enormes órbitas de grandes rocas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "limite-de-chandrasekhar:-el-peso-denso-y-extremo",
+      "title": "Límite de Chandrasekhar: El peso denso y extremo",
+      "order": 263,
+      "description": "Profundizamos en la barrera exacta de la física estelar actual. Descubre qué sucede cuando una enana blanca logra superar este crucial límite.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-problema-del-litio:-un-dilema-del-gran-big-bang",
+      "title": "El problema del litio: Un dilema del gran Big Bang",
+      "order": 264,
+      "description": "Abordamos el enigmático faltante cósmico actual. Explicamos por qué las observaciones de litio no logran encajar en nuestro modelo primordial.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "dinamo-planetaria:-el-motor-del-campo-magnetico-hoy",
+      "title": "Dinamo planetaria: El motor del campo magnético hoy",
+      "order": 265,
+      "description": "Entiende cómo los inmensos metales líquidos girando dentro del profundo núcleo logran generar grandes fuerzas magnéticas vitales para la Tierra.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "mundos-circumbinarios:-los-atardeceres-de-dos-soles",
+      "title": "Mundos circumbinarios: Los atardeceres de dos soles",
+      "order": 266,
+      "description": "Exploramos la peculiar y compleja estabilidad orbital de aquellos increíbles exoplanetas solitarios que giran de forma asombrosa ante dos astros.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "remolinos-lunares:-los-bellos-patrones-magneticos",
+      "title": "Remolinos lunares: Los bellos patrones magnéticos",
+      "order": 267,
+      "description": "Contemplamos las hermosas manchas curvilíneas y pálidas en la rocosa superficie lunar entendiendo su asombroso origen y conexión con su campo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "todo-el-espectro-visual:-luz-que-jamas-lograras-ver",
+      "title": "Todo el espectro visual: Luz que jamás lograrás ver",
+      "order": 268,
+      "description": "Comprendemos las ondas más extensas y veloces de radiación espacial existentes observando la inmensa energía imperceptible para el ojo humano.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-gran-muralla-sloan:-arquitectura-colosal-cosmica",
+      "title": "La Gran Muralla Sloan: Arquitectura colosal cósmica",
+      "order": 269,
+      "description": "Dimensionamos a una de las estructuras oscuras más extensas del entero cosmos observable formado por miles y miles de galaxias entrelazadas hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "estrellas-fugitivas:-expulsadas-al-inmenso-vacio",
+      "title": "Estrellas fugitivas: Expulsadas al inmenso vacío",
+      "order": 270,
+      "description": "Discutimos sobre las brillantes y veloces estrellas hiperveloces arrojadas fuera de nuestra galaxia tras interactuar con un masivo agujero negro.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-bulbo-galactico:-el-gran-corazon-antiguo-y-denso",
+      "title": "El bulbo galáctico: El gran corazón antiguo y denso",
+      "order": 271,
+      "description": "Exploramos la inmensa y brillante región central de nuestra galaxia. Conoce por qué está habitada por incontables estrellas viejas y muy poco gas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "objetos-thorne-zytkow:-la-estrella-dentro-de-otra",
+      "title": "Objetos Thorne-Zytkow: La estrella dentro de otra",
+      "order": 272,
+      "description": "Analizamos un tipo teórico y asombroso de astro híbrido. Descubre qué pasaría si una estrella de neutrones es devorada por una gigante roja hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "optica-adaptativa:-despejando-nuestra-vision-cosmica",
+      "title": "Óptica adaptativa: Despejando nuestra visión cósmica",
+      "order": 273,
+      "description": "Descubre cómo los grandes observatorios terrestres logran contrarrestar la molesta turbulencia atmosférica usando espejos deformables y lásers.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "rezagadas-azules:-las-estrellas-que-enganan-su-edad",
+      "title": "Rezagadas azules: Las estrellas que engañan su edad",
+      "order": 274,
+      "description": "Conoce a los extraños astros que aparentan ser mucho más jóvenes que sus hermanas de cúmulo. Explicamos cómo roban masa para evitar su gran final.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-minimo-de-maunder:-cuando-el-sol-durmio-en-paz",
+      "title": "El mínimo de Maunder: Cuando el Sol durmió en paz",
+      "order": 275,
+      "description": "Retrocedemos en la historia para analizar el extraño periodo de baja actividad solar magnética que coincidió con inviernos terrestres súper gélidos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "magnetosferas-exoplanetarias:-escudos-a-la-distancia",
+      "title": "Magnetosferas exoplanetarias: Escudos a la distancia",
+      "order": 276,
+      "description": "Ampliamos la búsqueda de habitabilidad analizando los lejanos y débiles campos magnéticos. Entiende por qué son vitales para proteger exoplanetas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "estrellas-t-tauri:-los-astros-bebes-en-pleno-caos",
+      "title": "Estrellas T Tauri: Los astros bebés en pleno caos",
+      "order": 277,
+      "description": "Observamos las primeras y muy violentas etapas de la vida estelar moderna. Entiende cómo estas estrellas infantes moldean sus incipientes planetas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "escalera-de-distancias-cosmicas:-midiendo-el-vacio",
+      "title": "Escalera de distancias cósmicas: Midiendo el vacío",
+      "order": 278,
+      "description": "Explicamos el ingenioso método científico escalonado utilizado por astrofísicos para calcular distancias, desde el sistema solar a galaxias lejanas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-gran-ecuador-celeste:-la-linea-espacial-imaginaria",
+      "title": "El gran ecuador celeste: La línea espacial imaginaria",
+      "order": 279,
+      "description": "Aprende cómo proyectamos el plano terrestre directo sobre el vasto cielo nocturno. Conoce la importancia de este círculo vital para orientarnos hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "esferas-de-strömgren:-burbujas-brillantes-de-luz-pura",
+      "title": "Esferas de Strömgren: Burbujas brillantes de luz pura",
+      "order": 280,
+      "description": "Analizamos las inmensas regiones de gas iluminadas intensamente alrededor de las estrellas más masivas y calientes dentro del vasto cosmos actual.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-nucleo-de-mercurio:-el-misterio-interior-de-hierro",
+      "title": "El núcleo de Mercurio: El misterio interior de hierro",
+      "order": 281,
+      "description": "Viajamos al ardiente y veloz primer planeta para discutir su composición inusual. Descubre por qué su gran corazón de metal ocupa casi todo su ser.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "binarias-de-contacto:-las-estrellas-en-constante-roce",
+      "title": "Binarias de contacto: Las estrellas en constante roce",
+      "order": 282,
+      "description": "Conoce los fascinantes y muy extraños sistemas estelares dobles que giran tan de cerca que logran compartir sus atmósferas con inmensa gravedad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "enanas-blancas-magneticas:-los-densos-restos-potentes",
+      "title": "Enanas blancas magnéticas: Los densos restos potentes",
+      "order": 283,
+      "description": "Exploramos las ardientes y pesadas brasas estelares que han concentrado asombrosos campos magnéticos, rivalizando incluso con estrellas de neutrones.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-luz-cenicienta-de-venus:-el-raro-resplandor-nocturno",
+      "title": "La luz cenicienta de Venus: El raro resplandor nocturno",
+      "order": 284,
+      "description": "Abordamos uno de los mayores enigmas de nuestro planeta vecino. Analizamos las tenues emisiones de luz observadas en su lado eternamente oscuro.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "variaciones-de-tiempo-de-transito:-exoplanetas-ocultos",
+      "title": "Variaciones de tiempo de tránsito: Exoplanetas ocultos",
+      "order": 285,
+      "description": "Descubre el asombroso método indirecto que permite a los modernos astrónomos predecir nuevos y pequeños mundos a través de las lentas alteraciones.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-galaxias-de-anillo:-las-colisiones-limpias-cosmicas",
+      "title": "Las galaxias de anillo: Las colisiones limpias cósmicas",
+      "order": 286,
+      "description": "Contempla la maravillosa y bella estructura resultante cuando una galaxia pequeña logra atravesar limpiamente a otra galaxia mucho más grande y veloz.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-polvo-zodiacal:-los-restos-de-antiguos-y-frios-cometas",
+      "title": "El polvo zodiacal: Los restos de antiguos y fríos cometas",
+      "order": 287,
+      "description": "Exploramos el inmenso disco de diminutas partículas que rodea nuestro brillante sol. Entiende cómo estos microscópicos escombros logran reflejar luz.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "materia-intergalactica-calida:-el-hilo-invisible-cosmico",
+      "title": "Materia intergaláctica cálida: El hilo invisible cósmico",
+      "order": 288,
+      "description": "Adéntrate en los gigantescos e invisibles hilos de gas puro extremadamente tenues que logran conectar todas las estructuras gigantes de nuestro universo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-viento-estelar-extremo:-esculpiendo-nubes-espaciales",
+      "title": "El viento estelar extremo: Esculpiendo nubes espaciales",
+      "order": 289,
+      "description": "Analizamos cómo las inmensas corrientes energéticas expulsadas por estrellas gigantes logran darles formas asombrosas a las grandes nubes moleculares.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-gran-cresta-de-japeto:-la-larga-cordillera-espacial",
+      "title": "La gran cresta de Jápeto: La larga cordillera espacial",
+      "order": 290,
+      "description": "Visitamos el extraño satélite de Saturno para observar el gigantesco muro montañoso que lo rodea. Discutimos las grandes teorías sobre su formación.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fondo-cosmico-infrarrojo:-el-brillo-de-mundos-antiguos",
+      "title": "Fondo cósmico infrarrojo: El brillo de mundos antiguos",
+      "order": 291,
+      "description": "Descubre el sutil y lejano resplandor térmico escondido detrás de las galaxias oscuras. Entiende cómo revela el polvo de las primeras estrellas hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "planetas-superhinchados:-mundos-ligeros-como-el-algodon",
+      "title": "Planetas superhinchados: Mundos ligeros como el algodón",
+      "order": 292,
+      "description": "Viajamos a exoplanetas enormes y misteriosos con densidades tan bajas que asombran a todos. Explicamos cómo mantienen sus gigantescas atmósferas hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-inmensas-llanuras-de-hielo-de-la-suave-luna-europa",
+      "title": "Las inmensas llanuras de hielo de la suave luna Europa",
+      "order": 293,
+      "description": "Observamos la superficie extremadamente plana del gran satélite joviano. Analizamos las gigantes grietas y el misterioso océano global subterráneo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-gran-bombardeo-teorico:-simulando-el-sistema-solar",
+      "title": "El Gran Bombardeo Teórico: Simulando el sistema solar",
+      "order": 294,
+      "description": "Explicamos el exitoso modelo de Niza. Conoce cómo los inmensos gigantes gaseosos alteraron violentamente sus órbitas y dispersaron rocas menores hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gigantes-asintoticas-rojas:-la-pulsante-fase-evolutiva",
+      "title": "Gigantes asintóticas rojas: La pulsante fase evolutiva",
+      "order": 295,
+      "description": "Adéntrate en el inestable y tardío periodo estelar donde el inmenso astro se expande y se contrae de forma masiva expulsando carbono al universo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "espacio-tiempo-curvo:-la-revolucion-de-albert-einstein",
+      "title": "Espacio-tiempo curvo: La revolución de Albert Einstein",
+      "order": 296,
+      "description": "Profundizamos en el concepto moderno e inmenso de la gravedad. Imagina cómo la masa colosal de un astro logra deformar nuestro gran tejido cósmico.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "clima-espacial-muy-extremo:-alertas-solares-terrestres",
+      "title": "Clima espacial muy extremo: Alertas solares terrestres",
+      "order": 297,
+      "description": "Conoce cómo monitoreamos las grandes variaciones de energía y viento de nuestro propio Sol, entendiendo por qué resultan clave para nuestra gran red.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-inmensa-corona-galactica:-el-enorme-gas-hirviendo-hoy",
+      "title": "La inmensa corona galáctica: El enorme gas hirviendo hoy",
+      "order": 298,
+      "description": "Observamos la lejana e inmensa nube esférica de gas plasmático a millones de grados oscuros que logra envolver por completo a la gran Vía Láctea hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "planetas-terrestres-secos:-las-rocas-yermas-del-espacio",
+      "title": "Planetas terrestres secos: Las rocas yermas del espacio",
+      "order": 299,
+      "description": "Analizamos los duros mundos interiores de los sistemas estelares remotos. Descubre por qué los grandes planetas rocosos logran perder su vital agua.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-futuro-lejano-cosmico:-el-fin-oscuro-de-las-estrellas",
+      "title": "El futuro lejano cósmico: El fin oscuro de las estrellas",
+      "order": 300,
+      "description": "Proyectamos miles de billones de años hacia el asombroso futuro del universo lejano. Discutimos la inminente y triste época oscura de los agujeros hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "mineria-espacial:-extrayendo-la-riqueza-asteroidal",
+      "title": "Minería espacial: Extrayendo la riqueza asteroidal",
+      "order": 301,
+      "description": "Analizamos la fascinante posibilidad futura de obtener enormes metales preciosos y recursos hídricos directamente desde las lejanas rocas espaciales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "resonancia-orbital:-la-danza-perfecta-de-las-lunas",
+      "title": "Resonancia orbital: La danza perfecta de las lunas",
+      "order": 302,
+      "description": "Exploramos la inmensa sincronía gravitacional que existe entre los grandes satélites de Júpiter, garantizando órbitas estables durante miles de años.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-forma-del-universo:-es-plano-curvo-o-esferico",
+      "title": "La forma del universo: ¿Es plano, curvo o esférico?",
+      "order": 303,
+      "description": "Profundizamos en la compleja topología del vasto cosmos actual. Entiende cómo la ciencia moderna intenta descifrar la estructura geométrica del espacio.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "tubos-de-lava-lunares:-cavernas-ocultas-en-la-roca",
+      "title": "Tubos de lava lunares: Cavernas ocultas en la roca",
+      "order": 304,
+      "description": "Descubre los gigantescos túneles subterráneos vacíos que dejaron los antiguos flujos de magma, siendo excelentes refugios para los futuros astronautas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "metalicidad-estelar:-la-quimica-de-cada-generacion",
+      "title": "Metalicidad estelar: La química de cada generación",
+      "order": 305,
+      "description": "Explicamos cómo los astrofísicos estudian la abundancia de los elementos pesados para determinar la edad exacta y el verdadero origen de las estrellas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-nube-de-magallanes-pequena:-nuestra-vecina-menor",
+      "title": "La Nube de Magallanes Pequeña: Nuestra vecina menor",
+      "order": 306,
+      "description": "Visitamos a la otra galaxia irregular satélite de nuestra inmensa Vía Láctea. Discutimos sus hermosas estrellas jóvenes y su constante robo de materia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "migracion-planetaria:-los-gigantes-en-gran-movimiento",
+      "title": "Migración planetaria: Los gigantes en gran movimiento",
+      "order": 307,
+      "description": "Analizamos el violento proceso formativo donde los planetas masivos se desplazan desde su lugar de nacimiento hacia órbitas muy distintas y caóticas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "supernovas-superluminosas:-las-explosiones-extremas",
+      "title": "Supernovas superluminosas: Las explosiones extremas",
+      "order": 308,
+      "description": "Conoce a las extrañas muertes estelares que logran brillar cientos de veces más fuerte que una supernova normal. Exploramos los motores de este evento.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "constante-cosmologica:-el-gran-error-de-un-genio-hoy",
+      "title": "Constante cosmológica: El gran error de un genio hoy",
+      "order": 309,
+      "description": "Repasamos el fascinante término matemático que Albert Einstein introdujo y luego rechazó, el cual hoy podría explicar nuestra potente energía oscura.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "mimas-y-su-crater-herschel:-la-luna-que-nos-observa",
+      "title": "Mimas y su cráter Herschel: La luna que nos observa",
+      "order": 310,
+      "description": "Viajamos al pequeño satélite saturniano que parece una estación espacial de película. Analizamos el inmenso y brutal impacto que casi logra destruirlo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-medio-interestelar:-el-denso-espacio-entre-astros",
+      "title": "El medio interestelar: El denso espacio entre astros",
+      "order": 311,
+      "description": "Descubre que el gran vacío cósmico no está realmente vacío. Exploramos el sutil polvo y gas esparcido que alimenta constantemente el ciclo galáctico.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "espalacion-de-rayos-cosmicos:-elementos-en-el-vacio",
+      "title": "Espalación de rayos cósmicos: Elementos en el vacío",
+      "order": 312,
+      "description": "Explicamos el asombroso proceso subatómico donde veloces partículas espaciales chocan contra gruesos núcleos creando elementos raros como el gran boro.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "red-de-transporte-interplanetario:-las-vias-ocultas",
+      "title": "Red de transporte interplanetario: Las vías ocultas",
+      "order": 313,
+      "description": "Adéntrate en las invisibles y caóticas autopistas gravitacionales que conectan a todo el sistema solar, permitiendo enviar sondas con un mínimo gasto.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "llamaradas-de-las-enanas-rojas:-el-feroz-viento-hoy",
+      "title": "Llamaradas de las enanas rojas: El feroz viento hoy",
+      "order": 314,
+      "description": "Observamos la violenta y peligrosa actividad magnética de las pequeñas estrellas frías. Entiende cómo sus furiosas tormentas calcinan mundos cercanos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "vacios-cosmicos-inmensos:-los-grandes-abismos-negros",
+      "title": "Vacíos cósmicos inmensos: Los grandes abismos negros",
+      "order": 315,
+      "description": "Ampliamos nuestro mapa galáctico para observar las regiones increíblemente enormes y desoladas del universo donde casi ninguna galaxia logra formarse.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-cenit-y-el-nadir:-las-coordenadas-de-tu-horizonte",
+      "title": "El cenit y el nadir: Las coordenadas de tu horizonte",
+      "order": 316,
+      "description": "Aprende a ubicarte en cualquier gran noche oscura estrellada. Explicamos los puntos imaginarios clave que te conectan verticalmente con el vasto cielo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "radiacion-de-frenado:-la-luz-del-denso-plasma-calido",
+      "title": "Radiación de frenado: La luz del denso plasma cálido",
+      "order": 317,
+      "description": "Profundizamos en el extraño proceso físico de la Bremsstrahlung. Conoce cómo los veloces electrones emiten inmensos rayos X al desviarse bruscamente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cumulos-estelares-en-movimiento:-un-paseo-espacial",
+      "title": "Cúmulos estelares en movimiento: Un paseo espacial",
+      "order": 318,
+      "description": "Acompañamos a los grandes grupos de estrellas hermanas mientras viajan juntas y dispersan sus órbitas muy lentamente a través de todo el disco galáctico.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-fotosfera-estelar:-la-gran-superficie-de-luz-pura",
+      "title": "La fotosfera estelar: La gran superficie de luz pura",
+      "order": 319,
+      "description": "Descendemos hasta la delgada capa visible que rodea nuestra estrella madre ardiente. Entiende por qué resulta ser el único límite solar que observamos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-corona-polar-marciana:-el-hielo-del-planeta-rojo",
+      "title": "La corona polar marciana: El hielo del planeta rojo",
+      "order": 320,
+      "description": "Analizamos los grandes casquetes de agua y dióxido de carbono congelado que coronan al planeta Marte. Descubre cómo cambian con sus extremas estaciones.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "curvas-de-rotacion-galactica:-el-giro-estelar-total",
+      "title": "Curvas de rotación galáctica: El giro estelar total",
+      "order": 321,
+      "description": "Explicamos el antiguo misterio del rápido movimiento en espiral de las galaxias gigantes. Entiende cómo este fenómeno reveló a la gran materia oscura.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-telescopio-espacial-lisa:-caza-de-ondas-ocultas",
+      "title": "El telescopio espacial LISA: Caza de ondas ocultas",
+      "order": 322,
+      "description": "Miramos hacia el gran futuro de la exploración con este gigantesco observatorio orbital diseñado para medir las inmensas arrugas del espacio tiempo hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "subenanas-marrones:-mundos-oscuros-flotando-aislados",
+      "title": "Subenanas marrones: Mundos oscuros flotando aislados",
+      "order": 323,
+      "description": "Conoce a los extraños astros solitarios que son más pequeños que las típicas estrellas fallidas pero comparten el gran vacío lejos de todo sol ardiente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cromosfera-solar:-la-delgada-y-rojiza-capa-de-fuego",
+      "title": "Cromosfera solar: La delgada y rojiza capa de fuego",
+      "order": 324,
+      "description": "Exploramos la inestable atmósfera media de nuestra ardiente estrella diurna. Observa sus altísimos e inmensos chorros de plasma brillante e indomable.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "acrecion-del-nucleo:-el-origen-de-los-mundos-inmensos",
+      "title": "Acreción del núcleo: El origen de los mundos inmensos",
+      "order": 325,
+      "description": "Detallamos la principal teoría sobre el origen de los planetas jovianos. Aprende cómo el pequeño núcleo sólido y rocoso atrajo densos y abundantes gases.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "velas-solares:-navegando-por-el-espacio-con-luz-pura",
+      "title": "Velas solares: Navegando por el espacio con luz pura",
+      "order": 326,
+      "description": "Descubre la fascinante e innovadora tecnología que permite a las sondas modernas viajar inmensas distancias usando solo el impulso de los veloces fotones.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "microcuasares:-los-feroces-motores-galacticos-rapidos",
+      "title": "Microcuásares: Los feroces motores galácticos rápidos",
+      "order": 327,
+      "description": "Exploramos las increíbles réplicas a menor escala de los grandes cuásares. Entiende cómo estos binarios oscuros emiten chorros de inmensa energía vital.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-fondo-estocastico-de-ondas-gravitacionales-cosmicas",
+      "title": "El fondo estocástico de ondas gravitacionales cósmicas",
+      "order": 328,
+      "description": "Sumérgete en el constante zumbido que produce todo el universo de fondo. Analizamos cómo el eco de incontables choques titánicos reverbera en nuestra época.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-crater-de-chicxulub:-el-impacto-que-cambio-todo-hoy",
+      "title": "El cráter de Chicxulub: El impacto que cambió todo hoy",
+      "order": 329,
+      "description": "Visitamos la enorme cicatriz terrestre dejada por el gran asteroide devastador que borró a los imponentes dinosaurios, cambiando nuestra historia vital hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-limite-del-universo-observable:-el-borde-de-la-vista",
+      "title": "El límite del universo observable: El borde de la vista",
+      "order": 330,
+      "description": "Alcanzamos la frontera máxima de nuestra visión cosmológica humana. Entiende por qué es absolutamente imposible observar más allá de este horizonte esférico.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "globulos-de-bok:-las-densas-incubadoras-estelares-frias",
+      "title": "Glóbulos de Bok: Las densas incubadoras estelares frías.",
+      "order": 331,
+      "description": "Adéntrate en las oscuras y densas nubes de polvo y gas cósmico. Descubre cómo estos diminutos pero pesados capullos logran gestar a las nuevas estrellas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "discos-protoplanetarios:-forjando-brillantes-mundos-hoy",
+      "title": "Discos protoplanetarios: Forjando brillantes mundos hoy.",
+      "order": 332,
+      "description": "Observamos los inmensos remolinos de gas y rocas que rodean a los soles infantes. Explicamos el caótico proceso de construcción de un sistema planetario.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-anomalia-pioneer:-el-gran-misterio-de-la-gravedad",
+      "title": "La anomalía Pioneer: El gran misterio de la gravedad.",
+      "order": 333,
+      "description": "Analizamos la extraña fuerza que frenó a nuestras primeras sondas espaciales lejanas. Entiende cómo el simple calor emitido logró alterar su trayectoria.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "hipotesis-de-la-tierra-rara:-nuestro-fragil-oasis-azul",
+      "title": "Hipótesis de la Tierra Rara: Nuestro frágil oasis azul.",
+      "order": 334,
+      "description": "Discutimos la fascinante teoría que sugiere que la vida microbiana es común, pero la vida compleja e inteligente resulta extremadamente rara en el cosmos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-manchas-solares:-las-frias-y-oscuras-islas-magneticas",
+      "title": "Las manchas solares: Las frías y oscuras islas magnéticas.",
+      "order": 335,
+      "description": "Exploramos las regiones oscuras que aparecen sobre la brillante fotosfera solar. Descubre cómo estos intensos nudos magnéticos regulan el clima espacial.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-inmenso-cumulo-de-virgo:-nuestro-vecindario-galactico",
+      "title": "El inmenso Cúmulo de Virgo: Nuestro vecindario galáctico.",
+      "order": 336,
+      "description": "Viajamos al centro gravitacional de nuestro supercúmulo local. Conoce la masiva agrupación de miles de galaxias que dominan esta gran región del universo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-enanas-negras:-las-heladas-y-oscuras-cenizas-cosmicas",
+      "title": "Las enanas negras: Las heladas y oscuras cenizas cósmicas.",
+      "order": 337,
+      "description": "Adéntrate en el futuro más lejano y oscuro del universo. Explicamos cómo las enanas blancas se enfriarán por completo hasta volverse rocas indetectables.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "leyes-de-johannes-kepler:-la-bella-danza-de-los-planetas",
+      "title": "Leyes de Johannes Kepler: La bella danza de los planetas.",
+      "order": 338,
+      "description": "Repasamos las elegantes reglas matemáticas que describen las órbitas planetarias. Aprende por qué los mundos se aceleran al acercarse a su estrella madre.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cometa-shoemaker-levy:-el-increible-impacto-joviano-veloz",
+      "title": "Cometa Shoemaker-Levy: El increíble impacto joviano veloz.",
+      "order": 339,
+      "description": "Revivimos el histórico evento de mil novecientos noventa y cuatro. Analizamos cómo Júpiter capturó y destrozó un cometa, recibiendo un bombardeo masivo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ocultaciones-lunares:-las-sombras-sobre-estrellas-lejanas",
+      "title": "Ocultaciones lunares: Las sombras sobre estrellas lejanas.",
+      "order": 340,
+      "description": "Aprende sobre los eventos donde nuestro satélite bloquea la luz de astros distantes. Entiende cómo esto ayuda a medir con precisión dimensiones estelares.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-tension-de-hubble:-el-dilema-de-la-expansion-del-cosmos",
+      "title": "La Tensión de Hubble: El dilema de la expansión del cosmos",
+      "order": 341,
+      "description": "Abordamos la mayor crisis de la cosmología moderna. Explicamos por qué las diferentes mediciones de la expansión del universo no logran coincidir hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "vientos-galacticos:-las-feroces-tormentas-del-gas-oscuro",
+      "title": "Vientos galácticos: Las feroces tormentas del gas oscuro.",
+      "order": 342,
+      "description": "Observamos las masivas corrientes de partículas expulsadas por los núcleos activos. Descubre cómo logran frenar o detener la formación de nuevas estrellas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "tormentas-marcianas:-el-fino-polvo-que-cubre-todo-el-mundo",
+      "title": "Tormentas marcianas: El fino polvo que cubre todo el mundo.",
+      "order": 343,
+      "description": "Visitamos el planeta rojo para analizar sus feroces huracanes globales. Entiende cómo su atmósfera logra levantar polvo oscureciendo a su lejano sol.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cinturones-de-van-allen:-la-inmensa-trampa-magnetica-azul",
+      "title": "Cinturones de Van Allen: La inmensa trampa magnética azul.",
+      "order": 344,
+      "description": "Exploramos los anillos de radiación intensa que rodean a la Tierra. Explicamos cómo logran atrapar veloces partículas solares, protegiendo nuestra vida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "hielo-amorfo-espacial:-el-oscuro-mar-sin-cristales-de-hoy",
+      "title": "Hielo amorfo espacial: El oscuro mar sin cristales de hoy.",
+      "order": 345,
+      "description": "Descubre el estado más común del agua en todo nuestro extenso y frío universo. Analizamos este extraño hielo sin forma que se adhiere al polvo estelar.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-zona-radiativa-del-sol:-el-muy-lento-viaje-de-luz-pura",
+      "title": "La zona radiativa del Sol: El muy lento viaje de luz pura.",
+      "order": 346,
+      "description": "Adéntrate en la densa capa intermedia de nuestra estrella madre. Entiende por qué un simple fotón puede tardar milenios en atravesar este gran laberinto.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "titania:-la-inmensa-y-muy-cicatrizada-luna-del-gran-urano",
+      "title": "Titania: La inmensa y muy cicatrizada luna del gran Urano.",
+      "order": 347,
+      "description": "Visitamos al mayor satélite uraniano. Discutimos sus gigantescos cañones y enormes fallas geológicas que evidencian un violento y congelado pasado lejano.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-universo-oscilante:-del-big-bang-hacia-el-gran-rebote",
+      "title": "El universo oscilante: Del Big Bang hacia el gran rebote.",
+      "order": 348,
+      "description": "Nos sumergimos en las hipótesis sobre el ciclo eterno del cosmos infinito. Discutimos si nuestro universo volverá a contraerse para nacer nuevamente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-telescopio-nancy-roman:-ampliando-la-vision-del-cosmos",
+      "title": "El Telescopio Nancy Roman: Ampliando la visión del cosmos.",
+      "order": 349,
+      "description": "Conoce el futuro de la exploración infrarroja espacial. Analizamos cómo esta gran misión buscará comprender la energía oscura mapeando todo el universo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "hielo-oscuro-en-los-profundos-crateres-de-nuestra-luna",
+      "title": "Hielo oscuro en los profundos cráteres de nuestra Luna.",
+      "order": 350,
+      "description": "Exploramos los rincones de los polos lunares que jamás reciben luz solar directa. Descubre por qué las reservas de agua son claves para el futuro humano.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "espectroscopia-estelar:-la-increible-y-vital-huella-quimica",
+      "title": "Espectroscopia estelar: La increíble y vital huella química",
+      "order": 351,
+      "description": "Entiende cómo las atmósferas estelares devoran colores específicos de la luz. Explicamos cómo estas líneas oscuras revelan los elementos exactos del astro.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-estrella-de-teegarden:-un-muy-cercano-y-antiguo-vecino",
+      "title": "La estrella de Teegarden: Un muy cercano y antiguo vecino.",
+      "order": 352,
+      "description": "Viajamos a esta pequeña enana roja excepcionalmente cercana y vieja. Analizamos sus dos exoplanetas rocosos que podrían tener grandes mares cristalinos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "grandes-radiogalaxias:-los-lejanos-emisores-en-el-vacio",
+      "title": "Grandes radiogalaxias: Los lejanos emisores en el vacío.",
+      "order": 353,
+      "description": "Observamos las estructuras más extensas y energéticas del inmenso cosmos. Conoce cómo los chorros de plasma invisible emiten potentes ondas milimétricas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "rotacion-diferencial:-el-extrano-giro-de-los-gigantes",
+      "title": "Rotación diferencial: El extraño giro de los gigantes.",
+      "order": 354,
+      "description": "Descubre por qué los inmensos planetas gaseosos no rotan como cuerpos sólidos. Explicamos cómo su ecuador viaja mucho más veloz que sus fríos polos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-lluvia-de-diamantes-profundos-en-los-gigantes-helados",
+      "title": "La lluvia de diamantes profundos en los gigantes helados.",
+      "order": 355,
+      "description": "Adéntrate en las inmensas presiones de Urano y Neptuno. Analizamos el proceso químico donde el metano se comprime formando ricas y preciosas joyas sólidas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-inmenso-y-muy-potente-campo-magnetico-de-jupiter-hoy",
+      "title": "El inmenso y muy potente campo magnético de Júpiter hoy.",
+      "order": 356,
+      "description": "Exploramos la enorme magnetosfera joviana. Conoce cómo su inmenso tamaño logra atrapar letal radiación, creando auroras eternas mil veces más brillantes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "oscilacion-de-neutrinos:-particulas-que-logran-mutar-hoy",
+      "title": "Oscilación de neutrinos: Partículas que logran mutar hoy.",
+      "order": 357,
+      "description": "Abordamos el gran misterio de las partículas solares. Explicamos cómo los neutrinos logran alterar misteriosamente su propia masa mientras cruzan el vacío.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "supervacio-de-eridanus:-la-gran-y-sola-zona-fria-cosmica",
+      "title": "Supervacío de Eridanus: La gran y sola zona fría cósmica.",
+      "order": 358,
+      "description": "Viajamos hacia la estructura vacía más desconcertante del firmamento celeste. Discutimos qué alejó a la materia dejando este gran agujero oscuro y frío.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "anillos-de-escombros-y-polvo-en-asteroides-muy-lejanos",
+      "title": "Anillos de escombros y polvo en asteroides muy lejanos.",
+      "order": 359,
+      "description": "Rompe el mito de que solo los grandes mundos poseen grandes anillos. Descubre cómo rocas menores como Cariclo logran mantener su propio anillo de escombros.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "evolucion-termica-cosmica:-el-lento-enfriamiento-universal",
+      "title": "Evolución térmica cósmica: El lento enfriamiento universal.",
+      "order": 360,
+      "description": "Repasamos la inmensa historia de la temperatura del gran universo conocido. Entiende cómo pasamos de un infierno súper denso al frío casi absoluto de hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "estrellas-variables-mira:-los-ritmicos-latidos-estelares",
+      "title": "Estrellas variables Mira: Los rítmicos latidos estelares.",
+      "order": 361,
+      "description": "Observamos a gigantes rojas que alteran su enorme brillo en solo pocos meses. Analizamos qué origina esta gran expansión y contracción de sus capas finales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "reflectores-apolo:-midiendo-la-distancia-de-la-luna-hoy",
+      "title": "Reflectores Apolo: Midiendo la distancia de la luna hoy.",
+      "order": 362,
+      "description": "Conoce el asombroso experimento láser que sigue vigente. Entiende cómo verificamos con precisión milimétrica que nuestra hermosa luna se aleja cada año.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-gran-red-cosmica-en-expansion:-hilos-galacticos-oscuros",
+      "title": "La gran red cósmica en expansión: Hilos galácticos oscuros.",
+      "order": 363,
+      "description": "Contempla la estructura más inmensa y grandiosa del cosmos visible y conocido. Explicamos cómo la enigmática materia oscura logra tejer el universo moderno.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "termodinamica-de-agujeros-negros:-la-radiacion-hawking-hoy",
+      "title": "Termodinámica de agujeros negros: La Radiación Hawking hoy.",
+      "order": 364,
+      "description": "Nos sumergimos en las complejas teorías del enorme físico Stephen Hawking. Descubre por qué incluso los devoradores de luz más voraces logran evaporarse hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cronologia-cosmica:-el-inexorable-viaje-del-tiempo-hoy",
+      "title": "Cronología cósmica: El inexorable viaje del tiempo hoy.",
+      "order": 365,
+      "description": "Exploramos la flecha temporal de nuestro inmenso universo. Entiende cómo la inexorable entropía asegura que el flujo natural de los eventos jamás retroceda.",
+      "audioUrl": ""
+    }
+  ]
+}
