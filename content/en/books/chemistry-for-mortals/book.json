@@ -50,6 +50,41 @@
       "order": 5,
       "description": "Discover the marked chemical differences between metals and non-metals, their varied physical properties, and how they interact with each other in nature.",
       "audioUrl": ""
+    },
+    {
+      "slug": "covalent-bonds-successfully-sharing-electrons",
+      "title": "Covalent Bonds: Successfully Sharing Electrons",
+      "order": 6,
+      "description": "Understand how atoms join together by sharing their electrons to form stable molecules and why this type of bond is key for living beings.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-chemistry-of-fire-discovering-real-combustion",
+      "title": "The chemistry of fire: discovering real combustion",
+      "order": 7,
+      "description": "We take apart the fascinating process of combustion. Learn what elements are required to generate a flame, how the fire is maintained and how to extinguish it.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ions-and-ionic-bonds-the-attraction-of-opposites",
+      "title": "Ions and ionic bonds: the attraction of opposites",
+      "order": 8,
+      "description": "We analyze what happens when atoms lose or gain electrons, creating charged ions that attract strongly to form crystals like common salt.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "acids-and-bases-understanding-the-important-concept-of-ph",
+      "title": "Acids and bases: understanding the important concept of pH",
+      "order": 9,
+      "description": "We delve into the nature of acidic and basic compounds, the precise meaning of the pH scale and its great importance in our daily lives.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "chemical-reactions-the-art-of-transforming-matter",
+      "title": "Chemical reactions: the art of transforming matter",
+      "order": 10,
+      "description": "Observe in detail how different substances interact to create completely new compounds, breaking bonds and releasing or absorbing energy.",
+      "audioUrl": ""
     }
   ]
 }

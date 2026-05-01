@@ -19,41 +19,6 @@
   "language": "es",
   "chapters": [
     {
-      "slug": "son-vivos-los-virus-su-particular-ciclo-biologico",
-      "title": "¿Son vivos los virus? Su particular ciclo biológico",
-      "order": 6,
-      "description": "Debatimos la verdadera naturaleza biológica de los virus, sus métodos para invadir células huésped y cómo logran multiplicarse de forma tan efectiva.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "fungi-el-fascinante-reino-de-los-hongos-y-levaduras",
-      "title": "Fungi: El fascinante reino de los hongos y levaduras",
-      "order": 7,
-      "description": "Descubrimos la biología de los hongos, desde las levaduras unicelulares hasta las complejas redes de micelio que conectan los grandes bosques naturales.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "la-genetica-del-color-de-ojos-en-los-seres-humanos",
-      "title": "La genética del color de ojos en los seres humanos",
-      "order": 8,
-      "description": "Desglosamos cómo interactúan nuestros genes heredados para determinar la cantidad de melanina en el iris y generar los distintos colores de nuestros ojos.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "fotosintesis-como-las-plantas-generan-su-alimento",
-      "title": "Fotosíntesis: Cómo las plantas generan su alimento",
-      "order": 9,
-      "description": "Estudiamos el proceso bioquímico mediante el cual las plantas capturan la luz solar y el dióxido de carbono para producir su propia energía y el oxígeno.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "la-migracion-animal-biologia-de-los-grandes-viajes",
-      "title": "La migración animal: Biología de los grandes viajes",
-      "order": 10,
-      "description": "Exploramos los increíbles mecanismos biológicos y fisiológicos que permiten a diversas especies navegar y sobrevivir en viajes de miles de kilómetros.",
-      "audioUrl": ""
-    },
-    {
       "slug": "los-grupos-sanguineos-humanos-y-su-base-hereditaria",
       "title": "Los grupos sanguíneos humanos y su base hereditaria",
       "order": 11,

@@ -19,41 +19,6 @@
   "language": "en",
   "chapters": [
     {
-      "slug": "are-viruses-live-your-particular-biological-cycle",
-      "title": "Are viruses live? Your particular biological cycle",
-      "order": 6,
-      "description": "We discuss the true biological nature of viruses, their methods of invading host cells, and how they manage to multiply so effectively.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "fungi-the-fascinating-kingdom-of-fungi-and-yeasts",
-      "title": "Fungi: The fascinating kingdom of fungi and yeasts",
-      "order": 7,
-      "description": "We discover the biology of fungi, from single-celled yeasts to the complex networks of mycelium that connect large natural forests.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "the-genetics-of-eye-color-in-humans",
-      "title": "The genetics of eye color in humans",
-      "order": 8,
-      "description": "We break down how our inherited genes interact to determine the amount of melanin in the iris and generate the different colors of our eyes.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "photosynthesis-how-plants-make-their-food",
-      "title": "Photosynthesis: How plants make their food",
-      "order": 9,
-      "description": "We study the biochemical process by which plants capture sunlight and carbon dioxide to produce their own energy and oxygen.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "animal-migration-biology-of-great-journeys",
-      "title": "Animal migration: Biology of great journeys",
-      "order": 10,
-      "description": "We explore the incredible biological and physiological mechanisms that allow diverse species to navigate and survive journeys of thousands of kilometers.",
-      "audioUrl": ""
-    },
-    {
       "slug": "human-blood-groups-and-their-hereditary-basis",
       "title": "Human blood groups and their hereditary basis",
       "order": 11,

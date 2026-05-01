@@ -50,6 +50,41 @@
       "order": 5,
       "description": "Un recorrido detallado por Mercurio, Venus, Tierra y Marte. Analizamos sus superficies sólidas, sus atmósferas y qué los hace planetas tan singulares.",
       "audioUrl": ""
+    },
+    {
+      "slug": "gigantes-gaseosos:-colosos-majestuosos-del-sistema-solar",
+      "title": "Gigantes gaseosos: Colosos majestuosos del sistema solar",
+      "order": 6,
+      "description": "Exploramos la inmensidad de Júpiter, Saturno, Urano y Neptuno. Conoce los asombrosos secretos de sus densas atmósferas, anillos y sus numerosas lunas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "constelaciones:-las-antiguas-figuras-que-guian-la-noche",
+      "title": "Constelaciones: Las antiguas figuras que guían la noche",
+      "order": 7,
+      "description": "Aprende a identificar las constelaciones más famosas del cielo nocturno. Descubre sus hermosos mitos y cómo usarlas para orientarte entre las estrellas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "exoplanetas-fascinantes:-nuevos-mundos-mas-alla-del-sol",
+      "title": "Exoplanetas fascinantes: Nuevos mundos más allá del sol",
+      "order": 8,
+      "description": "Analizamos la búsqueda de planetas fuera del sistema solar. Conoce las técnicas para descubrirlos y cuáles tienen grandes posibilidades de tener vida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "telescopios-modernos:-ojos-gigantes-mirando-hacia-el-cielo",
+      "title": "Telescopios modernos: Ojos gigantes mirando hacia el cielo",
+      "order": 9,
+      "description": "Repasamos el funcionamiento de los instrumentos que revolucionaron la astronomía, desde los ópticos simples hasta los enormes observatorios espaciales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "asteroides-y-meteoritos:-las-rocas-errantes-de-la-galaxia",
+      "title": "Asteroides y meteoritos: Las rocas errantes de la galaxia",
+      "order": 10,
+      "description": "Diferenciamos estos escombros espaciales antiguos. Entiende qué ocurre cuando ingresan a la atmósfera terrestre y si representan una verdadera amenaza.",
+      "audioUrl": ""
     }
   ]
 }

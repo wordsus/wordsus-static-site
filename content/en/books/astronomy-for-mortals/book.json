@@ -50,6 +50,41 @@
       "order": 5,
       "description": "A detailed tour of Mercury, Venus, Earth and Mars. We analyze their solid surfaces, their atmospheres and what makes them planets so unique.",
       "audioUrl": ""
+    },
+    {
+      "slug": "gas-giants-majestic-colossi-of-the-solar-system",
+      "title": "Gas giants: Majestic colossi of the solar system",
+      "order": 6,
+      "description": "We explore the immensity of Jupiter, Saturn, Uranus and Neptune. Learn the amazing secrets of its dense atmospheres, rings and its numerous moons.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "constellations-the-ancient-figures-that-guide-the-night",
+      "title": "Constellations: The ancient figures that guide the night",
+      "order": 7,
+      "description": "Learn to identify the most famous constellations in the night sky. Discover their beautiful myths and how to use them to orient yourself among the stars.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fascinating-exoplanets-new-worlds-beyond-the-sun",
+      "title": "Fascinating exoplanets: New worlds beyond the sun",
+      "order": 8,
+      "description": "We analyze the search for planets outside the solar system. Learn the techniques to discover them and which ones have a great chance of being alive.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "modern-telescopes-giant-eyes-looking-into-the-sky",
+      "title": "Modern telescopes: Giant eyes looking into the sky",
+      "order": 9,
+      "description": "We review the operation of the instruments that revolutionized astronomy, from simple optics to enormous space observatories.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "asteroids-and-meteorites-the-wandering-rocks-of-the-galaxy",
+      "title": "Asteroids and meteorites: The wandering rocks of the galaxy",
+      "order": 10,
+      "description": "We differentiate these ancient space debris. Understand what happens when they enter Earth's atmosphere and if they pose a real threat.",
+      "audioUrl": ""
     }
   ]
 }

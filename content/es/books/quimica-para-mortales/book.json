@@ -50,6 +50,41 @@
       "order": 5,
       "description": "Descubre las marcadas diferencias químicas entre los metales y los no metales, sus variadas propiedades físicas y cómo interactúan entre sí en la naturaleza.",
       "audioUrl": ""
+    },
+    {
+      "slug": "enlaces-covalentes-compartiendo-electrones-con-exito",
+      "title": "Enlaces covalentes: compartiendo electrones con éxito",
+      "order": 6,
+      "description": "Entiende cómo los átomos se unen compartiendo sus electrones para formar moléculas estables y por qué este tipo de enlace es clave para los seres vivos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-quimica-del-fuego-descubriendo-la-combustion-real",
+      "title": "La química del fuego: descubriendo la combustión real",
+      "order": 7,
+      "description": "Desarmamos el fascinante proceso de la combustión. Conoce qué elementos se requieren para generar una llama, cómo se mantiene el fuego y cómo extinguirlo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "iones-y-enlaces-ionicos-la-atraccion-de-los-opuestos",
+      "title": "Iones y enlaces iónicos: la atracción de los opuestos",
+      "order": 8,
+      "description": "Analizamos qué ocurre cuando los átomos ceden o ganan electrones, creando iones cargados que se atraen fuertemente para formar cristales como la sal común.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "acidos-y-bases-entendiendo-el-importante-concepto-de-ph",
+      "title": "Ácidos y bases: entendiendo el importante concepto de pH",
+      "order": 9,
+      "description": "Profundizamos en la naturaleza de los compuestos ácidos y básicos, el significado preciso de la escala de pH y su gran importancia en nuestra vida diaria.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "reacciones-quimicas-el-arte-de-transformar-la-materia",
+      "title": "Reacciones químicas: el arte de transformar la materia",
+      "order": 10,
+      "description": "Observa detalladamente cómo interactúan distintas sustancias para crear compuestos completamente nuevos, rompiendo enlaces y liberando o absorbiendo energía.",
+      "audioUrl": ""
     }
   ]
 }

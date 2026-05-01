@@ -18,41 +18,6 @@
   "language": "en",
   "chapters": [
     {
-      "slug": "quantum-entanglement-particle-physics",
-      "title": "Quantum entanglement: particle physics",
-      "order": 6,
-      "description": "We explore one of the strangest phenomena in the cosmos. Learn how two particles can be instantly connected regardless of distances.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "the-physics-of-fluids-why-airplanes-can-fly",
-      "title": "The Physics of Fluids: Why Airplanes Can Fly",
-      "order": 7,
-      "description": "We apply science to everyday life by analyzing fluids. Discover the aerodynamic principles and pressure laws that allow an airplane to rise.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "newtons-second-law-mass-force-and-acceleration",
-      "title": "Newton's second law: mass, force and acceleration",
-      "order": 8,
-      "description": "We continue with the laws of motion to understand how the mass of an object and the force applied to it directly determine its final acceleration.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "entropy-explained-the-natural-disorder-of-the-universe",
-      "title": "Entropy explained: the natural disorder of the universe",
-      "order": 9,
-      "description": "We delve into thermodynamics to explain entropy. Understand why the universe tends toward disorder and how this defines the arrow of time today.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "earths-magnetic-fields-our-vital-shield",
-      "title": "Earth's magnetic fields: our vital shield",
-      "order": 10,
-      "description": "We investigate the immense magnetic field that surrounds the Earth. You will learn how it is generated in the core of the planet and why it is vital for our existence.",
-      "audioUrl": ""
-    },
-    {
       "slug": "the-refraction-of-light-mirages-and-lenses-in-detail",
       "title": "The refraction of light: mirages and lenses in detail",
       "order": 11,

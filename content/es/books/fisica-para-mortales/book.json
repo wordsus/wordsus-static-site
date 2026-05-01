@@ -51,6 +51,41 @@
       "order": 5,
       "description": "Adéntrate en el fascinante mundo de los agujeros negros. Analizamos qué son, cómo se forman en el espacio y qué sucede si la materia cruza su horizonte.",
       "audioUrl": ""
+    },
+    {
+      "slug": "entrelazamiento-cuantico-la-fisica-de-las-particulas",
+      "title": "Entrelazamiento cuántico: la física de las partículas",
+      "order": 6,
+      "description": "Exploramos uno de los fenómenos más extraños del cosmos. Aprende cómo dos partículas pueden estar conectadas instantáneamente sin importar las distancias.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-fisica-de-los-fluidos-por-que-los-aviones-pueden-volar",
+      "title": "La física de los fluidos: por qué los aviones pueden volar",
+      "order": 7,
+      "description": "Aplicamos la ciencia a lo cotidiano analizando los fluidos. Descubre los principios aerodinámicos y las leyes de presión que permiten a un avión elevarse.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-segunda-ley-de-newton-masa-fuerza-y-aceleracion",
+      "title": "La segunda ley de Newton: masa, fuerza y aceleración",
+      "order": 8,
+      "description": "Continuamos con las leyes del movimiento para entender cómo la masa de un objeto y la fuerza que se le aplica determinan directamente su aceleración final.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-entropia-explicada-el-desorden-natural-del-universo",
+      "title": "La entropía explicada: el desorden natural del universo",
+      "order": 9,
+      "description": "Profundizamos en la termodinámica para explicar la entropía. Entiende por qué el universo tiende al desorden y cómo esto define la flecha del tiempo hoy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-campos-magneticos-terrestres-nuestro-escudo-vital",
+      "title": "Los campos magnéticos terrestres: nuestro escudo vital",
+      "order": 10,
+      "description": "Investigamos el inmenso campo magnético que rodea la Tierra. Aprenderás cómo se genera en el núcleo del planeta y por qué es vital para nuestra existencia.",
+      "audioUrl": ""
     }
   ]
 }

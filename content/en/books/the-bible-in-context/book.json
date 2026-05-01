@@ -50,6 +50,41 @@
       "order": 5,
       "description": "Understanding money in ancient times changes the parables profoundly. Discover the purchasing power of a denarius and the abysmal value of a talent.",
       "audioUrl": ""
+    },
+    {
+      "slug": "moses-before-the-egyptian-empire-and-its-formal-formation",
+      "title": "Moses before the Egyptian empire and its formal formation",
+      "order": 6,
+      "description": "Education in Egypt prepared Moses to lead an entire nation to Canaan. We analyze the clash between the luxury of the pharaoh and harsh slavery.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-sea-of-galilee-and-its-influence-on-the-life-of-jesus",
+      "title": "The Sea of ​​Galilee and its influence on the life of Jesus",
+      "order": 7,
+      "description": "This iconic lake was the main setting for multiple miracles. We explore its geography, sudden violent storms and the culture of its coasts.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-babylonian-empire-and-the-impact-of-the-great-exile",
+      "title": "The Babylonian Empire and the impact of the great exile",
+      "order": 8,
+      "description": "The painful deportation to Babylon was Israel's greatest historical trauma. Learn how this power transformed religious identity and writing.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "structure-and-purpose-of-the-tabernacle-in-the-desert",
+      "title": "Structure and purpose of the tabernacle in the desert",
+      "order": 9,
+      "description": "This sacred tent organized the nomadic life of the Israelites on their journey. We detail its areas, the materials and the symbolism of the sacrifices.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "david-and-the-geopolitical-transition-of-the-kingdom-of-israel",
+      "title": "David and the geopolitical transition of the kingdom of Israel",
+      "order": 10,
+      "description": "From outcast shepherd to unifying king, David changed the military history of his nation. We analyze the conquest of Jerusalem and the strategic alliances.",
+      "audioUrl": ""
     }
   ]
 }
