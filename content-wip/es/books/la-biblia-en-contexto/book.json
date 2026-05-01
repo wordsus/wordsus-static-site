@@ -1,0 +1,2541 @@
+{
+  "slug": "la-biblia-en-contexto",
+  "locale": "es",
+  "title": "La Biblia en Contexto",
+  "author": "Equipo Wordsus",
+  "description": "Un viaje fascinante por el mundo antiguo para comprender el contexto histórico, cultural y geográfico de las Escrituras. Descubre cómo vivían, pensaban y sentían los personajes bíblicos para transformar tu lectura de la Biblia.",
+  "cover": "/images/books/la-biblia-en-contexto-es-cover.jpeg",
+  "category": "estudios-biblicos",
+  "tags": [
+    "biblia",
+    "contexto-historico",
+    "estudios-biblicos",
+    "cultura-antigua"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-01",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "moises-ante-el-imperio-egipcio-y-su-formacion-formal",
+      "title": "Moisés ante el imperio egipcio y su formación formal",
+      "order": 6,
+      "description": "La educación en Egipto preparó a Moisés para guiar a una nación entera hacia Canaán. Analizamos el choque entre el lujo del faraón y la dura esclavitud.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-mar-de-galilea-y-su-influencia-en-la-vida-de-jesus",
+      "title": "El Mar de Galilea y su influencia en la vida de Jesús",
+      "order": 7,
+      "description": "Este icónico lago fue el escenario principal de múltiples milagros. Exploramos su geografía, violentas tormentas repentinas y la cultura de sus costas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-imperio-babilonico-y-el-impacto-del-gran-exilio",
+      "title": "El Imperio Babilónico y el impacto del gran exilio",
+      "order": 8,
+      "description": "La dolorosa deportación a Babilonia fue el mayor trauma histórico de Israel. Conoce cómo esta potencia transformó la identidad religiosa y la escritura.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "estructura-y-proposito-del-tabernaculo-en-el-desierto",
+      "title": "Estructura y propósito del tabernáculo en el desierto",
+      "order": 9,
+      "description": "Esta tienda sagrada organizaba la vida nómada de los israelitas en su travesía. Detallamos sus zonas, los materiales y el simbolismo de los sacrificios.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "david-y-la-transicion-geopolitica-del-reino-de-israel",
+      "title": "David y la transición geopolítica del reino de Israel",
+      "order": 10,
+      "description": "De pastor marginado a rey unificador, David cambió la historia militar de su nación. Analizamos la conquista de Jerusalén y las alianzas estratégicas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-duro-oficio-de-ser-pastor-de-ovejas-en-la-judea",
+      "title": "El duro oficio de ser pastor de ovejas en la Judea",
+      "order": 11,
+      "description": "Olvida la imagen romántica tradicional. El pastoreo era un trabajo rudo, solitario y peligroso. Comprenderlo da un nuevo peso y significado al Salmo veintitrés.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-industria-pesquera-durante-el-primer-siglo-en-judea",
+      "title": "La industria pesquera durante el primer siglo en Judea",
+      "order": 12,
+      "description": "Los pescadores no eran campesinos muy pobres, manejaban empresas rentables bajo fuertes impuestos. Exploramos su rutina diaria y posición en la sociedad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "geografia-sagrada-y-la-defensa-natural-de-jerusalen",
+      "title": "Geografía sagrada y la defensa natural de Jerusalén",
+      "order": 13,
+      "description": "Ubicada sobre diversos montes y rodeada de valles profundos, la ciudad era una fortaleza natural. Descubre por qué todos los peregrinos debían subir a ella.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-contexto-politico-y-social-durante-la-vida-de-jesus",
+      "title": "El contexto político y social durante la vida de Jesús",
+      "order": 14,
+      "description": "Jesús nació en un verdadero polvorín político dominado por Roma de forma estricta. Analizamos tensiones sociales, impuestos y expectativas de liberación.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-imperio-romano-y-su-estricto-control-sobre-judea",
+      "title": "El Imperio Romano y su estricto control sobre Judea",
+      "order": 15,
+      "description": "La gran maquinaria militar de Roma dictaba cada aspecto de la vida cotidiana. Conoce a los prefectos, las legiones y el equilibrio de poder con el Sanedrín.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "pedro-de-galilea-y-su-rol-en-el-inicio-del-movimiento",
+      "title": "Pedro de Galilea y su rol en el inicio del movimiento",
+      "order": 16,
+      "description": "Un hombre impulsivo y pescador de oficio que se convirtió en un gran líder. Estudiamos su evolución personal al enfrentar a la fuerte cultura grecorromana.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-contratos-matrimoniales-y-esponsales-en-la-epoca",
+      "title": "Los contratos matrimoniales y esponsales en la época",
+      "order": 17,
+      "description": "El compromiso judío era legalmente vinculante, muchísimo más estricto que un noviazgo actual. Entender esta costumbre aclara el riesgo que asumió María.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-celebracion-de-la-pascua-y-el-sacrificio-del-cordero",
+      "title": "La celebración de la Pascua y el sacrificio del cordero",
+      "order": 18,
+      "description": "La mayor fiesta del calendario convocaba a miles de peregrinos sin excepción. Detallamos la cena ritual, el ambiente festivo y la vigilancia de las tropas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "elias-frente-a-la-influencia-politica-del-culto-a-baal",
+      "title": "Elías frente a la influencia política del culto a Baal",
+      "order": 19,
+      "description": "La extensa sequía no fue un simple desastre ecológico, fue una guerra contra el dios cananeo de la lluvia. Entiende el desafío en el gran Monte Carmelo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-pureza-ritual-y-el-estigma-social-de-la-lepra-antigua",
+      "title": "La pureza ritual y el estigma social de la lepra antigua",
+      "order": 20,
+      "description": "Ser declarado inmundo implicaba la expulsión total de la sociedad civil y religiosa. Analizamos estrictas leyes de salubridad y la labor del sacerdote.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-mar-muerto-y-la-preservacion-de-los-textos-sagrados",
+      "title": "El Mar Muerto y la preservación de los textos sagrados",
+      "order": 21,
+      "description": "El lugar más bajo de la Tierra alberga un ecosistema único y de condiciones extremas. Su clima árido permitió que los famosos rollos antiguos sobrevivieran.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "pablo-de-tarso-y-su-estrategica-ciudadania-del-imperio",
+      "title": "Pablo de Tarso y su estratégica ciudadanía del imperio",
+      "order": 22,
+      "description": "Como educado y devoto ciudadano romano, Pablo tenía inmensas ventajas legales únicas. Exploramos cómo utilizó su estatus para expandir su gran ministerio.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ciclos-agricolas-y-las-estaciones-en-la-antigua-judea",
+      "title": "Ciclos agrícolas y las estaciones en la antigua Judea",
+      "order": 23,
+      "description": "Las lluvias tempranas y tardías marcaban la estricta supervivencia de las aldeas locales. La economía agrícola inspiró grandes metáforas de las Escrituras.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-antiguo-egipto-como-refugio-y-lugar-de-esclavitud",
+      "title": "El antiguo Egipto como refugio y lugar de esclavitud",
+      "order": 24,
+      "description": "Desde Abraham hasta el Nuevo Testamento, Egipto fue constante ruta de escape en las hambrunas. Analizamos la ambivalente relación de Israel con esta nación.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "jose-y-el-funcionamiento-interno-de-la-corte-del-faraon",
+      "title": "José y el funcionamiento interno de la corte del faraón",
+      "order": 25,
+      "description": "Vendido como esclavo en su juventud, José logró ascender al poder administrativo. Descubre cómo operaban los visires y los silos de grano durante las crisis.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-arquitectura-y-el-proposito-del-gran-templo-de-herodes",
+      "title": "La arquitectura y el propósito del gran Templo de Herodes",
+      "order": 26,
+      "description": "Una de las mayores maravillas arquitectónicas del mundo antiguo en su máximo esplendor. Exploramos sus enormes atrios y la exclusividad del gran santuario.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-saduceos-y-el-control-aristocratico-sobre-el-templo",
+      "title": "Los saduceos y el control aristocrático sobre el Templo",
+      "order": 27,
+      "description": "Representaban activamente a la aristocracia rica y sacerdotal de la gran ciudad de Jerusalén. Aprende por qué rechazaban las creencias en la resurrección.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "jacob-y-la-importancia-de-los-derechos-de-primogenitura",
+      "title": "Jacob y la importancia de los derechos de primogenitura",
+      "order": 28,
+      "description": "En el mundo antiguo, la primogenitura aseguraba el liderazgo familiar y la mejor herencia económica. Entiende las tensiones familiares que formaron la nación.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-crueldad-militar-del-imperio-asirio-en-la-antiguedad",
+      "title": "La crueldad militar del Imperio Asirio en la antigüedad",
+      "order": 29,
+      "description": "Conocidos mundialmente por su implacable brutalidad bélica, aterrorizaban a sus vecinos. Analizamos cómo esta violenta invasión destruyó el reino del norte.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "juan-el-bautista-y-su-radical-vida-en-el-arido-desierto",
+      "title": "Juan el Bautista y su radical vida en el árido desierto",
+      "order": 30,
+      "description": "Un predicador apasionado con un mensaje directo de fuerte arrepentimiento social. Estudiamos su extraña dieta, vestimenta austera y el bautismo purificador.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "salomon-y-la-edad-de-oro-del-reino-unido-de-israel",
+      "title": "Salomón y la edad de oro del reino unido de Israel",
+      "order": 31,
+      "description": "Exploramos la inmensa prosperidad económica, las grandes alianzas comerciales y la sabiduría administrativa que caracterizaron su prestigioso reinado pacífico.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-proceso-de-produccion-de-aceite-en-prensas-de-oliva",
+      "title": "El proceso de producción de aceite en prensas de oliva",
+      "order": 32,
+      "description": "El aceite de oliva era vital para la alimentación, medicina e iluminación. Analizamos su laboriosa extracción y el simbolismo del huerto de Getsemaní en Judea.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "origen-e-importancia-de-la-sinagoga-en-la-vida-judia",
+      "title": "Origen e importancia de la sinagoga en la vida judía",
+      "order": 33,
+      "description": "Sin el Templo, se formaron centros locales de estudio sagrado. Exploramos la función educativa y social de estas reuniones comunitarias en las aldeas judías.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-publicanos-y-la-compleja-red-de-impuestos-romanos",
+      "title": "Los publicanos y la compleja red de impuestos romanos",
+      "order": 34,
+      "description": "Recaudar tributos para Roma te convertía en un marginado y gran traidor. Analizamos el enorme repudio popular hacia esta lucrativa labor en la sociedad judía.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "josue-frente-al-enorme-desafio-de-la-conquista-militar",
+      "title": "Josué frente al enorme desafío de la conquista militar",
+      "order": 35,
+      "description": "Al morir Moisés, este líder debió organizar al pueblo para la batalla. Estudiamos sus tácticas de guerra y la geografía de la tan anhelada tierra prometida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-rio-jordan-y-su-inmensa-importancia-en-la-frontera",
+      "title": "El Río Jordán y su inmensa importancia en la frontera",
+      "order": 36,
+      "description": "Este río definía importantes fronteras físicas y espirituales. Exploramos sus cruces históricos y su vital función en los antiguos rituales de purificación.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-imperio-griego-y-su-enorme-influencia-sociopolitica",
+      "title": "El Imperio Griego y su enorme influencia sociopolítica",
+      "order": 37,
+      "description": "Grecia logró imponer una lengua universal y rica cultura. Exploramos cómo este entorno preparó el mundo para lograr una difusión rápida de las escrituras.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "maria-de-nazaret-y-la-dificil-vida-en-la-sociedad-rural",
+      "title": "María de Nazaret y la difícil vida en la sociedad rural",
+      "order": 38,
+      "description": "Analizamos la inmensa dificultad de una aldeana al quedar encinta antes de sus nupcias, desafiando las estrictas leyes y la condena de su rígido pueblo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-poder-politico-y-religioso-del-gran-sanedrin-judio",
+      "title": "El poder político y religioso del Gran Sanedrín judío",
+      "order": 39,
+      "description": "Este consejo de notables operaba como la gran corte suprema de la región. Estudiamos su histórica conformación y el poder de sus duros veredictos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "jeremias-y-la-profunda-carga-emocional-del-duro-mensaje",
+      "title": "Jeremías y la profunda carga emocional del duro mensaje",
+      "order": 40,
+      "description": "Ser profeta aseguraba un rechazo profundo. Vemos la soledad de este predicador al alertar asiduamente sobre el terrible colapso militar de su amado país.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-tradiciones-funerarias-y-los-sepulcros-excavados",
+      "title": "Las tradiciones funerarias y los sepulcros excavados",
+      "order": 41,
+      "description": "Conocer el trato a los difuntos ilumina muchos relatos antiguos. Estudiamos el duelo familiar y el arduo proceso de excavar un sepulcro seguro.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "rut-de-moab-y-las-vitales-leyes-de-espigueo-agricola",
+      "title": "Rut de Moab y las vitales leyes de espigueo agrícola",
+      "order": 42,
+      "description": "Dejar sobras de cosechas ayudaba al sustento popular. Comprendemos la noble red solidaria del pasado con el excelente trabajo de esta joven extranjera.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "esdras-y-el-complejo-retorno-del-pueblo-tras-el-exilio",
+      "title": "Esdras y el complejo retorno del pueblo tras el exilio",
+      "order": 43,
+      "description": "Reconstruir una capital arrasada era monumental. Analizamos el largo regreso del exilio y el urgente rescate de normas sociales para lograr consolar al pueblo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "centuriones-romanos-y-su-rigurosa-formacion-militar",
+      "title": "Centuriones romanos y su rigurosa formación militar",
+      "order": 44,
+      "description": "Lideraban fielmente a las temibles tropas del imperio. Vemos el poder de este cargo militar y la sorpresiva fe mostrada por varios en un entorno convulso.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-monte-sinai-y-las-profundas-revelaciones-geograficas",
+      "title": "El Monte Sinaí y las profundas revelaciones geográficas",
+      "order": 45,
+      "description": "Este macizo rocoso fue el escenario vital donde se dictaron normas eternas. Observamos cómo la altura agreste infundió enorme respeto entre los acampados.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-pozos-de-agua-y-su-gran-relevancia-en-la-antiguedad",
+      "title": "Los pozos de agua y su gran relevancia en la antigüedad",
+      "order": 46,
+      "description": "En el árido clima disponer de líquido salvaba vidas. Analizamos cómo controlar la preciada extracción desataba pleitos amargos y grandes historias amorosas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "nehemias-y-la-colosal-hazana-de-fortificar-a-jerusalen",
+      "title": "Nehemías y la colosal hazaña de fortificar a Jerusalén",
+      "order": 47,
+      "description": "Restaurar los gruesos muros defensivos era algo vital para sobrevivir. Admiramos el trabajo veloz y la logística que logró blindar la emblemática ciudad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-castigo-de-la-cruz-y-el-sistema-penal-del-gran-imperio",
+      "title": "El castigo de la cruz y el sistema penal del gran Imperio",
+      "order": 48,
+      "description": "Esta temible ejecución aseguraba dolor y deshonra severa. Analizamos por qué se usaba este brutal castigo como una firme herramienta de gran disuasión masiva.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "mateo-y-la-peculiar-posicion-social-de-recaudar-impuestos",
+      "title": "Mateo y la peculiar posición social de recaudar impuestos",
+      "order": 49,
+      "description": "Cobrar aranceles traía fortunas económicas y repudio popular. Analizamos su admirable audacia para dejar una posición tan lucrativa y ser un fiel seguidor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-fuerte-tension-historica-que-existia-con-los-samaritanos",
+      "title": "La fuerte tensión histórica que existía con los samaritanos",
+      "order": 50,
+      "description": "Esta etnia vecina contaba con costumbres religiosas incompatibles. Comprendemos la severa historia del odio racial en este áspero entorno geográfico.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-valioso-proceso-de-hacer-pan-y-la-influencia-de-levadura",
+      "title": "El valioso proceso de hacer pan y la influencia de levadura",
+      "order": 51,
+      "description": "Amasar la harina formaba el pilar de la nutrición familiar. Estudiamos su efecto orgánico expansivo y la asombrosa utilización simbólica para enseñar ética.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-grandes-asambleas-musicales-en-solemnes-dedicatorias",
+      "title": "Las grandes asambleas musicales en solemnes dedicatorias",
+      "order": 52,
+      "description": "Grandes agrupaciones de músicos daban belleza formal a las celebraciones masivas. Estudiamos la enorme preparación estética requerida en cada uno de ellos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "isaias-y-sus-inmensos-conocimientos-de-geopolitica-mundial",
+      "title": "Isaías y sus inmensos conocimientos de geopolítica mundial",
+      "order": 53,
+      "description": "Desde el palacio, este sabio vocero lograba interpretar complejas tensiones mundiales. Descubrimos su brillantez diplomática al alertar contra alianzas débiles.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-costoso-uso-de-perfumes-aromaticos-y-los-finos-unguentos",
+      "title": "El costoso uso de perfumes aromáticos y los finos ungüentos",
+      "order": 54,
+      "description": "Las fragancias extranjeras equivalían a costosas propiedades inmuebles. Vemos el increíble impacto de derramar un envase valioso en un gran e inusual gesto.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-asombrosa-superioridad-belica-y-letal-de-los-filisteos",
+      "title": "La asombrosa superioridad bélica y letal de los filisteos",
+      "order": 55,
+      "description": "Este gran pueblo controlaba la secreta fundición letal. Vemos su brutal, asombrosa e inmensa ventaja de armamento frente a batallones sumamente inexpertos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-sefela-y-el-crucial-gran-territorio-en-disputa-belica",
+      "title": "La Sefelá y el crucial gran territorio en disputa bélica",
+      "order": 56,
+      "description": "Esta bella región de suaves colinas fue la principal frontera estratégica de la antigüedad. Analizamos intensos choques por los codiciados caminos comerciales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "juan-y-la-lenta-evolucion-interna-del-discipulo-muy-amado",
+      "title": "Juan y la lenta evolución interna del discípulo muy amado",
+      "order": 57,
+      "description": "Inició su ruta pastoral con un carácter en extremo intolerante. Admiramos la noble evolución que inspiró sus grandiosos libros reflexivos en su etapa madura.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "antioquia-y-la-primera-y-vital-explosion-del-movimiento",
+      "title": "Antioquía y la primera y vital explosión del movimiento",
+      "order": 58,
+      "description": "Esta enorme urbe unificó a diversas culturas milenarias. Apreciamos cómo su inmenso crisol social impulsó eficazmente audaces campañas itinerantes mundiales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-grandes-calzadas-romanas-y-su-veloz-red-de-transporte",
+      "title": "Las grandes calzadas romanas y su veloz red de transporte",
+      "order": 59,
+      "description": "Grandes vías unieron vastas provincias de forma eficaz. Analizamos esta notable hazaña constructiva que propagó firmes mensajes transformadores con éxito.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "tomas-y-la-sincera-expresion-de-asombro-y-de-gran-duda",
+      "title": "Tomás y la sincera expresión de asombro y de gran duda",
+      "order": 60,
+      "description": "Conocido por sus complejos y justificados resquemores, reveló luego inmenso e indomable valor. Apreciamos cómo ese fuerte pragmatismo lo vigorizó eficazmente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "samuel-y-la-dificil-transicion-hacia-la-monarquia",
+      "title": "Samuel y la difícil transición hacia la monarquía",
+      "order": 61,
+      "description": "Este gran líder guió al pueblo desde la época de los jueces hasta el establecimiento de los reyes. Analizamos su profunda resistencia al cambio político.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-industria-textil-y-la-vestimenta-en-el-mundo-antiguo",
+      "title": "La industria textil y la vestimenta en el mundo antiguo",
+      "order": 62,
+      "description": "Fabricar prendas exigía un esfuerzo enorme e incansable. Estudiamos los rústicos telares, el costo de las ricas túnicas y el gran valor de un simple manto.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-imperio-persa-y-su-sorpresiva-politica-de-tolerancia",
+      "title": "El Imperio Persa y su sorpresiva política de tolerancia",
+      "order": 63,
+      "description": "A diferencia de los brutales asirios, los persas permitieron la restauración de los pueblos conquistados. Exploramos el famoso decreto del emperador Ciro.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-majestuoso-monte-carmelo-y-su-gran-valor-estrategico",
+      "title": "El majestuoso Monte Carmelo y su gran valor estratégico",
+      "order": 64,
+      "description": "Esta cordillera no solo fue sede de duelos religiosos memorables, sino una vital barrera geográfica. Analizamos su espesa vegetación y sus rutas ocultas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "maria-magdalena-y-el-crucial-apoyo-logistico-del-grupo",
+      "title": "María Magdalena y el crucial apoyo logístico del grupo",
+      "order": 65,
+      "description": "Más allá de los mitos infundados, esta figura brindó inmenso respaldo financiero al movimiento. Exploramos su vital rol como principal testigo presencial.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "medicina-antigua-y-los-limitados-tratamientos-de-la-epoca",
+      "title": "Medicina antigua y los limitados tratamientos de la época",
+      "order": 66,
+      "description": "En un entorno de precaria salubridad, la enfermedad solía ser letal. Analizamos los rudimentarios remedios, el uso de aceites y la esperanza de sanidad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "daniel-y-los-grandes-desafios-eticos-en-la-corte-pagana",
+      "title": "Daniel y los grandes desafíos éticos en la corte pagana",
+      "order": 67,
+      "description": "Sobrevivir como alto funcionario en un imperio ajeno demandaba inmensa astucia y gran convicción moral. Estudiamos su brillante y extensa labor diplomática.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-festividad-de-los-tabernaculos-y-su-profundo-jubilo",
+      "title": "La festividad de los tabernáculos y su profundo jubilo",
+      "order": 68,
+      "description": "Esta celebración agraria obligaba al pueblo a vivir en enramadas rústicas durante una semana. Exploramos sus gozosos rituales de agua y antorchas festivas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-inmenso-valle-de-jezreel-y-las-sangrientas-batallas",
+      "title": "El inmenso valle de Jezreel y las sangrientas batallas",
+      "order": 69,
+      "description": "Este gran corredor plano presenció los combates más letales de la antigüedad debido a su ubicación. Entendemos por qué inspiró el concepto de Armagedón.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "bernabe-y-el-inmenso-poder-social-de-la-recomendacion",
+      "title": "Bernabé y el inmenso poder social de la recomendación",
+      "order": 70,
+      "description": "Introducir a un ex perseguidor en las asambleas desataba un terror generalizado. Analizamos la valiente mentoría que hizo prosperar al movimiento inicial.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-esclavitud-por-graves-deudas-en-la-dura-antiguedad",
+      "title": "La esclavitud por graves deudas en la dura antigüedad",
+      "order": 71,
+      "description": "Lejos de las redes modernas, someterse a servidumbre solía ser la única salida ante la ruina total. Analizamos las leyes protectoras del año de jubileo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-dieta-basica-cotidiana-y-los-grandes-festines-reales",
+      "title": "La dieta básica cotidiana y los grandes festines reales",
+      "order": 72,
+      "description": "La alimentación popular era muy monótona, basada estrictamente en pan y legumbres. Exploramos el inmenso contraste con los lujos y las especias del palacio.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gedeon-frente-al-asedio-y-la-fuerte-opresion-madianita",
+      "title": "Gedeón frente al asedio y la fuerte opresión madianita",
+      "order": 73,
+      "description": "Los veloces saqueadores nómadas arruinaban todas las cosechas sumiendo al país en gran miseria. Analizamos la ingeniosa y letal táctica nocturna de guerra.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-dinastia-herodiana-y-el-control-de-la-tensa-region",
+      "title": "La dinastía herodiana y el control de la tensa región",
+      "order": 74,
+      "description": "Esta disfuncional pero astuta gran familia gobernó bajo la estricta vigilancia de Roma. Analizamos su ambiciosa paranoia y sus colosales obras públicas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-arduo-oficio-profetico-frente-a-los-grandes-enganos",
+      "title": "El arduo oficio profético frente a los grandes engaños",
+      "order": 75,
+      "description": "Hablar por Dios implicaba un gran riesgo político y fuerte rechazo social. Estudiamos cómo operaban estos mensajeros en las cortes reales de la antigüedad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "timoteo-y-el-inmenso-desafio-de-liderar-en-la-antiguedad",
+      "title": "Timoteo y el inmenso desafío de liderar en la antigüedad",
+      "order": 76,
+      "description": "Siendo inusualmente joven y de frágil salud, debió organizar comunidades en ciudades muy hostiles. Analizamos el duro choque con la fuerte cultura de Éfeso.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-ciudad-de-hebron-y-su-gran-peso-historico-y-familiar",
+      "title": "La ciudad de Hebrón y su gran peso histórico y familiar",
+      "order": 77,
+      "description": "Enclavada en la zona montañosa, esta antigua urbe resguardaba las tumbas de los grandes fundadores. Comprendemos por qué fue la primera capital del reino.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-pesado-armamento-militar-y-la-tactica-en-las-guerras",
+      "title": "El pesado armamento militar y la táctica en las guerras",
+      "order": 78,
+      "description": "Los combates cuerpo a cuerpo exigían gran vigor físico y rudo entrenamiento. Analizamos las espadas, lanzas y escudos usados por batallones de infantería.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "esteban-y-el-profundo-cisma-con-las-posturas-helenistas",
+      "title": "Esteban y el profundo cisma con las posturas helenistas",
+      "order": 79,
+      "description": "La temprana comunidad enfrentó severas tensiones por las arraigadas diferencias culturales internas. Estudiamos el tenaz y letal debate público de este líder.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-estricta-relacion-de-patronazgo-en-el-imperio-romano",
+      "title": "La estricta relación de patronazgo en el imperio romano",
+      "order": 80,
+      "description": "Toda la sociedad operaba bajo rígidas alianzas de favores inquebrantables entre ricos y vasallos. Entendemos cómo el concepto del favor inmerecido impactó.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-rica-ciudad-de-samaria-y-su-colosal-caida-definitiva",
+      "title": "La rica ciudad de Samaria y su colosal caída definitiva",
+      "order": 81,
+      "description": "Edificada sobre un monte prominente, fue la lujosa y ostentosa capital del norte. Exploramos sus opulentos palacios y su amargo y crudo cerco devastador.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "silas-y-las-letales-misiones-en-las-carreteras-romanas",
+      "title": "Silas y las letales misiones en las carreteras romanas",
+      "order": 82,
+      "description": "Portar mensajes urgentes entre las diversas comunidades exigía valentía asombrosa. Analizamos los enormes peligros que enfrentaban los tenaces delegados.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-arca-del-pacto-y-su-imponente-presencia-en-la-batalla",
+      "title": "El arca del pacto y su imponente presencia en la batalla",
+      "order": 83,
+      "description": "Este sagrado cofre recubierto en oro representaba el inmenso poder celestial en el campamento. Exploramos su construcción, sus misterios y su letal captura.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-feroces-zelotes-y-la-gran-rebelion-contra-el-imperio",
+      "title": "Los feroces zelotes y la gran rebelión contra el imperio",
+      "order": 84,
+      "description": "Frustrados por incesantes abusos, grupos radicales impulsaron un tenaz alzamiento fuertemente armado. Analizamos las graves consecuencias de este extremismo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "priscila-y-aquila-en-la-influyente-industria-de-carpas",
+      "title": "Priscila y Aquila en la influyente industria de carpas",
+      "order": 85,
+      "description": "Trabajar la pesada lona y el cuero formaba redes vitales de negocios en la antigüedad. Estudiamos la enorme hospitalidad y teología de esta astuta pareja.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-vinedos-antiguos-y-la-laboriosa-gran-pisa-de-la-uva",
+      "title": "Los viñedos antiguos y la laboriosa gran pisa de la uva",
+      "order": 86,
+      "description": "El vino era vital para purificar el agua estancada. Analizamos la dura faena de cosechar los frutos y las metáforas que nacieron de las enormes prensas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-sagrado-monte-de-los-olivos-y-la-expectacion-judia",
+      "title": "El sagrado Monte de los Olivos y la expectación judía",
+      "order": 87,
+      "description": "Esta cumbre no solo ofrecía la vista más hermosa del recinto sagrado, sino que concentraba fuertes esperanzas proféticas. Exploramos su intensa geografía.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "josias-y-el-gran-redescubrimiento-del-libro-de-la-norma",
+      "title": "Josías y el gran redescubrimiento del libro de la norma",
+      "order": 88,
+      "description": "Heredar un reino totalmente hundido en el fuerte misticismo ajeno fue un reto monumental. Estudiamos las drásticas y valientes reformas de purificación.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-grandes-rutas-comerciales-y-los-lucrativos-aranceles",
+      "title": "Las grandes rutas comerciales y los lucrativos aranceles",
+      "order": 89,
+      "description": "El estrecho puente geográfico permitía controlar el millonario tráfico internacional. Analizamos las caravanas mercantes y el paso militar por la región.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-alto-costo-financiero-de-los-sacrificios-en-el-altar",
+      "title": "El alto costo financiero de los sacrificios en el altar",
+      "order": 90,
+      "description": "Entregar un animal perfecto significaba desprenderse de valioso patrimonio familiar. Analizamos la cruda realidad física de este incesante y duro ritual.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-puertas-de-la-ciudad-y-el-centro-legal-urbano",
+      "title": "Las puertas de la ciudad y el centro legal urbano",
+      "order": 91,
+      "description": "En la antigüedad, la entrada amurallada no era solo tránsito, sino la gran corte donde los ancianos resolvían intensas disputas legales y tratos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "judas-iscariote-y-la-fuerte-rebelion-nacionalista",
+      "title": "Judas Iscariote y la fuerte rebelión nacionalista",
+      "order": 92,
+      "description": "Analizamos el oscuro perfil de esta figura y cómo sus fuertes frustraciones políticas frente al opresivo y rígido imperio romano lo influyeron.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-escribas-y-el-monumental-trabajo-del-pergamino",
+      "title": "Los escribas y el monumental trabajo del pergamino",
+      "order": 93,
+      "description": "Copiar textos sagrados era una labor de extrema lentitud y altísima precisión. Estudiamos las tintas, los cueros y el inmenso valor de un rollo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "isaac-y-la-compleja-vida-de-los-clanes-patriarcales",
+      "title": "Isaac y la compleja vida de los clanes patriarcales",
+      "order": 94,
+      "description": "Vivir pacíficamente entre hostiles vecinos nómadas requería gran diplomacia. Analizamos los enormes desafíos que enfrentó esta figura pacífica.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-imponente-monte-hermon-y-las-deidades-en-la-zona",
+      "title": "El imponente Monte Hermón y las deidades en la zona",
+      "order": 95,
+      "description": "Esta majestuosa cumbre nevada dominaba el paisaje. Exploramos su fuerte contraste pagano y por qué fue el escenario de la gran transfiguración.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-vital-uso-de-la-sal-en-el-caluroso-mundo-antiguo",
+      "title": "El vital uso de la sal en el caluroso mundo antiguo",
+      "order": 96,
+      "description": "Lejos de ser un simple condimento, este preciado mineral garantizaba la preservación de las carnes e inspiró los pactos antiguos más duraderos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "sanson-y-la-fuerte-presion-militar-de-los-filisteos",
+      "title": "Sansón y la fuerte presión militar de los filisteos",
+      "order": 97,
+      "description": "Más allá de su fuerza física, su historia refleja la anarquía de la época. Analizamos la dura lucha fronteriza y las débiles alianzas tribales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "damasco-y-su-inmensa-importancia-comercial-antigua",
+      "title": "Damasco y su inmensa importancia comercial antigua",
+      "order": 98,
+      "description": "Siendo uno de los incesantes y grandes epicentros urbanos más antiguos, esta próspera ciudad oasis controlaba firmemente todas las rutas caravaneras.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-antiguos-instrumentos-musicales-y-su-gran-valor",
+      "title": "Los antiguos instrumentos musicales y su gran valor",
+      "order": 99,
+      "description": "La música regulaba profundamente el fuerte ritmo laboral y religioso. Exploramos el incesante sonido de liras, panderos y trompetas de cuernos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "poncio-pilato-y-la-tensa-administracion-provincial",
+      "title": "Poncio Pilato y la tensa administración provincial",
+      "order": 100,
+      "description": "Gobernar a una población sumamente rebelde exigía inmensa crueldad táctica. Analizamos el enorme desprecio mutuo entre este militar y la región.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "booz-y-el-vital-concepto-del-pariente-redentor-legal",
+      "title": "Booz y el vital concepto del pariente redentor legal",
+      "order": 101,
+      "description": "La severa ley amparaba a las viudas y los huérfanos mediante esta curiosa figura familiar. Estudiamos el rescate de las tierras y el patrimonio.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-barcas-pesqueras-en-el-convulso-siglo-primero",
+      "title": "Las barcas pesqueras en el convulso siglo primero",
+      "order": 102,
+      "description": "Arqueólogos descubrieron restos de lanchas antiguas. Analizamos su frágil construcción de madera y cómo soportaban las grandes y rudas tormentas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "maria-la-profetisa-y-el-vital-rol-en-el-liderazgo",
+      "title": "María la profetisa y el vital rol en el liderazgo",
+      "order": 103,
+      "description": "Apoyar la difícil gran emancipación hebrea fue colosal. Analizamos la inmensa influencia política y musical de esta valiente y sagaz figura clave.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-tiendas-de-pelo-de-cabra-y-la-dura-vida-nomada",
+      "title": "Las tiendas de pelo de cabra y la dura vida nómada",
+      "order": 104,
+      "description": "Los intensos cambios de clima obligaban a viajar. Comprendemos la rigurosa rutina de armar y desmontar los rústicos campamentos en el desierto.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-gran-region-de-la-decapolis-y-su-choque-cultural",
+      "title": "La gran región de la Decápolis y su choque cultural",
+      "order": 105,
+      "description": "Esta alianza de enormes urbes griegas representaba el paganismo extremo. Estudiamos su ostentosa arquitectura y la inmensa producción de cerdos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-intenso-duelo-publico-y-las-planideras-de-oficio",
+      "title": "El intenso duelo público y las plañideras de oficio",
+      "order": 106,
+      "description": "Llorar intensamente a los muertos era una fuerte obligación comunitaria. Exploramos la profunda labor de quienes cobraban por lamentarse a gritos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "aaron-y-la-firme-instauracion-del-sumo-sacerdocio",
+      "title": "Aarón y la firme instauración del sumo sacerdocio",
+      "order": 107,
+      "description": "Mediar entre el pueblo y lo divino requería gran entrenamiento ritual. Analizamos la sagrada indumentaria y sus tensas responsabilidades diarias.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-antiguos-tratados-de-paz-y-el-corte-de-pactos",
+      "title": "Los antiguos tratados de paz y el corte de pactos",
+      "order": 108,
+      "description": "Firmar severos acuerdos involucraba caminar ceremoniosamente entre los animales divididos. Analizamos esta letal y sangrienta metáfora de lealtad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "marta-maria-y-la-gran-dinamica-del-hogar-en-judea",
+      "title": "Marta, María y la gran dinámica del hogar en Judea",
+      "order": 109,
+      "description": "Estas destacadas figuras nos permiten ver el intenso y fuerte choque entre las rígidas y severas labores domésticas y el aprendizaje teológico.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-oscuro-valle-de-hinon-y-su-gran-peso-teologico",
+      "title": "El oscuro valle de Hinón y su gran peso teológico",
+      "order": 110,
+      "description": "Un profundo basurero llameante en las afueras de la urbe sirvió como la gran imagen del fuego eterno. Analizamos sus crudos sacrificios pasados.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-hondas-cisternas-y-el-milagro-de-guardar-agua",
+      "title": "Las hondas cisternas y el milagro de guardar agua",
+      "order": 111,
+      "description": "Excavar grandes depósitos en la dura roca garantizaba sobrevivir. Exploramos su vital limpieza y cómo operaban como oscuras y crueles prisiones.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-dura-educacion-y-la-crianza-infantil-de-la-epoca",
+      "title": "La dura educación y la crianza infantil de la época",
+      "order": 112,
+      "description": "Transmitir memorísticamente la sagrada ley a los infantes era la más vital e importante gran misión familiar. Estudiamos las escuelas tempranas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "esau-y-el-gran-territorio-rocoso-de-los-edomitas",
+      "title": "Esaú y el gran territorio rocoso de los edomitas",
+      "order": 113,
+      "description": "Descendientes del hermano mayor formaron una implacable nación rival. Analizamos las agrestes cumbres rojas de Petra y las hostilidades eternas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-grandes-hornos-comunales-y-la-labor-de-amasar",
+      "title": "Los grandes hornos comunales y la labor de amasar",
+      "order": 114,
+      "description": "Cocer las hogazas integrales de pan unía a las vecinas diariamente. Estudiamos el inmenso calor de estos rústicos pozos de arcilla y pasto seco.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-navegacion-antigua-y-los-grandes-peligros-del-mar",
+      "title": "La navegación antigua y los grandes peligros del mar",
+      "order": 115,
+      "description": "Viajar en inmensas naves mercantes durante los fríos meses de invierno era letal. Vemos las brutales tormentas y los naufragios más asombrosos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-severa-guardia-pretoriana-y-el-control-de-roma",
+      "title": "La severa Guardia Pretoriana y el control de Roma",
+      "order": 116,
+      "description": "Esta brutal fuerza de gran élite protegía a los temidos grandes emperadores. Vemos cómo influyeron notoriamente en los encierros del gran apóstol.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-opulenta-ciudad-de-ur-y-su-antigua-gran-cultura",
+      "title": "La opulenta ciudad de Ur y su antigua gran cultura",
+      "order": 117,
+      "description": "Salir de la civilización más avanzada de su era requirió enorme fe y valentía. Analizamos la fuerte idolatría astral y los lujos que se dejaron.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-enormes-banos-termales-y-la-filosofia-helenista",
+      "title": "Los enormes baños termales y la filosofía helenista",
+      "order": 118,
+      "description": "Entendemos el violento choque cultural entre la estricta moralidad hebrea frente a la inmensa obsesión grecorromana por cultivar el cuerpo humano.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-duro-arido-neguev-y-las-extremas-y-largas-sequias",
+      "title": "El duro árido Néguev y las extremas y largas sequías",
+      "order": 119,
+      "description": "Esta implacable región fronteriza del lejano sur castigaba con su inmenso y mortal calor. Entendemos las duras e increíbles áridas rutas de escape.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-remota-isla-de-patmos-y-el-feroz-exilio-minero",
+      "title": "La remota isla de Patmos y el feroz exilio minero",
+      "order": 120,
+      "description": "Recluido y fuertemente vigilado en esta gran colonia rocosa, el profeta dictó visiones. Estudiamos la letal brutalidad del rudo sistema penal.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "job-y-el-inmenso-enigma-del-fuerte-y-atroz-sufrimiento",
+      "title": "Job y el inmenso enigma del fuerte y atroz sufrimiento",
+      "order": 121,
+      "description": "Analizamos la colosal tragedia de esta inmensa figura para entender la gran y profunda crisis teológica del mundo antiguo ante el dolor inmerecido.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-rio-eufrates-y-la-cuna-de-civilizaciones-antiguas",
+      "title": "El río Éufrates y la cuna de civilizaciones antiguas",
+      "order": 122,
+      "description": "Este enorme y colosal caudal de agua formó las primeras grandes ciudades mundiales. Estudiamos su inmenso peso comercial y enorme valor fronterizo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ester-y-la-intensa-y-letal-politica-del-gran-imperio",
+      "title": "Ester y la intensa y letal política del gran imperio",
+      "order": 123,
+      "description": "Ocultar su estricta identidad judía en una corte tan hostil demandaba sumo cuidado. Analizamos su valentía para detener una masacre tan devastadora.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-lamparas-de-aceite-y-la-iluminacion-en-las-casas",
+      "title": "Las lámparas de aceite y la iluminación en las casas",
+      "order": 124,
+      "description": "La oscuridad nocturna era paralizante y sumamente temida. Exploramos el inmenso valor de las vasijas de arcilla y su profundo simbolismo de la luz.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-vital-rol-de-las-parteras-en-el-inicio-del-mundo",
+      "title": "El vital rol de las parteras en el inicio del mundo",
+      "order": 125,
+      "description": "En una época de altísima mortandad infantil, su dedicada y experta labor salvaba muchísimas vidas. Estudiamos su tenaz resistencia civil en Egipto.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "lucas-y-la-detallada-y-muy-precisa-labor-de-investigar",
+      "title": "Lucas y la detallada y muy precisa labor de investigar",
+      "order": 126,
+      "description": "Este culto médico griego recopiló meticulosamente las diversas fuentes orales dispersas. Analizamos su inmensa y vital aportación a la historiografía.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-intensos-y-aridos-caminos-del-desierto-de-judea",
+      "title": "Los intensos y áridos caminos del desierto de Judea",
+      "order": 127,
+      "description": "Transitar estas agrestes rutas rocosas exponía a los viajeros a asaltantes letales. Comprendemos el gran y profundo peligro del relato del samaritano.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ezequiel-y-el-exilio-junto-al-lejano-rio-de-babilonia",
+      "title": "Ezequiel y el exilio junto al lejano río de Babilonia",
+      "order": 128,
+      "description": "Predicar a los cautivos derrotados requirió de asombrosas y dramáticas metáforas visuales. Analizamos sus complejas visiones sobre la gran esperanza.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-duro-trabajo-minero-y-la-extraccion-de-los-metales",
+      "title": "El duro trabajo minero y la extracción de los metales",
+      "order": 129,
+      "description": "Obtener cobre y oro implicaba descender a oscuras y muy peligrosas cavernas subterráneas. Estudiamos las durísimas condiciones de esta brutal faena.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-riguroso-y-muy-sagrado-voto-nazareo-en-la-antiguedad",
+      "title": "El riguroso y muy sagrado voto nazareo en la antigüedad",
+      "order": 130,
+      "description": "Abstenerse de cortar el cabello y consumir uvas era un visible y firme pacto de total entrega. Exploramos la inmensa devoción de este peculiar rito.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "marcos-y-el-tenaz-desafio-de-escribir-un-gran-relato",
+      "title": "Marcos y el tenaz desafío de escribir un gran relato",
+      "order": 131,
+      "description": "Redactar el primer escrito continuado sobre el maestro exigió una narrativa sumamente veloz y directa. Analizamos su inmensa influencia literaria.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-apicultura-antigua-y-la-preciada-miel-silvestre",
+      "title": "La apicultura antigua y la preciada miel silvestre",
+      "order": 132,
+      "description": "Considerada el dulce más exquisito de su época, su recolección en los agrestes bosques era laboriosa. Vemos el colosal y enorme valor de este manjar.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-colosal-y-soberbio-esplendor-de-la-antigua-efeso",
+      "title": "El colosal y soberbio esplendor de la antigua Éfeso",
+      "order": 133,
+      "description": "Esta grandiosa urbe comercial albergaba una de las mayores maravillas del mundo antiguo. Estudiamos su letal misticismo y su enorme riqueza material.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "santiago-y-el-fuerte-llamado-a-la-justicia-equitativa",
+      "title": "Santiago y el fuerte llamado a la justicia equitativa",
+      "order": 134,
+      "description": "Su duro mensaje contra los inmensos abusos de los terratenientes ricos resonó con inmensa fuerza comunitaria. Analizamos su ética sumamente radical.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-severas-prisiones-romanas-y-los-duros-calabozos",
+      "title": "Las severas prisiones romanas y los duros calabozos",
+      "order": 135,
+      "description": "Oscuras, fétidas y frías, estas mazmorras subterráneas quebrantaban cualquier espíritu humano. Vemos el inmenso sufrimiento físico de los prisioneros.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-invaluable-uso-de-sellos-de-arcilla-y-los-anillos",
+      "title": "El invaluable uso de sellos de arcilla y los anillos",
+      "order": 136,
+      "description": "Firmar grandes documentos requería imprimir cera o barro con un emblema personal. Analizamos esta vital garantía legal de gran autoridad y propiedad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "oseas-y-la-amarga-y-profunda-gran-tragedia-matrimonial",
+      "title": "Oseas y la amarga y profunda gran tragedia matrimonial",
+      "order": 137,
+      "description": "Usar su propio e inmenso desastre conyugal como firme metáfora de la infidelidad nacional fue audaz. Exploramos esta inmensa y colosal lección ética.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-asombrosos-y-colosales-cedros-del-libano-antiguo",
+      "title": "Los asombrosos y colosales cedros del Líbano antiguo",
+      "order": 138,
+      "description": "Esta madera aromática y duradera era el material de lujo máximo para los grandes palacios y templos. Analizamos su inmensa y vasta tala internacional.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-duro-trabajo-artesanal-de-la-alfareria-y-sus-vasijas",
+      "title": "El duro trabajo artesanal de la alfarería y sus vasijas",
+      "order": 139,
+      "description": "Moldear el barro sobre la rueda exigía enorme habilidad y gran paciencia del artesano. Exploramos el inmenso peso simbólico de esta labor cotidiana.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "natan-y-la-enorme-osadia-de-confrontar-al-gran-monarca",
+      "title": "Natán y la enorme osadía de confrontar al gran monarca",
+      "order": 140,
+      "description": "Reprender los crueles y letales abusos morales del soberano podía costarle la vida al instante. Analizamos su astuta y muy ingeniosa gran estrategia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-imponentes-y-enormes-murallas-de-la-antigua-jerico",
+      "title": "Las imponentes y enormes murallas de la antigua Jericó",
+      "order": 141,
+      "description": "Esta fortificada e invulnerable metrópoli defendía el acceso al codiciado territorio. Estudiamos su inmensa defensa y las colosales fallas sísmicas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-costosa-e-intensa-obtencion-de-la-preciada-purpura",
+      "title": "La costosa e intensa obtención de la preciada púrpura",
+      "order": 142,
+      "description": "Extraer este brillante tinte de miles de caracoles marinos lo hacía exclusivo de la élite imperial. Vemos el colosal valor de este inmenso comercio.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "felipe-y-la-rapida-y-letal-expansion-en-las-fronteras",
+      "title": "Felipe y la rápida y letal expansión en las fronteras",
+      "order": 143,
+      "description": "Predicar a etnias hostiles como los samaritanos rompió colosales barreras históricas de gran odio. Analizamos su enorme y audaz valentía fronteriza.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-vital-pastoreo-de-cabras-en-la-economia-familiar",
+      "title": "El vital pastoreo de cabras en la economía familiar",
+      "order": 144,
+      "description": "Estos rústicos y duros animales proveían excelente leche, fuerte carne y telas para sobrevivir. Estudiamos su inmensa utilidad en los clanes del sur.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-cruenta-y-muy-severa-destruccion-del-colosal-templo",
+      "title": "La cruenta y muy severa destrucción del colosal Templo",
+      "order": 145,
+      "description": "El brutal asedio militar del año setenta arrasó por completo el máximo centro vital religioso judío. Analizamos este inmenso trauma arquitectónico.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "jonas-y-el-profundo-y-gran-rechazo-a-la-misericordia",
+      "title": "Jonás y el profundo y gran rechazo a la misericordia",
+      "order": 146,
+      "description": "Negarse firmemente a predicar el perdón a un imperio sumamente cruel y asirio es muy comprensible. Exploramos esta enorme y gran ironía compasiva.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-crueles-y-violentos-cobradores-de-inmensas-deudas",
+      "title": "Los crueles y violentos cobradores de inmensas deudas",
+      "order": 147,
+      "description": "Caer en bancarrota permitía el encarcelamiento físico o la terrible venta familiar como esclavos. Analizamos las inmensas y muy severas leyes locales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-lapidacion-y-el-riguroso-sistema-judicial-antiguo",
+      "title": "La lapidación y el riguroso sistema judicial antiguo",
+      "order": 148,
+      "description": "Apedrear a los culpables requería de testigos firmes y garantizaba una clara responsabilidad social. Analizamos la dura letalidad de este gran castigo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "apolos-y-la-enorme-influencia-de-la-excelsa-oratoria",
+      "title": "Apolos y la enorme influencia de la excelsa oratoria",
+      "order": 149,
+      "description": "Procedente de Alejandría, combinó una inmensa erudición teológica con una brillante retórica griega. Estudiamos su inmensa y vital popularidad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-arduo-trabajo-cotidiano-de-moler-el-grano-en-casa",
+      "title": "El arduo trabajo cotidiano de moler el grano en casa",
+      "order": 150,
+      "description": "Usar las inmensas y muy pesadas piedras circulares al alba era una tarea sumamente extenuante para la mujer. Vemos el inmenso esfuerzo de esta labor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "caleb-y-la-gran-firmeza-militar-en-la-conquista-antigua",
+      "title": "Caleb y la gran firmeza militar en la conquista antigua",
+      "order": 151,
+      "description": "Mantener un inmenso vigor guerrero en la vejez era sumamente inusual en aquella dura época. Analizamos la inquebrantable gran tenacidad de esta figura.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-gran-monte-nebo-y-la-vision-final-de-la-vasta-tierra",
+      "title": "El gran Monte Nebo y la visión final de la vasta tierra",
+      "order": 152,
+      "description": "Esta alta cumbre ofrecía un panorama visual impresionante de la ansiada región. Exploramos el inmenso peso emocional de observar sin poder cruzar el río.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-gran-legalidad-de-la-adopcion-en-el-imperio-romano",
+      "title": "La gran legalidad de la adopción en el imperio romano",
+      "order": 153,
+      "description": "Ser adoptado borraba deudas previas y otorgaba inmediatos derechos herederos inmensos. Analizamos cómo el apóstol usó esta brillante ley de la época.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "filacterias-y-el-recordatorio-fisico-de-la-sagrada-ley",
+      "title": "Filacterias y el recordatorio físico de la sagrada ley",
+      "order": 154,
+      "description": "Portar pequeños estuches de cuero con textos atados al cuerpo era un gran símbolo de enorme devoción pura. Estudiamos esta rigurosa práctica cotidiana.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ezequias-y-el-extraordinario-tunel-de-agua-oculto",
+      "title": "Ezequías y el extraordinario túnel de agua oculto",
+      "order": 155,
+      "description": "Ante el inminente asedio, este rey excavó la roca sólida para asegurar el agua vital urbana. Analizamos esta colosal y enorme hazaña de ingeniería civil.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-inmenso-y-lucrativo-comercio-del-fino-incienso",
+      "title": "El inmenso y lucrativo comercio del fino incienso",
+      "order": 156,
+      "description": "Producido en el lejano sur, esta aromática y dulce resina valía tanto como el oro más puro. Exploramos las letales y áridas rutas antiguas de las caravanas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-odres-de-cuero-y-la-fermentacion-del-vino-nuevo",
+      "title": "Los odres de cuero y la fermentación del vino nuevo",
+      "order": 157,
+      "description": "Almacenar líquidos en pieles de animales requería una gran flexibilidad del material natural. Analizamos la inmensa metáfora sobre los fuertes cambios.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "tito-y-la-dura-correccion-moral-en-la-isla-de-creta",
+      "title": "Tito y la dura corrección moral en la isla de Creta",
+      "order": 158,
+      "description": "Organizar una joven comunidad en una cultura famosa por su feroz engaño fue un reto colosal. Estudiamos el liderazgo firme de este hábil gran delegado.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-dispersion-judia-y-las-colonias-del-gran-imperio",
+      "title": "La dispersión judía y las colonias del gran imperio",
+      "order": 159,
+      "description": "Vivir lejos del recinto sagrado forzó a las familias a crear fuertes lazos de identidad. Analizamos cómo esta inmensa red facilitó el nuevo mensaje.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-techos-planos-y-su-inmensa-utilidad-residencial",
+      "title": "Los techos planos y su inmensa utilidad residencial",
+      "order": 160,
+      "description": "Las azoteas servían para dormir en verano, secar granos y hacer reuniones sociales muy grandes. Vemos la intensa y vital vida doméstica en las alturas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "debora-y-el-vital-liderazgo-judicial-de-aquella-epoca",
+      "title": "Débora y el vital liderazgo judicial de aquella época",
+      "order": 161,
+      "description": "En tiempos de enorme caos, esta astuta líder logró pacificar e instruir a diversas tribus guerreras. Analizamos su inmensa y profunda autoridad civil.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-letales-carros-de-hierro-y-la-ventaja-militar",
+      "title": "Los letales carros de hierro y la ventaja militar",
+      "order": 162,
+      "description": "Esta avanzada y letal maquinaria de guerra causaba un terror absoluto en las llanuras. Estudiamos el colosal pánico de las lentas tropas de infantería.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-dia-de-la-expiacion-y-su-extremo-rito-de-pureza",
+      "title": "El Día de la Expiación y su extremo rito de pureza",
+      "order": 163,
+      "description": "Una vez al año el sumo sacerdote ingresaba al máximo recinto oscuro y sumamente sagrado. Exploramos el inmenso peso del perdón nacional y el sacrificio.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-inmenso-honor-y-la-verguenza-en-el-mundo-antiguo",
+      "title": "El inmenso honor y la vergüenza en el mundo antiguo",
+      "order": 164,
+      "description": "Perder el respeto social era peor que sufrir hambre o pobreza extrema en aquellas comunidades. Analizamos cómo estas fuertes normas regían cada decisión.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "acab-y-la-colosal-presion-militar-del-reino-vecino",
+      "title": "Acab y la colosal presión militar del reino vecino",
+      "order": 165,
+      "description": "Enfrentar a las fuertes potencias exigió a este monarca pactar oscuras e impías alianzas. Estudiamos la letal influencia extranjera en su gran corte.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-muy-fertil-region-de-basan-y-los-inmensos-ganados",
+      "title": "La muy fértil región de Basán y los inmensos ganados",
+      "order": 166,
+      "description": "Sus prados verdes criaban los toros más robustos y fuertes de toda la enorme geografía. Analizamos por qué fue un gran símbolo de ostentación y orgullo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-humilde-y-necesario-lavado-de-los-pies-cansados",
+      "title": "El humilde y necesario lavado de los pies cansados",
+      "order": 167,
+      "description": "Caminar largas distancias en áridas vías llenas de polvo exigía esta obligada higiene al llegar. Vemos el colosal contraste de realizar esta baja tarea.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-impuesto-sagrado-y-la-valiosa-moneda-de-plata-de-tiro",
+      "title": "El impuesto sagrado y la valiosa moneda de plata de Tiro",
+      "order": 168,
+      "description": "El tributo religioso exigía un pago exclusivo en plata purísima libre de grandes imágenes imperiales. Estudiamos este lucrativo negocio de la gran época.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "eliseo-y-la-formacion-de-las-escuelas-de-profetas",
+      "title": "Eliseo y la formación de las escuelas de profetas",
+      "order": 169,
+      "description": "Lejos de operar solos, los videntes se agrupaban en cofradías bajo un sabio liderazgo experto. Analizamos la curiosa instrucción de estos grandes grupos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-higueras-y-el-vital-sustento-agricola-de-judea",
+      "title": "Las higueras y el vital sustento agrícola de Judea",
+      "order": 170,
+      "description": "Sus tempranos brotes anunciaban fielmente el inminente verano y sus frutos daban enorme vigor físico. Exploramos su inmenso uso como metáfora nacional.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-censos-imperiales-y-el-control-de-la-poblacion",
+      "title": "Los censos imperiales y el control de la población",
+      "order": 171,
+      "description": "Registrar a cada habitante permitía recaudar inmensos fondos de forma implacable. Analizamos las tenaces revueltas que desataban estos fuertes conteos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-altas-torres-de-vigilancia-en-los-vinedos-locales",
+      "title": "Las altas torres de vigilancia en los viñedos locales",
+      "order": 172,
+      "description": "Proteger la costosa cosecha de los rápidos ladrones y fieras exigía dormir en rústicas garitas de piedra. Estudiamos esta dura y solitaria vigilancia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "noe-y-el-colosal-desafio-de-la-antigua-ingenieria",
+      "title": "Noé y el colosal desafío de la antigua ingeniería",
+      "order": 173,
+      "description": "Construir una inmensa nave de pesada madera sin precedentes navales fue un acto asombroso. Analizamos el inmenso impacto visual de esta gran estructura.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-grandes-votos-sagrados-y-el-rigido-uso-de-la-palabra",
+      "title": "Los grandes votos sagrados y el rígido uso de la palabra",
+      "order": 174,
+      "description": "Prometer algo invocando lo divino creaba una deuda inquebrantable y sumamente letal si se rompía. Exploramos la extrema cautela verbal de los antiguos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-montes-gerizim-y-ebal-en-la-frontera-sagrada",
+      "title": "Los montes Gerizim y Ebal en la frontera sagrada",
+      "order": 175,
+      "description": "Estas inmensas cumbres gemelas formaban un colosal anfiteatro natural perfecto. Analizamos cómo se proclamaban allí en voz alta las letales maldiciones.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-precisos-y-muy-vitales-registros-de-genealogias",
+      "title": "Los precisos y muy vitales registros de genealogías",
+      "order": 176,
+      "description": "Probar el exacto linaje ancestral garantizaba el claro derecho a inmensas tierras y nobles cargos. Vemos la inmensa obsesión por cuidar estas listas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "filemon-y-la-fuerte-tension-social-de-la-esclavitud",
+      "title": "Filemón y la fuerte tensión social de la esclavitud",
+      "order": 177,
+      "description": "Perdonar a un siervo fugitivo desafiaba por completo las estrictas leyes y la dura economía del imperio. Analizamos la inmensa revolución de esta carta.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-obtencion-de-fuego-y-los-rusticos-hornos-de-lena",
+      "title": "La obtención de fuego y los rústicos hornos de leña",
+      "order": 178,
+      "description": "Encender la lumbre diaria era una labor ardua ante la fuerte escasez de buena madera. Exploramos el inmenso valor de las brasas para la vida familiar.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-letales-arqueros-y-el-uso-de-la-honda-militar",
+      "title": "Los letales arqueros y el uso de la honda militar",
+      "order": 179,
+      "description": "Lanzar los proyectiles a inmensa velocidad decidía batallas desde la gran distancia. Estudiamos la letal destreza de las grandes tropas ligeras y ágiles.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "melquisedec-y-el-inmenso-misterio-del-rey-de-salem",
+      "title": "Melquisedec y el inmenso misterio del rey de Salem",
+      "order": 180,
+      "description": "Gobernante pacífico y devoto sacerdote de una era inmensamente lejana y oscura. Analizamos por qué su enigmática y colosal figura impactó la teología.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-acto-sagrado-de-compartir-el-pan-en-la-antiguedad",
+      "title": "El acto sagrado de compartir el pan en la antigüedad",
+      "order": 181,
+      "description": "Comer juntos no era solo nutrición, era un profundo pacto de lealtad y paz. Analizamos por qué sentarse a la mesa con los pecadores causaba enorme escándalo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "joab-y-el-inmenso-precio-moral-de-ser-un-gran-comandante",
+      "title": "Joab y el inmenso precio moral de ser un gran comandante",
+      "order": 182,
+      "description": "Liderar el ejército del rey exigía decisiones sumamente letales y crueles. Estudiamos las complejas y sangrientas intrigas palaciegas de esta fuerte figura.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-naves-de-tarsis-y-el-colosal-y-gran-comercio-naval",
+      "title": "Las naves de Tarsis y el colosal y gran comercio naval",
+      "order": 183,
+      "description": "Estas inmensas flotas mercantes traían exóticos lujos desde lejanas costas. Exploramos el inmenso impacto económico de importar marfil, monos y pavos reales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-inmenso-monte-tabor-y-su-gran-dominio-del-horizonte",
+      "title": "El inmenso Monte Tabor y su gran dominio del horizonte",
+      "order": 184,
+      "description": "Elevándose abruptamente sobre la gran llanura, sirvió como frontera y gran punto de reunión militar. Estudiamos su letal geografía en los combates antiguos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "lidia-y-el-lucrativo-gran-negocio-de-las-ricas-purpuras",
+      "title": "Lidia y el lucrativo gran negocio de las ricas púrpuras",
+      "order": 185,
+      "description": "Como exitosa comerciante de este carísimo gran tinte, ella poseía independencia económica. Analizamos su vital influencia para expandir comunidades en Europa.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-estricta-dote-nupcial-y-la-valiosa-economia-familiar",
+      "title": "La estricta dote nupcial y la valiosa economía familiar",
+      "order": 186,
+      "description": "Entregar inmensos bienes al padre de la novia aseguraba una clara protección civil legal. Vemos cómo estas fuertes normas blindaban los futuros matrimonios.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-gimnasio-griego-y-el-gran-choque-de-pudor-y-cultura",
+      "title": "El gimnasio griego y el gran choque de pudor y cultura",
+      "order": 187,
+      "description": "La inmensa obsesión helenista por la desnudez atlética ofendía la severa moral de Judea. Analizamos esta colosal y enorme tensión social en la gran ciudad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "aod-y-el-intenso-y-letal-conflicto-con-la-nacion-de-moab",
+      "title": "Aod y el intenso y letal conflicto con la nación de Moab",
+      "order": 188,
+      "description": "Las duras fronteras exigieron a este peculiar líder tácticas de extremo sigilo y gran valentía letal. Analizamos la inmensa opresión militar sobre las tribus.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-dieta-kosher-y-la-inmensa-separacion-social-del-resto",
+      "title": "La dieta kosher y la inmensa separación social del resto",
+      "order": 189,
+      "description": "Comer exclusivamente alimentos puros creaba una fuerte e impenetrable barrera con los imperios vecinos. Estudiamos el peso social de esta inmensa restricción.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-inmensas-nubes-de-langostas-y-el-terror-de-la-ruina",
+      "title": "Las inmensas nubes de langostas y el terror de la ruina",
+      "order": 190,
+      "description": "Millones de estos veloces insectos arrasaban los cultivos en pocas horas causando hambrunas. Analizamos esta colosal y letal gran amenaza en la antigüedad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "agar-y-la-fuerte-y-cruel-realidad-de-las-siervas-esclavas",
+      "title": "Agar y la fuerte y cruel realidad de las siervas esclavas",
+      "order": 191,
+      "description": "Sin derechos legales, las criadas soportaban los inmensos abusos de las tensiones familiares. Analizamos la dura supervivencia de esta figura en el desierto.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-destete-infantil-y-las-inmensas-fiestas-de-la-familia",
+      "title": "El destete infantil y las inmensas fiestas de la familia",
+      "order": 192,
+      "description": "Superar los peligrosos primeros años de vida era un colosal triunfo ante la inmensa mortandad. Exploramos las alegres y grandes celebraciones de la época.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-estricta-guardia-del-templo-y-su-gran-fuerza-policial",
+      "title": "La estricta guardia del templo y su gran fuerza policial",
+      "order": 193,
+      "description": "Custodiar el inmenso tesoro sagrado y mantener el orden masivo requería de fuertes soldados. Analizamos la autoridad letal de esta milicia local y clerical.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "absalon-y-el-inmenso-peligro-del-carisma-y-la-rebelion",
+      "title": "Absalón y el inmenso peligro del carisma y la rebelión",
+      "order": 194,
+      "description": "Usar una inmensa belleza física y el descontento social para robar el poder fue una astuta táctica. Estudiamos las letales intrigas dentro de la corte real.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-eras-de-trillar-y-la-separacion-del-trigo-y-la-paja",
+      "title": "Las eras de trillar y la separación del trigo y la paja",
+      "order": 195,
+      "description": "Ubicadas en grandes zonas de intensos vientos, estas plataformas permitían limpiar la cosecha. Analizamos su inmenso uso como gran metáfora del juicio final.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-inmensos-y-crueles-asedios-a-las-ciudades-amuralladas",
+      "title": "Los inmensos y crueles asedios a las ciudades amuralladas",
+      "order": 196,
+      "description": "Cortar los fuertes suministros y construir inmensas rampas de ataque destruía las metrópolis. Analizamos el colosal terror psicológico de las largas esperas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "jehu-y-la-colosal-y-muy-letal-purga-del-misticismo-falso",
+      "title": "Jehú y la colosal y muy letal purga del misticismo falso",
+      "order": 197,
+      "description": "Asumir el poder militar implicó bañar en sangre a la inmensa y corrompida monarquía vecina. Estudiamos la extrema y brutal violencia de esta firme figura.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-exotico-comercio-de-especias-y-sus-inmensos-valores",
+      "title": "El exótico comercio de especias y sus inmensos valores",
+      "order": 198,
+      "description": "Transportadas desde el lejano oriente, estas fuertes fragancias condimentaban las ricas mesas reales. Vemos el inmenso poder de las caravanas comerciales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-severa-y-dificil-realidad-de-las-viudas-de-la-epoca",
+      "title": "La severa y difícil realidad de las viudas de la época",
+      "order": 199,
+      "description": "Perder al esposo significaba la total marginación económica y el colosal riesgo de hambruna inminente. Analizamos las tenaces y fuertes leyes de protección.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "balaam-y-el-lucrativo-gran-oficio-de-maldecir-naciones",
+      "title": "Balaam y el lucrativo gran oficio de maldecir naciones",
+      "order": 200,
+      "description": "Los adivinos extranjeros cobraban inmensas fortunas por invocar letales castigos sobre los batallones. Analizamos la enigmática y compleja moral del profeta.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-inmensas-fallas-sismicas-y-los-temidos-terremotos",
+      "title": "Las inmensas fallas sísmicas y los temidos terremotos",
+      "order": 201,
+      "description": "Situados sobre colosales fisuras tectónicas, los habitantes sentían pánico ante los violentos temblores. Exploramos su inmenso significado en la gran época.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-altos-eunucos-y-su-inmensa-confianza-en-los-palacios",
+      "title": "Los altos eunucos y su inmensa confianza en los palacios",
+      "order": 202,
+      "description": "Estos servidores sin descendencia eran la máxima y gran lealtad para los reyes paranoicos del imperio. Analizamos su inmensa influencia política cortesana.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "noemi-y-la-profunda-amargura-ante-la-inmensa-gran-ruina",
+      "title": "Noemí y la profunda amargura ante la inmensa gran ruina",
+      "order": 203,
+      "description": "Volver vacía y sin familia a su antigua aldea representaba un colosal deshonor social en esa época. Vemos cómo su astucia logró revertir su colosal tragedia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-inmenso-monte-sion-y-su-colosal-peso-como-gran-sede",
+      "title": "El inmenso Monte Sion y su colosal peso como gran sede",
+      "order": 204,
+      "description": "De ser una firme e inexpugnable fortaleza local, esta cumbre pasó a ser el gran epicentro espiritual. Estudiamos su inmensa transformación y fuerte defensa.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-inmensas-grandes-fiestas-de-esquila-en-los-rebanos",
+      "title": "Las inmensas grandes fiestas de esquila en los rebaños",
+      "order": 205,
+      "description": "Cortar la lana a miles de ovejas culminaba en ostentosos banquetes de gran júbilo tras el rudo trabajo. Analizamos la inmensa riqueza de los terratenientes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "jeroboam-y-el-astuto-y-letal-quiebre-de-la-monarquia",
+      "title": "Jeroboam y el astuto y letal quiebre de la monarquía",
+      "order": 206,
+      "description": "Aprovechar la inmensa furia fiscal del norte para fundar un nuevo gran reino exigió astucia colosal. Estudiamos su letal creación de becerros alternativos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-inmenso-y-letal-riesgo-del-espionaje-en-las-batallas",
+      "title": "El inmenso y letal riesgo del espionaje en las batallas",
+      "order": 207,
+      "description": "Infiltrarse en enormes metrópolis amuralladas para medir la moral enemiga garantizaba una cruel muerte. Analizamos las letales maniobras de los informantes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-ciudades-de-refugio-y-el-freno-a-la-letal-venganza",
+      "title": "Las ciudades de refugio y el freno a la letal venganza",
+      "order": 208,
+      "description": "Para evitar las inmensas y sangrientas purgas familiares por accidentes, estas urbes daban asilo legal. Exploramos su inmenso e invaluable peso humanitario.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "lazaro-y-el-inmenso-peso-social-del-gran-duelo-publico",
+      "title": "Lázaro y el inmenso peso social del gran duelo público",
+      "order": 209,
+      "description": "Su inmensa tragedia unió a fuertes multitudes de la capital en llanto intenso en su aldea cercana. Analizamos el inmenso fervor de los oscuros sepulcros.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-estrictas-aduanas-y-el-letal-control-de-los-caminos",
+      "title": "Las estrictas aduanas y el letal control de los caminos",
+      "order": 210,
+      "description": "Cobrar aranceles inmensos a cada mercader extranjero en los límites generaba colosales riquezas brutales. Analizamos la férrea fiscalización del gran imperio.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-valle-de-elah-y-el-gran-duelo-militar-de-campeones",
+      "title": "El valle de Elah y el gran duelo militar de campeones",
+      "order": 211,
+      "description": "Este famoso escenario natural fue testigo del combate más icónico de la época. Analizamos la táctica militar de usar a un guerrero para evitar masacres.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-vital-uso-de-la-honda-en-la-vida-de-los-pastores",
+      "title": "El vital uso de la honda en la vida de los pastores",
+      "order": 212,
+      "description": "Más que un arma militar, esta sencilla herramienta de cuero protegía a los rebaños de letales fieras. Exploramos su inmensa precisión en manos expertas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-rey-herodes-el-grande-y-su-gran-paranoia-dinastica",
+      "title": "El rey Herodes el Grande y su gran paranoia dinástica",
+      "order": 213,
+      "description": "Gobernó con una mezcla asombrosa de brillantes obras arquitectónicas y crueldad letal contra su propia familia. Analizamos su inmenso terror al complot.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-corona-de-espinas-y-el-cruel-gran-escarnio-romano",
+      "title": "La corona de espinas y el cruel gran escarnio romano",
+      "order": 214,
+      "description": "La tortura imperial incluía humillaciones teatrales profundas. Estudiamos las letales plantas locales usadas para infligir inmenso dolor a los cautivos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-vital-ruta-del-incienso-y-su-gran-comercio-del-sur",
+      "title": "La vital ruta del incienso y su gran comercio del sur",
+      "order": 215,
+      "description": "Controlar las caravanas de ricas especias aseguraba una enorme prosperidad nacional. Exploramos el inmenso flujo económico a través del rudo gran desierto.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ana-y-la-muy-intensa-devocion-en-el-recinto-del-templo",
+      "title": "Ana y la muy intensa devoción en el recinto del templo",
+      "order": 216,
+      "description": "Una anciana viuda dedicó su prolongada vida entera al ruego y ayuno constante. Analizamos la gran y respetada labor espiritual de esta figura profética.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-gran-arido-desierto-de-zin-y-los-oasis-de-la-region",
+      "title": "El gran árido desierto de Zin y los oasis de la región",
+      "order": 217,
+      "description": "Transitar por esta desolada y vasta zona castigaba el ánimo y la fuerza física. Vemos la inmensa importancia de localizar veloces manantiales de agua dulce.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-muy-dura-labor-de-los-curtidores-de-pieles-antiguas",
+      "title": "La muy dura labor de los curtidores de pieles antiguas",
+      "order": 218,
+      "description": "Transformar los rústicos cueros era un oficio sumamente maloliente y repulsivo. Estudiamos el inmenso estigma de vivir marginado en las afueras del pueblo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-asombroso-uso-de-los-estandartes-en-las-legiones",
+      "title": "El asombroso uso de los estandartes en las legiones",
+      "order": 219,
+      "description": "Portar el águila imperial representaba el inmenso honor del batallón romano. Analizamos la gran ofensa religiosa que causaban al ingresar a tierra sagrada.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-inmensos-impuestos-de-peaje-y-las-ricas-aduanas",
+      "title": "Los inmensos impuestos de peaje y las ricas aduanas",
+      "order": 220,
+      "description": "Transitar caminos principales exigía pagos continuos y muy excesivos al imperio. Vemos la inmensa frustración de la gran población ante el robo sistemático.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-letal-consulta-a-los-mediums-en-el-antiguo-israel",
+      "title": "La letal consulta a los médiums en el antiguo Israel",
+      "order": 221,
+      "description": "Invocar a los fallecidos estaba castigado con severidad, pero era una gran práctica oculta. Exploramos la inmensa desesperación militar detrás del misticismo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-muy-robustos-bueyes-y-la-fuerte-traccion-agricola",
+      "title": "Los muy robustos bueyes y la fuerte tracción agrícola",
+      "order": 222,
+      "description": "Arar la dura y seca tierra exigía enormes animales unidos bajo un pesado madero. Analizamos la inmensa metáfora del yugo desigual en las uniones civiles.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-derecho-al-asilo-en-los-sagrados-cuernos-del-altar",
+      "title": "El derecho al asilo en los sagrados cuernos del altar",
+      "order": 223,
+      "description": "Afianzarse al gran mobiliario del santuario frenaba la veloz y letal venganza de sangre. Estudiamos esta inmensa y tensa tradición de la extrema clemencia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-gran-cosecha-de-granadas-y-su-colosal-simbolismo",
+      "title": "La gran cosecha de granadas y su colosal simbolismo",
+      "order": 224,
+      "description": "Esta hermosa fruta roja representaba firmemente la gran abundancia, belleza y gran fertilidad. Vemos su inmenso uso decorativo en la arquitectura del templo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-muy-severo-rol-de-los-ancianos-y-el-consejo-tribal",
+      "title": "El muy severo rol de los ancianos y el consejo tribal",
+      "order": 225,
+      "description": "Mucho antes de las monarquías, los líderes mayores impartían la vital justicia local. Analizamos su inmensa y profunda autoridad para juzgar serios delitos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-rey-ciro-el-grande-y-la-politica-de-restauracion",
+      "title": "El rey Ciro el Grande y la política de restauración",
+      "order": 226,
+      "description": "A diferencia de los crueles invasores previos, este rey fomentó el retorno de los cautivos. Exploramos la inmensa diplomacia de su tan famoso decreto real.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-muy-fuertes-tormentas-del-inmenso-mar-mediterraneo",
+      "title": "Las muy fuertes tormentas del inmenso mar Mediterráneo",
+      "order": 227,
+      "description": "Navegar durante el rudo invierno exponía a las grandes flotas a naufragios letales. Vemos el colosal pavor de los valientes tripulantes frente al temporal.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-historia-de-jairo-y-la-fuerte-presion-en-las-sinagogas",
+      "title": "La historia de Jairo y la fuerte presión en las sinagogas",
+      "order": 228,
+      "description": "Administrar los vitales lugares de asamblea otorgaba sumo prestigio. Estudiamos la colosal fe que impulsó a este ilustre hombre a rogar ante la gran multitud.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-tensa-entrega-de-rehenes-y-los-grandes-pactos-de-paz",
+      "title": "La tensa entrega de rehenes y los grandes pactos de paz",
+      "order": 229,
+      "description": "Para garantizar los tratos militares, se intercambiaban nobles importantes como firme garantía. Analizamos esta ruda y muy tensa costumbre de la antigüedad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-inmenso-y-muy-vital-cuidado-de-los-dientes-antiguos",
+      "title": "El inmenso y muy vital cuidado de los dientes antiguos",
+      "order": 230,
+      "description": "Sin la medicina actual, la gran higiene bucal dependía de rústicos métodos naturales. Vemos cómo el dolor de muelas paralizaba a la inmensa población civil.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-gruesas-puertas-de-bronce-en-las-urbes-amuralladas",
+      "title": "Las gruesas puertas de bronce en las urbes amuralladas",
+      "order": 231,
+      "description": "Asegurar los accesos principales era sumamente vital para detener los letales asedios. Analizamos la inmensa ingeniería defensiva frente a los arietes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-extrano-juramento-al-colocar-la-mano-bajo-el-muslo",
+      "title": "El extraño juramento al colocar la mano bajo el muslo",
+      "order": 232,
+      "description": "Esta antigua y muy solemne práctica aseguraba el cumplimiento de las órdenes patriarcales. Exploramos el inmenso peso cultural de los acuerdos funerarios.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-letales-gobernadores-locales-y-la-justicia-imperial",
+      "title": "Los letales gobernadores locales y la justicia imperial",
+      "order": 233,
+      "description": "Administrar vastas regiones exigía inmensa severidad y gran diplomacia. Vemos cómo estos funcionarios mediaban intensamente entre las turbas y el imperio.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cesarea-maritima-y-la-ostentacion-de-herodes-el-grande",
+      "title": "Cesarea Marítima y la ostentación de Herodes el Grande",
+      "order": 234,
+      "description": "Construida con colosales puertos artificiales, esta urbe romana desafió a la enorme naturaleza. Estudiamos su inmenso lujo y los fuertes choques raciales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-uso-ritual-de-los-grandes-inciensos-en-los-templos",
+      "title": "El uso ritual de los grandes inciensos en los templos",
+      "order": 235,
+      "description": "Quemar especias puras enmarcaba las letales súplicas y cubría el hedor de los sacrificios. Analizamos la inmensa solemnidad de esta aromática gran labor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "zacarias-y-el-duro-silencio-en-el-lugar-mas-sagrado",
+      "title": "Zacarías y el duro silencio en el lugar más sagrado",
+      "order": 236,
+      "description": "Servir en el altar del incienso era el honor cumbre de la vida de un sacerdote. Exploramos la inmensa tensión teológica de perder el habla en el santuario.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-dura-tala-de-madera-y-el-transporte-por-los-mares",
+      "title": "La dura tala de madera y el transporte por los mares",
+      "order": 237,
+      "description": "Trasladar enormes troncos atados en grandes balsas exigía una ardua y colosal logística marina. Analizamos este inmenso comercio fenicio de la antigüedad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-agiles-gacelas-y-la-inmensa-belleza-del-gran-bosque",
+      "title": "Las ágiles gacelas y la inmensa belleza del gran bosque",
+      "order": 238,
+      "description": "Admirados por su colosal velocidad y gracia, estos bellos animales inspiraron hermosa poesía. Estudiamos su inmenso uso literario en los cantos amorosos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-uso-militar-de-los-caballos-y-la-letal-caballeria",
+      "title": "El uso militar de los caballos y la letal caballería",
+      "order": 239,
+      "description": "Criar corceles veloces para la guerra otorgaba una inmensa superioridad letal en las llanuras. Vemos por qué su multiplicación estaba fuertemente prohibida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-fuertes-impurezas-rituales-y-el-bano-de-purificacion",
+      "title": "Las fuertes impurezas rituales y el baño de purificación",
+      "order": 240,
+      "description": "Los estanques ceremoniales limpiaban a los devotos antes de ingresar al sagrado recinto. Analizamos la inmensa importancia de sumergirse en las aguas vivas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-luto-y-las-ropas-rasgadas-en-la-antigua-judea",
+      "title": "El luto y las ropas rasgadas en la antigua Judea",
+      "order": 241,
+      "description": "Romper las vestimentas expresaba un dolor extremo y una desolación profunda. Analizamos esta visible e intensa muestra de luto en la sociedad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-estrategica-ciudad-de-corinto-y-sus-dos-puertos",
+      "title": "La estratégica ciudad de Corinto y sus dos puertos",
+      "order": 242,
+      "description": "Este inmenso puente terrestre dominaba el gran comercio marítimo antiguo. Exploramos la fuerte tensión moral en esta inmensa urbe cosmopolita.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "raquel-y-el-enorme-valor-de-los-idolos-familiares",
+      "title": "Raquel y el enorme valor de los ídolos familiares",
+      "order": 243,
+      "description": "Robar las estatuillas del hogar aseguraba el derecho a la herencia principal. Analizamos la inmensa crisis diplomática tras esta audaz acción.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-severo-castigo-de-los-azotes-en-las-sinagogas",
+      "title": "El severo castigo de los azotes en las sinagogas",
+      "order": 244,
+      "description": "La disciplina comunitaria permitía castigos físicos bajo normas muy estrictas. Estudiamos el inmenso impacto corporal y social de esta condena.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-cria-de-palomas-y-su-gran-uso-en-los-sacrificios",
+      "title": "La cría de palomas y su gran uso en los sacrificios",
+      "order": 245,
+      "description": "Las aves eran la ofrenda más accesible para la inmensa población marginada. Exploramos la vital industria de los palomares en todo el imperio.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-letal-viento-del-este-y-el-intenso-calor-seco",
+      "title": "El letal viento del este y el intenso calor seco",
+      "order": 246,
+      "description": "El fuerte siroco soplaba desde el árido desierto marchitando los cultivos al instante. Vemos cómo este colosal fenómeno inspiró advertencias.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "miqueas-y-la-fuerte-denuncia-a-los-terratenientes",
+      "title": "Miqueas y la fuerte denuncia a los terratenientes",
+      "order": 247,
+      "description": "Los ricos monopolizaban las tierras dejando a las inmensas mayorías en la ruina. Analizamos el valiente clamor por justicia de esta gran figura.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-complejos-techos-de-paja-y-barro-en-las-casas",
+      "title": "Los complejos techos de paja y barro en las casas",
+      "order": 248,
+      "description": "Las viviendas requerían un arduo mantenimiento constante ante las fuertes lluvias. Estudiamos la enorme facilidad para perforar estas cubiertas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-guardia-nocturna-y-los-grandes-vigias-urbanos",
+      "title": "La guardia nocturna y los grandes vigías urbanos",
+      "order": 249,
+      "description": "Las ciudades dependían totalmente de centinelas para evitar letales emboscadas. Exploramos el inmenso terror de cuidar la gran muralla oscura.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-extensas-genealogias-y-su-gran-peso-teologico",
+      "title": "Las extensas genealogías y su gran peso teológico",
+      "order": 250,
+      "description": "Lejos de ser simples y aburridas listas de nombres, demostraban el firme cumplimiento de pactos. Analizamos el colosal valor de estos archivos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "sefora-y-el-intenso-choque-cultural-en-el-desierto",
+      "title": "Séfora y el intenso choque cultural en el desierto",
+      "order": 251,
+      "description": "Unir costumbres extranjeras con el inmenso rigor sagrado generó fuertes fricciones. Estudiamos la enorme tensión familiar de esta mujer clave.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-escritura-cuneiforme-y-las-tablillas-de-arcilla",
+      "title": "La escritura cuneiforme y las tablillas de arcilla",
+      "order": 252,
+      "description": "Los grandes imperios antiguos registraban sus letales victorias en pesados bloques de barro. Exploramos este asombroso e inmenso avance documental.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-inmenso-valle-de-cedron-y-sus-grandes-tumbas",
+      "title": "El inmenso valle de Cedrón y sus grandes tumbas",
+      "order": 253,
+      "description": "Este profundo torrente dividía a la capital del monte de los olivos. Analizamos las inmensas y sagradas necrópolis excavadas en su dura roca.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-riguroso-y-muy-antiguo-tribunal-del-gran-areopago",
+      "title": "El riguroso y muy antiguo tribunal del gran Areópago",
+      "order": 254,
+      "description": "Esta corte ateniense juzgaba las ideas filosóficas novedosas con gran severidad. Vemos el letal e inmenso choque intelectual de las culturas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-figura-del-copero-real-en-las-cortes-antiguas",
+      "title": "La figura del copero real en las cortes antiguas",
+      "order": 255,
+      "description": "Probar el vino del monarca aseguraba su vida ante letales intentos de envenenamiento. Analizamos la inmensa influencia y confianza del cargo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "miriam-y-la-celebracion-con-danzas-en-la-frontera",
+      "title": "Miriam y la celebración con danzas en la frontera",
+      "order": 256,
+      "description": "Las victorias militares se festejaban con fuertes ritmos y danzas femeninas. Exploramos la inmensa labor artística de las grandes profetisas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-riguroso-y-letal-castigo-por-la-gran-blasfemia",
+      "title": "El riguroso y letal castigo por la gran blasfemia",
+      "order": 257,
+      "description": "Maldecir lo sagrado era el mayor y más letal crimen posible en la estricta sociedad hebrea. Analizamos la inmensa ira que desataba este delito.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-inmensas-calderas-y-la-gran-cocina-comunitaria",
+      "title": "Las inmensas calderas y la gran cocina comunitaria",
+      "order": 258,
+      "description": "Preparar alimentos para batallones o peregrinos exigía colosales vasijas de pesado bronce. Estudiamos las inmensas celebraciones de las tribus.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-enormes-y-letales-leones-del-antiguo-oriente",
+      "title": "Los enormes y letales leones del antiguo oriente",
+      "order": 259,
+      "description": "Estas letales y grandes fieras dominaban los frondosos matorrales del gran río Jordán. Analizamos el terror que infundían en las poblaciones.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-monte-ebal-y-el-antiguo-altar-de-piedras-brutas",
+      "title": "El monte Ebal y el antiguo altar de piedras brutas",
+      "order": 260,
+      "description": "La norma exigía usar rocas intactas sin labrar con herramientas de fuerte hierro. Exploramos la inmensa solemnidad en la renovación del pacto.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "jetro-y-el-inmenso-desafio-de-delegar-el-liderazgo",
+      "title": "Jetro y el inmenso desafío de delegar el liderazgo",
+      "order": 261,
+      "description": "Gobernar solo a miles de acampantes agotaba las fuerzas del más tenaz líder. Analizamos el sabio y colosal consejo de crear tribunales menores.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-lujosos-y-costosos-lechos-de-marfil-extranjero",
+      "title": "Los lujosos y costosos lechos de marfil extranjero",
+      "order": 262,
+      "description": "Descansar sobre colmillos tallados era el máximo símbolo de ostentación imperial. Vemos cómo esta inmensa riqueza generó gran repudio profético.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-valioso-manto-de-elias-y-su-profundo-simbolismo",
+      "title": "El valioso manto de Elías y su profundo simbolismo",
+      "order": 263,
+      "description": "Entregar la rústica capa profética significaba delegar toda la inmensa y colosal autoridad espiritual. Estudiamos este gran traspaso de poder.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-gran-puerto-de-jope-y-la-dificil-salida-al-mar",
+      "title": "El gran puerto de Jope y la difícil salida al mar",
+      "order": 264,
+      "description": "A falta de grandes bahías naturales, esta abrupta ciudad rocosa era la vital puerta al inmenso océano. Analizamos su letal comercio marítimo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-implacables-deudas-de-sangre-en-la-antiguedad",
+      "title": "Las implacables deudas de sangre en la antigüedad",
+      "order": 265,
+      "description": "Vengar la trágica muerte de un pariente cercano era una fuerte e ineludible obligación moral. Analizamos esta letal y gran justicia clánica.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-colosal-y-solemne-sacrificio-de-la-vaca-alazana",
+      "title": "El colosal y solemne sacrificio de la vaca alazana",
+      "order": 266,
+      "description": "Las purificaciones extremas tras tocar un cadáver exigían las raras cenizas de este fino animal. Exploramos la inmensa rareza de este gran rito.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "aquila-y-su-inmensa-labor-en-las-urbes-imperiales",
+      "title": "Aquila y su inmensa labor en las urbes imperiales",
+      "order": 267,
+      "description": "Obligado al fuerte exilio por los severos edictos romanos, fundó redes vitales de fe. Analizamos su valiosa y colosal resistencia comercial.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-grandes-pozos-de-asfalto-en-el-antiguo-valle",
+      "title": "Los grandes pozos de asfalto en el antiguo valle",
+      "order": 268,
+      "description": "Los oscuros manantiales de alquitrán en el desierto eran grandes trampas letales en las guerras. Estudiamos su inmenso uso bélico y comercial.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-fuerte-amargura-y-la-planta-del-ajenjo-antiguo",
+      "title": "La fuerte amargura y la planta del ajenjo antiguo",
+      "order": 269,
+      "description": "Esta hierba del desierto posee una inmensa toxicidad y un letal sabor. Vemos cómo se convirtió en la gran metáfora de las grandes desgracias.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "festo-y-la-inmensa-y-tensa-diplomacia-del-imperio",
+      "title": "Festo y la inmensa y tensa diplomacia del imperio",
+      "order": 270,
+      "description": "Asumir el poder tras severos gobiernos corruptos exigía calmar a las grandes turbas iracundas. Analizamos sus astutas y letales negociaciones.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-cambistas-y-el-gran-negocio-en-el-templo-judio",
+      "title": "Los cambistas y el gran negocio en el templo judío",
+      "order": 271,
+      "description": "Cambiar monedas extranjeras era un lucrativo comercio vital para los peregrinos. Analizamos la inmensa corrupción y el fuerte monopolio del recinto sagrado.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-armadura-romana-y-el-fuerte-equipamiento-letal",
+      "title": "La armadura romana y el fuerte equipamiento letal",
+      "order": 272,
+      "description": "Las legiones dominaban el mundo gracias a su avanzada y muy robusta indumentaria de guerra. Exploramos el inmenso peso táctico del escudo y la espada corta.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-cisternas-rotas-y-el-valor-del-agua-corriente",
+      "title": "Las cisternas rotas y el valor del agua corriente",
+      "order": 273,
+      "description": "Depender de los oscuros estanques de lluvia estancada era vital pero sumamente arriesgado. Analizamos la inmensa superioridad de los manantiales naturales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-primogenitura-y-el-inmenso-peso-del-hijo-mayor",
+      "title": "La primogenitura y el inmenso peso del hijo mayor",
+      "order": 274,
+      "description": "Nacer primero garantizaba heredar la doble porción y el inmenso liderazgo tribal absoluto. Estudiamos las letales intrigas familiares por este gran derecho.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-balsamo-de-galaad-y-la-antigua-medicina-local",
+      "title": "El bálsamo de Galaad y la antigua medicina local",
+      "order": 275,
+      "description": "Esta exótica y muy escasa resina aromática se usaba para curar letales heridas de guerra. Analizamos el inmenso y colosal valor comercial de este ungüento.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-sistema-postal-y-los-veloces-mensajeros-reales",
+      "title": "El sistema postal y los veloces mensajeros reales",
+      "order": 276,
+      "description": "Los grandes imperios antiguos desarrollaron asombrosas y muy rápidas redes de comunicación. Exploramos la inmensa fatiga física de estos jinetes imperiales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-serpiente-de-bronce-y-el-gran-peligro-idolatra",
+      "title": "La serpiente de bronce y el gran peligro idólatra",
+      "order": 277,
+      "description": "Un antiguo instrumento de colosal sanidad se convirtió en un letal y muy oscuro objeto de culto. Analizamos el inmenso riesgo del falso misticismo popular.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-cuarentena-y-el-fuerte-estigma-de-la-gran-lepra",
+      "title": "La cuarentena y el fuerte estigma de la gran lepra",
+      "order": 278,
+      "description": "Las estrictas y severas leyes de sanidad aislaban por completo a los enfermos sin compasión. Estudiamos el inmenso terror social a las manchas en las ropas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-estanque-de-betesda-y-los-antiguos-cultos-de-fe",
+      "title": "El estanque de Betesda y los antiguos cultos de fe",
+      "order": 279,
+      "description": "Albergaba inmensas multitudes de enfermos desesperados buscando una cura colosal e inmediata. Analizamos la inmensa tensión teológica en sus cinco pórticos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-pretorio-romano-y-la-severa-justicia-del-cesar",
+      "title": "El Pretorio romano y la severa justicia del César",
+      "order": 280,
+      "description": "Este imponente y gran cuartel militar representaba la máxima e implacable autoridad extranjera. Exploramos la inmensa y letal rigidez de los juicios cívicos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-cilicio-y-la-intensa-expresion-fisica-de-duelo",
+      "title": "El cilicio y la intensa expresión física de duelo",
+      "order": 281,
+      "description": "Vestir ásperas ropas de pelo de cabra y cubrirse con cenizas mostraba una profunda humillación. Analizamos esta inmensa y severa práctica de arrepentimiento.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-rediles-de-ovejas-y-la-firme-labor-del-pastor",
+      "title": "Los rediles de ovejas y la firme labor del pastor",
+      "order": 282,
+      "description": "Proteger al rebaño de los letales lobos exigía rústicos corrales de dura piedra natural. Vemos la inmensa devoción al dormir en la gran y vital puerta local.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-lugares-altos-y-el-profundo-misticismo-pagano",
+      "title": "Los lugares altos y el profundo misticismo pagano",
+      "order": 283,
+      "description": "Las altas cimas boscosas albergaban letales y muy oscuros altares dedicados a falsas deidades. Analizamos la inmensa y tenaz lucha para lograr destruirlos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-bordes-del-manto-y-el-vital-recordatorio-legal",
+      "title": "Los bordes del manto y el vital recordatorio legal",
+      "order": 284,
+      "description": "Llevar flecos con hilos azules en las túnicas era una gran señal de enorme sumisión a las normas. Estudiamos el inmenso significado de tocar esta vestimenta.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-gran-matrimonio-levirato-y-la-fuerte-ley-filial",
+      "title": "El gran matrimonio levirato y la fuerte ley filial",
+      "order": 285,
+      "description": "Casarse con la viuda del hermano sin hijos aseguraba la supervivencia del gran linaje familiar. Analizamos esta inmensa y rigurosa obligación de la gran época.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-espinos-y-cardos-en-la-ruda-agricultura-antigua",
+      "title": "Los espinos y cardos en la ruda agricultura antigua",
+      "order": 286,
+      "description": "Limpiar los áridos campos de estas letales malezas demandaba un inmenso y muy agotador esfuerzo. Exploramos la gran metáfora sobre la maldición de la tierra.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-vara-y-el-cayado-en-el-firme-cuidado-del-rebano",
+      "title": "La vara y el cayado en el firme cuidado del rebaño",
+      "order": 287,
+      "description": "Estas dos rústicas herramientas de madera brindaban inmensa defensa y gran dirección. Analizamos su colosal y vital utilidad en los valles más inhóspitos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-monte-moriah-y-la-inmensa-prueba-de-fe-suprema",
+      "title": "El Monte Moriah y la inmensa prueba de fe suprema",
+      "order": 288,
+      "description": "Esta cumbre fue el antiguo escenario del mayor y más letal sacrificio solicitado. Estudiamos su inmensa y colosal gran importancia arquitectónica posterior.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-panales-antiguos-y-el-duro-nacimiento-en-judea",
+      "title": "Los pañales antiguos y el duro nacimiento en Judea",
+      "order": 289,
+      "description": "Envolver a los recién nacidos con largas tiras de tela era una gran práctica vital. Analizamos las inmensas precariedades de los partos en la dura antigüedad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-aventador-y-la-fuerte-limpieza-de-la-gran-siega",
+      "title": "El aventador y la fuerte limpieza de la gran siega",
+      "order": 290,
+      "description": "Lanzar el grano al fuerte viento permitía que la densa paja volara velozmente. Exploramos esta inmensa y colosal imagen del letal y severo juicio definitivo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-finos-cosmeticos-y-la-inmensa-belleza-oriental",
+      "title": "Los finos cosméticos y la inmensa belleza oriental",
+      "order": 291,
+      "description": "Delinear los ojos con oscuros minerales no solo era estético, sino una gran defensa ocular vital. Analizamos el inmenso valor de los caros ungüentos femeninos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-estricto-ayuno-y-la-inmensa-humillacion-fisica",
+      "title": "El estricto ayuno y la inmensa humillación física",
+      "order": 292,
+      "description": "Abstenerse de vitales alimentos expresaba una inmensa dependencia y un gran duelo extremo. Analizamos las fuertes y rígidas leyes sobre esta gran práctica útil.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-sagrada-uncion-con-aceite-y-su-inmenso-peso-real",
+      "title": "La sagrada unción con aceite y su inmenso peso real",
+      "order": 293,
+      "description": "Derramar el costoso aceite perfumado sobre la cabeza otorgaba una inmensa e indiscutible autoridad. Estudiamos el colosal y vital inicio del liderazgo civil.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-gran-concilio-judio-y-los-duros-juicios-nocturnos",
+      "title": "El gran concilio judío y los duros juicios nocturnos",
+      "order": 294,
+      "description": "Celebrar cortes penales durante la profunda oscuridad era una colosal e inmensa violación legal. Analizamos las severas y estrictas normas que fueron ignoradas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-antiguas-balanzas-y-el-intenso-fraude-comercial",
+      "title": "Las antiguas balanzas y el intenso fraude comercial",
+      "order": 295,
+      "description": "Usar pesas falsas para robar era un letal y muy detestado gran crimen cotidiano. Exploramos la inmensa y colosal exigencia moral de mantener una total equidad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-gran-desierto-de-paran-y-la-letal-y-ruda-travesia",
+      "title": "El gran desierto de Parán y la letal y ruda travesía",
+      "order": 296,
+      "description": "Esta colosal región rocosa fue el escenario de un profundo fracaso. Analizamos la inmensa y letal tensión de liderar a miles de los muy rústicos acampantes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-fiesta-de-las-semanas-y-la-gran-cosecha-de-trigo",
+      "title": "La fiesta de las semanas y la gran cosecha de trigo",
+      "order": 297,
+      "description": "Esta inmensa celebración agrícola convocaba a multitudes para agradecer los inmensos frutos. Estudiamos su colosal significado en el nacimiento de la asamblea.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-fragiles-papiros-y-la-vital-escritura-antigua",
+      "title": "Los frágiles papiros y la vital escritura antigua",
+      "order": 298,
+      "description": "Escribir largas cartas en hojas de grandes juncos prensados era inmensamente caro y muy delicado. Analizamos la colosal preservación de los textos más antiguos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-brutal-flagelo-romano-y-la-inmensa-tortura-real",
+      "title": "El brutal flagelo romano y la inmensa tortura real",
+      "order": 299,
+      "description": "Usar látigos con letales trozos de plomo y hueso buscaba desgarrar la piel de los condenados. Estudiamos la colosal crueldad del fuerte sistema penal imperial.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-grandes-esenios-y-el-retiro-sectario-al-desierto",
+      "title": "Los grandes esenios y el retiro sectario al desierto",
+      "order": 300,
+      "description": "Aislarse por completo de la inmensa corrupción urbana formó a esta rigurosa secta del sur. Exploramos su inmensa y vital aportación en las cuevas de Qumrán.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-sagrado-uso-del-urim-y-el-tumim-en-el-antiguo-templo",
+      "title": "El sagrado uso del Urim y el Tumim en el antiguo Templo",
+      "order": 301,
+      "description": "Estas misteriosas piedras permitían al sumo sacerdote consultar las vitales decisiones divinas. Analizamos este inmenso e invaluable método.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-gran-ciudad-de-filipos-y-la-firme-colonia-del-imperio",
+      "title": "La gran ciudad de Filipos y la firme colonia del imperio",
+      "order": 302,
+      "description": "Esta importante y estratégica urbe militar no contaba con sinagoga. Exploramos la inmensa dificultad de establecer allí una fe sin raíces.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-rol-del-tetrarca-y-la-gran-division-politica-regional",
+      "title": "El rol del tetrarca y la gran división política regional",
+      "order": 303,
+      "description": "Gobernar solo una cuarta parte del territorio generaba letales y profundas envidias. Estudiamos las inmensas rivalidades de estos líderes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "amos-y-el-inmenso-choque-entre-el-campo-y-la-gran-ciudad",
+      "title": "Amós y el inmenso choque entre el campo y la gran ciudad",
+      "order": 304,
+      "description": "Un humilde pastor rural fue llamado a denunciar el inmenso lujo y la corrupción del norte. Analizamos su audaz y letal mensaje campesino.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-arboles-sicomoros-y-la-ruda-recoleccion-de-los-higos",
+      "title": "Los árboles sicómoros y la ruda recolección de los higos",
+      "order": 305,
+      "description": "Cultivar este rústico y duro fruto exigía un intenso trabajo manual constante. Vemos el inmenso valor de esta gran y vital dieta popular.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-estanque-de-siloe-y-su-colosal-importancia-en-jerusalen",
+      "title": "El estanque de Siloé y su colosal importancia en Jerusalén",
+      "order": 306,
+      "description": "Construido en el gran valle, este depósito de agua dulce era vital para las purificaciones rituales. Analizamos su inmenso uso ceremonial.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cornelio-y-el-inmenso-asombro-ante-la-fe-de-un-extranjero",
+      "title": "Cornelio y el inmenso asombro ante la fe de un extranjero",
+      "order": 307,
+      "description": "La devoción de un alto oficial imperial rompió todas las estrictas barreras culturales. Exploramos este inmenso y vital puente ideológico.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-valiosa-tunica-sin-costuras-y-el-rudo-trabajo-de-tejer",
+      "title": "La valiosa túnica sin costuras y el rudo trabajo de tejer",
+      "order": 308,
+      "description": "Elaborar una vestimenta de una sola gran pieza exigía enorme habilidad artesanal. Analizamos el inmenso cuidado al sortear esta gran prenda.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-toque-del-shofar-y-la-inmensa-alarma-en-la-antiguedad",
+      "title": "El toque del shofar y la inmensa alarma en la antigüedad",
+      "order": 309,
+      "description": "El penetrante e inmenso sonido del cuerno de carnero convocaba a la letal guerra o al arrepentimiento. Estudiamos esta gran señal acústica.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-vasta-region-de-galacia-y-las-fuertes-tensiones-de-fe",
+      "title": "La vasta región de Galacia y las fuertes tensiones de fe",
+      "order": 310,
+      "description": "Habitar en estas duras y agrestes provincias forjó una cultura muy férrea y legalista. Analizamos la inmensa resistencia a los nuevos tratos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "habacuc-y-el-profundo-ruego-ante-el-letal-silencio-divino",
+      "title": "Habacuc y el profundo ruego ante el letal silencio divino",
+      "order": 311,
+      "description": "Cuestionar intensamente la tolerancia del mal en el mundo exigió inmenso valor profético. Exploramos su colosal e íntima queja angustiada.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-oscuro-valle-de-acor-y-la-implacable-justicia-tribal",
+      "title": "El oscuro valle de Acor y la implacable justicia tribal",
+      "order": 312,
+      "description": "Este infame y rudo lugar fue el triste y oscuro escenario del más severo y letal castigo histórico. Analizamos su inmenso peso en la moral.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-remota-isla-de-malta-y-el-inmenso-peligro-de-naufragar",
+      "title": "La remota isla de Malta y el inmenso peligro de naufragar",
+      "order": 313,
+      "description": "Sobrevivir a las brutales olas del mar invernal para llegar a esta gran costa rocosa fue asombroso. Estudiamos este colosal relato naval.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-prospera-urbe-de-tarso-y-su-inmensa-y-notable-academia",
+      "title": "La próspera urbe de Tarso y su inmensa y notable academia",
+      "order": 314,
+      "description": "Esta influyente gran capital del imperio rivalizaba con Atenas en la filosofía. Analizamos su inmenso rol en la educación del gran apóstol.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "zaqueo-y-la-inmensa-gran-verguenza-social-en-los-caminos",
+      "title": "Zaqueo y la inmensa gran vergüenza social en los caminos",
+      "order": 315,
+      "description": "Un rico recaudador marginado desafió el inmenso y firme protocolo al trepar un árbol por curiosidad. Vemos su colosal redención económica.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-fiesta-de-la-dedicacion-y-el-inmenso-fervor-macabeo",
+      "title": "La fiesta de la dedicación y el inmenso fervor macabeo",
+      "order": 316,
+      "description": "Celebrar la purificación militar del recinto sagrado en invierno mantenía viva la gran llama rebelde. Analizamos su inmenso valor popular.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-relojes-de-sol-y-la-inmensa-medicion-del-rudo-tiempo",
+      "title": "Los relojes de sol y la inmensa medición del rudo tiempo",
+      "order": 317,
+      "description": "Sin relojes mecánicos modernos, las letales sombras del día regulaban cada inmenso turno militar. Exploramos las rudas vigilias del pueblo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "zorobabel-y-la-colosal-hazana-de-levantar-el-nuevo-templo",
+      "title": "Zorobabel y la colosal hazaña de levantar el nuevo Templo",
+      "order": 318,
+      "description": "Liderar a una población arruinada para reconstruir el máximo santuario fue una misión inmensa. Analizamos la dura escasez de recursos allí.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-inmensos-banquetes-de-bodas-y-la-gran-honra-familiar",
+      "title": "Los inmensos banquetes de bodas y la gran honra familiar",
+      "order": 319,
+      "description": "Las celebraciones duraban varios días enteros y agotar el vino causaba un colosal deshonor social. Estudiamos las letales presiones de ayer.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-inmenso-altar-de-bronce-y-el-constante-fuego-sagrado",
+      "title": "El inmenso altar de bronce y el constante fuego sagrado",
+      "order": 320,
+      "description": "Este colosal mobiliario exterior consumía diariamente muchísimas víctimas. Analizamos la inmensa y ruda logística de su intensa gran labor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "uzias-y-el-letal-riesgo-del-inmenso-orgullo-en-el-palacio",
+      "title": "Uzías y el letal riesgo del inmenso orgullo en el palacio",
+      "order": 321,
+      "description": "Un rey brillante e innovador terminó aislado y marginado tras usurpar las grandes y vitales funciones sacerdotales. Analizamos su gran caída.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "loida-y-eunice-en-la-firme-y-vital-transmision-de-la-fe",
+      "title": "Loida y Eunice en la firme y vital transmisión de la fe",
+      "order": 322,
+      "description": "Enseñar los grandes textos sagrados en el hogar era la única gran defensa frente a las fuertes culturas idólatras. Vemos este inmenso labor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-escritura-sobre-ceramica-y-el-uso-de-los-viejos-ostraca",
+      "title": "La escritura sobre cerámica y el uso de los viejos ostraca",
+      "order": 323,
+      "description": "Cuando el pergamino era inmensamente caro, los trozos de vasijas rotas servían como el vital y gran papel común. Analizamos estos recibos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "antioquia-de-pisidia-y-la-fuerte-e-inmensa-gran-hostilidad",
+      "title": "Antioquía de Pisidia y la fuerte e inmensa gran hostilidad",
+      "order": 324,
+      "description": "Esta colonia militar romana en las altas montañas era sumamente dura. Estudiamos las inmensas expulsiones de las grandes y firmes asambleas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "hageo-y-el-fuerte-llamado-frente-a-la-inmensa-gran-apatia",
+      "title": "Hageo y el fuerte llamado frente a la inmensa gran apatía",
+      "order": 325,
+      "description": "Confrontar a los ricos por adornar sus lujosas casas mientras el gran templo seguía totalmente en ruinas. Analizamos este inmenso discurso.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-aceite-en-los-fuertes-escudos-y-la-gran-tactica-militar",
+      "title": "El aceite en los fuertes escudos y la gran táctica militar",
+      "order": 326,
+      "description": "Lubricar el letal cuero de las armas defensivas evitaba grandes grietas bajo el inmenso y duro sol. Exploramos esta vital práctica de guerra.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-duros-guardas-de-las-puertas-en-el-recinto-del-templo",
+      "title": "Los duros guardas de las puertas en el recinto del templo",
+      "order": 327,
+      "description": "Vigilar los inmensos accesos al santuario evitaba inmensas tragedias y fuertes revueltas mortales. Estudiamos la letal carga de estos vigías.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "tiquico-y-el-inmenso-valor-de-portar-las-grandes-epistolas",
+      "title": "Tíquico y el inmenso valor de portar las grandes epístolas",
+      "order": 328,
+      "description": "Atravesar inmensas distancias llevando los valiosos escritos sagrados escondidos exigía gran lealtad. Analizamos esta audaz y firme misión.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-llaves-de-madera-y-los-duros-pesados-cerrojos-antiguos",
+      "title": "Las llaves de madera y los duros pesados cerrojos antiguos",
+      "order": 329,
+      "description": "Portar inmensas herramientas para abrir los colosales y fuertes pórticos era un gran símbolo de enorme autoridad. Analizamos estos artefactos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-sereno-monte-de-galilea-y-la-gran-acustica-del-paisaje",
+      "title": "El sereno monte de Galilea y la gran acústica del paisaje",
+      "order": 330,
+      "description": "Las suaves colinas frente al inmenso mar creaban un asombroso anfiteatro natural para los inmensos sermones. Exploramos esta bella geografía.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-primicias-y-el-colosal-inicio-de-cosechas-antiguas",
+      "title": "Las primicias y el colosal inicio de cosechas antiguas",
+      "order": 331,
+      "description": "Entregar los primeros frutos era un acto de gran fe y muy firme confianza. Analizamos el inmenso e intenso peso vital de la antigua festividad agrícola local.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "colosas-y-el-letal-choque-con-inmensas-sectas-del-mundo",
+      "title": "Colosas y el letal choque con inmensas sectas del mundo",
+      "order": 332,
+      "description": "Esta antigua urbe albergó inmensas corrientes místicas. Estudiamos el gran esfuerzo de la comunidad para preservar intacta la letal y muy antigua fe original.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "benaia-y-la-letal-guardia-personal-de-un-inmenso-monarca",
+      "title": "Benaía y la letal guardia personal de un inmenso monarca",
+      "order": 333,
+      "description": "Ser el fiel escolta real exigía una implacable fuerza inmensa. Analizamos las letales hazañas de esta imponente figura militar en la remota y ruda antigüedad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-oscuras-tiendas-de-cedar-en-medio-del-rudo-desierto",
+      "title": "Las oscuras tiendas de Cedar en medio del rudo desierto",
+      "order": 334,
+      "description": "Fabricadas con oscura piel de cabra, estas gruesas carpas resistían vientos inmensos. Analizamos la rústica construcción y la ruda rutina de aquellos nómadas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "dorcas-y-el-inmenso-valor-civil-del-rustico-hilo-y-aguja",
+      "title": "Dorcas y el inmenso valor civil del rústico hilo y aguja",
+      "order": 335,
+      "description": "Fabricar hermosas túnicas para las tristes viudas desamparadas era una labor ruda. Analizamos la enorme influencia y prestigio social de esta gran figura local.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-sirofenicia-y-el-letal-choque-de-colosales-fronteras",
+      "title": "La sirofenicia y el letal choque de colosales fronteras",
+      "order": 336,
+      "description": "Acercarse al maestro siendo de una hostil etnia exigió inmensa audacia vital. Exploramos el firme y duro diálogo civil que derribó la gran diferencia cultural.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-lavado-de-manos-y-las-inmensas-tradiciones-de-los-padres",
+      "title": "El lavado de manos y las inmensas tradiciones de los padres",
+      "order": 337,
+      "description": "Esta inmensa norma no buscaba higiene médica, sino evitar toda letal impureza ritual antigua. Analizamos el profundo gran debate sobre estas tensas tradiciones.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-amplio-valle-de-josafat-y-el-inmenso-y-letal-juicio",
+      "title": "El amplio valle de Josafat y el inmenso y letal juicio",
+      "order": 338,
+      "description": "Este inmenso y emblemático valle geográfico fue escenario vital para el dictamen final definitivo. Estudiamos el profundo y firme terror letal de la antigüedad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "simei-y-el-letal-acto-de-apedrear-a-un-inmenso-monarca",
+      "title": "Simei y el letal acto de apedrear a un inmenso monarca",
+      "order": 339,
+      "description": "Arrojar oscura tierra y piedras al rey caído fue un rudo acto público letal. Analizamos las inmensas tensiones tribales locales y la enorme venganza final antigua.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "galion-y-el-inmenso-desden-del-implacable-y-letal-proconsul",
+      "title": "Galión y el inmenso desdén del implacable y letal procónsul",
+      "order": 340,
+      "description": "Sostener la gran paz romana ante letales disputas era un reto mayúsculo de la época. Analizamos la ruda burocracia imperial frente al violento alboroto provocado.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "mesarse-el-vello-facial-ante-un-colosal-y-letal-desastre",
+      "title": "Mesarse el vello facial ante un colosal y letal desastre",
+      "order": 341,
+      "description": "Arrancar el propio vello facial expresaba un rudo y gran pánico extremo. Exploramos esta inmensa y dolorosa reacción ante la ruda desgracia nacional y muy letal.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "hobab-y-el-inmenso-talento-de-un-letal-rastreador-del-sur",
+      "title": "Hobab y el inmenso talento de un letal rastreador del sur",
+      "order": 342,
+      "description": "Navegar los rudos desiertos áridos exigía gran experiencia y mucha astucia letal. Analizamos la vital logística de esta figura al enfrentar los calores inmensos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-inmensas-cenizas-grises-y-la-letal-muestra-del-luto",
+      "title": "Las inmensas cenizas grises y la letal muestra del luto",
+      "order": 343,
+      "description": "Esparcir ceniza en la cabeza evidenciaba inmenso dolor tras una gran tragedia letal. Estudiamos esta inmensa y muy ruda práctica de duelo extremo en el lejano mundo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "juana-y-la-inmensa-audacia-dentro-del-colosal-palacio-real",
+      "title": "Juana y la inmensa audacia dentro del colosal palacio real",
+      "order": 344,
+      "description": "Apoyar la nueva causa desde una ruda corte monárquica era un letal y vil riesgo constante. Analizamos el inmenso valor audaz de esta imponente figura en la judea.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-rudos-espejos-de-bronce-y-la-inmensa-ilusion-visual",
+      "title": "Los rudos espejos de bronce y la inmensa ilusión visual",
+      "order": 345,
+      "description": "Sin vidrio pulido claro, los rudos metales daban solo un difuso e inmenso reflejo muy oscuro. Exploramos esta vital metáfora y poesía en torno a la frágil visión.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "abisai-y-la-colosal-y-muy-letal-fuerza-de-la-infanteria",
+      "title": "Abisai y la colosal y muy letal fuerza de la infantería",
+      "order": 346,
+      "description": "Este feroz guerrero proponía las letales y veloces soluciones de inmensa sangre y violencia. Analizamos las grandes y rudas tensiones propias del ejército antiguo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-almendro-oriental-y-la-colosal-belleza-del-rudo-campo",
+      "title": "El almendro oriental y la colosal belleza del rudo campo",
+      "order": 347,
+      "description": "Florecer veloz en el frío y duro invierno le otorgó imagen de un gran cumplimiento letal. Analizamos la inmensa fama botánica de este enorme árbol en la antigüedad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-inmenso-monte-ararat-y-el-letal-silencio-de-las-cumbres",
+      "title": "El inmenso monte Ararat y el letal silencio de las cumbres",
+      "order": 348,
+      "description": "Esta altísima e inmensa cumbre helada marcó el gran y vital reinicio de la humanidad en la historia. Exploramos la ruda geografía letal posterior al colosal diluvio.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "aman-y-la-colosal-perfidia-de-un-inmenso-oficial-de-estado",
+      "title": "Amán y la colosal perfidia de un inmenso oficial de estado",
+      "order": 349,
+      "description": "Planear las letales y rudas masacres en secreto usando sellos imperiales exigió audacia letal enorme. Analizamos el inmenso odio oscuro de esta figura cortesana vil.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-diezmo-agricola-y-el-inmenso-y-vital-sosten-de-los-coros",
+      "title": "El diezmo agrícola y el inmenso y vital sostén de los coros",
+      "order": 350,
+      "description": "Mantener los rudos y caros ritos exigía aportar cosechas muy inmensas. Exploramos la letal y civil gravedad al evadir los obligatorios tributos de aquel santuario.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "erasto-y-el-colosal-cargo-de-un-inmenso-administrador-vil",
+      "title": "Erasto y el colosal cargo de un inmenso administrador vil",
+      "order": 351,
+      "description": "Dirigir altas finanzas en una urbe letal y muy pagana exigía valentía extrema y audaz. Analizamos la firme influencia civil municipal de esta enorme figura histórica.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-pesado-yugo-rural-y-la-inmensa-letal-faena-en-los-campos",
+      "title": "El pesado yugo rural y la inmensa letal faena en los campos",
+      "order": 352,
+      "description": "Atar toros inmensos bajo un letal tronco de madera nivelaba el colosal esfuerzo rural. Exploramos esta gran metáfora rústica referida al doloroso yugo del hombre cruel.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-duras-y-grandes-gemas-y-el-letal-trabajo-del-grabador",
+      "title": "Las duras y grandes gemas y el letal trabajo del grabador",
+      "order": 353,
+      "description": "Incidir las rudas piedras preciosas exigía inmensa y letal precisión. Analizamos el rudo y gran precio colosal que poseía esta joyería en la profunda y gran antigüedad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "jael-y-el-letal-uso-tactico-de-una-inmensa-estaca-de-metal",
+      "title": "Jael y el letal uso táctico de una inmensa estaca de metal",
+      "order": 354,
+      "description": "Usar una ruda y letal estaca como arma mortífera evidenció brutal tenacidad militar férrea. Estudiamos el inmenso e indomable gran coraje castrense de esta oscura figura.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-uso-de-rudo-estiercol-como-gran-lena-de-un-letal-horno",
+      "title": "El uso de rudo estiércol como gran leña de un letal horno",
+      "order": 355,
+      "description": "La inmensa falta de leña forzó el uso de heces secas de ganado como combustible para repeler el frío letal. Estudiamos el rudo e intenso humo denso en los antiguos lares.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "abdias-y-el-colosal-peligro-de-ocultar-al-clero-y-exiliados",
+      "title": "Abdías y el colosal peligro de ocultar al clero y exiliados",
+      "order": 356,
+      "description": "Ocultar cien inocentes en húmedas cavernas letales en la antigüedad requirió de inmensa osadía. Analizamos el inmenso y gran complot heroico ejecutado en la oscura corte.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-inmenso-y-cruel-gran-trillo-y-la-letal-cosecha-madura",
+      "title": "El inmenso y cruel gran trillo y la letal cosecha madura",
+      "order": 357,
+      "description": "Arrastrar enormes maderos con letales rocas afiladas separaba el vital trigo de la paja seca. Analizamos la inmensa y ruda metáfora antigua vinculada al duro sufrimiento.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "hiram-de-tiro-y-el-inmenso-peso-del-rudo-comercio-del-mar",
+      "title": "Hiram de Tiro y el inmenso peso del rudo comercio del mar",
+      "order": 358,
+      "description": "Intercambiar letal oro por gruesos lujos generó vital endeudamiento al inmenso y rudo reino vecino oriental. Analizamos la rica alianza de esta gran figura con sus naves.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-duro-centurion-imperial-ante-la-cruz-y-la-gran-nobleza",
+      "title": "El duro centurión imperial ante la cruz y la gran nobleza",
+      "order": 359,
+      "description": "Dirigir masacres letales en el imperio era rutina militar civil. Estudiamos el colosal asombro del gran oficial al presenciar tanta calma frente al inmenso dolor físico.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-firme-mezuza-en-los-duros-marcos-y-la-letal-norma-social",
+      "title": "La firme mezuzá en los duros marcos y la letal norma social",
+      "order": 360,
+      "description": "Fijar textos rigurosos en pórticos consagraba el inmenso tránsito familiar a diario. Analizamos la profunda, férrea y vital práctica civil de esta antigua población devota.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "salome-y-la-inmensa-y-oscura-letalidad-en-el-cruel-banquete",
+      "title": "Salomé y la inmensa y oscura letalidad en el cruel banquete",
+      "order": 361,
+      "description": "Bailar ante letales y ebrios dignatarios propició un oscuro homicidio cruel. Estudiamos el misterio civil rodeando a la inmensa y muy vil figura cortesana tras ese banquete.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "eneldo-y-menta-frente-a-la-inmensa-etica-de-amor-comunal",
+      "title": "Eneldo y menta frente a la inmensa ética de amor comunal",
+      "order": 362,
+      "description": "Medir minúsculas hierbas eludiendo vitales labores morales generó letales condenas públicas. Analizamos la inmensa y cruda hipocresía ritual religiosa que operó en aquella época.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "jotam-y-su-letal-fabula-sobre-un-inmenso-y-cruel-usurpador",
+      "title": "Jotam y su letal fábula sobre un inmenso y cruel usurpador",
+      "order": 363,
+      "description": "Denunciar una letal tiranía usando fábulas exigió audacia. Analizamos el inmenso genio literario de este audaz e ilustre pensador al alertar al pueblo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-inmensa-fuente-de-bronce-y-el-rudo-terror-del-santuario",
+      "title": "La inmensa fuente de bronce y el rudo terror del santuario",
+      "order": 364,
+      "description": "Lavarse manos y pies antes del vital rito evitaba la letal ira en el lugar oscuro. Analizamos el inmenso asombro que infundía esta dura regla higiénica.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-rudos-rollos-sagrados-y-la-inmensa-e-invaluable-custodia",
+      "title": "Los rudos rollos sagrados y la inmensa e invaluable custodia",
+      "order": 365,
+      "description": "A pesar de letales destierros militares e inmensos fuegos, las escrituras sobrevivieron milenios de rigurosos ataques resistiendo a los grandes imperios.",
+      "audioUrl": ""
+    }
+  ],
+  "parts": []
+}

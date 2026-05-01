@@ -1,0 +1,55 @@
+{
+  "slug": "the-bible-in-context",
+  "locale": "en",
+  "title": "The Bible in Context",
+  "author": "Wordsus Team",
+  "description": "A fascinating journey through the ancient world to understand the historical, cultural and geographical context of the Scriptures. Discover how biblical characters lived, thought and felt to transform your reading of the Bible.",
+  "cover": "/images/books/the-bible-in-context-en-cover.jpeg",
+  "category": "biblical-studies",
+  "tags": [
+    "bible",
+    "historical-context",
+    "biblical-studies",
+    "ancient-culture"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-01",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "abrahams-journey-and-middle-eastern-culture",
+      "title": "Abraham's Journey and Middle Eastern Culture",
+      "order": 1,
+      "description": "Explore the life of Abraham and how his nomadic environment defined his big decisions. Understanding this context transforms our reading of the book of Genesis.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-geographical-and-spiritual-significance-of-the-desert",
+      "title": "The geographical and spiritual significance of the desert",
+      "order": 2,
+      "description": "The desert is not just sand, it is an unforgiving region that transforms leaders. We analyze why large testing processes occur in these lands.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "origin-and-identity-of-the-pharisees-in-ancient-times",
+      "title": "Origin and identity of the Pharisees in ancient times",
+      "order": 3,
+      "description": "Beyond being antagonists, the Pharisees were highly respected popular leaders. Discover how they emerged and why their theology clashed so much with the Lord.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-sacred-law-of-hospitality-in-the-ancient-world",
+      "title": "The sacred law of hospitality in the ancient world",
+      "order": 4,
+      "description": "Denying asylum to a stranger was a very serious cultural crime in that region. Learn how this rule worked and why it explains surprising stories.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "biblical-economics-and-the-real-value-of-the-ancient-denarius",
+      "title": "Biblical economics and the real value of the ancient denarius",
+      "order": 5,
+      "description": "Understanding money in ancient times changes the parables profoundly. Discover the purchasing power of a denarius and the abysmal value of a talent.",
+      "audioUrl": ""
+    }
+  ]
+}

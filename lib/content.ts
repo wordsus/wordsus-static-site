@@ -139,7 +139,8 @@ export function getAllCategories(locale: Locale): CategoryMeta[] {
     .map((f) => {
       const raw = fs.readFileSync(path.join(categoriesDir, f), "utf-8");
       return JSON.parse(raw) as CategoryMeta;
-    });
+    })
+    .sort((a, b) => (a.order ?? Infinity) - (b.order ?? Infinity));
 }
 
 export function getCategoryBySlug(

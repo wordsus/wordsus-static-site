@@ -37,6 +37,7 @@ export interface CategoryMeta {
   title: string;
   description: string;
   icon: string;
+  order?: number;
 }
 
 export interface TocItem {

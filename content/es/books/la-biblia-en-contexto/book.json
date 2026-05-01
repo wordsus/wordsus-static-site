@@ -1,0 +1,55 @@
+{
+  "slug": "la-biblia-en-contexto",
+  "locale": "es",
+  "title": "La Biblia en Contexto",
+  "author": "Equipo Wordsus",
+  "description": "Un viaje fascinante por el mundo antiguo para comprender el contexto histórico, cultural y geográfico de las Escrituras. Descubre cómo vivían, pensaban y sentían los personajes bíblicos para transformar tu lectura de la Biblia.",
+  "cover": "/images/books/la-biblia-en-contexto-es-cover.jpeg",
+  "category": "estudios-biblicos",
+  "tags": [
+    "biblia",
+    "contexto-historico",
+    "estudios-biblicos",
+    "cultura-antigua"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-01",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "el-viaje-de-abraham-y-la-cultura-del-medio-oriente",
+      "title": "El viaje de Abraham y la cultura del Medio Oriente",
+      "order": 1,
+      "description": "Explora la vida de Abraham y cómo su entorno nómada definió sus grandes decisiones. Entender este contexto transforma nuestra lectura del libro de Génesis.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-significado-geografico-y-espiritual-del-desierto",
+      "title": "El significado geográfico y espiritual del desierto",
+      "order": 2,
+      "description": "El desierto no es solo arena, es una región implacable que transforma líderes. Analizamos por qué los grandes procesos de prueba ocurren en estas tierras.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "origen-e-identidad-de-los-fariseos-en-la-antiguedad",
+      "title": "Origen e identidad de los fariseos en la antigüedad",
+      "order": 3,
+      "description": "Más allá de ser antagonistas, los fariseos eran líderes populares muy respetados. Descubre cómo surgieron y por qué su teología chocaba tanto con el Señor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-sagrada-ley-de-la-hospitalidad-en-el-mundo-antiguo",
+      "title": "La sagrada ley de la hospitalidad en el mundo antiguo",
+      "order": 4,
+      "description": "Negar asilo a un forastero era un delito cultural gravísimo en aquella región. Aprende cómo funcionaba esta norma y por qué explica relatos sorprendentes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "economia-biblica-y-el-valor-real-del-denario-antiguo",
+      "title": "Economía bíblica y el valor real del denario antiguo",
+      "order": 5,
+      "description": "Entender el dinero en la antigüedad cambia las parábolas profundamente. Descubre el poder adquisitivo de un denario y el abismal valor que tenía un talento.",
+      "audioUrl": ""
+    }
+  ]
+}

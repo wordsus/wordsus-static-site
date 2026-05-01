@@ -3,5 +3,6 @@
   "locale": "en",
   "title": "Science",
   "description": "Explore the fascinating world of science, from physics and astronomy to biology and chemistry. Discover how the universe works.",
-  "icon": "flask"
+  "icon": "flask",
+  "order": 1
 }

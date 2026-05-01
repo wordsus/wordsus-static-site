@@ -18,7 +18,7 @@ interface HomeClientProps {
   locale: Locale;
   allBooks: BookMeta[];             // books in the current locale (for category grid)
   allBooksAllLocales: BookMeta[];   // books from every locale (for Continue Reading)
-  categories: { slug: string; title: string; description: string; icon: string }[];
+  categories: { slug: string; title: string; description: string; icon: string; order?: number }[];
   booksByCategory: Record<string, BookMeta[]>;
 }
 

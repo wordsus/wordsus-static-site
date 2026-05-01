@@ -3,5 +3,6 @@
   "locale": "es",
   "title": "Ciencia",
   "description": "Explora el fascinante mundo de la ciencia, desde la física y la astronomía hasta la biología y la química. Descubre cómo funciona el universo.",
-  "icon": "flask"
+  "icon": "flask",
+  "order": 1
 }

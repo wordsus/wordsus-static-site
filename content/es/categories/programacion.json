@@ -3,5 +3,6 @@
   "locale": "es",
   "title": "Programación",
   "description": "Aprende lenguajes de programación, algoritmos, estructuras de datos y mejores prácticas de desarrollo.",
-  "icon": "code"
+  "icon": "code",
+  "order": 2
 }

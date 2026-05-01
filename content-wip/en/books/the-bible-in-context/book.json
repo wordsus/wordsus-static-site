@@ -1,0 +1,2541 @@
+{
+  "slug": "the-bible-in-context",
+  "locale": "en",
+  "title": "The Bible in Context",
+  "author": "Wordsus Team",
+  "description": "A fascinating journey through the ancient world to understand the historical, cultural and geographical context of the Scriptures. Discover how biblical characters lived, thought and felt to transform your reading of the Bible.",
+  "cover": "/images/books/the-bible-in-context-en-cover.jpeg",
+  "category": "biblical-studies",
+  "tags": [
+    "bible",
+    "historical-context",
+    "biblical-studies",
+    "ancient-culture"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-01",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "moses-before-the-egyptian-empire-and-its-formal-formation",
+      "title": "Moses before the Egyptian empire and its formal formation",
+      "order": 6,
+      "description": "Education in Egypt prepared Moses to lead an entire nation to Canaan. We analyze the clash between the luxury of the pharaoh and harsh slavery.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-sea-of-galilee-and-its-influence-on-the-life-of-jesus",
+      "title": "The Sea of ​​Galilee and its influence on the life of Jesus",
+      "order": 7,
+      "description": "This iconic lake was the main setting for multiple miracles. We explore its geography, sudden violent storms and the culture of its coasts.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-babylonian-empire-and-the-impact-of-the-great-exile",
+      "title": "The Babylonian Empire and the impact of the great exile",
+      "order": 8,
+      "description": "The painful deportation to Babylon was Israel's greatest historical trauma. Learn how this power transformed religious identity and writing.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "structure-and-purpose-of-the-tabernacle-in-the-desert",
+      "title": "Structure and purpose of the tabernacle in the desert",
+      "order": 9,
+      "description": "This sacred tent organized the nomadic life of the Israelites on their journey. We detail its areas, the materials and the symbolism of the sacrifices.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "david-and-the-geopolitical-transition-of-the-kingdom-of-israel",
+      "title": "David and the geopolitical transition of the kingdom of Israel",
+      "order": 10,
+      "description": "From outcast shepherd to unifying king, David changed the military history of his nation. We analyze the conquest of Jerusalem and the strategic alliances.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-hard-job-of-being-a-sheepherder-in-judea",
+      "title": "The hard job of being a sheepherder in Judea",
+      "order": 11,
+      "description": "Forget the traditional romantic image. Herding was rough, lonely and dangerous work. Understanding it gives new weight and meaning to Psalm twenty-three.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-fishing-industry-during-the-first-century-in-judea",
+      "title": "The fishing industry during the first century in Judea",
+      "order": 12,
+      "description": "The fishermen were not very poor farmers, they ran profitable businesses under heavy taxes. We explore their daily routine and position in society.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "sacred-geography-and-the-natural-defense-of-jerusalem",
+      "title": "Sacred geography and the natural defense of Jerusalem",
+      "order": 13,
+      "description": "Located on various mountains and surrounded by deep valleys, the city was a natural fortress. Discover why all the pilgrims had to climb it.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-political-and-social-context-during-the-life-of-jesus",
+      "title": "The political and social context during the life of Jesus",
+      "order": 14,
+      "description": "Jesus was born in a true political powder keg strictly dominated by Rome. We analyze social tensions, taxes and expectations of liberation.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-roman-empire-and-its-strict-control-over-judea",
+      "title": "The Roman Empire and its strict control over Judea",
+      "order": 15,
+      "description": "Rome's great military machine dictated every aspect of daily life. Learn about the prefects, the legions, and the balance of power with the Sanhedrin.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "peter-of-galilee-and-his-role-in-the-beginning-of-the-movement",
+      "title": "Peter of Galilee and his role in the beginning of the movement",
+      "order": 16,
+      "description": "An impulsive man and fisherman by trade who became a great leader. We study his personal evolution when facing the strong Greco-Roman culture.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "marriage-and-spousal-contracts-at-the-time",
+      "title": "Marriage and spousal contracts at the time",
+      "order": 17,
+      "description": "The Jewish engagement was legally binding, much stricter than a modern courtship. Understanding this custom clarifies the risk that Mary took.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-celebration-of-passover-and-the-sacrifice-of-the-lamb",
+      "title": "The celebration of Passover and the sacrifice of the lamb",
+      "order": 18,
+      "description": "The biggest festival on the calendar attracted thousands of pilgrims without exception. We detail the ritual dinner, the festive atmosphere and the surveillance of the troops.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "elijah-against-the-political-influence-of-the-cult-of-baal",
+      "title": "Elijah against the political influence of the cult of Baal",
+      "order": 19,
+      "description": "The extensive drought was not a simple ecological disaster, it was a war against the Canaanite god of rain. Understand the challenge on the great Mount Carmel.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ritual-purity-and-the-social-stigma-of-ancient-leprosy",
+      "title": "Ritual purity and the social stigma of ancient leprosy",
+      "order": 20,
+      "description": "Being declared unclean implied total expulsion from civil and religious society. We analyze strict health laws and the work of the priest.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-dead-sea-and-the-preservation-of-sacred-texts",
+      "title": "The Dead Sea and the preservation of sacred texts",
+      "order": 21,
+      "description": "The lowest place on Earth is home to a unique ecosystem with extreme conditions. Its arid climate allowed the famous ancient scrolls to survive.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "paul-of-tarsus-and-his-strategic-citizenship-of-the-empire",
+      "title": "Paul of Tarsus and his strategic citizenship of the empire",
+      "order": 22,
+      "description": "As an educated and devout Roman citizen, Paul had immense and unique legal advantages. We explore how he used his status to expand his great ministry.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "agricultural-cycles-and-seasons-in-ancient-judea",
+      "title": "Agricultural cycles and seasons in ancient Judea",
+      "order": 23,
+      "description": "Early and late rains marked the strict survival of local villages. Agricultural economics inspired great metaphors in Scripture.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ancient-egypt-as-a-refuge-and-place-of-slavery",
+      "title": "Ancient Egypt as a refuge and place of slavery",
+      "order": 24,
+      "description": "From Abraham to the New Testament, Egypt was a constant escape route from famines. We analyze Israel's ambivalent relationship with this nation.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "joseph-and-the-inner-workings-of-pharaohs-court",
+      "title": "Joseph and the inner workings of Pharaoh's court",
+      "order": 25,
+      "description": "Sold as a slave in his youth, Joseph managed to rise to administrative power. Discover how viziers and grain silos operated during crises.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-architecture-and-purpose-of-herods-great-temple",
+      "title": "The architecture and purpose of Herod's great Temple",
+      "order": 26,
+      "description": "One of the greatest architectural wonders of the ancient world in its greatest splendor. We explore its enormous atriums and the exclusivity of the great sanctuary.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-sadducees-and-aristocratic-control-over-the-temple",
+      "title": "The Sadducees and aristocratic control over the Temple",
+      "order": 27,
+      "description": "They actively represented the wealthy and priestly aristocracy of the great city of Jerusalem. Learn why they rejected beliefs in the resurrection.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "jacob-and-the-importance-of-birthright",
+      "title": "Jacob and the importance of birthright",
+      "order": 28,
+      "description": "In the ancient world, primogeniture ensured family leadership and the best economic inheritance. He understands the family tensions that formed the nation.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-military-cruelty-of-the-assyrian-empire-in-ancient-times",
+      "title": "The military cruelty of the Assyrian Empire in ancient times",
+      "order": 29,
+      "description": "Known worldwide for their relentless warlike brutality, they terrorized their neighbors. We analyze how this violent invasion destroyed the northern kingdom.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "john-the-baptist-and-his-radical-life-in-the-arid-desert",
+      "title": "John the Baptist and his radical life in the arid desert",
+      "order": 30,
+      "description": "A passionate preacher with a direct message of strong social repentance. We study their strange diet, austere clothing, and purifying baptism.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "solomon-and-the-golden-age-of-the-united-kingdom-of-israel",
+      "title": "Solomon and the golden age of the united kingdom of Israel",
+      "order": 31,
+      "description": "We explore the immense economic prosperity, great trade alliances, and administrative wisdom that characterized his prestigious peaceful reign.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-oil-production-process-in-olive-presses",
+      "title": "The oil production process in olive presses",
+      "order": 32,
+      "description": "Olive oil was vital for food, medicine and lighting. We analyze its laborious extraction and the symbolism of the Garden of Gethsemane in Judea.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "origin-and-importance-of-the-synagogue-in-jewish-life",
+      "title": "Origin and importance of the synagogue in Jewish life",
+      "order": 33,
+      "description": "Without the Temple, local centers of sacred study were formed. We explore the educational and social function of these community gatherings in Jewish villages.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "publicans-and-the-complex-roman-tax-network",
+      "title": "Publicans and the complex Roman tax network",
+      "order": 34,
+      "description": "Collecting tribute for Rome made you an outcast and a great traitor. We analyze the enormous popular rejection of this lucrative work in Jewish society.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "joshua-facing-the-enormous-challenge-of-military-conquest",
+      "title": "Joshua facing the enormous challenge of military conquest",
+      "order": 35,
+      "description": "When Moses died, this leader had to organize the people for battle. We study their war tactics and the geography of the long-awaited promised land.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-jordan-river-and-its-immense-importance-on-the-border",
+      "title": "The Jordan River and its immense importance on the border",
+      "order": 36,
+      "description": "This river defined important physical and spiritual boundaries. We explore their historical crosses and their vital function in ancient purification rituals.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-greek-empire-and-its-enormous-sociopolitical-influence",
+      "title": "The Greek Empire and its enormous sociopolitical influence",
+      "order": 37,
+      "description": "Greece managed to impose a universal language and rich culture. We explore how this environment prepared the world for rapid spread of scripture.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "mary-of-nazareth-and-the-difficult-life-in-rural-society",
+      "title": "Mary of Nazareth and the difficult life in rural society",
+      "order": 38,
+      "description": "We analyze the immense difficulty of a villager when she becomes pregnant before her wedding, defying the strict laws and condemnation of her rigid town.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-political-and-religious-power-of-the-jewish-great-sanhedrin",
+      "title": "The political and religious power of the Jewish Great Sanhedrin",
+      "order": 39,
+      "description": "This council of notables operated as the great supreme court of the region. We study its historical formation and the power of its harsh verdicts.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "jeremiah-and-the-deep-emotional-burden-of-the-harsh-message",
+      "title": "Jeremiah and the deep emotional burden of the harsh message",
+      "order": 40,
+      "description": "Being a prophet guaranteed deep rejection. We see the loneliness of this preacher as he assiduously warns about the terrible military collapse of his beloved country.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "funerary-traditions-and-excavated-tombs",
+      "title": "Funerary traditions and excavated tombs",
+      "order": 41,
+      "description": "Knowing the treatment of the deceased illuminates many ancient stories. We study family grief and the arduous process of excavating a safe grave.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ruth-of-moab-and-the-vital-agricultural-gleaning-laws",
+      "title": "Ruth of Moab and the vital agricultural gleaning laws",
+      "order": 42,
+      "description": "Leaving leftovers from crops helped popular sustenance. We understand the noble solidarity network of the past with the excellent work of this young foreigner.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ezra-and-the-complex-return-of-the-people-after-exile",
+      "title": "Ezra and the complex return of the people after exile",
+      "order": 43,
+      "description": "Rebuilding a razed capital was monumental. We analyze the long return from exile and the urgent rescue of social norms to console the people.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "roman-centurions-and-their-rigorous-military-training",
+      "title": "Roman centurions and their rigorous military training",
+      "order": 44,
+      "description": "They faithfully led the fearsome troops of the empire. We see the power of this military position and the surprising faith shown by several in a turbulent environment.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "mount-sinai-and-the-profound-geographical-revelations",
+      "title": "Mount Sinai and the profound geographical revelations",
+      "order": 45,
+      "description": "This rock massif was the vital setting where eternal rules were dictated. We observed how the rugged height instilled enormous respect among the campers.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "water-wells-and-their-great-relevance-in-ancient-times",
+      "title": "Water wells and their great relevance in ancient times",
+      "order": 46,
+      "description": "In the arid climate having liquid saved lives. We analyze how controlling the precious extraction unleashed bitter lawsuits and great love stories.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "nehemiah-and-the-colossal-feat-of-fortifying-jerusalem",
+      "title": "Nehemiah and the colossal feat of fortifying Jerusalem",
+      "order": 47,
+      "description": "Restoring the thick defensive walls was vital to survival. We admire the quick work and logistics that managed to shield the emblematic city.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-punishment-of-the-cross-and-the-penal-system-of-the-great-empire",
+      "title": "The punishment of the cross and the penal system of the great Empire",
+      "order": 48,
+      "description": "This fearsome execution assured severe pain and disgrace. We analyze why this brutal punishment was used as a strong tool of great mass deterrence.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "mateo-and-the-peculiar-social-position-of-collecting-taxes",
+      "title": "Mateo and the peculiar social position of collecting taxes",
+      "order": 49,
+      "description": "Charging tariffs brought economic fortunes and popular rejection. We analyze his admirable audacity to leave such a lucrative position and be a loyal follower.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-strong-historical-tension-that-existed-with-the-samaritans",
+      "title": "The strong historical tension that existed with the Samaritans",
+      "order": 50,
+      "description": "This neighboring ethnic group had incompatible religious customs. We understand the severe history of racial hatred in this harsh geographical environment.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-valuable-process-of-making-bread-and-the-influence-of-yeast",
+      "title": "The valuable process of making bread and the influence of yeast",
+      "order": 51,
+      "description": "Kneading flour formed the pillar of family nutrition. We study its expansive organic effect and the amazing symbolic use to teach ethics.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-great-musical-assemblies-in-solemn-dedications",
+      "title": "The great musical assemblies in solemn dedications",
+      "order": 52,
+      "description": "Large groups of musicians gave formal beauty to the massive celebrations. We study the enormous aesthetic preparation required in each of them.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "isaias-and-his-immense-knowledge-of-world-geopolitics",
+      "title": "Isaías and his immense knowledge of world geopolitics",
+      "order": 53,
+      "description": "From the palace, this wise spokesperson was able to interpret complex global tensions. We discovered his diplomatic brilliance in warning against weak alliances.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-costly-use-of-aromatic-perfumes-and-fine-ointments",
+      "title": "The costly use of aromatic perfumes and fine ointments",
+      "order": 54,
+      "description": "Foreign fragrances were equivalent to expensive real estate. We see the incredible impact of spilling valuable packaging in a grand and unusual gesture.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-astonishing-warlike-and-lethal-superiority-of-the-philistines",
+      "title": "The astonishing warlike and lethal superiority of the Philistines",
+      "order": 55,
+      "description": "This great town controlled the secret lethal foundry. We see their brutal, astonishing, and immense weapons advantage over highly inexperienced battalions.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-shephelah-and-the-crucial-great-territory-in-war-dispute",
+      "title": "The Shephelah and the crucial great territory in war dispute",
+      "order": 56,
+      "description": "This beautiful region of gentle hills was the main strategic frontier of ancient times. We analyze intense crashes along the coveted commercial roads.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "john-and-the-slow-internal-evolution-of-the-much-loved-disciple",
+      "title": "John and the slow internal evolution of the much loved disciple",
+      "order": 57,
+      "description": "He began his pastoral route with an extremely intolerant character. We admire the noble evolution that inspired his great reflective books in his mature stage.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "antioch-and-the-first-and-vital-explosion-of-the-movement",
+      "title": "Antioch and the first and vital explosion of the movement",
+      "order": 58,
+      "description": "This enormous city unified various ancient cultures. We appreciate how its immense social melting pot effectively fueled bold global roadshow campaigns.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-great-roman-roads-and-their-fast-transportation-network",
+      "title": "The great Roman roads and their fast transportation network",
+      "order": 59,
+      "description": "Great roads linked vast provinces effectively. We analyze this remarkable constructive feat that successfully spread strong transformative messages.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "tomas-and-the-sincere-expression-of-astonishment-and-great-doubt",
+      "title": "Tomás and the sincere expression of astonishment and great doubt",
+      "order": 60,
+      "description": "Known for his complex and justified resentments, he later revealed immense and indomitable courage. We appreciate how that strong pragmatism effectively invigorated him.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "samuel-and-the-difficult-transition-to-monarchy",
+      "title": "Samuel and the difficult transition to monarchy",
+      "order": 61,
+      "description": "This great leader guided the people from the time of the judges to the establishment of the kings. We analyze their deep resistance to political change.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-textile-industry-and-clothing-in-the-ancient-world",
+      "title": "The textile industry and clothing in the ancient world",
+      "order": 62,
+      "description": "Making clothes required enormous and tireless effort. We studied the rustic looms, the cost of the rich tunics and the great value of a simple cloak.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-persian-empire-and-its-surprising-policy-of-tolerance",
+      "title": "The Persian Empire and its surprising policy of tolerance",
+      "order": 63,
+      "description": "Unlike the brutal Assyrians, the Persians allowed the restoration of the conquered peoples. We explore the famous decree of Emperor Cyrus.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-majestic-mount-carmel-and-its-great-strategic-value",
+      "title": "The majestic Mount Carmel and its great strategic value",
+      "order": 64,
+      "description": "This mountain range was not only the site of memorable religious duels, but also a vital geographical barrier. We analyze its thick vegetation and its hidden routes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "maria-magdalena-and-the-crucial-logistical-support-of-the-group",
+      "title": "María Magdalena and the crucial logistical support of the group",
+      "order": 65,
+      "description": "Beyond the unfounded myths, this figure provided immense financial support to the movement. We explore his vital role as the main eyewitness.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ancient-medicine-and-the-limited-treatments-of-the-time",
+      "title": "Ancient medicine and the limited treatments of the time",
+      "order": 66,
+      "description": "In an environment of poor sanitation, the disease was often fatal. We analyze the rudimentary remedies, the use of oils and the hope of healing.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "daniel-and-the-great-ethical-challenges-in-the-pagan-court",
+      "title": "Daniel and the great ethical challenges in the pagan court",
+      "order": 67,
+      "description": "Surviving as a high official in a foreign empire demanded immense cunning and great moral conviction. We study his brilliant and extensive diplomatic work.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-festival-of-tabernacles-and-its-deep-joy",
+      "title": "The festival of tabernacles and its deep joy",
+      "order": 68,
+      "description": "This agrarian celebration forced the people to live in rustic bowers for a week. We explore their joyful water rituals and festive torches.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-immense-valley-of-jezreel-and-the-bloody-battles",
+      "title": "The immense valley of Jezreel and the bloody battles",
+      "order": 69,
+      "description": "This large flat corridor witnessed the deadliest combats of ancient times due to its location. We understand why he inspired the concept of Armageddon.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "barnabas-and-the-immense-social-power-of-recommendation",
+      "title": "Barnabas and the immense social power of recommendation",
+      "order": 70,
+      "description": "Introducing a former persecutor into the assemblies unleashed widespread terror. We look at the courageous mentoring that made the initial movement thrive.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "slavery-due-to-serious-debts-in-ancient-times",
+      "title": "Slavery due to serious debts in ancient times",
+      "order": 71,
+      "description": "Far from modern networks, submitting to servitude used to be the only way out of total ruin. We analyze the protective laws of the jubilee year.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-basic-daily-diet-and-the-great-royal-feasts",
+      "title": "The basic daily diet and the great royal feasts",
+      "order": 72,
+      "description": "The popular diet was very monotonous, based strictly on bread and legumes. We explore the immense contrast with the luxuries and spices of the palace.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gideon-facing-the-siege-and-strong-midianite-oppression",
+      "title": "Gideon facing the siege and strong Midianite oppression",
+      "order": 73,
+      "description": "The fast nomadic plunderers ruined all the crops, plunging the country into great misery. We analyze the ingenious and lethal night war tactic.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-herodian-dynasty-and-control-of-the-tense-region",
+      "title": "The Herodian dynasty and control of the tense region",
+      "order": 74,
+      "description": "This dysfunctional but cunning great family ruled under the strict surveillance of Rome. We analyze his ambitious paranoia and his colossal public works.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-arduous-prophetic-office-in-the-face-of-great-deceptions",
+      "title": "The arduous prophetic office in the face of great deceptions",
+      "order": 75,
+      "description": "Speaking for God implied great political risk and strong social rejection. We study how these messengers operated in the royal courts of ancient times.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "timothy-and-the-immense-challenge-of-leading-in-ancient-times",
+      "title": "Timothy and the immense challenge of leading in ancient times",
+      "order": 76,
+      "description": "Being unusually young and in fragile health, he had to organize communities in very hostile cities. We analyze the harsh clash with the strong culture of Ephesus.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-city-of-hebron-and-its-great-historical-and-family-weight",
+      "title": "The city of Hebron and its great historical and family weight",
+      "order": 77,
+      "description": "Located in the mountainous area, this ancient city guarded the tombs of the great founders. We understand why it was the first capital of the kingdom.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "heavy-military-weapons-and-tactics-in-wars",
+      "title": "Heavy military weapons and tactics in wars",
+      "order": 78,
+      "description": "Hand-to-hand combat required great physical stamina and rough training. We analyze the swords, spears and shields used by infantry battalions.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "stephen-and-the-deep-schism-with-the-hellenistic-positions",
+      "title": "Stephen and the deep schism with the Hellenistic positions",
+      "order": 79,
+      "description": "The early community faced severe tensions due to deep-rooted internal cultural differences. We study the tenacious and lethal public debate of this leader.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-strict-relationship-of-patronage-in-the-roman-empire",
+      "title": "The strict relationship of patronage in the Roman Empire",
+      "order": 80,
+      "description": "The entire society operated under rigid alliances of unbreakable favors between the rich and vassals. We understand how the concept of unmerited favor impacted.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-rich-city-of-samaria-and-its-colossal-final-fall",
+      "title": "The rich city of Samaria and its colossal final fall",
+      "order": 81,
+      "description": "Built on a prominent hill, it was the luxurious and ostentatious capital of the north. We explore its opulent palaces and its bitter and raw devastating siege.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "silas-and-the-lethal-missions-on-the-roman-roads",
+      "title": "Silas and the lethal missions on the Roman roads",
+      "order": 82,
+      "description": "Carrying urgent messages between diverse communities required astonishing bravery. We analyzed the enormous dangers faced by the tenacious delegates.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-ark-of-the-covenant-and-its-imposing-presence-in-battle",
+      "title": "The Ark of the Covenant and its imposing presence in battle",
+      "order": 83,
+      "description": "This sacred chest covered in gold represented the immense celestial power in the camp. We explore its construction, its mysteries and its lethal capture.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-ferocious-zealots-and-the-great-rebellion-against-the-empire",
+      "title": "The ferocious zealots and the great rebellion against the empire",
+      "order": 84,
+      "description": "Frustrated by incessant abuses, radical groups launched a tenacious, heavily armed uprising. We analyze the serious consequences of this extremism.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "priscila-and-aquila-in-the-influential-tent-industry",
+      "title": "Priscila and Aquila in the influential tent industry",
+      "order": 85,
+      "description": "Working heavy canvas and leather formed vital business networks in ancient times. We study the enormous hospitality and theology of this astute couple.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-old-vineyards-and-the-laborious-great-treading-of-the-grapes",
+      "title": "The old vineyards and the laborious great treading of the grapes",
+      "order": 86,
+      "description": "Wine was vital to purify stagnant water. We analyze the hard work of harvesting the fruits and the metaphors that were born from the enormous presses.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-sacred-mount-of-olives-and-jewish-expectation",
+      "title": "The sacred Mount of Olives and Jewish expectation",
+      "order": 87,
+      "description": "This summit not only offered the most beautiful view of the sacred precinct, but also concentrated strong prophetic hopes. We explore its intense geography.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "josiah-and-the-great-rediscovery-of-the-book-of-the-norm",
+      "title": "Josiah and the great rediscovery of the book of the norm",
+      "order": 88,
+      "description": "Inheriting a kingdom completely sunk in the strong mysticism of others was a monumental challenge. We study the drastic and courageous purification reforms.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-great-trade-routes-and-lucrative-tariffs",
+      "title": "The great trade routes and lucrative tariffs",
+      "order": 89,
+      "description": "The narrow geographical bridge made it possible to control the million-dollar international traffic. We analyze the merchant caravans and the military passage through the region.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-high-financial-cost-of-sacrifices-on-the-altar",
+      "title": "The high financial cost of sacrifices on the altar",
+      "order": 90,
+      "description": "Giving a perfect animal meant giving up valuable family heritage. We analyze the harsh physical reality of this incessant and harsh ritual.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-city-gates-and-the-urban-legal-center",
+      "title": "The city gates and the urban legal center",
+      "order": 91,
+      "description": "In ancient times, the walled entrance was not just transit, but the great court where elders resolved intense legal disputes and deals.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "judas-iscariot-and-the-strong-nationalist-rebellion",
+      "title": "Judas Iscariot and the strong nationalist rebellion",
+      "order": 92,
+      "description": "We analyze the dark profile of this figure and how his strong political frustrations against the oppressive and rigid Roman Empire influenced him.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-scribes-and-the-monumental-work-of-the-parchment",
+      "title": "The scribes and the monumental work of the parchment",
+      "order": 93,
+      "description": "Copying sacred texts was a task of extreme slowness and very high precision. We study the inks, the leathers and the immense value of a roll.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "isaac-and-the-complex-life-of-the-patriarchal-clans",
+      "title": "Isaac and the complex life of the patriarchal clans",
+      "order": 94,
+      "description": "Living peacefully among hostile nomadic neighbors required great diplomacy. We analyze the enormous challenges that this peaceful figure faced.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-imposing-mount-hermon-and-the-deities-in-the-area",
+      "title": "The imposing Mount Hermon and the deities in the area",
+      "order": 95,
+      "description": "This majestic snowy peak dominated the landscape. We explore its strong pagan contrast and why it was the scene of the great transfiguration.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-vital-use-of-salt-in-the-hot-ancient-world",
+      "title": "The vital use of salt in the hot ancient world",
+      "order": 96,
+      "description": "Far from being a simple condiment, this precious mineral guaranteed the preservation of meat and inspired the most lasting ancient pacts.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "samson-and-the-strong-military-pressure-of-the-philistines",
+      "title": "Samson and the strong military pressure of the Philistines",
+      "order": 97,
+      "description": "Beyond his physical strength, his story reflects the anarchy of the time. We analyze the tough border fighting and weak tribal alliances.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "damascus-and-its-immense-ancient-commercial-importance",
+      "title": "Damascus and its immense ancient commercial importance",
+      "order": 98,
+      "description": "Being one of the oldest major urban epicenters, this prosperous oasis city firmly controlled all caravan routes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ancient-musical-instruments-and-their-great-value",
+      "title": "Ancient musical instruments and their great value",
+      "order": 99,
+      "description": "Music profoundly regulated the strong work and religious rhythm. We explored the incessant sound of lyres, tambourines and horn trumpets.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "pontius-pilate-and-the-tense-provincial-administration",
+      "title": "Pontius Pilate and the tense provincial administration",
+      "order": 100,
+      "description": "Governing a highly rebellious population required immense tactical cruelty. We analyze the enormous mutual contempt between this military man and the region.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "boaz-and-the-vital-concept-of-the-legal-kinsman-redeemer",
+      "title": "Boaz and the vital concept of the legal kinsman redeemer",
+      "order": 101,
+      "description": "The severe law protected widows and orphans through this curious family figure. We study the rescue of lands and heritage.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fishing-boats-in-the-turbulent-first-century",
+      "title": "Fishing boats in the turbulent first century",
+      "order": 102,
+      "description": "Archaeologists discovered remains of ancient boats. We analyzed their fragile wooden construction and how they withstood large, harsh storms.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "mary-the-prophetess-and-the-vital-role-in-leadership",
+      "title": "Mary the prophetess and the vital role in leadership",
+      "order": 103,
+      "description": "Supporting the difficult great Hebrew emancipation was colossal. We analyze the immense political and musical influence of this brave and sagacious key figure.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "goat-hair-tents-and-the-harsh-nomadic-life",
+      "title": "Goat hair tents and the harsh nomadic life",
+      "order": 104,
+      "description": "The intense changes in climate forced travel. We understand the rigorous routine of setting up and breaking down rustic camps in the desert.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-great-region-of-the-decapolis-and-its-culture-shock",
+      "title": "The great region of the Decapolis and its culture shock",
+      "order": 105,
+      "description": "This alliance of enormous Greek cities represented extreme paganism. We study its ostentatious architecture and the immense production of pigs.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-intense-public-mourning-and-the-official-mourners",
+      "title": "The intense public mourning and the official mourners",
+      "order": 106,
+      "description": "Intensely mourning the dead was a strong community obligation. We explore the profound work of those who were paid to lament loudly.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "aaron-and-the-firm-establishment-of-the-high-priesthood",
+      "title": "Aaron and the firm establishment of the high priesthood",
+      "order": 107,
+      "description": "Mediating between the people and the divine required great ritual training. We analyze the sacred clothing and its tense daily responsibilities.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-old-peace-treaties-and-the-cutting-of-pacts",
+      "title": "The old peace treaties and the cutting of pacts",
+      "order": 108,
+      "description": "Signing stern agreements involved walking ceremoniously among the divided animals. We analyze this lethal and bloody metaphor of loyalty.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "martha-mary-and-the-great-dynamics-of-the-home-in-judea",
+      "title": "Martha, Mary and the great dynamics of the home in Judea",
+      "order": 109,
+      "description": "These outstanding figures allow us to see the intense and strong clash between rigid and severe domestic tasks and theological learning.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-dark-valley-of-hinno-and-its-great-theological-weight",
+      "title": "The dark valley of Hinno and its great theological weight",
+      "order": 110,
+      "description": "A deep flaming garbage dump on the outskirts of the city served as the great image of eternal fire. We analyze their raw past sacrifices.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-deep-cisterns-and-the-miracle-of-saving-water",
+      "title": "The deep cisterns and the miracle of saving water",
+      "order": 111,
+      "description": "Excavating large deposits in the hard rock guaranteed survival. We explore their vital cleanliness and how they operated as dark and cruel prisons.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-harsh-education-and-child-rearing-of-the-time",
+      "title": "The harsh education and child rearing of the time",
+      "order": 112,
+      "description": "Transmitting the sacred law to children by rote was the most vital and important family mission. We study early schools.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "esau-and-the-great-rocky-territory-of-the-edomites",
+      "title": "Esau and the great rocky territory of the Edomites",
+      "order": 113,
+      "description": "Descendants of the elder brother formed an implacable rival nation. We analyze the wild red peaks of Petra and the eternal hostilities.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-large-communal-ovens-and-the-work-of-kneading",
+      "title": "The large communal ovens and the work of kneading",
+      "order": 114,
+      "description": "Baking whole grain loaves of bread brought the neighbors together daily. We study the immense heat of these rustic wells of clay and dry grass.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ancient-navigation-and-the-great-dangers-of-the-sea",
+      "title": "Ancient navigation and the great dangers of the sea",
+      "order": 115,
+      "description": "Traveling on huge merchant ships during the cold winter months was lethal. We see the brutal storms and the most amazing shipwrecks.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-severe-praetorian-guard-and-the-control-of-rome",
+      "title": "The severe Praetorian Guard and the control of Rome",
+      "order": 116,
+      "description": "This brutal elite force protected the feared great emperors. We see how they had a notable influence on the confinements of the great apostle.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-opulent-city-of-ur-and-its-ancient-great-culture",
+      "title": "The opulent city of Ur and its ancient great culture",
+      "order": 117,
+      "description": "Leaving the most advanced civilization of their era required enormous faith and courage. We analyze the strong astral idolatry and the luxuries that were left behind.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-huge-thermal-baths-and-hellenistic-philosophy",
+      "title": "The huge thermal baths and Hellenistic philosophy",
+      "order": 118,
+      "description": "We understand the violent cultural clash between strict Hebrew morality versus the immense Greco-Roman obsession with cultivating the human body.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-harsh-arid-negev-and-the-extreme-and-long-droughts",
+      "title": "The harsh arid Negev and the extreme and long droughts",
+      "order": 119,
+      "description": "This unforgiving border region in the far south punished with its immense and deadly heat. We understand the harsh and incredibly arid escape routes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-remote-island-of-patmos-and-the-fierce-mining-exile",
+      "title": "The remote island of Patmos and the fierce mining exile",
+      "order": 120,
+      "description": "Secluded and heavily guarded in this large rock colony, the prophet dictated visions. We study the lethal brutality of the harsh penal system.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "job-and-the-immense-enigma-of-strong-and-atrocious-suffering",
+      "title": "Job and the immense enigma of strong and atrocious suffering",
+      "order": 121,
+      "description": "We analyze the colossal tragedy of this immense figure to understand the great and profound theological crisis of the ancient world in the face of undeserved pain.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-euphrates-river-and-the-cradle-of-ancient-civilizations",
+      "title": "The Euphrates River and the cradle of ancient civilizations",
+      "order": 122,
+      "description": "This enormous and colossal flow of water formed the first great world cities. We study its immense commercial weight and enormous border value.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "esther-and-the-intense-and-lethal-politics-of-the-great-empire",
+      "title": "Esther and the intense and lethal politics of the great empire",
+      "order": 123,
+      "description": "Hiding his strict Jewish identity in such a hostile court required great care. We look at their bravery in stopping such a devastating massacre.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "oil-lamps-and-lighting-in-houses",
+      "title": "Oil lamps and lighting in houses",
+      "order": 124,
+      "description": "The darkness of the night was paralyzing and extremely feared. We explore the immense value of clay vessels and their deep symbolism of light.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-vital-role-of-midwives-in-the-beginning-of-the-world",
+      "title": "The vital role of midwives in the beginning of the world",
+      "order": 125,
+      "description": "In a time of very high infant mortality, their dedicated and expert work saved many lives. We study their tenacious civil resistance in Egypt.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "lucas-and-the-detailed-and-very-precise-work-of-investigating",
+      "title": "Lucas and the detailed and very precise work of investigating",
+      "order": 126,
+      "description": "This Greek medical cult meticulously compiled the various scattered oral sources. We analyze his immense and vital contribution to historiography.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-intense-and-arid-roads-of-the-judean-desert",
+      "title": "The intense and arid roads of the Judean Desert",
+      "order": 127,
+      "description": "Traveling these rugged, rocky routes exposed travelers to lethal assailants. We understand the great and profound danger of the story of the Samaritan.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ezekiel-and-the-exile-by-the-distant-river-of-babylon",
+      "title": "Ezekiel and the exile by the distant river of Babylon",
+      "order": 128,
+      "description": "Preaching to defeated captives required stunning and dramatic visual metaphors. We analyze his complex visions of the great hope.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-hard-mining-work-and-the-extraction-of-metals",
+      "title": "The hard mining work and the extraction of metals",
+      "order": 129,
+      "description": "Obtaining copper and gold meant descending into dark and very dangerous underground caverns. We study the very harsh conditions of this brutal task.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-rigorous-and-very-sacred-nazarite-vow-in-ancient-times",
+      "title": "The rigorous and very sacred Nazarite vow in ancient times",
+      "order": 130,
+      "description": "Abstaining from cutting hair and consuming grapes was a visible and firm pact of total dedication. We explore the immense devotion of this peculiar rite.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "marcos-and-the-tenacious-challenge-of-writing-a-great-story",
+      "title": "Marcos and the tenacious challenge of writing a great story",
+      "order": 131,
+      "description": "Writing the first continuous writing about the teacher required an extremely fast and direct narrative. We analyze its immense literary influence.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ancient-beekeeping-and-precious-wild-honey",
+      "title": "Ancient beekeeping and precious wild honey",
+      "order": 132,
+      "description": "Considered the most exquisite sweet of its time, its collection in the wild forests was laborious. We see the colossal and enormous value of this delicacy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-colossal-and-superb-splendor-of-ancient-ephesus",
+      "title": "The colossal and superb splendor of ancient Ephesus",
+      "order": 133,
+      "description": "This great commercial city housed one of the greatest wonders of the ancient world. We study its lethal mysticism and its enormous material wealth.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "santiago-and-the-strong-call-for-equitable-justice",
+      "title": "Santiago and the strong call for equitable justice",
+      "order": 134,
+      "description": "His harsh message against the immense abuses of wealthy landowners resonated with immense community force. We analyze his extremely radical ethics.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-severe-roman-prisons-and-harsh-dungeons",
+      "title": "The severe Roman prisons and harsh dungeons",
+      "order": 135,
+      "description": "Dark, fetid and cold, these underground dungeons broke any human spirit. We see the immense physical suffering of the prisoners.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-invaluable-use-of-clay-seals-and-rings",
+      "title": "The invaluable use of clay seals and rings",
+      "order": 136,
+      "description": "Signing large documents required printing wax or clay with a personal emblem. We analyze this vital legal guarantee of great authority and ownership.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "hosea-and-the-bitter-and-profound-great-marriage-tragedy",
+      "title": "Hosea and the bitter and profound great marriage tragedy",
+      "order": 137,
+      "description": "Using his own immense marital disaster as a powerful metaphor for national infidelity was bold. We explore this immense and colossal ethical lesson.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-amazing-and-colossal-cedars-of-ancient-lebanon",
+      "title": "The amazing and colossal cedars of ancient Lebanon",
+      "order": 138,
+      "description": "This aromatic and durable wood was the ultimate luxury material for great palaces and temples. We analyze its immense and vast international logging.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-hard-craftsmanship-of-pottery-and-its-vessels",
+      "title": "The hard craftsmanship of pottery and its vessels",
+      "order": 139,
+      "description": "Molding the clay on the wheel required enormous skill and great patience from the craftsman. We explore the immense symbolic weight of this daily work.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "natan-and-the-enormous-audacity-of-confronting-the-great-monarch",
+      "title": "Natán and the enormous audacity of confronting the great monarch",
+      "order": 140,
+      "description": "Rebuking the sovereign's cruel and lethal moral abuses could cost him his life instantly. We analyze his astute and very ingenious grand strategy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-imposing-and-huge-walls-of-ancient-jericho",
+      "title": "The imposing and huge walls of ancient Jericho",
+      "order": 141,
+      "description": "This fortified and invulnerable metropolis defended access to the coveted territory. We study its immense defense and the colossal seismic faults.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-expensive-and-intense-obtaining-of-the-precious-purple",
+      "title": "The expensive and intense obtaining of the precious purple",
+      "order": 142,
+      "description": "Extracting this brilliant dye from thousands of sea snails made it exclusive to the imperial elite. We see the colossal value of this immense trade.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "felipe-and-the-rapid-and-lethal-expansion-at-the-borders",
+      "title": "Felipe and the rapid and lethal expansion at the borders",
+      "order": 143,
+      "description": "Preaching to hostile ethnic groups like the Samaritans broke colossal historical barriers of great hatred. We analyze his enormous and bold frontier bravery.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-vital-grazing-of-goats-in-the-family-economy",
+      "title": "The vital grazing of goats in the family economy",
+      "order": 144,
+      "description": "These rustic and tough animals provided excellent milk, strong meat and fabrics to survive. We study its immense usefulness in the southern clans.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-bloody-and-very-severe-destruction-of-the-colossal-temple",
+      "title": "The bloody and very severe destruction of the colossal Temple",
+      "order": 145,
+      "description": "The brutal military siege of the 1970s completely destroyed the Jewish religious center. We analyze this immense architectural trauma.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "jonah-and-the-deep-and-great-rejection-of-mercy",
+      "title": "Jonah and the deep and great rejection of mercy",
+      "order": 146,
+      "description": "Firmly refusing to preach forgiveness to an extremely cruel and Assyrian empire is very understandable. We explore this huge, great compassionate irony.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-cruel-and-violent-collectors-of-immense-debts",
+      "title": "The cruel and violent collectors of immense debts",
+      "order": 147,
+      "description": "Falling bankrupt allowed for physical imprisonment or the terrible sale of families into slavery. We analyze the immense and very severe local laws.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "stoning-and-the-rigorous-ancient-judicial-system",
+      "title": "Stoning and the rigorous ancient judicial system",
+      "order": 148,
+      "description": "Stoning the guilty required strong witnesses and guaranteed clear social responsibility. We analyze the harsh lethality of this great punishment.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "apollos-and-the-enormous-influence-of-excellent-oratory",
+      "title": "Apollos and the enormous influence of excellent oratory",
+      "order": 149,
+      "description": "Coming from Alexandria, he combined immense theological erudition with brilliant Greek rhetoric. We study its immense and vital popularity.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-hard-daily-work-of-grinding-grain-at-home",
+      "title": "The hard daily work of grinding grain at home",
+      "order": 150,
+      "description": "Using the immense and very heavy circular stones at dawn was an extremely strenuous task for the woman. We see the immense effort of this work.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "caleb-and-the-great-military-firmness-in-the-ancient-conquest",
+      "title": "Caleb and the great military firmness in the ancient conquest",
+      "order": 151,
+      "description": "Maintaining immense warrior vigor in old age was extremely unusual in those harsh times. We analyze the unbreakable great tenacity of this figure.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-great-mount-nebo-and-the-final-vision-of-the-vast-land",
+      "title": "The great Mount Nebo and the final vision of the vast land",
+      "order": 152,
+      "description": "This high peak offered an impressive visual panorama of the desired region. We explore the immense emotional weight of observing without being able to cross the river.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-great-legality-of-adoption-in-the-roman-empire",
+      "title": "The great legality of adoption in the Roman Empire",
+      "order": 153,
+      "description": "Being adopted erased previous debts and immediately granted immense inheritance rights. We analyze how the apostle used this brilliant law of the time.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "phylacteries-and-the-physical-reminder-of-the-sacred-law",
+      "title": "Phylacteries and the physical reminder of the sacred law",
+      "order": 154,
+      "description": "Carrying small leather cases with texts tied to the body was a great symbol of enormous pure devotion. We study this rigorous daily practice.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "hezekiah-and-the-extraordinary-hidden-water-tunnel",
+      "title": "Hezekiah and the extraordinary hidden water tunnel",
+      "order": 155,
+      "description": "Faced with the imminent siege, this king excavated the solid rock to ensure vital urban water. We analyze this colossal and enormous feat of civil engineering.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-immense-and-lucrative-trade-in-fine-incense",
+      "title": "The immense and lucrative trade in fine incense",
+      "order": 156,
+      "description": "Produced in the far south, this sweet, aromatic resin was worth as much as the purest gold. We explore the deadly, barren ancient caravan routes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "leather-wineskins-and-the-fermentation-of-new-wine",
+      "title": "Leather wineskins and the fermentation of new wine",
+      "order": 157,
+      "description": "Storing liquids in animal skins required great flexibility of the natural material. We analyze the immense metaphor about strong changes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "titus-and-the-harsh-moral-correction-on-the-island-of-crete",
+      "title": "Titus and the harsh moral correction on the island of Crete",
+      "order": 158,
+      "description": "Organizing a young community in a culture famous for its fierce deceit was a colossal challenge. We study the strong leadership of this able great delegate.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-jewish-dispersion-and-the-colonies-of-the-great-empire",
+      "title": "The Jewish dispersion and the colonies of the great empire",
+      "order": 159,
+      "description": "Living far from the sacred precinct forced families to create strong ties of identity. We analyze how this immense network facilitated the new message.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "flat-roofs-and-their-immense-residential-utility",
+      "title": "Flat roofs and their immense residential utility",
+      "order": 160,
+      "description": "The roofs were used to sleep in the summer, dry grains and hold very large social gatherings. We see the intense and vital domestic life in the heights.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "debora-and-the-vital-judicial-leadership-of-that-time",
+      "title": "Débora and the vital judicial leadership of that time",
+      "order": 161,
+      "description": "In times of enormous chaos, this cunning leader managed to pacify and instruct various warrior tribes. We analyze his immense and profound civil authority.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "deadly-iron-chariots-and-military-advantage",
+      "title": "Deadly Iron Chariots and Military Advantage",
+      "order": 162,
+      "description": "This advanced and lethal war machine caused absolute terror on the plains. We study the colossal panic of the slow infantry troops.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-day-of-atonement-and-its-extreme-rite-of-purity",
+      "title": "The Day of Atonement and its extreme rite of purity",
+      "order": 163,
+      "description": "Once a year the high priest entered the maximum dark and extremely sacred precinct. We explore the immense weight of national forgiveness and sacrifice.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-immense-honor-and-shame-in-the-ancient-world",
+      "title": "The immense honor and shame in the ancient world",
+      "order": 164,
+      "description": "Losing social respect was worse than suffering from hunger or extreme poverty in those communities. We analyzed how these strong norms governed each decision.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ahab-and-the-colossal-military-pressure-of-the-neighboring-kingdom",
+      "title": "Ahab and the colossal military pressure of the neighboring kingdom",
+      "order": 165,
+      "description": "Facing strong powers required this monarch to agree on dark and impious alliances. We study the lethal foreign influence in his great court.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-very-fertile-region-of-bashan-and-the-immense-cattle",
+      "title": "The very fertile region of Bashan and the immense cattle",
+      "order": 166,
+      "description": "Its green meadows raised the most robust and strongest bulls in the entire enormous geography. We analyze why it was a great symbol of ostentation and pride.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-humble-and-necessary-washing-of-tired-feet",
+      "title": "The humble and necessary washing of tired feet",
+      "order": 167,
+      "description": "Walking long distances on arid roads full of dust required this mandatory hygiene upon arrival. We see the colossal contrast of performing this low task.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-sacred-tax-and-the-valuable-silver-coin-of-tire",
+      "title": "The sacred tax and the valuable silver coin of Tire",
+      "order": 168,
+      "description": "The religious tribute demanded an exclusive payment in very pure silver free of large imperial images. We study this lucrative business of the great era.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "elisha-and-the-formation-of-the-schools-of-prophets",
+      "title": "Elisha and the formation of the schools of prophets",
+      "order": 169,
+      "description": "Far from operating alone, the seers were grouped into brotherhoods under wise, expert leadership. We analyze the curious instruction of these large groups.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fig-trees-and-the-vital-agricultural-livelihood-of-judea",
+      "title": "Fig trees and the vital agricultural livelihood of Judea",
+      "order": 170,
+      "description": "Its early buds faithfully announced the imminent summer and its fruits gave enormous physical vigor. We explore its immense use as a national metaphor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "imperial-censuses-and-population-control",
+      "title": "Imperial censuses and population control",
+      "order": 171,
+      "description": "Registering each inhabitant allowed immense funds to be raised relentlessly. We analyze the tenacious revolts that these strong counts unleashed.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-tall-watchtowers-in-the-local-vineyards",
+      "title": "The tall watchtowers in the local vineyards",
+      "order": 172,
+      "description": "Protecting the expensive harvest from quick thieves and wild beasts required sleeping in rustic stone cabins. We study this harsh and lonely vigilance.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "noah-and-the-colossal-challenge-of-ancient-engineering",
+      "title": "Noah and the colossal challenge of ancient engineering",
+      "order": 173,
+      "description": "Building an immense ship of heavy wood without naval precedents was an astonishing act. We analyze the immense visual impact of this great structure.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-great-sacred-vows-and-the-rigid-use-of-the-word",
+      "title": "The great sacred vows and the rigid use of the word",
+      "order": 174,
+      "description": "Promising something by invoking the divine created an unbreakable debt and extremely lethal if broken. We explore the extreme verbal caution of the ancients.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "mounts-gerizim-and-ebal-on-the-sacred-border",
+      "title": "Mounts Gerizim and Ebal on the sacred border",
+      "order": 175,
+      "description": "These immense twin peaks formed a colossal perfect natural amphitheater. We analyzed how the lethal curses were loudly proclaimed there.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-accurate-and-very-vital-genealogy-records",
+      "title": "The accurate and very vital genealogy records",
+      "order": 176,
+      "description": "Proving the exact ancestral lineage guaranteed the clear right to immense lands and noble positions. We see the immense obsession with taking care of these lists.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "philemon-and-the-strong-social-tension-of-slavery",
+      "title": "Philemon and the strong social tension of slavery",
+      "order": 177,
+      "description": "Pardoning a runaway servant completely defied the strict laws and harsh economy of the empire. We analyze the immense revolution of this letter.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "obtaining-fire-and-rustic-wood-ovens",
+      "title": "Obtaining fire and rustic wood ovens",
+      "order": 178,
+      "description": "Lighting the daily fire was arduous work due to the severe shortage of good wood. We explore the immense value of embers for family life.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-deadly-archers-and-the-use-of-the-military-sling",
+      "title": "The deadly archers and the use of the military sling",
+      "order": 179,
+      "description": "Launching projectiles at immense speed decided battles from great distances. We study the lethal prowess of large, light and agile troops.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "melchizedek-and-the-immense-mystery-of-the-king-of-salem",
+      "title": "Melchizedek and the immense mystery of the king of Salem",
+      "order": 180,
+      "description": "Peaceful ruler and devout priest of an immensely distant and dark age. We analyze why his enigmatic and colossal figure impacted theology.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-sacred-act-of-sharing-bread-in-ancient-times",
+      "title": "The sacred act of sharing bread in ancient times",
+      "order": 181,
+      "description": "Eating together was not just nutrition, it was a deep pact of loyalty and peace. We analyzed why sitting at the table with sinners caused enormous scandal.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "joab-and-the-immense-moral-price-of-being-a-great-commander",
+      "title": "Joab and the immense moral price of being a great commander",
+      "order": 182,
+      "description": "Leading the king's army required extremely lethal and cruel decisions. We study the complex and bloody palace intrigues of this strong figure.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-ships-of-tarshish-and-the-colossal-and-great-naval-trade",
+      "title": "The ships of Tarshish and the colossal and great naval trade",
+      "order": 183,
+      "description": "These immense merchant fleets brought exotic luxuries from distant coasts. We explore the immense economic impact of importing ivory, monkeys and peacocks.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-immense-mount-tabor-and-its-great-dominance-of-the-horizon",
+      "title": "The immense Mount Tabor and its great dominance of the horizon",
+      "order": 184,
+      "description": "Rising abruptly above the great plain, it served as a border and a major military assembly point. We study its lethal geography in ancient combats.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "lidia-and-the-lucrative-big-business-of-the-rich-purples",
+      "title": "Lidia and the lucrative big business of the rich purples",
+      "order": 185,
+      "description": "As a successful merchant of this very expensive great dye, she possessed economic independence. We analyze its vital influence to expand communities in Europe.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-strict-wedding-dowry-and-the-valuable-family-economy",
+      "title": "The strict wedding dowry and the valuable family economy",
+      "order": 186,
+      "description": "Delivering immense assets to the bride's father ensured clear civil legal protection. We see how these strong norms shielded future marriages.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-greek-gymnasium-and-the-great-clash-of-modesty-and-culture",
+      "title": "The Greek gymnasium and the great clash of modesty and culture",
+      "order": 187,
+      "description": "The immense Hellenistic obsession with athletic nudity offended the severe morals of Judea. We analyze this colossal and enormous social tension in the big city.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ehud-and-the-intense-and-deadly-conflict-with-the-nation-of-moab",
+      "title": "Ehud and the intense and deadly conflict with the nation of Moab",
+      "order": 188,
+      "description": "The harsh borders demanded from this peculiar leader tactics of extreme stealth and great lethal bravery. We analyze the immense military oppression of the tribes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-kosher-diet-and-the-immense-social-separation-from-the-rest",
+      "title": "The kosher diet and the immense social separation from the rest",
+      "order": 189,
+      "description": "Eating exclusively pure foods created a strong and impenetrable barrier with neighboring empires. We study the social weight of this immense restriction.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-immense-clouds-of-locusts-and-the-terror-of-ruin",
+      "title": "The immense clouds of locusts and the terror of ruin",
+      "order": 190,
+      "description": "Millions of these fast insects devastated crops in a few hours, causing famine. We analyze this colossal and lethal great threat in ancient times.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "hagar-and-the-strong-and-cruel-reality-of-the-slave-servants",
+      "title": "Hagar and the strong and cruel reality of the slave servants",
+      "order": 191,
+      "description": "Without legal rights, maids endured the immense abuses of family tensions. We analyze the hard survival of this figure in the desert.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "child-weaning-and-huge-family-holidays",
+      "title": "Child weaning and huge family holidays",
+      "order": 192,
+      "description": "Overcoming the dangerous first years of life was a colossal triumph in the face of immense mortality. We explore the joyous and grand celebrations of the season.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-strict-temple-guard-and-its-large-police-force",
+      "title": "The strict temple guard and its large police force",
+      "order": 193,
+      "description": "Guarding the immense sacred treasure and maintaining mass order required strong soldiers. We analyze the lethal authority of this local and clerical militia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "absalom-and-the-immense-danger-of-charisma-and-rebellion",
+      "title": "Absalom and the immense danger of charisma and rebellion",
+      "order": 194,
+      "description": "Using immense physical beauty and social unrest to steal power was a cunning tactic. We study the deadly intrigues within the royal court.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "threshing-floors-and-the-separation-of-wheat-and-chaff",
+      "title": "Threshing floors and the separation of wheat and chaff",
+      "order": 195,
+      "description": "Located in large areas of intense winds, these platforms allowed the harvest to be cleaned. We analyze its immense use as a great metaphor for the final judgment.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-immense-and-cruel-sieges-of-the-walled-cities",
+      "title": "The immense and cruel sieges of the walled cities",
+      "order": 196,
+      "description": "Cutting off strong supplies and building huge attack ramps destroyed the metropolises. We analyze the colossal psychological terror of long waits.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "jehu-and-the-colossal-and-very-lethal-purge-of-false-mysticism",
+      "title": "Jehu and the colossal and very lethal purge of false mysticism",
+      "order": 197,
+      "description": "Assuming military power meant bathing the immense and corrupt neighboring monarchy in blood. We study the extreme and brutal violence of this firm figure.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-exotic-spice-trade-and-its-immense-values",
+      "title": "The exotic spice trade and its immense values",
+      "order": 198,
+      "description": "Transported from the Far East, these strong fragrances flavored the rich royal tables. We see the immense power of trade caravans.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-severe-and-difficult-reality-of-widows-of-the-time",
+      "title": "The severe and difficult reality of widows of the time",
+      "order": 199,
+      "description": "Losing one's husband meant total economic marginalization and the colossal risk of imminent famine. We analyze the tenacious and strong protection laws.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "balaam-and-the-lucrative-great-trade-of-cursing-nations",
+      "title": "Balaam and the lucrative great trade of cursing nations",
+      "order": 200,
+      "description": "Foreign fortune tellers charged immense fortunes for invoking lethal punishments on the battalions. We analyze the enigmatic and complex morality of the prophet.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-immense-seismic-faults-and-the-feared-earthquakes",
+      "title": "The immense seismic faults and the feared earthquakes",
+      "order": 201,
+      "description": "Located on colossal tectonic fissures, the inhabitants were panicked by the violent tremors. We explore its immense meaning in the great era.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-high-eunuchs-and-their-immense-confidence-in-the-palaces",
+      "title": "The high eunuchs and their immense confidence in the palaces",
+      "order": 202,
+      "description": "These childless servants were the greatest and greatest loyalty to the paranoid kings of the empire. We analyze his immense courtly political influence.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "naomi-and-the-deep-bitterness-in-the-face-of-the-immense-great-ruin",
+      "title": "Naomi and the deep bitterness in the face of the immense great ruin",
+      "order": 203,
+      "description": "Returning empty and without family to her old village represented a colossal social dishonor at that time. We see how his cunning managed to reverse his colossal tragedy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-immense-mount-zion-and-its-colossal-weight-as-a-great-headquarters",
+      "title": "The immense Mount Zion and its colossal weight as a great headquarters",
+      "order": 204,
+      "description": "From being a firm and impregnable local fortress, this summit became the great spiritual epicenter. We study his immense transformation and strong defense.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-huge-shearing-festivals-in-the-flocks",
+      "title": "The huge shearing festivals in the flocks",
+      "order": 205,
+      "description": "Cutting the wool of thousands of sheep culminated in ostentatious banquets of great joy after the rough work. We analyze the immense wealth of the landowners.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "jeroboam-and-the-cunning-and-deadly-breakdown-of-the-monarchy",
+      "title": "Jeroboam and the cunning and deadly breakdown of the monarchy",
+      "order": 206,
+      "description": "Taking advantage of the immense fiscal fury of the north to found a great new kingdom required colossal cunning. We study his lethal creation of alternative calves.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-immense-and-lethal-risk-of-espionage-in-battles",
+      "title": "The immense and lethal risk of espionage in battles",
+      "order": 207,
+      "description": "Infiltrating huge walled metropolises to gauge enemy morale guaranteed a cruel death. We analyze the lethal maneuvers of the informants.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cities-of-refuge-and-the-brakes-on-lethal-revenge",
+      "title": "Cities of refuge and the brakes on lethal revenge",
+      "order": 208,
+      "description": "To avoid the immense and bloody family purges due to accidents, these cities provided legal asylum. We explore its immense and invaluable humanitarian weight.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "lazarus-and-the-immense-social-weight-of-the-great-public-mourning",
+      "title": "Lazarus and the immense social weight of the great public mourning",
+      "order": 209,
+      "description": "His immense tragedy united strong crowds from the capital in intense tears in his nearby village. We analyze the immense fervor of the dark tombs.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "strict-customs-and-lethal-road-control",
+      "title": "Strict customs and lethal road control",
+      "order": 210,
+      "description": "Charging immense tariffs to every foreign merchant in the borders generated colossal brutal riches. We analyze the strict supervision of the great empire.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-valley-of-elah-and-the-great-military-duel-of-champions",
+      "title": "The Valley of Elah and the great military duel of champions",
+      "order": 211,
+      "description": "This famous natural setting witnessed the most iconic combat of the time. We analyze the military tactic of using a warrior to prevent massacres.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-vital-use-of-the-sling-in-the-lives-of-shepherds",
+      "title": "The vital use of the sling in the lives of shepherds",
+      "order": 212,
+      "description": "More than a military weapon, this simple leather tool protected flocks from deadly beasts. We explore its immense precision in expert hands.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "king-herod-the-great-and-his-great-dynastic-paranoia",
+      "title": "King Herod the Great and his great dynastic paranoia",
+      "order": 213,
+      "description": "He ruled with an astonishing mix of brilliant architectural works and lethal cruelty against his own family. We analyze his immense terror of the plot.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-crown-of-thorns-and-the-cruel-great-roman-mockery",
+      "title": "The crown of thorns and the cruel great Roman mockery",
+      "order": 214,
+      "description": "Imperial torture included profound theatrical humiliations. We study the lethal local plants used to inflict immense pain on captives.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-vital-incense-route-and-its-great-southern-trade",
+      "title": "The vital incense route and its great southern trade",
+      "order": 215,
+      "description": "Controlling the caravans of rich spices ensured enormous national prosperity. We explore the immense economic flow through the harsh great desert.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ana-and-the-very-intense-devotion-in-the-temple-grounds",
+      "title": "Ana and the very intense devotion in the temple grounds",
+      "order": 216,
+      "description": "An elderly widow dedicated her entire long life to constant prayer and fasting. We analyze the great and respected spiritual work of this prophetic figure.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-great-arid-desert-of-zin-and-the-oases-of-the-region",
+      "title": "The great arid desert of Zin and the oases of the region",
+      "order": 217,
+      "description": "Traveling through this desolate and vast area taxed the spirit and physical strength. We see the immense importance of locating swift springs of fresh water.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-very-hard-work-of-ancient-leather-tanners",
+      "title": "The very hard work of ancient leather tanners",
+      "order": 218,
+      "description": "Transforming the rustic leathers was an extremely smelly and repulsive job. We study the immense stigma of living marginalized on the outskirts of town.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-amazing-use-of-banners-in-the-legions",
+      "title": "The amazing use of banners in the legions",
+      "order": 219,
+      "description": "Carrying the imperial eagle represented the immense honor of the Roman battalion. We analyze the great religious offense they caused by entering sacred land.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-immense-toll-taxes-and-the-rich-customs",
+      "title": "The immense toll taxes and the rich customs",
+      "order": 220,
+      "description": "Traveling main roads required continuous and very excessive payments to the empire. We see the immense frustration of the large population in the face of systematic theft.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-lethal-consultation-of-mediums-in-ancient-israel",
+      "title": "The lethal consultation of mediums in ancient Israel",
+      "order": 221,
+      "description": "Invoking the deceased was severely punished, but it was a great occult practice. We explore the immense military desperation behind mysticism.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-very-robust-oxen-and-the-strong-agricultural-traction",
+      "title": "The very robust oxen and the strong agricultural traction",
+      "order": 222,
+      "description": "Plowing the hard, dry land required huge animals united under a heavy tree. We analyze the immense metaphor of the unequal yoke in civil unions.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-right-to-asylum-in-the-sacred-horns-of-the-altar",
+      "title": "The right to asylum in the sacred horns of the altar",
+      "order": 223,
+      "description": "Holding on to the great furniture of the sanctuary stopped the swift and lethal blood vengeance. We study this immense and tense tradition of extreme clemency.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-great-pomegranate-harvest-and-its-colossal-symbolism",
+      "title": "The great pomegranate harvest and its colossal symbolism",
+      "order": 224,
+      "description": "This beautiful red fruit firmly represented great abundance, beauty and great fertility. We see its immense decorative use in the temple architecture.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-very-severe-role-of-elders-and-the-tribal-council",
+      "title": "The very severe role of elders and the tribal council",
+      "order": 225,
+      "description": "Long before monarchies, senior leaders dispensed vital local justice. We analyze his immense and profound authority to judge serious crimes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "king-cyrus-the-great-and-restoration-policy",
+      "title": "King Cyrus the Great and restoration policy",
+      "order": 226,
+      "description": "Unlike previous cruel invaders, this king encouraged the return of captives. We explore the immense diplomacy of his famous royal decree.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-very-strong-storms-of-the-immense-mediterranean-sea",
+      "title": "The very strong storms of the immense Mediterranean Sea",
+      "order": 227,
+      "description": "Sailing during the harsh winter exposed large fleets to deadly shipwrecks. We see the colossal terror of the brave crew members in the face of the storm.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-story-of-jairus-and-the-strong-pressure-on-the-synagogues",
+      "title": "The story of Jairus and the strong pressure on the synagogues",
+      "order": 228,
+      "description": "Managing the vital assembly places gave great prestige. We study the colossal faith that moved this illustrious man to pray before the great crowd.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-tense-handover-of-hostages-and-the-great-peace-pacts",
+      "title": "The tense handover of hostages and the great peace pacts",
+      "order": 229,
+      "description": "To guarantee military deals, important nobles were exchanged as firm guarantee. We analyze this rude and very tense custom of antiquity.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-immense-and-very-vital-care-of-old-teeth",
+      "title": "The immense and very vital care of old teeth",
+      "order": 230,
+      "description": "Without modern medicine, great oral hygiene depended on rustic natural methods. We see how toothache paralyzed the immense civilian population.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-thick-bronze-doors-in-the-walled-cities",
+      "title": "The thick bronze doors in the walled cities",
+      "order": 231,
+      "description": "Securing the main entrances was extremely vital to stopping the deadly sieges. We analyze the immense defensive engineering against the battering rams.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-strange-oath-when-placing-your-hand-under-your-thigh",
+      "title": "The strange oath when placing your hand under your thigh",
+      "order": 232,
+      "description": "This ancient and very solemn practice ensured compliance with patriarchal orders. We explore the immense cultural weight of funeral arrangements.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "lethal-local-governors-and-imperial-justice",
+      "title": "Lethal local governors and imperial justice",
+      "order": 233,
+      "description": "Administering vast regions required immense severity and great diplomacy. We see how these officials intensely mediated between the mobs and the empire.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "caesarea-maritima-and-the-ostentation-of-herod-the-great",
+      "title": "Caesarea Maritima and the ostentation of Herod the Great",
+      "order": 234,
+      "description": "Built with colossal artificial ports, this Roman city defied the enormous nature. We study its immense luxury and the strong racial clashes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-ritual-use-of-large-incenses-in-temples",
+      "title": "The ritual use of large incenses in temples",
+      "order": 235,
+      "description": "Burning pure spices framed the deadly supplications and covered the stench of the sacrifices. We analyze the immense solemnity of this aromatic great work.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "zechariah-and-the-harsh-silence-in-the-most-sacred-place",
+      "title": "Zechariah and the harsh silence in the most sacred place",
+      "order": 236,
+      "description": "Serving at the altar of incense was the crowning honor of a priest's life. We explore the immense theological tension of losing speech in the sanctuary.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-hard-felling-of-wood-and-transportation-across-the-seas",
+      "title": "The hard felling of wood and transportation across the seas",
+      "order": 237,
+      "description": "Moving huge logs tied on large rafts required arduous and colossal marine logistics. We analyze this immense Phoenician trade from ancient times.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-agile-gazelles-and-the-immense-beauty-of-the-great-forest",
+      "title": "The agile gazelles and the immense beauty of the great forest",
+      "order": 238,
+      "description": "Admired for their colossal speed and grace, these beautiful animals inspired beautiful poetry. We study its immense literary use in love songs.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-military-use-of-horses-and-lethal-cavalry",
+      "title": "The military use of horses and lethal cavalry",
+      "order": 239,
+      "description": "Breeding swift steeds for war gave immense lethal superiority on the plains. We see why their multiplication was strongly prohibited.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "strong-ritual-impurities-and-the-purification-bath",
+      "title": "Strong ritual impurities and the purification bath",
+      "order": 240,
+      "description": "The ceremonial ponds cleansed the devotees before entering the sacred precinct. We analyze the immense importance of immersing yourself in living waters.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "mourning-and-torn-clothes-in-ancient-judea",
+      "title": "Mourning and torn clothes in ancient Judea",
+      "order": 241,
+      "description": "Breaking clothes expressed extreme pain and deep desolation. We analyze this visible and intense display of mourning in society.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-strategic-city-of-corinth-and-its-two-ports",
+      "title": "The strategic city of Corinth and its two ports",
+      "order": 242,
+      "description": "This immense land bridge dominated the great ancient maritime trade. We explore the strong moral tension in this immense cosmopolitan city.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "raquel-and-the-enormous-value-of-family-idols",
+      "title": "Raquel and the enormous value of family idols",
+      "order": 243,
+      "description": "Stealing the figurines from the home ensured the right to the main inheritance. We analyze the immense diplomatic crisis after this bold action.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-severe-punishment-of-whipping-in-the-synagogues",
+      "title": "The severe punishment of whipping in the synagogues",
+      "order": 244,
+      "description": "Community discipline allowed physical punishment under very strict rules. We study the immense physical and social impact of this sentence.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "pigeon-breeding-and-its-great-use-in-sacrifices",
+      "title": "Pigeon breeding and its great use in sacrifices",
+      "order": 245,
+      "description": "Birds were the most accessible offering for the immense marginalized population. We explore the vital pigeon loft industry across the empire.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-deadly-east-wind-and-intense-dry-heat",
+      "title": "The deadly east wind and intense dry heat",
+      "order": 246,
+      "description": "The strong sirocco blew from the arid desert, instantly withering the crops. We see how this colossal phenomenon inspired warnings.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "micah-and-the-strong-denunciation-of-the-landowners",
+      "title": "Micah and the strong denunciation of the landowners",
+      "order": 247,
+      "description": "The rich monopolized the land, leaving the vast majority in ruin. We analyze the brave cry for justice of this great figure.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-complex-thatch-and-mud-roofs-on-the-houses",
+      "title": "The complex thatch and mud roofs on the houses",
+      "order": 248,
+      "description": "The homes required constant arduous maintenance in the face of heavy rains. We studied the enormous ease of drilling these covers.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-night-guard-and-the-great-urban-lookouts",
+      "title": "The night guard and the great urban lookouts",
+      "order": 249,
+      "description": "Cities depended entirely on sentinels to prevent deadly ambushes. We explore the immense terror of guarding the great dark wall.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-extensive-genealogies-and-their-great-theological-weight",
+      "title": "The extensive genealogies and their great theological weight",
+      "order": 250,
+      "description": "Far from being simple and boring lists of names, they demonstrated the firm fulfillment of pacts. We analyze the colossal value of these files.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "zipporah-and-the-intense-culture-shock-in-the-desert",
+      "title": "Zipporah and the intense culture shock in the desert",
+      "order": 251,
+      "description": "Combining foreign customs with the immense sacred rigor generated strong friction. We study the enormous family tension of this key woman.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cuneiform-writing-and-clay-tablets",
+      "title": "Cuneiform writing and clay tablets",
+      "order": 252,
+      "description": "The great ancient empires recorded their deadly victories in heavy blocks of clay. We explore this amazing and immense documentary trailer.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-immense-kidron-valley-and-its-great-tombs",
+      "title": "The immense Kidron Valley and its great tombs",
+      "order": 253,
+      "description": "This deep torrent divided the capital from the Mount of Olives. We analyze the immense and sacred necropolis excavated in its hard rock.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-rigorous-and-very-ancient-court-of-the-great-areopagus",
+      "title": "The rigorous and very ancient court of the great Areopagus",
+      "order": 254,
+      "description": "This Athenian court judged novel philosophical ideas with great severity. We see the lethal and immense intellectual clash of cultures.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-figure-of-the-royal-cupbearer-in-ancient-courts",
+      "title": "The figure of the royal cupbearer in ancient courts",
+      "order": 255,
+      "description": "Tasting the monarch's wine ensured his life against lethal poisoning attempts. We analyze the immense influence and trust of the position.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "miriam-and-the-celebration-with-dances-on-the-border",
+      "title": "Miriam and the celebration with dances on the border",
+      "order": 256,
+      "description": "Military victories were celebrated with strong rhythms and feminine dances. We explore the immense artistic work of the great prophetesses.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-rigorous-and-lethal-punishment-for-great-blasphemy",
+      "title": "The rigorous and lethal punishment for great blasphemy",
+      "order": 257,
+      "description": "Cursing the sacred was the greatest and most lethal crime possible in strict Hebrew society. We analyze the immense anger that this crime unleashed.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-huge-boilers-and-the-large-communal-kitchen",
+      "title": "The huge boilers and the large communal kitchen",
+      "order": 258,
+      "description": "Preparing food for battalions or pilgrims required colossal vessels of heavy bronze. We study the immense celebrations of the tribes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-huge-and-deadly-lions-of-the-ancient-east",
+      "title": "The huge and deadly lions of the ancient east",
+      "order": 259,
+      "description": "These lethal and large beasts dominated the leafy thickets of the great Jordan River. We analyze the terror they instilled in the populations.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "mount-ebal-and-the-ancient-altar-of-rough-stones",
+      "title": "Mount Ebal and the ancient altar of rough stones",
+      "order": 260,
+      "description": "The rule required using intact, unworked rocks with strong iron tools. We explore the immense solemnity in the renewal of the covenant.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "jethro-and-the-immense-challenge-of-delegating-leadership",
+      "title": "Jethro and the immense challenge of delegating leadership",
+      "order": 261,
+      "description": "Governing thousands of campers alone exhausted the strength of the most tenacious leader. We analyze the wise and colossal advice of creating smaller courts.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-luxurious-and-expensive-beds-of-foreign-ivory",
+      "title": "The luxurious and expensive beds of foreign ivory",
+      "order": 262,
+      "description": "Resting on carved tusks was the ultimate symbol of imperial ostentation. We see how this immense wealth generated great prophetic repudiation.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-valuable-mantle-of-elijah-and-its-deep-symbolism",
+      "title": "The valuable mantle of Elijah and its deep symbolism",
+      "order": 263,
+      "description": "Handing over the rustic prophetic cloak meant delegating all the immense and colossal spiritual authority. We study this great transfer of power.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-great-port-of-joppa-and-the-difficult-exit-to-the-sea",
+      "title": "The great port of Joppa and the difficult exit to the sea",
+      "order": 264,
+      "description": "In the absence of large natural bays, this rugged rocky city was the vital gateway to the immense ocean. We analyze its lethal maritime trade.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-relentless-blood-debts-of-ancient-times",
+      "title": "The relentless blood debts of ancient times",
+      "order": 265,
+      "description": "Avenging the tragic death of a close relative was a strong and unavoidable moral obligation. We analyze this lethal and great clan justice.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-colossal-and-solemn-sacrifice-of-the-chestnut-cow",
+      "title": "The colossal and solemn sacrifice of the chestnut cow",
+      "order": 266,
+      "description": "The extreme purifications after touching a corpse required the rare ashes of this fine animal. We explore the immense strangeness of this great rite.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "aquila-and-his-immense-work-in-the-imperial-cities",
+      "title": "Aquila and his immense work in the imperial cities",
+      "order": 267,
+      "description": "Forced into harsh exile by harsh Roman edicts, he founded vital networks of faith. We analyze its valuable and colossal commercial resistance.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-large-asphalt-pits-in-the-old-valley",
+      "title": "The large asphalt pits in the old valley",
+      "order": 268,
+      "description": "The dark tar springs in the desert were great lethal traps in wars. We study its immense war and commercial use.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-strong-bitterness-and-the-ancient-wormwood-plant",
+      "title": "The strong bitterness and the ancient wormwood plant",
+      "order": 269,
+      "description": "This desert herb has immense toxicity and a lethal taste. We see how it became the great metaphor for great misfortunes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "festus-and-the-immense-and-tense-diplomacy-of-the-empire",
+      "title": "Festus and the immense and tense diplomacy of the empire",
+      "order": 270,
+      "description": "Assuming power after severely corrupt governments required calming large angry mobs. We analyze their cunning and lethal negotiations.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-money-changers-and-big-business-in-the-jewish-temple",
+      "title": "The money changers and big business in the Jewish temple",
+      "order": 271,
+      "description": "Exchanging foreign currencies was a lucrative trade vital to pilgrims. We analyze the immense corruption and the strong monopoly of the sacred precinct.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "roman-armor-and-strong-lethal-equipment",
+      "title": "Roman armor and strong lethal equipment",
+      "order": 272,
+      "description": "The legions dominated the world thanks to their advanced and very robust war clothing. We explore the immense tactical weight of the shield and the short sword.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "broken-cisterns-and-the-value-of-running-water",
+      "title": "Broken cisterns and the value of running water",
+      "order": 273,
+      "description": "Relying on dark pools of stagnant rain was vital but extremely risky. We analyze the immense superiority of natural springs.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "birthright-and-the-immense-weight-of-the-eldest-son",
+      "title": "Birthright and the immense weight of the eldest son",
+      "order": 274,
+      "description": "Being born first guaranteed inheriting the double portion and immense absolute tribal leadership. We study the lethal family intrigues for this great right.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-balm-of-gilead-and-ancient-local-medicine",
+      "title": "The balm of Gilead and ancient local medicine",
+      "order": 275,
+      "description": "This exotic and very rare aromatic resin was used to heal lethal war wounds. We analyze the immense and colossal commercial value of this ointment.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-postal-system-and-fast-royal-couriers",
+      "title": "The postal system and fast royal couriers",
+      "order": 276,
+      "description": "The great ancient empires developed amazing and very fast communication networks. We explore the immense physical fatigue of these imperial horsemen.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-bronze-serpent-and-the-great-idolatrous-danger",
+      "title": "The bronze serpent and the great idolatrous danger",
+      "order": 277,
+      "description": "An ancient instrument of colossal healing became a lethal and very dark object of worship. We analyze the immense risk of false popular mysticism.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "quarantine-and-the-strong-stigma-of-great-leprosy",
+      "title": "Quarantine and the strong stigma of great leprosy",
+      "order": 278,
+      "description": "The strict and severe health laws completely isolated the sick without compassion. We study the immense social terror of stains on clothes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-pool-of-bethesda-and-ancient-faith-cults",
+      "title": "The Pool of Bethesda and Ancient Faith Cults",
+      "order": 279,
+      "description": "It housed immense crowds of desperate patients seeking a colossal and immediate cure. We analyze the immense theological tension in its five porticos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-roman-praetorium-and-the-severe-justice-of-caesar",
+      "title": "The Roman Praetorium and the severe justice of Caesar",
+      "order": 280,
+      "description": "This imposing and large military barracks represented the maximum and implacable foreign authority. We explore the immense and lethal rigidity of civic judgment.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-hair-shirt-and-the-intense-physical-expression-of-mourning",
+      "title": "The hair shirt and the intense physical expression of mourning",
+      "order": 281,
+      "description": "Wearing rough goat hair clothes and covering oneself with ashes showed deep humiliation. We analyze this immense and severe practice of repentance.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-sheepfolds-and-the-steadfast-work-of-the-shepherd",
+      "title": "The sheepfolds and the steadfast work of the shepherd",
+      "order": 282,
+      "description": "Protecting the flock from the deadly wolves required rustic corrals made of hard natural stone. We see the immense devotion when sleeping at the great and vital local door.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-high-places-and-deep-pagan-mysticism",
+      "title": "The high places and deep pagan mysticism",
+      "order": 283,
+      "description": "The high forested peaks housed deadly and very dark altars dedicated to false deities. We analyze the immense and tenacious struggle to destroy them.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-edges-of-the-mantle-and-the-vital-legal-reminder",
+      "title": "The edges of the mantle and the vital legal reminder",
+      "order": 284,
+      "description": "Wearing fringes with blue threads on the tunics was a great sign of enormous submission to the rules. We study the immense meaning of touching this clothing.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-great-levirate-marriage-and-the-strong-filial-law",
+      "title": "The great levirate marriage and the strong filial law",
+      "order": 285,
+      "description": "Marrying his childless brother's widow ensured the survival of the great family lineage. We analyze this immense and rigorous obligation of the great era.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "thorns-and-thistles-in-ancient-rude-agriculture",
+      "title": "Thorns and thistles in ancient rude agriculture",
+      "order": 286,
+      "description": "Cleaning the arid fields of these lethal weeds required an immense and very exhausting effort. We explore the great metaphor about the curse of the earth.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-rod-and-the-staff-in-the-firm-care-of-the-flock",
+      "title": "The rod and the staff in the firm care of the flock",
+      "order": 287,
+      "description": "These two rustic wooden tools provided immense defense and great direction. We analyze its colossal and vital usefulness in the most inhospitable valleys.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "mount-moriah-and-the-immense-test-of-supreme-faith",
+      "title": "Mount Moriah and the immense test of supreme faith",
+      "order": 288,
+      "description": "This summit was the ancient scene of the greatest and most lethal sacrifice requested. We study its immense and colossal great later architectural importance.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "old-diapers-and-the-hard-birth-in-judea",
+      "title": "Old diapers and the hard birth in Judea",
+      "order": 289,
+      "description": "Wrapping newborns with long strips of cloth was a great life practice. We analyze the immense precariousness of childbirth in harsh antiquity.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-fan-and-the-strong-cleaning-of-the-great-harvest",
+      "title": "The fan and the strong cleaning of the great harvest",
+      "order": 290,
+      "description": "Throwing the grain into the strong wind allowed the dense straw to fly away quickly. We explore this immense and colossal image of the lethal and severe final judgment.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fine-cosmetics-and-immense-oriental-beauty",
+      "title": "Fine cosmetics and immense oriental beauty",
+      "order": 291,
+      "description": "Lining the eyes with dark minerals was not only aesthetic, but a great vital eye defense. We analyze the immense value of expensive feminine ointments.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-strict-fasting-and-immense-physical-humiliation",
+      "title": "The strict fasting and immense physical humiliation",
+      "order": 292,
+      "description": "Abstaining from vital foods expressed immense dependence and extreme grief. We analyze the strong and rigid laws about this great useful practice.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-sacred-anointing-with-oil-and-its-immense-royal-weight",
+      "title": "The sacred anointing with oil and its immense royal weight",
+      "order": 293,
+      "description": "Pouring the expensive perfumed oil on the head gave immense and indisputable authority. We study the colossal and vital beginning of civil leadership.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-great-jewish-council-and-the-harsh-night-trials",
+      "title": "The great Jewish council and the harsh night trials",
+      "order": 294,
+      "description": "Holding criminal courts during the deep darkness was a colossal and immense legal violation. We analyze the severe and strict rules that were ignored.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-old-scales-and-intense-commercial-fraud",
+      "title": "The old scales and intense commercial fraud",
+      "order": 295,
+      "description": "Using fake weights to steal was a lethal and much hated major everyday crime. We explore the immense and colossal moral requirement of maintaining total equity.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-great-desert-of-paran-and-the-lethal-and-rough-journey",
+      "title": "The great desert of Paran and the lethal and rough journey",
+      "order": 296,
+      "description": "This colossal rocky region was the scene of profound failure. We analyze the immense and lethal stress of leading thousands of the very rustic campers.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-feast-of-weeks-and-the-great-wheat-harvest",
+      "title": "The Feast of Weeks and the Great Wheat Harvest",
+      "order": 297,
+      "description": "This immense agricultural celebration brought together crowds to thank the immense fruits. We study its colossal significance in the birth of the assembly.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fragile-papyri-and-vital-ancient-writing",
+      "title": "Fragile papyri and vital ancient writing",
+      "order": 298,
+      "description": "Writing long letters on sheets of large pressed reeds was immensely expensive and very delicate. We analyze the colossal preservation of the oldest texts.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-brutal-roman-scourge-and-the-immense-royal-torture",
+      "title": "The brutal Roman scourge and the immense royal torture",
+      "order": 299,
+      "description": "Using whips with lethal pieces of lead and bone sought to tear the skin of the condemned. We study the colossal cruelty of the strong imperial penal system.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-great-essenes-and-the-sectarian-retreat-to-the-desert",
+      "title": "The great Essenes and the sectarian retreat to the desert",
+      "order": 300,
+      "description": "Completely isolating itself from the immense urban corruption formed this rigorous southern sect. We explore his immense and vital contribution in the caves of Qumran.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-sacred-use-of-the-urim-and-thummim-in-the-ancient-temple",
+      "title": "The sacred use of the Urim and Thummim in the ancient Temple",
+      "order": 301,
+      "description": "These mysterious stones allowed the high priest to consult vital divine decisions. We analyze this immense and invaluable method.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-great-city-of-philippi-and-the-firm-colony-of-the-empire",
+      "title": "The great city of Philippi and the firm colony of the empire",
+      "order": 302,
+      "description": "This important and strategic military city did not have a synagogue. We explore the immense difficulty of establishing a faith without roots there.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-role-of-the-tetrarch-and-the-great-regional-political-division",
+      "title": "The role of the tetrarch and the great regional political division",
+      "order": 303,
+      "description": "Governing only a quarter of the territory generated deadly and deep envy. We study the immense rivalries of these leaders.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "amos-and-the-immense-clash-between-the-countryside-and-the-big-city",
+      "title": "Amos and the immense clash between the countryside and the big city",
+      "order": 304,
+      "description": "A humble rural pastor was called to denounce the immense luxury and corruption of the north. We analyze its bold and lethal peasant message.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-sycamore-trees-and-the-rude-harvesting-of-figs",
+      "title": "The sycamore trees and the rude harvesting of figs",
+      "order": 305,
+      "description": "Cultivating this rustic and hard fruit required constant intense manual work. We see the immense value of this great and vital popular diet.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-pool-of-siloam-and-its-colossal-importance-in-jerusalem",
+      "title": "The Pool of Siloam and its colossal importance in Jerusalem",
+      "order": 306,
+      "description": "Built in the great valley, this freshwater reservoir was vital for ritual purifications. We analyze its immense ceremonial use.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cornelius-and-the-immense-amazement-at-the-faith-of-a-foreigner",
+      "title": "Cornelius and the immense amazement at the faith of a foreigner",
+      "order": 307,
+      "description": "The devotion of a high imperial officer broke all strict cultural barriers. We explore this immense and vital ideological bridge.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-valuable-seamless-tunic-and-the-rough-work-of-weaving",
+      "title": "The valuable seamless tunic and the rough work of weaving",
+      "order": 308,
+      "description": "Making a garment from a single large piece required enormous craftsmanship. We analyze the immense care taken when sorting out this great garment.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-blowing-of-the-shofar-and-the-immense-alarm-in-ancient-times",
+      "title": "The blowing of the shofar and the immense alarm in ancient times",
+      "order": 309,
+      "description": "The penetrating and immense sound of the ram's horn called for deadly war or repentance. We study this great acoustic signal.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-vast-region-of-galatia-and-the-strong-tensions-of-faith",
+      "title": "The vast region of Galatia and the strong tensions of faith",
+      "order": 310,
+      "description": "Living in these harsh and rugged provinces forged a very iron and legalistic culture. We analyze the immense resistance to new deals.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "habakkuk-and-the-deep-prayer-in-the-face-of-the-lethal-divine-silence",
+      "title": "Habakkuk and the deep prayer in the face of the lethal divine silence",
+      "order": 311,
+      "description": "Intensely questioning the tolerance of evil in the world required immense prophetic courage. We explore his colossal and intimate anguished complaint.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-dark-valley-of-achor-and-implacable-tribal-justice",
+      "title": "The dark valley of Achor and implacable tribal justice",
+      "order": 312,
+      "description": "This infamous and rude place was the sad and dark scene of the most severe and lethal punishment in history. We analyze its immense weight on morale.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-remote-island-of-malta-and-the-immense-danger-of-shipwreck",
+      "title": "The remote island of Malta and the immense danger of shipwreck",
+      "order": 313,
+      "description": "Surviving the brutal winter sea waves to reach this large rocky coast was amazing. We study this colossal naval story.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-prosperous-city-of-tarsus-and-its-immense-and-notable-academy",
+      "title": "The prosperous city of Tarsus and its immense and notable academy",
+      "order": 314,
+      "description": "This influential great capital of the empire rivaled Athens in philosophy. We analyze his immense role in the education of the great apostle.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "zacchaeus-and-the-immense-great-social-shame-on-the-roads",
+      "title": "Zacchaeus and the immense great social shame on the roads",
+      "order": 315,
+      "description": "A wealthy marginalized tax collector defied the immensely firm protocol by climbing a tree out of curiosity. We see his colossal economic redemption.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-festival-of-dedication-and-the-immense-maccabean-fervor",
+      "title": "The festival of dedication and the immense Maccabean fervor",
+      "order": 316,
+      "description": "Celebrating the military purification of the sacred precinct in winter kept the great rebel flame alive. We analyze its immense popular value.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "sundials-and-the-immense-measurement-of-rude-time",
+      "title": "Sundials and the immense measurement of rude time",
+      "order": 317,
+      "description": "Without modern mechanical clocks, the deadly shadows of day regulated each immense military shift. We explore the rude vigils of the town.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "zerubbabel-and-the-colossal-feat-of-building-the-new-temple",
+      "title": "Zerubbabel and the colossal feat of building the new Temple",
+      "order": 318,
+      "description": "Leading a ruined population to rebuild the ultimate sanctuary was an immense mission. We analyze the harsh scarcity of resources there.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-immense-wedding-banquets-and-the-great-family-honor",
+      "title": "The immense wedding banquets and the great family honor",
+      "order": 319,
+      "description": "The celebrations lasted several whole days and running out of wine caused colossal social dishonour. We study the lethal pressures of yesterday.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-immense-bronze-altar-and-the-constant-sacred-fire",
+      "title": "The immense bronze altar and the constant sacred fire",
+      "order": 320,
+      "description": "This colossal outdoor furniture consumed many victims daily. We analyze the immense and rough logistics of their intense great work.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "uzziah-and-the-lethal-risk-of-immense-pride-in-the-palace",
+      "title": "Uzziah and the lethal risk of immense pride in the palace",
+      "order": 321,
+      "description": "A brilliant and innovative king ended up isolated and marginalized after usurping the great and vital priestly functions. We analyze his great fall.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "lois-and-eunice-in-the-firm-and-vital-transmission-of-faith",
+      "title": "Lois and Eunice in the firm and vital transmission of faith",
+      "order": 322,
+      "description": "Teaching the great sacred texts at home was the only great defense against strong idolatrous cultures. We see this immense work.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "writing-on-ceramics-and-the-use-of-old-ostraca",
+      "title": "Writing on ceramics and the use of old ostraca",
+      "order": 323,
+      "description": "When parchment was immensely expensive, pieces of broken pots served as the vital and great common paper. We analyze these receipts.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "pisidia-antioch-and-the-strong-and-immense-great-hostility",
+      "title": "Pisidia Antioch and the strong and immense great hostility",
+      "order": 324,
+      "description": "This Roman military colony in the high mountains was extremely harsh. We study the immense expulsions of the great and firm assemblies.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "haggai-and-the-strong-call-in-the-face-of-immense-great-apathy",
+      "title": "Haggai and the strong call in the face of immense great apathy",
+      "order": 325,
+      "description": "Confronting the rich for decorating their luxurious homes while the great temple remained completely in ruins. We analyze this immense speech.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-oil-in-the-strong-shields-and-the-great-military-tactics",
+      "title": "The oil in the strong shields and the great military tactics",
+      "order": 326,
+      "description": "Lubricating the lethal leather of defensive weapons prevented large cracks under the immense, harsh sun. We explore this vital practice of war.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-tough-door-guards-in-the-temple-precinct",
+      "title": "The tough door guards in the temple precinct",
+      "order": 327,
+      "description": "Monitoring the immense entrances to the sanctuary prevented immense tragedies and strong deadly riots. We study the lethal load of these lookouts.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "tychicus-and-the-immense-value-of-carrying-the-great-epistles",
+      "title": "Tychicus and the immense value of carrying the great epistles",
+      "order": 328,
+      "description": "Crossing immense distances carrying valuable hidden sacred writings required great loyalty. We analyze this bold and firm mission.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-wooden-keys-and-the-hard-heavy-old-locks",
+      "title": "The wooden keys and the hard heavy old locks",
+      "order": 329,
+      "description": "Carrying immense tools to open the colossal and strong porticos was a great symbol of enormous authority. We analyze these artifacts.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-serene-mountain-of-galilee-and-the-great-acoustics-of-the-landscape",
+      "title": "The serene mountain of Galilee and the great acoustics of the landscape",
+      "order": 330,
+      "description": "The gentle hills facing the immense sea created an amazing natural amphitheater for the immense sermons. We explore this beautiful geography.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-first-fruits-and-the-colossal-beginning-of-ancient-harvests",
+      "title": "The first fruits and the colossal beginning of ancient harvests",
+      "order": 331,
+      "description": "Delivering the first fruits was an act of great faith and very firm trust. We analyze the immense and intense vital weight of the ancient local agricultural festival.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "colossae-and-the-lethal-clash-with-immense-sects-of-the-world",
+      "title": "Colossae and the lethal clash with immense sects of the world",
+      "order": 332,
+      "description": "This ancient city housed immense mystical currents. We study the great effort of the community to preserve intact the original lethal and very ancient faith.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "benaiah-and-the-lethal-personal-guard-of-an-immense-monarch",
+      "title": "Benaiah and the lethal personal guard of an immense monarch",
+      "order": 333,
+      "description": "Being the faithful royal escort required immense relentless strength. We analyze the lethal exploits of this imposing military figure in remote and rude antiquity.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cedars-dark-tents-in-the-middle-of-the-harsh-desert",
+      "title": "Cedar's dark tents in the middle of the harsh desert",
+      "order": 334,
+      "description": "Made from dark goatskin, these thick tents withstood immense winds. We analyze the rustic construction and the rough routine of those nomads.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "dorcas-and-the-immense-civil-value-of-the-rustic-needle-and-thread",
+      "title": "Dorcas and the immense civil value of the rustic needle and thread",
+      "order": 335,
+      "description": "Making beautiful robes for the sad, helpless widows was hard work. We analyze the enormous influence and social prestige of this great local figure.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-syrophoenician-and-the-lethal-clash-of-colossal-frontiers",
+      "title": "The Syrophoenician and the lethal clash of colossal frontiers",
+      "order": 336,
+      "description": "Approaching the teacher being from a hostile ethnic group required immense vital audacity. We explore the firm and tough civil dialogue that overturned the great cultural difference.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "handwashing-and-the-immense-traditions-of-parents",
+      "title": "Handwashing and the immense traditions of parents",
+      "order": 337,
+      "description": "This immense norm did not seek medical hygiene, but rather to avoid all lethal ancient ritual impurity. We analyze the deep great debate about these tense traditions.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-wide-valley-of-jehoshaphat-and-the-immense-and-lethal-judgment",
+      "title": "The wide valley of Jehoshaphat and the immense and lethal judgment",
+      "order": 338,
+      "description": "This immense and emblematic geographical valley was a vital setting for the definitive final ruling. We study the deep and steadfast lethal terror of antiquity.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "shimei-and-the-lethal-act-of-stoning-an-immense-monarch",
+      "title": "Shimei and the lethal act of stoning an immense monarch",
+      "order": 339,
+      "description": "Throwing dark earth and stones at the fallen king was a rude and lethal public act. We analyze the immense local tribal tensions and the enormous ancient final revenge.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gallio-and-the-immense-disdain-of-the-implacable-and-lethal-proconsul",
+      "title": "Gallio and the immense disdain of the implacable and lethal proconsul",
+      "order": 340,
+      "description": "Maintaining the great Roman peace in the face of deadly disputes was a major challenge of the time. We analyze the rude imperial bureaucracy against the violent uproar caused.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "tearing-facial-hair-in-the-face-of-a-colossal-and-lethal-disaster",
+      "title": "Tearing facial hair in the face of a colossal and lethal disaster",
+      "order": 341,
+      "description": "Plucking one's own facial hair expressed extreme rudeness and panic. We explore this immense and painful reaction to the harsh and very lethal national disgrace.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "hobab-and-the-immense-talent-of-a-deadly-southern-tracker",
+      "title": "Hobab and the immense talent of a deadly southern tracker",
+      "order": 342,
+      "description": "Navigating the harsh arid deserts required great experience and much lethal cunning. We analyze the vital logistics of this figure when facing the immense heat.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-immense-gray-ashes-and-the-lethal-sign-of-mourning",
+      "title": "The immense gray ashes and the lethal sign of mourning",
+      "order": 343,
+      "description": "Spreading ashes on the head showed immense pain after a great lethal tragedy. We study this immense and very rude practice of extreme mourning in the distant world.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "juana-and-the-immense-audacity-inside-the-colossal-royal-palace",
+      "title": "Juana and the immense audacity inside the colossal royal palace",
+      "order": 344,
+      "description": "Supporting the new cause from a rude monarchical court was a constant lethal and vile risk. We analyze the immense bold value of this imposing figure in Judea.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-rude-bronze-mirrors-and-the-immense-visual-illusion",
+      "title": "The rude bronze mirrors and the immense visual illusion",
+      "order": 345,
+      "description": "Without clear polished glass, the rough metals gave only a diffuse and immense, very dark reflection. We explore this vital metaphor and poetry around fragile vision.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "abisai-and-the-colossal-and-very-lethal-force-of-the-infantry",
+      "title": "Abisai and the colossal and very lethal force of the infantry",
+      "order": 346,
+      "description": "This fierce warrior proposed lethal and quick solutions of immense blood and violence. We analyze the great and rude tensions typical of the ancient army.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-oriental-almond-tree-and-the-colossal-beauty-of-the-rough-countryside",
+      "title": "The oriental almond tree and the colossal beauty of the rough countryside",
+      "order": 347,
+      "description": "Blooming quickly in the cold and harsh winter gave it an image of great lethal fulfillment. We analyze the immense botanical fame of this enormous tree in ancient times.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-immense-mount-ararat-and-the-lethal-silence-of-the-summits",
+      "title": "The immense Mount Ararat and the lethal silence of the summits",
+      "order": 348,
+      "description": "This very high and immense frozen summit marked the great and vital restart of humanity in history. We explore the harsh, lethal geography after the colossal flood.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "haman-and-the-colossal-perfidy-of-an-immense-state-official",
+      "title": "Haman and the colossal perfidy of an immense state official",
+      "order": 349,
+      "description": "Planning the deadly and brutal massacres in secret using imperial seals required enormous lethal audacity. We analyze the immense dark hatred of this vile courtly figure.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-agricultural-tithe-and-the-immense-and-vital-support-of-the-choirs",
+      "title": "The agricultural tithe and the immense and vital support of the choirs",
+      "order": 350,
+      "description": "Maintaining the rude and expensive rites required providing very immense harvests. We explore the lethal and civil gravity by evading the obligatory tributes of that sanctuary.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "erastus-and-the-colossal-position-of-an-immense-vile-administrator",
+      "title": "Erastus and the colossal position of an immense vile administrator",
+      "order": 351,
+      "description": "Running high finance in a lethal and very pagan city required extreme and audacious bravery. We analyze the firm municipal civil influence of this enormous historical figure.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-heavy-rural-yoke-and-the-immense-lethal-task-in-the-fields",
+      "title": "The heavy rural yoke and the immense lethal task in the fields",
+      "order": 352,
+      "description": "Tying huge bulls under a lethal wooden trunk leveled the colossal rural effort. We explore this great rustic metaphor referring to the painful yoke of cruel man.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-hard-and-large-gems-and-the-lethal-work-of-the-engraver",
+      "title": "The hard and large gems and the lethal work of the engraver",
+      "order": 353,
+      "description": "Cutting into the rough precious stones required immense and lethal precision. We analyze the rude and colossal great price that this jewelry had in deep and great antiquity.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "jael-and-the-lethal-tactical-use-of-a-huge-metal-stake",
+      "title": "Jael and the lethal tactical use of a huge metal stake",
+      "order": 354,
+      "description": "Using a crude and lethal stake as a deadly weapon showed brutal, iron military tenacity. We study the immense and indomitable great military courage of this dark figure.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-use-of-crude-manure-as-great-firewood-for-a-lethal-furnace",
+      "title": "The use of crude manure as great firewood for a lethal furnace",
+      "order": 355,
+      "description": "The immense lack of firewood forced the use of dried cattle feces as fuel to repel the lethal cold. We study the rough and intense dense smoke in the ancient lares.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "obadiah-and-the-colossal-danger-of-hiding-the-clergy-and-exiles",
+      "title": "Obadiah and the colossal danger of hiding the clergy and exiles",
+      "order": 356,
+      "description": "Hiding one hundred innocents in dank, lethal caverns in ancient times required immense daring. We analyze the immense and great heroic plot executed in the dark court.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-immense-and-cruel-great-threshing-floor-and-the-lethal-harvest-ripens",
+      "title": "The immense and cruel great threshing floor and the lethal harvest ripens",
+      "order": 357,
+      "description": "Dragging huge logs with deadly sharp rocks separated the vital wheat from the dry chaff. We analyze the immense and rude ancient metaphor linked to harsh suffering.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "hiram-of-tire-and-the-immense-weight-of-the-rough-trade-of-the-sea",
+      "title": "Hiram of Tire and the immense weight of the rough trade of the sea",
+      "order": 358,
+      "description": "Exchanging lethal gold for rich luxuries generated vital debt to the immense and rude eastern neighboring kingdom. We analyze the rich alliance of this great figure with his ships.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-harsh-imperial-centurion-before-the-cross-and-the-great-nobility",
+      "title": "The harsh imperial centurion before the cross and the great nobility",
+      "order": 359,
+      "description": "Leading lethal massacres in the empire was civilian military routine. We study the great officer's colossal amazement at witnessing such calm in the face of immense physical pain.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-firm-mezuzah-in-the-hard-frames-and-the-lethal-social-norm",
+      "title": "The firm mezuzah in the hard frames and the lethal social norm",
+      "order": 360,
+      "description": "Fixing rigorous texts on porticos consecrated the immense daily family traffic. We analyze the deep, strong and vital civil practice of this ancient devout population.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "salome-and-the-immense-and-dark-lethality-in-the-cruel-banquet",
+      "title": "Salomé and the immense and dark lethality in the cruel banquet",
+      "order": 361,
+      "description": "Dancing before lethal and drunken dignitaries led to a dark and cruel homicide. We study the civil mystery surrounding the immense and very vile courtly figure behind that banquet.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "dill-and-mint-versus-the-immense-ethic-of-communal-love",
+      "title": "Dill and mint versus the immense ethic of communal love",
+      "order": 362,
+      "description": "Measuring tiny herbs while avoiding vital moral tasks generated lethal public condemnations. We analyze the immense and crude religious ritual hypocrisy that operated at that time.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "jotham-and-his-lethal-fable-about-an-immense-and-cruel-usurper",
+      "title": "Jotham and his lethal fable about an immense and cruel usurper",
+      "order": 363,
+      "description": "Denouncing a lethal tyranny using fables required audacity. We analyze the immense literary genius of this bold and illustrious thinker by alerting the people.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-immense-bronze-fountain-and-the-rude-terror-of-the-sanctuary",
+      "title": "The immense bronze fountain and the rude terror of the sanctuary",
+      "order": 364,
+      "description": "Washing hands and feet before the vital rite avoided the deadly wrath in the dark place. We analyze the immense astonishment that this harsh hygienic rule instilled.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-rude-sacred-scrolls-and-the-immense-and-invaluable-monstrance",
+      "title": "The rude sacred scrolls and the immense and invaluable monstrance",
+      "order": 365,
+      "description": "Despite deadly military banishments and immense fires, the scriptures survived millennia of rigorous attacks, resisting great empires.",
+      "audioUrl": ""
+    }
+  ],
+  "parts": []
+}
