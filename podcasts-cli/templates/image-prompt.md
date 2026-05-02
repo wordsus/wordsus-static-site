@@ -1,7 +1,6 @@
-Create a highly descriptive and detailed image generation prompt for an image that will be used as a YouTube thumbnail and podcast background.
-
-The text on the image will be:
+YouTube Channel: "{{PODCAST_NAME}}"
 Title: "{{IMAGE_TITLE}}"
-Subtitle: "{{IMAGE_SUBTITLE}}"
+Subtitle: "{{IMAGE_SUBTITLE}}
+Bottom Watermark: Wordsus
 
-Based on these titles, describe a visually striking, high-quality, cinematic image that perfectly captures the essence of the topic without including any actual text in the generated image itself. The prompt should be ready to paste into an image generator like Midjourney or Google Imagen.
+Using the data detailed above, generate and show me a prompt to create an image to use as a thumbnail for a YouTube video that discusses and explains this article. Add the title, subtitle, and a podcast icon. Do not generate the image; the output should only be the prompt.

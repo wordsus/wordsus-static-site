@@ -31,6 +31,7 @@ export interface EpisodeMetadata {
   description: string;
   locale: string;
   source: string;
+  podcast: string;
 }
 
 // ─── Session state shared across steps ────────────────────────────────────────

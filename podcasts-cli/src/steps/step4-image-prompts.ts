@@ -38,6 +38,9 @@ export async function runStep4(session: SessionState): Promise<void> {
     let prompt: string;
     try {
       prompt = renderTemplate(book, chapter, "image-prompt");
+      if (book.locale === "es") {
+        prompt += "\n\nThe prompt must be in English and the texts in Spanish.";
+      }
     } catch (e) {
       warn(`[${book.alias}] ${(e as Error).message}`);
       continue;

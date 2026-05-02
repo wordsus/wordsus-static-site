@@ -43,6 +43,15 @@ Templates are located in the `templates/` folder:
 
 If a specific book requires a different prompt, create a folder with the book's `alias` inside `templates/` and place the file there (e.g., `templates/fisica/audio-prompt.md`).
 
+### 4. Template Variables
+You can use the following placeholders in any `.md` template:
+- `{{PODCAST_NAME}}`: The podcast show name defined as `podcast` in `src/books.ts`.
+- `{{EPISODE_TITLE}}`: The full title of the current chapter (`chapter.title`) from `book.json`.
+- `{{EPISODE_NUMBER}}`: The order number of the chapter (`chapter.order`) from `book.json`.
+- `{{ARTICLE_URL}}`: The public URL of the article on the website (automatically generated).
+- `{{IMAGE_TITLE}}`: The first part of the title (extracted from the title before any `:` or `—`).
+- `{{IMAGE_SUBTITLE}}`: The second part of the title (extracted from the title after any `:` or `—`).
+
 ## Usage
 
 To start the workflow, run the script from the root of the web project:

@@ -38,6 +38,7 @@ export async function runStep1(session: SessionState): Promise<void> {
       description: chapter.description ?? bookJson.description,
       locale: book.locale,
       source: articleUrl,
+      podcast: book.podcast,
     };
 
     const outPath = getJsonSourcePath(book.alias);

@@ -1,6 +1,8 @@
-You are an expert podcast producer. I want you to generate a custom Audio Overview for my podcast.
+This is a podcast episode with the following information.
 
-The podcast is called "{{PODCAST_NAME}}".
-This is episode number {{EPISODE_NUMBER}}, titled "{{EPISODE_TITLE}}".
+Podcast Name: "{{PODCAST_NAME}}"
+Episode Title: "{{EPISODE_TITLE}}"
 
-Please discuss the core themes of the provided source document. Maintain an educational, engaging, and professional tone suitable for a general audience interested in this topic. 
+This is a popular science podcast, therefore it should be suitable for all audiences and easily understandable by beginners. That is, the topics covered should be presented in a way that a beginner can understand, but also in a way that is entertaining for listeners familiar with the subject.
+
+At the end of the audio, mention that the link to the written article for this content can be found in the episode description on the podcast platform.
