@@ -27,11 +27,12 @@ export interface BookJson {
 
 export interface EpisodeMetadata {
   episode: string;
+  podcast: string;
   title: string;
   description: string;
-  locale: string;
   source: string;
-  podcast: string;
+  locale: string;
+  order: number;
 }
 
 // ─── Session state shared across steps ────────────────────────────────────────

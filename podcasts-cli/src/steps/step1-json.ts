@@ -34,11 +34,12 @@ export async function runStep1(session: SessionState): Promise<void> {
 
     const metadata: EpisodeMetadata = {
       episode: String(episodeNumber),
+      podcast: book.podcast,
       title: chapter.title,
       description: chapter.description ?? bookJson.description,
-      locale: book.locale,
       source: articleUrl,
-      podcast: book.podcast,
+      locale: book.locale,
+      order: book.order,
     };
 
     const outPath = getJsonSourcePath(book.alias);
