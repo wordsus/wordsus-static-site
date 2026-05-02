@@ -60,10 +60,15 @@ export function splitTitle(fullTitle: string): { title: string; subtitle: string
   for (const sep of separators) {
     const idx = fullTitle.indexOf(sep);
     if (idx !== -1) {
-      return {
-        title: fullTitle.slice(0, idx),
-        subtitle: fullTitle.slice(idx + sep.length),
-      };
+      const title = fullTitle.slice(0, idx);
+      let subtitle = fullTitle.slice(idx + sep.length);
+
+      // Capitalize first letter of subtitle
+      if (subtitle.length > 0) {
+        subtitle = subtitle.charAt(0).toUpperCase() + subtitle.slice(1);
+      }
+
+      return { title, subtitle };
     }
   }
   return { title: fullTitle, subtitle: "" };
