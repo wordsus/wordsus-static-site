@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build && next-image-export-optimizer",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "podcasts": "pnpm --filter podcasts-cli start"
   },
   "dependencies": {
     "@types/mdx": "^2.0.13",
