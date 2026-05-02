@@ -79,7 +79,7 @@ wordsus-static-site/
 │   │   ├── books/
 │   │   │   └── <book-slug>/
 │   │   │       ├── book.json     # Book metadata & chapter index
-│   │   │       └── <chapter-slug>.md  # Chapter content (Markdown)
+│   │   │       └── <chapter-order>-<chapter-slug>.md  # Chapter content (Markdown)
 │   │   └── categories/
 │   │       └── <category-slug>.json  # Category metadata
 │   └── es/                       # Spanish content (same structure)
@@ -159,10 +159,10 @@ content/en/books/<your-book-slug>/
 | `chapters` | ChapterMeta[] | ✅ | Ordered list of chapters |
 | `chapters[].audioUrl` | string | ❌ | S3 URL for chapter audio (optional) |
 
-3. **Create chapter Markdown files** named exactly as the `slug` in `book.json`:
+3. **Create chapter Markdown files** following the naming convention `<order>-<slug>.md` using the fields from `book.json`:
 
 ```
-content/en/books/my-awesome-book/chapter-1-introduction.md
+content/en/books/my-awesome-book/1-chapter-1-introduction.md
 ```
 
 Chapters support standard Markdown + GFM (tables, code blocks, etc.):
