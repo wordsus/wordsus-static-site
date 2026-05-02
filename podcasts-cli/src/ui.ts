@@ -87,16 +87,18 @@ export function printReadinessTable(results: ReadinessResult[]): void {
     C.muted("Ready");
   console.log(header);
   console.log(C.muted("  " + "─".repeat(50)));
+
   for (const r of results) {
     const tick = (v: boolean) => (v ? C.accent("✔") : C.danger("✖"));
-    const ready = r.ready ? C.accent.bold("  YES") : C.danger.bold("   NO");
-    console.log(
-      `  ${C.white(r.alias.padEnd(14))}` +
-      `${tick(r.hasAudio).padEnd(18)}` +
-      `${tick(r.hasImage).padEnd(18)}` +
-      `${tick(r.hasJson).padEnd(18)}` +
-      ready
-    );
+    const ready = r.ready ? C.accent.bold("YES") : C.danger.bold("NO");
+    
+    // Column alignment manual handling to avoid ANSI padding issues
+    const colAlias = C.white(r.alias.padEnd(14));
+    const colAudio = tick(r.hasAudio) + " ".repeat(9);
+    const colImage = tick(r.hasImage) + " ".repeat(9);
+    const colJson  = tick(r.hasJson) + " ".repeat(9);
+
+    console.log(`  ${colAlias}${colAudio}${colImage}${colJson}${ready}`);
   }
   console.log();
 }

@@ -1,7 +1,7 @@
 This is a podcast episode with the following information.
 
-Podcast Name: "{{PODCAST_NAME}}"
-Episode Title: "{{EPISODE_TITLE}}"
+Podcast Name: {{PODCAST_NAME}}
+Episode Title: {{EPISODE_TITLE}}
 
 This is a popular science podcast, therefore it should be suitable for all audiences and easily understandable by beginners. That is, the topics covered should be presented in a way that a beginner can understand, but also in a way that is entertaining for listeners familiar with the subject. This podcast is intended for a Christian listener; respect for Christian beliefs must be maintained at all times.
 

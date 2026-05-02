@@ -56,35 +56,40 @@ async function main() {
         ],
       });
 
-      switch (choice) {
-        case 1:
-          await runStep1(session);
-          break;
-        case 2:
-          await runStep2(session);
-          break;
-        case 3:
-          await runStep3(session);
-          break;
-        case 4:
-          await runStep4(session);
-          break;
-        case 5:
-          await runStep5(session);
-          break;
-        case 6:
-          try {
+      try {
+        switch (choice) {
+          case 1:
+            await runStep1(session);
+            break;
+          case 2:
+            await runStep2(session);
+            break;
+          case 3:
+            await runStep3(session);
+            break;
+          case 4:
+            await runStep4(session);
+            break;
+          case 5:
+            await runStep5(session);
+            break;
+          case 6:
             await runStep6(session);
-          } catch (e) {
-            // Error already logged and printed in step 6
-          }
-          break;
-        case 7:
-          await runStep7();
-          break;
-        case 0:
-          exitRequested = true;
-          break;
+            break;
+          case 7:
+            await runStep7();
+            break;
+          case 0:
+            exitRequested = true;
+            break;
+        }
+      } catch (error) {
+        if (error instanceof Error && (error.message.includes("cancelled") || error.message.includes("User force closed"))) {
+          log("WARN", `Step ${choice} cancelled by user.`);
+        } else {
+          const msg = error instanceof Error ? error.message : String(error);
+          log("ERROR", `Step ${choice} failed: ${msg}`);
+        }
       }
       
       if (!exitRequested) {

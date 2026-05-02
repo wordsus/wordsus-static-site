@@ -37,7 +37,7 @@ export async function runStep5(session: SessionState): Promise<void> {
       
       if (!retry) {
         log("WARN", "User cancelled readiness check.");
-        throw new Error("Verification cancelled by user.");
+        return;
       }
     }
   }
