@@ -17,41 +17,6 @@
   "language": "es",
   "chapters": [
     {
-      "slug": "la-quimica-del-cafe-la-molecula-que-nos-mantiene-alerta",
-      "title": "La química del café: la molécula que nos mantiene alerta",
-      "order": 11,
-      "description": "Exploramos la estructura de la cafeína, el alcaloide más consumido en todo el mundo, sus efectos directos en el sistema nervioso y su proceso de extracción.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "balanceo-de-ecuaciones-el-orden-perfecto-en-la-quimica",
-      "title": "Balanceo de ecuaciones: el orden perfecto en la química",
-      "order": 12,
-      "description": "Aprende por qué la materia no se crea ni se destruye, y cómo los químicos utilizan el balanceo matemático para representar fielmente las reacciones exactas.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "soluciones-y-mezclas-lo-homogeneo-contra-lo-heterogeneo",
-      "title": "Soluciones y mezclas: lo homogéneo contra lo heterogéneo",
-      "order": 13,
-      "description": "Diferenciamos claramente las soluciones químicas de las simples mezclas, analizando solutos, solventes y cómo la concentración afecta las propiedades finales.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "oxidacion-y-reduccion-por-que-los-metales-se-corroen",
-      "title": "Oxidación y reducción: por qué los metales se corroen",
-      "order": 14,
-      "description": "Conoce las famosas reacciones redox, un intercambio constante de electrones que causa la corrosión del hierro pero también permite el uso de las baterías.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "fuerzas-intermoleculares-el-pegamento-oculto-del-mundo",
-      "title": "Fuerzas intermoleculares: el pegamento oculto del mundo",
-      "order": 15,
-      "description": "Descubre cómo las moléculas se atraen entre sí mediante puentes de hidrógeno y fuerzas de Van der Waals, determinando estados físicos y puntos de ebullición.",
-      "audioUrl": ""
-    },
-    {
       "slug": "compuestos-organicos-la-quimica-del-carbono-en-la-vida",
       "title": "Compuestos orgánicos: la química del carbono en la vida",
       "order": 16,

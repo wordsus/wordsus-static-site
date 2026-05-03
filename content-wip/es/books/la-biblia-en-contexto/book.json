@@ -17,41 +17,6 @@
   "language": "es",
   "chapters": [
     {
-      "slug": "el-duro-oficio-de-ser-pastor-de-ovejas-en-la-judea",
-      "title": "El duro oficio de ser pastor de ovejas en la Judea",
-      "order": 11,
-      "description": "Olvida la imagen romántica tradicional. El pastoreo era un trabajo rudo, solitario y peligroso. Comprenderlo da un nuevo peso y significado al Salmo veintitrés.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "la-industria-pesquera-durante-el-primer-siglo-en-judea",
-      "title": "La industria pesquera durante el primer siglo en Judea",
-      "order": 12,
-      "description": "Los pescadores no eran campesinos muy pobres, manejaban empresas rentables bajo fuertes impuestos. Exploramos su rutina diaria y posición en la sociedad.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "geografia-sagrada-y-la-defensa-natural-de-jerusalen",
-      "title": "Geografía sagrada y la defensa natural de Jerusalén",
-      "order": 13,
-      "description": "Ubicada sobre diversos montes y rodeada de valles profundos, la ciudad era una fortaleza natural. Descubre por qué todos los peregrinos debían subir a ella.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "el-contexto-politico-y-social-durante-la-vida-de-jesus",
-      "title": "El contexto político y social durante la vida de Jesús",
-      "order": 14,
-      "description": "Jesús nació en un verdadero polvorín político dominado por Roma de forma estricta. Analizamos tensiones sociales, impuestos y expectativas de liberación.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "el-imperio-romano-y-su-estricto-control-sobre-judea",
-      "title": "El Imperio Romano y su estricto control sobre Judea",
-      "order": 15,
-      "description": "La gran maquinaria militar de Roma dictaba cada aspecto de la vida cotidiana. Conoce a los prefectos, las legiones y el equilibrio de poder con el Sanedrín.",
-      "audioUrl": ""
-    },
-    {
       "slug": "pedro-de-galilea-y-su-rol-en-el-inicio-del-movimiento",
       "title": "Pedro de Galilea y su rol en el inicio del movimiento",
       "order": 16,

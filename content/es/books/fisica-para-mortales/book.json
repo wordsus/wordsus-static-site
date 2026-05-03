@@ -86,6 +86,41 @@
       "order": 10,
       "description": "Investigamos el inmenso campo magnético que rodea la Tierra. Aprenderás cómo se genera en el núcleo del planeta y por qué es vital para nuestra existencia.",
       "audioUrl": ""
+    },
+    {
+      "slug": "la-refraccion-de-la-luz-espejismos-y-lentes-en-detalle",
+      "title": "La refracción de la luz: espejismos y lentes en detalle",
+      "order": 11,
+      "description": "Estudiamos cómo la luz cambia de dirección al pasar por distintos medios. Un análisis sobre cómo funcionan los lentes, los prismas y los espejismos ópticos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "relatividad-especial-el-tiempo-no-es-igual-para-todos",
+      "title": "Relatividad especial: el tiempo no es igual para todos",
+      "order": 12,
+      "description": "Nos sumergimos en las ideas de Albert Einstein. Descubre cómo la velocidad de la luz altera nuestra percepción del tiempo y el espacio en el universo actual.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-origen-del-universo-evidencias-sobre-el-big-bang",
+      "title": "El origen del universo: evidencias sobre el Big Bang",
+      "order": 13,
+      "description": "Viajamos al inicio de todo lo que conocemos. Revisamos las pruebas científicas que respaldan la teoría del Big Bang y la constante expansión del universo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "acustica-basica-la-ciencia-detras-del-sonido-y-la-musica",
+      "title": "Acústica básica: la ciencia detrás del sonido y la música",
+      "order": 14,
+      "description": "Exploramos cómo se propagan las ondas sonoras en el aire. Entiende la física que hace posible desde una simple conversación hasta la mejor obra musical.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "tercera-ley-de-newton-el-principio-de-accion-y-reaccion",
+      "title": "Tercera ley de Newton: el principio de acción y reacción",
+      "order": 15,
+      "description": "Analizamos por qué toda acción tiene una reacción igual y opuesta. Ejemplos cotidianos de esta ley, desde caminar hasta el lanzamiento de cohetes espaciales.",
+      "audioUrl": ""
     }
   ]
 }

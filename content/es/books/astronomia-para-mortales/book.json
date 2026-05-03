@@ -85,6 +85,41 @@
       "order": 10,
       "description": "Diferenciamos estos escombros espaciales antiguos. Entiende qué ocurre cuando ingresan a la atmósfera terrestre y si representan una verdadera amenaza.",
       "audioUrl": ""
+    },
+    {
+      "slug": "la-via-lactea-un-paseo-detallado-por-nuestra-casa-espiral",
+      "title": "La Vía Láctea: Un paseo detallado por nuestra casa espiral",
+      "order": 11,
+      "description": "Viajamos a través de nuestra gigantesca galaxia. Exploramos su forma espiral, su denso núcleo central y la increíble cantidad de estrellas que contiene.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-ano-luz-entendiendo-las-enormes-distancias-del-espacio",
+      "title": "El año luz: Entendiendo las enormes distancias del espacio",
+      "order": 12,
+      "description": "Explicamos cómo medimos la inmensidad del universo. Descubre por qué al mirar ciertas estrellas lejanas, estamos asomándonos literalmente hacia el pasado.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cometas-majestuosos-antiguas-bolas-de-nieve-en-el-espacio",
+      "title": "Cometas majestuosos: Antiguas bolas de nieve en el espacio",
+      "order": 13,
+      "description": "Acompaña a estos nómadas helados en su órbita. Conoce sus componentes principales y cómo forman sus espectaculares y brillantes colas junto al sol.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-big-bang-la-increible-explosion-que-origino-todo-esto",
+      "title": "El Big Bang: La increíble explosión que originó todo esto",
+      "order": 14,
+      "description": "Retrocedemos miles de millones de años para narrar el inicio absoluto del universo. Desgranamos cómo surgió repentinamente la materia, luz y el tiempo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "nebulosas-brillantes-cunas-maravillosas-de-las-estrellas",
+      "title": "Nebulosas brillantes: Cunas maravillosas de las estrellas",
+      "order": 15,
+      "description": "Adéntrate en las inmensas nubes de gas cósmico y polvo interestelar. Contempla estos viveros donde nacen las estrellas con formas y colores hermosos.",
+      "audioUrl": ""
     }
   ]
 }

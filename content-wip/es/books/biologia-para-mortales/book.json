@@ -19,41 +19,6 @@
   "language": "es",
   "chapters": [
     {
-      "slug": "los-grupos-sanguineos-humanos-y-su-base-hereditaria",
-      "title": "Los grupos sanguíneos humanos y su base hereditaria",
-      "order": 11,
-      "description": "Entiende la diferencia genética entre los grupos sanguíneos del sistema ABO y el factor Rh, y por qué esta compatibilidad es crucial en la medicina actual.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "el-sistema-inmunologico-las-defensas-del-organismo",
-      "title": "El sistema inmunológico: Las defensas del organismo",
-      "order": 12,
-      "description": "Analizamos las células y procesos que componen nuestro sistema inmune, el cual nos protege de patógenos y enfermedades de manera constante y silenciosa.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "la-biologia-del-sueno-por-que-dormimos-y-sus-fases",
-      "title": "La biología del sueño: Por qué dormimos y sus fases",
-      "order": 13,
-      "description": "Revisamos los procesos neuronales, los ritmos circadianos y la gran importancia biológica de dormir bien para mantener una salud física y mental óptima.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "el-proceso-de-la-digestion-y-absorcion-de-nutrientes",
-      "title": "El proceso de la digestión y absorción de nutrientes",
-      "order": 14,
-      "description": "Acompañamos a los alimentos en su recorrido por el sistema digestivo humano para entender cómo extraemos y asimilamos la energía necesaria para vivir.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "crispr-cas9-la-revolucion-en-la-edicion-genetica",
-      "title": "CRISPR-Cas9: La revolución en la edición genética",
-      "order": 15,
-      "description": "Conoce la herramienta de edición genética inspirada en el sistema inmune bacteriano que permite a los científicos modificar secuencias de ADN con precisión.",
-      "audioUrl": ""
-    },
-    {
       "slug": "metamorfosis-transformaciones-biologicas-extremas",
       "title": "Metamorfosis: Transformaciones biológicas extremas",
       "order": 16,
