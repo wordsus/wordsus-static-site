@@ -10,7 +10,7 @@ import { config } from "../config.js";
 import { printStep, ok, err, info, C, divider } from "../ui.js";
 import { logStep, log } from "../logger.js";
 import type { SessionState } from "../types.js";
-import { discoverEpisodes, outputsDir, findAudioFile, findImageFile, findVideoFile } from "../filesystem.js";
+import { discoverEpisodes, outputsDir, findAudioFile, findImageFile, findVideoFile, saveLastEpisode } from "../filesystem.js";
 import { runFFmpeg } from "../ffmpeg.js";
 import { generateYoutubeInfo } from "../youtube.js";
 
@@ -76,8 +76,13 @@ export async function runStep6(session: SessionState): Promise<void> {
         outputFile: outputVideo,
         isStaticImage,
         onProgress: (p) => {
-          const percent = ((p.seconds / p.totalSeconds) * 100).toFixed(1);
-          process.stdout.write(`\r  🎬 Rendering: ${C.accent(percent + "%")} [${p.seconds.toFixed(1)}s / ${p.totalSeconds.toFixed(1)}s]   `);
+          const ratio = p.seconds / p.totalSeconds;
+          const percent = (ratio * 100).toFixed(1);
+          const barWidth = 30;
+          const filledWidth = Math.floor(ratio * barWidth);
+          const bar = C.accent("━".repeat(filledWidth)) + C.muted("━".repeat(barWidth - filledWidth));
+          
+          process.stdout.write(`\r  🎬 Rendering: ${C.white("[")}${bar}${C.white("]")} ${C.accent(percent + "%")} [${p.seconds.toFixed(0)}s/${p.totalSeconds.toFixed(0)}s]   `);
         }
       });
       process.stdout.write("\n");
@@ -110,6 +115,10 @@ export async function runStep6(session: SessionState): Promise<void> {
     err(`${errors.length} episode(s) failed to process.`);
   }
   ok(`All episodes processed — ${doneCount} rendered, ${skippedCount} skipped.`);
+
+  // Save the episode number to last-episode.log
+  saveLastEpisode(session.defaultEpisode);
+
   log("INFO", `Step 6 completed: ${doneCount} done, ${skippedCount} skipped, ${errors.length} errors.`);
 }
 

@@ -183,7 +183,7 @@ export async function backupAndClean(): Promise<void> {
   purgeOldBackups();
 }
 
-function purgeOldBackups(): void {
+export function purgeOldBackups(): void {
   const backups = backupsDir();
   if (!fs.existsSync(backups)) return;
   const retentionMs = config.backupRetentionDays * 24 * 60 * 60 * 1000;
@@ -196,4 +196,12 @@ function purgeOldBackups(): void {
       log("INFO", `Purged old backup: ${file}`);
     }
   }
+}
+
+export function saveLastEpisode(episode: number): void {
+  const dir = logsDir();
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+  const logFile = path.join(dir, "last-episode.log");
+  fs.writeFileSync(logFile, episode.toString(), "utf-8");
+  log("INFO", `Saved last episode (${episode}) to ${logFile}`);
 }
