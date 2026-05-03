@@ -18,15 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     });
 
-    const categories = getAllCategories(locale as Locale);
-    for (const cat of categories) {
-      entries.push({
-        url: `${siteUrl}/${locale}/${cat.slug}`,
-        lastModified: new Date(),
-        changeFrequency: 'weekly',
-        priority: 0.8,
-      });
-    }
+    // Home is enough here; categories are now noindex
 
     const books = getAllBooks(locale as Locale);
     for (const book of books) {

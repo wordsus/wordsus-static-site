@@ -78,12 +78,14 @@ export function checkReadiness(aliases: string[]): ReadinessResult[] {
 
 // ─── Backup ───────────────────────────────────────────────────────────────────
 
-function getTodayDateString(): string {
+function getBackupTimestamp(): string {
   const d = new Date();
   const yyyy = d.getFullYear();
   const mm = String(d.getMonth() + 1).padStart(2, "0");
   const dd = String(d.getDate()).padStart(2, "0");
-  return `${yyyy}-${mm}-${dd}`;
+  const hh = String(d.getHours()).padStart(2, "0");
+  const min = String(d.getMinutes()).padStart(2, "0");
+  return `${yyyy}-${mm}-${dd}_${hh}-${min}`;
 }
 
 async function zipDirectory(sourceDir: string, outZip: string): Promise<void> {
@@ -101,12 +103,12 @@ async function zipDirectory(sourceDir: string, outZip: string): Promise<void> {
 }
 
 export async function backupAndClean(): Promise<void> {
-  const date = getTodayDateString();
+  const timestamp = getBackupTimestamp();
   const backups = backupsDir();
   fs.mkdirSync(backups, { recursive: true });
 
-  const sourcesZip = path.join(backups, `sources_${date}.zip`);
-  const outputsZip = path.join(backups, `outputs_${date}.zip`);
+  const sourcesZip = path.join(backups, `sources_${timestamp}.zip`);
+  const outputsZip = path.join(backups, `outputs_${timestamp}.zip`);
 
   // Zip sources_today
   if (fs.existsSync(sourcesDir()) && fs.readdirSync(sourcesDir()).length > 0) {
