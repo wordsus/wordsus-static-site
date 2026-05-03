@@ -50,7 +50,7 @@ async function main() {
           { name: "3. Copy Audio Prompts (NotebookLM)", value: 3 },
           { name: "4. Copy Image Prompts (Gemini)", value: 4 },
           { name: "5. Verify Source Files readiness", value: 5 },
-          { name: "6. Generate Videos (Python Script)", value: 6 },
+          { name: "6. Generate Videos (FFmpeg)", value: 6 },
           { name: "7. Backup & Cleanup", value: 7 },
           { name: C.danger("0. Exit program"), value: 0 },
         ],

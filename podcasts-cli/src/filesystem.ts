@@ -46,9 +46,59 @@ export function findImageFile(alias: string): string | null {
   return null;
 }
 
+export function findVideoFile(alias: string): string | null {
+  const dir = sourcesDir();
+  const candidate = path.join(dir, `${alias}.mp4`);
+  return fs.existsSync(candidate) ? candidate : null;
+}
+
 export function findJsonFile(alias: string): string | null {
   const candidate = getJsonSourcePath(alias);
   return fs.existsSync(candidate) ? candidate : null;
+}
+
+// ─── Episode Discovery ───────────────────────────────────────────────────────
+
+export interface EpisodeDiscoveryInfo {
+  alias: string;
+  jsonPath: string;
+  order: number;
+}
+
+export function discoverEpisodes(): EpisodeDiscoveryInfo[] {
+  const dir = sourcesDir();
+  if (!fs.existsSync(dir)) return [];
+
+  const files = fs.readdirSync(dir);
+  const episodes: EpisodeDiscoveryInfo[] = [];
+
+  for (const file of files) {
+    if (file.endsWith(".json")) {
+      const alias = path.basename(file, ".json");
+      const jsonPath = path.join(dir, file);
+      
+      // Basic processable check
+      const hasAudio = findAudioFile(alias) !== null;
+      const hasImage = findImageFile(alias) !== null;
+      const hasVideo = findVideoFile(alias) !== null;
+      
+      if (hasAudio && (hasImage || hasVideo)) {
+        try {
+          const content = fs.readFileSync(jsonPath, "utf-8");
+          const data = JSON.parse(content);
+          episodes.push({
+            alias,
+            jsonPath,
+            order: data.order ?? 0,
+          });
+        } catch (e) {
+          log("ERROR", `Failed to read metadata for ${alias}: ${e}`);
+        }
+      }
+    }
+  }
+
+  return episodes.sort((a, b) => (a.order - b.order) || a.alias.localeCompare(b.alias));
 }
 
 // ─── Readiness check ─────────────────────────────────────────────────────────

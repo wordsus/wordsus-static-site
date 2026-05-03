@@ -4,9 +4,7 @@
  */
 export const config = {
   /**
-   * Path to the working directory shared with the Python video-generation script.
-   * This must match the WORKING_DIR variable in the Python script.
-   * Example: "/Users/yourname/Downloads/podcasts"
+   * Path to the working directory.
    */
   workingDir: process.env.PODCASTS_WORKING_DIR ?? "/Users/fabian/Downloads/podcasts",
 
@@ -27,13 +25,29 @@ export const config = {
   logRetentionDays: 7,
 
   /**
-   * Path to the Python video-generation script.
-   * The script will be called with `python3 <scriptPath>`.
-   */
-  pythonScriptPath: process.env.PODCASTS_PYTHON_SCRIPT ?? "/Users/fabian/scripts/generate_podcast_video.py",
-
-  /**
    * Base URL of the published website. Used to construct article URLs.
    */
   siteBaseUrl: "https://wordsus.com",
+
+  /**
+   * Video generation settings.
+   */
+  video: {
+    visualizer: {
+      sensitivity: 0.8,
+      style: "wave" as "bars" | "wave" | "circle" | "spectrum",
+      color: "#00FFAA",
+      height: 400,
+      bands: 64,
+    },
+    output: {
+      codec: "libx264",
+      crf: 22,
+      resolution: "1920x1080",
+      fps: 30,
+    },
+    loop: {
+      crossfadeDuration: 1.0,
+    },
+  },
 } as const;

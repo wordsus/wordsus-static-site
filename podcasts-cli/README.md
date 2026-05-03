@@ -13,13 +13,24 @@ This tool acts as an interactive orchestrator, providing a menu to explicitly ex
 5. **Validation:** Verifies that all resources (audio, image, json) are present before executing the video rendering.
 6. **Automatic Backups:** Zips the day's files into a backup folder and purges old backups and logs.
 
+## Prerequisites
+
+This tool requires the following system dependencies to be installed and available in your **PATH**:
+
+- **FFmpeg**: Used for video rendering and audio-reactive visualizers.
+- **ffprobe**: (Part of the FFmpeg suite) Used to detect media durations.
+
+You can install them via Homebrew (macOS):
+```bash
+brew install ffmpeg
+```
+
 ## Configuration
 
 ### 1. Environment Variables / Directories
 Review `src/config.ts` or set the following environment variables:
-- `PODCASTS_WORKING_DIR`: Directory where working folders will be created (e.g., `~/Downloads/podcasts`). **This must match your Python script's configuration.**
+- `PODCASTS_WORKING_DIR`: Directory where working folders will be created (e.g., `~/Downloads/podcasts`).
 - `PODCASTS_CONTENT_DIR`: Path to the website's `content` folder.
-- `PODCASTS_PYTHON_SCRIPT`: Absolute path to the Python video generation script.
 
 ### 2. Registering Books
 Edit `src/books.ts` to define which books from the website are relevant to this process.
@@ -36,14 +47,23 @@ export const books: BookConfig[] = [
 ];
 ```
 
-### 3. Prompt Templates
+### 3. Video Generation Settings
+You can customize the video output and visualizer behavior in `src/config.ts`:
+
+- **Visualizer Style:** `bars`, `wave`, `circle`, or `spectrum`.
+- **Color:** Accent color in Hex format (e.g., `#00FFAA`).
+- **Resolution:** Target output resolution (default `1920x1080`).
+- **FPS:** Target frames per second (default `30`).
+- **Crossfade Duration:** Seamless loop duration for video backgrounds (default `1.0s`).
+
+### 4. Prompt Templates
 Templates are located in the `templates/` folder:
 - `audio-prompt.md`: General prompt for NotebookLM.
 - `image-prompt.md`: General prompt for Gemini.
 
 If a specific book requires a different prompt, create a folder with the book's `alias` inside `templates/` and place the file there (e.g., `templates/fisica/audio-prompt.md`).
 
-### 4. Template Variables
+### 5. Template Variables
 You can use the following placeholders in any `.md` template:
 - `{{PODCAST_NAME}}`: The podcast show name defined as `podcast` in `src/books.ts`.
 - `{{EPISODE_TITLE}}`: The full title of the current chapter (`chapter.title`) from `book.json`.
@@ -74,5 +94,5 @@ pnpm podcasts --episode 3
 - **Step 3 - Audio Prompts:** Copies prompts one by one to customize the "Audio Overview" in NotebookLM.
 - **Step 4 - Image Prompts:** Copies prompts and automatically opens the corresponding Gemini chat (defined in `chats.txt`) to generate image descriptions.
 - **Step 5 - Verification:** Waits for you to place the downloaded audio and images (`[alias].wav`, `[alias].png`) into `sources_today/`.
-- **Step 6 - Generation:** Launches the Python script to create the `.mp4` and `.txt` files in `outputs_today/`.
+- **Step 6 - Generation:** Uses **FFmpeg** to create the `.mp4` and `.txt` files in `outputs_today/`. It renders an audio-reactive visualizer and manages background loops.
 - **Step 7 - Cleanup:** After uploading everything to YouTube, it packages today's files into a ZIP file in the `backups/` folder and cleans the environment for the next day.

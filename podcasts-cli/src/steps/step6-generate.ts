@@ -1,21 +1,31 @@
 /**
- * Step 6 — Execute the Python generation script.
- * Runs the configured Python script which processes the sources_today/ directory
- * and writes the final mp4 and txt files to outputs_today/.
+ * Step 6 — Generate Videos.
+ * Port of the Python script to TypeScript.
+ * Processes the sources_today/ directory and writes final mp4 and txt files to outputs_today/.
  */
-import { spawn } from "child_process";
+import fs from "fs";
+import path from "path";
 import { confirm } from "@inquirer/prompts";
 import { config } from "../config.js";
-import { printStep, ok, err, warn, info, C } from "../ui.js";
+import { printStep, ok, err, info, C, divider } from "../ui.js";
 import { logStep, log } from "../logger.js";
 import type { SessionState } from "../types.js";
+import { discoverEpisodes, outputsDir, findAudioFile, findImageFile, findVideoFile } from "../filesystem.js";
+import { runFFmpeg } from "../ffmpeg.js";
+import { generateYoutubeInfo } from "../youtube.js";
 
 export async function runStep6(session: SessionState): Promise<void> {
   printStep(6, "Generate Videos");
 
-  info(`The Python script will now process the files in sources_today/.`);
-  info(`Make sure the script is configured to look in:`);
-  info(`  WORKING_DIR=${config.workingDir}`);
+  const episodes = discoverEpisodes();
+
+  if (episodes.length === 0) {
+    warn("No processable episodes found in sources_today/.");
+    info("Each episode needs a .json metadata file, an audio file, and a background image/video.");
+    return;
+  }
+
+  info(`Found ${C.accent(episodes.length.toString())} episode(s) to process.`);
   
   const proceed = await confirm({
     message: C.white("Start video generation?"),
@@ -27,40 +37,82 @@ export async function runStep6(session: SessionState): Promise<void> {
     return;
   }
 
-  logStep(6, `Starting Python script: ${config.pythonScriptPath}`);
+  logStep(6, `Starting generation of ${episodes.length} videos...`);
 
-  return new Promise((resolve, reject) => {
-    // Determine how to run the script. Could be `python3`, `python`, etc.
-    // For now we assume `python3`. It can be overridden in the environment if needed.
-    const pythonCmd = process.env.PYTHON_CMD || "python3";
-    
-    // We pass the working directory as an environment variable to the python script
-    const env = {
-      ...process.env,
-      WORKING_DIR: config.workingDir,
-    };
+  let doneCount = 0;
+  let skippedCount = 0;
+  const errors: { alias: string; error: any }[] = [];
 
-    const pythonProcess = spawn(pythonCmd, [config.pythonScriptPath], {
-      stdio: "inherit",
-      env,
-    });
+  for (const ep of episodes) {
+    const { alias, jsonPath } = ep;
+    const outputVideo = path.join(outputsDir(), `${alias}.mp4`);
+    const outputInfo = path.join(outputsDir(), `${alias}_upload_info.txt`);
 
-    pythonProcess.on("close", (code) => {
-      if (code === 0) {
-        ok("Video generation completed successfully.");
-        log("INFO", "Python script exited with code 0.");
-        resolve();
-      } else {
-        err(`Video generation failed with exit code ${code}.`);
-        log("ERROR", `Python script failed with code ${code}.`);
-        reject(new Error(`Python script failed with code ${code}`));
+    divider();
+    info(`Processing: ${C.primary.bold(alias)}`);
+
+    // Skip if already exists
+    if (fs.existsSync(outputVideo)) {
+      info(`⏭ Skipping ${alias} — video already exists.`);
+      skippedCount++;
+      continue;
+    }
+
+    try {
+      const audioFile = findAudioFile(alias)!;
+      const bgVideo = findVideoFile(alias);
+      const bgImage = findImageFile(alias);
+      
+      const backgroundFile = bgVideo || bgImage!;
+      const isStaticImage = !bgVideo;
+
+      // Read metadata for YouTube info
+      const metadata = JSON.parse(fs.readFileSync(jsonPath, "utf-8"));
+
+      // Run FFmpeg
+      await runFFmpeg({
+        audioFile,
+        backgroundFile,
+        outputFile: outputVideo,
+        isStaticImage,
+        onProgress: (p) => {
+          const percent = ((p.seconds / p.totalSeconds) * 100).toFixed(1);
+          process.stdout.write(`\r  🎬 Rendering: ${C.accent(percent + "%")} [${p.seconds.toFixed(1)}s / ${p.totalSeconds.toFixed(1)}s]   `);
+        }
+      });
+      process.stdout.write("\n");
+
+      // Generate YouTube info
+      generateYoutubeInfo({
+        infoPath: outputInfo,
+        metadata,
+        videoFile: outputVideo
+      });
+
+      // Copy thumbnail if it's an image
+      if (bgImage) {
+        const destThumbnail = path.join(outputsDir(), `${alias}${path.extname(bgImage)}`);
+        fs.copyFileSync(bgImage, destThumbnail);
+        info(`Thumbnail copied: ${path.basename(destThumbnail)}`);
       }
-    });
 
-    pythonProcess.on("error", (error) => {
-      err(`Failed to start Python script: ${error.message}`);
-      log("ERROR", `Failed to start Python script: ${error.message}`);
-      reject(error);
-    });
-  });
+      ok(`Done — ${alias}`);
+      doneCount++;
+    } catch (e) {
+      err(`Failed to process ${alias}: ${e}`);
+      log("ERROR", `Failed to process ${alias}: ${e}`);
+      errors.push({ alias, error: e });
+    }
+  }
+
+  divider();
+  if (errors.length > 0) {
+    err(`${errors.length} episode(s) failed to process.`);
+  }
+  ok(`All episodes processed — ${doneCount} rendered, ${skippedCount} skipped.`);
+  log("INFO", `Step 6 completed: ${doneCount} done, ${skippedCount} skipped, ${errors.length} errors.`);
+}
+
+function warn(msg: string): void {
+  console.log(C.warn("  ⚠  ") + C.white(msg));
 }

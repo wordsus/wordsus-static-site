@@ -24,7 +24,7 @@ function ensureLogsDir(): void {
   fs.mkdirSync(logsDir, { recursive: true });
 }
 
-export function log(level: "INFO" | "STEP" | "WARN" | "ERROR", message: string): void {
+export function log(level: "INFO" | "STEP" | "WARN" | "ERROR" | "DEBUG", message: string): void {
   ensureLogsDir();
   const line = `[${getTimestamp()}] [${level}] ${message}\n`;
   const logFile = path.join(logsDir, getTodayFilename());
