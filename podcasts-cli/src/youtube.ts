@@ -4,7 +4,7 @@ import { log } from "./logger.js";
 
 const YOUTUBE_INFO_TEMPLATE = `\
 ══════════════════════════════════════════════════
-  YouTube Upload Info — {podcast} — Episode {episode}
+{podcast} — Episode {episode}
 ══════════════════════════════════════════════════
 
 PODCAST SHOW
@@ -31,7 +31,7 @@ export function generateYoutubeInfo(params: {
   videoFile: string;
 }): void {
   const { infoPath, metadata, videoFile } = params;
-  
+
   const description = metadata.description || "";
   const locale = (metadata.locale || "es").toLowerCase();
   const source = metadata.source || "";
@@ -46,11 +46,11 @@ export function generateYoutubeInfo(params: {
   const fullDescription = `${description}${sourceInfo}`;
 
   const content = YOUTUBE_INFO_TEMPLATE
-    .replace("{podcast}", metadata.podcast || "N/A")
-    .replace("{episode}", metadata.episode || "N/A")
-    .replace("{title}", metadata.title || "N/A")
-    .replace("{description}", fullDescription)
-    .replace("{video_file}", path.basename(videoFile));
+    .replaceAll("{podcast}", metadata.podcast || "N/A")
+    .replaceAll("{episode}", metadata.episode || "N/A")
+    .replaceAll("{title}", metadata.title || "N/A")
+    .replaceAll("{description}", fullDescription)
+    .replaceAll("{video_file}", path.basename(videoFile));
 
   fs.writeFileSync(infoPath, content, "utf-8");
   log("INFO", `YouTube upload info written: ${infoPath}`);
