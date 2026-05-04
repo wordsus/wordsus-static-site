@@ -17,41 +17,6 @@
   "language": "es",
   "chapters": [
     {
-      "slug": "enanas-rojas-las-estrellas-mas-comunes-de-nuestra-galaxia",
-      "title": "Enanas rojas: Las estrellas más comunes de nuestra galaxia",
-      "order": 16,
-      "description": "Conoce a los astros más abundantes y longevos del cosmos. Explicamos por qué son tan pequeñas, frías y fundamentales para buscar planetas habitables.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "materia-oscura-el-gran-e-invisible-misterio-del-universo",
-      "title": "Materia oscura: El gran e invisible misterio del universo",
-      "order": 17,
-      "description": "Abordamos uno de los mayores enigmas de la ciencia. Analizamos cómo sabemos que la materia invisible existe y cómo logra mantener unidas a las galaxias.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "la-fuerza-de-gravedad-el-pegamento-que-sostiene-al-cosmos",
-      "title": "La fuerza de gravedad: El pegamento que sostiene al cosmos",
-      "order": 18,
-      "description": "Descubre la fuerza principal que moldea el universo. Explicamos fácilmente cómo los cuerpos más masivos logran curvar el espacio y el tiempo a su alrededor.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "supernovas-las-explosiones-mas-violentas-del-cosmos-entero",
-      "title": "Supernovas: Las explosiones más violentas del cosmos entero",
-      "order": 19,
-      "description": "Presencia el último suspiro de estrellas masivas. Aprende cómo estas potentes e inmensas explosiones siembran el espacio con todos los elementos pesados.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "galaxia-de-andromeda-nuestro-inmenso-y-lejano-vecino-real",
-      "title": "Galaxia de Andrómeda: Nuestro inmenso y lejano vecino real",
-      "order": 20,
-      "description": "Viajamos a la galaxia enorme más cercana a nuestra Vía Láctea. Analizamos su gran tamaño colosal y su inevitable e increíble colisión futura con nosotros.",
-      "audioUrl": ""
-    },
-    {
       "slug": "eclipses-totales-la-perfecta-danza-de-sombras-en-el-cielo",
       "title": "Eclipses totales: La perfecta danza de sombras en el cielo",
       "order": 21,

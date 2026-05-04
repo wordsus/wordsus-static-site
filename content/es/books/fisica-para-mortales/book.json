@@ -121,6 +121,41 @@
       "order": 15,
       "description": "Analizamos por qué toda acción tiene una reacción igual y opuesta. Ejemplos cotidianos de esta ley, desde caminar hasta el lanzamiento de cohetes espaciales.",
       "audioUrl": ""
+    },
+    {
+      "slug": "conduccion-y-conveccion-como-se-transfiere-el-calor",
+      "title": "Conducción y convección: cómo se transfiere el calor",
+      "order": 16,
+      "description": "Diferenciamos los métodos de transferencia de energía térmica. Descubre por qué el aire caliente sube y cómo los metales conducen el calor tan rápidamente.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "circuitos-electricos-la-corriente-en-nuestros-hogares",
+      "title": "Circuitos eléctricos: la corriente en nuestros hogares",
+      "order": 17,
+      "description": "Comprendemos el flujo de electrones en un circuito cerrado. Explicamos la diferencia entre corriente alterna y continua que alimenta tus electrodomésticos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "espectro-electromagnetico-mas-alla-de-la-luz-visible",
+      "title": "Espectro electromagnético: más allá de la luz visible",
+      "order": 18,
+      "description": "Descubre las ondas que no podemos ver pero que usamos a diario. Desde las ondas de radio y microondas hasta los rayos X y la radiación gamma en el espacio.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "materia-oscura-el-gran-fantasma-de-nuestro-universo",
+      "title": "Materia oscura: el gran fantasma de nuestro universo",
+      "order": 19,
+      "description": "Investigamos la misteriosa sustancia que compone la mayor parte del cosmos. Aprende por qué sabemos que existe aunque no podamos verla ni interactuar con ella.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-gato-de-schrodinger-paradojas-del-mundo-cuantico",
+      "title": "El gato de Schrödinger: paradojas del mundo cuántico",
+      "order": 20,
+      "description": "Analizamos el famoso experimento mental de la mecánica cuántica. Entiende qué significa la superposición y por qué observar algo puede cambiar su estado final.",
+      "audioUrl": ""
     }
   ]
 }

@@ -17,41 +17,6 @@
   "language": "es",
   "chapters": [
     {
-      "slug": "compuestos-organicos-la-quimica-del-carbono-en-la-vida",
-      "title": "Compuestos orgánicos: la química del carbono en la vida",
-      "order": 16,
-      "description": "Nos adentramos en la química orgánica para entender por qué el átomo de carbono es tan versátil y conforma la estructura básica de todos los seres vivientes.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "alcanos-alquenos-y-alquinos-cadenas-de-hidrocarburos",
-      "title": "Alcanos, alquenos y alquinos: cadenas de hidrocarburos",
-      "order": 17,
-      "description": "Exploramos los hidrocarburos más simples, analizando las diferencias de reactividad entre enlaces simples, dobles y triples que sostienen a esta industria.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "la-inalterabilidad-del-oro-un-metal-noble-muy-resistente",
-      "title": "La inalterabilidad del oro: un metal noble muy resistente",
-      "order": 18,
-      "description": "Estudiamos por qué el oro no pierde su brillo ni se corroe con el paso de los siglos. Conoce su configuración electrónica y su escasa reactividad química.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "estequiometria-las-matematicas-detras-de-las-reacciones",
-      "title": "Estequiometría: las matemáticas detrás de las reacciones",
-      "order": 19,
-      "description": "Aprende cómo calcular las cantidades exactas de reactivos y productos. Esta herramienta fundamental evita el desperdicio de sustancias a nivel industrial.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "velocidad-de-reaccion-acelerando-los-procesos-quimicos",
-      "title": "Velocidad de reacción: acelerando los procesos químicos",
-      "order": 20,
-      "description": "Analizamos la cinética química y cómo factores como la temperatura, la presión, la concentración y los catalizadores pueden acelerar las transformaciones.",
-      "audioUrl": ""
-    },
-    {
       "slug": "el-diamante-y-el-grafito-las-multiples-caras-del-carbono",
       "title": "El diamante y el grafito: las múltiples caras del carbono",
       "order": 21,

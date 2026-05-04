@@ -120,6 +120,41 @@
       "order": 15,
       "description": "La gran maquinaria militar de Roma dictaba cada aspecto de la vida cotidiana. Conoce a los prefectos, las legiones y el equilibrio de poder con el Sanedrín.",
       "audioUrl": ""
+    },
+    {
+      "slug": "pedro-de-galilea-y-su-rol-en-el-inicio-del-movimiento",
+      "title": "Pedro de Galilea y su rol en el inicio del movimiento",
+      "order": 16,
+      "description": "Un hombre impulsivo y pescador de oficio que se convirtió en un gran líder. Estudiamos su evolución personal al enfrentar a la fuerte cultura grecorromana.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-contratos-matrimoniales-y-esponsales-en-la-epoca",
+      "title": "Los contratos matrimoniales y esponsales en la época",
+      "order": 17,
+      "description": "El compromiso judío era legalmente vinculante, muchísimo más estricto que un noviazgo actual. Entender esta costumbre aclara el riesgo que asumió María.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-celebracion-de-la-pascua-y-el-sacrificio-del-cordero",
+      "title": "La celebración de la Pascua y el sacrificio del cordero",
+      "order": 18,
+      "description": "La mayor fiesta del calendario convocaba a miles de peregrinos sin excepción. Detallamos la cena ritual, el ambiente festivo y la vigilancia de las tropas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "elias-frente-a-la-influencia-politica-del-culto-a-baal",
+      "title": "Elías frente a la influencia política del culto a Baal",
+      "order": 19,
+      "description": "La extensa sequía no fue un simple desastre ecológico, fue una guerra contra el dios cananeo de la lluvia. Entiende el desafío en el gran Monte Carmelo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-pureza-ritual-y-el-estigma-social-de-la-lepra-antigua",
+      "title": "La pureza ritual y el estigma social de la lepra antigua",
+      "order": 20,
+      "description": "Ser declarado inmundo implicaba la expulsión total de la sociedad civil y religiosa. Analizamos estrictas leyes de salubridad y la labor del sacerdote.",
+      "audioUrl": ""
     }
   ]
 }

@@ -19,41 +19,6 @@
   "language": "es",
   "chapters": [
     {
-      "slug": "metamorfosis-transformaciones-biologicas-extremas",
-      "title": "Metamorfosis: Transformaciones biológicas extremas",
-      "order": 16,
-      "description": "Descubre los impresionantes cambios morfológicos y fisiológicos que atraviesan los insectos y anfibios durante su profundo desarrollo hasta la fase adulta.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "la-biologia-del-envejecimiento-humano-a-nivel-celular",
-      "title": "La biología del envejecimiento humano a nivel celular",
-      "order": 17,
-      "description": "Analizamos el acortamiento de los telómeros y el estrés oxidativo para comprender los factores celulares y genéticos que causan nuestro envejecimiento.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "las-bases-biologicas-de-la-memoria-y-el-aprendizaje",
-      "title": "Las bases biológicas de la memoria y el aprendizaje",
-      "order": 18,
-      "description": "Exploramos cómo nuestras neuronas crean nuevas conexiones sinápticas en el cerebro para poder procesar, almacenar y recuperar la información que aprendemos.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "simbiosis-la-cooperacion-entre-distintas-especies",
-      "title": "Simbiosis: La cooperación entre distintas especies",
-      "order": 19,
-      "description": "Estudiamos las fascinantes relaciones simbióticas, donde diferentes organismos evolucionan en conjunto para beneficiarse mutuamente y lograr sobrevivir.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "los-extremofilos-vida-en-los-ambientes-mas-hostiles",
-      "title": "Los extremófilos: Vida en los ambientes más hostiles",
-      "order": 20,
-      "description": "Conoce a los sorprendentes microorganismos adaptados genética y biológicamente para prosperar en condiciones de calor extremo, alta acidez o radiación.",
-      "audioUrl": ""
-    },
-    {
       "slug": "evolucion-de-los-hominidos-nuestro-linaje-humano",
       "title": "Evolución de los homínidos: Nuestro linaje humano",
       "order": 21,
