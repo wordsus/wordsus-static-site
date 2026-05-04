@@ -85,6 +85,41 @@
       "order": 10,
       "description": "From outcast shepherd to unifying king, David changed the military history of his nation. We analyze the conquest of Jerusalem and the strategic alliances.",
       "audioUrl": ""
+    },
+    {
+      "slug": "the-hard-job-of-being-a-sheepherder-in-judea",
+      "title": "The hard job of being a sheepherder in Judea",
+      "order": 11,
+      "description": "Forget the traditional romantic image. Herding was rough, lonely and dangerous work. Understanding it gives new weight and meaning to Psalm twenty-three.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-fishing-industry-during-the-first-century-in-judea",
+      "title": "The fishing industry during the first century in Judea",
+      "order": 12,
+      "description": "The fishermen were not very poor farmers, they ran profitable businesses under heavy taxes. We explore their daily routine and position in society.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "sacred-geography-and-the-natural-defense-of-jerusalem",
+      "title": "Sacred geography and the natural defense of Jerusalem",
+      "order": 13,
+      "description": "Located on various mountains and surrounded by deep valleys, the city was a natural fortress. Discover why all the pilgrims had to climb it.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-political-and-social-context-during-the-life-of-jesus",
+      "title": "The political and social context during the life of Jesus",
+      "order": 14,
+      "description": "Jesus was born in a true political powder keg strictly dominated by Rome. We analyze social tensions, taxes and expectations of liberation.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-roman-empire-and-its-strict-control-over-judea",
+      "title": "The Roman Empire and its strict control over Judea",
+      "order": 15,
+      "description": "Rome's great military machine dictated every aspect of daily life. Learn about the prefects, the legions, and the balance of power with the Sanhedrin.",
+      "audioUrl": ""
     }
   ]
 }

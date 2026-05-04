@@ -85,6 +85,41 @@
       "order": 10,
       "description": "Observe in detail how different substances interact to create completely new compounds, breaking bonds and releasing or absorbing energy.",
       "audioUrl": ""
+    },
+    {
+      "slug": "the-chemistry-of-coffee-the-molecule-that-keeps-us-alert",
+      "title": "The chemistry of coffee: the molecule that keeps us alert",
+      "order": 11,
+      "description": "We explore the structure of caffeine, the most consumed alkaloid in the world, its direct effects on the nervous system and its extraction process.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "balancing-equations-the-perfect-order-in-chemistry",
+      "title": "Balancing Equations: The Perfect Order in Chemistry",
+      "order": 12,
+      "description": "Learn why matter is neither created nor destroyed, and how chemists use mathematical balancing to accurately represent exact reactions.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "solutions-and-mixtures-the-homogeneous-versus-the-heterogeneous",
+      "title": "Solutions and mixtures: the homogeneous versus the heterogeneous",
+      "order": 13,
+      "description": "We clearly differentiate chemical solutions from simple mixtures, analyzing solutes, solvents and how concentration affects final properties.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "oxidation-and-reduction-why-metals-corrode",
+      "title": "Oxidation and reduction: why metals corrode",
+      "order": 14,
+      "description": "Learn about the famous redox reactions, a constant exchange of electrons that causes the corrosion of iron but also allows the use of batteries.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "intermolecular-forces-the-hidden-glue-of-the-world",
+      "title": "Intermolecular forces: the hidden glue of the world",
+      "order": 15,
+      "description": "Discover how molecules attract each other through hydrogen bonds and Van der Waals forces, determining physical states and boiling points.",
+      "audioUrl": ""
     }
   ]
 }

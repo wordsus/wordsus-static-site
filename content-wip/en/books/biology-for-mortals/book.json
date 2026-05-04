@@ -19,41 +19,6 @@
   "language": "en",
   "chapters": [
     {
-      "slug": "human-blood-groups-and-their-hereditary-basis",
-      "title": "Human blood groups and their hereditary basis",
-      "order": 11,
-      "description": "Understand the genetic difference between ABO system blood groups and the Rh factor, and why this compatibility is crucial in today's medicine.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "the-immune-system-the-bodys-defenses",
-      "title": "The immune system: The body's defenses",
-      "order": 12,
-      "description": "We analyze the cells and processes that make up our immune system, which protects us from pathogens and diseases in a constant and silent way.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "the-biology-of-sleep-why-we-sleep-and-its-phases",
-      "title": "The biology of sleep: Why we sleep and its phases",
-      "order": 13,
-      "description": "We review neural processes, circadian rhythms, and the great biological importance of sleeping well to maintain optimal physical and mental health.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "the-process-of-digestion-and-absorption-of-nutrients",
-      "title": "The process of digestion and absorption of nutrients",
-      "order": 14,
-      "description": "We accompany food on its journey through the human digestive system to understand how we extract and assimilate the energy necessary to live.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "crispr-cas9-the-revolution-in-gene-editing",
-      "title": "CRISPR-Cas9: The revolution in gene editing",
-      "order": 15,
-      "description": "Learn about the genetic editing tool inspired by the bacterial immune system that allows scientists to modify DNA sequences with precision.",
-      "audioUrl": ""
-    },
-    {
       "slug": "metamorphosis-extreme-biological-transformations",
       "title": "Metamorphosis: Extreme biological transformations",
       "order": 16,

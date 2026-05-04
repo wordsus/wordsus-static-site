@@ -85,6 +85,41 @@
       "order": 10,
       "description": "We differentiate these ancient space debris. Understand what happens when they enter Earth's atmosphere and if they pose a real threat.",
       "audioUrl": ""
+    },
+    {
+      "slug": "the-milky-way-a-detailed-walk-through-our-spiral-house",
+      "title": "The Milky Way: A detailed walk through our spiral house",
+      "order": 11,
+      "description": "We travel through our gigantic galaxy. We explore its spiral shape, its dense central core and the incredible number of stars it contains.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-light-year-understanding-the-enormous-distances-of-space",
+      "title": "The light year: Understanding the enormous distances of space",
+      "order": 12,
+      "description": "We explain how we measure the immensity of the universe. Discover why when looking at certain distant stars, we are literally peering into the past.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "majestic-comets-ancient-snowballs-in-space",
+      "title": "Majestic comets: Ancient snowballs in space",
+      "order": 13,
+      "description": "Accompany these frozen nomads in their orbit. Learn about its main components and how they form their spectacular and brilliant tails in the sun.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-big-bang-the-incredible-explosion-that-caused-all-this",
+      "title": "The Big Bang: The incredible explosion that caused all this",
+      "order": 14,
+      "description": "We go back billions of years to narrate the absolute beginning of the universe. We explain how matter, light and time suddenly emerged.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "bright-nebulae-wonderful-birthplaces-of-stars",
+      "title": "Bright nebulae: Wonderful birthplaces of stars",
+      "order": 15,
+      "description": "Delve into immense clouds of cosmic gas and interstellar dust. Contemplate these nurseries where stars are born with beautiful shapes and colors.",
+      "audioUrl": ""
     }
   ]
 }

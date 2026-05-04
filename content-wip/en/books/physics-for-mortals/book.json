@@ -18,41 +18,6 @@
   "language": "en",
   "chapters": [
     {
-      "slug": "the-refraction-of-light-mirages-and-lenses-in-detail",
-      "title": "The refraction of light: mirages and lenses in detail",
-      "order": 11,
-      "description": "We study how light changes direction when passing through different media. An analysis of how lenses, prisms and optical mirages work.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "special-relativity-time-is-not-the-same-for-everyone",
-      "title": "Special relativity: time is not the same for everyone",
-      "order": 12,
-      "description": "We immerse ourselves in the ideas of Albert Einstein. Discover how the speed of light alters our perception of time and space in today's universe.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "the-origin-of-the-universe-evidence-about-the-big-bang",
-      "title": "The origin of the universe: evidence about the Big Bang",
-      "order": 13,
-      "description": "We travel to the beginning of everything we know. We review the scientific evidence that supports the Big Bang theory and the constant expansion of the universe.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "basic-acoustics-the-science-behind-sound-and-music",
-      "title": "Basic Acoustics: The Science Behind Sound and Music",
-      "order": 14,
-      "description": "We explore how sound waves propagate in air. Understand the physics that makes everything possible from a simple conversation to the best piece of music.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "newtons-third-law-the-principle-of-action-and-reaction",
-      "title": "Newton's third law: the principle of action and reaction",
-      "order": 15,
-      "description": "We analyze why every action has an equal and opposite reaction. Everyday examples of this law, from walking to launching space rockets.",
-      "audioUrl": ""
-    },
-    {
       "slug": "conduction-and-convection-how-heat-is-transferred",
       "title": "Conduction and convection: how heat is transferred",
       "order": 16,

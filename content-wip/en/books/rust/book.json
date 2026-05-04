@@ -1,0 +1,252 @@
+{
+  "slug": "rust",
+  "locale": "en",
+  "title": "Mastering Rust: Foundations, Architecture, and Production",
+  "author": "Wordsus Team",
+  "description": "Master systems and backend development with Rust. A comprehensive journey from language foundations and ownership to advanced concurrency, microservices, and production-ready systems.",
+  "cover": "/images/books/rust-en-cover.jpeg",
+  "category": "programming",
+  "tags": [
+    "rust",
+    "systems-programming",
+    "backend",
+    "architecture"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-03",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "getting-started-and-tooling",
+      "title": "Getting Started and Tooling",
+      "order": 1,
+      "description": "Learn the fundamentals of the Rust ecosystem, including the philosophy of the language, installation, and essential development tools like Cargo and rust-analyzer.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "core-language-concepts",
+      "title": "Core Language Concepts",
+      "order": 2,
+      "description": "Master the basic building blocks of Rust: variables, data types, functions, and control flow structures.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ownership-and-borrowing",
+      "title": "Ownership and Borrowing",
+      "order": 3,
+      "description": "Deep dive into Rust's unique memory management system, covering ownership, borrowing, lifetimes, and the stack vs. heap.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "structs-enums-and-pattern-matching",
+      "title": "Structs, Enums, and Pattern Matching",
+      "order": 4,
+      "description": "Explore data modeling in Rust using structs and enums, and learn to handle complex logic with powerful pattern matching.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "modules-crates-and-workspaces",
+      "title": "Modules, Crates, and Workspaces",
+      "order": 5,
+      "description": "Understand how to organize and structure your Rust projects using modules, crates, and Cargo workspaces for better scalability.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-standard-library",
+      "title": "The Standard Library",
+      "order": 6,
+      "description": "Explore the essential collections, I/O primitives, networking, and synchronization tools provided by the Rust standard library.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "traits-and-generics",
+      "title": "Traits and Generics",
+      "order": 7,
+      "description": "Master shared behavior and code reuse through traits, generics, and advanced patterns like blanket implementations.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "error-handling-in-depth",
+      "title": "Error Handling in Depth",
+      "order": 8,
+      "description": "Learn robust error handling strategies using Result, Option, and popular crates like thiserror and anyhow for production-grade code.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "closures-and-iterators",
+      "title": "Closures and Iterators",
+      "order": 9,
+      "description": "Leverage functional programming features in Rust, including closures, custom iterators, and zero-cost abstractions for data processing.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "smart-pointers-and-interior-mutability",
+      "title": "Smart Pointers and Interior Mutability",
+      "order": 10,
+      "description": "Manage complex memory patterns with smart pointers like Box, Rc, and RefCell, and understand interior mutability.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fearless-concurrency",
+      "title": "Fearless Concurrency",
+      "order": 11,
+      "description": "Build safe and efficient concurrent systems using threads, channels, and shared-state primitives like Mutex and Arc.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "asynchronous-programming",
+      "title": "Asynchronous Programming",
+      "order": 12,
+      "description": "Master the async/await paradigm, futures, and the Tokio runtime for building high-performance asynchronous applications.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "macros-and-metaprogramming",
+      "title": "Macros and Metaprogramming",
+      "order": 13,
+      "description": "Extend Rust's capabilities with declarative and procedural macros to generate code and simplify complex boilerplate.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "unsafe-rust-and-ffi",
+      "title": "Unsafe Rust and FFI",
+      "order": 14,
+      "description": "Understand the 'unsafe' superpowers of Rust and how to interface with C code and external libraries through FFI.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "restful-api-development",
+      "title": "RESTful API Development",
+      "order": 15,
+      "description": "Build high-performance web services using modern frameworks like Axum or Actix-web, focusing on routing and middleware.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "data-persistence-and-databases",
+      "title": "Data Persistence and Databases",
+      "order": 16,
+      "description": "Connect Rust applications to relational and NoSQL databases using tools like SQLx, Diesel, and asynchronous drivers.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "software-architecture-and-design",
+      "title": "Software Architecture and Design",
+      "order": 17,
+      "description": "Apply software engineering principles like Clean Architecture, DDD, and design patterns specifically tailored for Rust.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "in-depth-testing",
+      "title": "In-Depth Testing",
+      "order": 18,
+      "description": "Ensure code quality through unit testing, integration testing, property-based testing, and automated CI pipelines.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "observability-and-monitoring",
+      "title": "Observability and Monitoring",
+      "order": 19,
+      "description": "Implement robust monitoring, structured logging, and distributed tracing to keep your production systems healthy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "backend-application-security",
+      "title": "Backend Application Security",
+      "order": 20,
+      "description": "Secure your Rust applications with authentication, authorization, and protection against common web vulnerabilities.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "advanced-communication-and-microservices",
+      "title": "Advanced Communication and Microservices",
+      "order": 21,
+      "description": "Explore gRPC, GraphQL, and WebSockets for building scalable microservices and real-time systems.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "event-driven-architecture-and-messaging",
+      "title": "Event-Driven Architecture and Messaging",
+      "order": 22,
+      "description": "Implement event-driven systems using message brokers like Kafka and RabbitMQ with event sourcing patterns.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "internals-and-optimization",
+      "title": "Internals and Optimization",
+      "order": 23,
+      "description": "Optimize your Rust code for peak performance through profiling, memory management tuning, and compiler optimization understanding.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "systems-programming-concepts",
+      "title": "Systems Programming Concepts",
+      "order": 24,
+      "description": "Interact directly with the OS, handle signals, and build advanced CLI tools using Rust's systems-level capabilities.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "webassembly-and-the-future",
+      "title": "WebAssembly and the Future",
+      "order": 25,
+      "description": "Compile Rust to WebAssembly for browser and server execution, and explore full-stack development frameworks.",
+      "audioUrl": ""
+    }
+  ],
+  "parts": [
+    {
+      "title": "Part I: The Foundations of Rust",
+      "chapterSlugs": [
+        "getting-started-and-tooling",
+        "core-language-concepts",
+        "ownership-and-borrowing",
+        "structs-enums-and-pattern-matching"
+      ]
+    },
+    {
+      "title": "Part II: Intermediate Abstractions and Ecosystem",
+      "chapterSlugs": [
+        "modules-crates-and-workspaces",
+        "the-standard-library",
+        "traits-and-generics",
+        "error-handling-in-depth",
+        "closures-and-iterators"
+      ]
+    },
+    {
+      "title": "Part III: Advanced Rust Concepts",
+      "chapterSlugs": [
+        "smart-pointers-and-interior-mutability",
+        "fearless-concurrency",
+        "asynchronous-programming",
+        "macros-and-metaprogramming",
+        "unsafe-rust-and-ffi"
+      ]
+    },
+    {
+      "title": "Part IV: Building Real-World Applications",
+      "chapterSlugs": [
+        "restful-api-development",
+        "data-persistence-and-databases",
+        "software-architecture-and-design"
+      ]
+    },
+    {
+      "title": "Part V: Production-Ready Systems",
+      "chapterSlugs": [
+        "in-depth-testing",
+        "observability-and-monitoring",
+        "backend-application-security"
+      ]
+    },
+    {
+      "title": "Part VI: Distributed Systems and Extreme Performance",
+      "chapterSlugs": [
+        "advanced-communication-and-microservices",
+        "event-driven-architecture-and-messaging",
+        "internals-and-optimization",
+        "systems-programming-concepts",
+        "webassembly-and-the-future"
+      ]
+    }
+  ]
+}
