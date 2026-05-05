@@ -234,13 +234,17 @@ export default function BookClient({
       >
         {/* Book header */}
         <div
-          className="border-b border-[hsl(var(--border))] bg-[hsl(var(--background))] overflow-hidden group/header cursor-pointer select-none"
-          onClick={() => setIsHeaderExpanded(!isHeaderExpanded)}
+          className="border-b border-[hsl(var(--border))] bg-[hsl(var(--background))] overflow-hidden group/header"
+          onClick={() => {
+            if (window.innerWidth < 1024) {
+              setIsHeaderExpanded(!isHeaderExpanded);
+            }
+          }}
         >
           {book.cover && (
             <div className={clsx(
               "relative w-full overflow-hidden transition-all duration-500 ease-in-out",
-              isHeaderExpanded ? "h-96" : "h-44 group-hover/header:h-96"
+              isHeaderExpanded ? "h-96" : "h-44 lg:group-hover/header:h-96"
             )}>
               <Image
                 src={book.cover}
@@ -249,7 +253,7 @@ export default function BookClient({
                 height={400}
                 className={clsx(
                   "w-full h-full object-cover transition-transform duration-700",
-                  isHeaderExpanded ? "scale-105" : "group-hover/header:scale-105"
+                  isHeaderExpanded ? "scale-105" : "lg:group-hover/header:scale-105"
                 )}
                 priority
               />
@@ -257,7 +261,7 @@ export default function BookClient({
               {/* Overlays */}
               <div className={clsx(
                 "absolute inset-0 bg-gradient-to-t from-[hsl(var(--background))/0.8] via-transparent to-black/20 transition-opacity duration-500",
-                isHeaderExpanded ? "opacity-0" : "opacity-100 group-hover/header:opacity-0"
+                isHeaderExpanded ? "opacity-0" : "opacity-100 lg:group-hover/header:opacity-0"
               )} />
 
               {/* Floating Buttons */}
@@ -293,12 +297,12 @@ export default function BookClient({
           <div className={clsx(
             "relative z-20 px-3 pb-3 transition-all duration-500 ease-in-out",
             book.cover
-              ? (isHeaderExpanded ? "mt-3" : "-mt-10 group-hover/header:mt-3")
+              ? (isHeaderExpanded ? "mt-3" : "-mt-10 lg:group-hover/header:mt-3")
               : "pt-6"
           )}>
             <div className={clsx(
               "bg-[hsl(var(--background))] p-3 rounded-xl border border-[hsl(var(--border))] shadow-sm backdrop-blur-sm bg-opacity-95 transition-all duration-500",
-              isHeaderExpanded ? "shadow-none border-transparent" : "group-hover/header:shadow-none group-hover/header:border-transparent"
+              isHeaderExpanded ? "shadow-none border-transparent" : "lg:group-hover/header:shadow-none lg:group-hover/header:border-transparent"
             )}>
               <h1 className="font-bold text-sm text-[hsl(var(--foreground))] leading-tight">
                 {book.title}
