@@ -50,6 +50,7 @@
     "minuteRead": "min read",
     "backToCategory": "Back to Category",
     "copyCode": "Copy code",
+    "edition": "{year} Edition",
     "chapterDescription": "Read Chapter {order}: {chapterTitle} from the book {bookTitle} online for free."
   },
   "category": {

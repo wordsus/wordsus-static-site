@@ -1,7 +1,8 @@
 {
   "slug": "opentofu",
   "locale": "en",
-  "title": "The OpenTofu Handbook: From Basics to Advanced Infrastructure Automation",
+  "title": "The OpenTofu Handbook",
+  "subtitle": "From Basics to Advanced Infrastructure Automation",
   "author": "Wordsus Team",
   "description": "Master infrastructure as code with OpenTofu. A comprehensive guide covering everything from HCL fundamentals and state management to advanced modularity, CI/CD integration, and custom provider development.",
   "cover": "/images/books/opentofu-en-cover.jpeg",

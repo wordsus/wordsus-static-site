@@ -72,6 +72,11 @@ export default function BookCard({
           <p className="text-sm font-medium text-[hsl(var(--foreground))] truncate group-hover:text-[hsl(var(--primary))] transition-colors">
             {book.title}
           </p>
+          {book.subtitle && (
+            <p className="text-[11px] text-[hsl(var(--muted-foreground))] truncate leading-tight mb-0.5">
+              {book.subtitle}
+            </p>
+          )}
           <p className="text-xs text-[hsl(var(--muted-foreground))] truncate">
             {book.author}
           </p>
@@ -126,9 +131,16 @@ export default function BookCard({
           </button>
         </div>
 
-        <h3 className="font-semibold text-sm text-[hsl(var(--foreground))] leading-snug group-hover:text-[hsl(var(--primary))] transition-colors line-clamp-2">
-          {book.title}
-        </h3>
+        <div className="min-w-0">
+          <h3 className="font-semibold text-[19px] text-[hsl(var(--foreground))] leading-snug group-hover:text-[hsl(var(--primary))] transition-colors line-clamp-1">
+            {book.title}
+          </h3>
+          {book.subtitle && (
+            <p className="text-[12px] text-[hsl(var(--muted-foreground))] leading-tight line-clamp-1 mt-0.5">
+              {book.subtitle}
+            </p>
+          )}
+        </div>
         <p className="text-xs text-[hsl(var(--muted-foreground))]">
           {t("by")} {book.author}
         </p>
@@ -168,9 +180,14 @@ export default function BookCard({
         </div>
 
         <div>
-          <h3 className="font-bold text-lg text-[hsl(var(--foreground))] leading-tight mb-1">
+          <h3 className="font-bold text-lg text-[hsl(var(--foreground))] leading-tight mb-0.5">
             {book.title}
           </h3>
+          {book.subtitle && (
+            <p className="text-sm text-[hsl(var(--muted-foreground))] font-medium leading-tight mb-2 italic opacity-80">
+              {book.subtitle}
+            </p>
+          )}
           <p className="text-sm text-[hsl(var(--primary))] font-medium">
             {t("by")} {book.author}
           </p>

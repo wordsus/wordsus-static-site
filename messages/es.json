@@ -50,6 +50,7 @@
     "minuteRead": "min de lectura",
     "backToCategory": "Volver a la Categoría",
     "copyCode": "Copiar código",
+    "edition": "Edición {year}",
     "chapterDescription": "Lee el Capítulo {order}: {chapterTitle} del libro {bookTitle} en línea gratis."
   },
   "category": {

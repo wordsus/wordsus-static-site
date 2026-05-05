@@ -1,7 +1,8 @@
 {
   "slug": "quimica-para-mortales",
   "locale": "es",
-  "title": "Química para Mortales: Una mirada atómica a tu alrededor",
+  "title": "Química para Mortales",
+  "subtitle": "Una mirada atómica a tu alrededor",
   "author": "Wordsus Team",
   "description": "Un viaje fascinante de 365 días por el mundo de la química. Desde la estructura del átomo hasta las aplicaciones más modernas de la nanotecnología, explicado de forma sencilla y amena.",
   "cover": "/images/books/quimica-para-mortales-es-cover.jpeg",

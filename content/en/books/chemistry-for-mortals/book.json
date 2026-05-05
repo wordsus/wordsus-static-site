@@ -1,7 +1,8 @@
 {
   "slug": "chemistry-for-mortals",
   "locale": "en",
-  "title": "Chemistry for Mortals: An atomic look around you",
+  "title": "Chemistry for Mortals",
+  "subtitle": "An atomic look around you",
   "author": "Wordsus Team",
   "description": "A fascinating 365-day journey through the world of chemistry. From the structure of the atom to the most modern applications of nanotechnology, explained in a simple and entertaining way.",
   "cover": "/images/books/chemistry-for-mortals-en-cover.jpeg",

@@ -19,6 +19,7 @@ export interface BookMeta {
   slug: string;
   locale: Locale;
   title: string;
+  subtitle?: string;
   author: string;
   description: string;
   cover: string;
@@ -50,6 +51,7 @@ export interface SearchableBook {
   slug: string;
   locale: Locale;
   title: string;
+  subtitle?: string;
   author: string;
   description: string;
   cover: string;

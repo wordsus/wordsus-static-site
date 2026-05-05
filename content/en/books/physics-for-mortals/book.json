@@ -1,7 +1,8 @@
 {
   "slug": "physics-for-mortals",
   "locale": "en",
-  "title": "Physics for Mortals: We unravel the mysteries of the universe",
+  "title": "Physics for Mortals",
+  "subtitle": "We unravel the mysteries of the universe",
   "author": "Wordsus Team",
   "description": "Discover the secrets of the universe in this complete guide to 365 physics lessons. From Newton's laws to quantum mechanics and the multiverse, explained in a simple way for everyone.",
   "cover": "/images/books/physics-for-mortals-en-cover.jpeg",

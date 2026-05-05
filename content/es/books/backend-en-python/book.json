@@ -1,8 +1,9 @@
 {
   "slug": "backend-en-python",
   "locale": "es",
-  "title": "Desarrollo Backend en Python: La Guía Definitiva",
-  "author": "Equipo Wordsus",
+  "title": "Desarrollo Backend en Python",
+  "subtitle": "La Guía Definitiva",
+  "author": "Wordsus Team",
   "description": "Domina el desarrollo backend con Python. Una ruta completa desde los fundamentos del lenguaje hasta la arquitectura de microservicios, seguridad avanzada y despliegue profesional.",
   "cover": "/images/books/backend-en-python-es-cover.jpeg",
   "category": "programacion",

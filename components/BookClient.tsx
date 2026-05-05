@@ -40,6 +40,7 @@ export default function BookClient({
   const [isFav, setIsFav] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [tocOpen, setTocOpen] = useState(false);
+  const [isHeaderExpanded, setIsHeaderExpanded] = useState(false);
 
   const currentChapterMeta = allChapers.find((ch) => ch.slug === activeChapter);
   const currentIdx = allChapers.findIndex((ch) => ch.slug === activeChapter);
@@ -51,7 +52,7 @@ export default function BookClient({
     try {
       const favs: string[] = JSON.parse(localStorage.getItem("wordsus-favorites") || "[]");
       setIsFav(favs.includes(`${locale}:${book.slug}`));
-    } catch {}
+    } catch { }
   }, [book.slug, locale]);
 
   // Track recent books
@@ -61,28 +62,28 @@ export default function BookClient({
       const recent: string[] = JSON.parse(localStorage.getItem("wordsus-recent") || "[]");
       const filtered = recent.filter((r) => r !== key);
       localStorage.setItem("wordsus-recent", JSON.stringify([key, ...filtered]));
-    } catch {}
+    } catch { }
   }, [book.slug, locale]);
 
   // Persist current chapter per book every time it changes
   useEffect(() => {
     try {
       localStorage.setItem(`wordsus-chapter-${locale}-${book.slug}`, activeChapter);
-    } catch {}
+    } catch { }
   }, [activeChapter, book.slug, locale]);
 
   // Fetch chapter content
   const loadChapter = useCallback(
     async (slug: string, isAutoLoad = false) => {
       if (slug === activeChapter && chapterHtml !== initialChapterHtml) return;
-      
+
       setLoading(true);
       try {
         const res = await fetch(`/chapter-content/${locale}/${book.slug}/${slug}.json`);
         const data = await res.json();
         setChapterHtml(data.html);
         setToc(data.toc);
-        
+
         // Update URL
         const newUrl = `/${locale}/${book.slug}/${slug}`;
         if (window.location.pathname !== newUrl) {
@@ -112,7 +113,7 @@ export default function BookClient({
       if (saved && saved !== initialChapterSlug && allChapers.some((ch) => ch.slug === saved)) {
         savedChapter = saved;
       }
-    } catch {}
+    } catch { }
 
     if (savedChapter !== initialChapterSlug) {
       setActiveChapter(savedChapter);
@@ -123,7 +124,7 @@ export default function BookClient({
         window.history.replaceState(null, "", newUrl);
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [book.slug, locale, initialChapterSlug]);
 
   const toggleFavorite = () => {
@@ -133,7 +134,7 @@ export default function BookClient({
       const next = isFav ? favs.filter((f) => f !== key) : [...favs, key];
       localStorage.setItem("wordsus-favorites", JSON.stringify(next));
       setIsFav(!isFav);
-    } catch {}
+    } catch { }
   };
 
   useEffect(() => {
@@ -150,7 +151,7 @@ export default function BookClient({
         const header = document.createElement('div');
         header.className = 'mac-header';
         header.style.cssText = 'display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background-color: #1a1b26; border-top-left-radius: 0.75rem; border-top-right-radius: 0.75rem; position: absolute; top: 0; left: 0; right: 0; height: 2.75rem; z-index: 10;';
-        
+
         const dots = document.createElement('div');
         dots.style.cssText = 'display: flex; gap: 0.5rem; width: 4rem;';
         dots.innerHTML = `
@@ -232,47 +233,97 @@ export default function BookClient({
         )}
       >
         {/* Book header */}
-        <div className="p-4 border-b border-[hsl(var(--border))]">
-          <Link
-            href={`/${locale}/${book.category}`}
-            className="text-xs text-[hsl(var(--primary))] hover:underline flex items-center gap-1 mb-3"
-          >
-            <ChevronLeft size={12} />
-            {t("backToCategory")}
-          </Link>
-
+        <div
+          className="border-b border-[hsl(var(--border))] bg-[hsl(var(--background))] overflow-hidden group/header cursor-pointer select-none"
+          onClick={() => setIsHeaderExpanded(!isHeaderExpanded)}
+        >
           {book.cover && (
-            <div className="w-20 h-28 rounded-xl overflow-hidden mb-3 mx-auto">
+            <div className={clsx(
+              "relative w-full overflow-hidden transition-all duration-500 ease-in-out",
+              isHeaderExpanded ? "h-96" : "h-44 group-hover/header:h-96"
+            )}>
               <Image
                 src={book.cover}
                 alt={book.title}
-                width={80}
-                height={112}
-                className="w-full h-full object-cover"
+                width={300}
+                height={400}
+                className={clsx(
+                  "w-full h-full object-cover transition-transform duration-700",
+                  isHeaderExpanded ? "scale-105" : "group-hover/header:scale-105"
+                )}
+                priority
               />
+
+              {/* Overlays */}
+              <div className={clsx(
+                "absolute inset-0 bg-gradient-to-t from-[hsl(var(--background))/0.8] via-transparent to-black/20 transition-opacity duration-500",
+                isHeaderExpanded ? "opacity-0" : "opacity-100 group-hover/header:opacity-0"
+              )} />
+
+              {/* Floating Buttons */}
+              <div
+                className="absolute top-3 inset-x-3 flex justify-between items-start z-30"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <Link
+                  href={`/${locale}/${book.category}`}
+                  className="p-1.5 rounded-full bg-black/20 backdrop-blur-md text-white hover:bg-white/20 transition-all border border-white/10"
+                  title={t("backToCategory")}
+                >
+                  <ChevronLeft size={16} />
+                </Link>
+
+                <button
+                  id="book-favorite-btn"
+                  onClick={toggleFavorite}
+                  className={clsx(
+                    "p-1.5 rounded-full backdrop-blur-md transition-all border border-white/10",
+                    isFav
+                      ? "bg-red-500 text-white border-red-400"
+                      : "bg-black/20 text-white hover:bg-white/20"
+                  )}
+                  title={isFav ? t("removeFromFavorites") : t("addToFavorites")}
+                >
+                  <Heart size={16} fill={isFav ? "currentColor" : "none"} />
+                </button>
+              </div>
             </div>
           )}
 
-          <h1 className="font-bold text-sm text-[hsl(var(--foreground))] text-center leading-snug">
-            {book.title}
-          </h1>
-          <p className="text-xs text-[hsl(var(--muted-foreground))] text-center mt-0.5">
-            {t("by")} {book.author}
-          </p>
+          <div className={clsx(
+            "relative z-20 px-3 pb-3 transition-all duration-500 ease-in-out",
+            book.cover
+              ? (isHeaderExpanded ? "mt-3" : "-mt-10 group-hover/header:mt-3")
+              : "pt-6"
+          )}>
+            <div className={clsx(
+              "bg-[hsl(var(--background))] p-3 rounded-xl border border-[hsl(var(--border))] shadow-sm backdrop-blur-sm bg-opacity-95 transition-all duration-500",
+              isHeaderExpanded ? "shadow-none border-transparent" : "group-hover/header:shadow-none group-hover/header:border-transparent"
+            )}>
+              <h1 className="font-bold text-sm text-[hsl(var(--foreground))] leading-tight">
+                {book.title}
+              </h1>
+              {book.subtitle && (
+                <p className="text-[12px] text-[hsl(var(--muted-foreground))] leading-tight mt-1 line-clamp-2">
+                  {book.subtitle}
+                </p>
+              )}
 
-          <button
-            id="book-favorite-btn"
-            onClick={toggleFavorite}
-            className={clsx(
-              "mt-3 w-full flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-xs font-medium transition-colors",
-              isFav
-                ? "bg-red-500/10 text-red-500 hover:bg-red-500/20"
-                : "bg-[hsl(var(--muted))] text-[hsl(var(--muted-foreground))] hover:bg-[hsl(var(--accent))]"
-            )}
-          >
-            <Heart size={13} fill={isFav ? "currentColor" : "none"} />
-            {isFav ? t("removeFromFavorites") : t("addToFavorites")}
-          </button>
+              <div className="flex items-center gap-2 mt-2">
+                <span className="text-[10px] text-[hsl(var(--muted-foreground))] uppercase tracking-tight">
+                  {t("by")} <span className="text-[hsl(var(--foreground))] font-semibold ml-1">{book.author}</span>
+                </span>
+                {book.publishedAt && (
+                  <>
+                    <span className="w-0.5 h-0.5 rounded-full bg-[hsl(var(--border))]" />
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-[hsl(var(--primary))]">
+                      {t("edition", { year: new Date(book.publishedAt).getUTCFullYear() })}
+                    </span>
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Chapter list */}

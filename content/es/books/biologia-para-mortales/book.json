@@ -1,7 +1,8 @@
 {
   "slug": "biologia-para-mortales",
   "locale": "es",
-  "title": "Biología para Mortales: Explorando el código oculto de la naturaleza",
+  "title": "Biología para Mortales",
+  "subtitle": "Explorando el código oculto de la naturaleza",
   "author": "Wordsus Team",
   "description": "Explora los misterios de la vida a través de 365 lecciones fascinantes. Desde el ADN y la genética hasta la evolución y la ecología profunda, explicado de forma sencilla para todos.",
   "cover": "/images/books/biologia-para-mortales-es-cover.jpeg",

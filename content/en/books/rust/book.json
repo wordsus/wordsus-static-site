@@ -1,7 +1,8 @@
 {
   "slug": "rust",
   "locale": "en",
-  "title": "Mastering Rust: Foundations, Architecture, and Production",
+  "title": "Mastering Rust",
+  "subtitle": "Foundations, Architecture, and Production",
   "author": "Wordsus Team",
   "description": "Master systems and backend development with Rust. A comprehensive journey from language foundations and ownership to advanced concurrency, microservices, and production-ready systems.",
   "cover": "/images/books/rust-en-cover.jpeg",

@@ -1,7 +1,8 @@
 {
   "slug": "opentelemetry",
   "locale": "en",
-  "title": "OpenTelemetry in Depth: Architecting Modern Observability",
+  "title": "OpenTelemetry in Depth",
+  "subtitle": "Architecting Modern Observability",
   "author": "Wordsus Team",
   "description": "A deep dive into OpenTelemetry, the industry standard for observability. Learn how to architect, implement, and scale telemetry pipelines using traces, metrics, and logs to gain deep insights into distributed systems.",
   "cover": "/images/books/opentelemetry-en-cover.jpeg",

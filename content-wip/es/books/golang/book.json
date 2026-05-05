@@ -1,10 +1,11 @@
 {
   "slug": "golang",
   "locale": "es",
-  "title": "Go para el Backend: De los Fundamentos a la Maestría",
-  "author": "Equipo Wordsus",
+  "title": "Go para Ingenieros Backend",
+  "subtitle": "De los Fundamentos a la Maestría",
+  "author": "Wordsus Team",
   "description": "Domina el desarrollo backend con Go (Golang). Una ruta completa desde la sintaxis básica y concurrencia avanzada hasta microservicios, gRPC y despliegue en entornos cloud.",
-  "cover": "/images/books/default-cover.jpg",
+  "cover": "/images/books/golang-es-cover.jpeg",
   "category": "programacion",
   "tags": [
     "go",

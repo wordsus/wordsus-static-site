@@ -1,7 +1,8 @@
 {
   "slug": "golang",
   "locale": "en",
-  "title": "Mastering Go: From Fundamentals to Cloud-Native Architecture",
+  "title": "Mastering Go",
+  "subtitle": "From Fundamentals to Cloud-Native Architecture",
   "author": "Wordsus Team",
   "description": "Master Go (Golang) from the ground up. A comprehensive guide covering language fundamentals, core mechanics, concurrency, APIs, distributed systems, and cloud-native architecture.",
   "cover": "/images/books/golang-en-cover.jpeg",

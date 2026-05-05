@@ -1,7 +1,8 @@
 {
   "slug": "python-backend",
   "locale": "en",
-  "title": "Mastering the Python Backend: A Step-by-Step Evolution",
+  "title": "Mastering the Python Backend",
+  "subtitle": "A Step-by-Step Evolution",
   "author": "Wordsus Team",
   "description": "Master backend development with Python. A comprehensive journey from language fundamentals to microservices architecture, advanced security, and professional deployment.",
   "cover": "/images/books/python-backend-en-cover.jpeg",

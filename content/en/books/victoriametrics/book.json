@@ -1,7 +1,8 @@
 {
   "slug": "victoriametrics",
   "locale": "en",
-  "title": "VictoriaMetrics: The Definitive Guide",
+  "title": "VictoriaMetrics",
+  "subtitle": "The Definitive Guide",
   "author": "Wordsus Team",
   "description": "Master the art of scalable monitoring with VictoriaMetrics. This comprehensive guide covers everything from single-node setups and cluster architectures to advanced MetricsQL querying, storage optimization, and cloud-native deployments with Kubernetes.",
   "cover": "/images/books/victoriametrics-en-cover.jpeg",
