@@ -1,14 +1,15 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import { clsx } from "clsx";
 import { useTranslations } from "next-intl";
-import { ChevronLeft, ChevronRight, Heart, Menu, List, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, Heart, Menu, List, X, MoreVertical, CheckCheck, RotateCcw } from "lucide-react";
 import type { BookMeta, TocItem, Locale } from "@/lib/types";
 import TableOfContents from "@/components/TableOfContents";
 import AudioPlayer from "@/components/AudioPlayer";
 import Image from "next-image-export-optimizer";
+import { saveChapter, getSavedChapter, calcProgress, chapterKey } from "@/lib/readingProgress";
 
 interface BookClientProps {
   book: BookMeta;
@@ -41,11 +42,20 @@ export default function BookClient({
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [tocOpen, setTocOpen] = useState(false);
   const [isHeaderExpanded, setIsHeaderExpanded] = useState(false);
+  const [progressMenuOpen, setProgressMenuOpen] = useState(false);
+  const progressMenuRef = useRef<HTMLDivElement>(null);
+  // When true, the next activeChapter change will NOT be persisted (used after a reset)
+  const skipNextSave = useRef(false);
 
   const currentChapterMeta = allChapers.find((ch) => ch.slug === activeChapter);
   const currentIdx = allChapers.findIndex((ch) => ch.slug === activeChapter);
   const prevChapter = currentIdx > 0 ? allChapers[currentIdx - 1] : null;
   const nextChapter = currentIdx < allChapers.length - 1 ? allChapers[currentIdx + 1] : null;
+
+  // Reading progress percentage (0–100) based on current chapter order
+  const readingProgress = currentChapterMeta
+    ? calcProgress(currentChapterMeta.order, allChapers.length)
+    : 0;
 
   // Load favorites state
   useEffect(() => {
@@ -65,11 +75,13 @@ export default function BookClient({
     } catch { }
   }, [book.slug, locale]);
 
-  // Persist current chapter per book every time it changes
+  // Persist current chapter per book every time it changes (skip once after a reset)
   useEffect(() => {
-    try {
-      localStorage.setItem(`wordsus-chapter-${locale}-${book.slug}`, activeChapter);
-    } catch { }
+    if (skipNextSave.current) {
+      skipNextSave.current = false;
+      return;
+    }
+    saveChapter(locale, book.slug, activeChapter);
   }, [activeChapter, book.slug, locale]);
 
   // Fetch chapter content
@@ -108,12 +120,10 @@ export default function BookClient({
   useEffect(() => {
     setIsMounted(true);
     let savedChapter = initialChapterSlug;
-    try {
-      const saved = localStorage.getItem(`wordsus-chapter-${locale}-${book.slug}`);
-      if (saved && saved !== initialChapterSlug && allChapers.some((ch) => ch.slug === saved)) {
-        savedChapter = saved;
-      }
-    } catch { }
+    const saved = getSavedChapter(locale, book.slug);
+    if (saved && saved !== initialChapterSlug && allChapers.some((ch) => ch.slug === saved)) {
+      savedChapter = saved;
+    }
 
     if (savedChapter !== initialChapterSlug) {
       setActiveChapter(savedChapter);
@@ -136,6 +146,44 @@ export default function BookClient({
       setIsFav(!isFav);
     } catch { }
   };
+
+  // Mark all chapters as read — saves the last chapter as current
+  const markAllAsRead = () => {
+    const lastChapter = allChapers[allChapers.length - 1];
+    if (!lastChapter) return;
+    saveChapter(locale, book.slug, lastChapter.slug);
+    setActiveChapter(lastChapter.slug);
+    loadChapter(lastChapter.slug);
+    setProgressMenuOpen(false);
+  };
+
+  // Reset reading progress — removes the persisted chapter key
+  const resetProgress = () => {
+    skipNextSave.current = true;  // prevent the effect from immediately re-saving
+    try {
+      localStorage.removeItem(chapterKey(locale, book.slug));
+    } catch { }
+    setProgressMenuOpen(false);
+    // Navigate back to the first chapter without persisting it
+    const firstChapter = allChapers[0];
+    if (firstChapter) {
+      setActiveChapter(firstChapter.slug);
+      loadChapter(firstChapter.slug);
+    }
+  };
+
+  // Close progress menu on outside click
+  useEffect(() => {
+    if (!progressMenuOpen) return;
+    const handleOutside = (e: MouseEvent) => {
+      if (progressMenuRef.current && !progressMenuRef.current.contains(e.target as Node)) {
+        setProgressMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleOutside);
+    return () => document.removeEventListener("mousedown", handleOutside);
+  }, [progressMenuOpen]);
+
 
   useEffect(() => {
     const addHeaders = () => {
@@ -214,7 +262,16 @@ export default function BookClient({
   }, [chapterHtml, t]);
 
   return (
-    <div className="relative flex min-h-[calc(100vh-4rem)]">
+    <div className="relative flex min-h-[calc(100vh-4rem)] flex-col">
+      {/* ─── Sticky reading progress strip ───────────────────────── */}
+      <div className="sticky top-16 z-50 h-1 w-full bg-[hsl(var(--border))]">
+        <div
+          className="h-full bg-gradient-to-r from-[hsl(var(--primary)/0.7)] to-[hsl(var(--primary))] transition-all duration-500 ease-out"
+          style={{ width: `${readingProgress}%` }}
+        />
+      </div>
+
+      <div className="relative flex flex-1 min-h-0">
       {/* ─── Mobile sidebar overlay ─────────────────────── */}
       {sidebarOpen && (
         <div
@@ -329,6 +386,61 @@ export default function BookClient({
             </div>
           </div>
         </div>
+
+        {/* Progress summary inside sidebar */}
+        {isMounted && readingProgress > 0 && (
+          <div className="mx-2 mt-3 mb-2 px-3 py-2 rounded-lg bg-[hsl(var(--accent)/0.4)] border border-[hsl(var(--primary)/0.12)]">
+            <div className="flex items-center justify-between mb-1.5">
+              <span className="text-[10px] text-[hsl(var(--muted-foreground))] font-semibold uppercase tracking-wider">
+                {t("readingProgress")}
+              </span>
+              <div className="flex items-center gap-1">
+                <span className="text-[10px] font-bold text-[hsl(var(--primary))]">
+                  {readingProgress}%
+                </span>
+                {/* Dropdown menu */}
+                <div className="relative" ref={progressMenuRef}>
+                  <button
+                    onClick={() => setProgressMenuOpen((v) => !v)}
+                    aria-label="Progress options"
+                    className="p-0.5 rounded hover:bg-[hsl(var(--muted))] text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors"
+                  >
+                    <MoreVertical size={13} />
+                  </button>
+                  {progressMenuOpen && (
+                    <div className="absolute right-0 top-full mt-1 z-50 w-52 rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] shadow-lg shadow-black/10 overflow-hidden">
+                      <button
+                        onClick={markAllAsRead}
+                        className="flex items-center gap-2.5 w-full px-3 py-2.5 text-xs text-[hsl(var(--foreground))] hover:bg-[hsl(var(--accent))] transition-colors text-left"
+                      >
+                        <CheckCheck size={13} className="text-[hsl(var(--primary))] shrink-0" />
+                        {t("markAllAsRead")}
+                      </button>
+                      <div className="h-px bg-[hsl(var(--border))]" />
+                      <button
+                        onClick={resetProgress}
+                        className="flex items-center gap-2.5 w-full px-3 py-2.5 text-xs text-[hsl(var(--foreground))] hover:bg-[hsl(var(--accent))] transition-colors text-left"
+                      >
+                        <RotateCcw size={13} className="text-red-400 shrink-0" />
+                        {t("resetProgress")}
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+            <div className="relative h-1.5 w-full rounded-full bg-[hsl(var(--muted))] overflow-hidden">
+              <div
+                className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-[hsl(var(--primary)/0.6)] to-[hsl(var(--primary))] transition-all duration-500"
+                style={{ width: `${readingProgress}%` }}
+              />
+            </div>
+            <p className="text-[10px] text-[hsl(var(--muted-foreground))] mt-1">
+              {currentIdx + 1} / {allChapers.length} {t("chapters").toLowerCase()}
+            </p>
+          </div>
+        )}
+
 
         {/* Chapter list */}
         <div className="p-2">
@@ -509,6 +621,7 @@ export default function BookClient({
           <TableOfContents toc={toc} onClick={() => setTocOpen(false)} />
         </div>
       </aside>
+    </div>
     </div>
   );
 }

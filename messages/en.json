@@ -51,7 +51,11 @@
     "backToCategory": "Back to Category",
     "copyCode": "Copy code",
     "edition": "{year} Edition",
-    "chapterDescription": "Read Chapter {order}: {chapterTitle} from the book {bookTitle} online for free."
+    "chapterDescription": "Read Chapter {order}: {chapterTitle} from the book {bookTitle} online for free.",
+    "readingProgress": "Reading Progress",
+    "read": "read",
+    "markAllAsRead": "Mark all as read",
+    "resetProgress": "Reset reading progress"
   },
   "category": {
     "books": "books",
