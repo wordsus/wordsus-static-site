@@ -2,12 +2,11 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next-image-export-optimizer";
 import { useTranslations } from "next-intl";
 import BookCard from "@/components/BookCard";
+import RecentBookCard from "@/components/RecentBookCard";
 import type { BookMeta, Locale } from "@/lib/types";
-import { BookOpen, Clock, ArrowRight, X } from "lucide-react";
-import { getSavedChapter, calcProgress } from "@/lib/readingProgress";
+import { BookOpen, Clock, ArrowRight } from "lucide-react";
 
 interface RecentEntry {
   key: string;       // "locale:slug"
@@ -91,76 +90,16 @@ export default function HomeClient({
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {recentEntries.map(({ key, book, bookLocale }) => {
-              // Resolve the last visited chapter (if any) for a direct deep link
-              const savedSlug = getSavedChapter(bookLocale, book.slug);
-              const savedChapter = savedSlug
-                ? book.chapters.find((ch) => ch.slug === savedSlug)
-                : null;
-              const progress = savedChapter
-                ? calcProgress(savedChapter.order, book.chapters.length)
-                : null;
-              const href = savedSlug
-                ? `/${bookLocale}/${book.slug}/${savedSlug}`
-                : `/${bookLocale}/${book.slug}`;
-
-              return (
-              <div key={key} className="relative group/item">
-                {/* Dismiss button — appears on hover */}
-                <button
-                  onClick={() => removeRecent(key)}
-                  aria-label={t("removeFromReading")}
-                  title={t("removeFromReading")}
-                  className="absolute top-2 right-2 z-10 p-1 rounded-full opacity-0 group-hover/item:opacity-100 focus:opacity-100 transition-opacity bg-[hsl(var(--muted))] hover:bg-[hsl(var(--destructive)/0.15)] text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--destructive))]"
-                >
-                  <X size={12} />
-                </button>
-
-                {/* Compact book card using book's own locale for href */}
-                <Link
-                  href={href}
-                  className="group flex items-center gap-3 p-3 rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] hover:border-[hsl(var(--primary)/0.4)] hover:bg-[hsl(var(--accent)/0.3)] transition-all duration-200 pr-10"
-                >
-                  <div className="relative w-12 h-16 rounded-lg overflow-hidden bg-[hsl(var(--muted))] shrink-0 flex items-center justify-center shadow-xs">
-                    {book.cover ? (
-                      <Image
-                        src={book.cover}
-                        alt={book.title}
-                        width={48}
-                        height={64}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <BookOpen size={16} className="text-[hsl(var(--muted-foreground))]" />
-                    )}
-                    {/* Locale badge when the book belongs to a different locale */}
-                    {bookLocale !== locale && (
-                      <span className="absolute bottom-0 right-0 px-1 py-0.5 rounded-tl-md text-[0.55rem] font-bold uppercase tracking-wider bg-[hsl(var(--primary))] text-white shadow-xs z-10">
-                        {bookLocale}
-                      </span>
-                    )}
-                    {/* Reading progress overlay on cover */}
-                    {progress !== null && (
-                      <div className="absolute bottom-0 inset-x-0 h-1 bg-black/30">
-                        <div
-                          className="h-full bg-[hsl(var(--primary))] transition-all duration-500"
-                          style={{ width: `${progress}%` }}
-                        />
-                      </div>
-                    )}
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-sm font-medium text-[hsl(var(--foreground))] truncate group-hover:text-[hsl(var(--primary))] transition-colors">
-                      {book.title}
-                    </p>
-                    <p className="text-xs text-[hsl(var(--muted-foreground))] truncate">
-                      {book.author}
-                    </p>
-                  </div>
-                </Link>
-              </div>
-              );
-            })}
+            {recentEntries.map(({ key, book, bookLocale }) => (
+              <RecentBookCard
+                key={key}
+                bookKey={key}
+                book={book}
+                bookLocale={bookLocale}
+                currentLocale={locale}
+                onRemove={removeRecent}
+              />
+            ))}
           </div>
         </section>
       )}
