@@ -1,0 +1,264 @@
+{
+  "slug": "victoriametrics",
+  "locale": "en",
+  "title": "VictoriaMetrics: The Definitive Guide",
+  "author": "Wordsus Team",
+  "description": "Master the art of scalable monitoring with VictoriaMetrics. This comprehensive guide covers everything from single-node setups and cluster architectures to advanced MetricsQL querying, storage optimization, and cloud-native deployments with Kubernetes.",
+  "cover": "/images/books/victoriametrics-en-cover.jpeg",
+  "category": "cloud-infrastructure-devops",
+  "tags": [
+    "victoriametrics",
+    "monitoring",
+    "tsdb",
+    "prometheus",
+    "observability",
+    "metrics"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-04",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "introduction-to-time-series-databases-and-victoriametrics",
+      "title": "Introduction to Time Series Databases and VictoriaMetrics",
+      "order": 1,
+      "description": "Learn the basics of Time Series Databases, the evolution of the Prometheus ecosystem, and why VictoriaMetrics stands out as a high-performance alternative.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "core-concepts-and-architecture",
+      "title": "Core Concepts and Architecture",
+      "order": 2,
+      "description": "Explore the fundamental architecture of VictoriaMetrics, including its toolchain, resource efficiency principles, and the differences between single-node and cluster versions.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "installation-and-first-steps",
+      "title": "Installation and First Steps",
+      "order": 3,
+      "description": "Get VictoriaMetrics up and running using binaries or Docker, and learn the basics of configuration and data ingestion.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "supported-ingestion-protocols",
+      "title": "Supported Ingestion Protocols",
+      "order": 4,
+      "description": "Dive into the wide range of protocols supported by VictoriaMetrics, including Prometheus remote_write, InfluxDB, Graphite, and OpenTelemetry.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "deep-dive-into-vmagent",
+      "title": "Deep Dive into vmagent",
+      "order": 5,
+      "description": "Master the role of vmagent in data collection, target scraping, disk buffering, and ensuring high availability.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "relabeling-and-data-transformation",
+      "title": "Relabeling and Data Transformation",
+      "order": 6,
+      "description": "Understand the powerful relabeling engine to transform, drop, or modify metrics and labels on the fly.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "introduction-to-promql-and-metricsql",
+      "title": "Introduction to PromQL and MetricsQL",
+      "order": 7,
+      "description": "Begin your journey with querying using PromQL basics and the enhanced capabilities of VictoriaMetrics' MetricsQL.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "advanced-metricsql-functions",
+      "title": "Advanced MetricsQL Functions",
+      "order": 8,
+      "description": "Master advanced functions like rollups, subqueries, and template functions for sophisticated data analysis.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "query-optimization-and-best-practices",
+      "title": "Query Optimization and Best Practices",
+      "order": 9,
+      "description": "Learn how to execute queries efficiently, identify bottlenecks, and manage high-cardinality data safely.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-storage-engine-explained",
+      "title": "The Storage Engine Explained",
+      "order": 10,
+      "description": "Explore the inner workings of the VictoriaMetrics storage engine, inspired by MergeTree, and its advanced compression techniques.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "data-retention-and-deduplication",
+      "title": "Data Retention and Deduplication",
+      "order": 11,
+      "description": "Configure retention policies, handle out-of-order data, and implement deduplication rules to keep your storage lean.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "downsampling-and-historical-data",
+      "title": "Downsampling and Historical Data",
+      "order": 12,
+      "description": "Learn the importance of downsampling for long-term storage and how to configure multi-tiered retention for historical analysis.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "introduction-to-vmalert",
+      "title": "Introduction to vmalert",
+      "order": 13,
+      "description": "Understand the architecture of vmalert and how it connects to storage nodes for executing alerting and recording rules.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "recording-rules-and-alerting-rules",
+      "title": "Recording Rules and Alerting Rules",
+      "order": 14,
+      "description": "Craft effective alerting and recording rules using MetricsQL and Go templates for automated monitoring.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "alert-routing-and-notifications",
+      "title": "Alert Routing and Notifications",
+      "order": 15,
+      "description": "Integrate with Alertmanager and vmalertmanager to design complex routing trees and notification systems.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cluster-architecture-overview",
+      "title": "Cluster Architecture Overview",
+      "order": 16,
+      "description": "Deep dive into the distributed components of a VictoriaMetrics cluster: vminsert, vmstorage, and vmselect.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "deploying-the-victoriametrics-cluster",
+      "title": "Deploying the VictoriaMetrics Cluster",
+      "order": 17,
+      "description": "Learn the practical steps to provision, interconnect, and scale a high-throughput VictoriaMetrics cluster.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "multi-tenancy-in-the-cluster",
+      "title": "Multi-Tenancy in the Cluster",
+      "order": 18,
+      "description": "Explore how to isolate data and queries for multiple teams or customers using the AccountID and ProjectID structure.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "kubernetes-and-the-victoriametrics-operator",
+      "title": "Kubernetes and the VictoriaMetrics Operator",
+      "order": 19,
+      "description": "Automate your VictoriaMetrics deployments on Kubernetes using the official operator, CRDs, and Helm charts.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "visualizing-data-and-dashboards",
+      "title": "Visualizing Data and Dashboards",
+      "order": 20,
+      "description": "Connect VictoriaMetrics to Grafana, build effective dashboards, and use the built-in VMUI for exploration.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "monitoring-and-troubleshooting",
+      "title": "Monitoring and Troubleshooting",
+      "order": 21,
+      "description": "Implement self-monitoring, analyze logs, and troubleshoot common deployment issues to maintain system health.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "security-authentication-and-authorization",
+      "title": "Security, Authentication, and Authorization",
+      "order": 22,
+      "description": "Secure your infrastructure with TLS, Basic Auth, and advanced routing and role-based access control using vmauth.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "backup-restore-and-disaster-recovery",
+      "title": "Backup, Restore, and Disaster Recovery",
+      "order": 23,
+      "description": "Protect your data with snapshots and the vmbackup/vmrestore utilities, integrated with cloud object storage.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "performance-tuning-and-capacity-planning",
+      "title": "Performance Tuning and Capacity Planning",
+      "order": 24,
+      "description": "Fine-tune hardware, memory caching, and OS settings to maximize the performance of your VictoriaMetrics instance.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "migration-strategies-and-ecosystem-tools",
+      "title": "Migration Strategies and Ecosystem Tools",
+      "order": 25,
+      "description": "Plan and execute a seamless migration from Prometheus or other systems to VictoriaMetrics, including historical data backfilling.",
+      "audioUrl": ""
+    }
+  ],
+  "parts": [
+    {
+      "title": "Part I: Introduction and Fundamentals",
+      "chapterSlugs": [
+        "introduction-to-time-series-databases-and-victoriametrics",
+        "core-concepts-and-architecture",
+        "installation-and-first-steps"
+      ]
+    },
+    {
+      "title": "Part II: Data Collection and Ingestion",
+      "chapterSlugs": [
+        "supported-ingestion-protocols",
+        "deep-dive-into-vmagent",
+        "relabeling-and-data-transformation"
+      ]
+    },
+    {
+      "title": "Part III: Querying and Data Analysis",
+      "chapterSlugs": [
+        "introduction-to-promql-and-metricsql",
+        "advanced-metricsql-functions",
+        "query-optimization-and-best-practices"
+      ]
+    },
+    {
+      "title": "Part IV: Storage Management",
+      "chapterSlugs": [
+        "the-storage-engine-explained",
+        "data-retention-and-deduplication",
+        "downsampling-and-historical-data"
+      ]
+    },
+    {
+      "title": "Part V: Alerting and Automation",
+      "chapterSlugs": [
+        "introduction-to-vmalert",
+        "recording-rules-and-alerting-rules",
+        "alert-routing-and-notifications"
+      ]
+    },
+    {
+      "title": "Part VI: Scaling and Clustering",
+      "chapterSlugs": [
+        "cluster-architecture-overview",
+        "deploying-the-victoriametrics-cluster",
+        "multi-tenancy-in-the-cluster"
+      ]
+    },
+    {
+      "title": "Part VII: Integrations and Cloud Native",
+      "chapterSlugs": [
+        "kubernetes-and-the-victoriametrics-operator",
+        "visualizing-data-and-dashboards"
+      ]
+    },
+    {
+      "title": "Part VIII: Operations, Security, and Tuning",
+      "chapterSlugs": [
+        "monitoring-and-troubleshooting",
+        "security-authentication-and-authorization",
+        "backup-restore-and-disaster-recovery",
+        "performance-tuning-and-capacity-planning",
+        "migration-strategies-and-ecosystem-tools"
+      ]
+    }
+  ]
+}

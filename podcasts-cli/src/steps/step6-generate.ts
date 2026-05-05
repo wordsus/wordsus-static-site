@@ -51,11 +51,17 @@ export async function runStep6(session: SessionState): Promise<void> {
     divider();
     info(`Processing: ${C.primary.bold(alias)}`);
 
-    // Skip if already exists
-    if (fs.existsSync(outputVideo)) {
-      info(`⏭ Skipping ${alias} — video already exists.`);
+    // Skip only if BOTH video and info file exist (indicating success)
+    if (fs.existsSync(outputVideo) && fs.existsSync(outputInfo)) {
+      info(`⏭ Skipping ${alias} — already processed.`);
       skippedCount++;
       continue;
+    }
+
+    // If video exists but info doesn't, it was probably interrupted
+    if (fs.existsSync(outputVideo)) {
+      info(`🔄 ${alias} was interrupted. Restarting render...`);
+      fs.unlinkSync(outputVideo);
     }
 
     try {
