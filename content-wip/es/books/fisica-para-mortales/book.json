@@ -18,41 +18,6 @@
   "language": "es",
   "chapters": [
     {
-      "slug": "tension-superficial-insectos-que-caminan-sobre-el-agua",
-      "title": "Tensión superficial: insectos que caminan sobre el agua",
-      "order": 21,
-      "description": "Descubrimos por qué la superficie de los líquidos actúa como una membrana elástica. La física detrás de las burbujas y las gotas de lluvia en tu ventana.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "gravedad-newtoniana-la-fuerza-que-nos-mantiene-anclados",
-      "title": "Gravedad newtoniana: la fuerza que nos mantiene anclados",
-      "order": 22,
-      "description": "Revisamos cómo Isaac Newton describió la atracción entre masas. Entiende cómo esta fórmula matemática predice las órbitas planetarias y la caída de las manzanas.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "radiacion-termica-como-el-sol-calienta-nuestro-planeta",
-      "title": "Radiación térmica: cómo el Sol calienta nuestro planeta",
-      "order": 23,
-      "description": "Aprende sobre la transferencia de calor a través del vacío del espacio. Exploramos cómo la radiación infrarroja transporta energía sin necesitar ningún medio.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "electrostatica-por-que-nos-dan-choques-los-picaportes",
-      "title": "Electrostática: por qué nos dan choques los picaportes",
-      "order": 24,
-      "description": "Investigamos la acumulación de cargas eléctricas en reposo. La ciencia detrás de los relámpagos y los pequeños chispazos al tocar un objeto metálico en invierno.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "difraccion-de-la-luz-como-las-ondas-esquivan-obstaculos",
-      "title": "Difracción de la luz: cómo las ondas esquivan obstáculos",
-      "order": 25,
-      "description": "Estudiamos cómo la luz se curva al pasar por rendijas estrechas. Un fenómeno fascinante que demuestra de forma definitiva la naturaleza ondulatoria de la luz.",
-      "audioUrl": ""
-    },
-    {
       "slug": "relatividad-general-la-gravedad-como-curvatura-espacial",
       "title": "Relatividad general: la gravedad como curvatura espacial",
       "order": 26,

@@ -158,6 +158,41 @@
       "order": 20,
       "description": "Conoce a los sorprendentes microorganismos adaptados genética y biológicamente para prosperar en condiciones de calor extremo, alta acidez o radiación.",
       "audioUrl": ""
+    },
+    {
+      "slug": "evolucion-de-los-hominidos-nuestro-linaje-humano",
+      "title": "Evolución de los homínidos: Nuestro linaje humano",
+      "order": 21,
+      "description": "Trazamos el largo recorrido evolutivo desde nuestros ancestros primates más antiguos hasta la consolidación del Homo sapiens moderno en el planeta Tierra.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "los-dinosaurios-emplumados-y-el-origen-de-las-aves",
+      "title": "Los dinosaurios emplumados y el origen de las aves",
+      "order": 22,
+      "description": "Examinamos las contundentes pruebas biológicas y paleontológicas que demuestran cómo las aves modernas descienden directamente de los dinosaurios terópodos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "epigenetica-como-el-entorno-influye-en-los-genes",
+      "title": "Epigenética: Cómo el entorno influye en los genes",
+      "order": 23,
+      "description": "Descubre cómo ciertos factores externos y ambientales logran activar o desactivar nuestros genes sin alterar la secuencia fundamental de nuestro ADN humano.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-microbioma-humano-somos-un-ecosistema-andante",
+      "title": "El microbioma humano: Somos un ecosistema andante",
+      "order": 24,
+      "description": "Analizamos a los billones de microorganismos que habitan sobre nuestra piel y dentro del intestino, y su crucial impacto biológico en nuestra salud general.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-celulas-madre-humanas-potencial-y-desarrollo",
+      "title": "Las células madre humanas: Potencial y desarrollo",
+      "order": 25,
+      "description": "Explicamos qué son exactamente las células madre, su increíble capacidad para especializarse en distintos tejidos y su enorme potencial en la medicina actual.",
+      "audioUrl": ""
     }
   ]
 }

@@ -17,41 +17,6 @@
   "language": "es",
   "chapters": [
     {
-      "slug": "el-mar-muerto-y-la-preservacion-de-los-textos-sagrados",
-      "title": "El Mar Muerto y la preservación de los textos sagrados",
-      "order": 21,
-      "description": "El lugar más bajo de la Tierra alberga un ecosistema único y de condiciones extremas. Su clima árido permitió que los famosos rollos antiguos sobrevivieran.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "pablo-de-tarso-y-su-estrategica-ciudadania-del-imperio",
-      "title": "Pablo de Tarso y su estratégica ciudadanía del imperio",
-      "order": 22,
-      "description": "Como educado y devoto ciudadano romano, Pablo tenía inmensas ventajas legales únicas. Exploramos cómo utilizó su estatus para expandir su gran ministerio.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "ciclos-agricolas-y-las-estaciones-en-la-antigua-judea",
-      "title": "Ciclos agrícolas y las estaciones en la antigua Judea",
-      "order": 23,
-      "description": "Las lluvias tempranas y tardías marcaban la estricta supervivencia de las aldeas locales. La economía agrícola inspiró grandes metáforas de las Escrituras.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "el-antiguo-egipto-como-refugio-y-lugar-de-esclavitud",
-      "title": "El antiguo Egipto como refugio y lugar de esclavitud",
-      "order": 24,
-      "description": "Desde Abraham hasta el Nuevo Testamento, Egipto fue constante ruta de escape en las hambrunas. Analizamos la ambivalente relación de Israel con esta nación.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "jose-y-el-funcionamiento-interno-de-la-corte-del-faraon",
-      "title": "José y el funcionamiento interno de la corte del faraón",
-      "order": 25,
-      "description": "Vendido como esclavo en su juventud, José logró ascender al poder administrativo. Descubre cómo operaban los visires y los silos de grano durante las crisis.",
-      "audioUrl": ""
-    },
-    {
       "slug": "la-arquitectura-y-el-proposito-del-gran-templo-de-herodes",
       "title": "La arquitectura y el propósito del gran Templo de Herodes",
       "order": 26,

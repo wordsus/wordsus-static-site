@@ -17,41 +17,6 @@
   "language": "es",
   "chapters": [
     {
-      "slug": "el-diamante-y-el-grafito-las-multiples-caras-del-carbono",
-      "title": "El diamante y el grafito: las múltiples caras del carbono",
-      "order": 21,
-      "description": "Descubre el concepto de alotropía comparando dos minerales formados solo por carbono, pero con propiedades diametralmente opuestas debido a su geometría.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "gases-ideales-las-leyes-de-boyle-charles-y-gay-lussac",
-      "title": "Gases ideales: las leyes de Boyle, Charles y Gay-Lussac",
-      "order": 22,
-      "description": "Exploramos cómo responden los gases a los cambios de presión, volumen y temperatura, deduciendo las fórmulas históricas que explican su comportamiento vital.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "termoquimica-en-accion-las-reacciones-que-nos-dan-calor",
-      "title": "Termoquímica en acción: las reacciones que nos dan calor",
-      "order": 23,
-      "description": "Analizamos el flujo de calor durante los procesos químicos, diferenciando las reacciones exotérmicas que nos calientan de las endotérmicas que absorben calor.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "la-quimica-en-la-cocina-reacciones-de-maillard-y-sabores",
-      "title": "La química en la cocina: reacciones de Maillard y sabores",
-      "order": 24,
-      "description": "Transformamos tu cocina en un laboratorio. Descubre la fantástica serie de reacciones que dotan de aromas, colores y sabores tostados a todos tus alimentos.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "polimeros-sinteticos-el-amplio-universo-de-los-plasticos",
-      "title": "Polímeros sintéticos: el amplio universo de los plásticos",
-      "order": 25,
-      "description": "Desde envases hasta fibras textiles, estudiamos cómo pequeñas moléculas se unen formando enormes cadenas que revolucionaron la vida moderna para siempre.",
-      "audioUrl": ""
-    },
-    {
       "slug": "el-equilibrio-quimico-las-reacciones-que-nunca-se-detienen",
       "title": "El equilibrio químico: las reacciones que nunca se detienen",
       "order": 26,

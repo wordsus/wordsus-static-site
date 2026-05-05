@@ -156,6 +156,41 @@
       "order": 20,
       "description": "Viajamos a la galaxia enorme más cercana a nuestra Vía Láctea. Analizamos su gran tamaño colosal y su inevitable e increíble colisión futura con nosotros.",
       "audioUrl": ""
+    },
+    {
+      "slug": "eclipses-totales-la-perfecta-danza-de-sombras-en-el-cielo",
+      "title": "Eclipses totales: La perfecta danza de sombras en el cielo",
+      "order": 21,
+      "description": "Entiende la mecánica detrás de estos hermosos eventos astronómicos. Te enseñamos por qué ocurren exactamente y cómo puedes observarlos de forma segura.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "basura-espacial-el-preocupante-anillo-artificial-terrestre",
+      "title": "Basura espacial: El preocupante anillo artificial terrestre",
+      "order": 22,
+      "description": "Examinamos los miles de fragmentos de satélites inactivos que orbitan la Tierra. Conoce los riesgos actuales del anillo artificial y las posibles curas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "pulsares-y-estrellas-de-neutrones-los-faros-del-universo",
+      "title": "Púlsares y estrellas de neutrones: Los faros del universo",
+      "order": 23,
+      "description": "Acércate a los remanentes estelares densos y más extremos. Explicamos cómo giran vertiginosamente, emitiendo pulsos de radiación constantes como faros.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "agujeros-de-gusano-los-atajos-teoricos-a-traves-del-cosmos",
+      "title": "Agujeros de gusano: Los atajos teóricos a través del cosmos",
+      "order": 24,
+      "description": "Nos adentramos en la física teórica para hablar de los extraños puentes en el espacio-tiempo. Conoce si en realidad será posible usarlos para viajar pronto.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-enano-pluton-la-entranable-roca-helada-en-los-confines",
+      "title": "El enano Plutón: La entrañable roca helada en los confines",
+      "order": 25,
+      "description": "Revisitamos la rica historia de nuestro antiguo noveno planeta. Discutimos por qué lo reclasificaron y los asombrosos datos recientes que hemos descubierto.",
+      "audioUrl": ""
     }
   ]
 }
