@@ -17,41 +17,6 @@
   "language": "en",
   "chapters": [
     {
-      "slug": "red-dwarfs-the-most-common-stars-in-our-galaxy",
-      "title": "Red dwarfs: The most common stars in our galaxy",
-      "order": 16,
-      "description": "Get to know the most abundant and long-lived stars in the cosmos. We explain why they are so small, cold and essential for searching for habitable planets.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "dark-matter-the-great-and-invisible-mystery-of-the-universe",
-      "title": "Dark matter: The great and invisible mystery of the universe",
-      "order": 17,
-      "description": "We address one of the greatest enigmas of science. We analyze how we know that invisible matter exists and how it manages to keep galaxies together.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "the-force-of-gravity-the-glue-that-holds-the-cosmos",
-      "title": "The force of gravity: The glue that holds the cosmos",
-      "order": 18,
-      "description": "Discover the main force that shapes the universe. We easily explain how the most massive bodies manage to curve space and time around them.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "supernovas-the-most-violent-explosions-in-the-entire-cosmos",
-      "title": "Supernovas: The most violent explosions in the entire cosmos",
-      "order": 19,
-      "description": "Witness the last gasp of massive stars. Learn how these powerful and immense explosions seed space with all the heavy elements.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "andromeda-galaxy-our-immense-and-distant-royal-neighbor",
-      "title": "Andromeda Galaxy: Our immense and distant royal neighbor",
-      "order": 20,
-      "description": "We travel to the enormous galaxy closest to our Milky Way. We analyze its colossal great size and its inevitable and incredible future collision with us.",
-      "audioUrl": ""
-    },
-    {
       "slug": "total-eclipses-the-perfect-dance-of-shadows-in-the-sky",
       "title": "Total eclipses: The perfect dance of shadows in the sky",
       "order": 21,

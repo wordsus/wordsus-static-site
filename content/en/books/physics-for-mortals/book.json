@@ -121,6 +121,41 @@
       "order": 15,
       "description": "We analyze why every action has an equal and opposite reaction. Everyday examples of this law, from walking to launching space rockets.",
       "audioUrl": ""
+    },
+    {
+      "slug": "conduction-and-convection-how-heat-is-transferred",
+      "title": "Conduction and convection: how heat is transferred",
+      "order": 16,
+      "description": "We differentiate the methods of transferring thermal energy. Discover why hot air rises and how metals conduct heat so quickly.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "electrical-circuits-the-current-in-our-homes",
+      "title": "Electrical circuits: the current in our homes",
+      "order": 17,
+      "description": "We understand the flow of electrons in a closed circuit. We explain the difference between alternating and direct current that powers your appliances.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "electromagnetic-spectrum-beyond-visible-light",
+      "title": "Electromagnetic spectrum: beyond visible light",
+      "order": 18,
+      "description": "Discover the waves that we cannot see but that we use every day. From radio waves and microwaves to X-rays and gamma radiation in space.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "dark-matter-the-great-ghost-of-our-universe",
+      "title": "Dark matter: the great ghost of our universe",
+      "order": 19,
+      "description": "We investigate the mysterious substance that makes up most of the cosmos. Learn why we know it exists even though we can't see it or interact with it.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "schrodingers-cat-paradoxes-of-the-quantum-world",
+      "title": "Schrödinger's cat: paradoxes of the quantum world",
+      "order": 20,
+      "description": "We analyze the famous thought experiment of quantum mechanics. Understand what superposition means and why observing something can change its final state.",
+      "audioUrl": ""
     }
   ]
 }

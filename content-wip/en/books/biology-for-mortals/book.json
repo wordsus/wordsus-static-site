@@ -19,41 +19,6 @@
   "language": "en",
   "chapters": [
     {
-      "slug": "metamorphosis-extreme-biological-transformations",
-      "title": "Metamorphosis: Extreme biological transformations",
-      "order": 16,
-      "description": "Discover the impressive morphological and physiological changes that insects and amphibians go through during their deep development until the adult phase.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "the-biology-of-human-aging-at-the-cellular-level",
-      "title": "The biology of human aging at the cellular level",
-      "order": 17,
-      "description": "We analyze telomere shortening and oxidative stress to understand the cellular and genetic factors that cause our aging.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "the-biological-bases-of-memory-and-learning",
-      "title": "The biological bases of memory and learning",
-      "order": 18,
-      "description": "We explore how our neurons create new synaptic connections in the brain to process, store and retrieve the information we learn.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "symbiosis-cooperation-between-different-species",
-      "title": "Symbiosis: Cooperation between different species",
-      "order": 19,
-      "description": "We study the fascinating symbiotic relationships, where different organisms evolve together to benefit each other and survive.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "extremophiles-life-in-the-most-hostile-environments",
-      "title": "Extremophiles: Life in the most hostile environments",
-      "order": 20,
-      "description": "Meet the amazing microorganisms genetically and biologically adapted to thrive in conditions of extreme heat, high acidity or radiation.",
-      "audioUrl": ""
-    },
-    {
       "slug": "hominid-evolution-our-human-lineage",
       "title": "Hominid Evolution: Our Human Lineage",
       "order": 21,

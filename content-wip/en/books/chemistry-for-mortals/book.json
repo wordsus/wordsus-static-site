@@ -17,41 +17,6 @@
   "language": "en",
   "chapters": [
     {
-      "slug": "organic-compounds-the-chemistry-of-carbon-in-life",
-      "title": "Organic Compounds: The Chemistry of Carbon in Life",
-      "order": 16,
-      "description": "We delve into organic chemistry to understand why the carbon atom is so versatile and makes up the basic structure of all living beings.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "alkanes-alkenes-and-alkynes-hydrocarbon-chains",
-      "title": "Alkanes, alkenes and alkynes: hydrocarbon chains",
-      "order": 17,
-      "description": "We explore the simplest hydrocarbons, analyzing the differences in reactivity between single, double and triple bonds that support this industry.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "the-inalterability-of-gold-a-very-resistant-noble-metal",
-      "title": "The inalterability of gold: a very resistant noble metal",
-      "order": 18,
-      "description": "We study why gold does not lose its shine or corrode over the centuries. Know its electronic configuration and its low chemical reactivity.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "stoichiometry-the-mathematics-behind-reactions",
-      "title": "Stoichiometry: the mathematics behind reactions",
-      "order": 19,
-      "description": "Learn how to calculate the exact quantities of reactants and products. This fundamental tool prevents the waste of substances at an industrial level.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "reaction-speed-accelerating-chemical-processes",
-      "title": "Reaction speed: accelerating chemical processes",
-      "order": 20,
-      "description": "We analyze chemical kinetics and how factors such as temperature, pressure, concentration and catalysts can accelerate transformations.",
-      "audioUrl": ""
-    },
-    {
       "slug": "diamond-and-graphite-the-many-faces-of-carbon",
       "title": "Diamond and graphite: the many faces of carbon",
       "order": 21,
