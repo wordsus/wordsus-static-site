@@ -5,6 +5,7 @@
     "courses": "Cursos",
     "favorites": "Favoritos",
     "categories": "Categorías",
+    "contact": "Contacto",
     "search": "Buscar",
     "searchPlaceholder": "Buscar libros y cursos...",
     "noResults": "No se encontraron resultados para",
@@ -81,6 +82,38 @@
   "footer": {
     "tagline": "Conocimiento gratuito para todos.",
     "rights": "Todos los derechos reservados.",
-    "builtWith": "Construido con"
+    "builtWith": "Construido con",
+    "navigation": "Navegación",
+    "legal": "Legal",
+    "company": "Empresa",
+    "privacyPolicy": "Política de Privacidad",
+    "termsConditions": "Términos y Condiciones",
+    "cookiePolicy": "Política de Cookies",
+    "aboutUs": "Sobre Nosotros",
+    "contact": "Contacto",
+    "openSource": "Código Abierto",
+    "openSourceText": "Wordsus es de código abierto y gratuito."
+  },
+  "legal": {
+    "privacy": {
+      "title": "Política de Privacidad",
+      "description": "Cómo Wordsus gestiona tus datos personales."
+    },
+    "terms": {
+      "title": "Términos y Condiciones",
+      "description": "Reglas y condiciones para usar la plataforma Wordsus."
+    },
+    "cookies": {
+      "title": "Política de Cookies",
+      "description": "Cómo Wordsus usa cookies y almacenamiento local."
+    },
+    "about": {
+      "title": "Sobre Nosotros",
+      "description": "Conoce Wordsus, la biblioteca gratuita de libros generados con IA.",
+      "contactTitle": "Contacto",
+      "contactText": "¿Tienes alguna pregunta, sugerencia o propuesta de colaboración? Nos encantaría saber de ti. Escíbenos a:",
+      "copyEmail": "Copiar dirección de email",
+      "copied": "¡Copiado!"
+    }
   }
 }

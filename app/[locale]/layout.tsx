@@ -51,7 +51,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       <div lang={locale} className="min-h-screen flex flex-col">
         <Header locale={locale as "en" | "es"} categories={categories} />
         <main className="flex-1">{children}</main>
-        <Footer />
+        <Footer locale={locale} />
       </div>
     </NextIntlClientProvider>
   );

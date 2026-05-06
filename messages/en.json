@@ -5,6 +5,7 @@
     "courses": "Courses",
     "favorites": "Favorites",
     "categories": "Categories",
+    "contact": "Contact",
     "search": "Search",
     "searchPlaceholder": "Search books and courses...",
     "noResults": "No results found for",
@@ -81,6 +82,38 @@
   "footer": {
     "tagline": "Free knowledge for everyone.",
     "rights": "All rights reserved.",
-    "builtWith": "Built with"
+    "builtWith": "Built with",
+    "navigation": "Navigation",
+    "legal": "Legal",
+    "company": "Company",
+    "privacyPolicy": "Privacy Policy",
+    "termsConditions": "Terms & Conditions",
+    "cookiePolicy": "Cookie Policy",
+    "aboutUs": "About Us",
+    "contact": "Contact",
+    "openSource": "Open Source",
+    "openSourceText": "Wordsus is open source and free to use."
+  },
+  "legal": {
+    "privacy": {
+      "title": "Privacy Policy",
+      "description": "How Wordsus handles your personal data."
+    },
+    "terms": {
+      "title": "Terms & Conditions",
+      "description": "Rules and conditions for using the Wordsus platform."
+    },
+    "cookies": {
+      "title": "Cookie Policy",
+      "description": "How Wordsus uses cookies and local storage."
+    },
+    "about": {
+      "title": "About Us",
+      "description": "Learn about Wordsus, the free AI-powered book library.",
+      "contactTitle": "Contact",
+      "contactText": "Have a question, suggestion, or collaboration proposal? We\u2019d love to hear from you. Write to us at:",
+      "copyEmail": "Copy email address",
+      "copied": "Copied!"
+    }
   }
 }
