@@ -20,12 +20,14 @@ export default function ContactSection({
 
   const handleCopy = () => {
     // Email assembled only on user interaction — never in static HTML
-    const p1 = "hello";
-    const p2 = "@";
-    const p3 = "word";
-    const p4 = "sus";
-    const p5 = ".com";
-    const email = p1 + p2 + p3 + p4 + p5;
+    const p1 = "hi";
+    const p2 = ".wor";
+    const p3 = "dsus";
+    const p4 = "@";
+    const p5 = "gma";
+    const p6 = "il.c";
+    const p7 = "om";
+    const email = p1 + p2 + p3 + p4 + p5 + p6 + p7;
 
     navigator.clipboard.writeText(email).then(() => {
       setCopied(true);

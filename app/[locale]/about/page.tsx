@@ -29,19 +29,19 @@ export default async function AboutPage({ params }: Props) {
 
   const features = isEs
     ? [
-        { icon: BookOpen, title: "Biblioteca en crecimiento", desc: "Cientos de libros educativos en ciencia, tecnología, filosofía, teología y más." },
-        { icon: Sparkles, title: "Generado con IA", desc: "Contenido creado con la asistencia de inteligencia artificial y supervisión editorial humana." },
-        { icon: Globe, title: "Multiidioma", desc: "Disponible en español e inglés, con planes de expansión a más idiomas." },
-        { icon: Users, title: "Para todos", desc: "Sin registro, sin pagos, sin barreras. Acceso libre para cualquier persona en el mundo." },
-        { icon: Zap, title: "Experiencia fluida", desc: "Progreso de lectura local, favoritos y tema visual sin necesidad de crear una cuenta." },
-      ]
+      { icon: BookOpen, title: "Biblioteca en crecimiento", desc: "Cientos de libros educativos en ciencia, tecnología, filosofía, teología y más." },
+      { icon: Sparkles, title: "Generado con IA", desc: "Contenido creado con la asistencia de inteligencia artificial y supervisión editorial humana." },
+      { icon: Globe, title: "Multiidioma", desc: "Disponible en español e inglés, con planes de expansión a más idiomas." },
+      { icon: Users, title: "Para todos", desc: "Sin registro, sin pagos, sin barreras. Acceso libre para cualquier persona en el mundo." },
+      { icon: Zap, title: "Experiencia fluida", desc: "Progreso de lectura local, favoritos y tema visual sin necesidad de crear una cuenta." },
+    ]
     : [
-        { icon: BookOpen, title: "Growing Library", desc: "Hundreds of educational books across science, technology, philosophy, theology, and more." },
-        { icon: Sparkles, title: "AI-Powered", desc: "Content created with artificial intelligence assistance and human editorial oversight." },
-        { icon: Globe, title: "Multilingual", desc: "Available in Spanish and English, with plans to expand to more languages." },
-        { icon: Users, title: "For Everyone", desc: "No registration, no payments, no barriers. Free access for anyone in the world." },
-        { icon: Zap, title: "Smooth Experience", desc: "Local reading progress, favorites, and visual themes — no account needed." },
-      ];
+      { icon: BookOpen, title: "Growing Library", desc: "Hundreds of educational books across science, technology, philosophy, theology, and more." },
+      { icon: Sparkles, title: "AI-Powered", desc: "Content created with artificial intelligence assistance and human editorial oversight." },
+      { icon: Globe, title: "Multilingual", desc: "Available in Spanish and English, with plans to expand to more languages." },
+      { icon: Users, title: "For Everyone", desc: "No registration, no payments, no barriers. Free access for anyone in the world." },
+      { icon: Zap, title: "Smooth Experience", desc: "Local reading progress, favorites, and visual themes — no account needed." },
+    ];
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -76,9 +76,6 @@ export default async function AboutPage({ params }: Props) {
               <p>
                 Combinamos el poder de la inteligencia artificial con la supervisión editorial humana para crear libros educativos accesibles, rigurosos y gratuitos sobre los temas más apasionantes del mundo: ciencia, programación, teología, filosofía, biología, astronomía y mucho más.
               </p>
-              <p>
-                <strong className="text-[hsl(var(--foreground))]">No somos una empresa comercial.</strong> No procesamos pagos, no tenemos planes de suscripción y no vendemos tus datos. Somos un proyecto de acceso abierto, comprometido con la democratización del conocimiento.
-              </p>
             </>
           ) : (
             <>
@@ -87,9 +84,6 @@ export default async function AboutPage({ params }: Props) {
               </p>
               <p>
                 We combine the power of artificial intelligence with human editorial oversight to create accessible, rigorous, and free educational books on the most fascinating topics in the world: science, programming, theology, philosophy, biology, astronomy, and much more.
-              </p>
-              <p>
-                <strong className="text-[hsl(var(--foreground))]">We are not a commercial company.</strong> We process no payments, have no subscription plans, and do not sell your data. We are an open-access project committed to the democratization of knowledge.
               </p>
             </>
           )}

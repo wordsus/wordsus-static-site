@@ -14,11 +14,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: isEs ? "Política de Privacidad" : "Privacy Policy",
     description: isEs
-      ? "Cómo Wordsus gestiona tus datos personales."
-      : "How Wordsus handles your personal data.",
+      ? "Cómo Wordsus gestiona tus datos personales y el uso de publicidad de terceros."
+      : "How Wordsus handles your personal data and third-party advertising.",
     robots: { index: false, follow: true },
   };
 }
+
+const link = "text-[hsl(var(--primary))] hover:underline";
+const muted = "text-[hsl(var(--muted-foreground))] leading-relaxed";
 
 export default async function PrivacyPage({ params }: Props) {
   const { locale } = await params;
@@ -29,65 +32,153 @@ export default async function PrivacyPage({ params }: Props) {
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="mb-10">
         <span className="inline-block text-xs font-semibold uppercase tracking-widest text-[hsl(var(--primary))] mb-3">
-          {isEs ? "Legal" : "Legal"}
+          Legal
         </span>
         <h1 className="text-4xl font-bold text-[hsl(var(--foreground))] mb-4">
           {isEs ? "Política de Privacidad" : "Privacy Policy"}
         </h1>
-        <p className="text-[hsl(var(--muted-foreground))]">
+        <p className={muted}>
           {isEs ? "Última actualización: mayo de 2025" : "Last updated: May 2025"}
         </p>
       </div>
 
-      <div className="prose-wordsus space-y-8 text-[hsl(var(--foreground))]">
+      <div className="space-y-8 text-[hsl(var(--foreground))]">
         {isEs ? (
           <>
             <section className="space-y-3">
               <h2 className="text-xl font-semibold">1. Introducción</h2>
-              <p className="text-[hsl(var(--muted-foreground))] leading-relaxed">
-                En Wordsus (<strong>wordsus.com</strong>), nos tomamos muy en serio la privacidad de nuestros usuarios. Esta política describe qué información recopilamos, cómo la usamos y qué derechos tienes sobre ella. Wordsus es un sitio web de acceso libre que ofrece libros educativos gratuitos generados con inteligencia artificial. <strong>No realizamos transacciones comerciales ni procesamos pagos.</strong>
+              <p className={muted}>
+                En Wordsus (<strong>wordsus.com</strong>), nos tomamos muy en serio la privacidad de nuestros usuarios.
+                Esta política describe qué información recopilamos, cómo la usamos, cómo intervienen terceros
+                (incluidos proveedores de publicidad) y qué derechos tienes. Wordsus es un sitio web de acceso libre
+                que ofrece libros educativos gratuitos generados con inteligencia artificial.{" "}
+                <strong>No realizamos transacciones comerciales ni procesamos pagos.</strong>
               </p>
             </section>
 
             <section className="space-y-3">
               <h2 className="text-xl font-semibold">2. Datos que recopilamos</h2>
-              <p className="text-[hsl(var(--muted-foreground))] leading-relaxed">
-                Wordsus <strong>no requiere registro ni cuenta de usuario</strong>. No recopilamos datos personales identificables como nombre, email o dirección. Los únicos datos que se almacenan son preferencias locales del usuario (tema visual, favoritos, progreso de lectura) guardadas exclusivamente en el <code>localStorage</code> de tu navegador, en tu dispositivo, y nunca enviadas a nuestros servidores.
+              <p className={muted}>
+                Wordsus <strong>no requiere registro ni cuenta de usuario</strong> y no recopila directamente datos
+                personales identificables como nombre, email o dirección. Las preferencias del usuario (tema visual,
+                favoritos, progreso de lectura) se guardan exclusivamente en el <code>localStorage</code> de tu
+                navegador y <strong>nunca son enviadas a nuestros servidores</strong>.
+              </p>
+              <p className={muted}>
+                Sin embargo, al mostrar publicidad a través de <strong>Google AdSense</strong>, terceros pueden
+                recopilar información de forma automática, tal como se describe en las secciones 4 y 5.
               </p>
             </section>
 
             <section className="space-y-3">
               <h2 className="text-xl font-semibold">3. Cookies y almacenamiento local</h2>
-              <p className="text-[hsl(var(--muted-foreground))] leading-relaxed">
-                Utilizamos almacenamiento local del navegador (<code>localStorage</code>) para guardar tus preferencias. No usamos cookies de seguimiento ni de publicidad. Consulta nuestra <a href={`/${locale}/cookies`} className="text-[hsl(var(--primary))] hover:underline">Política de Cookies</a> para más información.
+              <p className={muted}>
+                Utilizamos almacenamiento local del navegador (<code>localStorage</code>) para guardar tus preferencias
+                de forma completamente local en tu dispositivo. Adicionalmente, los proveedores de publicidad de
+                terceros (como Google) pueden establecer sus propias cookies. Consulta nuestra{" "}
+                <a href={`/${locale}/cookies`} className={link}>Política de Cookies</a> para más información.
               </p>
             </section>
 
             <section className="space-y-3">
-              <h2 className="text-xl font-semibold">4. Servicios de terceros</h2>
-              <p className="text-[hsl(var(--muted-foreground))] leading-relaxed">
-                Podemos utilizar servicios de análisis de tráfico anonimizados (como Cloudflare Web Analytics) que no recopilan datos personales identificables. El código fuente del sitio está alojado en GitHub (GitHub Pages / Cloudflare Pages).
+              <h2 className="text-xl font-semibold">4. Publicidad de terceros — Google AdSense</h2>
+              <p className={muted}>
+                Wordsus utiliza <strong>Google AdSense</strong> para mostrar anuncios publicitarios. Google, como
+                proveedor externo, usa cookies para mostrar anuncios basados en las visitas anteriores del usuario a
+                este sitio web y a otros sitios web. Estas cookies permiten a Google y a sus socios mostrar anuncios
+                a nuestros usuarios basándose en su visita a Wordsus y/o a otros sitios en internet.
+              </p>
+              <p className={muted}>
+                Google utiliza la <strong>cookie DoubleClick DART</strong> para mostrar anuncios basados en el
+                interés a los visitantes de nuestro sitio y de otros sitios en internet. Los usuarios pueden
+                deshabilitar el uso de la cookie DART visitando la{" "}
+                <a
+                  href="https://policies.google.com/technologies/ads"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={link}
+                >
+                  Política de privacidad de la red de publicidad y contenido de Google
+                </a>.
+              </p>
+              <p className={muted}>
+                Los proveedores externos, incluido Google, usan cookies para publicar anuncios basados en visitas
+                anteriores de un usuario a tu sitio web u otros sitios web. El uso de cookies de publicidad permite
+                a Google y a sus socios publicar anuncios para los usuarios en función de su visita a tus sitios u
+                otros sitios de Internet.
               </p>
             </section>
 
             <section className="space-y-3">
-              <h2 className="text-xl font-semibold">5. Tus derechos</h2>
-              <p className="text-[hsl(var(--muted-foreground))] leading-relaxed">
-                Dado que no recopilamos datos personales, no existe información que solicitar, rectificar ni eliminar en nuestros servidores. Puedes borrar en cualquier momento los datos guardados en tu navegador desde la configuración de tu dispositivo.
+              <h2 className="text-xl font-semibold">5. Información recopilada por terceros</h2>
+              <p className={muted}>
+                Al interactuar con los anuncios mostrados en Wordsus, los terceros anunciantes o redes publicitarias
+                pueden recopilar automáticamente información como:
+              </p>
+              <ul className="list-disc list-inside space-y-1 pl-2 text-[hsl(var(--muted-foreground))]">
+                <li>Tu dirección IP</li>
+                <li>El tipo de navegador y sistema operativo</li>
+                <li>Las páginas visitadas antes y después de acceder a Wordsus</li>
+                <li>Identificadores de cookies y tecnologías similares</li>
+              </ul>
+              <p className={muted}>
+                Esta recopilación de datos está sujeta a las políticas de privacidad de dichos terceros, no a esta
+                política. Wordsus no tiene acceso ni control sobre estas cookies.
               </p>
             </section>
 
             <section className="space-y-3">
-              <h2 className="text-xl font-semibold">6. Cambios en esta política</h2>
-              <p className="text-[hsl(var(--muted-foreground))] leading-relaxed">
-                Nos reservamos el derecho de actualizar esta política de privacidad cuando sea necesario. Los cambios se publicarán en esta misma página con la fecha de actualización correspondiente.
+              <h2 className="text-xl font-semibold">6. Análisis de tráfico</h2>
+              <p className={muted}>
+                Podemos utilizar servicios de análisis anonimizados (como Cloudflare Web Analytics) para comprender
+                el uso del sitio. Estos servicios no recopilan datos personales identificables.
               </p>
             </section>
 
             <section className="space-y-3">
-              <h2 className="text-xl font-semibold">7. Contacto</h2>
-              <p className="text-[hsl(var(--muted-foreground))] leading-relaxed">
-                Si tienes alguna pregunta sobre esta política, puedes contactarnos a través de la sección de <a href={`/${locale}/about#contact`} className="text-[hsl(var(--primary))] hover:underline">Contacto</a>.
+              <h2 className="text-xl font-semibold">7. Tus opciones y derechos</h2>
+              <p className={muted}>
+                Puedes controlar la publicidad personalizada de Google o desactivar el uso de cookies visitando:
+              </p>
+              <ul className="list-disc list-inside space-y-2 pl-2 text-[hsl(var(--muted-foreground))]">
+                <li>
+                  <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" className={link}>
+                    Configuración de anuncios de Google
+                  </a>{" "}
+                  — para desactivar la publicidad basada en intereses de Google.
+                </li>
+                <li>
+                  <a href="https://optout.networkadvertising.org/" target="_blank" rel="noopener noreferrer" className={link}>
+                    Network Advertising Initiative (NAI) opt-out
+                  </a>{" "}
+                  — para desactivar anuncios de múltiples redes publicitarias.
+                </li>
+                <li>
+                  <a href="https://optout.aboutads.info/" target="_blank" rel="noopener noreferrer" className={link}>
+                    Digital Advertising Alliance opt-out
+                  </a>.
+                </li>
+              </ul>
+              <p className={muted}>
+                Dado que Wordsus no recopila directamente datos personales, no hay información personal que
+                solicitar, rectificar ni eliminar en nuestros servidores. Los datos del navegador (localStorage)
+                puedes borrarlos en cualquier momento desde la configuración de tu dispositivo.
+              </p>
+            </section>
+
+            <section className="space-y-3">
+              <h2 className="text-xl font-semibold">8. Cambios en esta política</h2>
+              <p className={muted}>
+                Nos reservamos el derecho de actualizar esta política cuando sea necesario. Los cambios se publicarán
+                en esta página con la fecha de actualización correspondiente.
+              </p>
+            </section>
+
+            <section className="space-y-3">
+              <h2 className="text-xl font-semibold">9. Contacto</h2>
+              <p className={muted}>
+                Si tienes preguntas sobre esta política, contáctanos a través de la sección de{" "}
+                <a href={`/${locale}/about#contact`} className={link}>Contacto</a>.
               </p>
             </section>
           </>
@@ -95,50 +186,138 @@ export default async function PrivacyPage({ params }: Props) {
           <>
             <section className="space-y-3">
               <h2 className="text-xl font-semibold">1. Introduction</h2>
-              <p className="text-[hsl(var(--muted-foreground))] leading-relaxed">
-                At Wordsus (<strong>wordsus.com</strong>), we take your privacy seriously. This policy describes what information we collect, how we use it, and what rights you have over it. Wordsus is a freely accessible website offering free educational books generated with artificial intelligence. <strong>We do not conduct commercial transactions or process payments.</strong>
+              <p className={muted}>
+                At Wordsus (<strong>wordsus.com</strong>), we take your privacy seriously. This policy describes
+                what information we collect, how we use it, how third parties (including advertising providers)
+                are involved, and what rights you have. Wordsus is a freely accessible website offering free
+                educational books generated with artificial intelligence.{" "}
+                <strong>We do not conduct commercial transactions or process payments.</strong>
               </p>
             </section>
 
             <section className="space-y-3">
               <h2 className="text-xl font-semibold">2. Data We Collect</h2>
-              <p className="text-[hsl(var(--muted-foreground))] leading-relaxed">
-                Wordsus <strong>does not require registration or a user account</strong>. We do not collect personally identifiable data such as name, email, or address. The only data stored are local user preferences (visual theme, favorites, reading progress) saved exclusively in your browser&apos;s <code>localStorage</code>, on your device, and never sent to our servers.
+              <p className={muted}>
+                Wordsus <strong>does not require registration or a user account</strong> and does not directly
+                collect personally identifiable data such as name, email, or address. User preferences (visual
+                theme, favorites, reading progress) are stored exclusively in your browser&apos;s{" "}
+                <code>localStorage</code> and are <strong>never sent to our servers</strong>.
+              </p>
+              <p className={muted}>
+                However, by displaying advertising through <strong>Google AdSense</strong>, third parties may
+                automatically collect information as described in Sections 4 and 5.
               </p>
             </section>
 
             <section className="space-y-3">
               <h2 className="text-xl font-semibold">3. Cookies and Local Storage</h2>
-              <p className="text-[hsl(var(--muted-foreground))] leading-relaxed">
-                We use browser local storage (<code>localStorage</code>) to save your preferences. We do not use tracking or advertising cookies. See our <a href={`/${locale}/cookies`} className="text-[hsl(var(--primary))] hover:underline">Cookie Policy</a> for more details.
+              <p className={muted}>
+                We use browser local storage (<code>localStorage</code>) to save your preferences entirely
+                locally on your device. Additionally, third-party advertising providers (such as Google) may set
+                their own cookies. See our{" "}
+                <a href={`/${locale}/cookies`} className={link}>Cookie Policy</a> for more details.
               </p>
             </section>
 
             <section className="space-y-3">
-              <h2 className="text-xl font-semibold">4. Third-Party Services</h2>
-              <p className="text-[hsl(var(--muted-foreground))] leading-relaxed">
-                We may use anonymized traffic analytics services (such as Cloudflare Web Analytics) that do not collect personally identifiable data. The site&apos;s source code is hosted on GitHub (GitHub Pages / Cloudflare Pages).
+              <h2 className="text-xl font-semibold">4. Third-Party Advertising — Google AdSense</h2>
+              <p className={muted}>
+                Wordsus uses <strong>Google AdSense</strong> to display advertisements. Google, as a third-party
+                provider, uses cookies to serve ads based on a user&apos;s prior visits to this website and other
+                websites. These cookies allow Google and its partners to serve ads to our users based on their
+                visit to Wordsus and/or other sites on the internet.
+              </p>
+              <p className={muted}>
+                Google uses the <strong>DoubleClick DART cookie</strong> to serve interest-based ads to visitors
+                of our site and other sites on the internet. Users may opt out of the use of the DART cookie by
+                visiting the{" "}
+                <a
+                  href="https://policies.google.com/technologies/ads"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={link}
+                >
+                  Google advertising and content network privacy policy
+                </a>.
+              </p>
+              <p className={muted}>
+                Third-party vendors, including Google, use cookies to serve ads based on a user&apos;s prior
+                visits to your website or other websites. Google&apos;s use of advertising cookies enables it and
+                its partners to serve ads to users based on their visit to your sites and/or other sites on the
+                internet.
               </p>
             </section>
 
             <section className="space-y-3">
-              <h2 className="text-xl font-semibold">5. Your Rights</h2>
-              <p className="text-[hsl(var(--muted-foreground))] leading-relaxed">
-                Since we do not collect personal data, there is no information to request, rectify, or delete on our servers. You can delete data stored in your browser at any time through your device settings.
+              <h2 className="text-xl font-semibold">5. Information Collected by Third Parties</h2>
+              <p className={muted}>
+                When you interact with ads shown on Wordsus, third-party advertisers or ad networks may
+                automatically collect information such as:
+              </p>
+              <ul className="list-disc list-inside space-y-1 pl-2 text-[hsl(var(--muted-foreground))]">
+                <li>Your IP address</li>
+                <li>Browser type and operating system</li>
+                <li>Pages visited before and after accessing Wordsus</li>
+                <li>Cookie identifiers and similar technologies</li>
+              </ul>
+              <p className={muted}>
+                This data collection is governed by those third parties&apos; own privacy policies, not by this
+                policy. Wordsus has no access to or control over these cookies.
               </p>
             </section>
 
             <section className="space-y-3">
-              <h2 className="text-xl font-semibold">6. Changes to This Policy</h2>
-              <p className="text-[hsl(var(--muted-foreground))] leading-relaxed">
-                We reserve the right to update this privacy policy when necessary. Changes will be published on this page with the corresponding update date.
+              <h2 className="text-xl font-semibold">6. Traffic Analytics</h2>
+              <p className={muted}>
+                We may use anonymized analytics services (such as Cloudflare Web Analytics) to understand site
+                usage. These services do not collect personally identifiable data.
               </p>
             </section>
 
             <section className="space-y-3">
-              <h2 className="text-xl font-semibold">7. Contact</h2>
-              <p className="text-[hsl(var(--muted-foreground))] leading-relaxed">
-                If you have questions about this policy, please reach out via our <a href={`/${locale}/about#contact`} className="text-[hsl(var(--primary))] hover:underline">Contact</a> section.
+              <h2 className="text-xl font-semibold">7. Your Choices and Rights</h2>
+              <p className={muted}>
+                You can control Google&apos;s personalized advertising or opt out of cookie use by visiting:
+              </p>
+              <ul className="list-disc list-inside space-y-2 pl-2 text-[hsl(var(--muted-foreground))]">
+                <li>
+                  <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" className={link}>
+                    Google Ads Settings
+                  </a>{" "}
+                  — to disable interest-based advertising from Google.
+                </li>
+                <li>
+                  <a href="https://optout.networkadvertising.org/" target="_blank" rel="noopener noreferrer" className={link}>
+                    Network Advertising Initiative (NAI) opt-out
+                  </a>{" "}
+                  — to disable ads from multiple ad networks.
+                </li>
+                <li>
+                  <a href="https://optout.aboutads.info/" target="_blank" rel="noopener noreferrer" className={link}>
+                    Digital Advertising Alliance opt-out
+                  </a>.
+                </li>
+              </ul>
+              <p className={muted}>
+                Since Wordsus does not directly collect personal data, there is no personal information to
+                request, rectify, or delete on our servers. Browser data (localStorage) can be cleared at any
+                time from your device settings.
+              </p>
+            </section>
+
+            <section className="space-y-3">
+              <h2 className="text-xl font-semibold">8. Changes to This Policy</h2>
+              <p className={muted}>
+                We reserve the right to update this policy when necessary. Changes will be published on this page
+                with the corresponding update date.
+              </p>
+            </section>
+
+            <section className="space-y-3">
+              <h2 className="text-xl font-semibold">9. Contact</h2>
+              <p className={muted}>
+                If you have questions about this policy, please reach out via our{" "}
+                <a href={`/${locale}/about#contact`} className={link}>Contact</a> section.
               </p>
             </section>
           </>
