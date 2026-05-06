@@ -5,6 +5,8 @@ import { routing } from "@/i18n/routing";
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { getAllCategories } from "@/lib/content";
+import type { Locale } from "@/lib/types";
 
 type Props = {
   children: React.ReactNode;
@@ -42,11 +44,12 @@ export default async function LocaleLayout({ children, params }: Props) {
   setRequestLocale(locale);
 
   const messages = await getMessages();
+  const categories = getAllCategories(locale as Locale);
 
   return (
     <NextIntlClientProvider messages={messages} locale={locale}>
       <div lang={locale} className="min-h-screen flex flex-col">
-        <Header locale={locale as "en" | "es"} />
+        <Header locale={locale as "en" | "es"} categories={categories} />
         <main className="flex-1">{children}</main>
         <Footer />
       </div>

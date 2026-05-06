@@ -4,6 +4,7 @@
     "books": "Libros",
     "courses": "Cursos",
     "favorites": "Favoritos",
+    "categories": "Categorías",
     "search": "Buscar",
     "searchPlaceholder": "Buscar libros y cursos...",
     "noResults": "No se encontraron resultados para",
