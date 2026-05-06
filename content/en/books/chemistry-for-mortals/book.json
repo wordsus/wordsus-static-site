@@ -156,6 +156,41 @@
       "order": 20,
       "description": "We analyze chemical kinetics and how factors such as temperature, pressure, concentration and catalysts can accelerate transformations.",
       "audioUrl": ""
+    },
+    {
+      "slug": "diamond-and-graphite-the-many-faces-of-carbon",
+      "title": "Diamond and graphite: the many faces of carbon",
+      "order": 21,
+      "description": "Discover the concept of allotropy by comparing two minerals formed only by carbon, but with diametrically opposite properties due to their geometry.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ideal-gases-the-laws-of-boyle-charles-and-gay-lussac",
+      "title": "Ideal gases: the laws of Boyle, Charles and Gay-Lussac",
+      "order": 22,
+      "description": "We explore how gases respond to changes in pressure, volume and temperature, deducing the historical formulas that explain their vital behavior.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "thermochemistry-in-action-the-reactions-that-give-us-heat",
+      "title": "Thermochemistry in action: the reactions that give us heat",
+      "order": 23,
+      "description": "We analyze the flow of heat during chemical processes, differentiating exothermic reactions that warm us from endothermic reactions that absorb heat.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "chemistry-in-the-kitchen-maillard-reactions-and-flavors",
+      "title": "Chemistry in the kitchen: Maillard reactions and flavors",
+      "order": 24,
+      "description": "We transform your kitchen into a laboratory. Discover the fantastic series of reactions that provide aromas, colors and toasted flavors to all your foods.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "synthetic-polymers-the-wide-universe-of-plastics",
+      "title": "Synthetic polymers: the wide universe of plastics",
+      "order": 25,
+      "description": "From packaging to textile fibers, we study how small molecules come together to form enormous chains that revolutionized modern life forever.",
+      "audioUrl": ""
     }
   ]
 }

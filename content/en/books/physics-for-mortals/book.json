@@ -157,6 +157,41 @@
       "order": 20,
       "description": "We analyze the famous thought experiment of quantum mechanics. Understand what superposition means and why observing something can change its final state.",
       "audioUrl": ""
+    },
+    {
+      "slug": "surface-tension-insects-that-walk-on-water",
+      "title": "Surface tension: insects that walk on water",
+      "order": 21,
+      "description": "We discovered why the surface of liquids acts like an elastic membrane. The physics behind bubbles and raindrops on your window.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "newtonian-gravity-the-force-that-keeps-us-anchored",
+      "title": "Newtonian gravity: the force that keeps us anchored",
+      "order": 22,
+      "description": "We review how Isaac Newton described the attraction between masses. Understand how this mathematical formula predicts planetary orbits and the fall of apples.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "thermal-radiation-how-the-sun-heats-our-planet",
+      "title": "Thermal radiation: how the Sun heats our planet",
+      "order": 23,
+      "description": "Learn about heat transfer through the vacuum of space. We explore how infrared radiation transports energy without requiring any medium.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "electrostatics-why-doorknobs-shock-us",
+      "title": "Electrostatics: why doorknobs shock us",
+      "order": 24,
+      "description": "We investigate the accumulation of electrical charges at rest. The science behind lightning and tiny sparks when you touch a metal object in winter.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "light-diffraction-how-waves-avoid-obstacles",
+      "title": "Light diffraction: how waves avoid obstacles",
+      "order": 25,
+      "description": "We study how light bends as it passes through narrow slits. A fascinating phenomenon that definitively demonstrates the wave nature of light.",
+      "audioUrl": ""
     }
   ]
 }

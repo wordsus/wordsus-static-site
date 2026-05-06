@@ -19,41 +19,6 @@
   "language": "en",
   "chapters": [
     {
-      "slug": "hominid-evolution-our-human-lineage",
-      "title": "Hominid Evolution: Our Human Lineage",
-      "order": 21,
-      "description": "We trace the long evolutionary journey from our oldest primate ancestors to the consolidation of modern Homo sapiens on planet Earth.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "feathered-dinosaurs-and-the-origin-of-birds",
-      "title": "Feathered dinosaurs and the origin of birds",
-      "order": 22,
-      "description": "We examine the compelling biological and paleontological evidence showing how modern birds descended directly from theropod dinosaurs.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "epigenetics-how-the-environment-influences-genes",
-      "title": "Epigenetics: How the environment influences genes",
-      "order": 23,
-      "description": "Discover how certain external and environmental factors manage to activate or deactivate our genes without altering the fundamental sequence of our human DNA.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "the-human-microbiome-we-are-a-walking-ecosystem",
-      "title": "The human microbiome: We are a walking ecosystem",
-      "order": 24,
-      "description": "We analyze the billions of microorganisms that live on our skin and inside the intestine, and their crucial biological impact on our general health.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "human-stem-cells-potential-and-development",
-      "title": "Human stem cells: Potential and development",
-      "order": 25,
-      "description": "We explain what exactly stem cells are, their incredible ability to specialize in different tissues and their enormous potential in current medicine.",
-      "audioUrl": ""
-    },
-    {
       "slug": "bioluminescence-animals-that-produce-their-own-light",
       "title": "Bioluminescence: Animals that produce their own light",
       "order": 26,

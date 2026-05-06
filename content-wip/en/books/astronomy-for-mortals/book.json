@@ -17,41 +17,6 @@
   "language": "en",
   "chapters": [
     {
-      "slug": "total-eclipses-the-perfect-dance-of-shadows-in-the-sky",
-      "title": "Total eclipses: The perfect dance of shadows in the sky",
-      "order": 21,
-      "description": "Understand the mechanics behind these beautiful astronomical events. We teach you why exactly they occur and how you can observe them safely.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "space-junk-the-worrying-artificial-terrestrial-ring",
-      "title": "Space junk: The worrying artificial terrestrial ring",
-      "order": 22,
-      "description": "We examine the thousands of fragments of inactive satellites orbiting the Earth. Learn about the current risks of the artificial ring and the possible cures.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "pulsars-and-neutron-stars-the-lighthouses-of-the-universe",
-      "title": "Pulsars and neutron stars: The lighthouses of the universe",
-      "order": 23,
-      "description": "Get closer to the densest and most extreme stellar remnants. We explain how they spin vertiginously, emitting constant pulses of radiation like lighthouses.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "wormholes-theoretical-shortcuts-through-the-cosmos",
-      "title": "Wormholes: Theoretical shortcuts through the cosmos",
-      "order": 24,
-      "description": "We delve into theoretical physics to talk about the strange bridges in space-time. Find out if it will actually be possible to use them to travel soon.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "the-dwarf-pluto-the-endearing-icy-rock-in-the-confines",
-      "title": "The dwarf Pluto: The endearing icy rock in the confines",
-      "order": 25,
-      "description": "We revisit the rich history of our ancient ninth planet. We discuss why he was reclassified and the amazing recent data we've discovered.",
-      "audioUrl": ""
-    },
-    {
       "slug": "the-expanding-universe-the-mysterious-stellar-receding",
       "title": "The expanding universe: The mysterious stellar receding",
       "order": 26,
