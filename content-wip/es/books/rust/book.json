@@ -1,0 +1,462 @@
+{
+  "slug": "rust",
+  "locale": "es",
+  "title": "Sistemas Backend con Rust",
+  "subtitle": "De la Sintaxis a la Arquitectura",
+  "author": "Wordsus Team",
+  "description": "Domina el desarrollo de sistemas backend de alto rendimiento con Rust. Una guía exhaustiva que cubre desde los fundamentos del lenguaje y el sistema de ownership hasta la arquitectura de microservicios, persistencia avanzada y observabilidad.",
+  "cover": "/images/books/rust-es-cover.jpeg",
+  "category": "programacion",
+  "tags": [
+    "rust",
+    "backend",
+    "desarrollo-web",
+    "arquitectura"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-06",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "ecosistema-y-configuracion-inicial",
+      "title": "Ecosistema y Configuración Inicial",
+      "order": 1,
+      "description": "Aprende sobre Instalación y gestión con rustup, cargo: El gestor de paquetes y dependencias, Estructura de un proyecto en Rust, Formateo y linting ...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "sintaxis-basica-y-tipos-de-datos",
+      "title": "Sintaxis Básica y Tipos de Datos",
+      "order": 2,
+      "description": "Aprende sobre Variables, inmutabilidad por defecto y shadowing, Tipos escalares (enteros, flotantes, booleanos, caracteres), Tipos compuestos (tupl...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-sistema-de-tipos-principal",
+      "title": "El Sistema de Tipos Principal",
+      "order": 3,
+      "description": "Aprende sobre Structs y sus variantes, Enums y el patrón de diseño Algebraic Data Types (ADT), Implementación de métodos con impl, Pattern Matching...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ownership-y-borrowing-el-corazon-de-rust",
+      "title": "Ownership y Borrowing (El Corazón de Rust)",
+      "order": 4,
+      "description": "Aprende sobre La pila (Stack) vs. El montículo (Heap), Reglas estrictas de Ownership, Referencias y Borrowing (préstamos mutables e inmutables), Sl...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "manejo-de-errores",
+      "title": "Manejo de Errores",
+      "order": 5,
+      "description": "Aprende sobre Errores irrecuperables: la macro panic!, Errores recuperables: el enum Result<T, E>, Propagación de errores con el operador ?, Creaci...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "colecciones-y-tipos-estandar",
+      "title": "Colecciones y Tipos Estándar",
+      "order": 6,
+      "description": "Aprende sobre Vectores (Vec<T>), Representaciones de texto (String vs &str), Mapas Hash y Conjuntos (HashMap y HashSet), El enum Option<T> para val...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "abstraccion-y-reutilizacion-de-codigo",
+      "title": "Abstracción y Reutilización de Código",
+      "order": 7,
+      "description": "Aprende sobre Funciones y tipos genéricos, Traits: Definiendo comportamiento compartido, Trait Bounds y el uso de where, Trait Objects y Dynamic Di...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "lifetimes-tiempos-de-vida",
+      "title": "Lifetimes (Tiempos de Vida)",
+      "order": 8,
+      "description": "Aprende sobre El comprobador de préstamos (Borrow Checker), Anotación de Lifetimes en funciones y structs, Elisión de Lifetimes (Reglas implícitas)...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "programacion-funcional-en-rust",
+      "title": "Programación Funcional en Rust",
+      "order": 9,
+      "description": "Aprende sobre Closures y captura de entorno, Traits de Closures (Fn, FnMut, FnOnce), Iteradores y sus métodos de consumo, Adaptadores de iteradores...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "macros-y-metaprogramacion",
+      "title": "Macros y Metaprogramación",
+      "order": 10,
+      "description": "Aprende sobre Macros declarativas (macro_rules!), Macros procedurales personalizadas, Macros tipo Derive (#[derive(...)]), Macros tipo atributo y f...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fundamentos-de-la-standard-library-std",
+      "title": "Fundamentos de la Standard Library (std)",
+      "order": 11,
+      "description": "Aprende sobre El prelude y los módulos principales, Core vs. Alloc vs. Std (no_std environments), Operaciones matemáticas y primitivas avanzadas, M...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "entradasalida-io-y-sistema-de-archivos",
+      "title": "Entrada/Salida (I/O) y Sistema de Archivos",
+      "order": 12,
+      "description": "Aprende sobre Lectura y escritura de archivos (std::fs), Manejo eficiente con buffers (BufReader, BufWriter), Interacción con la entrada y salida e...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "redes-en-la-standard-library",
+      "title": "Redes en la Standard Library",
+      "order": 13,
+      "description": "Aprende sobre Conexiones TCP (TcpListener, TcpStream), Comunicación UDP (UdpSocket), Resolución de direcciones IP y manipulación de Sockets, Limita...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "concurrencia-sincrona-y-sincronizacion",
+      "title": "Concurrencia Síncrona y Sincronización",
+      "order": 14,
+      "description": "Aprende sobre Creación de hilos del sistema operativo (std::thread), Estado compartido: Mutex y RwLock, Paso de mensajes con canales (std::sync::mp...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fundamentos-web-y-serializacion",
+      "title": "Fundamentos Web y Serialización",
+      "order": 15,
+      "description": "Aprende sobre El ecosistema web de Rust, Serialización y deserialización con serde y serde_json, Estructuración de requests y responses HTTP, Manej...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-framework-actix-web",
+      "title": "El Framework Actix-Web",
+      "order": 16,
+      "description": "Aprende sobre Configuración de servidores y workers, Extractors (Path, Query, Json, Form), Gestión del estado compartido de la aplicación, Creación...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-framework-axum-ecosistema-tokio",
+      "title": "El Framework Axum (Ecosistema Tokio)",
+      "order": 17,
+      "description": "Aprende sobre Enrutamiento y Handlers asíncronos, Integración profunda con tower y servicios HTTP, Extracción de datos y validación, Websockets nat...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "autenticacion-y-autorizacion",
+      "title": "Autenticación y Autorización",
+      "order": 18,
+      "description": "Aprende sobre Implementación de JSON Web Tokens (JWT) con jsonwebtoken, Manejo de sesiones y cookies, Flujos de OAuth2 y OpenID Connect, Control de...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "conectividad-y-drivers-basicos",
+      "title": "Conectividad y Drivers Básicos",
+      "order": 19,
+      "description": "Aprende sobre Pools de conexiones con deadpool o bb8, Drivers asíncronos para PostgreSQL (tokio-postgres), Migraciones de esquemas (herramientas co...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "sqlx-el-estandar-asincrono-de-facto",
+      "title": "SQLx (El Estándar Asíncrono de Facto)",
+      "order": 20,
+      "description": "Aprende sobre Consultas comprobadas en tiempo de compilación (query!), Mapeo de resultados a Structs de Rust, Manejo de transacciones y deadlocks, ...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "object-relational-mapping-orm",
+      "title": "Object-Relational Mapping (ORM)",
+      "order": 21,
+      "description": "Aprende sobre Diesel: Generación de código y seguridad de tipos (Síncrono/Asíncrono), SeaORM: El ORM asíncrono para bases de datos relacionales, Co...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "bases-de-datos-nosql-y-cache",
+      "title": "Bases de Datos NoSQL y Caché",
+      "order": 22,
+      "description": "Aprende sobre Integración con MongoDB (Driver asíncrono oficial), Uso de Redis para caché y rate limiting (redis-rs), Bases de datos columnares (Ca...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "testing-unitario-y-de-integracion",
+      "title": "Testing Unitario y de Integración",
+      "order": 23,
+      "description": "Aprende sobre El framework de pruebas integrado (#[test]), Asserts personalizados e igualdades estructuradas, Directorio tests/ para pruebas de int...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "tecnicas-de-mocking-y-stubs",
+      "title": "Técnicas de Mocking y Stubs",
+      "order": 24,
+      "description": "Aprende sobre Cuándo usar Mocks en Rust, Creación de Mocks manuales mediante Traits, Uso del crate mockall, Inyección de dependencias para facilita...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "property-based-testing-y-fuzzing",
+      "title": "Property-Based Testing y Fuzzing",
+      "order": 25,
+      "description": "Aprende sobre Pruebas basadas en propiedades con proptest, Generación de datos arbitrarios, Fuzzing continuo con cargo-fuzz (libFuzzer), Descubrimi...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "testcontainers-para-entornos-efimeros",
+      "title": "Testcontainers para Entornos Efímeros",
+      "order": 26,
+      "description": "Aprende sobre Fundamentos del crate testcontainers-rs, Configuración de bases de datos de prueba en Docker (Postgres, Redis), Aislamiento de tests ...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "benchmarking-de-codigo",
+      "title": "Benchmarking de Código",
+      "order": 27,
+      "description": "Aprende sobre Benchmarks básicos con Cargo, Análisis estadístico avanzado con criterion, Detección de regresiones de rendimiento en CI/CD, Perfilad...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "patrones-de-diseno-adaptados-a-rust",
+      "title": "Patrones de Diseño Adaptados a Rust",
+      "order": 28,
+      "description": "Aprende sobre El patrón Builder y el patrón Typestate (Estados en compilación), El patrón Newtype para seguridad de dominio, Command Pattern y Estr...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "arquitectura-limpia-clean-architecture",
+      "title": "Arquitectura Limpia (Clean Architecture)",
+      "order": 29,
+      "description": "Aprende sobre Principios SOLID aplicados a Rust, Capa de Entidades y Casos de Uso, Aislamiento de frameworks y la base de datos, Inversión de depen...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "arquitectura-hexagonal-ports-adapters",
+      "title": "Arquitectura Hexagonal (Ports & Adapters)",
+      "order": 30,
+      "description": "Aprende sobre Definición de Puertos de Entrada y Salida (Traits), Adaptadores Primarios (Controladores API, CLI), Adaptadores Secundarios (Reposito...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "domain-driven-design-ddd",
+      "title": "Domain-Driven Design (DDD)",
+      "order": 31,
+      "description": "Aprende sobre Modelado del Dominio Rico vs Anémico, Value Objects inmutables con semántica de Rust, Entidades, Agregados y Raíces de Agregación, Ev...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ecosistema-asincrono-profundo-tokio",
+      "title": "Ecosistema Asíncrono Profundo (Tokio)",
+      "order": 32,
+      "description": "Aprende sobre El Trait Future bajo el capó (Pin, Unpin, Context, Waker), El runtime de Tokio: Threads, I/O Polling y Task Scheduling, Streams y asi...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "comunicacion-rpc-con-grpc",
+      "title": "Comunicación RPC con gRPC",
+      "order": 33,
+      "description": "Aprende sobre Protocol Buffers (Protobuf) e IDL, Construcción de servidores y clientes gRPC con tonic, Streaming Unidireccional y Bidireccional, In...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "apis-en-tiempo-real-y-websockets",
+      "title": "APIs en Tiempo Real y WebSockets",
+      "order": 34,
+      "description": "Aprende sobre El protocolo WebSocket en el ecosistema Rust, Uso de tokio-tungstenite, Canales de Tokio para broadcasting a múltiples clientes, Serv...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "interaccion-con-colas-de-mensajes-y-eventos",
+      "title": "Interacción con Colas de Mensajes y Eventos",
+      "order": 35,
+      "description": "Aprende sobre Producción y consumo con Apache Kafka (rdkafka), RabbitMQ / AMQP con lapin, Patrones de resiliencia: Dead Letter Queues y Circuit Bre...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "graphql-en-el-backend",
+      "title": "GraphQL en el Backend",
+      "order": 36,
+      "description": "Aprende sobre Schemas, Queries y Mutaciones con async-graphql, Resolvers asíncronos y contexto, Problema de N+1 consultas (Dataloaders en Rust), Su...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "logging-estructurado",
+      "title": "Logging Estructurado",
+      "order": 37,
+      "description": "Aprende sobre El facade de log vs el ecosistema tracing, Creación de Spans y eventos jerárquicos, Filtrado dinámico de logs (EnvFilter), Salida JSO...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "metricas-de-aplicacion",
+      "title": "Métricas de Aplicación",
+      "order": 38,
+      "description": "Aprende sobre Exportación de métricas con formato Prometheus (metrics-rs), Contadores, Gauges e Histogramas, Instrumentación del uso de memoria y C...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "tracing-distribuido",
+      "title": "Tracing Distribuido",
+      "order": 39,
+      "description": "Aprende sobre Introducción a OpenTelemetry en Rust, Propagación del contexto en peticiones HTTP y gRPC, Exportación de trazas a Jaeger, Zipkin o Da...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "health-checks-y-resiliencia-en-kubernetes",
+      "title": "Health Checks y Resiliencia en Kubernetes",
+      "order": 40,
+      "description": "Aprende sobre Diseño de endpoints Liveness y Readiness, Graceful Shutdown (Apagado elegante) en Tokio, Manejo de señales del sistema operativo (SIG...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "criptografia-practica",
+      "title": "Criptografía Práctica",
+      "order": 41,
+      "description": "Aprende sobre Hashing seguro de contraseñas (Argon2, bcrypt), Uso avanzado del crate ring y rustls (Alternativa a OpenSSL), Cifrado simétrico y asi...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "prevencion-de-vulnerabilidades-web-owasp",
+      "title": "Prevención de Vulnerabilidades Web (OWASP)",
+      "order": 42,
+      "description": "Aprende sobre Mitigación de Inyección SQL (Uso estricto de binds en SQLx/Diesel), Sanitización de inputs y prevención de XSS, Cross-Site Request Fo...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gestion-de-secretos",
+      "title": "Gestión de Secretos",
+      "order": 43,
+      "description": "Aprende sobre Carga segura de variables de entorno (dotenvy), Integración con HashiCorp Vault, Uso de AWS Secrets Manager / Azure Key Vault, Preven...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "seguridad-en-la-cadena-de-suministro-supply-chain",
+      "title": "Seguridad en la Cadena de Suministro (Supply Chain)",
+      "order": 44,
+      "description": "Aprende sobre Auditoría de dependencias con cargo-audit, Restricción de licencias y crates de confianza con cargo-deny, Reproducibilidad de builds,...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-compilador-rustc-y-llvm",
+      "title": "El Compilador (rustc) y LLVM",
+      "order": 45,
+      "description": "Aprende sobre Fases del compilador: AST, HIR, MIR, Cómo funciona el Monomorfismo de Genéricos, LLVM IR y optimizaciones de paso a paso, Perfilado d...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gestion-de-memoria-avanzada",
+      "title": "Gestión de Memoria Avanzada",
+      "order": 46,
+      "description": "Aprende sobre Layout de structs en memoria y padding (#[repr(C)], #[repr(packed)]), Custom Allocators y uso de jemalloc / mimalloc, Smart Pointers ...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "unsafe-rust-y-ffi-foreign-function-interface",
+      "title": "Unsafe Rust y FFI (Foreign Function Interface)",
+      "order": 47,
+      "description": "Aprende sobre Los 5 superpoderes del código unsafe, Punteros crudos (Raw Pointers), Llamando a librerías de C desde Rust y viceversa, Creación de a...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "optimizacion-de-rendimiento-extrema",
+      "title": "Optimización de Rendimiento Extrema",
+      "order": 48,
+      "description": "Aprende sobre Profiling de CPU con Flamegraphs, Localidad de caché y diseño orientado a datos (DOD), Paralelismo de datos con instrucciones SIMD, Z...",
+      "audioUrl": ""
+    }
+  ],
+  "parts": [
+    {
+      "title": "Parte I: Fundamentos del Lenguaje",
+      "chapterSlugs": [
+        "ecosistema-y-configuracion-inicial",
+        "sintaxis-basica-y-tipos-de-datos",
+        "el-sistema-de-tipos-principal",
+        "ownership-y-borrowing-el-corazon-de-rust"
+      ]
+    },
+    {
+      "title": "Parte II: Conceptos Intermedios y Avanzados",
+      "chapterSlugs": [
+        "manejo-de-errores",
+        "colecciones-y-tipos-estandar",
+        "abstraccion-y-reutilizacion-de-codigo",
+        "lifetimes-tiempos-de-vida",
+        "programacion-funcional-en-rust",
+        "macros-y-metaprogramacion"
+      ]
+    },
+    {
+      "title": "Parte III: La Standard Library de Rust",
+      "chapterSlugs": [
+        "fundamentos-de-la-standard-library-std",
+        "entradasalida-io-y-sistema-de-archivos",
+        "redes-en-la-standard-library",
+        "concurrencia-sincrona-y-sincronizacion"
+      ]
+    },
+    {
+      "title": "Parte IV: Desarrollo de APIs RESTful",
+      "chapterSlugs": [
+        "fundamentos-web-y-serializacion",
+        "el-framework-actix-web",
+        "el-framework-axum-ecosistema-tokio",
+        "autenticacion-y-autorizacion"
+      ]
+    },
+    {
+      "title": "Parte V: Persistencia de Datos y Bases de Datos",
+      "chapterSlugs": [
+        "conectividad-y-drivers-basicos",
+        "sqlx-el-estandar-asincrono-de-facto",
+        "object-relational-mapping-orm",
+        "bases-de-datos-nosql-y-cache"
+      ]
+    },
+    {
+      "title": "Parte VI: Testing a fondo, incluyendo Testcontainers",
+      "chapterSlugs": [
+        "testing-unitario-y-de-integracion",
+        "tecnicas-de-mocking-y-stubs",
+        "property-based-testing-y-fuzzing",
+        "testcontainers-para-entornos-efimeros",
+        "benchmarking-de-codigo"
+      ]
+    },
+    {
+      "title": "Parte VII: Arquitectura y Diseño de Software",
+      "chapterSlugs": [
+        "patrones-de-diseno-adaptados-a-rust",
+        "arquitectura-limpia-clean-architecture",
+        "arquitectura-hexagonal-ports-adapters",
+        "domain-driven-design-ddd"
+      ]
+    },
+    {
+      "title": "Parte VIII: Comunicación Avanzada y Microservicios",
+      "chapterSlugs": [
+        "ecosistema-asincrono-profundo-tokio",
+        "comunicacion-rpc-con-grpc",
+        "apis-en-tiempo-real-y-websockets",
+        "interaccion-con-colas-de-mensajes-y-eventos",
+        "graphql-en-el-backend"
+      ]
+    },
+    {
+      "title": "Parte IX: Observabilidad y Monitoreo",
+      "chapterSlugs": [
+        "logging-estructurado",
+        "metricas-de-aplicacion",
+        "tracing-distribuido",
+        "health-checks-y-resiliencia-en-kubernetes"
+      ]
+    },
+    {
+      "title": "Parte X: Seguridad en Aplicaciones Backend",
+      "chapterSlugs": [
+        "criptografia-practica",
+        "prevencion-de-vulnerabilidades-web-owasp",
+        "gestion-de-secretos",
+        "seguridad-en-la-cadena-de-suministro-supply-chain"
+      ]
+    },
+    {
+      "title": "Parte XI: Internals y Optimización",
+      "chapterSlugs": [
+        "el-compilador-rustc-y-llvm",
+        "gestion-de-memoria-avanzada",
+        "unsafe-rust-y-ffi-foreign-function-interface",
+        "optimizacion-de-rendimiento-extrema"
+      ]
+    }
+  ]
+}
