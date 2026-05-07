@@ -17,41 +17,6 @@
   "language": "es",
   "chapters": [
     {
-      "slug": "la-arquitectura-y-el-proposito-del-gran-templo-de-herodes",
-      "title": "La arquitectura y el propósito del gran Templo de Herodes",
-      "order": 26,
-      "description": "Una de las mayores maravillas arquitectónicas del mundo antiguo en su máximo esplendor. Exploramos sus enormes atrios y la exclusividad del gran santuario.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "los-saduceos-y-el-control-aristocratico-sobre-el-templo",
-      "title": "Los saduceos y el control aristocrático sobre el Templo",
-      "order": 27,
-      "description": "Representaban activamente a la aristocracia rica y sacerdotal de la gran ciudad de Jerusalén. Aprende por qué rechazaban las creencias en la resurrección.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "jacob-y-la-importancia-de-los-derechos-de-primogenitura",
-      "title": "Jacob y la importancia de los derechos de primogenitura",
-      "order": 28,
-      "description": "En el mundo antiguo, la primogenitura aseguraba el liderazgo familiar y la mejor herencia económica. Entiende las tensiones familiares que formaron la nación.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "la-crueldad-militar-del-imperio-asirio-en-la-antiguedad",
-      "title": "La crueldad militar del Imperio Asirio en la antigüedad",
-      "order": 29,
-      "description": "Conocidos mundialmente por su implacable brutalidad bélica, aterrorizaban a sus vecinos. Analizamos cómo esta violenta invasión destruyó el reino del norte.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "juan-el-bautista-y-su-radical-vida-en-el-arido-desierto",
-      "title": "Juan el Bautista y su radical vida en el árido desierto",
-      "order": 30,
-      "description": "Un predicador apasionado con un mensaje directo de fuerte arrepentimiento social. Estudiamos su extraña dieta, vestimenta austera y el bautismo purificador.",
-      "audioUrl": ""
-    },
-    {
       "slug": "salomon-y-la-edad-de-oro-del-reino-unido-de-israel",
       "title": "Salomón y la edad de oro del reino unido de Israel",
       "order": 31,

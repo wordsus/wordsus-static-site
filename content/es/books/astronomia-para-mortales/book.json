@@ -191,6 +191,41 @@
       "order": 25,
       "description": "Revisitamos la rica historia de nuestro antiguo noveno planeta. Discutimos por qué lo reclasificaron y los asombrosos datos recientes que hemos descubierto.",
       "audioUrl": ""
+    },
+    {
+      "slug": "el-universo-en-expansion-el-misterioso-alejamiento-estelar",
+      "title": "El universo en expansión: El misterioso alejamiento estelar",
+      "order": 26,
+      "description": "Descubre por qué todos los astros del cosmos se alejan entre sí. Explicamos el corrimiento al rojo y la fuerza enigmática conocida como energía oscura.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "energia-oscura-el-acelerador-invisible-del-vasto-universo",
+      "title": "Energía oscura: El acelerador invisible del vasto universo",
+      "order": 27,
+      "description": "Profundizamos en el extraño motor constante que acelera la expansión cósmica. Conoce las hipótesis de esta energía que domina la mayor parte del cosmos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-sondas-voyager-nuestros-viajeros-humanos-mas-lejanos",
+      "title": "Las sondas Voyager: Nuestros viajeros humanos más lejanos",
+      "order": 28,
+      "description": "Celebramos la misión pionera de gran exploración. Hablamos de su viaje por planetas exteriores, su famoso disco dorado y la salida final del sistema.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "radiotelescopios-gigantes-escuchando-los-ecos-del-cosmos",
+      "title": "Radiotelescopios gigantes: Escuchando los ecos del cosmos",
+      "order": 29,
+      "description": "Exploramos cómo los astrónomos observan frecuencias invisibles de luz. Entiende cómo estas grandes antenas captan galaxias distantes y ondas de radio.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-teoria-del-multiverso-existen-otros-mundos-paralelos",
+      "title": "La teoría del multiverso: ¿Existen otros mundos paralelos?",
+      "order": 30,
+      "description": "Abordamos un tema sumamente alucinante en cosmología. Discutimos las increíbles probabilidades teóricas de que este universo sea solo uno entre muchos otros.",
+      "audioUrl": ""
     }
   ]
 }

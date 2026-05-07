@@ -193,6 +193,41 @@
       "order": 25,
       "description": "Explicamos qué son exactamente las células madre, su increíble capacidad para especializarse en distintos tejidos y su enorme potencial en la medicina actual.",
       "audioUrl": ""
+    },
+    {
+      "slug": "bioluminiscencia-animales-que-producen-luz-propia",
+      "title": "Bioluminiscencia: Animales que producen luz propia",
+      "order": 26,
+      "description": "Estudiamos los procesos químicos que permiten a ciertas medusas, insectos y peces abisales generar su propia luz para lograr cazar, comunicarse o defenderse.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "biologia-de-las-alergias-el-sistema-inmune-activo",
+      "title": "Biología de las alergias: El sistema inmune activo",
+      "order": 27,
+      "description": "Comprende qué ocurre biológicamente en nuestro cuerpo cuando el sistema inmunológico reacciona de forma exagerada e innecesaria ante sustancias inofensivas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-trifosfato-de-adenosina-la-moneda-de-la-energia",
+      "title": "El trifosfato de adenosina: La moneda de la energía",
+      "order": 28,
+      "description": "Nos adentramos en la bioquímica celular para comprender la función de la molécula ATP, responsable de almacenar y transferir energía vital en los seres vivos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-mutaciones-geneticas-errores-que-traen-cambio",
+      "title": "Las mutaciones genéticas: Errores que traen cambio",
+      "order": 29,
+      "description": "Aclaramos cómo suceden los cambios espontáneos en nuestra secuencia genética, provocando enfermedades hereditarias o impulsando la diversidad evolutiva natural.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-biologia-de-los-gemelos-la-identidad-compartida",
+      "title": "La biología de los gemelos: La identidad compartida",
+      "order": 30,
+      "description": "Diferenciamos la formación biológica entre los gemelos idénticos y fraternos, explorando cómo comparten la información genética en el desarrollo temprano.",
+      "audioUrl": ""
     }
   ]
 }

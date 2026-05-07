@@ -192,6 +192,41 @@
       "order": 25,
       "description": "Estudiamos cómo la luz se curva al pasar por rendijas estrechas. Un fenómeno fascinante que demuestra de forma definitiva la naturaleza ondulatoria de la luz.",
       "audioUrl": ""
+    },
+    {
+      "slug": "relatividad-general-la-gravedad-como-curvatura-espacial",
+      "title": "Relatividad general: la gravedad como curvatura espacial",
+      "order": 26,
+      "description": "Profundizamos en la obra maestra de Einstein. Descubre cómo los objetos masivos deforman el tejido del espaciotiempo, creando lo que percibimos como gravedad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "exoplanetas-la-busqueda-de-otros-mundos-habitables",
+      "title": "Exoplanetas: la búsqueda de otros mundos habitables",
+      "order": 27,
+      "description": "Viajamos más allá de nuestro sistema solar. Exploramos los métodos físicos que utilizan los astrónomos para detectar planetas orbitando estrellas lejanas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "efecto-doppler-el-sonido-de-las-sirenas-en-movimiento",
+      "title": "Efecto Doppler: el sonido de las sirenas en movimiento",
+      "order": 28,
+      "description": "Comprendemos por qué el tono de un sonido cambia cuando su fuente se acerca o se aleja. Un efecto crucial tanto en acústica como en la exploración espacial.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "energia-cinetica-y-potencial-las-fuerzas-en-equilibrio",
+      "title": "Energía cinética y potencial: las fuerzas en equilibrio",
+      "order": 29,
+      "description": "Analizamos la conservación de la energía mecánica. Aprende cómo la energía de posición se transforma en energía de movimiento, como en una montaña rusa.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-leyes-de-la-termodinamica-en-motores-de-combustion",
+      "title": "Las leyes de la termodinámica en motores de combustión",
+      "order": 30,
+      "description": "Aplicamos la física térmica a los vehículos modernos. Descubre cómo el calor se transforma en trabajo mecánico y por qué ningún motor es perfectamente eficiente.",
+      "audioUrl": ""
     }
   ]
 }

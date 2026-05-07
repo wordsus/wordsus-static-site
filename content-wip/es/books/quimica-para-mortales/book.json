@@ -17,41 +17,6 @@
   "language": "es",
   "chapters": [
     {
-      "slug": "el-equilibrio-quimico-las-reacciones-que-nunca-se-detienen",
-      "title": "El equilibrio químico: las reacciones que nunca se detienen",
-      "order": 26,
-      "description": "Comprendemos por qué muchas reacciones químicas no se completan totalmente, sino que alcanzan un estado dinámico donde reactivos y productos conviven en paz.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "electrolitos-en-solucion-la-conduccion-de-la-electricidad",
-      "title": "Electrolitos en solución: la conducción de la electricidad",
-      "order": 27,
-      "description": "Investigamos qué sucede cuando ciertas sales se disuelven en agua pura, separándose en iones móviles que permiten el libre paso de la corriente eléctrica.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "la-quimica-del-adn-el-codigo-molecular-de-todos-los-seres",
-      "title": "La química del ADN: el código molecular de todos los seres",
-      "order": 28,
-      "description": "Exploramos los nucleótidos y puentes de hidrógeno que forman la famosa doble hélice del ADN, almacenando la vasta información genética de la humanidad.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "coloides-y-suspensiones-las-fronteras-de-las-disoluciones",
-      "title": "Coloides y suspensiones: las fronteras de las disoluciones",
-      "order": 29,
-      "description": "Analizamos esas mezclas especiales que parecen homogéneas pero no lo son. Desde la niebla hasta la leche, descubre las fascinantes propiedades de los coloides.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "radiactividad-natural-isotopos-inestables-y-sus-misterios",
-      "title": "Radiactividad natural: isótopos inestables y sus misterios",
-      "order": 30,
-      "description": "Analizamos por qué algunos núcleos atómicos se rompen de manera espontánea, liberando grandes dosis de energía y radiación invisible.",
-      "audioUrl": ""
-    },
-    {
       "slug": "el-numero-de-avogadro-y-el-concepto-de-mol-en-quimica",
       "title": "El número de Avogadro y el concepto de mol en química",
       "order": 31,
