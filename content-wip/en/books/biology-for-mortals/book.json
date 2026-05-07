@@ -19,41 +19,6 @@
   "language": "en",
   "chapters": [
     {
-      "slug": "bioluminescence-animals-that-produce-their-own-light",
-      "title": "Bioluminescence: Animals that produce their own light",
-      "order": 26,
-      "description": "We study the chemical processes that allow certain jellyfish, insects and abyssal fish to generate their own light to hunt, communicate or defend themselves.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "biology-of-allergies-the-active-immune-system",
-      "title": "Biology of allergies: The active immune system",
-      "order": 27,
-      "description": "Understand what happens biologically in our body when the immune system overreacts and unnecessarily to harmless substances.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "adenosine-triphosphate-the-currency-of-energy",
-      "title": "Adenosine triphosphate: The currency of energy",
-      "order": 28,
-      "description": "We delve into cellular biochemistry to understand the function of the ATP molecule, responsible for storing and transferring vital energy in living beings.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "genetic-mutations-errors-that-bring-change",
-      "title": "Genetic mutations: Errors that bring change",
-      "order": 29,
-      "description": "We clarify how spontaneous changes occur in our genetic sequence, causing hereditary diseases or driving natural evolutionary diversity.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "the-biology-of-twins-shared-identity",
-      "title": "The Biology of Twins: Shared Identity",
-      "order": 30,
-      "description": "We differentiate biological formation between identical and fraternal twins, exploring how they share genetic information in early development.",
-      "audioUrl": ""
-    },
-    {
       "slug": "biology-of-pollination-and-plant-reproduction",
       "title": "Biology of pollination and plant reproduction",
       "order": 31,

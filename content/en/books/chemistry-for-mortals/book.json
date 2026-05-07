@@ -191,6 +191,41 @@
       "order": 25,
       "description": "From packaging to textile fibers, we study how small molecules come together to form enormous chains that revolutionized modern life forever.",
       "audioUrl": ""
+    },
+    {
+      "slug": "chemical-balance-reactions-that-never-stop",
+      "title": "Chemical balance: reactions that never stop",
+      "order": 26,
+      "description": "We understand why many chemical reactions do not complete completely, but rather reach a dynamic state where reactants and products coexist in peace.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "electrolytes-in-solution-the-conduction-of-electricity",
+      "title": "Electrolytes in solution: the conduction of electricity",
+      "order": 27,
+      "description": "We investigate what happens when certain salts dissolve in pure water, separating into mobile ions that allow the free passage of electric current.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-chemistry-of-dna-the-molecular-code-of-all-beings",
+      "title": "The chemistry of DNA: the molecular code of all beings",
+      "order": 28,
+      "description": "We explore the nucleotides and hydrogen bonds that form the famous double helix of DNA, storing humanity's vast genetic information.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "colloids-and-suspensions-the-boundaries-of-solutions",
+      "title": "Colloids and suspensions: the boundaries of solutions",
+      "order": 29,
+      "description": "We analyze those special mixtures that seem homogeneous but are not. From fog to milk, discover the fascinating properties of colloids.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "natural-radioactivity-unstable-isotopes-and-their-mysteries",
+      "title": "Natural radioactivity: unstable isotopes and their mysteries",
+      "order": 30,
+      "description": "We analyze why some atomic nuclei break spontaneously, releasing large doses of energy and invisible radiation.",
+      "audioUrl": ""
     }
   ]
 }

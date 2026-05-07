@@ -17,41 +17,6 @@
   "language": "en",
   "chapters": [
     {
-      "slug": "the-expanding-universe-the-mysterious-stellar-receding",
-      "title": "The expanding universe: The mysterious stellar receding",
-      "order": 26,
-      "description": "Discover why all the stars in the cosmos move away from each other. We explain the redshift and the enigmatic force known as dark energy.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "dark-energy-the-invisible-accelerator-of-the-vast-universe",
-      "title": "Dark energy: The invisible accelerator of the vast universe",
-      "order": 27,
-      "description": "We delve into the strange constant engine that accelerates cosmic expansion. Learn about the hypotheses of this energy that dominates most of the cosmos.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "the-voyager-probes-our-furthest-human-travelers",
-      "title": "The Voyager probes: Our furthest human travelers",
-      "order": 28,
-      "description": "We celebrate the pioneering mission of great exploration. We talk about his journey through outer planets, his famous golden disk and the final exit from the system.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "giant-radio-telescopes-listening-to-the-echoes-of-the-cosmos",
-      "title": "Giant radio telescopes: Listening to the echoes of the cosmos",
-      "order": 29,
-      "description": "We explore how astronomers observe invisible frequencies of light. Understand how these large antennas pick up distant galaxies and radio waves.",
-      "audioUrl": ""
-    },
-    {
-      "slug": "the-multiverse-theory-are-there-other-parallel-worlds",
-      "title": "The multiverse theory: Are there other parallel worlds?",
-      "order": 30,
-      "description": "We address an extremely amazing topic in cosmology. We discussed the incredible theoretical odds that this universe is just one among many others.",
-      "audioUrl": ""
-    },
-    {
       "slug": "the-asteroid-belt-the-inner-rocky-frontier",
       "title": "The Asteroid Belt: The inner rocky frontier",
       "order": 31,

@@ -192,6 +192,41 @@
       "order": 25,
       "description": "We study how light bends as it passes through narrow slits. A fascinating phenomenon that definitively demonstrates the wave nature of light.",
       "audioUrl": ""
+    },
+    {
+      "slug": "general-relativity-gravity-as-spatial-curvature",
+      "title": "General relativity: gravity as spatial curvature",
+      "order": 26,
+      "description": "We delve into Einstein's masterpiece. Discover how massive objects warp the fabric of spacetime, creating what we perceive as gravity.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "exoplanets-the-search-for-other-habitable-worlds",
+      "title": "Exoplanets: the search for other habitable worlds",
+      "order": 27,
+      "description": "We travel beyond our solar system. We explore the physical methods astronomers use to detect planets orbiting distant stars.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "doppler-effect-the-sound-of-moving-sirens",
+      "title": "Doppler effect: the sound of moving sirens",
+      "order": 28,
+      "description": "We understand why the pitch of a sound changes when its source moves closer or farther away. A crucial effect in both acoustics and space exploration.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "kinetic-and-potential-energy-forces-in-balance",
+      "title": "Kinetic and potential energy: forces in balance",
+      "order": 29,
+      "description": "We analyze the conservation of mechanical energy. Learn how energy of position is transformed into energy of movement, like on a roller coaster.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-laws-of-thermodynamics-in-combustion-engines",
+      "title": "The laws of thermodynamics in combustion engines",
+      "order": 30,
+      "description": "We apply thermal physics to modern vehicles. Discover how heat is transformed into mechanical work and why no engine is perfectly efficient.",
+      "audioUrl": ""
     }
   ]
 }
