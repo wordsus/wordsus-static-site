@@ -9,7 +9,15 @@ import type { BookMeta, TocItem, Locale } from "@/lib/types";
 import TableOfContents from "@/components/TableOfContents";
 import AudioPlayer from "@/components/AudioPlayer";
 import Image from "next-image-export-optimizer";
-import { saveChapter, getSavedChapter, calcProgress, chapterKey } from "@/lib/readingProgress";
+import {
+  saveChapter,
+  getSavedChapter,
+  calcProgress,
+  chapterKey,
+  saveScrollPositions,
+  getScrollPositions,
+  clearScrollPositions,
+} from "@/lib/readingProgress";
 
 interface BookClientProps {
   book: BookMeta;
@@ -46,6 +54,14 @@ export default function BookClient({
   const progressMenuRef = useRef<HTMLDivElement>(null);
   // When true, the next activeChapter change will NOT be persisted (used after a reset)
   const skipNextSave = useRef(false);
+
+  // Refs for the two sidebars (used to save/restore their scroll offsets)
+  const leftSidebarRef = useRef<HTMLElement>(null);
+  const rightSidebarRef = useRef<HTMLElement>(null);
+  // Debounce timer for scroll persistence
+  const scrollTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // When true, loadChapter skips its scroll-to-top so saved scroll can be restored
+  const isRestoringScroll = useRef(false);
 
   const currentChapterMeta = allChapers.find((ch) => ch.slug === activeChapter);
   const currentIdx = allChapers.findIndex((ch) => ch.slug === activeChapter);
@@ -111,7 +127,11 @@ export default function BookClient({
       } finally {
         setLoading(false);
         setActiveChapter(slug);
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        // Skip scroll-to-top when we are about to restore a saved position
+        if (!isRestoringScroll.current) {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          if (rightSidebarRef.current) rightSidebarRef.current.scrollTop = 0;
+        }
       }
     },
     [activeChapter, chapterHtml, initialChapterHtml, locale, book.slug]
@@ -125,14 +145,29 @@ export default function BookClient({
       savedChapter = saved;
     }
 
+    const restoreScroll = () => {
+      const pos = getScrollPositions(locale, book.slug);
+      if (!pos) return;
+      // Use rAF to let React flush the new DOM before scrolling
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: pos.content, behavior: "instant" });
+        if (leftSidebarRef.current) leftSidebarRef.current.scrollTop = pos.leftSidebar;
+        if (rightSidebarRef.current) rightSidebarRef.current.scrollTop = pos.rightSidebar;
+        isRestoringScroll.current = false;
+      });
+    };
+
     if (savedChapter !== initialChapterSlug) {
       setActiveChapter(savedChapter);
-      loadChapter(savedChapter, true);
+      isRestoringScroll.current = true;
+      loadChapter(savedChapter, true).then(restoreScroll);
     } else {
       const newUrl = `/${locale}/${book.slug}/${initialChapterSlug}`;
       if (window.location.pathname.replace(/\/$/, "") !== newUrl) {
         window.history.replaceState(null, "", newUrl);
       }
+      // Still restore scroll positions for the initial chapter
+      restoreScroll();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [book.slug, locale, initialChapterSlug]);
@@ -157,12 +192,13 @@ export default function BookClient({
     setProgressMenuOpen(false);
   };
 
-  // Reset reading progress — removes the persisted chapter key
+  // Reset reading progress — removes the persisted chapter key and scroll positions
   const resetProgress = () => {
     skipNextSave.current = true;  // prevent the effect from immediately re-saving
     try {
       localStorage.removeItem(chapterKey(locale, book.slug));
     } catch { }
+    clearScrollPositions(locale, book.slug);
     setProgressMenuOpen(false);
     // Navigate back to the first chapter without persisting it
     const firstChapter = allChapers[0];
@@ -183,6 +219,38 @@ export default function BookClient({
     document.addEventListener("mousedown", handleOutside);
     return () => document.removeEventListener("mousedown", handleOutside);
   }, [progressMenuOpen]);
+
+  // ─── Scroll persistence ────────────────────────────────────────
+  // Save scroll positions (debounced 500 ms) whenever the user scrolls
+  // the window or either sidebar.
+  useEffect(() => {
+    const persist = () => {
+      if (scrollTimerRef.current) clearTimeout(scrollTimerRef.current);
+      scrollTimerRef.current = setTimeout(() => {
+        saveScrollPositions(locale, book.slug, {
+          content: window.scrollY,
+          leftSidebar: leftSidebarRef.current?.scrollTop ?? 0,
+          rightSidebar: rightSidebarRef.current?.scrollTop ?? 0,
+        });
+      }, 500);
+    };
+
+    const leftEl = leftSidebarRef.current;
+    const rightEl = rightSidebarRef.current;
+
+    window.addEventListener("scroll", persist, { passive: true });
+    leftEl?.addEventListener("scroll", persist, { passive: true });
+    rightEl?.addEventListener("scroll", persist, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", persist);
+      leftEl?.removeEventListener("scroll", persist);
+      rightEl?.removeEventListener("scroll", persist);
+      if (scrollTimerRef.current) clearTimeout(scrollTimerRef.current);
+    };
+    // Re-attach whenever the book/locale changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [book.slug, locale]);
 
 
   useEffect(() => {
@@ -282,6 +350,7 @@ export default function BookClient({
 
       {/* ─── Left sidebar: book index ──────────────────── */}
       <aside
+        ref={leftSidebarRef}
         className={clsx(
           "fixed lg:sticky top-16 z-40 lg:z-auto h-[calc(100vh-4rem)] overflow-y-auto",
           "w-72 bg-[hsl(var(--background))] border-r border-[hsl(var(--border))]",
@@ -604,6 +673,7 @@ export default function BookClient({
 
       {/* ─── Right sidebar: ToC ────────────────────────── */}
       <aside
+        ref={rightSidebarRef}
         className={clsx(
           "fixed xl:sticky top-16 right-0 z-40 xl:z-auto h-[calc(100vh-4rem)] overflow-y-auto",
           "w-80 bg-[hsl(var(--background))] border-l border-[hsl(var(--border))]",
