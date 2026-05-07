@@ -1,0 +1,8 @@
+{
+  "slug": "software-architecture",
+  "locale": "en",
+  "title": "Software Architecture",
+  "description": "Master the principles of Software Architecture, including System Design, Database Architecture, API Design, and Microservices.",
+  "icon": "server",
+  "order": 3
+}

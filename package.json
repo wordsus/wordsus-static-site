@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && next-image-export-optimizer",
+    "generate-chapters": "node scripts/generate-chapters.mjs",
     "start": "next start",
     "lint": "eslint",
     "podcasts": "pnpm --filter podcasts-cli start"

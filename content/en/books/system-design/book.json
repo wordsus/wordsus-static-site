@@ -1,0 +1,217 @@
+{
+  "slug": "system-design",
+  "locale": "en",
+  "title": "Mastering System Design",
+  "subtitle": "From Foundations to Global Scale",
+  "author": "Wordsus Team",
+  "description": "Learn the core principles and advanced patterns for designing scalable, reliable, and maintainable distributed systems. This comprehensive guide covers everything from networking fundamentals and database sharding to consensus algorithms and real-world case studies.",
+  "cover": "/images/books/system-design-en-cover.jpeg",
+  "category": "software-architecture",
+  "tags": [
+    "system-design",
+    "architecture",
+    "distributed-systems",
+    "scalability",
+    "backend"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-07",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "introduction-to-system-design",
+      "title": "Introduction to System Design",
+      "order": 1,
+      "description": "Introduction to what system design is, its lifecycle, metrics like latency and throughput, and engineering trade-offs.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "core-architectural-principles",
+      "title": "Core Architectural Principles",
+      "order": 2,
+      "description": "Explore monolithic vs microservices architectures, separation of concerns, and the CAP and PACELC theorems.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "networking-foundations",
+      "title": "Networking Foundations",
+      "order": 3,
+      "description": "Deep dive into OSI/TCP models, DNS, networking protocols (TCP/UDP), HTTP versions, and real-time communication.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "api-design-and-paradigms",
+      "title": "API Design and Paradigms",
+      "order": 4,
+      "description": "Master REST, GraphQL, gRPC, API gateways, rate limiting, and versioning strategies.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "relational-databases-and-sql",
+      "title": "Relational Databases and SQL",
+      "order": 5,
+      "description": "Advanced SQL, relational algebra, ACID properties, indexing with B-Trees, and query optimization.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "nosql-databases-and-non-relational-stores",
+      "title": "NoSQL Databases and Non-Relational Stores",
+      "order": 6,
+      "description": "Study key-value, document, column-family, and graph databases and their use cases.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "caching-strategies",
+      "title": "Caching Strategies",
+      "order": 7,
+      "description": "Implement caching layers, eviction policies (LRU/LFU), and strategies like write-through or write-back.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "data-partitioning-and-sharding",
+      "title": "Data Partitioning and Sharding",
+      "order": 8,
+      "description": "Scale databases horizontally using partitioning criteria, sharding keys, and consistent hashing.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "replication-and-consistency-models",
+      "title": "Replication and Consistency Models",
+      "order": 9,
+      "description": "Understand leader-based replication, consensus protocols, and strong vs eventual consistency models.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "load-balancing-and-reverse-proxies",
+      "title": "Load Balancing and Reverse Proxies",
+      "order": 10,
+      "description": "Master Layer 4/7 load balancing, algorithms like round-robin, and high availability with reverse proxies.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "asynchronous-processing-and-message-queues",
+      "title": "Asynchronous Processing and Message Queues",
+      "order": 11,
+      "description": "Build decoupled systems using message queues (RabbitMQ, Kafka), pub-sub, and background workers.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "distributed-search-and-logging",
+      "title": "Distributed Search and Logging",
+      "order": 12,
+      "description": "Implement full-text search, centralized logging, distributed tracing, and monitoring/alerting systems.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "content-delivery-networks",
+      "title": "Content Delivery Networks (CDNs)",
+      "order": 13,
+      "description": "Leverage edge computing, push/pull CDN models, geo-routing, and security at the edge.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "consensus-algorithms-and-coordination",
+      "title": "Consensus Algorithms and Coordination",
+      "order": 14,
+      "description": "Solve the Byzantine Generals problem with Paxos, Raft, and distributed coordination services like Zookeeper.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "distributed-transactions",
+      "title": "Distributed Transactions",
+      "order": 15,
+      "description": "Manage data integrity across services using 2PC, 3PC, the Saga pattern, and compensating transactions.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fault-tolerance-and-chaos-engineering",
+      "title": "Fault Tolerance and Chaos Engineering",
+      "order": 16,
+      "description": "Build resilient systems with circuit breakers, bulkhead patterns, retries, and chaos engineering practices.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "security-in-distributed-systems",
+      "title": "Security in Distributed Systems",
+      "order": 17,
+      "description": "Implement IAM, OAuth 2.0, mTLS, and defense mechanisms against DDoS and data breaches.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "designing-social-media-feeds-and-timelines",
+      "title": "Designing Social Media Feeds and Timelines",
+      "order": 18,
+      "description": "Case study on building scalable feeds, handling fan-out problems, and optimizing media storage.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "designing-video-streaming-platforms",
+      "title": "Designing Video Streaming Platforms",
+      "order": 19,
+      "description": "Case study on video encoding, adaptive bitrate streaming, and distributed delivery at scale.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "designing-location-based-services",
+      "title": "Designing Location-Based Services",
+      "order": 20,
+      "description": "Case study on spatial data indexing, quadtrees, real-time tracking, and ride-hailing architectures.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "designing-e-commerce-platforms",
+      "title": "Designing E-commerce Platforms",
+      "order": 21,
+      "description": "Case study on product catalogs, inventory management, payment gateways, and handling flash sales.",
+      "audioUrl": ""
+    }
+  ],
+  "parts": [
+    {
+      "title": "Part I: Foundations of System Design",
+      "chapterSlugs": [
+        "introduction-to-system-design",
+        "core-architectural-principles",
+        "networking-foundations",
+        "api-design-and-paradigms"
+      ]
+    },
+    {
+      "title": "Part II: Data Storage and Management",
+      "chapterSlugs": [
+        "relational-databases-and-sql",
+        "nosql-databases-and-non-relational-stores",
+        "caching-strategies",
+        "data-partitioning-and-sharding",
+        "replication-and-consistency-models"
+      ]
+    },
+    {
+      "title": "Part III: Scaling and Performance",
+      "chapterSlugs": [
+        "load-balancing-and-reverse-proxies",
+        "asynchronous-processing-and-message-queues",
+        "distributed-search-and-logging",
+        "content-delivery-networks"
+      ]
+    },
+    {
+      "title": "Part IV: Advanced Distributed Systems Concepts",
+      "chapterSlugs": [
+        "consensus-algorithms-and-coordination",
+        "distributed-transactions",
+        "fault-tolerance-and-chaos-engineering",
+        "security-in-distributed-systems"
+      ]
+    },
+    {
+      "title": "Part V: Real-World Case Studies and Patterns",
+      "chapterSlugs": [
+        "designing-social-media-feeds-and-timelines",
+        "designing-video-streaming-platforms",
+        "designing-location-based-services",
+        "designing-e-commerce-platforms"
+      ]
+    }
+  ]
+}
