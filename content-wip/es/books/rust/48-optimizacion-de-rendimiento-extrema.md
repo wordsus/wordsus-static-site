@@ -1,1 +1,0 @@
-# Optimización de Rendimiento Extrema

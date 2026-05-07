@@ -1,1 +1,0 @@
-# Criptografía Práctica

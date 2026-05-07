@@ -1,1 +1,0 @@
-# Testcontainers para Entornos Efímeros

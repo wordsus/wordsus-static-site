@@ -1,1 +1,0 @@
-# Arquitectura Limpia (Clean Architecture)
