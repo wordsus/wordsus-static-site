@@ -17,7 +17,7 @@ export const config = {
   /**
    * Number of days to keep backup zip files before permanent deletion.
    */
-  backupRetentionDays: 7,
+  backupRetentionDays: 3,
 
   /**
    * Number of days to keep log files before permanent deletion.

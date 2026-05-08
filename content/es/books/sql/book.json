@@ -1,0 +1,140 @@
+{
+  "slug": "sql",
+  "locale": "es",
+  "title": "SQL",
+  "subtitle": "Dominando el lenguaje de las bases de datos",
+  "author": "Wordsus Team",
+  "description": "Domina el lenguaje SQL desde los fundamentos hasta la optimización avanzada. Una guía práctica para consultar, manipular y estructurar bases de datos relacionales con eficiencia, cubriendo desde DQL básico hasta funciones de ventana y optimización de rendimiento.",
+  "cover": "/images/books/sql-es-cover.jpeg",
+  "category": "programacion",
+  "tags": [
+    "sql",
+    "bases-de-datos",
+    "relacional",
+    "backend",
+    "consultas"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-08",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "introduccion-a-las-bases-de-datos-relacionales",
+      "title": "Introducción a las Bases de Datos Relacionales",
+      "order": 1,
+      "description": "Aprende sobre ¿Qué es un RDBMS?, El modelo relacional: Tablas, Filas y Columnas, Concepto de Esquema (Schema), Tipos de datos básicos...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-abc-de-las-consultas-dql",
+      "title": "El ABC de las Consultas (DQL)",
+      "order": 2,
+      "description": "Aprende sobre La sentencia SELECT: Selección de columnas, Alias de columnas y tablas (AS), Eliminación de duplicados con DISTINCT, Filtrado básico...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ordenamiento-y-limitacion",
+      "title": "Ordenamiento y Limitación",
+      "order": 3,
+      "description": "Aprende sobre Ordenar resultados con ORDER BY (ASC/DESC), Restricción de filas (LIMIT, TOP o FETCH FIRST)...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "funciones-de-agregacion-y-agrupamiento",
+      "title": "Funciones de Agregación y Agrupamiento",
+      "order": 4,
+      "description": "Aprende sobre Funciones básicas: COUNT, SUM, AVG, MIN, MAX, Agrupar datos con GROUP BY, Filtrado de grupos con HAVING...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "relaciones-y-joins-el-corazon-de-sql",
+      "title": "Relaciones y Joins (El corazón de SQL)",
+      "order": 5,
+      "description": "Aprende sobre Concepto de Claves Primarias y Foráneas, INNER JOIN, LEFT JOIN y RIGHT JOIN, FULL OUTER JOIN, CROSS JOIN y SELF JOIN...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "manipulacion-de-datos-dml",
+      "title": "Manipulación de Datos (DML)",
+      "order": 6,
+      "description": "Aprende sobre Inserción de registros (INSERT INTO), Actualización de datos (UPDATE), Eliminación de datos (DELETE vs TRUNCATE)...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "subconsultas-y-expresiones-comunes-ctes",
+      "title": "Subconsultas y Expresiones Comunes (CTEs)",
+      "order": 7,
+      "description": "Aprende sobre Subconsultas escalares y de lista, Subconsultas correlacionadas, Operadores EXISTS y ANY/ALL, CTEs con la cláusula WITH...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "definicion-de-objetos-ddl",
+      "title": "Definición de Objetos (DDL)",
+      "order": 8,
+      "description": "Aprende sobre Creación y alteración de tablas (CREATE, ALTER), Restricciones (Constraints), Creación y gestión de Vistas (VIEW)...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "funciones-de-ventana-window-functions",
+      "title": "Funciones de Ventana (Window Functions)",
+      "order": 9,
+      "description": "Aprende sobre La cláusula OVER y PARTITION BY, Funciones de ranking (ROW_NUMBER, RANK, DENSE_RANK), Funciones de valor (LAG, LEAD)...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "rendimiento-e-indexacion",
+      "title": "Rendimiento e Indexación",
+      "order": 10,
+      "description": "Aprende sobre ¿Cómo funciona un Índice? (B-Tree, Hash), Índices agrupados vs No agrupados, Análisis de planes de ejecución (EXPLAIN)...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "control-de-transacciones-tcl",
+      "title": "Control de Transacciones (TCL)",
+      "order": 11,
+      "description": "Aprende sobre Propiedades ACID, COMMIT, ROLLBACK y SAVEPOINT, Niveles de aislamiento (Isolation Levels)...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "logica-en-el-servidor",
+      "title": "Lógica en el Servidor",
+      "order": 12,
+      "description": "Aprende sobre Procedimientos Almacenados (Stored Procedures), Funciones definidas por el usuario (UDFs), Disparadores (Triggers)...",
+      "audioUrl": ""
+    }
+  ],
+  "parts": [
+    {
+      "title": "Parte I: Fundamentos y Consulta de Datos (Nivel Inicial)",
+      "chapterSlugs": [
+        "introduccion-a-las-bases-de-datos-relacionales",
+        "el-abc-de-las-consultas-dql",
+        "ordenamiento-y-limitacion"
+      ]
+    },
+    {
+      "title": "Parte II: Manipulación y Agregación (Nivel Intermedio)",
+      "chapterSlugs": [
+        "funciones-de-agregacion-y-agrupamiento",
+        "relaciones-y-joins-el-corazon-de-sql",
+        "manipulacion-de-datos-dml"
+      ]
+    },
+    {
+      "title": "Parte III: Lógica Compleja y Estructura (Nivel Avanzado)",
+      "chapterSlugs": [
+        "subconsultas-y-expresiones-comunes-ctes",
+        "definicion-de-objetos-ddl",
+        "funciones-de-ventana-window-functions"
+      ]
+    },
+    {
+      "title": "Parte IV: Optimización y Programabilidad (Nivel Experto)",
+      "chapterSlugs": [
+        "rendimiento-e-indexacion",
+        "control-de-transacciones-tcl",
+        "logica-en-el-servidor"
+      ]
+    }
+  ]
+}
