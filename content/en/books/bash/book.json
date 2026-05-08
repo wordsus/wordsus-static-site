@@ -1,0 +1,213 @@
+{
+  "slug": "bash",
+  "locale": "en",
+  "title": "Mastering the Bash Shell",
+  "subtitle": "A Step-by-Step Developer's Guide",
+  "author": "Wordsus Team",
+  "description": "Master the art of command-line automation and systems scripting with Bash. This comprehensive guide takes you from the basics of terminal navigation to advanced process management and secure scripting practices.",
+  "cover": "/images/books/bash-en-cover.jpeg",
+  "category": "programming",
+  "tags": [
+    "bash",
+    "shell",
+    "scripting",
+    "linux",
+    "automation",
+    "devops"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-07",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "introduction-to-the-shell",
+      "title": "Introduction to the Shell",
+      "order": 1,
+      "description": "An introduction to Bash and the command line, terminal emulators, basic navigation, and how to get help using system documentation.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "file-system-navigation-and-management",
+      "title": "File System Navigation and Management",
+      "order": 2,
+      "description": "Master the Linux directory structure, absolute and relative paths, and essential operations for creating, moving, and deleting files.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "file-permissions-and-ownership",
+      "title": "File Permissions and Ownership",
+      "order": 3,
+      "description": "Understand users, groups, and permission strings. Learn to manage file security using chmod, chown, and umask.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "text-viewing-and-basic-manipulation",
+      "title": "Text Viewing and Basic Manipulation",
+      "order": 4,
+      "description": "Explore tools for displaying file contents, searching text with grep, and sorting or counting output efficiently.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "redirection-and-pipelines",
+      "title": "Redirection and Pipelines",
+      "order": 5,
+      "description": "Learn to manage standard input, output, and error. Master redirection and the power of piping commands together.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "introduction-to-bash-scripting",
+      "title": "Introduction to Bash Scripting",
+      "order": 6,
+      "description": "Start building scripts with the shebang, learn how to make them executable, and understand different execution methods.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "variables-and-parameters",
+      "title": "Variables and Parameters",
+      "order": 7,
+      "description": "Master variable assignment, quoting rules, positional parameters, and the power of command substitution.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "conditional-statements",
+      "title": "Conditional Statements",
+      "order": 8,
+      "description": "Implement logic in your scripts using if/else constructs, the test command, and various comparison operators.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "looping-constructs",
+      "title": "Looping Constructs",
+      "order": 9,
+      "description": "Automate repetitive tasks using for, while, and until loops, along with loop control mechanisms like break and continue.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "functions-in-bash",
+      "title": "Functions in Bash",
+      "order": 10,
+      "description": "Modularize your code by defining functions, passing arguments, and managing variable scope.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "advanced-text-processing-tools",
+      "title": "Advanced Text Processing Tools",
+      "order": 11,
+      "description": "Deep dive into stream editing with sed, pattern processing with awk, and column extraction with cut.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "regular-expressions-in-bash",
+      "title": "Regular Expressions in Bash",
+      "order": 12,
+      "description": "Master basic and extended regular expressions, anchors, quantifiers, and character classes for powerful text matching.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "arrays-and-associative-arrays",
+      "title": "Arrays and Associative Arrays",
+      "order": 13,
+      "description": "Manage complex data structures using indexed and associative arrays, including slicing and iteration techniques.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "environment-and-shell-customization",
+      "title": "Environment and Shell Customization",
+      "order": 14,
+      "description": "Configure your development environment using export, startup files, aliases, and custom prompts.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "arithmetic-operations",
+      "title": "Arithmetic Operations",
+      "order": 15,
+      "description": "Perform integer and floating-point math, generate random numbers, and understand bitwise operations in Bash.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "input-output-and-file-descriptors",
+      "title": "Input, Output, and File Descriptors",
+      "order": 16,
+      "description": "Advance your I/O knowledge with custom file descriptors, printf formatting, Here documents, and Here strings.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "process-management-and-job-control",
+      "title": "Process Management and Job Control",
+      "order": 17,
+      "description": "Control foreground and background processes, manage jobs, and monitor system resources using PIDs and signals.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "error-handling-and-debugging",
+      "title": "Error Handling and Debugging",
+      "order": 18,
+      "description": "Build robust scripts with exit status evaluation, signal trapping, strict modes, and execution tracing.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "interacting-with-the-system",
+      "title": "Interacting with the System",
+      "order": 19,
+      "description": "Parse command-line options with getopts, schedule tasks with cron, and integrate network or archival tools.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "security-and-best-practices",
+      "title": "Security and Best Practices",
+      "order": 20,
+      "description": "Protect your scripts from code injection, manage secrets safely, and follow industry-standard style guides.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "advanced-bash-subsystems",
+      "title": "Advanced Bash Subsystems",
+      "order": 21,
+      "description": "Explore subshells, process substitution, co-processes, and inter-process communication with named pipes.",
+      "audioUrl": ""
+    }
+  ],
+  "parts": [
+    {
+      "title": "Part I: The Foundations of Bash",
+      "chapterSlugs": [
+        "introduction-to-the-shell",
+        "file-system-navigation-and-management",
+        "file-permissions-and-ownership",
+        "text-viewing-and-basic-manipulation",
+        "redirection-and-pipelines"
+      ]
+    },
+    {
+      "title": "Part II: Core Scripting Concepts",
+      "chapterSlugs": [
+        "introduction-to-bash-scripting",
+        "variables-and-parameters",
+        "conditional-statements",
+        "looping-constructs",
+        "functions-in-bash"
+      ]
+    },
+    {
+      "title": "Part III: Data Manipulation and Environment",
+      "chapterSlugs": [
+        "advanced-text-processing-tools",
+        "regular-expressions-in-bash",
+        "arrays-and-associative-arrays",
+        "environment-and-shell-customization",
+        "arithmetic-operations"
+      ]
+    },
+    {
+      "title": "Part IV: Advanced Techniques and Automation",
+      "chapterSlugs": [
+        "input-output-and-file-descriptors",
+        "process-management-and-job-control",
+        "error-handling-and-debugging",
+        "interacting-with-the-system",
+        "security-and-best-practices",
+        "advanced-bash-subsystems"
+      ]
+    }
+  ]
+}
