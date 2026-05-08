@@ -1,0 +1,116 @@
+{
+  "slug": "dns",
+  "locale": "es",
+  "title": "DNS",
+  "subtitle": "De la resolución local a la infraestructura",
+  "author": "Wordsus Team",
+  "description": "Explora el Sistema de Nombres de Dominio (DNS) en profundidad, desde sus fundamentos teóricos y funcionamiento paso a paso hasta su implementación práctica, seguridad avanzada (DNSSEC, DoH), operaciones a escala cloud y metodologías de diagnóstico forense.",
+  "cover": "/images/books/dns-es-cover.jpeg",
+  "category": "infraestructura-cloud-devops",
+  "tags": [
+    "dns",
+    "redes",
+    "infraestructura",
+    "devops",
+    "seguridad"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-08",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "fundamentos-del-sistema-de-nombres-de-dominio",
+      "title": "Fundamentos del Sistema de Nombres de Dominio",
+      "order": 1,
+      "description": "Aprende sobre ¿Qué es el DNS y por qué es el pilar de Internet?, El Espacio de Nombres de Dominio, Jerarquía estructural, El viaje de una consulta, UDP vs. TCP en el puerto 53...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "arquitectura-y-actores-del-dns",
+      "title": "Arquitectura y Actores del DNS",
+      "order": 2,
+      "description": "Aprende sobre Los Servidores Raíz (Root Servers) y el enrutamiento Anycast, Servidores Autoritativos, Resolutores Recursivos, Forwarders y Stub Resolvers, El papel de la Caché y el TTL...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "anatomia-de-una-zona-y-tipos-de-registros",
+      "title": "Anatomía de una Zona y Tipos de Registros",
+      "order": 3,
+      "description": "Aprende sobre Estructura de un archivo de zona, Registros esenciales: A y AAAA, Alias canónicos: CNAME, Registros troncales: NS y SOA, Enrutamiento de correo: MX, Verificación por texto: TXT, SPF, DKIM, DMARC, Registros avanzados: PTR, SRV, CAA y ALIAS/ANAME...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gestion-de-zonas-y-replicacion",
+      "title": "Gestión de Zonas y Replicación",
+      "order": 4,
+      "description": "Aprende sobre Arquitectura Maestro/Esclavo, Transferencias de zona: AXFR e IXFR, Mecanismos de actualización: DNS NOTIFY y DDNS, Delegación de subdominios y Glue Records, Split-Horizon DNS...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "el-ecosistema-de-servidores-dns",
+      "title": "El Ecosistema de Servidores DNS",
+      "order": 5,
+      "description": "Aprende sobre BIND9, Unbound y Knot Resolver, PowerDNS y Knot DNS, dnsmasq y CoreDNS, Microsoft DNS e integración con Active Directory...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "seguridad-avanzada-en-dns",
+      "title": "Seguridad Avanzada en DNS (El dominio del Senior)",
+      "order": 6,
+      "description": "Aprende sobre Vectores de ataque clásicos, Amplificación DNS y RRL, DNSSEC, Anatomía de DNSSEC, Operaciones DNSSEC, Privacidad en tránsito: DoT, DoH y DoQ, DNS Firewalling con RPZ...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "rendimiento-alta-disponibilidad-y-trafico",
+      "title": "Rendimiento, Alta Disponibilidad y Tráfico",
+      "order": 7,
+      "description": "Aprende sobre Balanceo de carga básico: Round-Robin DNS, El mito del Failover por DNS, Implementación de BGP Anycast, GeoDNS y Traffic Management...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "dns-en-la-era-cloud-y-devops",
+      "title": "DNS en la Era Cloud y DevOps",
+      "order": 8,
+      "description": "Aprende sobre Proveedores DNS Gestionados a escala, DNS como Código (IaC) con Terraform y OctoDNS, El DNS en contenedores con CoreDNS en Kubernetes, Service Discovery e integración con Service Mesh...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "operaciones-troubleshooting-y-diagnostico-forense",
+      "title": "Operaciones, Troubleshooting y Diagnóstico Forense",
+      "order": 9,
+      "description": "Aprende sobre Maestría en la línea de comandos con dig y drill, Análisis de tráfico con tcpdump y Wireshark, Diagnóstico de errores críticos, Monitoreo proactivo y métricas...",
+      "audioUrl": ""
+    }
+  ],
+  "parts": [
+    {
+      "title": "Parte I: Principios y Arquitectura Core",
+      "chapterSlugs": [
+        "fundamentos-del-sistema-de-nombres-de-dominio",
+        "arquitectura-y-actores-del-dns",
+        "anatomia-de-una-zona-y-tipos-de-registros"
+      ]
+    },
+    {
+      "title": "Parte II: Administración, Ecosistema y Operación de Servidores",
+      "chapterSlugs": [
+        "gestion-de-zonas-y-replicacion",
+        "el-ecosistema-de-servidores-dns"
+      ]
+    },
+    {
+      "title": "Parte III: Rendimiento, Seguridad y Cloud Native",
+      "chapterSlugs": [
+        "seguridad-avanzada-en-dns",
+        "rendimiento-alta-disponibilidad-y-trafico",
+        "dns-en-la-era-cloud-y-devops"
+      ]
+    },
+    {
+      "title": "Parte IV: Herramientas y Diagnóstico Avanzado",
+      "chapterSlugs": [
+        "operaciones-troubleshooting-y-diagnostico-forense"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "slug": "infraestructura-cloud-devops",
+  "locale": "es",
+  "title": "Infraestructura Cloud y DevOps",
+  "description": "Domina las plataformas en la nube, infraestructura como código, pipelines de CI/CD y prácticas modernas de DevOps.",
+  "icon": "cloud",
+  "order": 2
+}
