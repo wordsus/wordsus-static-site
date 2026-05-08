@@ -1,0 +1,225 @@
+{
+  "slug": "database-design",
+  "locale": "en",
+  "title": "Mastering Database Design",
+  "subtitle": "From Fundamentals to Modern Architectures",
+  "author": "Wordsus Team",
+  "description": "Master the art of designing robust, scalable, and efficient database systems. This guide takes you from the core fundamentals of the relational model and normalization to advanced topics like distributed architectures, transaction management, NoSQL stores, and modern cloud-native database trends.",
+  "cover": "/images/books/database-design-en-cover.jpeg",
+  "category": "software-architecture",
+  "tags": [
+    "database-design",
+    "databases",
+    "sql",
+    "nosql",
+    "architecture",
+    "data-modeling"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-08",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "introduction-to-dbms",
+      "title": "Introduction to Data and Database Management Systems (DBMS)",
+      "order": 1,
+      "description": "Explore the evolution of data storage, core DBMS architecture, and the various roles involved in database design and management.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "relational-model",
+      "title": "The Relational Model",
+      "order": 2,
+      "description": "Deep dive into the anatomy of relations, keys, integrity constraints, and the foundations of relational algebra.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "er-modeling",
+      "title": "Data Modeling and the Entity-Relationship (ER) Model",
+      "order": 3,
+      "description": "Learn the conceptual design process, identifying entities and relationships, and creating effective ER diagrams.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "advanced-er-modeling",
+      "title": "Advanced ER Modeling Concepts",
+      "order": 4,
+      "description": "Understand supertypes, subtypes, weak entities, and how to model complex time-dependent data constraints.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "mapping-er-to-relational",
+      "title": "Translating ER Models to Relational Schemas",
+      "order": 5,
+      "description": "Master the transformation of conceptual models into logical relational schemas, handling attributes and relationships.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "normalization-fundamentals",
+      "title": "Functional Dependencies and Normalization Fundamentals",
+      "order": 6,
+      "description": "Eliminate data anomalies using normalization techniques from First Normal Form (1NF) through Third Normal Form (3NF).",
+      "audioUrl": ""
+    },
+    {
+      "slug": "advanced-normalization",
+      "title": "Advanced Normal Forms and Denormalization",
+      "order": 7,
+      "description": "Explore BCNF, 4NF, and 5NF, and learn when to strategically denormalize for performance optimization.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ddl-and-schema-creation",
+      "title": "Data Definition Language (DDL) and Schema Creation",
+      "order": 8,
+      "description": "Implement database schemas using SQL, defining data types, views, triggers, and managing migrations.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "storage-indexes-and-access",
+      "title": "Physical Storage, Indexes, and Access Methods",
+      "order": 9,
+      "description": "Understand disk storage, buffer management, and the architecture of B-Trees, Hash indexes, and Bitmap indexes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "query-optimization",
+      "title": "Query Processing and Optimization",
+      "order": 10,
+      "description": "Learn how SQL engines parse, optimize, and execute queries using cost-based and rule-based techniques.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "transaction-and-acid",
+      "title": "Transaction Concepts and ACID Properties",
+      "order": 11,
+      "description": "Master the principles of Atomicity, Consistency, Isolation, and Durability (ACID) for reliable data processing.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "concurrency-control",
+      "title": "Concurrency Control Techniques",
+      "order": 12,
+      "description": "Solve concurrency problems using locking protocols, MVCC, and optimistic concurrency control mechanisms.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "recovery-protocols",
+      "title": "Database Recovery Protocols",
+      "order": 13,
+      "description": "Explore undo/redo logging, checkpointing, and algorithms like ARIES to ensure database durability after failures.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "distributed-databases",
+      "title": "Distributed Databases and Replication",
+      "order": 14,
+      "description": "Design distributed systems with horizontal fragmentation, 2PC protocols, and understand CAP/PACELC trade-offs.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "data-warehousing-and-olap",
+      "title": "Data Warehousing and OLAP",
+      "order": 15,
+      "description": "Build analytical systems using star/snowflake schemas, ETL pipelines, and multidimensional data cubes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "nosql-databases",
+      "title": "NoSQL Databases and Non-Relational Models",
+      "order": 16,
+      "description": "Compare key-value, document, column-family, and graph databases for specialized scaling requirements.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "security-and-authorization",
+      "title": "Database Security and Authorization",
+      "order": 17,
+      "description": "Implement robust security with access control models, encryption, and prevention of SQL injection attacks.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "administration-and-tuning",
+      "title": "Database Administration, Monitoring, and Tuning",
+      "order": 18,
+      "description": "Strategies for capacity planning, health monitoring, performance tuning, and high availability planning.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cloud-databases",
+      "title": "Cloud Databases and Database-as-a-Service (DBaaS)",
+      "order": 19,
+      "description": "Evaluate cloud deployment models, serverless databases, and strategies for migrating to the cloud.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "big-data-and-real-time",
+      "title": "Big Data Architectures and Real-time Processing",
+      "order": 20,
+      "description": "Explore data lakes, stream processing with Kafka, and the emergence of vector databases for AI workloads.",
+      "audioUrl": ""
+    }
+  ],
+  "parts": [
+    {
+      "title": "Part I: Fundamentals of Data and Databases",
+      "chapterSlugs": [
+        "introduction-to-dbms",
+        "relational-model"
+      ]
+    },
+    {
+      "title": "Part II: Conceptual Database Design",
+      "chapterSlugs": [
+        "er-modeling",
+        "advanced-er-modeling"
+      ]
+    },
+    {
+      "title": "Part III: Logical Database Design and Normalization",
+      "chapterSlugs": [
+        "mapping-er-to-relational",
+        "normalization-fundamentals",
+        "advanced-normalization"
+      ]
+    },
+    {
+      "title": "Part IV: Physical Database Design and Implementation",
+      "chapterSlugs": [
+        "ddl-and-schema-creation",
+        "storage-indexes-and-access",
+        "query-optimization"
+      ]
+    },
+    {
+      "title": "Part V: Transaction Management and Concurrency",
+      "chapterSlugs": [
+        "transaction-and-acid",
+        "concurrency-control",
+        "recovery-protocols"
+      ]
+    },
+    {
+      "title": "Part VI: Advanced Database Architectures",
+      "chapterSlugs": [
+        "distributed-databases",
+        "data-warehousing-and-olap",
+        "nosql-databases"
+      ]
+    },
+    {
+      "title": "Part VII: Database Security and Administration",
+      "chapterSlugs": [
+        "security-and-authorization",
+        "administration-and-tuning"
+      ]
+    },
+    {
+      "title": "Part VIII: Emerging Trends and Modern Applications",
+      "chapterSlugs": [
+        "cloud-databases",
+        "big-data-and-real-time"
+      ]
+    }
+  ]
+}
