@@ -12,11 +12,11 @@ To assign a value to a variable, you use the assignment operator (`=`). The most
 
 ```bash
 # Correct assignment
-city="Posadas"
+city="Buenos Aires"
 version=3
 
 # Incorrect assignment (Will cause errors)
-city = "Posadas"
+city = "Buenos Aires"
 version= 3
 ```
 
