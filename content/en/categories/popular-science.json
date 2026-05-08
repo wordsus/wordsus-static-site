@@ -1,7 +1,7 @@
 {
-  "slug": "science",
+  "slug": "popular-science",
   "locale": "en",
-  "title": "Science",
+  "title": "Popular Science",
   "description": "Explore the fascinating world of science, from physics and astronomy to biology and chemistry. Discover how the universe works.",
   "icon": "flask",
   "order": 4

@@ -1,7 +1,7 @@
 {
-  "slug": "ciencia",
+  "slug": "divulgacion-cientifica",
   "locale": "es",
-  "title": "Ciencia",
+  "title": "Divulgación Científica",
   "description": "Explora el fascinante mundo de la ciencia, desde la física y la astronomía hasta la biología y la química. Descubre cómo funciona el universo.",
   "icon": "flask",
   "order": 2
