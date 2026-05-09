@@ -1,0 +1,121 @@
+{
+  "slug": "http",
+  "locale": "es",
+  "title": "HTTP",
+  "subtitle": "El Arte de Transportar Mensajes",
+  "author": "Wordsus Team",
+  "description": "Explora el protocolo HTTP en profundidad, desde sus fundamentos arquitectónicos y semántica de cabeceras hasta su evolución a HTTP/3, seguridad con TLS, y patrones de despliegue en infraestructuras modernas.",
+  "cover": "/images/books/http-es-cover.jpeg",
+  "category": "infraestructura-cloud-devops",
+  "tags": [
+    "http",
+    "redes",
+    "infraestructura",
+    "backend",
+    "seguridad"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-08",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "fundamentos-arquitectonicos-del-protocolo",
+      "title": "Fundamentos Arquitectónicos del Protocolo",
+      "order": 1,
+      "description": "Aprende sobre El Modelo Cliente-Servidor y la arquitectura de la Web, Anatomía de una URL y URIs, El flujo de un mensaje HTTP, Métodos HTTP y su semántica, Idempotencia y seguridad, y Códigos de Estado.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cabeceras-headers-y-semantica-de-los-datos",
+      "title": "Cabeceras (Headers) y Semántica de los Datos",
+      "order": 2,
+      "description": "Aprende sobre Clasificación de Cabeceras, Negociación de Contenido, Gestión de Conexiones (keep-alive vs close), Administración de Estado con Cookies, y Metadatos de enrutamiento y proxy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cache-y-optimizacion-de-entrega",
+      "title": "Caché y Optimización de Entrega",
+      "order": 3,
+      "description": "Aprende sobre La jerarquía de caché, Directivas de control, Validación condicional, Gestión de variaciones con el encabezado Vary, e Invalidación de caché y estrategias de purga.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "evolucion-del-protocolo-http-1-1-http-2-y-http-3",
+      "title": "Evolución del Protocolo: HTTP/1.1, HTTP/2 y HTTP/3",
+      "order": 4,
+      "description": "Aprende sobre Limitaciones de HTTP/1.0, HTTP/2: Arquitectura binaria y multiplexación, HTTP/3 y QUIC, Solución al Head-of-Line blocking, y Estrategias de actualización de protocolo.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "criptografia-y-seguridad-https-tls",
+      "title": "Criptografía y Seguridad (HTTPS / TLS)",
+      "order": 5,
+      "description": "Aprende sobre El Handshake TLS, Terminación TLS vs TLS Passthrough, Indicación de Nombre del Servidor (SNI), Autenticación Mutua (mTLS), Cabeceras de Seguridad Estrictas, y CORS.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "autenticacion-y-autorizacion-en-http",
+      "title": "Autenticación y Autorización en HTTP",
+      "order": 6,
+      "description": "Aprende sobre Autenticación Básica y Digest, Autenticación basada en Tokens (JWT), Integración con OAuth 2.0 y OIDC, y Gestión de Rate Limiting y Throttling.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "infraestructura-http-y-patrones-de-despliegue",
+      "title": "Infraestructura HTTP y Patrones de Despliegue",
+      "order": 7,
+      "description": "Aprende sobre Proxies Inversos vs Proxies Directos, Balanceo de Carga a nivel L7 vs L4, Configuración de servidores web líderes, Ingress Controllers en Kubernetes, y Content Delivery Networks (CDNs).",
+      "audioUrl": ""
+    },
+    {
+      "slug": "observabilidad-analisis-y-troubleshooting",
+      "title": "Observabilidad, Análisis y Troubleshooting",
+      "order": 8,
+      "description": "Aprende sobre Formatos de Logs y estandarización, Métricas RED, Trazabilidad Distribuida, Herramientas de CLI imprescindibles, Análisis a nivel de red, e Interceptación con proxies locales.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "mas-alla-de-http-rest-el-ecosistema-extendido",
+      "title": "Más allá de HTTP/REST (El Ecosistema Extendido)",
+      "order": 9,
+      "description": "Aprende sobre Principios de diseño de APIs RESTful, WebSockets vs Server-Sent Events (SSE), gRPC, Webhooks y patrones de callbacks HTTP.",
+      "audioUrl": ""
+    }
+  ],
+  "parts": [
+    {
+      "title": "Parte I: Principios y Arquitectura Core",
+      "chapterSlugs": [
+        "fundamentos-arquitectonicos-del-protocolo",
+        "cabeceras-headers-y-semantica-de-los-datos"
+      ]
+    },
+    {
+      "title": "Parte II: Rendimiento y Evolución",
+      "chapterSlugs": [
+        "cache-y-optimizacion-de-entrega",
+        "evolucion-del-protocolo-http-1-1-http-2-y-http-3"
+      ]
+    },
+    {
+      "title": "Parte III: Seguridad y Autenticación",
+      "chapterSlugs": [
+        "criptografia-y-seguridad-https-tls",
+        "autenticacion-y-autorizacion-en-http"
+      ]
+    },
+    {
+      "title": "Parte IV: Infraestructura y Observabilidad",
+      "chapterSlugs": [
+        "infraestructura-http-y-patrones-de-despliegue",
+        "observabilidad-analisis-y-troubleshooting"
+      ]
+    },
+    {
+      "title": "Parte V: Ecosistema y Patrones Avanzados",
+      "chapterSlugs": [
+        "mas-alla-de-http-rest-el-ecosistema-extendido"
+      ]
+    }
+  ]
+}
