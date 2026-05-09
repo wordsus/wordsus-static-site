@@ -1,0 +1,151 @@
+{
+  "slug": "linux",
+  "locale": "es",
+  "title": "Linux para DevOps",
+  "subtitle": "Dominando la Línea de Comandos",
+  "author": "Wordsus Team",
+  "description": "Domina Linux desde sus fundamentos hasta el nivel senior. Aprende navegación, permisos, gestión de procesos, automatización con Bash scripting, redes, seguridad y las entrañas de los contenedores. Una guía indispensable para ingenieros DevOps que buscan maestría en la línea de comandos y administración de sistemas.",
+  "cover": "/images/books/linux-es-cover.jpeg",
+  "category": "infraestructura-cloud-devops",
+  "tags": [
+    "linux",
+    "devops",
+    "bash",
+    "shell",
+    "terminal",
+    "administracion",
+    "redes",
+    "seguridad"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-09",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "fundamentos-y-filosofia-de-linux",
+      "title": "Fundamentos y Filosofía de Linux",
+      "order": 1,
+      "description": "Aprende sobre ¿Qué es Linux? Kernel, Shell y el Espacio de Usuario, La Terminal vs. La Shell (Bash, Zsh), El árbol de directorios estándar, Navegación básica y rutas, y Obtención de ayuda en la terminal.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "manipulacion-de-archivos-y-directorios",
+      "title": "Manipulación de Archivos y Directorios",
+      "order": 2,
+      "description": "Aprende sobre Creación y destrucción de entidades, Movimiento y clonación de datos, Visualización e inspección de archivos, Enlaces duros y simbólicos, y Búsqueda de archivos en el sistema.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "identidad-usuarios-y-privilegios",
+      "title": "Identidad, Usuarios y Privilegios",
+      "order": 3,
+      "description": "Aprende sobre Gestión de usuarios y grupos, El modelo de permisos estándar de UNIX, Escalado de privilegios de forma segura (sudo), y Listas de Control de Acceso (ACLs).",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gestion-de-procesos-y-servicios",
+      "title": "Gestión de Procesos y Servicios",
+      "order": 4,
+      "description": "Aprende sobre El ciclo de vida de un proceso, Listado y búsqueda, Señales y terminación, Procesos en primer y segundo plano, Systemd, y Análisis de logs con journalctl.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gestion-de-paquetes-y-software",
+      "title": "Gestión de Paquetes y Software",
+      "order": 5,
+      "description": "Aprende sobre Gestión en sistemas basados en Debian/Ubuntu (apt) y RHEL/CentOS (dnf), Gestión de repositorios, y Empaquetado y compresión de archivos (tar, gzip).",
+      "audioUrl": ""
+    },
+    {
+      "slug": "almacenamiento-y-sistemas-de-archivos",
+      "title": "Almacenamiento y Sistemas de Archivos",
+      "order": 6,
+      "description": "Aprende sobre Inspección de discos y bloques, Particionado, Creación de sistemas de archivos, Montaje temporal y persistente (fstab), y Gestión de Volúmenes Lógicos (LVM).",
+      "audioUrl": ""
+    },
+    {
+      "slug": "tuberias-y-redirecciones",
+      "title": "Tuberías (Pipes) y Redirecciones",
+      "order": 7,
+      "description": "Aprende sobre Entradas, salidas y errores estándar (stdin, stdout, stderr), Redirección de flujos, Conectando comandos con tuberías, y el comando tee.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "la-santisima-trinidad-del-procesamiento-de-texto",
+      "title": "La Santísima Trinidad del Procesamiento de Texto",
+      "order": 8,
+      "description": "Aprende sobre Búsqueda de patrones con grep, Edición de flujos con sed, Procesamiento avanzado de columnas con awk, y herramientas complementarias como cut, sort y uniq.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "scripting-avanzado-en-bash",
+      "title": "Scripting Avanzado en Bash",
+      "order": 9,
+      "description": "Aprende sobre Shebangs y variables de entorno, Condicionales y operadores lógicos, Ciclos de iteración, Funciones y manejo de errores, y Automatización con cron.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "redes-y-troubleshooting-de-conectividad",
+      "title": "Redes y Troubleshooting de Conectividad",
+      "order": 10,
+      "description": "Aprende sobre Interfaces de red y enrutamiento, Diagnóstico de conectividad (ping, traceroute), Resolución de DNS (dig), Conexiones (ss, netstat), y Clientes HTTP (curl, wget).",
+      "audioUrl": ""
+    },
+    {
+      "slug": "seguridad-y-hardening-del-sistema",
+      "title": "Seguridad y Hardening del Sistema",
+      "order": 11,
+      "description": "Aprende sobre Criptografía básica y sumas de verificación, Acceso remoto seguro (SSH), Gestión de Firewalls (iptables, ufw), y Conceptos de SELinux y AppArmor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "las-entranas-de-los-contenedores-linux-internals",
+      "title": "Las Entrañas de los Contenedores (Linux Internals)",
+      "order": 12,
+      "description": "Aprende sobre Aislamiento de procesos (chroot), Namespaces (PID, Mount, Network), Control Groups (cgroups), e Inspección de contenedores desde el host.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "monitoreo-avanzado-performance-y-debugging",
+      "title": "Monitoreo Avanzado, Performance y Debugging (Nivel Senior)",
+      "order": 13,
+      "description": "Aprende sobre Monitoreo en tiempo real (htop), Análisis de cuellos de botella (CPU, Memoria, Disco), Intercepción de System Calls (strace), Captura de tráfico (tcpdump), y eBPF.",
+      "audioUrl": ""
+    }
+  ],
+  "parts": [
+    {
+      "title": "Parte I: Los Cimientos del Sistema",
+      "chapterSlugs": [
+        "fundamentos-y-filosofia-de-linux",
+        "manipulacion-de-archivos-y-directorios",
+        "identidad-usuarios-y-privilegios"
+      ]
+    },
+    {
+      "title": "Parte II: Operaciones e Infraestructura",
+      "chapterSlugs": [
+        "gestion-de-procesos-y-servicios",
+        "gestion-de-paquetes-y-software",
+        "almacenamiento-y-sistemas-de-archivos"
+      ]
+    },
+    {
+      "title": "Parte III: Automatización y Procesamiento de Datos",
+      "chapterSlugs": [
+        "tuberias-y-redirecciones",
+        "la-santisima-trinidad-del-procesamiento-de-texto",
+        "scripting-avanzado-en-bash"
+      ]
+    },
+    {
+      "title": "Parte IV: Redes, Seguridad y El Ecosistema DevOps",
+      "chapterSlugs": [
+        "redes-y-troubleshooting-de-conectividad",
+        "seguridad-y-hardening-del-sistema",
+        "las-entranas-de-los-contenedores-linux-internals",
+        "monitoreo-avanzado-performance-y-debugging"
+      ]
+    }
+  ]
+}
