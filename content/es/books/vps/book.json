@@ -1,0 +1,129 @@
+{
+  "slug": "vps",
+  "locale": "es",
+  "title": "VPS para SysAdmins",
+  "subtitle": "De Instancias Aisladas a Infraestructuras Resilientes",
+  "author": "Wordsus Team",
+  "description": "Domina la gestión avanzada de Servidores Privados Virtuales (VPS). Desde la arquitectura de hipervisores y el bootstrapping automatizado hasta la implementación de infraestructuras resilientes con alta disponibilidad, redes privadas seguras y orquestación de contenedores.",
+  "cover": "/images/books/vps-es-cover.jpeg",
+  "category": "infraestructura-cloud-devops",
+  "tags": [
+    "vps",
+    "sysadmin",
+    "linux",
+    "devops",
+    "infraestructura"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-09",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "arquitectura-y-fundamentos-del-entorno-vps",
+      "title": "Arquitectura y Fundamentos del Entorno VPS",
+      "order": 1,
+      "description": "Aprende sobre Tecnologías de hipervisores en la nube (KVM vs. Xen), Virtualización completa vs. Paravirtualización vs. Contenedores de sistema (LXC/LXD), Entendiendo el \"Steal Time\" y la sobreasignación de recursos, y Proveedores Cloud y sus APIs.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "bootstrapping-y-provision-inicial",
+      "title": "Bootstrapping y Provisión Inicial",
+      "order": 2,
+      "description": "Aprende sobre Anatomía y ciclo de vida de una instancia en la nube, Automatización del despliegue inicial con cloud-init, Personalización de imágenes (Golden Images) con Packer, y Gestión de metadatos de la instancia.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "hardening-perimetral-y-control-de-acceso-avanzado",
+      "title": "Hardening Perimetral y Control de Acceso Avanzado",
+      "order": 3,
+      "description": "Aprende sobre Auditoría y reemplazo de configuraciones SSH predeterminadas, Implementación de Port Knocking y Single Packet Authorization (SPA), Firewalls dinámicos y protección contra intrusos (Fail2Ban, CrowdSec), y Aislamiento de redes privadas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gestion-de-almacenamiento-en-entornos-virtualizados",
+      "title": "Gestión de Almacenamiento en Entornos Virtualizados",
+      "order": 4,
+      "description": "Aprende sobre Volúmenes de bloques (Block Storage), Object Storage (S3 Compatible APIs) para respaldos, Sistemas de archivos distribuidos (NFS, Ceph, GlusterFS), y Estrategias de Snapshots consistentes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "automatizacion-e-infraestructura-como-codigo-iac",
+      "title": "Automatización e Infraestructura como Código (IaC)",
+      "order": 5,
+      "description": "Aprende sobre El paradigma de infraestructura inmutable, Despliegue de infraestructura de red y cálculo con Terraform, Gestión del estado de Terraform, y Gestión de la configuración interna con Ansible.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "redes-superpuestas-overlay-networks-y-vpns",
+      "title": "Redes Superpuestas (Overlay Networks) y VPNs",
+      "order": 6,
+      "description": "Aprende sobre Limitaciones de las redes públicas en arquitecturas multi-VPS, Creación de redes privadas virtuales con WireGuard, Redes de malla (Tailscale, Nebula, ZeroTier), y Enrutamiento avanzado entre VPCs.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "alta-disponibilidad-ha-y-balanceo-de-carga",
+      "title": "Alta Disponibilidad (HA) y Balanceo de Carga",
+      "order": 7,
+      "description": "Aprende sobre Modelos de arquitectura HA (Activo-Activo vs. Activo-Pasivo), Implementación de Floating IPs / IPs Virtuales (VIP), Failover automático con Keepalived / Corosync, y Balanceo de carga en Capa 4 y Capa 7.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "monitoreo-observabilidad-y-alertas",
+      "title": "Monitoreo, Observabilidad y Alertas",
+      "order": 8,
+      "description": "Aprende sobre Evolución del monitoreo clásico a la observabilidad, Recolección de métricas con Prometheus y Node Exporter, Visualización de telemetría con Grafana, Agregación centralizada de logs (Loki, ELK/EFK), y Gestión de incidentes con Alertmanager.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "contenedores-y-orquestacion-en-vps",
+      "title": "Contenedores y Orquestación en VPS",
+      "order": 9,
+      "description": "Aprende sobre Docker y Podman en hosts individuales, Docker Compose para despliegues multi-servicio, Limitación de recursos mediante cgroups y namespaces, e Introducción a la orquestación ligera (K3s / MicroK8s).",
+      "audioUrl": ""
+    },
+    {
+      "slug": "auditoria-cumplimiento-y-respuesta-a-incidentes",
+      "title": "Auditoría, Cumplimiento y Respuesta a Incidentes",
+      "order": 10,
+      "description": "Aprende sobre Sistemas de Detección de Intrusos en Host (HIDS), Auditoría del kernel con auditd y AppArmor/SELinux, Gestión de vulnerabilidades y parches (Livepatching), y Análisis forense básico de un VPS comprometido.",
+      "audioUrl": ""
+    }
+  ],
+  "parts": [
+    {
+      "title": "Parte I: Fundamentos y Provisión",
+      "chapterSlugs": [
+        "arquitectura-y-fundamentos-del-entorno-vps",
+        "bootstrapping-y-provision-inicial"
+      ]
+    },
+    {
+      "title": "Parte II: Seguridad y Almacenamiento",
+      "chapterSlugs": [
+        "hardening-perimetral-y-control-de-acceso-avanzado",
+        "gestion-de-almacenamiento-en-entornos-virtualizados"
+      ]
+    },
+    {
+      "title": "Parte III: Automatización y Redes",
+      "chapterSlugs": [
+        "automatizacion-e-infraestructura-como-codigo-iac",
+        "redes-superpuestas-overlay-networks-y-vpns"
+      ]
+    },
+    {
+      "title": "Parte IV: Alta Disponibilidad y Monitoreo",
+      "chapterSlugs": [
+        "alta-disponibilidad-ha-y-balanceo-de-carga",
+        "monitoreo-observabilidad-y-alertas"
+      ]
+    },
+    {
+      "title": "Parte V: Orquestación y Auditoría",
+      "chapterSlugs": [
+        "contenedores-y-orquestacion-en-vps",
+        "auditoria-cumplimiento-y-respuesta-a-incidentes"
+      ]
+    }
+  ]
+}

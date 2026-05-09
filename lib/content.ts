@@ -7,6 +7,33 @@ import remarkRehype from "remark-rehype";
 import rehypeKatex from "rehype-katex";
 import rehypeHighlight from "rehype-highlight";
 import rehypeStringify from "rehype-stringify";
+import { all } from "lowlight";
+import { definer as hcl } from "@taga3s/highlightjs-terraform";
+
+// ─── Syntax highlighting ──────────────────────────────────────────────────────
+// rehype-highlight v7 uses lowlight internally (not the global hljs singleton).
+// We spread lowlight's `all` preset (192 built-in grammars) and add the one
+// language that isn't there: HCL / Terraform.
+const highlightLanguages = { ...all, hcl };
+
+// Aliases map registered language names → additional fence identifiers authors use.
+// Format: { registeredLanguageName: aliasOrAliases }
+const highlightAliases: Record<string, string | string[]> = {
+  hcl:        ["terraform", "tf"],
+  dockerfile: "Dockerfile",
+  graphql:    "gql",
+  protobuf:   "proto",
+  properties: ["env", "dotenv"],
+  json:       ["jsonc", "json5"],
+  bash:       ["zsh", "fish", "ksh"],
+  pgsql:      ["postgres", "postgresql"],
+  csharp:     "cs",
+  powershell: ["ps1", "pwsh"],
+  x86asm:     "asm",
+  django:     ["jinja", "jinja2"],
+  xml:        ["vue", "svelte"],
+};
+
 import type { BookMeta, CategoryMeta, TocItem, Locale } from "./types";
 
 const contentDir = path.join(process.cwd(), "content");
@@ -108,7 +135,7 @@ export async function getChapterContent(
     .use(remarkMath)
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeKatex)
-    .use(rehypeHighlight)
+    .use(rehypeHighlight, { languages: highlightLanguages, aliases: highlightAliases })
     .use(rehypeStringify, { allowDangerousHtml: true })
     .process(raw);
 

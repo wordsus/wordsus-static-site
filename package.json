@@ -13,10 +13,13 @@
     "podcasts": "pnpm --filter podcasts-cli start"
   },
   "dependencies": {
+    "@taga3s/highlightjs-terraform": "^1.0.7",
     "@types/mdx": "^2.0.13",
     "clsx": "^2.1.1",
     "gray-matter": "^4.0.3",
+    "highlight.js": "^11.11.1",
     "katex": "^0.16.45",
+    "lowlight": "^3.3.0",
     "lucide-react": "^1.8.0",
     "next": "16.2.4",
     "next-image-export-optimizer": "^1.20.1",
