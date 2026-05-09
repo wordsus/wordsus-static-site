@@ -1,4 +1,4 @@
-Escribir software de backend escalable requiere un equilibrio delicado entre la flexibilidad y la seguridad. En Rust, este equilibrio se alcanza mediante el polimorfismo, permitiendo que una misma lógica opere sobre diversos tipos de datos sin comprometer el rendimiento. 
+Escribir software de backend escalable requiere un equilibrio delicado entre la flexibilidad y la seguridad. En Rust, este equilibrio se alcanza mediante el polimorfismo, permitiendo que una misma lógica opere sobre diversos tipos de datos sin comprometer el rendimiento.
 
 En este capítulo, exploraremos cómo los **genéricos** actúan como plantillas para estructuras y funciones, y cómo los **traits** definen contratos de comportamiento rigurosos. Aprenderás a dominar desde el despacho estático (monomorfización) hasta la flexibilidad dinámica de los *trait objects*, herramientas esenciales para diseñar arquitecturas limpias, desacopladas y de alto nivel.
 
@@ -112,6 +112,7 @@ impl ApiResponse<f32> {
     }
 }
 ```
+
 En este caso, no ponemos `<T>` después de `impl` porque estamos apuntando a un tipo específico (`f32`). Las instancias de `ApiResponse<String>` no tendrán acceso al método `round_payload()`.
 
 ### El Costo de los Genéricos: Monomorfización
@@ -120,13 +121,13 @@ Una pregunta común al venir de lenguajes interpretados o con máquinas virtuale
 
 En Rust, la respuesta es un rotundo **no**. Rust utiliza un proceso llamado **monomorfización** durante la compilación.
 
-Cuando escribes una función genérica y la llamas con un `i32` y luego con un `String`, el compilador (bajo el capó) genera *dos copias distintas* de esa función, reemplazando el tipo genérico por los tipos concretos. 
+Cuando escribes una función genérica y la llamas con un `i32` y luego con un `String`, el compilador (bajo el capó) genera *dos copias distintas* de esa función, reemplazando el tipo genérico por los tipos concretos.
 
 Esto significa que el uso de genéricos en Rust es una **abstracción de coste cero** (*zero-cost abstraction*). El código resultante que se ejecuta en tu servidor es exactamente el mismo, e igual de rápido, que si hubieras escrito funciones duplicadas manualmente para cada tipo. El único "costo" es que el tamaño del binario final puede ser ligeramente mayor y el tiempo de compilación puede extenderse (profundizaremos en cómo el compilador maneja esto a nivel de LLVM en el Capítulo 45).
 
 ## 7.2 Traits: Definiendo comportamiento compartido
 
-En la sección anterior, vimos cómo los genéricos nos permiten escribir código que acepta cualquier tipo `T`. Sin embargo, en el mundo real del backend, rara vez queremos aceptar *literalmente cualquier cosa*. 
+En la sección anterior, vimos cómo los genéricos nos permiten escribir código que acepta cualquier tipo `T`. Sin embargo, en el mundo real del backend, rara vez queremos aceptar *literalmente cualquier cosa*.
 
 Si estamos escribiendo una función genérica que guarda un registro en una base de datos o lo almacena en Redis, necesitamos que ese tipo `T` tenga ciertas capacidades: debe saber cómo convertirse en una cadena de texto, o cómo extraer un identificador único. Aquí es donde entran los **Traits**.
 
@@ -217,6 +218,7 @@ La sintaxis `item: &impl Cacheable` es en realidad "azúcar sintáctico" para un
 Como desarrollador backend en Rust, pronto te encontrarás queriendo implementar un trait de una librería externa en un struct de otra librería externa. Por ejemplo, podrías querer implementar el trait `Display` de la Standard Library para el tipo `DateTime` de la librería `chrono`.
 
 El compilador de Rust te detendrá con un error. Esto se debe a la **Regla del Huérfano**, la cual dicta que solo puedes implementar un trait para un tipo si:
+
 1. El **trait** fue definido en tu propio crate (tu proyecto).
 2. El **tipo** fue definido en tu propio crate.
 
@@ -224,7 +226,7 @@ Esta regla existe para evitar el caos. Si dos librerías diferentes decidieran i
 
 ### Traits Derivados Automáticamente (`#[derive]`)
 
-A lo largo del libro has visto anotaciones como `#[derive(Debug, Clone, Serialize)]` encima de tus structs. `Debug`, `Clone` y `Serialize` no son magia; son simplemente traits. 
+A lo largo del libro has visto anotaciones como `#[derive(Debug, Clone, Serialize)]` encima de tus structs. `Debug`, `Clone` y `Serialize` no son magia; son simplemente traits.
 
 Rust proporciona una macro especial llamada `derive` que puede generar automáticamente la implementación de ciertos traits estándar si todos los campos internos de tu struct también los implementan. Es una herramienta indispensable para reducir el código repetitivo (*boilerplate*) en la capa de dominio de tu aplicación.
 
@@ -277,7 +279,7 @@ pub fn process_background_job<T: Clone + Debug>(payload: T) {
 
 ### La cláusula `where`: Manteniendo la cordura en el código
 
-A medida que tu arquitectura se vuelve más compleja, las firmas de tus funciones pueden convertirse en un caos ilegible si usas la sintaxis en línea. 
+A medida que tu arquitectura se vuelve más compleja, las firmas de tus funciones pueden convertirse en un caos ilegible si usas la sintaxis en línea.
 
 Imagina un repositorio genérico para tu base de datos que acepta un tipo de entidad `T` y un tipo de identificador `ID`. `T` debe ser serializable e imprimible, y el `ID` debe ser clonable, comparable y poder convertirse a texto.
 
@@ -360,13 +362,14 @@ where
     }
 }
 ```
+
 Si creas un `Wrapper<String>`, tendrá el método `new`, pero si intentas llamar a `wrapper.double()`, el compilador emitirá un error indicando que el método no existe para ese tipo específico. Esto permite crear APIs extremadamente seguras y expresivas.
 
 ## 7.4 Trait Objects y Dynamic Dispatch (`dyn Trait`)
 
 Hasta ahora, hemos visto cómo los genéricos y la cláusula `where` nos permiten escribir código flexible. Como aprendimos en la sección 7.1, Rust resuelve esto mediante la **monomorfización**: genera copias específicas de la función para cada tipo en tiempo de compilación. A esto se le conoce como **Despacho Estático** (*Static Dispatch*).
 
-El despacho estático es increíblemente rápido, pero tiene una limitación estricta: requiere que el compilador conozca todos los tipos de antemano. ¿Qué sucede cuando necesitamos flexibilidad en **tiempo de ejecución**? 
+El despacho estático es increíblemente rápido, pero tiene una limitación estricta: requiere que el compilador conozca todos los tipos de antemano. ¿Qué sucede cuando necesitamos flexibilidad en **tiempo de ejecución**?
 
 Imagina que estás construyendo un sistema de notificaciones para tu backend. Quieres iterar sobre una lista de diferentes proveedores (Email, SMS, Push) y enviar un mensaje usando cada uno.
 
@@ -434,24 +437,27 @@ fn main() {
 
 ### ¿Cómo funciona bajo el capó? (La `vtable`)
 
-Como desarrollador senior, es crucial que entiendas el costo de tus abstracciones. Cuando usas `dyn Trait`, Rust implementa el **Despacho Dinámico** (*Dynamic Dispatch*). 
+Como desarrollador senior, es crucial que entiendas el costo de tus abstracciones. Cuando usas `dyn Trait`, Rust implementa el **Despacho Dinámico** (*Dynamic Dispatch*).
 
 En lugar de saber en tiempo de compilación qué función ejecutar, Rust crea una estructura oculta llamada **vtable** (Virtual Method Table) para cada Trait Object. Un Trait Object en Rust es en realidad un "puntero gordo" (*fat pointer*) que contiene dos cosas:
+
 1. Un puntero a los datos reales de la instancia (ej. tu struct `EmailNotifier`).
 2. Un puntero a la `vtable`, que contiene las direcciones de memoria de los métodos implementados por ese tipo.
 
 Cuando llamas a `notifier.send(...)`, Rust primero tiene que seguir el puntero a la `vtable`, buscar dónde está el método `send` para ese tipo específico, y *luego* ejecutarlo.
 
 **Trade-offs en el Backend:**
-* **Contras:** Esta indirección añade un minúsculo costo de rendimiento (búsqueda en la vtable) y evita que el compilador realice ciertas optimizaciones en línea (*inlining*). 
+
+* **Contras:** Esta indirección añade un minúsculo costo de rendimiento (búsqueda en la vtable) y evita que el compilador realice ciertas optimizaciones en línea (*inlining*).
 * **Pros:** Reduce drásticamente el tamaño del binario compilado (no hay monomorfización masiva) y te permite diseñar arquitecturas conectables (*pluggables*) y middlewares, esenciales en frameworks web como Actix o Axum. En el 99% del código backend, el costo de la vtable es imperceptible frente a la latencia de red o base de datos.
 
 ### La limitación fundamental: Object Safety
 
-Hay una advertencia importante: **no todos los Traits pueden convertirse en Trait Objects**. Para poder usar `dyn MiTrait`, el trait debe ser **"Object Safe"** (Seguro para objetos). 
+Hay una advertencia importante: **no todos los Traits pueden convertirse en Trait Objects**. Para poder usar `dyn MiTrait`, el trait debe ser **"Object Safe"** (Seguro para objetos).
 
 Las dos reglas principales para que un trait sea *Object Safe* son:
-1.  **No puede devolver `Self`**. (Si el compilador no conoce el tipo subyacente, tampoco sabe qué tamaño de `Self` tiene que retornar).
-2.  **No puede tener métodos genéricos**.
+
+1. **No puede devolver `Self`**. (Si el compilador no conoce el tipo subyacente, tampoco sabe qué tamaño de `Self` tiene que retornar).
+2. **No puede tener métodos genéricos**.
 
 Si intentas hacer `dyn` con un trait que rompe estas reglas (como `Clone`, que devuelve `Self`), el compilador te lo impedirá con un error de seguridad de objetos.

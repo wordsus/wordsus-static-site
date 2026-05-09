@@ -1,16 +1,16 @@
-With the foundational concepts and architectural patterns established, it is time to put theory into practice. This chapter provides a hands-on guide to getting your first VictoriaMetrics instance up and running. 
+With the foundational concepts and architectural patterns established, it is time to put theory into practice. This chapter provides a hands-on guide to getting your first VictoriaMetrics instance up and running.
 
 Whether you prefer executing the remarkably lightweight standalone binary or deploying a reproducible containerized environment via Docker, the installation process is designed for absolute simplicity. We will explore the essential configuration flags needed to tailor the database to your environment, and conclude by manually writing and reading your first data points. By the end of this chapter, your database will be ready for action.
 
 ## 3.1 Downloading and Running the Standalone Binary
 
-The most straightforward way to get started with VictoriaMetrics is by utilizing the standalone binary. Because VictoriaMetrics is written in Go, the single-node version compiles down to a statically linked executable. This means it carries zero external dependencies—no Java Virtual Machine, no external libraries, and no complex installation wizards. You simply download the file, extract it, and execute it. 
+The most straightforward way to get started with VictoriaMetrics is by utilizing the standalone binary. Because VictoriaMetrics is written in Go, the single-node version compiles down to a statically linked executable. This means it carries zero external dependencies—no Java Virtual Machine, no external libraries, and no complex installation wizards. You simply download the file, extract it, and execute it.
 
 ### Sourcing the Right Binary
 
 Official binaries for all supported architectures are hosted on the VictoriaMetrics GitHub repository under the **Releases** page. You will need to identify the correct archive for your operating system (Linux, macOS, or Windows) and architecture (amd64, arm64, etc.).
 
-For a standard Linux environment running on an x86_64 processor, you can download the latest stable release using `wget` or `curl`. 
+For a standard Linux environment running on an x86_64 processor, you can download the latest stable release using `wget` or `curl`.
 
 ```bash
 # Define the version you wish to download
@@ -24,7 +24,7 @@ wget https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/${VM_V
 
 ### Extraction and Directory Structure
 
-Once the download completes, extract the archive. The tarball is intentionally minimalist; it does not contain sprawling directory structures or scattered configuration files. 
+Once the download completes, extract the archive. The tarball is intentionally minimalist; it does not contain sprawling directory structures or scattered configuration files.
 
 ```bash
 # Extract the binary
@@ -42,6 +42,7 @@ To start the time series database, invoke the binary directly from your terminal
 ```
 
 When you start the binary without any explicit flags, VictoriaMetrics makes a few immediate assumptions:
+
 1. It binds to the default port **8428** on all available network interfaces (`0.0.0.0`).
 2. It automatically creates a new directory named `victoria-metrics-data` in the current working directory to store all time-series data, indexes, and metadata.
 
@@ -72,10 +73,10 @@ Directory State: Post-Execution
 In your terminal window, you will see startup logs indicating that the server is initializing the storage components and starting the HTTP listener. The output will look similar to this:
 
 ```text
-2026-04-28T03:45:12.123Z info VictoriaMetrics/lib/logger/flag.go:12	build version: victoria-metrics-20240428-034512-tags-v1.99.0-0-gabcdef123
-2026-04-28T03:45:12.124Z info VictoriaMetrics/lib/logger/flag.go:13	command line flags
-2026-04-28T03:45:12.124Z info VictoriaMetrics/app/victoria-metrics/main.go:50	starting VictoriaMetrics at ":8428"...
-2026-04-28T03:45:12.125Z info VictoriaMetrics/app/victoria-metrics/main.go:62	opened storage at "victoria-metrics-data" in 0.001 seconds
+2026-04-28T03:45:12.123Z info VictoriaMetrics/lib/logger/flag.go:12 build version: victoria-metrics-20240428-034512-tags-v1.99.0-0-gabcdef123
+2026-04-28T03:45:12.124Z info VictoriaMetrics/lib/logger/flag.go:13 command line flags
+2026-04-28T03:45:12.124Z info VictoriaMetrics/app/victoria-metrics/main.go:50 starting VictoriaMetrics at ":8428"...
+2026-04-28T03:45:12.125Z info VictoriaMetrics/app/victoria-metrics/main.go:62 opened storage at "victoria-metrics-data" in 0.001 seconds
 ```
 
 ### Verifying the Process is Alive
@@ -87,6 +88,7 @@ curl http://localhost:8428/ping
 ```
 
 If the server is running correctly, it will respond simply with:
+
 ```text
 OK
 ```
@@ -116,6 +118,7 @@ docker run -d \
 ```
 
 Let us break down the flags used in this command:
+
 * `-d`: Runs the container in detached mode (in the background).
 * `--name victoria-metrics`: Assigns a recognizable name to the container for easier management.
 * `-p 8428:8428`: Maps port `8428` on the host to port `8428` inside the container, allowing HTTP access.
@@ -174,9 +177,10 @@ volumes:
 ```
 
 **Key Advantages of the Compose Approach:**
-1.  **Managed Volumes:** Instead of hardcoding host paths, we use Docker-managed volumes (`vm_data`). Docker handles the exact placement on the host filesystem, preventing permission issues that often occur with direct bind mounts.
-2.  **Configuration via Command:** We pass VictoriaMetrics configuration flags directly through the `command` array. In this example, `--retentionPeriod=1y` instructs the database to keep data for one year.
-3.  **Automatic Restarts:** The `restart: always` policy ensures that if the host machine reboots or the database crashes, the Docker daemon will automatically attempt to restart it.
+
+1. **Managed Volumes:** Instead of hardcoding host paths, we use Docker-managed volumes (`vm_data`). Docker handles the exact placement on the host filesystem, preventing permission issues that often occur with direct bind mounts.
+2. **Configuration via Command:** We pass VictoriaMetrics configuration flags directly through the `command` array. In this example, `--retentionPeriod=1y` instructs the database to keep data for one year.
+3. **Automatic Restarts:** The `restart: always` policy ensures that if the host machine reboots or the database crashes, the Docker daemon will automatically attempt to restart it.
 
 To spin up the service using this file, run:
 
@@ -189,6 +193,7 @@ docker-compose up -d
 Once the deployment command is executed, you should verify that the container started successfully and that there are no permission errors regarding the storage volume.
 
 To check the operational logs:
+
 ```bash
 # If using basic Docker
 docker logs -f victoria-metrics
@@ -197,7 +202,7 @@ docker logs -f victoria-metrics
 docker-compose logs -f victoriametrics
 ```
 
-Look for lines indicating that the storage was successfully opened and the HTTP server is listening. If you see errors related to `cannot open directory`, it typically means the container user (which runs as a non-root user in newer versions of the image) does not have write permissions to the mounted host directory. 
+Look for lines indicating that the storage was successfully opened and the HTTP server is listening. If you see errors related to `cannot open directory`, it typically means the container user (which runs as a non-root user in newer versions of the image) does not have write permissions to the mounted host directory.
 
 Finally, just as with the standalone binary, you can verify the deployment by querying the HTTP endpoint from your host:
 
@@ -226,32 +231,35 @@ Because the ecosystem evolves quickly, the most accurate source of truth for con
 For 90% of basic deployments, you will only need to modify three core parameters: data retention, storage location, and network binding.
 
 #### 1. Data Retention (`-retentionPeriod`)
-By default, VictoriaMetrics retains data for **1 month**. Data older than the configured retention period is automatically deleted in the background. 
 
-* **Syntax:** You can specify the duration in months (default if no unit is provided), days (`d`), weeks (`w`), or years (`y`). 
+By default, VictoriaMetrics retains data for **1 month**. Data older than the configured retention period is automatically deleted in the background.
+
+* **Syntax:** You can specify the duration in months (default if no unit is provided), days (`d`), weeks (`w`), or years (`y`).
 * **Examples:** * `-retentionPeriod=14d` (14 days)
-    * `-retentionPeriod=6` (6 months)
-    * `-retentionPeriod=1y` (1 year)
-    * `-retentionPeriod=100y` (Effectively infinite retention)
+  * `-retentionPeriod=6` (6 months)
+  * `-retentionPeriod=1y` (1 year)
+  * `-retentionPeriod=100y` (Effectively infinite retention)
 
 #### 2. Storage Directory (`-storageDataPath`)
+
 As seen in previous sections, the default behavior is to create a folder named `victoria-metrics-data` in the directory where the binary is executed. In production, you typically want to point this to a specific, high-performance mounted disk (like an SSD or NVMe drive).
 
 * **Example:** `-storageDataPath=/mnt/fast-ssd/vm-data`
 
 #### 3. Network Binding (`-httpListenAddr`)
+
 By default, VictoriaMetrics listens on port `8428` across all available network interfaces (`:8428`). You may need to change this to avoid port conflicts or to restrict access strictly to the local loopback interface for security reasons.
 
 * **Examples:**
-    * `-httpListenAddr=127.0.0.1:8428` (Listens only on localhost)
-    * `-httpListenAddr=:9090` (Changes the port to 9090, often used to mimic Prometheus)
+  * `-httpListenAddr=127.0.0.1:8428` (Listens only on localhost)
+  * `-httpListenAddr=:9090` (Changes the port to 9090, often used to mimic Prometheus)
 
 ### Basic Resource Management Flags
 
 VictoriaMetrics is famously efficient, but you can explicitly define its resource boundaries to prevent it from starving other applications running on the same host.
 
 * **`-memory.allowedPercent`**: This determines the maximum percentage of total system RAM VictoriaMetrics will use for its various internal caches. The default is **60%**. If you are running VictoriaMetrics on a dedicated server, this default is optimal. If sharing a server, you might lower this: `-memory.allowedPercent=30`.
-* **`-memory.allowedBytes`**: An alternative to the percentage flag, allowing you to set a hard limit in bytes (e.g., `-memory.allowedBytes=4GB`). 
+* **`-memory.allowedBytes`**: An alternative to the percentage flag, allowing you to set a hard limit in bytes (e.g., `-memory.allowedBytes=4GB`).
 
 ### Putting It All Together
 
@@ -260,6 +268,7 @@ How you pass these flags depends entirely on your deployment method. Below is a 
 **Goal Configuration:** Keep data for 1 year, store it in `/opt/data`, bind to port `9090`, and restrict memory usage to 40%.
 
 **Method A: Standalone Binary**
+
 ```bash
 ./victoria-metrics-prod \
   -retentionPeriod=1y \
@@ -310,7 +319,7 @@ VictoriaMetrics natively supports a wide array of ingestion protocols, but for o
 
 ### Writing Data via HTTP
 
-We will use `curl` to send a POST request to the VictoriaMetrics import endpoint: `/api/v1/import/prometheus`. 
+We will use `curl` to send a POST request to the VictoriaMetrics import endpoint: `/api/v1/import/prometheus`.
 
 Let's invent a metric named `book_sales_total`, tag it with a label (`edition="first"`), and assign it a value of `42`.
 
@@ -321,7 +330,7 @@ curl -X POST 'http://localhost:8428/api/v1/import/prometheus' \
      -d 'book_sales_total{edition="first"} 42'
 ```
 
-If the command is successful, VictoriaMetrics will quietly return an HTTP `204 No Content` status. There is no verbose success message; the database is optimized for high-throughput ingestion and assumes silence means success. 
+If the command is successful, VictoriaMetrics will quietly return an HTTP `204 No Content` status. There is no verbose success message; the database is optimized for high-throughput ingestion and assumes silence means success.
 
 Behind the scenes, VictoriaMetrics has parsed your text, assigned the current Unix timestamp to the data point (because we didn't explicitly provide one), updated its inverted index with the `edition="first"` label, and written the compressed data block to your storage directory.
 
@@ -359,6 +368,7 @@ The database evaluates the query string (`book_sales_total`) and returns a struc
 ```
 
 **Understanding the Response:**
+
 * **`status`**: Confirms the query was parsed and executed successfully.
 * **`resultType`**: Indicates an instant vector (a single point in time for a time series).
 * **`__name__`**: VictoriaMetrics internally converts the metric name into a standard label called `__name__`.

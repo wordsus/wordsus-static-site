@@ -10,11 +10,11 @@ En este artículo, vamos a desmitificar la física del sonido. No necesitas un t
 
 ## 1. ¿Qué es realmente el sonido? El efecto dominó invisible
 
-Para entender el sonido, primero debemos entender el concepto de vibración. Todo sonido en el universo comienza con un objeto que vibra. Puede ser la cuerda de una guitarra, las cuerdas vocales en tu garganta, la membrana de un altavoz o incluso un vaso de vidrio cayendo al suelo. 
+Para entender el sonido, primero debemos entender el concepto de vibración. Todo sonido en el universo comienza con un objeto que vibra. Puede ser la cuerda de una guitarra, las cuerdas vocales en tu garganta, la membrana de un altavoz o incluso un vaso de vidrio cayendo al suelo.
 
-Cuando un objeto vibra, empuja las moléculas de aire que están inmediatamente a su alrededor. Al hacerlo, las comprime, creando una pequeña región de alta presión. Pero el objeto no se queda quieto; al vibrar, retrocede, dejando un espacio vacío que crea una región de baja presión, conocida como rarefacción. Este movimiento rápido de ida y vuelta crea una reacción en cadena. 
+Cuando un objeto vibra, empuja las moléculas de aire que están inmediatamente a su alrededor. Al hacerlo, las comprime, creando una pequeña región de alta presión. Pero el objeto no se queda quieto; al vibrar, retrocede, dejando un espacio vacío que crea una región de baja presión, conocida como rarefacción. Este movimiento rápido de ida y vuelta crea una reacción en cadena.
 
-Piénsalo como un efecto dominó inmensamente rápido o como las personas en un estadio haciendo "la ola". Las moléculas de aire individuales no viajan desde la boca del cantante hasta tu oído. Si lo hicieran, sentirías una ráfaga de viento cada vez que alguien te habla. En cambio, lo que viaja es la **energía** del movimiento. Cada molécula choca con su vecina, le transmite la energía y vuelve a su posición original. 
+Piénsalo como un efecto dominó inmensamente rápido o como las personas en un estadio haciendo "la ola". Las moléculas de aire individuales no viajan desde la boca del cantante hasta tu oído. Si lo hicieran, sentirías una ráfaga de viento cada vez que alguien te habla. En cambio, lo que viaja es la **energía** del movimiento. Cada molécula choca con su vecina, le transmite la energía y vuelve a su posición original.
 
 Este fenómeno se conoce como una **onda mecánica longitudinal**. Se llama mecánica porque necesita un medio material para propagarse (a diferencia de la luz, que puede viajar por el vacío del espacio). Se llama longitudinal porque las partículas del medio vibran en la misma dirección en la que viaja la onda.
 
@@ -45,9 +45,10 @@ Para comprender por qué algunos sonidos son fuertes, otros suaves, algunos agud
 La amplitud se refiere a qué tan lejos se mueven las moléculas de aire de su posición de reposo cuando son empujadas por la onda. En nuestro diagrama anterior, representaría cuán "apretadas" están las zonas de compresión. Cuanta más energía tiene la vibración inicial (por ejemplo, golpear un tambor con mucha fuerza), mayor es la amplitud de la onda. En nuestra percepción diaria, la amplitud se traduce en el volumen o intensidad del sonido. Se mide habitualmente en decibelios (dB). Un susurro ronda los 30 dB, una conversación normal los 60 dB, y un concierto de rock puede superar los 110 dB, acercándose al umbral del dolor humano.
 
 **La Frecuencia: El tono (agudo o grave)**
-La frecuencia es la velocidad a la que ocurren las vibraciones. Se define como el número de ciclos completos (una compresión y una rarefacción) que ocurren en un segundo. La unidad de medida de la frecuencia es el Hertz (Hz). 
-*   Si un objeto vibra lentamente, producirá pocas ondas por segundo (baja frecuencia), y nuestro cerebro lo interpretará como un sonido **grave**, como el ronroneo de un motor grande o las notas bajas de un bajo eléctrico.
-*   Si un objeto vibra muy rápido, producirá muchas ondas por segundo (alta frecuencia), y lo escucharemos como un sonido **agudo**, como el canto de un pájaro o un silbato.
+La frecuencia es la velocidad a la que ocurren las vibraciones. Se define como el número de ciclos completos (una compresión y una rarefacción) que ocurren en un segundo. La unidad de medida de la frecuencia es el Hertz (Hz).
+
+* Si un objeto vibra lentamente, producirá pocas ondas por segundo (baja frecuencia), y nuestro cerebro lo interpretará como un sonido **grave**, como el ronroneo de un motor grande o las notas bajas de un bajo eléctrico.
+* Si un objeto vibra muy rápido, producirá muchas ondas por segundo (alta frecuencia), y lo escucharemos como un sonido **agudo**, como el canto de un pájaro o un silbato.
 
 El oído humano joven y sano es capaz de percibir frecuencias que van desde los 20 Hz hasta los 20,000 Hz. Con la edad o la exposición a ruidos fuertes, este rango se va acortando, perdiendo usualmente primero la sensibilidad a las frecuencias más agudas.
 
@@ -59,9 +60,10 @@ Estas tres propiedades están íntimamente conectadas por una ecuación fundamen
 $$ v = \lambda \cdot f $$
 
 En esta fórmula:
-*   $v$ es la velocidad de propagación del sonido.
-*   $\lambda$ es la longitud de onda.
-*   $f$ es la frecuencia.
+
+* $v$ es la velocidad de propagación del sonido.
+* $\lambda$ es la longitud de onda.
+* $f$ es la frecuencia.
 
 Dado que la velocidad del sonido ($v$) tiende a ser constante en un medio específico, la ecuación nos dice que la longitud de onda y la frecuencia son inversamente proporcionales. Las notas graves (baja frecuencia) tienen longitudes de onda enormes (a veces de varios metros), lo que explica por qué los sonidos graves pueden atravesar paredes con más facilidad y por qué los grandes instrumentos de viento son tan largos. Las notas agudas (alta frecuencia) tienen longitudes de onda minúsculas, a veces de apenas unos milímetros.
 
@@ -135,7 +137,7 @@ Tu cerebro es una supercomputadora espectacular capaz de analizar instantáneame
 Las ondas sonoras no viajan por el mundo sin ser molestadas. En su camino se encuentran con obstáculos, diferentes temperaturas y movimientos. La forma en que las ondas interactúan con su entorno explica gran parte de nuestra experiencia sonora diaria.
 
 **Reflexión: El Eco y la Reverberación**
-Cuando una onda sonora choca contra una superficie dura y lisa (como una pared de piedra o la ladera de una montaña), rebota, igual que una pelota de tenis. Esto es la reflexión acústica. 
+Cuando una onda sonora choca contra una superficie dura y lisa (como una pared de piedra o la ladera de una montaña), rebota, igual que una pelota de tenis. Esto es la reflexión acústica.
 Si estás lo suficientemente lejos de la pared reflectante, escucharás el sonido original primero, y luego de un tiempo, escucharás la versión reflejada. Si el retraso entre ambos sonidos es mayor a 0.1 segundos (que es el tiempo de procesamiento de nuestro cerebro para distinguir dos sonidos separados), lo llamamos **eco**.
 Si el retardo es menor a 0.1 segundos o hay múltiples rebotes en un espacio cerrado, los sonidos se superponen creando una persistencia del sonido en el aire. Esto se llama **reverberación**. Es lo que escuchas cuando cantas en la ducha y tu voz suena más rica y llena; los azulejos reflejan rápidamente el sonido, agregándole cuerpo.
 
@@ -160,9 +162,9 @@ Esta fórmula no es solo útil en acústica; el mismo principio del Efecto Doppl
 
 Toda esta increíble física sucediendo en el aire sería inútil para nosotros sin el receptor adecuado. El oído humano es un milagro de la evolución y de la bioingeniería, capaz de traducir fluctuaciones de presión del aire invisibles en descargas eléctricas comprensibles para nuestro cerebro. Se divide en tres partes magistralmente diseñadas:
 
-1.  **El oído externo (El embudo):** Consta del pabellón auricular (la oreja visible) y el canal auditivo. El pabellón auricular está lleno de pliegues asimétricos diseñados específicamente para recoger las ondas sonoras y ayudarnos a localizar de dónde provienen (arriba, abajo, delante o detrás). Estas ondas viajan por el canal y chocan contra la membrana timpánica (el tímpano).
-2.  **El oído medio (El amplificador mecánico):** El tímpano vibra y transmite esa vibración a los tres huesos más pequeños del cuerpo humano: el martillo, el yunque y el estribo. Este sistema de palancas óseas actúa como un amplificador natural. El estribo golpea contra una ventana ovalada mucho más pequeña que el tímpano, concentrando toda la fuerza y multiplicando la presión acústica por más de 20 veces. Esto es crucial porque el siguiente paso es mover líquido, no aire.
-3.  **El oído interno (El traductor):** La ventana ovalada empuja el líquido dentro de la cóclea, un órgano en forma de caracol. En el interior de la cóclea hay miles de células ciliadas microscópicas dispuestas sobre una membrana. A medida que el líquido ondulante se mueve sobre ellas, estas pequeñas "cerdas" se doblan. Al doblarse, abren canales químicos en la célula, provocando un impulso eléctrico que viaja rápidamente por el nervio auditivo directo a la corteza auditiva del cerebro.
+1. **El oído externo (El embudo):** Consta del pabellón auricular (la oreja visible) y el canal auditivo. El pabellón auricular está lleno de pliegues asimétricos diseñados específicamente para recoger las ondas sonoras y ayudarnos a localizar de dónde provienen (arriba, abajo, delante o detrás). Estas ondas viajan por el canal y chocan contra la membrana timpánica (el tímpano).
+2. **El oído medio (El amplificador mecánico):** El tímpano vibra y transmite esa vibración a los tres huesos más pequeños del cuerpo humano: el martillo, el yunque y el estribo. Este sistema de palancas óseas actúa como un amplificador natural. El estribo golpea contra una ventana ovalada mucho más pequeña que el tímpano, concentrando toda la fuerza y multiplicando la presión acústica por más de 20 veces. Esto es crucial porque el siguiente paso es mover líquido, no aire.
+3. **El oído interno (El traductor):** La ventana ovalada empuja el líquido dentro de la cóclea, un órgano en forma de caracol. En el interior de la cóclea hay miles de células ciliadas microscópicas dispuestas sobre una membrana. A medida que el líquido ondulante se mueve sobre ellas, estas pequeñas "cerdas" se doblan. Al doblarse, abren canales químicos en la célula, provocando un impulso eléctrico que viaja rápidamente por el nervio auditivo directo a la corteza auditiva del cerebro.
 
 Dependiendo de qué tan adentro del caracol de la cóclea se doblen los cilios, el cerebro sabe si el sonido es agudo o grave. Las células en la entrada perciben los agudos (y son las primeras en morir por ruidos fuertes continuos), mientras que las del centro profundo perciben los graves.
 
@@ -174,14 +176,14 @@ Si aplicas una fuerza externa sobre ese objeto, y esa fuerza externa empuja en p
 
 Ese "empujón en el momento adecuado" es la resonancia. Es el principio físico que permite que la caja hueca de una guitarra acústica amplifique el suave sonido de la vibración de una cuerda para que llene toda una habitación. La caja está diseñada para resonar con las frecuencias de las cuerdas.
 
-Pero la resonancia tiene un lado oscuro. Si envías una onda sonora continua, a un volumen lo suficientemente alto, que coincida exactamente con la frecuencia natural de una copa de cristal fino, el cristal empezará a absorber esa energía resonante. Comenzará a vibrar y deformarse de manera microscópica, y la vibración se hará cada vez más amplia. Dado que el cristal no es flexible, el exceso de energía superará el límite elástico del material. En fracciones de segundo, la copa estallará violentamente en pedazos, rota por algo completamente invisible: el sonido. 
+Pero la resonancia tiene un lado oscuro. Si envías una onda sonora continua, a un volumen lo suficientemente alto, que coincida exactamente con la frecuencia natural de una copa de cristal fino, el cristal empezará a absorber esa energía resonante. Comenzará a vibrar y deformarse de manera microscópica, y la vibración se hará cada vez más amplia. Dado que el cristal no es flexible, el exceso de energía superará el límite elástico del material. En fracciones de segundo, la copa estallará violentamente en pedazos, rota por algo completamente invisible: el sonido.
 
 La resonancia es la razón por la que los ingenieros que construyen rascacielos o puentes colgantes invierten millones para asegurar que los vientos o terremotos no igualen las frecuencias naturales de la estructura, evitando colapsos catastróficos.
 
 ## Conclusión: La sinfonía invisible que nos rodea
 
-La próxima vez que escuches tu canción favorita, escuches el silbido del viento por la ventana o tengas una conversación profunda con un amigo, tómate un segundo para apreciar la inmensa coreografía de la física acústica que está ocurriendo a tu alrededor. 
+La próxima vez que escuches tu canción favorita, escuches el silbido del viento por la ventana o tengas una conversación profunda con un amigo, tómate un segundo para apreciar la inmensa coreografía de la física acústica que está ocurriendo a tu alrededor.
 
-Millones de moléculas colisionando unas con otras en el aire a miles de kilómetros por hora, transfiriendo energía en ondas invisibles que rebotan, se filtran, se superponen en frecuencias y armónicos complejos, viajando a través de tus oídos para convertirse en un pulso eléctrico que tu cerebro interpreta instantáneamente como significado, emoción o belleza. 
+Millones de moléculas colisionando unas con otras en el aire a miles de kilómetros por hora, transfiriendo energía en ondas invisibles que rebotan, se filtran, se superponen en frecuencias y armónicos complejos, viajando a través de tus oídos para convertirse en un pulso eléctrico que tu cerebro interpreta instantáneamente como significado, emoción o belleza.
 
 La acústica no es solo una rama árida de las ciencias físicas; es el lenguaje fundamental a través del cual la materia interactúa en el mundo, haciendo que el silencio de nuestro universo tenga voz. Es la ciencia que demuestra que, aunque no podamos verlas, estamos constantemente rodeados por olas de energía en una sinfonía perpetua y fascinante.

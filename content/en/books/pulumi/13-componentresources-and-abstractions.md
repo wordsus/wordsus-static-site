@@ -2,15 +2,15 @@ As infrastructure grows, relying solely on base-level cloud primitives becomes u
 
 ## 13.1 The Need for Higher-Level Abstractions
 
-Up to this point, our infrastructure definitions have primarily relied on **cloud primitives**. When working with Pulumi providers like AWS, Azure, or Google Cloud, you interact with exact representations of the underlying cloud APIs—resources like `aws.s3.Bucket`, `azure-native.compute.VirtualMachine`, or `gcp.container.Cluster`. In Pulumi terminology, these base-level primitives are known as `CustomResource`s. 
+Up to this point, our infrastructure definitions have primarily relied on **cloud primitives**. When working with Pulumi providers like AWS, Azure, or Google Cloud, you interact with exact representations of the underlying cloud APIs—resources like `aws.s3.Bucket`, `azure-native.compute.VirtualMachine`, or `gcp.container.Cluster`. In Pulumi terminology, these base-level primitives are known as `CustomResource`s.
 
-While having 1:1 access to cloud APIs is incredibly powerful and necessary for fine-grained control, relying *exclusively* on these Layer 1 primitives does not scale well as your organization, infrastructure, and team size grow. 
+While having 1:1 access to cloud APIs is incredibly powerful and necessary for fine-grained control, relying *exclusively* on these Layer 1 primitives does not scale well as your organization, infrastructure, and team size grow.
 
 ### The Problem with Primitive Sprawl
 
-Consider a seemingly simple request: "Deploy a static website to AWS." 
+Consider a seemingly simple request: "Deploy a static website to AWS."
 
-If you are writing this using raw primitives, you are not just creating an S3 bucket. A production-ready static website requires an S3 bucket, a Bucket Policy, a Public Access Block configuration, a CloudFront Distribution, Origin Access Controls (OAC), an ACM TLS Certificate, and Route53 DNS records. 
+If you are writing this using raw primitives, you are not just creating an S3 bucket. A production-ready static website requires an S3 bucket, a Bucket Policy, a Public Access Block configuration, a CloudFront Distribution, Origin Access Controls (OAC), an ACM TLS Certificate, and Route53 DNS records.
 
 What sounds like a single architectural concept ("a static website") quickly explodes into hundreds of lines of complex, interconnected code.
 
@@ -58,7 +58,7 @@ If multiple teams in your organization need to deploy static websites, asking th
 
 ### The Abstraction Pyramid
 
-To solve these scalability challenges, infrastructure code must be treated like application code. We need to encapsulate complex, repetitive logic into reusable, parameterized functions and classes. 
+To solve these scalability challenges, infrastructure code must be treated like application code. We need to encapsulate complex, repetitive logic into reusable, parameterized functions and classes.
 
 In the Pulumi ecosystem, this shift represents moving up the abstraction pyramid:
 
@@ -86,7 +86,7 @@ In the Pulumi ecosystem, this shift represents moving up the abstraction pyramid
 
 ### The Benefits of Encapsulation
 
-By creating a "Level 2" or "Level 3" abstraction, we hide the implementation details of the underlying primitives and expose only a clean, intentional API to the consumer. 
+By creating a "Level 2" or "Level 3" abstraction, we hide the implementation details of the underlying primitives and expose only a clean, intentional API to the consumer.
 
 If we encapsulate the static website logic from earlier, the consumer's experience transforms into this:
 
@@ -108,7 +108,7 @@ This higher-level abstraction provides three immediate benefits:
 * **Simplified Interface:** The consumer only needs to provide three configuration values (`domainName`, `pathToContent`, and `enableAccessLogs`). The abstraction automatically handles the wiring of the 10+ underlying cloud resources.
 * **Centralized Lifecycle Management:** If the platform engineering team decides to switch from AWS CloudFront to Cloudflare for CDN services, they only need to update the internal implementation of the `SecureStaticWebsite` abstraction. Consuming applications inherit the updated architecture on their next `pulumi up` without changing a single line of their own code.
 
-Because Pulumi utilizes general-purpose programming languages, you technically *could* achieve basic abstraction using standard functions or classes (e.g., a function that simply returns an array of resources). However, doing so breaks the Pulumi engine's ability to track these groupings logically in the state file. To build *true* abstractions that are recognized by the engine, support parent-child relationships, and handle complex lifecycles, Pulumi provides a dedicated construct: the `ComponentResource`. 
+Because Pulumi utilizes general-purpose programming languages, you technically *could* achieve basic abstraction using standard functions or classes (e.g., a function that simply returns an array of resources). However, doing so breaks the Pulumi engine's ability to track these groupings logically in the state file. To build *true* abstractions that are recognized by the engine, support parent-child relationships, and handle complex lifecycles, Pulumi provides a dedicated construct: the `ComponentResource`.
 
 Understanding why we need to move away from raw primitives sets the stage for the next section, where we will dive into authoring these custom `ComponentResource` classes.
 
@@ -116,17 +116,17 @@ Understanding why we need to move away from raw primitives sets the stage for th
 
 In Pulumi, a `ComponentResource` is a logical container for other resources. Unlike a `CustomResource` (which maps directly to a cloud provider's API, like an S3 bucket or an EC2 instance), a `ComponentResource` does not provision any physical infrastructure itself. Instead, it dictates how a collection of child resources should be configured, wired together, and represented in the Pulumi state file.
 
-When you author a custom `ComponentResource`, you are effectively creating your own Pulumi provider using standard object-oriented programming principles. 
+When you author a custom `ComponentResource`, you are effectively creating your own Pulumi provider using standard object-oriented programming principles.
 
 ### The Anatomy of a ComponentResource
 
 Regardless of the language you choose (TypeScript, Python, Go, or C#), authoring a component involves a few standard steps:
 
-1.  **Define the Input Arguments:** Create an interface or class to strongly type the configuration options your component accepts.
-2.  **Subclass `ComponentResource`:** Create a new class that extends the core Pulumi `ComponentResource` base class.
-3.  **Call the Constructor (`super()`):** Initialize the base class with a unique "type token", a name, and optional Pulumi resource options.
-4.  **Instantiate Child Resources:** Create the underlying cloud primitives, ensuring you pass `{ parent: this }` so the Pulumi engine understands the relationship.
-5.  **Register Outputs:** Expose specific properties back to the caller and notify the engine that the component has finished provisioning.
+1. **Define the Input Arguments:** Create an interface or class to strongly type the configuration options your component accepts.
+2. **Subclass `ComponentResource`:** Create a new class that extends the core Pulumi `ComponentResource` base class.
+3. **Call the Constructor (`super()`):** Initialize the base class with a unique "type token", a name, and optional Pulumi resource options.
+4. **Instantiate Child Resources:** Create the underlying cloud primitives, ensuring you pass `{ parent: this }` so the Pulumi engine understands the relationship.
+5. **Register Outputs:** Expose specific properties back to the caller and notify the engine that the component has finished provisioning.
 
 ### Building the `SecureStaticWebsite` Component
 
@@ -208,7 +208,7 @@ Inside the constructor, we instantiate the raw AWS primitives. To ensure these r
 
 #### 4. Registering Outputs
 
-Finally, we need to assign values to our class properties and finalize the component. 
+Finally, we need to assign values to our class properties and finalize the component.
 
 ```typescript
         // (Still inside the constructor...)
@@ -227,12 +227,13 @@ Finally, we need to assign values to our class properties and finalize the compo
 ```
 
 The `this.registerOutputs()` call is mandatory. It serves two purposes:
+
 1. It hides all internal state of the component. By default, a component might leak sensitive information from its child resources. `registerOutputs` seals the component, meaning only the keys explicitly passed into this method are visible to consumers of the component.
 2. It signals to the Pulumi engine that the component is fully constructed and resolved.
 
 ### The Engine's Perspective: The Resource Tree
 
-When a developer consumes your `SecureStaticWebsite` component and runs `pulumi up`, Pulumi builds a hierarchical Directed Acyclic Graph (DAG) rather than a flat list of resources. 
+When a developer consumes your `SecureStaticWebsite` component and runs `pulumi up`, Pulumi builds a hierarchical Directed Acyclic Graph (DAG) rather than a flat list of resources.
 
 Because we used the `{ parent: this }` option, the CLI output and the Pulumi Console will visually group the resources. If a component fails to deploy, the error is contextually tied to the component itself.
 
@@ -251,7 +252,7 @@ If you forget to add `{ parent: this }`, the AWS resources will still be created
 
 ## 13.3 Encapsulating Best Practices and Defaults
 
-One of the most dangerous aspects of raw cloud primitives is that they are designed to accommodate every possible use case. Because cloud providers cannot predict how you will use their services, their default configurations are often permissive rather than secure. For instance, an AWS S3 bucket does not enforce encryption or versioning by default, and a Kubernetes Service defaults to a publicly accessible LoadBalancer if not carefully configured. 
+One of the most dangerous aspects of raw cloud primitives is that they are designed to accommodate every possible use case. Because cloud providers cannot predict how you will use their services, their default configurations are often permissive rather than secure. For instance, an AWS S3 bucket does not enforce encryption or versioning by default, and a Kubernetes Service defaults to a publicly accessible LoadBalancer if not carefully configured.
 
 When you author custom `ComponentResource` classes, you are building an abstraction layer that acts as a secure, opinionated funnel. By encapsulating best practices and establishing sane defaults, you shift security and compliance to the "left," ensuring that infrastructure is born compliant rather than fixed after the fact.
 
@@ -275,6 +276,7 @@ Consider a component designed to provision an RDS PostgreSQL database. Instead o
 ### Implementing "Secure by Default"
 
 Let's look at a concrete example using a `CompliantStorageBucket`. In this organization, the security team dictates that all storage buckets must:
+
 1. Have versioning enabled.
 2. Block all public access.
 3. Be encrypted at rest.
@@ -370,7 +372,7 @@ export class CompliantStorageBucket extends pulumi.ComponentResource {
 
 A persistent challenge in cloud governance is ensuring every resource has the correct billing and ownership tags. When using raw primitives, a developer might remember to tag the EC2 instance, but forget to tag the underlying EBS volumes and Elastic Network Interfaces.
 
-By encapsulating resources within a `ComponentResource`, you create a single point of entry for metadata. As demonstrated in the `CompliantStorageBucket` example above, the `standardTags` object is assembled once based on the required inputs (`costCenter`, `classification`) and systematically applied to the S3 Bucket and the KMS Key. 
+By encapsulating resources within a `ComponentResource`, you create a single point of entry for metadata. As demonstrated in the `CompliantStorageBucket` example above, the `standardTags` object is assembled once based on the required inputs (`costCenter`, `classification`) and systematically applied to the S3 Bucket and the KMS Key.
 
 If your component creates dozens of child resources, you can take this a step further by utilizing Pulumi **Transformations** at the component level to automatically inject tags into every child resource, completely eliminating the need to manually attach tags to each primitive.
 
@@ -382,15 +384,15 @@ Once you have built a library of these highly opinionated, secure components, th
 
 ## 13.4 Sharing Components Across the Organization
 
-Once your platform or infrastructure team has developed a robust set of custom `ComponentResource` classes—like the `SecureStaticWebsite` or `CompliantStorageBucket` from previous sections—the next imperative is distribution. A beautifully encapsulated, highly secure component provides zero value if application teams are forced to copy and paste its source code into their local repositories. 
+Once your platform or infrastructure team has developed a robust set of custom `ComponentResource` classes—like the `SecureStaticWebsite` or `CompliantStorageBucket` from previous sections—the next imperative is distribution. A beautifully encapsulated, highly secure component provides zero value if application teams are forced to copy and paste its source code into their local repositories.
 
 Copy-pasting leads to version fragmentation, orphaned code, and a complete inability to push security patches globally. To truly scale Infrastructure as Code, you must treat your Pulumi components as internal software products and distribute them through established package management channels.
 
 ### Method 1: Native Package Managers (Single-Language Sharing)
 
-Because Pulumi utilizes general-purpose programming languages, the most straightforward way to share a component is to package it using your language's native ecosystem. 
+Because Pulumi utilizes general-purpose programming languages, the most straightforward way to share a component is to package it using your language's native ecosystem.
 
-If your organization has standardized on a single language for infrastructure—for example, TypeScript—you can publish your Pulumi components to a private npm registry (such as JFrog Artifactory, AWS CodeArtifact, or GitHub Packages). 
+If your organization has standardized on a single language for infrastructure—for example, TypeScript—you can publish your Pulumi components to a private npm registry (such as JFrog Artifactory, AWS CodeArtifact, or GitHub Packages).
 
 ```text
 +-------------------+        +------------------------+        +-------------------+
@@ -418,11 +420,11 @@ This approach leverages existing CI/CD pipelines and developer familiarity. Howe
 
 ### Method 2: The Multi-Language Solution (Pulumi Packages)
 
-In large enterprises, enforcing a single programming language across all engineering teams is often impossible. Backend teams might prefer Go, data engineers might require Python, and frontend teams might stick with TypeScript. 
+In large enterprises, enforcing a single programming language across all engineering teams is often impossible. Backend teams might prefer Go, data engineers might require Python, and frontend teams might stick with TypeScript.
 
-To solve the multi-language distribution problem, Pulumi provides a feature called **Pulumi Packages** (often referred to as Multi-Language Components, or MLCs). 
+To solve the multi-language distribution problem, Pulumi provides a feature called **Pulumi Packages** (often referred to as Multi-Language Components, or MLCs).
 
-Instead of writing a standard Node.js module or Python package, you author your component logic once (typically in Go or TypeScript) and define a schema. The Pulumi engine then uses this schema to auto-generate native SDKs for Node.js, Python, Go, and .NET. 
+Instead of writing a standard Node.js module or Python package, you author your component logic once (typically in Go or TypeScript) and define a schema. The Pulumi engine then uses this schema to auto-generate native SDKs for Node.js, Python, Go, and .NET.
 
 ```text
                                  +---> npm Registry (TypeScript/JS)
@@ -438,9 +440,9 @@ With Pulumi Packages, the Python developer and the TypeScript developer can both
 
 ### Method 3: Organizational Templates
 
-Distributing packages solves the problem of sharing resources, but developers still need to know how to bootstrap a new project that correctly utilizes those packages. 
+Distributing packages solves the problem of sharing resources, but developers still need to know how to bootstrap a new project that correctly utilizes those packages.
 
-Instead of having developers run `pulumi new aws-typescript` and manually modify the `package.json` to include internal dependencies, you can create custom Pulumi templates. 
+Instead of having developers run `pulumi new aws-typescript` and manually modify the `package.json` to include internal dependencies, you can create custom Pulumi templates.
 
 A template is simply a Git repository (or a subdirectory within a repo) containing a pre-configured Pulumi project. It includes the necessary boilerplate, company-standard `.gitignore` files, linter configurations, and pre-installed internal components.
 

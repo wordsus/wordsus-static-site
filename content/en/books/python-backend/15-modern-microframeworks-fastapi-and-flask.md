@@ -2,7 +2,7 @@ While Chapter 14 explored Django's monolithic "batteries-included" approach, the
 
 ## 15.1 Application Contexts and Request Contexts in Flask
 
-When transitioning from Django’s explicit request-passing architecture (where the `request` object is the first argument of every view), Flask’s approach can seem like black magic. In Flask, you import objects like `request`, `current_app`, and `g` directly from the `flask` module and use them globally anywhere in your code. 
+When transitioning from Django’s explicit request-passing architecture (where the `request` object is the first argument of every view), Flask’s approach can seem like black magic. In Flask, you import objects like `request`, `current_app`, and `g` directly from the `flask` module and use them globally anywhere in your code.
 
 Given what you learned about multithreading and concurrency in Chapter 12, this design immediately raises a red flag: if `request` is a global variable, how does Flask prevent concurrent HTTP requests from overwriting each other's data? The answer lies in **Context Locals**, powered by Werkzeug (Flask’s underlying WSGI toolkit) and Python's `contextvars` module.
 
@@ -39,6 +39,7 @@ When an incoming HTTP request hits your Flask WSGI application, Flask dynamicall
 ### The Request Context
 
 The Request Context tracks request-level data. When pushed, it activates two primary proxies:
+
 * **`request`**: Encapsulates the HTTP request data (URL, headers, form data, JSON payload).
 * **`session`**: A dictionary-like object backed by cryptographically signed cookies (tying into the cryptography concepts discussed later in Chapter 23) used to store data across requests for a specific client.
 
@@ -49,6 +50,7 @@ Flask creates a `RequestContext` object containing this data and pushes it onto 
 You might wonder why Flask needs an Application Context if it already has a Request Context. The separation exists primarily to support the **Application Factory Pattern** and testing. If you create your Flask application instance globally (`app = Flask(__name__)`), you could theoretically import it anywhere. However, modern Python backend design avoids global state to allow multiple application instances in the same process—vital for isolated unit testing (Chapter 21).
 
 The Application Context activates these proxies:
+
 * **`current_app`**: A proxy to the active Flask application instance handling the request. This allows blueprints and external modules to access configuration variables (`current_app.config`) without needing to import a global `app` object.
 * **`g`** (Global): A namespace object used to store data *during* a single application context. Despite its name, `g` is not truly global; it is bound to the specific request lifecycle. It is the perfect place to store a database connection or the currently authenticated user during a request, ensuring that subsequent functions in the same request can reuse the connection without re-instantiating it.
 
@@ -67,7 +69,7 @@ print(current_app.config['ENVIRONMENT'])
 # Raises: RuntimeError: Working outside of application context.
 ```
 
-To resolve this, you must manually push an application context using the `app.app_context()` context manager (leveraging the Context Manager Protocol you mastered in Chapter 6). 
+To resolve this, you must manually push an application context using the `app.app_context()` context manager (leveraging the Context Manager Protocol you mastered in Chapter 6).
 
 ```python
 from flask import Flask, current_app
@@ -175,16 +177,16 @@ async def create_user(user: UserCreate):
 
 ### Key Advantages of the FastAPI/Pydantic Synergy
 
-1.  **Automatic 422 Unprocessable Entity Responses:** If a client sends a payload missing a required field (like `email`), or violates a constraint (like an `age` of 16), FastAPI automatically intercepts the Pydantic `ValidationError`. It intercepts the request before it even reaches your view function and returns a standardized `422 Unprocessable Entity` JSON response detailing exactly which field failed and why.
-2.  **Type Safety in the IDE:** Because `user` is typed as `UserCreate`, modern IDEs will provide auto-completion for `user.username` and `user.email`. This eliminates the typo-prone dictionary lookups (`request.json.get("username")`) prevalent in older frameworks.
-3.  **Advanced Validation via `Field`:** As shown in the example above, the `Field` function allows you to define complex metadata and validation rules that go beyond standard type hints, such as regex patterns, greater-than/less-than constraints, and explicit aliases (e.g., mapping a Python `snake_case` variable to a JSON `camelCase` key).
-4.  **Response Modeling:** By declaring a `response_model` in the route decorator, FastAPI ensures that outgoing data is filtered. If your database returns an object with a hashed password, but your `UserResponse` model omits the password field, FastAPI guarantees the sensitive data is stripped out before the JSON is sent over the wire, providing a robust layer of data encapsulation (expanding on concepts from Chapter 7.3).
+1. **Automatic 422 Unprocessable Entity Responses:** If a client sends a payload missing a required field (like `email`), or violates a constraint (like an `age` of 16), FastAPI automatically intercepts the Pydantic `ValidationError`. It intercepts the request before it even reaches your view function and returns a standardized `422 Unprocessable Entity` JSON response detailing exactly which field failed and why.
+2. **Type Safety in the IDE:** Because `user` is typed as `UserCreate`, modern IDEs will provide auto-completion for `user.username` and `user.email`. This eliminates the typo-prone dictionary lookups (`request.json.get("username")`) prevalent in older frameworks.
+3. **Advanced Validation via `Field`:** As shown in the example above, the `Field` function allows you to define complex metadata and validation rules that go beyond standard type hints, such as regex patterns, greater-than/less-than constraints, and explicit aliases (e.g., mapping a Python `snake_case` variable to a JSON `camelCase` key).
+4. **Response Modeling:** By declaring a `response_model` in the route decorator, FastAPI ensures that outgoing data is filtered. If your database returns an object with a hashed password, but your `UserResponse` model omits the password field, FastAPI guarantees the sensitive data is stripped out before the JSON is sent over the wire, providing a robust layer of data encapsulation (expanding on concepts from Chapter 7.3).
 
 ## 15.3 Dependency Injection Systems in Modern Frameworks
 
 In Chapter 15.1, we explored how Flask relies on thread-local proxies (`request`, `g`) to manage state without cluttering function signatures. While this approach is elegant for rapid development, it tightly couples your view logic to the framework's global state, making testing and refactoring notoriously difficult. Modern Python frameworks—with FastAPI leading the charge—have embraced a fundamentally different paradigm: **Dependency Injection (DI)**.
 
-Dependency Injection is an implementation of the Inversion of Control (IoC) principle. Instead of a function instantiating its required resources (like a database connection or an authentication user) or pulling them from a global proxy, the framework *injects* them into the function as arguments at runtime. 
+Dependency Injection is an implementation of the Inversion of Control (IoC) principle. Instead of a function instantiating its required resources (like a database connection or an authentication user) or pulling them from a global proxy, the framework *injects* them into the function as arguments at runtime.
 
 ### The Architecture of FastAPI's `Depends`
 
@@ -297,7 +299,7 @@ By decoupling the *creation* of resources from their *consumption*, DI systems e
 
 ## 15.4 Constructing Native Asynchronous Endpoints
 
-In Chapter 12, we explored the mechanics of Python's `asyncio`, the Global Interpreter Lock (GIL), and the power of the event loop for I/O-bound operations. When applied to web frameworks, asynchronous programming fundamentally shifts how servers handle concurrency. 
+In Chapter 12, we explored the mechanics of Python's `asyncio`, the Global Interpreter Lock (GIL), and the power of the event loop for I/O-bound operations. When applied to web frameworks, asynchronous programming fundamentally shifts how servers handle concurrency.
 
 Traditional WSGI frameworks allocate a dedicated system thread (or process) for every incoming HTTP request. If your endpoint queries a slow database and takes 2 seconds to respond, that thread does nothing but wait for 2 seconds. If a traffic spike exhausts your thread pool, subsequent users receive 502 Bad Gateway or timeout errors. Modern ASGI (Asynchronous Server Gateway Interface) frameworks, like FastAPI, solve this by running an event loop. When an asynchronous endpoint waits for a database, it yields control back to the event loop, allowing the single server thread to handle thousands of other incoming requests in the interim.
 
@@ -330,7 +332,7 @@ If you declare an endpoint with `async def`, FastAPI assumes you know what you a
 
 ### The Blocking Trap
 
-The most common and devastating mistake when building asynchronous backends is placing synchronous, blocking I/O calls inside an `async def` endpoint. 
+The most common and devastating mistake when building asynchronous backends is placing synchronous, blocking I/O calls inside an `async def` endpoint.
 
 ```python
 from fastapi import FastAPI
@@ -396,6 +398,6 @@ async def get_user_dashboard(user_id: int):
 
 ### Flask's Approach to Async
 
-While FastAPI was built from the ground up on ASGI and `asyncio`, Flask was built on WSGI. However, recognizing the shift in the Python ecosystem, Flask 2.0 introduced support for `async def` routes. 
+While FastAPI was built from the ground up on ASGI and `asyncio`, Flask was built on WSGI. However, recognizing the shift in the Python ecosystem, Flask 2.0 introduced support for `async def` routes.
 
 When you write an `async def` route in Flask, the framework conceptually wraps your coroutine in `asyncio.run()` (or similar event-loop execution mechanisms) *per request* within its standard WSGI thread worker. While this allows you to use asynchronous libraries like `httpx` and `asyncio.gather` within a single Flask view to speed up internal API calls, it does not provide the massive concurrent-connection scaling benefits of a pure ASGI server unless you specifically run Flask using an ASGI adapter like Gunicorn with Uvicorn workers. For greenfield projects requiring heavy I/O concurrency, native ASGI frameworks like FastAPI remain the architectural standard.

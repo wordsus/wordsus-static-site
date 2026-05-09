@@ -10,23 +10,23 @@ This article will take you on a journey through deep time, exploring the fossil 
 
 ## 1. The First Clue: A Feather in the Stone
 
-To understand how we know birds are dinosaurs, we have to travel back to the mid-19th century, specifically to the year 1861. Just two years prior, Charles Darwin had published his groundbreaking book, *On the Origin of Species*, which proposed the theory of evolution by natural selection. Darwin's theory suggested that if all life evolved from common ancestors, there should be "transitional fossils"—creatures showing a mix of traits from an older group and a newer group. Critics of Darwin pointed out that no such fossils had ever been found. 
+To understand how we know birds are dinosaurs, we have to travel back to the mid-19th century, specifically to the year 1861. Just two years prior, Charles Darwin had published his groundbreaking book, *On the Origin of Species*, which proposed the theory of evolution by natural selection. Darwin's theory suggested that if all life evolved from common ancestors, there should be "transitional fossils"—creatures showing a mix of traits from an older group and a newer group. Critics of Darwin pointed out that no such fossils had ever been found.
 
-Then, in a limestone quarry in Solnhofen, Germany, workers unearthed something impossible. 
+Then, in a limestone quarry in Solnhofen, Germany, workers unearthed something impossible.
 
 Preserved in the impossibly fine-grained Jurassic rock was the skeleton of a creature that looked exactly like a small dinosaur, complete with a long bony tail, a mouth full of sharp teeth, and claws on its front limbs. But branching off from its arms and tail were the unmistakable, perfectly preserved impressions of feathers. This creature was named *Archaeopteryx lithographica* (meaning "ancient wing from the printing stone").
 
-*Archaeopteryx* was the ultimate smoking gun for Darwin's theory. It was the perfect halfway point between a reptile and a bird. British biologist Thomas Henry Huxley, a staunch defender of Darwin famously known as "Darwin's Bulldog," was one of the first to look closely at *Archaeopteryx* alongside the fossils of small, meat-eating dinosaurs like *Compsognathus*. Huxley noticed that their skeletons were shockingly similar. He proposed that birds and dinosaurs were closely related. 
+*Archaeopteryx* was the ultimate smoking gun for Darwin's theory. It was the perfect halfway point between a reptile and a bird. British biologist Thomas Henry Huxley, a staunch defender of Darwin famously known as "Darwin's Bulldog," was one of the first to look closely at *Archaeopteryx* alongside the fossils of small, meat-eating dinosaurs like *Compsognathus*. Huxley noticed that their skeletons were shockingly similar. He proposed that birds and dinosaurs were closely related.
 
 However, despite Huxley's brilliant deduction, the idea fell out of favor by the early 20th century. Scientists began to focus on the fact that dinosaur collarbones were seemingly missing, a feature necessary to form a bird's wishbone. For decades, the dinosaur-bird connection was dismissed as a historical curiosity, and dinosaurs were firmly relegated back to the "sluggish reptile" category.
 
 ## 2. The Dinosaur Renaissance
 
-The story picks up again in the late 1960s, thanks to an American paleontologist named John Ostrom. While working in Montana, Ostrom discovered the remains of a spectacular, human-sized predator he named *Deinonychus* (meaning "terrible claw"). 
+The story picks up again in the late 1960s, thanks to an American paleontologist named John Ostrom. While working in Montana, Ostrom discovered the remains of a spectacular, human-sized predator he named *Deinonychus* (meaning "terrible claw").
 
 *Deinonychus* was not a slow, tail-dragging swamp dweller. Its skeleton suggested an agile, highly active, and perhaps pack-hunting predator. It had a stiffened tail for balance, long legs built for running, and a terrifying, sickle-shaped claw on each foot. When Ostrom studied the anatomy of *Deinonychus*—particularly its wrists, arms, and feet—he had a profound realization. The bones were astonishingly similar to those of modern birds. In fact, the wrist of *Deinonychus* possessed a specialized "half-moon" shaped bone (the semilunate carpal) that allowed it to fold its arms inward in the exact same way a bird folds its wings against its body.
 
-Ostrom revived Huxley's century-old theory with a vengeance. He published exhaustive anatomical comparisons showing that birds shared dozens of unique skeletal features with theropod dinosaurs—features not found in any other group of animals. 
+Ostrom revived Huxley's century-old theory with a vengeance. He published exhaustive anatomical comparisons showing that birds shared dozens of unique skeletal features with theropod dinosaurs—features not found in any other group of animals.
 
 This sparked what historians of science call the "Dinosaur Renaissance." Ostrom's student, Robert Bakker, took the idea further, arguing that dinosaurs were warm-blooded, active, and behaviorally complex. Alongside this, the relatively new science of "cladistics" was taking over biology. Cladistics is a method of classifying animals based purely on shared, newly evolved physical traits. When scientists fed the skeletal data of birds and dinosaurs into early computers, the mathematical trees generated (called cladograms) pointed to one undeniable conclusion: birds were deeply nested inside the dinosaur family tree.
 
@@ -70,9 +70,9 @@ The Yixian Formation in Liaoning contains beds of ancient volcanic ash that sett
 
 In 1996, Chinese paleontologists unveiled *Sinosauropteryx*, a small, ground-dwelling theropod dinosaur related to *Compsognathus*. But *Sinosauropteryx* was different from anything found before: running down its back and tail was a halo of fine, filamentous structures. These were not scales; they were the first undeniable proof of dinosaur feathers. Because *Sinosauropteryx* was a basal (primitive) coelurosaur, completely incapable of flight, it proved a monumental biological concept: feathers did not evolve for flight. They evolved in ground-dwelling dinosaurs long before the first bird ever took to the sky.
 
-Following *Sinosauropteryx*, the Liaoning quarries yielded an absolute treasure trove of feathered dinosaurs, each more bizarre and wonderful than the last. There was *Caudipteryx*, a dinosaur with a beak and a tail fan of long, symmetrical feathers. There was *Microraptor*, a small, four-winged dromaeosaurid (a close cousin to *Velociraptor*) with long flight feathers on both its arms *and* its legs. 
+Following *Sinosauropteryx*, the Liaoning quarries yielded an absolute treasure trove of feathered dinosaurs, each more bizarre and wonderful than the last. There was *Caudipteryx*, a dinosaur with a beak and a tail fan of long, symmetrical feathers. There was *Microraptor*, a small, four-winged dromaeosaurid (a close cousin to *Velociraptor*) with long flight feathers on both its arms *and* its legs.
 
-Perhaps most astonishingly, the preservation in Liaoning was so perfect that microscopic structures called melanosomes survived in the fossilized feathers. Melanosomes are the tiny cellular organelles that contain melanin pigment. By comparing the shape and density of dinosaur melanosomes to those of modern birds, scientists were able to do the impossible: determine the actual colors of dinosaurs. 
+Perhaps most astonishingly, the preservation in Liaoning was so perfect that microscopic structures called melanosomes survived in the fossilized feathers. Melanosomes are the tiny cellular organelles that contain melanin pigment. By comparing the shape and density of dinosaur melanosomes to those of modern birds, scientists were able to do the impossible: determine the actual colors of dinosaurs.
 
 We now know that *Sinosauropteryx* had a ginger-colored coat with a striped, raccoon-like tail. *Microraptor* was covered in glossy, iridescent black feathers, much like a modern crow or raven. Dinosaurs were not the dull, muddy green and gray monsters of old movies; they were as vibrantly colored as the birds we see today.
 
@@ -81,23 +81,26 @@ We now know that *Sinosauropteryx* had a ginger-colored coat with a striped, rac
 While feathers are the most visually striking link between birds and dinosaurs, the similarities go much deeper, quite literally into the bones and internal organs.
 
 ### The Wishbone (Furcula)
+
 Remember those missing collarbones that caused scientists in the early 20th century to doubt the bird-dinosaur connection? It turns out they weren't missing at all; they were fused. In modern birds, the two collarbones are fused together to form the furcula, or wishbone. This bone acts like a biological spring, helping to store and release energy during the downstroke of a wingbeat. We now have found fossilized wishbones in many theropod dinosaurs, including *Allosaurus*, *Velociraptor*, and even *Tyrannosaurus rex*.
 
 ### Pneumatic Bones and the One-Way Lung
-If you pick up a bird bone, you will notice it is incredibly light. Many bird bones are hollow, but they aren't just empty tubes. They are "pneumatized," meaning they are invaded by air sacs that extend from the animal's lungs. 
+
+If you pick up a bird bone, you will notice it is incredibly light. Many bird bones are hollow, but they aren't just empty tubes. They are "pneumatized," meaning they are invaded by air sacs that extend from the animal's lungs.
 
 Mammals, like humans, have a two-way respiratory system: we breathe air into our lungs, the oxygen is absorbed, and we push the stale air back out the same way. It is a highly inefficient system, as fresh and stale air mix. Birds, however, have a hyper-efficient, one-way respiratory system. Using a network of air sacs distributed throughout their bodies (and inside their bones), air flows through a bird's lungs in a continuous, one-way loop, providing constant oxygenation whether the bird is inhaling or exhaling. This is why birds can fly over the Himalayas without passing out from oxygen deprivation.
 
-When paleontologists cut open the bones of theropod dinosaurs, they found the exact same pneumatic holes and internal honeycomb structures. This proves that meat-eating dinosaurs possessed the same highly efficient, bird-like respiratory system, driven by air sacs. 
+When paleontologists cut open the bones of theropod dinosaurs, they found the exact same pneumatic holes and internal honeycomb structures. This proves that meat-eating dinosaurs possessed the same highly efficient, bird-like respiratory system, driven by air sacs.
 
 ### Brooding and Behavior
+
 Dinosaurs didn't just look like birds; they acted like them. The classic image of a dinosaur is a creature that lays its eggs in the dirt and abandons them, much like a sea turtle. But fossils from the Gobi Desert have shown otherwise.
 
 Paleontologists have uncovered several specimens of an ostrich-like dinosaur called *Citipati* (an oviraptorosaur) preserved perfectly in the act of brooding. These dinosaurs were buried alive by sudden sandstorms while sitting directly on top of their nests. Their arms were spread wide to protect and incubate the eggs beneath them, in the exact posture a modern chicken uses to keep her chicks warm. Furthermore, chemical analysis of dinosaur eggs has shown that many were brightly colored, covered in speckles and spots just like bird eggs, likely for camouflage in open nests.
 
 ## 5. The Concept of Exaptation: Why Did Feathers Evolve?
 
-If feathers did not evolve for flight, why did dinosaurs develop them in the first place? To answer this, we must look at a biological concept known as *exaptation*. Exaptation occurs when a trait evolves for one specific purpose but is later co-opted for an entirely different use. 
+If feathers did not evolve for flight, why did dinosaurs develop them in the first place? To answer this, we must look at a biological concept known as *exaptation*. Exaptation occurs when a trait evolves for one specific purpose but is later co-opted for an entirely different use.
 
 Feathers are made of keratin, the same tough protein that makes up human fingernails, rhino horns, and reptile scales. In the evolutionary timeline of dinosaurs, feathers began very simply and grew more complex over millions of years. Scientists generally agree on a five-stage model of feather evolution, which is beautifully preserved in the fossil record.
 
@@ -145,13 +148,13 @@ By the time of the Late Cretaceous, true birds had evolved. They shared the skie
 
 ## 7. Surviving the Apocalypse
 
-66 million years ago, a massive asteroid, roughly six miles wide, slammed into what is now the Yucatan Peninsula in Mexico. The impact unleashed catastrophic global wildfires, tsunamis, and a thick cloud of dust and soot that blocked out the sun for years. This event, the Cretaceous-Paleogene (K-Pg) mass extinction, wiped out about 75% of all plant and animal life on Earth. 
+66 million years ago, a massive asteroid, roughly six miles wide, slammed into what is now the Yucatan Peninsula in Mexico. The impact unleashed catastrophic global wildfires, tsunamis, and a thick cloud of dust and soot that blocked out the sun for years. This event, the Cretaceous-Paleogene (K-Pg) mass extinction, wiped out about 75% of all plant and animal life on Earth.
 
 The *T. rex*, the *Triceratops*, and the mighty sauropods all perished. So did the pterosaurs and the giant marine reptiles. But why did some dinosaurs survive? Why are there pigeons and not raptors outside our windows?
 
-The answer lies in the specific adaptations that early birds had evolved. 
+The answer lies in the specific adaptations that early birds had evolved.
 
-First, the surviving avian dinosaurs were small. Large animals require massive amounts of food, which simply didn't exist in the dark, dying post-asteroid world. Small birds could survive on much fewer calories. 
+First, the surviving avian dinosaurs were small. Large animals require massive amounts of food, which simply didn't exist in the dark, dying post-asteroid world. Small birds could survive on much fewer calories.
 
 Second, the survivors had evolved toothless beaks. While many toothed birds died out, the beaked birds were able to exploit a very specific, durable food source that survived the fires and the darkness: seeds. The forests may have burned, but the ground was littered with millions of seeds. A beak is an incredibly efficient tool for cracking seeds, allowing these birds to wait out the multi-year nuclear winter.
 
@@ -161,7 +164,7 @@ The small, seed-eating, fast-growing feathered dinosaurs squeezed through the ev
 
 ## Conclusion: The Dinosaurs Among Us
 
-The realization that birds are dinosaurs is one of the most profound and beautiful discoveries in the history of science. It forces us to completely reevaluate our place in the natural world and our understanding of extinction. 
+The realization that birds are dinosaurs is one of the most profound and beautiful discoveries in the history of science. It forces us to completely reevaluate our place in the natural world and our understanding of extinction.
 
 Dinosaurs did not fail. They did not fade away into evolutionary obsolescence, and they were not entirely wiped out by a rock from space. They adapted, they innovated, and they took to the skies. Today, there are roughly 10,000 species of birds on Earth, meaning there are significantly more species of dinosaurs alive today than there are species of mammals. In a very real biological sense, this is still the Age of Dinosaurs.
 

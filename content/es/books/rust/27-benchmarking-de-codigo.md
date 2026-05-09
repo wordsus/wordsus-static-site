@@ -2,9 +2,9 @@ Optimizar el rendimiento en el backend no es una cuestión de intuición, sino d
 
 ## 27.1 Benchmarks básicos con Cargo
 
-En el desarrollo backend, no basta con que el código funcione correctamente (algo que ya aseguramos en el Capítulo 23 con `#[test]`); a menudo necesitamos probar qué tan rápido se ejecuta. Aquí es donde entra en juego el **benchmarking**. 
+En el desarrollo backend, no basta con que el código funcione correctamente (algo que ya aseguramos en el Capítulo 23 con `#[test]`); a menudo necesitamos probar qué tan rápido se ejecuta. Aquí es donde entra en juego el **benchmarking**.
 
-Rust incluye un framework de benchmarking integrado directamente en su ecosistema de herramientas a través de `cargo bench`. Sin embargo, hay un detalle arquitectónico crucial que debes conocer desde el principio: **el framework nativo de benchmarks de Rust (`#[bench]`) es inestable y requiere usar el compilador *nightly***. 
+Rust incluye un framework de benchmarking integrado directamente en su ecosistema de herramientas a través de `cargo bench`. Sin embargo, hay un detalle arquitectónico crucial que debes conocer desde el principio: **el framework nativo de benchmarks de Rust (`#[bench]`) es inestable y requiere usar el compilador *nightly***.
 
 Aunque en entornos de producción normalmente utilizaremos herramientas estables (como veremos en la siguiente sección), comprender cómo funciona el benchmark nativo es fundamental para entender la evolución del ecosistema y los conceptos básicos de medición de rendimiento.
 
@@ -60,6 +60,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 1 measured; 0 filtered out
 ```
 
 ¿Qué significa esta salida?
+
 * **`3,412 ns/iter`**: Es el tiempo medio que tardó el código dentro de `b.iter()` en ejecutarse (en nanosegundos).
 * **`(+/- 120)`**: Representa la varianza. Una varianza alta indica que el rendimiento es inestable (tal vez por el planificador del sistema operativo, recolección de basura de otros procesos, o falta de calentamiento de la caché de la CPU).
 
@@ -69,13 +70,15 @@ Uno de los errores más comunes al hacer benchmarking en lenguajes compilados mo
 
 Si en el ejemplo anterior hubiéramos escrito simplemente `suma_intensiva(10_000);` sin hacer nada con el resultado, el compilador LLVM en modo *release* (que es como se ejecuta `cargo bench` por defecto) se daría cuenta de que el resultado nunca se utiliza. Para ahorrar tiempo, LLVM simplemente **eliminaría la llamada a la función por completo**. Tu benchmark reportaría un tiempo de `0 ns/iter`, dándote una falsa sensación de velocidad.
 
-Para evitar esto, introducimos `std::hint::black_box`. Esta función le dice al compilador: *"Asume que el valor que te paso aquí puede ser leído o modificado por un ente externo opaco. No intentes predecirlo ni optimizarlo"*. 
+Para evitar esto, introducimos `std::hint::black_box`. Esta función le dice al compilador: *"Asume que el valor que te paso aquí puede ser leído o modificado por un ente externo opaco. No intentes predecirlo ni optimizarlo"*.
+
 * Al envolver el input (`black_box(10_000)`), evitamos que LLVM precalcule el resultado en tiempo de compilación (Constant Folding).
 * Al envolver el output (`black_box(resultado)`), obligamos a LLVM a ejecutar la función porque le hacemos creer que el resultado final sí se utilizará.
 
 ### Limitaciones del enfoque nativo
 
 Aunque `cargo bench` con `#[bench]` es rápido de implementar si ya estás en el ecosistema *nightly*, tiene deficiencias notables para proyectos backend a nivel empresarial:
+
 1. **Atadura a Nightly:** La mayoría de los proyectos empresariales en Rust operan bajo la rama *stable* para garantizar retrocompatibilidad.
 2. **Estadísticas limitadas:** Solo ofrece la media y una varianza básica. No detecta *outliers* (valores atípicos) de forma inteligente ni guarda un historial para comparar si un nuevo PR degradó el rendimiento (regresión).
 
@@ -144,14 +147,14 @@ criterion_main!(benches);
 
 Cuando ejecutas `cargo bench`, Criterion no se limita a iterar tu código ciegamente. Realiza un proceso analítico riguroso dividido en varias fases:
 
-1.  **Calentamiento (Warm-up):** Antes de medir nada, Criterion ejecuta tu función durante un breve periodo. Esto es vital en servidores modernos porque permite que la caché de la CPU (L1/L2/L3) se llene con tus datos y que el predictor de saltos (*branch predictor*) aprenda los patrones de tus bucles.
-2.  **Muestreo (Sampling):** Criterion toma múltiples muestras del tiempo de ejecución, aumentando iterativamente el número de ejecuciones por muestra para obtener alta fidelidad tanto en funciones que tardan nanosegundos como en las que tardan milisegundos.
-3.  **Análisis de Outliers:** Identifica y separa los valores atípicos severos. Si tu sistema operativo decidió indexar un archivo o descargar una actualización justo durante una iteración, Criterion detectará ese pico de latencia y evitará que arruine la media estadística.
-4.  **Estimación Bootstrap:** Utiliza técnicas de remuestreo estadístico (bootstrapping) para calcular con alta precisión la media y los **intervalos de confianza**.
+1. **Calentamiento (Warm-up):** Antes de medir nada, Criterion ejecuta tu función durante un breve periodo. Esto es vital en servidores modernos porque permite que la caché de la CPU (L1/L2/L3) se llene con tus datos y que el predictor de saltos (*branch predictor*) aprenda los patrones de tus bucles.
+2. **Muestreo (Sampling):** Criterion toma múltiples muestras del tiempo de ejecución, aumentando iterativamente el número de ejecuciones por muestra para obtener alta fidelidad tanto en funciones que tardan nanosegundos como en las que tardan milisegundos.
+3. **Análisis de Outliers:** Identifica y separa los valores atípicos severos. Si tu sistema operativo decidió indexar un archivo o descargar una actualización justo durante una iteración, Criterion detectará ese pico de latencia y evitará que arruine la media estadística.
+4. **Estimación Bootstrap:** Utiliza técnicas de remuestreo estadístico (bootstrapping) para calcular con alta precisión la media y los **intervalos de confianza**.
 
 ### Detección de Regresiones
 
-La característica más poderosa de Criterion para un equipo de backend es su memoria histórica. Durante la primera ejecución, Criterion guarda las métricas base en el directorio `target/criterion/`. 
+La característica más poderosa de Criterion para un equipo de backend es su memoria histórica. Durante la primera ejecución, Criterion guarda las métricas base en el directorio `target/criterion/`.
 
 Si posteriormente modificas la función `procesar_usuarios` (por ejemplo, introduciendo un clon de memoria innecesario) y vuelves a ejecutar `cargo bench`, la salida en terminal será explícita y codificada por colores:
 
@@ -171,13 +174,13 @@ Sin embargo, aquí nos encontramos con uno de los problemas más frustrantes del
 
 ### El problema del "Wall-clock time" en servidores compartidos
 
-Cuando ejecutas un benchmark en tu máquina local, tienes un control relativo sobre los recursos. En plataformas como GitHub Actions o GitLab CI, tus pruebas se ejecutan en máquinas virtuales alojadas en servidores compartidos. 
+Cuando ejecutas un benchmark en tu máquina local, tienes un control relativo sobre los recursos. En plataformas como GitHub Actions o GitLab CI, tus pruebas se ejecutan en máquinas virtuales alojadas en servidores compartidos.
 
 Si otro contenedor en el mismo servidor físico decide consumir mucha CPU (fenómeno conocido como *CPU steal time*), tu benchmark de Rust tardará más milisegundos en ejecutarse. Si tu pipeline está configurado para fallar cuando detecta una regresión del 5%, un pico de latencia del servidor en la nube provocará un **falso positivo**, rompiendo el pipeline (y la paciencia del equipo) aunque el código sea perfectamente óptimo.
 
 ### Estrategia 1: Monitoreo sin bloqueo (Visibilidad Continua)
 
-Para mitigar el ruido, la primera estrategia para equipos que usan *runners* compartidos es ejecutar los benchmarks y registrar los resultados sin hacer fallar el *Pull Request* (PR). 
+Para mitigar el ruido, la primera estrategia para equipos que usan *runners* compartidos es ejecutar los benchmarks y registrar los resultados sin hacer fallar el *Pull Request* (PR).
 
 Podemos utilizar herramientas como `github-action-benchmark` para extraer los datos de Criterion y publicarlos en un dashboard estático (por ejemplo, en GitHub Pages) o comentarlos directamente en el PR.
 
@@ -222,7 +225,8 @@ Si realmente necesitas que el CI rechace PRs que degraden el rendimiento (y quie
 
 Sin importar en qué máquina se ejecute, sumar `2 + 2` siempre tomará el mismo número de instrucciones a nivel de ensamblador. Herramientas modernas en el ecosistema Rust, como **CodSpeed** o el uso integrado de `Valgrind` / `Callgrind` junto a `iai-callgrind` (un framework alternativo a Criterion), se basan en este principio.
 
-En lugar de medir milisegundos, miden cuántas instrucciones, lecturas de caché L1 y accesos a RAM requiere tu función. 
+En lugar de medir milisegundos, miden cuántas instrucciones, lecturas de caché L1 y accesos a RAM requiere tu función.
+
 * Si tu PR original requería 150,000 instrucciones.
 * Y tu nuevo commit requiere 180,000 instrucciones.
 * Tienes una regresión matemática y absoluta del 20%.
@@ -243,7 +247,7 @@ En un entorno backend, donde tu aplicación puede correr ininterrumpidamente dur
 
 ### El enfoque educativo: Interceptar el Asignador Global
 
-Para entender cómo medir la memoria en Rust, primero debemos mirar bajo el capó. Rust nos permite definir nuestro propio asignador de memoria (Allocator) mediante el atributo `#[global_allocator]`. 
+Para entender cómo medir la memoria en Rust, primero debemos mirar bajo el capó. Rust nos permite definir nuestro propio asignador de memoria (Allocator) mediante el atributo `#[global_allocator]`.
 
 Podemos crear un envoltorio (wrapper) alrededor del asignador del sistema que incremente un contador atómico cada vez que se pide memoria. Esto nos permite escribir tests unitarios que fallen si una función asigna más memoria en el *heap* de la que consideramos aceptable:
 

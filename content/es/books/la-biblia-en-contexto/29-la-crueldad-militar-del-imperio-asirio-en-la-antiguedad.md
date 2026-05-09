@@ -2,9 +2,9 @@
 
 ---
 
-Cuando abrimos las páginas de la Biblia, específicamente en los libros de los Reyes, las Crónicas y los Profetas Menores, nos encontramos frecuentemente con una sombra oscura y amenazante que se cierne sobre el pueblo de Dios: el Imperio Asirio. Para el lector moderno, Asiria puede parecer simplemente otro nombre en una larga lista de naciones antiguas. Sin embargo, para un habitante del antiguo Cercano Oriente, pronunciar la palabra "Nínive" (su capital) producía el mismo terror que hoy nos producirían las peores tiranías de la historia. 
+Cuando abrimos las páginas de la Biblia, específicamente en los libros de los Reyes, las Crónicas y los Profetas Menores, nos encontramos frecuentemente con una sombra oscura y amenazante que se cierne sobre el pueblo de Dios: el Imperio Asirio. Para el lector moderno, Asiria puede parecer simplemente otro nombre en una larga lista de naciones antiguas. Sin embargo, para un habitante del antiguo Cercano Oriente, pronunciar la palabra "Nínive" (su capital) producía el mismo terror que hoy nos producirían las peores tiranías de la historia.
 
-Comprender la magnitud de la crueldad asiria no solo es un fascinante viaje arqueológico e histórico, sino que es fundamental para el creyente. Nos ayuda a entender por qué el profeta Jonás huyó en dirección contraria cuando Dios lo mandó a predicar a Nínive, por qué el profeta Nahúm celebró su caída llamándola "ciudad sanguinaria", y cómo Dios, en Su soberanía inescrutable, permitió que esta maquinaria de guerra disciplinara al Reino del Norte (Israel) tras siglos de rebelión espiritual y alejamiento del pacto. 
+Comprender la magnitud de la crueldad asiria no solo es un fascinante viaje arqueológico e histórico, sino que es fundamental para el creyente. Nos ayuda a entender por qué el profeta Jonás huyó en dirección contraria cuando Dios lo mandó a predicar a Nínive, por qué el profeta Nahúm celebró su caída llamándola "ciudad sanguinaria", y cómo Dios, en Su soberanía inescrutable, permitió que esta maquinaria de guerra disciplinara al Reino del Norte (Israel) tras siglos de rebelión espiritual y alejamiento del pacto.
 
 En este artículo, viajaremos en el tiempo, más de dos mil setecientos años atrás, para analizar cómo operaba el ejército más temido de la antigüedad, cómo utilizaban el terror como política de Estado, y cómo su implacable avance terminó por borrar del mapa a las diez tribus del Reino del Norte.
 
@@ -37,9 +37,9 @@ Tiglat-Pileser III reformó el Estado y creó el primer ejército permanente y p
 
 La maquinaria militar asiria se destacaba por varios factores:
 
-*   **Uso masivo del hierro:** Mientras muchas naciones aún usaban armas de bronce (más blandas y propensas a romperse), los asirios equiparon a sus tropas con espadas, lanzas y armaduras de hierro a una escala industrial.
-*   **Armas combinadas:** Fueron pioneros en coordinar diferentes tipos de tropas en el campo de batalla. Tenían infantería pesada con grandes escudos, arqueros letales, caballería ligera y la unidad de choque de la época: los carros de guerra tirados por caballos, desde los cuales comandantes y arqueros de élite masacraban las líneas enemigas.
-*   **Cuerpo de ingenieros:** Los asirios no se detenían ante ríos o murallas. Si había un río, sus ingenieros construían puentes de pontones o daban a los soldados odres de piel de animal inflados para flotar. Si había una muralla, construían inmensas torres de asedio y arietes con punta de hierro para derribar puertas y fortificaciones.
+* **Uso masivo del hierro:** Mientras muchas naciones aún usaban armas de bronce (más blandas y propensas a romperse), los asirios equiparon a sus tropas con espadas, lanzas y armaduras de hierro a una escala industrial.
+* **Armas combinadas:** Fueron pioneros en coordinar diferentes tipos de tropas en el campo de batalla. Tenían infantería pesada con grandes escudos, arqueros letales, caballería ligera y la unidad de choque de la época: los carros de guerra tirados por caballos, desde los cuales comandantes y arqueros de élite masacraban las líneas enemigas.
+* **Cuerpo de ingenieros:** Los asirios no se detenían ante ríos o murallas. Si había un río, sus ingenieros construían puentes de pontones o daban a los soldados odres de piel de animal inflados para flotar. Si había una muralla, construían inmensas torres de asedio y arietes con punta de hierro para derribar puertas y fortificaciones.
 
 ## 3. El Terror y la Guerra Psicológica como Política de Estado
 
@@ -48,20 +48,22 @@ Lo que hizo "mundialmente" famosos a los asirios en la antigüedad no fue solo s
 El objetivo era claro: infundir un miedo tan profundo, tan paralizante, que las naciones prefirieran rendirse y pagar un tributo exorbitante antes que atreverse a levantar una espada en su contra. Los relieves de piedra (esculturas talladas en las paredes de sus palacios en Nínive) que han sido desenterrados por los arqueólogos modernos no ocultan sus atrocidades; por el contrario, las exhiben con orgullo.
 
 Los anales de los reyes asirios describen prácticas espeluznantes:
-*   **Desollamiento:** Arrancar la piel de los líderes rebeldes estando aún vivos, para luego colgar sus pieles en las murallas de la ciudad.
-*   **Empalamiento:** Colocar a los prisioneros en estacas puntiagudas alrededor de la ciudad sitiada para que los defensores, desde las murallas, vieran el destino que les esperaba si no se rendían.
-*   **Pilas de cabezas:** Tras conquistar una ciudad rebelde, a menudo decapitaban a los soldados enemigos y construían pirámides con sus cabezas a las puertas de la ciudad.
-*   **Mutilaciones:** Cortar manos, pies, narices u orejas, o arrancar los ojos de los cautivos, dejándolos vivos como un testimonio ambulante y ciego de la ira asiria.
+
+* **Desollamiento:** Arrancar la piel de los líderes rebeldes estando aún vivos, para luego colgar sus pieles en las murallas de la ciudad.
+* **Empalamiento:** Colocar a los prisioneros en estacas puntiagudas alrededor de la ciudad sitiada para que los defensores, desde las murallas, vieran el destino que les esperaba si no se rendían.
+* **Pilas de cabezas:** Tras conquistar una ciudad rebelde, a menudo decapitaban a los soldados enemigos y construían pirámides con sus cabezas a las puertas de la ciudad.
+* **Mutilaciones:** Cortar manos, pies, narices u orejas, o arrancar los ojos de los cautivos, dejándolos vivos como un testimonio ambulante y ciego de la ira asiria.
 
 Para el creyente cristiano de hoy, leer estas descripciones puede ser impactante. Sin embargo, contextualiza maravillosamente la gracia de Dios en el libro de Jonás. Cuando Dios decide enviar un mensaje de arrepentimiento a Nínive (la capital de este imperio sanguinario), nos muestra que la misericordia divina no tiene límites, y que el Señor desea que incluso el peor de los pecadores se vuelva de sus malos caminos.
 
 ## 4. El Reino del Norte en el Tablero Geopolítico
 
 Para entender cómo chocaron Asiria e Israel, debemos repasar brevemente la historia bíblica. Tras la muerte del rey Salomón, la nación hebrea se dividió en dos:
-1.  **El Reino del Sur (Judá):** Con capital en Jerusalén, leal a la dinastía de David.
-2.  **El Reino del Norte (Israel):** Formado por diez tribus, con capital eventualmente establecida en Samaria.
 
-El Reino del Norte, desde su concepción, estuvo plagado de inestabilidad política y apostasía espiritual. Para evitar que sus ciudadanos viajaran al templo de Jerusalén en Judá, sus primeros reyes instauraron la adoración de becerros de oro. A esto se sumó, años más tarde, la introducción del culto al dios cananeo Baal. 
+1. **El Reino del Sur (Judá):** Con capital en Jerusalén, leal a la dinastía de David.
+2. **El Reino del Norte (Israel):** Formado por diez tribus, con capital eventualmente establecida en Samaria.
+
+El Reino del Norte, desde su concepción, estuvo plagado de inestabilidad política y apostasía espiritual. Para evitar que sus ciudadanos viajaran al templo de Jerusalén en Judá, sus primeros reyes instauraron la adoración de becerros de oro. A esto se sumó, años más tarde, la introducción del culto al dios cananeo Baal.
 
 A pesar de las constantes advertencias de profetas gigantes como Elías, Eliseo, Amós y Oseas, el Reino del Norte se hundió en una profunda decadencia moral, injusticia social e idolatría. Políticamente, Israel tuvo momentos de gran esplendor militar y riqueza, especialmente bajo reyes como Omri, Acab y Jeroboam II. Sin embargo, su poder no era nada comparado con la tormenta que se estaba formando en el norte de Mesopotamia.
 
@@ -69,7 +71,7 @@ A mediados del siglo VIII a.C., la sombra de Nínive cubrió a Israel. Al princi
 
 ## 5. El Error Fatal: La Alianza con Egipto y el Sitio de Samaria
 
-La dinámica de vasallaje se rompió trágicamente durante el reinado de Oseas, el último rey de Israel. 
+La dinámica de vasallaje se rompió trágicamente durante el reinado de Oseas, el último rey de Israel.
 
 El libro de 2 Reyes, en el capítulo 17, relata que Oseas había estado pagando el tributo anual al rey asirio Salmanasar V. Sin embargo, viendo que Asiria estaba ocupada en otras fronteras, Oseas cometió un error de cálculo geopolítico monumental: dejó de enviar el tributo y buscó en secreto una alianza militar con So, rey de Egipto, esperando que los egipcios lo protegieran de la represalia asiria.
 
@@ -100,12 +102,12 @@ Lo que hizo Sargón II tras conquistar Samaria es quizás uno de los eventos dem
 
 En el mundo antiguo, cuando se conquistaba un territorio, existía el peligro constante de que el pueblo subyugado mantuviera su identidad nacional y se rebelara años después. Los asirios inventaron una solución radical para este problema: la deportación masiva y el intercambio de poblaciones.
 
-Según los registros históricos encontrados en los palacios asirios, Sargón II deportó a más de 27.000 israelitas de clase alta, líderes militares, sacerdotes y artesanos. 
+Según los registros históricos encontrados en los palacios asirios, Sargón II deportó a más de 27.000 israelitas de clase alta, líderes militares, sacerdotes y artesanos.
 
-1.  **El desarraigo de Israel:** Los israelitas fueron arrancados de la Tierra Prometida y obligados a marchar cientos de kilómetros hacia el este, siendo reasentados en regiones lejanas del imperio, como Halah, el río Habor y las ciudades de los medos (hoy en día partes de Siria, Irak e Irán). Sin líderes, sin su templo, y rodeados de culturas paganas, la mayoría de estos cautivos se asimilaron con el tiempo, perdiendo su identidad hebrea. A esto es a lo que la historia se refiere popularmente como "las diez tribus perdidas de Israel".
-2.  **La siembra de extranjeros:** Paralelamente, los asirios trajeron a pueblos conquistados de otras regiones lejanas (Babilonia, Cuta, Ava, Hamat y Sefarvaim) y los obligaron a establecerse en las ciudades desoladas de Samaria.
+1. **El desarraigo de Israel:** Los israelitas fueron arrancados de la Tierra Prometida y obligados a marchar cientos de kilómetros hacia el este, siendo reasentados en regiones lejanas del imperio, como Halah, el río Habor y las ciudades de los medos (hoy en día partes de Siria, Irak e Irán). Sin líderes, sin su templo, y rodeados de culturas paganas, la mayoría de estos cautivos se asimilaron con el tiempo, perdiendo su identidad hebrea. A esto es a lo que la historia se refiere popularmente como "las diez tribus perdidas de Israel".
+2. **La siembra de extranjeros:** Paralelamente, los asirios trajeron a pueblos conquistados de otras regiones lejanas (Babilonia, Cuta, Ava, Hamat y Sefarvaim) y los obligaron a establecerse en las ciudades desoladas de Samaria.
 
-El propósito de esta política era destruir cualquier sentido de nacionalismo. Al mezclar a tantas personas de diferentes idiomas, dioses y culturas en una misma tierra, los asirios se aseguraban de que nunca pudieran unirse para organizar una rebelión. 
+El propósito de esta política era destruir cualquier sentido de nacionalismo. Al mezclar a tantas personas de diferentes idiomas, dioses y culturas en una misma tierra, los asirios se aseguraban de que nunca pudieran unirse para organizar una rebelión.
 
 Esta mezcla forzada de poblaciones es el origen de los **samaritanos**. Los nuevos habitantes paganos se mezclaron con los israelitas pobres que los asirios dejaron en la tierra para trabajar los campos. Su religión se volvió un sincretismo: adoraban a Jehová el Dios de la tierra (a su manera), pero también servían a los ídolos de sus países de origen. Esta impureza étnica y espiritual es la raíz histórica del profundo odio y desprecio que existía entre los judíos (del sur) y los samaritanos en los tiempos de Jesús, varios siglos después.
 
@@ -113,7 +115,7 @@ Esta mezcla forzada de poblaciones es el origen de los **samaritanos**. Los nuev
 
 Como lectores de la Biblia, la caída del Reino del Norte no puede entenderse únicamente a través de la política o la superioridad militar asiria. Las Escrituras nos invitan a levantar la mirada y ver detrás de la cortina de la historia humana.
 
-El autor de 2 de Reyes dedica gran parte del capítulo 17 a dar la explicación teológica de esta tragedia. No fue simplemente que Asiria tenía mejores carros de hierro o que Oseas fue un mal diplomático. La verdadera razón fue espiritual: 
+El autor de 2 de Reyes dedica gran parte del capítulo 17 a dar la explicación teológica de esta tragedia. No fue simplemente que Asiria tenía mejores carros de hierro o que Oseas fue un mal diplomático. La verdadera razón fue espiritual:
 
 > *"Todo esto sucedió porque los israelitas habían pecado contra el Señor su Dios... Rindieron culto a otros dioses y siguieron las costumbres de las naciones que el Señor había expulsado delante de ellos... El Señor les había advertido a Israel y a Judá por medio de todos sus profetas y videntes... Pero ellos no quisieron escuchar, sino que fueron tercos..."* (2 Reyes 17:7-14, parafraseado).
 
@@ -135,7 +137,7 @@ La respuesta divina fue dramática. La Biblia relata que el Ángel del Señor hi
 
 **El fin de la crueldad**
 
-La hegemonía del terror asirio, como todo imperio levantado sobre sangre y soberbia humana, tenía fecha de caducidad. Lo que el profeta Nahúm había predicho con asombrosa precisión gráfica, finalmente ocurrió en el año 612 a.C. 
+La hegemonía del terror asirio, como todo imperio levantado sobre sangre y soberbia humana, tenía fecha de caducidad. Lo que el profeta Nahúm había predicho con asombrosa precisión gráfica, finalmente ocurrió en el año 612 a.C.
 
 Una coalición de naciones oprimidas —los babilonios y los medos— se levantó y puso sitio a la invencible Nínive. La ciudad sanguinaria probó su propia medicina; fue destruida con tal nivel de devastación que sus ruinas quedaron enterradas bajo la arena del desierto, olvidadas por la historia durante milenios, hasta que los arqueólogos europeos volvieron a desenterrar sus monstruosos palacios en el siglo XIX.
 

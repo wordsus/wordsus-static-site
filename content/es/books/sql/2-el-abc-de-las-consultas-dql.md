@@ -46,8 +46,6 @@ El asterisco le dice a la base de datos: *"Devuélveme todas las columnas de est
 * Consume más recursos de red y memoria de tu servidor al descargar datos que quizás la aplicación final no necesita.
 * Si el esquema de la tabla cambia en el futuro (por ejemplo, si un administrador añade una columna con información sensible o pesada), tu consulta devolverá esos datos inesperados de forma automática, lo que puede romper el código de las aplicaciones que dependen de esa consulta.
 
-
-
 ---
 
 ### Seleccionando columnas específicas

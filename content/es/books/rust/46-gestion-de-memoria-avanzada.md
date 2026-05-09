@@ -1,4 +1,4 @@
-En el desarrollo backend de alto rendimiento, la eficiencia no es solo escribir algoritmos rápidos, sino entender cómo los datos habitan en el hardware. Rust nos otorga un control granular sobre la memoria, pero delegar el control total implica conocer las reglas del juego a bajo nivel. 
+En el desarrollo backend de alto rendimiento, la eficiencia no es solo escribir algoritmos rápidos, sino entender cómo los datos habitan en el hardware. Rust nos otorga un control granular sobre la memoria, pero delegar el control total implica conocer las reglas del juego a bajo nivel.
 
 En este capítulo, desglosaremos la anatomía de los **structs** para dominar el *padding* y la alineación. Exploraremos cómo los **custom allocators** como `mimalloc` pueden reducir la latencia en APIs concurrentes y cómo los **smart pointers** avanzados facilitan patrones de diseño complejos. Finalmente, aprenderemos a gestionar el ciclo de vida de la memoria, desde fugas intencionales hasta la prevención de ciclos fatales.
 
@@ -32,6 +32,7 @@ fn main() {
 ```
 
 Si Rust respetara el orden de declaración, el layout en memoria sería:
+
 1. `activo` (1 byte)
 2. *Padding* (7 bytes, para alinear el siguiente `u64`)
 3. `id` (8 bytes)
@@ -87,7 +88,7 @@ fn main() {
 }
 ```
 
-Hemos reducido el struct a su tamaño absoluto teórico: **11 bytes**. 
+Hemos reducido el struct a su tamaño absoluto teórico: **11 bytes**.
 
 **El gran peligro de `#[repr(packed)]`:**
 Al eliminar el padding, campos como `id` (`u64`) ahora residen en direcciones de memoria no alineadas. Si intentas crear una referencia directa a ese campo (ej. `&usuario.id`), estarías creando un puntero desalineado, lo cual es **Comportamiento Indefinido (UB)** en Rust. El compilador, de hecho, te lanzará un error o advertencia severa si intentas hacerlo en versiones modernas.
@@ -107,15 +108,16 @@ let id_valor = unsafe { id_seguro.read_unaligned() };
 ```
 
 ### Resumen de uso en Backend
+
 * Usa el **predeterminado** (`#[repr(Rust)]`) para casi toda tu lógica de negocio. Es rápido y eficiente.
 * Usa `#[repr(C)]` cuando interactúes con FFI, llamadas al sistema (syscalls) o leas/escribas estructuras binarias compartidas con otros sistemas compatibles con C.
 * Usa `#[repr(packed)]` con extremo cuidado, únicamente cuando estés modelando protocolos de red binarios estrictos donde los bytes exactos importan más que la penalización de rendimiento por accesos desalineados.
 
 ## 46.2 Custom Allocators y uso de `jemalloc` / `mimalloc`
 
-Cuando desarrollas servicios backend en Rust, especialmente aquellos que manejan alta concurrencia con frameworks como Tokio o Actix-Web, el manejo de la memoria en el heap (montículo) se vuelve un factor crítico de rendimiento. 
+Cuando desarrollas servicios backend en Rust, especialmente aquellos que manejan alta concurrencia con frameworks como Tokio o Actix-Web, el manejo de la memoria en el heap (montículo) se vuelve un factor crítico de rendimiento.
 
-Por defecto, la Standard Library de Rust utiliza el asignador de memoria del sistema operativo subyacente (`std::alloc::System`). Aunque este asignador generalista es suficiente para la mayoría de las aplicaciones, puede convertirse en un cuello de botella en escenarios de estrés extremo. 
+Por defecto, la Standard Library de Rust utiliza el asignador de memoria del sistema operativo subyacente (`std::alloc::System`). Aunque este asignador generalista es suficiente para la mayoría de las aplicaciones, puede convertirse en un cuello de botella en escenarios de estrés extremo.
 
 ### El problema con el System Allocator
 
@@ -134,7 +136,7 @@ Su principal ventaja es la **prevención extrema de la fragmentación**. Es la o
 
 ### `mimalloc`: Rendimiento moderno y concurrencia
 
-Desarrollado por Microsoft Research, `mimalloc` está diseñado desde cero con un enfoque implacable en el rendimiento de aplicaciones multihilo modernas. 
+Desarrollado por Microsoft Research, `mimalloc` está diseñado desde cero con un enfoque implacable en el rendimiento de aplicaciones multihilo modernas.
 
 Su arquitectura utiliza cachés locales por hilo (thread-local caches) de manera muy agresiva. Cuando un hilo necesita memoria, `mimalloc` suele asignarla desde su propia caché sin necesidad de comunicarse con otros hilos, eliminando casi por completo la contención de bloqueos. En la mayoría de los benchmarks de aplicaciones asíncronas en Rust, `mimalloc` ofrece el mayor incremento de *throughput* (solicitudes por segundo).
 
@@ -145,12 +147,14 @@ Sustituir el asignador es sorprendentemente sencillo en Rust. Solo necesitas añ
 **Para usar `mimalloc`:**
 
 Primero, añade la dependencia:
+
 ```toml
 [dependencies]
 mimalloc = "0.1"
 ```
 
 Luego, en tu `main.rs`:
+
 ```rust
 use mimalloc::MiMalloc;
 
@@ -175,6 +179,7 @@ tikv-jemallocator = "0.5"
 ```
 
 En tu `main.rs`:
+
 ```rust
 use tikv_jemallocator::Jemalloc;
 
@@ -199,7 +204,7 @@ fn main() {
 
 ## 46.3 Smart Pointers avanzados (`Rc`, `Arc`, `RefCell`, `Cell`)
 
-El modelo de *ownership* y *borrowing* estricto de Rust es excelente para garantizar la seguridad de memoria en tiempo de compilación. Sin embargo, en el desarrollo backend, a menudo nos encontramos con arquitecturas donde los datos deben tener **múltiples dueños** (como una caché compartida entre varios *workers*) o donde necesitamos **mutar datos a través de referencias inmutables** (el patrón de *Interior Mutability*). 
+El modelo de *ownership* y *borrowing* estricto de Rust es excelente para garantizar la seguridad de memoria en tiempo de compilación. Sin embargo, en el desarrollo backend, a menudo nos encontramos con arquitecturas donde los datos deben tener **múltiples dueños** (como una caché compartida entre varios *workers*) o donde necesitamos **mutar datos a través de referencias inmutables** (el patrón de *Interior Mutability*).
 
 Para sortear las limitaciones del comprobador de préstamos sin sacrificar la seguridad, Rust nos provee de *Smart Pointers* (punteros inteligentes) avanzados.
 
@@ -265,7 +270,7 @@ fn main() {
 Tanto `Rc` como `Arc` exponen sus datos de forma **inmutable**. Si quieres modificar el contenido compartido, el compilador no te dejará. Aquí entra el patrón de mutabilidad interior, que permite saltarse las reglas de mutabilidad en tiempo de compilación y trasladarlas al tiempo de ejecución.
 
 **3. `Cell<T>`**
-Permite mutar el valor que contiene incluso si el `Cell` en sí mismo es inmutable. Funciona copiando (o moviendo) los valores hacia adentro y hacia afuera de la celda. 
+Permite mutar el valor que contiene incluso si el `Cell` en sí mismo es inmutable. Funciona copiando (o moviendo) los valores hacia adentro y hacia afuera de la celda.
 
 * **Uso en Backend:** Ideal para contadores simples, banderas booleanas o máquinas de estado pequeñas en un entorno de un solo hilo, donde el tipo `T` implementa `Copy`. No tiene penalización de rendimiento en tiempo de ejecución.
 
@@ -313,11 +318,12 @@ Podemos dividir las fugas de memoria en dos categorías: las que hacemos a prop�
 
 ### Fugas Voluntarias: El poder de `Box::leak`
 
-En ocasiones, necesitamos inicializar una estructura de datos en tiempo de ejecución (leyendo variables de entorno, parseando un archivo YAML) y luego garantizar que esa memoria viva durante el resto de la ejecución del programa, adquiriendo el codiciado *lifetime* `'static`. 
+En ocasiones, necesitamos inicializar una estructura de datos en tiempo de ejecución (leyendo variables de entorno, parseando un archivo YAML) y luego garantizar que esa memoria viva durante el resto de la ejecución del programa, adquiriendo el codiciado *lifetime* `'static`.
 
 Como los datos dinámicos se alojan en el *heap*, no nacen siendo `'static`. Aquí es donde entra `Box::leak`. Esta función toma un `Box<T>`, desactiva su mecanismo de limpieza automática (el trait `Drop`) y devuelve una referencia mutable `'static mut T` (o inmutable).
 
 **Casos de uso en Backend:**
+
 * Creación de configuraciones globales (*App State*) que se inicializan una vez y son leídas millones de veces sin el costo de un `Arc`.
 * *String Interning* u optimización de diccionarios en memoria.
 * Interoperabilidad con C (FFI), donde entregamos un puntero a C y le decimos a Rust que deje de rastrearlo.
@@ -357,7 +363,7 @@ fn main() {
 
 ### Fugas Involuntarias: Ciclos de referencias
 
-En la sección anterior vimos cómo `Rc` y `Arc` usan conteo de referencias para permitir múltiples dueños. El problema surge cuando combinamos estos *Smart Pointers* con Mutabilidad Interior (`RefCell` o `Mutex`/`RwLock`). 
+En la sección anterior vimos cómo `Rc` y `Arc` usan conteo de referencias para permitir múltiples dueños. El problema surge cuando combinamos estos *Smart Pointers* con Mutabilidad Interior (`RefCell` o `Mutex`/`RwLock`).
 
 Si el objeto A tiene un `Arc` que apunta al objeto B, y el objeto B muta su estado para guardar un `Arc` que apunta de vuelta al objeto A, hemos creado un **ciclo de referencias**.
 

@@ -1,6 +1,7 @@
 La seguridad en la capa de aplicación es el pilar que transforma una red abierta en un ecosistema empresarial confiable. Este capítulo analiza la evolución de los mecanismos de control de acceso, desde la sencillez de los esquemas **Básicos** y **Digest**, hasta la sofisticación de la autenticación basada en **Tokens (JWT)**. Exploraremos cómo protocolos como **OAuth 2.0** y **OIDC** permiten delegar la identidad de forma segura, y cerraremos con las estrategias de **Rate Limiting** esenciales para proteger la disponibilidad de la infraestructura mediante el código **429**. Como administrador, dominar estos flujos es vital para garantizar la integridad y resiliencia de cualquier servicio web moderno.
 
 ## 6.1. Autenticación Básica y Digest (Limitaciones y casos de uso legacy)
+
 Antes de la proliferación de arquitecturas descentralizadas, tokens criptográficos y proveedores de identidad federados, el protocolo HTTP integró sus propios mecanismos nativos para el control de acceso: la Autenticación Básica y la Autenticación Digest. Aunque hoy en día se consideran enfoques *legacy* (heredados) para la mayoría de las aplicaciones orientadas al usuario, como administradores de sistemas y operadores de red, es crucial comprender cómo funcionan a nivel de protocolo, sus vulnerabilidades y en qué nichos de infraestructura aún tienen cabida.
 
 Ambos esquemas se basan en un modelo de **desafío-respuesta** (challenge-response) utilizando los códigos de estado `401 Unauthorized` y las cabeceras `WWW-Authenticate` y `Authorization`.
@@ -8,6 +9,7 @@ Ambos esquemas se basan en un modelo de **desafío-respuesta** (challenge-respon
 ---
 
 ### Autenticación Básica (Basic Authentication)
+
 Es el mecanismo de control de acceso más simple integrado en HTTP. Su diseño prioritario fue la facilidad de implementación, no la seguridad.
 
 **El Flujo del Protocolo:**
@@ -60,6 +62,7 @@ Authorization: Basic YWRtaW46czNjcmV0
 ---
 
 ### Autenticación Digest (Digest Authentication)
+
 Introducida para solventar el envío de contraseñas en "texto plano" (Base64) de la Autenticación Básica, el esquema Digest utiliza funciones hash criptográficas (típicamente MD5, o en implementaciones más modernas SHA-256) para probar al servidor que el cliente conoce la contraseña, sin llegar a transmitirla por la red.
 
 **El Flujo del Protocolo:**
@@ -128,6 +131,7 @@ Para un administrador de sistemas, este cambio es fundamental: permite que los s
 ---
 
 ### El Patrón "Bearer Token"
+
 El esquema *Bearer* (portador) es un mecanismo de autorización donde cualquier parte que posea el token (el "portador") puede utilizarlo para acceder a los recursos protegidos. El servidor no verifica la identidad del cliente que envía el token, sino **la validez del token en sí**.
 
 A nivel HTTP, el cliente incluye el token en las peticiones mediante el encabezado `Authorization`, utilizando la palabra clave `Bearer`:
@@ -144,6 +148,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 ---
 
 ### JSON Web Tokens (JWT): El Estándar de la Industria
+
 Aunque un Bearer token puede ser cualquier cadena opaca (como un UUID generado por una base de datos), el estándar dominante hoy en día es el **JWT (JSON Web Token)**, definido en el RFC 7519.
 
 Un JWT es un estándar abierto que define una forma compacta y autónoma de transmitir información de forma segura entre partes como un objeto JSON. Para los SysAdmins e Ingenieros DevOps, la magia del JWT radica en que está **firmado digitalmente**, lo que garantiza que no ha sido alterado en tránsito.
@@ -182,6 +187,7 @@ Si inspeccionas un JWT (por ejemplo, decodificando el tráfico en tu proxy inver
 ---
 
 ### Implicaciones Arquitectónicas y de Infraestructura
+
 La adopción de JWT cambia radicalmente cómo diseñamos y operamos la infraestructura HTTP:
 
 **1. Delegación en API Gateways (Offloading):**
@@ -204,6 +210,7 @@ A diferencia de Basic Auth, que añade unas pocas docenas de bytes al request HT
 * En **Nginx**, esto suele requerir ajustar las directivas `client_header_buffer_size` y `large_client_header_buffers` para evitar que el proxy rechace peticiones HTTP legítimas debido al tamaño masivo de la cabecera `Authorization`.
 
 ## 6.3. Integración de HTTP con protocolos de identidad: OAuth 2.0 y OIDC
+
 En la sección anterior vimos cómo los tokens (especialmente los JWT) permiten a los servidores web validar solicitudes de forma *stateless*. Sin embargo, surge una pregunta crítica a nivel de arquitectura: **¿Cómo obtiene el cliente ese token de forma segura en primer lugar?** No queremos que los usuarios entreguen sus contraseñas directamente a cada aplicación o microservicio.
 
 Aquí es donde entran en juego **OAuth 2.0** y **OpenID Connect (OIDC)**. Estos protocolos estandarizan el flujo de mensajes HTTP para delegar la autenticación y la autorización a un servidor centralizado (Identity Provider o IdP, como Keycloak, Auth0, Okta o Google Workspace).
@@ -213,6 +220,7 @@ Para un administrador de sistemas, comprender estos flujos es vital, ya que gran
 ---
 
 ### La distinción fundamental: Autorización vs. Autenticación
+
 Un error común en la industria es confundir los propósitos de ambos protocolos. Es crucial separarlos:
 
 * **OAuth 2.0 es un marco de Autorización:** Responde a la pregunta *"¿Tiene esta aplicación permiso para acceder a este recurso en nombre del usuario?"*. Emite **Access Tokens** (Típicamente JWTs o tokens opacos). No está diseñado para decirle a la aplicación *quién* es el usuario.
@@ -221,6 +229,7 @@ Un error común en la industria es confundir los propósitos de ambos protocolos
 ---
 
 ### El Flujo de Código de Autorización (Authorization Code Flow)
+
 Este es el flujo HTTP más seguro y el estándar *de facto* para aplicaciones web y móviles modernas. Evita que los tokens pasen por el navegador del usuario (frontend), previniendo su filtración en el historial o mediante scripts maliciosos (XSS).
 
 **Actores involucrados:**
@@ -280,6 +289,7 @@ Este es el flujo HTTP más seguro y el estándar *de facto* para aplicaciones we
 ---
 
 ### OIDC y el Punto de Descubrimiento (Discovery Endpoint)
+
 Una de las maravillas operativas de OIDC es que estandariza la configuración del proveedor de identidad. Cualquier servidor compatible con OIDC expone un endpoint en una ruta estándar:
 
 `GET /.well-known/openid-configuration`
@@ -296,6 +306,7 @@ El API Gateway utiliza la URL proporcionada en el `jwks_uri` para descargar las 
 ---
 
 ### Patrón de Despliegue: Identity-Aware Proxy (IAP) / OAuth2 Proxy
+
 A nivel de infraestructura, la tendencia moderna es **sacar la lógica de autenticación del código de la aplicación**. Si tienes 20 microservicios, no quieres programar el flujo de OAuth 2.0 en cada uno de ellos.
 
 En su lugar, desplegamos un patrón conocido como **Identity-Aware Proxy** o usamos herramientas como **OAuth2 Proxy** frente a nuestras aplicaciones:
@@ -309,6 +320,7 @@ En su lugar, desplegamos un patrón conocido como **Identity-Aware Proxy** o usa
 Este enfoque permite a los equipos de infraestructura proteger aplicaciones *legacy* o internas pesadas que no tienen soporte nativo para OIDC, añadiendo una capa de seguridad moderna puramente a nivel de enrutamiento HTTP.
 
 ## 6.4. Gestión de Rate Limiting y Throttling a nivel de API/Proxy (códigos 429)
+
 Incluso con la autenticación más robusta y los backends más optimizados, ningún servidor web tiene recursos infinitos. Cuando un cliente (legítimo, malicioso o mal programado) envía más peticiones de las que la infraestructura puede o debe manejar, es responsabilidad de la capa de proxy intervenir para evitar la degradación del servicio o una falla en cascada (*cascading failure*).
 
 Aquí es donde entran las estrategias de **Rate Limiting** (Limitación de Tasa) y **Throttling** (Estrangulamiento), herramientas fundamentales en el arsenal de cualquier administrador de sistemas para proteger la estabilidad del clúster, hacer cumplir acuerdos de nivel de servicio (SLA) y mitigar ataques de denegación de servicio (DoS).
@@ -316,12 +328,14 @@ Aquí es donde entran las estrategias de **Rate Limiting** (Limitación de Tasa)
 ---
 
 ### Rate Limiting vs. Throttling: La Diferencia Operativa
+
 Aunque a menudo se usan como sinónimos, a nivel de ingeniería de tráfico representan acciones distintas:
 
 * **Rate Limiting:** Es un límite estricto (*hard limit*). Se define una cuota (por ejemplo, 100 peticiones por minuto). Si el cliente supera esa cuota, el proxy rechaza inmediatamente las peticiones excedentes con un código de error HTTP.
 * **Throttling:** Es un límite suave (*soft limit*) enfocado en modelar el tráfico (*traffic shaping*). Si un cliente envía demasiadas peticiones al mismo tiempo, el proxy no las rechaza de inmediato, sino que las encola y las retrasa artificialmente para procesarlas a un ritmo constante que el backend pueda soportar.
 
 ### El Código de Estado 429 y las Cabeceras de Control
+
 Cuando se activa el Rate Limiting, el estándar HTTP dicta que el servidor debe responder con un código **`429 Too Many Requests`**.
 
 A nivel operativo, simplemente devolver un 429 no es suficiente. Debemos proporcionar al cliente la telemetría necesaria para que su código se adapte y deje de saturar la red.
@@ -348,6 +362,7 @@ X-RateLimit-Reset: 1698770000 # Timestamp UNIX de cuándo se reinicia la cuota
 ---
 
 ### Algoritmos Principales de Limitación
+
 Los proxies inversos y Gateways implementan la limitación utilizando diferentes modelos matemáticos. Comprenderlos es vital para ajustar la configuración correctamente.
 
 **1. Ventana Fija (Fixed Window)**
@@ -385,6 +400,7 @@ Es la contraparte de Throttling. Las peticiones entran al cubo a cualquier veloc
 ---
 
 ### Implementación en Infraestructura: El Ejemplo de Nginx
+
 Nginx utiliza una implementación basada en el algoritmo de *Leaky Bucket* y requiere memoria compartida (`zone`) para mantener el estado de los contadores entre sus *worker processes*.
 
 A continuación, un escenario típico de SysAdmin: Queremos limitar el tráfico de una API a **10 peticiones por segundo por IP**, pero queremos permitir picos ocasionales de hasta **20 peticiones simultáneas** sin retrasarlas.
@@ -419,6 +435,7 @@ server {
 ---
 
 ### Desafíos en Arquitecturas Distribuidas
+
 Las zonas de memoria compartida (como la de Nginx o HAProxy) funcionan perfectamente en un solo nodo. Sin embargo, si tienes 5 proxies inversos balanceados por un Load Balancer de Capa 4 o un servicio DNS Anycast (Capítulo 7), una IP maliciosa podría consumir el límite de las 5 máquinas simultáneamente.
 
 En arquitecturas *Cloud Native* maduras o clústeres de Kubernetes masivos, el Rate Limiting se extrae del proxy local y se delega a **almacenes de datos en memoria centralizados (como Redis)** usando scripts Lua o middleware especializado en el API Gateway. Esto garantiza que si el límite es 1000 req/hora, sea 1000 en total para todo el clúster perimetral global, a costa de añadir una ligera latencia de red (1-2ms) en la fase de validación de cada petición.

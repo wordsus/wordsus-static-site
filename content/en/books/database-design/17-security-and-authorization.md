@@ -61,7 +61,6 @@ Modern database systems typically support multiple authentication strategies, wh
 * **Kerberos:** A network authentication protocol that uses "tickets" to prove identity without transmitting passwords across the network.
 * **PAM (Pluggable Authentication Modules):** Allows the database to hook into the host operating system's underlying authentication mechanisms.
 
-
 * **Certificate-Based Authentication (Mutual TLS):** Instead of passwords, the client presents an X.509 cryptographic certificate signed by a trusted Certificate Authority (CA). The DBMS verifies the certificate's validity and extracts the user identity from it.
 
 ### 2. Database Authorization (AuthZ)
@@ -461,10 +460,10 @@ A comprehensive audit trail records the "Who, What, When, Where, and How" of dat
 Databases implement auditing through various architectural approaches:
 
 1. **Native Database Auditing:** Most enterprise DBMS platforms (like Oracle Unified Auditing, SQL Server Audit, or PostgreSQL's `pgaudit` extension) have built-in capabilities to write audit records to system tables, OS event logs, or flat files.
+
 * *Drawback:* High levels of native auditing can introduce significant I/O and CPU overhead, impacting transactional performance.
 
-
-2. **Database Activity Monitoring (DAM):** To avoid performance penalties, enterprise environments often use DAM solutions. These are out-of-band network appliances or host-based agents that sniff the SQL traffic on the network wire or intercept memory calls before they reach the database engine. DAM systems analyze and log queries without consuming the DBMS's internal resources.
+1. **Database Activity Monitoring (DAM):** To avoid performance penalties, enterprise environments often use DAM solutions. These are out-of-band network appliances or host-based agents that sniff the SQL traffic on the network wire or intercept memory calls before they reach the database engine. DAM systems analyze and log queries without consuming the DBMS's internal resources.
 
 #### Immutability and Separation of Duties
 

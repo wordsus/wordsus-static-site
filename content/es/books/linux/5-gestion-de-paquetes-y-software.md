@@ -294,19 +294,18 @@ Si el gestor de paquetes no puede resolver este rompecabezas sin romper el progr
 **¿Cómo diagnosticar y solucionar conflictos?**
 
 * **En APT:** Puedes simular una instalación para ver el árbol de decisiones sin modificar el sistema usando la bandera `-s` (simulate):
+
 ```bash
 apt-get install -s paquete_conflictivo
 
 ```
 
-
 * **En DNF:** Puedes usar el comando `repoquery` para analizar de qué depende un paquete antes de hacer nada:
+
 ```bash
 dnf repoquery --requires nginx
 
 ```
-
-
 
 ---
 
@@ -425,20 +424,20 @@ A diferencia de `tar`, `zip` comprime y empaqueta en un solo paso de forma nativ
 **Comandos clave:**
 
 * **Comprimir un directorio entero:**
+
 ```bash
 zip -r mi_lambda.zip /ruta/al/codigo/
 
 ```
 
-
 *(El `-r` es por recursivo, vital para incluir subdirectorios).*
+
 * **Descomprimir:**
+
 ```bash
 unzip mi_lambda.zip -d /ruta/destino/
 
 ```
-
-
 
 ---
 

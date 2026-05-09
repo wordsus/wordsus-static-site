@@ -1,4 +1,4 @@
-With the foundational concepts established, it is time to translate theory into practice. This chapter guides you through the complete lifecycle of a Pulumi deployment, taking you from an empty directory to fully provisioned cloud resources. 
+With the foundational concepts established, it is time to translate theory into practice. This chapter guides you through the complete lifecycle of a Pulumi deployment, taking you from an empty directory to fully provisioned cloud resources.
 
 You will learn how to bootstrap a new workspace using the CLI, author infrastructure using standard programming languages, and safely deploy utilizing the engine's preview mechanism. Finally, we will cover how to cleanly decommission environments. By the end of this chapter, you will have the practical skills needed to confidently build, modify, and destroy your cloud architecture.
 
@@ -22,7 +22,7 @@ Executing `pulumi new` without any arguments launches an interactive wizard. The
 1. **Template Selection:** You will be presented with a searchable list of templates. You can use the arrow keys to navigate or type to filter. For example, selecting `aws-typescript` will scaffold an Amazon Web Services project using Node.js and TypeScript.
 2. **Project Name:** By default, this defaults to the name of your current directory. As covered in Chapter 3, this name must be unique within your Pulumi organization or backend.
 3. **Project Description:** A brief, human-readable summary of what this infrastructure project manages.
-4. **Stack Name:** The CLI will prompt you to initialize your first stack. The default is typically `dev`. 
+4. **Stack Name:** The CLI will prompt you to initialize your first stack. The default is typically `dev`.
 5. **Configuration Values:** Depending on the chosen template, the wizard may ask for required configuration variables. For an AWS template, it will explicitly request the `aws:region` (e.g., `us-east-1`, `eu-central-1`) to determine where the resources should be deployed.
 
 Once the prompts are completed, the CLI downloads the template, generates the files, and automatically runs the language-specific package manager (such as `npm install`, `pip install`, or `go mod tidy`) to install the necessary Pulumi SDKs and provider plugins.
@@ -44,7 +44,7 @@ The `--yes` (or `-y`) flag automatically accepts default values for any prompts 
 
 ### Anatomy of a Bootstrapped Project
 
-After the command finishes executing, your directory will be populated with the core files needed to run Pulumi. While the specific code files will vary based on your chosen programming language, the structural anatomy remains consistent. 
+After the command finishes executing, your directory will be populated with the core files needed to run Pulumi. While the specific code files will vary based on your chosen programming language, the structural anatomy remains consistent.
 
 Here is the plain text layout of a newly bootstrapped `aws-typescript` project:
 
@@ -79,7 +79,7 @@ config:
   aws:region: us-east-1
 ```
 
-As you add more secrets and environment-specific variables later, they will be appended to this file. 
+As you add more secrets and environment-specific variables later, they will be appended to this file.
 
 #### The Entrypoint: `index.ts` (or `__main__.py`, `main.go`, `Program.cs`)
 
@@ -137,12 +137,13 @@ Let's examine the three core phases occurring within this script, relying on the
 We import the core `@pulumi/pulumi` library and the specific cloud provider package, `@pulumi/aws`. These packages were downloaded by your package manager (npm) during `pulumi new`.
 
 **2. Resource Declaration:**
-We define our infrastructure by creating instances of Resource classes. 
+We define our infrastructure by creating instances of Resource classes.
+
 * The first argument (e.g., `"my-storage-bucket"`) is the **logical name**. Pulumi uses this internally in its state file to track the resource across updates. It is *not* the physical name assigned in AWS. By default, Pulumi appends a random suffix to the logical name to generate the physical name (e.g., `my-storage-bucket-a3f9b2c`), preventing naming collisions if you deploy multiple copies of this stack.
 * The second argument is the **arguments object**, which contains the configuration properties defining the resource (like tags and versioning).
 
 **3. Implicit Dependencies:**
-Notice how `sampleObject` references `storageBucket.id`. You do not need to write explicit "depends_on" statements. Because the `BucketObject` requires the ID of the `Bucket` as an input, the Pulumi engine automatically infers that the bucket must be fully created *before* the object can be uploaded. 
+Notice how `sampleObject` references `storageBucket.id`. You do not need to write explicit "depends_on" statements. Because the `BucketObject` requires the ID of the `Bucket` as an input, the Pulumi engine automatically infers that the bucket must be fully created *before* the object can be uploaded.
 
 This creates a directed acyclic graph (DAG) of your infrastructure:
 
@@ -216,11 +217,11 @@ Do you want to perform this update?
 
 Let's break down the critical components of this interface:
 
-* **The Plan Column and Symbols:** The CLI clearly marks what will happen to each resource. 
-    * `+` (Green): The resource does not exist in the state file and will be **created**.
-    * `-` (Red): The resource exists in the state but was removed from your code; it will be **deleted**.
-    * `~` (Yellow): The resource exists in both, but its properties have changed; it will be **updated** (which may involve in-place modifications or a disruptive delete-and-replace operation).
-    * *No symbol*: The resource is unchanged.
+* **The Plan Column and Symbols:** The CLI clearly marks what will happen to each resource.
+  * `+` (Green): The resource does not exist in the state file and will be **created**.
+  * `-` (Red): The resource exists in the state but was removed from your code; it will be **deleted**.
+  * `~` (Yellow): The resource exists in both, but its properties have changed; it will be **updated** (which may involve in-place modifications or a disruptive delete-and-replace operation).
+  * *No symbol*: The resource is unchanged.
 * **Hierarchical Display:** The CLI uses a tree structure (`├─` and `└─`) to illustrate the dependency graph. It shows that the `Bucket` and `BucketObject` are children of the overall `Stack`.
 * **Unknown Outputs:** Notice that the `Outputs` section displays `"output<string>"` instead of actual values. Because the infrastructure has not been created yet, Pulumi cannot know the AWS-assigned ARN or the physical bucket name. These are represented as strongly-typed "promises" that will be resolved during the actual update phase.
 
@@ -230,9 +231,9 @@ At the bottom of the preview, execution is halted, and you are presented with a 
 
 * **`yes`:** Proceed with the update phase, executing the changes against the cloud provider.
 * **`no`:** Safely abort the operation. No changes will be made to your cloud environment or your state file.
-* **`details`:** This is the most powerful option during a complex deployment. 
+* **`details`:** This is the most powerful option during a complex deployment.
 
-Selecting `details` shifts the CLI from a high-level summary to an exhaustive, property-by-property breakdown. It will show you precisely which tags are being added, which configuration values are shifting, and critically, whether an "update" requires a resource replacement. 
+Selecting `details` shifts the CLI from a high-level summary to an exhaustive, property-by-property breakdown. It will show you precisely which tags are being added, which configuration values are shifting, and critically, whether an "update" requires a resource replacement.
 
 For instance, changing a tag on an S3 bucket is an in-place update. However, changing the *region* of an S3 bucket requires destroying the old bucket and creating a new one—a potentially disastrous action if that bucket contains production data. The `details` view will explicitly warn you if an update forces a replacement, allowing you to catch errors before they impact your systems.
 
@@ -246,7 +247,7 @@ To cleanly tear down an environment, Pulumi provides the `pulumi destroy` comman
 
 ### The Reverse Dependency Graph
 
-Just as `pulumi up` relies on a Directed Acyclic Graph (DAG) to understand the order in which resources must be created, `pulumi destroy` uses the exact same graph to determine the safe order of deletion. It must walk the graph in reverse. 
+Just as `pulumi up` relies on a Directed Acyclic Graph (DAG) to understand the order in which resources must be created, `pulumi destroy` uses the exact same graph to determine the safe order of deletion. It must walk the graph in reverse.
 
 If we revisit the S3 example from previous sections, the S3 Bucket Object implicitly depends on the S3 Bucket. AWS will reject an API request to delete a bucket if it still contains objects. Therefore, the Pulumi Engine understands that it must delete the children before the parents.
 

@@ -2,9 +2,9 @@ La persistencia es el pilar de cualquier aplicación de backend real. En Rust, l
 
 ## 19.1 Pools de conexiones con `deadpool` o `bb8`
 
-En el desarrollo de APIs de alto rendimiento (como las que construimos con Actix-Web o Axum en los capítulos anteriores), abrir una nueva conexión a la base de datos por cada petición HTTP es un antipatrón crítico. El proceso de establecer una conexión a una base de datos requiere resolver el DNS, realizar el *handshake* de TCP, negociar TLS y autenticar al usuario. Todo este *overhead* destruye la latencia de tu aplicación. 
+En el desarrollo de APIs de alto rendimiento (como las que construimos con Actix-Web o Axum en los capítulos anteriores), abrir una nueva conexión a la base de datos por cada petición HTTP es un antipatrón crítico. El proceso de establecer una conexión a una base de datos requiere resolver el DNS, realizar el *handshake* de TCP, negociar TLS y autenticar al usuario. Todo este *overhead* destruye la latencia de tu aplicación.
 
-La solución estándar es utilizar un **Connection Pool** (pool de conexiones). Un pool mantiene un conjunto de conexiones abiertas y listas para ser reutilizadas. Cuando una petición necesita hablar con la base de datos, "toma prestada" una conexión del pool y, al finalizar, la devuelve. 
+La solución estándar es utilizar un **Connection Pool** (pool de conexiones). Un pool mantiene un conjunto de conexiones abiertas y listas para ser reutilizadas. Cuando una petición necesita hablar con la base de datos, "toma prestada" una conexión del pool y, al finalizar, la devuelve.
 
 En el ecosistema asíncrono de Rust, si estás trabajando directamente con drivers de bajo nivel como `tokio-postgres` (que veremos en la siguiente sección) en lugar de un ORM, tienes dos opciones principales y probadas en producción: **`deadpool`** y **`bb8`**.
 
@@ -115,21 +115,22 @@ A la hora de llevar estos pools a producción, no basta con instanciarlos y ya e
 2. **Métodos de Reciclaje:** Cuando una conexión se devuelve al pool, el gestor necesita saber si la conexión sigue viva o si ha sido corrompida (por ejemplo, por una transacción fallida o un timeout de red). `deadpool` permite configurar esto (`RecyclingMethod::Fast` vs `RecyclingMethod::Verified`). Validar exhaustivamente cada conexión antes de devolverla añade seguridad, pero inyecta latencia adicional (suele hacer un `SELECT 1` interno).
 3. **Manejo del Estado:** En frameworks como Axum o Actix-Web (Capítulos 16 y 17), el objeto `Pool` completo es lo que debes inyectar en el estado compartido de la aplicación (`app_data` o `State`), **no** las conexiones individuales. El pool internamente utiliza `Arc` para gestionar las referencias de forma segura entre hilos.
 
-Ambas librerías son excepcionales. Si tu proyecto prioriza un rendimiento bruto y un stack puramente basado en mecánicas modernas de Tokio, `deadpool` suele ser la opción recomendada. Si valoras una heurística robusta de mantenimiento de conexiones en segundo plano, `bb8` no te fallará. 
+Ambas librerías son excepcionales. Si tu proyecto prioriza un rendimiento bruto y un stack puramente basado en mecánicas modernas de Tokio, `deadpool` suele ser la opción recomendada. Si valoras una heurística robusta de mantenimiento de conexiones en segundo plano, `bb8` no te fallará.
 
 *(Nota: En el Capítulo 20 veremos cómo SQLx trae su propio gestor de pools de conexiones integrado, haciendo innecesario el uso de `deadpool` o `bb8` si optas por esa herramienta).*
 
 ## 19.2 Drivers asíncronos para PostgreSQL (`tokio-postgres`)
 
-Si bien en el ecosistema de Rust existen varios drivers para interactuar con bases de datos, **`tokio-postgres`** se ha consolidado como la piedra angular para las comunicaciones asíncronas con PostgreSQL. Es una implementación nativa escrita 100% en Rust (no es un wrapper sobre `libpq` de C), diseñada desde cero para aprovechar al máximo el runtime asíncrono de Tokio. 
+Si bien en el ecosistema de Rust existen varios drivers para interactuar con bases de datos, **`tokio-postgres`** se ha consolidado como la piedra angular para las comunicaciones asíncronas con PostgreSQL. Es una implementación nativa escrita 100% en Rust (no es un wrapper sobre `libpq` de C), diseñada desde cero para aprovechar al máximo el runtime asíncrono de Tokio.
 
 Incluso si planeas usar herramientas de más alto nivel como SQLx o un ORM como SeaORM (que exploraremos en los próximos capítulos), comprender cómo funciona `tokio-postgres` te dará la base técnica necesaria para depurar cuellos de botella y entender la arquitectura de tu acceso a datos.
 
 ### La dicotomía entre `Client` y `Connection`
 
-El diseño de `tokio-postgres` es particular y brillante. Al establecer una conexión, la librería no te devuelve un único objeto, sino una tupla con dos elementos distintos: un `Client` y un `Connection`. 
+El diseño de `tokio-postgres` es particular y brillante. Al establecer una conexión, la librería no te devuelve un único objeto, sino una tupla con dos elementos distintos: un `Client` y un `Connection`.
 
 Esta separación es fundamental para entender su modelo de concurrencia:
+
 * **`Connection`**: Es un `Future` que representa el bucle de red real (el *socket* TCP/TLS). Se encarga de leer y escribir bytes en la red de forma ininterrumpida. **Debe ser ejecutado en una tarea de fondo (spawn)** para que pueda procesar el tráfico independientemente de tu lógica de negocio.
 * **`Client`**: Es la interfaz de usuario. Es lo que clonas y utilizas en tus *handlers* HTTP para enviar consultas. El `Client` se comunica internamente con la `Connection` a través de canales (channels) de un solo productor y un solo consumidor, de forma extremadamente rápida.
 
@@ -212,7 +213,7 @@ tx.commit().await?;
 
 ### Pipelining Automático (El superpoder oculto)
 
-Una de las razones por las que `tokio-postgres` es tan rápido es su soporte nativo para **Pipelining**. 
+Una de las razones por las que `tokio-postgres` es tan rápido es su soporte nativo para **Pipelining**.
 
 En un driver tradicional, si envías tres consultas, el flujo es: `Enviar Q1 -> Esperar R1 -> Enviar Q2 -> Esperar R2 -> Enviar Q3 -> Esperar R3`. Esto es ineficiente debido a la latencia de la red.
 
@@ -282,9 +283,10 @@ Al ejecutarse, `refinery` creará automáticamente una tabla interna en PostgreS
 
 A nivel Senior o en equipos donde el backend se divide entre varios lenguajes, acoplar las migraciones al código de Rust no siempre es la mejor decisión arquitectónica. En estos casos, se prefieren herramientas CLI externas.
 
-**`dbmate`** (o alternativas como Flyway, Liquibase o golang-migrate) te permite desacoplar completamente la evolución del esquema del código de tu aplicación. 
+**`dbmate`** (o alternativas como Flyway, Liquibase o golang-migrate) te permite desacoplar completamente la evolución del esquema del código de tu aplicación.
 
 Las ventajas de este enfoque son:
+
 * **Separación de responsabilidades:** La base de datos se gestiona en su propio repositorio o en un paso completamente separado de tu canalización CI/CD.
 * **Independencia del driver:** Si mañana cambias `tokio-postgres` por SQLx, tus migraciones no necesitan reescribirse ni reconfigurarse.
 * **Rollbacks más sencillos:** La mayoría de estas herramientas CLI manejan el concepto de migraciones *Up* (aplicar) y *Down* (revertir) de forma muy madura.
@@ -309,7 +311,7 @@ Independientemente de la herramienta que elijas, debes adoptar las siguientes pr
 
 ## 19.4 Ejecución de sentencias SQL planas
 
-A medida que tu aplicación crece, las abstracciones genéricas a menudo se quedan cortas. Operaciones como las *Common Table Expressions* (CTEs), *Window Functions*, inserciones masivas (*Bulk Inserts*) complejas o consultas analíticas con `GROUPING SETS` requieren el poder puro de SQL. 
+A medida que tu aplicación crece, las abstracciones genéricas a menudo se quedan cortas. Operaciones como las *Common Table Expressions* (CTEs), *Window Functions*, inserciones masivas (*Bulk Inserts*) complejas o consultas analíticas con `GROUPING SETS` requieren el poder puro de SQL.
 
 Como desarrollador Senior, debes saber cuándo abandonar un ORM y escribir SQL plano (raw SQL) para aprovechar las características específicas del motor de tu base de datos (en este caso, PostgreSQL). Con `tokio-postgres`, la ejecución de SQL plano es rápida y explícita, pero requiere que manejes manualmente el mapeo de tipos y la memoria.
 

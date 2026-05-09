@@ -4,7 +4,7 @@ Here, we transition from writing code that executes tasks to writing code that *
 
 ## 10.1 State Retention through Closures and Non-local Variables
 
-While Chapter 4 established that Python treats functions as first-class citizens and resolves namespaces via the LEGB rule, we have yet to explore one of the most powerful consequences of this architecture: the **closure**. 
+While Chapter 4 established that Python treats functions as first-class citizens and resolves namespaces via the LEGB rule, we have yet to explore one of the most powerful consequences of this architecture: the **closure**.
 
 A closure is a dynamically generated function that remembers the environment in which it was created. Specifically, it retains access to variables from its enclosing lexical scope, even after the outer function has finished execution and its local scope has been destroyed. This mechanism allows functions to persist state across invocations without relying on class instances or global variables.
 
@@ -30,11 +30,11 @@ print(multiply_by_five(2))  # Output: 10
 print(multiply_by_ten(2))   # Output: 20
 ```
 
-When `make_multiplier(5)` returns, its execution context is theoretically garbage collected. However, `multiply_by_five` still remembers that `factor` is `5`. It achieves this through a closure. 
+When `make_multiplier(5)` returns, its execution context is theoretically garbage collected. However, `multiply_by_five` still remembers that `factor` is `5`. It achieves this through a closure.
 
 ### Under the Hood: Cell Objects and `__closure__`
 
-Python implements closures using **cell objects**. When a nested function references a variable from an enclosing scope, the compiler creates a cell object to store that variable. Both the enclosing scope and the nested function point to this cell. 
+Python implements closures using **cell objects**. When a nested function references a variable from an enclosing scope, the compiler creates a cell object to store that variable. Both the enclosing scope and the nested function point to this cell.
 
 We can inspect this behavior at runtime using the `__closure__` dunder attribute, which returns a tuple of cell objects corresponding to the retained variables.
 
@@ -72,7 +72,7 @@ Because both the inner function and the original variable reference the same cel
 
 ### State Mutation and the `nonlocal` Keyword
 
-Retaining a read-only value is useful, but maintaining a mutable state introduces a new challenge. If an inner function attempts to reassign an enclosing variable, Python's default behavior assumes you are trying to create a *new* local variable in the inner function's scope. 
+Retaining a read-only value is useful, but maintaining a mutable state introduces a new challenge. If an inner function attempts to reassign an enclosing variable, Python's default behavior assumes you are trying to create a *new* local variable in the inner function's scope.
 
 ```python
 def counter():
@@ -104,7 +104,7 @@ print(ticker())  # Output: 2
 print(ticker())  # Output: 3
 ```
 
-**`nonlocal` vs. `global`**: 
+**`nonlocal` vs. `global`**:
 It is critical to distinguish between these two keywords. `global` forces the variable resolution to the module level. `nonlocal` strictly searches the enclosing function scopes, traversing upwards until it finds the variable (halting before the global scope). If the variable does not exist in any enclosing function, `nonlocal` throws a `SyntaxError`.
 
 ### Closures vs. Objects for State Management
@@ -122,6 +122,7 @@ class CounterObject:
 ```
 
 **When should you use which?**
+
 * **Closures** are computationally lighter, require less boilerplate, and provide strict data encapsulation (the state in a closure cannot be accessed directly from the outside, unlike `self.count`). They are ideal for single-method interfaces or simple state retention.
 * **Classes** are superior when the state is complex, requires multiple behaviors (methods) to manipulate it, or when the state needs to be explicitly introspected and modified by external consumers.
 
@@ -129,7 +130,7 @@ Understanding closures and non-local mutation is not just an exercise in functio
 
 ## 10.2 Decorator Architecture: Wrapping Functions and Preserving Metadata
 
-Armed with an understanding of first-class functions and closures from the previous section, we can now dissect one of Python's most expressive and widely used features: the **decorator**. 
+Armed with an understanding of first-class functions and closures from the previous section, we can now dissect one of Python's most expressive and widely used features: the **decorator**.
 
 In backend engineering, we constantly encounter cross-cutting concerns—operations that must be applied across many different endpoints or services. Think of authentication checks, request logging, database transaction management, or rate limiting. Decorators allow us to extract this boilerplate into reusable modules, wrapping our core business logic without modifying its source code.
 
@@ -137,7 +138,7 @@ In backend engineering, we constantly encounter cross-cutting concerns—operati
 
 Fundamentally, a decorator is simply a function that accepts another function as an argument, extends or alters its behavior using a closure, and returns a new function.
 
-Let's build a practical backend example: an execution logger. 
+Let's build a practical backend example: an execution logger.
 
 ```python
 def log_execution(func):
@@ -213,7 +214,7 @@ Caller receives: "Processed $150"
 
 ### The Metadata Trap
 
-While our `log_execution` decorator works flawlessly, it introduces a subtle but severe architectural bug. When we use `@log_execution`, we completely overwrite the original function with the `wrapper` function. 
+While our `log_execution` decorator works flawlessly, it introduces a subtle but severe architectural bug. When we use `@log_execution`, we completely overwrite the original function with the `wrapper` function.
 
 This means the original function's metadata—its name, its docstring, and its type annotations—is instantly obliterated.
 
@@ -264,24 +265,25 @@ print(fetch_user.__doc__)
 # Retrieves a user record from the database.
 ```
 
-By applying `@wraps(func)` to the `wrapper`, we ensure the wrapper masquerades perfectly as the original function. The state retention we discussed in Section 10.1 acts as the engine of the decorator, while `@wraps` ensures the exterior paint job matches the original vehicle. 
+By applying `@wraps(func)` to the `wrapper`, we ensure the wrapper masquerades perfectly as the original function. The state retention we discussed in Section 10.1 acts as the engine of the decorator, while `@wraps` ensures the exterior paint job matches the original vehicle.
 
 This combination of closures and metadata preservation forms the bedrock of middleware and request-hook architectures in virtually every major Python web framework.
 
 ## 10.3 Parameterized Decorators and Class-Based Decorators
 
-In the previous section, we built decorators that implicitly accepted a single argument: the function being decorated. However, backend development frequently requires decorators that can be dynamically configured. 
+In the previous section, we built decorators that implicitly accepted a single argument: the function being decorated. However, backend development frequently requires decorators that can be dynamically configured.
 
 Consider a route authorization decorator. A standard `@require_login` decorator is useful, but a `@require_permission("admin")` or `@require_permission("editor")` decorator is far more powerful. To pass arguments directly to the decorator itself, we must add another layer of abstraction: the **decorator factory**.
 
 ### The Decorator Factory (Three-Level Nesting)
 
-When Python encounters `@require_permission("admin")`, it evaluates the expression `require_permission("admin")` *first*, before the decoration happens. Therefore, `require_permission` is not the decorator itself; it is a function that *returns* the actual decorator. 
+When Python encounters `@require_permission("admin")`, it evaluates the expression `require_permission("admin")` *first*, before the decoration happens. Therefore, `require_permission` is not the decorator itself; it is a function that *returns* the actual decorator.
 
 This requires three levels of nested functions:
-1.  **The Factory:** Accepts the configuration parameters.
-2.  **The Decorator:** Accepts the target function.
-3.  **The Wrapper:** Accepts the target function's runtime arguments.
+
+1. **The Factory:** Accepts the configuration parameters.
+2. **The Decorator:** Accepts the target function.
+3. **The Wrapper:** Accepts the target function's runtime arguments.
 
 Here is a practical implementation of a parameterized permission checker:
 
@@ -351,8 +353,9 @@ Because Python functions are just objects, and classes can be made callable via 
 #### Implementing a Parameterized Class Decorator
 
 When building a parameterized decorator using a class, the setup is split into two phases:
-1.  `__init__` acts as the **Factory**, receiving the configuration parameters.
-2.  `__call__` acts as the **Decorator**, receiving the function and returning the wrapper.
+
+1. `__init__` acts as the **Factory**, receiving the configuration parameters.
+2. `__call__` acts as the **Decorator**, receiving the function and returning the wrapper.
 
 Let's build a robust `@Retry` decorator—a common requirement in distributed systems to handle transient network failures.
 
@@ -414,6 +417,7 @@ Python’s standard library provides the `functools` module as the definitive to
 As discussed in Section 10.2, applying a decorator completely replaces the target function with the wrapper, stripping away its identity (`__name__`, `__doc__`, and type annotations). `functools.wraps` is the standard solution to this problem.
 
 What is less commonly understood is *how* `wraps` works under the hood. It is actually a convenience function that invokes `functools.update_wrapper()`. It systematically copies the following attributes from the original function to the wrapper:
+
 * `__module__`
 * `__name__`
 * `__qualname__`
@@ -424,9 +428,9 @@ For modern web frameworks like FastAPI, which parse `__annotations__` at runtime
 
 ### Arity Reduction with `functools.partial`
 
-In backend development, you frequently encounter situations where a function requires multiple arguments, but the framework or callback mechanism executing that function only supplies a subset of them (or none at all). 
+In backend development, you frequently encounter situations where a function requires multiple arguments, but the framework or callback mechanism executing that function only supplies a subset of them (or none at all).
 
-`functools.partial` allows you to "freeze" specific arguments or keyword arguments of a function, returning a new callable object with a simplified signature. 
+`functools.partial` allows you to "freeze" specific arguments or keyword arguments of a function, returning a new callable object with a simplified signature.
 
 Consider a scenario where you are using `asyncio` to run a blocking database query in a thread pool. The `run_in_executor` method expects a callable that takes *no arguments*. If your database query requires a user ID, you cannot pass it directly.
 
@@ -504,8 +508,8 @@ If a new call arrives for ("data_D",):
 
 While powerful, `lru_cache` has strict limitations that must be respected:
 
-1.  **Arguments Must Be Hashable:** Because the cache uses a dictionary behind the scenes to map arguments to results, all arguments passed to the decorated function must be hashable. If you attempt to pass a `list`, `dict`, or `set`, Python will raise a `TypeError: unhashable type`. (This is a prime use-case for `frozenset` and tuples, covered in Chapter 5).
-2.  **Memory Exhaustion:** As of Python 3.9, you can use `@functools.cache` for an unbounded cache (equivalent to `lru_cache(maxsize=None)`). **Never use an unbounded cache in a production backend** unless the domain of possible arguments is strictly finite and small. An unbounded cache on an endpoint that accepts user input is a critical memory leak waiting to happen. Always use `lru_cache` with a carefully tuned `maxsize`.
-3.  **Thread Safety:** The CPython implementation of `lru_cache` is thread-safe, meaning it can be safely used in threaded backend environments (like WSGI servers) without corrupting the internal state dictionary.
+1. **Arguments Must Be Hashable:** Because the cache uses a dictionary behind the scenes to map arguments to results, all arguments passed to the decorated function must be hashable. If you attempt to pass a `list`, `dict`, or `set`, Python will raise a `TypeError: unhashable type`. (This is a prime use-case for `frozenset` and tuples, covered in Chapter 5).
+2. **Memory Exhaustion:** As of Python 3.9, you can use `@functools.cache` for an unbounded cache (equivalent to `lru_cache(maxsize=None)`). **Never use an unbounded cache in a production backend** unless the domain of possible arguments is strictly finite and small. An unbounded cache on an endpoint that accepts user input is a critical memory leak waiting to happen. Always use `lru_cache` with a carefully tuned `maxsize`.
+3. **Thread Safety:** The CPython implementation of `lru_cache` is thread-safe, meaning it can be safely used in threaded backend environments (like WSGI servers) without corrupting the internal state dictionary.
 
 By mastering closures, decorators, and the `functools` module, you transition from writing procedural scripts to architecting modular, highly optimized, and framework-ready Python applications.

@@ -8,7 +8,7 @@ The story of Go (often referred to as Golang) begins not as an academic exercise
 
 In late 2007, software engineers at Google were facing a crisis of scale. The company's codebases, primarily written in C++ and Java, had grown so massive that compiling a single binary could take nearly an hour. Furthermore, the hardware landscape was shifting; multicore processors were becoming the norm, but existing languages required complex, error-prone threading models to take advantage of them.
 
-During a lengthy C++ compilation cycle, three prominent engineers—Robert Griesemer, Rob Pike, and Ken Thompson (co-creator of Unix and C)—went to the whiteboard. They sought to design a language that combined the performance and security of a statically typed, compiled language with the ease of use and rapid iteration of a dynamically typed, interpreted language like Python. 
+During a lengthy C++ compilation cycle, three prominent engineers—Robert Griesemer, Rob Pike, and Ken Thompson (co-creator of Unix and C)—went to the whiteboard. They sought to design a language that combined the performance and security of a statically typed, compiled language with the ease of use and rapid iteration of a dynamically typed, interpreted language like Python.
 
 By 2009, Go was released as an open-source project. In March 2012, Go 1.0 was officially released, marking the stabilization of the language.
 
@@ -18,6 +18,7 @@ Go was intentionally designed to be boring, predictable, and remarkably straight
 
 **1. Simplicity and Readability**
 Go is a language that can be learned in a weekend. It has only 25 keywords (compared to C++ or Java, which have well over 50). The creators famously omitted features that add complexity to reading and maintaining code:
+
 * No classes or classical inheritance (favoring composition via interfaces and structs).
 * No pointer arithmetic by default.
 * No implicit type conversions.
@@ -72,21 +73,22 @@ However, the language has not remained stagnant. It has evolved carefully to add
 
 ### The Language of the Cloud
 
-As Go matured, a massive shift occurred in the software industry: the rise of Cloud-Native computing. Go’s design characteristics—statically compiled single binaries, minimal memory footprint, and native concurrency—made it the perfect tool for distributed systems. 
+As Go matured, a massive shift occurred in the software industry: the rise of Cloud-Native computing. Go’s design characteristics—statically compiled single binaries, minimal memory footprint, and native concurrency—made it the perfect tool for distributed systems.
 
 When Docker was released in 2013, it was written in Go. Shortly after, Kubernetes, the ubiquitous container orchestration system, was also built in Go. Today, the foundational infrastructure of the modern cloud—from Terraform and Prometheus to HashiCorp Vault and etcd—is overwhelmingly written in Go. By learning Go, you are learning the native language of modern backend and cloud architecture.
 
 ## 1.2 Installing Go and Configuring the Workspace
 
-One of Go's greatest strengths is its minimal footprint and straightforward setup process. Unlike environments that require complex virtual machines or massive runtime installations, the Go toolchain is distributed as a set of standalone binaries. 
+One of Go's greatest strengths is its minimal footprint and straightforward setup process. Unlike environments that require complex virtual machines or massive runtime installations, the Go toolchain is distributed as a set of standalone binaries.
 
 ### Downloading and Installing
 
-The official distributions for all major operating systems are hosted at the official Go website (`go.dev/dl`). 
+The official distributions for all major operating systems are hosted at the official Go website (`go.dev/dl`).
 
 * **macOS:** You can use the official `.pkg` installer. Alternatively, if you use the Homebrew package manager, installation is as simple as running `brew install go` in your terminal.
 * **Windows:** Download and execute the `.msi` installer. It automatically places the Go distribution in `C:\Program Files\Go` and updates your system's environment variables.
 * **Linux:** Download the `.tar.gz` archive. Remove any previous Go installation by deleting `/usr/local/go`, then extract the new archive to `/usr/local`.
+
     ```bash
     rm -rf /usr/local/go && tar -C /usr/local -xzf go1.x.x.linux-amd64.tar.gz
     ```
@@ -96,13 +98,14 @@ The official distributions for all major operating systems are hosted at the off
 To work effectively with Go, you must understand a few key environment variables. While modern Go versions automatically configure these for you in most cases, understanding what they do is crucial for debugging workspace issues.
 
 **1. `GOROOT`**
-This variable defines where the Go toolchain (the compiler, standard library, and standard tools) is installed on your system. 
+This variable defines where the Go toolchain (the compiler, standard library, and standard tools) is installed on your system.
+
 * *Default (Linux/macOS):* `/usr/local/go`
 * *Default (Windows):* `C:\Program Files\Go`
 * *Note:* You generally never need to set or change `GOROOT` manually unless you are maintaining multiple custom Go versions on a single machine.
 
 **2. `GOPATH`**
-Historically, `GOPATH` was the most confusing aspect of setting up Go. Before Go 1.13, you were forced to place all your source code inside a specific `GOPATH/src` directory for the compiler to find it. 
+Historically, `GOPATH` was the most confusing aspect of setting up Go. Before Go 1.13, you were forced to place all your source code inside a specific `GOPATH/src` directory for the compiler to find it.
 
 Today, thanks to Go Modules (which we will cover in depth in Chapter 8), you can place your code anywhere on your system. However, the `GOPATH` variable still exists and serves an important background role. It is now the default location where Go stores downloaded third-party dependencies and compiled third-party binaries.
 
@@ -126,8 +129,9 @@ Today, thanks to Go Modules (which we will cover in depth in Chapter 8), you can
 ### Configuring the System PATH
 
 For your operating system to recognize Go commands, the directories containing the Go executables must be added to your system's `PATH` variable. You need to add two distinct locations:
-1.  The Go toolchain binary directory (`$GOROOT/bin`).
-2.  Your personal Go workspace binary directory (`$GOPATH/bin`), so you can execute third-party Go tools installed globally.
+
+1. The Go toolchain binary directory (`$GOROOT/bin`).
+2. Your personal Go workspace binary directory (`$GOPATH/bin`), so you can execute third-party Go tools installed globally.
 
 **On Linux and macOS:**
 Open your shell profile (e.g., `~/.bashrc`, `~/.zshrc`, or `~/.profile`) and append the following line:
@@ -135,9 +139,11 @@ Open your shell profile (e.g., `~/.bashrc`, `~/.zshrc`, or `~/.profile`) and app
 ```bash
 export PATH=$PATH:/usr/local/go/bin:~/go/bin
 ```
+
 After saving the file, apply the changes by running `source ~/.zshrc` (or the equivalent for your shell).
 
 **On Windows:**
+
 1. Open the Start Search, type "env", and select "Edit the system environment variables".
 2. Click the "Environment Variables" button.
 3. Under "System variables", find the `Path` variable, select it, and click "Edit".
@@ -172,7 +178,7 @@ With the Go environment configured, the next step is to write your first Go prog
 
 ### Writing the Code
 
-Create a new directory for your project, navigate into it, and create a file named `main.go`. You can use any text editor or IDE (such as VS Code with the official Go extension, or JetBrains GoLand). 
+Create a new directory for your project, navigate into it, and create a file named `main.go`. You can use any text editor or IDE (such as VS Code with the official Go extension, or JetBrains GoLand).
 
 Enter the following code into `main.go`:
 
@@ -191,17 +197,20 @@ func main() {
 Though brief, this program introduces three fundamental concepts that appear in almost every Go file.
 
 **1. The `package` Declaration**
-Every Go source file must begin with a `package` declaration. Packages are Go's way of organizing code. 
-* The name `main` is special. It tells the Go compiler that this file should be compiled into an **executable binary**, rather than a shared library. 
+Every Go source file must begin with a `package` declaration. Packages are Go's way of organizing code.
+
+* The name `main` is special. It tells the Go compiler that this file should be compiled into an **executable binary**, rather than a shared library.
 * If you named it `package mathutils`, the compiler would assume you are building a library to be imported by other programs, and it would not produce an executable file.
 
 **2. The `import` Statement**
-The `import` keyword pulls in code from other packages. 
-* Here, we are importing the `fmt` (short for "format") package from the Go Standard Library. 
+The `import` keyword pulls in code from other packages.
+
+* Here, we are importing the `fmt` (short for "format") package from the Go Standard Library.
 * `fmt` contains functions for formatting text, including printing to the console, reading from standard input, and formatting strings.
 
 **3. The `main` Function**
-Just as `package main` is special, `func main()` is special. 
+Just as `package main` is special, `func main()` is special.
+
 * It is the entry point of your program. When you run a compiled Go executable, the operating system hands control over to the Go runtime, which initializes the program and immediately calls the `main` function.
 * It takes no arguments and returns no values.
 
@@ -220,6 +229,7 @@ go run main.go
 ```
 
 You should immediately see the output:
+
 ```text
 Hello, World!
 ```
@@ -233,6 +243,7 @@ go build main.go
 ```
 
 After running this command, you will notice a new file in your directory:
+
 * On macOS and Linux, it will be named `main` (an executable binary).
 * On Windows, it will be named `main.exe`.
 
@@ -267,7 +278,7 @@ By compiling the code into a standalone binary, Go embeds everything the program
 
 When you install Go, you are not just installing a compiler; you are installing a comprehensive, opinionated toolchain designed to manage the entire software development lifecycle. In many other languages, developers must piece together third-party tools for formatting, linting, testing, and building. Go bundles these utilities into a single, unified command-line interface: the `go` command.
 
-While the toolchain includes dozens of subcommands, four form the absolute core of the daily Go development workflow. 
+While the toolchain includes dozens of subcommands, four form the absolute core of the daily Go development workflow.
 
 ### 1. `go run` and `go build`: The Execution Duo
 
@@ -289,13 +300,14 @@ GOOS=linux GOARCH=arm64 go build -o myapp-pi main.go
 # Compiling for Windows from a Linux machine:
 GOOS=windows GOARCH=amd64 go build -o myapp.exe main.go
 ```
+
 This frictionless cross-compilation is a primary reason Go is the language of choice for building CLI tools and cloud-native agents.
 
 ### 2. `go fmt`: The End of the Formatting Wars
 
 Perhaps the most culturally significant tool in the Go ecosystem is `go fmt`. In many programming communities, countless hours are wasted debating code style: Tabs or spaces? Where do the curly braces go? How should variables be aligned?
 
-Go's creators decided that the best code style is a *uniform* code style. `go fmt` (short for format) automatically parses your Go source files and rewrites them according to a strict, non-negotiable standard. 
+Go's creators decided that the best code style is a *uniform* code style. `go fmt` (short for format) automatically parses your Go source files and rewrites them according to a strict, non-negotiable standard.
 
 ```go
 // BEFORE go fmt: Messy, inconsistent spacing and alignment
@@ -318,10 +330,10 @@ package main
 import "fmt"
 
 func main() {
-	x := 10
-	if x > 5 {
-		fmt.Println("x is large")
-	}
+ x := 10
+ if x > 5 {
+  fmt.Println("x is large")
+ }
 }
 ```
 
@@ -341,13 +353,13 @@ package main
 import "fmt"
 
 func main() {
-	name := "Alice"
-	// Bug: Using %d (integer format) for a string variable
-	fmt.Printf("Hello, %d\n", name) 
+ name := "Alice"
+ // Bug: Using %d (integer format) for a string variable
+ fmt.Printf("Hello, %d\n", name) 
 }
 ```
 
-The Go compiler will build this program without a single complaint because the syntax is perfectly legal. However, when run, it will print `Hello, %!d(string=Alice)`, which is not the intended behavior. 
+The Go compiler will build this program without a single complaint because the syntax is perfectly legal. However, when run, it will print `Hello, %!d(string=Alice)`, which is not the intended behavior.
 
 Running `go vet main.go` catches this immediately:
 
@@ -358,6 +370,7 @@ $ go vet main.go
 ```
 
 **Common issues caught by `go vet` include:**
+
 * `Printf`-style format string mismatches.
 * Unreachable code (e.g., code written after a `return` statement).
 * Shadowed variables that hide outer variables.

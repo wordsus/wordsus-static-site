@@ -47,7 +47,7 @@ The architecture consists of four primary components:
 
 ### Implementing a Robust Pool
 
-When designing your pool, you must handle task distribution, error reporting, and graceful shutdown to prevent deadlocks and goroutine leaks. 
+When designing your pool, you must handle task distribution, error reporting, and graceful shutdown to prevent deadlocks and goroutine leaks.
 
 Below is a complete, production-ready implementation of a bounded worker pool:
 
@@ -55,126 +55,129 @@ Below is a complete, production-ready implementation of a bounded worker pool:
 package main
 
 import (
-	"fmt"
-	"math/rand"
-	"sync"
-	"time"
+ "fmt"
+ "math/rand"
+ "sync"
+ "time"
 )
 
 // Task encapsulates the input data required for the work.
 type Task struct {
-	ID      int
-	Payload string
+ ID      int
+ Payload string
 }
 
 // Result encapsulates the outcome of a Task, including potential errors.
 type Result struct {
-	TaskID int
-	Value  string
-	Err    error
+ TaskID int
+ Value  string
+ Err    error
 }
 
 // worker is the function executed by each goroutine in the pool.
 func worker(workerID int, tasks <-chan Task, results chan<- Result, wg *sync.WaitGroup) {
-	// Ensure the WaitGroup counter is decremented when the worker exits.
-	defer wg.Done()
+ // Ensure the WaitGroup counter is decremented when the worker exits.
+ defer wg.Done()
 
-	// The worker loop naturally terminates when the 'tasks' channel is closed.
-	for task := range tasks {
-		fmt.Printf("Worker %d processing task %d\n", workerID, task.ID)
-		
-		// Simulate arbitrary work (e.g., API call, file processing)
-		time.Sleep(time.Duration(rand.Intn(500)) * time.Millisecond)
+ // The worker loop naturally terminates when the 'tasks' channel is closed.
+ for task := range tasks {
+  fmt.Printf("Worker %d processing task %d\n", workerID, task.ID)
+  
+  // Simulate arbitrary work (e.g., API call, file processing)
+  time.Sleep(time.Duration(rand.Intn(500)) * time.Millisecond)
 
-		// Simulate a random failure
-		if rand.Float32() < 0.2 {
-			results <- Result{
-				TaskID: task.ID,
-				Err:    fmt.Errorf("random processing error"),
-			}
-			continue
-		}
+  // Simulate a random failure
+  if rand.Float32() < 0.2 {
+   results <- Result{
+    TaskID: task.ID,
+    Err:    fmt.Errorf("random processing error"),
+   }
+   continue
+  }
 
-		// Send successful outcome
-		results <- Result{
-			TaskID: task.ID,
-			Value:  fmt.Sprintf("%s processed by worker %d", task.Payload, workerID),
-		}
-	}
-	fmt.Printf("Worker %d shutting down\n", workerID)
+  // Send successful outcome
+  results <- Result{
+   TaskID: task.ID,
+   Value:  fmt.Sprintf("%s processed by worker %d", task.Payload, workerID),
+  }
+ }
+ fmt.Printf("Worker %d shutting down\n", workerID)
 }
 
 func main() {
-	const numWorkers = 3
-	const numTasks = 10
+ const numWorkers = 3
+ const numTasks = 10
 
-	// 1. Initialize Channels
-	// We use buffered channels to prevent the dispatcher and workers from blocking unnecessarily.
-	tasks := make(chan Task, numTasks)
-	results := make(chan Result, numTasks)
+ // 1. Initialize Channels
+ // We use buffered channels to prevent the dispatcher and workers from blocking unnecessarily.
+ tasks := make(chan Task, numTasks)
+ results := make(chan Result, numTasks)
 
-	var wg sync.WaitGroup
+ var wg sync.WaitGroup
 
-	// 2. Boot up the Worker Pool
-	for w := 1; w <= numWorkers; w++ {
-		wg.Add(1)
-		go worker(w, tasks, results, &wg)
-	}
+ // 2. Boot up the Worker Pool
+ for w := 1; w <= numWorkers; w++ {
+  wg.Add(1)
+  go worker(w, tasks, results, &wg)
+ }
 
-	// 3. Dispatch Tasks
-	// In a real application, this might be a loop reading from a database or an HTTP request stream.
-	for i := 1; i <= numTasks; i++ {
-		tasks <- Task{
-			ID:      i,
-			Payload: fmt.Sprintf("Data-%d", i),
-		}
-	}
-	
-	// 4. Signal no more tasks
-	// Closing the tasks channel breaks the 'for range' loops inside the workers.
-	close(tasks)
+ // 3. Dispatch Tasks
+ // In a real application, this might be a loop reading from a database or an HTTP request stream.
+ for i := 1; i <= numTasks; i++ {
+  tasks <- Task{
+   ID:      i,
+   Payload: fmt.Sprintf("Data-%d", i),
+  }
+ }
+ 
+ // 4. Signal no more tasks
+ // Closing the tasks channel breaks the 'for range' loops inside the workers.
+ close(tasks)
 
-	// 5. Graceful Shutdown Coordinator
-	// We spin up a separate goroutine to wait for all workers to finish.
-	// Once they are done, we close the results channel. This prevents a deadlock
-	// on the range loop reading results below.
-	go func() {
-		wg.Wait()
-		close(results)
-	}()
+ // 5. Graceful Shutdown Coordinator
+ // We spin up a separate goroutine to wait for all workers to finish.
+ // Once they are done, we close the results channel. This prevents a deadlock
+ // on the range loop reading results below.
+ go func() {
+  wg.Wait()
+  close(results)
+ }()
 
-	// 6. Aggregate Results
-	// This loop continues until the results channel is explicitly closed by the coordinator above.
-	var successCount, errorCount int
-	for res := range results {
-		if res.Err != nil {
-			fmt.Printf("[ERROR] Task %d failed: %v\n", res.TaskID, res.Err)
-			errorCount++
-		} else {
-			fmt.Printf("[SUCCESS] Task %d result: %s\n", res.TaskID, res.Value)
-			successCount++
-		}
-	}
+ // 6. Aggregate Results
+ // This loop continues until the results channel is explicitly closed by the coordinator above.
+ var successCount, errorCount int
+ for res := range results {
+  if res.Err != nil {
+   fmt.Printf("[ERROR] Task %d failed: %v\n", res.TaskID, res.Err)
+   errorCount++
+  } else {
+   fmt.Printf("[SUCCESS] Task %d result: %s\n", res.TaskID, res.Value)
+   successCount++
+  }
+ }
 
-	fmt.Printf("\n--- Processing Complete ---\n")
-	fmt.Printf("Successes: %d | Errors: %d\n", successCount, errorCount)
+ fmt.Printf("\n--- Processing Complete ---\n")
+ fmt.Printf("Successes: %d | Errors: %d\n", successCount, errorCount)
 }
 ```
 
 ### Critical Design Considerations
 
 #### Avoiding the Result Deadlock
+
 Notice Step 5 in the implementation: `go func() { wg.Wait(); close(results) }()`. This is a crucial Go idiom. If we had placed `wg.Wait()` directly in the `main` thread before iterating over `results`, the program would deadlock. The workers might block trying to send to a full `results` channel, while `main` is blocked on `wg.Wait()` and unable to read from it. By waiting and closing in a separate goroutine, the main thread immediately proceeds to drain the `results` channel, keeping the pipeline flowing.
 
 #### Channel Sizing
+
 In the example above, the channels are fully buffered (`make(chan Task, numTasks)`). This allows the dispatcher to push all tasks at once without blocking. However, in long-running services (e.g., streaming large files), holding all tasks in memory defeats the purpose of the pool. In those cases, keep the task channel buffer small (e.g., equal to the number of workers). This creates *backpressure*, forcing the dispatcher to pause until a worker frees up, thereby keeping memory usage flat and predictable.
 
 #### Error Handling as Data
+
 Worker pools heavily emphasize Go's "errors are values" philosophy. Because a worker runs in a separate goroutine, it cannot simply return an error to the caller, nor should it `panic` (which would crash the entire application). Instead, errors must be packaged into the `Result` struct and sent back through the channel to be logged, retried, or discarded by the aggregator.
 
 ## 11.2 Fan-In and Fan-Out Patterns for Workload Distribution
 
-While worker pools (covered in Section 11.1) are excellent for managing a fixed amount of concurrency, data streaming and pipeline architectures often require a more dynamic approach to workload distribution. This is where the **Fan-Out** and **Fan-In** concurrency patterns become essential. 
+While worker pools (covered in Section 11.1) are excellent for managing a fixed amount of concurrency, data streaming and pipeline architectures often require a more dynamic approach to workload distribution. This is where the **Fan-Out** and **Fan-In** concurrency patterns become essential.
 
 These patterns describe how data flows through various stages of your application. They are inspired by digital logic gates and are instrumental in CPU-bound processing, log aggregation, and real-time data ingestion.
 
@@ -205,106 +208,106 @@ The following example demonstrates a complete pipeline. We will generate a strea
 package main
 
 import (
-	"fmt"
-	"math/rand"
-	"sync"
-	"time"
+ "fmt"
+ "math/rand"
+ "sync"
+ "time"
 )
 
 // generator creates a stream of integers and returns a read-only channel.
 // This is the source of our pipeline.
 func generator(done <-chan struct{}, nums ...int) <-chan int {
-	out := make(chan int)
-	go func() {
-		defer close(out)
-		for _, n := range nums {
-			select {
-			case out <- n:
-			case <-done:
-				return // Early cancellation support
-			}
-		}
-	}()
-	return out
+ out := make(chan int)
+ go func() {
+  defer close(out)
+  for _, n := range nums {
+   select {
+   case out <- n:
+   case <-done:
+    return // Early cancellation support
+   }
+  }
+ }()
+ return out
 }
 
 // worker represents a CPU-heavy operation. It reads from an input channel
 // and writes to an output channel.
 func worker(done <-chan struct{}, in <-chan int, workerID int) <-chan string {
-	out := make(chan string)
-	go func() {
-		defer close(out)
-		for n := range in {
-			// Simulate variable computational load
-			time.Sleep(time.Duration(rand.Intn(100)) * time.Millisecond)
-			result := fmt.Sprintf("Worker %d calculated %d^2 = %d", workerID, n, n*n)
-			
-			select {
-			case out <- result:
-			case <-done:
-				return
-			}
-		}
-	}()
-	return out
+ out := make(chan string)
+ go func() {
+  defer close(out)
+  for n := range in {
+   // Simulate variable computational load
+   time.Sleep(time.Duration(rand.Intn(100)) * time.Millisecond)
+   result := fmt.Sprintf("Worker %d calculated %d^2 = %d", workerID, n, n*n)
+   
+   select {
+   case out <- result:
+   case <-done:
+    return
+   }
+  }
+ }()
+ return out
 }
 
 // fanIn multiplexes multiple read-only channels into a single read-only channel.
 func fanIn(done <-chan struct{}, channels ...<-chan string) <-chan string {
-	var wg sync.WaitGroup
-	multiplexedStream := make(chan string)
+ var wg sync.WaitGroup
+ multiplexedStream := make(chan string)
 
-	// multiplex reads from a single channel and forwards to the unified stream.
-	multiplex := func(c <-chan string) {
-		defer wg.Done()
-		for i := range c {
-			select {
-			case multiplexedStream <- i:
-			case <-done:
-				return
-			}
-		}
-	}
+ // multiplex reads from a single channel and forwards to the unified stream.
+ multiplex := func(c <-chan string) {
+  defer wg.Done()
+  for i := range c {
+   select {
+   case multiplexedStream <- i:
+   case <-done:
+    return
+   }
+  }
+ }
 
-	// Add a WaitGroup delta for each input channel
-	wg.Add(len(channels))
-	for _, c := range channels {
-		go multiplex(c)
-	}
+ // Add a WaitGroup delta for each input channel
+ wg.Add(len(channels))
+ for _, c := range channels {
+  go multiplex(c)
+ }
 
-	// Wait for all multiplexing goroutines to finish, then close the unified stream.
-	go func() {
-		wg.Wait()
-		close(multiplexedStream)
-	}()
+ // Wait for all multiplexing goroutines to finish, then close the unified stream.
+ go func() {
+  wg.Wait()
+  close(multiplexedStream)
+ }()
 
-	return multiplexedStream
+ return multiplexedStream
 }
 
 func main() {
-	// Set up a done channel for graceful cancellation across the pipeline
-	done := make(chan struct{})
-	defer close(done)
+ // Set up a done channel for graceful cancellation across the pipeline
+ done := make(chan struct{})
+ defer close(done)
 
-	// 1. Source: Generate a stream of numbers
-	inputStream := generator(done, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+ // 1. Source: Generate a stream of numbers
+ inputStream := generator(done, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
-	// 2. Fan-Out: Distribute work across 3 worker goroutines
-	// Unlike a worker pool reading from one channel, here each worker 
-	// returns its own output channel.
-	worker1 := worker(done, inputStream, 1)
-	worker2 := worker(done, inputStream, 2)
-	worker3 := worker(done, inputStream, 3)
+ // 2. Fan-Out: Distribute work across 3 worker goroutines
+ // Unlike a worker pool reading from one channel, here each worker 
+ // returns its own output channel.
+ worker1 := worker(done, inputStream, 1)
+ worker2 := worker(done, inputStream, 2)
+ worker3 := worker(done, inputStream, 3)
 
-	// 3. Fan-In: Multiplex the 3 output channels back into a single channel
-	unifiedStream := fanIn(done, worker1, worker2, worker3)
+ // 3. Fan-In: Multiplex the 3 output channels back into a single channel
+ unifiedStream := fanIn(done, worker1, worker2, worker3)
 
-	// 4. Consume the final results
-	for result := range unifiedStream {
-		fmt.Println(result)
-	}
-	
-	fmt.Println("Pipeline processing complete.")
+ // 4. Consume the final results
+ for result := range unifiedStream {
+  fmt.Println(result)
+ }
+ 
+ fmt.Println("Pipeline processing complete.")
 }
 ```
 
@@ -313,17 +316,20 @@ func main() {
 When designing Fan-Out/Fan-In architectures, keep the following considerations in mind:
 
 #### Order is Not Guaranteed
+
 By fanning out workloads across multiple goroutines, you abandon strict sequential processing. In the example above, calculating `1^2` might finish *after* `2^2` depending on the Go scheduler and the simulated processing time. If your domain logic requires strict ordering (e.g., processing ledger transactions), you must either avoid fanning out or implement a reordering mechanism buffer post-Fan-In, sorting by a sequence ID.
 
 #### The `done` Channel Paradigm
-Notice the pervasive use of the `done <-chan struct{}` in every stage of the pipeline. In distributed systems, downstream consumers might fail or exit early. Without a cancellation signal, upstream goroutines would block forever trying to send to unread channels, causing a goroutine leak. Passing a `done` channel allows the `main` function (or a context, as we will explore in Section 11.4) to broadcast a shutdown signal to the entire pipeline instantly. 
+
+Notice the pervasive use of the `done <-chan struct{}` in every stage of the pipeline. In distributed systems, downstream consumers might fail or exit early. Without a cancellation signal, upstream goroutines would block forever trying to send to unread channels, causing a goroutine leak. Passing a `done` channel allows the `main` function (or a context, as we will explore in Section 11.4) to broadcast a shutdown signal to the entire pipeline instantly.
 
 #### Variadic Fan-In
+
 The `fanIn` function relies on a variadic parameter (`channels ...<-chan string`). This makes the function highly reusable. Whether you fan out to 2 workers or 2,000 workers, you can pass their resulting channels into the same `fanIn` function seamlessly. The internal `sync.WaitGroup` dynamically scales to the number of input channels provided, ensuring the multiplexed channel is only closed when absolutely all inputs are exhausted.
 
 ## 11.3 Building Concurrency Pipelines and Data Streams
 
-In the previous sections, we bounded concurrency using worker pools and distributed workloads using fan-out/fan-in patterns. Now, we will combine these concepts to construct **Concurrency Pipelines**. 
+In the previous sections, we bounded concurrency using worker pools and distributed workloads using fan-out/fan-in patterns. Now, we will combine these concepts to construct **Concurrency Pipelines**.
 
 A pipeline is a series of data processing stages connected by channels. In a pipeline, data flows like water through a plumbing system: it enters at the source, passes through various transformative stages, and pools at the destination. This architectural pattern is highly idiomatic in Go and is perfectly suited for stream processing, ETL (Extract, Transform, Load) tasks, and data ingestion services.
 
@@ -331,9 +337,9 @@ A pipeline is a series of data processing stages connected by channels. In a pip
 
 A robust pipeline consists of three distinct types of components:
 
-1.  **The Source (Generator):** The origin of the data stream. It converts discrete data sources (like a database query result, a CSV file, or an HTTP stream) into a channel of values.
-2.  **The Stages (Processors):** The middle layers. They receive data from an upstream channel, perform operations (filtering, enriching, or mutating), and send the results to a downstream channel.
-3.  **The Sink (Consumer):** The terminal end of the pipeline. It ranges over the final channel, aggregating the results, writing them to a database, or simply logging them.
+1. **The Source (Generator):** The origin of the data stream. It converts discrete data sources (like a database query result, a CSV file, or an HTTP stream) into a channel of values.
+2. **The Stages (Processors):** The middle layers. They receive data from an upstream channel, perform operations (filtering, enriching, or mutating), and send the results to a downstream channel.
+3. **The Sink (Consumer):** The terminal end of the pipeline. It ranges over the final channel, aggregating the results, writing them to a database, or simply logging them.
 
 ```text
 +----------+        +-------------+        +---------------+        +----------+
@@ -344,9 +350,10 @@ A robust pipeline consists of three distinct types of components:
 
 ### Channel Ownership and Pipeline Rules
 
-To prevent deadlocks and goroutine leaks, you must adhere strictly to the rules of **channel ownership**. The goroutine that *creates* the channel is responsible for writing to it and, crucially, *closing* it. 
+To prevent deadlocks and goroutine leaks, you must adhere strictly to the rules of **channel ownership**. The goroutine that *creates* the channel is responsible for writing to it and, crucially, *closing* it.
 
 The Go blog formally defines the golden rules for pipeline stages:
+
 * Stages close their outbound channels when all send operations are complete.
 * Stages keep receiving values from inbound channels until those channels are closed or until they receive a cancellation signal.
 
@@ -358,106 +365,109 @@ Let us build a data processing pipeline that simulates an ETL job. The pipeline 
 package main
 
 import (
-	"fmt"
-	"strings"
-	"sync"
+ "fmt"
+ "strings"
+ "sync"
 )
 
 // 1. The Source: Generates raw data from a slice and pipes it into a channel.
 func generateData(done <-chan struct{}, rawData []string) <-chan string {
-	out := make(chan string)
-	go func() {
-		defer close(out) // Owner closes the channel
-		for _, data := range rawData {
-			select {
-			case out <- data:
-			case <-done:
-				return // Graceful exit if downstream cancels
-			}
-		}
-	}()
-	return out
+ out := make(chan string)
+ go func() {
+  defer close(out) // Owner closes the channel
+  for _, data := range rawData {
+   select {
+   case out <- data:
+   case <-done:
+    return // Graceful exit if downstream cancels
+   }
+  }
+ }()
+ return out
 }
 
 // 2. Stage 1 (Filter): Removes empty strings from the stream.
 func filterEmpty(done <-chan struct{}, in <-chan string) <-chan string {
-	out := make(chan string)
-	go func() {
-		defer close(out)
-		for data := range in {
-			if strings.TrimSpace(data) == "" {
-				continue // Skip empty strings
-			}
-			select {
-			case out <- data:
-			case <-done:
-				return
-			}
-		}
-	}()
-	return out
+ out := make(chan string)
+ go func() {
+  defer close(out)
+  for data := range in {
+   if strings.TrimSpace(data) == "" {
+    continue // Skip empty strings
+   }
+   select {
+   case out <- data:
+   case <-done:
+    return
+   }
+  }
+ }()
+ return out
 }
 
 // 3. Stage 2 (Transform): Converts the string to uppercase.
 func toUpper(done <-chan struct{}, in <-chan string) <-chan string {
-	out := make(chan string)
-	go func() {
-		defer close(out)
-		for data := range in {
-			processed := strings.ToUpper(data)
-			select {
-			case out <- processed:
-			case <-done:
-				return
-			}
-		}
-	}()
-	return out
+ out := make(chan string)
+ go func() {
+  defer close(out)
+  for data := range in {
+   processed := strings.ToUpper(data)
+   select {
+   case out <- processed:
+   case <-done:
+    return
+   }
+  }
+ }()
+ return out
 }
 
 func main() {
-	// The cancellation signal channel
-	done := make(chan struct{})
-	defer close(done) // Ensure all goroutines exit when main exits
+ // The cancellation signal channel
+ done := make(chan struct{})
+ defer close(done) // Ensure all goroutines exit when main exits
 
-	// Simulated raw input data containing some noise (empty strings)
-	input := []string{"apple", "", "banana", "  ", "cherry", "date"}
+ // Simulated raw input data containing some noise (empty strings)
+ input := []string{"apple", "", "banana", "  ", "cherry", "date"}
 
-	// Construct the pipeline by chaining the stages together
-	// Data flows: input -> sourceChan -> filteredChan -> upperChan
-	sourceChan := generateData(done, input)
-	filteredChan := filterEmpty(done, sourceChan)
-	upperChan := toUpper(done, filteredChan)
+ // Construct the pipeline by chaining the stages together
+ // Data flows: input -> sourceChan -> filteredChan -> upperChan
+ sourceChan := generateData(done, input)
+ filteredChan := filterEmpty(done, sourceChan)
+ upperChan := toUpper(done, filteredChan)
 
-	// 4. The Sink: Consume the final output stream
-	fmt.Println("--- Pipeline Output ---")
-	for result := range upperChan {
-		fmt.Printf("Processed: %s\n", result)
-	}
-	fmt.Println("-----------------------")
+ // 4. The Sink: Consume the final output stream
+ fmt.Println("--- Pipeline Output ---")
+ for result := range upperChan {
+  fmt.Printf("Processed: %s\n", result)
+ }
+ fmt.Println("-----------------------")
 }
 ```
 
 ### Advanced Pipeline Techniques
 
 #### 1. Fanning Out Pipeline Stages
+
 A single pipeline stage might become a bottleneck. For instance, if the `toUpper` stage involved a slow network call instead of a simple string manipulation, the entire pipeline would stall. You can combine pipelines with the fan-out/fan-in pattern from Section 11.2. You would spin up multiple `toUpper` goroutines reading from `filteredChan`, and then use a `fanIn` function to merge their outputs into `upperChan`.
 
 #### 2. Buffered Channels for Backpressure Tuning
-In our example, all channels are unbuffered. This creates a highly synchronized, "lock-step" pipeline where Stage 1 cannot process its next item until Stage 2 has accepted the current one. While safe, this can cause micro-stalls. 
+
+In our example, all channels are unbuffered. This creates a highly synchronized, "lock-step" pipeline where Stage 1 cannot process its next item until Stage 2 has accepted the current one. While safe, this can cause micro-stalls.
 
 By strategically adding small buffers to the channels between stages (`out := make(chan string, 10)`), you create elasticity. Stage 1 can process a burst of data and push it into the buffer even if Stage 2 is momentarily busy. This smooths out performance fluctuations, though it requires careful profiling to avoid excessive memory consumption.
 
 #### 3. Error Handling in Pipelines
-Handling errors in a linear pipeline requires a structured approach. Just like in worker pools, you should not panic or halt the entire program for a single bad data point. Instead of passing raw strings or integers down the channels, pass a struct that encapsulates both the data and an `error` interface. 
+
+Handling errors in a linear pipeline requires a structured approach. Just like in worker pools, you should not panic or halt the entire program for a single bad data point. Instead of passing raw strings or integers down the channels, pass a struct that encapsulates both the data and an `error` interface.
 
 If a stage encounters an error, it attaches the error to the struct and forwards it down the channel. Subsequent stages should check if the error is non-nil; if it is, they bypass processing and simply forward the error struct to the sink, which is responsible for logging it or triggering a retry mechanism.
 
 ## 11.4 The `context` Package: Managing Timeouts and Cancellations
 
-In Section 11.3, we used a `done <-chan struct{}` to manually broadcast a cancellation signal across our pipeline. While this pattern is foundational, building complex, production-grade systems—especially servers and microservices—requires a more standardized and feature-rich approach. 
+In Section 11.3, we used a `done <-chan struct{}` to manually broadcast a cancellation signal across our pipeline. While this pattern is foundational, building complex, production-grade systems—especially servers and microservices—requires a more standardized and feature-rich approach.
 
-If a user cancels an HTTP request, or if a database query takes too long, your application must gracefully terminate all associated goroutines to free up CPU and memory. Failure to do so results in **goroutine leaks**, where background tasks continue consuming resources for requests that have already been abandoned. 
+If a user cancels an HTTP request, or if a database query takes too long, your application must gracefully terminate all associated goroutines to free up CPU and memory. Failure to do so results in **goroutine leaks**, where background tasks continue consuming resources for requests that have already been abandoned.
 
 To solve this, Go introduced the `context` package. It provides a standard mechanism to carry deadlines, cancellation signals, and request-scoped values across API boundaries and between goroutines.
 
@@ -484,6 +494,7 @@ Contexts in Go are immutable. You do not modify a context to add a timeout; inst
 ### Creating Contexts
 
 Every context tree must start with a root. The standard library provides two root contexts:
+
 * `context.Background()`: The standard root context. It is never canceled, has no deadline, and carries no values. It is typically used in `main()`, `init()`, and at the top level of incoming requests.
 * `context.TODO()`: Used as a placeholder when you are unsure which context to use or if a surrounding function has not yet been updated to accept a context.
 
@@ -497,56 +508,56 @@ The following example demonstrates how to protect a simulated database query usi
 package main
 
 import (
-	"context"
-	"fmt"
-	"time"
+ "context"
+ "fmt"
+ "time"
 )
 
 // simulateSlowDatabase call takes a context and simulates a long-running task.
 func simulateSlowDatabase(ctx context.Context) (string, error) {
-	// Create a channel to receive the result of the query
-	resultChan := make(chan string)
+ // Create a channel to receive the result of the query
+ resultChan := make(chan string)
 
-	// Launch the actual work in a goroutine
-	go func() {
-		// Simulate a query that takes 3 seconds
-		time.Sleep(3 * time.Second)
-		resultChan <- "Database result: [User Data]"
-	}()
+ // Launch the actual work in a goroutine
+ go func() {
+  // Simulate a query that takes 3 seconds
+  time.Sleep(3 * time.Second)
+  resultChan <- "Database result: [User Data]"
+ }()
 
-	// The select statement blocks until either the result is ready 
-	// OR the context is canceled/times out.
-	select {
-	case res := <-resultChan:
-		return res, nil
-	case <-ctx.Done(): // ctx.Done() returns a channel that is closed upon cancellation
-		// ctx.Err() tells us WHY the context was canceled 
-		// (e.g., context.DeadlineExceeded or context.Canceled)
-		return "", fmt.Errorf("database query aborted: %w", ctx.Err())
-	}
+ // The select statement blocks until either the result is ready 
+ // OR the context is canceled/times out.
+ select {
+ case res := <-resultChan:
+  return res, nil
+ case <-ctx.Done(): // ctx.Done() returns a channel that is closed upon cancellation
+  // ctx.Err() tells us WHY the context was canceled 
+  // (e.g., context.DeadlineExceeded or context.Canceled)
+  return "", fmt.Errorf("database query aborted: %w", ctx.Err())
+ }
 }
 
 func main() {
-	// 1. Create a root context
-	rootCtx := context.Background()
+ // 1. Create a root context
+ rootCtx := context.Background()
 
-	// 2. Derive a context with a 2-second timeout
-	// The cancel function is returned to allow manual cancellation before the timeout.
-	ctx, cancel := context.WithTimeout(rootCtx, 2*time.Second)
-	
-	// Always defer the cancel function to ensure resources are released immediately 
-	// when the operation finishes, even if it finishes before the timeout.
-	defer cancel()
+ // 2. Derive a context with a 2-second timeout
+ // The cancel function is returned to allow manual cancellation before the timeout.
+ ctx, cancel := context.WithTimeout(rootCtx, 2*time.Second)
+ 
+ // Always defer the cancel function to ensure resources are released immediately 
+ // when the operation finishes, even if it finishes before the timeout.
+ defer cancel()
 
-	fmt.Println("Initiating database query...")
-	
-	// 3. Pass the context down the call stack
-	result, err := simulateSlowDatabase(ctx)
-	if err != nil {
-		fmt.Printf("Error: %v\n", err) // Will print "database query aborted: context deadline exceeded"
-	} else {
-		fmt.Printf("Success: %s\n", result)
-	}
+ fmt.Println("Initiating database query...")
+ 
+ // 3. Pass the context down the call stack
+ result, err := simulateSlowDatabase(ctx)
+ if err != nil {
+  fmt.Printf("Error: %v\n", err) // Will print "database query aborted: context deadline exceeded"
+ } else {
+  fmt.Printf("Success: %s\n", result)
+ }
 }
 ```
 
@@ -560,7 +571,7 @@ If you have a Fan-Out architecture (Section 11.2) processing a list of files, an
 
 ### Request-Scoped Data (`context.WithValue`)
 
-The `context` package also allows you to attach key-value pairs to the context tree via `context.WithValue`. 
+The `context` package also allows you to attach key-value pairs to the context tree via `context.WithValue`.
 
 ```go
 // Creating a value context
@@ -570,9 +581,10 @@ ctx := context.WithValue(context.Background(), "request_id", "req-12345")
 reqID := ctx.Value("request_id").(string)
 ```
 
-**Crucial Warning on Values:** `context.WithValue` is heavily abused by Go beginners. It should **only** be used for request-scoped data that transits processes and API boundaries, not for passing optional parameters or bypassing standard function arguments. 
+**Crucial Warning on Values:** `context.WithValue` is heavily abused by Go beginners. It should **only** be used for request-scoped data that transits processes and API boundaries, not for passing optional parameters or bypassing standard function arguments.
 
 Appropriate use cases for `WithValue` include:
+
 * Trace IDs and Request IDs for distributed logging.
 * Authentication tokens or validated user session data.
 * Client IP addresses.
@@ -583,15 +595,15 @@ Inappropriate use cases include passing database connections, configuration obje
 
 When integrating `context` into your code, adhere strictly to these conventions mandated by the Go core team:
 
-1.  **Pass by Value:** Contexts should never be passed by pointer (`*context.Context`). 
-2.  **The First Parameter:** The context should always be the very first parameter of a function, and it should be named `ctx`.
+1. **Pass by Value:** Contexts should never be passed by pointer (`*context.Context`).
+2. **The First Parameter:** The context should always be the very first parameter of a function, and it should be named `ctx`.
     * *Good:* `func DoWork(ctx context.Context, data string)`
     * *Bad:* `func DoWork(data string, ctx context.Context)`
-3.  **Do Not Store in Structs:** Contexts are meant to flow dynamically through the execution graph. Storing a context inside a struct type leads to confusion about the lifecycle of that context and breaks the implicit request scope. Pass it directly to the methods that need it instead.
+3. **Do Not Store in Structs:** Contexts are meant to flow dynamically through the execution graph. Storing a context inside a struct type leads to confusion about the lifecycle of that context and breaks the implicit request scope. Pass it directly to the methods that need it instead.
 
 ## 11.5 Detecting and Preventing Goroutine Leaks and Deadlocks
 
-Even with Go’s elegant concurrency primitives, building concurrent systems is inherently complex. When synchronization goes wrong, two distinct but equally fatal pathologies emerge: **goroutine leaks** and **deadlocks**. 
+Even with Go’s elegant concurrency primitives, building concurrent systems is inherently complex. When synchronization goes wrong, two distinct but equally fatal pathologies emerge: **goroutine leaks** and **deadlocks**.
 
 A deadlock is loud and immediately halting, whereas a goroutine leak is silent, slowly degrading application performance until the operating system terminates the process due to memory exhaustion. Mastering Go requires not just knowing how to start goroutines, but guaranteeing they finish.
 
@@ -601,55 +613,55 @@ In Go, the garbage collector (GC) is incredibly efficient, but it has one hard r
 
 #### Common Causes of Leaks
 
-1.  **Abandoned Receivers/Senders:** A goroutine waiting to receive from a channel that will never be written to (or closed), or trying to send to an unbuffered channel that has no active receiver.
-2.  **Forgotten Context Cancellations:** Failing to call the `cancel()` function returned by `context.WithTimeout` or `context.WithCancel`, leaving background workers suspended.
-3.  **Unstopped Tickers:** Using `time.NewTicker` in a loop but forgetting to call `ticker.Stop()` when the loop exits.
+1. **Abandoned Receivers/Senders:** A goroutine waiting to receive from a channel that will never be written to (or closed), or trying to send to an unbuffered channel that has no active receiver.
+2. **Forgotten Context Cancellations:** Failing to call the `cancel()` function returned by `context.WithTimeout` or `context.WithCancel`, leaving background workers suspended.
+3. **Unstopped Tickers:** Using `time.NewTicker` in a loop but forgetting to call `ticker.Stop()` when the loop exits.
 
 #### Example: The Abandoned Sender Leak
 
-Consider an API endpoint that queries a slow external service. To ensure a fast response, we add a timeout. 
+Consider an API endpoint that queries a slow external service. To ensure a fast response, we add a timeout.
 
 ```go
 package main
 
 import (
-	"fmt"
-	"runtime"
-	"time"
+ "fmt"
+ "runtime"
+ "time"
 )
 
 // DANGEROUS: This function leaks a goroutine.
 func processWithTimeoutLeak() {
-	resultChan := make(chan string)
+ resultChan := make(chan string)
 
-	// Launch a background worker
-	go func() {
-		// Simulate a slow network call taking 3 seconds
-		time.Sleep(3 * time.Second) 
-		// The worker tries to send the result...
-		resultChan <- "success" 
-		fmt.Println("Worker finished normally") // This line will never print!
-	}()
+ // Launch a background worker
+ go func() {
+  // Simulate a slow network call taking 3 seconds
+  time.Sleep(3 * time.Second) 
+  // The worker tries to send the result...
+  resultChan <- "success" 
+  fmt.Println("Worker finished normally") // This line will never print!
+ }()
 
-	// Wait for the result OR a 1-second timeout
-	select {
-	case res := <-resultChan:
-		fmt.Println("Got result:", res)
-	case <-time.After(1 * time.Second):
-		fmt.Println("Operation timed out!")
-	}
+ // Wait for the result OR a 1-second timeout
+ select {
+ case res := <-resultChan:
+  fmt.Println("Got result:", res)
+ case <-time.After(1 * time.Second):
+  fmt.Println("Operation timed out!")
+ }
 }
 
 func main() {
-	fmt.Printf("Initial Goroutines: %d\n", runtime.NumGoroutine())
-	
-	processWithTimeoutLeak() // This triggers the timeout
-	
-	// Give the program a moment to settle
-	time.Sleep(4 * time.Second)
-	
-	// The leaked background worker is still alive, blocked forever!
-	fmt.Printf("Final Goroutines: %d\n", runtime.NumGoroutine()) 
+ fmt.Printf("Initial Goroutines: %d\n", runtime.NumGoroutine())
+ 
+ processWithTimeoutLeak() // This triggers the timeout
+ 
+ // Give the program a moment to settle
+ time.Sleep(4 * time.Second)
+ 
+ // The leaked background worker is still alive, blocked forever!
+ fmt.Printf("Final Goroutines: %d\n", runtime.NumGoroutine()) 
 }
 ```
 
@@ -674,7 +686,7 @@ A deadlock occurs when two or more goroutines are waiting on each other to relea
 
 #### Total vs. Partial Deadlocks
 
-Go includes a built-in deadlock detector. If **every single goroutine** in your program is asleep (blocked), the runtime will crash the program with a fatal error: `fatal error: all goroutines are asleep - deadlock!`. 
+Go includes a built-in deadlock detector. If **every single goroutine** in your program is asleep (blocked), the runtime will crash the program with a fatal error: `fatal error: all goroutines are asleep - deadlock!`.
 
 However, this detector is inherently limited. It only detects **total deadlocks**. If you have an HTTP server running, the main goroutine listening on the network port is never fully asleep. Therefore, if two worker goroutines deadlock in the background, the Go runtime **will not detect it**. These are called **partial deadlocks**, and they are incredibly dangerous.
 
@@ -686,51 +698,51 @@ The most classic partial deadlock involves `sync.Mutex`. If multiple goroutines 
 package main
 
 import (
-	"fmt"
-	"sync"
-	"time"
+ "fmt"
+ "sync"
+ "time"
 )
 
 type Account struct {
-	mu      sync.Mutex
-	Balance int
+ mu      sync.Mutex
+ Balance int
 }
 
 // DANGEROUS: Susceptible to lock inversion deadlocks
 func Transfer(from, to *Account, amount int, wg *sync.WaitGroup) {
-	defer wg.Done()
+ defer wg.Done()
 
-	from.mu.Lock()
-	fmt.Println("Locked 'from' account")
-	
-	// Simulate some processing time, increasing the chance of collision
-	time.Sleep(10 * time.Millisecond)
+ from.mu.Lock()
+ fmt.Println("Locked 'from' account")
+ 
+ // Simulate some processing time, increasing the chance of collision
+ time.Sleep(10 * time.Millisecond)
 
-	to.mu.Lock()
-	fmt.Println("Locked 'to' account")
+ to.mu.Lock()
+ fmt.Println("Locked 'to' account")
 
-	from.Balance -= amount
-	to.Balance += amount
+ from.Balance -= amount
+ to.Balance += amount
 
-	to.mu.Unlock()
-	from.mu.Unlock()
+ to.mu.Unlock()
+ from.mu.Unlock()
 }
 
 func main() {
-	alice := &Account{Balance: 100}
-	bob := &Account{Balance: 100}
+ alice := &Account{Balance: 100}
+ bob := &Account{Balance: 100}
 
-	var wg sync.WaitGroup
-	wg.Add(2)
+ var wg sync.WaitGroup
+ wg.Add(2)
 
-	// Goroutine 1 locks Alice, then Bob
-	go Transfer(alice, bob, 10, &wg)
-	
-	// Goroutine 2 locks Bob, then Alice
-	go Transfer(bob, alice, 20, &wg)
+ // Goroutine 1 locks Alice, then Bob
+ go Transfer(alice, bob, 10, &wg)
+ 
+ // Goroutine 2 locks Bob, then Alice
+ go Transfer(bob, alice, 20, &wg)
 
-	wg.Wait() // The program will freeze here indefinitely
-	fmt.Println("Transfers complete")
+ wg.Wait() // The program will freeze here indefinitely
+ fmt.Println("Transfers complete")
 }
 ```
 
@@ -741,7 +753,7 @@ To prevent lock inversion, you must establish a strict global ordering for lock 
 
 You cannot rely on manual code review alone to catch subtle leaks and deadlocks in complex systems. You must employ Go's profiling and diagnostic tools:
 
-1.  **`net/http/pprof`:** By importing `_ "net/http/pprof"`, you expose an HTTP endpoint (`/debug/pprof/goroutine?debug=1`) that dumps the stack trace of every currently running goroutine. If you see thousands of goroutines stuck on `runtime.gopark` or waiting on a channel receive, you have a leak. We will cover `pprof` in depth in Chapter 16.
-2.  **`runtime.NumGoroutine()`:** Periodically logging the total number of active goroutines is a simple but highly effective way to monitor application health. A steady, unexplainable upward trend indicates a leak.
-3.  **The Go Race Detector (`go run -race`):** While primarily designed to detect data races (simultaneous read/write to the same memory), running your tests with the race detector often uncovers the structural flaws that lead to deadlocks.
-4.  **Third-Party Mutex Wrappers:** In development, you can use packages like `github.com/sasha-s/go-deadlock`. It acts as a drop-in replacement for `sync.Mutex` but tracks lock acquisition order, panic-ing immediately if it detects a potential deadlock cycle.
+1. **`net/http/pprof`:** By importing `_ "net/http/pprof"`, you expose an HTTP endpoint (`/debug/pprof/goroutine?debug=1`) that dumps the stack trace of every currently running goroutine. If you see thousands of goroutines stuck on `runtime.gopark` or waiting on a channel receive, you have a leak. We will cover `pprof` in depth in Chapter 16.
+2. **`runtime.NumGoroutine()`:** Periodically logging the total number of active goroutines is a simple but highly effective way to monitor application health. A steady, unexplainable upward trend indicates a leak.
+3. **The Go Race Detector (`go run -race`):** While primarily designed to detect data races (simultaneous read/write to the same memory), running your tests with the race detector often uncovers the structural flaws that lead to deadlocks.
+4. **Third-Party Mutex Wrappers:** In development, you can use packages like `github.com/sasha-s/go-deadlock`. It acts as a drop-in replacement for `sync.Mutex` but tracks lock acquisition order, panic-ing immediately if it detects a potential deadlock cycle.

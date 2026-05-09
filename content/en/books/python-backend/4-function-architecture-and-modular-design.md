@@ -5,6 +5,7 @@ In Python, functions are not merely static blocks of code; they are dynamic, fir
 In Python, the boundary between data and logic is intentionally porous. Functions are not abstract, compiler-level constructs isolated from the rest of the application; they are objects. Specifically, they are instances of Python's built-in `function` class. This fundamental design choice makes functions **first-class citizens**, meaning they possess the exact same rights and privileges as integers, strings, or dictionaries.
 
 Because functions are just objects, you can:
+
 1. Assign them to variables.
 2. Store them in data structures (like lists or dictionaries).
 3. Pass them as arguments to other functions.
@@ -75,6 +76,7 @@ print(handle_transaction("REFUND"))  # Output: Processing refund...
 ### Higher-Order Functions
 
 A **higher-order function** is any function that does at least one of the following:
+
 * Takes one or more functions as arguments.
 * Returns a function as its result.
 
@@ -148,7 +150,7 @@ result = math_func(4, 5)  # Output: 20
 
 When working with higher-order functions, defining a full function using `def` just to pass it as an argument can feel verbose. Python provides `lambda` expressions to create small, unnamed (anonymous) function objects on the fly.
 
-The syntax is strict: `lambda arguments: expression`. 
+The syntax is strict: `lambda arguments: expression`.
 
 A lambda can take any number of arguments but must consist of a **single expression**. It cannot contain assignments, `if/else` blocks (though ternary conditional expressions are allowed), or loops.
 
@@ -157,7 +159,7 @@ A lambda can take any number of arguments but must consist of a **single express
 sorted_users = sorted(users, key=lambda u: u["reputation"], reverse=True)
 ```
 
-While lambdas are syntactically convenient, they are completely functionally equivalent to a standard `def` block returning a single value. They both create instances of the `function` class. 
+While lambdas are syntactically convenient, they are completely functionally equivalent to a standard `def` block returning a single value. They both create instances of the `function` class.
 
 ```text
 # Both of these create functionally identical objects in memory:
@@ -170,7 +172,7 @@ add_lam = lambda a, b: a + b
 
 ## 4.2 Argument Unpacking: `*args`, `**kwargs`, and Keyword-Only Parameters
 
-To fully leverage the dynamic nature of Python's functions, a robust mechanism for handling arbitrary inputs is required. Python solves this through **packing** and **unpacking** operators: the single asterisk (`*`) for iterables and the double asterisk (`**`) for mappings. 
+To fully leverage the dynamic nature of Python's functions, a robust mechanism for handling arbitrary inputs is required. Python solves this through **packing** and **unpacking** operators: the single asterisk (`*`) for iterables and the double asterisk (`**`) for mappings.
 
 These operators allow developers to design highly flexible APIs, wrapper functions, and decorators that can seamlessly accept and forward any combination of arguments without explicitly knowing their structure in advance.
 
@@ -252,7 +254,7 @@ This paradigm vastly improves readability at the call site. When reviewing a pul
 
 ### The Universal Signature Anatomy
 
-Since Python 3.8, the language also supports position-only parameters (denoted by a forward slash `/`), creating a complete, highly controlled parameter architecture. 
+Since Python 3.8, the language also supports position-only parameters (denoted by a forward slash `/`), creating a complete, highly controlled parameter architecture.
 
 When combining all these features, the order of parameters is strictly enforced by the interpreter.
 
@@ -261,16 +263,17 @@ def master_function(pos_only, /, standard, *args, kw_only, **kwargs):
 ```
 
 **Anatomy Breakdown:**
-1.  **`pos_only`**: Must be passed by position. Cannot use the keyword. (Rarely used in pure Python, mostly found in C-extensions).
-2.  **`/`**: The boundary ending position-only parameters.
-3.  **`standard`**: Can be passed by position or by keyword.
-4.  **`*args`**: Captures any remaining positional arguments. Also acts as the boundary starting keyword-only parameters.
-5.  **`kw_only`**: Must be passed by keyword.
-6.  **`**kwargs`**: Captures any remaining keyword arguments.
+
+1. **`pos_only`**: Must be passed by position. Cannot use the keyword. (Rarely used in pure Python, mostly found in C-extensions).
+2. **`/`**: The boundary ending position-only parameters.
+3. **`standard`**: Can be passed by position or by keyword.
+4. **`*args`**: Captures any remaining positional arguments. Also acts as the boundary starting keyword-only parameters.
+5. **`kw_only`**: Must be passed by keyword.
+6. **`**kwargs`**: Captures any remaining keyword arguments.
 
 ## 4.3 Lexical Scoping Mechanisms and the LEGB Resolution Rule
 
-When you reference a variable name inside a Python script, the interpreter must map that string of characters to a specific object in memory. Because the same variable name can be reused in different parts of your application, Python relies on **lexical scoping** to determine exactly which object you mean. 
+When you reference a variable name inside a Python script, the interpreter must map that string of characters to a specific object in memory. Because the same variable name can be reused in different parts of your application, Python relies on **lexical scoping** to determine exactly which object you mean.
 
 Lexical (or static) scoping means that the scope of a variable is determined entirely by its physical placement within the source code, prior to execution. It is independent of the call stack or the order in which functions are executed. To resolve these names, Python employs a strict, four-tiered lookup hierarchy known as the **LEGB rule**.
 
@@ -292,6 +295,7 @@ NameError raised if not found.
 Let's dissect each layer of this hierarchy.
 
 #### 1. Local Scope (L)
+
 The local scope refers to variables defined strictly within the currently executing function. This includes the function's parameters and any variables assigned inside its body. Local scopes are ephemeral; they are created when the function is called and destroyed when it returns.
 
 ```python
@@ -304,6 +308,7 @@ def process_data(data: list):
 ```
 
 #### 2. Enclosing Scope (E)
+
 Enclosing scopes only exist when you have nested functions (functions defined within other functions). If a name is not found in the inner function's local scope, Python checks the local scope of the outer function. This mechanism is the bedrock of closures and decorators, which we will explore extensively in Chapter 10.
 
 ```python
@@ -320,6 +325,7 @@ outer_handler()
 ```
 
 #### 3. Global Scope (G)
+
 "Global" in Python is a slight misnomer. Python does not have a truly universal global scope that spans an entire application. Instead, the global scope is explicitly **module-level**. A global variable is accessible anywhere within the `.py` file where it was defined. To use it in another file, it must be explicitly imported (as discussed in Section 4.4).
 
 ```python
@@ -332,11 +338,12 @@ def connect():
 ```
 
 #### 4. Built-in Scope (B)
+
 If a name is not found in the Local, Enclosing, or Global scopes, Python makes a final check in the `builtins` module. This namespace contains Python's pre-defined functions (`len()`, `print()`, `range()`), exceptions (`ValueError`, `KeyError`), and constants (`True`, `False`, `None`).
 
 ### Shadowing and the Rebinding Problem
 
-Because Python searches inside-out, a variable defined in a lower scope will **shadow** (hide) a variable with the same name in a higher scope. 
+Because Python searches inside-out, a variable defined in a lower scope will **shadow** (hide) a variable with the same name in a higher scope.
 
 While reading variables across scopes is seamless, **modifying** them introduces a critical rule in Python's design: *Assignment operations always default to creating or updating a local variable.*
 
@@ -358,6 +365,7 @@ increment_connections()
 To safely rebind variables in higher scopes, Python provides two explicit declaration keywords. These should be used sparingly in backend architectures, as heavily mutable global state makes testing difficult and introduces race conditions in concurrent environments (Chapter 12).
 
 #### The `global` Keyword
+
 The `global` keyword tells the interpreter: *"Do not create a local variable. Whenever I use this name, I am referring to the variable in the module's global scope."*
 
 ```python
@@ -372,6 +380,7 @@ increment_connections()  # Output: Active connections: 1
 ```
 
 #### The `nonlocal` Keyword
+
 Introduced in Python 3, `nonlocal` is used exclusively for Enclosing scopes. It tells the interpreter to bind a variable to the nearest enclosing scope (excluding the global scope). This is essential for state-retaining factory functions.
 
 ```python
@@ -397,7 +406,7 @@ Understanding LEGB is what separates developers who fight the Python interpreter
 
 ## 4.4 Namespace Management: Modules, Packages, and Absolute vs. Relative Imports
 
-In Section 4.3, we established that Python's "Global" scope is actually confined to the module level. This deliberate design prevents variable names in one file from colliding with identical names in another file. This isolation mechanism is what we call **namespace management**. 
+In Section 4.3, we established that Python's "Global" scope is actually confined to the module level. This deliberate design prevents variable names in one file from colliding with identical names in another file. This isolation mechanism is what we call **namespace management**.
 
 As a backend application grows from a single script into a complex architecture comprising hundreds of files, understanding how Python organizes, caches, and connects these namespaces becomes critical for maintaining a scalable codebase.
 
@@ -405,9 +414,9 @@ As a backend application grows from a single script into a complex architecture 
 
 At its simplest, a **module** is just a file containing Python definitions and statements (typically with a `.py` extension). When you import a module, Python does not simply copy and paste the code. Instead, it executes a strict lifecycle:
 
-1.  **Search:** Python searches for the module in the directories listed in `sys.path` (which includes the current directory, installed packages, and standard libraries).
-2.  **Compilation (Optional):** If a compiled `.pyc` file is missing or outdated, Python compiles the source code into bytecode.
-3.  **Execution and Caching:** Python creates a new namespace, executes the module's code from top to bottom within that namespace, and stores the resulting module object in a global cache called `sys.modules`.
+1. **Search:** Python searches for the module in the directories listed in `sys.path` (which includes the current directory, installed packages, and standard libraries).
+2. **Compilation (Optional):** If a compiled `.pyc` file is missing or outdated, Python compiles the source code into bytecode.
+3. **Execution and Caching:** Python creates a new namespace, executes the module's code from top to bottom within that namespace, and stores the resulting module object in a global cache called `sys.modules`.
 
 **The Caching Caveat:** Because of `sys.modules`, a module's top-level code is only executed the *first* time it is imported during the application's lifecycle. Subsequent imports anywhere else in the application simply fetch the already-loaded module object from memory.
 
@@ -423,7 +432,7 @@ import database  # No output. The cached module is returned.
 
 ### Packages and the `__init__.py` Boundary
 
-While modules are individual files, **packages** are directories containing multiple modules. To tell Python that a directory should be treated as a package, you traditionally include an `__init__.py` file. 
+While modules are individual files, **packages** are directories containing multiple modules. To tell Python that a directory should be treated as a package, you traditionally include an `__init__.py` file.
 
 *(Note: Python 3.3+ supports "Implicit Namespace Packages" without `__init__.py`, but explicit packages with `__init__.py` remain the standard for backend architectures, as they allow you to run initialization code and explicitly define the package's exported API).*
 
@@ -475,9 +484,11 @@ ecommerce_backend/
 ```
 
 #### Absolute Imports
-Absolute imports specify the full path to the module, starting from the project's root execution directory (the one in `sys.path`). 
+
+Absolute imports specify the full path to the module, starting from the project's root execution directory (the one in `sys.path`).
 
 **Example (Inside `api/routers/orders.py`):**
+
 ```python
 # Absolute import traversing from the root package down
 from api.services.billing import process_payment
@@ -488,6 +499,7 @@ from api.routers.users import get_user_by_id
 * **Cons:** If you rename the top-level `api` folder to `v1_api`, you must update every single absolute import across your entire codebase.
 
 #### Relative Imports
+
 Relative imports use dot notation to specify a path relative to the current module's location. They only work inside packages (directories with `__init__.py`) and cannot be used in the top-level script (like `main.py`).
 
 * `.` (Single dot): Refers to the current directory.
@@ -495,6 +507,7 @@ Relative imports use dot notation to specify a path relative to the current modu
 * `...` (Triple dot): Refers to the grandparent directory.
 
 **Example (Inside `api/routers/orders.py`):**
+
 ```python
 # Relative import (sibling module in the same 'routers' directory)
 from .users import get_user_by_id
@@ -504,7 +517,7 @@ from ..services.billing import process_payment
 ```
 
 * **Pros:** Highly modular. You can rename parent directories without breaking the internal imports of the package. Ideal for highly cohesive, self-contained domain components.
-* **Cons:** Can become unreadable if deeply nested (e.g., `from ....utils.formatters import clean_string`). 
+* **Cons:** Can become unreadable if deeply nested (e.g., `from ....utils.formatters import clean_string`).
 
 ### The Circular Import Dilemma
 
@@ -513,8 +526,9 @@ A common architectural trap in backend development is the **circular import**. T
 Because Python executes modules top-to-bottom upon import, if Module A is only halfway executed when it triggers the import of Module B, and B looks back to A for a variable that hasn't been defined yet, the application will crash with an `ImportError`.
 
 **Mitigation Strategies:**
-1.  **Refactor:** The best solution is architectural. If A and B depend on each other, extract the shared logic into a new Module C, and have both A and B import C.
-2.  **Inline Imports:** If refactoring is impossible (often the case with ORM Models mapping database relationships), move the `import` statement *inside* the function or method where it is needed. This delays the import until runtime, long after the initial module parsing is complete.
+
+1. **Refactor:** The best solution is architectural. If A and B depend on each other, extract the shared logic into a new Module C, and have both A and B import C.
+2. **Inline Imports:** If refactoring is impossible (often the case with ORM Models mapping database relationships), move the `import` statement *inside* the function or method where it is needed. This delays the import until runtime, long after the initial module parsing is complete.
 
 ```python
 # A common backend pattern to break circular dependencies

@@ -23,7 +23,7 @@ import (
 
 ### Establishing a Connection
 
-To interact with a database, you must first create a `*sql.DB` instance using `sql.Open()`. 
+To interact with a database, you must first create a `*sql.DB` instance using `sql.Open()`.
 
 It is crucial to understand that `sql.Open()` **does not immediately establish a network connection to the database**. It merely validates the Data Source Name (DSN) string and initializes the internal connection pool. To verify that the database is reachable and your credentials are valid, you must explicitly call the `Ping()` or `PingContext()` method.
 
@@ -114,6 +114,7 @@ func getUserByID(db *sql.DB, id int) (User, error) {
     return u, nil
 }
 ```
+
 Notice the handling of `sql.ErrNoRows`. This is a specific sentinel error provided by `database/sql` that allows you to cleanly distinguish between a "record not found" scenario and a genuine database failure (like a dropped connection).
 
 #### 3. Retrieving Multiple Rows with `Query()`
@@ -158,6 +159,7 @@ func getUsersByDomain(db *sql.DB, domain string) ([]User, error) {
 ```
 
 There are three critical lifecycle steps when working with `*sql.Rows`:
+
 1. **Defer `rows.Close()`:** The database connection used by the query remains locked to this result set until the rows are closed. If you return early due to an error during iteration, the `defer` ensures the connection is freed.
 2. **Iterate with `rows.Next()`:** This moves the cursor forward and prepares the row for `Scan()`.
 3. **Check `rows.Err()`:** A `for rows.Next()` loop can terminate because it reached the end of the data, *or* because the network connection dropped mid-read. Checking `rows.Err()` after the loop guarantees you didn't silently process a partial result set.
@@ -187,7 +189,7 @@ While functional, working with `sql.Null*` types can sometimes clutter your doma
 
 ## 12.2 Managing Connection Pooling, Transactions, and Prepared Statements
 
-While executing basic queries is straightforward, production-grade applications require careful management of database resources and data integrity. The `database/sql` package provides robust, built-in mechanisms for connection pooling, atomic transactions, and statement preparation. 
+While executing basic queries is straightforward, production-grade applications require careful management of database resources and data integrity. The `database/sql` package provides robust, built-in mechanisms for connection pooling, atomic transactions, and statement preparation.
 
 ### Mastering the Connection Pool
 
@@ -236,7 +238,7 @@ db.SetConnMaxIdleTime(1 * time.Minute)
 
 When you need to execute multiple SQL statements as a single, indivisible unit of work, you must use a transaction. If any statement within the transaction fails, the entire operation should be aborted (rolled back), leaving the database state unchanged.
 
-In Go, transactions are managed using the `*sql.Tx` object. You initiate a transaction by calling `db.Begin()` (or `db.BeginTx()` for context-aware cancellation and isolation level control). 
+In Go, transactions are managed using the `*sql.Tx` object. You initiate a transaction by calling `db.Begin()` (or `db.BeginTx()` for context-aware cancellation and isolation level control).
 
 A critical idiom in Go is to use a `defer` statement for the rollback immediately after successfully opening the transaction.
 
@@ -306,16 +308,17 @@ func bulkInsertUsers(db *sql.DB, users []User) error {
 
 #### The Hidden Complexity of `*sql.Stmt`
 
-While prepared statements are powerful, they interact with Go's connection pool in a way that can catch developers off guard. 
+While prepared statements are powerful, they interact with Go's connection pool in a way that can catch developers off guard.
 
-Prepared statements are intrinsically tied to a specific database connection. Because `*sql.DB` abstracts the connection pool, when you call `db.Prepare()`, Go prepares the statement on one connection. Later, when you call `stmt.Exec()`, Go might grab a *different* connection from the pool. 
+Prepared statements are intrinsically tied to a specific database connection. Because `*sql.DB` abstracts the connection pool, when you call `db.Prepare()`, Go prepares the statement on one connection. Later, when you call `stmt.Exec()`, Go might grab a *different* connection from the pool.
 
-To hide this complexity, the `database/sql` package does heavy lifting under the hood: if `stmt.Exec()` runs on a connection that hasn't prepared that statement yet, Go will transparently re-prepare the statement on that new connection. 
+To hide this complexity, the `database/sql` package does heavy lifting under the hood: if `stmt.Exec()` runs on a connection that hasn't prepared that statement yet, Go will transparently re-prepare the statement on that new connection.
 
 Because of this hidden machinery, you should adhere to these guidelines:
-1.  **Do not use `db.Prepare()` for single executions.** If you only need to run a query once, just use `db.Exec()` or `db.Query()`. The underlying driver often uses prepared statements implicitly anyway, but without the overhead of maintaining the `*sql.Stmt` object across the pool.
-2.  **Use `db.Prepare()` for tight loops** (like the bulk insert above) where the performance gain of skipping the query parsing phase outweighs the pooling overhead.
-3.  **Prepared Statements in Transactions:** You can prepare statements within a transaction using `tx.Prepare()`. Because a `*sql.Tx` is locked to a single connection, you bypass the cross-connection overhead entirely. This is highly efficient for complex, multi-step transaction loops.
+
+1. **Do not use `db.Prepare()` for single executions.** If you only need to run a query once, just use `db.Exec()` or `db.Query()`. The underlying driver often uses prepared statements implicitly anyway, but without the overhead of maintaining the `*sql.Stmt` object across the pool.
+2. **Use `db.Prepare()` for tight loops** (like the bulk insert above) where the performance gain of skipping the query parsing phase outweighs the pooling overhead.
+3. **Prepared Statements in Transactions:** You can prepare statements within a transaction using `tx.Prepare()`. Because a `*sql.Tx` is locked to a single connection, you bypass the cross-connection overhead entirely. This is highly efficient for complex, multi-step transaction loops.
 
 ## 12.3 Utilizing Go ORMs and Query Builders (GORM, sqlx, Squirrel)
 
@@ -330,6 +333,7 @@ This section explores the three dominant approaches using their most popular res
 If you are comfortable writing raw SQL but are tired of writing `for rows.Next()` loops and manually scanning variables, `github.com/jmoiron/sqlx` is the undisputed standard. It acts as a superset of `database/sql`, meaning any code written for the standard library works perfectly with `sqlx`, but it adds powerful struct scanning and named parameter capabilities.
 
 #### Struct Scanning
+
 `sqlx` uses struct tags (specifically the `db` tag) to automatically map database columns to struct fields. It introduces two major retrieval methods: `Get` (for a single row) and `Select` (for multiple rows).
 
 ```go
@@ -361,6 +365,7 @@ func getEmployeesByDept(db *sqlx.DB, dept string) ([]Employee, error) {
 ```
 
 #### Named Queries
+
 Writing `INSERT` or `UPDATE` statements with many columns often leads to positional parameter hell (e.g., matching `$17` to the correct variable). `sqlx` solves this with `NamedExec`, allowing you to bind SQL variables directly to struct fields.
 
 ```go
@@ -375,7 +380,7 @@ func createEmployee(db *sqlx.DB, emp Employee) error {
 
 ### 2. The Dynamic Query Builder: `Squirrel`
 
-Writing static SQL strings is simple, but building dynamic SQL—where `WHERE` clauses, `LIMIT`s, or `JOIN`s change based on user input—quickly devolves into a messy, bug-prone tangle of `if` statements and string concatenations. 
+Writing static SQL strings is simple, but building dynamic SQL—where `WHERE` clauses, `LIMIT`s, or `JOIN`s change based on user input—quickly devolves into a messy, bug-prone tangle of `if` statements and string concatenations.
 
 `github.com/Masterminds/squirrel` provides a fluent, composable API for building SQL queries programmatically. It ensures your queries are syntactically valid and safely parameterized before execution.
 
@@ -417,6 +422,7 @@ func buildSearchQuery(filters SearchFilters) (string, []interface{}, error) {
 // sqlStr, args, err := buildSearchQuery(filters)
 // rows, err := db.Query(sqlStr, args...)
 ```
+
 Notice that Squirrel *only* builds the SQL and the arguments array. It is entirely decoupled from the database connection. You still pass the resulting string and arguments to `database/sql` or `sqlx` for execution.
 
 ### 3. The Full ORM: `GORM`
@@ -426,6 +432,7 @@ For rapid application development, particularly in heavily relational domains, `
 Because GORM relies heavily on Go's `reflect` package to perform this magic, it incurs a slight performance penalty compared to raw SQL or `sqlx`. However, for many CRUD-heavy applications, the developer velocity it provides outweighs the microsecond latency costs.
 
 #### Defining Models and Auto-Migration
+
 GORM models are standard Go structs heavily annotated with tags. GORM can inspect these structs to automatically generate and run `CREATE TABLE` and `ALTER TABLE` statements.
 
 ```go
@@ -461,6 +468,7 @@ func initDB(dsn string) (*gorm.DB, error) {
 ```
 
 #### Querying with Associations
+
 One of GORM's most powerful features is its ability to traverse and load relational data effortlessly using the `Preload` method, which automatically executes the necessary `JOIN`s or secondary queries.
 
 ```go
@@ -521,6 +529,7 @@ Crucially, NoSQL databases **do not** use Go's standard `database/sql` package. 
 MongoDB stores data in flexible, JSON-like documents. The official driver, `go.mongodb.org/mongo-driver/mongo`, relies heavily on BSON (Binary JSON) serialization.
 
 When working with MongoDB in Go, you will constantly interact with the `bson` package to construct queries and define document structures. The two most important types are:
+
 * `bson.D`: An ordered representation of a BSON document (used for commands and sorting where order matters).
 * `bson.M`: An unordered map (used for general queries and simple updates).
 
@@ -675,15 +684,16 @@ When integrating these NoSQL solutions, the driver selection dictates the design
 
 ## 12.5 Implementing and Automating Database Migrations
 
-In Section 12.3, we explored how ORMs like GORM can automatically generate database schemas using `AutoMigrate()`. While this is an excellent feature for rapid prototyping, relying on automatic, state-inferred migrations in a production environment is a recipe for disaster. Production databases require deterministic, trackable, and reversible schema changes. 
+In Section 12.3, we explored how ORMs like GORM can automatically generate database schemas using `AutoMigrate()`. While this is an excellent feature for rapid prototyping, relying on automatic, state-inferred migrations in a production environment is a recipe for disaster. Production databases require deterministic, trackable, and reversible schema changes.
 
 Database migrations treat your database schema like application code. They provide version control for your database, ensuring that every environment (development, staging, and production) is in the exact same state.
 
 ### The Anatomy of a Migration
 
 A migration system typically relies on a series of numbered SQL files. For every change to the database, you write two scripts:
-1.  **Up Migration:** The SQL required to apply the change (e.g., `CREATE TABLE`, `ALTER TABLE ADD COLUMN`).
-2.  **Down Migration:** The exact inverse SQL required to revert the change (e.g., `DROP TABLE`, `ALTER TABLE DROP COLUMN`).
+
+1. **Up Migration:** The SQL required to apply the change (e.g., `CREATE TABLE`, `ALTER TABLE ADD COLUMN`).
+2. **Down Migration:** The exact inverse SQL required to revert the change (e.g., `DROP TABLE`, `ALTER TABLE DROP COLUMN`).
 
 To ensure migrations are applied in the correct sequence, files are prefixed with a version number, usually a sequential integer or a timestamp.
 
@@ -792,14 +802,17 @@ func main() {
 While the code above successfully automates migrations on application startup, you must carefully consider *where* and *when* this code executes based on your deployment architecture.
 
 #### 1. The Application Startup Strategy (Simple, but Risky at Scale)
-Running `migrator.Up()` in your `main()` function is highly convenient. However, in a cloud-native environment (like Kubernetes), deploying a new version of your app usually means spinning up multiple replicas simultaneously. 
+
+Running `migrator.Up()` in your `main()` function is highly convenient. However, in a cloud-native environment (like Kubernetes), deploying a new version of your app usually means spinning up multiple replicas simultaneously.
 
 If three pods start at the exact same millisecond, they will all attempt to run the migrations. Robust tools like `golang-migrate` use database locking (e.g., PostgreSQL advisory locks) to ensure only one instance actually executes the SQL, but this can still lead to startup delays or deadlocks if the migration takes a long time. Furthermore, if a migration fails, your application crashes in a restart loop.
 
 #### 2. The CI/CD Pipeline Strategy (The Standard)
+
 In strict production environments, migrations are decoupled from the application code entirely. The CI/CD pipeline runs a standalone container (often utilizing the `golang-migrate` CLI tool) to execute the migrations against the production database *before* the new application containers are deployed.
 
 #### 3. The Init Container Strategy (Kubernetes Native)
+
 A hybrid approach involves using Kubernetes Init Containers. An Init Container runs to completion before the main application container starts. You can configure a specific Init Container whose sole job is to execute the compiled Go migration code. If it succeeds, the main application starts (and it doesn't need to check migrations itself). If it fails, the deployment halts, preventing broken application code from serving traffic.
 
 Regardless of the execution strategy, treating database schema changes as immutable, version-controlled code is a mandatory practice for mastering cloud-native Go architecture.

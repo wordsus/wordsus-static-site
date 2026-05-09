@@ -194,23 +194,22 @@ Once fragments are created, the DDBMS must decide where to physically store them
 There are three primary strategies for allocating fragments:
 
 1. **Centralized Allocation:**
+
 * All fragments are stored on a single central node.
 * *Pros:* Trivial to manage; no complex distributed queries.
 * *Cons:* Defeats the purpose of a distributed database; creates a single point of failure and a massive network bottleneck.
 
+1. **Partitioned (Non-Replicated) Allocation:**
 
-2. **Partitioned (Non-Replicated) Allocation:**
 * Each fragment is stored at one and only one node.
 * *Pros:* Low storage costs; updates are instantaneous and simple (no need to synchronize copies).
 * *Cons:* If the node holding a specific fragment goes offline, that data is entirely unavailable. Queries requiring data from multiple nodes incur high network costs.
 
+1. **Replicated Allocation:**
 
-3. **Replicated Allocation:**
 * Fragments are copied and stored across multiple nodes. This can be *fully replicated* (every node has a copy of every fragment) or *partially replicated* (only critical or frequently accessed fragments are copied).
 * *Pros:* High availability (if one node fails, data is read from another); extremely fast read queries since data is often available locally.
 * *Cons:* High storage overhead; significant complexity in handling writes (updates must be synchronized across all replicas to maintain consistency).
-
-
 
 Optimizing the allocation requires mathematical modeling of the network topology, evaluating the ratio of read vs. write queries, and understanding the storage capacity of the participating nodes. Typically, read-heavy fragments are heavily replicated, while write-heavy fragments are strictly partitioned to avoid the overhead of distributed locking and synchronization.
 
@@ -229,29 +228,28 @@ The goal of the first phase is to ask every participant if they are absolutely r
 1. **Prepare Request:** The Coordinator sends a `PREPARE` message to all Participants.
 2. **Local Execution:** Upon receiving the `PREPARE` message, each Participant executes the transaction locally. This involves acquiring necessary database locks and writing the changes to their local WAL. *Crucially, they do not commit yet.*
 3. **The Vote:**
+
 * If a Participant successfully prepares the transaction and guarantees it can commit even if it crashes and reboots, it replies with a `VOTE_COMMIT` (or "Yes").
 * If a Participant encounters an error (e.g., a deadlock, integrity constraint violation, or disk failure), it replies with a `VOTE_ABORT` (or "No") and immediately aborts its local transaction.
 * If the Coordinator does not receive a response from a Participant within a specified timeout period, it registers a presumed `VOTE_ABORT`.
-
-
 
 ### Phase 2: The Commit Phase (Decision Phase)
 
 The second phase executes the final decision based entirely on the votes gathered in Phase 1.
 
 1. **The Decision:**
+
 * **Unanimous Agreement:** If, and only if, the Coordinator receives a `VOTE_COMMIT` from *every single* Participant, it decides to commit the global transaction.
 * **Veto Power:** If even one Participant votes `VOTE_ABORT`, or if a timeout occurs, the Coordinator decides to abort the entire global transaction.
 
+1. **Global Command:** The Coordinator logs its decision to its own durable storage, then broadcasts either a `GLOBAL_COMMIT` or `GLOBAL_ABORT` message to all Participants.
+2. **Execution & Acknowledgement:**
 
-2. **Global Command:** The Coordinator logs its decision to its own durable storage, then broadcasts either a `GLOBAL_COMMIT` or `GLOBAL_ABORT` message to all Participants.
-3. **Execution & Acknowledgement:**
 * Participants receive the decision and act accordingly. If committing, they make the changes permanent; if aborting, they roll back using their local undo logs.
 * After execution, they release all locks held during the transaction.
 * Finally, Participants send an `ACK` (Acknowledgement) back to the Coordinator.
 
-
-4. **Completion:** Once all `ACK`s are received, the Coordinator forgets the transaction, and the process is complete.
+1. **Completion:** Once all `ACK`s are received, the Coordinator forgets the transaction, and the process is complete.
 
 ### Plain Text Sequence Diagrams
 

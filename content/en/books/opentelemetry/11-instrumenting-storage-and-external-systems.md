@@ -8,7 +8,7 @@ OpenTelemetry standardizes SQL database observability by defining rigorous Seman
 
 ### The Anatomy of a Database Span
 
-When an application queries a database, the application acts as a client. Therefore, any span representing a database call must be created with a `SpanKind` of `CLIENT`. 
+When an application queries a database, the application acts as a client. Therefore, any span representing a database call must be created with a `SpanKind` of `CLIENT`.
 
 Unlike HTTP or gRPC calls, where the trace context is typically injected into headers and propagated to the receiving service (as discussed in Chapter 7), standard SQL protocols do not natively support W3C Trace Context headers. As a result, database spans are generally **leaf spans**—the final node in that specific branch of the distributed trace.
 
@@ -97,9 +97,9 @@ Traces provide high-fidelity insights into individual query performance, but the
 
 Standardized database metrics include:
 
-1.  **`db.client.connections.usage` (UpDownCounter):** Tracks the number of connections currently in the pool, broken down by state (e.g., `idle`, `used`). A depleted pool where `used` equals the maximum pool size is a classic early warning sign of a cascading failure.
-2.  **`db.client.connections.timeouts` (Counter):** The number of times the application timed out waiting for a connection from the pool. Spikes in this metric often correlate with slow queries blocking threads holding connections.
-3.  **`db.client.connections.use_time` (Histogram):** The duration for which a connection was held by the application before being returned to the pool.
+1. **`db.client.connections.usage` (UpDownCounter):** Tracks the number of connections currently in the pool, broken down by state (e.g., `idle`, `used`). A depleted pool where `used` equals the maximum pool size is a classic early warning sign of a cascading failure.
+2. **`db.client.connections.timeouts` (Counter):** The number of times the application timed out waiting for a connection from the pool. Spikes in this metric often correlate with slow queries blocking threads holding connections.
+3. **`db.client.connections.use_time` (Histogram):** The duration for which a connection was held by the application before being returned to the pool.
 
 By implementing these standards—whether by wrapping a low-level driver (like Go's `database/sql`) or utilizing an ORM instrumentation library—you transform opaque database interactions into highly structured, queryable observability data. This foundational step ensures that when a database bottleneck occurs, it is immediately identifiable on the dashboard, completely decoupled from the specific language or framework making the call.
 
@@ -109,12 +109,12 @@ Beyond relational databases, modern microservice architectures rely heavily on N
 
 ### Instrumenting Document Stores and Key-Value Caches
 
-Interactions with NoSQL databases (like MongoDB or Cassandra) and caches (like Redis or Memcached) are typically synchronous from the application's perspective. Therefore, just like SQL databases, spans representing these calls use the `CLIENT` span kind and leverage the `db.*` semantic namespace. 
+Interactions with NoSQL databases (like MongoDB or Cassandra) and caches (like Redis or Memcached) are typically synchronous from the application's perspective. Therefore, just like SQL databases, spans representing these calls use the `CLIENT` span kind and leverage the `db.*` semantic namespace.
 
 However, because there is no standardized query language like SQL, the `db.statement` attribute requires a different approach.
 
 * **NoSQL (e.g., MongoDB):** The `db.operation` might be `find`, `insert`, or `aggregate`. The `db.statement` is often represented as a serialized JSON string of the query filter. It is critical to sanitize this JSON payload to prevent exposing sensitive user data (discussed further in Section 11.4).
-* **Caches (e.g., Redis):** The `db.operation` will match the specific cache command, such as `GET`, `SET`, `HGETALL`, or `EXPIRE`. The `db.statement` usually contains the command and the key (e.g., `GET user:session:12345`). 
+* **Caches (e.g., Redis):** The `db.operation` will match the specific cache command, such as `GET`, `SET`, `HGETALL`, or `EXPIRE`. The `db.statement` usually contains the command and the key (e.g., `GET user:session:12345`).
 
 **Tracking Cache Performance via Metrics**
 Tracing individual cache calls is useful for identifying latency spikes, but assessing the overall health of a caching layer requires metrics—specifically, tracking the **cache hit ratio**. While you can add a `cache.hit` boolean attribute to a span, it is far more efficient to record this using a metric counter:
@@ -126,7 +126,7 @@ By tagging these metrics with the `db.system` (e.g., `redis`) and `db.name` (e.g
 
 ### Asynchronous Messaging and Event-Driven Architectures
 
-Instrumenting message queues (like Apache Kafka, RabbitMQ, or Amazon SQS) introduces a fundamental shift in OpenTelemetry concepts. Unlike a synchronous database call that acts as a leaf node in a trace, a message queue acts as an intermediary bridge between two decoupled services. 
+Instrumenting message queues (like Apache Kafka, RabbitMQ, or Amazon SQS) introduces a fundamental shift in OpenTelemetry concepts. Unlike a synchronous database call that acts as a leaf node in a trace, a message queue acts as an intermediary bridge between two decoupled services.
 
 To maintain a continuous distributed trace across an asynchronous boundary, OpenTelemetry introduces two specific span kinds: `PRODUCER` and `CONSUMER`.
 
@@ -230,7 +230,7 @@ By correctly applying the `PRODUCER` and `CONSUMER` span kinds and meticulously 
 
 ## 11.3 Capturing Query Execution Plans and Payload Data
 
-Knowing that a database query took five seconds is critical for identifying a bottleneck. However, resolving that bottleneck requires understanding *why* it took five seconds. Database administrators and engineers typically need two pieces of context to debug a slow query: the exact data being requested (bind parameters) and the database engine's strategy for retrieving it (the execution plan). 
+Knowing that a database query took five seconds is critical for identifying a bottleneck. However, resolving that bottleneck requires understanding *why* it took five seconds. Database administrators and engineers typically need two pieces of context to debug a slow query: the exact data being requested (bind parameters) and the database engine's strategy for retrieving it (the execution plan).
 
 While OpenTelemetry's standard `db.*` semantic conventions cover the operation and the parameterized SQL statement, capturing execution plans and high-fidelity payloads requires advanced instrumentation strategies to balance observability depth with system performance.
 
@@ -254,15 +254,18 @@ Attaching execution plans to OpenTelemetry spans provides the ultimate context f
 You cannot afford to run an `EXPLAIN` query for every single database span. Instead, you must employ conditional capture strategies:
 
 #### 1. Threshold-Based In-Band Capture
+
 The most straightforward approach is to evaluate the query duration post-execution. If the query exceeds a predefined SLA (e.g., > 500ms), the application immediately fires a secondary `EXPLAIN` query using the same parameters and attaches the result to the span before closing it.
 
 * **Pros:** Easy to implement in middleware or ORM hooks.
 * **Cons:** Blocks the application thread while the `EXPLAIN` runs, slightly exacerbating the latency for the end-user.
 
 #### 2. Out-of-Band (Asynchronous) Capture
+
 To avoid impacting the critical path, the telemetry pipeline can dispatch the `EXPLAIN` request asynchronously. When a slow query is detected, the statement and parameters are sent to a background worker queue. The worker executes the `EXPLAIN` and creates a standalone span (linked to the original trace via the W3C Trace Context) containing the plan.
 
 #### 3. Baggage-Triggered Debug Capture
+
 You can use OpenTelemetry Baggage to dynamically trigger plan capture. For example, an engineer troubleshooting in production can inject a specific header (e.g., `debug-db-plan=true`) into an HTTP request. This flag propagates via Baggage through the microservices. The database instrumentation checks for this Baggage entry; if present, it captures the execution plan regardless of the query duration.
 
 ### Recording the Plan: Attributes vs. Events
@@ -348,9 +351,9 @@ Preventing PII leaks requires a defense-in-depth strategy. You must sanitize tel
 
 PII typically leaks into OpenTelemetry database spans through three primary vectors:
 
-1.  **Unparameterized Raw Queries:** When applications concatenate strings to build SQL queries rather than using prepared statements (e.g., `SELECT * FROM users WHERE email = 'jane.doe@example.com'`), the PII becomes hardcoded into the `db.statement` attribute.
-2.  **Captured Bind Parameters:** If you enable the capture of bind variables (`db.statement.parameters`), raw values like passwords, social security numbers, and credit card strings will be attached directly to the span.
-3.  **Database Exception Messages:** Many database engines include the offending data in constraint violation errors. For example, a PostgreSQL unique constraint error might return: `duplicate key value violates unique constraint "users_email_key". Detail: Key (email)=(jane.doe@example.com) already exists.` If your instrumentation records raw exceptions, this data is leaked.
+1. **Unparameterized Raw Queries:** When applications concatenate strings to build SQL queries rather than using prepared statements (e.g., `SELECT * FROM users WHERE email = 'jane.doe@example.com'`), the PII becomes hardcoded into the `db.statement` attribute.
+2. **Captured Bind Parameters:** If you enable the capture of bind variables (`db.statement.parameters`), raw values like passwords, social security numbers, and credit card strings will be attached directly to the span.
+3. **Database Exception Messages:** Many database engines include the offending data in constraint violation errors. For example, a PostgreSQL unique constraint error might return: `duplicate key value violates unique constraint "users_email_key". Detail: Key (email)=(jane.doe@example.com) already exists.` If your instrumentation records raw exceptions, this data is leaked.
 
 ### Layer 1: Client-Side Redaction via Span Processors
 
@@ -410,7 +413,7 @@ class PIIRedactionProcessor(SpanProcessor):
 
 ### Layer 2: Pipeline Redaction via the OTel Collector
 
-While client-side redaction is the most secure, relying solely on it is risky in a polyglot microservice environment. You would need to ensure every single development team, across every language, correctly implements and updates their redaction processors. 
+While client-side redaction is the most secure, relying solely on it is risky in a polyglot microservice environment. You would need to ensure every single development team, across every language, correctly implements and updates their redaction processors.
 
 To mitigate this risk, the OpenTelemetry Collector acts as a centralized secondary firewall. By utilizing the `transform` processor (powered by the OpenTelemetry Transformation Language, OTTL) or the community-contributed `redaction` processor, operators can enforce global sanitization rules.
 
@@ -454,6 +457,6 @@ pipelines:
 
 To architect a secure and compliant observability pipeline:
 
-1.  **Opt-In, Not Opt-Out:** Never capture `db.statement.parameters` by default. This capability should be strictly opt-in, explicitly enabled via environment variables only in pre-production environments, or enabled dynamically for short periods in production under strict auditing.
-2.  **Use Cryptographic Hashing for Correlation:** If you need to know that *the same* user is experiencing repeated database timeouts, but you cannot legally store their User ID, use an HMAC (Hash-Based Message Authentication Code) with a secret salt. This allows you to track a consistent anonymous identifier (e.g., `user_hash: 8f4e2...`) across spans without knowing who the user actually is.
-3.  **Regularly Audit Telemetry Data:** Treat your observability backend as an attack surface. Run automated queries against your tracing backend to search for regex patterns matching credit cards or emails in span attributes to detect accidental regressions in your instrumentation.
+1. **Opt-In, Not Opt-Out:** Never capture `db.statement.parameters` by default. This capability should be strictly opt-in, explicitly enabled via environment variables only in pre-production environments, or enabled dynamically for short periods in production under strict auditing.
+2. **Use Cryptographic Hashing for Correlation:** If you need to know that *the same* user is experiencing repeated database timeouts, but you cannot legally store their User ID, use an HMAC (Hash-Based Message Authentication Code) with a secret salt. This allows you to track a consistent anonymous identifier (e.g., `user_hash: 8f4e2...`) across spans without knowing who the user actually is.
+3. **Regularly Audit Telemetry Data:** Treat your observability backend as an attack surface. Run automated queries against your tracing backend to search for regex patterns matching credit cards or emails in span attributes to detect accidental regressions in your instrumentation.

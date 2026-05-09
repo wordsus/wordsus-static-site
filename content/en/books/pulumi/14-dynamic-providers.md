@@ -4,9 +4,9 @@ Enter **Dynamic Providers**—Pulumi’s native escape hatch. In this chapter, w
 
 ## 14.1 When to Use Dynamic Providers
 
-Pulumi’s expansive ecosystem of native providers covers the vast majority of infrastructure needs, from core AWS and Azure resources to Kubernetes orchestration. As you saw in Chapter 13, when you need to combine these existing resources into reusable, higher-level abstractions, `ComponentResources` are the ideal tool. However, a `ComponentResource` is ultimately bound by the capabilities of the underlying resource providers. 
+Pulumi’s expansive ecosystem of native providers covers the vast majority of infrastructure needs, from core AWS and Azure resources to Kubernetes orchestration. As you saw in Chapter 13, when you need to combine these existing resources into reusable, higher-level abstractions, `ComponentResources` are the ideal tool. However, a `ComponentResource` is ultimately bound by the capabilities of the underlying resource providers.
 
-What happens when you need to manage a resource, system, or stateful operation that *no* existing Pulumi provider supports? 
+What happens when you need to manage a resource, system, or stateful operation that *no* existing Pulumi provider supports?
 
 This is where **Dynamic Providers** come into play. A Dynamic Provider is a lightweight, language-specific mechanism that allows you to author a custom resource provider directly within your Pulumi program. Instead of writing a full, standalone provider plugin in Go and publishing it (a process detailed later in Chapter 16), a Dynamic Provider lets you define the exact Create, Read, Update, and Delete (CRUD) operations in the same language you are using to write your infrastructure (typically TypeScript/Node.js or Python).
 
@@ -37,13 +37,17 @@ Before reaching for a Dynamic Provider, it is critical to understand where it fi
 Dynamic Providers are best utilized when you need a rapid, native-language escape hatch to integrate unsupported APIs or systems into the Pulumi state lifecycle. Here are the most common scenarios where Dynamic Providers excel:
 
 #### 1. Managing Internal or Proprietary APIs
+
 Many enterprises maintain homegrown systems that lack public Pulumi providers. For example, your organization might have a custom internal developer portal that requires a specific API call to register a new microservice. By wrapping this API call in a Dynamic Provider, the internal portal registration becomes a first-class citizen in your Pulumi state. If the Pulumi stack is destroyed, the Dynamic Provider will automatically issue the `DELETE` API call to deregister the service.
 
 #### 2. Filling Gaps in Existing Cloud Providers
+
 Cloud providers frequently release new services or features before the corresponding IaC providers can implement them. If you are blocked by a missing feature in the AWS or GCP provider, you can write a temporary Dynamic Provider that uses the cloud provider's official SDK to manage that specific resource. Once the official Pulumi provider is updated, you can migrate the state and retire the dynamic resource.
 
 #### 3. Stateful Orchestration and Side-Effects
+
 Some infrastructure deployments require executing actions that aren't strictly "cloud resources" but still require stateful tracking. Examples include:
+
 * Executing database schema migrations (e.g., running Flyway or Prisma) immediately after provisioning an RDS instance.
 * Invalidating a CDN cache or triggering a webhook payload after a static website deployment.
 * Generating and securely storing a one-time API key from a third-party SaaS platform.
@@ -51,6 +55,7 @@ Some infrastructure deployments require executing actions that aren't strictly "
 By modeling these side-effects as Dynamic Providers, Pulumi can track whether the action has already been performed, preventing redundant executions on subsequent `pulumi up` runs unless the inputs change.
 
 #### 4. Managing Niche SaaS Platforms
+
 If you use a specialized SaaS tool (e.g., a specific incident management system or a niche analytics platform) that does not have an official Pulumi or Terraform provider to bridge, a Dynamic Provider allows you to manage its configuration—like alert routing rules or dashboard setups—as code alongside your primary infrastructure.
 
 ### When to Avoid Dynamic Providers
@@ -98,7 +103,7 @@ The heavy lifting happens entirely within the `CustomSystemProvider` object pass
 
 ## 14.2 The CRUD Lifecycle in Dynamic Providers
 
-To build a Dynamic Provider, you must understand how the Pulumi engine manages state transitions. When you run `pulumi up`, Pulumi doesn't simply execute your code from top to bottom. Instead, it constructs a desired state from your program and compares it against the last known state. 
+To build a Dynamic Provider, you must understand how the Pulumi engine manages state transitions. When you run `pulumi up`, Pulumi doesn't simply execute your code from top to bottom. Instead, it constructs a desired state from your program and compares it against the last known state.
 
 For standard resources, the native provider plugin handles this reconciliation. For a dynamic resource, you must explicitly define how Pulumi should validate inputs, compare states, and execute the Create, Read, Update, and Delete (CRUD) operations by implementing the `dynamic.Provider` interface.
 
@@ -142,32 +147,44 @@ The following diagram illustrates the sequence of operations Pulumi invokes on y
 Implementing a Dynamic Provider requires authoring an object that adheres to the `dynamic.Provider` interface. Let's examine the exact responsibilities of each lifecycle hook.
 
 #### 1. `check(olds, news)`: Validation and Defaults
-Before any state comparison happens, Pulumi passes the current inputs (`news`) and the previous state (`olds`) to the `check` method. 
-* **Purpose:** Validate user input, enforce constraints, and inject default values. 
+
+Before any state comparison happens, Pulumi passes the current inputs (`news`) and the previous state (`olds`) to the `check` method.
+
+* **Purpose:** Validate user input, enforce constraints, and inject default values.
 * **Returns:** A sanitized dictionary of inputs that will be passed to subsequent methods. If validation fails, you throw an array of detailed failure objects.
 
 #### 2. `diff(id, olds, news)`: Detecting Changes
+
 If `check` succeeds, Pulumi calls `diff` to understand *what* changed and *how* to handle it.
+
 * **Purpose:** Compare the old state with the new sanitized inputs. You must determine if a change occurred and whether that change requires destroying the old resource and creating a new one (a replacement), or if it can be updated in place.
 * **Returns:** A `DiffResult` object containing `changes` (a boolean) and `replaces` (an array of property names that triggered a replacement).
 
 #### 3. `create(inputs)`: Provisioning
+
 This is the heart of the provider. If `diff` indicates a new resource is needed (or if it's the very first deployment), `create` is called.
+
 * **Purpose:** Make the API calls or execute the scripts necessary to bring the resource into existence.
 * **Returns:** A `CreateResult` containing a unique `id` for the newly created resource and the `outs` (the final state of the resource, which will be saved in the Pulumi state file). **Crucially, the ID must be unique and persistent**, as Pulumi uses it to track the resource across subsequent runs.
 
 #### 4. `update(id, olds, news)`: In-Place Modification
+
 If `diff` returns `changes: true` but `replaces: []` (meaning no replacement is necessary), Pulumi calls `update` instead of `create`.
+
 * **Purpose:** Call the underlying API's update or patch method.
 * **Returns:** An `UpdateResult` containing the updated `outs`.
 
 #### 5. `delete(id, props)`: Teardown
+
 When a resource is removed from your Pulumi program, or when a replacement is triggered (create-before-replace or replace-before-create), `delete` is invoked.
+
 * **Purpose:** Gracefully destroy the resource in the backend system using the provided `id`.
 * **Returns:** Nothing. If the operation fails, throwing an error will halt the deletion and keep the resource in the state file.
 
 #### 6. `read(id, props)`: State Refresh (Optional but Recommended)
+
 Invoked when a user runs `pulumi refresh` or when a resource is imported.
+
 * **Purpose:** Fetch the absolute truth from the external system to synchronize Pulumi's state file with reality.
 * **Returns:** A `ReadResult` containing the updated `id` and `props`.
 
@@ -268,9 +285,10 @@ When implementing the lifecycle methods, keep these constraints in mind:
 
 With a solid grasp of the CRUD lifecycle and the `dynamic.Provider` interface from the previous section, it is time to write functional code. While the conceptual model is identical across languages, the specific syntax and standard libraries used for implementation vary between Node.js (TypeScript) and Python.
 
-In this section, we will build a practical Dynamic Provider in both languages. Our objective is to manage a **Custom Webhook Registration** against a hypothetical internal developer platform API. 
+In this section, we will build a practical Dynamic Provider in both languages. Our objective is to manage a **Custom Webhook Registration** against a hypothetical internal developer platform API.
 
 The lifecycle requires us to:
+
 1. `create`: Issue a POST request to register the webhook and save the returned ID.
 2. `update`: Issue a PUT request if the webhook URL or secret changes.
 3. `delete`: Issue a DELETE request to remove the webhook.
@@ -363,6 +381,7 @@ export class Webhook extends dynamic.Resource {
 ```
 
 #### A Note on Node.js Dependencies
+
 In the example above, we imported `axios`. During execution, Pulumi serializes the `WebhookProvider` class to run it within the engine. Pulumi attempts to automatically capture closures and dependencies, but complex external C-bindings or deeply nested module trees can occasionally fail serialization. For maximum reliability, use standard Node.js built-ins (like `https` or the global `fetch` in Node 18+) inside your provider methods, or ensure your dependencies are strictly pure JavaScript.
 
 ### The Python Implementation
@@ -447,9 +466,10 @@ class Webhook(Resource):
 
 A critical difference between Native Providers and Dynamic Providers is how you handle sensitive data. In a standard provider like AWS, passing an `Output<string>` marked as a secret to a database password field is handled securely by the engine; the provider plugin never leaks it.
 
-In Dynamic Providers, because the state (`outs`) is returned as a plain dictionary from your `create` and `update` methods, you must be careful not to accidentally strip the "secretness" from the data. 
+In Dynamic Providers, because the state (`outs`) is returned as a plain dictionary from your `create` and `update` methods, you must be careful not to accidentally strip the "secretness" from the data.
 
 To ensure a property remains encrypted in the state file:
+
 1. The user must pass it as a secret (e.g., `pulumi.secret("my-token")`).
 2. Inside your dynamic resource class, do *not* declare a public `pulumi.Output` property for that secret field unless absolutely necessary.
 3. If you must expose the secret as an output, ensure you wrap it using `pulumi.secret()` inside the provider's `create` and `update` returns, or utilize Pulumi's `additionalSecretOutputs` resource option to explicitly instruct the engine to encrypt specific keys in the `outs` dictionary.
@@ -461,7 +481,8 @@ The most common source of bugs in Dynamic Providers does not stem from the API c
 ### The Mechanics of `olds` and `news`
 
 During the preview phase (`pulumi up`), Pulumi passes two objects to your `diff` method:
-* **`olds`**: The current state of the resource, exactly as it was returned in the `outs` dictionary during the last successful `create` or `update` operation. 
+
+* **`olds`**: The current state of the resource, exactly as it was returned in the `outs` dictionary during the last successful `create` or `update` operation.
 * **`news`**: The desired state of the resource, which consists of the sanitized inputs returned by your `check` method.
 
 Your primary job in the `diff` method is to compare these two objects and return a `DiffResult`.
@@ -470,9 +491,9 @@ Your primary job in the `diff` method is to compare these two objects and return
 
 The `DiffResult` tells the Pulumi engine what action to take. It contains three critical properties:
 
-1.  **`changes` (boolean):** Set this to `true` if *any* meaningful property has changed between `olds` and `news`. If this is `false`, Pulumi will take no action and report that the resource is up to date.
-2.  **`replaces` (array of strings):** If changes exist, can the underlying system apply them in place (e.g., via a `PUT` or `PATCH` request)? If not, you must list the names of the properties that force a replacement. If this array is populated, Pulumi will destroy the old resource and create a new one.
-3.  **`deleteBeforeReplace` (boolean):** By default, Pulumi attempts a "Create-Before-Replace" strategy to minimize downtime. It creates the new resource, and if successful, deletes the old one. However, if the resource relies on a globally unique identifier (like a specific hostname or a singleton database table name), creating the new one first will fail. Setting this to `true` forces Pulumi to delete the old resource *before* provisioning the new one.
+1. **`changes` (boolean):** Set this to `true` if *any* meaningful property has changed between `olds` and `news`. If this is `false`, Pulumi will take no action and report that the resource is up to date.
+2. **`replaces` (array of strings):** If changes exist, can the underlying system apply them in place (e.g., via a `PUT` or `PATCH` request)? If not, you must list the names of the properties that force a replacement. If this array is populated, Pulumi will destroy the old resource and create a new one.
+3. **`deleteBeforeReplace` (boolean):** By default, Pulumi attempts a "Create-Before-Replace" strategy to minimize downtime. It creates the new resource, and if successful, deletes the old one. However, if the resource relies on a globally unique identifier (like a specific hostname or a singleton database table name), creating the new one first will fail. Setting this to `true` forces Pulumi to delete the old resource *before* provisioning the new one.
 
 ### A Complex Diffing Example
 

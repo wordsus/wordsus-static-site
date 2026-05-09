@@ -11,6 +11,7 @@ Para proteger las contraseñas, necesitamos **Funciones de Derivación de Claves
 Argon2 fue el ganador de la *Password Hashing Competition* (PHC) en 2015 y es la recomendación actual de organizaciones como OWASP. Su principal ventaja es que es "duro de memoria" (*memory-hard*), lo que significa que requiere una cantidad significativa de memoria RAM para calcularse, neutralizando la ventaja de las granjas de GPUs de los atacantes.
 
 Argon2 tiene tres variantes:
+
 * **Argon2d:** Maximiza la resistencia a ataques de cracking por GPU, pero es vulnerable a ataques de canal lateral (*side-channel attacks*).
 * **Argon2i:** Optimizado contra ataques de canal lateral, pero menos robusto frente a cracking por hardware.
 * **Argon2id:** Una combinación de ambos. **Esta es la variante recomendada para aplicaciones backend y web.**
@@ -18,6 +19,7 @@ Argon2 tiene tres variantes:
 En Rust, la implementación estándar de facto pertenece al proyecto *RustCrypto* mediante el crate `argon2`. Para usarlo, normalmente requerimos habilitar características adicionales para la gestión de generación de "salts" aleatorios.
 
 **Dependencias en `Cargo.toml`:**
+
 ```toml
 [dependencies]
 argon2 = { version = "0.5", features = ["std"] }
@@ -77,6 +79,7 @@ Aunque Argon2 es superior técnicamente, **bcrypt** ha estado en producción des
 Si necesitas integrarte con sistemas *legacy* o bases de datos compartidas donde otra aplicación (escrita en Node.js, Python, PHP, etc.) ya usa bcrypt, usar el crate `bcrypt` en Rust será tu mejor opción.
 
 **Dependencias en `Cargo.toml`:**
+
 ```toml
 [dependencies]
 bcrypt = "0.15"
@@ -101,7 +104,7 @@ pub fn verify_with_bcrypt(password: &str, hashed: &str) -> Result<bool, bcrypt::
 
 ### Consideración Crítica Arquitectónica: Hashing y Asincronía
 
-Como vimos en el Capítulo 32 (El runtime de Tokio), bloquear un hilo del *worker* con operaciones intensivas en CPU arruina el rendimiento y la concurrencia de tu servidor asíncrono. 
+Como vimos en el Capítulo 32 (El runtime de Tokio), bloquear un hilo del *worker* con operaciones intensivas en CPU arruina el rendimiento y la concurrencia de tu servidor asíncrono.
 
 Tanto Argon2 como bcrypt están diseñados, **por definición**, para bloquear el procesador durante fracciones de segundo. Si ejecutas estas funciones directamente dentro de un *handler* de Axum o Actix-Web, detendrás el procesamiento de otras requests concurrentes que compartan ese hilo de Tokio.
 
@@ -134,6 +137,7 @@ Esta separación entre la concurrencia asíncrona de I/O y la ejecución intensi
 Si has desarrollado backends en otros lenguajes, es muy probable que estés acostumbrado a depender de OpenSSL para todo lo relacionado con criptografía y conexiones TLS/SSL. En el ecosistema de Rust, usar OpenSSL a través del crate `openssl` (y su contraparte insegura `openssl-sys`) es posible, pero suele convertirse rápidamente en un dolor de cabeza a nivel operativo.
 
 **El problema con OpenSSL en Rust:**
+
 1. **Compilación cruzada (Cross-compilation):** Intentar compilar un binario de Rust desde macOS o Windows para un entorno Linux Alpine (`x86_64-unknown-linux-musl`) utilizando OpenSSL requiere configurar toolchains de C y compilar la librería estática de OpenSSL a mano.
 2. **Seguridad de memoria:** OpenSSL está escrito en C. Por más seguro que sea tu código en Rust, si dependes de una librería en C, heredas sus vulnerabilidades de memoria (como el infame *Heartbleed*).
 3. **Imágenes Docker pesadas:** Requiere instalar paquetes del sistema como `libssl-dev` o `openssl-dev`, impidiendo el uso de imágenes Docker ultraligeras tipo *scratch* o *distroless*.
@@ -149,6 +153,7 @@ El crate `ring` está enfocado en exponer un subconjunto de primitivas criptogr�
 Un caso de uso backend avanzado y muy común para `ring` es la validación de firmas **HMAC** (Hash-based Message Authentication Code). Esto es fundamental al construir integraciones con terceros, como validar que un evento Webhook realmente proviene de Stripe o GitHub y no de un atacante.
 
 **Dependencias en `Cargo.toml`:**
+
 ```toml
 [dependencies]
 ring = "0.17"
@@ -190,6 +195,7 @@ fn hex_to_bytes(hex: &str) -> Result<Vec<u8>, ()> {
         .collect()
 }
 ```
+
 *Nota arquitectónica:* Fíjate que `hmac::verify` mitiga automáticamente los *timing attacks* (ataques de tiempo). Si compararas la firma usando un simple `==` en Rust, la operación terminaría antes si los primeros caracteres fallan, revelando información al atacante. `ring` nos protege de esto por defecto.
 
 ---
@@ -205,6 +211,7 @@ Para un desarrollador backend, el uso más crítico de `rustls` es servir APIs s
 Para integrar `rustls` en el framework web Axum (cubierto en el Capítulo 17), solemos usar herramientas del ecosistema como `axum-server`, que manejan el "acceptor" TLS de forma asíncrona.
 
 **Dependencias en `Cargo.toml`:**
+
 ```toml
 [dependencies]
 axum = "0.7"
@@ -261,11 +268,12 @@ Durante años, esquemas simétricos como AES-CBC fueron el estándar. Sin embarg
 
 La solución definitiva en la criptografía moderna es **AEAD** (*Authenticated Encryption with Associated Data*). AEAD no solo cifra el mensaje, sino que genera una etiqueta de autenticación (MAC). Si un solo bit del texto cifrado es alterado, la fase de descifrado fallará rotundamente, protegiendo a tu aplicación de procesar datos corruptos o maliciosos. Además, permite adjuntar "Datos Asociados" (*Associated Data*): metadatos en texto plano (como el ID de un usuario o cabeceras de red) que no se cifran, pero cuya integridad sí se verifica junto con el mensaje.
 
-Los dos algoritmos AEAD más utilizados hoy en día son **AES-GCM** (acelerado por hardware en casi todas las CPUs modernas) y **ChaCha20-Poly1305** (extremadamente rápido en software, ideal para móviles o dispositivos IoT). 
+Los dos algoritmos AEAD más utilizados hoy en día son **AES-GCM** (acelerado por hardware en casi todas las CPUs modernas) y **ChaCha20-Poly1305** (extremadamente rápido en software, ideal para móviles o dispositivos IoT).
 
 En el ecosistema de Rust, el proyecto *RustCrypto* provee abstracciones de primer nivel mediante el trait `Aead`.
 
 **Dependencias en `Cargo.toml`:**
+
 ```toml
 [dependencies]
 aes-gcm = "0.10"
@@ -329,7 +337,7 @@ Actualmente, el estándar de facto para firmas digitales rápidas y seguras es *
 
 ## 41.4 Generación de números pseudoaleatorios seguros (`rand_core`)
 
-Para cerrar el capítulo sobre criptografía, debemos abordar un pilar fundamental en el que se basan todos los algoritmos que hemos visto: la aleatoriedad. Ya sea para generar la *salt* de una contraseña en Argon2, el *nonce* en AES-GCM, claves asimétricas o tokens de sesión para tus APIs, necesitas números aleatorios. 
+Para cerrar el capítulo sobre criptografía, debemos abordar un pilar fundamental en el que se basan todos los algoritmos que hemos visto: la aleatoriedad. Ya sea para generar la *salt* de una contraseña en Argon2, el *nonce* en AES-GCM, claves asimétricas o tokens de sesión para tus APIs, necesitas números aleatorios.
 
 Sin embargo, los ordenadores son máquinas deterministas. No saben ser aleatorios por naturaleza. Para solucionar esto, utilizamos algoritmos matemáticos llamados **PRNGs** (Generadores de Números Pseudoaleatorios). El problema radica en que los PRNGs estándar están diseñados para ser rápidos y tener una buena distribución estadística (útiles para simulaciones o videojuegos), pero **son predecibles**. Si un atacante descubre la semilla (*seed*) inicial o el estado interno de un PRNG estándar, puede predecir todos los números pasados y futuros, comprometiendo todo tu sistema de seguridad.
 
@@ -350,6 +358,7 @@ Aquí es donde el sistema de tipos de Rust brilla de forma espectacular. ¿Cómo
 El crate `rand_core` expone un *Marker Trait* (un trait sin métodos) llamado `CryptoRng`. Su única función es actuar como un "sello de garantía" a nivel del compilador. Si un PRNG implementa `CryptoRng`, sus autores certifican que es criptográficamente seguro.
 
 **Dependencias en `Cargo.toml`:**
+
 ```toml
 [dependencies]
 rand_core = { version = "0.6", features = ["std"] }

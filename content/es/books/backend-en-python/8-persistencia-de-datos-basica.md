@@ -4,7 +4,7 @@ La persistencia transforma scripts efímeros en aplicaciones útiles. Hasta ahor
 
 Hasta este punto del libro, los datos con los que hemos trabajado vivían exclusivamente en la memoria RAM. Esto significa que al terminar la ejecución del script, la información desaparecía. Para lograr la **persistencia**, el primer paso fundamental es aprender a interactuar con el sistema de archivos del sistema operativo mediante operaciones de entrada y salida (I/O).
 
-En Python, la función integrada `open()` es la puerta de enlace para trabajar con archivos locales. 
+En Python, la función integrada `open()` es la puerta de enlace para trabajar con archivos locales.
 
 ### La función `open()` y los Modos de Apertura
 
@@ -32,6 +32,7 @@ A continuación, un diagrama en texto plano que resume los modos principales y e
 Como vimos en el **Capítulo 6**, gestionar los recursos adecuadamente es vital. Si abrimos un archivo, debemos cerrarlo con `.close()` para liberar el descriptor de archivo a nivel del sistema operativo. Sin embargo, la forma "Senior" y recomendada (Pythonic) es utilizar el gestor de contexto `with`, el cual garantiza el cierre del archivo incluso si ocurre una excepción durante la lectura.
 
 #### 1. Leer todo el contenido (Cuidado con la memoria)
+
 El método `.read()` carga todo el contenido del archivo en un solo *string*. Es útil para archivos pequeños, pero un antipatrón absoluto si el archivo pesa varios Gigabytes.
 
 ```python
@@ -40,10 +41,12 @@ with open("mensaje.txt", "r", encoding="utf-8") as archivo:
     contenido = archivo.read()
     print(contenido)
 ```
+
 > **Nota de Senior:** Siempre especifica `encoding="utf-8"` cuando trabajes con texto. Si omites este parámetro, Python usará la codificación por defecto del sistema operativo (por ejemplo, `cp1252` en Windows), lo que provocará errores al leer caracteres especiales o emojis creados en sistemas basados en Unix.
 
 #### 2. Lectura línea por línea (El enfoque eficiente)
-Para procesar archivos grandes, en lugar de usar `.readlines()` (que carga todas las líneas en una lista en memoria), debemos aprovechar que **los objetos de archivo en Python son iterables**. 
+
+Para procesar archivos grandes, en lugar de usar `.readlines()` (que carga todas las líneas en una lista en memoria), debemos aprovechar que **los objetos de archivo en Python son iterables**.
 
 ```python
 # Procesamiento eficiente en memoria (O(1) en RAM)
@@ -116,7 +119,7 @@ Con estas bases sólidas sobre cómo interactuar con el sistema de archivos a ni
 
 ## 8.2 Manipulación de formatos estándar: JSON, CSV y YAML
 
-En la sección anterior dominamos la interacción con el sistema de archivos mediante texto plano y bytes. Sin embargo, en el mundo del desarrollo de software rara vez intercambiamos información como texto libre. Necesitamos estructuras, jerarquías y reglas que tanto humanos como máquinas puedan interpretar de manera predecible. 
+En la sección anterior dominamos la interacción con el sistema de archivos mediante texto plano y bytes. Sin embargo, en el mundo del desarrollo de software rara vez intercambiamos información como texto libre. Necesitamos estructuras, jerarquías y reglas que tanto humanos como máquinas puedan interpretar de manera predecible.
 
 A continuación, exploraremos los tres formatos de serialización más utilizados en la industria, cómo manejarlos en Python y, lo más importante, cuándo elegir cada uno.
 
@@ -245,7 +248,8 @@ En la sección anterior aprendimos a comunicarnos con el mundo exterior utilizan
 
 ### ¿Qué es `pickle`?
 
-`pickle` es un módulo integrado en Python diseñado para la **serialización y deserialización binaria de objetos nativos**. 
+`pickle` es un módulo integrado en Python diseñado para la **serialización y deserialización binaria de objetos nativos**.
+
 * **Serializar (Pickling):** Convertir una jerarquía de objetos de Python en un flujo de bytes (byte stream).
 * **Deserializar (Unpickling):** Tomar ese flujo de bytes y reconstruir la jerarquía de objetos original en memoria.
 
@@ -310,10 +314,12 @@ datos_recuperados = pickle.loads(bytes_serializados)
 Llegar a nivel "Senior" implica no solo saber cómo usar una herramienta, sino **cuándo evitarla**. `pickle` tiene dos grandes desventajas que limitan severamente su uso en producción:
 
 #### 1. Incompatibilidad entre lenguajes y versiones
+
 Un archivo `.pkl` solo puede ser leído por Python. Peor aún, si guardas un objeto con una versión muy nueva de Python, es posible que una versión más antigua no pueda leerlo. **Nunca uses `pickle` para almacenamiento de datos a largo plazo.**
 
 #### 2. La vulnerabilidad de ejecución de código (RCE)
-> **⚠️ Advertencia Crítica de Seguridad:** NUNCA, bajo ninguna circunstancia, deserialices (`pickle.load`) datos provenientes de una fuente no confiable (usuarios de internet, redes públicas, archivos descargados). 
+>
+> **⚠️ Advertencia Crítica de Seguridad:** NUNCA, bajo ninguna circunstancia, deserialices (`pickle.load`) datos provenientes de una fuente no confiable (usuarios de internet, redes públicas, archivos descargados).
 
 El formato de `pickle` permite insertar instrucciones que Python ejecutará inmediatamente al deserializar el objeto. Un atacante puede crear un archivo `.pkl` modificado que, al ser leído por tu servidor, ejecute comandos en el sistema operativo (por ejemplo, borrar la base de datos o abrir una puerta trasera).
 

@@ -4,7 +4,7 @@
 
 Cuando miramos al cielo nocturno, a menudo pensamos en las estrellas, pero algunos de los puntos más brillantes que vemos no titilan: son los planetas de nuestro propio vecindario cósmico. Mientras que los planetas interiores como la Tierra y Marte son mundos pequeños, rocosos y sólidos, más allá del cinturón de asteroides las reglas del juego cambian drásticamente. Allí nos encontramos con un dominio completamente diferente: el reino de los planetas jovianos, más comúnmente conocidos como los gigantes gaseosos (y sus hermanos, los gigantes de hielo).
 
-Imagina mundos tan inmensos que podrían tragarse a la Tierra docenas o incluso miles de veces; planetas sin una superficie sólida sobre la cual caminar, compuestos casi en su totalidad por los mismos gases que forman las estrellas; esferas masivas rodeadas de intrincados sistemas de anillos y colecciones de lunas que actúan como sistemas solares en miniatura. 
+Imagina mundos tan inmensos que podrían tragarse a la Tierra docenas o incluso miles de veces; planetas sin una superficie sólida sobre la cual caminar, compuestos casi en su totalidad por los mismos gases que forman las estrellas; esferas masivas rodeadas de intrincados sistemas de anillos y colecciones de lunas que actúan como sistemas solares en miniatura.
 
 En este viaje a través de la sección *Astronomía para Mortales*, vamos a dejar atrás la comodidad de la roca firme para sumergirnos en los misterios de Júpiter, Saturno, Urano y Neptuno. Entenderemos por qué son tan grandes, qué esconden debajo de sus nubes arremolinadas y por qué son fundamentales para nuestra propia existencia en la Tierra.
 
@@ -14,7 +14,7 @@ Antes de visitar cada planeta individualmente, es fundamental entender por qué 
 
 Hace unos 4.600 millones de años, nuestro sistema solar era solo un disco giratorio de gas y polvo. Cerca del joven Sol, la temperatura era tan alta que materiales como el agua, el metano o el amoníaco solo podían existir en forma de gas. Solo los materiales pesados y con altos puntos de fusión (rocas y metales) podían condensarse para formar planetas. Por eso la Tierra es rocosa.
 
-Sin embargo, a cierta distancia del Sol (aproximadamente entre Marte y Júpiter), el frío del espacio permitía que el agua, el metano y el amoníaco se congelaran convirtiéndose en diminutos granos de hielo. 
+Sin embargo, a cierta distancia del Sol (aproximadamente entre Marte y Júpiter), el frío del espacio permitía que el agua, el metano y el amoníaco se congelaran convirtiéndose en diminutos granos de hielo.
 
 ```text
 Gráfico de Distribución de Masa en el Sistema Solar Temprano:
@@ -41,6 +41,7 @@ Comparación de Diámetros (Aproximada):
 Tierra:  (o) 12,742 km
 Júpiter: (OOOOOOOOOO) 139,820 km
 ```
+
 *Si Júpiter fuera del tamaño de una pelota de baloncesto, la Tierra sería apenas del tamaño de una uva.*
 
 A pesar de su inmenso tamaño, Júpiter está hecho casi completamente de hidrógeno (alrededor del 90%) y helio (10%). No tiene una superficie sólida. Si intentaras aterrizar en Júpiter, simplemente caerías a través de nubes cada vez más densas y calientes, aplastado lentamente por una presión atmosférica aplastante.
@@ -49,7 +50,7 @@ En su interior, las condiciones son tan extremas que el gas hidrógeno sufre una
 
 ### Clima Extremo y la Gran Mancha Roja
 
-Cuando miramos a Júpiter, vemos hermosas bandas de colores. Estas son corrientes en chorro de amoníaco, agua y otros compuestos químicos que giran alrededor del planeta en direcciones opuestas a velocidades asombrosas. 
+Cuando miramos a Júpiter, vemos hermosas bandas de colores. Estas son corrientes en chorro de amoníaco, agua y otros compuestos químicos que giran alrededor del planeta en direcciones opuestas a velocidades asombrosas.
 
 > **Dato asombroso:** Júpiter tiene el día más corto de todo el sistema solar. ¡Un inmenso planeta de casi 140.000 km de diámetro completa un giro sobre su propio eje en apenas 9 horas y 55 minutos! Esta rotación vertiginosa es lo que aplana al planeta en los polos y crea sus furiosas bandas climáticas.
 
@@ -59,10 +60,10 @@ El rasgo más distintivo de Júpiter es la **Gran Mancha Roja**. Se trata de un 
 
 Júpiter no está solo; es orbitado por al menos 95 lunas conocidas. Las cuatro más grandes, descubiertas por Galileo Galilei en 1610 (los satélites galileanos), son mundos fascinantes por derecho propio:
 
-*   **Ío:** El cuerpo más volcánicamente activo del sistema solar, cubierto de azufre y lavas ardientes debido a las inmensas fuerzas de marea de Júpiter que "amasan" su interior.
-*   **Europa:** Un mundo cubierto de hielo con un océano de agua líquida salada bajo su corteza. Es uno de los principales candidatos en la búsqueda de vida extraterrestre.
-*   **Ganimedes:** La luna más grande del sistema solar (¡incluso más grande que el planeta Mercurio!) y la única conocida por tener su propio campo magnético.
-*   **Calisto:** Un mundo antiguo y profundamente craterizado que nos sirve como cápsula del tiempo del sistema solar primitivo.
+* **Ío:** El cuerpo más volcánicamente activo del sistema solar, cubierto de azufre y lavas ardientes debido a las inmensas fuerzas de marea de Júpiter que "amasan" su interior.
+* **Europa:** Un mundo cubierto de hielo con un océano de agua líquida salada bajo su corteza. Es uno de los principales candidatos en la búsqueda de vida extraterrestre.
+* **Ganimedes:** La luna más grande del sistema solar (¡incluso más grande que el planeta Mercurio!) y la única conocida por tener su propio campo magnético.
+* **Calisto:** Un mundo antiguo y profundamente craterizado que nos sirve como cápsula del tiempo del sistema solar primitivo.
 
 ## 3. Saturno: La Joya de los Anillos
 
@@ -83,7 +84,7 @@ La densidad promedio de la Tierra es de unos $5.51 \text{ g/cm}^3$. La densidad 
 
 Aunque todos los gigantes gaseosos tienen anillos, los de Saturno son los únicos visibles desde la Tierra con un telescopio pequeño. No son objetos sólidos, sino un asombroso sistema de incontables trozos de hielo de agua y roca. Algunos son tan pequeños como granos de arena, mientras que otros son del tamaño de montañas o rascacielos.
 
-**¿De dónde salieron estos anillos?** 
+**¿De dónde salieron estos anillos?**
 La teoría más aceptada involucra un concepto físico llamado el **Límite de Roche**. El físico Édouard Roche calculó la distancia mínima a la que un cuerpo celeste, mantenido unido solo por su propia gravedad, puede acercarse a un planeta masivo sin ser destrozado por las fuerzas de marea del planeta.
 
 Si una luna o un cometa se acerca demasiado a Saturno y cruza el límite de Roche, la gravedad de Saturno tira de la parte frontal de la luna con mucha más fuerza que de la parte trasera. Esta diferencia de fuerza gravitacional desgarra al objeto. Los restos de ese evento cataclísmico se esparcen en el plano ecuatorial del planeta, creando los majestuosos anillos que vemos hoy. La fórmula del límite de Roche ($d$) depende del radio del planeta ($R_M$) y de las densidades del planeta ($\rho_M$) y del satélite ($\rho_m$):
@@ -93,8 +94,9 @@ Casi todo el material de los anillos principales de Saturno orbita dentro de est
 ### Mundos Oceánicos y Atmósferas Densas
 
 Saturno cuenta con más de 140 lunas, pero dos de ellas capturan la atención de los científicos:
-1.  **Titán:** Es la segunda luna más grande del sistema solar y la única con una atmósfera densa. Su atmósfera es rica en nitrógeno y metano. En su superficie helada, llueve metano líquido que forma ríos y lagos, creando un ciclo hidrológico muy parecido al de la Tierra, pero a -179 °C.
-2.  **Encélado:** Un mundo diminuto y brillante que esconde un secreto extraordinario. Cerca de su polo sur, enormes géiseres de vapor de agua y materia orgánica estallan hacia el espacio desde un océano global subterráneo, alimentando el anillo E de Saturno.
+
+1. **Titán:** Es la segunda luna más grande del sistema solar y la única con una atmósfera densa. Su atmósfera es rica en nitrógeno y metano. En su superficie helada, llueve metano líquido que forma ríos y lagos, creando un ciclo hidrológico muy parecido al de la Tierra, pero a -179 °C.
+2. **Encélado:** Un mundo diminuto y brillante que esconde un secreto extraordinario. Cerca de su polo sur, enormes géiseres de vapor de agua y materia orgánica estallan hacia el espacio desde un océano global subterráneo, alimentando el anillo E de Saturno.
 
 ## 4. Urano: El Gigante Inclinado y los Gigantes de Hielo
 
@@ -130,13 +132,13 @@ Neptuno es el planeta más lejano, orbitando a unos 4.500 millones de kilómetro
 
 ### Un Descubrimiento Matemático
 
-Neptuno es el único planeta que fue descubierto matemáticamente antes de ser observado por un telescopio. A mediados del siglo XIX, los astrónomos notaron que Urano no se movía en su órbita exactamente como predecían las leyes de la física gravitacional de Isaac Newton. Había perturbaciones irregulares en su trayectoria. 
+Neptuno es el único planeta que fue descubierto matemáticamente antes de ser observado por un telescopio. A mediados del siglo XIX, los astrónomos notaron que Urano no se movía en su órbita exactamente como predecían las leyes de la física gravitacional de Isaac Newton. Había perturbaciones irregulares en su trayectoria.
 
 Los matemáticos Urbain Le Verrier y John Couch Adams calcularon de forma independiente que debía existir un octavo planeta invisible cuya gravedad estaba "tirando" de Urano. En 1846, apuntaron sus telescopios exactamente a la coordenada del cielo que las matemáticas predecían, y allí estaba Neptuno.
 
 ### Vientos Supersónicos e Interiores de Diamante
 
-A pesar de recibir poquísima energía del Sol, Neptuno es el mundo más activo y tormentoso del sistema solar exterior. Sus vientos son los más rápidos registrados, alcanzando la escalofriante velocidad de más de 2.100 km/h (velocidades supersónicas, casi el doble de rápidas que la velocidad del sonido en la Tierra). 
+A pesar de recibir poquísima energía del Sol, Neptuno es el mundo más activo y tormentoso del sistema solar exterior. Sus vientos son los más rápidos registrados, alcanzando la escalofriante velocidad de más de 2.100 km/h (velocidades supersónicas, casi el doble de rápidas que la velocidad del sonido en la Tierra).
 
 Al igual que Júpiter tiene su Gran Mancha Roja, la sonda Voyager 2 descubrió en 1989 una "Gran Mancha Oscura" en Neptuno, un vórtice del tamaño de nuestro planeta. Sorprendentemente, pocos años después, el Telescopio Espacial Hubble observó que había desaparecido, y había aparecido una nueva en el hemisferio norte, lo que demuestra lo cambiante e inestable de su atmósfera.
 
@@ -184,6 +186,6 @@ En el caso de Urano, a pesar de ser 14 veces más masivo que la Tierra, su baja 
 
 Explorar los gigantes gaseosos no es solo una cuestión de acumular datos curiosos sobre planetas lejanos. Comprender la física, la composición y el comportamiento de Júpiter, Saturno, Urano y Neptuno nos ayuda a comprender los millones de exoplanetas que estamos descubriendo ahora orbitando otras estrellas en nuestra galaxia.
 
-Además, debemos nuestro agradecimiento a estos colosos majestuosos. Júpiter y Saturno, con sus inmensas masas y campos gravitatorios, actúan como las "aspiradoras" del sistema solar exterior. A lo largo de miles de millones de años, su gravedad ha atraído, alterado la órbita o expulsado a incontables cometas y asteroides peligrosos que, de otro modo, podrían haber llovido sobre el sistema solar interior y, potencialmente, sobre la Tierra. 
+Además, debemos nuestro agradecimiento a estos colosos majestuosos. Júpiter y Saturno, con sus inmensas masas y campos gravitatorios, actúan como las "aspiradoras" del sistema solar exterior. A lo largo de miles de millones de años, su gravedad ha atraído, alterado la órbita o expulsado a incontables cometas y asteroides peligrosos que, de otro modo, podrían haber llovido sobre el sistema solar interior y, potencialmente, sobre la Tierra.
 
 Al observar con asombro la Gran Mancha Roja o los anillos iluminados por el Sol distante, estamos mirando no solo hermosos mundos extraños, sino a las mismísimas piezas maestras que esculpieron el vecindario cósmico que hoy nos permite existir. El estudio de estos inmensos colosos gaseosos nos recuerda lo dinámico, violento y, al mismo tiempo, delicadamente equilibrado que es nuestro maravilloso sistema solar.

@@ -42,21 +42,21 @@ The algorithm categorizes every object into one of three sets:
 
 A complete Go GC cycle transitions through four distinct phases, carefully alternating between concurrent execution and brief STW pauses:
 
-1.  **Sweep Termination (STW):** The GC ensures that all sweeping from the *previous* cycle is complete. It stops all goroutines, enables the Write Barrier, and prepares the background worker goroutines. This pause is exceptionally short.
-2.  **Mark Phase (Concurrent):** The GC turns on background marking. Goroutines resume execution. The GC traverses the object graph using the tri-color algorithm. If the background workers cannot keep up with the allocation rate of the application, the GC implements "Mark Assists," forcing application goroutines to help with the marking work before they are allowed to allocate more memory.
-3.  **Mark Termination (STW):** The GC stops the world one last time to drain any remaining tasks in the work queues, flush GC state, and disable the Write Barrier. 
-4.  **Sweep Phase (Concurrent):** Goroutines resume. The GC sweeps through the heap, reclaiming memory occupied by white objects. Sweeping is done incrementally, often piggybacking on new memory allocations.
+1. **Sweep Termination (STW):** The GC ensures that all sweeping from the *previous* cycle is complete. It stops all goroutines, enables the Write Barrier, and prepares the background worker goroutines. This pause is exceptionally short.
+2. **Mark Phase (Concurrent):** The GC turns on background marking. Goroutines resume execution. The GC traverses the object graph using the tri-color algorithm. If the background workers cannot keep up with the allocation rate of the application, the GC implements "Mark Assists," forcing application goroutines to help with the marking work before they are allowed to allocate more memory.
+3. **Mark Termination (STW):** The GC stops the world one last time to drain any remaining tasks in the work queues, flush GC state, and disable the Write Barrier.
+4. **Sweep Phase (Concurrent):** Goroutines resume. The GC sweeps through the heap, reclaiming memory occupied by white objects. Sweeping is done incrementally, often piggybacking on new memory allocations.
 
 ### GC Pacing and Tuning
 
 Go takes a minimalist approach to GC tuning. The "Pacer" is an internal algorithmic component responsible for determining *when* the next GC cycle should begin. Its goal is to complete the mark phase just before the heap reaches its target size.
 
-Historically, Go provided exactly one knob to control the pacer: the `GOGC` environment variable (or `runtime/debug.SetGCPercent`). 
+Historically, Go provided exactly one knob to control the pacer: the `GOGC` environment variable (or `runtime/debug.SetGCPercent`).
 
 * **`GOGC` (Target Heap Growth):** This value defines the acceptable percentage of heap growth before the next cycle is triggered. The default is `100`. This means if the live heap size was 50MB after the last GC, the pacer will aim to finish the next GC cycle when the heap hits 100MB (100% growth).
-    * Lowering `GOGC` (e.g., `GOGC=50`) triggers the GC more frequently, sacrificing CPU time to keep the memory footprint smaller.
-    * Raising `GOGC` (e.g., `GOGC=200`) delays the GC, using more memory but reducing the CPU overhead of garbage collection.
-    * Setting `GOGC=off` disables automatic garbage collection entirely.
+  * Lowering `GOGC` (e.g., `GOGC=50`) triggers the GC more frequently, sacrificing CPU time to keep the memory footprint smaller.
+  * Raising `GOGC` (e.g., `GOGC=200`) delays the GC, using more memory but reducing the CPU overhead of garbage collection.
+  * Setting `GOGC=off` disables automatic garbage collection entirely.
 
 **The Soft Memory Limit (`GOMEMLIMIT`)**
 Introduced in Go 1.19, `GOMEMLIMIT` revolutionized Go's operational stability in containerized environments (like Docker/Kubernetes). Previously, if a container had a hard RAM limit of 500MB, a sudden spike in allocations could cause the Linux OOM (Out Of Memory) killer to terminate the application before the Go Pacer realized it needed to run.
@@ -71,47 +71,47 @@ You can interact with the GC pacing and observe its metrics programmatically usi
 package main
 
 import (
-	"fmt"
-	"runtime"
-	"runtime/debug"
-	"time"
+ "fmt"
+ "runtime"
+ "runtime/debug"
+ "time"
 )
 
 func main() {
-	// 1. Manually adjusting GOGC at runtime (Default is 100)
-	// Setting it to 50 means GC triggers at 50% heap growth.
-	previousGOGC := debug.SetGCPercent(50)
-	fmt.Printf("Previous GOGC: %d, New GOGC: 50\n", previousGOGC)
+ // 1. Manually adjusting GOGC at runtime (Default is 100)
+ // Setting it to 50 means GC triggers at 50% heap growth.
+ previousGOGC := debug.SetGCPercent(50)
+ fmt.Printf("Previous GOGC: %d, New GOGC: 50\n", previousGOGC)
 
-	// 2. Setting a soft memory limit (e.g., 250 MB)
-	// This acts as a safety net against container OOM kills.
-	limit := int64(250 * 1024 * 1024)
-	debug.SetMemoryLimit(limit)
-	fmt.Printf("Memory limit set to 250 MB\n")
+ // 2. Setting a soft memory limit (e.g., 250 MB)
+ // This acts as a safety net against container OOM kills.
+ limit := int64(250 * 1024 * 1024)
+ debug.SetMemoryLimit(limit)
+ fmt.Printf("Memory limit set to 250 MB\n")
 
-	// Simulate allocations
-	allocateMemory()
+ // Simulate allocations
+ allocateMemory()
 
-	// 3. Forcing a garbage collection manually (rarely recommended in production)
-	runtime.GC()
+ // 3. Forcing a garbage collection manually (rarely recommended in production)
+ runtime.GC()
 
-	// 4. Reading GC statistics
-	var m runtime.MemStats
-	runtime.ReadMemStats(&m)
+ // 4. Reading GC statistics
+ var m runtime.MemStats
+ runtime.ReadMemStats(&m)
 
-	fmt.Printf("\n--- GC Statistics ---\n")
-	fmt.Printf("Allocated Heap: %v MB\n", m.Alloc/1024/1024)
-	fmt.Printf("Total GC Cycles: %v\n", m.NumGC)
-	fmt.Printf("Next GC Target: %v MB\n", m.NextGC/1024/1024)
-	fmt.Printf("Total STW Pause Time: %v ns\n", m.PauseTotalNs)
+ fmt.Printf("\n--- GC Statistics ---\n")
+ fmt.Printf("Allocated Heap: %v MB\n", m.Alloc/1024/1024)
+ fmt.Printf("Total GC Cycles: %v\n", m.NumGC)
+ fmt.Printf("Next GC Target: %v MB\n", m.NextGC/1024/1024)
+ fmt.Printf("Total STW Pause Time: %v ns\n", m.PauseTotalNs)
 }
 
 func allocateMemory() {
-	// Allocate roughly 100MB of temporary objects
-	for i := 0; i < 10000; i++ {
-		_ = make([]byte, 1024*10) 
-	}
-	time.Sleep(100 * time.Millisecond)
+ // Allocate roughly 100MB of temporary objects
+ for i := 0; i < 10000; i++ {
+  _ = make([]byte, 1024*10) 
+ }
+ time.Sleep(100 * time.Millisecond)
 }
 ```
 
@@ -126,13 +126,15 @@ To write high-performance Go applications, understanding where your data lives i
 Every running Go program utilizes two primary memory regions, each with distinct performance characteristics:
 
 **The Stack**
-Every goroutine is initialized with its own contiguous block of memory called a stack (typically starting at just 2KB in modern Go versions). The stack operates on a simple Last-In, First-Out (LIFO) principle. 
+Every goroutine is initialized with its own contiguous block of memory called a stack (typically starting at just 2KB in modern Go versions). The stack operates on a simple Last-In, First-Out (LIFO) principle.
+
 * **Speed:** Allocation and deallocation are nearly instantaneous. It merely involves moving a stack pointer up or down.
 * **Lifecycle:** Variables on the stack are tied to the function's scope. When a function returns, its stack frame is instantly invalidated and the memory is reclaimed without any overhead.
 * **Dynamic Growth:** If a goroutine deeply recurses or requires more stack space, Go's runtime automatically grows the stack by allocating a new, larger memory block and copying the old stack over.
 
 **The Heap**
-The heap is a global pool of memory shared across all goroutines. 
+The heap is a global pool of memory shared across all goroutines.
+
 * **Speed:** Allocation is slower. It involves finding a suitable block of free memory, acquiring locks (sometimes), and updating internal data structures.
 * **Lifecycle:** Variables on the heap outlive the function that created them. They remain in memory until the Garbage Collector (GC) proves they are no longer reachable and sweeps them away (as detailed in 19.1).
 * **Overhead:** Heavy reliance on the heap increases CPU pressure because the GC has more objects to track and clean up.
@@ -165,11 +167,11 @@ The compiler looks at the data flow. If a pointer is passed *down* the call stac
 
 #### Common Escape Scenarios
 
-1.  **Returning Pointers:** Returning the memory address of a local variable.
-2.  **Interface Assignments:** Assigning concrete types to an interface (like `interface{}` or `any`). The interface runtime structure holds a pointer to the underlying data, often forcing an allocation. (Note: Go has optimized many small interface allocations, but it remains a common escape trigger).
-3.  **Closures:** Variables captured by anonymous functions that outlive the scope in which they were defined.
-4.  **Unknown Sizes:** Slices or arrays whose size cannot be determined at compile time (e.g., `make([]byte, n)` where `n` is a variable).
-5.  **Data Structures with Pointers:** Adding a pointer to a map, slice, or channel often causes the pointed-to data to escape.
+1. **Returning Pointers:** Returning the memory address of a local variable.
+2. **Interface Assignments:** Assigning concrete types to an interface (like `interface{}` or `any`). The interface runtime structure holds a pointer to the underlying data, often forcing an allocation. (Note: Go has optimized many small interface allocations, but it remains a common escape trigger).
+3. **Closures:** Variables captured by anonymous functions that outlive the scope in which they were defined.
+4. **Unknown Sizes:** Slices or arrays whose size cannot be determined at compile time (e.g., `make([]byte, n)` where `n` is a variable).
+5. **Data Structures with Pointers:** Adding a pointer to a map, slice, or channel often causes the pointed-to data to escape.
 
 ### Observing Escape Analysis in Action
 
@@ -181,33 +183,33 @@ Consider the following code (`main.go`):
 package main
 
 type User struct {
-	Name string
-	Age  int
+ Name string
+ Age  int
 }
 
 // staysOnStack uses pass-by-value. The User object is created on the 
 // stack of this function and destroyed when it returns.
 // The result is copied back to the caller.
 func staysOnStack(name string, age int) User {
-	u := User{Name: name, Age: age}
-	return u
+ u := User{Name: name, Age: age}
+ return u
 }
 
 // escapesToHeap returns a pointer. If 'u' were allocated on the stack, 
 // the returned pointer would point to invalid memory once the function 
 // returned. Thus, the compiler forces 'u' to the heap.
 func escapesToHeap(name string, age int) *User {
-	u := User{Name: name, Age: age}
-	return &u
+ u := User{Name: name, Age: age}
+ return &u
 }
 
 func main() {
-	user1 := staysOnStack("Alice", 30)
-	user2 := escapesToHeap("Bob", 35)
+ user1 := staysOnStack("Alice", 30)
+ user2 := escapesToHeap("Bob", 35)
 
-	// Suppress "unused variable" errors
-	_ = user1
-	_ = user2
+ // Suppress "unused variable" errors
+ _ = user1
+ _ = user2
 }
 ```
 
@@ -226,7 +228,7 @@ $ go build -gcflags="-m" main.go
 ./main.go:20:2: moved to heap: u
 ```
 
-Notice the crucial line: `./main.go:20:2: moved to heap: u`. The compiler recognized that `escapesToHeap` returns a pointer to `u`, so it safely migrated `u` to the global heap. 
+Notice the crucial line: `./main.go:20:2: moved to heap: u`. The compiler recognized that `escapesToHeap` returns a pointer to `u`, so it safely migrated `u` to the global heap.
 
 ### Performance Implications: Pointers vs. Values
 
@@ -235,6 +237,7 @@ A common misconception among developers coming from object-oriented languages is
 While passing a pointer *does* avoid a memory copy, it frequently forces the data to escape to the heap. The cost of a small memory copy on the stack is practically zero (it's just CPU registers and L1 cache). However, the cost of a heap allocation involves runtime overhead, synchronization, and eventual garbage collection pauses.
 
 **Rule of Thumb:**
+
 * Default to passing by value (which uses the stack) for simple structs and small payloads.
 * Only pass by pointer when you strictly need to mutate the original data, or when the struct is demonstrably large enough (e.g., several megabytes) that the cost of copying outweighs the cost of a heap allocation and GC overhead.
 
@@ -246,7 +249,7 @@ Understanding these optimizations allows you to write idiomatic code that the co
 
 ### Function Inlining
 
-Function calls are not free. Every time a function is invoked, the CPU must save the current instruction pointer, push arguments onto the stack (or registers), jump to the new function's memory address, execute it, and then jump back. 
+Function calls are not free. Every time a function is invoked, the CPU must save the current instruction pointer, push arguments onto the stack (or registers), jump to the new function's memory address, execute it, and then jump back.
 
 **Inlining** is the process where the compiler completely eliminates this overhead by taking the body of a small function and substituting it directly into the caller's code.
 
@@ -272,7 +275,8 @@ Function calls are not free. Every time a function is invoked, the CPU must save
 Beyond removing call overhead, inlining is the "master optimization." Once a function is inlined, its internal variables are exposed to the caller's scope, which often unlocks secondary optimizations like better escape analysis (preventing heap allocations) and dead code elimination.
 
 **The Inlining Budget:**
-The Go compiler does not inline everything; doing so would result in massive, bloated executables and thrash the CPU's instruction cache. Instead, it assigns an "inlining budget" to every function based on its AST (Abstract Syntax Tree) complexity. 
+The Go compiler does not inline everything; doing so would result in massive, bloated executables and thrash the CPU's instruction cache. Instead, it assigns an "inlining budget" to every function based on its AST (Abstract Syntax Tree) complexity.
+
 * "Leaf functions" (functions that don't call other functions) with simple logic are almost always inlined.
 * Functions with `for` loops, `select` statements, or complex `switch` blocks traditionally exceeded the budget (though modern Go versions are getting smarter about this).
 
@@ -373,21 +377,21 @@ package main
 
 // BAD: Causes multiple heap allocations and memory copying as the slice grows.
 func collectNamesBad(users []User) []string {
-	var names []string // capacity is 0
-	for _, u := range users {
-		names = append(names, u.Name) 
-	}
-	return names
+ var names []string // capacity is 0
+ for _, u := range users {
+  names = append(names, u.Name) 
+ }
+ return names
 }
 
 // GOOD: Zero allocations during the loop. The backing array is allocated 
 // exactly once (and might even stay on the stack depending on escape analysis).
 func collectNamesGood(users []User) []string {
-	names := make([]string, 0, len(users)) // pre-allocate capacity
-	for _, u := range users {
-		names = append(names, u.Name)
-	}
-	return names
+ names := make([]string, 0, len(users)) // pre-allocate capacity
+ for _, u := range users {
+  names = append(names, u.Name)
+ }
+ return names
 }
 ```
 
@@ -401,33 +405,33 @@ For temporary objects that *must* escape to the heap (like request buffers, JSON
 package main
 
 import (
-	"bytes"
-	"sync"
+ "bytes"
+ "sync"
 )
 
 // 1. Define the pool. The New function dictates how to create an 
 // object if the pool is currently empty.
 var bufferPool = sync.Pool{
-	New: func() any {
-		// Allocate a pointer to a buffer so it doesn't escape 
-		// via interface{} conversion on Get/Put.
-		return new(bytes.Buffer) 
-	},
+ New: func() any {
+  // Allocate a pointer to a buffer so it doesn't escape 
+  // via interface{} conversion on Get/Put.
+  return new(bytes.Buffer) 
+ },
 }
 
 func processRequest(data []byte) {
-	// 2. Fetch an existing buffer from the pool (or create a new one)
-	buf := bufferPool.Get().(*bytes.Buffer)
-	
-	// 3. CRITICAL: Reset the object state before use! 
-	// You don't want leftover data from a previous goroutine.
-	buf.Reset()
+ // 2. Fetch an existing buffer from the pool (or create a new one)
+ buf := bufferPool.Get().(*bytes.Buffer)
+ 
+ // 3. CRITICAL: Reset the object state before use! 
+ // You don't want leftover data from a previous goroutine.
+ buf.Reset()
 
-	// ... perform work with buf ...
-	buf.Write(data)
+ // ... perform work with buf ...
+ buf.Write(data)
 
-	// 4. Return the object to the pool when finished
-	bufferPool.Put(buf)
+ // 4. Return the object to the pool when finished
+ bufferPool.Put(buf)
 }
 ```
 
@@ -443,22 +447,22 @@ To build strings dynamically without unnecessary allocations, use `strings.Build
 import "strings"
 
 func buildQuery(ids []string) string {
-	var sb strings.Builder
-	
-	// If you know the rough final size, pre-allocate the builder!
-	// (e.g., len(ids) * roughly 10 chars per ID)
-	sb.Grow(len(ids) * 10) 
+ var sb strings.Builder
+ 
+ // If you know the rough final size, pre-allocate the builder!
+ // (e.g., len(ids) * roughly 10 chars per ID)
+ sb.Grow(len(ids) * 10) 
 
-	sb.WriteString("SELECT * FROM users WHERE id IN (")
-	for i, id := range ids {
-		if i > 0 {
-			sb.WriteString(", ")
-		}
-		sb.WriteString(id)
-	}
-	sb.WriteString(")")
-	
-	return sb.String() // Zero-copy conversion to string
+ sb.WriteString("SELECT * FROM users WHERE id IN (")
+ for i, id := range ids {
+  if i > 0 {
+   sb.WriteString(", ")
+  }
+  sb.WriteString(id)
+ }
+ sb.WriteString(")")
+ 
+ return sb.String() // Zero-copy conversion to string
 }
 ```
 
@@ -476,26 +480,26 @@ import "unsafe"
 // ZeroCopyBytesToString converts a byte slice to a string without allocating.
 // DANGER: Modifying 'b' after this call will corrupt the string 's'!
 func ZeroCopyBytesToString(b []byte) string {
-	if len(b) == 0 {
-		return ""
-	}
-	return unsafe.String(unsafe.SliceData(b), len(b))
+ if len(b) == 0 {
+  return ""
+ }
+ return unsafe.String(unsafe.SliceData(b), len(b))
 }
 
 // ZeroCopyStringToBytes converts a string to a byte slice without allocating.
 // DANGER: The returned slice is pointing to read-only memory. 
 // Attempting to mutate the returned slice will cause a fatal panic!
 func ZeroCopyStringToBytes(s string) []byte {
-	if len(s) == 0 {
-		return nil
-	}
-	return unsafe.Slice(unsafe.StringData(s), len(s))
+ if len(s) == 0 {
+  return nil
+ }
+ return unsafe.Slice(unsafe.StringData(s), len(s))
 }
 ```
 
 ### 5. Memory Alignment and Struct Packing
 
-Go's memory allocator works in blocks of specific sizes (e.g., 8, 16, 32 bytes). To ensure the CPU can fetch memory efficiently, Go aligns variables in memory based on their size (e.g., a 64-bit integer must align to an 8-byte boundary). 
+Go's memory allocator works in blocks of specific sizes (e.g., 8, 16, 32 bytes). To ensure the CPU can fetch memory efficiently, Go aligns variables in memory based on their size (e.g., a 64-bit integer must align to an 8-byte boundary).
 
 If you order your struct fields poorly, the compiler inserts hidden "padding" bytes to maintain alignment, inflating the size of your struct. When allocating millions of these structs, this wasted space translates to significant heap pressure and CPU cache misses.
 
@@ -540,16 +544,16 @@ With the introduction of Generics (Type Parameters), you can write highly reusab
 ```go
 // BAD: Allocates if the value passed escapes, due to interface{} boxing.
 func MaxIntf(a, b interface{}) interface{} {
-	// ... type assertions ...
+ // ... type assertions ...
 }
 
 // GOOD: Zero allocation. The compiler generates specialized, 
 // strictly-typed machine code for each type used.
 func Max[T constraints.Ordered](a, b T) T {
-	if a > b {
-		return a
-	}
-	return b
+ if a > b {
+  return a
+ }
+ return b
 }
 ```
 
@@ -573,21 +577,21 @@ For web services, exposing `pprof` data is as simple as importing the `net/http/
 package main
 
 import (
-	"log"
-	"net/http"
-	_ "net/http/pprof" // Blank import registers the /debug/pprof handlers
+ "log"
+ "net/http"
+ _ "net/http/pprof" // Blank import registers the /debug/pprof handlers
 )
 
 func main() {
-	// Start a dedicated goroutine for profiling endpoints 
-	// to keep it isolated from your main application router.
-	go func() {
-		log.Println("Starting pprof server on :6060")
-		log.Println(http.ListenAndServe("localhost:6060", nil))
-	}()
+ // Start a dedicated goroutine for profiling endpoints 
+ // to keep it isolated from your main application router.
+ go func() {
+  log.Println("Starting pprof server on :6060")
+  log.Println(http.ListenAndServe("localhost:6060", nil))
+ }()
 
-	// ... run your actual application logic ...
-	runApplication()
+ // ... run your actual application logic ...
+ runApplication()
 }
 ```
 
@@ -596,6 +600,7 @@ func main() {
 Once your application is under load, you can fetch and analyze the profiles using the Go toolchain.
 
 **1. CPU Profiling:**
+
 ```bash
 # Samples the CPU for 30 seconds and drops you into an interactive shell
 $ go tool pprof http://localhost:6060/debug/pprof/profile?seconds=30
@@ -614,11 +619,13 @@ Dropped 45 nodes (cum <= 0.02s)
      0.40s  8.11% 79.11%      2.50s 50.71%  main.processBatch
      0.30s  6.09% 85.12%      0.30s  6.09%  runtime.memmove
 ```
+
 * **flat:** Time spent *directly* in this function.
 * **cum (cumulative):** Time spent in this function *and* everything it called.
 
 **2. Memory Profiling:**
 Memory profiling tracks heap allocations. It's crucial to understand the four different memory views `pprof` offers:
+
 * `inuse_space`: Amount of memory currently allocated and not yet freed (finds memory leaks).
 * `inuse_objects`: Number of objects currently allocated.
 * `alloc_space`: Total memory allocated over the program's lifetime, including freed memory (finds GC pressure).
@@ -634,7 +641,7 @@ $ go tool pprof -alloc_space http://localhost:6060/debug/pprof/heap
 While text is useful, complex call graphs are best viewed visually. By running `pprof` with the `-http` flag, Go opens a web UI featuring **Flame Graphs**.
 
 ```bash
-$ go tool pprof -http=:8080 cpu.prof
+go tool pprof -http=:8080 cpu.prof
 ```
 
 ```text
@@ -648,13 +655,14 @@ $ go tool pprof -http=:8080 cpu.prof
 | [main.parse()]  [ main.calculateHashes() ]  [ runtime.GC ]  | <-- Leaves = Hotspots
 +-------------------------------------------------------------+
 ```
+
 In a flame graph, the x-axis represents the population of the profile (CPU time or memory), and the y-axis represents the call stack. Wide boxes at the bottom edge are your primary targets for optimization.
 
 ---
 
 ### `go tool trace`: The Execution Tracer
 
-`pprof` tells you that `calculateHashes()` is taking 50% of your CPU. But what if your application is slow, yet CPU utilization is only at 10%? `pprof` won't help you much here. 
+`pprof` tells you that `calculateHashes()` is taking 50% of your CPU. But what if your application is slow, yet CPU utilization is only at 10%? `pprof` won't help you much here.
 
 Low CPU utilization in a concurrent system usually means goroutines are blocked—waiting on network I/O, channels, mutexes, or sleeping. The Execution Tracer records high-frequency events (goroutine creation/blocking/unblocking, GC phases, syscalls) with nanosecond precision.
 
@@ -666,24 +674,25 @@ Traces are extremely detailed and generate large files rapidly, so they are typi
 package main
 
 import (
-	"os"
-	"runtime/trace"
+ "os"
+ "runtime/trace"
 )
 
 func main() {
-	f, err := os.Create("trace.out")
-	if err != nil {
-		panic(err)
-	}
-	defer f.Close()
+ f, err := os.Create("trace.out")
+ if err != nil {
+  panic(err)
+ }
+ defer f.Close()
 
-	// Start tracing
-	trace.Start(f)
-	defer trace.Stop()
+ // Start tracing
+ trace.Start(f)
+ defer trace.Stop()
 
-	// ... run concurrent workload ...
+ // ... run concurrent workload ...
 }
 ```
+
 *(Note: You can also capture traces via the `net/http/pprof` endpoint: `curl -o trace.out http://localhost:6060/debug/pprof/trace?seconds=5`)*
 
 #### Analyzing the Trace Timeline
@@ -691,7 +700,7 @@ func main() {
 To view the trace, use the Go toolchain, which will launch a Chromium-based web viewer:
 
 ```bash
-$ go tool trace trace.out
+go tool trace trace.out
 ```
 
 The most powerful view is the **"View trace" (Timeline)**.
@@ -716,9 +725,9 @@ PROCS (Logical CPUs)
 
 **Key Anomalies to Look For:**
 
-1.  **Sparse Proc Rows:** If you have 8 Logical CPUs (`GOMAXPROCS=8`) but only 2 rows are executing goroutines while the others are empty, your workload is highly serialized. Look for global mutex locks or single channels creating a bottleneck.
-2.  **Thick GC Blocks:** If the `Proc` rows are frequently overtaken by "GC Mark Worker" or "GC Assist Wait", your application is allocating too rapidly (refer back to 19.4 on Zero-Allocation patterns).
-3.  **Goroutine Blocking:** Clicking on a specific Goroutine span (e.g., `G2`) will show exactly *why* it stopped running. The UI will tell you if it was blocked on a `sync.Mutex`, waiting for network I/O, or explicitly put to sleep. It also provides a direct link to the line of code that unblocked it.
+1. **Sparse Proc Rows:** If you have 8 Logical CPUs (`GOMAXPROCS=8`) but only 2 rows are executing goroutines while the others are empty, your workload is highly serialized. Look for global mutex locks or single channels creating a bottleneck.
+2. **Thick GC Blocks:** If the `Proc` rows are frequently overtaken by "GC Mark Worker" or "GC Assist Wait", your application is allocating too rapidly (refer back to 19.4 on Zero-Allocation patterns).
+3. **Goroutine Blocking:** Clicking on a specific Goroutine span (e.g., `G2`) will show exactly *why* it stopped running. The UI will tell you if it was blocked on a `sync.Mutex`, waiting for network I/O, or explicitly put to sleep. It also provides a direct link to the line of code that unblocked it.
 
 ### Tool Comparison Summary
 

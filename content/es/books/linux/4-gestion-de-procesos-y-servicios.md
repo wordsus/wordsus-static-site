@@ -128,6 +128,7 @@ La herramienta adecuada para esto es **`pgrep`** (Process Grep). `pgrep` busca d
 **Ejemplos de uso práctico:**
 
 * **Obtener el PID de un servicio:**
+
 ```bash
 $ pgrep sshd
 500
@@ -135,9 +136,9 @@ $ pgrep sshd
 
 ```
 
-
 * **Listar nombre y PID (flag `-l`):**
 Útil para confirmar que estás apuntando al proceso correcto antes de tomar acciones destructivas.
+
 ```bash
 $ pgrep -l nginx
 2041 nginx
@@ -147,6 +148,7 @@ $ pgrep -l nginx
 
 * **Buscar por el comando exacto (flag `-f`):**
 Por defecto, `pgrep` solo busca en el nombre del binario. Si ejecutas un script de Python (`python3 mi_script.py`), `pgrep mi_script` no devolverá nada. Debes usar `-f` para que busque en la línea de comandos completa.
+
 ```bash
 $ pgrep -f "python3 mi_script.py"
 3055
@@ -154,6 +156,7 @@ $ pgrep -f "python3 mi_script.py"
 ```
 
 * **Filtrar por usuario (flag `-u`):**
+
 ```bash
 $ pgrep -u devops bash
 1025
@@ -221,7 +224,7 @@ $ kill -9 3045
 Y para recargar la configuración de un servicio sin detenerlo (asumiendo que su PID es 892):
 
 ```bash
-$ kill -HUP 892
+kill -HUP 892
 
 ```
 
@@ -345,16 +348,18 @@ Aunque `nohup` es útil para comandos rápidos, los ingenieros DevOps Senior rar
 **Flujo básico de supervivencia con `tmux`:**
 
 1. **Crear una sesión nueva:** Llegas al servidor e inicias una sesión con nombre.
+
 ```bash
-$ tmux new -s migracion_db
+tmux new -s migracion_db
 
 ```
 
-2. **Trabajar normalmente:** Ejecutas tus comandos, bases de datos, compilaciones, etc.
-3. **Desconectarte (Detach):** Presionas `Ctrl+b` seguido de la tecla `d`. Sales de `tmux` y vuelves a tu shell normal, pero tus comandos siguen corriendo dentro de la sesión virtual.
-4. **Reconectarte (Attach):** Vuelves horas más tarde (o tras una caída de red) y te unes a tu sesión intacta:
+1. **Trabajar normalmente:** Ejecutas tus comandos, bases de datos, compilaciones, etc.
+2. **Desconectarte (Detach):** Presionas `Ctrl+b` seguido de la tecla `d`. Sales de `tmux` y vuelves a tu shell normal, pero tus comandos siguen corriendo dentro de la sesión virtual.
+3. **Reconectarte (Attach):** Vuelves horas más tarde (o tras una caída de red) y te unes a tu sesión intacta:
+
 ```bash
-$ tmux attach -t migracion_db
+tmux attach -t migracion_db
 
 ```
 
@@ -441,7 +446,6 @@ WantedBy=multi-user.target
 * `ExecStart=` es el comando absoluto que inicia la app.
 * `Restart=always` es la magia de Systemd: si la aplicación hace *crash* y muere (su proceso desaparece), Systemd esperará 3 segundos (`RestartSec`) y la volverá a levantar automáticamente.
 
-
 * **`[Install]`**: Define en qué "Target" debe integrarse este servicio cuando le hagamos `systemctl enable`.
 
 *(Nota importante: Siempre que modifiques un archivo `.service` en disco, debes ejecutar `systemctl daemon-reload` para que Systemd lea los nuevos cambios antes de intentar reiniciar el servicio).*
@@ -492,7 +496,7 @@ $ journalctl -u mi-api.service
 El equivalente moderno a `tail -f`. Muestra las últimas 10 líneas y se queda bloqueado en la terminal imprimiendo los nuevos eventos a medida que ocurren. Ideal para observar el comportamiento de una app justo después de desplegarla.
 
 ```bash
-$ journalctl -u nginx.service -f
+journalctl -u nginx.service -f
 
 ```
 
@@ -523,7 +527,7 @@ $ journalctl -p err
 Un DevOps no suele leer logs manualmente todo el tiempo; los exporta a sistemas de observabilidad como Elasticsearch, Datadog o Splunk. Como el journal es binario, puedes pedirle que exporte los datos en formato JSON estructurado, listo para ser parseado por cualquier herramienta moderna:
 
 ```bash
-$ journalctl -u mi-api.service -o json-pretty | head -n 15
+journalctl -u mi-api.service -o json-pretty | head -n 15
 
 ```
 

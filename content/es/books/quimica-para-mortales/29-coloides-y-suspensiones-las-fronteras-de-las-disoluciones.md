@@ -28,6 +28,7 @@ Disoluciones  <---------------->  Coloides  <---------------->  Suspensiones
   (Iones, moléculas)            (Macromoléculas,                   (Granos, células,
                                 agregados moleculares)             polvo visible)
 ```
+
 *(Nota: "nm" significa nanómetro, que es la millonésima parte de un milímetro. ¡Extremadamente pequeño!)*
 
 Para ponerlo en perspectiva, comparemos las tres categorías:
@@ -47,8 +48,8 @@ Cuando hablamos de disoluciones, utilizamos los términos "soluto" (lo que se di
 
 En lugar de soluto y disolvente, un sistema coloidal está compuesto por dos partes fundamentales:
 
-1.  **La fase dispersa:** Sería el equivalente al "soluto". Son las partículas diminutas que se encuentran distribuidas por todo el sistema.
-2.  **El medio dispersante (o fase continua):** Sería el equivalente al "disolvente". Es la sustancia, el medio continuo, en el cual las partículas de la fase dispersa están suspendidas o distribuidas.
+1. **La fase dispersa:** Sería el equivalente al "soluto". Son las partículas diminutas que se encuentran distribuidas por todo el sistema.
+2. **El medio dispersante (o fase continua):** Sería el equivalente al "disolvente". Es la sustancia, el medio continuo, en el cual las partículas de la fase dispersa están suspendidas o distribuidas.
 
 La magia de los coloides es que tanto la fase dispersa como el medio dispersante pueden estar en casi cualquier estado de la materia: sólido, líquido o gas. Las diferentes combinaciones de estos estados dan lugar a una asombrosa variedad de sustancias que usamos todos los días sin darnos cuenta de que pertenecen a la misma familia química.
 
@@ -93,10 +94,10 @@ Aquí tienes una tabla estructurada que resume este fascinante ecosistema:
 
 Detengámonos un momento a apreciar esta tabla, porque revela secretos asombrosos sobre nuestro entorno:
 
-*   **La niebla y las nubes** no son vapor de agua (el vapor es gas invisible). Son billones de microgotas de agua líquida suspendidas en el aire (un gas). Son aerosoles líquidos coloidales.
-*   **La mayonesa** parece una pasta uniforme, pero a nivel microscópico es una batalla campal pacificada: pequeñísimas gotas de aceite líquido flotando suspendidas dentro de agua (con un poco de jugo de limón o vinagre), mantenidas en su lugar por la yema de huevo. Es una emulsión.
-*   **La gelatina** es alucinante. Es un líquido (agua con saborizantes) atrapado dentro de una red tridimensional de cadenas de proteínas sólidas (el colágeno de la grenetina). Es un líquido disperso en un sólido. Por eso tiembla de esa manera tan particular.
-*   **El humo** de una fogata no es gas puro; si lo fuera, no veríamos esa nube gris o negra. El humo está compuesto por minúsculas partículas de carbono y ceniza sólida flotando y chocando en el aire. Es un aerosol sólido.
+* **La niebla y las nubes** no son vapor de agua (el vapor es gas invisible). Son billones de microgotas de agua líquida suspendidas en el aire (un gas). Son aerosoles líquidos coloidales.
+* **La mayonesa** parece una pasta uniforme, pero a nivel microscópico es una batalla campal pacificada: pequeñísimas gotas de aceite líquido flotando suspendidas dentro de agua (con un poco de jugo de limón o vinagre), mantenidas en su lugar por la yema de huevo. Es una emulsión.
+* **La gelatina** es alucinante. Es un líquido (agua con saborizantes) atrapado dentro de una red tridimensional de cadenas de proteínas sólidas (el colágeno de la grenetina). Es un líquido disperso en un sólido. Por eso tiembla de esa manera tan particular.
+* **El humo** de una fogata no es gas puro; si lo fuera, no veríamos esa nube gris o negra. El humo está compuesto por minúsculas partículas de carbono y ceniza sólida flotando y chocando en el aire. Es un aerosol sólido.
 
 ## 4. Cazando coloides con luz: El Efecto Tyndall
 
@@ -109,10 +110,11 @@ La luz viaja en ondas rectilíneas. Cuando la luz atraviesa una disolución verd
 Pero en un coloide, las partículas de la fase dispersa son mucho más "grandes" (recuerda, entre 1 y 1000 nm). Tienen un tamaño similar a la longitud de onda de la luz visible. Cuando el rayo de luz intenta atravesar el coloide, choca de frente con estas partículas coloidales. Al chocar, la luz rebota en todas direcciones, dispersándose.
 
 **¿Cómo se ve esto en la vida real?**
-*   **En el laboratorio (o en casa):** Si apuntas un puntero láser a través de un vaso con agua pura o salada, verás el punto rojo en la pared trasera, pero el agua dentro del vaso estará oscura. Si apuntas el mismo láser al vaso con una gota de leche, verás una línea roja brillante dibujada *dentro* del líquido. Las partículas de leche están rebotando la luz del láser hacia tus ojos.
-*   **En la naturaleza:** ¿Has visto esos hermosos "rayos de sol" que se filtran a través de los árboles en un bosque brumoso? Eso es el Efecto Tyndall masivo. La bruma (aerosol líquido coloidal) dispersa la luz solar.
-*   **En el auto:** Cuando conduces de noche en medio de una niebla espesa y enciendes las luces altas, te quedas ciego. La luz choca contra las gotas de agua coloidales de la niebla y se dispersa de vuelta hacia tus ojos. Por eso los autos tienen "luces antiniebla" que apuntan hacia abajo, donde hay menos densidad coloidal.
-*   **En los cines antiguos:** Ese haz de luz visible que salía del proyector hasta la pantalla solo se veía porque el aire de los cines antiguos estaba lleno de humo de cigarrillo o polvo flotando (aerosoles sólidos).
+
+* **En el laboratorio (o en casa):** Si apuntas un puntero láser a través de un vaso con agua pura o salada, verás el punto rojo en la pared trasera, pero el agua dentro del vaso estará oscura. Si apuntas el mismo láser al vaso con una gota de leche, verás una línea roja brillante dibujada *dentro* del líquido. Las partículas de leche están rebotando la luz del láser hacia tus ojos.
+* **En la naturaleza:** ¿Has visto esos hermosos "rayos de sol" que se filtran a través de los árboles en un bosque brumoso? Eso es el Efecto Tyndall masivo. La bruma (aerosol líquido coloidal) dispersa la luz solar.
+* **En el auto:** Cuando conduces de noche en medio de una niebla espesa y enciendes las luces altas, te quedas ciego. La luz choca contra las gotas de agua coloidales de la niebla y se dispersa de vuelta hacia tus ojos. Por eso los autos tienen "luces antiniebla" que apuntan hacia abajo, donde hay menos densidad coloidal.
+* **En los cines antiguos:** Ese haz de luz visible que salía del proyector hasta la pantalla solo se veía porque el aire de los cines antiguos estaba lleno de humo de cigarrillo o polvo flotando (aerosoles sólidos).
 
 El Efecto Tyndall es, literalmente, la luz haciendo visible lo invisible.
 
@@ -150,10 +152,11 @@ Para formalizar este concepto y calcular cómo se difunden estas partículas, Ei
 $$D = \frac{k_B T}{6 \pi \eta r}$$
 
 Aunque a simple vista parezca compleja, la belleza de esta ecuación radica en su simplicidad conceptual:
-*   $k_B$ es una constante universal (la constante de Boltzmann).
-*   $T$ es la temperatura. Cuanto más calor hace ($T$ mayor), más frenético es el movimiento de las moléculas de agua, y más rápido se difunde la partícula coloidal ($D$ mayor).
-*   $\eta$ representa la viscosidad del líquido (su espesura, como la diferencia entre agua y miel). Si el líquido es más espeso ($\eta$ mayor), la partícula encuentra más resistencia y se mueve menos ($D$ menor).
-*   $r$ es el radio de nuestra partícula coloidal. Cuanto más grande y "gorda" sea la partícula ($r$ mayor), más le costará moverse a través de los empujones ($D$ menor).
+
+* $k_B$ es una constante universal (la constante de Boltzmann).
+* $T$ es la temperatura. Cuanto más calor hace ($T$ mayor), más frenético es el movimiento de las moléculas de agua, y más rápido se difunde la partícula coloidal ($D$ mayor).
+* $\eta$ representa la viscosidad del líquido (su espesura, como la diferencia entre agua y miel). Si el líquido es más espeso ($\eta$ mayor), la partícula encuentra más resistencia y se mueve menos ($D$ menor).
+* $r$ es el radio de nuestra partícula coloidal. Cuanto más grande y "gorda" sea la partícula ($r$ mayor), más le costará moverse a través de los empujones ($D$ menor).
 
 Gracias a este baile caótico y a las matemáticas que lo explican, tu leche sigue siendo leche día tras día en el refrigerador.
 
@@ -195,9 +198,10 @@ La estabilidad eléctrica de los coloides es maravillosa, pero a veces, los huma
 Si logramos neutralizar o destruir esos "escudos eléctricos", las partículas chocarán, se pegarán, crecerán y la gravedad finalmente ganará, precipitándolas al fondo. A este proceso de destrucción coloidal se le llama **coagulación** o **floculación**.
 
 ¿Cómo destruimos el escudo? Generalmente, añadiendo electrolitos (sales) o cambiando la acidez (el pH).
-*   **En la cocina: Hacer queso.** La leche es una emulsión coloidal de grasas y proteínas en agua. Las proteínas (caseína) flotan porque tienen cargas eléctricas que las repelen. Si agregas jugo de limón o vinagre (un ácido) a la leche caliente, estás introduciendo cargas positivas masivas que neutralizan los escudos eléctricos de las proteínas. Al perder la repulsión, las proteínas chocan, se desenredan y se pegan, formando grumos masivos. ¡Acabas de coagular un coloide y has creado la cuajada para hacer queso fresco! El líquido translúcido que sobra es el suero.
-*   **En el medio ambiente: Deltas de los ríos.** Los ríos cargan consigo toneladas de finas partículas de arcilla en estado coloidal (lodo muy fino). Al ser un coloide, la arcilla no se asienta y el río viaja marrón durante miles de kilómetros. Sin embargo, cuando el río desemboca en el océano, choca con el agua de mar, que es increíblemente rica en sales (iones). Estas sales neutralizan las cargas eléctricas de las partículas de arcilla. De repente, la arcilla coloidal se aglomera, se vuelve pesada y se hunde rápidamente, formando inmensas acumulaciones de tierra en la desembocadura. Así es como se forman los deltas de los ríos, como el Delta del Nilo o el del Paraná.
-*   **En la potabilización del agua:** El agua de ríos y represas suele estar turbia por presencia de materia orgánica y tierra microscópica coloidal. En las plantas de tratamiento, los ingenieros agregan sustancias llamadas "floculantes" (como el sulfato de aluminio). Estos químicos neutralizan los coloides de la suciedad, haciendo que formen grumos grandes ("flóculos") que luego pueden ser filtrados fácilmente para darnos agua cristalina.
+
+* **En la cocina: Hacer queso.** La leche es una emulsión coloidal de grasas y proteínas en agua. Las proteínas (caseína) flotan porque tienen cargas eléctricas que las repelen. Si agregas jugo de limón o vinagre (un ácido) a la leche caliente, estás introduciendo cargas positivas masivas que neutralizan los escudos eléctricos de las proteínas. Al perder la repulsión, las proteínas chocan, se desenredan y se pegan, formando grumos masivos. ¡Acabas de coagular un coloide y has creado la cuajada para hacer queso fresco! El líquido translúcido que sobra es el suero.
+* **En el medio ambiente: Deltas de los ríos.** Los ríos cargan consigo toneladas de finas partículas de arcilla en estado coloidal (lodo muy fino). Al ser un coloide, la arcilla no se asienta y el río viaja marrón durante miles de kilómetros. Sin embargo, cuando el río desemboca en el océano, choca con el agua de mar, que es increíblemente rica en sales (iones). Estas sales neutralizan las cargas eléctricas de las partículas de arcilla. De repente, la arcilla coloidal se aglomera, se vuelve pesada y se hunde rápidamente, formando inmensas acumulaciones de tierra en la desembocadura. Así es como se forman los deltas de los ríos, como el Delta del Nilo o el del Paraná.
+* **En la potabilización del agua:** El agua de ríos y represas suele estar turbia por presencia de materia orgánica y tierra microscópica coloidal. En las plantas de tratamiento, los ingenieros agregan sustancias llamadas "floculantes" (como el sulfato de aluminio). Estos químicos neutralizan los coloides de la suciedad, haciendo que formen grumos grandes ("flóculos") que luego pueden ser filtrados fácilmente para darnos agua cristalina.
 
 ## 7. Suspensiones: Cuando la gravedad gana la batalla
 
@@ -205,20 +209,20 @@ Hablemos ahora de los gigantes del mundo de las mezclas: las suspensiones.
 
 Como mencionamos en el espectro inicial, una suspensión ocurre cuando las partículas dispersas superan la marca de los 1000 nanómetros (1 micrómetro). A esta escala, las reglas físicas cambian drásticamente.
 
-*   **El tamaño:** Las partículas son verdaderas montañas a escala microscópica. Están compuestas por aglomeraciones inmensas de moléculas.
-*   **Adiós al Efecto Tyndall limpio:** Si bien las suspensiones bloquean la luz (son totalmente opacas), las partículas son tan grandes que no dispersan la luz de manera elegante como los coloides, sino que simplemente la absorben o la bloquean masivamente.
-*   **El Movimiento Browniano se rinde:** Recuerda los empujones de las moléculas de agua. En un coloide, empujan una partícula diminuta manteniéndola a flote. En una suspensión, tratar de mantener a flote una partícula con choques térmicos es como intentar mantener un avión en el aire lanzándole pelotas de tenis desde abajo. La masa de la partícula es demasiado grande.
+* **El tamaño:** Las partículas son verdaderas montañas a escala microscópica. Están compuestas por aglomeraciones inmensas de moléculas.
+* **Adiós al Efecto Tyndall limpio:** Si bien las suspensiones bloquean la luz (son totalmente opacas), las partículas son tan grandes que no dispersan la luz de manera elegante como los coloides, sino que simplemente la absorben o la bloquean masivamente.
+* **El Movimiento Browniano se rinde:** Recuerda los empujones de las moléculas de agua. En un coloide, empujan una partícula diminuta manteniéndola a flote. En una suspensión, tratar de mantener a flote una partícula con choques térmicos es como intentar mantener un avión en el aire lanzándole pelotas de tenis desde abajo. La masa de la partícula es demasiado grande.
 
 Por lo tanto, la característica definitoria y absoluta de una suspensión es **su inestabilidad mecánica a lo largo del tiempo**. La gravedad impone su ley.
 
 Las suspensiones son tremendamente comunes, especialmente en áreas como la medicina y la construcción.
 
-### Ejemplos vitales de suspensiones:
+### Ejemplos vitales de suspensiones
 
-1.  **Medicamentos líquidos infantiles y antibióticos:** Muchos medicamentos no se disuelven bien en agua, ni logran formar un coloide estable. Los laboratorios los muelen en polvo muy fino y los mezclan en un jarabe líquido. Mientras el frasco está en la estantería de la farmacia, el medicamento sólido se asienta silenciosamente en el fondo, dejando un líquido claro arriba. Es por eso que el empaque lleva en letras grandes, rojas e ineludibles la instrucción: **"AGÍTESE BIEN ANTES DE USAR"**. Al agitar el frasco, aplicas energía mecánica para levantar las partículas y dispersarlas temporalmente de manera más o menos uniforme, dándote unos segundos o minutos de margen para servir la dosis correcta antes de que la gravedad vuelva a hacer su trabajo.
-2.  **Agua de horchata o jugos naturales pulposos:** La pulpa triturada de la fruta o los restos de almendra/arroz son demasiado grandes. Si dejas la jarra en la heladera, requerirá una cuchara para revolverla antes de servirla.
-3.  **Sangre (¡Es un sistema mixto!):** La sangre es una maravilla de la complejidad. El plasma sanguíneo contiene proteínas disueltas y coloidales, pero **los glóbulos rojos y blancos** son células inmensas. Por lo tanto, la sangre total actúa como una suspensión. Si extraes sangre en un tubo de ensayo y la dejas reposar, o si la introduces en una máquina centrifugadora (que multiplica artificialmente la fuerza de gravedad), los pesados glóbulos rojos caerán rápidamente al fondo, formando una pasta roja espesa, dejando un líquido amarillento (plasma) flotando en la parte superior.
-4.  **Pinturas caseras antiguas:** Si abres una lata de pintura que ha estado guardada en el garaje durante un par de años, encontrarás una costra sólida de pigmento en el fondo y un charco de aceite o disolvente claro arriba. Es una suspensión que ha decantado. Solo con mucha paciencia y un buen palo mezclador volverá a ser útil.
+1. **Medicamentos líquidos infantiles y antibióticos:** Muchos medicamentos no se disuelven bien en agua, ni logran formar un coloide estable. Los laboratorios los muelen en polvo muy fino y los mezclan en un jarabe líquido. Mientras el frasco está en la estantería de la farmacia, el medicamento sólido se asienta silenciosamente en el fondo, dejando un líquido claro arriba. Es por eso que el empaque lleva en letras grandes, rojas e ineludibles la instrucción: **"AGÍTESE BIEN ANTES DE USAR"**. Al agitar el frasco, aplicas energía mecánica para levantar las partículas y dispersarlas temporalmente de manera más o menos uniforme, dándote unos segundos o minutos de margen para servir la dosis correcta antes de que la gravedad vuelva a hacer su trabajo.
+2. **Agua de horchata o jugos naturales pulposos:** La pulpa triturada de la fruta o los restos de almendra/arroz son demasiado grandes. Si dejas la jarra en la heladera, requerirá una cuchara para revolverla antes de servirla.
+3. **Sangre (¡Es un sistema mixto!):** La sangre es una maravilla de la complejidad. El plasma sanguíneo contiene proteínas disueltas y coloidales, pero **los glóbulos rojos y blancos** son células inmensas. Por lo tanto, la sangre total actúa como una suspensión. Si extraes sangre en un tubo de ensayo y la dejas reposar, o si la introduces en una máquina centrifugadora (que multiplica artificialmente la fuerza de gravedad), los pesados glóbulos rojos caerán rápidamente al fondo, formando una pasta roja espesa, dejando un líquido amarillento (plasma) flotando en la parte superior.
+4. **Pinturas caseras antiguas:** Si abres una lata de pintura que ha estado guardada en el garaje durante un par de años, encontrarás una costra sólida de pigmento en el fondo y un charco de aceite o disolvente claro arriba. Es una suspensión que ha decantado. Solo con mucha paciencia y un buen palo mezclador volverá a ser útil.
 
 ## 8. Magia en la cocina: Controlando el universo coloidal
 
@@ -231,8 +235,9 @@ Si viertes aceite en agua y lo agitas vigorosamente, lograrás romper el aceite 
 Para crear una emulsión estable como la mayonesa, necesitas un intermediario, un pacificador, un diplomático químico. A estas moléculas especiales se les llama **emulsionantes** o agentes tensioactivos.
 
 La molécula emulsionante tiene una estructura fascinante: es *anfifílica*. Esto significa que padece de un trastorno de doble personalidad química.
-*   Una "cabeza" de la molécula ama el agua (es **hidrofílica**).
-*   Una "cola" de la molécula odia el agua y ama las grasas y aceites (es **lipofílica** o hidrofóbica).
+
+* Una "cabeza" de la molécula ama el agua (es **hidrofílica**).
+* Una "cola" de la molécula odia el agua y ama las grasas y aceites (es **lipofílica** o hidrofóbica).
 
 Cuando haces mayonesa, mezclas aceite, vinagre (agua) y tu ingrediente secreto: la **yema de huevo**. La yema de huevo está cargada de una molécula emulsionante natural llamada **lecitina**.
 
@@ -265,10 +270,10 @@ El estudio de los coloides y las suspensiones no es solo una curiosidad del sigl
 
 Al comprender cómo manipular partículas de entre 1 y 1000 nanómetros, los científicos están creando maravillas:
 
-*   **Entrega inteligente de fármacos:** En lugar de pastillas que inundan todo el cuerpo con químicos, los investigadores diseñan sistemas coloidales (como liposomas o nanopartículas) que encapsulan medicamentos contra el cáncer. Estos coloides viajan por la sangre de manera estable y están diseñados para romperse y liberar su carga tóxica *solo* cuando chocan con una célula tumoral, reduciendo drásticamente los efectos secundarios de la quimioterapia.
-*   **Aerogeles (El humo helado):** Si tomas un gel de sílice (líquido disperso en un sólido, como la gelatina pero de vidrio) y, mediante procesos de presión y temperatura extremos, logras reemplazar todo el líquido interior por gas (aire) sin que la estructura sólida colapse, creas una "espuma sólida" llamada aerogel. Es el material sólido más ligero del mundo. Es más de un 99% aire atrapado en una red tridimensional coloidal microscópica. Tienen un aspecto fantasmal azulado (debido al Efecto Tyndall) y son los mejores aislantes térmicos conocidos por la humanidad, utilizados por la NASA para aislar los trajes de los astronautas y los vehículos exploradores de Marte.
-*   **Cosméticos avanzados:** Las cremas antiarrugas modernas son complejas emulsiones coloidales diseñadas para penetrar la epidermis a ritmos específicos, liberando vitaminas o ácido hialurónico gradualmente a medida que la emulsión se rompe con el calor y la química de la piel.
-*   **Pinturas "mágicas":** Las tintas de las impresoras modernas y las pinturas industriales son coloides o suspensiones altamente especializadas. Existen pinturas coloidales que cambian de color con la temperatura (termocrómicas) o fluidos magnéticos coloidales (ferrofluidos) que reaccionan de manera espectacular, formando picos y esculturas al acercarles un imán.
+* **Entrega inteligente de fármacos:** En lugar de pastillas que inundan todo el cuerpo con químicos, los investigadores diseñan sistemas coloidales (como liposomas o nanopartículas) que encapsulan medicamentos contra el cáncer. Estos coloides viajan por la sangre de manera estable y están diseñados para romperse y liberar su carga tóxica *solo* cuando chocan con una célula tumoral, reduciendo drásticamente los efectos secundarios de la quimioterapia.
+* **Aerogeles (El humo helado):** Si tomas un gel de sílice (líquido disperso en un sólido, como la gelatina pero de vidrio) y, mediante procesos de presión y temperatura extremos, logras reemplazar todo el líquido interior por gas (aire) sin que la estructura sólida colapse, creas una "espuma sólida" llamada aerogel. Es el material sólido más ligero del mundo. Es más de un 99% aire atrapado en una red tridimensional coloidal microscópica. Tienen un aspecto fantasmal azulado (debido al Efecto Tyndall) y son los mejores aislantes térmicos conocidos por la humanidad, utilizados por la NASA para aislar los trajes de los astronautas y los vehículos exploradores de Marte.
+* **Cosméticos avanzados:** Las cremas antiarrugas modernas son complejas emulsiones coloidales diseñadas para penetrar la epidermis a ritmos específicos, liberando vitaminas o ácido hialurónico gradualmente a medida que la emulsión se rompe con el calor y la química de la piel.
+* **Pinturas "mágicas":** Las tintas de las impresoras modernas y las pinturas industriales son coloides o suspensiones altamente especializadas. Existen pinturas coloidales que cambian de color con la temperatura (termocrómicas) o fluidos magnéticos coloidales (ferrofluidos) que reaccionan de manera espectacular, formando picos y esculturas al acercarles un imán.
 
 ## Conclusión: La belleza en la frontera
 

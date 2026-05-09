@@ -94,11 +94,11 @@ Imagina que descargas una nueva versión de una herramienta. El proveedor siempr
 1. Descargas el archivo:
 
 ```bash
-$ wget https://ejemplo.com/devops-tool-v1.tar.gz
+wget https://ejemplo.com/devops-tool-v1.tar.gz
 
 ```
 
-2. Generas el hash localmente y lo comparas "a ojo" con el de la web:
+1. Generas el hash localmente y lo comparas "a ojo" con el de la web:
 
 ```bash
 $ sha256sum devops-tool-v1.tar.gz
@@ -106,7 +106,7 @@ $ sha256sum devops-tool-v1.tar.gz
 
 ```
 
-3. **El método automatizado (Senior):** Si tienes un archivo que contiene el hash original y el nombre del archivo (usualmente llamado `checksums.txt` o similar), puedes usar el flag `-c` (check) para que Linux haga la validación por ti:
+1. **El método automatizado (Senior):** Si tienes un archivo que contiene el hash original y el nombre del archivo (usualmente llamado `checksums.txt` o similar), puedes usar el flag `-c` (check) para que Linux haga la validación por ti:
 
 ```bash
 # El comando lee el archivo original, calcula el hash, y lo compara con el texto
@@ -181,7 +181,7 @@ PubkeyAuthentication yes
 Tras modificar el archivo, debes reiniciar el servicio para aplicar los cambios (asegúrate de no cerrar tu sesión actual antes de probar que aún puedes entrar, o podrías quedarte fuera de tu propio servidor):
 
 ```bash
-$ sudo systemctl restart sshd
+sudo systemctl restart sshd
 
 ```
 
@@ -373,6 +373,7 @@ Desarrollado originalmente por la NSA, es el estándar en RHEL, CentOS, Fedora y
 **Diagnóstico rápido (El flujo de trabajo Senior):**
 
 1. **Verificar el estado:**
+
 ```bash
 $ sestatus
 SELinux status:                 enabled
@@ -380,14 +381,13 @@ Current mode:                   enforcing
 
 ```
 
-
 * `enforcing`: Bloquea y registra violaciones.
 * `permissive`: **No bloquea**, solo registra (Ideal para debuggear sin romper producción).
 * `disabled`: Apagado (Mala práctica).
 
-
-2. **Ver los contextos de seguridad (El flag `-Z`):**
+1. **Ver los contextos de seguridad (El flag `-Z`):**
 Casi todos los comandos clásicos aceptan `-Z` para mostrar la etiqueta de SELinux.
+
 ```bash
 # Ver contexto de un archivo
 $ ls -lZ /var/www/html/index.html
@@ -398,7 +398,6 @@ $ ps -eZ | grep nginx
 system_u:system_r:httpd_t:s0    1234 ?        00:00:00 nginx
 
 ```
-
 
 En el ejemplo anterior, el proceso Nginx (`httpd_t`) está autorizado a leer archivos etiquetados como contenido web (`httpd_sys_content_t`).
 

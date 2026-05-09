@@ -36,7 +36,7 @@ El bloque `try` define la zona de riesgo. Aquí es donde colocas el código que 
 
 ### 2. El bloque `except`: Capturando el error
 
-Si ocurre una excepción dentro del bloque `try`, el resto de ese bloque se cancela y el intérprete salta inmediatamente al bloque `except`. 
+Si ocurre una excepción dentro del bloque `try`, el resto de ese bloque se cancela y el intérprete salta inmediatamente al bloque `except`.
 
 Como vimos en el Capítulo 5 (POO), las excepciones en Python son objetos (instancias de clases que heredan de `BaseException`). Esto nos permite capturar tipos de errores específicos y reaccionar de forma distinta a cada uno.
 
@@ -123,7 +123,7 @@ Dominar la sintaxis de `try/except/else/finally` es el primer paso para dominar 
 
 ## 6.2 Creación de jerarquías de excepciones personalizadas
 
-Las excepciones integradas (built-in) de Python, como `ValueError`, `TypeError` o `KeyError`, son excelentes para comunicar errores genéricos de programación. Sin embargo, a medida que tus aplicaciones crecen y modelan reglas de negocio complejas, estas excepciones genéricas pierden expresividad. 
+Las excepciones integradas (built-in) de Python, como `ValueError`, `TypeError` o `KeyError`, son excelentes para comunicar errores genéricos de programación. Sin embargo, a medida que tus aplicaciones crecen y modelan reglas de negocio complejas, estas excepciones genéricas pierden expresividad.
 
 Si estás programando una pasarela de pagos y un usuario intenta retirar más dinero del que tiene, podrías levantar un `ValueError`. Pero, semánticamente, "Error de Valor" no comunica el problema real ni a los otros desarrolladores ni al sistema de monitoreo. Aquí es donde entran las **excepciones personalizadas**.
 
@@ -252,8 +252,8 @@ El bloque `with` garantiza que, sin importar lo que ocurra dentro de su indentac
 
 Para que un objeto pueda usarse junto a la palabra `with`, debe implementar el **Protocolo de Gestor de Contexto**. Como aprendimos en el Capítulo 5 con el Modelo de Datos, esto significa que la clase debe definir dos métodos mágicos (dunder methods):
 
-1.  `__enter__(self)`: Se ejecuta al entrar al bloque `with`. Lo que retorna este método es lo que se asigna a la variable después de la palabra `as`.
-2.  `__exit__(self, exc_type, exc_val, exc_tb)`: Se ejecuta al salir del bloque `with`. Recibe tres argumentos que contienen la información de la excepción (si es que ocurrió alguna dentro del bloque). Si no hubo errores, los tres valores serán `None`.
+1. `__enter__(self)`: Se ejecuta al entrar al bloque `with`. Lo que retorna este método es lo que se asigna a la variable después de la palabra `as`.
+2. `__exit__(self, exc_type, exc_val, exc_tb)`: Se ejecuta al salir del bloque `with`. Recibe tres argumentos que contienen la información de la excepción (si es que ocurrió alguna dentro del bloque). Si no hubo errores, los tres valores serán `None`.
 
 Aquí tienes un diagrama en texto plano del ciclo de vida:
 

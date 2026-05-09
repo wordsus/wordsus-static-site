@@ -2,7 +2,7 @@
 
 ---
 
-Imagina por un momento dos eventos cotidianos: el estallido de un globo y la oxidación de una vieja bicicleta abandonada en el patio bajo la lluvia. Ambos son procesos que involucran cambios a nivel molecular, pero hay una diferencia abismal entre ellos que salta a la vista: el tiempo que tardan en ocurrir. El estallido del globo sucede en una fracción de segundo, un parpadeo, mientras que la bicicleta puede tardar años en convertirse en un amasijo de polvo anaranjado. 
+Imagina por un momento dos eventos cotidianos: el estallido de un globo y la oxidación de una vieja bicicleta abandonada en el patio bajo la lluvia. Ambos son procesos que involucran cambios a nivel molecular, pero hay una diferencia abismal entre ellos que salta a la vista: el tiempo que tardan en ocurrir. El estallido del globo sucede en una fracción de segundo, un parpadeo, mientras que la bicicleta puede tardar años en convertirse en un amasijo de polvo anaranjado.
 
 En la naturaleza y en la industria, no solo importa **qué** sustancias reaccionan entre sí, sino **a qué velocidad** lo hacen. De nada nos sirve una reacción química que produce un medicamento vital si tarda cien años en generar una sola pastilla. Del mismo modo, sería catastrófico si el combustible de nuestros automóviles liberara toda su energía en un microsegundo en lugar de hacerlo de forma controlada.
 
@@ -97,8 +97,8 @@ Pero, ¿qué es exactamente el calor a nivel microscópico? En el mundo de los �
 
 Cuando aumentamos la temperatura en una mezcla química, suceden dos cosas maravillosas a la vez, y ambas trabajan juntas para acelerar la reacción:
 
-1.  **Más choques:** Como las moléculas se mueven como locas a gran velocidad, se encuentran y chocan entre sí con mucha más frecuencia. Volviendo a la analogía de los autos chocadores: si todos los autos van al doble de velocidad, habrá el doble de choques por minuto.
-2.  **Choques más violentos (El factor clave):** Este es el efecto más importante. No solo hay más choques, sino que un porcentaje mucho mayor de estos choques ahora posee la energía suficiente para superar la "colina" de la Energía de Activación ($E_a$).
+1. **Más choques:** Como las moléculas se mueven como locas a gran velocidad, se encuentran y chocan entre sí con mucha más frecuencia. Volviendo a la analogía de los autos chocadores: si todos los autos van al doble de velocidad, habrá el doble de choques por minuto.
+2. **Choques más violentos (El factor clave):** Este es el efecto más importante. No solo hay más choques, sino que un porcentaje mucho mayor de estos choques ahora posee la energía suficiente para superar la "colina" de la Energía de Activación ($E_a$).
 
 > **Dato curioso para mortales:** Como regla general empírica (aunque no es una ley exacta para todas las reacciones), **un aumento de tan solo 10°C en la temperatura puede llegar a duplicar o incluso triplicar la velocidad de una reacción.** ¡Esa es la diferencia entre un medicamento que caduca en un año o en seis meses si lo dejas al sol!
 
@@ -107,11 +107,12 @@ El químico sueco Svante Arrhenius fue quien descubrió la relación matemática
 $$k = A e^{-\frac{E_a}{RT}}$$
 
 No te asustes, vamos a traducirla al lenguaje de los mortales:
-*   **$k$** es nuestra velocidad (específicamente, la constante de velocidad).
-*   **$A$** representa la frecuencia de los choques y la orientación correcta.
-*   **$E_a$** es nuestra famosa colina, la energía de activación.
-*   **$R$** es una constante universal de los gases (un número fijo).
-*   **$T$** es la temperatura.
+
+* **$k$** es nuestra velocidad (específicamente, la constante de velocidad).
+* **$A$** representa la frecuencia de los choques y la orientación correcta.
+* **$E_a$** es nuestra famosa colina, la energía de activación.
+* **$R$** es una constante universal de los gases (un número fijo).
+* **$T$** es la temperatura.
 
 Lo que esta ecuación nos dice matemáticamente es que a medida que $T$ (la temperatura) se hace más grande, todo el término negativo se hace más pequeño, lo que hace que el resultado final $k$ (la velocidad) se dispare hacia arriba exponencialmente. Es la confirmación matemática de que el calor pone todo a máxima velocidad.
 
@@ -135,9 +136,9 @@ $$\text{Velocidad} = k [A]^n [B]^m$$
 
 Esos pequeños exponentes ($n$ y $m$) son los que llamamos el **orden de la reacción**. Y nos revelan sorpresas fascinantes:
 
-*   **Orden Cero ($n=0$):** En algunos casos raros, ¡aumentar la concentración no hace absolutamente nada! Puedes agregar toneladas de reactivo, y la reacción seguirá a su paso de tortuga inalterable. Esto suele suceder cuando la reacción depende de una superficie de contacto que ya está completamente llena (como un peaje con un solo carril, no importa cuántos autos se acumulen atrás, el cajero solo puede cobrarle a uno a la vez).
-*   **Primer Orden ($n=1$):** Es la relación directa que todos imaginamos. Si duplicas la concentración, la velocidad se duplica. Si la triplicas, la velocidad se triplica.
-*   **Segundo Orden ($n=2$):** Aquí la cosa se descontrola. Si duplicas la concentración ($2^2$), ¡la velocidad se cuadruplica! Si la triplicas ($3^2$), ¡la velocidad se multiplica por nueve! Son reacciones extremadamente sensibles a la cantidad de reactivo presente.
+* **Orden Cero ($n=0$):** En algunos casos raros, ¡aumentar la concentración no hace absolutamente nada! Puedes agregar toneladas de reactivo, y la reacción seguirá a su paso de tortuga inalterable. Esto suele suceder cuando la reacción depende de una superficie de contacto que ya está completamente llena (como un peaje con un solo carril, no importa cuántos autos se acumulen atrás, el cajero solo puede cobrarle a uno a la vez).
+* **Primer Orden ($n=1$):** Es la relación directa que todos imaginamos. Si duplicas la concentración, la velocidad se duplica. Si la triplicas, la velocidad se triplica.
+* **Segundo Orden ($n=2$):** Aquí la cosa se descontrola. Si duplicas la concentración ($2^2$), ¡la velocidad se cuadruplica! Si la triplicas ($3^2$), ¡la velocidad se multiplica por nueve! Son reacciones extremadamente sensibles a la cantidad de reactivo presente.
 
 Un ejemplo clásico del efecto de la concentración lo vemos en la lluvia ácida. El mármol de las estatuas reacciona lentamente con la ligera acidez natural de la lluvia normal. Sin embargo, en zonas industriales donde la concentración de ácidos en el agua de lluvia es mucho mayor, las estatuas se disuelven y pierden sus rasgos a una velocidad alarmante.
 
@@ -225,9 +226,10 @@ Si hemos hablado de aceleradores, es justo mencionar que también tenemos pedale
 Las sustancias que reducen la velocidad de una reacción química se conocen como **inhibidores** (a veces erróneamente llamados "catalizadores negativos", aunque el mecanismo es diferente).
 
 ¿Por qué querríamos frenar una reacción?
-*   **Conservación de alimentos:** El oxígeno del aire oxida las grasas de nuestras comidas, volviéndolas rancias. Para evitarlo, agregamos conservantes y antioxidantes. Estos aditivos actúan como inhibidores, "secuestrando" los reactivos perjudiciales o interfiriendo en el mecanismo de descomposición para extender la vida útil de las galletas o el pan en el supermercado.
-*   **Medicina:** Muchas enfermedades son causadas por enzimas en nuestro cuerpo que se han vuelto hiperactivas o enzimas de bacterias invasoras que se están reproduciendo. Gran parte de los medicamentos que tomamos (como los antibióticos o analgésicos) son en realidad inhibidores. Viajan por nuestro cuerpo, encuentran a la enzima problemática y se pegan a ella, bloqueando su función y deteniendo la reacción dañina. Es como poner pegamento dentro de la cerradura para que la llave no pueda entrar.
-*   **Corrosión:** Pintar el hierro es una forma física de evitar la oxidación, pero la industria también utiliza inhibidores de corrosión químicos que se mezclan con los líquidos (como el anticongelante en el radiador del auto) para ralentizar drásticamente la degradación de los metales.
+
+* **Conservación de alimentos:** El oxígeno del aire oxida las grasas de nuestras comidas, volviéndolas rancias. Para evitarlo, agregamos conservantes y antioxidantes. Estos aditivos actúan como inhibidores, "secuestrando" los reactivos perjudiciales o interfiriendo en el mecanismo de descomposición para extender la vida útil de las galletas o el pan en el supermercado.
+* **Medicina:** Muchas enfermedades son causadas por enzimas en nuestro cuerpo que se han vuelto hiperactivas o enzimas de bacterias invasoras que se están reproduciendo. Gran parte de los medicamentos que tomamos (como los antibióticos o analgésicos) son en realidad inhibidores. Viajan por nuestro cuerpo, encuentran a la enzima problemática y se pegan a ella, bloqueando su función y deteniendo la reacción dañina. Es como poner pegamento dentro de la cerradura para que la llave no pueda entrar.
+* **Corrosión:** Pintar el hierro es una forma física de evitar la oxidación, pero la industria también utiliza inhibidores de corrosión químicos que se mezclan con los líquidos (como el anticongelante en el radiador del auto) para ralentizar drásticamente la degradación de los metales.
 
 Los inhibidores nos recuerdan que tener el control no significa siempre pisar el acelerador a fondo, sino saber controlar el ritmo de la transformación a nuestra conveniencia.
 
@@ -236,6 +238,7 @@ Los inhibidores nos recuerdan que tener el control no significa siempre pisar el
 Antes de cerrar nuestra inmersión en el mundo de las velocidades, es vital para todo "mortal" comprender una de las mayores confusiones en la química, e incluso en la vida cotidiana: la diferencia entre la Termodinámica y la Cinética.
 
 Piensa en estas dos preguntas:
+
 1. ¿*Puede* ocurrir esta reacción? (¿Tiene sentido energético que suceda?)
 2. ¿*Cuán rápido* va a ocurrir?
 
@@ -257,7 +260,7 @@ Por lo tanto, la reacción es termodinámicamente espontánea, pero cinéticamen
 
 A lo largo de este extenso recorrido, hemos descubierto que la química no es estática, es un frenesí dinámico de choques microscópicos. Hemos aprendido que la velocidad de una reacción es el pulso de la naturaleza, y que nosotros tenemos las herramientas para alterar ese ritmo cardíaco.
 
-Ya sea elevando la **temperatura** para enfurecer a las moléculas y hacerlas chocar con violencia, aumentando la **concentración** y la **presión** para acorralarlas y obligarlas a encontrarse, triturándolas para multiplicar su **superficie de contacto**, o usando el ingenio sutil de los **catalizadores** para abrirles túneles secretos a través de las montañas de energía de activación. 
+Ya sea elevando la **temperatura** para enfurecer a las moléculas y hacerlas chocar con violencia, aumentando la **concentración** y la **presión** para acorralarlas y obligarlas a encontrarse, triturándolas para multiplicar su **superficie de contacto**, o usando el ingenio sutil de los **catalizadores** para abrirles túneles secretos a través de las montañas de energía de activación.
 
 Dominar la cinética química es lo que permitió a la humanidad dar el salto de recolectores a maestros industriales de la materia. Desde el diseño de airbags que te salvan la vida desplegándose en milisegundos gracias a una rápida explosión controlada, hasta la síntesis de plásticos, la conservación de alimentos por años, y el desarrollo de fármacos precisos que actúan como directores de orquesta del cuerpo humano.
 

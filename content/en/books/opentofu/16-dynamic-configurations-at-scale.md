@@ -2,13 +2,13 @@ As your OpenTofu codebase grows, hardcoding resources quickly becomes unsustaina
 
 ## 16.1 Iterating Over Infrastructure Resources with `count`
 
-As your infrastructure grows, you will inevitably encounter scenarios where you need to deploy multiple identical—or nearly identical—resources. Copying and pasting the same resource block multiple times violates the DRY (Don't Repeat Yourself) principle, leading to bloated configurations that are difficult to maintain and prone to human error. 
+As your infrastructure grows, you will inevitably encounter scenarios where you need to deploy multiple identical—or nearly identical—resources. Copying and pasting the same resource block multiple times violates the DRY (Don't Repeat Yourself) principle, leading to bloated configurations that are difficult to maintain and prone to human error.
 
 OpenTofu provides the `count` meta-argument to solve this exact problem. By adding `count` to a `resource` or `data` block, you instruct OpenTofu to create multiple instances of that block dynamically.
 
 ### The Basics of the `count` Meta-Argument
 
-The `count` meta-argument accepts a whole number (integer) representing the exact number of resource instances you want to provision. 
+The `count` meta-argument accepts a whole number (integer) representing the exact number of resource instances you want to provision.
 
 Consider a scenario where you need to provision three identical web servers. Instead of writing three separate `aws_instance` blocks, you can define it once:
 
@@ -24,11 +24,11 @@ resource "aws_instance" "web" {
 }
 ```
 
-When you run `tofu plan`, OpenTofu will read this block and generate an execution plan for three distinct EC2 instances. 
+When you run `tofu plan`, OpenTofu will read this block and generate an execution plan for three distinct EC2 instances.
 
 ### Differentiating Instances with `count.index`
 
-Creating three completely identical resources is rarely useful in practice; usually, you need to differentiate them by name, IP address, or specific tags. Whenever you use the `count` meta-argument, OpenTofu makes a special `count` object available within the block. 
+Creating three completely identical resources is rarely useful in practice; usually, you need to differentiate them by name, IP address, or specific tags. Whenever you use the `count` meta-argument, OpenTofu makes a special `count` object available within the block.
 
 This object contains a single attribute: `count.index`. It represents the zero-based index of the current iteration. You can inject this index into your resource attributes using string interpolation.
 
@@ -65,7 +65,7 @@ resource "aws_instance" "web" {
 
 ### Conditional Resource Creation
 
-One of the most powerful and common use cases for `count` doesn't actually involve iterating over large numbers. Because `count` can be set to `0`, it serves as OpenTofu's primary mechanism for conditional resource creation. 
+One of the most powerful and common use cases for `count` doesn't actually involve iterating over large numbers. Because `count` can be set to `0`, it serves as OpenTofu's primary mechanism for conditional resource creation.
 
 By evaluating a boolean variable with a ternary operator (as discussed in Chapter 8), you can toggle the deployment of a resource entirely:
 
@@ -134,6 +134,7 @@ To solve this, OpenTofu provides the `for_each` meta-argument. Introduced as a s
 ### The `each` Object
 
 When you use `for_each` within a `resource` or `data` block, OpenTofu injects a special `each` object into the block's scope. This object has two attributes:
+
 * **`each.key`**: The map key (or set element) corresponding to the current instance.
 * **`each.value`**: The map value corresponding to the current instance. (If iterating over a set, `each.value` is identical to `each.key`).
 
@@ -174,7 +175,7 @@ If you later decide to remove the `backend` subnet from the variable, OpenTofu w
 
 ### Iterating Over Sets
 
-Sometimes you don't need complex objects; you just need a simple list of names, such as creating multiple IAM users or S3 buckets. 
+Sometimes you don't need complex objects; you just need a simple list of names, such as creating multiple IAM users or S3 buckets.
 
 Because `for_each` only accepts maps or sets of strings (not lists), you must use the built-in `toset()` function to convert a standard list into a set before iterating.
 
@@ -236,7 +237,7 @@ If you attempt to use `for_each` with a map whose keys are generated dynamically
 
 ## 16.3 Generating Configuration Blocks Dynamically with `dynamic`
 
-While `count` and `for_each` are the standard mechanisms for generating entirely new, top-level resources, they cannot be used *inside* a resource to generate nested configuration blocks. Many cloud resources rely heavily on these nested blocks. For example, an AWS Security Group uses nested `ingress` and `egress` blocks to define firewall rules, while an Auto Scaling Group uses nested `tag` blocks. 
+While `count` and `for_each` are the standard mechanisms for generating entirely new, top-level resources, they cannot be used *inside* a resource to generate nested configuration blocks. Many cloud resources rely heavily on these nested blocks. For example, an AWS Security Group uses nested `ingress` and `egress` blocks to define firewall rules, while an Auto Scaling Group uses nested `tag` blocks.
 
 If you are building a reusable module and need to allow consumers to define an arbitrary number of these nested rules, hardcoding them is not an option. OpenTofu provides the `dynamic` block specifically to solve this problem.
 
@@ -263,7 +264,8 @@ resource "..." "..." {
 ```
 
 The `dynamic` block takes the name of the nested block you want to generate (e.g., `"ingress"`, `"setting"`, `"tag"`). Inside, it requires two main components:
-1. **`for_each`**: The collection (list, set, or map) that you want to iterate over. 
+
+1. **`for_each`**: The collection (list, set, or map) that you want to iterate over.
 2. **`content`**: The actual configuration arguments that will be generated for each item in the collection.
 
 ### Practical Application: Security Group Rules
@@ -297,7 +299,7 @@ resource "aws_security_group" "web_sg" {
 }
 ```
 
-Notice the use of `ingress.value`. By default, OpenTofu creates a temporary iterator object named after the `dynamic` block itself. Because our block is named `"ingress"`, we access the current item in the loop using `ingress.value`. 
+Notice the use of `ingress.value`. By default, OpenTofu creates a temporary iterator object named after the `dynamic` block itself. Because our block is named `"ingress"`, we access the current item in the loop using `ingress.value`.
 
 ### Customizing the Iterator
 
@@ -332,15 +334,17 @@ resource "aws_db_parameter_group" "main" {
 
 ### Best Practices and Anti-Patterns
 
-While `dynamic` blocks are an incredibly powerful tool for writing flexible modules, they should be used with caution. 
+While `dynamic` blocks are an incredibly powerful tool for writing flexible modules, they should be used with caution.
 
 **The Readability Cost:** Overusing `dynamic` blocks can quickly turn an easily understandable declarative configuration into complex, imperative-looking code. If an engineer has to reverse-engineer a complex variable structure just to figure out what ports a security group is opening, the IaC has lost its primary benefit of readability.
 
 **When to use them:**
+
 * Use `dynamic` blocks heavily in **shared modules** (Part IV) where flexibility is paramount, and the module consumer expects to pass in variable lists of configurations.
 * Use them when the underlying API requires an unpredictable number of nested blocks based on the environment (e.g., tagging resources dynamically based on the active workspace).
 
 **When to avoid them:**
+
 * Avoid `dynamic` blocks in **root configurations** (the code you actually deploy) if the nested blocks are static and rarely change. Writing out three static `ingress` blocks is almost always preferable to building a complex data structure and a `dynamic` block just to save a few lines of code. Optimize for human readability first.
 
 ## 16.4 Deciding Between `count` and `for_each` for Stability
@@ -363,6 +367,7 @@ If a resource's identity is tied to its position, any disruption to that sequenc
 As a general best practice in OpenTofu, **`for_each` should be your default choice for iterating over collections.**
 
 You should explicitly use `for_each` when:
+
 * **The resources have distinct identities:** If you are creating subnets, IAM users, databases, or route tables, each item has a specific purpose. Losing one should not impact the others.
 * **The collection is likely to change:** If there is any chance you will add or remove items from the configuration over the lifecycle of the infrastructure, `for_each` guarantees that only the modified items are touched.
 * **You are iterating over complex objects:** `for_each` cleanly maps to complex input variables (like a map of objects), making it easy to pass distinct configurations to each resource instance.
@@ -373,13 +378,13 @@ Despite the dominance of `for_each` for collections, `count` still has three hig
 
 You should use `count` when:
 
-1.  **Conditional Resource Creation (Toggling):**
+1. **Conditional Resource Creation (Toggling):**
     This is the most common and powerful use of `count`. When you simply need to turn a single resource on or off using `count = var.enabled ? 1 : 0`, it is cleaner and more idiomatic than attempting to use `for_each` with an empty map.
 
-2.  **Iterating Over Unknown Values:**
+2. **Iterating Over Unknown Values:**
     `for_each` has a strict limitation: the map keys or set elements must be known *before* OpenTofu applies the configuration (during the plan phase). If you need to iterate over a list of IDs generated dynamically by another resource being created in the same run, `for_each` will throw an error. In this edge case, `count` is your only viable option.
 
-3.  **Truly Identical, Ephemeral Resources:**
+3. **Truly Identical, Ephemeral Resources:**
     If you are provisioning a batch of resources where individual identity genuinely does not matter—such as spinning up 50 identical load-testing worker nodes—`count` is perfectly acceptable. If node `[12]` is deleted and OpenTofu recreates it, the system's overall function remains unaffected.
 
 ### Feature Comparison Matrix

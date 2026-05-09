@@ -4,7 +4,7 @@
 
 Vivimos en un universo donde es absolutamente imposible tocar sin ser tocado. Piensa en ello por un segundo: no puedes dar un empujón sin recibir exactamente el mismo empujón de vuelta. Esta idea, que suena a filosofía oriental o a una lección de karma, es en realidad uno de los pilares fundamentales de la mecánica clásica. Es la piedra angular que nos permite entender cómo interactúan los objetos en nuestro cosmos, desde las partículas de polvo que flotan en tu habitación hasta las galaxias masivas que danzan en el espacio profundo.
 
-En 1687, Sir Isaac Newton publicó su obra maestra, *Philosophiæ Naturalis Principia Mathematica*, un libro que cambiaría la historia de la ciencia para siempre. En él, además de la ley de gravitación universal, Newton describió tres leyes del movimiento. La primera nos habla de la inercia, la segunda de cómo la fuerza altera el movimiento, pero es la tercera la que describe la naturaleza íntima de las interacciones. 
+En 1687, Sir Isaac Newton publicó su obra maestra, *Philosophiæ Naturalis Principia Mathematica*, un libro que cambiaría la historia de la ciencia para siempre. En él, además de la ley de gravitación universal, Newton describió tres leyes del movimiento. La primera nos habla de la inercia, la segunda de cómo la fuerza altera el movimiento, pero es la tercera la que describe la naturaleza íntima de las interacciones.
 
 En este artículo de **Física para Mortales**, vamos a desmenuzar esta Tercera Ley de Newton. Vamos a despojarla de la jerga académica para entender qué significa realmente, por qué a menudo la malinterpretamos y cómo este simple enunciado dicta la forma en que caminamos, nadamos, conducimos y, de paso, cómo logramos enviar seres humanos a la Luna. Prepárate para ver el mundo con otros ojos, porque a partir de hoy, cada vez que interactúes con tu entorno, sentirás la física en acción.
 
@@ -29,10 +29,11 @@ Si llamamos $A$ al primer objeto y $B$ al segundo objeto, la Tercera Ley de Newt
 $$ \vec{F}_{AB} = -\vec{F}_{BA} $$
 
 Desarmemos esta ecuación para ver su belleza:
-*   $\vec{F}_{AB}$: Representa la fuerza que el objeto $A$ ejerce sobre el objeto $B$. La pequeña flecha arriba ($\vec{F}$) significa que es un **vector**, es decir, que importa hacia dónde apunta (no es lo mismo empujar hacia la derecha que hacia la izquierda).
-*   $\vec{F}_{BA}$: Representa la fuerza que el objeto $B$ ejerce sobre el objeto $A$.
-*   El signo igual ($=$): Nos dice que ambas fuerzas tienen exactamente la misma magnitud. Si tú empujas una pared con una fuerza de 100 Newtons, la pared te empuja con exactamente 100 Newtons. Ni 99, ni 101. Exactamente 100.
-*   El signo negativo ($-$): Este es el detalle crucial. Indica que la dirección de la fuerza de reacción es exactamente opuesta. Si $A$ empuja a $B$ hacia el Norte, $B$ empuja a $A$ hacia el Sur. 
+
+* $\vec{F}_{AB}$: Representa la fuerza que el objeto $A$ ejerce sobre el objeto $B$. La pequeña flecha arriba ($\vec{F}$) significa que es un **vector**, es decir, que importa hacia dónde apunta (no es lo mismo empujar hacia la derecha que hacia la izquierda).
+* $\vec{F}_{BA}$: Representa la fuerza que el objeto $B$ ejerce sobre el objeto $A$.
+* El signo igual ($=$): Nos dice que ambas fuerzas tienen exactamente la misma magnitud. Si tú empujas una pared con una fuerza de 100 Newtons, la pared te empuja con exactamente 100 Newtons. Ni 99, ni 101. Exactamente 100.
+* El signo negativo ($-$): Este es el detalle crucial. Indica que la dirección de la fuerza de reacción es exactamente opuesta. Si $A$ empuja a $B$ hacia el Norte, $B$ empuja a $A$ hacia el Sur.
 
 Aquí tienes un diagrama en texto plano para visualizarlo mejor. Imagina que estás empujando una caja pesada:
 
@@ -61,8 +62,9 @@ Las fuerzas de acción y reacción **nunca** se cancelan entre sí porque **act�
 Para que dos fuerzas se cancelen y sumen cero (lo que llamamos equilibrio), deben actuar sobre el *mismo* objeto. Por ejemplo, si tú empujas una caja hacia la derecha con 50 Newtons, y tu amigo empuja la *misma caja* hacia la izquierda con 50 Newtons, la caja no se mueve. Las fuerzas se cancelan porque ambas se aplican a la caja.
 
 Pero en la Tercera Ley de Newton, el par de fuerzas está dividido:
-1.  La fuerza de acción actúa sobre la **caja**. (Esto determina cómo se mueve la caja).
-2.  La fuerza de reacción actúa sobre **ti**. (Esto determina qué sientes tú en las manos y cómo se mueve tu cuerpo).
+
+1. La fuerza de acción actúa sobre la **caja**. (Esto determina cómo se mueve la caja).
+2. La fuerza de reacción actúa sobre **ti**. (Esto determina qué sientes tú en las manos y cómo se mueve tu cuerpo).
 
 Como las fuerzas se aplican a cuerpos distintos, no puedes sumarlas. La caja se moverá hacia adelante porque hay una fuerza neta actuando sobre ella (tu empujón). Tú sentirás presión en tus manos y tal vez tus pies resbalen hacia atrás porque hay una fuerza neta actuando sobre ti (el empujón de la caja). ¡El universo no está atascado, se mueve gracias a que estas fuerzas actúan en cuerpos diferentes!
 
@@ -79,9 +81,10 @@ Imagina un caballo atado a una carreta. El caballo es un animal inteligente, ha 
 El caballo está confundiendo los sistemas de referencia y olvidando al tercer protagonista de esta historia: **el suelo del planeta Tierra**.
 
 Analicemos las fuerzas correctamente:
-1.  Es cierto que la fuerza que el caballo ejerce sobre la carreta es igual a la fuerza que la carreta ejerce sobre el caballo. Estas fuerzas tiran una de la otra y generan tensión en las cuerdas de amarre.
-2.  Sin embargo, ¿cómo avanza el caballo? El caballo apoya sus pezuñas en el suelo y empuja la Tierra hacia **atrás** (Acción).
-3.  Por la Tercera Ley de Newton, la Tierra reacciona y empuja al caballo hacia **adelante** (Reacción).
+
+1. Es cierto que la fuerza que el caballo ejerce sobre la carreta es igual a la fuerza que la carreta ejerce sobre el caballo. Estas fuerzas tiran una de la otra y generan tensión en las cuerdas de amarre.
+2. Sin embargo, ¿cómo avanza el caballo? El caballo apoya sus pezuñas en el suelo y empuja la Tierra hacia **atrás** (Acción).
+3. Por la Tercera Ley de Newton, la Tierra reacciona y empuja al caballo hacia **adelante** (Reacción).
 
 Si la fuerza con la que la Tierra empuja al caballo hacia adelante es mayor que la fuerza con la que la carreta tira del caballo hacia atrás, el caballo (y por consiguiente la carreta) acelerará hacia adelante. El secreto del movimiento no está en la interacción entre el caballo y la carreta, sino en la interacción entre los cascos del caballo y el suelo firme.
 
@@ -99,7 +102,7 @@ Cuando intentas dar un paso hacia adelante, lo que realmente hace tu pie es rasp
     =========================================>
 ```
 
-¿Y qué pasa con la Tierra? Si tú la empujaste hacia atrás, ¿la Tierra retrocedió? ¡Técnicamente sí! Según la Segunda Ley de Newton, la aceleración de un objeto depende de la fuerza aplicada dividida por su masa ($a = F/m$). Como la masa de la Tierra es colosal (alrededor de $5.97 \times 10^{24}$ kg) y tu masa es pequeñísima en comparación, la aceleración de la Tierra es tan microscópicamente pequeña que es imposible de medir. Pero en el estricto rigor físico matemático, cada vez que caminas, alteras infinitesimalmente la rotación o posición del planeta entero. 
+¿Y qué pasa con la Tierra? Si tú la empujaste hacia atrás, ¿la Tierra retrocedió? ¡Técnicamente sí! Según la Segunda Ley de Newton, la aceleración de un objeto depende de la fuerza aplicada dividida por su masa ($a = F/m$). Como la masa de la Tierra es colosal (alrededor de $5.97 \times 10^{24}$ kg) y tu masa es pequeñísima en comparación, la aceleración de la Tierra es tan microscópicamente pequeña que es imposible de medir. Pero en el estricto rigor físico matemático, cada vez que caminas, alteras infinitesimalmente la rotación o posición del planeta entero.
 
 En el agua ocurre exactamente lo mismo. ¿Cómo nada un campeón olímpico o un simple aficionado en la piscina de verano? Los nadadores usan sus manos y pies para empujar volúmenes de agua hacia atrás. El agua, cumpliendo religiosamente la ley de Newton, empuja el cuerpo del nadador hacia adelante. Lo mismo hacen las hélices de un barco de vapor o los remos de una canoa.
 
@@ -111,12 +114,13 @@ Durante los primeros años del siglo XX, cuando pioneros como Robert Goddard com
 
 Este fue un fallo colosal en la comprensión de la física. *The New York Times* se vio obligado a publicar una retracción en 1969, mientras la misión Apolo 11 viajaba hacia la Luna.
 
-Los cohetes no necesitan aire contra el cual empujar. De hecho, funcionan mejor en el vacío sin la resistencia atmosférica. El cohete lleva consigo su propio material de "empuje" en forma de combustible. 
+Los cohetes no necesitan aire contra el cual empujar. De hecho, funcionan mejor en el vacío sin la resistencia atmosférica. El cohete lleva consigo su propio material de "empuje" en forma de combustible.
 
 El funcionamiento es pura Tercera Ley destilada:
-1.  En la cámara de combustión del cohete, se quema combustible a temperaturas y presiones extremas.
-2.  El motor del cohete empuja los gases de escape a altísima velocidad hacia abajo, expulsándolos por las toberas (Acción).
-3.  Los gases de escape, en respuesta, empujan al motor del cohete (y por ende, a toda la nave) hacia arriba (Reacción).
+
+1. En la cámara de combustión del cohete, se quema combustible a temperaturas y presiones extremas.
+2. El motor del cohete empuja los gases de escape a altísima velocidad hacia abajo, expulsándolos por las toberas (Acción).
+3. Los gases de escape, en respuesta, empujan al motor del cohete (y por ende, a toda la nave) hacia arriba (Reacción).
 
 Aquí tienes un esquema visual simplificado del motor de un cohete:
 
@@ -149,9 +153,10 @@ $$ F = G \frac{m_{\text{manzana}} m_{\text{Tierra}}}{r^2} $$
 
 Ambos cuerpos experimentan esta misma fuerza $F$. Entonces, ¿por qué vemos caer a la manzana y no vemos a la Tierra "subir" hacia la manzana?
 
-Nuevamente, la respuesta está en las masas. La fuerza es la misma ($F = 1 \text{ Newton}$, por ejemplo, para una manzana típica). 
-*   Para la manzana: $1 \text{ Newton} \div \text{Masa pequeñita} = \text{Aceleración enorme} \ (9.8 \text{ m/s}^2)$. La manzana se desploma visiblemente.
-*   Para la Tierra: $1 \text{ Newton} \div \text{Masa gigantesca de la Tierra} = \text{Aceleración casi nula}$. 
+Nuevamente, la respuesta está en las masas. La fuerza es la misma ($F = 1 \text{ Newton}$, por ejemplo, para una manzana típica).
+
+* Para la manzana: $1 \text{ Newton} \div \text{Masa pequeñita} = \text{Aceleración enorme} \ (9.8 \text{ m/s}^2)$. La manzana se desploma visiblemente.
+* Para la Tierra: $1 \text{ Newton} \div \text{Masa gigantesca de la Tierra} = \text{Aceleración casi nula}$.
 
 La Tierra sí se mueve hacia la manzana, pero la distancia que recorre es tan insignificante (fracciones del tamaño de un átomo) que es humanamente indetectable. Sin embargo, a escala cósmica, este principio es fundamental. La Tierra tira de la Luna, manteniendo su órbita, pero la Luna también tira de la Tierra. Esa fuerza de reacción lunar es lo que deforma levemente los océanos de nuestro planeta, creando el fenómeno que conocemos como **las mareas**.
 

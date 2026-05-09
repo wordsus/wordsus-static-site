@@ -10,7 +10,7 @@ In these architectures, the application is divided into concentric layers. The f
 
 ### The Ports and Adapters Mental Model
 
-To visualize this in a Rust context, imagine your application as a hexagon. The inside of the hexagon contains your pure business rules. The outside contains mechanisms for delivery (HTTP frameworks, CLIs) and infrastructure (SQL databases, message brokers). 
+To visualize this in a Rust context, imagine your application as a hexagon. The inside of the hexagon contains your pure business rules. The outside contains mechanisms for delivery (HTTP frameworks, CLIs) and infrastructure (SQL databases, message brokers).
 
 ```text
 +-------------------------------------------------------------+
@@ -49,7 +49,8 @@ To visualize this in a Rust context, imagine your application as a hexagon. The 
 Let's build a mental model of a user registration feature. We will structure our Rust code to reflect these layers, utilizing the trait system we explored in Chapter 7 and the asynchronous paradigms from Chapter 12.
 
 #### 1. The Domain Layer
-The domain layer contains pure data structures. It knows nothing about databases or web requests. 
+
+The domain layer contains pure data structures. It knows nothing about databases or web requests.
 
 ```rust
 // domain.rs
@@ -83,6 +84,7 @@ pub enum DomainError {
 ```
 
 #### 2. The Ports (Interfaces)
+
 The core domain needs to save this user to *somewhere*, but it shouldn't know about SQL. We define a Port (a Trait) that describes the required behavior.
 
 ```rust
@@ -105,6 +107,7 @@ pub trait UserRepository: Send + Sync {
 ```
 
 #### 3. The Use Cases (Application Layer)
+
 Use cases orchestrate the flow of data to and from the entities, and direct those entities to use their core business rules to achieve the goals of the use case.
 
 ```rust
@@ -142,6 +145,7 @@ impl RegisterUserUseCase {
 ```
 
 #### 4. The Adapters (Infrastructure Layer)
+
 Adapters live at the outermost edge. They implement the traits defined in the Ports layer. This is where you pull in crates like `sqlx` or `axum`.
 
 ```rust
@@ -183,21 +187,21 @@ impl UserRepository for PostgresUserRepository {
 
 ### The Benefits of this Approach in Rust
 
-1.  **Compile-Time Verification:** Rust’s trait bounds ensure that your adapters fulfill the strict contracts required by your domain. If your database adapter fails to return a mapped `RepositoryError` and instead leaks an `sqlx::Error`, the code will not compile.
-2.  **Testability:** By depending on the `UserRepository` trait, testing the `RegisterUserUseCase` is trivial. You can implement a `MockUserRepository` (often generated automatically via the `mockall` crate, which we will cover in Chapter 18) and inject it, testing your business logic without spinning up a database container.
-3.  **Framework Agnosticism:** If you decide to migrate your web delivery layer from Actix-Web to Axum, your core domain, ports, use cases, and even database adapters remain entirely untouched. Only the HTTP driving adapter needs to be rewritten.
+1. **Compile-Time Verification:** Rust’s trait bounds ensure that your adapters fulfill the strict contracts required by your domain. If your database adapter fails to return a mapped `RepositoryError` and instead leaks an `sqlx::Error`, the code will not compile.
+2. **Testability:** By depending on the `UserRepository` trait, testing the `RegisterUserUseCase` is trivial. You can implement a `MockUserRepository` (often generated automatically via the `mockall` crate, which we will cover in Chapter 18) and inject it, testing your business logic without spinning up a database container.
+3. **Framework Agnosticism:** If you decide to migrate your web delivery layer from Actix-Web to Axum, your core domain, ports, use cases, and even database adapters remain entirely untouched. Only the HTTP driving adapter needs to be rewritten.
 
 While this pattern introduces boilerplate—requiring mapping between database models, domain models, and HTTP response schemas—it acts as an architectural firewall. In the upcoming sections, we will explore how to further refine this logic using Domain-Driven Design and compile-time Type States.
 
 ## 17.2 Domain-Driven Design (DDD) Principles
 
-While Clean Architecture and Hexagonal patterns define the *boundaries* of our application, Domain-Driven Design (DDD) tells us how to structure the *inside* of the core domain. Originated by Eric Evans, DDD is an approach to software development that centers on programming a model that has a deep understanding of the processes and rules of a domain. 
+While Clean Architecture and Hexagonal patterns define the *boundaries* of our application, Domain-Driven Design (DDD) tells us how to structure the *inside* of the core domain. Originated by Eric Evans, DDD is an approach to software development that centers on programming a model that has a deep understanding of the processes and rules of a domain.
 
 Rust is uniquely positioned to excel at DDD. Its expressive type system, strict ownership rules, and fearless concurrency map flawlessly to the concepts of ubiquitous language, value objects, and aggregate boundaries.
 
 ### The Ubiquitous Language
 
-At the heart of DDD is the **Ubiquitous Language**: a shared vocabulary between domain experts (business stakeholders) and developers. If the business talks about "Members" and "Subscriptions," your Rust code should not contain `User` and `Plan` structs. 
+At the heart of DDD is the **Ubiquitous Language**: a shared vocabulary between domain experts (business stakeholders) and developers. If the business talks about "Members" and "Subscriptions," your Rust code should not contain `User` and `Plan` structs.
 
 Rust's algebraic data types—specifically `enum`s—are perfect for capturing the ubiquitous language of business states, ensuring invalid states are unrepresentable at compile time.
 
@@ -217,6 +221,7 @@ pub enum AccountStatus {
 Within the domain, DDD categorizes objects into two primary buckets: Entities and Value Objects.
 
 #### 1. Value Objects
+
 A Value Object has no conceptual identity. It is defined entirely by its attributes. If two value objects have the same attributes, they are considered equal. They must be **immutable**; to change a value object, you replace it entirely.
 
 In Rust, the **Newtype pattern** (using single-element tuple structs) is the idiomatic way to create Value Objects. This prevents "Primitive Obsession" (using basic `String` or `i32` types everywhere), replacing it with domain-specific types.
@@ -245,6 +250,7 @@ impl EmailAddress {
 ```
 
 #### 2. Entities
+
 An Entity has a distinct identity that runs through time and different states. Even if two users have the same name and email, they are distinct if their IDs are different. Entities are naturally mutable over time.
 
 ```rust
@@ -326,9 +332,9 @@ impl Order {
 
 ### Bounded Contexts and Modules
 
-In large systems, the meaning of a term changes depending on the context. A "Product" in the Inventory context has stock levels and warehouse locations. A "Product" in the E-commerce context has images, SEO tags, and customer reviews. 
+In large systems, the meaning of a term changes depending on the context. A "Product" in the Inventory context has stock levels and warehouse locations. A "Product" in the E-commerce context has images, SEO tags, and customer reviews.
 
-DDD uses **Bounded Contexts** to separate these models. You should not try to create one massive `Product` struct that serves the entire enterprise. In Rust, Bounded Contexts map elegantly to Crates (in a Cargo workspace, as seen in Chapter 5) or high-level modules. 
+DDD uses **Bounded Contexts** to separate these models. You should not try to create one massive `Product` struct that serves the entire enterprise. In Rust, Bounded Contexts map elegantly to Crates (in a Cargo workspace, as seen in Chapter 5) or high-level modules.
 
 ```text
 ecommerce_workspace/
@@ -345,7 +351,7 @@ By combining Clean Architecture's Port/Adapter separation with DDD's tactical pa
 
 ## 17.3 The Type State Pattern for Compile-Time Business Logic Validation
 
-In the previous section, we explored how Domain-Driven Design (DDD) relies on boundaries and ubiquitous language to protect business rules. We used Rust's `enum` to represent states, such as `OrderState::Draft` or `OrderState::Paid`, which allowed us to return runtime errors if an invalid action was attempted (e.g., shipping an unpaid order). 
+In the previous section, we explored how Domain-Driven Design (DDD) relies on boundaries and ubiquitous language to protect business rules. We used Rust's `enum` to represent states, such as `OrderState::Draft` or `OrderState::Paid`, which allowed us to return runtime errors if an invalid action was attempted (e.g., shipping an unpaid order).
 
 However, relying on runtime checks means your application must be running—and properly tested—to catch logical violations. Rust offers a more powerful paradigm: **The Type State Pattern**. This pattern leverages Rust's strict type system and ownership rules to encode state machines directly into the compiler. Invalid business transitions become compilation errors, entirely eliminating entire classes of runtime bugs.
 
@@ -397,7 +403,7 @@ pub struct Shipped { tracking_number: String }
 
 #### 2. Parameterizing the Entity
 
-Next, we define our `Order` struct with a generic type parameter `S` representing its current state. 
+Next, we define our `Order` struct with a generic type parameter `S` representing its current state.
 
 ```rust
 pub struct Order<S> {
@@ -501,7 +507,7 @@ impl AnyOrder {
 }
 ```
 
-When an HTTP handler receives a request to pay an order, it loads `AnyOrder` from the database, pattern-matches to ensure it is in the `Draft` state, calls `.pay()`, and saves the resulting `Order<Paid>` back to the database. 
+When an HTTP handler receives a request to pay an order, it loads `AnyOrder` from the database, pattern-matches to ensure it is in the `Draft` state, calls `.pay()`, and saves the resulting `Order<Paid>` back to the database.
 
 ### When to Use (and Not Use) Type States
 
@@ -512,9 +518,10 @@ By mastering the Type State pattern, you elevate your use of Rust from merely wr
 
 ## 17.4 Dependency Inversion and Dynamic Dispatch with Trait Objects
 
-In Section 17.1, we established that a clean architecture relies on "Ports" (Interfaces) to isolate our core domain from external infrastructure. To realize this isolation in code, we must apply the **Dependency Inversion Principle (DIP)**. 
+In Section 17.1, we established that a clean architecture relies on "Ports" (Interfaces) to isolate our core domain from external infrastructure. To realize this isolation in code, we must apply the **Dependency Inversion Principle (DIP)**.
 
 The DIP dictates two fundamental rules:
+
 1. High-level modules (business logic) should not depend on low-level modules (databases, APIs). Both should depend on abstractions.
 2. Abstractions should not depend on details. Details should depend on abstractions.
 
@@ -546,6 +553,7 @@ where
 ```
 
 This approach has two severe drawbacks for application architecture:
+
 1. **Generic Infection:** Every struct that uses `CheckoutService` must now also become generic over `R, C, N`. Your entire application state becomes a cascading wall of generic parameters, making the code incredibly difficult to read, refactor, and maintain.
 2. **Homogeneous Constraints:** If you want an array or a vector of different notifiers (e.g., an SMS notifier and an Email notifier), you cannot put them in a `Vec<N>` because a `Vec` must contain elements of a single, uniform type at compile time.
 
@@ -604,7 +612,8 @@ By using `dyn Trait`, our `OrderService` has a fixed, known size at compile time
 
 A common misconception among developers transitioning to Rust from languages like C++ or Java is an overarching fear of dynamic dispatch overhead. In systems programming (like writing a game engine or a high-frequency trading parser), traversing a vtable pointer inside a tight loop executed millions of times per second *will* cause CPU cache misses and degrade performance.
 
-However, **in the context of Application Architecture, this cost is entirely negligible.** When your application boundary involves an abstraction like a `UserRepository` or a `PaymentGateway`, the concrete implementation is almost certainly performing network I/O, disk I/O, or querying a database. 
+However, **in the context of Application Architecture, this cost is entirely negligible.** When your application boundary involves an abstraction like a `UserRepository` or a `PaymentGateway`, the concrete implementation is almost certainly performing network I/O, disk I/O, or querying a database.
+
 * A vtable lookup takes on the order of a few nanoseconds.
 * A database query or an HTTP request takes on the order of milliseconds (millions of nanoseconds).
 
@@ -650,7 +659,7 @@ By leveraging `Arc<dyn Trait>`, you maintain a rigid separation of concerns. You
 
 ## 17.5 Structuring Application State and Managing Configurations
 
-Throughout this chapter, we have designed a robust architecture using Domain-Driven Design, Type States, and Trait Objects. However, an architecture is only theoretical until it is actually instantiated and wired together. In a long-running backend application, you must initialize your database pools, parse your environment variables, instantiate your adapters, and share them safely across thousands of concurrent asynchronous requests. 
+Throughout this chapter, we have designed a robust architecture using Domain-Driven Design, Type States, and Trait Objects. However, an architecture is only theoretical until it is actually instantiated and wired together. In a long-running backend application, you must initialize your database pools, parse your environment variables, instantiate your adapters, and share them safely across thousands of concurrent asynchronous requests.
 
 This process is handled by two closely related concepts: **Configuration Management** and the **Application State**.
 
@@ -826,11 +835,11 @@ async fn register_user(
 
 By combining the concepts from this chapter, you create a unidirectional data flow that maximizes safety and testability:
 
-1.  **Bootstrapping (`main.rs`):** Reads settings, calls `Application::build()`, and starts the server.
-2.  **Wiring (`Application`):** Connects to databases, instantiates specific Adapters, and injects them as Trait Objects into `AppState`.
-3.  **Delivery Layer (HTTP Handlers):** Extracts the `AppState`, parses incoming JSON/Headers, and invokes the Use Cases.
-4.  **Application Layer (Use Cases):** Orchestrates the Ports (Traits) to fetch Data.
-5.  **Domain Layer (Entities & Type States):** Receives the data, enforces strict business rules at compile-time, and mutates state.
-6.  **Persistence:** The Use Case passes the updated Entity back to the Port, which the Adapter writes to the database.
+1. **Bootstrapping (`main.rs`):** Reads settings, calls `Application::build()`, and starts the server.
+2. **Wiring (`Application`):** Connects to databases, instantiates specific Adapters, and injects them as Trait Objects into `AppState`.
+3. **Delivery Layer (HTTP Handlers):** Extracts the `AppState`, parses incoming JSON/Headers, and invokes the Use Cases.
+4. **Application Layer (Use Cases):** Orchestrates the Ports (Traits) to fetch Data.
+5. **Domain Layer (Entities & Type States):** Receives the data, enforces strict business rules at compile-time, and mutates state.
+6. **Persistence:** The Use Case passes the updated Entity back to the Port, which the Adapter writes to the database.
 
 This architecture ensures that as your Rust application grows from a ten-file project to a ten-thousand-file enterprise system, the boundaries remain clear, the business logic remains pure, and the compiler remains your most rigorous ally.

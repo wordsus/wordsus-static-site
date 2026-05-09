@@ -42,6 +42,7 @@ Rather than writing logs to a file or standard output, these appenders intercept
 ```
 
 **Advantages:**
+
 * **Zero-touch correlation:** Developers do not need to alter their existing logging statements.
 * **Native schema compliance:** The identifiers populate the explicit `trace_id` and `span_id` fields defined in the OTLP protocol, rather than being stuffed into arbitrary log attributes or message strings.
 
@@ -49,11 +50,12 @@ Rather than writing logs to a file or standard output, these appenders intercept
 
 In scenarios where routing logs via OTLP directly from the application is not feasible—such as legacy systems that strictly require writing logs to standard output or physical files—you must inject the trace context into the application's logging mechanism itself.
 
-Most modern logging frameworks support a Mapped Diagnostic Context (MDC) or equivalent thread-local storage (like Python's `logging.Filter` or Node.js's `AsyncLocalStorage`). OpenTelemetry auto-instrumentation agents (e.g., the Java agent) often automatically copy the active `TraceId` and `SpanId` into the MDC. 
+Most modern logging frameworks support a Mapped Diagnostic Context (MDC) or equivalent thread-local storage (like Python's `logging.Filter` or Node.js's `AsyncLocalStorage`). OpenTelemetry auto-instrumentation agents (e.g., the Java agent) often automatically copy the active `TraceId` and `SpanId` into the MDC.
 
 To link the logs, you modify the logging framework's pattern layout or JSON formatter to extract these values and write them into the log output.
 
 **Example: Java Logback XML Configuration**
+
 ```xml
 <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
@@ -63,6 +65,7 @@ To link the logs, you modify the logging framework's pattern layout or JSON form
 ```
 
 **Example: Python JSON Logging Output**
+
 ```json
 {
   "timestamp": "2026-04-25T08:27:06Z",
@@ -75,6 +78,7 @@ To link the logs, you modify the logging framework's pattern layout or JSON form
 ```
 
 **Advantages:**
+
 * **Compatibility:** Works seamlessly with existing log aggregation agents (like Fluent Bit or Promtail) that read from files or `stdout`.
 * **Human readability:** The context is visible during local debugging or direct `tail` commands.
 
@@ -98,7 +102,7 @@ processors:
 
 ### Choosing the Right Strategy
 
-The industry is rapidly shifting toward **Strategy 1** (Direct OTLP Log Emission via Appenders). It treats logs as structured data streams from inception, guarantees perfect fidelity of the `trace_id` and `span_id` byte arrays, and bypasses the computational overhead of formatting logs into strings at the application edge only to parse them back into structured data at the Collector. 
+The industry is rapidly shifting toward **Strategy 1** (Direct OTLP Log Emission via Appenders). It treats logs as structured data streams from inception, guarantees perfect fidelity of the `trace_id` and `span_id` byte arrays, and bypasses the computational overhead of formatting logs into strings at the application edge only to parse them back into structured data at the Collector.
 
 However, **Strategy 2** paired with **Strategy 3** remains a critical migration path for enterprises that rely on legacy sidecar architectures (like Fluentd parsing container `stdout`) and cannot yet switch their application runtimes to emit OTLP natively. Regardless of the chosen path, ensuring that every significant log line carries the context of its parent span is the non-negotiable first step in achieving modern observability.
 
@@ -168,7 +172,7 @@ Consider a user initiating a checkout process. The request flows from an API Gat
 
 ### OpenTelemetry Configuration
 
-Because W3C Trace Context is the default, most OpenTelemetry SDKs require zero configuration to use it. Under the hood, this is managed by a `TextMapPropagator`. 
+Because W3C Trace Context is the default, most OpenTelemetry SDKs require zero configuration to use it. Under the hood, this is managed by a `TextMapPropagator`.
 
 If you need to configure an environment to support legacy systems transitioning to the new standard, OpenTelemetry allows you to register multiple propagators. For example, in an environment migrating from Jaeger to standard OTLP, you can configure the SDK to inject and extract both formats simultaneously to prevent broken traces during the transition period.
 
@@ -197,7 +201,7 @@ By adhering strictly to the W3C Trace Context standard, OpenTelemetry ensures th
 
 ## 7.3 Propagating Arbitrary Business Context with Baggage
 
-While the W3C Trace Context standard (`traceparent` and `tracestate`) perfectly maps the structural topology of a distributed request, it is intentionally devoid of business logic. It knows *how* services connect, but not *why* the request matters to the business. 
+While the W3C Trace Context standard (`traceparent` and `tracestate`) perfectly maps the structural topology of a distributed request, it is intentionally devoid of business logic. It knows *how* services connect, but not *why* the request matters to the business.
 
 Often, a deep backend service—perhaps a database abstraction layer—needs to know the context of the user who initiated the request at the edge. Passing this context (like a `tenant_id`, `user_tier`, or `experiment_bucket`) through every single method signature and API payload across a dozen microservices requires massive refactoring and creates tight coupling.
 
@@ -229,7 +233,7 @@ The most common misconception among developers new to OpenTelemetry is conflatin
 
 ### The W3C Baggage Specification
 
-Like Trace Context, Baggage has been standardized by the W3C. OpenTelemetry propagators automatically serialize your Baggage key-value pairs into the standard `baggage` HTTP header. 
+Like Trace Context, Baggage has been standardized by the W3C. OpenTelemetry propagators automatically serialize your Baggage key-value pairs into the standard `baggage` HTTP header.
 
 **Example Header:**
 `baggage: tenant_id=acme-corp,user_tier=premium,is_sampled=true`
@@ -325,14 +329,17 @@ The standard workflow for diagnosing complex distributed failures leverages the 
 ```
 
 #### Step 1: Detecting the Symptom (Metrics)
+
 Metrics are computationally cheap and mathematically precise, making them ideal for alerting. An incident begins when an aggregate metric breaches a threshold—for example, the 99th percentile (p99) latency of the `/checkout` endpoint exceeds 2 seconds.
 
 #### Step 2: Localizing the Bottleneck (Traces via Exemplars)
+
 Rather than guessing which specific requests caused the metric spike, modern observability platforms use **Exemplars**. An exemplar is a specific, representative `trace_id` recorded alongside a metric data point at the exact moment the metric was aggregated.
 
 By clicking on the metric spike in a dashboard, the engineer pivots directly to the specific distributed trace that experienced the 2-second delay. The trace graph reveals the entire topology of the request. The engineer sees that the `/checkout` service was fast, but a downstream call to the `InventoryService` took 1.9 seconds, ultimately timing out.
 
 #### Step 3: Identifying the Root Cause (Logs via Span ID)
+
 The trace has localized the problem to a specific span within the `InventoryService`. Because of the correlation strategies implemented in Section 7.1, the engineer can execute a cross-signal query to retrieve *only* the logs emitted by that specific service, during that exact 1.9-second window, tied to that specific `span_id`.
 
 The query reveals a single log line: `FATAL: Connection pool exhausted. Timeout waiting for available database connection.` The root cause is identified.
@@ -352,6 +359,7 @@ WHERE trace_id = '4bf92f3577b34da6a3ce929d0e0e4736'
   AND span_id = '00f067aa0ba902b7'
 ORDER BY timestamp ASC;
 ```
+
 Because `trace_id` is a high-cardinality, highly indexed field in modern log stores, this query returns results in milliseconds, filtering out millions of noisy, irrelevant logs from the same service.
 
 **Example 2: Logs to Traces (The Bottom-Up Approach)**
@@ -379,6 +387,7 @@ ORDER BY AVG(duration) DESC;
 The standardization brought by OpenTelemetry is paving the way for sophisticated, automated root cause analysis. Because the relationships between metrics, traces, and logs are now explicitly defined in the data model rather than relying on regex or heuristics, machine learning algorithms can traverse this graph automatically.
 
 When an error rate spikes, an automated RCA system can:
+
 1. Identify all failed traces associated with the metric spike.
 2. Compare the attributes of the failed traces against a baseline of successful traces.
 3. Automatically highlight the correlating factors.

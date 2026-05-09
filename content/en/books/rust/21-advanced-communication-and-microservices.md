@@ -2,7 +2,7 @@ As Rust applications scale into distributed systems, REST APIs often lack the pe
 
 ## 21.1 Building RPC Services with gRPC and Protocol Buffers (`tonic`)
 
-In distributed systems, microservices need a fast, reliable, and strongly typed mechanism to communicate. While REST is ubiquitous (as covered in Chapter 15), it often relies on JSON parsing and lacks strict, universally enforced contracts. gRPC, combined with Protocol Buffers (protobufs), solves these issues by providing a highly efficient, language-agnostic Remote Procedure Call (RPC) framework built on HTTP/2. 
+In distributed systems, microservices need a fast, reliable, and strongly typed mechanism to communicate. While REST is ubiquitous (as covered in Chapter 15), it often relies on JSON parsing and lacks strict, universally enforced contracts. gRPC, combined with Protocol Buffers (protobufs), solves these issues by providing a highly efficient, language-agnostic Remote Procedure Call (RPC) framework built on HTTP/2.
 
 In the Rust ecosystem, the de facto standard for gRPC is the `tonic` crate. Because you are already familiar with Tokio (Chapter 12) and Tower middleware (Chapter 15), you will find `tonic` fits naturally into your existing mental model. It is built natively on top of Tokio, Hyper (for HTTP/2), Prost (for protobuf serialization), and Tower (for middleware and service abstractions).
 
@@ -185,6 +185,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 Because Tonic is fundamentally built on `tower::Service`, your gRPC endpoints can seamlessly integrate with the broader Tower ecosystem. This allows you to apply middleware for cross-cutting concerns without modifying your gRPC handlers.
 
 Common production middleware applied to Tonic servers includes:
+
 * **Timeouts and Rate Limiting:** Using `tower::timeout::TimeoutLayer` or `tower::limit::RateLimitLayer`.
 * **Tracing:** Intercepting requests to inject OpenTelemetry span IDs (covered extensively in Chapter 19).
 * **Authentication:** Tonic provides an `Interceptor` trait specifically for inspecting and modifying headers (like bearer tokens) before a request reaches the service logic.
@@ -193,13 +194,13 @@ Using gRPC via `tonic` provides a rigid, highly performant backbone for internal
 
 ## 21.2 Developing GraphQL APIs with `async-graphql`
 
-While gRPC (covered in Section 21.1) excels at strict, high-performance server-to-server communication, it is often not the best fit for frontend clients. REST APIs (Chapter 15) are standard but can suffer from over-fetching (sending too much data) or under-fetching (requiring multiple round-trips to gather related data). 
+While gRPC (covered in Section 21.1) excels at strict, high-performance server-to-server communication, it is often not the best fit for frontend clients. REST APIs (Chapter 15) are standard but can suffer from over-fetching (sending too much data) or under-fetching (requiring multiple round-trips to gather related data).
 
 GraphQL solves these client-side data fetching problems by exposing a single endpoint where clients can query exactly the shape of the data they need. In the Rust ecosystem, `async-graphql` has emerged as the premier framework for building highly performant, type-safe GraphQL servers.
 
 ### The Code-First Philosophy
 
-Unlike `tonic` and Protocol Buffers, which enforce a **schema-first** approach (where you write a `.proto` file and generate Rust code), `async-graphql` champions a **code-first** approach. 
+Unlike `tonic` and Protocol Buffers, which enforce a **schema-first** approach (where you write a `.proto` file and generate Rust code), `async-graphql` champions a **code-first** approach.
 
 With `async-graphql`, your Rust structs, enums, and functions *are* the source of truth. By annotating your Rust code with procedural macros, the framework automatically generates the GraphQL schema at compile time. This guarantees that your implementation and your schema can never fall out of sync.
 
@@ -364,17 +365,19 @@ When taking a GraphQL API to production, there are specific architectural challe
 
 * **The N+1 Problem:** Because GraphQL resolves fields recursively, querying a list of 100 users and their associated posts can easily result in 101 database queries (1 to fetch users, 100 to fetch posts per user). `async-graphql` solves this using **DataLoaders**. A DataLoader batches and caches requests, gathering all the requested Post IDs across the entire query tree and executing a single `SELECT * FROM posts WHERE user_id IN (...)` query.
 * **Security and Malicious Queries:** GraphQL's flexibility allows a malicious client to craft deeply nested queries (e.g., `user -> posts -> author -> posts -> ...`) that can bring down your server by exhausting memory or CPU. You must implement limits during schema construction:
+
     ```rust
     let schema = Schema::build(QueryRoot, EmptyMutation, EmptySubscription)
         .limit_depth(5)       // Prevent deeply nested queries
         .limit_complexity(50) // Assign weights to fields and cap the total
         .finish();
     ```
+
 * **Real-time Subscriptions:** `async-graphql` fully supports GraphQL Subscriptions over WebSockets, integrating flawlessly with Tokio's `Stream` trait (Chapter 12.5) to push real-time events to connected clients.
 
 ## 21.3 WebSockets for Real-Time Bidirectional Communication
 
-While gRPC and GraphQL offer highly structured, efficient paradigms for requesting data, they are fundamentally built on the traditional client-server request/response model. When building applications that require real-time, low-latency updates—such as live trading dashboards, multiplayer games, or chat platforms—polling a server continuously is inefficient. 
+While gRPC and GraphQL offer highly structured, efficient paradigms for requesting data, they are fundamentally built on the traditional client-server request/response model. When building applications that require real-time, low-latency updates—such as live trading dashboards, multiplayer games, or chat platforms—polling a server continuously is inefficient.
 
 WebSockets provide a persistent, full-duplex communication channel over a single TCP connection. Once established, both the client and the server can push data to each other independently and simultaneously, bypassing the overhead of HTTP headers on every transmission.
 
@@ -449,8 +452,9 @@ async fn ws_handler(
 Once the connection is upgraded, the `handle_socket` function takes over. A WebSocket is both a `Stream` (for receiving messages) and a `Sink` (for sending messages). To handle bidirectional communication concurrently, we split the socket into a sender and a receiver.
 
 We then spawn two separate Tokio tasks:
-1.  One task listens for incoming WebSocket messages from the client and forwards them to the global broadcast channel.
-2.  Another task listens to the global broadcast channel and pushes those messages down the WebSocket to the client.
+
+1. One task listens for incoming WebSocket messages from the client and forwards them to the global broadcast channel.
+2. Another task listens to the global broadcast channel and pushes those messages down the WebSocket to the client.
 
 ```rust
 use futures_util::{sink::SinkExt, stream::StreamExt};
@@ -507,24 +511,24 @@ When deploying WebSockets to a production environment, you must account for conn
 
 ## 21.4 Inter-Service Communication, Service Discovery, and Load Balancing
 
-As your distributed system grows from a handful of services to dozens or hundreds, the complexity shifts from the business logic within the services to the network connecting them. While gRPC (Section 21.1) provides a robust protocol, manually hardcoding IP addresses and trusting the network to be reliable are catastrophic anti-patterns in production. 
+As your distributed system grows from a handful of services to dozens or hundreds, the complexity shifts from the business logic within the services to the network connecting them. While gRPC (Section 21.1) provides a robust protocol, manually hardcoding IP addresses and trusting the network to be reliable are catastrophic anti-patterns in production.
 
 To build a truly resilient system, you must address three pillars: finding where services live (**Service Discovery**), distributing traffic across them efficiently (**Load Balancing**), and surviving inevitable network failures (**Resiliency Patterns**).
 
 ### The Evolution of Service Discovery
 
-In a cloud-native environment, instances of services are ephemeral. They scale up during traffic spikes, scale down at night, and crash unexpectedly. When "Service A" needs to call "Service B", it cannot rely on a static IP address. 
+In a cloud-native environment, instances of services are ephemeral. They scale up during traffic spikes, scale down at night, and crash unexpectedly. When "Service A" needs to call "Service B", it cannot rely on a static IP address.
 
 There are two dominant architectural approaches to solving this:
 
-1.  **External Registries (Consul, etcd, ZooKeeper):** Services register themselves with a central authority upon startup and send heartbeats. Clients query the registry to find active instances.
-2.  **Infrastructure-Provided Discovery (Kubernetes DNS):** The orchestration platform manages IPs. When a client requests `service-b.default.svc.cluster.local`, the internal DNS resolves this to either a virtual IP or a list of active pod IPs.
+1. **External Registries (Consul, etcd, ZooKeeper):** Services register themselves with a central authority upon startup and send heartbeats. Clients query the registry to find active instances.
+2. **Infrastructure-Provided Discovery (Kubernetes DNS):** The orchestration platform manages IPs. When a client requests `service-b.default.svc.cluster.local`, the internal DNS resolves this to either a virtual IP or a list of active pod IPs.
 
 In the Rust ecosystem, especially when deploying to Kubernetes, relying on DNS resolution is the most common pattern. The `hickory-dns` crate (formerly `trust-dns`) is often used for asynchronous, non-blocking DNS resolution when standard library tools (`std::net::ToSocketAddrs`) are insufficient or block the async executor.
 
 ### Server-Side vs. Client-Side Load Balancing
 
-Once a service discovers the addresses of its dependencies, it must distribute requests among them. 
+Once a service discovers the addresses of its dependencies, it must distribute requests among them.
 
 ```text
 +-------------------------------------------------------------+
@@ -548,7 +552,7 @@ Once a service discovers the addresses of its dependencies, it must distribute r
 +-------------------------------------------------------------+
 ```
 
-gRPC specifically struggles with Pattern A (Server-Side) if the proxy operates at Layer 4 (TCP). Because gRPC utilizes HTTP/2, a client opens a *single* long-lived TCP connection and multiplexes many requests over it. A Layer 4 proxy will route that single connection to one backend instance, effectively defeating the load balancer. 
+gRPC specifically struggles with Pattern A (Server-Side) if the proxy operates at Layer 4 (TCP). Because gRPC utilizes HTTP/2, a client opens a *single* long-lived TCP connection and multiplexes many requests over it. A Layer 4 proxy will route that single connection to one backend instance, effectively defeating the load balancer.
 
 Therefore, gRPC systems typically rely on Layer 7 proxies (like Envoy or Linkerd) or **Client-Side Load Balancing**.
 

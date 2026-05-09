@@ -33,7 +33,7 @@ az account set --subscription "<SUBSCRIPTION_ID>"
 ```
 
 **2. Service Principals (CI/CD and Automation)**
-In headless environments like GitHub Actions or GitLab CI (which we will explore further in Chapter 18), relying on a local CLI session is impossible. Instead, you must use a Service Principal. 
+In headless environments like GitHub Actions or GitLab CI (which we will explore further in Chapter 18), relying on a local CLI session is impossible. Instead, you must use a Service Principal.
 
 You expose the Service Principal credentials to Pulumi using standard environment variables:
 
@@ -162,12 +162,15 @@ The following diagram illustrates how these components interact:
 To create a Role Assignment via Pulumi, you need the IDs for the Principal, the Role Definition, and the Scope.
 
 #### 1. Defining the Scope
-In this context, the scope is the Resource Group we just created. We can retrieve its ID dynamically using the `appResourceGroup.id` output property. 
+
+In this context, the scope is the Resource Group we just created. We can retrieve its ID dynamically using the `appResourceGroup.id` output property.
 
 #### 2. Resolving the Role Definition ID
+
 Azure provides hundreds of built-in roles. To assign a built-in role (like "Contributor" or "Reader"), you must retrieve its immutable UUID. Instead of hardcoding these UUIDs, it is a best practice to use Pulumi's authorization data sources to look them up dynamically during the deployment.
 
 #### 3. Assigning the Role
+
 Once you have the Principal ID (usually passed in via configuration or retrieved from Azure Active Directory), you map them together using the `azure_native.authorization.RoleAssignment` resource.
 
 Here is a complete example of creating a Resource Group and granting a Service Principal "Contributor" access scoped exclusively to that group:
@@ -238,7 +241,7 @@ The following text diagram illustrates the resource hierarchy and dependencies r
 
 ### The Compute Foundation: App Service Plans
 
-Before you can deploy an app or a function, you must provision an App Service Plan (referred to in the ARM API and Azure Native as a `ServerFarm`). The App Service Plan acts as the compute boundary, defining the operating system, the hardware specifications, and the pricing tier (SKU). 
+Before you can deploy an app or a function, you must provision an App Service Plan (referred to in the ARM API and Azure Native as a `ServerFarm`). The App Service Plan acts as the compute boundary, defining the operating system, the hardware specifications, and the pricing tier (SKU).
 
 For traditional Web Apps, you typically use a Dedicated tier (like `B1`, `S1`, or `P1v2`). For serverless Azure Functions, you use the Dynamic/Consumption tier (`Y1`), which scales to zero and bills only for execution time.
 
@@ -271,7 +274,7 @@ const dedicatedPlan = new azure_native.web.AppServicePlan("dedicated-plan", {
 
 ### Deploying a Web App
 
-To deploy a standard web application, you instantiate a `WebApp` resource, pass in the ID of your Dedicated App Service Plan, and explicitly set the `kind` to `"app"`. 
+To deploy a standard web application, you instantiate a `WebApp` resource, pass in the ID of your Dedicated App Service Plan, and explicitly set the `kind` to `"app"`.
 
 The `siteConfig` block is where you define the runtime environment (e.g., Node.js, Python, .NET) and inject application settings (environment variables).
 
@@ -300,9 +303,10 @@ export const webAppUrl = pulumi.interpolate`https://${webApp.defaultHostName}`;
 
 ### Going Serverless: Azure Functions
 
-Deploying an Azure Function App introduces a critical new dependency: an Azure Storage Account. Azure Functions rely heavily on blob storage and queues to manage execution state, timers, triggers, and logging. 
+Deploying an Azure Function App introduces a critical new dependency: an Azure Storage Account. Azure Functions rely heavily on blob storage and queues to manage execution state, timers, triggers, and logging.
 
 Because of this requirement, creating a Function App in Pulumi is a multi-step process:
+
 1. Create the Storage Account.
 2. Retrieve the Storage Account's access keys dynamically using the `listStorageAccountKeys` function.
 3. Construct the connection string.
@@ -356,15 +360,15 @@ export const functionAppUrl = pulumi.interpolate`https://${functionApp.defaultHo
 
 ### A Note on Code Deployment
 
-The examples above provision the *infrastructure* to host your applications, but they do not deploy the application code itself. 
+The examples above provision the *infrastructure* to host your applications, but they do not deploy the application code itself.
 
-While you can use Pulumi's `pulumi.asset.FileArchive` or `pulumi.asset.AssetArchive` classes to zip up a local directory and push it directly to the App Service during `pulumi up`, modern enterprise architectures generally advise against this. Coupling infrastructure provisioning too tightly with application code deployment often leads to bloated state files and brittle deployments. 
+While you can use Pulumi's `pulumi.asset.FileArchive` or `pulumi.asset.AssetArchive` classes to zip up a local directory and push it directly to the App Service during `pulumi up`, modern enterprise architectures generally advise against this. Coupling infrastructure provisioning too tightly with application code deployment often leads to bloated state files and brittle deployments.
 
 Instead, best practice dictates that Pulumi should provision the Web Apps and Function Apps, outputting the necessary publish profiles or endpoint URLs. A dedicated Continuous Delivery (CD) pipeline (such as GitHub Actions or Azure DevOps) should then take over, compiling the application code and pushing the artifacts to the pre-provisioned Pulumi infrastructure. This separation of concerns will be explored further in Chapter 18.
 
 ## 10.4 Managing Azure Storage and Cosmos DB
 
-Data is the center of gravity for most cloud architectures. While compute resources can often be treated as ephemeral and easily replaced, stateful resources require rigorous configuration, security hardening, and lifecycle management. In the Azure ecosystem, data persistence primarily revolves around two foundational services: **Azure Storage** (for unstructured data, files, and queues) and **Azure Cosmos DB** (for globally distributed NoSQL and relational workloads). 
+Data is the center of gravity for most cloud architectures. While compute resources can often be treated as ephemeral and easily replaced, stateful resources require rigorous configuration, security hardening, and lifecycle management. In the Azure ecosystem, data persistence primarily revolves around two foundational services: **Azure Storage** (for unstructured data, files, and queues) and **Azure Cosmos DB** (for globally distributed NoSQL and relational workloads).
 
 Using the Pulumi Azure Native provider, you can manage these complex data topologies securely, ensuring that access controls, scaling parameters, and replication strategies are version-controlled alongside your application code.
 
@@ -422,11 +426,12 @@ export const containerName = blobContainer.name;
 
 ### Architecting Azure Cosmos DB
 
-Azure Cosmos DB is Microsoft's fully managed, globally distributed, multi-model database service. It is highly tunable, allowing you to optimize for throughput, latency, availability, and consistency. 
+Azure Cosmos DB is Microsoft's fully managed, globally distributed, multi-model database service. It is highly tunable, allowing you to optimize for throughput, latency, availability, and consistency.
 
 Because Cosmos DB is an underlying engine supporting multiple APIs (SQL/Core, MongoDB, Cassandra, Gremlin, Table), the Azure Resource Manager (and therefore Pulumi) categorizes it under the `documentdb` namespace.
 
 When defining a Cosmos DB architecture in Pulumi, you must provision three distinct layers:
+
 1. **The Database Account:** Defines the global distribution (regions), the API type, and the default Consistency Level.
 2. **The Database:** The logical grouping of containers.
 3. **The Container:** The actual table/collection holding the data, which defines the **Partition Key** and the Provisioned Throughput (RU/s).

@@ -106,12 +106,9 @@ When a transaction modifies data, it does so in volatile memory (the Buffer Pool
 * **Steal Policy:** The buffer manager is allowed to flush a dirty page to disk *before* the transaction that modified it commits. This is necessary for performance, as a massive transaction might exceed the total size of the buffer pool.
 * **No-Steal Policy:** Dirty pages cannot be written to disk until the transaction commits.
 
-
 * **Force vs. No-Force (Durability Focus):**
 * **Force Policy:** When a transaction commits, all its dirty data pages must be immediately flushed to disk before the commit is acknowledged to the user. This causes severe I/O bottlenecks.
 * **No-Force Policy:** A transaction can commit even if its modified data pages remain only in volatile memory. The disk writes can happen lazily in the background.
-
-
 
 Almost all modern, high-performance relational databases (like PostgreSQL, MySQL/InnoDB, and Oracle) adopt a **Steal / No-Force** policy.
 
@@ -155,13 +152,12 @@ A transaction log is a sequential append-only file. Every modification (Insert, 
 Having Undo and Redo data is useless if the log records are lost during a crash alongside the data pages. To prevent this, the DBMS enforces the **Write-Ahead Logging (WAL)** protocol. WAL establishes strict rules governing the order in which memory is flushed to disk:
 
 1. **The Undo Rule (Supports Steal):** Before a dirty data page can be flushed to disk, the log records containing its *Old_Values* (Undo data) must be written to the physical log file.
+
 * *Why?* If the database writes the uncommitted data first and then crashes, there is no way to reverse the stolen page. The undo instructions must survive first.
 
+1. **The Redo Rule (Supports No-Force):** Before a transaction is allowed to formally commit and acknowledge success to the client, all of its log records containing *New_Values* (Redo data), up to its `<COMMIT>` record, must be written to the physical log file.
 
-2. **The Redo Rule (Supports No-Force):** Before a transaction is allowed to formally commit and acknowledge success to the client, all of its log records containing *New_Values* (Redo data), up to its `<COMMIT>` record, must be written to the physical log file.
 * *Why?* If the system crashes after acknowledging a commit but before the lazily written data pages hit the disk, the data is lost. The redo instructions must hit the disk synchronously at commit time.
-
-
 
 Writing log records sequentially to a log file is orders of magnitude faster than performing random I/O to update scattered data pages across the disk. This is the primary genius of WAL: it converts slow, random disk writes (updating tables and indexes) into fast, sequential disk writes (appending log records), while still fully guaranteeing ACID durability.
 

@@ -2,7 +2,7 @@
 
 ---
 
-Imagina por un momento un inmenso árbol genealógico. Si pudieras retroceder en el tiempo, pasando por tus tatarabuelos, los primeros constructores de ciudades, los pioneros de la agricultura y los cazadores-recolectores de la Edad de Hielo, eventualmente llegarías a un punto donde nuestra familia se fusiona con la de otros primates. La historia de la evolución humana no es una línea recta donde un mono se fue enderezando mágicamente hasta convertirse en un oficinista moderno, como a menudo muestran los dibujos de la cultura popular. 
+Imagina por un momento un inmenso árbol genealógico. Si pudieras retroceder en el tiempo, pasando por tus tatarabuelos, los primeros constructores de ciudades, los pioneros de la agricultura y los cazadores-recolectores de la Edad de Hielo, eventualmente llegarías a un punto donde nuestra familia se fusiona con la de otros primates. La historia de la evolución humana no es una línea recta donde un mono se fue enderezando mágicamente hasta convertirse en un oficinista moderno, como a menudo muestran los dibujos de la cultura popular.
 
 En realidad, nuestra evolución es un arbusto tupido, lleno de ramas que se bifurcan, especies que convivieron en los mismos paisajes, experimentos evolutivos fascinantes y linajes enteros que se extinguieron para siempre. En "Biología para Mortales", vamos a desentrañar este viaje épico de supervivencia, adaptación e ingenio que duró más de 7 millones de años y que culminó con una única especie de homínido dominando el planeta: nosotros, el *Homo sapiens*.
 
@@ -22,7 +22,7 @@ Los primeros representantes de nuestra rama, que ya mostraban indicios de separa
 
 ## 2. Los Ardipithecus y el bosque antiguo (Hace ~4.4 millones de años)
 
-Avanzando un poco en el tiempo, nos encontramos con *Ardipithecus ramidus*, cariñosamente conocido como "Ardi". Descubierto en Etiopía, Ardi destrozó la idea clásica de que empezamos a caminar en dos piernas porque los bosques desaparecieron y tuvimos que adentrarnos en la sabana abierta. 
+Avanzando un poco en el tiempo, nos encontramos con *Ardipithecus ramidus*, cariñosamente conocido como "Ardi". Descubierto en Etiopía, Ardi destrozó la idea clásica de que empezamos a caminar en dos piernas porque los bosques desaparecieron y tuvimos que adentrarnos en la sabana abierta.
 
 Los restos fósiles de animales y plantas encontrados junto a Ardi demostraron que vivía en un entorno de bosque cerrado. Ardi tenía una pelvis adaptada para caminar en dos piernas en el suelo, pero sus pies aún conservaban un dedo gordo oponible, como un pulgar, perfecto para agarrarse a las ramas de los árboles. Era una criatura de transición, cómoda tanto en las alturas del dosel forestal como dando pasos tambaleantes por el suelo del bosque.
 
@@ -32,7 +32,7 @@ El bipedismo (caminar sobre dos piernas) fue la primera gran revolución de nues
 
 A medida que el clima de África se volvía gradualmente más frío y seco, los espesos bosques comenzaron a encogerse, dando paso a sabanas abiertas y praderas arboladas. Aquí es donde entra en escena el género *Australopithecus*.
 
-La superestrella indiscutible de esta era es **Lucy**, un esqueleto notablemente completo de la especie *Australopithecus afarensis* descubierto en 1974. Lucy y sus parientes ya eran bípedos obligados. Sus pies habían perdido el pulgar prensil, y tenían arcos longitudinales (como los nuestros) que actuaban como resortes para caminar largas distancias. 
+La superestrella indiscutible de esta era es **Lucy**, un esqueleto notablemente completo de la especie *Australopithecus afarensis* descubierto en 1974. Lucy y sus parientes ya eran bípedos obligados. Sus pies habían perdido el pulgar prensil, y tenían arcos longitudinales (como los nuestros) que actuaban como resortes para caminar largas distancias.
 
 Para ilustrar este salto anatómico, veamos un cuadro comparativo de cómo cambió nuestra estructura para adaptarnos a caminar erguidos:
 
@@ -57,9 +57,10 @@ Hace unos 2.5 millones de años, la evolución dio otro giro drástico. La presi
 
 El primero en subir al escenario fue **Homo habilis** (el "hombre hábil"). Lo que distingue al *Homo habilis* de los *Australopithecus* no fue solo un ligero aumento en el tamaño del cerebro, sino la aparición de la cultura material sistemática: **las herramientas de piedra Olduvayenses**.
 
-Al golpear una piedra contra otra de manera controlada, el *Homo habilis* logró crear bordes afilados. Esto cambió las reglas del juego. No tenían garras de león ni colmillos de hiena, pero con una lasca de piedra afilada, podían cortar la gruesa piel de un antílope muerto y acceder a la carne rica en proteínas y a la médula ósea llena de grasas calóricas. 
+Al golpear una piedra contra otra de manera controlada, el *Homo habilis* logró crear bordes afilados. Esto cambió las reglas del juego. No tenían garras de león ni colmillos de hiena, pero con una lasca de piedra afilada, podían cortar la gruesa piel de un antílope muerto y acceder a la carne rica en proteínas y a la médula ósea llena de grasas calóricas.
 
 Este cambio en la dieta provocó un ciclo de retroalimentación evolutiva asombroso:
+
 1. La carne y la médula proporcionaron la inmensa cantidad de energía que requiere un cerebro grande (los cerebros son órganos extremadamente costosos energéticamente).
 2. Un cerebro más grande permitió un pensamiento más complejo, mejor memoria territorial y tácticas grupales.
 3. Esto llevó a una obtención de alimentos más eficiente, lo que a su vez permitió que el cerebro creciera aún más.
@@ -74,7 +75,7 @@ Primero, inventaron la **tecnología Achelense**, caracterizada por hermosas y s
 
 Segundo, y quizás lo más importante, **domesticaron el fuego**. El control del fuego ofreció protección contra depredadores en la noche, calor en climas fríos y, crucialmente, la capacidad de cocinar. Cocinar los alimentos (tanto carne como tubérculos) rompe las fibras resistentes y pre-digiere la comida fuera del cuerpo, permitiendo que nuestro sistema digestivo absorba muchas más calorías con menos esfuerzo. Esto redujo el tamaño de nuestros intestinos y desvió aún más energía hacia el cerebro.
 
-El *Homo erectus* fue tan exitoso que fue la primera especie de homínido en salir de África, migrando por Oriente Medio, el Cáucaso, y expandiéndose hasta China e Indonesia. 
+El *Homo erectus* fue tan exitoso que fue la primera especie de homínido en salir de África, migrando por Oriente Medio, el Cáucaso, y expandiéndose hasta China e Indonesia.
 
 ### Diagrama del Árbol Evolutivo Simplificado
 
@@ -106,6 +107,7 @@ Millones de años atrás (Ma)
 0.0 |               |-- Homo denisovensis (Asia)
     +---------------+-- Homo sapiens (África -> Todo el mundo)
 ```
+
 *(Nota: Este árbol es una representación simplificada; las relaciones exactas de descendencia son objeto de debate científico constante a medida que aparecen nuevos fósiles).*
 
 ## 6. Neandertales y Denisovanos: Los primos del norte (Hace ~400,000 a 40,000 años)
@@ -124,9 +126,10 @@ Mientras los Neandertales dominaban la fría Europa, en África continental, nue
 
 Hace unos 70,000 a 50,000 años, experimentamos lo que los antropólogos llaman la **"Revolución Cognitiva"**. Nuestro lenguaje se volvió infinitamente más complejo. Empezamos a pensar en conceptos abstractos, a planificar a largo plazo, a tejer redes comerciales que abarcaban cientos de kilómetros y a plasmar nuestros mitos y miedos en arte rupestre sumamente sofisticado (como en las cuevas de Lascaux o Altamira).
 
-Armados con esta mente simbólica y herramientas ligeras y letales (como el arco y flecha y el propulsor de lanzas), el *Homo sapiens* comenzó su gran expansión fuera de África. 
+Armados con esta mente simbólica y herramientas ligeras y letales (como el arco y flecha y el propulsor de lanzas), el *Homo sapiens* comenzó su gran expansión fuera de África.
 
 ### El encuentro con los primos
+
 ¿Qué pasó cuando el *Homo sapiens* llegó a Europa y Asia y se encontró con los Neandertales y Denisovanos? Durante mucho tiempo se pensó que simplemente los masacramos o los superamos en la caza hasta llevarlos a la extinción. Sin embargo, la genética moderna nos ha revelado una historia mucho más íntima.
 
 ¡Nos cruzamos con ellos! Al aislar y secuenciar el ADN de fósiles neandertales y compararlo con humanos modernos, descubrimos que los humanos de ascendencia no africana (europeos, asiáticos, indígenas americanos) llevan en promedio entre un 1% y un 2% de ADN Neandertal en sus genomas. Asimismo, las poblaciones de Oceanía y el sudeste asiático portan ADN Denisovano.
@@ -144,12 +147,13 @@ El decaimiento radiactivo es un proceso exponencial que se rige por la siguiente
 $$N(t) = N_0 \cdot e^{-\lambda t}$$
 
 Donde:
-*   $N(t)$ es la cantidad de isótopo radiactivo que queda en la muestra en el tiempo $t$.
-*   $N_0$ es la cantidad inicial de isótopo radiactivo en el momento en que se formó la roca o murió el organismo.
-*   $\lambda$ es la constante de desintegración específica de ese isótopo (la velocidad a la que "hace tic-tac" el reloj).
-*   $e$ es la base del logaritmo natural (aprox. 2.718).
 
-Para fósiles recientes (hasta 50,000 años), usamos la datación por **Carbono-14**, analizando el colágeno sobrante en los propios huesos. Para fósiles más antiguos, como los de Lucy o *Homo erectus* que vivieron hace millones de años, el Carbono-14 es inútil porque ya se ha desintegrado por completo. En esos casos, los geólogos usan técnicas como la datación por **Potasio-Argón** o **Argón-Argón**. 
+* $N(t)$ es la cantidad de isótopo radiactivo que queda en la muestra en el tiempo $t$.
+* $N_0$ es la cantidad inicial de isótopo radiactivo en el momento en que se formó la roca o murió el organismo.
+* $\lambda$ es la constante de desintegración específica de ese isótopo (la velocidad a la que "hace tic-tac" el reloj).
+* $e$ es la base del logaritmo natural (aprox. 2.718).
+
+Para fósiles recientes (hasta 50,000 años), usamos la datación por **Carbono-14**, analizando el colágeno sobrante en los propios huesos. Para fósiles más antiguos, como los de Lucy o *Homo erectus* que vivieron hace millones de años, el Carbono-14 es inútil porque ya se ha desintegrado por completo. En esos casos, los geólogos usan técnicas como la datación por **Potasio-Argón** o **Argón-Argón**.
 
 No fechan el hueso directamente, sino que fechan las capas de ceniza volcánica que quedaron depositadas justo por encima y por debajo del fósil en la tierra. Si la ceniza de abajo tiene 3.2 millones de años y la de arriba tiene 3.1 millones de años, ¡bingo! Sabes exactamente la ventana de tiempo en la que ese homínido vivió y murió.
 
@@ -168,6 +172,7 @@ Evolución de la Capacidad Craneal (Promedio estimado)
 | Homo sapiens (nosotros)       | ~1350 - 1450 cc       |
 +-------------------------------+-----------------------+
 ```
+
 *(Es interesante notar que nuestro cerebro es ligeramente más pequeño hoy que el de los primeros Homo sapiens de hace 30.000 años; algunos científicos especulan que nuestros cerebros se han vuelto más eficientes, o que la vida en sociedades seguras y agrícolas redujo la presión para mantener cerebros tan masivos).*
 
 ## Conclusión: Los herederos de una historia enredada

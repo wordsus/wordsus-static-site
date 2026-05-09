@@ -130,7 +130,6 @@ Let's break down the anatomy of this output:
 * The `+` indicates the **current job**. This is usually the most recently foregrounded or stopped job. If you issue a job control command without specifying an ID, it targets the `+` job.
 * The `-` indicates the **previous job**. If the `+` job terminates, the `-` job becomes the new `+` job.
 
-
 * **State:** The current condition of the job (e.g., `Running`, `Stopped`, `Terminated`, `Done`).
 * **Command:** The original command string used to launch the job.
 
@@ -290,7 +289,7 @@ Key columns to watch in `ps aux` include:
 While `ps` provides a static snapshot, system monitoring often requires watching resource usage change in real-time. The `top` command provides a dynamic, continuously updating view of system processes, sorted by default by CPU usage.
 
 ```bash
-$ top
+top
 
 ```
 

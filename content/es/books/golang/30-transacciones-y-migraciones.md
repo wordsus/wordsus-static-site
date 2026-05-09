@@ -2,7 +2,7 @@ La persistencia de datos en aplicaciones de alto rendimiento exige más que simp
 
 ## 30.1. Manejo de Transacciones (Tx) y propiedades ACID
 
-En el desarrollo de aplicaciones backend robustas, interactuar con la base de datos de forma aislada a través de consultas individuales rara vez es suficiente. Cuando una operación de negocio requiere múltiples mutaciones de estado (por ejemplo, transferir fondos entre dos cuentas o registrar un usuario y asignarle roles por defecto), necesitamos garantizar que todas las operaciones triunfen en conjunto o fallen sin dejar rastro. 
+En el desarrollo de aplicaciones backend robustas, interactuar con la base de datos de forma aislada a través de consultas individuales rara vez es suficiente. Cuando una operación de negocio requiere múltiples mutaciones de estado (por ejemplo, transferir fondos entre dos cuentas o registrar un usuario y asignarle roles por defecto), necesitamos garantizar que todas las operaciones triunfen en conjunto o fallen sin dejar rastro.
 
 Aquí es donde entran en juego las **Transacciones** y las **propiedades ACID**. Aunque delegamos gran parte de esta responsabilidad al motor de la base de datos relacional (PostgreSQL, MySQL, etc.), Go proporciona abstracciones precisas en el paquete `database/sql` para orquestar este flujo de forma segura y concurrente.
 
@@ -33,49 +33,49 @@ El manejo de transacciones en Go tiene un patrón idiomático muy marcado que ap
 package repository
 
 import (
-	"context"
-	"database/sql"
-	"fmt"
+ "context"
+ "database/sql"
+ "fmt"
 )
 
 // TransferFunds ejemplifica una transacción ACID clásica.
 func TransferFunds(ctx context.Context, db *sql.DB, fromAccountID, toAccountID int, amount float64) error {
-	// 1. Iniciamos la transacción pasándole el Contexto (Capítulo 13)
-	// Usamos nil en las TxOptions para adoptar el nivel de aislamiento por defecto del motor.
-	tx, err := db.BeginTx(ctx, nil)
-	if err != nil {
-		return fmt.Errorf("error iniciando transacción: %w", err)
-	}
+ // 1. Iniciamos la transacción pasándole el Contexto (Capítulo 13)
+ // Usamos nil en las TxOptions para adoptar el nivel de aislamiento por defecto del motor.
+ tx, err := db.BeginTx(ctx, nil)
+ if err != nil {
+  return fmt.Errorf("error iniciando transacción: %w", err)
+ }
 
-	// 2. LA REGLA DE ORO: Deferimos el Rollback.
-	// Si la función retorna tempranamente por un error o un panic, esto revierte los cambios.
-	// Si la transacción ya hizo Commit(), Rollback() simplemente retornará sql.ErrTxDone y no hará nada.
-	defer tx.Rollback()
+ // 2. LA REGLA DE ORO: Deferimos el Rollback.
+ // Si la función retorna tempranamente por un error o un panic, esto revierte los cambios.
+ // Si la transacción ya hizo Commit(), Rollback() simplemente retornará sql.ErrTxDone y no hará nada.
+ defer tx.Rollback()
 
-	// 3. Ejecutamos las operaciones usando el objeto `tx`, NO el `db`.
-	const debitQuery = `UPDATE accounts SET balance = balance - $1 WHERE id = $2 AND balance >= $1`
-	res, err := tx.ExecContext(ctx, debitQuery, amount, fromAccountID)
-	if err != nil {
-		return fmt.Errorf("error debitando cuenta origen: %w", err) // El defer hará rollback
-	}
+ // 3. Ejecutamos las operaciones usando el objeto `tx`, NO el `db`.
+ const debitQuery = `UPDATE accounts SET balance = balance - $1 WHERE id = $2 AND balance >= $1`
+ res, err := tx.ExecContext(ctx, debitQuery, amount, fromAccountID)
+ if err != nil {
+  return fmt.Errorf("error debitando cuenta origen: %w", err) // El defer hará rollback
+ }
 
-	rowsAffected, err := res.RowsAffected()
-	if err != nil || rowsAffected == 0 {
-		return fmt.Errorf("fondos insuficientes o cuenta origen no encontrada") // El defer hará rollback
-	}
+ rowsAffected, err := res.RowsAffected()
+ if err != nil || rowsAffected == 0 {
+  return fmt.Errorf("fondos insuficientes o cuenta origen no encontrada") // El defer hará rollback
+ }
 
-	const creditQuery = `UPDATE accounts SET balance = balance + $1 WHERE id = $2`
-	_, err = tx.ExecContext(ctx, creditQuery, amount, toAccountID)
-	if err != nil {
-		return fmt.Errorf("error acreditando cuenta destino: %w", err) // El defer hará rollback
-	}
+ const creditQuery = `UPDATE accounts SET balance = balance + $1 WHERE id = $2`
+ _, err = tx.ExecContext(ctx, creditQuery, amount, toAccountID)
+ if err != nil {
+  return fmt.Errorf("error acreditando cuenta destino: %w", err) // El defer hará rollback
+ }
 
-	// 4. Consolidamos los cambios.
-	if err := tx.Commit(); err != nil {
-		return fmt.Errorf("error consolidando la transacción: %w", err)
-	}
+ // 4. Consolidamos los cambios.
+ if err := tx.Commit(); err != nil {
+  return fmt.Errorf("error consolidando la transacción: %w", err)
+ }
 
-	return nil
+ return nil
 }
 ```
 
@@ -84,15 +84,18 @@ func TransferFunds(ctx context.Context, db *sql.DB, fromAccountID, toAccountID i
 Trabajar con `sql.Tx` introduce vectores de error sutiles que pueden derribar una aplicación en producción. Aquí detallamos los más críticos:
 
 #### 1. Usar el `db` global dentro del bloque transaccional
-Un error clásico es iniciar una transacción y, por descuido, usar la variable original `db` (el pool) para ejecutar una de las consultas intermedias. 
+
+Un error clásico es iniciar una transacción y, por descuido, usar la variable original `db` (el pool) para ejecutar una de las consultas intermedias.
 
 > **Peligro:** La consulta hecha con `db.Exec()` se ejecutará fuera del contexto transaccional (rompiendo la Atomicidad). Peor aún, si la transacción actual mantiene un bloqueo de fila (Row Lock) y la consulta externa intenta modificar esa misma fila, tu aplicación de Go sufrirá un **Deadlock** instantáneo, agotando eventualmente el pool de conexiones.
 
 #### 2. Concurrencia dentro de un `sql.Tx`
-Vimos en la Parte 3 que las goroutines son baratas y abundantes. Sin embargo, **el objeto `sql.Tx` no es seguro para el uso concurrente**. 
+
+Vimos en la Parte 3 que las goroutines son baratas y abundantes. Sin embargo, **el objeto `sql.Tx` no es seguro para el uso concurrente**.
 Dado que `sql.Tx` envuelve una *única* conexión física subyacente, lanzar múltiples goroutines que intenten ejecutar consultas simultáneas llamando a `tx.Exec()` o `tx.Query()` generará una carrera de datos (Data Race) en el driver SQL o corromperá la trama de red enviada al motor. Las consultas dentro de una transacción deben ser estrictamente secuenciales.
 
 #### 3. Olvidar el Contexto (`Begin` vs `BeginTx`)
+
 En bases de código antiguas de Go es común ver el uso de `db.Begin()`. Como desarrollador avanzado, debes usar **siempre** `db.BeginTx(ctx, options)`. Si el cliente HTTP cancela la petición o el tiempo límite (Timeout) expira (conceptos vistos en el Capítulo 13), el uso del contexto cancelará la transacción en la base de datos de forma proactiva, liberando bloqueos costosos y salvando valiosos recursos del motor SQL.
 
 ## 30.2. Control de niveles de aislamiento (Isolation Levels)
@@ -107,9 +110,9 @@ Go proporciona un control granular sobre este comportamiento directamente a trav
 
 Antes de configurar el nivel de aislamiento en Go, es crucial entender qué anomalías de concurrencia estamos intentando prevenir. Los motores de bases de datos definen sus niveles de aislamiento en función de su capacidad para evitar tres fenómenos principales:
 
-1.  **Lecturas Sucias (Dirty Reads):** Una transacción lee datos que han sido modificados por otra transacción concurrente, pero que aún no han hecho *commit*. Si la segunda transacción hace *rollback*, la primera habrá operado con datos que nunca existieron oficialmente.
-2.  **Lecturas No Repetibles (Non-repeatable Reads):** Una transacción lee la misma fila dos veces y obtiene datos diferentes porque otra transacción modificó y consolidó esa fila entre ambas lecturas.
-3.  **Lecturas Fantasma (Phantom Reads):** Una transacción ejecuta una consulta de búsqueda (ej. `SELECT * WHERE age > 20`) dos veces. Entre ambas ejecuciones, otra transacción inserta o elimina filas que cumplen con la condición, cambiando el conjunto de resultados.
+1. **Lecturas Sucias (Dirty Reads):** Una transacción lee datos que han sido modificados por otra transacción concurrente, pero que aún no han hecho *commit*. Si la segunda transacción hace *rollback*, la primera habrá operado con datos que nunca existieron oficialmente.
+2. **Lecturas No Repetibles (Non-repeatable Reads):** Una transacción lee la misma fila dos veces y obtiene datos diferentes porque otra transacción modificó y consolidó esa fila entre ambas lecturas.
+3. **Lecturas Fantasma (Phantom Reads):** Una transacción ejecuta una consulta de búsqueda (ej. `SELECT * WHERE age > 20`) dos veces. Entre ambas ejecuciones, otra transacción inserta o elimina filas que cumplen con la condición, cambiando el conjunto de resultados.
 
 ---
 
@@ -137,44 +140,44 @@ Imaginemos que necesitamos generar un reporte financiero de fin de mes. Queremos
 package reports
 
 import (
-	"context"
-	"database/sql"
-	"fmt"
+ "context"
+ "database/sql"
+ "fmt"
 )
 
 // GenerateMonthlyReport ejecuta una transacción serializable de solo lectura.
 func GenerateMonthlyReport(ctx context.Context, db *sql.DB) error {
-	// Configuramos las opciones de la transacción
-	opts := &sql.TxOptions{
-		Isolation: sql.LevelSerializable,
-		ReadOnly:  true, // Optimización: indicamos que no haremos mutaciones (INSERT/UPDATE/DELETE)
-	}
+ // Configuramos las opciones de la transacción
+ opts := &sql.TxOptions{
+  Isolation: sql.LevelSerializable,
+  ReadOnly:  true, // Optimización: indicamos que no haremos mutaciones (INSERT/UPDATE/DELETE)
+ }
 
-	tx, err := db.BeginTx(ctx, opts)
-	if err != nil {
-		return fmt.Errorf("no se pudo iniciar la transacción de reporte: %w", err)
-	}
-	defer tx.Rollback() // Seguro: si es ReadOnly, el Rollback simplemente libera la conexión
+ tx, err := db.BeginTx(ctx, opts)
+ if err != nil {
+  return fmt.Errorf("no se pudo iniciar la transacción de reporte: %w", err)
+ }
+ defer tx.Rollback() // Seguro: si es ReadOnly, el Rollback simplemente libera la conexión
 
-	// 1. Ejecutar consultas de lectura complejas
-	var totalRevenue float64
-	err = tx.QueryRowContext(ctx, "SELECT SUM(amount) FROM ledger WHERE month = 'current'").Scan(&totalRevenue)
-	if err != nil {
-		return fmt.Errorf("error calculando ingresos: %w", err)
-	}
+ // 1. Ejecutar consultas de lectura complejas
+ var totalRevenue float64
+ err = tx.QueryRowContext(ctx, "SELECT SUM(amount) FROM ledger WHERE month = 'current'").Scan(&totalRevenue)
+ if err != nil {
+  return fmt.Errorf("error calculando ingresos: %w", err)
+ }
 
-	// 2. Ejecutar más consultas...
-	// Al ser Serializable, garantizamos que las filas no cambiarán 
-	// (ni aparecerán nuevas) respecto a la primera consulta.
+ // 2. Ejecutar más consultas...
+ // Al ser Serializable, garantizamos que las filas no cambiarán 
+ // (ni aparecerán nuevas) respecto a la primera consulta.
 
-	// Para transacciones ReadOnly, un Commit o un Rollback tienen un efecto similar 
-	// en cuanto a la liberación de recursos, pero Commit indica que todo fue exitoso.
-	if err := tx.Commit(); err != nil {
-		return fmt.Errorf("error finalizando la transacción de lectura: %w", err)
-	}
+ // Para transacciones ReadOnly, un Commit o un Rollback tienen un efecto similar 
+ // en cuanto a la liberación de recursos, pero Commit indica que todo fue exitoso.
+ if err := tx.Commit(); err != nil {
+  return fmt.Errorf("error finalizando la transacción de lectura: %w", err)
+ }
 
-	fmt.Printf("Reporte generado. Ingresos totales: %.2f\n", totalRevenue)
-	return nil
+ fmt.Printf("Reporte generado. Ingresos totales: %.2f\n", totalRevenue)
+ return nil
 }
 ```
 
@@ -182,8 +185,8 @@ func GenerateMonthlyReport(ctx context.Context, db *sql.DB) error {
 
 El paquete `database/sql` de Go actúa como una interfaz abstracta; el trabajo real recae en el driver específico (como `github.com/lib/pq` o `github.com/go-sql-driver/mysql`). Esto introduce matices importantes:
 
-1.  **Rechazo vs. Promoción Silenciosa:** Si solicitas un nivel de aislamiento que el motor de base de datos no soporta, el comportamiento depende del motor. Por ejemplo, PostgreSQL no soporta *Read Uncommitted*; si solicitas `sql.LevelReadUncommitted` en Go, Postgres lo promoverá silenciosamente a *Read Committed*. Otros drivers podrían devolver un error explícito durante el `BeginTx()`.
-2.  **Errores de Serialización:** Cuando usas niveles estrictos como `sql.LevelSerializable`, debes estar preparado para que `tx.Commit()` (o incluso `tx.Exec()`) retorne un error si el motor detecta un conflicto irresoluble entre dos transacciones concurrentes. En aplicaciones avanzadas, tu código Go debe capturar este error específico y aplicar un patrón de **Retry** (reintentar la transacción completa).
+1. **Rechazo vs. Promoción Silenciosa:** Si solicitas un nivel de aislamiento que el motor de base de datos no soporta, el comportamiento depende del motor. Por ejemplo, PostgreSQL no soporta *Read Uncommitted*; si solicitas `sql.LevelReadUncommitted` en Go, Postgres lo promoverá silenciosamente a *Read Committed*. Otros drivers podrían devolver un error explícito durante el `BeginTx()`.
+2. **Errores de Serialización:** Cuando usas niveles estrictos como `sql.LevelSerializable`, debes estar preparado para que `tx.Commit()` (o incluso `tx.Exec()`) retorne un error si el motor detecta un conflicto irresoluble entre dos transacciones concurrentes. En aplicaciones avanzadas, tu código Go debe capturar este error específico y aplicar un patrón de **Retry** (reintentar la transacción completa).
 
 ## 30.3. Herramientas de migración de esquemas (golang-migrate, goose)
 
@@ -214,13 +217,13 @@ Aunque `golang-migrate` proporciona una CLI excelente (ideal para usar en pipeli
 package database
 
 import (
-	"database/sql"
-	"embed"
-	"fmt"
+ "database/sql"
+ "embed"
+ "fmt"
 
-	"github.com/golang-migrate/migrate/v4"
-	"github.com/golang-migrate/migrate/v4/database/postgres"
-	"github.com/golang-migrate/migrate/v4/source/iofs"
+ "github.com/golang-migrate/migrate/v4"
+ "github.com/golang-migrate/migrate/v4/database/postgres"
+ "github.com/golang-migrate/migrate/v4/source/iofs"
 )
 
 //go:embed migrations/*.sql
@@ -228,30 +231,30 @@ var fs embed.FS
 
 // RunMigrations aplica las migraciones pendientes al arrancar el servicio.
 func RunMigrations(db *sql.DB, dbName string) error {
-	// 1. Configuramos el sistema de archivos embebido como origen de datos
-	sourceDriver, err := iofs.New(fs, "migrations")
-	if err != nil {
-		return fmt.Errorf("error cargando archivos embebidos: %w", err)
-	}
+ // 1. Configuramos el sistema de archivos embebido como origen de datos
+ sourceDriver, err := iofs.New(fs, "migrations")
+ if err != nil {
+  return fmt.Errorf("error cargando archivos embebidos: %w", err)
+ }
 
-	// 2. Configuramos el driver de base de datos (PostgreSQL en este ejemplo)
-	dbDriver, err := postgres.WithInstance(db, &postgres.Config{})
-	if err != nil {
-		return fmt.Errorf("error creando driver de postgres para migraciones: %w", err)
-	}
+ // 2. Configuramos el driver de base de datos (PostgreSQL en este ejemplo)
+ dbDriver, err := postgres.WithInstance(db, &postgres.Config{})
+ if err != nil {
+  return fmt.Errorf("error creando driver de postgres para migraciones: %w", err)
+ }
 
-	// 3. Instanciamos el motor de migración
-	m, err := migrate.NewWithInstance("iofs", sourceDriver, dbName, dbDriver)
-	if err != nil {
-		return fmt.Errorf("error instanciando golang-migrate: %w", err)
-	}
+ // 3. Instanciamos el motor de migración
+ m, err := migrate.NewWithInstance("iofs", sourceDriver, dbName, dbDriver)
+ if err != nil {
+  return fmt.Errorf("error instanciando golang-migrate: %w", err)
+ }
 
-	// 4. Ejecutamos las migraciones 'Up'
-	if err := m.Up(); err != nil && err != migrate.ErrNoChange {
-		return fmt.Errorf("error aplicando migraciones: %w", err)
-	}
+ // 4. Ejecutamos las migraciones 'Up'
+ if err := m.Up(); err != nil && err != migrate.ErrNoChange {
+  return fmt.Errorf("error aplicando migraciones: %w", err)
+ }
 
-	return nil
+ return nil
 }
 ```
 
@@ -264,6 +267,7 @@ Un detalle arquitectónico a tener en cuenta con `golang-migrate` es su manejo d
 Mientras que `golang-migrate` te obliga a usar archivos SQL puros, `goose` brilla por ofrecer una alternativa poderosa: **escribir migraciones directamente en Go**.
 
 ¿Por qué querríamos escribir migraciones en Go en lugar de SQL? En sistemas complejos, a veces una migración requiere lógica que SQL no puede manejar fácilmente. Por ejemplo:
+
 * Hacer backfill de datos iterando sobre millones de registros por lotes.
 * Encriptar contraseñas antiguas usando `bcrypt` u otro paquete criptográfico.
 * Consultar una API externa de terceros para enriquecer datos existentes antes de guardarlos en una nueva columna.
@@ -276,34 +280,34 @@ Con `goose`, puedes registrar funciones Go que actúan como operaciones `Up` y `
 package migrations
 
 import (
-	"database/sql"
+ "database/sql"
 
-	"github.com/pressly/goose/v3"
+ "github.com/pressly/goose/v3"
 )
 
 // Utilizamos la función init() para registrar la migración en el binario.
 func init() {
-	goose.AddMigration(upBackfillUserUUIDs, downBackfillUserUUIDs)
+ goose.AddMigration(upBackfillUserUUIDs, downBackfillUserUUIDs)
 }
 
 func upBackfillUserUUIDs(tx *sql.Tx) error {
-	// Esta consulta iteraría sobre los usuarios sin UUID y generaría uno
-	// usando una librería de Go, algo complejo de hacer con SQL estándar en ciertos motores.
-	rows, err := tx.Query("SELECT id FROM users WHERE external_uuid IS NULL")
-	if err != nil {
-		return err
-	}
-	defer rows.Close()
+ // Esta consulta iteraría sobre los usuarios sin UUID y generaría uno
+ // usando una librería de Go, algo complejo de hacer con SQL estándar en ciertos motores.
+ rows, err := tx.Query("SELECT id FROM users WHERE external_uuid IS NULL")
+ if err != nil {
+  return err
+ }
+ defer rows.Close()
 
-	// ... Lógica de iteración, generación de UUIDs y ejecución de sentencias UPDATE ...
+ // ... Lógica de iteración, generación de UUIDs y ejecución de sentencias UPDATE ...
 
-	return nil
+ return nil
 }
 
 func downBackfillUserUUIDs(tx *sql.Tx) error {
-	// En una operación down lógica, podríamos anular los UUIDs (aunque rara vez se hace en producción)
-	_, err := tx.Exec("UPDATE users SET external_uuid = NULL")
-	return err
+ // En una operación down lógica, podríamos anular los UUIDs (aunque rara vez se hace en producción)
+ _, err := tx.Exec("UPDATE users SET external_uuid = NULL")
+ return err
 }
 ```
 
@@ -312,6 +316,7 @@ Para aplicar estas migraciones, simplemente importaríamos nuestro paquete de mi
 ### ¿Cuál elegir?
 
 Como arquitecto de software en Go, tu decisión dependerá del contexto del equipo:
+
 * Usa **`golang-migrate`** si prefieres mantener un límite estricto donde la base de datos solo se modifica mediante SQL declarativo puro, lo cual facilita que los DBAs revisen los scripts.
 * Usa **`goose`** si prevés que tu aplicación requerirá transformaciones de datos complejas durante las migraciones, aprovechando todo el ecosistema de librerías de Go.
 
@@ -329,17 +334,17 @@ Este patrón divide un cambio destructivo (como renombrar una columna, cambiar s
 
 Imagina que necesitamos unificar las columnas `first_name` y `last_name` en una sola columna `full_name` en nuestra tabla `users`. El proceso consta de cinco fases estrictas:
 
-1.  **Expandir (Migración SQL):** Añadimos la nueva columna `full_name` a la tabla permitiendo valores nulos (`NULL`). No tocamos las columnas originales. El código Go actual ignora esta nueva columna.
-2.  **Doble Escritura (Despliegue Go):** Desplegamos una nueva versión de nuestro backend. El repositorio ahora escribe tanto en las columnas antiguas como en la nueva al insertar o actualizar, pero **sigue leyendo de las antiguas**.
-3.  **Backfill (Migración de Datos):** Ejecutamos un script (o una migración en Go con `goose`, como vimos en la sección anterior) para poblar la nueva columna `full_name` concatenando `first_name` y `last_name` para todos los registros antiguos que aún lo tienen en nulo.
-4.  **Transición (Despliegue Go):** Desplegamos otra versión del backend. Ahora el código lee exclusivamente de la nueva columna `full_name`. Las escrituras pueden dejar de poblar las columnas antiguas.
-5.  **Contraer (Migración SQL):** Una vez que estamos seguros de que no hay errores y no necesitamos hacer *rollback* de nuestra aplicación Go, ejecutamos una última migración SQL para eliminar (`DROP`) las columnas `first_name` y `last_name`.
+1. **Expandir (Migración SQL):** Añadimos la nueva columna `full_name` a la tabla permitiendo valores nulos (`NULL`). No tocamos las columnas originales. El código Go actual ignora esta nueva columna.
+2. **Doble Escritura (Despliegue Go):** Desplegamos una nueva versión de nuestro backend. El repositorio ahora escribe tanto en las columnas antiguas como en la nueva al insertar o actualizar, pero **sigue leyendo de las antiguas**.
+3. **Backfill (Migración de Datos):** Ejecutamos un script (o una migración en Go con `goose`, como vimos en la sección anterior) para poblar la nueva columna `full_name` concatenando `first_name` y `last_name` para todos los registros antiguos que aún lo tienen en nulo.
+4. **Transición (Despliegue Go):** Desplegamos otra versión del backend. Ahora el código lee exclusivamente de la nueva columna `full_name`. Las escrituras pueden dejar de poblar las columnas antiguas.
+5. **Contraer (Migración SQL):** Una vez que estamos seguros de que no hay errores y no necesitamos hacer *rollback* de nuestra aplicación Go, ejecutamos una última migración SQL para eliminar (`DROP`) las columnas `first_name` y `last_name`.
 
 ---
 
 ### Implementando la Doble Escritura en Go
 
-La fase más crítica para el desarrollador backend es la Fase 2. Durante este periodo, la aplicación debe garantizar que ambos esquemas se mantengan sincronizados temporalmente. 
+La fase más crítica para el desarrollador backend es la Fase 2. Durante este periodo, la aplicación debe garantizar que ambos esquemas se mantengan sincronizados temporalmente.
 
 Aquí tienes un ejemplo de cómo se adapta el patrón de repositorio en Go para manejar esta transición de forma segura:
 
@@ -347,36 +352,36 @@ Aquí tienes un ejemplo de cómo se adapta el patrón de repositorio en Go para 
 package repository
 
 import (
-	"context"
-	"database/sql"
-	"fmt"
+ "context"
+ "database/sql"
+ "fmt"
 )
 
 type User struct {
-	ID        int
-	FirstName string // Próximo a ser obsoleto
-	LastName  string // Próximo a ser obsoleto
-	FullName  string // Nueva columna
+ ID        int
+ FirstName string // Próximo a ser obsoleto
+ LastName  string // Próximo a ser obsoleto
+ FullName  string // Nueva columna
 }
 
 // CreateUser demuestra el patrón de doble escritura (Fase 2 de Expand and Contract).
 func CreateUser(ctx context.Context, db *sql.DB, u User) error {
-	// Calculamos el nuevo campo en memoria
-	u.FullName = fmt.Sprintf("%s %s", u.FirstName, u.LastName)
+ // Calculamos el nuevo campo en memoria
+ u.FullName = fmt.Sprintf("%s %s", u.FirstName, u.LastName)
 
-	// La consulta SQL inserta en TODAS las columnas (antiguas y nueva)
-	const query = `
-		INSERT INTO users (first_name, last_name, full_name)
-		VALUES ($1, $2, $3)
-		RETURNING id
-	`
-	
-	err := db.QueryRowContext(ctx, query, u.FirstName, u.LastName, u.FullName).Scan(&u.ID)
-	if err != nil {
-		return fmt.Errorf("error insertando usuario con doble escritura: %w", err)
-	}
+ // La consulta SQL inserta en TODAS las columnas (antiguas y nueva)
+ const query = `
+  INSERT INTO users (first_name, last_name, full_name)
+  VALUES ($1, $2, $3)
+  RETURNING id
+ `
+ 
+ err := db.QueryRowContext(ctx, query, u.FirstName, u.LastName, u.FullName).Scan(&u.ID)
+ if err != nil {
+  return fmt.Errorf("error insertando usuario con doble escritura: %w", err)
+ }
 
-	return nil
+ return nil
 }
 ```
 
@@ -384,7 +389,7 @@ func CreateUser(ctx context.Context, db *sql.DB, u User) error {
 
 ### Operaciones SQL seguras vs. peligrosas
 
-Más allá del patrón lógico en Go, debes conocer el comportamiento físico de tu motor de base de datos. Lo que es instantáneo en PostgreSQL podría requerir una reescritura completa de la tabla en MySQL. 
+Más allá del patrón lógico en Go, debes conocer el comportamiento físico de tu motor de base de datos. Lo que es instantáneo en PostgreSQL podría requerir una reescritura completa de la tabla en MySQL.
 
 La siguiente tabla resume reglas generales para migraciones sin inactividad:
 

@@ -2,18 +2,19 @@ One of VictoriaMetrics' most powerful features is its unparalleled flexibility i
 
 ## 4.1 The Prometheus `remote_write` Protocol
 
-While Prometheus was initially designed around a pull-based model—scraping targets directly to store data locally—the growing need for high availability, global views, and long-term storage led to the creation of the `remote_write` protocol. Today, this protocol is the de facto standard for pushing time-series data across the cloud-native ecosystem. 
+While Prometheus was initially designed around a pull-based model—scraping targets directly to store data locally—the growing need for high availability, global views, and long-term storage led to the creation of the `remote_write` protocol. Today, this protocol is the de facto standard for pushing time-series data across the cloud-native ecosystem.
 
 VictoriaMetrics provides native, highly optimized support for ingesting data via `remote_write`, making it an ideal drop-in replacement for Prometheus long-term storage.
 
 ### How `remote_write` Works Under the Hood
 
-The `remote_write` protocol is designed for high throughput and network efficiency. When a Prometheus server (or a compatible forwarder) collects data, it buffers the samples, batches them together, and transmits them to the remote endpoint. 
+The `remote_write` protocol is designed for high throughput and network efficiency. When a Prometheus server (or a compatible forwarder) collects data, it buffers the samples, batches them together, and transmits them to the remote endpoint.
 
 The transmission process relies on three core technologies:
-1.  **Transport:** Standard HTTP POST requests.
-2.  **Encoding:** Protocol Buffers (Protobuf), which provides a strictly typed, binary payload that is much smaller and faster to serialize than JSON or plain text.
-3.  **Compression:** Snappy, a fast block-level compression algorithm that significantly reduces network bandwidth without heavily taxing the CPU.
+
+1. **Transport:** Standard HTTP POST requests.
+2. **Encoding:** Protocol Buffers (Protobuf), which provides a strictly typed, binary payload that is much smaller and faster to serialize than JSON or plain text.
+3. **Compression:** Snappy, a fast block-level compression algorithm that significantly reduces network bandwidth without heavily taxing the CPU.
 
 ```text
 +-------------------+                                  +-------------------+
@@ -28,12 +29,13 @@ The transmission process relies on three core technologies:
 ```
 
 Within the Protobuf payload, the data is organized into a `WriteRequest` message. This message contains an array of `TimeSeries` objects. Each `TimeSeries` includes:
+
 * A set of **Labels** (key-value pairs, including the mandatory `__name__` label).
 * An array of **Samples** (each containing a Unix timestamp in milliseconds and a 64-bit floating-point value).
 
 ### Configuring Prometheus to Send to VictoriaMetrics
 
-To instruct a standard Prometheus server to push its scraped data to VictoriaMetrics, you only need to add a `remote_write` block to your `prometheus.yml` configuration file. 
+To instruct a standard Prometheus server to push its scraped data to VictoriaMetrics, you only need to add a `remote_write` block to your `prometheus.yml` configuration file.
 
 Here is a basic example:
 
@@ -97,6 +99,7 @@ The protocol consists of four primary components, separated by spaces and commas
 ```
 
 Here is a practical example of a CPU metric:
+
 ```text
 cpu_usage,host=server-01,region=us-east cpu_idle=85.2,cpu_user=10.1 1677600000000000000
 ```
@@ -107,9 +110,9 @@ Because VictoriaMetrics utilizes a Prometheus-compatible underlying data model, 
 
 When VictoriaMetrics receives the line protocol payload above, it performs the following transformations:
 
-1.  **Metric Name Creation:** It concatenates the `<measurement>` and the `<field_key>` with an underscore (`_`).
-2.  **Label Mapping:** InfluxDB tags are mapped directly to Prometheus-style labels.
-3.  **Timestamp Conversion:** InfluxDB typically sends timestamps in nanoseconds. VictoriaMetrics automatically truncates or converts these to milliseconds (its native resolution) unless instructed otherwise.
+1. **Metric Name Creation:** It concatenates the `<measurement>` and the `<field_key>` with an underscore (`_`).
+2. **Label Mapping:** InfluxDB tags are mapped directly to Prometheus-style labels.
+3. **Timestamp Conversion:** InfluxDB typically sends timestamps in nanoseconds. VictoriaMetrics automatically truncates or converts these to milliseconds (its native resolution) unless instructed otherwise.
 
 The single line of InfluxDB protocol from our example is split and stored in VictoriaMetrics as two distinct time series:
 
@@ -153,7 +156,7 @@ Telegraf is the most common source of Line Protocol data. To route Telegraf metr
 
 ### Handling Timestamps and Precision
 
-A common pitfall when integrating external protocols is timestamp mismatch. InfluxDB defaults to nanosecond precision, while VictoriaMetrics operates internally on milliseconds. 
+A common pitfall when integrating external protocols is timestamp mismatch. InfluxDB defaults to nanosecond precision, while VictoriaMetrics operates internally on milliseconds.
 
 If you are using custom scripts to push ILP data and your timestamps are in seconds or milliseconds, you must append the `precision` query parameter to the write URL to tell VictoriaMetrics how to interpret the time.
 
@@ -164,13 +167,13 @@ If the timestamp is omitted entirely from the ingested line, VictoriaMetrics wil
 
 ## 4.3 Scraping Data via the Graphite Plaintext Protocol
 
-Graphite is one of the oldest and most influential time-series monitoring tools. While its ecosystem has largely been superseded by Prometheus and modern cloud-native stacks, the Graphite plaintext protocol remains incredibly prevalent. Many legacy applications, network switches, and custom scripts still rely on it because of its absolute simplicity. 
+Graphite is one of the oldest and most influential time-series monitoring tools. While its ecosystem has largely been superseded by Prometheus and modern cloud-native stacks, the Graphite plaintext protocol remains incredibly prevalent. Many legacy applications, network switches, and custom scripts still rely on it because of its absolute simplicity.
 
 VictoriaMetrics provides native, high-performance ingestion of Graphite data, allowing you to bridge legacy infrastructure with modern MetricsQL querying and alerting without needing intermediary services like `graphite_exporter` or `statsd`.
 
 ### The Anatomy of the Plaintext Protocol
 
-The Graphite plaintext protocol is arguably the simplest ingestion format in the monitoring ecosystem. It consists of a single line of text per data point, separated by spaces. 
+The Graphite plaintext protocol is arguably the simplest ingestion format in the monitoring ecosystem. It consists of a single line of text per data point, separated by spaces.
 
 ```text
 <metric_path> <metric_value> <metric_timestamp>
@@ -182,13 +185,15 @@ The Graphite plaintext protocol is arguably the simplest ingestion format in the
 ```
 
 Here is a practical example of a memory metric being reported:
+
 ```text
 servers.us-east.web01.memory.free 1048576 1677600000
 ```
 
-Unlike the multidimensional labeled approach of Prometheus, classic Graphite uses a rigid, dot-separated hierarchical namespace. 
+Unlike the multidimensional labeled approach of Prometheus, classic Graphite uses a rigid, dot-separated hierarchical namespace.
 
 #### Handling Graphite Tags (Graphite 1.1+)
+
 To compete with modern TSDBs, later versions of Graphite introduced "Graphite Tags." This appends key-value pairs to the end of the metric path using semicolons. VictoriaMetrics fully supports this syntax:
 
 ```text
@@ -199,10 +204,10 @@ servers.memory.free;region=us-east;host=web01 1048576 1677600000
 
 When VictoriaMetrics ingests Graphite data, it must adapt the hierarchical model into its internal labeled architecture.
 
-1.  **Classic Graphite:** The entire dot-separated string is mapped directly to the `__name__` label.
+1. **Classic Graphite:** The entire dot-separated string is mapped directly to the `__name__` label.
     * Input: `servers.web01.cpu.load 1.5 1677600000`
     * Stored as: `{__name__="servers.web01.cpu.load"}`
-2.  **Tagged Graphite:** The base metric path becomes the `__name__` label, and the semicolon-separated tags are parsed into native Prometheus labels.
+2. **Tagged Graphite:** The base metric path becomes the `__name__` label, and the semicolon-separated tags are parsed into native Prometheus labels.
     * Input: `cpu.load;host=web01 1.5 1677600000`
     * Stored as: `cpu.load{host="web01"}`
 
@@ -213,6 +218,7 @@ When VictoriaMetrics ingests Graphite data, it must adapt the hierarchical model
 VictoriaMetrics supports ingesting Graphite data via two distinct methods: a dedicated TCP/UDP listener, and standard HTTP POST requests.
 
 #### Method 1: The TCP/UDP Listener (Recommended for Legacy Systems)
+
 Many older systems expect to open a raw socket (typically port `2003`) and stream text directly. To enable this in VictoriaMetrics, you must start the single-node binary or the `vminsert` component with the `-graphiteListenAddr` flag.
 
 ```bash
@@ -227,6 +233,7 @@ echo "local.random.diceroll 4 `date +%s`" | nc localhost 2003
 ```
 
 #### Method 2: HTTP POST Ingestion
+
 If you are passing data through proxies, load balancers, or serverless functions, HTTP is often easier to manage than raw TCP sockets. VictoriaMetrics exposes dedicated HTTP endpoints for Graphite plaintext payloads.
 
 * **Single-Node:** `http://<vm-host>:8428/api/v1/import/graphite`
@@ -241,9 +248,10 @@ curl -d "servers.web01.disk.bytes_used 500000000 $(date +%s)" \
 
 ### Timestamp Precision
 
-It is critical to note that the Graphite protocol historically expects timestamps in **seconds**, whereas VictoriaMetrics natively operates in **milliseconds**. 
+It is critical to note that the Graphite protocol historically expects timestamps in **seconds**, whereas VictoriaMetrics natively operates in **milliseconds**.
 
 When VictoriaMetrics receives a Graphite payload, it uses a heuristic to determine the timestamp format:
+
 * If the timestamp value is less than `2147483647` (the year 2038 in seconds), VictoriaMetrics assumes it is in seconds and automatically multiplies it by 1,000 to store it as milliseconds.
 * If the timestamp is much larger, it assumes the client is already sending milliseconds or nanoseconds.
 
@@ -267,9 +275,9 @@ Native OTLP Architecture (VictoriaMetrics Recommended):
 
 When an OpenTelemetry SDK or an OTel Collector pushes metrics to VictoriaMetrics, the data arrives as Protocol Buffers (Protobuf) payloads. VictoriaMetrics unpacks these payloads and intelligently maps the OTLP data model into its internal time-series architecture on the fly:
 
-1.  **Resource Attributes:** In OpenTelemetry, infrastructure metadata (like `host.name`, `cloud.region`, or `k8s.pod.name`) are defined as Resource Attributes. VictoriaMetrics automatically promotes all Resource Attributes to standard Prometheus labels, attaching them to every ingested metric point.
-2.  **Histograms:** OpenTelemetry's advanced exponential histograms are natively translated into VictoriaMetrics' highly optimized internal histogram format (utilizing `vmrange` labels) without losing precision.
-3.  **Temporality:** OpenTelemetry supports both Delta and Cumulative aggregation temporality. VictoriaMetrics operates best with Cumulative temporality (the Prometheus standard). While VictoriaMetrics can ingest Delta temporality natively (queryable later via `sum_over_time`), it is highly recommended to configure your OTel Collector to use a `deltatocumulative` processor before pushing data to ensure seamless compatibility with standard `rate()` functions in PromQL.
+1. **Resource Attributes:** In OpenTelemetry, infrastructure metadata (like `host.name`, `cloud.region`, or `k8s.pod.name`) are defined as Resource Attributes. VictoriaMetrics automatically promotes all Resource Attributes to standard Prometheus labels, attaching them to every ingested metric point.
+2. **Histograms:** OpenTelemetry's advanced exponential histograms are natively translated into VictoriaMetrics' highly optimized internal histogram format (utilizing `vmrange` labels) without losing precision.
+3. **Temporality:** OpenTelemetry supports both Delta and Cumulative aggregation temporality. VictoriaMetrics operates best with Cumulative temporality (the Prometheus standard). While VictoriaMetrics can ingest Delta temporality natively (queryable later via `sum_over_time`), it is highly recommended to configure your OTel Collector to use a `deltatocumulative` processor before pushing data to ensure seamless compatibility with standard `rate()` functions in PromQL.
 
 ### Configuration and Endpoints
 
@@ -341,6 +349,7 @@ VictoriaMetrics natively implements the DataDog "Submit Metrics" API (`/api/v2/s
 
 **Endpoint Structures**
 The base URL you provide to the DataDog agent depends on your VictoriaMetrics deployment:
+
 * **Single-Node:** `http://<vm-host>:8428/datadog`
 * **Cluster Version:** `http://<vminsert-host>:8480/insert/<accountID>/datadog`
 
@@ -364,13 +373,15 @@ DD_ADDITIONAL_ENDPOINTS="{\"http://<victoriametrics-host>:8428/datadog\": [\"fak
 
 ### Integrating the NewRelic Infrastructure Agent
 
-Similarly, VictoriaMetrics implements the NewRelic Events API (`/newrelic/infra/v2/metrics/events/bulk`). The NewRelic agent pushes "Events," which contain a mix of numeric metrics and string metadata. 
+Similarly, VictoriaMetrics implements the NewRelic Events API (`/newrelic/infra/v2/metrics/events/bulk`). The NewRelic agent pushes "Events," which contain a mix of numeric metrics and string metadata.
 
 When VictoriaMetrics receives a NewRelic Event, it performs the following transformation:
+
 1. Every string field (including the `eventType`) is converted into a standard Prometheus label.
 2. Every numeric field is extracted and stored as a raw metric value, using the numeric field's key as the base metric name.
 
 **Endpoint Structures**
+
 * **Single-Node:** `http://<vm-host>:8428/newrelic`
 * **Cluster Version:** `http://<vminsert-host>:8480/insert/<accountID>/newrelic`
 

@@ -1,4 +1,4 @@
-Hardcoding values in infrastructure code limits reusability and creates severe security risks. To build flexible environments, your code must be completely decoupled from stack-specific parameters and sensitive credentials. 
+Hardcoding values in infrastructure code limits reusability and creates severe security risks. To build flexible environments, your code must be completely decoupled from stack-specific parameters and sensitive credentials.
 
 This chapter explores Pulumi’s robust configuration system. You will learn how to inject dynamic settings, handle complex structured data, and securely manage secrets like database passwords. Whether utilizing the default Pulumi Service encryption or integrating third-party Key Management Systems (AWS KMS, Azure Key Vault, HashiCorp Vault), you will discover how to keep your deployments portable, scalable, and strictly compliant.
 
@@ -6,7 +6,7 @@ This chapter explores Pulumi’s robust configuration system. You will learn how
 
 Writing infrastructure as code offers the distinct advantage of reusability. However, to truly reuse a Pulumi program across multiple environments—such as development, staging, and production—you must extract hardcoded values and replace them with configurable parameters. The Pulumi Configuration system provides a robust, strongly-typed mechanism to manage these parameters on a per-stack basis.
 
-Instead of writing a separate program for each environment, you write a single logical definition and use configuration to drive variations like instance sizes, feature flags, or scaling capacities. 
+Instead of writing a separate program for each environment, you write a single logical definition and use configuration to drive variations like instance sizes, feature flags, or scaling capacities.
 
 ### The Mechanics of Pulumi Config
 
@@ -61,6 +61,7 @@ Within your Pulumi program, you access these values using the `Config` object pr
 Here is how you retrieve configurations in both TypeScript and Python:
 
 **TypeScript:**
+
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
@@ -86,6 +87,7 @@ const server = new aws.ec2.Instance(`${appName}-server`, {
 ```
 
 **Python:**
+
 ```python
 import pulumi
 import pulumi_aws as aws
@@ -111,7 +113,7 @@ server = aws.ec2.Instance(f"{app_name}-server",
 
 ### Configuration Namespaces
 
-By default, when you instantiate a `Config` object without arguments, Pulumi scopes the configuration lookups to the current project's name. This prevents key collisions if you are utilizing multiple packages or components. 
+By default, when you instantiate a `Config` object without arguments, Pulumi scopes the configuration lookups to the current project's name. This prevents key collisions if you are utilizing multiple packages or components.
 
 However, configurations can be namespaced to target specific providers or logical groupings. The most common use case is configuring a cloud provider directly. For example, setting the AWS region:
 
@@ -246,12 +248,12 @@ pulumi.log.info(f"Deploying on port {port}. Secure: {is_secure}")
 ### Best Practices for Structured Configurations
 
 * **Fail Fast with Validation:** While TypeScript interfaces provide compile-time safety, they do not validate the data at runtime (e.g., if the YAML contains a string where a number was expected). Consider using validation libraries (like Zod in TypeScript or Pydantic in Python) to parse and validate complex `requireObject` outputs before passing them into your infrastructure resources.
-* **Keep YAML Readable:** If your structured configuration grows beyond a few dozen lines, it becomes difficult to manage inside `Pulumi.<stack>.yaml`. At that scale, consider extracting the configuration into a dedicated external JSON or YAML file within your project directory and using standard language file I/O (like Node's `fs` or Python's `open()`) to read it at runtime. 
+* **Keep YAML Readable:** If your structured configuration grows beyond a few dozen lines, it becomes difficult to manage inside `Pulumi.<stack>.yaml`. At that scale, consider extracting the configuration into a dedicated external JSON or YAML file within your project directory and using standard language file I/O (like Node's `fs` or Python's `open()`) to read it at runtime.
 * **Avoid Deep Nesting:** Keep your configuration structures relatively shallow (1-3 levels deep). Overly nested configuration paths are difficult to update via the CLI and increase the cognitive load required to understand the infrastructure environment variations.
 
 ## 6.3 Encrypting Secrets with Pulumi Service
 
-Modern infrastructure provisioning relies heavily on sensitive data: database passwords, API tokens, TLS certificates, and OAuth client secrets. Storing these values in plain text within your configuration files or version control system is a critical security vulnerability. 
+Modern infrastructure provisioning relies heavily on sensitive data: database passwords, API tokens, TLS certificates, and OAuth client secrets. Storing these values in plain text within your configuration files or version control system is a critical security vulnerability.
 
 Pulumi treats secrets as a first-class citizen. Rather than relying entirely on external scripts or forcing you to build custom encryption pipelines, Pulumi integrates secrets management directly into its configuration system and state file engine. When using the default Pulumi Service backend, this encryption is handled automatically using per-stack encryption keys.
 
@@ -303,9 +305,9 @@ config:
 
 ### Retrieving and Handling Secrets in Code
 
-Because Pulumi must prevent you from accidentally logging or exposing sensitive data, secrets are not retrieved as plain strings or numbers. Instead, they are retrieved as **Outputs** (specifically, `Output<string>` in TypeScript or `Output[str]` in Python). 
+Because Pulumi must prevent you from accidentally logging or exposing sensitive data, secrets are not retrieved as plain strings or numbers. Instead, they are retrieved as **Outputs** (specifically, `Output<string>` in TypeScript or `Output[str]` in Python).
 
-An `Output` in Pulumi acts as a wrapper that tracks the "secretness" of a value. 
+An `Output` in Pulumi acts as a wrapper that tracks the "secretness" of a value.
 
 * **`getSecret` / `get_secret`**: Retrieves an optional configuration value as a secret Output.
 * **`requireSecret` / `require_secret`**: Retrieves a mandatory configuration value as a secret Output, throwing an error if it is missing.
@@ -313,6 +315,7 @@ An `Output` in Pulumi acts as a wrapper that tracks the "secretness" of a value.
 Here is how you securely retrieve and use a secret to provision a database:
 
 **TypeScript:**
+
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
@@ -334,6 +337,7 @@ const db = new aws.rds.Instance("primary-db", {
 ```
 
 **Python:**
+
 ```python
 import pulumi
 import pulumi_aws as aws
@@ -356,7 +360,7 @@ db = aws.rds.Instance("primary-db",
 
 ### The "Taint" Propagation of Secrets
 
-One of the most powerful features of Pulumi's secret management is how it tracks sensitive data through your infrastructure graph. 
+One of the most powerful features of Pulumi's secret management is how it tracks sensitive data through your infrastructure graph.
 
 If you pass a secret `Output` into a resource property (like the `password` field of an RDS instance), Pulumi automatically marks the entire resource property—and any downstream properties derived from it—as a secret. This "taint" propagation ensures that if you export the database connection string, the connection string is also encrypted because it implicitly contains the secret password.
 
@@ -374,13 +378,13 @@ By default, the Pulumi Service handles the key generation and management for thi
 
 ## 6.4 Integrating Third-Party KMS (AWS KMS, Azure Key Vault, HashiCorp Vault)
 
-While the default Pulumi Service provides seamless, managed secrets encryption, many enterprise environments operate under strict compliance frameworks. These frameworks often dictate that the organization must retain absolute, cryptographic control over the keys used to encrypt sensitive data—a principle known as Bring Your Own Key (BYOK). 
+While the default Pulumi Service provides seamless, managed secrets encryption, many enterprise environments operate under strict compliance frameworks. These frameworks often dictate that the organization must retain absolute, cryptographic control over the keys used to encrypt sensitive data—a principle known as Bring Your Own Key (BYOK).
 
 To support these requirements, Pulumi allows you to delegate secrets encryption to a third-party Key Management System (KMS).
 
 ### The Envelope Encryption Model
 
-When you configure a third-party KMS, Pulumi employs **envelope encryption**. The external KMS does not directly encrypt your database passwords or API tokens. Instead, the KMS generates a master Data Encryption Key (DEK). 
+When you configure a third-party KMS, Pulumi employs **envelope encryption**. The external KMS does not directly encrypt your database passwords or API tokens. Instead, the KMS generates a master Data Encryption Key (DEK).
 
 1. The KMS provides the Pulumi CLI with two versions of the DEK: a plaintext version and an encrypted version.
 2. The Pulumi CLI uses the *plaintext* DEK to encrypt your secrets locally on your machine.
@@ -411,7 +415,7 @@ Because of this architecture, your plaintext secrets never leave your local mach
 
 ### Initializing Stacks with a KMS
 
-You configure a KMS provider when you initialize a new stack using the `--secrets-provider` flag followed by a provider-specific URI. 
+You configure a KMS provider when you initialize a new stack using the `--secrets-provider` flag followed by a provider-specific URI.
 
 #### AWS Key Management Service (KMS)
 
@@ -454,11 +458,12 @@ pulumi stack change-secrets-provider "awskms://alias/my-enterprise-key"
 ```
 
 When you execute this command, the Pulumi CLI performs the following sequence automatically:
+
 1. Decrypts all existing secrets in the `Pulumi.<stack-name>.yaml` file using the *old* provider (the Pulumi Service).
 2. Requests a new Data Encryption Key from the *new* provider (AWS KMS).
 3. Re-encrypts all secrets locally using the new key.
 4. Updates the stack file with the new ciphertexts and the new encrypted data key.
 
-This operation modifies your `Pulumi.<stack-name>.yaml` file, so ensure you commit the changes to your version control system immediately after the migration succeeds. 
+This operation modifies your `Pulumi.<stack-name>.yaml` file, so ensure you commit the changes to your version control system immediately after the migration succeeds.
 
 By leveraging third-party KMS integrations, you bridge the gap between developer velocity and stringent enterprise security, ensuring that infrastructure code remains both flexible and compliant.

@@ -36,18 +36,14 @@ $ ip a
 * `eth0` (o `ens33`, `enp3s0`): La interfaz Ethernet principal conectada a la red.
 * `docker0`: Un puente virtual (*bridge*) creado por Docker.
 
-
 * **El estado del enlace (`<...,UP,LOWER_UP>`):**
 * `UP`: La interfaz ha sido activada a nivel de software (Capa 3).
 * `LOWER_UP`: El cable físico (o su equivalente virtual) está conectado (Capa 1/2). Si ves `UP` pero no `LOWER_UP`, tienes un problema físico o el hipervisor desconectó la red virtual.
-
 
 * **Direcciones MAC e IP:**
 * `link/ether`: Tu dirección MAC (Capa 2).
 * `inet`: Tu dirección IPv4 acompañada de su máscara de red en notación CIDR (ej. `/24`, que equivale a `255.255.255.0`).
 * `inet6`: Tu dirección IPv6 (si estuviera habilitada).
-
-
 
 #### Gestión rápida de interfaces y direcciones
 
@@ -242,7 +238,7 @@ Mientras que `ping` te da estadísticas estáticas y `traceroute` te da una foto
 **Modo de uso en Terminal interactiva:**
 
 ```bash
-$ sudo mtr 8.8.8.8
+sudo mtr 8.8.8.8
 
 ```
 
@@ -316,6 +312,7 @@ Este archivo es tu mejor amigo para probar migraciones. Si estás moviendo un si
 Si solo necesitas una respuesta rápida sin demasiados detalles técnicos, estas dos herramientas son suficientes.
 
 * **`host`:** Es la forma más limpia de preguntar "qué IP tiene este nombre" o hacer resolución inversa ("qué nombre tiene esta IP").
+
 ```bash
 $ host google.com
 google.com has address 142.250.190.46
@@ -326,7 +323,6 @@ $ host 142.250.190.46
 46.190.250.142.in-addr.arpa domain name pointer mad08s10-in-f14.1e100.net.
 
 ```
-
 
 * **`nslookup`:** Es una herramienta heredada. Sigue siendo muy popular porque viene preinstalada en Windows, pero en el ecosistema Linux se considera obsoleta frente a `dig`. Úsala solo si no tienes otra opción en el sistema.
 
@@ -339,7 +335,7 @@ $ host 142.250.190.46
 **Uso básico y lectura de la salida:**
 
 ```bash
-$ dig misitio.com
+dig misitio.com
 
 ```
 
@@ -399,7 +395,7 @@ misitio.com.
 Esta es la "bomba nuclear" del diagnóstico DNS. Si un dominio se rompe por completo y nadie sabe por qué, `+trace` le pide a `dig` que simule ser un servidor DNS y haga la ruta completa: desde los servidores raíz de internet (`.`), pasando por los servidores de dominio superior (`.com`), hasta llegar a los servidores autoritativos (ej. Route53 o Cloudflare) que alojan tu dominio.
 
 ```bash
-$ dig misitio.com +trace
+dig misitio.com +trace
 
 ```
 
@@ -505,25 +501,25 @@ node    20455 node   18u  IPv4 123456      0t0  TCP *:8080 (LISTEN)
 
 Ahora sabes que es un proceso de Node.js con el PID `20455`. Puedes proceder a investigar por qué está ahí o directamente matarlo (`kill -9 20455`).
 
-#### Casos de uso clave para `lsof -i`:
+#### Casos de uso clave para `lsof -i`
 
 * **Ver todas las conexiones de un proceso específico:**
+
 ```bash
-$ lsof -i -a -p 20455
+lsof -i -a -p 20455
 
 ```
 
-
 *(El `-a` significa "AND": muestra archivos que sean de red **Y** que pertenezcan al PID 20455).*
+
 * **Identificar conexiones salientes extrañas (Malware/Miners):**
 Si sospechas que un servidor está comprometido y haciendo "call-home" a un servidor de comando y control (C2):
+
 ```bash
 # Lista todas las conexiones de red establecidas que no sean puertos comunes (80, 443, 22)
 $ sudo lsof -i | grep ESTABLISHED | egrep -v ":(http|https|ssh)"
 
 ```
-
-
 
 ### Resumen de Supervivencia
 
@@ -554,20 +550,19 @@ $ wget https://releases.ubuntu.com/22.04/ubuntu-22.04.3-live-server-amd64.iso
 **Escenarios DevOps cotidianos:**
 
 * **Descargas masivas a prueba de fallos (`-c`):** Imagina que estás descargando un volcado de base de datos de 50 GB y tu conexión VPN parpadea al 99%. `wget` te salva la vida permitiéndote continuar desde donde se cortó.
+
 ```bash
-$ wget -c https://backup-server.local/db-prod-dump.tar.gz
+wget -c https://backup-server.local/db-prod-dump.tar.gz
 
 ```
 
-
 * **Descargas en segundo plano (`-b`):** Si estás conectado por SSH y necesitas lanzar una descarga larga sin bloquear tu terminal (ni usar `tmux` o `nohup`).
+
 ```bash
 $ wget -b https://midominio.com/archivo-gigante.zip
 # La salida se enviará a un archivo 'wget-log'
 
 ```
-
-
 
 ---
 
@@ -654,7 +649,7 @@ Tiempo Total:    4.550 s
 A veces, en entornos de desarrollo local o servidores internos, te encontrarás con certificados SSL autofirmados o caducados. `curl` abortará la conexión por seguridad. Para decirle *"confía en mí, sé lo que hago"*, usa el flag **inseguro (`-k` o `--insecure`)**:
 
 ```bash
-$ curl -k https://192.168.1.50/api/test
+curl -k https://192.168.1.50/api/test
 
 ```
 

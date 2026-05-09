@@ -1,10 +1,10 @@
-You have learned how VictoriaMetrics operates, scales, and outperforms traditional time series databases. Now, it is time to make the switch. Migrating a production observability stack is a delicate operation—downtime and data loss are simply not options. 
+You have learned how VictoriaMetrics operates, scales, and outperforms traditional time series databases. Now, it is time to make the switch. Migrating a production observability stack is a delicate operation—downtime and data loss are simply not options.
 
 This chapter provides a battle-tested blueprint for safely transitioning from Prometheus to VictoriaMetrics. We will explore how to objectively assess your current infrastructure footprint, design a zero-downtime dual-write strategy, backfill years of historical data using the `vmctl` utility, and mathematically validate your data integrity to guarantee a flawless cutover.
 
 ## 25.1 Assessing Your Current Prometheus Footprint
 
-Before moving a single byte of data or changing a single DNS record to point to VictoriaMetrics, you must thoroughly understand the workload your current Prometheus infrastructure handles. A blind migration often leads to over-provisioning (wasting resources) or under-provisioning (causing immediate performance degradation post-migration). 
+Before moving a single byte of data or changing a single DNS record to point to VictoriaMetrics, you must thoroughly understand the workload your current Prometheus infrastructure handles. A blind migration often leads to over-provisioning (wasting resources) or under-provisioning (causing immediate performance degradation post-migration).
 
 Because you have already learned how to calculate hardware sizing for VictoriaMetrics (Chapter 24), this phase is entirely about extracting the necessary variables from your existing Prometheus instances. You need to map out your ingestion load, storage volume, query patterns, and configuration complexity.
 
@@ -14,21 +14,26 @@ The "write path" is usually the primary driver for migrating to VictoriaMetrics.
 
 You can gather these by executing PromQL queries directly against your existing Prometheus instances:
 
-*   **Active Time Series (ATS):** This is the number of series that have received new data points recently. It is the single most important metric for determining memory consumption.
+* **Active Time Series (ATS):** This is the number of series that have received new data points recently. It is the single most important metric for determining memory consumption.
+
     ```promql
     # Current Active Time Series
     prometheus_tsdb_head_series
     ```
-*   **Ingestion Rate:** The number of raw samples appended per second. This dictates your CPU and disk I/O requirements.
+
+* **Ingestion Rate:** The number of raw samples appended per second. This dictates your CPU and disk I/O requirements.
+
     ```promql
     # Samples ingested per second (5-minute average)
     rate(prometheus_tsdb_head_samples_appended_total[5m])
     ```
-*   **Series Churn Rate:** How quickly old series stop receiving data and new series are created (often driven by ephemeral Kubernetes pods or frequent deployments). High churn places significant stress on the inverted index.
+
+* **Series Churn Rate:** How quickly old series stop receiving data and new series are created (often driven by ephemeral Kubernetes pods or frequent deployments). High churn places significant stress on the inverted index.
+
     ```promql
     # New series created per second
     rate(prometheus_tsdb_head_series_created_total[5m])
-    
+
 ```
 
 **Assessment Check:** If your churn rate exceeds 10% of your ATS per hour, make a note of it. VictoriaMetrics handles churn much better than Prometheus, but you will still need to tune your memory caching (as discussed in Section 24.2) to accommodate the constant index updates.
@@ -43,10 +48,10 @@ Prometheus metrics to review:
 prometheus_tsdb_storage_blocks_bytes
 ```
 
-When evaluating storage, factor in the VictoriaMetrics compression advantage. As outlined in Chapter 10, VictoriaMetrics typically achieves a compression ratio that is 1.5x to 3x better than Prometheus depending on the data shape. 
+When evaluating storage, factor in the VictoriaMetrics compression advantage. As outlined in Chapter 10, VictoriaMetrics typically achieves a compression ratio that is 1.5x to 3x better than Prometheus depending on the data shape.
 
-*   *Assessment Formula:* `(Prometheus Disk Usage / 2) = Estimated VictoriaMetrics Disk Usage`
-*   *Retention Assessment:* Document your current `--storage.tsdb.retention.time` and `--storage.tsdb.retention.size` flags. Decide *before* migration if you plan to extend retention periods now that you will have more efficient storage. 
+* *Assessment Formula:* `(Prometheus Disk Usage / 2) = Estimated VictoriaMetrics Disk Usage`
+* *Retention Assessment:* Document your current `--storage.tsdb.retention.time` and `--storage.tsdb.retention.size` flags. Decide *before* migration if you plan to extend retention periods now that you will have more efficient storage.
 
 ### 3. Analyzing the Query and Read Workload
 
@@ -67,13 +72,14 @@ histogram_quantile(0.90, rate(prometheus_engine_query_duration_seconds_bucket[5m
 
 *Tip:* Review your Grafana query logs or use the Prometheus `/api/v1/status/tsdb` endpoint to find the top 10 most expensive queries. If you identify heavy use of regular expressions or massive aggregations without selectors, you should plan to refactor these queries or use VictoriaMetrics recording rules (Chapter 14) post-migration.
 
-### 4. Rule and Alerting Complexity 
+### 4. Rule and Alerting Complexity
 
-If you are running Prometheus, it is highly likely that Prometheus is also evaluating your recording and alerting rules. During migration, these duties will be offloaded to `vmalert` (Chapter 13). 
+If you are running Prometheus, it is highly likely that Prometheus is also evaluating your recording and alerting rules. During migration, these duties will be offloaded to `vmalert` (Chapter 13).
 
 You must inventory:
-1.  **Total Rule Count:** How many distinct rules exist across your YAML files?
-2.  **Rule Evaluation Duration:** How long does it take Prometheus to evaluate a rule group? If rule evaluation regularly spikes near your evaluation interval (e.g., taking 14 seconds on a 15-second interval), your Prometheus is struggling, and you will need to partition these rules across multiple `vmalert` instances.
+
+1. **Total Rule Count:** How many distinct rules exist across your YAML files?
+2. **Rule Evaluation Duration:** How long does it take Prometheus to evaluate a rule group? If rule evaluation regularly spikes near your evaluation interval (e.g., taking 14 seconds on a 15-second interval), your Prometheus is struggling, and you will need to partition these rules across multiple `vmalert` instances.
 
 ```promql
 # 99th percentile rule group evaluation time
@@ -82,7 +88,7 @@ histogram_quantile(0.99, rate(prometheus_rule_group_last_duration_seconds_bucket
 
 ### The Assessment Matrix
 
-To consolidate your findings, create an assessment matrix. This acts as the blueprint for your migration strategy in the next section. 
+To consolidate your findings, create an assessment matrix. This acts as the blueprint for your migration strategy in the next section.
 
 ```text
 +-------------------------+-------------------------+----------------------------------+
@@ -130,7 +136,7 @@ The most reliable migration path involves configuring your existing Prometheus i
 
 First, deploy your VictoriaMetrics infrastructure based on the assessment matrix you developed in Section 25.1. Ensure all networking, firewall rules, and authentication layers (Chapter 22) are in place.
 
-Next, update your existing `prometheus.yml` configuration to include a `remote_write` block pointing to your new VictoriaMetrics endpoint. 
+Next, update your existing `prometheus.yml` configuration to include a `remote_write` block pointing to your new VictoriaMetrics endpoint.
 
 ```yaml
 # prometheus.yml
@@ -155,20 +161,21 @@ remote_write:
 At this point, VictoriaMetrics only possesses data starting from the moment you applied the `remote_write` configuration. Let it run for 24 to 48 hours to build up a recent data cache and to allow you to monitor the ingestion performance.
 
 During this shadow phase, update your Grafana instance:
-1.  Add VictoriaMetrics as a **new** Prometheus-type Data Source in Grafana. Do *not* overwrite the existing Prometheus data source yet.
-2.  Duplicate your most critical, high-traffic dashboards.
-3.  Change the data source of the duplicated dashboards to VictoriaMetrics.
+
+1. Add VictoriaMetrics as a **new** Prometheus-type Data Source in Grafana. Do *not* overwrite the existing Prometheus data source yet.
+2. Duplicate your most critical, high-traffic dashboards.
+3. Change the data source of the duplicated dashboards to VictoriaMetrics.
 
 Compare the two sets of dashboards. Look for visual discrepancies, missing metrics, or slight variations in query evaluation times. Because VictoriaMetrics implements MetricsQL (a superset of PromQL), 99% of your queries will work seamlessly. However, this is the time to spot any edge cases or identify queries that could benefit from VictoriaMetrics-specific optimizations (Chapter 9).
 
 ### Phase 3: Rule and Alert Translation
 
-While data is dual-writing, you must migrate your recording and alerting rules. 
+While data is dual-writing, you must migrate your recording and alerting rules.
 
-1.  Extract your rule YAML files from Prometheus.
-2.  Deploy `vmalert` (Chapter 13) and configure it to read these files.
-3.  Point `vmalert` to your VictoriaMetrics read endpoint (`-datasource.url`) and write endpoint (`-remoteWrite.url`), and connect it to your Alertmanager.
-4.  **Crucial Step:** To avoid duplicate paging and alert spam, configure `vmalert` with a `-notifier.blackhole` flag temporarily, or route its alerts to a testing Slack channel. 
+1. Extract your rule YAML files from Prometheus.
+2. Deploy `vmalert` (Chapter 13) and configure it to read these files.
+3. Point `vmalert` to your VictoriaMetrics read endpoint (`-datasource.url`) and write endpoint (`-remoteWrite.url`), and connect it to your Alertmanager.
+4. **Crucial Step:** To avoid duplicate paging and alert spam, configure `vmalert` with a `-notifier.blackhole` flag temporarily, or route its alerts to a testing Slack channel.
 
 Once you have verified that `vmalert` is firing the exact same alerts as Prometheus, you can disable the rule evaluation inside your legacy Prometheus instances and remove the blackhole from `vmalert`.
 
@@ -176,17 +183,17 @@ Once you have verified that `vmalert` is firing the exact same alerts as Prometh
 
 You now have a live VictoriaMetrics instance handling current ingestion, dashboard reads, and rule evaluations. However, it is missing your historical data (e.g., data from last month or last year).
 
-This is where you execute the historical backfill. You will use the `vmctl` utility (detailed in Section 25.3) to read the TSDB blocks from Prometheus's disk and write them into VictoriaMetrics. 
+This is where you execute the historical backfill. You will use the `vmctl` utility (detailed in Section 25.3) to read the TSDB blocks from Prometheus's disk and write them into VictoriaMetrics.
 
 Because you are already handling live data via `remote_write`, the backfill can run at a controlled, throttled pace in the background without impacting your real-time observability. VictoriaMetrics natively handles the insertion of out-of-order historical data seamlessly.
 
 ### Phase 5: The Cutover and Decommissioning
 
-Once `vmctl` finishes importing your historical blocks, the migration is essentially complete. 
+Once `vmctl` finishes importing your historical blocks, the migration is essentially complete.
 
-1.  In Grafana, safely update your default Prometheus Data Source URL to point to VictoriaMetrics. Delete the duplicated "shadow" dashboards.
-2.  Replace Prometheus instances with `vmagent` (Chapter 5) to act as your lightweight scrapers. `vmagent` uses a fraction of the RAM and CPU that Prometheus uses for scraping, finalizing your resource efficiency gains.
-3.  Spin down your legacy Prometheus servers.
+1. In Grafana, safely update your default Prometheus Data Source URL to point to VictoriaMetrics. Delete the duplicated "shadow" dashboards.
+2. Replace Prometheus instances with `vmagent` (Chapter 5) to act as your lightweight scrapers. `vmagent` uses a fraction of the RAM and CPU that Prometheus uses for scraping, finalizing your resource efficiency gains.
+3. Spin down your legacy Prometheus servers.
 
 By following this strategy, your end-users will experience uninterrupted observability, and your on-call engineers will not suffer from missing alerts or broken dashboards during the transition.
 
@@ -194,7 +201,7 @@ By following this strategy, your end-users will experience uninterrupted observa
 
 While the dual-write strategy established in Section 25.2 handles real-time incoming metrics, your historical context—the weeks, months, or years of data sitting on your legacy Prometheus disks—remains inaccessible to your new VictoriaMetrics cluster. To achieve a complete migration, you must backfill this historical data.
 
-VictoriaMetrics provides an official, purpose-built command-line utility for this exact task: `vmctl`. 
+VictoriaMetrics provides an official, purpose-built command-line utility for this exact task: `vmctl`.
 
 ### The Architecture of `vmctl`
 
@@ -224,6 +231,7 @@ curl -XPOST http://localhost:9090/api/v1/admin/tsdb/snapshot
 ```
 
 The response will look like this:
+
 ```json
 {
   "status": "success",
@@ -248,7 +256,8 @@ Here is the standard command structure for a Prometheus-to-VictoriaMetrics backf
 ```
 
 #### Avoiding Overlap with Dual-Write
-Because you initiated the `remote_write` phase (Section 25.2) *before* triggering this backfill, your snapshot will contain a few hours or days of data that VictoriaMetrics already possesses. 
+
+Because you initiated the `remote_write` phase (Section 25.2) *before* triggering this backfill, your snapshot will contain a few hours or days of data that VictoriaMetrics already possesses.
 
 While VictoriaMetrics handles duplicate data gracefully (ignoring exact duplicates), you can save network bandwidth and processing time by telling `vmctl` to stop reading data at the exact timestamp you enabled `remote_write`.
 
@@ -265,11 +274,12 @@ Migrating terabytes of historical data can take time. `vmctl` is heavily multith
 
 To optimize the transfer, adjust the following parameters:
 
-*   **`--prom-concurrency`**: Controls the number of concurrent readers scanning the Prometheus snapshot. Increase this if you are reading from fast NVMe SSDs (e.g., `--prom-concurrency=4`).
-*   **`--vm-concurrency`**: Controls the number of concurrent workers sending data to VictoriaMetrics. This should generally match or slightly exceed the `prom-concurrency` (e.g., `--vm-concurrency=4`).
-*   **`--vm-batch-size`**: Dictates the maximum number of samples sent per single HTTP request. The default is `200000`. Increasing this can improve throughput on high-latency networks but uses more RAM on both `vmctl` and the VictoriaMetrics node.
+* **`--prom-concurrency`**: Controls the number of concurrent readers scanning the Prometheus snapshot. Increase this if you are reading from fast NVMe SSDs (e.g., `--prom-concurrency=4`).
+* **`--vm-concurrency`**: Controls the number of concurrent workers sending data to VictoriaMetrics. This should generally match or slightly exceed the `prom-concurrency` (e.g., `--vm-concurrency=4`).
+* **`--vm-batch-size`**: Dictates the maximum number of samples sent per single HTTP request. The default is `200000`. Increasing this can improve throughput on high-latency networks but uses more RAM on both `vmctl` and the VictoriaMetrics node.
 
 **A Production-Ready Command:**
+
 ```bash
 ./vmctl prometheus \
   --prom-snapshot=/var/lib/prometheus/snapshots/20231027... \
@@ -282,17 +292,17 @@ To optimize the transfer, adjust the following parameters:
 
 ### Handling Failures and Interruptions
 
-Network blips happen, and occasionally a `vmctl` process might crash or be killed by an Out-Of-Memory (OOM) killer on constrained machines. 
+Network blips happen, and occasionally a `vmctl` process might crash or be killed by an Out-Of-Memory (OOM) killer on constrained machines.
 
-**Do not panic.** You do not need to start over from scratch. 
+**Do not panic.** You do not need to start over from scratch.
 
-Because VictoriaMetrics utilizes an advanced time series storage engine (Chapter 10), inserting identical data points multiple times is idempotent. If `vmctl` fails halfway through a migration, simply restart the command. 
+Because VictoriaMetrics utilizes an advanced time series storage engine (Chapter 10), inserting identical data points multiple times is idempotent. If `vmctl` fails halfway through a migration, simply restart the command.
 
 VictoriaMetrics will ingest the data again, recognize the identical timestamps and values, and seamlessly deduplicate them during the background merge process, ensuring your historical data remains perfectly intact and mathematically accurate.
 
 ## 25.4 Validating Data Integrity Post-Migration
 
-The final step in any migration strategy is proving that the data safely arrived and remains mathematically accurate. A successful run of `vmctl` simply means the data was transferred; it does not automatically guarantee that your dashboards will render identically. 
+The final step in any migration strategy is proving that the data safely arrived and remains mathematically accurate. A successful run of `vmctl` simply means the data was transferred; it does not automatically guarantee that your dashboards will render identically.
 
 Validating time series data across two different storage engines requires a strategic approach. You cannot simply compare the raw disk size or the total byte count, as VictoriaMetrics utilizes significantly heavier compression than Prometheus (as discussed in Chapter 10). Instead, validation must focus on query behavior, data shape, and mathematical equivalency.
 
@@ -300,18 +310,18 @@ Validating time series data across two different storage engines requires a stra
 
 Before running any validation queries, you must understand a critical architectural difference between Prometheus and VictoriaMetrics that often causes immediate panic during post-migration checks: **background deduplication**.
 
-If your `remote_write` dual-write phase (Section 25.2) overlapped with the end-time of your `vmctl` backfill (Section 25.3), VictoriaMetrics will have received the same data points twice for that overlapping time window. 
+If your `remote_write` dual-write phase (Section 25.2) overlapped with the end-time of your `vmctl` backfill (Section 25.3), VictoriaMetrics will have received the same data points twice for that overlapping time window.
 
-*   **Prometheus** will store duplicate samples if they arrive via different mechanisms or if blocks overlap without compaction.
-*   **VictoriaMetrics** automatically identifies identical timestamps and values for the same time series and discards the duplicates during its background merge process.
+* **Prometheus** will store duplicate samples if they arrive via different mechanisms or if blocks overlap without compaction.
+* **VictoriaMetrics** automatically identifies identical timestamps and values for the same time series and discards the duplicates during its background merge process.
 
 Therefore, if you run a query to count the *absolute number of raw samples* over the migrated time window, **VictoriaMetrics will likely report a lower number than Prometheus.** This is not data loss; it is data hygiene. Validation must rely on aggregated values and functions, not raw sample counts.
 
 ### 2. Macro-Level Mathematical Validation
 
-The most effective way to validate data integrity is to run heavy aggregations over a specific historical time window on both systems and compare the results. 
+The most effective way to validate data integrity is to run heavy aggregations over a specific historical time window on both systems and compare the results.
 
-Select 3 to 5 critical, high-volume metrics (e.g., CPU usage, HTTP request rates, network throughput) and execute the following PromQL queries against both the legacy Prometheus snapshot and the new VictoriaMetrics cluster. 
+Select 3 to 5 critical, high-volume metrics (e.g., CPU usage, HTTP request rates, network throughput) and execute the following PromQL queries against both the legacy Prometheus snapshot and the new VictoriaMetrics cluster.
 
 *Be sure to use an absolute time range in your query tool (e.g., exactly `2023-10-01T00:00:00Z` to `2023-10-25T00:00:00Z`) so both systems evaluate the exact same data window.*
 
@@ -330,7 +340,7 @@ avg(rate(node_cpu_seconds_total[30d]))
 
 ### 3. Visual Validation via Dual-Datasource Dashboards
 
-While mathematical validation ensures the data is accurate at a macro level, visual validation ensures the data *shape* is correct at a micro level. 
+While mathematical validation ensures the data is accurate at a macro level, visual validation ensures the data *shape* is correct at a micro level.
 
 In Grafana, create a temporary "Validation Dashboard." For your most critical panels, utilize Grafana's mixed data source capability to plot the Prometheus data and the VictoriaMetrics data on the exact same graph.
 
@@ -355,9 +365,9 @@ Historical data is validated, but what about real-time alerting? If you followed
 
 Before decommissioning Prometheus, compare the active alert states:
 
-1.  Query the Prometheus `/api/v1/alerts` endpoint.
-2.  Query the `vmalert` `/api/v1/alerts` endpoint.
-3.  Compare the output.
+1. Query the Prometheus `/api/v1/alerts` endpoint.
+2. Query the `vmalert` `/api/v1/alerts` endpoint.
+3. Compare the output.
 
 ```json
 // Example comparison checklist:
@@ -390,6 +400,6 @@ Create a final validation matrix to document the success of the migration before
 
 Once this matrix is complete and all checks pass, your migration is officially successful. You have safely transitioned from Prometheus to VictoriaMetrics, resulting in lower resource consumption, faster queries, and a highly scalable, long-term observability platform.
 
-With your migration complete and data validated, you have officially mastered VictoriaMetrics. From understanding the core architecture and ingestion protocols to scaling distributed clusters and tuning performance, this book has equipped you with the knowledge to build a robust, cost-effective observability platform. 
+With your migration complete and data validated, you have officially mastered VictoriaMetrics. From understanding the core architecture and ingestion protocols to scaling distributed clusters and tuning performance, this book has equipped you with the knowledge to build a robust, cost-effective observability platform.
 
 VictoriaMetrics is designed to get out of your way, allowing you to focus on the insights your metrics provide rather than fighting the database that stores them. As the ecosystem continues to evolve, your foundational understanding will serve as a reliable anchor. Congratulations on completing *VictoriaMetrics: The Definitive Guide*. Happy monitoring!

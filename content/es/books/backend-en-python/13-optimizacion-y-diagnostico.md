@@ -27,7 +27,7 @@ Antes de entrar en las herramientas, es crucial entender el flujo de trabajo cor
 
 ### Micro-perfilado con `timeit`
 
-Cuando necesitas comparar la velocidad de pequeñas porciones de código (por ejemplo, evaluar si una comprensión de lista es más rápida que usar `map` para un caso específico), `timeit` es la herramienta adecuada. 
+Cuando necesitas comparar la velocidad de pequeñas porciones de código (por ejemplo, evaluar si una comprensión de lista es más rápida que usar `map` para un caso específico), `timeit` es la herramienta adecuada.
 
 `timeit` aísla el código, lo ejecuta miles o millones de veces para obtener un promedio estadísticamente significativo y, lo más importante, **deshabilita temporalmente el recolector de basura (Garbage Collector)** de Python. Esto evita que la recolección de memoria interfiera con la medición del tiempo de CPU.
 
@@ -44,6 +44,7 @@ $ python -m timeit "'-'.join(str(n) for n in range(100))"
 $ python -m timeit "'-'.join([str(n) for n in range(100)])"
 20000 loops, best of 5: 12.1 usec per loop
 ```
+
 *El resultado muestra que la comprensión de lista es ligeramente más rápida porque genera todos los elementos en memoria en C antes de pasarlos a `join`, evitando la sobrecarga del protocolo de iteración en cada paso.*
 
 **Uso programático**
@@ -83,7 +84,7 @@ Puedes perfilar un script completo sin modificar ni una sola línea de código f
 python -m cProfile mi_script.py
 ```
 
-Esto imprimirá un informe en la consola al finalizar la ejecución. Sin embargo, para aplicaciones reales, el output puede ser masivo e ilegible. 
+Esto imprimirá un informe en la consola al finalizar la ejecución. Sin embargo, para aplicaciones reales, el output puede ser masivo e ilegible.
 
 **Entendiendo el output de cProfile**
 
@@ -140,7 +141,7 @@ p.print_callers('procesar_datos')
 
 ## 13.2 Análisis de consumo de memoria
 
-Optimizar el uso de la CPU es solo la mitad de la batalla en el desarrollo de software de alto rendimiento. En Python, la memoria suele ser un recurso mucho más crítico e impredecible. Debido a que Python gestiona la memoria automáticamente mediante **conteo de referencias (reference counting)** y un **recolector de basura cíclico (cyclic garbage collector)**, es muy fácil desarrollar una falsa sensación de seguridad. 
+Optimizar el uso de la CPU es solo la mitad de la batalla en el desarrollo de software de alto rendimiento. En Python, la memoria suele ser un recurso mucho más crítico e impredecible. Debido a que Python gestiona la memoria automáticamente mediante **conteo de referencias (reference counting)** y un **recolector de basura cíclico (cyclic garbage collector)**, es muy fácil desarrollar una falsa sensación de seguridad.
 
 Aunque técnicamente Python no tiene "fugas de memoria" (memory leaks) en el sentido tradicional de C o C++ (memoria asignada y nunca liberada), sí sufre de **retención de objetos indeseada**. Esto ocurre cuando mantenemos referencias vivas a objetos que ya no necesitamos (por ejemplo, en variables globales, cachés sin límite o clausuras), impidiendo que el recolector de basura los destruya.
 
@@ -148,7 +149,7 @@ Para diagnosticar estos problemas, pasamos del análisis de tiempo al análisis 
 
 ### Nivel 1: Inspección superficial con `sys.getsizeof`
 
-La forma más básica de medir la memoria es preguntar cuánto ocupa un objeto individual. La biblioteca estándar proporciona `sys.getsizeof()`. 
+La forma más básica de medir la memoria es preguntar cuánto ocupa un objeto individual. La biblioteca estándar proporciona `sys.getsizeof()`.
 
 Sin embargo, tiene una trampa fundamental que todo desarrollador Senior debe conocer: **solo mide el tamaño del contenedor, no el de sus elementos referenciados**.
 
@@ -219,12 +220,14 @@ tracemalloc.stop()
 ```
 
 **Salida típica:**
+
 ```text
 --- Top 3 líneas que consumieron más memoria ---
 mi_script.py:7: size=8543 KiB (+8543 KiB), count=100000 (+100000), average=87 B
 mi_script.py:6: size=800 KiB (+800 KiB), count=1 (+1), average=800 KiB
 ...
 ```
+
 *Aquí vemos claramente que la línea 7 (`global_cache.append(...)`) es la responsable de asignar más de 8 MB de memoria.*
 
 ### Nivel 3: Perfilado línea por línea con `memory_profiler`
@@ -257,6 +260,7 @@ python -m memory_profiler script_memoria.py
 ```
 
 **Salida generada:**
+
 ```text
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
@@ -269,6 +273,7 @@ Line #    Mem usage    Increment  Occurrences   Line Contents
 ```
 
 **Interpretación de columnas:**
+
 * **Mem usage:** Memoria total utilizada por el proceso de Python en ese instante.
 * **Increment:** Cuánta memoria **añadió (o liberó)** esa línea de código en particular respecto a la línea anterior. Aquí reside el valor real de la herramienta.
 
@@ -278,13 +283,13 @@ Dominar estas herramientas te permitirá transicionar de decir *"mi aplicación 
 
 ## 13.3 Estructuras de datos de alto rendimiento del módulo `collections`
 
-Como descubrimos en las secciones anteriores utilizando `cProfile` y `tracemalloc`, identificar un cuello de botella en CPU o memoria es solo el primer paso. Frecuentemente, el problema raíz no es una lógica de negocio ineficiente, sino el uso de la estructura de datos incorrecta para el patrón de acceso requerido. 
+Como descubrimos en las secciones anteriores utilizando `cProfile` y `tracemalloc`, identificar un cuello de botella en CPU o memoria es solo el primer paso. Frecuentemente, el problema raíz no es una lógica de negocio ineficiente, sino el uso de la estructura de datos incorrecta para el patrón de acceso requerido.
 
 Python proporciona listas, diccionarios, tuplas y sets nativos que son extremadamente versátiles. Sin embargo, para operaciones altamente especializadas, la biblioteca estándar ofrece el módulo `collections`, escrito e hiperoptimizado en C. En esta sección nos centraremos en las dos estructuras más críticas para el rendimiento: `deque` y `Counter`.
 
 ### `deque`: La solución al problema de O(n) en listas
 
-En CPython, la estructura nativa `list` no es una lista enlazada como su nombre podría sugerir, sino un **arreglo dinámico de punteros** contiguos en memoria. 
+En CPython, la estructura nativa `list` no es una lista enlazada como su nombre podría sugerir, sino un **arreglo dinámico de punteros** contiguos en memoria.
 
 Esto hace que acceder a un elemento por su índice (`lista[50]`) o añadir al final (`lista.append(x)`) sea rapidísimo, con una complejidad temporal de **O(1)**. Sin embargo, ¿qué ocurre si necesitamos insertar o eliminar el primer elemento (`lista.insert(0, x)` o `lista.pop(0)`)?
 
@@ -378,7 +383,7 @@ print(frecuencias)
 **Características de alto rendimiento de Counter:**
 
 1. **`most_common(n)`:** En lugar de ordenar todo el diccionario por sus valores (lo que costaría **O(n log n)**), este método utiliza una estructura de datos de Montículo (Heap, a través del módulo `heapq`) por debajo, logrando extraer los top N elementos de forma mucho más eficiente.
-   
+
    ```python
    # Obtener los 2 códigos más frecuentes
    print(frecuencias.most_common(2))

@@ -59,6 +59,7 @@ class TestAplicarDescuento(unittest.TestCase):
 ```
 
 **Ventajas y Desventajas:**
+
 * **Pros:** Viene "fuera de la caja". Su estructura basada en clases agrupa lógicamente las pruebas y los métodos `setUp` y `tearDown` facilitan la preparación del entorno.
 * **Contras:** Requiere mucho código repetitivo (*boilerplate*). Además, sus métodos de aserción (`assertEqual`, `assertTrue`, `assertDictEqual`) obligan a memorizar una API específica (estilo *camelCase*, poco "pythónico") en lugar de usar los operadores estándar del lenguaje.
 
@@ -110,7 +111,7 @@ En este ejemplo, `pytest` reportará 4 pruebas distintas. Si la segunda falla, l
 
 ### ¿Cuál elegir?
 
-Hoy en día, la respuesta en el 95% de los proyectos profesionales es **`pytest`**. Su legibilidad, su potente ecosistema de plugins (como `pytest-cov` para cobertura o `pytest-asyncio` para probar el código asíncrono que vimos en el Capítulo 12) y su sistema de *Fixtures* lo hacen superior. 
+Hoy en día, la respuesta en el 95% de los proyectos profesionales es **`pytest`**. Su legibilidad, su potente ecosistema de plugins (como `pytest-cov` para cobertura o `pytest-asyncio` para probar el código asíncrono que vimos en el Capítulo 12) y su sistema de *Fixtures* lo hacen superior.
 
 Sin embargo, comprender `unittest` es fundamental porque te encontrarás con muchas bases de código *legacy* que lo utilizan. Afortunadamente, `pytest` es compatible hacia atrás y puede ejecutar suites de pruebas escritas en `unittest` sin necesidad de modificarlas.
 
@@ -244,7 +245,7 @@ def test_insertar_usuario(base_de_datos_en_memoria):
 
 ### Advertencia de Arquitectura: El peligro del "Over-mocking"
 
-A nivel senior, es fundamental entender los riesgos del aislamiento excesivo. Si *mockeas* demasiadas dependencias, terminas escribiendo pruebas tautológicas: pruebas que solo validan que tus mocks hacen lo que tú les dijiste que hicieran, perdiendo cualquier relación con el comportamiento real del software. 
+A nivel senior, es fundamental entender los riesgos del aislamiento excesivo. Si *mockeas* demasiadas dependencias, terminas escribiendo pruebas tautológicas: pruebas que solo validan que tus mocks hacen lo que tú les dijiste que hicieran, perdiendo cualquier relación con el comportamiento real del software.
 
 La regla general de la **Arquitectura Limpia** para el testing es: mockea las barreras de I/O (red, disco, bases de datos), pero usa instancias reales para las clases y funciones de dominio internas.
 
@@ -252,7 +253,7 @@ La regla general de la **Arquitectura Limpia** para el testing es: mockea las ba
 
 ## 17.3 Pruebas de integración, E2E y análisis de cobertura (Coverage)
 
-En las secciones anteriores aprendimos a aislar nuestro código mediante *mocks* y a probarlo en pequeñas burbujas unitarias. Sin embargo, existe un viejo chiste en la ingeniería de software: *"Las pruebas unitarias pasaron, pero el sistema no funciona. Es como probar que el paracaídas abre en tierra, pero olvidar probar si se puede atar al saltador"*. 
+En las secciones anteriores aprendimos a aislar nuestro código mediante *mocks* y a probarlo en pequeñas burbujas unitarias. Sin embargo, existe un viejo chiste en la ingeniería de software: *"Las pruebas unitarias pasaron, pero el sistema no funciona. Es como probar que el paracaídas abre en tierra, pero olvidar probar si se puede atar al saltador"*.
 
 Para asegurar que nuestro software funciona en el mundo real, necesitamos escalar en la **Pirámide de Pruebas** (Test Pyramid):
 
@@ -389,11 +390,13 @@ También puedes generar un reporte HTML (`--cov-report=html`) que crea un sitio 
 Existe un antipatrón común en equipos inmaduros: forzar un 100% de cobertura en sus pipelines de CI/CD. Esto casi siempre conduce a aplicar la **Ley de Goodhart**: *"Cuando una medida se convierte en un objetivo, deja de ser una buena medida"*.
 
 Obligar el 100% de cobertura provoca:
+
 1. Pruebas inútiles (*tautológicas*) que solo buscan pasar por la línea de código sin afirmar nada (`assert True`).
 2. Desgaste del equipo probando *getters*, *setters* y configuraciones triviales.
 3. Código altamente *mockeado* que es frágil ante refactorizaciones estructurales.
 
 **Mejores prácticas para la Cobertura:**
+
 * Utiliza la cobertura para **descubrir áreas críticas sin probar**, no como una métrica de desempeño del desarrollador.
 * Un objetivo saludable en la industria oscila entre el **75% y el 85%**.
 * En el 15%-25% restante suele estar el código de "pegamento", scripts de configuración de despliegue y validaciones exóticas de infraestructura, cuyo costo de probar aislando dependencias es mayor que el beneficio obtenido. Enfoca tus esfuerzos en probar exhaustivamente la **lógica de negocio central** (Domain).
@@ -419,23 +422,26 @@ Aunque a menudo se mencionan juntos, cumplen roles distintos y complementarios:
 
 Durante muchos años, el estándar de la industria en Python se basó en una combinación de varias herramientas:
 
-1.  **Black (El formateador "inquebrantable"):** Se autodenomina *The uncompromising code formatter*. Black toma las decisiones por ti. Al adoptarlo, el equipo acepta ceder el control sobre el micro-formato a cambio de tener una base de código 100% uniforme.
+1. **Black (El formateador "inquebrantable"):** Se autodenomina *The uncompromising code formatter*. Black toma las decisiones por ti. Al adoptarlo, el equipo acepta ceder el control sobre el micro-formato a cambio de tener una base de código 100% uniforme.
 
     *Código antes de Black:*
+
     ```python
     def funcion_fea( arg1,arg2,
         arg3):
       return { 'a': 1,'b':2}
     ```
+
     *Código después de `black .`:*
+
     ```python
     def funcion_fea(arg1, arg2, arg3):
         return {"a": 1, "b": 2}
     ```
 
-2.  **Flake8 (El linter clásico):** Es un envoltorio que combina varias herramientas de análisis estático (`PyFlakes`, `pycodestyle` y `mccabe`). Si escribes `import os` pero nunca usas el módulo, Flake8 hará fallar tu construcción advirtiéndote: `F401 'os' imported but unused`.
+2. **Flake8 (El linter clásico):** Es un envoltorio que combina varias herramientas de análisis estático (`PyFlakes`, `pycodestyle` y `mccabe`). Si escribes `import os` pero nunca usas el módulo, Flake8 hará fallar tu construcción advirtiéndote: `F401 'os' imported but unused`.
 
-3.  **isort:** Una herramienta adicional puramente dedicada a ordenar alfabéticamente y agrupar tus importaciones (biblioteca estándar, dependencias de terceros, módulos locales).
+3. **isort:** Una herramienta adicional puramente dedicada a ordenar alfabéticamente y agrupar tus importaciones (biblioteca estándar, dependencias de terceros, módulos locales).
 
 ---
 

@@ -4,7 +4,7 @@
 
 Imagina por un momento que tienes un superpoder. Imagina que, a la hora del almuerzo, en lugar de tener que cocinar, comprar comida o pedir algo a domicilio, pudieras simplemente salir al patio, extender los brazos hacia el sol, tomar una gran bocanada de aire y, mágicamente, tu estómago se llenara y tu cuerpo se llenara de energía. Suena a ciencia ficción, ¿verdad? Sin embargo, este "superpoder" es una realidad cotidiana en nuestro planeta. Es la base de casi toda la vida en la Tierra y ocurre en silencio a nuestro alrededor: en las hojas de los árboles, en el césped de los parques y en las algas microscópicas de los océanos.
 
-Este asombroso proceso se llama fotosíntesis. 
+Este asombroso proceso se llama fotosíntesis.
 
 En la sección "Biología para Mortales" creemos que la ciencia no debe ser un secreto guardado bajo llave en laboratorios oscuros, sino una historia fascinante que todos podemos entender. Hoy vamos a desentrañar el misterio de la fotosíntesis. Vamos a viajar al interior de una hoja para descubrir las fábricas microscópicas donde la luz del sol se transforma en la comida que sostiene al mundo y en el aire que respiramos. Prepárate para descubrir cómo la naturaleza realiza, todos los días, el truco de magia más importante del universo conocido.
 
@@ -14,21 +14,22 @@ Para entender la magnitud de la fotosíntesis, primero debemos dividir el mundo 
 
 Nosotros, los seres humanos, al igual que los perros, los peces, los insectos y los hongos, somos heterótrofos (del griego *heteros* = otro, y *trophos* = alimento). Esto significa que somos esencialmente "consumidores". No podemos fabricar nuestra propia comida; tenemos que consumir a otros organismos para obtener la energía y los materiales necesarios para sobrevivir. Si comemos una ensalada, estamos consumiendo plantas. Si comemos un trozo de carne, estamos consumiendo un animal que, a su vez, comió plantas (o comió a otro animal que comió plantas).
 
-Las plantas, las algas y algunas bacterias son autótrofos (del griego *autos* = por sí mismo). Son los "productores" del mundo. Tienen la increíble capacidad de tomar componentes inorgánicos simples (como el agua y un gas del aire) y, utilizando la energía del sol, construir moléculas orgánicas complejas y llenas de energía (azúcares). 
+Las plantas, las algas y algunas bacterias son autótrofos (del griego *autos* = por sí mismo). Son los "productores" del mundo. Tienen la increíble capacidad de tomar componentes inorgánicos simples (como el agua y un gas del aire) y, utilizando la energía del sol, construir moléculas orgánicas complejas y llenas de energía (azúcares).
 
 La **fotosíntesis** (del griego *photo* = luz, y *synthesis* = composición o ensamblaje) es precisamente ese proceso. Es la fabricación de alimento utilizando luz.
 
 ¿Por qué debería importarte? Por dos razones fundamentales que mantienen tu cuerpo vivo en este exacto segundo:
-1.  **Toda tu energía proviene del sol:** Cada caloría que quemas al caminar, pensar o latir tu corazón provino originalmente de una planta que atrapó la luz solar. La fotosíntesis es el puente que permite que la energía de una estrella a 150 millones de kilómetros de distancia entre en la red de la vida terrestre.
-2.  **El oxígeno que respiras es un "desecho":** Cuando las plantas fabrican su alimento, liberan oxígeno como un subproducto. Ese gas invisible, sin el cual moriríamos en minutos, es el resultado directo de la fotosíntesis. 
+
+1. **Toda tu energía proviene del sol:** Cada caloría que quemas al caminar, pensar o latir tu corazón provino originalmente de una planta que atrapó la luz solar. La fotosíntesis es el puente que permite que la energía de una estrella a 150 millones de kilómetros de distancia entre en la red de la vida terrestre.
+2. **El oxígeno que respiras es un "desecho":** Cuando las plantas fabrican su alimento, liberan oxígeno como un subproducto. Ese gas invisible, sin el cual moriríamos en minutos, es el resultado directo de la fotosíntesis.
 
 ## 2. Los ingredientes del éxito: ¿Qué necesita una planta?
 
 Para preparar un pastel, necesitas una receta y los ingredientes correctos. Las plantas son excelentes pasteleras bioquímicas, pero su lista de ingredientes es sorprendentemente breve. Para realizar la fotosíntesis, una planta solo necesita tres cosas fundamentales:
 
-*   **Luz solar (La fuente de energía):** Al igual que un teléfono necesita electricidad para cargar su batería, la fotosíntesis necesita energía para forzar a las moléculas a unirse. Esta energía proviene de los fotones (partículas de luz) emitidos por el sol.
-*   **Agua ($H_2O$ - El proveedor de electrones):** Las plantas absorben el agua del suelo a través de sus raíces. Desde allí, el agua viaja hacia arriba por el tallo a través de un intrincado sistema de "tuberías" microscópicas llamado *xilema*, hasta llegar a las hojas.
-*   **Dióxido de carbono ($CO_2$ - El material de construcción):** Este es un gas presente en nuestra atmósfera (y el mismo que nosotros exhalamos al respirar). El $CO_2$ entra a la planta a través de poros microscópicos en la superficie de las hojas llamados **estomas**. Imagina los estomas como pequeñas bocas que se abren para tomar aire y se cierran para evitar que la planta se seque.
+* **Luz solar (La fuente de energía):** Al igual que un teléfono necesita electricidad para cargar su batería, la fotosíntesis necesita energía para forzar a las moléculas a unirse. Esta energía proviene de los fotones (partículas de luz) emitidos por el sol.
+* **Agua ($H_2O$ - El proveedor de electrones):** Las plantas absorben el agua del suelo a través de sus raíces. Desde allí, el agua viaja hacia arriba por el tallo a través de un intrincado sistema de "tuberías" microscópicas llamado *xilema*, hasta llegar a las hojas.
+* **Dióxido de carbono ($CO_2$ - El material de construcción):** Este es un gas presente en nuestra atmósfera (y el mismo que nosotros exhalamos al respirar). El $CO_2$ entra a la planta a través de poros microscópicos en la superficie de las hojas llamados **estomas**. Imagina los estomas como pequeñas bocas que se abren para tomar aire y se cierran para evitar que la planta se seque.
 
 ## 3. El escenario principal: El cloroplasto y la clorofila
 
@@ -55,7 +56,7 @@ Estructura de un Cloroplasto
                                  (Aquí ocurre la Fase Luminosa de la fotosíntesis).
 ```
 
-El secreto del éxito del cloroplasto, y la razón por la que el mundo natural es predominantemente verde, reside en los tilacoides. Allí se encuentra un pigmento extraordinario llamado **clorofila**. 
+El secreto del éxito del cloroplasto, y la razón por la que el mundo natural es predominantemente verde, reside en los tilacoides. Allí se encuentra un pigmento extraordinario llamado **clorofila**.
 
 La clorofila es una molécula experta en absorber la luz visible, específicamente las longitudes de onda correspondientes al rojo y al azul. Sin embargo, no es buena absorbiendo la luz verde; en cambio, la refleja. Esa luz verde rebotada es la que llega a nuestros ojos, y es por eso que percibimos a las plantas de ese color. La clorofila es la "antena" que atrapa la energía solar para iniciar todo el proceso.
 
@@ -80,17 +81,18 @@ El objetivo principal de la fase luminosa no es fabricar azúcar todavía. Su ob
 
 El proceso paso a paso (simplificado) es el siguiente:
 
-1.  **El golpe de luz:** Los fotones de luz solar impactan en la hoja y son absorbidos por la clorofila presente en los tilacoides. Esto excita a los electrones de la clorofila, dándoles una enorme cantidad de energía (imagina un niño que acaba de comer mucho azúcar y empieza a rebotar por las paredes).
-2.  **La ruptura del agua (Fotólisis):** Para reponer esos electrones excitados que se han "escapado", la planta hace algo brutal: usa parte de la energía solar para romper una molécula de agua ($H_2O$). Al romper el agua, la planta se queda con los electrones y los protones que necesita, y descarta el átomo de oxígeno. Como a los átomos de oxígeno no les gusta estar solos, se unen en pares ($O_2$) y son expulsados de la hoja a través de los estomas. **¡Acabas de respirar gracias a este exacto paso!**
-3.  **La cadena de transporte y la carga de baterías:** Los electrones llenos de energía viajan a través de una serie de proteínas en la membrana del tilacoide, en un proceso llamado *cadena de transporte de electrones*. A medida que saltan de proteína en proteína, liberan energía.
-4.  **Productos finales:** Esa energía liberada se utiliza para fabricar dos moléculas cruciales que actuarán como "baterías" y "camiones de reparto" para el siguiente acto:
-    *   **ATP (Trifosfato de adenosina):** La moneda energética universal de las células. Es pura energía química lista para usarse.
-    *   **NADPH:** Un transportador de electrones. Es como un camión cargado de electrones y protones de hidrógeno que se necesitarán más tarde para construir el azúcar.
+1. **El golpe de luz:** Los fotones de luz solar impactan en la hoja y son absorbidos por la clorofila presente en los tilacoides. Esto excita a los electrones de la clorofila, dándoles una enorme cantidad de energía (imagina un niño que acaba de comer mucho azúcar y empieza a rebotar por las paredes).
+2. **La ruptura del agua (Fotólisis):** Para reponer esos electrones excitados que se han "escapado", la planta hace algo brutal: usa parte de la energía solar para romper una molécula de agua ($H_2O$). Al romper el agua, la planta se queda con los electrones y los protones que necesita, y descarta el átomo de oxígeno. Como a los átomos de oxígeno no les gusta estar solos, se unen en pares ($O_2$) y son expulsados de la hoja a través de los estomas. **¡Acabas de respirar gracias a este exacto paso!**
+3. **La cadena de transporte y la carga de baterías:** Los electrones llenos de energía viajan a través de una serie de proteínas en la membrana del tilacoide, en un proceso llamado *cadena de transporte de electrones*. A medida que saltan de proteína en proteína, liberan energía.
+4. **Productos finales:** Esa energía liberada se utiliza para fabricar dos moléculas cruciales que actuarán como "baterías" y "camiones de reparto" para el siguiente acto:
+    * **ATP (Trifosfato de adenosina):** La moneda energética universal de las células. Es pura energía química lista para usarse.
+    * **NADPH:** Un transportador de electrones. Es como un camión cargado de electrones y protones de hidrógeno que se necesitarán más tarde para construir el azúcar.
 
 **Resumen de la Fase Luminosa:**
-*   **Entra:** Luz solar y Agua ($H_2O$).
-*   **Sale:** Oxígeno ($O_2$) como desecho.
-*   **Se produce para uso interno:** ATP (energía) y NADPH (electrones).
+
+* **Entra:** Luz solar y Agua ($H_2O$).
+* **Sale:** Oxígeno ($O_2$) como desecho.
+* **Se produce para uso interno:** ATP (energía) y NADPH (electrones).
 
 ## 6. Acto II: La Fase Oscura o Ciclo de Calvin (El ensamblaje del azúcar)
 
@@ -100,10 +102,10 @@ Este proceso ocurre en el **estroma**, el fluido acuoso que rodea a los tilacoid
 
 Aquí es donde ocurre la verdadera "síntesis" de la fotosíntesis. Es como una línea de ensamblaje en una fábrica de alta tecnología.
 
-1.  **La captura del carbono (Fijación):** El dióxido de carbono ($CO_2$) que entró a la hoja desde el aire es atrapado por una enzima con un nombre muy peculiar: **RuBisCO**. Esta enzima es, muy probablemente, la proteína más abundante en todo el planeta Tierra. Su trabajo es tomar el gas $CO_2$ inorgánico y "fijarlo" a una molécula orgánica que ya está dentro de la planta. Imagina que el $CO_2$ es un fantasma gaseoso y la RuBisCO le da un cuerpo físico y sólido.
-2.  **La inversión de energía:** La nueva molécula formada es muy inestable. Aquí es donde entran las baterías cargadas en el Acto I. La planta gasta su ATP (energía) y vacía los camiones de NADPH (electrones) para modificar químicamente esta molécula.
-3.  **La creación del azúcar:** Después de varias reacciones bioquímicas complejas (como piezas en una línea de montaje que se van ensamblando y cortando), la fábrica libera un producto valiosísimo: una pequeña molécula de azúcar de tres carbonos llamada G3P.
-4.  **El reciclaje:** El ciclo se llama "ciclo" porque parte del material debe ser reciclado para que la enzima RuBisCO pueda seguir atrapando más $CO_2$ y el proceso nunca se detenga.
+1. **La captura del carbono (Fijación):** El dióxido de carbono ($CO_2$) que entró a la hoja desde el aire es atrapado por una enzima con un nombre muy peculiar: **RuBisCO**. Esta enzima es, muy probablemente, la proteína más abundante en todo el planeta Tierra. Su trabajo es tomar el gas $CO_2$ inorgánico y "fijarlo" a una molécula orgánica que ya está dentro de la planta. Imagina que el $CO_2$ es un fantasma gaseoso y la RuBisCO le da un cuerpo físico y sólido.
+2. **La inversión de energía:** La nueva molécula formada es muy inestable. Aquí es donde entran las baterías cargadas en el Acto I. La planta gasta su ATP (energía) y vacía los camiones de NADPH (electrones) para modificar químicamente esta molécula.
+3. **La creación del azúcar:** Después de varias reacciones bioquímicas complejas (como piezas en una línea de montaje que se van ensamblando y cortando), la fábrica libera un producto valiosísimo: una pequeña molécula de azúcar de tres carbonos llamada G3P.
+4. **El reciclaje:** El ciclo se llama "ciclo" porque parte del material debe ser reciclado para que la enzima RuBisCO pueda seguir atrapando más $CO_2$ y el proceso nunca se detenga.
 
 Si bien el producto inmediato del Ciclo de Calvin es esta pequeña molécula (G3P), la planta la utiliza rápidamente como un bloque de construcción (como un ladrillo de Lego) para armar **Glucosa** ($C_6H_{12}O_6$), que es un azúcar mucho más grande y estable.
 
@@ -129,9 +131,9 @@ Flujo simplificado del Ciclo de Calvin
 
 ¡Misión cumplida! La planta ha fabricado glucosa. Pero, ¿ahora qué? A diferencia de nosotros, que comemos para sentirnos satisfechos, la planta utiliza esta glucosa producida con tanto esfuerzo para propósitos muy específicos que le permiten vivir y crecer. La glucosa tiene tres destinos principales:
 
-*   **Combustible inmediato (Respiración Celular):** ¡Sorpresa! Las plantas también respiran. Al igual que nosotros, las células vegetales necesitan energía constante para sobrevivir, reparar daños y realizar sus funciones vitales. Las plantas toman una parte de la glucosa que acaban de fabricar y, en otro orgánulo llamado mitocondria, la "queman" usando oxígeno para liberar la energía que contiene.
-*   **Material de construcción (Celulosa):** Si tomas el tronco de un árbol, una rama, o muerdes el tallo crujiente de un apio, estás sintiendo la rigidez de la celulosa. La celulosa es un carbohidrato complejo formado por miles de moléculas de glucosa unidas como en una cadena irrompible. Es el material estructural principal que permite a las plantas crecer hacia arriba, desafiando la gravedad, para alcanzar más luz solar.
-*   **Almacenamiento a largo plazo (Almidón):** Las plantas saben que no siempre habrá un sol brillante. Puede haber días nublados, inviernos oscuros o sequías. Por lo tanto, no gastan toda su comida a la vez. Enlazan moléculas de glucosa formando **almidón** y lo guardan en sus raíces, tallos o semillas. Cuando comes una patata (papa), zanahorias o granos de trigo, estás consumiendo la despensa de energía a largo plazo que la planta guardó para sí misma (o para sus futuros hijos, en el caso de las semillas).
+* **Combustible inmediato (Respiración Celular):** ¡Sorpresa! Las plantas también respiran. Al igual que nosotros, las células vegetales necesitan energía constante para sobrevivir, reparar daños y realizar sus funciones vitales. Las plantas toman una parte de la glucosa que acaban de fabricar y, en otro orgánulo llamado mitocondria, la "queman" usando oxígeno para liberar la energía que contiene.
+* **Material de construcción (Celulosa):** Si tomas el tronco de un árbol, una rama, o muerdes el tallo crujiente de un apio, estás sintiendo la rigidez de la celulosa. La celulosa es un carbohidrato complejo formado por miles de moléculas de glucosa unidas como en una cadena irrompible. Es el material estructural principal que permite a las plantas crecer hacia arriba, desafiando la gravedad, para alcanzar más luz solar.
+* **Almacenamiento a largo plazo (Almidón):** Las plantas saben que no siempre habrá un sol brillante. Puede haber días nublados, inviernos oscuros o sequías. Por lo tanto, no gastan toda su comida a la vez. Enlazan moléculas de glucosa formando **almidón** y lo guardan en sus raíces, tallos o semillas. Cuando comes una patata (papa), zanahorias o granos de trigo, estás consumiendo la despensa de energía a largo plazo que la planta guardó para sí misma (o para sus futuros hijos, en el caso de las semillas).
 
 ## 8. Más allá del verde: Adaptaciones asombrosas (C3, C4 y CAM)
 
@@ -160,7 +162,7 @@ A estas alturas, está claro que la fotosíntesis es vital para alimentar a la b
 
 Recordemos la ecuación: la fotosíntesis consume Dióxido de Carbono ($CO_2$). El $CO_2$ es el principal gas de efecto invernadero responsable del calentamiento global antropogénico (causado por el ser humano). Al quemar combustibles fósiles (que, por cierto, son plantas muertas prehistóricas llenas de energía solar almacenada hace millones de años), estamos devolviendo a la atmósfera grandes cantidades de $CO_2$.
 
-Los bosques tropicales como el Amazonas, los inmensos bosques boreales del norte, y sobre todo, el **fitoplancton** microscópico que flota en nuestros océanos, actúan como enormes "sumideros de carbono". A través de la fotosíntesis, inhalan millones de toneladas de este gas de efecto invernadero cada año, ayudando a enfriar el planeta y mantener la estabilidad del clima. 
+Los bosques tropicales como el Amazonas, los inmensos bosques boreales del norte, y sobre todo, el **fitoplancton** microscópico que flota en nuestros océanos, actúan como enormes "sumideros de carbono". A través de la fotosíntesis, inhalan millones de toneladas de este gas de efecto invernadero cada año, ayudando a enfriar el planeta y mantener la estabilidad del clima.
 
 De hecho, aunque solemos pensar en los árboles como los pulmones del mundo, se estima que entre el 50% y el 85% del oxígeno de nuestra atmósfera proviene de la fotosíntesis realizada por algas y cianobacterias marinas. Océanos saludables significan un planeta que respira.
 
@@ -168,8 +170,8 @@ Por lo tanto, la deforestación y la contaminación oceánica no solo destruyen 
 
 ## Conclusión: El milagro verde
 
-La próxima vez que camines por un parque, salgas a tu balcón a ver tus macetas, o simplemente te comas una ensalada, detente a pensar en el silencioso e incesante trabajo que está ocurriendo frente a tus ojos. 
+La próxima vez que camines por un parque, salgas a tu balcón a ver tus macetas, o simplemente te comas una ensalada, detente a pensar en el silencioso e incesante trabajo que está ocurriendo frente a tus ojos.
 
-Dentro de cada hoja verde hay fábricas microscópicas trabajando a toda máquina. Están atrapando la luz de una estrella lejana, rompiendo moléculas de agua con precisión quirúrgica, y extrayendo un gas invisible del aire para tejer la materia misma de la vida. La fotosíntesis no es solo un tema de biología de la escuela secundaria; es el proceso bioquímico supremo. Es la magia verde que permite que la Tierra no sea una roca estéril flotando en el vacío, sino un planeta azul y verde, rebosante de vida, energía y oxígeno. 
+Dentro de cada hoja verde hay fábricas microscópicas trabajando a toda máquina. Están atrapando la luz de una estrella lejana, rompiendo moléculas de agua con precisión quirúrgica, y extrayendo un gas invisible del aire para tejer la materia misma de la vida. La fotosíntesis no es solo un tema de biología de la escuela secundaria; es el proceso bioquímico supremo. Es la magia verde que permite que la Tierra no sea una roca estéril flotando en el vacío, sino un planeta azul y verde, rebosante de vida, energía y oxígeno.
 
 Somos, en última instancia, criaturas hechas de luz solar transformada, todo gracias al humilde y asombroso trabajo de las plantas.

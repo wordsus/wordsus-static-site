@@ -6,7 +6,7 @@ Having established the semantic differences between mutable and immutable data m
 
 ### The Tuple: Exact Sizing and Static Allocation
 
-Because a tuple is immutable, CPython knows precisely how much memory it will require for the entirety of its lifecycle at the exact moment of its creation. It allocates a single, fixed-size memory block. 
+Because a tuple is immutable, CPython knows precisely how much memory it will require for the entirety of its lifecycle at the exact moment of its creation. It allocates a single, fixed-size memory block.
 
 This block contains the standard Python object header (reference count and type pointer), the size of the tuple (number of elements), and the array of pointers referencing the actual elements.
 
@@ -55,13 +55,13 @@ List Memory Layout (Dynamic):
                          +-----------------+
 ```
 
-When you append a fourth item, CPython simply places the pointer in the pre-allocated `NULL` slot and increments the list's internal size counter. No new system memory allocation is required. 
+When you append a fourth item, CPython simply places the pointer in the pre-allocated `NULL` slot and increments the list's internal size counter. No new system memory allocation is required.
 
 #### The Growth Pattern
 
 When the number of elements matches the allocated capacity and you attempt to append another item, CPython is forced to resize the array. The growth factor is designed to balance memory waste with reallocation overhead. While some languages double the array size (a 2x growth factor), Python uses a more conservative mathematical progression.
 
-When a list resizes, the new allocated size is roughly $\approx 1.125 \times \text{new\_size} + 3$ (or $+ 6$ for larger lists). 
+When a list resizes, the new allocated size is roughly $\approx 1.125 \times \text{new\_size} + 3$ (or $+ 6$ for larger lists).
 
 We can observe this over-allocation behavior in real-time using the `sys.getsizeof()` function, which returns the size of the container in bytes (not including the size of the objects the pointers reference).
 
@@ -78,6 +78,7 @@ for i in range(1, 10):
 ```
 
 **Output on a standard 64-bit CPython build:**
+
 ```text
 Empty list: 56 bytes
 Size with 1 items: 88 bytes   <-- Jump! (Allocated space for ~4 items)
@@ -103,8 +104,8 @@ print(f"Size of 9-item tuple: {sys.getsizeof(static_tuple)} bytes")
 
 For a backend engineer, choosing between a list and a tuple is not just a matter of "preventing accidental modification." It is a memory architecture decision.
 
-1.  **Read-Only Data Loads:** When fetching records from a database or loading configuration parameters that will be iterated over but not modified, using tuples minimizes your application's memory footprint. This becomes highly visible when dealing with millions of records in memory.
-2.  **Pre-sizing Lists:** If you know exactly how many items you are going to put into a list, appending them one by one in a loop triggers unnecessary resizing operations. Using a list comprehension (which we will cover in Chapter 5.2 alongside dictionaries) or multiplying a list `[None] * size` allows CPython to allocate the properly sized array upfront, bypassing the overhead of incremental growth.
+1. **Read-Only Data Loads:** When fetching records from a database or loading configuration parameters that will be iterated over but not modified, using tuples minimizes your application's memory footprint. This becomes highly visible when dealing with millions of records in memory.
+2. **Pre-sizing Lists:** If you know exactly how many items you are going to put into a list, appending them one by one in a loop triggers unnecessary resizing operations. Using a list comprehension (which we will cover in Chapter 5.2 alongside dictionaries) or multiplying a list `[None] * size` allows CPython to allocate the properly sized array upfront, bypassing the overhead of incremental growth.
 
 ## 5.2 Hash Tables, Dictionaries, and Dictionary Comprehensions
 
@@ -112,7 +113,7 @@ While lists and tuples provide ordered sequence storage, backend development fre
 
 ### The Mechanics of Hash Tables
 
-At its core, a hash table is a sparse array that maps keys to values using a **hash function**. When you insert a key-value pair into a dictionary, Python does not simply append it to the end of a list. Instead, it processes the key through its built-in `hash()` function. 
+At its core, a hash table is a sparse array that maps keys to values using a **hash function**. When you insert a key-value pair into a dictionary, Python does not simply append it to the end of a list. Instead, it processes the key through its built-in `hash()` function.
 
 This function takes a Python object and returns a fixed-size integer. CPython then applies a modulo operation (`hash_value % array_size`) to this integer to calculate a specific index within the underlying C array where the value should be stored.
 
@@ -130,9 +131,10 @@ This mathematical addressing allows dictionaries to achieve an average time comp
 
 #### The Hashability Requirement
 
-Because the exact memory location is derived mathematically from the key's value, **dictionary keys must be hashable**. In Python, an object is hashable if its hash value never changes during its lifetime. 
+Because the exact memory location is derived mathematically from the key's value, **dictionary keys must be hashable**. In Python, an object is hashable if its hash value never changes during its lifetime.
 
 This perfectly bridges back to our discussion on memory allocation in Section 5.1:
+
 * **Immutables are hashable:** Strings, integers, and tuples (containing only immutable elements) can be hashed.
 * **Mutables are unhashable:** Lists, dictionaries, and sets cannot be used as dictionary keys. If you could mutate a list used as a key, its hash value would change, and Python would look for it in the wrong memory bucket, effectively losing the data.
 
@@ -141,8 +143,9 @@ This perfectly bridges back to our discussion on memory allocation in Section 5.
 Prior to Python 3.6, dictionaries were implemented as standard sparse hash tables. This meant the internal C array had to maintain empty slots to reduce "hash collisions" (when two keys resolve to the same index). This sparse nature made dictionaries highly memory-intensive and completely unordered; iterating over a dictionary yielded items in random, unpredictable sequences.
 
 Modern CPython implements a **compact dictionary architecture**. The data structure is now split into two separate arrays:
-1.  **A sparse indices array:** A small array that acts as the actual hash table, containing only integers that point to indices in the second array.
-2.  **A dense entries array:** A traditional, contiguous array that stores the actual `[hash, key, value]` records in the exact order they were inserted.
+
+1. **A sparse indices array:** A small array that acts as the actual hash table, containing only integers that point to indices in the second array.
+2. **A dense entries array:** A traditional, contiguous array that stores the actual `[hash, key, value]` records in the exact order they were inserted.
 
 ```text
 Compact Dictionary Layout (Python 3.6+):
@@ -165,12 +168,13 @@ Inserting: 'a': 1, 'b': 2
 ```
 
 This structural evolution achieved two massive wins for Python engineers:
-1.  **Memory Efficiency:** The memory footprint of dictionaries shrank by roughly 20% to 25%, as the bulky `[hash, key, value]` structs are no longer scattered across a heavily empty sparse array.
-2.  **Guaranteed Insertion Order:** Because the entries are appended sequentially to the dense array, dictionaries now natively preserve the order in which items are added. This eliminated the need for `collections.OrderedDict` in most standard backend scenarios.
+
+1. **Memory Efficiency:** The memory footprint of dictionaries shrank by roughly 20% to 25%, as the bulky `[hash, key, value]` structs are no longer scattered across a heavily empty sparse array.
+2. **Guaranteed Insertion Order:** Because the entries are appended sequentially to the dense array, dictionaries now natively preserve the order in which items are added. This eliminated the need for `collections.OrderedDict` in most standard backend scenarios.
 
 ### Dictionary Comprehensions
 
-Just as list comprehensions provide a highly optimized, readable way to generate lists, **dictionary comprehensions** allow for the dynamic, declarative construction of dictionaries. 
+Just as list comprehensions provide a highly optimized, readable way to generate lists, **dictionary comprehensions** allow for the dynamic, declarative construction of dictionaries.
 
 Instead of instantiating an empty dictionary and populating it within a `for` loop, you can define the key-value transformation directly. The syntax mirrors list comprehensions but utilizes curly braces `{}` and the `key: value` colon delimiter.
 
@@ -213,7 +217,7 @@ Under the hood, comprehensions execute largely in C, bypassing the overhead of r
 
 ## 5.3 Mathematical Set Operations and `frozenset` Implementations
 
-Having explored the mechanics of hash tables in the context of dictionaries, we can now examine their most mathematically pure application in Python: the `set`. If a dictionary is a hash table mapping keys to values, a set is simply a hash table consisting *only* of keys. 
+Having explored the mechanics of hash tables in the context of dictionaries, we can now examine their most mathematically pure application in Python: the `set`. If a dictionary is a hash table mapping keys to values, a set is simply a hash table consisting *only* of keys.
 
 This architecture guarantees two fundamental properties: all elements within a set must be unique, and all elements must be hashable. By discarding the overhead of storing values and maintaining insertion order (unlike modern dictionaries, standard sets remain unordered), sets provide a highly optimized structure specifically designed for rapid membership testing and mathematical operations.
 
@@ -386,7 +390,7 @@ This bypasses the CPython interpreter's need to repeatedly execute `KeyError` ch
 
 Python’s standard list is a dynamic array (Section 5.1). This makes appending to the right side highly efficient ($O(1)$ amortized). However, inserting or removing items from the left side (`list.insert(0, val)` or `list.pop(0)`) is disastrous for performance. It requires shifting every single subsequent element in the array one position to the right or left, resulting in $O(n)$ time complexity.
 
-The `deque` (pronounced "deck") is implemented in C as a doubly-linked list of fixed-size memory blocks. 
+The `deque` (pronounced "deck") is implemented in C as a doubly-linked list of fixed-size memory blocks.
 
 ```text
 Deque Internal Architecture (Block-Linked List):

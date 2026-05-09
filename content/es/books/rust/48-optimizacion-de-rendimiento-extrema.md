@@ -12,7 +12,7 @@ Inventados por Brendan Gregg, los Flamegraphs son visualizaciones de datos de pe
 
 ### ¿Cómo funciona el Profiling por Muestreo?
 
-El ecosistema de Rust utiliza profiling por muestreo (*sampling*). En lugar de inyectar código de rastreo en cada función (lo cual añadiría un *overhead* masivo que alteraría los resultados), herramientas como `perf` (en Linux) o `DTrace` (en macOS) interrumpen la ejecución del programa a una frecuencia fija (por ejemplo, 99 veces por segundo) y toman una "fotografía" del *stack trace* actual. 
+El ecosistema de Rust utiliza profiling por muestreo (*sampling*). En lugar de inyectar código de rastreo en cada función (lo cual añadiría un *overhead* masivo que alteraría los resultados), herramientas como `perf` (en Linux) o `DTrace` (en macOS) interrumpen la ejecución del programa a una frecuencia fija (por ejemplo, 99 veces por segundo) y toman una "fotografía" del *stack trace* actual.
 
 Al finalizar, estas herramientas agregan miles de fotografías. Si la función `calcular_hash_md5` aparece en el 60% de las muestras, puedes deducir con confianza que esa función está consumiendo aproximadamente el 60% del tiempo de CPU.
 
@@ -80,12 +80,12 @@ Tras unos segundos, el programa finalizará y generará un archivo `flamegraph.s
 
 Al abrir el archivo `.svg` en tu navegador, verás una estructura similar a llamas de fuego invertidas o estalactitas. Para interpretar este gráfico correctamente, debes entender sus tres ejes:
 
-1.  **Eje Y (Profundidad de la Pila):** Representa el *Call Stack*. La base (abajo) es el punto de entrada de tu programa (`main`, o el runtime de Tokio). A medida que subes, ves las funciones hijas siendo llamadas. Si la caja `A` está debajo de la caja `B`, significa que `A` llamó a `B`.
-2.  **Eje X (Población, no Tiempo):** **Este es el error más común.** El eje X *no* muestra el paso del tiempo de izquierda a derecha. El eje X es una agrupación alfabética del tiempo total consolidado. El ancho de una caja es proporcional a la cantidad total de tiempo de CPU que esa función (y sus hijas) consumió.
-3.  **Color:** Generalmente es aleatorio dentro de una paleta cálida para diferenciar bloques visualmente. No indica "temperatura" o "peligro".
+1. **Eje Y (Profundidad de la Pila):** Representa el *Call Stack*. La base (abajo) es el punto de entrada de tu programa (`main`, o el runtime de Tokio). A medida que subes, ves las funciones hijas siendo llamadas. Si la caja `A` está debajo de la caja `B`, significa que `A` llamó a `B`.
+2. **Eje X (Población, no Tiempo):** **Este es el error más común.** El eje X *no* muestra el paso del tiempo de izquierda a derecha. El eje X es una agrupación alfabética del tiempo total consolidado. El ancho de una caja es proporcional a la cantidad total de tiempo de CPU que esa función (y sus hijas) consumió.
+3. **Color:** Generalmente es aleatorio dentro de una paleta cálida para diferenciar bloques visualmente. No indica "temperatura" o "peligro".
 
-**El secreto para leer un Flamegraph:** Busca las **mesetas más anchas en la parte superior** del gráfico. 
-Una función que es muy ancha y no tiene nada encima de ella significa que la CPU estaba ejecutando *directamente* sus instrucciones (es decir, estaba "en la cima" del stack trace cuando se tomó la muestra). 
+**El secreto para leer un Flamegraph:** Busca las **mesetas más anchas en la parte superior** del gráfico.
+Una función que es muy ancha y no tiene nada encima de ella significa que la CPU estaba ejecutando *directamente* sus instrucciones (es decir, estaba "en la cima" del stack trace cuando se tomó la muestra).
 
 En nuestro ejemplo de código anterior, al ver el Flamegraph notarás rápidamente que una enorme porción del ancho total se gasta en métodos internos de asignación de memoria (`malloc` o equivalente) llamados por `to_lowercase()` y `replace()`, las cuales crean nuevas `String` en el *heap* en cada iteración del loop. Esto confirma que el cuello de botella no es el algoritmo del `HashSet`, sino la constante re-asignación de memoria.
 
@@ -112,9 +112,10 @@ Aquí es donde nos topamos con el "Muro de la Memoria" (Memory Wall) y entra en 
 En la programación orientada a objetos (OOP) tradicional, nos enseñan a agrupar los datos conceptualmente. Si tenemos un usuario, creamos un `struct Usuario` con todos sus campos. Esto es excelente para la mente humana, pero terrible para la CPU.
 
 Para entender por qué, debes saber cómo lee datos tu procesador:
-1.  La CPU es órdenes de magnitud más rápida que la memoria RAM.
-2.  Cuando la CPU necesita leer una variable de la RAM, no trae solo esa variable. Trae un bloque entero de memoria adyacente llamado **Línea de Caché (Cache Line)**, que típicamente es de 64 bytes, y lo guarda en la memoria caché L1/L2/L3 ultrarrápida del procesador.
-3.  **Localidad Espacial:** Si el siguiente dato que tu programa necesita está dentro de esos mismos 64 bytes (es adyacente en memoria), la CPU lo lee instantáneamente de la caché (*Cache Hit*). Si está en otra parte de la RAM, la CPU debe detenerse y esperar cientos de ciclos de reloj para traer otra línea de caché (*Cache Miss*).
+
+1. La CPU es órdenes de magnitud más rápida que la memoria RAM.
+2. Cuando la CPU necesita leer una variable de la RAM, no trae solo esa variable. Trae un bloque entero de memoria adyacente llamado **Línea de Caché (Cache Line)**, que típicamente es de 64 bytes, y lo guarda en la memoria caché L1/L2/L3 ultrarrápida del procesador.
+3. **Localidad Espacial:** Si el siguiente dato que tu programa necesita está dentro de esos mismos 64 bytes (es adyacente en memoria), la CPU lo lee instantáneamente de la caché (*Cache Hit*). Si está en otra parte de la RAM, la CPU debe detenerse y esperar cientos de ciclos de reloj para traer otra línea de caché (*Cache Miss*).
 
 Un *Cache Miss* en un bucle "caliente" (hot loop) en el backend (por ejemplo, procesando un millón de transacciones financieras) arruinará tu latencia.
 
@@ -169,7 +170,7 @@ fn sumar_exitosas_soa(datos: &TransaccionesSoA) -> f64 {
 }
 ```
 
-**La ventaja de SoA:** En Rust, un `Vec<bool>` empaqueta los booleanos de forma contigua. Una sola línea de caché de 64 bytes puede cargar **64 booleanos de golpe**. El procesador puede iterar por el arreglo de `exitosas` a la velocidad de la luz, identificando los índices correctos y luego saltando directamente a los `montos` correspondientes (que también están contiguos entre sí). 
+**La ventaja de SoA:** En Rust, un `Vec<bool>` empaqueta los booleanos de forma contigua. Una sola línea de caché de 64 bytes puede cargar **64 booleanos de golpe**. El procesador puede iterar por el arreglo de `exitosas` a la velocidad de la luz, identificando los índices correctos y luego saltando directamente a los `montos` correspondientes (que también están contiguos entre sí).
 
 El Diseño Orientado a Datos (DOD) dicta exactamente esto: **diseña tus estructuras de datos pensando en los algoritmos que las van a transformar, no en las entidades del mundo real que representan.**
 
@@ -266,13 +267,13 @@ El equipo de Rust está estabilizando la API de *Portable SIMD*, que proporciona
 
 El uso de SIMD no se limita a cálculos matemáticos. En el ecosistema backend moderno, SIMD está revolucionando las operaciones de I/O y parsing:
 
-  * **Parsing de JSON:** Librerías como `simd-json` utilizan instrucciones vectoriales para buscar comillas dobles, escapes de barra invertida y estructuras en gigabytes de JSON a velocidades que saturan el ancho de banda del disco, siendo magnitudes más rápidas que `serde_json` estándar.
-  * **Búsqueda de Strings y Regex:** Buscar patrones de bytes en grandes \<i\>buffers\</i\> de red.
-  * **Criptografía:** Generación de hashes (SHA-256) o cifrado de tráfico TLS en bloque.
+* **Parsing de JSON:** Librerías como `simd-json` utilizan instrucciones vectoriales para buscar comillas dobles, escapes de barra invertida y estructuras en gigabytes de JSON a velocidades que saturan el ancho de banda del disco, siendo magnitudes más rápidas que `serde_json` estándar.
+* **Búsqueda de Strings y Regex:** Buscar patrones de bytes en grandes \<i\>buffers\</i\> de red.
+* **Criptografía:** Generación de hashes (SHA-256) o cifrado de tráfico TLS en bloque.
 
 ## 48.4 Zero-copy parsing e I/O con herramientas como `nom`
 
-Hemos optimizado el uso de la caché y exprimido cada ciclo de reloj con instrucciones SIMD. Nuestra CPU es ahora una máquina devoradora de datos perfectamente engrasada. Sin embargo, en el desarrollo backend, los datos casi siempre provienen del exterior (una petición HTTP, un socket TCP, un archivo en disco). 
+Hemos optimizado el uso de la caché y exprimido cada ciclo de reloj con instrucciones SIMD. Nuestra CPU es ahora una máquina devoradora de datos perfectamente engrasada. Sin embargo, en el desarrollo backend, los datos casi siempre provienen del exterior (una petición HTTP, un socket TCP, un archivo en disco).
 
 Si tomamos un *buffer* de red que acaba de llegar y comenzamos a copiar sus fragmentos a nuevas `String` o `Vec<u8>` en el *heap* para poder procesarlos, todo el esfuerzo anterior habrá sido en vano. El cuello de botella ya no será el procesamiento matemático, sino el ancho de banda de la memoria y el *allocator*.
 
@@ -288,7 +289,7 @@ En muchos lenguajes, cuando extraes una subcadena de un texto mayor, el lenguaje
 
 ### Parseo Extremo con `nom`
 
-Para implementar parsers Zero-copy de forma ergonómica, el ecosistema de Rust cuenta con **`nom`**, una librería de *parser combinators* (combinadores de parsers) orientada a bytes. 
+Para implementar parsers Zero-copy de forma ergonómica, el ecosistema de Rust cuenta con **`nom`**, una librería de *parser combinators* (combinadores de parsers) orientada a bytes.
 
 En lugar de escribir expresiones regulares complejas (que suelen ser lentas y hacer copias) o bucles manuales de manipulación de punteros, `nom` te permite construir parsers complejos combinando parsers más pequeños y simples de forma declarativa.
 
@@ -357,6 +358,7 @@ En el código anterior, los campos `method`, `path` y `version` apuntan directam
 El concepto de Zero-copy en backend no se detiene en el *parsing*. También aplica a cómo movemos datos entre el disco y la red.
 
 Imagina que tu servidor Rust debe enviar una imagen de 50MB a un cliente. El enfoque ingenuo (*naive*) sería:
+
 1. Leer la imagen del disco a la memoria RAM de tu aplicación (Kernel Space -> User Space).
 2. Escribir esos bytes desde la memoria de tu aplicación al socket de red (User Space -> Kernel Space).
 
@@ -376,8 +378,8 @@ Esta es la frontera final de la ingeniería de software concurrente, y el compil
 
 ## Despedida del libro
 
-Has recorrido el camino desde el primer `Hello World` hasta las fronteras de la optimización extrema. En este capítulo final, has aprendido que la verdadera eficiencia en Rust nace de entender el hardware: desde la visualización con **Flamegraphs** hasta el aprovechamiento de **SIMD** y la gestión de memoria **Zero-copy**. 
+Has recorrido el camino desde el primer `Hello World` hasta las fronteras de la optimización extrema. En este capítulo final, has aprendido que la verdadera eficiencia en Rust nace de entender el hardware: desde la visualización con **Flamegraphs** hasta el aprovechamiento de **SIMD** y la gestión de memoria **Zero-copy**.
 
-Este libro no es solo una guía técnica; es un manifiesto sobre cómo construir sistemas backend que sean, a la vez, inquebrantables y veloces. Rust te otorga el control total sin sacrificar la seguridad, permitiéndote diseñar el futuro de la infraestructura digital. Ahora, el código es tuyo: construye con audacia, mide con rigor y nunca dejes de optimizar. 
+Este libro no es solo una guía técnica; es un manifiesto sobre cómo construir sistemas backend que sean, a la vez, inquebrantables y veloces. Rust te otorga el control total sin sacrificar la seguridad, permitiéndote diseñar el futuro de la infraestructura digital. Ahora, el código es tuyo: construye con audacia, mide con rigor y nunca dejes de optimizar.
 
 **¡Feliz hacking!**

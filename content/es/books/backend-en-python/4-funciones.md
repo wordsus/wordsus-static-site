@@ -6,7 +6,7 @@ A medida que tus scripts en Python crecen más allá de unas pocas líneas, la n
 
 ### Definición de Funciones
 
-En Python, una función se define utilizando la palabra clave `def`, seguida del nombre de la función, paréntesis y dos puntos. El bloque de código que constituye el cuerpo de la función debe estar indentado. 
+En Python, una función se define utilizando la palabra clave `def`, seguida del nombre de la función, paréntesis y dos puntos. El bloque de código que constituye el cuerpo de la función debe estar indentado.
 
 Por convención (PEP 8), los nombres de las funciones deben escribirse en minúsculas, separando las palabras con guiones bajos (`snake_case`).
 
@@ -23,7 +23,7 @@ saludar_usuario("Ana")  # Llamada a la función
 
 ### El valor de Retorno (`return`)
 
-A diferencia de otros lenguajes que hacen una distinción estricta entre procedimientos (que no devuelven nada) y funciones (que sí lo hacen), en Python **todas las funciones retornan un valor**. 
+A diferencia de otros lenguajes que hacen una distinción estricta entre procedimientos (que no devuelven nada) y funciones (que sí lo hacen), en Python **todas las funciones retornan un valor**.
 
 Utilizamos la palabra clave `return` para enviar un resultado de vuelta al punto donde la función fue invocada. En el momento en que Python ejecuta un `return`, la función termina inmediatamente.
 
@@ -79,10 +79,10 @@ Jerarquía de Búsqueda de Variables (Desde adentro hacia afuera)
 
 Veamos cómo funciona esto en la práctica. Cuando Python encuentra una variable, buscará en el siguiente orden:
 
-1.  **L (Local):** Primero busca dentro del cuerpo de la función actual.
-2.  **E (Enclosing):** Si no la encuentra, busca en el ámbito local de cualquier función contenedora (si estamos dentro de una función anidada).
-3.  **G (Global):** Si sigue sin encontrarla, busca a nivel global en el módulo actual.
-4.  **B (Built-in):** Como último recurso, busca en el módulo predeterminado de Python (donde viven funciones como `print`, `sum`, o `len`). Si no está aquí, lanza un `NameError`.
+1. **L (Local):** Primero busca dentro del cuerpo de la función actual.
+2. **E (Enclosing):** Si no la encuentra, busca en el ámbito local de cualquier función contenedora (si estamos dentro de una función anidada).
+3. **G (Global):** Si sigue sin encontrarla, busca a nivel global en el módulo actual.
+4. **B (Built-in):** Como último recurso, busca en el módulo predeterminado de Python (donde viven funciones como `print`, `sum`, o `len`). Si no está aquí, lanza un `NameError`.
 
 A continuación, un ejemplo que ilustra los cuatro niveles:
 
@@ -105,11 +105,12 @@ def funcion_externa():
 
 funcion_externa() # Imprimirá "Local"
 ```
+
 *Si comentas la línea `mensaje = "Local"`, imprimirá "Enclosing". Si también comentas `mensaje = "Enclosing"`, imprimirá "Global".*
 
 ### Modificando el Alcance: `global` y `nonlocal`
 
-Por defecto, si intentas asignar un valor a una variable dentro de una función, Python asume que quieres crear una **nueva variable local**, incluso si ya existe una variable global con ese nombre. 
+Por defecto, si intentas asignar un valor a una variable dentro de una función, Python asume que quieres crear una **nueva variable local**, incluso si ya existe una variable global con ese nombre.
 
 Para modificar variables en ámbitos superiores, Python provee dos palabras clave:
 
@@ -173,6 +174,7 @@ def saludar(nombre, saludo="Hola"):
 > print(agregar_empleado("Ana"))    # Salida: ['Ana']
 > print(agregar_empleado("Carlos")) # Salida: ['Ana', 'Carlos'] - ¡Cuidado!
 > ```
+>
 > **¿Por qué ocurre esto?** Los valores por defecto se evalúan *una sola vez* cuando la función es definida (al momento de importar o leer el script), no cada vez que se llama. La lista `equipo` es la misma instancia en memoria para todas las llamadas.
 >
 > ```python
@@ -186,7 +188,7 @@ def saludar(nombre, saludo="Hola"):
 
 ### `*args`: Empaquetado de Posicionales Arbitrarios
 
-A veces no sabemos de antemano cuántos argumentos posicionales recibirá nuestra función. Python nos permite capturar un número arbitrario de ellos utilizando un asterisco (`*`) antes del nombre del parámetro. 
+A veces no sabemos de antemano cuántos argumentos posicionales recibirá nuestra función. Python nos permite capturar un número arbitrario de ellos utilizando un asterisco (`*`) antes del nombre del parámetro.
 
 Por convención universal se utiliza la palabra `args` (arguments), pero la verdadera magia reside en el asterisco. Python tomará todos los argumentos posicionales adicionales y los empaquetará en una **tupla**.
 
@@ -312,7 +314,7 @@ print(resultado)  # Salida: 25
 
 ### ¿Cuándo usar Lambdas realmente? (El parámetro `key`)
 
-El verdadero poder de las funciones lambda no reside en llamarlas directamente, sino en **pasarlas como argumentos a otras funciones** que esperan recibir una función (comportamiento). 
+El verdadero poder de las funciones lambda no reside en llamarlas directamente, sino en **pasarlas como argumentos a otras funciones** que esperan recibir una función (comportamiento).
 
 El caso de uso más idiomático y frecuente en código de producción es como argumento `key` en funciones de ordenamiento como `sorted()`, `min()` o `max()`.
 
@@ -340,30 +342,32 @@ Para mantener la simplicidad, Python impone restricciones severas a las lambdas 
 
 1. **Una sola expresión, ninguna declaración (statement):** El cuerpo de una lambda debe ser algo que pueda ser evaluado a un valor. No puedes usar declaraciones como `if`, `while`, `for`, `pass`, `return` o asignaciones de variables (`x = 5`).
 2. **Excepción con el operador ternario:** Aunque no puedes usar un bloque `if` tradicional, sí puedes usar una expresión condicional (operador ternario) porque, al fin y al cabo, se evalúa a un valor.
+
    ```python
    # Válido: Es una expresión
    clasificar = lambda nota: "Aprobado" if nota >= 60 else "Reprobado"
    ```
+
 3. **Depuración opaca:** Si ocurre una excepción dentro de una lambda, el *Traceback* (rastreo de pila) de Python mostrará el error originado en `<lambda>`, sin el nombre descriptivo que tendría una función `def`. Esto dificulta encontrar errores si abusas de ellas.
 
 > **Nota de Arquitectura (De Cero a Senior): El Antipatrón de Asignación y Abuso**
-> 
+>
 > Un error de estilo muy común entre desarrolladores junior es asignar una lambda a una variable para usarla como una función normal.
-> 
+>
 > ```python
 > # ❌ MALA PRÁCTICA (Viola la guía de estilo PEP 8)
 > multiplicar = lambda a, b: a * b
 > resultado = multiplicar(5, 4)
 > ```
-> 
+>
 > **¿Por qué está mal?** El propósito principal de una lambda es ser *anónima*. Al asignarla a un identificador (`multiplicar`), anulas ese propósito. Además, si esa función falla, el error dirá `<lambda>`, no `multiplicar`. **La regla de oro del PEP 8 es:** Si vas a darle un nombre a la función, usa `def`.
-> 
+>
 > ```python
 > # ✅ BUENA PRÁCTICA
 > def multiplicar(a, b):
 >     return a * b
 > ```
-> 
+>
 > Como desarrollador Senior, también debes evitar anidar lambdas o crear lambdas excesivamente largas que requieran saltos de línea con `\`. Si tienes que detenerte a descifrar qué hace una lambda de tres líneas disfrazada de una, refactorízala inmediatamente a una función con `def`. La legibilidad siempre vence a la brevedad.
 
 ## 4.4 Funciones de primera clase y de orden superior (map, filter, reduce)
@@ -374,9 +378,10 @@ Esta premisa nos lleva directamente al concepto de funciones de "primera clase" 
 
 ### Funciones de Primera Clase (First-Class Citizens)
 
-Decir que las funciones son "ciudadanos de primera clase" significa que el lenguaje las trata exactamente igual que a cualquier otro tipo de dato (como un entero, una cadena o una lista). 
+Decir que las funciones son "ciudadanos de primera clase" significa que el lenguaje las trata exactamente igual que a cualquier otro tipo de dato (como un entero, una cadena o una lista).
 
 En la práctica, esto implica que puedes:
+
 1. Asignar funciones a variables.
 2. Almacenarlas en estructuras de datos (como listas o diccionarios).
 3. Pasarlas como argumentos a otras funciones.
@@ -400,7 +405,7 @@ print(operaciones["mayusculas"]("peligro")) # Salida: PELIGRO!!!
 
 ### Funciones de Orden Superior (Higher-Order Functions)
 
-Una función de orden superior es simplemente una función que cumple con al menos una de estas dos condiciones: **acepta una o más funciones como argumentos**, o **devuelve una función como resultado**. 
+Una función de orden superior es simplemente una función que cumple con al menos una de estas dos condiciones: **acepta una o más funciones como argumentos**, o **devuelve una función como resultado**.
 
 El uso de funciones lambda (que vimos en la sección anterior) como argumentos de `sorted()` es un ejemplo perfecto de esto. Históricamente, el paradigma funcional nos ha legado tres funciones de orden superior clásicas para el procesamiento de colecciones: `map`, `filter` y `reduce`.
 
@@ -421,6 +426,7 @@ precios_finales = list(map(lambda p: p * 1.21, precios_sin_iva))
 
 print(precios_finales) # Salida: [121.0, 302.5, 60.5]
 ```
+
 *Detalle técnico:* En Python 3, `map` evalúa de forma perezosa (*lazy evaluation*). No calcula todos los valores de golpe, sino a medida que se los pides. Esto es altamente eficiente en memoria para grandes volúmenes de datos.
 
 ---
@@ -477,11 +483,11 @@ print(f"Total de ventas: ${total}") # Salida: Total de ventas: $1150
 ---
 
 > **Nota de Arquitectura (De Cero a Senior): El estilo "Pythonic" vs Funcional**
-> 
+>
 > Aunque dominar `map`, `filter` y `reduce` es vital para entender la programación funcional y leer código heredado, en el ecosistema Python moderno **se prefiere fuertemente el uso de Comprensiones (Comprehensions)** para las operaciones de mapeo y filtrado.
-> 
+>
 > El propio creador de Python, Guido van Rossum, ha expresado que las comprensiones son más legibles y, a menudo, ligeramente más rápidas.
-> 
+>
 > ```python
 > numeros = [1, 2, 3, 4, 5]
 > 
@@ -491,5 +497,5 @@ print(f"Total de ventas: ${total}") # Salida: Total de ventas: $1150
 > # Estilo Pythonic (List Comprehension): ¡Mucho más claro!
 > pares_al_cuadrado = [x**2 for x in numeros if x % 2 == 0]
 > ```
-> 
+>
 > En cuanto a `reduce()`, su uso se desaconseja a menos que la lógica de acumulación sea compleja. Para sumas, es mejor usar la función nativa `sum()`. Para verificar condiciones en toda la lista, es mejor usar `all()` o `any()`. Un desarrollador Senior sabe que el mejor código no es el que usa las funciones más abstractas, sino el que resulta más fácil de leer para el resto del equipo.

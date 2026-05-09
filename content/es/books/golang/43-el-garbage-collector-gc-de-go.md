@@ -2,7 +2,7 @@ La gestión automática de memoria es uno de los pilares que permite a Go equili
 
 ## 43.1. Arquitectura del recolector de basura: Concurrent Mark and Sweep
 
-A diferencia de lenguajes como Java o C#, que tradicionalmente confían en recolectores de basura generacionales (dividiendo el *Heap* en generaciones jóvenes y viejas) y compactadores, Go ha optado por un enfoque distinto: un **Recolector de Basura (GC) concurrente, no generacional y no compactador, basado en el algoritmo de Marcado y Barrido (Mark and Sweep)**. 
+A diferencia de lenguajes como Java o C#, que tradicionalmente confían en recolectores de basura generacionales (dividiendo el *Heap* en generaciones jóvenes y viejas) y compactadores, Go ha optado por un enfoque distinto: un **Recolector de Basura (GC) concurrente, no generacional y no compactador, basado en el algoritmo de Marcado y Barrido (Mark and Sweep)**.
 
 La decisión de no hacer un GC generacional se fundamenta en una característica intrínseca del compilador de Go que exploraremos en el Capítulo 44: el **Análisis de Escape**. Dado que el compilador de Go es excepcionalmente eficiente alojando objetos de vida corta en el *Stack* (los cuales se limpian automáticamente al retornar la función), el *Heap* de Go contiene principalmente objetos de vida larga. Esto anula gran parte de la ventaja de recolectar generaciones jóvenes.
 
@@ -18,10 +18,10 @@ El núcleo del motor de marcado de Go es el algoritmo tricolor. Este modelo conc
 
 El proceso de marcado sigue un bucle continuo hasta vaciar la lista de objetos grises:
 
-1.  Se extrae un objeto de la lista de grises y se marca como negro.
-2.  Se inspeccionan todos los punteros dentro de ese objeto.
-3.  Cualquier objeto blanco referenciado por esos punteros se marca como gris y se añade a la cola de escaneo.
-4.  El proceso se repite hasta que no queden objetos grises.
+1. Se extrae un objeto de la lista de grises y se marca como negro.
+2. Se inspeccionan todos los punteros dentro de ese objeto.
+3. Cualquier objeto blanco referenciado por esos punteros se marca como gris y se añade a la cola de escaneo.
+4. El proceso se repite hasta que no queden objetos grises.
 
 Veamos un ejemplo de código simple para ilustrar cómo se formaría este grafo de referencias en memoria:
 
@@ -55,17 +55,18 @@ func main() {
 
 El trabajo del GC no ocurre de forma instantánea. Se divide en fases precisas, algunas de las cuales corren concurrentemente con nuestro código (los *mutators*, en la jerga de diseño de compiladores), y otras que requieren pausar la ejecución.
 
-1.  **Sweep Termination (Fin del barrido):** El GC asegura que cualquier fase de barrido (limpieza) del ciclo anterior haya terminado. Esta fase detiene el mundo brevemente.
-2.  **Mark Setup (Preparación del marcado):** Se habilitan las "Barreras de Escritura" (Write Barriers). Esto requiere detener todas las Goroutines simultáneamente (una pausa *Stop-The-World* que detallaremos en la sección 43.2).
-3.  **Concurrent Marking (Marcado concurrente):** Esta es la fase principal. El GC comienza a inspeccionar los "raíces" (Roots), que incluyen variables globales y los *Stacks* de todas las Goroutines activas, marcándolos como grises. A partir de ahí, el GC sigue el algoritmo tricolor. Lo crucial es que esto **ocurre concurrentemente**, utilizando un porcentaje de la CPU (típicamente el 25%) mientras tus Goroutines siguen ejecutándose.
-4.  **Mark Termination (Fin del marcado):** Detiene las Goroutines nuevamente para vaciar las últimas colas de trabajo, deshabilitar la barrera de escritura y calcular los metadatos para el próximo ciclo.
-5.  **Concurrent Sweep (Barrido concurrente):** Las Goroutines de la aplicación continúan su ejecución. En segundo plano, los hilos de barrido del GC recorren el *Heap* reclamando la memoria de los objetos que quedaron marcados como blancos.
+1. **Sweep Termination (Fin del barrido):** El GC asegura que cualquier fase de barrido (limpieza) del ciclo anterior haya terminado. Esta fase detiene el mundo brevemente.
+2. **Mark Setup (Preparación del marcado):** Se habilitan las "Barreras de Escritura" (Write Barriers). Esto requiere detener todas las Goroutines simultáneamente (una pausa *Stop-The-World* que detallaremos en la sección 43.2).
+3. **Concurrent Marking (Marcado concurrente):** Esta es la fase principal. El GC comienza a inspeccionar los "raíces" (Roots), que incluyen variables globales y los *Stacks* de todas las Goroutines activas, marcándolos como grises. A partir de ahí, el GC sigue el algoritmo tricolor. Lo crucial es que esto **ocurre concurrentemente**, utilizando un porcentaje de la CPU (típicamente el 25%) mientras tus Goroutines siguen ejecutándose.
+4. **Mark Termination (Fin del marcado):** Detiene las Goroutines nuevamente para vaciar las últimas colas de trabajo, deshabilitar la barrera de escritura y calcular los metadatos para el próximo ciclo.
+5. **Concurrent Sweep (Barrido concurrente):** Las Goroutines de la aplicación continúan su ejecución. En segundo plano, los hilos de barrido del GC recorren el *Heap* reclamando la memoria de los objetos que quedaron marcados como blancos.
 
 ### La Barrera de Escritura (Write Barrier)
 
 Dado que la fase de *Concurrent Marking* ocurre al mismo tiempo que la ejecución de nuestro programa, surge un problema crítico: **¿Qué pasa si una Goroutine altera un puntero durante la fase de marcado?**
 
 Imagina este escenario de colisión temporal:
+
 1. El GC marca el Objeto A como Negro (ya fue escaneado).
 2. El Objeto B es Gris y apunta al Objeto C (Blanco).
 3. Una Goroutine en ejecución cambia las referencias: Hace que el Objeto A apunte al Objeto C, y elimina la referencia que el Objeto B tenía hacia C.
@@ -74,7 +75,7 @@ Imagina este escenario de colisión temporal:
 
 Para evitar esto, durante la fase *Mark Setup*, Go activa la **Write Barrier** (Barrera de Escritura). Una barrera de escritura es un pequeño fragmento de código que el compilador inyecta automáticamente antes de cualquier operación de modificación de punteros en el *Heap*.
 
-En Go 1.8 se introdujo la *Hybrid Write Barrier* (combinación de barrera de inserción de Dijkstra y barrera de borrado de Yuasa). Funciona bajo la siguiente regla simplificada: **Si durante la fase de marcado se sobreescribe un puntero en memoria, el objeto referenciado se marca automáticamente como gris**. 
+En Go 1.8 se introdujo la *Hybrid Write Barrier* (combinación de barrera de inserción de Dijkstra y barrera de borrado de Yuasa). Funciona bajo la siguiente regla simplificada: **Si durante la fase de marcado se sobreescribe un puntero en memoria, el objeto referenciado se marca automáticamente como gris**.
 
 Esto garantiza que el GC no pierda rastro de ningún objeto que haya sido movido durante el escaneo concurrente, eliminando la necesidad de volver a escanear los *Stacks* de las Goroutines al final del ciclo y reduciendo drásticamente las latencias.
 
@@ -86,8 +87,8 @@ Aunque Go es célebre por su recolector de basura concurrente y de baja latencia
 
 En el ciclo de vida del GC de Go, descrito en la sección anterior, existen dos fases precisas que exigen un STW:
 
-1.  **Mark Setup (Preparación del marcado):** Antes de comenzar a buscar basura concurrentemente, el *runtime* debe detener todas las Goroutines para habilitar la *Write Barrier* (Barrera de Escritura). Esto asegura que ninguna Goroutine modifique punteros a espaldas del GC. Además, durante esta pausa se preparan las raíces (*Roots*) para el escaneo.
-2.  **Mark Termination (Fin del marcado):** Una vez que el marcado concurrente finaliza, el mundo se detiene de nuevo. Esta pausa sirve para vaciar las colas de trabajo restantes, deshabilitar la *Write Barrier* y calcular los metadatos necesarios para el próximo ciclo (labor del *Pacer*, que veremos a continuación).
+1. **Mark Setup (Preparación del marcado):** Antes de comenzar a buscar basura concurrentemente, el *runtime* debe detener todas las Goroutines para habilitar la *Write Barrier* (Barrera de Escritura). Esto asegura que ninguna Goroutine modifique punteros a espaldas del GC. Además, durante esta pausa se preparan las raíces (*Roots*) para el escaneo.
+2. **Mark Termination (Fin del marcado):** Una vez que el marcado concurrente finaliza, el mundo se detiene de nuevo. Esta pausa sirve para vaciar las colas de trabajo restantes, deshabilitar la *Write Barrier* y calcular los metadatos necesarios para el próximo ciclo (labor del *Pacer*, que veremos a continuación).
 
 En versiones modernas de Go (1.14 en adelante), el *runtime* utiliza **preempción asíncrona basada en señales** (como `SIGURG` en sistemas Unix). Esto significa que el planificador no tiene que esperar a que una Goroutine haga una llamada a una función para detenerla; puede interrumpir bucles densos y detener todas las Goroutines casi instantáneamente. Gracias a esto, **las pausas STW en Go suelen durar menos de un milisegundo**, independientemente del tamaño del *Heap*.
 
@@ -97,31 +98,31 @@ Podemos inspeccionar estas pausas programáticamente utilizando el paquete `runt
 package main
 
 import (
-	"fmt"
-	"runtime"
-	"time"
+ "fmt"
+ "runtime"
+ "time"
 )
 
 func main() {
-	// Generamos algo de presión de memoria para forzar el GC
-	go func() {
-		for {
-			_ = make([]byte, 10<<20) // 10 MB allocations
-			time.Sleep(10 * time.Millisecond)
-		}
-	}()
+ // Generamos algo de presión de memoria para forzar el GC
+ go func() {
+  for {
+   _ = make([]byte, 10<<20) // 10 MB allocations
+   time.Sleep(10 * time.Millisecond)
+  }
+ }()
 
-	time.Sleep(2 * time.Second) // Dejamos que el GC actúe
+ time.Sleep(2 * time.Second) // Dejamos que el GC actúe
 
-	var m runtime.MemStats
-	runtime.ReadMemStats(&m)
+ var m runtime.MemStats
+ runtime.ReadMemStats(&m)
 
-	fmt.Printf("Total de ciclos GC: %d\n", m.NumGC)
-	fmt.Printf("Tiempo total en STW (Nanosegundos): %d\n", m.PauseTotalNs)
-	
-	// El arreglo circular PauseNs guarda las últimas 256 pausas STW
-	ultimoSTW := m.PauseNs[(m.NumGC+255)%256] 
-	fmt.Printf("Duración de la última pausa STW: %d ns (%.3f ms)\n", ultimoSTW, float64(ultimoSTW)/1e6)
+ fmt.Printf("Total de ciclos GC: %d\n", m.NumGC)
+ fmt.Printf("Tiempo total en STW (Nanosegundos): %d\n", m.PauseTotalNs)
+ 
+ // El arreglo circular PauseNs guarda las últimas 256 pausas STW
+ ultimoSTW := m.PauseNs[(m.NumGC+255)%256] 
+ fmt.Printf("Duración de la última pausa STW: %d ns (%.3f ms)\n", ultimoSTW, float64(ultimoSTW)/1e6)
 }
 ```
 
@@ -138,6 +139,7 @@ El tamaño objetivo del *Heap* está determinado por la siguiente ecuación mate
 $$\text{Heap}_{target} = \text{Heap}_{live} \times \left(1 + \frac{\text{GOGC}}{100}\right)$$
 
 Donde:
+
 * $\text{Heap}_{target}$: Es el límite máximo de memoria que el *Heap* debería alcanzar antes de que finalice la recolección actual.
 * $\text{Heap}_{live}$: Es la cantidad de memoria viva (sobreviviente) contabilizada al final del último ciclo del GC.
 * $\text{GOGC}$: Es la variable de entorno de configuración (cuyo valor por defecto es 100).
@@ -154,7 +156,7 @@ Los Mark Assists funcionan como una penalización automática: cuanto más rápi
 
 ## 43.3. Ajuste fino del GC en producción (`GOGC`, `GOMEMLIMIT`)
 
-Históricamente, uno de los grandes orgullos del equipo de Go ha sido ofrecer un Garbage Collector que prácticamente no requiere configuración. A diferencia de la Máquina Virtual de Java (JVM), que expone decenas de *flags* para afinar el recolector, Go expone una superficie de configuración deliberadamente minimalista. 
+Históricamente, uno de los grandes orgullos del equipo de Go ha sido ofrecer un Garbage Collector que prácticamente no requiere configuración. A diferencia de la Máquina Virtual de Java (JVM), que expone decenas de *flags* para afinar el recolector, Go expone una superficie de configuración deliberadamente minimalista.
 
 Sin embargo, en arquitecturas de alto rendimiento o en entornos de contenedores con recursos estrictamente limitados (como Kubernetes), los valores por defecto pueden no ser los óptimos. Para estos casos, Go proporciona dos palancas fundamentales: `GOGC` y, a partir de Go 1.19, `GOMEMLIMIT`.
 
@@ -168,12 +170,12 @@ Por defecto, **`GOGC=100`**. Esto significa que el *runtime* permitirá que el *
 
 Modificar este valor altera directamente el compromiso ( *trade-off* ) entre el uso de memoria y el consumo de CPU:
 
-* **Reducir `GOGC` (ej. `GOGC=50`):** El GC se disparará con mayor frecuencia (cuando el *Heap* crezca un 50%). 
-    * *Ventaja:* Mantendrás una huella de memoria (RAM) mucho más baja y predecible.
-    * *Desventaja:* El programa gastará más ciclos de CPU ejecutando las fases concurrentes del GC y pagará el costo de las pausas *Stop-The-World* más a menudo. El rendimiento general ( *throughput* ) de tu aplicación disminuirá.
+* **Reducir `GOGC` (ej. `GOGC=50`):** El GC se disparará con mayor frecuencia (cuando el *Heap* crezca un 50%).
+  * *Ventaja:* Mantendrás una huella de memoria (RAM) mucho más baja y predecible.
+  * *Desventaja:* El programa gastará más ciclos de CPU ejecutando las fases concurrentes del GC y pagará el costo de las pausas *Stop-The-World* más a menudo. El rendimiento general ( *throughput* ) de tu aplicación disminuirá.
 * **Aumentar `GOGC` (ej. `GOGC=200` o `GOGC=1000`):** El GC se ejecutará con mucha menos frecuencia.
-    * *Ventaja:* La aplicación gastará menos CPU en recolección de basura, mejorando significativamente el *throughput* y reduciendo la frecuencia de latencias inducidas por el GC o los *Mark Assists*.
-    * *Desventaja:* El consumo de RAM crecerá de forma agresiva.
+  * *Ventaja:* La aplicación gastará menos CPU en recolección de basura, mejorando significativamente el *throughput* y reduciendo la frecuencia de latencias inducidas por el GC o los *Mark Assists*.
+  * *Desventaja:* El consumo de RAM crecerá de forma agresiva.
 * **Desactivar el GC (`GOGC=off`):** Deshabilita el recolector por completo. Solo es viable para programas efímeros (scripts CLI de corta duración) o sistemas donde la memoria se gestiona manualmente de forma extrema.
 
 ### El problema de los Contenedores y la llegada de GOMEMLIMIT
@@ -182,7 +184,7 @@ Durante años, `GOGC` fue suficiente para aplicaciones que corrían en máquinas
 
 Imagina un contenedor de Go con un límite de RAM de **500 MB** y `GOGC=100`. Si la aplicación tiene **300 MB** de datos vivos tras un ciclo, el Pacer calculará el próximo límite del *Heap* en **600 MB**. Como el *runtime* de Go cree que tiene espacio para crecer hasta los 600 MB, no disparará el GC a tiempo. El núcleo de Linux, al ver que el contenedor supera los 500 MB, enviará una señal `SIGKILL` y destruirá el Pod instantáneamente (OOMKilled).
 
-Para solucionar esto, Go 1.19 introdujo **`GOMEMLIMIT`**. 
+Para solucionar esto, Go 1.19 introdujo **`GOMEMLIMIT`**.
 
 `GOMEMLIMIT` establece un **límite de memoria suave (soft memory limit)** para el *runtime* de Go. A diferencia de un límite del sistema operativo (que mata el proceso de forma abrupta), el límite suave le dice al *Pacer* del GC: *"No me importa qué valor tenga GOGC; si el total de memoria consumida por Go se acerca a este límite, ejecuta el GC inmediatamente y de la forma más agresiva posible para evitar que el Sistema Operativo nos mate"*.
 
@@ -192,8 +194,8 @@ La combinación de estas dos variables ha creado un nuevo estándar de oro para 
 
 Si tu contenedor de Kubernetes tiene un límite estricto de **1 GB** de RAM, la configuración ideal sería:
 
-1.  Establecer `GOMEMLIMIT` al 90% del límite del contenedor (ej. `900MiB`). Ese 10% de margen es para la memoria que no gestiona el GC (cachés del OS, memoria Cgo, etc.).
-2.  Desactivar `GOGC` (o establecerlo en un valor muy alto como `1000`).
+1. Establecer `GOMEMLIMIT` al 90% del límite del contenedor (ej. `900MiB`). Ese 10% de margen es para la memoria que no gestiona el GC (cachés del OS, memoria Cgo, etc.).
+2. Desactivar `GOGC` (o establecerlo en un valor muy alto como `1000`).
 
 Bajo esta configuración, tu aplicación aprovechará toda la RAM disponible en el contenedor casi sin interrupciones del GC (máximo rendimiento de CPU). El GC solo se despertará de forma reactiva cuando la memoria se acerque peligrosamente a los 900 MiB.
 
@@ -205,24 +207,24 @@ Aunque lo más común es pasar estos valores mediante variables de entorno en el
 package main
 
 import (
-	"fmt"
-	"runtime/debug"
+ "fmt"
+ "runtime/debug"
 )
 
 func main() {
-	// 1. Configurar GOGC programáticamente
-	// SetGCPercent devuelve el valor anterior. Un valor negativo desactiva el GC.
-	oldGOGC := debug.SetGCPercent(200) 
-	fmt.Printf("GOGC cambiado de %d a 200\n", oldGOGC)
+ // 1. Configurar GOGC programáticamente
+ // SetGCPercent devuelve el valor anterior. Un valor negativo desactiva el GC.
+ oldGOGC := debug.SetGCPercent(200) 
+ fmt.Printf("GOGC cambiado de %d a 200\n", oldGOGC)
 
-	// 2. Configurar GOMEMLIMIT programáticamente
-	// Establecemos un límite suave de 900 Megabytes (900 * 1024 * 1024 bytes)
-	limiteBytes := int64(900 << 20)
-	oldLimit := debug.SetMemoryLimit(limiteBytes)
-	
-	fmt.Printf("GOMEMLIMIT ajustado a 900 MiB. (Límite anterior: %d bytes)\n", oldLimit)
-	
-	// A partir de este punto, el Pacer usará las nuevas reglas para planificar el GC
+ // 2. Configurar GOMEMLIMIT programáticamente
+ // Establecemos un límite suave de 900 Megabytes (900 * 1024 * 1024 bytes)
+ limiteBytes := int64(900 << 20)
+ oldLimit := debug.SetMemoryLimit(limiteBytes)
+ 
+ fmt.Printf("GOMEMLIMIT ajustado a 900 MiB. (Límite anterior: %d bytes)\n", oldLimit)
+ 
+ // A partir de este punto, el Pacer usará las nuevas reglas para planificar el GC
 }
 ```
 
@@ -230,7 +232,7 @@ Es crucial entender que `GOMEMLIMIT` no es una garantía absoluta. Si la memoria
 
 ## 43.4. Estrategias de minimización de presión sobre el GC
 
-A lo largo de este capítulo hemos analizado la arquitectura y el ajuste del Garbage Collector. Sin embargo, en el desarrollo de software de alto rendimiento con Go existe una máxima ineludible: **el Garbage Collector más rápido es aquel que no necesita ejecutarse**. 
+A lo largo de este capítulo hemos analizado la arquitectura y el ajuste del Garbage Collector. Sin embargo, en el desarrollo de software de alto rendimiento con Go existe una máxima ineludible: **el Garbage Collector más rápido es aquel que no necesita ejecutarse**.
 
 La técnica de reducir las asignaciones de memoria en el *Heap* se conoce como *Allocation-less programming* (programación sin asignaciones) o *Zero-allocation*. Al generar menos basura, el *Pacer* tardará más en alcanzar el límite objetivo (`GOGC`), reduciendo la frecuencia de los ciclos de recolección y eliminando las pausas *Stop-The-World* y los *Mark Assists*.
 
@@ -239,6 +241,7 @@ A continuación, exploraremos las estrategias arquitectónicas y de código más
 ### 1. Preasignación de Slices y Maps (Capacidad vs. Longitud)
 
 El error más común que genera presión innecesaria sobre el GC es el crecimiento dinámico de Slices y Maps. Cuando un Slice supera su capacidad subyacente durante una operación `append`, el *runtime* de Go debe:
+
 1. Asignar un nuevo bloque de memoria en el *Heap* (generalmente el doble del tamaño original).
 2. Copiar los elementos del Slice antiguo al nuevo.
 3. Abandonar el array original, convirtiéndolo instantáneamente en basura que el GC deberá recolectar.
@@ -251,22 +254,22 @@ package main
 import "fmt"
 
 func main() {
-	datosOrigen := make([]int, 1000)
+ datosOrigen := make([]int, 1000)
 
-	// ANTI-PATRÓN: El slice crecerá dinámicamente, creando basura en cada reasignación.
-	var resultadoMalo []int
-	for _, v := range datosOrigen {
-		resultadoMalo = append(resultadoMalo, v)
-	}
+ // ANTI-PATRÓN: El slice crecerá dinámicamente, creando basura en cada reasignación.
+ var resultadoMalo []int
+ for _, v := range datosOrigen {
+  resultadoMalo = append(resultadoMalo, v)
+ }
 
-	// PATRÓN CORRECTO: Se reserva la memoria de una sola vez. Cero basura generada.
-	// Longitud 0, Capacidad 1000.
-	resultadoBueno := make([]int, 0, len(datosOrigen))
-	for _, v := range datosOrigen {
-		resultadoBueno = append(resultadoBueno, v)
-	}
-	
-	fmt.Printf("Capacidad Bueno: %d\n", cap(resultadoBueno))
+ // PATRÓN CORRECTO: Se reserva la memoria de una sola vez. Cero basura generada.
+ // Longitud 0, Capacidad 1000.
+ resultadoBueno := make([]int, 0, len(datosOrigen))
+ for _, v := range datosOrigen {
+  resultadoBueno = append(resultadoBueno, v)
+ }
+ 
+ fmt.Printf("Capacidad Bueno: %d\n", cap(resultadoBueno))
 }
 ```
 
@@ -282,33 +285,33 @@ Un detalle técnico crucial que vincula `sync.Pool` con el GC es que **el Garbag
 package main
 
 import (
-	"bytes"
-	"sync"
+ "bytes"
+ "sync"
 )
 
 // Creamos un Pool global para buffers de bytes
 var bufferPool = sync.Pool{
-	New: func() interface{} {
-		// Esta función solo se ejecuta si el Pool está vacío
-		return new(bytes.Buffer)
-	},
+ New: func() interface{} {
+  // Esta función solo se ejecuta si el Pool está vacío
+  return new(bytes.Buffer)
+ },
 }
 
 func procesarPeticion(datos []byte) string {
-	// 1. Solicitamos un buffer al Pool (Reutilización)
-	buf := bufferPool.Get().(*bytes.Buffer)
-	
-	// 2. Limpiamos el estado del buffer antes de usarlo
-	buf.Reset()
-	
-	// 3. Deferimos su devolución al Pool para que otra Goroutine lo use
-	defer bufferPool.Put(buf)
-	
-	// Usamos el buffer sin generar asignaciones en el Heap
-	buf.Write(datos)
-	buf.WriteString(" procesado")
-	
-	return buf.String()
+ // 1. Solicitamos un buffer al Pool (Reutilización)
+ buf := bufferPool.Get().(*bytes.Buffer)
+ 
+ // 2. Limpiamos el estado del buffer antes de usarlo
+ buf.Reset()
+ 
+ // 3. Deferimos su devolución al Pool para que otra Goroutine lo use
+ defer bufferPool.Put(buf)
+ 
+ // Usamos el buffer sin generar asignaciones en el Heap
+ buf.Write(datos)
+ buf.WriteString(" procesado")
+ 
+ return buf.String()
 }
 ```
 
@@ -316,11 +319,12 @@ func procesarPeticion(datos []byte) string {
 
 En lenguajes como Java o C#, los objetos siempre se asignan en el *Heap* y se pasan por referencia. En Go, tienes el control explícito: puedes pasar un *Struct* por valor (una copia) o por puntero.
 
-Un mito común en Go es pensar que "pasar por puntero siempre es más rápido porque evita copiar datos". Aunque es cierto que un puntero (8 bytes en sistemas de 64 bits) es muy barato de copiar, **usar punteros frecuentemente provoca que el compilador asigne el objeto en el *Heap* en lugar de en el *Stack***. 
+Un mito común en Go es pensar que "pasar por puntero siempre es más rápido porque evita copiar datos". Aunque es cierto que un puntero (8 bytes en sistemas de 64 bits) es muy barato de copiar, **usar punteros frecuentemente provoca que el compilador asigne el objeto en el *Heap* en lugar de en el *Stack***.
 
-Si pasas un objeto por valor (copia), el compilador de Go es extremadamente eficiente alojándolo en el *Stack* de la Goroutine. Cuando la función termina, el *Stack* se retrae y la memoria se libera instantáneamente en milisegundos, **sin intervención del Garbage Collector**. 
+Si pasas un objeto por valor (copia), el compilador de Go es extremadamente eficiente alojándolo en el *Stack* de la Goroutine. Cuando la función termina, el *Stack* se retrae y la memoria se libera instantáneamente en milisegundos, **sin intervención del Garbage Collector**.
 
 Como regla general para minimizar la presión sobre el GC:
+
 * Utiliza **semántica de valores** (copias en el *Stack*) para estructuras de datos pequeñas y de ciclo de vida corto.
 * Utiliza **semántica de punteros** (asignaciones en el *Heap*) solo si necesitas compartir el estado de ese objeto y mutarlo, o si la estructura de datos es masiva (por ejemplo, megabytes de tamaño) y el costo de copia en CPU supera el costo del GC.
 
@@ -334,23 +338,23 @@ Para concatenaciones complejas o en bucles, utiliza siempre `strings.Builder`. E
 package main
 
 import (
-	"fmt"
-	"strings"
+ "fmt"
+ "strings"
 )
 
 func generarInforme(lineas []string) string {
-	var builder strings.Builder
-	
-	// Si sabemos aproximadamente el tamaño final, preasignamos la memoria del builder
-	// para evitar que su buffer interno tenga que crecer.
-	builder.Grow(len(lineas) * 50) 
-	
-	for _, linea := range lineas {
-		builder.WriteString(linea)
-		builder.WriteString("\n")
-	}
-	
-	// La llamada a String() no copia el buffer interno, es una operación de O(1)
-	return builder.String() 
+ var builder strings.Builder
+ 
+ // Si sabemos aproximadamente el tamaño final, preasignamos la memoria del builder
+ // para evitar que su buffer interno tenga que crecer.
+ builder.Grow(len(lineas) * 50) 
+ 
+ for _, linea := range lineas {
+  builder.WriteString(linea)
+  builder.WriteString("\n")
+ }
+ 
+ // La llamada a String() no copia el buffer interno, es una operación de O(1)
+ return builder.String() 
 }
 ```

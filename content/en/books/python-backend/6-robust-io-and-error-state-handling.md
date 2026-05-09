@@ -1,4 +1,4 @@
-In backend engineering, the line between a resilient system and a fragile script is defined by how it handles the unexpected. Hardware fails, networks timeout, and memory fills up. Chapter 6 transitions you from writing code that merely works under ideal conditions to engineering systems that fail gracefully. 
+In backend engineering, the line between a resilient system and a fragile script is defined by how it handles the unexpected. Hardware fails, networks timeout, and memory fills up. Chapter 6 transitions you from writing code that merely works under ideal conditions to engineering systems that fail gracefully.
 
 We will explore how Python manages execution state via the call stack and exception hierarchies, empowering you to design domain-specific error protocols. We will also master resource management using Context Managers to prevent leaks, and dive into stream processing to handle massive I/O workloads without exhausting server memory.
 
@@ -10,7 +10,7 @@ In any robust backend architecture, errors are not anomalies; they are expected 
 
 When a Python script runs, the interpreter utilizes a "call stack" (often referred to as the execution stack) to keep track of active subroutines. Every time a function is called, CPython pushes a new **frame object** onto the top of the stack. This frame contains the function's local variables, its bytecode, and a reference to the environment where it was called. When the function returns, its frame is popped off the stack.
 
-When an error occurs, normal sequential execution halts immediately. The interpreter instantiates an exception object and begins a process known as **stack unwinding**. 
+When an error occurs, normal sequential execution halts immediately. The interpreter instantiates an exception object and begins a process known as **stack unwinding**.
 
 Consider the following simplified call stack representation when an error is triggered deeply within an application:
 
@@ -30,7 +30,7 @@ Consider the following simplified call stack representation when an error is tri
 
 ### Stack Unwinding and Traceback Generation
 
-When `execute_query` raises a `TimeoutError`, Python does not immediately crash. Instead, it looks for an active `try...except` block in the current frame (Frame 3). If it doesn't find one, it pops Frame 3 off the stack, abandoning its local state, and passes the exception down to Frame 2. 
+When `execute_query` raises a `TimeoutError`, Python does not immediately crash. Instead, it looks for an active `try...except` block in the current frame (Frame 3). If it doesn't find one, it pops Frame 3 off the stack, abandoning its local state, and passes the exception down to Frame 2.
 
 This downward propagation continues until Python either finds a matching `except` block or reaches the bottom of the stack. If the exception reaches the global module scope unhandled, Python invokes `sys.excepthook`, which prints the traceback to `stderr` and initiates a system exit.
 
@@ -91,11 +91,12 @@ except Exception as e:
 
 ### Exception Chaining: Preserving the Stack
 
-In complex backends, you rarely want to let low-level exceptions bubble all the way up to the API response. For instance, a `psycopg2.OperationalError` from your database layer should likely be caught and translated into a `ServiceUnavailable` error before reaching the user. 
+In complex backends, you rarely want to let low-level exceptions bubble all the way up to the API response. For instance, a `psycopg2.OperationalError` from your database layer should likely be caught and translated into a `ServiceUnavailable` error before reaching the user.
 
 However, translating exceptions risks losing the original traceback, which is disastrous for debugging. Python 3 solved this with **exception chaining** (PEP 3134), which utilizes the `__context__` and `__cause__` dunder attributes.
 
 #### Implicit Chaining (`__context__`)
+
 If an exception occurs *while* you are already inside an `except` block handling a previous exception, Python implicitly links them.
 
 ```python
@@ -106,9 +107,11 @@ except KeyError as e:
     # A typo in the error handler causes a new exception
     print(f"Failed to connect to {config['host']}:{porrt}") # Raises NameError
 ```
+
 The traceback will explicitly state: *`During handling of the above exception, another exception occurred:`* ensuring you see both the `KeyError` and the `NameError`.
 
 #### Explicit Chaining (`__cause__`)
+
 When translating an exception intentionally, you should use the `raise ... from ...` syntax. This assigns the original exception to the `__cause__` attribute of the new exception.
 
 ```python
@@ -158,7 +161,7 @@ class InsufficientFundsError(Exception):
     pass
 ```
 
-In a backend context, exceptions should carry **structured context**. When an error propagates up to your API's boundary layer (e.g., a FastAPI exception handler or Django middleware), it needs data to construct a standardized JSON response and set the correct HTTP status code. 
+In a backend context, exceptions should carry **structured context**. When an error propagates up to your API's boundary layer (e.g., a FastAPI exception handler or Django middleware), it needs data to construct a standardized JSON response and set the correct HTTP status code.
 
 Here is a production-grade pattern for defining an application exception base class:
 
@@ -253,9 +256,9 @@ This architectural pattern ensures that your error responses remain strictly con
 
 ## 6.3 The Context Manager Protocol: Designing `with` Statements
 
-In high-throughput backend systems, resource exhaustion is a silent killer. Unclosed file descriptors, dangling database connections, and unreleased thread locks will eventually starve your server of resources and trigger an outage. While the `try...finally` block guarantees that cleanup code executes, it forces developers to repeatedly write boilerplate and relies heavily on discipline. 
+In high-throughput backend systems, resource exhaustion is a silent killer. Unclosed file descriptors, dangling database connections, and unreleased thread locks will eventually starve your server of resources and trigger an outage. While the `try...finally` block guarantees that cleanup code executes, it forces developers to repeatedly write boilerplate and relies heavily on discipline.
 
-Python abstracts this resource management into a reusable, declarative pattern known as the Context Manager Protocol, invoked via the `with` statement. 
+Python abstracts this resource management into a reusable, declarative pattern known as the Context Manager Protocol, invoked via the `with` statement.
 
 ### The Protocol Mechanics: `__enter__` and `__exit__`
 
@@ -289,7 +292,7 @@ Here is the control flow of a context manager:
 
 ### Class-Based Context Managers
 
-To understand the mechanics deeply, let's implement a custom context manager for a conceptual database transaction. 
+To understand the mechanics deeply, let's implement a custom context manager for a conceptual database transaction.
 
 The `__exit__` method is the most critical component. It receives three arguments representing the exception state (which are all `None` if the block executed successfully). The return value of `__exit__` dictates how exceptions are handled: returning `True` swallows the exception, while returning `False` (or implicitly returning `None`) allows the exception to propagate up the call stack.
 
@@ -332,7 +335,7 @@ except Exception as e:
 
 Writing a full class with `__enter__` and `__exit__` methods is powerful, but often overly verbose for simple use cases. Python's standard library provides the `contextlib` module, which allows you to construct a context manager using a generator function and the `@contextmanager` decorator.
 
-When using this approach, the `yield` statement acts as the boundary. Everything before the `yield` serves as `__enter__`, and everything after serves as `__exit__`. 
+When using this approach, the `yield` statement acts as the boundary. Everything before the `yield` serves as `__enter__`, and everything after serves as `__exit__`.
 
 **Crucially, you must wrap the `yield` in a `try...finally` block.** If an exception occurs inside the `with` block, it is injected directly into the generator at the `yield` line. Without `try...finally`, the generator would crash, and your cleanup code would never run.
 
@@ -372,7 +375,7 @@ This generator pattern is heavily utilized in modern microframeworks (like FastA
 
 As backend architectures transition towards highly concurrent, non-blocking I/O (which we will cover extensively in Chapter 12), you will often need to manage asynchronous resources, such as connection pools for `asyncpg` or sessions in `aiohttp`.
 
-To support this, Python provides asynchronous counterparts to the protocol: `__aenter__` and `__aexit__`, which are consumed using `async with`. 
+To support this, Python provides asynchronous counterparts to the protocol: `__aenter__` and `__aexit__`, which are consumed using `async with`.
 
 ```python
 class AsyncRedisLock:
@@ -426,9 +429,10 @@ Every time you read from a file, invoking the operating system kernel via a syst
 
 ### Buffer Management: Chunking and Iteration
 
-The most common anti-pattern in I/O processing is the `.read()` method without arguments, which pulls the entire stream into memory. 
+The most common anti-pattern in I/O processing is the `.read()` method without arguments, which pulls the entire stream into memory.
 
 #### Text Streams: Line-by-Line Processing
+
 For text files, the most memory-efficient approach leverages the fact that file objects are inherently iterators. You should process them line-by-line.
 
 ```python
@@ -446,6 +450,7 @@ with open("massive_access_log.txt", "r", encoding="utf-8") as f:
 ```
 
 #### Binary Streams: Fixed-Size Chunking
+
 When dealing with binary data (e.g., streaming an uploaded image to cloud storage), lines do not exist. Instead, you must read the stream in fixed-size byte chunks. A common chunk size is 4KB to 64KB, aligning with standard OS page and network packet sizes.
 
 ```python

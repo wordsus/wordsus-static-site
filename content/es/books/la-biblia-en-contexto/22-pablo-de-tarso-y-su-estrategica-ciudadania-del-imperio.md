@@ -2,7 +2,7 @@
 
 ---
 
-Cuando leemos el Nuevo Testamento, a menudo nos imaginamos a los apóstoles como hombres sencillos, pescadores de Galilea o campesinos que caminaban por caminos polvorientos predicando el mensaje de Jesús. Si bien esto es cierto para muchos de los primeros discípulos, la historia da un giro fascinante y providencial cuando Dios llama a un hombre radicalmente diferente para llevar el Evangelio a los confines del mundo conocido: Saulo de Tarso, mejor conocido como el apóstol Pablo. 
+Cuando leemos el Nuevo Testamento, a menudo nos imaginamos a los apóstoles como hombres sencillos, pescadores de Galilea o campesinos que caminaban por caminos polvorientos predicando el mensaje de Jesús. Si bien esto es cierto para muchos de los primeros discípulos, la historia da un giro fascinante y providencial cuando Dios llama a un hombre radicalmente diferente para llevar el Evangelio a los confines del mundo conocido: Saulo de Tarso, mejor conocido como el apóstol Pablo.
 
 Pablo no era un pescador. Era un intelectual, un erudito de las Escrituras, un fariseo de fariseos. Pero, más allá de su profunda preparación religiosa, Pablo poseía un "superpoder" político y social que ninguno de los doce apóstoles originales tenía: era ciudadano del Imperio Romano por nacimiento.
 
@@ -75,11 +75,12 @@ En el libro de los Hechos (22:27-28), vemos una conversación reveladora entre P
 *El tribuno se acercó y le preguntó: "Dime, ¿eres tú ciudadano romano?". "Sí", respondió él. El tribuno exclamó: "A mí me costó mucho dinero adquirir esta ciudadanía". "Pues yo la tengo por nacimiento", replicó Pablo.*
 
 Esta breve interacción nos dice muchísimo. En esa época, la ciudadanía se podía adquirir de varias formas:
-1.  **Por recompensa militar:** Sirviendo en el ejército auxiliar romano durante 25 años.
-2.  **Por liberación:** Un esclavo de un amo romano, al ser liberado, a menudo obtenía la ciudadanía.
-3.  **Por soborno/compra:** Como confesó el comandante en el relato bíblico, se podía comprar a un precio exorbitante, a menudo sobornando a funcionarios imperiales.
-4.  **Por concesión imperial:** Otorgada a líderes de ciudades extranjeras por servicios prestados a Roma.
-5.  **Por nacimiento:** Si tu padre era ciudadano romano.
+
+1. **Por recompensa militar:** Sirviendo en el ejército auxiliar romano durante 25 años.
+2. **Por liberación:** Un esclavo de un amo romano, al ser liberado, a menudo obtenía la ciudadanía.
+3. **Por soborno/compra:** Como confesó el comandante en el relato bíblico, se podía comprar a un precio exorbitante, a menudo sobornando a funcionarios imperiales.
+4. **Por concesión imperial:** Otorgada a líderes de ciudades extranjeras por servicios prestados a Roma.
+5. **Por nacimiento:** Si tu padre era ciudadano romano.
 
 Dado que Pablo la tenía por nacimiento, esto significa que su padre, o quizás su abuelo, la había adquirido antes que él. Los historiadores creen que es probable que los antepasados de Pablo, originarios de Tarso, fabricaran tiendas de campaña (un oficio que Pablo aprendió y ejerció, según Hechos 18:3) para el inmenso ejército romano. En la antigüedad, las tropas necesitaban enormes cantidades de tiendas de cuero o pelo de cabra. Un proveedor leal y vital para el ejército podría haber sido recompensado con la ciudadanía por algún general romano (quizás Pompeyo o Marco Antonio) como reconocimiento a sus servicios.
 
@@ -116,6 +117,7 @@ En este momento, amarrado y con el verdugo listo para destrozarle la espalda, Pa
 *"¿Les está permitido azotar a un ciudadano romano que no ha sido condenado?"* (Hechos 22:25).
 
 La reacción fue inmediata. El pánico paralizó la sala de tortura.
+
 1. El centurión corrió hacia el comandante: *"¿Qué vas a hacer? Este hombre es ciudadano romano"*.
 2. El comandante bajó apresuradamente a verificar.
 3. Al escuchar la confirmación de Pablo, se nos dice que *"los que iban a interrogarlo se apartaron de él enseguida. Y el propio comandante se asustó al darse cuenta de que había encadenado a un ciudadano romano"*.
@@ -139,7 +141,7 @@ Con solo tres palabras (en latín, *Caesarem appello*), Pablo detuvo toda la maq
 **¿Cuál era la estrategia divina detrás de esto?**
 Años antes, el Señor se le había aparecido a Pablo y le había dicho: *"¡Ánimo! Así como has dado testimonio de mí en Jerusalén, es necesario que lo des también en Roma"* (Hechos 23:11). Pablo siempre había deseado ir a Roma, la capital del mundo (Romanos 1:15), para predicar el Evangelio.
 
-A través de su apelación al César, Dios le proveyó a Pablo un viaje seguro a Roma, todo pagado y escoltado por el ejército del Imperio Romano. Y no solo eso, sino que esta apelación legal lo llevaría eventualmente a presentarse ante el tribunal supremo del mundo antiguo, y a tener cautivos a los soldados de la guardia imperial (la guardia pretoriana) para predicarles el evangelio mientras estaba encadenado a ellos (Filipenses 1:12-13). 
+A través de su apelación al César, Dios le proveyó a Pablo un viaje seguro a Roma, todo pagado y escoltado por el ejército del Imperio Romano. Y no solo eso, sino que esta apelación legal lo llevaría eventualmente a presentarse ante el tribunal supremo del mundo antiguo, y a tener cautivos a los soldados de la guardia imperial (la guardia pretoriana) para predicarles el evangelio mientras estaba encadenado a ellos (Filipenses 1:12-13).
 
 Lo que parecía un estancamiento burocrático, fue en realidad la plataforma de Dios para introducir el cristianismo en las mismísimas cortes del Emperador Nerón.
 
@@ -147,13 +149,13 @@ Lo que parecía un estancamiento burocrático, fue en realidad la plataforma de 
 
 Además de la protección legal directa, no podemos dejar de lado cómo la ciudadanía de Pablo complementó un fenómeno histórico único llamado la *Pax Romana* (La Paz Romana).
 
-Durante el primer siglo, el Imperio Romano había logrado estabilizar todo el mar Mediterráneo. Habían erradicado en gran medida a los piratas del mar y habían construido una red de calzadas (las famosas vías romanas) que conectaban las principales ciudades. 
+Durante el primer siglo, el Imperio Romano había logrado estabilizar todo el mar Mediterráneo. Habían erradicado en gran medida a los piratas del mar y habían construido una red de calzadas (las famosas vías romanas) que conectaban las principales ciudades.
 
 ```text
 [Jerusalén] --- (Vías Romanas + Pax Romana + Ciudadanía) ---> [Todo el Imperio]
 ```
 
-Para un judío común, viajar era peligroso y logísticamente complejo debido a los impuestos, las aduanas y el riesgo de ser apresado o esclavizado injustamente en un territorio desconocido. Pero Pablo, como ciudadano romano con pasaporte imperial, podía moverse con una libertad sin precedentes a través de fronteras provinciales. 
+Para un judío común, viajar era peligroso y logísticamente complejo debido a los impuestos, las aduanas y el riesgo de ser apresado o esclavizado injustamente en un territorio desconocido. Pero Pablo, como ciudadano romano con pasaporte imperial, podía moverse con una libertad sin precedentes a través de fronteras provinciales.
 
 Él caminó miles de kilómetros a lo largo de Asia Menor y Europa, fundando iglesias a lo largo de estas "autopistas de la antigüedad" (como la Vía Egnatia). Su ciudadanía le garantizaba paso seguro, respeto ante las autoridades aduaneras, y el derecho a realizar negocios (como la fabricación de tiendas) en colonias romanas para sostener su ministerio sin ser una carga para las iglesias.
 

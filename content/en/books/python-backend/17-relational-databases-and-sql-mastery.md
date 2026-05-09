@@ -20,8 +20,8 @@ Consider an unnormalized `orders` table:
 
 | order_id | customer_name | customer_email | product_name | category | price |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| 101 | Alice | alice@ex.com | Laptop | Tech | 1200 |
-| 102 | Alice | alice@ex.com | Mouse | Tech | 25 |
+| 101 | Alice | <alice@ex.com> | Laptop | Tech | 1200 |
+| 102 | Alice | <alice@ex.com> | Mouse | Tech | 25 |
 
 This structure is highly redundant. If Alice changes her email, we must update multiple rows (Update Anomaly). Normalizing to 3NF yields three distinct tables:
 
@@ -35,7 +35,7 @@ This structure is highly redundant. If Alice changes her email, we must update m
 
 **The Case for Denormalization**
 
-Strict normalization optimizes for write operations and data integrity. However, it penalizes read performance because reconstructing the data requires computationally expensive `JOIN` operations. In highly read-heavy systems, engineers intentionally violate normal forms—a process called **denormalization**. 
+Strict normalization optimizes for write operations and data integrity. However, it penalizes read performance because reconstructing the data requires computationally expensive `JOIN` operations. In highly read-heavy systems, engineers intentionally violate normal forms—a process called **denormalization**.
 
 By pre-computing aggregates or duplicating read-heavy fields (e.g., storing `total_order_value` on the `Customers` table), you trade storage space and write-time complexity for faster reads.
 
@@ -56,14 +56,14 @@ Conceptual B-Tree Structure:
 
 #### Types of Indexes and Application
 
-1.  **Single-Column Indexes:** Applied to a single field. Highly effective for exact matches (`WHERE email = '...'`) or range queries (`WHERE created_at > '...'`).
-2.  **Composite Indexes:** Applied across multiple columns. The order of columns is critical due to the **Leftmost Prefix Rule**. An index on `(last_name, first_name)` will accelerate queries filtering by `last_name`, or by `last_name` AND `first_name`. It will *not* help queries filtering solely by `first_name`.
-3.  **Unique Indexes:** Enforces data integrity by preventing duplicate values in the indexed column(s), while simultaneously acting as a standard index for lookups.
-4.  **Covering Indexes:** An index that contains all the data required to satisfy a query. If you query `SELECT first_name FROM users WHERE last_name = 'Smith'`, and you have a composite index on `(last_name, first_name)`, the database can return the result directly from the index without ever reading the actual table row (the "heap").
+1. **Single-Column Indexes:** Applied to a single field. Highly effective for exact matches (`WHERE email = '...'`) or range queries (`WHERE created_at > '...'`).
+2. **Composite Indexes:** Applied across multiple columns. The order of columns is critical due to the **Leftmost Prefix Rule**. An index on `(last_name, first_name)` will accelerate queries filtering by `last_name`, or by `last_name` AND `first_name`. It will *not* help queries filtering solely by `first_name`.
+3. **Unique Indexes:** Enforces data integrity by preventing duplicate values in the indexed column(s), while simultaneously acting as a standard index for lookups.
+4. **Covering Indexes:** An index that contains all the data required to satisfy a query. If you query `SELECT first_name FROM users WHERE last_name = 'Smith'`, and you have a composite index on `(last_name, first_name)`, the database can return the result directly from the index without ever reading the actual table row (the "heap").
 
 ### Decoding Query Execution Plans
 
-Writing SQL is declarative; you tell the database *what* you want, not *how* to get it. The database's **Query Planner (or Optimizer)** analyzes the SQL, considers available indexes, evaluates table statistics, and generates an **Execution Plan**. 
+Writing SQL is declarative; you tell the database *what* you want, not *how* to get it. The database's **Query Planner (or Optimizer)** analyzes the SQL, considers available indexes, evaluates table statistics, and generates an **Execution Plan**.
 
 To debug slow queries, backend engineers use the `EXPLAIN` command (or `EXPLAIN ANALYZE` in PostgreSQL, which actually executes the query to provide real timing data).
 
@@ -76,10 +76,10 @@ SELECT * FROM orders WHERE customer_id = 452 AND status = 'shipped';
 
 A typical execution plan output reads from the inside out (or bottom up). It details the "nodes" of execution. You must recognize three primary access methods:
 
-1.  **Sequential Scan (Seq Scan) / Table Scan:** The database reads every single row in the table, from beginning to end, to find matching records. This is acceptable for small tables but catastrophic for tables with millions of rows.
-2.  **Index Scan:** The database traverses the B-Tree index to find the matching pointers, then visits the actual table (the heap) to retrieve the required rows. 
-3.  **Index Only Scan:** The holy grail of read performance. The query was entirely satisfied by the data within the index itself (a Covering Index scenario), completely bypassing the heap.
-4.  **Bitmap Heap Scan:** Often seen when an index returns too many pointers to fetch individually. The database builds an in-memory bitmap of the required pages, sorts them, and fetches them sequentially to minimize disk I/O seek times.
+1. **Sequential Scan (Seq Scan) / Table Scan:** The database reads every single row in the table, from beginning to end, to find matching records. This is acceptable for small tables but catastrophic for tables with millions of rows.
+2. **Index Scan:** The database traverses the B-Tree index to find the matching pointers, then visits the actual table (the heap) to retrieve the required rows.
+3. **Index Only Scan:** The holy grail of read performance. The query was entirely satisfied by the data within the index itself (a Covering Index scenario), completely bypassing the heap.
+4. **Bitmap Heap Scan:** Often seen when an index returns too many pointers to fetch individually. The database builds an in-memory bitmap of the required pages, sorts them, and fetches them sequentially to minimize disk I/O seek times.
 
 **Example PostgreSQL Execution Plan:**
 
@@ -93,6 +93,7 @@ Execution Time: 0.035 ms
 ```
 
 **Breaking down the metrics:**
+
 * **cost=0.29..8.31:** An arbitrary unit representing the planner's estimated cost. The first number is startup cost (time to return the first row); the second is total cost.
 * **rows=1:** The planner's *estimate* of how many rows will be returned. If this differs wildly from the actual rows, your database statistics are stale (requiring an `ANALYZE` run).
 * **actual time=0.015..0.017:** The real execution time in milliseconds (only visible with `ANALYZE`).
@@ -107,6 +108,7 @@ While mastering standard normalization and B-Tree indexing forms the bedrock of 
 PostgreSQL offers two JSON data types: `JSON` and `JSONB`. The `JSON` type stores an exact copy of the input text, meaning it preserves whitespace and duplicate keys, and requires reparsing on every execution. In almost all backend scenarios, you should use **`JSONB`** (JSON Binary). `JSONB` stores data in a decomposed binary format. It introduces a slight overhead during insertion but significantly accelerates processing and, crucially, supports indexing.
 
 **When to use JSONB:**
+
 * **User Preferences/Settings:** Storing highly variable, schema-less key-value pairs where defining columns for every possible setting is impractical.
 * **Third-Party API Payloads:** Storing raw webhooks or API responses for auditing or deferred processing.
 * **Replacing the EAV (Entity-Attribute-Value) Anti-pattern:** Avoiding complex and slow `JOIN` operations when dealing with products that have vastly different attributes.
@@ -142,11 +144,12 @@ WHERE metadata @> '{"theme": "dark"}';
 ```
 
 **Indexing JSONB:**
-To make JSONB queries highly performant, you use a **GIN (Generalized Inverted Index)**. 
+To make JSONB queries highly performant, you use a **GIN (Generalized Inverted Index)**.
 
 ```sql
 CREATE INDEX idx_users_metadata ON users USING GIN (metadata);
 ```
+
 This index allows PostgreSQL to instantly locate rows containing specific keys or key-value pairs without scanning the entire table.
 
 ### Array Types: Controlled Denormalization
@@ -154,6 +157,7 @@ This index allows PostgreSQL to instantly locate rows containing specific keys o
 PostgreSQL allows columns to be defined as multidimensional arrays of any built-in or user-defined type. While standard normalization dictates that one-to-many relationships should be handled with a separate table and a Foreign Key, arrays offer a pragmatic alternative for simple, cohesive lists of values where order might matter, and the list is rarely queried independently of its parent row.
 
 **When to use Arrays:**
+
 * Simple tagging systems where tags have no independent metadata (e.g., no `created_at` or `author_id` per tag).
 * Storing matrices or coordinate sets.
 * Caching aggregated lists to avoid frequent `JOIN`s on heavily read endpoints.
@@ -193,8 +197,9 @@ Backend engineers often start implementing search features using the `LIKE` or `
 PostgreSQL's native Full-Text Search solves this by parsing text into semantic tokens.
 
 **Core FTS Concepts:**
-1.  **`tsvector` (Text Search Vector):** Represents the *document* optimized for search. It parses the text, removes stop words (like "the", "a", "is"), and reduces words to their grammatical root (stemming). So, "running", "runs", and "ran" might all be reduced to "run".
-2.  **`tsquery` (Text Search Query):** Represents the user's *search terms*, similarly normalized, combined with boolean operators (`&` for AND, `|` for OR, `!` for NOT).
+
+1. **`tsvector` (Text Search Vector):** Represents the *document* optimized for search. It parses the text, removes stop words (like "the", "a", "is"), and reduces words to their grammatical root (stemming). So, "running", "runs", and "ran" might all be reduced to "run".
+2. **`tsquery` (Text Search Query):** Represents the user's *search terms*, similarly normalized, combined with boolean operators (`&` for AND, `|` for OR, `!` for NOT).
 
 **Implementation:**
 
@@ -213,6 +218,7 @@ SELECT title
 FROM documents 
 WHERE to_tsvector('english', title || ' ' || body) @@ to_tsquery('english', 'locks & threading');
 ```
+
 *Note how searching for "locks & threading" matches "Lock" and "threads" due to stemming.*
 
 **Optimizing FTS:**
@@ -244,10 +250,11 @@ Before a Python application can execute a single SQL query, it must establish a 
 Establishing a fresh connection to a relational database like PostgreSQL or MySQL is an expensive, multi-step operation. It is not merely a software abstraction; it requires significant network and operating system resources.
 
 Every new connection requires:
-1.  **TCP Handshake:** A three-way network handshake to establish the transport layer.
-2.  **Cryptographic Handshake:** TLS/SSL negotiation to secure the transit layer.
-3.  **Authentication:** Validating user credentials and checking access control lists.
-4.  **Process Allocation:** In databases like PostgreSQL, the engine must fork a dedicated OS process (the `postgres` backend process) and allocate memory specifically for this new client.
+
+1. **TCP Handshake:** A three-way network handshake to establish the transport layer.
+2. **Cryptographic Handshake:** TLS/SSL negotiation to secure the transit layer.
+3. **Authentication:** Validating user credentials and checking access control lists.
+4. **Process Allocation:** In databases like PostgreSQL, the engine must fork a dedicated OS process (the `postgres` backend process) and allocate memory specifically for this new client.
 
 If a highly concurrent web framework (like FastAPI or Django) opens and closes a connection for every single incoming HTTP request, the database will spend more CPU cycles creating and destroying connections than actually executing queries. Furthermore, database engines have a hard limit on `max_connections` (often defaulting to 100 in PostgreSQL). Once this limit is reached, subsequent requests are outright rejected.
 
@@ -273,7 +280,7 @@ App Request 3  --(Wait)  ->| [Pool Manager]    |
 
 **Pool Sizing Strategies**
 
-A common misconception is that a larger connection pool yields better performance. In reality, a pool size that exceeds the number of CPU cores on the database server can degrade performance due to severe context switching and resource contention. 
+A common misconception is that a larger connection pool yields better performance. In reality, a pool size that exceeds the number of CPU cores on the database server can degrade performance due to severe context switching and resource contention.
 
 A standard formula for sizing a pool, popularized by the HikariCP project, is:
 `connections = ((core_count * 2) + effective_spindle_count)`
@@ -303,7 +310,7 @@ engine = create_engine(
 ```
 
 **2. Infrastructure-Level Pooling (External Proxy)**
-To solve the multi-worker scaling problem, backend architectures introduce an external connection pooler like **PgBouncer** or **Odyssey** (for PostgreSQL). 
+To solve the multi-worker scaling problem, backend architectures introduce an external connection pooler like **PgBouncer** or **Odyssey** (for PostgreSQL).
 
 The proxy sits between the Python application and the database. The Python workers connect to PgBouncer (which is incredibly cheap), and PgBouncer maintains a strictly controlled, small pool of real connections to the actual database.
 
@@ -355,7 +362,7 @@ Relational database systems are fundamentally built upon the ACID model, a set o
 
 ### Transaction Boundaries in Python
 
-In raw SQL, a transaction begins implicitly or via the `BEGIN` command, and ends with a `COMMIT` (saving changes) or a `ROLLBACK` (aborting changes). 
+In raw SQL, a transaction begins implicitly or via the `BEGIN` command, and ends with a `COMMIT` (saving changes) or a `ROLLBACK` (aborting changes).
 
 When interacting with a database via Python drivers (like `psycopg2` or `asyncpg`), the driver usually initiates a transaction automatically when you execute the first query.
 
@@ -386,9 +393,9 @@ finally:
 
 When multiple transactions interact with the same data, three distinct read phenomena can occur if isolation is not strictly enforced:
 
-1.  **Dirty Read:** Transaction A reads data that has been modified by Transaction B, but Transaction B has *not yet committed*. If B rolls back, A operates on data that technically never existed.
-2.  **Non-Repeatable Read:** Transaction A reads a row. Transaction B updates or deletes that *same row* and commits. If Transaction A reads the row again, it gets a different result or finds it missing.
-3.  **Phantom Read:** Transaction A runs a query matching a specific condition (e.g., `SELECT * FROM users WHERE age > 30`). Transaction B inserts a new row that satisfies this condition and commits. If A repeats the query, a "phantom" row appears.
+1. **Dirty Read:** Transaction A reads data that has been modified by Transaction B, but Transaction B has *not yet committed*. If B rolls back, A operates on data that technically never existed.
+2. **Non-Repeatable Read:** Transaction A reads a row. Transaction B updates or deletes that *same row* and commits. If Transaction A reads the row again, it gets a different result or finds it missing.
+3. **Phantom Read:** Transaction A runs a query matching a specific condition (e.g., `SELECT * FROM users WHERE age > 30`). Transaction B inserts a new row that satisfies this condition and commits. If A repeats the query, a "phantom" row appears.
 
 ### Isolation Levels and MVCC
 
@@ -408,7 +415,7 @@ PostgreSQL (and many modern engines) avoids the heavy performance penalty of loc
 
 ### Concurrency Patterns: Pessimistic vs. Optimistic Locking
 
-Even with MVCC and transactions, backend engineers frequently encounter the **Lost Update Problem**. 
+Even with MVCC and transactions, backend engineers frequently encounter the **Lost Update Problem**.
 
 *Scenario:* Alice and Bob both read a concert ticket record showing `available_seats = 1`. Alice initiates a purchase and updates the count to 0. Simultaneously, Bob initiates a purchase, also updating the count from his read value (1) to 0. The system double-booked the seat.
 
@@ -454,6 +461,6 @@ Assume the best—that conflicts are rare. Do not lock the database row. Instead
    --> (Database returns: 0 rows affected. The version is now 2!)
 ```
 
-When the database returns `0 rows affected` for User B, the Python backend detects this, raises an exception (e.g., `StaleDataError`), and either prompts the user to try again or automatically retries the operation with the fresh data. 
+When the database returns `0 rows affected` for User B, the Python backend detects this, raises an exception (e.g., `StaleDataError`), and either prompts the user to try again or automatically retries the operation with the fresh data.
 
 *Trade-offs:* Exceptional performance and concurrency. Fails gracefully. It is the preferred method for standard CRUD operations in highly trafficked REST/GraphQL APIs where users rarely edit the exact same data simultaneously.

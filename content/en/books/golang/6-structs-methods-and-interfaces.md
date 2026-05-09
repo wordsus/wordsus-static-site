@@ -4,13 +4,13 @@ In this chapter, we explore encapsulating data using `structs` and attaching beh
 
 ## 6.1 Defining, Instantiating, and Exporting Structs
 
-While arrays, slices, and maps are excellent for managing collections of uniform data types, real-world software requires grouping heterogeneous data into logical units. In Go, this is achieved using the `struct` (structure) type. A struct is a user-defined, composite type representing a collection of fields, where each field has a name and a specific type. 
+While arrays, slices, and maps are excellent for managing collections of uniform data types, real-world software requires grouping heterogeneous data into logical units. In Go, this is achieved using the `struct` (structure) type. A struct is a user-defined, composite type representing a collection of fields, where each field has a name and a specific type.
 
 Because Go is not a traditional class-based object-oriented language, it does not have classes or inheritance. Instead, the struct serves as the foundational building block for defining custom data structures and domain models.
 
 ### Defining a Struct
 
-A struct is defined using the `type` and `struct` keywords. Inside the curly braces, you declare the fields. 
+A struct is defined using the `type` and `struct` keywords. Inside the curly braces, you declare the fields.
 
 ```go
 type ServerConfig struct {
@@ -87,7 +87,7 @@ Unlike many languages that use explicit access modifiers like `public`, `private
 * **Exported (Public):** If a struct name or a field name starts with an **uppercase** letter, it is exported. It can be accessed and imported by any other package.
 * **Unexported (Private):** If a struct name or a field name starts with a **lowercase** letter, it is unexported. It is entirely invisible outside of the package it is defined in.
 
-This rule applies independently to the struct itself and to its individual fields. 
+This rule applies independently to the struct itself and to its individual fields.
 
 ```go
 package network
@@ -130,7 +130,7 @@ func NewAccount(owner string) *Account {
 
 ### Anonymous Structs
 
-Sometimes you need a struct for a single, localized operation and defining a named type at the package level would pollute the namespace. Go allows you to define and instantiate **anonymous structs** on the fly. 
+Sometimes you need a struct for a single, localized operation and defining a named type at the package level would pollute the namespace. Go allows you to define and instantiate **anonymous structs** on the fly.
 
 ```go
 appState := struct {
@@ -183,7 +183,7 @@ This is explicit and clear, but deeply nested structs can result in verbose code
 
 ### Struct Embedding (Anonymous Fields)
 
-To provide the syntactic convenience of inheritance without the rigid coupling, Go offers **struct embedding**. You can declare an "anonymous field" by specifying the struct type without a field name. 
+To provide the syntactic convenience of inheritance without the rigid coupling, Go offers **struct embedding**. You can declare an "anonymous field" by specifying the struct type without a field name.
 
 When you embed a struct, all of the exported fields and methods of the embedded struct are **promoted** to the outer struct.
 
@@ -241,7 +241,7 @@ Here is a conceptual mapping of how memory and field access differ between stand
 
 ### Method Promotion
 
-Embedding applies not just to data, but also to behavior. If the embedded struct has methods (which we will cover extensively in Section 6.3), those methods can be called directly on the outer struct. 
+Embedding applies not just to data, but also to behavior. If the embedded struct has methods (which we will cover extensively in Section 6.3), those methods can be called directly on the outer struct.
 
 ```go
 func (b *BaseModel) PrintID() {
@@ -291,7 +291,7 @@ Struct embedding is a powerful tool in Go, frequently used in standard libraries
 
 In Go, behavior is attached to data structures through **methods**. Unlike standard functions, a method is simply a function that includes a special "receiver" argument. This receiver acts similarly to the `this` or `self` keywords in object-oriented languages, but Go requires you to explicitly declare it and give it a name.
 
-The receiver appears in its own argument list between the `func` keyword and the method name. 
+The receiver appears in its own argument list between the `func` keyword and the method name.
 
 ```go
 type Point struct {
@@ -328,6 +328,7 @@ func main() {
 ```
 
 **When to use Value Receivers:**
+
 * **Immutability:** When you want to guarantee that a method will not alter the state of the object.
 * **Small Data Types:** For small structs (like the `Point` example above) or basic types (like a custom `type Status int`). Copying a few bytes is incredibly fast and puts less pressure on the garbage collector than allocating pointers to the heap.
 * **Built-in Types:** When extending slices or maps. (Remember from Chapter 4 that slices and maps already act as references to underlying data structures, so a value receiver is usually sufficient unless you are re-slicing or changing map references).
@@ -350,6 +351,7 @@ func main() {
 ```
 
 **When to use Pointer Receivers:**
+
 * **Mutation:** The method needs to modify the receiver's state.
 * **Large Structs:** If the struct contains dozens of fields or large embedded structs, copying it on every method call creates unnecessary CPU and memory overhead.
 * **Synchronization:** If the struct contains synchronization primitives like `sync.Mutex` (covered in Chapter 10), it **must** be passed by pointer. Copying a mutex results in a completely different lock, rendering your concurrency controls useless.
@@ -390,7 +392,7 @@ p2.IsOrigin()
 
 While Go allows flexibility, idiomatic Go follows a strict guideline regarding consistency: **Do not mix receiver types for a single struct.**
 
-If a struct requires a pointer receiver for even *one* of its methods (because it needs mutation), you should use pointer receivers for *all* of its methods, even those that only read data. Mixing value and pointer receivers on the same type forces the API consumer to constantly think about memory semantics and can lead to subtle bugs when implementing interfaces (which will be explored in Section 6.4). 
+If a struct requires a pointer receiver for even *one* of its methods (because it needs mutation), you should use pointer receivers for *all* of its methods, even those that only read data. Mixing value and pointer receivers on the same type forces the API consumer to constantly think about memory semantics and can lead to subtle bugs when implementing interfaces (which will be explored in Section 6.4).
 
 If in doubt, default to a pointer receiver. It is generally safer and more flexible for future code changes.
 
@@ -402,7 +404,7 @@ Interfaces are the cornerstone of Go's approach to polymorphism and dependency i
 
 ### Defining an Interface
 
-An interface is defined using the `type` and `interface` keywords, followed by a list of method signatures. Idiomatic Go strongly favors small, highly focused interfaces—often containing just one or two methods. 
+An interface is defined using the `type` and `interface` keywords, followed by a list of method signatures. Idiomatic Go strongly favors small, highly focused interfaces—often containing just one or two methods.
 
 By convention, single-method interfaces are named by appending an "-er" suffix to the method name.
 
@@ -419,7 +421,7 @@ type Processor interface {
 
 ### Implicit Implementation (Duck Typing)
 
-The most striking feature of Go's interfaces is that they are **implemented implicitly**. There is no `implements` keyword. You do not explicitly declare that a struct fulfills an interface. 
+The most striking feature of Go's interfaces is that they are **implemented implicitly**. There is no `implements` keyword. You do not explicitly declare that a struct fulfills an interface.
 
 If a concrete type (like a struct) possesses all the methods defined in an interface, the Go compiler automatically recognizes that the type satisfies the interface. This is often referred to as structural typing or "Duck Typing" (*if it walks like a duck and quacks like a duck, it is a duck*).
 
@@ -483,6 +485,7 @@ This allows you to create interfaces "after the fact." You can write concrete co
 A common pitfall for Go developers relates directly to the choice between **value receivers** and **pointer receivers** (discussed in Section 6.3) and how that choice impacts interface satisfaction.
 
 The rule is strict:
+
 * If a method is implemented with a **value receiver**, both the value type (`T`) and the pointer type (`*T`) satisfy the interface.
 * If a method is implemented with a **pointer receiver**, **only** the pointer type (`*T`) satisfies the interface.
 
@@ -519,7 +522,7 @@ Why does this restriction exist? If an interface required a value but was passed
 
 ## 6.5 The Empty Interface (`interface{}`), Type Assertions, and Type Switches
 
-If a standard interface defines a strict contract of methods that a type must fulfill, what happens if an interface defines exactly *zero* methods? 
+If a standard interface defines a strict contract of methods that a type must fulfill, what happens if an interface defines exactly *zero* methods?
 
 In Go, this is known as the **empty interface**, denoted as `interface{}`. Because every single type in Go—from primitive integers to complex custom structs—possesses at least zero methods, **every type inherently satisfies the empty interface.**
 
@@ -569,7 +572,7 @@ To understand why this happens, we must look at how Go represents interface valu
   +-----------------------+
 ```
 
-Because the compiler only sees the outer `interface{}` wrapper, it refuses to allow operations like multiplication or method calls until you explicitly unwrap the box and prove to the compiler what is inside. 
+Because the compiler only sees the outer `interface{}` wrapper, it refuses to allow operations like multiplication or method calls until you explicitly unwrap the box and prove to the compiler what is inside.
 
 ### Type Assertions
 
@@ -636,6 +639,6 @@ func InspectType(i any) {
 The empty interface was heavily utilized in older Go codebases prior to Go 1.18. However, it should be used sparingly today.
 
 * **Avoid it for generic algorithms:** Before Go 1.18, if you wanted to write a `Sort()` function that worked for any slice, you had to use interfaces. Today, **Generics** (covered in Chapter 21) are the correct tool for type-safe, reusable algorithms.
-* **Use it for truly unknown data:** The `interface{}` (or `any`) type is still the correct choice when writing parsers for unstructured data (like decoding a JSON payload with unknown fields, as we will see in Chapter 7) or formatting libraries where the type genuinely does not matter until runtime. 
+* **Use it for truly unknown data:** The `interface{}` (or `any`) type is still the correct choice when writing parsers for unstructured data (like decoding a JSON payload with unknown fields, as we will see in Chapter 7) or formatting libraries where the type genuinely does not matter until runtime.
 
 The rule of thumb for robust Go architecture is: keep your types as specific as possible for as long as possible, falling back to `any` only when static typing becomes physically impossible.

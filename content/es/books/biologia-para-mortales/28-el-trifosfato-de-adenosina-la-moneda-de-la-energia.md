@@ -18,9 +18,9 @@ Para entender cómo el ATP almacena la energía, primero debemos observar su est
 
 El nombre "Trifosfato de Adenosina" nos da la pista de sus componentes:
 
-1.  **La Adenina:** Es una estructura molecular que funciona como la base de nuestra molécula. Curiosamente, es la misma adenina que forma parte de las "letras" de nuestro ADN.
-2.  **La Ribosa:** Es un azúcar de cinco carbonos que actúa como el chasis del vehículo, uniendo la base (adenina) con la parte verdaderamente explosiva de la molécula. Juntas, la adenina y la ribosa forman la "Adenosina".
-3.  **Los tres grupos Fosfato:** Aquí es donde ocurre la magia. Enganchados a la ribosa hay una cola de tres grupos fosfato (átomos de fósforo rodeados de átomos de oxígeno). De ahí la parte de "Tri-fosfato".
+1. **La Adenina:** Es una estructura molecular que funciona como la base de nuestra molécula. Curiosamente, es la misma adenina que forma parte de las "letras" de nuestro ADN.
+2. **La Ribosa:** Es un azúcar de cinco carbonos que actúa como el chasis del vehículo, uniendo la base (adenina) con la parte verdaderamente explosiva de la molécula. Juntas, la adenina y la ribosa forman la "Adenosina".
+3. **Los tres grupos Fosfato:** Aquí es donde ocurre la magia. Enganchados a la ribosa hay una cola de tres grupos fosfato (átomos de fósforo rodeados de átomos de oxígeno). De ahí la parte de "Tri-fosfato".
 
 Podemos visualizar la estructura del ATP con el siguiente esquema simplificado:
 
@@ -37,7 +37,7 @@ Podemos visualizar la estructura del ATP con el siguiente esquema simplificado:
 
 Fíjate en el símbolo `~` entre el segundo y el tercer fosfato en nuestro diagrama. Ese enlace no es un enlace químico ordinario.
 
-Los grupos fosfato tienen una carga eléctrica negativa muy fuerte. Y como sabemos por la física básica, las cargas iguales se repelen. Imagina que intentas juntar los polos negativos de tres imanes muy potentes; tendrás que hacer mucha fuerza para mantenerlos unidos, y en cuanto los sueltes, saldrán disparados. 
+Los grupos fosfato tienen una carga eléctrica negativa muy fuerte. Y como sabemos por la física básica, las cargas iguales se repelen. Imagina que intentas juntar los polos negativos de tres imanes muy potentes; tendrás que hacer mucha fuerza para mantenerlos unidos, y en cuanto los sueltes, saldrán disparados.
 
 En la molécula de ATP, esos tres grupos fosfato negativos están unidos a la fuerza. El enlace que sostiene al tercer fosfato es como un resorte comprimido al máximo. Contiene una gran cantidad de energía potencial almacenada. Cuando la célula necesita energía, simplemente "corta" ese último enlace, liberando al tercer fosfato y, con él, la energía que lo mantenía unido.
 
@@ -53,9 +53,10 @@ $$ \text{ATP} + \text{H}_2\text{O} \longrightarrow \text{ADP} + \text{P}_i + \te
 
 *(Donde $\text{P}_i$ representa al grupo fosfato inorgánico que ha sido liberado).*
 
-Aquí es donde entra nuestra analogía de la batería. 
-*   El **ATP** es una batería cargada al 100%, lista para ser utilizada.
-*   El **ADP** es una batería descargada (o al menos, con muy poca carga útil).
+Aquí es donde entra nuestra analogía de la batería.
+
+* El **ATP** es una batería cargada al 100%, lista para ser utilizada.
+* El **ADP** es una batería descargada (o al menos, con muy poca carga útil).
 
 Si nuestro cuerpo solo pudiera usar el ATP una vez y luego lo desechara, tendríamos un problema monumental. Necesitaríamos consumir toneladas de ATP al día para sobrevivir. Afortunadamente, la biología es la maestra suprema del reciclaje.
 
@@ -71,9 +72,9 @@ Si la célula fuera una ciudad, la mitocondria sería la planta de energía nucl
 
 El proceso completo es una verdadera obra maestra de la bioquímica, pero para los mortales, podemos resumirlo en tres grandes etapas que ocurren cuando tu cuerpo procesa la glucosa (el azúcar derivado de los carbohidratos que comiste):
 
-1.  **Glucólisis:** Ocurre en el fluido celular (citoplasma). Es la ruptura inicial de la molécula de glucosa por la mitad. Es un proceso rápido pero ineficiente. Solo produce una ganancia neta de **2 moléculas de ATP**.
-2.  **El Ciclo de Krebs:** Los fragmentos de la glucosa entran en la mitocondria y son desmantelados por completo. Aquí se extraen electrones de alta energía (como si estuvieran sacando el combustible refinado), pero solo se producen **2 moléculas de ATP** adicionales.
-3.  **La Cadena de Transporte de Electrones:** Esta es la joya de la corona energética. Los electrones extraídos en las fases anteriores son pasados a través de una serie de proteínas en la membrana de la mitocondria. Este flujo de electrones funciona como la corriente de un río que hace girar una turbina hidroeléctrica. Esa "turbina" celular (una enzima llamada ATP sintasa) gira físicamente a miles de revoluciones por minuto, aplastando literalmente el ADP y el fosfato para forzarlos a unirse. Esta etapa produce unas asombrosas **32 a 34 moléculas de ATP**.
+1. **Glucólisis:** Ocurre en el fluido celular (citoplasma). Es la ruptura inicial de la molécula de glucosa por la mitad. Es un proceso rápido pero ineficiente. Solo produce una ganancia neta de **2 moléculas de ATP**.
+2. **El Ciclo de Krebs:** Los fragmentos de la glucosa entran en la mitocondria y son desmantelados por completo. Aquí se extraen electrones de alta energía (como si estuvieran sacando el combustible refinado), pero solo se producen **2 moléculas de ATP** adicionales.
+3. **La Cadena de Transporte de Electrones:** Esta es la joya de la corona energética. Los electrones extraídos en las fases anteriores son pasados a través de una serie de proteínas en la membrana de la mitocondria. Este flujo de electrones funciona como la corriente de un río que hace girar una turbina hidroeléctrica. Esa "turbina" celular (una enzima llamada ATP sintasa) gira físicamente a miles de revoluciones por minuto, aplastando literalmente el ADP y el fosfato para forzarlos a unirse. Esta etapa produce unas asombrosas **32 a 34 moléculas de ATP**.
 
 Para que esta última etapa funcione, hay un requisito innegociable: **el oxígeno**. El oxígeno que respiras tiene la función vital de atrapar esos electrones al final de la cadena (formando agua en el proceso). Si no hay oxígeno, la cadena se detiene, la turbina no gira y la producción masiva de ATP se colapsa. Por eso asfixiarse es letal tan rápidamente; sin oxígeno, las células se quedan sin su "dinero en efectivo" en cuestión de minutos.
 
@@ -120,8 +121,8 @@ A diferencia de la grasa corporal, el cuerpo humano **no almacena grandes cantid
 
 Si esto es así, ¿cómo sobrevivimos? Porque reciclamos el ADP en ATP a una velocidad que desafía la imaginación.
 
-*   Una sola célula muscular en pleno esfuerzo puede estar reciclando hasta **10 millones de moléculas de ATP por segundo**.
-*   A lo largo de un solo día, tu cuerpo recicla una cantidad de ATP que equivale, en peso, a **tu propio peso corporal**. Si pesas 70 kilos, habrás fabricado y destruido 70 kilos de ATP hoy, utilizando siempre los mismos 250 gramos de "materia prima" base, recargándolos una y otra vez.
+* Una sola célula muscular en pleno esfuerzo puede estar reciclando hasta **10 millones de moléculas de ATP por segundo**.
+* A lo largo de un solo día, tu cuerpo recicla una cantidad de ATP que equivale, en peso, a **tu propio peso corporal**. Si pesas 70 kilos, habrás fabricado y destruido 70 kilos de ATP hoy, utilizando siempre los mismos 250 gramos de "materia prima" base, recargándolos una y otra vez.
 
 Ese ritmo frenético requiere una precisión milimétrica. Cada vez que inspiras profundamente y sientes cómo el aire llena tus pulmones, recuerda que la razón última por la que haces eso es para entregarle a tus miles de millones de pequeñas "turbinas" mitocondriales la brisa necesaria para seguir recargando las diminutas baterías que te mantienen vivo.
 
@@ -129,6 +130,6 @@ Ese ritmo frenético requiere una precisión milimétrica. Cada vez que inspiras
 
 El trifosfato de adenosina es uno de los mayores triunfos evolutivos de la vida en la Tierra. Desde la bacteria más simple que habita en las profundidades del océano, pasando por los robles milenarios, hasta llegar al cerebro de un astrofísico que estudia el cosmos, todos utilizamos la misma moneda de cambio.
 
-Esta universalidad nos enseña una lección maravillosa sobre la biología: cuando la naturaleza encuentra una solución brillante, eficiente y elegante a un problema complejo —como el almacenamiento y la transferencia rápida de energía—, la conserva y la utiliza como cimiento para construir toda la inmensa diversidad de la vida. 
+Esta universalidad nos enseña una lección maravillosa sobre la biología: cuando la naturaleza encuentra una solución brillante, eficiente y elegante a un problema complejo —como el almacenamiento y la transferencia rápida de energía—, la conserva y la utiliza como cimiento para construir toda la inmensa diversidad de la vida.
 
 Así que la próxima vez que te levantes del sofá, resuelvas un acertijo mental, o simplemente disfrutes del latido rítmico de tu propio corazón, tómate un microsegundo para agradecer a esas invisibles moléculas de ATP, los verdaderos magnates financieros de tu economía celular, trabajando incansablemente para comprarte un segundo más de vida.

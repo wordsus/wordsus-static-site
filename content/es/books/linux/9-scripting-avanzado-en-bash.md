@@ -576,8 +576,8 @@ Para gestionar tus tareas encoladas, utilizas `atq` (para listar) y `atrm` segui
 
 ```bash
 $ atq
-1	Sun Oct 29 02:00:00 2023 a root
-2	Mon Oct 30 14:00:00 2023 a root
+1 Sun Oct 29 02:00:00 2023 a root
+2 Mon Oct 30 14:00:00 2023 a root
 
 $ atrm 1 # Cancela el reinicio de nginx
 

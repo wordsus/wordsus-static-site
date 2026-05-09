@@ -2,9 +2,9 @@ Writing elegant, concurrent, and optimized Go code is only half the battle; the 
 
 ## 20.1 Containerizing Go Applications with Docker (Multi-stage builds)
 
-Go's compilation model makes it exceptionally well-suited for containerization. Unlike interpreted languages (like Python or Node.js) or languages that rely on heavy runtime environments (like Java's JVM), Go compiles your application and all its dependencies into a single, statically linked machine code binary. 
+Go's compilation model makes it exceptionally well-suited for containerization. Unlike interpreted languages (like Python or Node.js) or languages that rely on heavy runtime environments (like Java's JVM), Go compiles your application and all its dependencies into a single, statically linked machine code binary.
 
-Because the runtime is baked directly into the executable, a Go application does not need the Go compiler, the Go toolchain, or even a standard operating system environment to run inside a container. However, if you write a naive Dockerfile that uses the official `golang` image as both the build environment and the final execution environment, you end up with massive container images (often 800MB or more) containing source code, build tools, and OS utilities that your production application will never use. 
+Because the runtime is baked directly into the executable, a Go application does not need the Go compiler, the Go toolchain, or even a standard operating system environment to run inside a container. However, if you write a naive Dockerfile that uses the official `golang` image as both the build environment and the final execution environment, you end up with massive container images (often 800MB or more) containing source code, build tools, and OS utilities that your production application will never use.
 
 This expands your attack surface and slows down deployment pipelines. The idiomatic solution is the **Multi-stage Docker build**.
 
@@ -122,6 +122,7 @@ By default, Go attempts to dynamically link standard C libraries (libc) using cg
 
 **3. Providing "Missing" OS Features in Scratch**
 While a static Go binary doesn't need an OS to execute, standard library packages might expect certain OS-level files to exist:
+
 * **Outbound HTTP/HTTPS (`net/http`)**: If your Go microservice makes API calls to other services over HTTPS, it must verify SSL certificates. `scratch` has no root certificates. You must explicitly copy `/etc/ssl/certs/ca-certificates.crt` from the builder.
 * **Timezones (`time`)**: If your application uses `time.LoadLocation` to format times in specific zones, it relies on the OS timezone database. You must copy `/usr/share/zoneinfo` from the builder.
 * **Security (`os/user`)**: Containers should never run as the `root` user. Because `scratch` has no `useradd` command, we create the `appuser` in the Alpine builder stage and copy the `/etc/passwd` file into the `scratch` image so Docker knows the user exists.
@@ -265,10 +266,10 @@ func (r *WebAppReconciler) SetupWithManager(mgr ctrl.Manager) error {
 
 When authoring controllers in Go, deviating from core principles can lead to infinite loops, split-brain scenarios, or total cluster degradation.
 
-1.  **Idempotency is Mandatory:** Your `Reconcile` function will be called repeatedly, even if nothing has explicitly changed (due to cache resyncs). Calling it once should have the exact same effect on the cluster as calling it one hundred times. Never blindly append to lists or create resources without first checking if they already exist.
-2.  **Stateless Execution:** Never store state in Go variables (like standard maps or slices) between reconciliation loops. The controller could crash, restart, or be preempted at any time. The Kubernetes API server (etcd) is your only source of truth.
-3.  **Leverage Owner References:** When your operator creates native Kubernetes resources (like Pods, Services, or Deployments) on behalf of a Custom Resource, always use `ctrl.SetControllerReference`. This links the lifecycles; if the user deletes the parent Custom Resource, Kubernetes' built-in Garbage Collector will automatically prune the orphaned child resources, preventing resource leaks.
-4.  **Avoid Blocking:** The `Reconcile` function runs in a specific worker goroutine pulled from a limited pool. If you execute long-running synchronous tasks (like a 10-minute database backup) directly inside `Reconcile`, you will block the queue. For long-running operations, trigger the job asynchronously (e.g., by creating a Kubernetes `Job` resource) and return immediately. The operator can then watch the `Job` resource to track completion.
+1. **Idempotency is Mandatory:** Your `Reconcile` function will be called repeatedly, even if nothing has explicitly changed (due to cache resyncs). Calling it once should have the exact same effect on the cluster as calling it one hundred times. Never blindly append to lists or create resources without first checking if they already exist.
+2. **Stateless Execution:** Never store state in Go variables (like standard maps or slices) between reconciliation loops. The controller could crash, restart, or be preempted at any time. The Kubernetes API server (etcd) is your only source of truth.
+3. **Leverage Owner References:** When your operator creates native Kubernetes resources (like Pods, Services, or Deployments) on behalf of a Custom Resource, always use `ctrl.SetControllerReference`. This links the lifecycles; if the user deletes the parent Custom Resource, Kubernetes' built-in Garbage Collector will automatically prune the orphaned child resources, preventing resource leaks.
+4. **Avoid Blocking:** The `Reconcile` function runs in a specific worker goroutine pulled from a limited pool. If you execute long-running synchronous tasks (like a 10-minute database backup) directly inside `Reconcile`, you will block the queue. For long-running operations, trigger the job asynchronously (e.g., by creating a Kubernetes `Job` resource) and return immediately. The operator can then watch the `Job` resource to track completion.
 
 ## 20.3 Serverless Go (AWS Lambda, Google Cloud Functions)
 
@@ -309,7 +310,7 @@ To write effective serverless Go, you must understand the difference between the
 
 ### AWS Lambda with Go
 
-Historically, AWS provided a specific `go1.x` runtime. However, because Go compiles to a self-contained executable, AWS has deprecated the dedicated Go runtime in favor of the OS-only Custom Runtime (`provided.al2` or `provided.al2023`). 
+Historically, AWS provided a specific `go1.x` runtime. However, because Go compiles to a self-contained executable, AWS has deprecated the dedicated Go runtime in favor of the OS-only Custom Runtime (`provided.al2` or `provided.al2023`).
 
 To run Go on AWS Lambda, you compile your code for Linux, name the resulting binary `bootstrap`, zip it, and upload it to AWS.
 
@@ -383,6 +384,7 @@ Because Lambda uses Amazon Linux, you must cross-compile your binary. If you con
 GOOS=linux GOARCH=arm64 go build -tags lambda.norpc -o bootstrap main.go
 zip function.zip bootstrap
 ```
+
 *(Note: The `lambda.norpc` build tag strips out legacy RPC code, further reducing binary size and improving cold start times on the custom runtime).*
 
 ### Google Cloud Functions (GCF) with Go
@@ -615,9 +617,10 @@ Always run your tests in CI with the `-race` flag (`go test -race`). While the r
 While `go vet` and `go fmt` are great, they only scratch the surface of static analysis. `golangci-lint` is a fast, parallelized runner that executes dozens of different Go linters simultaneously (checking for unhandled errors, complex cyclomatic logic, unused variables, and shadow variables). Always run linters *before* tests to fail the pipeline as quickly as possible.
 
 **3. Build Matrix for Cross-Compilation**
-If you are building CLI tools or libraries meant for different operating systems, leverage your CI platform's matrix features. Go's cross-compilation makes it trivial to generate binaries for Windows, macOS, and Linux simultaneously. 
+If you are building CLI tools or libraries meant for different operating systems, leverage your CI platform's matrix features. Go's cross-compilation makes it trivial to generate binaries for Windows, macOS, and Linux simultaneously.
 
 *GitHub Actions Matrix Example:*
+
 ```yaml
 jobs:
   build:
@@ -647,6 +650,7 @@ This capability is essential for cloud-native development, where developers ofte
 ### The Power of `GOOS` and `GOARCH`
 
 Cross-compiling in Go is controlled entirely through two environment variables passed at build time:
+
 * `GOOS`: The target Operating System (e.g., `linux`, `windows`, `darwin`, `freebsd`).
 * `GOARCH`: The target Architecture (e.g., `amd64`, `arm64`, `386`, `wasm`).
 
@@ -665,9 +669,9 @@ GOOS=linux GOARCH=arm GOARM=7 go build -o myapp-pi main.go
 
 ### The CGO Cross-Compilation Caveat
 
-Standard cross-compilation in Go is effortless **only if CGO is disabled**. 
+Standard cross-compilation in Go is effortless **only if CGO is disabled**.
 
-If your Go application relies on C code—either directly or through a third-party module like `go-sqlite3` or Confluent's Kafka client—setting `GOOS` and `GOARCH` is not enough. The Go compiler does not ship with C cross-compilers. 
+If your Go application relies on C code—either directly or through a third-party module like `go-sqlite3` or Confluent's Kafka client—setting `GOOS` and `GOARCH` is not enough. The Go compiler does not ship with C cross-compilers.
 
 If you attempt to cross-compile a CGO-enabled application without the proper C toolchain, the build will fail.
 
@@ -697,13 +701,14 @@ To cross-compile a CGO project for Windows from Linux, you would need to install
 sudo apt-get install mingw-w64
 CGO_ENABLED=1 GOOS=windows GOARCH=amd64 CC=x86_64-w64-mingw32-gcc go build -o app.exe
 ```
+
 *Best Practice:* In cloud-native and microservice architectures, avoid CGO whenever possible. Pure Go implementations (like `modernc.org/sqlite` instead of `mattn/go-sqlite3`) ensure your builds remain portable, fast, and simple.
 
 ### Conditional Compilation with Build Tags
 
-While cross-compilation handles generating the correct binary, your codebase itself might need to behave differently depending on the target OS, architecture, or environment (e.g., mock databases for testing vs. real databases for production). 
+While cross-compilation handles generating the correct binary, your codebase itself might need to behave differently depending on the target OS, architecture, or environment (e.g., mock databases for testing vs. real databases for production).
 
-Go solves this natively using **Build Tags** (also known as build constraints). 
+Go solves this natively using **Build Tags** (also known as build constraints).
 
 A build tag is a special comment placed at the absolute top of a `.go` file (before the `package` declaration) that tells the compiler whether to include the file in the build process. Modern Go (1.17+) uses the `//go:build` syntax, which supports boolean logic (`&&`, `||`, `!`).
 
@@ -712,6 +717,7 @@ A build tag is a special comment placed at the absolute top of a `.go` file (bef
 Imagine you are writing a CLI tool that needs to clear the terminal screen. The command is `clear` on Linux/macOS and `cls` on Windows. You can solve this cleanly by creating an interface or a function signature, and providing multiple implementations segmented by build tags.
 
 **File: `terminal_windows.go`**
+
 ```go
 //go:build windows
 
@@ -730,6 +736,7 @@ func ClearScreen() {
 ```
 
 **File: `terminal_unix.go`**
+
 ```go
 //go:build linux || darwin
 
@@ -764,6 +771,7 @@ If you use this naming convention, you do not need to add the `//go:build` comme
 Build tags are not restricted to OS and architecture. You can invent your own tags to toggle features, swap out dependency injection patterns, or manage different editions of your software (e.g., community vs. enterprise).
 
 **File: `payment_mock.go`**
+
 ```go
 //go:build integration_test || local_dev
 

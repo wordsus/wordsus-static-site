@@ -10,10 +10,11 @@ The Iterator Protocol is a formal design pattern built entirely upon two dunder 
 
 ### Iterables vs. Iterators
 
-An **Iterable** is any object capable of returning its members one at a time. Lists, tuples, and strings are iterables. 
+An **Iterable** is any object capable of returning its members one at a time. Lists, tuples, and strings are iterables.
 An **Iterator** is the object representing the actual stream of data. It maintains the internal state (the "cursor") pointing to the current element during iteration.
 
 The contract is defined as follows:
+
 1. **The Iterable Contract:** Must implement `__iter__()`, which returns a brand-new Iterator object.
 2. **The Iterator Contract:** Must implement `__next__()`, which returns the next item in the sequence or raises the `StopIteration` exception when exhausted. Furthermore, an Iterator must also implement `__iter__()` by simply returning `self`. This makes every iterator an iterable, but not every iterable an iterator.
 
@@ -54,7 +55,7 @@ while True:
         break
 ```
 
-This structural pattern is what allows Python to iterate over fundamentally different data structures with a single, uniform syntax. 
+This structural pattern is what allows Python to iterate over fundamentally different data structures with a single, uniform syntax.
 
 ### Building a Custom Iterator
 
@@ -92,7 +93,7 @@ Notice how `self.current_page` persists between calls to `__next__()`. Because `
 
 ### The Two-Argument `iter()` Sentinel Function
 
-A lesser-known but highly powerful feature of the Iterator Protocol is the two-argument form of the `iter()` built-in: `iter(callable, sentinel)`. 
+A lesser-known but highly powerful feature of the Iterator Protocol is the two-argument form of the `iter()` built-in: `iter(callable, sentinel)`.
 
 When used this way, `iter()` creates an iterator that calls the provided `callable` (a function or method taking zero arguments) repeatedly. It yields the returned value until the `callable` returns a value equal to the `sentinel`, at which point `StopIteration` is triggered.
 
@@ -117,7 +118,7 @@ By leveraging `iter()` with a sentinel, we transform a raw `while` loop with a m
 
 In Section 9.1, we manually constructed an iterator by defining a class with `__iter__` and `__next__` methods. While powerful, this approach requires significant boilerplate code to manage the internal state (the cursor) and explicitly raise `StopIteration`. Python offers a much more elegant, native solution for this pattern: **Generators**.
 
-A generator is simply a function that returns an iterator. It looks like a normal function, but instead of using `return` to send back a value and destroy its local state, it uses the `yield` statement. 
+A generator is simply a function that returns an iterator. It looks like a normal function, but instead of using `return` to send back a value and destroy its local state, it uses the `yield` statement.
 
 ### The Mechanics of `yield` vs. `return`
 
@@ -242,7 +243,7 @@ If we attempted to write `unique_id_generator` returning a list, the `while True
 
 ## 9.3 Bidirectional Generators: `send()`, `throw()`, and `close()`
 
-Up to this point, we have treated generators as unidirectional data producers. In Section 9.2, data flowed *out* of the generator via the `yield` statement to the consuming caller. However, Python's generator architecture is far more powerful. By treating `yield` not just as a statement, but as an expression, generators can also receive data, handle injected exceptions, and gracefully terminate on command. 
+Up to this point, we have treated generators as unidirectional data producers. In Section 9.2, data flowed *out* of the generator via the `yield` statement to the consuming caller. However, Python's generator architecture is far more powerful. By treating `yield` not just as a statement, but as an expression, generators can also receive data, handle injected exceptions, and gracefully terminate on command.
 
 This bidirectional capability transforms a simple generator into a **coroutine**—a specialized function that can pause execution, yield control, and maintain state across multiple entry points. Understanding this mechanism is crucial, as it forms the foundational plumbing for Python's asynchronous event loops (`asyncio`), which we will explore in Chapter 12.
 
@@ -253,9 +254,10 @@ To make a generator bidirectional, we assign the `yield` statement to a variable
 `received_value = yield yielded_value`
 
 The execution flow of this line is strictly ordered, and understanding it is the key to mastering coroutines:
-1.  **Yield out:** The generator evaluates `yielded_value` and sends it back to the caller.
-2.  **Pause:** The generator freezes execution at that exact point.
-3.  **Resume and Receive in:** When the caller resumes the generator using `.send(value)`, the generator wakes up. The `yield` expression evaluates to `value`, which is then assigned to `received_value`.
+
+1. **Yield out:** The generator evaluates `yielded_value` and sends it back to the caller.
+2. **Pause:** The generator freezes execution at that exact point.
+3. **Resume and Receive in:** When the caller resumes the generator using `.send(value)`, the generator wakes up. The `yield` expression evaluates to `value`, which is then assigned to `received_value`.
 
 ```text
 +---------------------+                      +---------------------+
@@ -355,7 +357,7 @@ print(analyzer.send(50)) # 50.0
 
 ### Graceful Shutdown with `close()`
 
-When a coroutine manages resources—like open file handlers, database connections, or network sockets—you must ensure those resources are released when the coroutine is no longer needed. 
+When a coroutine manages resources—like open file handlers, database connections, or network sockets—you must ensure those resources are released when the coroutine is no longer needed.
 
 The `.close()` method is the standard way to terminate a generator. When called, it raises a special `GeneratorExit` exception inside the generator at the `yield` point. If the generator has a `try...finally` block, the `finally` suite will execute, ensuring deterministic cleanup.
 
@@ -395,7 +397,7 @@ To bridge the gap between the clean syntax of comprehensions and the lazy evalua
 
 ### Syntactic Distinctions: Brackets vs. Parentheses
 
-The difference in syntax between a list comprehension and a generator expression is famously minimal: a list comprehension uses square brackets `[]`, while a generator expression uses parentheses `()`. 
+The difference in syntax between a list comprehension and a generator expression is famously minimal: a list comprehension uses square brackets `[]`, while a generator expression uses parentheses `()`.
 
 ```python
 # List Comprehension: Eagerly evaluates and builds a list in memory
@@ -439,7 +441,7 @@ As demonstrated, the memory consumed by the list comprehension scales linearly w
 
 ### Architectural Decision Matrix
 
-Choosing between a comprehension and a generator expression is a daily architectural decision. Defaulting to generators is a good habit, but there are specific scenarios where lists are mathematically necessary. 
+Choosing between a comprehension and a generator expression is a daily architectural decision. Defaulting to generators is a good habit, but there are specific scenarios where lists are mathematically necessary.
 
 | Feature | List Comprehension `[...]` | Generator Expression `(...)` |
 | :--- | :--- | :--- |

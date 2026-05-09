@@ -1,14 +1,14 @@
 The Rust compiler is a tireless guardian, using strict ownership rules to guarantee memory safety. However, systems programming often demands actions the compiler cannot statically verify, like accessing raw memory, interacting with the OS, or integrating with C libraries.
 
-Welcome to `unsafe` Rust and the Foreign Function Interface (FFI). 
+Welcome to `unsafe` Rust and the Foreign Function Interface (FFI).
 
 In this chapter, you will learn how to responsibly use the `unsafe` keyword as a controlled escape hatch. We will explore how to wield raw pointers, mutate global state, and build robust FFI boundaries to safely interoperate with C, all while encapsulating these dangerous operations within safe abstractions.
 
 ## 14.1 The Five Unsafe Superpowers and Unsafe Blocks
 
-Up to this point in the book, we have relied entirely on the Rust compiler's static analysis to enforce memory safety and prevent data races. The borrow checker is an incredible tool, but its analysis is inherently conservative. There are times when you, as the developer, know that a specific memory operation is completely safe, but the compiler does not have enough context to prove it. 
+Up to this point in the book, we have relied entirely on the Rust compiler's static analysis to enforce memory safety and prevent data races. The borrow checker is an incredible tool, but its analysis is inherently conservative. There are times when you, as the developer, know that a specific memory operation is completely safe, but the compiler does not have enough context to prove it.
 
-When you encounter these fundamental limits of static analysis, Rust provides an escape hatch: `unsafe` Rust. 
+When you encounter these fundamental limits of static analysis, Rust provides an escape hatch: `unsafe` Rust.
 
 A common misconception is that writing `unsafe` turns off the borrow checker. **It does not.** You cannot suddenly mutate an immutable reference or bypass ownership rules just because you are inside an `unsafe` block. Instead, the `unsafe` keyword simply grants you access to five specific "superpowers" that are otherwise restricted in safe Rust.
 
@@ -20,6 +20,7 @@ When you declare a block of code, a function, or a trait as `unsafe`, you unlock
 
 **1. Dereferencing a Raw Pointer**
 Safe Rust uses references (`&T` and `&mut T`) which are guaranteed to always point to valid data. Unsafe Rust introduces **raw pointers**: `*const T` (immutable) and `*mut T` (mutable). Raw pointers are much closer to pointers in C:
+
 * They are allowed to be null.
 * They are not constrained by lifetimes.
 * They can violate the aliasing rules (you can have multiple mutable raw pointers to the same data).
@@ -42,7 +43,7 @@ unsafe {
 ```
 
 **2. Calling an Unsafe Function or Method**
-Some functions have preconditions that the compiler cannot verify. By marking a function as `unsafe fn`, the author signals that the caller must manually ensure those preconditions are met before invoking it. 
+Some functions have preconditions that the compiler cannot verify. By marking a function as `unsafe fn`, the author signals that the caller must manually ensure those preconditions are met before invoking it.
 
 A classic example is `slice::get_unchecked`. Unlike standard indexing which panics on out-of-bounds access, `get_unchecked` skips the bounds check for maximum performance. If you pass an out-of-bounds index, you trigger undefined behavior.
 
@@ -57,7 +58,7 @@ unsafe {
 ```
 
 **3. Accessing or Modifying a Mutable Static Variable**
-As we discussed in Chapter 2, global variables in Rust are called `static` variables. While reading an immutable `static` is safe, reading or writing to a `static mut` is highly dangerous. Multiple threads could easily access a `static mut` simultaneously, resulting in a data race. 
+As we discussed in Chapter 2, global variables in Rust are called `static` variables. While reading an immutable `static` is safe, reading or writing to a `static mut` is highly dangerous. Multiple threads could easily access a `static mut` simultaneously, resulting in a data race.
 
 Because the compiler cannot track access to global mutable state, you must use an `unsafe` block to read or write to it, promising that you have handled synchronization manually.
 
@@ -82,9 +83,9 @@ A `union` is a data structure similar to a `struct`, but all of its fields share
 
 ### The Unsafe Boundary: Building Safe Abstractions
 
-The goal of `unsafe` Rust is not to infect your entire codebase. Instead, the idiomatic approach is to keep `unsafe` blocks as small as possible and wrap them in **safe abstractions**. 
+The goal of `unsafe` Rust is not to infect your entire codebase. Instead, the idiomatic approach is to keep `unsafe` blocks as small as possible and wrap them in **safe abstractions**.
 
-You create a safe public API, and inside that API, you handle the dangerous `unsafe` operations, carefully ensuring that users of your API can never trigger undefined behavior, no matter what inputs they provide. 
+You create a safe public API, and inside that API, you handle the dangerous `unsafe` operations, carefully ensuring that users of your API can never trigger undefined behavior, no matter what inputs they provide.
 
 ```text
 +---------------------------------------------------+
@@ -102,13 +103,13 @@ You create a safe public API, and inside that API, you handle the dangerous `uns
 +---------------------------------------------------+
 ```
 
-In fact, you have been using safe abstractions over `unsafe` code throughout this entire book. When you push to a `Vec<T>`, allocate memory with `Box<T>`, or use a `Mutex<T>`, you are calling safe methods that internally rely heavily on raw pointers and `unsafe` blocks. The authors of the standard library have done the hard work of verifying the memory invariants so you do not have to. 
+In fact, you have been using safe abstractions over `unsafe` code throughout this entire book. When you push to a `Vec<T>`, allocate memory with `Box<T>`, or use a `Mutex<T>`, you are calling safe methods that internally rely heavily on raw pointers and `unsafe` blocks. The authors of the standard library have done the hard work of verifying the memory invariants so you do not have to.
 
 When you write `unsafe` code, you take on the role of a standard library author. You must rigorously audit your code, verify your pointers, and ensure that your safe abstractions are truly leak-proof.
 
 ## 14.2 Dereferencing Raw Pointers and Calling Unsafe Functions
 
-While Section 14.1 introduced the five unsafe superpowers, the two you will encounter and utilize most frequently are dereferencing raw pointers and calling unsafe functions. These two operations form the bedrock of systems programming in Rust, allowing you to interface with hardware, interoperate with C, and build high-performance data structures that bypass the borrow checker’s conservative analysis. 
+While Section 14.1 introduced the five unsafe superpowers, the two you will encounter and utilize most frequently are dereferencing raw pointers and calling unsafe functions. These two operations form the bedrock of systems programming in Rust, allowing you to interface with hardware, interoperate with C, and build high-performance data structures that bypass the borrow checker’s conservative analysis.
 
 However, with this power comes the responsibility of understanding exactly what the compiler expects from you. Failing to uphold these expectations results in Undefined Behavior (UB).
 
@@ -147,10 +148,11 @@ fn main() {
 #### Undefined Behavior and the Optimizer
 
 When you dereference a raw pointer, you are making a binding contract with the Rust compiler (and the underlying LLVM optimizer). You are guaranteeing that the pointer is:
-1.  **Non-null:** It points to an actual memory address.
-2.  **Aligned:** The memory address is appropriately aligned for the type `T`.
-3.  **Valid:** The memory belongs to your program and has not been freed (no dangling pointers).
-4.  **Properly Aliased:** If you are dereferencing a `*mut T`, you guarantee no other pointer or reference is currently accessing that exact memory.
+
+1. **Non-null:** It points to an actual memory address.
+2. **Aligned:** The memory address is appropriately aligned for the type `T`.
+3. **Valid:** The memory belongs to your program and has not been freed (no dangling pointers).
+4. **Properly Aliased:** If you are dereferencing a `*mut T`, you guarantee no other pointer or reference is currently accessing that exact memory.
 
 If any of these rules are violated, the result is Undefined Behavior. In Rust, UB does not just mean "the program might crash." The compiler operates under the strict assumption that UB *never happens*. If it does, the optimizer is permitted to generate entirely unpredictable machine code, which can lead to data corruption, silent logic failures, or severe security vulnerabilities.
 
@@ -234,7 +236,8 @@ A trait is marked as `unsafe` when it contains fundamental invariants that the R
 
 #### The `Send` and `Sync` Marker Traits
 
-The most common unsafe traits you will encounter are the auto-traits `Send` and `Sync`, which we covered in Chapter 11. 
+The most common unsafe traits you will encounter are the auto-traits `Send` and `Sync`, which we covered in Chapter 11.
+
 * `Send` indicates that a type's ownership can be safely transferred between threads.
 * `Sync` indicates that it is safe for multiple threads to hold immutable references (`&T`) to the type simultaneously.
 
@@ -283,7 +286,7 @@ If a user implements `Pod` incorrectly and returns a pointer to a smaller alloca
 
 ### Mutating Static Variables
 
-In Rust, global variables are defined using the `static` keyword. They have the `'static` lifetime and reside in a fixed memory location for the entire duration of the program. 
+In Rust, global variables are defined using the `static` keyword. They have the `'static` lifetime and reside in a fixed memory location for the entire duration of the program.
 
 Reading an immutable `static` is perfectly safe. However, creating and modifying a `static mut` (mutable static variable) is inherently unsafe because it completely bypasses the borrow checker's aliasing rules.
 
@@ -393,6 +396,7 @@ In this example, the Rust compiler trusts that you have correctly defined the si
 C and Rust have different representations for fundamental data types. An `int` in C is not guaranteed to be exactly 32 bits on all platforms, whereas Rust's `i32` is strictly 32 bits. To bridge this gap and ensure cross-platform compatibility, the Rust standard library provides the `std::ffi` module (and historically, `std::os::raw`).
 
 These modules contain type aliases that map directly to their C equivalents on the target architecture:
+
 * `c_int` maps to C's `int`
 * `c_uint` maps to C's `unsigned int`
 * `c_char` maps to C's `char`
@@ -402,7 +406,7 @@ When declaring C functions, you should strictly use these FFI types rather than 
 
 ### The String Problem: Null-Termination vs. Fat Pointers
 
-One of the most notorious challenges in FFI is string handling. Rust and C represent strings in fundamentally different ways. 
+One of the most notorious challenges in FFI is string handling. Rust and C represent strings in fundamentally different ways.
 
 Rust uses "fat pointers" for strings (`&str`), which contain both a pointer to the data and the exact length of the data. Rust strings are also guaranteed to be valid UTF-8 and are *not* null-terminated. C, on the other hand, uses "thin pointers" (`char*`) that point to a sequence of arbitrary bytes that continue until a null byte (`\0`) is encountered.
 
@@ -434,6 +438,7 @@ Rust uses "fat pointers" for strings (`&str`), which contain both a pointer to t
 ```
 
 Because of this mismatch, you cannot simply pass a Rust `&str` to a C function expecting a `char*`. You must allocate a new, null-terminated string. Rust provides two types for this exact purpose:
+
 * **`CString`**: An owned, null-terminated string (analogous to `String`).
 * **`CStr`**: A borrowed, null-terminated string slice (analogous to `&str`).
 
@@ -468,7 +473,7 @@ fn main() {
 
 ### Linking Against External Libraries
 
-Declaring the `extern` block tells Rust how to call the function, but you still need to tell the linker where to find the function's compiled machine code. 
+Declaring the `extern` block tells Rust how to call the function, but you still need to tell the linker where to find the function's compiled machine code.
 
 If you are calling standard library functions (like `abs` or `strlen`), the linker usually resolves them automatically. However, if you are calling a third-party C library (e.g., `libz` or `libsqlite3`), you must instruct Cargo to link against it.
 
@@ -511,8 +516,8 @@ crate-type = ["cdylib"]
 
 To make a Rust function callable from C, you must address two fundamental compilation behaviors: the Application Binary Interface (ABI) and name mangling.
 
-1.  **The ABI:** Just as we used `extern "C"` to tell Rust how to *call* a C function, we use `pub extern "C" fn` to tell the Rust compiler to format the exported function's arguments and return values according to the C standard.
-2.  **Name Mangling:** By default, the Rust compiler changes the names of your functions during compilation to include unique type and module information (e.g., turning `process` into `_ZN11math_engine7process17h...`). The C linker will not be able to find your function if its name is mangled. You must disable this by applying the `#[no_mangle]` attribute.
+1. **The ABI:** Just as we used `extern "C"` to tell Rust how to *call* a C function, we use `pub extern "C" fn` to tell the Rust compiler to format the exported function's arguments and return values according to the C standard.
+2. **Name Mangling:** By default, the Rust compiler changes the names of your functions during compilation to include unique type and module information (e.g., turning `process` into `_ZN11math_engine7process17h...`). The C linker will not be able to find your function if its name is mangled. You must disable this by applying the `#[no_mangle]` attribute.
 
 ```rust
 use std::ffi::c_int;

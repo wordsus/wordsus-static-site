@@ -2,13 +2,13 @@ Rust elegantly bridges high-level functional programming with low-level systems 
 
 ## 9.1 Capturing the Environment with Anonymous Functions
 
-Standard functions in Rust, defined with the `fn` keyword, are strictly bound to their parameters. They operate in a clean room, only able to interact with data explicitly passed to them. While this strictness is excellent for creating predictable and reusable code, it can become cumbersome when you need a small function to operate alongside local variables, such as when filtering a collection or passing a task to another thread. 
+Standard functions in Rust, defined with the `fn` keyword, are strictly bound to their parameters. They operate in a clean room, only able to interact with data explicitly passed to them. While this strictness is excellent for creating predictable and reusable code, it can become cumbersome when you need a small function to operate alongside local variables, such as when filtering a collection or passing a task to another thread.
 
-Rust solves this with **closures**: anonymous functions that can capture their enclosing environment. 
+Rust solves this with **closures**: anonymous functions that can capture their enclosing environment.
 
 ### Syntax and Type Inference
 
-Closures use a distinct syntax. Instead of wrapping parameters in parentheses `()`, closures define their parameters between vertical pipes `||`. 
+Closures use a distinct syntax. Instead of wrapping parameters in parentheses `()`, closures define their parameters between vertical pipes `||`.
 
 Furthermore, unlike standard functions which require explicit type signatures for both parameters and return types, closures rarely require them. Because closures are typically short-lived and defined in narrow contexts, the Rust compiler can almost always infer their types based on how they are used.
 
@@ -30,7 +30,7 @@ fn main() {
 
 ### The Mechanics of Capturing
 
-The defining feature of a closure is its ability to reach outside its own scope and access variables defined in the surrounding function. 
+The defining feature of a closure is its ability to reach outside its own scope and access variables defined in the surrounding function.
 
 Consider a scenario where we want to filter numbers based on a dynamically calculated threshold:
 
@@ -49,7 +49,7 @@ fn main() {
 }
 ```
 
-To understand why this is a zero-cost abstraction (a concept we will explore deeply in Section 23.3), we must look at how the compiler translates this under the hood. Rust does not use garbage collection or hidden heap allocations to store this environment. Instead, when you define a closure, the compiler automatically generates an anonymous `struct` behind the scenes. 
+To understand why this is a zero-cost abstraction (a concept we will explore deeply in Section 23.3), we must look at how the compiler translates this under the hood. Rust does not use garbage collection or hidden heap allocations to store this environment. Instead, when you define a closure, the compiler automatically generates an anonymous `struct` behind the scenes.
 
 The fields of this struct contain the variables captured from the environment. The closure's execution block is then implemented as a method on that generated struct.
 
@@ -79,9 +79,9 @@ The fields of this struct contain the variables captured from the environment. T
 
 Because closures compile down to structs, the data inside those structs must obey Rust's strict ownership and borrowing rules (Chapter 3). The compiler automatically analyzes what you do with the captured variables inside the closure's body and chooses the least restrictive method of capturing them:
 
-1.  **Immutable Borrow (`&T`):** If you only read the captured variable.
-2.  **Mutable Borrow (`&mut T`):** If you modify the captured variable.
-3.  **Taking Ownership (`T`):** If you consume the variable (e.g., dropping it or moving it into another data structure).
+1. **Immutable Borrow (`&T`):** If you only read the captured variable.
+2. **Mutable Borrow (`&mut T`):** If you modify the captured variable.
+3. **Taking Ownership (`T`):** If you consume the variable (e.g., dropping it or moving it into another data structure).
 
 However, you will frequently encounter situations—particularly when dealing with threads (Chapter 11) or returning closures from functions—where you *must* force the closure to take ownership of the environment, even if the body only reads the data. This is done using the `move` keyword.
 
@@ -220,7 +220,7 @@ An important architectural detail of these traits is their hierarchical relation
 * `trait FnMut: FnOnce` (Any `FnMut` is also an `FnOnce`)
 * `trait Fn: FnMut` (Any `Fn` is also an `FnMut` and an `FnOnce`)
 
-This creates a principle of maximum flexibility for API designers. 
+This creates a principle of maximum flexibility for API designers.
 
 ```text
 // Plain Text Diagram: Closure Trait Hierarchy Bounds
@@ -283,6 +283,7 @@ The true power of iterators unlocks when you use **iterator adapters**. These ar
 This is where the closures we discussed in sections 9.1 and 9.2 shine. Adapters heavily rely on closures to define their transformation logic.
 
 Common adapters include:
+
 * `map`: Transforms each element into another type or value.
 * `filter`: Keeps only the elements that satisfy a predicate (returns `true`).
 * `enumerate`: Attaches the current iteration index to each item, yielding `(usize, Item)`.
@@ -299,11 +300,12 @@ let pipeline = numbers.iter()
 
 ### Consumers: Triggering the Pipeline
 
-Because adapters are lazy, the compiler will issue a warning if you build an iterator pipeline and never evaluate it. To actually execute the pipeline and get a result, you must use a **consuming adaptor**. 
+Because adapters are lazy, the compiler will issue a warning if you build an iterator pipeline and never evaluate it. To actually execute the pipeline and get a result, you must use a **consuming adaptor**.
 
-Consumers are methods that call `next` internally, exhausting the iterator to produce a final value, a collection, or a side effect. 
+Consumers are methods that call `next` internally, exhausting the iterator to produce a final value, a collection, or a side effect.
 
 Common consumers include:
+
 * `collect`: Gathers the yielded elements into a collection (like `Vec<T>`, `String`, or `HashMap<K, V>`). You often need to provide a type hint because `collect` can build many different types of collections.
 * `sum` / `product`: Calculates the sum or product of numerical items.
 * `fold`: Reduces the iterator to a single value by repeatedly applying a closure that carries an accumulator state.
@@ -330,7 +332,7 @@ fn main() {
 
 ### Visualizing the Iterator Pipeline
 
-It is helpful to visualize iterator pipelines not as loops that run sequentially, but as a series of on-demand requests pulling data from the source. 
+It is helpful to visualize iterator pipelines not as loops that run sequentially, but as a series of on-demand requests pulling data from the source.
 
 ```text
 // Plain Text Diagram: The Pull-Based Nature of Rust Iterators
@@ -373,10 +375,10 @@ While the standard library provides iterators for all of its built-in collection
 
 To create a custom iterator, you must complete three steps:
 
-1.  **Define a `struct`** to maintain the state of the iteration. This struct must hold enough information to know where it currently is in the sequence and how to compute the next value.
-2.  **Implement the `Iterator` trait** for your struct.
-3.  **Specify the `Item` associated type** to tell the compiler what type of values your iterator will yield.
-4.  **Write the `next` method** to return `Some(Item)` for the next value, or `None` when the sequence is exhausted.
+1. **Define a `struct`** to maintain the state of the iteration. This struct must hold enough information to know where it currently is in the sequence and how to compute the next value.
+2. **Implement the `Iterator` trait** for your struct.
+3. **Specify the `Item` associated type** to tell the compiler what type of values your iterator will yield.
+4. **Write the `next` method** to return `Some(Item)` for the next value, or `None` when the sequence is exhausted.
 
 ### Example: The Fibonacci Sequence
 
@@ -402,7 +404,7 @@ impl Fibonacci {
 }
 ```
 
-Now, we implement the `Iterator` trait. We use `u64` as our `Item` type. 
+Now, we implement the `Iterator` trait. We use `u64` as our `Item` type.
 
 ```rust
 impl Iterator for Fibonacci {
@@ -479,9 +481,10 @@ This design pattern—where you write a minimal core implementation (`next`) and
 
 A common hesitation among developers coming to Rust from languages like C or C++ is the fear that high-level, functional-style abstractions—like chaining closures through `map` and `filter`—will introduce unacceptable runtime overhead. In many managed languages, every closure allocates memory on the heap, and every step in an iterator pipeline creates a temporary array.
 
-In Rust, iterators and closures are **zero-cost abstractions**. 
+In Rust, iterators and closures are **zero-cost abstractions**.
 
 The term "zero-cost abstraction," coined by C++ creator Bjarne Stroustrup, does not mean the operation takes zero time to execute. Instead, it means two things:
+
 1. What you don't use, you don't pay for.
 2. What you do use, you couldn't hand-code any better yourself.
 
@@ -519,19 +522,19 @@ fn iterator_sum(buffer: &[i32]) -> i32 {
 }
 ```
 
-When you use `buffer.iter()`, the standard library implements the iterator by tracking memory pointers directly (similar to pointer arithmetic in C). Because the iterator inherently knows its own start and end addresses, the compiler can mathematically prove that the iteration will never access memory out of bounds. 
+When you use `buffer.iter()`, the standard library implements the iterator by tracking memory pointers directly (similar to pointer arithmetic in C). Because the iterator inherently knows its own start and end addresses, the compiler can mathematically prove that the iteration will never access memory out of bounds.
 
 Consequently, the LLVM compiler backend completely **eliminates the bounds checks**. The resulting machine code contains no branching logic for safety verifications, leading to a tighter, faster loop.
 
 ### How the Compiler Optimizes the Pipeline
 
-When you chain multiple adapters, such as `filter` and `map`, it looks like multiple passes over the data. However, as discussed in Section 9.3, iterators are lazy and pull-based. 
+When you chain multiple adapters, such as `filter` and `map`, it looks like multiple passes over the data. However, as discussed in Section 9.3, iterators are lazy and pull-based.
 
 The process of turning this high-level code into hyper-optimized machine code relies on a synergy of compiler features:
 
-1.  **Monomorphization:** As we learned in Chapter 7, generic types are resolved at compile time. Every closure you write generates a unique, concrete struct. Every `Map` or `Filter` adapter generates a specific, strongly-typed state machine. There is no dynamic dispatch or virtual method table overhead.
-2.  **Inlining:** Because the exact types of the iterators and closures are known, the Rust compiler aggressively inlines the `next` methods and the closure bodies directly into the calling function. The "pipeline" collapses into a single, contiguous block of code.
-3.  **Loop Unrolling and SIMD:** Once the code is completely inlined and bounds checks are eliminated, LLVM (Rust's compiler backend) can perform aggressive loop unrolling. Furthermore, it will often auto-vectorize the code, utilizing **SIMD** (Single Instruction, Multiple Data) CPU registers to process multiple elements (e.g., 4, 8, or 16 integers) in a single CPU cycle.
+1. **Monomorphization:** As we learned in Chapter 7, generic types are resolved at compile time. Every closure you write generates a unique, concrete struct. Every `Map` or `Filter` adapter generates a specific, strongly-typed state machine. There is no dynamic dispatch or virtual method table overhead.
+2. **Inlining:** Because the exact types of the iterators and closures are known, the Rust compiler aggressively inlines the `next` methods and the closure bodies directly into the calling function. The "pipeline" collapses into a single, contiguous block of code.
+3. **Loop Unrolling and SIMD:** Once the code is completely inlined and bounds checks are eliminated, LLVM (Rust's compiler backend) can perform aggressive loop unrolling. Furthermore, it will often auto-vectorize the code, utilizing **SIMD** (Single Instruction, Multiple Data) CPU registers to process multiple elements (e.g., 4, 8, or 16 integers) in a single CPU cycle.
 
 ```text
 // Plain Text Diagram: The Zero-Cost Compilation Pipeline
@@ -562,6 +565,6 @@ vpaddd ymm0, ymm0, ymm1  ; Process 8 integers simultaneously!
 
 ### Trusting the Abstraction
 
-The practical takeaway for writing production Rust code is to **prefer iterators over manual indexing whenever possible**. 
+The practical takeaway for writing production Rust code is to **prefer iterators over manual indexing whenever possible**.
 
 Writing idiomatic Rust—using `iter`, `map`, `filter`, and `fold`—is not merely a stylistic choice for cleaner code. It is giving the compiler the explicit semantic information it needs to safely remove safety checks and leverage advanced hardware instructions. By embracing closures and the `Iterator` trait, you achieve the holy grail of systems programming: expressive, memory-safe code that compiles down to the absolute maximum performance the hardware can deliver.

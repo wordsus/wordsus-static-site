@@ -84,11 +84,12 @@ if __name__ == "__main__":
 
 ### OAuth2: El Marco de Autorización Delegada
 
-Mientras que JWT es un formato de token, **OAuth2** es un marco (framework) de autorización. Su propósito original no es la autenticación (para eso se construyó OpenID Connect sobre OAuth2), sino permitir que una aplicación obtenga acceso limitado a una cuenta de usuario en un servicio de terceros, sin exponer la contraseña del usuario. 
+Mientras que JWT es un formato de token, **OAuth2** es un marco (framework) de autorización. Su propósito original no es la autenticación (para eso se construyó OpenID Connect sobre OAuth2), sino permitir que una aplicación obtenga acceso limitado a una cuenta de usuario en un servicio de terceros, sin exponer la contraseña del usuario.
 
 Piensa en el clásico botón de *"Iniciar sesión con Google"* o *"Autorizar a esta app para leer tus repositorios de GitHub"*.
 
 OAuth2 define cuatro roles principales:
+
 1. **Resource Owner (Propietario del recurso):** El usuario final.
 2. **Client (Cliente):** La aplicación que solicita acceso a los datos del usuario (tu backend o frontend).
 3. **Authorization Server (Servidor de autorización):** El servidor que autentica al usuario y emite los tokens (ej. los servidores de Google).
@@ -158,13 +159,13 @@ async def read_sensitive_data(current_user_id: str = Depends(get_current_user)):
 ```
 
 **Resumen Arquitectónico:**
-Al combinar JWT y OAuth2, logras un sistema donde el servidor de autorización se encarga de las reglas complejas de identidad, y tus microservicios (Resource Servers) solo necesitan la clave pública o secreta para verificar los JWT que reciben en las cabeceras HTTP de cada petición. Esto reduce drásticamente las consultas a la base de datos (I/O bound) durante la verificación de sesiones, mejorando el rendimiento global de tu arquitectura. 
+Al combinar JWT y OAuth2, logras un sistema donde el servidor de autorización se encarga de las reglas complejas de identidad, y tus microservicios (Resource Servers) solo necesitan la clave pública o secreta para verificar los JWT que reciben en las cabeceras HTTP de cada petición. Esto reduce drásticamente las consultas a la base de datos (I/O bound) durante la verificación de sesiones, mejorando el rendimiento global de tu arquitectura.
 
 En la siguiente sección (18.2), exploraremos cómo proteger estos mismos endpoints contra ataques maliciosos comunes como Inyección SQL y Cross-Site Scripting.
 
 ## 18.2 Mitigación de vulnerabilidades OWASP (SQLi, XSS, CSRF)
 
-Desarrollar software funcional es solo la mitad del trabajo; la otra mitad es asegurar que sea resistente a ataques malintencionados. El proyecto **OWASP** (Open Worldwide Application Security Project) mantiene un documento estándar llamado *OWASP Top 10*, que clasifica los riesgos de seguridad más críticos en aplicaciones web. 
+Desarrollar software funcional es solo la mitad del trabajo; la otra mitad es asegurar que sea resistente a ataques malintencionados. El proyecto **OWASP** (Open Worldwide Application Security Project) mantiene un documento estándar llamado *OWASP Top 10*, que clasifica los riesgos de seguridad más críticos en aplicaciones web.
 
 Como desarrolladores backend en Python, estamos en la primera línea de defensa. A continuación, analizaremos tres de las vulnerabilidades históricamente más explotadas y cómo mitigarlas en nuestro código.
 
@@ -182,10 +183,11 @@ Entrada del usuario (email): admin@app.com' OR '1'='1
 Consulta resultante: 
 SELECT * FROM users WHERE email = 'admin@app.com' OR '1'='1' AND password = '...'
 ```
+
 Como `'1'='1'` es siempre verdadero, el atacante podría evadir la autenticación por completo.
 
 **Mitigación en Python:**
-La regla de oro es **nunca usar concatenación de cadenas o f-strings para construir consultas SQL**. 
+La regla de oro es **nunca usar concatenación de cadenas o f-strings para construir consultas SQL**.
 
 * **Uso de ORMs:** Herramientas como SQLAlchemy (visto en el Capítulo 15) o el ORM de Django mitigan esta vulnerabilidad automáticamente por diseño, ya que parametrizan las consultas en segundo plano.
 * **Consultas parametrizadas (Drivers nativos):** Si debes usar SQL puro (por ejemplo, con `asyncpg` o `psycopg2`), utiliza siempre los marcadores de posición del driver.
@@ -209,15 +211,15 @@ result = session.execute(query, {"username": user_input})
 
 ### 2. Cross-Site Scripting (XSS)
 
-El XSS ocurre cuando una aplicación incluye datos no confiables en una página web sin la validación o el escape adecuados. Esto permite a un atacante ejecutar scripts maliciosos (generalmente JavaScript) en el navegador de la víctima. 
+El XSS ocurre cuando una aplicación incluye datos no confiables en una página web sin la validación o el escape adecuados. Esto permite a un atacante ejecutar scripts maliciosos (generalmente JavaScript) en el navegador de la víctima.
 
 Aunque el XSS se ejecuta en el *frontend*, el *backend* es el responsable de almacenar (XSS Almacenado) o reflejar (XSS Reflejado) el código malicioso.
 
 **Mitigación en el Backend (Python):**
 
-1.  **Escapar la salida (Output Encoding):** Si tu backend renderiza HTML (por ejemplo, usando Flask y Jinja2 o Django Templates), los motores de plantillas modernos escapan automáticamente las variables por defecto. Convierte caracteres peligrosos como `<` en `&lt;`. 
+1. **Escapar la salida (Output Encoding):** Si tu backend renderiza HTML (por ejemplo, usando Flask y Jinja2 o Django Templates), los motores de plantillas modernos escapan automáticamente las variables por defecto. Convierte caracteres peligrosos como `<` en `&lt;`.
     * *Precaución:* Nunca desactives este comportamiento con filtros como `|safe` (Jinja2) a menos que estés absolutamente seguro del origen de los datos.
-2.  **Validación y Sanitización de entrada:** No confíes en lo que envía el cliente. Si tu API solo debe recibir texto alfanumérico, rechaza cualquier input que contenga etiquetas HTML. Si *necesitas* permitir HTML (ej. un editor de texto enriquecido), usa librerías como `bleach` para limpiar etiquetas maliciosas antes de guardar en la base de datos:
+2. **Validación y Sanitización de entrada:** No confíes en lo que envía el cliente. Si tu API solo debe recibir texto alfanumérico, rechaza cualquier input que contenga etiquetas HTML. Si *necesitas* permitir HTML (ej. un editor de texto enriquecido), usa librerías como `bleach` para limpiar etiquetas maliciosas antes de guardar en la base de datos:
 
 ```python
 import bleach
@@ -229,7 +231,7 @@ def sanitize_user_bio(bio_text: str) -> str:
     return clean_bio
 ```
 
-3.  **Cabeceras de Seguridad (CSP):** Configura tu backend para enviar la cabecera HTTP `Content-Security-Policy`. Esto le dice al navegador desde qué dominios está permitido ejecutar scripts, bloqueando la ejecución de scripts inyectados inline.
+1. **Cabeceras de Seguridad (CSP):** Configura tu backend para enviar la cabecera HTTP `Content-Security-Policy`. Esto le dice al navegador desde qué dominios está permitido ejecutar scripts, bloqueando la ejecución de scripts inyectados inline.
 
 ---
 
@@ -238,6 +240,7 @@ def sanitize_user_bio(bio_text: str) -> str:
 El CSRF (Falsificación de Petición en Sitios Cruzados) engaña al navegador de un usuario autenticado para que realice una acción no deseada en tu aplicación sin su consentimiento.
 
 **El mecanismo del ataque:**
+
 ```text
 1. El usuario inicia sesión en tu app (banco.com). El navegador guarda una Cookie de sesión.
 2. El usuario visita un sitio malicioso (gatosgraciosos.com) en otra pestaña.
@@ -247,12 +250,12 @@ El CSRF (Falsificación de Petición en Sitios Cruzados) engaña al navegador de
 ```
 
 **La relación con JWT (Sección 18.1):**
-Si tu API web utiliza JWT enviados explícitamente en la cabecera `Authorization: Bearer <token>` mediante código JavaScript (fetch/axios), **eres naturalmente inmune al CSRF**, ya que el navegador no adjunta cabeceras personaladas de forma automática al hacer peticiones cruzadas. 
+Si tu API web utiliza JWT enviados explícitamente en la cabecera `Authorization: Bearer <token>` mediante código JavaScript (fetch/axios), **eres naturalmente inmune al CSRF**, ya que el navegador no adjunta cabeceras personaladas de forma automática al hacer peticiones cruzadas.
 Sin embargo, si guardas tus JWT en *Cookies HTTPOnly* (una práctica recomendada para evitar ataques XSS), vuelves a ser vulnerable a CSRF.
 
 **Mitigación en Python:**
 
-1.  **Atributo SameSite en Cookies:** Es la primera y más efectiva línea de defensa moderna. Al configurar tus cookies (sea de sesión o con JWT), asegúrate de usar `SameSite=Lax` o `SameSite=Strict`. Esto impide que el navegador envíe la cookie si la petición se origina desde un dominio diferente.
+1. **Atributo SameSite en Cookies:** Es la primera y más efectiva línea de defensa moderna. Al configurar tus cookies (sea de sesión o con JWT), asegúrate de usar `SameSite=Lax` o `SameSite=Strict`. Esto impide que el navegador envíe la cookie si la petición se origina desde un dominio diferente.
 
 ```python
 # Ejemplo en FastAPI devolviendo una cookie segura
@@ -271,7 +274,7 @@ def login(response: Response):
     return {"msg": "Login exitoso"}
 ```
 
-2.  **Tokens Anti-CSRF:** Es el método clásico. El servidor genera un token criptográfico único y lo envía al frontend. El frontend debe incluir ese token en un campo oculto del formulario o en una cabecera HTTP (`X-CSRFToken`) en las peticiones mutables (POST, PUT, DELETE).
+1. **Tokens Anti-CSRF:** Es el método clásico. El servidor genera un token criptográfico único y lo envía al frontend. El frontend debe incluir ese token en un campo oculto del formulario o en una cabecera HTTP (`X-CSRFToken`) en las peticiones mutables (POST, PUT, DELETE).
     * **Django:** Lo incluye de forma nativa. Solo necesitas agregar `{% csrf_token %}` en tus formularios HTML, o el middleware `CsrfViewMiddleware` rechazará la petición.
     * **FastAPI / Flask:** Existen extensiones (como `fastapi-csrf-protect` o `Flask-WTF`) que implementan este patrón si estás construyendo aplicaciones con renderizado del lado del servidor.
 
@@ -283,7 +286,7 @@ La regla número uno de la seguridad de datos es asumir que, en algún momento, 
 
 ### 1. La Evolución del Hashing de Contraseñas
 
-Es fundamental entender por qué las técnicas antiguas ya no sirven. 
+Es fundamental entender por qué las técnicas antiguas ya no sirven.
 
 * **El error del texto plano:** Guardar `password = "123456"` es negligencia pura.
 * **El error de los hashes rápidos (MD5, SHA-1, SHA-256):** Las funciones de hash criptográficas tradicionales están diseñadas para ser **extremadamente rápidas** (para verificar la integridad de archivos grandes, por ejemplo). Un hardware moderno puede calcular miles de millones de hashes SHA-256 por segundo. Si usas SHA-256, un atacante puede usar ataques de fuerza bruta o *Rainbow Tables* (tablas precalculadas) para descifrar las contraseñas en minutos.
@@ -301,14 +304,15 @@ Flujo de verificación (Login):
 
 En el desarrollo backend moderno, hay dos estándares principales:
 
-1.  **bcrypt:** Es el estándar de la industria desde hace más de dos décadas. Su principal característica es que es intensivo en CPU y permite ajustar su "costo" (rounds) a medida que el hardware mejora.
-2.  **Argon2:** Es el ganador de la *Password Hashing Competition* (2015) y es el estándar moderno recomendado por organizaciones como OWASP. A diferencia de bcrypt, Argon2 (específicamente la variante `Argon2id`) es intensivo no solo en CPU, sino también en **memoria RAM**. Esto lo hace altamente resistente a ataques que utilizan hardware especializado como GPUs o ASICs, los cuales tienen mucha capacidad de cálculo pero memoria limitada.
+1. **bcrypt:** Es el estándar de la industria desde hace más de dos décadas. Su principal característica es que es intensivo en CPU y permite ajustar su "costo" (rounds) a medida que el hardware mejora.
+2. **Argon2:** Es el ganador de la *Password Hashing Competition* (2015) y es el estándar moderno recomendado por organizaciones como OWASP. A diferencia de bcrypt, Argon2 (específicamente la variante `Argon2id`) es intensivo no solo en CPU, sino también en **memoria RAM**. Esto lo hace altamente resistente a ataques que utilizan hardware especializado como GPUs o ASICs, los cuales tienen mucha capacidad de cálculo pero memoria limitada.
 
 ### 3. Implementación en Python con `passlib`
 
 Aunque puedes usar las librerías `bcrypt` o `argon2-cffi` directamente, la práctica recomendada en Python (especialmente en frameworks como FastAPI) es utilizar **`passlib`**. Esta librería abstrae la complejidad y maneja los "contextos", permitiéndote actualizar los algoritmos en el futuro sin romper los inicios de sesión de los usuarios existentes.
 
 Primero, instala las dependencias (usaremos bcrypt para el ejemplo, pero el esquema es idéntico para Argon2):
+
 ```bash
 pip install "passlib[bcrypt]"
 # O para Argon2: pip install "passlib[argon2]"
@@ -386,6 +390,6 @@ print(f"Conectando a BD con credenciales ocultas...")
 ```
 
 **Nivel 3: Gestores de Secretos Cloud (Nivel Senior)**
-Para entornos de producción distribuidos y arquitecturas de microservicios (Capítulos 19 y 20), depender de variables de entorno estáticas puede ser insuficiente o difícil de auditar. 
+Para entornos de producción distribuidos y arquitecturas de microservicios (Capítulos 19 y 20), depender de variables de entorno estáticas puede ser insuficiente o difícil de auditar.
 
 En arquitecturas Senior, la aplicación al arrancar se autentica contra un servicio dedicado como **AWS Secrets Manager**, **Google Secret Manager** o **HashiCorp Vault**. Estos sistemas permiten rotar las contraseñas de las bases de datos automáticamente cada ciertos días sin que tengas que reiniciar tu aplicación en Python ni cambiar código, llevando la seguridad a su máximo nivel.

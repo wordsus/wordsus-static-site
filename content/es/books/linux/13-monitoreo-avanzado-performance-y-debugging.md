@@ -22,8 +22,6 @@ Más allá de listar procesos, el verdadero valor de `top` para un perfil Senior
 * `%wa` (IOWait): Tiempo que la CPU pasa ociosa esperando a que responda el disco o la red. Si este valor es alto, tienes un problema de I/O (que analizaremos a fondo en la sección 13.3 con `iostat`).
 * `%st` (Steal Time): Crítico en la nube (AWS, GCP). Es el tiempo que el hipervisor físico le "robó" a tu máquina virtual para dárselo a otro *tenant* ruidoso. Si tienes un alto `%st`, tu proveedor de nube te está limitando (throttling).
 
-
-
 **Atajos interactivos clave en `top`:**
 
 * `P`: Ordenar por uso de CPU (por defecto).
@@ -319,6 +317,7 @@ Ninguna aplicación puede tocar el hardware directamente. Si tu código quiere a
 
 * **El misterio del archivo faltante ("No such file or directory"):**
 Imagina que un servicio falla al arrancar, pero no te dice qué archivo de configuración le falta. Puedes arrancar el servicio a través de `strace`:
+
 ```bash
 $ strace -e trace=open,openat,stat cat archivo_misterioso.txt
 openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
@@ -327,10 +326,11 @@ openat(AT_FDCWD, "archivo_misterioso.txt", O_RDONLY) = -1 ENOENT (No such file o
 
 ```
 
-
 *Diagnóstico:* Al filtrar solo las syscalls de apertura de archivos (`-e trace=open,openat,stat`), vemos exactamente dónde busca el proceso y el error exacto (`ENOENT`), revelando la ruta que el desarrollador olvidó documentar.
+
 * **Aplicaciones congeladas ("Hangs"):**
 Si un proceso se queda bloqueado, puedes "enganchar" `strace` a su PID en vivo usando `-p`:
+
 ```bash
 $ sudo strace -p 1234
 strace: Process 1234 attached
@@ -338,10 +338,11 @@ recvfrom(5,
 
 ```
 
-
 *Diagnóstico:* Si al ejecutar el comando la salida se queda pausada en `recvfrom` o `connect`, tu aplicación no está rota; está esperando indefinidamente a que un servicio de red externo (como una base de datos o una API) le responda. Tienes un problema de timeout, no de código.
+
 * **Perfilado de rendimiento (Profiling) con `strace -c`:**
 Si tu aplicación es lenta pero la CPU global está bien, puedes contar cuántas syscalls hace y cuánto tiempo le toman:
+
 ```bash
 $ sudo strace -c -p 1234
 % time     seconds  usecs/call     calls    errors syscall
@@ -353,7 +354,6 @@ $ sudo strace -c -p 1234
 100.00    0.062883                   1292         total
 
 ```
-
 
 *Diagnóstico:* La aplicación está perdiendo el 85% de su tiempo en la syscall `select`, lo que indica ineficiencia en cómo maneja múltiples conexiones de red o descriptores de archivos.
 
@@ -405,28 +405,29 @@ Si ejecutas `tcpdump` sin argumentos en un servidor ocupado, tu terminal se inun
 
 * **Verificar si el tráfico llega al servidor:**
 Supongamos que un cliente dice que no puede acceder a tu puerto 443 (HTTPS), pero tu aplicación está corriendo perfectamente.
+
 ```bash
-$ sudo tcpdump -i eth0 -nn port 443
+sudo tcpdump -i eth0 -nn port 443
 
 ```
-
 
 *Diagnóstico:* Si no ves paquetes entrar cuando el cliente hace la petición, el problema no es tu servidor; es un firewall externo (AWS Security Group, balanceador de carga, etc.) que está bloqueando el tráfico antes de que llegue a ti.
+
 * **Aislar la comunicación entre dos hosts:**
 Tu API (10.0.0.5) se comunica con la Base de Datos (10.0.0.50). Quieres ver solo ese tráfico bidireccional:
+
 ```bash
-$ sudo tcpdump -i any -nn host 10.0.0.5 and host 10.0.0.50
+sudo tcpdump -i any -nn host 10.0.0.5 and host 10.0.0.50
 
 ```
-
 
 * **Capturar para análisis forense (El estándar de la industria):**
 En una crisis a las 3:00 a.m., no te pones a leer paquetes en la terminal. Los guardas en un archivo `.pcap` para analizarlos más tarde en tu laptop con una interfaz gráfica cómoda como Wireshark.
+
 ```bash
-$ sudo tcpdump -i eth0 -nn -w captura_incidente.pcap -s 0
+sudo tcpdump -i eth0 -nn -w captura_incidente.pcap -s 0
 
 ```
-
 
 *(Nota: `-s 0` le indica que capture el paquete completo, sin recortarlo).*
 
@@ -442,20 +443,21 @@ Aquí entra `tshark` (Terminal Wireshark). Es la versión de línea de comandos 
 
 * **Analizar un archivo PCAP generado por `tcpdump`:**
 En lugar de descargar el `.pcap` a tu máquina, lo analizas directamente en el servidor.
+
 ```bash
-$ tshark -r captura_incidente.pcap -Y "http.request.method == GET"
+tshark -r captura_incidente.pcap -Y "http.request.method == GET"
 
 ```
-
 
 *Diagnóstico:* Esto filtra un archivo crudo gigante y te muestra únicamente las peticiones HTTP tipo GET, en un formato humanamente legible.
+
 * **Cazar latencia en consultas DNS:**
 Si el sistema se siente "lento" de forma intermitente, suele ser culpa del DNS. Podemos usar `tshark` en vivo para imprimir solo las consultas DNS que tardan más de un tiempo determinado:
+
 ```bash
-$ sudo tshark -i eth0 -f "udp port 53" -Y "dns.time > 0.1" -T fields -e dns.qry.name -e dns.time
+sudo tshark -i eth0 -f "udp port 53" -Y "dns.time > 0.1" -T fields -e dns.qry.name -e dns.time
 
 ```
-
 
 *Diagnóstico:* Esto imprimirá en pantalla únicamente los dominios que tardaron más de 100ms en resolverse, identificando inmediatamente si tu servidor DNS primario está degradado.
 

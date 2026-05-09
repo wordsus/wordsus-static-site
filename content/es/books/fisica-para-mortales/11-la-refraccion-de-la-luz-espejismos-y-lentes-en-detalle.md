@@ -4,7 +4,7 @@
 
 Imagina que estás sentado en un restaurante durante una tarde calurosa de verano. Pides un vaso de agua con hielo y, para revolver, usas un sorbete o una cuchara larga. De repente, al mirar el vaso desde un lado, notas algo extraño: el sorbete parece estar quebrado, fracturado justo en la línea donde el agua se encuentra con el aire. Si lo sacas, está perfectamente intacto; si lo vuelves a sumergir, se "rompe" de nuevo. Este pequeño truco de magia cotidiano, que todos hemos presenciado en algún momento de nuestras vidas, es la tarjeta de presentación de uno de los fenómenos más fascinantes del universo: la refracción de la luz.
 
-Si has estado leyendo nuestra sección de *Física para Mortales*, ya sabes que la luz tiene comportamientos duales, a veces actúa como una partícula y otras veces como una onda. Pero hoy no vamos a debatir sobre la mecánica cuántica. Hoy vamos a centrarnos en el viaje de la luz. Vamos a entender por qué la luz, que solemos imaginar viajando siempre en líneas perfectamente rectas, a veces decide doblar la esquina. 
+Si has estado leyendo nuestra sección de *Física para Mortales*, ya sabes que la luz tiene comportamientos duales, a veces actúa como una partícula y otras veces como una onda. Pero hoy no vamos a debatir sobre la mecánica cuántica. Hoy vamos a centrarnos en el viaje de la luz. Vamos a entender por qué la luz, que solemos imaginar viajando siempre en líneas perfectamente rectas, a veces decide doblar la esquina.
 
 La refracción no solo sirve para "romper" lápices en vasos de agua. Es el principio maestro detrás de las gafas que nos devuelven la vista, los microscopios que nos revelaron el mundo celular, los telescopios que nos acercaron a las galaxias y la fibra óptica que hace posible que estés leyendo este artículo en internet ahora mismo. A lo largo de esta extensa lectura, vamos a desarmar la refracción pieza por pieza. Veremos cómo la luz cambia de velocidad, conoceremos las matemáticas ocultas que dictan su camino, entenderemos por qué el asfalto parece mojado en verano y descubriremos cómo moldear la luz a nuestro antojo mediante lentes. Prepárate una taza de café, ponte cómodo y acompáñame a explorar este maravilloso rincón de la óptica.
 
@@ -32,11 +32,11 @@ $$n = \frac{c}{v}$$
 
 Como la velocidad de la luz en el vacío ($c$) siempre es el número más grande posible, el número de abajo ($v$) siempre será menor. Por lo tanto, el índice de refracción ($n$) siempre es un número igual o mayor a $1$. Nunca menor a $1$.
 
-*   **Vacío:** $n = 1.000$ (La línea base, sin frenos).
-*   **Aire:** $n \approx 1.0003$ (Frena tan poco a la luz que para la mayoría de los cálculos cotidianos decimos que es igual a $1$).
-*   **Agua:** $n \approx 1.33$ (Significa que la luz viaja en el vacío $1.33$ veces más rápido que en el agua).
-*   **Vidrio común:** $n \approx 1.5$ (Más denso, mayor capacidad de frenado).
-*   **Diamante:** $n \approx 2.42$ (Un freno masivo, lo que le da al diamante sus propiedades ópticas espectaculares que veremos más adelante).
+* **Vacío:** $n = 1.000$ (La línea base, sin frenos).
+* **Aire:** $n \approx 1.0003$ (Frena tan poco a la luz que para la mayoría de los cálculos cotidianos decimos que es igual a $1$).
+* **Agua:** $n \approx 1.33$ (Significa que la luz viaja en el vacío $1.33$ veces más rápido que en el agua).
+* **Vidrio común:** $n \approx 1.5$ (Más denso, mayor capacidad de frenado).
+* **Diamante:** $n \approx 2.42$ (Un freno masivo, lo que le da al diamante sus propiedades ópticas espectaculares que veremos más adelante).
 
 Cuanto mayor es el índice de refracción, más se ralentiza la luz y, por lo tanto, más se dobla (se refracta) cuando entra a ese material.
 
@@ -84,8 +84,9 @@ Antes de Newton, la gente creía que los prismas "coloreaban" mágicamente la lu
 ¿Por qué ocurre esto? Aquí es donde la refracción se vuelve caprichosa. Anteriormente dijimos que el vidrio tiene un índice de refracción de alrededor de $1.5$. Pero resulta que el índice de refracción no es exactamente el mismo para todos los colores de luz.
 
 La luz es una onda, y cada color tiene una longitud de onda diferente. El rojo tiene una longitud de onda más larga y estirada, mientras que el azul y el violeta tienen longitudes de onda cortas y apretadas. Cuando esta mezcla de ondas golpea el vidrio:
-*   La luz roja es menos afectada, su índice de refracción efectivo es ligeramente menor, por lo que **se desvía menos**.
-*   La luz violeta interactúa más con los átomos del cristal, su índice de refracción es mayor, por lo que se frena más y **se desvía más**.
+
+* La luz roja es menos afectada, su índice de refracción efectivo es ligeramente menor, por lo que **se desvía menos**.
+* La luz violeta interactúa más con los átomos del cristal, su índice de refracción es mayor, por lo que se frena más y **se desvía más**.
 
 Como el rojo se dobla un poco, el naranja un poco más, el amarillo aún más, hasta llegar al violeta que se dobla muchísimo, los colores se separan espacialmente. Esto es lo que crea el arcoíris artificial de un prisma.
 
@@ -101,12 +102,12 @@ Si sigues inclinando la linterna, llegará un punto en el que el rayo de luz se 
 
 $$\theta_c = \arcsin\left(\frac{n_2}{n_1}\right)$$
 
-¿Pero qué ocurre si inclinas la linterna *más allá* de ese ángulo crítico? La luz se dobla tanto que no puede salir del agua. Se refleja en la superficie interior del agua como si fuera un espejo perfecto y vuelve hacia abajo. A este fenómeno se le llama **Reflexión Interna Total**. 
+¿Pero qué ocurre si inclinas la linterna *más allá* de ese ángulo crítico? La luz se dobla tanto que no puede salir del agua. Se refleja en la superficie interior del agua como si fuera un espejo perfecto y vuelve hacia abajo. A este fenómeno se le llama **Reflexión Interna Total**.
 
 Aunque suene a un detalle técnico oscuro, la Reflexión Interna Total es uno de los fenómenos más cruciales del mundo moderno:
 
-*   **Los diamantes:** La razón por la que un diamante brilla tanto es por su alto índice de refracción ($2.42$), lo que le da un ángulo crítico muy pequeño (apenas 24 grados). Cuando la luz entra en el diamante tallado, choca contra las paredes internas en ángulos mayores a 24 grados, quedando atrapada, rebotando en su interior varias veces antes de encontrar una salida por la parte superior hacia tus ojos, creando esos destellos impresionantes.
-*   **Fibra Óptica:** Es la tecnología que soporta la internet global. Son hilos de vidrio o plástico flexibles, apenas más gruesos que un cabello humano. Se dispara un rayo láser en un extremo en un ángulo pronunciado. El rayo viaja por el interior del cable, rebotando continuamente contra las paredes del vidrio mediante reflexión interna total. La luz queda atrapada en el conducto y puede viajar miles de kilómetros por debajo del océano sin perderse en el entorno.
+* **Los diamantes:** La razón por la que un diamante brilla tanto es por su alto índice de refracción ($2.42$), lo que le da un ángulo crítico muy pequeño (apenas 24 grados). Cuando la luz entra en el diamante tallado, choca contra las paredes internas en ángulos mayores a 24 grados, quedando atrapada, rebotando en su interior varias veces antes de encontrar una salida por la parte superior hacia tus ojos, creando esos destellos impresionantes.
+* **Fibra Óptica:** Es la tecnología que soporta la internet global. Son hilos de vidrio o plástico flexibles, apenas más gruesos que un cabello humano. Se dispara un rayo láser en un extremo en un ángulo pronunciado. El rayo viaja por el interior del cable, rebotando continuamente contra las paredes del vidrio mediante reflexión interna total. La luz queda atrapada en el conducto y puede viajar miles de kilómetros por debajo del océano sin perderse en el entorno.
 
 ## 6. Espejismos: Las ilusiones ópticas de la naturaleza
 
@@ -136,12 +137,12 @@ Ojo del observador
 ============================================================== Asfalto caliente
 ```
 
-1.  La luz azul proviene del cielo (o de las nubes) y desciende diagonalmente hacia la ruta.
-2.  A medida que desciende, se encuentra con capas de aire cada vez más calientes y menos densas.
-3.  Debido a la refracción constante en estas capas cambiantes, el rayo de luz en lugar de viajar en línea recta, comienza a curvarse hacia arriba, formando una curva en forma de "U".
-4.  Ese rayo de luz curva finalmente entra en tus ojos.
-5.  Aquí está la clave de la ilusión: **Tu cerebro ha evolucionado asumiendo ciegamente que la luz siempre viaja en línea recta**. Tu cerebro proyecta ese rayo que acaba de llegar a tus ojos hacia atrás, en línea recta, y ve la imagen del cielo azul estrellada contra el suelo.
-6.  ¿Y qué interpreta un cerebro humano cuando ve un reflejo azul brillante ondulante en el suelo? "Debe ser un charco de agua".
+1. La luz azul proviene del cielo (o de las nubes) y desciende diagonalmente hacia la ruta.
+2. A medida que desciende, se encuentra con capas de aire cada vez más calientes y menos densas.
+3. Debido a la refracción constante en estas capas cambiantes, el rayo de luz en lugar de viajar en línea recta, comienza a curvarse hacia arriba, formando una curva en forma de "U".
+4. Ese rayo de luz curva finalmente entra en tus ojos.
+5. Aquí está la clave de la ilusión: **Tu cerebro ha evolucionado asumiendo ciegamente que la luz siempre viaja en línea recta**. Tu cerebro proyecta ese rayo que acaba de llegar a tus ojos hacia atrás, en línea recta, y ve la imagen del cielo azul estrellada contra el suelo.
+6. ¿Y qué interpreta un cerebro humano cuando ve un reflejo azul brillante ondulante en el suelo? "Debe ser un charco de agua".
 
 A este tipo de espejismo, donde la imagen aparece por debajo del objeto real, se le llama **Espejismo Inferior**.
 
@@ -149,7 +150,7 @@ Existe un fenómeno inverso, menos común y más aterrador, llamado **Espejismo 
 
 ## 7. Lentes: Doblando la luz a nuestra voluntad
 
-La naturaleza usa la refracción para asustar marineros y crear arcoíris, pero la humanidad aprendió a domesticarla. El dominio de la refracción se materializó en la invención de las **lentes**. 
+La naturaleza usa la refracción para asustar marineros y crear arcoíris, pero la humanidad aprendió a domesticarla. El dominio de la refracción se materializó en la invención de las **lentes**.
 
 Una lente no es más que una pieza de cristal (o plástico) cuidadosamente tallada para forzar a los rayos de luz que la atraviesan a converger (unirse) o divergir (separarse) de manera controlada y matemática. Básicamente, son prismas muy sofisticados.
 
@@ -169,8 +170,9 @@ Rayos de luz incidentes         Lente Convergente
 ```
 
 **¿Para qué se usan?**
-*   **Lupas:** Al concentrar la luz, pueden magnificar la imagen de un objeto pequeño si se sitúa cerca. También, si concentras la luz del sol en el punto focal, puedes calentar una hoja seca hasta encender fuego.
-*   **Microscopios y Telescopios:** Utilizan combinaciones de lentes convergentes para atrapar enormes cantidades de luz lejana y enfocarla en nuestro ojo, haciendo que las estrellas gigantescas o las bacterias microscópicas aparezcan en nuestro campo visual.
+
+* **Lupas:** Al concentrar la luz, pueden magnificar la imagen de un objeto pequeño si se sitúa cerca. También, si concentras la luz del sol en el punto focal, puedes calentar una hoja seca hasta encender fuego.
+* **Microscopios y Telescopios:** Utilizan combinaciones de lentes convergentes para atrapar enormes cantidades de luz lejana y enfocarla en nuestro ojo, haciendo que las estrellas gigantescas o las bacterias microscópicas aparezcan en nuestro campo visual.
 
 ### B. Lentes Divergentes (Cóncavas)
 
@@ -208,7 +210,7 @@ Y por supuesto, a medida que envejecemos (generalmente a partir de los 40 años)
 
 ## Conclusión: Vivimos inmersos en un juego de luces
 
-La refracción de la luz no es solo un conjunto de ecuaciones en un libro de texto de física. Es el mecanismo silencioso que da forma a la manera en que percibimos la realidad misma. 
+La refracción de la luz no es solo un conjunto de ecuaciones en un libro de texto de física. Es el mecanismo silencioso que da forma a la manera en que percibimos la realidad misma.
 
 Desde la forma en que los primeros cazadores notaron que el pez en el río no estaba exactamente donde el agua mostraba que estaba, hasta los ingenieros contemporáneos disparando láseres a través de hilos de cristal que cruzan los océanos para conectar continentes. La humanidad ha evolucionado entendiendo, estudiando y finalmente manipulando la manera en que la velocidad de la luz se ve frenada por la materia.
 

@@ -2,7 +2,7 @@ En este capítulo exploraremos las herramientas que transforman a Python en un l
 
 ## 3.1 Listas y Tuplas: Uso, diferencias y métodos
 
-Hasta ahora hemos trabajado con tipos de datos primitivos y estructuras de control. Sin embargo, en el mundo real, los programas necesitan gestionar colecciones de datos. Python nos ofrece varias estructuras integradas para este propósito, siendo las **secuencias** las más fundamentales. 
+Hasta ahora hemos trabajado con tipos de datos primitivos y estructuras de control. Sin embargo, en el mundo real, los programas necesitan gestionar colecciones de datos. Python nos ofrece varias estructuras integradas para este propósito, siendo las **secuencias** las más fundamentales.
 
 En esta sección profundizaremos en las dos secuencias más utilizadas: las **listas** y las **tuplas**. Ambas permiten almacenar múltiples elementos ordenados, pero tienen propósitos, comportamientos y optimizaciones bajo el capó muy diferentes.
 
@@ -27,16 +27,16 @@ Bajo el capó en CPython, las listas no son listas enlazadas (linked lists) trad
 Debido a su mutabilidad, las listas poseen una rica variedad de métodos para alterar su estado (modificarlas *in-place*):
 
 * **Agregar elementos:**
-    * `.append(x)`: Añade el elemento `x` al final de la lista. (Operación $O(1)$ en promedio).
-    * `.extend(iterable)`: Desempaqueta un iterable y añade sus elementos al final.
-    * `.insert(i, x)`: Inserta `x` en el índice `i`. Puede ser costoso ($O(n)$) si se inserta al principio, ya que desplaza los demás elementos en memoria.
+  * `.append(x)`: Añade el elemento `x` al final de la lista. (Operación $O(1)$ en promedio).
+  * `.extend(iterable)`: Desempaqueta un iterable y añade sus elementos al final.
+  * `.insert(i, x)`: Inserta `x` en el índice `i`. Puede ser costoso ($O(n)$) si se inserta al principio, ya que desplaza los demás elementos en memoria.
 * **Eliminar elementos:**
-    * `.pop([i])`: Elimina y retorna el elemento en la posición `i`. Si no se especifica `i`, elimina el último elemento.
-    * `.remove(x)`: Elimina la primera aparición del valor `x`. Lanza `ValueError` si no existe.
-    * `.clear()`: Vacía la lista por completo.
+  * `.pop([i])`: Elimina y retorna el elemento en la posición `i`. Si no se especifica `i`, elimina el último elemento.
+  * `.remove(x)`: Elimina la primera aparición del valor `x`. Lanza `ValueError` si no existe.
+  * `.clear()`: Vacía la lista por completo.
 * **Organización:**
-    * `.sort()`: Ordena la lista *in-place*.
-    * `.reverse()`: Invierte el orden de los elementos *in-place*.
+  * `.sort()`: Ordena la lista *in-place*.
+  * `.reverse()`: Invierte el orden de los elementos *in-place*.
 
 ```python
 servidores = ["web_01", "db_01"]
@@ -58,7 +58,7 @@ servidores.sort(reverse=True)
 
 ### Tuplas: Integridad e Inmutabilidad
 
-Una tupla (`tuple`) es, en esencia, una lista **inmutable**. Una vez que se crea una tupla, no se pueden añadir, eliminar ni cambiar sus elementos. 
+Una tupla (`tuple`) es, en esencia, una lista **inmutable**. Una vez que se crea una tupla, no se pueden añadir, eliminar ni cambiar sus elementos.
 
 Curiosamente, lo que define a una tupla en Python no son los paréntesis `()`, sino **las comas** `,`. Los paréntesis se utilizan para agrupar y evitar ambigüedades, pero la coma es el operador real de creación (excepto para la tupla vacía).
 
@@ -95,11 +95,13 @@ print(tupla_trampa)         # Salida: (1, 2, ['a', 'b', 'c'])
 La decisión entre usar una lista o una tupla no es arbitraria; obedece a razones semánticas, de rendimiento y de arquitectura de la memoria.
 
 #### 1. Semántica: Homogeneidad vs. Heterogeneidad
+
 Convencionalmente (y de forma idiomática en Python), **las listas se usan para datos homogéneos** (colecciones de elementos del mismo tipo, como una lista de nombres o de objetos de una clase). El orden y la posición no tienen un significado intrínseco más allá de la secuencia.
 
 Por el contrario, **las tuplas se usan para datos heterogéneos** donde la posición de cada elemento tiene un significado específico, actuando a menudo como un "registro" o "struct" ligero sin nombres de campo (por ejemplo, una tupla `(nombre, edad, peso)` o coordenadas `(x, y)`).
 
 #### 2. Rendimiento y Asignación de Memoria (Over-allocation)
+
 Como se mencionó, las listas deben prever el crecimiento. Las tuplas, al ser estáticas, conocen su tamaño exacto al momento de la creación. Esto hace que las tuplas ocupen menos memoria y sean ligeramente más rápidas de instanciar e iterar.
 
 ```text
@@ -113,7 +115,8 @@ TUPLA (Arreglo Estático)
 ```
 
 #### 3. Hasheabilidad (Hashability)
-Esta es una diferencia técnica crucial de cara al próximo capítulo (3.2). Como las listas pueden cambiar, no son *hashables* (su valor hash cambiaría, perdiendo su ubicación). Las tuplas puras (que solo contienen otros objetos inmutables) **sí son hashables**. 
+
+Esta es una diferencia técnica crucial de cara al próximo capítulo (3.2). Como las listas pueden cambiar, no son *hashables* (su valor hash cambiaría, perdiendo su ubicación). Las tuplas puras (que solo contienen otros objetos inmutables) **sí son hashables**.
 
 Esto significa que **una tupla puede ser usada como clave en un diccionario o como elemento de un Set**, mientras que una lista no puede.
 
@@ -154,15 +157,15 @@ config = dict(host="localhost", puerto=5432)
 La manipulación de diccionarios es el pan de cada día en el desarrollo backend, especialmente al procesar JSONs o respuestas de bases de datos.
 
 * **Acceso seguro:**
-    * `dict["clave"]`: Devuelve el valor, pero lanza un `KeyError` si la clave no existe.
-    * `.get("clave", valor_por_defecto)`: Intenta obtener el valor. Si la clave no existe, devuelve el valor por defecto (o `None` si no se especifica), evitando que el programa colapse.
+  * `dict["clave"]`: Devuelve el valor, pero lanza un `KeyError` si la clave no existe.
+  * `.get("clave", valor_por_defecto)`: Intenta obtener el valor. Si la clave no existe, devuelve el valor por defecto (o `None` si no se especifica), evitando que el programa colapse.
 * **Modificación:**
-    * `.update(otro_dict)`: Actualiza el diccionario actual con los pares del nuevo. Si la clave ya existe, sobrescribe el valor.
-    * `.setdefault("clave", valor)`: Si la clave no existe, la inserta con el valor especificado. Si ya existe, simplemente devuelve el valor actual.
+  * `.update(otro_dict)`: Actualiza el diccionario actual con los pares del nuevo. Si la clave ya existe, sobrescribe el valor.
+  * `.setdefault("clave", valor)`: Si la clave no existe, la inserta con el valor especificado. Si ya existe, simplemente devuelve el valor actual.
 * **Vistas (Iteración):**
-    * `.keys()`: Retorna una vista de las claves.
-    * `.values()`: Retorna una vista de los valores.
-    * `.items()`: Retorna una vista de tuplas `(clave, valor)`, ideal para bucles `for`.
+  * `.keys()`: Retorna una vista de las claves.
+  * `.values()`: Retorna una vista de los valores.
+  * `.items()`: Retorna una vista de tuplas `(clave, valor)`, ideal para bucles `for`.
 
 ```python
 # Acceso seguro
@@ -203,9 +206,9 @@ solo_back = backend_devs - frontend_devs  # Diferencia: {'David'}
 
 Tanto los diccionarios como los sets logran sus tiempos de búsqueda en $O(1)$ (tiempo constante) gracias a las **tablas hash**. Cuando insertas un par en un diccionario o un elemento en un set, Python no busca secuencialmente dónde guardarlo. Sigue este proceso:
 
-1.  **Cálculo del Hash:** Python pasa la clave por una función matemática incorporada llamada `hash()`. Esta función toma el dato y devuelve un número entero pseudoaleatorio pero determinista.
-2.  **Módulo (Indexación):** Toma ese número grande y aplica una operación de módulo (`%`) basada en el tamaño actual del arreglo de la tabla hash en memoria. Esto genera un índice exacto.
-3.  **Almacenamiento:** El par clave-valor se guarda en ese índice específico (llamado "bucket").
+1. **Cálculo del Hash:** Python pasa la clave por una función matemática incorporada llamada `hash()`. Esta función toma el dato y devuelve un número entero pseudoaleatorio pero determinista.
+2. **Módulo (Indexación):** Toma ese número grande y aplica una operación de módulo (`%`) basada en el tamaño actual del arreglo de la tabla hash en memoria. Esto genera un índice exacto.
+3. **Almacenamiento:** El par clave-valor se guarda en ese índice específico (llamado "bucket").
 
 Cuando pides el valor de una clave, Python no tiene que buscar en toda la lista. Simplemente vuelve a calcular el hash, va directamente a esa dirección de memoria y extrae el dato.
 
@@ -226,7 +229,7 @@ Memoria (Arreglo bajo el capó):
 
 #### La restricción de oro: Hasheabilidad y Colisiones
 
-Para que este sistema funcione, **el valor del hash nunca debe cambiar durante la vida del objeto**. Si cambiara, perderíamos su ubicación en la memoria. 
+Para que este sistema funcione, **el valor del hash nunca debe cambiar durante la vida del objeto**. Si cambiara, perderíamos su ubicación en la memoria.
 
 Por esta razón, **solo los objetos inmutables pueden ser claves de diccionario o elementos de un set** (como strings, enteros, flotantes y tuplas que contengan elementos inmutables). Como vimos en el capítulo anterior, las listas no son *hashables* porque si mutan, su valor interior cambia.
 
@@ -240,13 +243,13 @@ A veces, dos claves diferentes generan el mismo índice (colisión). CPython man
 
 #### El orden de inserción (Una nota histórica)
 
-Históricamente, debido a la naturaleza de las tablas hash, los diccionarios y sets no garantizaban el orden. Las claves aparecían "desordenadas" al imprimirlas. 
+Históricamente, debido a la naturaleza de las tablas hash, los diccionarios y sets no garantizaban el orden. Las claves aparecían "desordenadas" al imprimirlas.
 
 Sin embargo, a partir de **Python 3.7**, los diccionarios garantizan **preservar el orden de inserción**. Esto se logró separando la tabla de índices dispersos del arreglo donde se guardan realmente los pares clave-valor. Esto no solo hizo que los diccionarios fueran ordenados, sino que redujo su consumo de memoria entre un 20% y un 25%. (Nota: Los `sets`, por el contrario, siguen sin tener un orden garantizado).
 
 ## 3.3 Comprensiones (Comprehensions) de listas, diccionarios y sets
 
-En Python, la legibilidad es un principio fundamental. Cuando necesitamos transformar o filtrar una colección de datos para crear una nueva, el enfoque tradicional imperativo (usar un bucle `for` vacío, iterar, aplicar lógica y añadir elementos uno a uno mediante `.append()`) puede volverse verboso. 
+En Python, la legibilidad es un principio fundamental. Cuando necesitamos transformar o filtrar una colección de datos para crear una nueva, el enfoque tradicional imperativo (usar un bucle `for` vacío, iterar, aplicar lógica y añadir elementos uno a uno mediante `.append()`) puede volverse verboso.
 
 Las **comprensiones** (o *comprehensions*) son una de las características más amadas y distintivas del lenguaje. Nos permiten crear nuevas secuencias de manera **declarativa**, expresando *qué* queremos obtener en lugar de detallar paso a paso *cómo* construirlo.
 
@@ -289,6 +292,7 @@ El resultado es el mismo (`[0, 4, 16, 36, 64]`), pero el segundo enfoque requier
 Las comprensiones no se limitan a las listas. Introducidas en Python 2.7, las comprensiones de diccionarios y sets aplican el mismo concepto usando llaves `{}`.
 
 #### Set Comprehensions
+
 Si usamos llaves y proveemos una sola expresión, Python creará un Set. Esto es extremadamente útil para extraer valores únicos y transformarlos al mismo tiempo.
 
 ```python
@@ -301,6 +305,7 @@ dominios_unicos = {correo.split('@')[1] for correo in emails}
 ```
 
 #### Dictionary Comprehensions
+
 Si usamos llaves pero separamos dos expresiones con dos puntos `clave: valor`, Python creará un Diccionario. Un caso de uso clásico en el desarrollo backend es invertir las claves y valores de un diccionario existente.
 
 ```python
@@ -319,7 +324,8 @@ id_a_usuario = {v: k for k, v in usuarios.items()}
 Para dominar las comprensiones, es vital entender cómo anidar lógica y, sobre todo, cuándo **no** usarlas.
 
 #### 1. El operador ternario en la expresión (Filtrar vs. Transformar)
-Un error muy común es confundir el `if` de filtrado (al final) con una bifurcación de transformación (al principio). 
+
+Un error muy común es confundir el `if` de filtrado (al final) con una bifurcación de transformación (al principio).
 Si quieres omitir elementos, el `if` va al final. Si quieres modificar el elemento dependiendo de una condición, debes usar una expresión condicional (operador ternario) al inicio.
 
 ```python
@@ -335,6 +341,7 @@ normalizados = [x if x > 0 else 0 for x in numeros]
 ```
 
 #### 2. Comprensiones Anidadas (Aplanando estructuras)
+
 Puedes usar múltiples `for` en una sola comprensión. El orden de evaluación es de izquierda a derecha, idéntico a cómo se anidarían los bucles tradicionales.
 
 ```python
@@ -349,9 +356,11 @@ matriz = [
 plana = [numero for fila in matriz for numero in fila]
 # [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
+
 *Modelo mental para anidamiento:* Lee siempre el primer `for` como el bucle exterior, y el siguiente `for` como el bucle interior.
 
 #### 3. El Antipatrón de la "Comprensión Ilegible" (Zen de Python)
+
 El Zen de Python dicta que *"la legibilidad cuenta"* y *"simple es mejor que complejo"*. Aunque es técnicamente posible anidar múltiples `for`, `if` y operadores ternarios en una sola línea, **rara vez es una buena idea en un entorno profesional**.
 
 ```python
@@ -402,13 +411,14 @@ registro_usuario = ("jdoe", "jdoe@email.com", "127.0.0.1", "2023-10-25")
 # Solo nos interesa el username y la fecha de registro
 username, _, _, fecha_registro = registro_usuario
 ```
+
 *Nota técnica:* `_` es una variable real y válida en Python, y de hecho almacenará el valor asignado. Sin embargo, por convención universal, indica al lector humano y a las herramientas de análisis de código que ese valor será ignorado intencionalmente.
 
 ---
 
 ### 2. Desempaquetado con Asterisco (`*`): Capturando el "Resto"
 
-Introducido en PEP 3132, el uso del operador `*` (asterisco o *splat*) llevó el desempaquetado a un nivel superior. Permite agrupar dinámicamente una cantidad arbitraria de elementos restantes en una lista. 
+Introducido en PEP 3132, el uso del operador `*` (asterisco o *splat*) llevó el desempaquetado a un nivel superior. Permite agrupar dinámicamente una cantidad arbitraria de elementos restantes en una lista.
 
 Esto es extremadamente útil cuando la longitud del iterable es desconocida o variable.
 

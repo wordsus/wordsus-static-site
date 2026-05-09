@@ -104,9 +104,9 @@ Entender la mecánica física de estas capturas es vital. En la siguiente secci�
 
 ## 9.2 Traits de Closures (`Fn`, `FnMut`, `FnOnce`)
 
-En la sección anterior vimos cómo los closures capturan su entorno físicamente en memoria mediante un `struct` anónimo generado por el compilador. Sin embargo, cuando necesitamos pasar un closure a una función —por ejemplo, como un middleware en Actix-Web o un iterador personalizado— no podemos usar el nombre de ese `struct` porque es anónimo e inaccesible directamente en nuestro código. 
+En la sección anterior vimos cómo los closures capturan su entorno físicamente en memoria mediante un `struct` anónimo generado por el compilador. Sin embargo, cuando necesitamos pasar un closure a una función —por ejemplo, como un middleware en Actix-Web o un iterador personalizado— no podemos usar el nombre de ese `struct` porque es anónimo e inaccesible directamente en nuestro código.
 
-Para resolver esto, Rust utiliza su sistema de tipos y polimorfismo (que vimos en el Capítulo 7). El compilador implementa automáticamente uno o varios de los **traits de closures** definidos en `std::ops`: `Fn`, `FnMut` y `FnOnce`. 
+Para resolver esto, Rust utiliza su sistema de tipos y polimorfismo (que vimos en el Capítulo 7). El compilador implementa automáticamente uno o varios de los **traits de closures** definidos en `std::ops`: `Fn`, `FnMut` y `FnOnce`.
 
 Comprender la diferencia entre estos tres traits es fundamental para el desarrollo Backend, ya que dictan cuántas veces se puede ejecutar un closure y cómo este afecta a la memoria a su alrededor.
 
@@ -196,7 +196,7 @@ ejecutar_concurrentemente(multiplicar);
 
 ### Relevancia en Frameworks Web (Axum / Actix)
 
-Cuando defines rutas y controladores (*handlers*) en frameworks como Axum o Actix-Web (Capítulos 16 y 17), el framework necesita invocar tu función por cada petición HTTP entrante. Si tu controlador fuera un closure `FnOnce`, el servidor solo podría responder a la primera petición y luego fallaría. 
+Cuando defines rutas y controladores (*handlers*) en frameworks como Axum o Actix-Web (Capítulos 16 y 17), el framework necesita invocar tu función por cada petición HTTP entrante. Si tu controlador fuera un closure `FnOnce`, el servidor solo podría responder a la primera petición y luego fallaría.
 
 Por esta razón, los frameworks asíncronos exigen que los handlers sean funciones o closures que implementen `Fn` (o que implementen `Clone` de forma económica) y sean `Send` + `Sync`, garantizando que el estado capturado pueda ser compartido de forma segura entre los *worker threads* del servidor sin mutaciones de estado no controladas.
 
@@ -298,6 +298,7 @@ let todo_ok = codigos_estado.iter().all(|&c| c < 400);
 // Encuentra el primer código no autorizado
 let no_autorizado = codigos_estado.iter().find(|&&c| c == 401); // Devuelve Option<&i32>
 ```
+
 *(Nota sobre la doble referencia `&&c` en `find`: Como `iter()` devuelve referencias `&T`, y el closure de `find` toma una referencia al elemento por diseño de la API para no consumirlo, terminamos con una referencia a una referencia. Se desestructura usando `&&` o desreferenciando con `**`).*
 
 **3. Consolidación: `count`, `sum`, `max`, `min`**
@@ -348,7 +349,7 @@ let iterador_ids = usuarios.iter().map(|user| user.id);
 
 ### 2. `filter`: La criba de elementos
 
-`filter` toma un closure que devuelve un booleano (`true` o `false`). Si el closure devuelve `true`, el elemento pasa al siguiente paso del pipeline; si es `false`, se descarta. 
+`filter` toma un closure que devuelve un booleano (`true` o `false`). Si el closure devuelve `true`, el elemento pasa al siguiente paso del pipeline; si es `false`, se descarta.
 
 **Un detalle crucial para el nivel Senior:** Por diseño, `filter` pasa una *referencia* al elemento para no consumirlo prematuramente durante la evaluación. Si estás iterando sobre una colección usando `iter()` (que ya devuelve referencias `&T`), el closure de `filter` recibirá una referencia a una referencia (`&&T`).
 
@@ -418,7 +419,7 @@ let set_ids = ids_crudos.iter()
 ```
 
 **El superpoder de `collect` con `Result`**
-Una de las técnicas más elegantes en el backend con Rust es usar `collect` para invertir una colección de `Result`s. Si tienes un iterador que produce `Result<T, E>`, puedes recolectarlo en un `Result<Vec<T>, E>`. 
+Una de las técnicas más elegantes en el backend con Rust es usar `collect` para invertir una colección de `Result`s. Si tienes un iterador que produce `Result<T, E>`, puedes recolectarlo en un `Result<Vec<T>, E>`.
 
 Si todos los elementos son `Ok`, obtendrás un vector con los valores. **Si un solo elemento es `Err`, `collect` aborta la iteración (cortocircuito) y devuelve ese error inmediatamente.**
 

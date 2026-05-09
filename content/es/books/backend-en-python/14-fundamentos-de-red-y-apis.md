@@ -6,9 +6,10 @@ Al adentrarnos en el desarrollo Backend, abandonamos el aislamiento de la ejecuc
 
 ### HTTP vs HTTPS: La capa de seguridad
 
-HTTP es, en su base, un protocolo de texto plano, sin estado (stateless) y basado en el modelo cliente-servidor. El cliente (un navegador, una app móvil o un script en Python) envía una **petición (Request)** y el servidor devuelve una **respuesta (Response)**. 
+HTTP es, en su base, un protocolo de texto plano, sin estado (stateless) y basado en el modelo cliente-servidor. El cliente (un navegador, una app móvil o un script en Python) envía una **petición (Request)** y el servidor devuelve una **respuesta (Response)**.
 
 Al ser texto plano, cualquier intermediario en la red puede leer el tráfico HTTP. Aquí es donde entra **HTTPS (HTTP Secure)**. HTTPS no es un protocolo distinto, sino que es el mismo HTTP envolviendo su tráfico en una capa de cifrado mediante TLS (Transport Layer Security, el sucesor de SSL). Esto garantiza tres pilares fundamentales:
+
 1. **Confidencialidad:** Los datos viajan cifrados.
 2. **Integridad:** Los datos no pueden ser modificados en tránsito sin que el receptor lo note.
 3. **Autenticación:** Asegura que el servidor con el que te comunicas es quien dice ser (mediante certificados digitales).
@@ -44,11 +45,13 @@ Los métodos HTTP (o verbos) indican la intención de la petición. Un desarroll
 Las cabeceras permiten al cliente y al servidor pasar información adicional junto con la petición o la respuesta. Son pares clave-valor (case-insensitive). Se dividen en varias categorías, pero las más críticas para el desarrollo backend son:
 
 **Cabeceras de Petición (Request Headers):**
+
 * `Accept`: Le dice al servidor qué tipo de contenido espera el cliente (ej. `application/json`, `text/html`).
 * `Authorization`: Contiene las credenciales para autenticar al usuario (ej. `Bearer <token_jwt>`).
 * `User-Agent`: Identifica el cliente, sistema operativo y versión que realiza la petición.
 
 **Cabeceras de Respuesta (Response Headers):**
+
 * `Content-Type`: Indica el tipo de medio del cuerpo de la respuesta (ej. `application/json; charset=utf-8`).
 * `Set-Cookie`: Envía cookies desde el servidor al cliente para mantener sesiones o rastreo.
 * `Cache-Control`: Directivas de almacenamiento en caché para optimizar el rendimiento.
@@ -59,21 +62,21 @@ El código de estado es un número de tres dígitos que el servidor devuelve par
 
 * **1xx (Informativos):** Petición recibida, el proceso continúa. (Ej. `101 Switching Protocols` usado al iniciar WebSockets).
 * **2xx (Éxito):** La acción fue recibida, entendida y aceptada exitosamente.
-    * **200 OK:** Éxito estándar.
-    * **201 Created:** Petición completada, nuevo recurso creado (típico en respuestas `POST`).
-    * **204 No Content:** Éxito, pero no hay cuerpo en la respuesta (típico en respuestas `DELETE` exitosas).
+  * **200 OK:** Éxito estándar.
+  * **201 Created:** Petición completada, nuevo recurso creado (típico en respuestas `POST`).
+  * **204 No Content:** Éxito, pero no hay cuerpo en la respuesta (típico en respuestas `DELETE` exitosas).
 * **3xx (Redirección):** El cliente debe tomar acciones adicionales para completar la petición.
-    * **301 Moved Permanently:** El recurso cambió de URI definitivamente.
-    * **304 Not Modified:** El recurso no ha cambiado desde la última petición (basado en caché).
+  * **301 Moved Permanently:** El recurso cambió de URI definitivamente.
+  * **304 Not Modified:** El recurso no ha cambiado desde la última petición (basado en caché).
 * **4xx (Errores del Cliente):** La petición contiene sintaxis incorrecta o no puede procesarse. **El error es culpa de quien hace la petición.**
-    * **400 Bad Request:** Sintaxis inválida (ej. un JSON mal formado).
-    * **401 Unauthorized:** Faltan credenciales válidas o son incorrectas.
-    * **403 Forbidden:** Credenciales correctas, pero el usuario no tiene permisos para esa acción.
-    * **404 Not Found:** El recurso solicitado no existe.
-    * **429 Too Many Requests:** El cliente ha superado el límite de peticiones (Rate Limiting).
+  * **400 Bad Request:** Sintaxis inválida (ej. un JSON mal formado).
+  * **401 Unauthorized:** Faltan credenciales válidas o son incorrectas.
+  * **403 Forbidden:** Credenciales correctas, pero el usuario no tiene permisos para esa acción.
+  * **404 Not Found:** El recurso solicitado no existe.
+  * **429 Too Many Requests:** El cliente ha superado el límite de peticiones (Rate Limiting).
 * **5xx (Errores del Servidor):** El servidor falló al completar una petición aparentemente válida. **El error es culpa de nuestra aplicación (el backend).**
-    * **500 Internal Server Error:** Error genérico. Hubo una excepción no manejada en tu código Python.
-    * **502 Bad Gateway / 504 Gateway Timeout:** Problemas de comunicación entre proxies o balanceadores de carga y tu servidor de aplicación (ej. Nginx fallando al conectar con Gunicorn).
+  * **500 Internal Server Error:** Error genérico. Hubo una excepción no manejada en tu código Python.
+  * **502 Bad Gateway / 504 Gateway Timeout:** Problemas de comunicación entre proxies o balanceadores de carga y tu servidor de aplicación (ej. Nginx fallando al conectar con Gunicorn).
 
 ### HTTP en la práctica con Python
 
@@ -142,18 +145,18 @@ En arquitecturas antiguas (como SOAP o RPC), las URLs solían representar accion
 #### Mejores prácticas de nomenclatura (Routing)
 
 * **Usa sustantivos en plural:** Es el estándar de facto. Representa colecciones de recursos.
-    * ✅ BIEN: `GET /usuarios`
-    * ❌ MAL: `GET /usuario` o `GET /obtenerUsuarios`
+  * ✅ BIEN: `GET /usuarios`
+  * ❌ MAL: `GET /usuario` o `GET /obtenerUsuarios`
 * **Aplica métodos HTTP para las acciones:**
-    * `POST /usuarios`: Crea un nuevo usuario en la colección.
-    * `GET /usuarios/123`: Recupera el usuario con ID 123.
-    * `PUT /usuarios/123`: Reemplaza por completo el usuario 123.
-    * `PATCH /usuarios/123`: Modifica parcialmente el usuario 123.
-    * `DELETE /usuarios/123`: Elimina el usuario 123.
+  * `POST /usuarios`: Crea un nuevo usuario en la colección.
+  * `GET /usuarios/123`: Recupera el usuario con ID 123.
+  * `PUT /usuarios/123`: Reemplaza por completo el usuario 123.
+  * `PATCH /usuarios/123`: Modifica parcialmente el usuario 123.
+  * `DELETE /usuarios/123`: Elimina el usuario 123.
 * **Anidamiento lógico (pero limitado):** Si un recurso pertenece a otro, refléjalo en la URL, pero evita niveles de profundidad extremos. Una regla empírica es **no superar los dos niveles de profundidad**.
-    * ✅ BIEN: `GET /usuarios/123/pedidos` (Obtiene los pedidos del usuario 123).
-    * ✅ BIEN: `GET /pedidos/456` (Para ver un pedido específico, accede directo a su colección, no a través del usuario).
-    * ❌ MAL: `GET /usuarios/123/pedidos/456/articulos/789` (Demasiado acoplado y difícil de mantener).
+  * ✅ BIEN: `GET /usuarios/123/pedidos` (Obtiene los pedidos del usuario 123).
+  * ✅ BIEN: `GET /pedidos/456` (Para ver un pedido específico, accede directo a su colección, no a través del usuario).
+  * ❌ MAL: `GET /usuarios/123/pedidos/456/articulos/789` (Demasiado acoplado y difícil de mantener).
 
 ### 2. Filtrado, Ordenación y Paginación
 
@@ -199,26 +202,32 @@ Al discutir REST en entrevistas o diseño arquitectónico, es vital conocer el M
 
 ### Versionado de APIs: Diseñando para el futuro
 
-El software evoluciona. Eventualmente, tendrás que hacer un *breaking change* (cambio que rompe la compatibilidad), como eliminar un campo, cambiar un tipo de dato (de entero a string) o modificar profundamente la lógica de negocio. 
+El software evoluciona. Eventualmente, tendrás que hacer un *breaking change* (cambio que rompe la compatibilidad), como eliminar un campo, cambiar un tipo de dato (de entero a string) o modificar profundamente la lógica de negocio.
 
 Si sobrescribes la API actual, romperás las aplicaciones cliente (móviles, webs de terceros) que dependen de ella. **El versionado es tu póliza de seguro.** Existen tres estrategias principales:
 
 #### A. Versionado por URI (El más pragmático)
+
 Es el estándar de la industria (utilizado por Stripe, Twitter, y la mayoría de servicios). La versión se incluye explícitamente en la ruta.
+
 * `GET /api/v1/usuarios`
 * `GET /api/v2/usuarios`
 * **Pros:** Explícito, fácil de entender, cacheable por URIs distintas, fácil de enrutar en el balanceador de carga o API Gateway (ej. mandar tráfico `v1` a servidores antiguos y `v2` a nuevos).
 * **Contras:** Purísticamente, viola la idea de que una URI representa un único recurso inmutable a lo largo del tiempo.
 
 #### B. Versionado por Cabeceras (Content Negotiation)
+
 La versión no está en la URL. El cliente especifica qué versión espera mediante la cabecera `Accept`. Ésta es la forma REST "purista".
+
 * `GET /api/usuarios`
 * `Accept: application/vnd.miempresa.v1+json`
 * **Pros:** Mantiene las URIs limpias. Fiel a la arquitectura REST estricta.
 * **Contras:** Más difícil de probar (no puedes simplemente pegar la URL en el navegador), requiere clientes más sofisticados y complica el trabajo con cachés. (Utilizado por GitHub).
 
 #### C. Versionado por Query Parameter
+
 La versión se pasa como un filtro adicional.
+
 * `GET /api/usuarios?version=1`
 * **Pros:** Fácil de implementar temporalmente.
 * **Contras:** Suele ensuciar la lógica de los controladores y no es tan semánticamente correcto para cambios arquitectónicos grandes.
@@ -235,7 +244,7 @@ Para un desarrollador Senior, REST no es la única herramienta en el cinturón. 
 
 ### 1. El problema con REST: Over-fetching y Under-fetching
 
-En REST, el backend dicta la estructura de la respuesta. Si un cliente móvil necesita mostrar una lista de usuarios con su nombre y avatar, hace un `GET /usuarios`. 
+En REST, el backend dicta la estructura de la respuesta. Si un cliente móvil necesita mostrar una lista de usuarios con su nombre y avatar, hace un `GET /usuarios`.
 
 * **Over-fetching (Sobredescarga):** El servidor devuelve el nombre, avatar, pero también el email, fecha de nacimiento, rol, dirección y otros 20 campos que el cliente móvil no necesita. Se desperdicia ancho de banda y memoria.
 * **Under-fetching (Subdescarga):** Si además de los usuarios, el cliente necesita los últimos 3 artículos que escribió cada uno, REST suele obligar a realizar múltiples peticiones: primero un `GET /usuarios` y luego iterar haciendo `GET /usuarios/{id}/articulos`. Esto penaliza severamente el rendimiento por la latencia de red.
@@ -267,12 +276,14 @@ Query: {
 ```
 
 #### Conceptos Clave en GraphQL
-1.  **Schema (Esquema):** Un contrato fuertemente tipado que define los tipos de datos y sus relaciones.
-2.  **Query:** Equivalente a un `GET` en REST. Solicita datos sin modificarlos.
-3.  **Mutation:** Equivalente a `POST/PUT/DELETE`. Modifica datos en el servidor.
-4.  **Resolvers:** Funciones en tu código Python que se encargan de ir a la base de datos y obtener los campos específicos solicitados en la Query.
+
+1. **Schema (Esquema):** Un contrato fuertemente tipado que define los tipos de datos y sus relaciones.
+2. **Query:** Equivalente a un `GET` en REST. Solicita datos sin modificarlos.
+3. **Mutation:** Equivalente a `POST/PUT/DELETE`. Modifica datos en el servidor.
+4. **Resolvers:** Funciones en tu código Python que se encargan de ir a la base de datos y obtener los campos específicos solicitados en la Query.
 
 #### GraphQL en Python (Ejemplo con `strawberry`)
+
 El ecosistema moderno de Python brilla con GraphQL gracias a librerías como **Strawberry**, que utiliza los Type Hints (que vimos en el Capítulo 11) para generar el esquema automáticamente:
 
 ```python
@@ -322,14 +333,16 @@ Mientras GraphQL optimiza la comunicación entre el Cliente (navegador/móvil) y
 Si tienes un microservicio de Facturación en Python que necesita validar un usuario en el microservicio de Autenticación (quizás escrito en Go), usar JSON sobre REST HTTP/1.1 es lento: hay que convertir objetos a texto (JSON), enviarlos, recibirlos y volver a parsearlos a objetos.
 
 gRPC cambia las reglas del juego utilizando dos tecnologías clave:
-1.  **HTTP/2:** Permite multiplexación (múltiples llamadas paralelas sobre una sola conexión TCP) y streaming bidireccional real.
-2.  **Protocol Buffers (Protobuf):** Un formato de serialización **binario**. En lugar de enviar texto legible, envía bytes empaquetados de forma extremadamente eficiente.
+
+1. **HTTP/2:** Permite multiplexación (múltiples llamadas paralelas sobre una sola conexión TCP) y streaming bidireccional real.
+2. **Protocol Buffers (Protobuf):** Un formato de serialización **binario**. En lugar de enviar texto legible, envía bytes empaquetados de forma extremadamente eficiente.
 
 #### El flujo de trabajo con gRPC
 
 Con gRPC, no escribes directamente el código de las rutas. Escribes un archivo `.proto` independiente del lenguaje, que actúa como el contrato irrompible entre los microservicios.
 
 **Archivo `usuario.proto`:**
+
 ```protobuf
 syntax = "proto3";
 
@@ -371,11 +384,12 @@ Como Arquitecto de Software o Backend Senior, elegir el protocolo correcto es tu
 
 ## 14.4 Comunicación bidireccional con WebSockets
 
-Hasta ahora, en nuestra exploración de HTTP, REST, GraphQL y gRPC, hemos operado bajo un paradigma estricto: **el cliente siempre da el primer paso**. El servidor es reactivo; espera una petición, la procesa, envía una respuesta y la transacción termina. 
+Hasta ahora, en nuestra exploración de HTTP, REST, GraphQL y gRPC, hemos operado bajo un paradigma estricto: **el cliente siempre da el primer paso**. El servidor es reactivo; espera una petición, la procesa, envía una respuesta y la transacción termina.
 
 Pero, ¿qué ocurre si el servidor necesita notificar al cliente sobre un evento en tiempo real? (Por ejemplo, un nuevo mensaje en un chat, una actualización de precio en una plataforma de trading o el movimiento de otro jugador en un videojuego).
 
 En el pasado, simulábamos esta bidireccionalidad utilizando "hacks" sobre HTTP:
+
 1. **Short Polling:** El cliente pregunta cada 2 segundos: *"¿Hay algo nuevo?"*. Genera un desperdicio masivo de recursos de red y CPU si la respuesta suele ser *"No"*.
 2. **Long Polling:** El cliente pregunta, pero si no hay datos, el servidor mantiene la petición HTTP en suspenso hasta que ocurra un evento. Cuando ocurre, responde y el cliente vuelve a abrir otra petición. Es más eficiente, pero la latencia de reabrir conexiones sigue siendo alta.
 3. **Server-Sent Events (SSE):** Una conexión HTTP unidireccional permanente donde el servidor puede enviar datos al cliente. Excelente para notificaciones (como un *feed* de noticias), pero el cliente no puede usar este mismo canal para enviar datos de vuelta.
@@ -384,7 +398,7 @@ Para resolver esto de forma nativa y elegante, nacieron los **WebSockets**.
 
 ### ¿Qué es un WebSocket?
 
-WebSocket es un protocolo de comunicaciones que proporciona un canal **full-duplex** (bidireccional simultáneo) sobre una única conexión TCP de larga duración. 
+WebSocket es un protocolo de comunicaciones que proporciona un canal **full-duplex** (bidireccional simultáneo) sobre una única conexión TCP de larga duración.
 
 A diferencia de HTTP, que es *stateless* (sin estado), una conexión WebSocket es *stateful* (con estado). Una vez establecida, ambos extremos pueden enviarse mensajes (llamados *frames*) en cualquier momento y en cualquier dirección, sin la sobrecarga de enviar las cabeceras HTTP en cada transmisión.
 
@@ -475,9 +489,9 @@ Crear un chat local en Python es fácil. Escalarlo para un millón de usuarios e
 
 1. **El problema del balanceo de carga:**
    Los balanceadores de carga tradicionales distribuyen cada petición HTTP al servidor menos ocupado. Con WebSockets, la conexión es de larga duración. Si un usuario se conecta al `Servidor A`, se queda allí. Necesitas un balanceador que soporte proxying de WebSockets (como Nginx, HAProxy o AWS ALB).
-   
+
 2. **El problema del estado distribuido (Pub/Sub):**
-   Imagina que el Usuario 1 está conectado al `Servidor A` y el Usuario 2 al `Servidor B`. Si el Usuario 1 envía un mensaje al chat general, el `Servidor A` solo conoce sus propias conexiones. No puede enviárselo al Usuario 2. 
+   Imagina que el Usuario 1 está conectado al `Servidor A` y el Usuario 2 al `Servidor B`. Si el Usuario 1 envía un mensaje al chat general, el `Servidor A` solo conoce sus propias conexiones. No puede enviárselo al Usuario 2.
    La solución estándar en la industria es utilizar un **Backplane de mensajería o patrón Pub/Sub** (usualmente **Redis**, que abordaremos en el Capítulo 19). Cuando el Usuario 1 envía un mensaje, el `Servidor A` lo publica en Redis. Todos los servidores (A, B, C...) están suscritos a ese canal de Redis, reciben el mensaje y se lo retransmiten a sus respectivos clientes conectados.
 
 3. **Mantenimiento de la conexión (Ping/Pong):**

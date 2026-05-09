@@ -62,7 +62,7 @@ Normalmente pensamos que los planetas orbitan alrededor de estrellas estáticas.
 
 A medida que la estrella se bambolea acercándose a la Tierra, la luz que emite se comprime, viéndose ligeramente más azul (corrimiento al azul). A medida que se aleja de nosotros, las ondas de luz se estiran, viéndose ligeramente más rojas (corrimiento al rojo). Este es el **Efecto Doppler**, el mismo fenómeno que hace que la sirena de una ambulancia suene más aguda cuando se acerca y más grave cuando se aleja.
 
-Al analizar la luz de la estrella con instrumentos ultra precisos llamados espectrógrafos, los astrónomos pueden detectar estos sutiles cambios de color y deducir la **masa del planeta**. 
+Al analizar la luz de la estrella con instrumentos ultra precisos llamados espectrógrafos, los astrónomos pueden detectar estos sutiles cambios de color y deducir la **masa del planeta**.
 
 ### 2.3 Lente Microgravitacional (Usando la gravedad como lupa)
 
@@ -70,7 +70,7 @@ Este método parece sacado de la ciencia ficción, pero es una consecuencia dire
 
 Si una estrella lejana (la fuente) y una estrella más cercana (la lente) se alinean perfectamente desde la perspectiva de la Tierra, la gravedad de la estrella más cercana actuará como una inmensa lupa cósmica, curvando y magnificando la luz de la estrella de fondo.
 
-Si la estrella que actúa como "lente" tiene un planeta orbitándola, la gravedad de ese planeta añadirá su propio pequeño "bulto" a la distorsión gravitacional. En el gráfico de brillo que reciben los astrónomos, verán un aumento enorme de luz (cuando las estrellas se alinean) y un pequeño y agudo "pico" adicional de luz causado por la gravedad del planeta. 
+Si la estrella que actúa como "lente" tiene un planeta orbitándola, la gravedad de ese planeta añadirá su propio pequeño "bulto" a la distorsión gravitacional. En el gráfico de brillo que reciben los astrónomos, verán un aumento enorme de luz (cuando las estrellas se alinean) y un pequeño y agudo "pico" adicional de luz causado por la gravedad del planeta.
 
 Este método es excelente para encontrar planetas muy alejados de sus estrellas e incluso "planetas huérfanos", que vagan por la galaxia sin ninguna estrella anfitriona.
 
@@ -86,10 +86,10 @@ Este método funciona mejor para planetas que son muy grandes (del tamaño de J�
 
 Antes del descubrimiento de los exoplanetas, los científicos creían que todos los sistemas solares se parecerían al nuestro: planetas rocosos pequeños cerca de la estrella y gigantes gaseosos lejos de ella. El universo rápidamente nos enseñó una lección de humildad y creatividad. Hoy clasificamos los exoplanetas en familias que no tienen equivalentes en nuestro vecindario.
 
-*   **Júpiteres Calientes:** Fueron los primeros en ser descubiertos. Son gigantes gaseosos, del tamaño de Júpiter o mayores, pero orbitan tan ridículamente cerca de su estrella que completan un "año" en cuestión de días u horas. Están "anclados por marea" (como nuestra Luna con la Tierra), mostrando siempre la misma cara a su estrella. En el lado diurno, las temperaturas pueden derretir el titanio. En algunos, se sospecha que llueven rocas fundidas, cristal o hierro a velocidades supersónicas.
-*   **Súper-Tierras:** Esta es una clase de planetas más grandes que la Tierra, pero más pequeños que Neptuno. Resulta que son el tipo de planeta más común que hemos encontrado en la galaxia, ¡pero curiosamente no tenemos ninguno en nuestro propio sistema solar! Pueden ser mundos rocosos masivos con atmósferas densas, o tener inmensos continentes bajo gravedades aplastantes. La posibilidad de tectónica de placas en estos mundos es objeto de intensos debates científicos.
-*   **Mundos Oceánicos (Mini-Neptunos / Planetas Hiceánicos):** Estos mundos tienen tamaños intermedios. Se teoriza que en lugar de estar formados principalmente por roca o gas ligero como el hidrógeno, podrían estar compuestos por un inmenso porcentaje de agua, amoníaco y otros volátiles. Algunos podrían estar cubiertos por un único océano global de cientos de kilómetros de profundidad, sin una sola porción de tierra firme a la vista. En las profundidades de esos océanos exóticos, la presión es tan grande que el agua podría existir en estados extraños como el "hielo VII", un hielo sólido y caliente.
-*   **Planetas Huérfanos (Rogue Planets):** Quizás los más melancólicos del cosmos. Son planetas que, debido a colisiones gravitacionales catastróficas durante la formación de su sistema solar, fueron expulsados al espacio interestelar profundo. Vagan solos, a oscuras y congelados por la Vía Láctea, sin una estrella que los caliente. Se estima que hay miles de millones de ellos vagando entre las estrellas.
+* **Júpiteres Calientes:** Fueron los primeros en ser descubiertos. Son gigantes gaseosos, del tamaño de Júpiter o mayores, pero orbitan tan ridículamente cerca de su estrella que completan un "año" en cuestión de días u horas. Están "anclados por marea" (como nuestra Luna con la Tierra), mostrando siempre la misma cara a su estrella. En el lado diurno, las temperaturas pueden derretir el titanio. En algunos, se sospecha que llueven rocas fundidas, cristal o hierro a velocidades supersónicas.
+* **Súper-Tierras:** Esta es una clase de planetas más grandes que la Tierra, pero más pequeños que Neptuno. Resulta que son el tipo de planeta más común que hemos encontrado en la galaxia, ¡pero curiosamente no tenemos ninguno en nuestro propio sistema solar! Pueden ser mundos rocosos masivos con atmósferas densas, o tener inmensos continentes bajo gravedades aplastantes. La posibilidad de tectónica de placas en estos mundos es objeto de intensos debates científicos.
+* **Mundos Oceánicos (Mini-Neptunos / Planetas Hiceánicos):** Estos mundos tienen tamaños intermedios. Se teoriza que en lugar de estar formados principalmente por roca o gas ligero como el hidrógeno, podrían estar compuestos por un inmenso porcentaje de agua, amoníaco y otros volátiles. Algunos podrían estar cubiertos por un único océano global de cientos de kilómetros de profundidad, sin una sola porción de tierra firme a la vista. En las profundidades de esos océanos exóticos, la presión es tan grande que el agua podría existir en estados extraños como el "hielo VII", un hielo sólido y caliente.
+* **Planetas Huérfanos (Rogue Planets):** Quizás los más melancólicos del cosmos. Son planetas que, debido a colisiones gravitacionales catastróficas durante la formación de su sistema solar, fueron expulsados al espacio interestelar profundo. Vagan solos, a oscuras y congelados por la Vía Láctea, sin una estrella que los caliente. Se estima que hay miles de millones de ellos vagando entre las estrellas.
 
 ## 4. En busca de la "Zona Ricitos de Oro" (La Zona Habitable)
 
@@ -107,8 +107,9 @@ Esquema conceptual de la Zona Habitable
 ```
 
 Es importante entender que la posición de esta zona depende totalmente del tipo de estrella:
-*   Si la estrella es enorme, azul y extremadamente caliente, su Zona Habitable estará muy lejos, en los confines del sistema.
-*   Si la estrella es una enana roja (estrellas pequeñas, rojizas y frías, que son las más comunes en la galaxia), la Zona Habitable estará muy cerca de la estrella, incluso más cerca de lo que Mercurio está de nuestro Sol.
+
+* Si la estrella es enorme, azul y extremadamente caliente, su Zona Habitable estará muy lejos, en los confines del sistema.
+* Si la estrella es una enana roja (estrellas pequeñas, rojizas y frías, que son las más comunes en la galaxia), la Zona Habitable estará muy cerca de la estrella, incluso más cerca de lo que Mercurio está de nuestro Sol.
 
 Sin embargo, estar en la Zona Habitable no garantiza la vida. Nuestra propia luna y el planeta Marte están en los bordes de la Zona Habitable del Sol, y al menos la luna es un yermo inerte. Un exoplaneta necesita además una atmósfera que regule la temperatura (un efecto invernadero natural) y, preferiblemente, un campo magnético que proteja a la posible vida de la letal radiación estelar.
 
@@ -123,18 +124,19 @@ Cuando un planeta transita (pasa por delante) de su estrella, un pequeño porcen
 Los gases de la atmósfera actúan como un filtro. Cada elemento químico y compuesto molecular absorbe luz de un color muy específico. Al usar espectrómetros (prismas altamente sofisticados) en nuestros telescopios, los astrónomos separan esa luz filtrada en un arcoíris. En ese arcoíris verán "códigos de barras" o líneas oscuras que indican qué colores faltan. Esas líneas faltantes son la firma química inconfundible de los gases presentes en ese mundo a billones de kilómetros de distancia.
 
 Una **Biofirma** es un gas o una combinación de gases en la atmósfera que sería extremadamente difícil de explicar sin la presencia de procesos biológicos.
-*   **Oxígeno y Metano:** En la Tierra, el oxígeno es abundante porque las plantas y bacterias lo producen constantemente mediante la fotosíntesis. El metano lo producen las bacterias y la descomposición orgánica. El truco es que el oxígeno y el metano reaccionan entre sí y se destruyen rápidamente. Si encontramos un planeta extraterrestre que tiene *ambos* gases en grandes cantidades al mismo tiempo, significa que algo (probablemente vida) los está reponiendo constantemente a una escala masiva.
-*   **Ozono, Fosfina, Óxido Nitroso:** Son otros candidatos a biofirmas que los científicos analizan cuidadosamente.
-*   **El Borde Rojo (Red Edge):** A un nivel más avanzado, los astrobiólogos teóricos buscan anomalías en el espectro infrarrojo. La vegetación de la Tierra absorbe la luz visible para la fotosíntesis, pero refleja fuertemente la radiación infrarroja cercana para no sobrecalentarse. Un planeta cubierto de selvas podría mostrar esta fuerte firma de reflexión infrarroja.
+
+* **Oxígeno y Metano:** En la Tierra, el oxígeno es abundante porque las plantas y bacterias lo producen constantemente mediante la fotosíntesis. El metano lo producen las bacterias y la descomposición orgánica. El truco es que el oxígeno y el metano reaccionan entre sí y se destruyen rápidamente. Si encontramos un planeta extraterrestre que tiene *ambos* gases en grandes cantidades al mismo tiempo, significa que algo (probablemente vida) los está reponiendo constantemente a una escala masiva.
+* **Ozono, Fosfina, Óxido Nitroso:** Son otros candidatos a biofirmas que los científicos analizan cuidadosamente.
+* **El Borde Rojo (Red Edge):** A un nivel más avanzado, los astrobiólogos teóricos buscan anomalías en el espectro infrarrojo. La vegetación de la Tierra absorbe la luz visible para la fotosíntesis, pero refleja fuertemente la radiación infrarroja cercana para no sobrecalentarse. Un planeta cubierto de selvas podría mostrar esta fuerte firma de reflexión infrarroja.
 
 ## 6. Los VIP de los Exoplanetas: Mundos que prometen
 
 A lo largo de los años, varios exoplanetas han acaparado las portadas de revistas y los titulares de las noticias debido a sus prometedoras características. Aquí te presentamos algunos de los "Súper Estrellas" del catálogo exoplanetario:
 
-*   **El Sistema TRAPPIST-1:** Descubierto en 2017, este es quizás el hallazgo más extraordinario de la última década. Se trata de una estrella enana roja ultrafría situada a unos 40 años luz de nosotros. Lo asombroso es que alberga un sistema de ¡siete planetas rocosos del tamaño de la Tierra! Aún mejor, al menos tres (y posiblemente cuatro) de ellos orbitan en la Zona Habitable. El sistema es tan compacto que los planetas están más cerca entre sí que la distancia entre la Tierra y la Luna. Si estuvieras parado en TRAPPIST-1e, verías a los otros planetas cruzar tu cielo nocturno luciendo más grandes que nuestra luna llena, mostrando sus propios continentes u océanos en el cielo.
-*   **Proxima Centauri b:** Es nuestro vecino más cercano. Orbita la estrella Próxima Centauri a poco más de 4 años luz de la Tierra. Es un mundo rocoso que, según los cálculos de temperatura, podría albergar agua líquida en su superficie. Sin embargo, su estrella es muy inestable y emite gigantescas llamaradas de radiación que podrían haber barrido cualquier atmósfera hace miles de millones de años.
-*   **Kepler-452b:** Ha sido apodado "el primo mayor y más lejano de la Tierra". Este mundo orbita una estrella muy parecida a nuestro propio Sol, a una distancia que tarda 385 días en dar una vuelta completa (casi un año terrestre). Es más grande que nuestro planeta, lo que significa que tendría una gravedad mayor, pero fue uno de los primeros hitos al encontrar un mundo en una órbita "similar a la Tierra" alrededor de una estrella "similar al Sol".
-*   **K2-18b:** Este planeta captó la atención mundial cuando los telescopios detectaron firmas claras de vapor de agua en su atmósfera. Es un planeta que orbita dentro de la zona habitable, pero no es rocoso como la Tierra; es más masivo, clasificado como un mini-Neptuno o un mundo oceánico potencial.
+* **El Sistema TRAPPIST-1:** Descubierto en 2017, este es quizás el hallazgo más extraordinario de la última década. Se trata de una estrella enana roja ultrafría situada a unos 40 años luz de nosotros. Lo asombroso es que alberga un sistema de ¡siete planetas rocosos del tamaño de la Tierra! Aún mejor, al menos tres (y posiblemente cuatro) de ellos orbitan en la Zona Habitable. El sistema es tan compacto que los planetas están más cerca entre sí que la distancia entre la Tierra y la Luna. Si estuvieras parado en TRAPPIST-1e, verías a los otros planetas cruzar tu cielo nocturno luciendo más grandes que nuestra luna llena, mostrando sus propios continentes u océanos en el cielo.
+* **Proxima Centauri b:** Es nuestro vecino más cercano. Orbita la estrella Próxima Centauri a poco más de 4 años luz de la Tierra. Es un mundo rocoso que, según los cálculos de temperatura, podría albergar agua líquida en su superficie. Sin embargo, su estrella es muy inestable y emite gigantescas llamaradas de radiación que podrían haber barrido cualquier atmósfera hace miles de millones de años.
+* **Kepler-452b:** Ha sido apodado "el primo mayor y más lejano de la Tierra". Este mundo orbita una estrella muy parecida a nuestro propio Sol, a una distancia que tarda 385 días en dar una vuelta completa (casi un año terrestre). Es más grande que nuestro planeta, lo que significa que tendría una gravedad mayor, pero fue uno de los primeros hitos al encontrar un mundo en una órbita "similar a la Tierra" alrededor de una estrella "similar al Sol".
+* **K2-18b:** Este planeta captó la atención mundial cuando los telescopios detectaron firmas claras de vapor de agua en su atmósfera. Es un planeta que orbita dentro de la zona habitable, pero no es rocoso como la Tierra; es más masivo, clasificado como un mini-Neptuno o un mundo oceánico potencial.
 
 ## 7. Las maravillas tecnológicas: Telescopios que cambian la historia
 
@@ -156,15 +158,15 @@ $$ N = R_* \cdot f_p \cdot n_e \cdot f_l \cdot f_i \cdot f_c \cdot L $$
 
 Aunque pueda parecer intimidante, cada factor es simplemente una pieza del rompecabezas cósmico que disminuye gradualmente el embudo de posibilidades:
 
-*   $R_*$: La tasa de formación de estrellas adecuadas en nuestra galaxia.
-*   $f_p$: La fracción de esas estrellas que tienen sistemas planetarios. (¡Gracias a la búsqueda de exoplanetas, hoy sabemos que esto es casi el 100%!).
-*   $n_e$: El número de planetas, por sistema solar, con un entorno ecológico adecuado para la vida (planetas en la Zona Habitable).
-*   $f_l$: La fracción de esos planetas habitables donde la vida realmente aparece.
-*   $f_i$: La fracción de planetas con vida donde emergen especies inteligentes.
-*   $f_c$: La fracción de especies inteligentes que desarrollan una civilización capaz de emitir señales tecnológicas al espacio.
-*   $L$: El tiempo que una civilización de ese tipo logra sobrevivir transmitiendo señales en el espacio antes de extinguirse (el tiempo de vida de la civilización).
+* $R_*$: La tasa de formación de estrellas adecuadas en nuestra galaxia.
+* $f_p$: La fracción de esas estrellas que tienen sistemas planetarios. (¡Gracias a la búsqueda de exoplanetas, hoy sabemos que esto es casi el 100%!).
+* $n_e$: El número de planetas, por sistema solar, con un entorno ecológico adecuado para la vida (planetas en la Zona Habitable).
+* $f_l$: La fracción de esos planetas habitables donde la vida realmente aparece.
+* $f_i$: La fracción de planetas con vida donde emergen especies inteligentes.
+* $f_c$: La fracción de especies inteligentes que desarrollan una civilización capaz de emitir señales tecnológicas al espacio.
+* $L$: El tiempo que una civilización de ese tipo logra sobrevivir transmitiendo señales en el espacio antes de extinguirse (el tiempo de vida de la civilización).
 
-Hace apenas unas décadas, solo conocíamos con cierta certeza el primer factor ($R_*$). Hoy, gracias a la increíble disciplina que estudia los exoplanetas, estamos comenzando a tener valores reales, científicos y empíricos para $f_p$ y $n_e$. La caza de exoplanetas es la humanidad resolviendo las variables de la Ecuación de Drake en tiempo real. 
+Hace apenas unas décadas, solo conocíamos con cierta certeza el primer factor ($R_*$). Hoy, gracias a la increíble disciplina que estudia los exoplanetas, estamos comenzando a tener valores reales, científicos y empíricos para $f_p$ y $n_e$. La caza de exoplanetas es la humanidad resolviendo las variables de la Ecuación de Drake en tiempo real.
 
 Paso a paso, estamos cruzando la línea desde la astronomía puramente observacional hacia el umbral de la astrobiología: la ciencia que se encarga de entender los orígenes, evolución, distribución y futuro de la vida en el universo.
 

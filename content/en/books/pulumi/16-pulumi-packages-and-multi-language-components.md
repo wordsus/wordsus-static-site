@@ -2,7 +2,7 @@ In modern infrastructure, organizations rarely rely on a single programming lang
 
 ## 16.1 The Architecture of Pulumi Packages
 
-While standard `ComponentResources` (discussed in Chapter 13) are excellent for organizing code and enforcing best practices within a specific language ecosystem, they present a significant limitation in polyglot organizations: a component written in TypeScript cannot be natively consumed by a team writing their Pulumi infrastructure in Python or Go. 
+While standard `ComponentResources` (discussed in Chapter 13) are excellent for organizing code and enforcing best practices within a specific language ecosystem, they present a significant limitation in polyglot organizations: a component written in TypeScript cannot be natively consumed by a team writing their Pulumi infrastructure in Python or Go.
 
 Pulumi Packages, often referred to as Multi-Language Components (MLCs) or Native Providers, solve this exact problem. They decouple the authoring language of the component from the languages used to consume it. By understanding the architecture of Pulumi Packages, you can author a provider or component once and automatically generate idiomatic, fully-typed SDKs for Node.js, Python, Go, .NET, and Java.
 
@@ -50,7 +50,7 @@ A Pulumi Package is not a single monolith, but rather a distributed architecture
 
 #### 1. The Schema: The Universal Contract
 
-At the heart of every Pulumi Package is the schema. The schema is a language-agnostic declaration of every resource, type, function, and configuration variable your package exposes. 
+At the heart of every Pulumi Package is the schema. The schema is a language-agnostic declaration of every resource, type, function, and configuration variable your package exposes.
 
 Because different programming languages handle concepts like typing, casing, and promises differently, the schema acts as the universal source of truth. The Pulumi SDK generator reads this schema and outputs highly idiomatic code for each target language (e.g., converting `camelCase` to `snake_case` for Python).
 
@@ -89,7 +89,7 @@ A simplified snippet of a `schema.json` looks like this:
 
 #### 2. The Provider Plugin: The Execution Engine
 
-When you run `pulumi up`, the Pulumi CLI downloads and executes the **Provider Plugin** associated with your package. This plugin is a standalone, executable binary that acts as a gRPC server. 
+When you run `pulumi up`, the Pulumi CLI downloads and executes the **Provider Plugin** associated with your package. This plugin is a standalone, executable binary that acts as a gRPC server.
 
 Whether your package wraps an external REST API (like the AWS Classic Provider) or encapsulates higher-level Pulumi components (like an EKS cluster abstraction), the engine communicates with this binary via the `ResourceProvider` gRPC interface.
 
@@ -169,9 +169,9 @@ Consider a component property defined in the schema as `vpcId` of type `string`.
 
 Beyond naming conventions, the generator handles complex architectural differences:
 
-1.  **Asynchrony and Promises:** Pulumi's eventual consistency model means inputs and outputs are often not immediately known. The generator automatically wraps properties in `pulumi.Input<T>` and `pulumi.Output<T>` for TypeScript, `pulumi.Input[str]` for Python, and equivalent types in Go and C#, ensuring the underlying engine can track dependencies correctly.
-2.  **Strong Typing and Classes:** Resources are emitted as classes (or structs in Go) inheriting from core Pulumi base classes (like `pulumi.ComponentResource` or `pulumi.CustomResource`). This provides out-of-the-box IDE autocompletion and compile-time validation.
-3.  **Documentation Generation:** Description fields defined in your schema are automatically converted into language-native documentation comments, such as JSDoc for TypeScript or docstrings for Python.
+1. **Asynchrony and Promises:** Pulumi's eventual consistency model means inputs and outputs are often not immediately known. The generator automatically wraps properties in `pulumi.Input<T>` and `pulumi.Output<T>` for TypeScript, `pulumi.Input[str]` for Python, and equivalent types in Go and C#, ensuring the underlying engine can track dependencies correctly.
+2. **Strong Typing and Classes:** Resources are emitted as classes (or structs in Go) inheriting from core Pulumi base classes (like `pulumi.ComponentResource` or `pulumi.CustomResource`). This provides out-of-the-box IDE autocompletion and compile-time validation.
+3. **Documentation Generation:** Description fields defined in your schema are automatically converted into language-native documentation comments, such as JSDoc for TypeScript or docstrings for Python.
 
 ### Configuring Language-Specific Options
 
@@ -224,7 +224,7 @@ By mastering the code generation process, infrastructure teams can establish a "
 
 ## 16.3 Publishing Packages to Package Managers (npm, PyPI, NuGet)
 
-Generating multi-language SDKs is only half the battle. For your organization or the broader open-source community to consume your new Pulumi Package, you must distribute those SDKs through standard package managers. A Python developer should be able to simply run `pip install`, and a Node.js developer should be able to run `npm install`. 
+Generating multi-language SDKs is only half the battle. For your organization or the broader open-source community to consume your new Pulumi Package, you must distribute those SDKs through standard package managers. A Python developer should be able to simply run `pip install`, and a Node.js developer should be able to run `npm install`.
 
 Publishing a Pulumi Package involves a two-pronged distribution strategy: hosting the provider binary and publishing the language-specific SDKs.
 
@@ -244,6 +244,7 @@ Therefore, the SDK must know *where* to find this binary. This is typically conf
 ```
 
 **Standard Workflow for the Plugin:**
+
 1. Compile the provider binary for multiple operating systems and architectures (Linux, macOS, Windows; AMD64, ARM64).
 2. Archive them into `.tar.gz` files following Pulumi's naming conventions (e.g., `pulumi-resource-enterprise-vpc-v1.0.0-linux-amd64.tar.gz`).
 3. Host these archives on a publicly accessible HTTP server, an AWS S3 bucket, or—most commonly—as GitHub Releases.
@@ -332,11 +333,11 @@ Pulumi provides extensive boilerplate templates and custom GitHub Actions (such 
 
 While the previous sections focused on authoring and publishing your own multi-language packages, most teams will spend the majority of their time on the other side of the equation: consuming packages created by Pulumi and the broader community. The centralized hub for discovering and integrating these packages is the **Pulumi Registry**.
 
-The Pulumi Registry acts as the definitive catalog for both foundational cloud providers (like AWS, Azure, and Google Cloud) and higher-level, multi-language `ComponentResources` (often referred to simply as "Components"). 
+The Pulumi Registry acts as the definitive catalog for both foundational cloud providers (like AWS, Azure, and Google Cloud) and higher-level, multi-language `ComponentResources` (often referred to simply as "Components").
 
 ### The Relationship Between the Registry and Package Managers
 
-It is important to understand the distinction between the Pulumi Registry and standard package managers like npm or PyPI. 
+It is important to understand the distinction between the Pulumi Registry and standard package managers like npm or PyPI.
 
 The Pulumi Registry does not host the actual SDK code or provider binaries. Instead, it serves as the discovery engine and documentation portal. Because every Pulumi Package contains a universal `schema.json` (as discussed in Section 16.1), the Registry parses this schema to automatically generate consistent, searchable, and highly detailed API documentation for all supported languages simultaneously.
 
@@ -370,6 +371,7 @@ To illustrate the power of Registry Components, consider the task of creating a 
 By utilizing the `awsx` (AWS Crosswalk) component package from the Registry, this complexity is condensed into a single logical resource.
 
 **TypeScript Example:**
+
 ```typescript
 import * as awsx from "@pulumi/awsx";
 

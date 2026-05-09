@@ -2,7 +2,7 @@
 
 ---
 
-Imagina que estás en una habitación oscura y dejas la puerta ligeramente entreabierta. La luz del pasillo se filtra hacia adentro. Si la luz viajara en líneas absolutamente rectas e inquebrantables, verías proyectada en el suelo de tu habitación una franja de luz perfectamente nítida, con bordes afilados como cuchillas, del tamaño exacto de la apertura de la puerta. Sin embargo, si observas con atención, notarás que los bordes de esa franja de luz son borrosos. La luz parece "derramarse" un poco hacia los lados, invadiendo zonas que deberían estar en completa sombra. 
+Imagina que estás en una habitación oscura y dejas la puerta ligeramente entreabierta. La luz del pasillo se filtra hacia adentro. Si la luz viajara en líneas absolutamente rectas e inquebrantables, verías proyectada en el suelo de tu habitación una franja de luz perfectamente nítida, con bordes afilados como cuchillas, del tamaño exacto de la apertura de la puerta. Sin embargo, si observas con atención, notarás que los bordes de esa franja de luz son borrosos. La luz parece "derramarse" un poco hacia los lados, invadiendo zonas que deberían estar en completa sombra.
 
 Este comportamiento rebelde de la luz, esta capacidad de "esquivar" los bordes de un obstáculo y curvarse, es lo que los físicos llaman **difracción**.
 
@@ -32,8 +32,9 @@ Esto ocurre con todas las ondas. El sonido es otro ejemplo clásico. Si estás e
 Pero, ¿por qué notamos esto tan fácilmente con el sonido o el agua, y nos cuesta tanto verlo con la luz? La clave está en la **longitud de onda**, que es la distancia entre dos "crestas" consecutivas de la onda.
 
 Para que la difracción sea muy evidente, el tamaño del obstáculo o de la rendija debe ser similar a la longitud de onda de la onda que pasa por ahí.
-*   Las ondas de sonido tienen longitudes de onda que van desde unos pocos centímetros hasta varios metros. Por lo tanto, se difractan fácilmente al pasar por puertas o alrededor de edificios.
-*   La luz visible, por otro lado, tiene una longitud de onda minúscula. Hablamos de distancias entre $400$ y $700$ nanómetros (un nanómetro es la millonésima parte de un milímetro). 
+
+* Las ondas de sonido tienen longitudes de onda que van desde unos pocos centímetros hasta varios metros. Por lo tanto, se difractan fácilmente al pasar por puertas o alrededor de edificios.
+* La luz visible, por otro lado, tiene una longitud de onda minúscula. Hablamos de distancias entre $400$ y $700$ nanómetros (un nanómetro es la millonésima parte de un milímetro).
 
 Como las ondas de luz son tan ridículamente pequeñas, las cosas cotidianas (como una puerta, una ventana o una persona) son gigantescas en comparación. Por eso, en nuestro día a día, la luz parece viajar en línea recta y proyectar sombras afiladas. Pero si la hacemos pasar por una rendija extremadamente estrecha (casi del tamaño de su longitud de onda), la luz revelará su verdadera naturaleza y comenzará a curvarse.
 
@@ -43,7 +44,7 @@ La historia de la difracción es también la historia de uno de los debates más
 
 Por un lado, estaba el titán incontestable de la física: **Isaac Newton**. Él proponía la "teoría corpuscular", que afirmaba que la luz estaba compuesta por un chorro de pequeñas partículas (corpúsculos) disparadas a gran velocidad. Su argumento principal era, precisamente, que la luz parecía viajar en líneas rectas y proyectar sombras nítidas. Para Newton, si la luz fuera una onda, debería curvarse alrededor de los objetos como lo hace el sonido, algo que, según las rudimentarias observaciones de la época, no parecía suceder.
 
-Por otro lado, estaba el físico holandés **Christiaan Huygens**, un contemporáneo de Newton que defendía ferozmente que la luz era una onda mecánica (imaginaba que viajaba a través de una sustancia invisible que llenaba el universo llamada "éter"). Huygens incluso propuso un principio matemático para explicar cómo las ondas podían viajar y curvarse, pero chocó con un gran problema: la inmensa fama de Newton. 
+Por otro lado, estaba el físico holandés **Christiaan Huygens**, un contemporáneo de Newton que defendía ferozmente que la luz era una onda mecánica (imaginaba que viajaba a través de una sustancia invisible que llenaba el universo llamada "éter"). Huygens incluso propuso un principio matemático para explicar cómo las ondas podían viajar y curvarse, pero chocó con un gran problema: la inmensa fama de Newton.
 
 La autoridad de Newton era tan aplastante tras publicar sus leyes del movimiento y de la gravedad, que casi nadie se atrevió a contradecirle. Durante más de un siglo, el mundo de la ciencia aceptó que la luz eran partículas, y las ideas de Huygens sobre las ondas fueron relegadas al rincón del olvido. Pero el universo, a la larga, siempre le da la razón a los experimentos, no a la fama.
 
@@ -77,12 +78,13 @@ Pero, ¿qué pasaría si la luz fuera una onda?
 Si la luz es una onda de agua, al pasar por las dos rendijas, cada rendija actuaría como una nueva fuente de olas (gracias al Principio de Huygens). Estas dos nuevas olas se expandirían y, eventualmente, chocarían entre sí antes de llegar a la pantalla.
 
 Cuando dos ondas chocan, ocurre algo llamado **interferencia**:
-*   **Interferencia Constructiva:** Si la cresta de una ola coincide con la cresta de la otra ola, se suman y forman una ola el doble de alta (en términos de luz, esto significa una franja de luz muy brillante).
-*   **Interferencia Destructiva:** Si la cresta de una ola coincide con el valle (la parte más baja) de la otra, se cancelan mutuamente, dejando el agua en calma (en términos de luz, esto significa completa oscuridad).
+
+* **Interferencia Constructiva:** Si la cresta de una ola coincide con la cresta de la otra ola, se suman y forman una ola el doble de alta (en términos de luz, esto significa una franja de luz muy brillante).
+* **Interferencia Destructiva:** Si la cresta de una ola coincide con el valle (la parte más baja) de la otra, se cancelan mutuamente, dejando el agua en calma (en términos de luz, esto significa completa oscuridad).
 
 Young realizó el experimento en una habitación a oscuras. Hizo pasar un rayo de luz solar a través de un pequeño agujero para crear un haz estrecho, y luego dejó que ese haz golpeara una tarjeta en la que había cortado dos rendijas extremadamente finas y muy juntas.
 
-Lo que vio en la pared del fondo no fueron dos franjas de luz. Vio un **patrón de interferencia**: una serie de franjas brillantes y oscuras alternadas (luz, sombra, luz, sombra, luz, sombra...). 
+Lo que vio en la pared del fondo no fueron dos franjas de luz. Vio un **patrón de interferencia**: una serie de franjas brillantes y oscuras alternadas (luz, sombra, luz, sombra, luz, sombra...).
 
 ```text
 Haz de luz      Doble Rendija      Superposición de Ondas       Patrón en la pared
@@ -110,7 +112,7 @@ Sorprendentemente, no. Incluso cuando la luz pasa por **una sola rendija**, se f
 
 Aquí es donde el Principio de Huygens-Fresnel brilla de verdad. No debemos imaginar la rendija única como una sola fuente de ondas. Debemos imaginarla, microscópicamente, como una fila apretada de cientos de minúsculas fuentes de ondas puntuales, todas emitiendo luz simultáneamente.
 
-A medida que estas múltiples ondas secundarias viajan hacia la pantalla, recorren distancias ligeramente diferentes dependiendo de su punto de origen dentro de la rendija y del punto exacto en la pantalla al que se dirigen. Debido a estas diferencias en la distancia recorrida, algunas ondas llegarán "fuera de sincronía" (desfasadas) al mismo punto de la pared. 
+A medida que estas múltiples ondas secundarias viajan hacia la pantalla, recorren distancias ligeramente diferentes dependiendo de su punto de origen dentro de la rendija y del punto exacto en la pantalla al que se dirigen. Debido a estas diferencias en la distancia recorrida, algunas ondas llegarán "fuera de sincronía" (desfasadas) al mismo punto de la pared.
 
 Si tomamos una onda originada en el borde superior de la rendija y la comparamos con una onda originada justo en el centro de la rendija, y resulta que la diferencia de distancia que viajan hasta la pared es exactamente la mitad de una longitud de onda, llegarán la cresta de una con el valle de la otra, ¡y se cancelarán! Esto ocurre en cascada para todos los puntos de la rendija, creando zonas de oscuridad total.
 
@@ -119,10 +121,11 @@ Podemos describir dónde aparecerán estos puntos oscuros (los mínimos de difra
 $$ a \sin(\theta) = m \lambda $$
 
 Donde:
-*   $a$ es el ancho de la rendija.
-*   $\theta$ es el ángulo desde el centro de la rendija hasta el punto oscuro en la pantalla.
-*   $m$ es un número entero ($1, 2, 3...$) que representa el primer, segundo, tercer punto oscuro, etc.
-*   $\lambda$ (lambda) es la longitud de onda de la luz.
+
+* $a$ es el ancho de la rendija.
+* $\theta$ es el ángulo desde el centro de la rendija hasta el punto oscuro en la pantalla.
+* $m$ es un número entero ($1, 2, 3...$) que representa el primer, segundo, tercer punto oscuro, etc.
+* $\lambda$ (lambda) es la longitud de onda de la luz.
 
 De esta elegante ecuación podemos sacar una conclusión vital: si el tamaño de la rendija ($a$) se hace más pequeño, el ángulo ($\theta$) debe hacerse más grande. Esto significa que **cuanto más estrecha sea la rendija, más se esparcirá (difractará) la luz**. Por el contrario, si haces la rendija muy grande, el patrón colapsa y vuelves a ver una simple mancha de luz, recuperando la ilusión de que la luz viaja en línea recta.
 
@@ -136,7 +139,7 @@ Pero a diferencia del experimento de Young, aquí tenemos miles de ondas interfi
 
 Más importante aún, recordemos que la fórmula matemática ($a \sin(\theta) = m \lambda$) incluye la longitud de onda ($\lambda$). Esto significa que los colores de la luz (que no son más que diferentes longitudes de onda: el rojo tiene una onda más larga, el azul una más corta) se difractarán en ángulos diferentes.
 
-Si haces pasar luz blanca (que es una mezcla de todos los colores) a través de una red de difracción, cada color se curvará en una dirección ligeramente distinta. El resultado es que la luz blanca se descompone en un arcoíris perfecto. 
+Si haces pasar luz blanca (que es una mezcla de todos los colores) a través de una red de difracción, cada color se curvará en una dirección ligeramente distinta. El resultado es que la luz blanca se descompone en un arcoíris perfecto.
 
 Las redes de difracción están por todas partes. ¿Alguna vez has tomado un disco compacto (CD o DVD) y has visto cómo refleja la luz de la habitación en brillantes colores del arcoíris? No están pintados con pintura brillante. La superficie del CD está llena de surcos microscópicos paralelos donde se guarda la información digital. Esos surcos actúan accidentalmente como una red de difracción reflectante, separando la luz blanca de tu habitación en sus colores constituyentes.
 
@@ -168,13 +171,15 @@ El científico Lord Rayleigh formuló un criterio para saber exactamente cuándo
 $$ \theta = 1.22 \frac{\lambda}{D} $$
 
 Donde:
-*   $\theta$ (theta) es el ángulo mínimo de separación entre dos objetos para poder verlos distintos.
-*   $\lambda$ es la longitud de onda de la luz.
-*   $D$ es el diámetro de la abertura (el tamaño de tu telescopio o microscopio).
+
+* $\theta$ (theta) es el ángulo mínimo de separación entre dos objetos para poder verlos distintos.
+* $\lambda$ es la longitud de onda de la luz.
+* $D$ es el diámetro de la abertura (el tamaño de tu telescopio o microscopio).
 
 Si quieres ver cosas más pequeñas y detalladas (hacer que $\theta$ sea minúsculo), la fórmula te da dos opciones:
-1.  **Reducir la longitud de onda ($\lambda$):** Por eso los microscopios ópticos tradicionales tocaron techo y no pueden ver átomos; los átomos son más pequeños que la longitud de onda de la luz visible. Para ver cosas más diminutas, inventamos los microscopios electrónicos, que usan electrones (cuya longitud de onda es miles de veces más pequeña que la de la luz).
-2.  **Aumentar el diámetro de la apertura ($D$):** Esta es la razón por la que en astronomía siempre se construyen telescopios más y más grandes. No se hacen espejos gigantes de 10 o 30 metros de diámetro solo para recoger más luz, sino para hacer que la "rendija" por la que pasa la luz sea tan grande que el efecto de la difracción se minimice, reduciendo el desenfoque y permitiéndonos resolver galaxias lejanas que de otro modo se verían como manchas amorfas.
+
+1. **Reducir la longitud de onda ($\lambda$):** Por eso los microscopios ópticos tradicionales tocaron techo y no pueden ver átomos; los átomos son más pequeños que la longitud de onda de la luz visible. Para ver cosas más diminutas, inventamos los microscopios electrónicos, que usan electrones (cuya longitud de onda es miles de veces más pequeña que la de la luz).
+2. **Aumentar el diámetro de la apertura ($D$):** Esta es la razón por la que en astronomía siempre se construyen telescopios más y más grandes. No se hacen espejos gigantes de 10 o 30 metros de diámetro solo para recoger más luz, sino para hacer que la "rendija" por la que pasa la luz sea tan grande que el efecto de la difracción se minimice, reduciendo el desenfoque y permitiéndonos resolver galaxias lejanas que de otro modo se verían como manchas amorfas.
 
 Tu cámara de fotos, el telescopio espacial James Webb y tu propio ojo están gobernados y limitados por la dictadura de la difracción.
 
@@ -194,8 +199,8 @@ El animal ha evolucionado para manipular las leyes de la difracción a escala na
 
 ## Conclusión: Más allá de lo que ven los ojos
 
-La próxima vez que veas el arcoíris en la parte posterior de un DVD, que escuches una ambulancia antes de doblar la esquina, o que te maravilles ante el color iridiscente de un insecto, sabrás que estás presenciando la misma magia física en acción. 
+La próxima vez que veas el arcoíris en la parte posterior de un DVD, que escuches una ambulancia antes de doblar la esquina, o que te maravilles ante el color iridiscente de un insecto, sabrás que estás presenciando la misma magia física en acción.
 
-La difracción nos enseña una lección de humildad y fascinación. Nos demuestra que el sentido común no siempre es un buen guía en el universo de la física. A primera vista, la luz parece simple: rayos rectos que iluminan nuestro camino. Pero cuando la obligamos a pasar por espacios ajustados, cuando la interrogamos con las herramientas y experimentos adecuados, se quita la máscara y revela su compleja danza ondulatoria. 
+La difracción nos enseña una lección de humildad y fascinación. Nos demuestra que el sentido común no siempre es un buen guía en el universo de la física. A primera vista, la luz parece simple: rayos rectos que iluminan nuestro camino. Pero cuando la obligamos a pasar por espacios ajustados, cuando la interrogamos con las herramientas y experimentos adecuados, se quita la máscara y revela su compleja danza ondulatoria.
 
 Fue gracias a la difracción que pudimos poner fin a siglos de debate, probar que la luz se propaga en ondas, descomponer la luz de las estrellas para averiguar de qué está hecho el universo, y entender por fin los límites fundamentales de nuestra propia visión. Al final, estudiar cómo la luz "esquiva obstáculos" fue exactamente lo que nos ayudó a nosotros a esquivar nuestra propia ignorancia y aprender a ver, por primera vez, cómo funciona realmente el cosmos.

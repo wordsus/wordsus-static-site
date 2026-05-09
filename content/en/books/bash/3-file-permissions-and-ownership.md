@@ -240,35 +240,35 @@ Let's look at how this works in practice. Suppose you just created a new bash sc
 To make it executable for yourself (the user/owner):
 
 ```bash
-$ chmod u+x deploy.sh
+chmod u+x deploy.sh
 
 ```
 
 To remove write permissions for the group and others to secure a configuration file:
 
 ```bash
-$ chmod go-w config.yml
+chmod go-w config.yml
 
 ```
 
 To grant read, write, and execute permissions to everyone (often dangerous, use with caution!):
 
 ```bash
-$ chmod a+rwx public_folder
+chmod a+rwx public_folder
 
 ```
 
 To explicitly set the group's permission to read-only, regardless of what it was before:
 
 ```bash
-$ chmod g=r shared_notes.txt
+chmod g=r shared_notes.txt
 
 ```
 
 You can also chain symbolic operations together using a comma:
 
 ```bash
-$ chmod u+x,go-w script.sh
+chmod u+x,go-w script.sh
 
 ```
 
@@ -327,7 +327,7 @@ $ chmod 700 backup.sh
 Sometimes you need to change the permissions of a directory and every single file and subdirectory inside it. You can do this by passing the `-R` (capital R) flag to `chmod`.
 
 ```bash
-$ chmod -R 644 project_folder/
+chmod -R 644 project_folder/
 
 ```
 
@@ -419,7 +419,7 @@ Just like `chmod`, both `chown` and `chgrp` support the `-R` (recursive) flag. T
 If you are setting up a web server directory and need the `www-data` system user to own the entire application structure, you would run:
 
 ```bash
-$ sudo chown -R www-data:www-data /var/www/html/myapp/
+sudo chown -R www-data:www-data /var/www/html/myapp/
 
 ```
 

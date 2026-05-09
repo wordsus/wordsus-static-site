@@ -8,7 +8,7 @@ Para comprender por qué la concurrencia en Go es tan excepcionalmente escalable
 
 ### El problema con los modelos tradicionales
 
-1. **El modelo 1:1 (Hilos a nivel de Sistema Operativo):** En este modelo, utilizado tradicionalmente por lenguajes como C++ o Java (antes del Proyecto Loom), cada hilo de la aplicación se mapea directamente a un hilo del sistema operativo (OS thread). 
+1. **El modelo 1:1 (Hilos a nivel de Sistema Operativo):** En este modelo, utilizado tradicionalmente por lenguajes como C++ o Java (antes del Proyecto Loom), cada hilo de la aplicación se mapea directamente a un hilo del sistema operativo (OS thread).
    * **Ventajas:** Es un modelo verdaderamente paralelo. Si un hilo se bloquea (por ejemplo, por una operación de red), el sistema operativo simplemente programa otro hilo en la CPU.
    * **Desventajas:** El costo computacional es altísimo. Un hilo de SO típicamente reserva un bloque de memoria contiguo para su pila (stack) de entre **1 MB y 8 MB**. Además, el cambio de contexto (context switch) entre hilos implica llamadas al kernel que pueden tomar entre **1 y 2 microsegundos**, lo que destruye el rendimiento si intentamos lanzar decenas de miles de hilos simultáneamente.
 
@@ -19,7 +19,7 @@ Para comprender por qué la concurrencia en Go es tan excepcionalmente escalable
 
 ### La solución de Go: El modelo M:N
 
-Go resuelve este dilema implementando el modelo **M:N**. En este paradigma, **M** rutinas de usuario (llamadas *Goroutines*) se multiplexan sobre **N** hilos del sistema operativo. 
+Go resuelve este dilema implementando el modelo **M:N**. En este paradigma, **M** rutinas de usuario (llamadas *Goroutines*) se multiplexan sobre **N** hilos del sistema operativo.
 
 El entorno de ejecución de Go (Go Runtime) asume la responsabilidad de gestionar esta orquestación. Cuando inicias un programa en Go, el runtime crea un número predeterminado de hilos del SO (generalmente igual al número de núcleos lógicos de tu CPU, definido por `GOMAXPROCS`). A partir de ahí, puedes lanzar millones de goroutines, y el runtime se encargará de distribuirlas y ejecutarlas sobre ese pequeño grupo de hilos del SO reales.
 
@@ -44,39 +44,40 @@ El siguiente código ilustra cómo Go gestiona miles de unidades de concurrencia
 package main
 
 import (
-	"fmt"
-	"runtime"
-	"sync"
-	"time"
+ "fmt"
+ "runtime"
+ "sync"
+ "time"
 )
 
 func main() {
-	// GOMAXPROCS define los "P" (procesadores lógicos), que generalmente
-	// dictan el número de hilos del SO (M) ejecutando código Go activamente.
-	fmt.Printf("CPUs lógicas disponibles: %d\n", runtime.NumCPU())
-	fmt.Printf("Hilos de SO (GOMAXPROCS) iniciales: %d\n", runtime.GOMAXPROCS(0))
+ // GOMAXPROCS define los "P" (procesadores lógicos), que generalmente
+ // dictan el número de hilos del SO (M) ejecutando código Go activamente.
+ fmt.Printf("CPUs lógicas disponibles: %d\n", runtime.NumCPU())
+ fmt.Printf("Hilos de SO (GOMAXPROCS) iniciales: %d\n", runtime.GOMAXPROCS(0))
 
-	var wg sync.WaitGroup
-	numeroGoroutines := 50000 // Lanzaremos 50,000 Goroutines (M)
+ var wg sync.WaitGroup
+ numeroGoroutines := 50000 // Lanzaremos 50,000 Goroutines (M)
 
-	wg.Add(numeroGoroutines)
-	for i := 0; i < numeroGoroutines; i++ {
-		go func() {
-			defer wg.Done()
-			// Simulamos una tarea breve
-			time.Sleep(100 * time.Millisecond)
-		}()
-	}
+ wg.Add(numeroGoroutines)
+ for i := 0; i < numeroGoroutines; i++ {
+  go func() {
+   defer wg.Done()
+   // Simulamos una tarea breve
+   time.Sleep(100 * time.Millisecond)
+  }()
+ }
 
-	// Consultamos el runtime mientras las 50,000 goroutines están activas
-	fmt.Printf("Goroutines (M) activas: %d\n", runtime.NumGoroutine())
-	
-	wg.Wait()
-	fmt.Println("Ejecución finalizada con éxito.")
+ // Consultamos el runtime mientras las 50,000 goroutines están activas
+ fmt.Printf("Goroutines (M) activas: %d\n", runtime.NumGoroutine())
+ 
+ wg.Wait()
+ fmt.Println("Ejecución finalizada con éxito.")
 }
 ```
 
 **Salida típica en una máquina de 8 núcleos:**
+
 ```text
 CPUs lógicas disponibles: 8
 Hilos de SO (GOMAXPROCS) iniciales: 8
@@ -105,36 +106,36 @@ Un aspecto crítico durante la creación de una goroutine es que **los argumento
 package main
 
 import (
-	"fmt"
-	"sync"
-	"time"
+ "fmt"
+ "sync"
+ "time"
 )
 
 func simularTarea(id int, mensaje string, wg *sync.WaitGroup) {
-	defer wg.Done()
-	fmt.Printf("[Goroutine %d] Iniciando tarea: %s\n", id, mensaje)
-	time.Sleep(50 * time.Millisecond) // Simulamos trabajo
-	fmt.Printf("[Goroutine %d] Tarea finalizada.\n", id)
+ defer wg.Done()
+ fmt.Printf("[Goroutine %d] Iniciando tarea: %s\n", id, mensaje)
+ time.Sleep(50 * time.Millisecond) // Simulamos trabajo
+ fmt.Printf("[Goroutine %d] Tarea finalizada.\n", id)
 }
 
 func main() {
-	var wg sync.WaitGroup
+ var wg sync.WaitGroup
 
-	mensaje := "Procesamiento inicial"
-	
-	wg.Add(1)
-	// Los argumentos '1' y el valor actual de 'mensaje' se evalúan y copian AHORA.
-	go simularTarea(1, mensaje, &wg) 
+ mensaje := "Procesamiento inicial"
+ 
+ wg.Add(1)
+ // Los argumentos '1' y el valor actual de 'mensaje' se evalúan y copian AHORA.
+ go simularTarea(1, mensaje, &wg) 
 
-	// Mutamos la variable en la goroutine principal
-	mensaje = "Procesamiento modificado"
-	
-	wg.Add(1)
-	// Aquí se copia el nuevo valor de 'mensaje'.
-	go simularTarea(2, mensaje, &wg)
+ // Mutamos la variable en la goroutine principal
+ mensaje = "Procesamiento modificado"
+ 
+ wg.Add(1)
+ // Aquí se copia el nuevo valor de 'mensaje'.
+ go simularTarea(2, mensaje, &wg)
 
-	wg.Wait()
-	fmt.Println("Ejecución principal terminada.")
+ wg.Wait()
+ fmt.Println("Ejecución principal terminada.")
 }
 ```
 
@@ -177,16 +178,16 @@ El planificador de Go organiza las Goroutines que están en estado *Runnable* (l
 
 Para mantener todos los hilos del sistema operativo (`M`) ocupados y aprovechar el hardware al máximo, un `P` inactivo buscará trabajo en el siguiente orden:
 
-1.  Revisa su propia LRQ.
-2.  Revisa la Global Run Queue (GRQ).
-3.  Revisa el *Network Poller* (para ver si hay Goroutines listas tras una operación de red).
-4.  **Work-Stealing:** Si todo lo anterior falla, el `P` selecciona aleatoriamente a otro `P` y "roba" la mitad de las Goroutines de la LRQ de su vecino.
+1. Revisa su propia LRQ.
+2. Revisa la Global Run Queue (GRQ).
+3. Revisa el *Network Poller* (para ver si hay Goroutines listas tras una operación de red).
+4. **Work-Stealing:** Si todo lo anterior falla, el `P` selecciona aleatoriamente a otro `P` y "roba" la mitad de las Goroutines de la LRQ de su vecino.
 
 Este balanceo de carga dinámico asegura que ningún núcleo de la CPU se quede inactivo si hay Goroutines esperando ser ejecutadas en alguna parte del programa.
 
 ### Expropiación Asíncrona (Asynchronous Preemption)
 
-Un problema histórico en los lenguajes con hilos cooperativos es que un bucle infinito (o muy pesado) que no realiza llamadas a funciones ni operaciones bloqueantes puede secuestrar un hilo para siempre, impidiendo que otras tareas se ejecuten. 
+Un problema histórico en los lenguajes con hilos cooperativos es que un bucle infinito (o muy pesado) que no realiza llamadas a funciones ni operaciones bloqueantes puede secuestrar un hilo para siempre, impidiendo que otras tareas se ejecuten.
 
 A partir de Go 1.14, el planificador implementa **Expropiación Asíncrona basada en señales**. El runtime envía periódicamente señales del sistema operativo (como `SIGURG` en sistemas basados en Unix) a los hilos (`M`). Si una Goroutine lleva ejecutándose durante más de 10 milisegundos sin ceder el control voluntariamente, el runtime interrumpe su ejecución, guarda su estado, la devuelve a una cola de ejecución (LRQ o GRQ) y permite que otra Goroutine ocupe la CPU.
 
@@ -196,41 +197,41 @@ El siguiente código ilustra un escenario que, antes de Go 1.14, habría colapsa
 package main
 
 import (
-	"fmt"
-	"runtime"
-	"sync"
-	"time"
+ "fmt"
+ "runtime"
+ "sync"
+ "time"
 )
 
 func main() {
-	// Forzamos al runtime a usar un único hilo del SO (M) y un procesador (P)
-	runtime.GOMAXPROCS(1)
+ // Forzamos al runtime a usar un único hilo del SO (M) y un procesador (P)
+ runtime.GOMAXPROCS(1)
 
-	var wg sync.WaitGroup
-	wg.Add(2)
+ var wg sync.WaitGroup
+ wg.Add(2)
 
-	// Goroutine 1: Trabajo intensivo en CPU (bucle cerrado)
-	go func() {
-		defer wg.Done()
-		fmt.Println("Goroutine 1: Iniciando bucle pesado...")
-		// Sin expropiación asíncrona, este bucle monopolizaría el único hilo (M)
-		for i := 0; i < 5000000000; i++ {
-			// Simulación de cálculos sin llamadas a funciones o I/O
-		}
-		fmt.Println("Goroutine 1: Bucle finalizado.")
-	}()
+ // Goroutine 1: Trabajo intensivo en CPU (bucle cerrado)
+ go func() {
+  defer wg.Done()
+  fmt.Println("Goroutine 1: Iniciando bucle pesado...")
+  // Sin expropiación asíncrona, este bucle monopolizaría el único hilo (M)
+  for i := 0; i < 5000000000; i++ {
+   // Simulación de cálculos sin llamadas a funciones o I/O
+  }
+  fmt.Println("Goroutine 1: Bucle finalizado.")
+ }()
 
-	// Goroutine 2: Tarea ligera
-	go func() {
-		defer wg.Done()
-		// Esta Goroutine logrará ejecutarse a pesar de que la Goroutine 1 
-		// está acaparando la CPU, gracias a la Expropiación del Planificador.
-		time.Sleep(100 * time.Millisecond)
-		fmt.Println("Goroutine 2: Ejecutada exitosamente durante la expropiación.")
-	}()
+ // Goroutine 2: Tarea ligera
+ go func() {
+  defer wg.Done()
+  // Esta Goroutine logrará ejecutarse a pesar de que la Goroutine 1 
+  // está acaparando la CPU, gracias a la Expropiación del Planificador.
+  time.Sleep(100 * time.Millisecond)
+  fmt.Println("Goroutine 2: Ejecutada exitosamente durante la expropiación.")
+ }()
 
-	wg.Wait()
-	fmt.Println("Programa finalizado.")
+ wg.Wait()
+ fmt.Println("Programa finalizado.")
 }
 ```
 
@@ -243,7 +244,7 @@ El planificador distingue entre diferentes tipos de operaciones bloqueantes para
 
 ## 8.4. Prevención de fugas de Goroutines (Goroutine Leaks)
 
-El modelo de concurrencia de Go es tan ligero y accesible que resulta tentador lanzar miles de goroutines sin pensar demasiado en su ciclo de vida. Sin embargo, esta facilidad es un arma de doble filo. Uno de los problemas más insidiosos en aplicaciones de Go de larga duración es la **fuga de goroutines** (Goroutine Leak). 
+El modelo de concurrencia de Go es tan ligero y accesible que resulta tentador lanzar miles de goroutines sin pensar demasiado en su ciclo de vida. Sin embargo, esta facilidad es un arma de doble filo. Uno de los problemas más insidiosos en aplicaciones de Go de larga duración es la **fuga de goroutines** (Goroutine Leak).
 
 A diferencia de las variables ordinarias, el Recolector de Basura (Garbage Collector o GC) de Go **no puede limpiar una goroutine que se encuentra en ejecución o bloqueada**. Si una goroutine queda suspendida indefinidamente, la memoria asignada a su pila (esos 2 KB iniciales, más cualquier memoria referenciada dentro de ella) nunca será liberada. Con el tiempo, esto consumirá toda la memoria disponible, provocando que la aplicación colapse por un error de *Out of Memory* (OOM).
 
@@ -263,43 +264,45 @@ Veamos un ejemplo clásico donde una goroutine se filtra silenciosamente:
 package main
 
 import (
-	"fmt"
-	"runtime"
-	"time"
+ "fmt"
+ "runtime"
+ "time"
 )
 
 // procesarDatos lanza una goroutine que espera datos de un canal.
 func procesarDatos(ch <-chan string) {
-	go func() {
-		// Si la función principal deja de enviar datos y no cierra el canal,
-		// esta goroutine se quedará bloqueada aquí para siempre.
-		dato := <-ch
-		fmt.Println("Procesando:", dato)
-	}()
+ go func() {
+  // Si la función principal deja de enviar datos y no cierra el canal,
+  // esta goroutine se quedará bloqueada aquí para siempre.
+  dato := <-ch
+  fmt.Println("Procesando:", dato)
+ }()
 }
 
 func main() {
-	fmt.Printf("Goroutines iniciales: %d\n", runtime.NumGoroutine())
+ fmt.Printf("Goroutines iniciales: %d\n", runtime.NumGoroutine())
 
-	ch := make(chan string)
-	
-	// Llamamos a la función, pero decidimos no enviar nada por el canal
-	procesarDatos(ch)
-	
-	// Simulamos que el programa sigue haciendo otras cosas
-	time.Sleep(100 * time.Millisecond)
-	
-	fmt.Printf("Goroutines finales: %d\n", runtime.NumGoroutine())
-	// El canal 'ch' saldrá de ámbito (scope) y será recolectado por el GC,
-	// ¡pero la goroutine anónima bloqueada dentro de procesarDatos NO!
+ ch := make(chan string)
+ 
+ // Llamamos a la función, pero decidimos no enviar nada por el canal
+ procesarDatos(ch)
+ 
+ // Simulamos que el programa sigue haciendo otras cosas
+ time.Sleep(100 * time.Millisecond)
+ 
+ fmt.Printf("Goroutines finales: %d\n", runtime.NumGoroutine())
+ // El canal 'ch' saldrá de ámbito (scope) y será recolectado por el GC,
+ // ¡pero la goroutine anónima bloqueada dentro de procesarDatos NO!
 }
 ```
 
 **Salida del programa:**
+
 ```text
 Goroutines iniciales: 1
 Goroutines finales: 2
 ```
+
 Como se observa, la aplicación termina con una goroutine "zombi" consumiendo recursos.
 
 ### Estrategias de prevención
@@ -312,45 +315,46 @@ Para cumplir con esta regla, existen patrones idiomáticos que garantizan la ter
 package main
 
 import (
-	"fmt"
-	"runtime"
-	"time"
+ "fmt"
+ "runtime"
+ "time"
 )
 
 // procesarDatosSeguro utiliza un canal 'done' para señalar la cancelación.
 func procesarDatosSeguro(ch <-chan string, done <-chan struct{}) {
-	go func() {
-		for {
-			select {
-			case dato := <-ch:
-				fmt.Println("Procesando:", dato)
-			case <-done:
-				// Cuando el canal 'done' se cierra, esta rama se ejecuta.
-				fmt.Println("Señal de cancelación recibida. Terminando goroutine.")
-				return // Previene la fuga liberando la goroutine.
-			}
-		}
-	}()
+ go func() {
+  for {
+   select {
+   case dato := <-ch:
+    fmt.Println("Procesando:", dato)
+   case <-done:
+    // Cuando el canal 'done' se cierra, esta rama se ejecuta.
+    fmt.Println("Señal de cancelación recibida. Terminando goroutine.")
+    return // Previene la fuga liberando la goroutine.
+   }
+  }
+ }()
 }
 
 func main() {
-	ch := make(chan string)
-	done := make(chan struct{}) // Canal dedicado para señales de cierre
+ ch := make(chan string)
+ done := make(chan struct{}) // Canal dedicado para señales de cierre
 
-	procesarDatosSeguro(ch, done)
+ procesarDatosSeguro(ch, done)
 
-	time.Sleep(50 * time.Millisecond)
-	
-	// Indicamos a la goroutine que debe terminar cerrando el canal 'done'
-	close(done)
-	
-	time.Sleep(50 * time.Millisecond) // Damos tiempo para que la goroutine imprima su mensaje
-	fmt.Printf("Goroutines finales activas: %d\n", runtime.NumGoroutine())
+ time.Sleep(50 * time.Millisecond)
+ 
+ // Indicamos a la goroutine que debe terminar cerrando el canal 'done'
+ close(done)
+ 
+ time.Sleep(50 * time.Millisecond) // Damos tiempo para que la goroutine imprima su mensaje
+ fmt.Printf("Goroutines finales activas: %d\n", runtime.NumGoroutine())
 }
 ```
 
 Al utilizar la instrucción `select` junto con un canal de cancelación explícito (`done`), proporcionamos una "escotilla de escape". Incluso si nunca enviamos datos por `ch`, podemos cerrar `done` para garantizar que la goroutine retorne y sus recursos sean liberados al sistema.
 
 Otras estrategias clave incluyen:
+
 * **Timeouts:** Usar `time.After` dentro de un `select` para abortar operaciones que tardan demasiado.
 * **Cierre explícito de canales:** Acostumbrarse a que el *productor* de los datos sea siempre el responsable de cerrar el canal de comunicación.

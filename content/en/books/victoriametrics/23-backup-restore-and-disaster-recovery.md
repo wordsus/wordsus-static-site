@@ -1,4 +1,4 @@
-In the realm of time series databases, data loss is catastrophic. Whether storing financial metrics or infrastructure telemetry, a robust disaster recovery plan is non-negotiable. This chapter dives deep into the native backup and restore capabilities of VictoriaMetrics. 
+In the realm of time series databases, data loss is catastrophic. Whether storing financial metrics or infrastructure telemetry, a robust disaster recovery plan is non-negotiable. This chapter dives deep into the native backup and restore capabilities of VictoriaMetrics.
 
 We will explore how to leverage the highly optimized `vmbackup` and `vmrestore` utilities to secure your data with zero downtime. You will uncover the internal mechanics of instant snapshotting, design efficient incremental backup strategies, and master the process of restoring distributed clusters and integrating seamlessly with cloud object storage like S3 and GCS.
 
@@ -6,11 +6,11 @@ We will explore how to leverage the highly optimized `vmbackup` and `vmrestore` 
 
 While it is technically possible to back up a stopped VictoriaMetrics node using standard operating system utilities like `rsync` or `tar`, time series databases operate continuously. Stopping the database for a backup disrupts data ingestion and querying. To solve this, VictoriaMetrics provides `vmbackup` and `vmrestore`—purpose-built, highly optimized, standalone Go binaries designed to safely and efficiently back up and restore data without interrupting database operations.
 
-These utilities are strictly aware of the VictoriaMetrics storage architecture. They do not just copy files blindly; they orchestrate with the database's internal API to capture a consistent state of the data at a specific point in time. 
+These utilities are strictly aware of the VictoriaMetrics storage architecture. They do not just copy files blindly; they orchestrate with the database's internal API to capture a consistent state of the data at a specific point in time.
 
 ### The Backup Workflow
 
-The `vmbackup` utility automates a multi-step process to ensure data consistency. Rather than reading the live data files directly (which are actively being written to and merged), `vmbackup` triggers the VictoriaMetrics snapshot API. 
+The `vmbackup` utility automates a multi-step process to ensure data consistency. Rather than reading the live data files directly (which are actively being written to and merged), `vmbackup` triggers the VictoriaMetrics snapshot API.
 
 ```text
 +-------------------+                          +-------------------+
@@ -49,18 +49,20 @@ vmbackup \
 ```
 
 **Key Flags Explained:**
-*   `-storageDataPath`: The absolute path to the directory where VictoriaMetrics stores its data. `vmbackup` needs this to locate the physical snapshot files once the API generates them.
-*   `-snapshot.createURL`: The HTTP endpoint of the VictoriaMetrics node. For cluster versions, this must point to the specific `vmstorage` node you are backing up (e.g., `http://<vmstorage-host>:8482/snapshot/create`). 
-*   `-dst`: The destination for the backup. Notice the `fs://` prefix; `vmbackup` uses URI schemes to determine the storage backend. (Integration with cloud providers like S3 and GCS via these URIs is covered in Section 23.5).
+
+* `-storageDataPath`: The absolute path to the directory where VictoriaMetrics stores its data. `vmbackup` needs this to locate the physical snapshot files once the API generates them.
+* `-snapshot.createURL`: The HTTP endpoint of the VictoriaMetrics node. For cluster versions, this must point to the specific `vmstorage` node you are backing up (e.g., `http://<vmstorage-host>:8482/snapshot/create`).
+* `-dst`: The destination for the backup. Notice the `fs://` prefix; `vmbackup` uses URI schemes to determine the storage backend. (Integration with cloud providers like S3 and GCS via these URIs is covered in Section 23.5).
 
 **Operational Safeguards:**
 When running backups in a production environment, you must ensure the backup process does not starve the database of disk I/O or network bandwidth. `vmbackup` includes flags specifically for throttling:
-*   `-maxBytesPerSecond`: Limits the backup speed.
-*   `-concurrency`: Limits the number of concurrent worker threads reading and uploading files (defaults to the number of CPU cores).
+
+* `-maxBytesPerSecond`: Limits the backup speed.
+* `-concurrency`: Limits the number of concurrent worker threads reading and uploading files (defaults to the number of CPU cores).
 
 ### Using `vmrestore`
 
-The `vmrestore` utility performs the inverse operation. However, there is one critical operational rule: **You must stop the VictoriaMetrics instance before restoring data.** 
+The `vmrestore` utility performs the inverse operation. However, there is one critical operational rule: **You must stop the VictoriaMetrics instance before restoring data.**
 
 VictoriaMetrics assumes it has exclusive control over its data directory. If you attempt to restore files into a directory while the database process is running, data corruption is highly likely.
 
@@ -80,24 +82,25 @@ systemctl start victoriametrics
 ```
 
 **Key Flags Explained:**
-*   `-src`: The URI pointing to the backup destination you previously specified in the `-dst` flag of `vmbackup`.
-*   `-storageDataPath`: The local path where the restored data should be written. 
 
-If the `-storageDataPath` already contains data, `vmrestore` is designed to be safe: it will merge the restored data with the existing data. However, if the existing data is corrupted or you are attempting a clean disaster recovery, it is strongly recommended to clear the `-storageDataPath` completely before executing `vmrestore`. 
+* `-src`: The URI pointing to the backup destination you previously specified in the `-dst` flag of `vmbackup`.
+* `-storageDataPath`: The local path where the restored data should be written.
+
+If the `-storageDataPath` already contains data, `vmrestore` is designed to be safe: it will merge the restored data with the existing data. However, if the existing data is corrupted or you are attempting a clean disaster recovery, it is strongly recommended to clear the `-storageDataPath` completely before executing `vmrestore`.
 
 Like the backup utility, `vmrestore` also respects the `-maxBytesPerSecond` and `-concurrency` flags, allowing you to throttle the restore process if you are restoring to a live storage area network (SAN) or shared disk that shouldn't be overwhelmed.
 
 ## 23.2 The Underlying Instant Snapshotting Process
 
-To fully trust your backup strategy, it is crucial to understand *how* VictoriaMetrics achieves zero-downtime, instantaneous snapshots. A database processing millions of data points per second cannot afford to pause writes while terabytes of data are copied to a backup server. 
+To fully trust your backup strategy, it is crucial to understand *how* VictoriaMetrics achieves zero-downtime, instantaneous snapshots. A database processing millions of data points per second cannot afford to pause writes while terabytes of data are copied to a backup server.
 
 VictoriaMetrics solves this elegantly by leveraging a fundamental feature of POSIX-compliant file systems (like ext4, XFS, and ZFS): **hard links**, combined with the strict **immutability** of its own storage engine design.
 
 ### The Magic of Hard Links
 
-In a Linux file system, a file consists of two parts: the actual data stored on the physical disk (represented by an **inode**), and the file name in a directory that points to that inode. 
+In a Linux file system, a file consists of two parts: the actual data stored on the physical disk (represented by an **inode**), and the file name in a directory that points to that inode.
 
-A hard link is simply an additional directory entry that points to the *exact same inode*. 
+A hard link is simply an additional directory entry that points to the *exact same inode*.
 
 ```text
 Live Data Directory (/data)           Snapshot Directory (/snapshots/001)
@@ -109,13 +112,13 @@ part-001.data (Link Count: 2) <----+
 [ Physical Disk: Inode #84729 (Actual Metric Data) ]
 ```
 
-When you create a hard link, the OS does not copy the physical data. It merely creates a new pointer. This operation takes fractions of a millisecond, regardless of whether the file is 1 Megabyte or 100 Gigabytes. 
+When you create a hard link, the OS does not copy the physical data. It merely creates a new pointer. This operation takes fractions of a millisecond, regardless of whether the file is 1 Megabyte or 100 Gigabytes.
 
 ### Why This Works: Immutability
 
-Hard links alone are not enough for safe database snapshots. If a process modifies a file after a hard link is created, the changes are visible through all links, destroying the point-in-time consistency of the snapshot. 
+Hard links alone are not enough for safe database snapshots. If a process modifies a file after a hard link is created, the changes are visible through all links, destroying the point-in-time consistency of the snapshot.
 
-This is where the VictoriaMetrics storage architecture (discussed in Chapter 10) shines. The VictoriaMetrics data directory is composed of "parts" (partitions of data). **Once a part is written to disk, it is strictly immutable.** It is never modified, appended to, or truncated. 
+This is where the VictoriaMetrics storage architecture (discussed in Chapter 10) shines. The VictoriaMetrics data directory is composed of "parts" (partitions of data). **Once a part is written to disk, it is strictly immutable.** It is never modified, appended to, or truncated.
 
 When new data arrives, it is written to *new* parts. When VictoriaMetrics optimizes storage, it reads multiple small parts, merges them in memory, writes out a brand new large part, and then deletes the old small parts. Because the data files are immutable, a hard link is a perfectly safe, mathematically sound snapshot.
 
@@ -123,21 +126,22 @@ When new data arrives, it is written to *new* parts. When VictoriaMetrics optimi
 
 When `vmbackup` (or an administrator) calls the `http://<host>:8428/snapshot/create` API, the following sequence occurs internally in a matter of milliseconds:
 
-1.  **Flush:** VictoriaMetrics flushes all in-memory buffers to disk, ensuring all recently ingested data is persisted as immutable parts.
-2.  **Pause:** Background merge processes are briefly paused to prevent parts from being deleted during the snapshot creation.
-3.  **Link:** The engine traverses the active data directory and creates hard links for every single file inside a new directory located at `<-storageDataPath>/snapshots/<snapshot-name>`.
-4.  **Resume:** The merge processes are unpaused, and normal database operations continue uninterrupted.
-5.  **Return:** The API returns the name of the snapshot directory to the caller.
+1. **Flush:** VictoriaMetrics flushes all in-memory buffers to disk, ensuring all recently ingested data is persisted as immutable parts.
+2. **Pause:** Background merge processes are briefly paused to prevent parts from being deleted during the snapshot creation.
+3. **Link:** The engine traverses the active data directory and creates hard links for every single file inside a new directory located at `<-storageDataPath>/snapshots/<snapshot-name>`.
+4. **Resume:** The merge processes are unpaused, and normal database operations continue uninterrupted.
+5. **Return:** The API returns the name of the snapshot directory to the caller.
 
 ### Disk Space Dynamics and the "Merge Penalty"
 
-A common misconception is that snapshots consume massive amounts of disk space. Because they rely on hard links, **a freshly created snapshot consumes exactly zero additional bytes of physical disk space.** 
+A common misconception is that snapshots consume massive amounts of disk space. Because they rely on hard links, **a freshly created snapshot consumes exactly zero additional bytes of physical disk space.**
 
-However, you must account for the lifecycle of the data *after* the snapshot is created. 
+However, you must account for the lifecycle of the data *after* the snapshot is created.
 
-As VictoriaMetrics continues to operate, it will perform background merges. It will write a new merged part and attempt to delete the old parts. 
-*   In a normal state, deleting the old parts frees up disk space.
-*   If a snapshot exists, deleting the live database's reference to the old parts *reduces the link count from 2 to 1*. The actual file remains on disk because the snapshot directory still holds a hard link to it.
+As VictoriaMetrics continues to operate, it will perform background merges. It will write a new merged part and attempt to delete the old parts.
+
+* In a normal state, deleting the old parts frees up disk space.
+* If a snapshot exists, deleting the live database's reference to the old parts *reduces the link count from 2 to 1*. The actual file remains on disk because the snapshot directory still holds a hard link to it.
 
 ```text
 Time T+0: Snapshot Created
@@ -179,7 +183,8 @@ This file-level deduplication means that running `vmbackup` every hour to the sa
 
 While running endless incremental backups to a single destination is fast, it introduces a storage lifecycle problem at the destination.
 
-VictoriaMetrics continuously performs background merges to optimize query performance, combining smaller data parts into larger, compressed parts. 
+VictoriaMetrics continuously performs background merges to optimize query performance, combining smaller data parts into larger, compressed parts.
+
 1. The database merges Parts A, B, and C into a new, larger Part E.
 2. The active database deletes Parts A, B, and C.
 3. The next time `vmbackup` runs, it uploads the new Part E to the destination.
@@ -217,7 +222,7 @@ S3 Bucket: my-company-backups/vm-cluster/
 ```
 
 **Managing Retention:**
-With this structure, you do not need to rely on VictoriaMetrics to prune individual files. Instead, you use the native lifecycle management tools of your storage provider (e.g., AWS S3 Lifecycle Rules, or a simple `rm -rf` on a local NAS) to delete the entire `/2023-09/` prefix once it falls outside your required disaster recovery retention window. 
+With this structure, you do not need to rely on VictoriaMetrics to prune individual files. Instead, you use the native lifecycle management tools of your storage provider (e.g., AWS S3 Lifecycle Rules, or a simple `rm -rf` on a local NAS) to delete the entire `/2023-09/` prefix once it falls outside your required disaster recovery retention window.
 
 This strategy guarantees that your backups remain highly efficient on a daily basis, while preventing uncontrolled storage costs over the long term.
 
@@ -229,7 +234,7 @@ In a VictoriaMetrics cluster (as detailed in Chapter 16), data persistence is ha
 
 ### The Cluster Backup Layout
 
-When you back up a VictoriaMetrics cluster, you do not take a single monolithic backup. Instead, you run `vmbackup` independently against the snapshot API of *each* `vmstorage` node. 
+When you back up a VictoriaMetrics cluster, you do not take a single monolithic backup. Instead, you run `vmbackup` independently against the snapshot API of *each* `vmstorage` node.
 
 Consequently, your backup destination (e.g., an S3 bucket) will typically contain separate subdirectories or prefixes for each node:
 
@@ -249,11 +254,12 @@ The simplest restoration scenario involves spinning up a new cluster with the ex
 
 **Step-by-step Execution:**
 
-1.  **Provision the New Cluster:** Deploy your new `vminsert`, `vmselect`, and `vmstorage` nodes. 
-2.  **Stop Storage Services:** Before writing any data, you must stop the `vmstorage` daemon on all target nodes. Restoring into a running `vmstorage` process will cause severe data corruption.
-3.  **Execute `vmrestore`:** On each individual `vmstorage` server, run the `vmrestore` utility, pointing it to the corresponding backup prefix.
+1. **Provision the New Cluster:** Deploy your new `vminsert`, `vmselect`, and `vmstorage` nodes.
+2. **Stop Storage Services:** Before writing any data, you must stop the `vmstorage` daemon on all target nodes. Restoring into a running `vmstorage` process will cause severe data corruption.
+3. **Execute `vmrestore`:** On each individual `vmstorage` server, run the `vmrestore` utility, pointing it to the corresponding backup prefix.
 
 *Command executed on `new-storage-node-0`:*
+
 ```bash
 vmrestore \
   -src=s3://my-company-backups/prod-cluster/storage-node-0/2023-10 \
@@ -261,17 +267,18 @@ vmrestore \
 ```
 
 *Command executed on `new-storage-node-1`:*
+
 ```bash
 vmrestore \
   -src=s3://my-company-backups/prod-cluster/storage-node-1/2023-10 \
   -storageDataPath=/var/lib/victoria-metrics-data
 ```
 
-4.  **Start Services:** Once `vmrestore` completes on all nodes, start the `vmstorage` services. The stateless `vmselect` nodes will immediately connect and begin serving queries against the restored data.
+1. **Start Services:** Once `vmrestore` completes on all nodes, start the `vmstorage` services. The stateless `vmselect` nodes will immediately connect and begin serving queries against the restored data.
 
 ### Scenario 2: Restoring to a Different Topology (Topology Mismatch)
 
-A unique and highly advantageous feature of the VictoriaMetrics architecture is that **historical data does not strictly belong to a specific node to be readable.** 
+A unique and highly advantageous feature of the VictoriaMetrics architecture is that **historical data does not strictly belong to a specific node to be readable.**
 
 Because `vmselect` broadcasts every query to *all* configured `vmstorage` nodes and merges the results on the fly, it does not matter which physical storage node holds a specific historical metric. This allows you to restore a backup to a cluster with a different number of nodes.
 
@@ -290,7 +297,7 @@ To achieve this, you simply run `vmrestore` multiple times consecutively on the 
 
 #### Scaling Up (e.g., Restoring 3 nodes of data to a 5-node cluster)
 
-If you are migrating to a larger cluster to handle increased future throughput, you only need to restore data to 3 of the 5 new nodes. 
+If you are migrating to a larger cluster to handle increased future throughput, you only need to restore data to 3 of the 5 new nodes.
 
 ```text
 [ Backup Source ]                    [ New Upgraded Cluster ]
@@ -302,14 +309,15 @@ storage-node-2-backup  ==========>   new-storage-node-2
 ```
 
 When you bring the cluster online:
-*   `vmselect` will query all 5 nodes. Nodes 3 and 4 will return empty results for historical time ranges, while Nodes 0, 1, and 2 will return the restored data. 
-*   `vminsert` will begin hashing new incoming data evenly across all 5 nodes. 
+
+* `vmselect` will query all 5 nodes. Nodes 3 and 4 will return empty results for historical time ranges, while Nodes 0, 1, and 2 will return the restored data.
+* `vminsert` will begin hashing new incoming data evenly across all 5 nodes.
 
 Over time, as the retention period expires, the historical data on Nodes 0, 1, and 2 will age out, and the cluster's data distribution will naturally balance itself across all 5 nodes.
 
 ### Handling Replication
 
-If your original cluster was configured with replication (e.g., `-replicationFactor=2` on `vminsert`), your backup data already contains duplicate parts. If you restore this data to a new cluster, the historical data will maintain its replicated state. 
+If your original cluster was configured with replication (e.g., `-replicationFactor=2` on `vminsert`), your backup data already contains duplicate parts. If you restore this data to a new cluster, the historical data will maintain its replicated state.
 
 However, if you deliberately merge multiple nodes' backups onto a single node in a DR scenario, you are bypassing the physical separation that replication provides. While the database will function perfectly, the redundancy of that specific historical data is lost until new data is ingested by the DR cluster's `vminsert` nodes.
 
@@ -317,7 +325,7 @@ However, if you deliberately merge multiple nodes' backups onto a single node in
 
 Local disk backups are sufficient for temporary snapshots or on-premise arrays, but for true disaster recovery and long-term retention, shipping data off-site is mandatory. Cloud object storage—such as Amazon S3, Google Cloud Storage (GCS), and Azure Blob Storage—provides virtually infinite scalability, high durability (often 11 nines), and cost-effective archiving tiers.
 
-The `vmbackup` and `vmrestore` utilities are built with native, highly optimized clients for these cloud storage providers. They do not require intermediate shell scripts, `aws-cli`, or `gsutil` to transfer data. 
+The `vmbackup` and `vmrestore` utilities are built with native, highly optimized clients for these cloud storage providers. They do not require intermediate shell scripts, `aws-cli`, or `gsutil` to transfer data.
 
 ### The Direct-to-Cloud Architecture
 
@@ -339,11 +347,13 @@ To use Amazon S3, you prefix your destination path (`-dst`) with `s3://`.
 
 **Authentication:**
 `vmbackup` automatically integrates with standard AWS authentication mechanisms. You do not pass plaintext keys as command-line flags. Instead, the utility will look for credentials in the following order:
+
 1. Environment variables (`AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`).
 2. The shared credentials file (`~/.aws/credentials`).
 3. IAM Roles attached to the EC2 instance or Kubernetes Pod (IRSA). This is the recommended approach for production environments.
 
 **Standard S3 Backup Execution:**
+
 ```bash
 vmbackup \
   -storageDataPath=/var/lib/victoria-metrics-data \
@@ -352,6 +362,7 @@ vmbackup \
 ```
 
 #### Connecting to Custom S3 Endpoints (MinIO, Ceph)
+
 If you are running an on-premise S3-compatible storage system like MinIO or Ceph, you must explicitly tell `vmbackup` not to route traffic to AWS servers. You do this using the `-customS3Endpoint` flag.
 
 ```bash
@@ -364,12 +375,13 @@ vmbackup \
 
 ### Backing Up to Google Cloud Storage (GCS)
 
-For Google Cloud, use the `gcs://` prefix. 
+For Google Cloud, use the `gcs://` prefix.
 
 **Authentication:**
 Similar to AWS, `vmbackup` relies on Google's standard credential discovery. It will look for the `GOOGLE_APPLICATION_CREDENTIALS` environment variable pointing to a service account JSON key file, or it will use the default service account attached to the Compute Engine instance or GKE Workload Identity.
 
 **Standard GCS Backup Execution:**
+
 ```bash
 vmbackup \
   -storageDataPath=/var/lib/victoria-metrics-data \
@@ -383,15 +395,17 @@ When operating across wide area networks (WAN) to cloud providers, network laten
 
 **1. Tuning Concurrency and I/O**
 By default, `vmbackup` sets its concurrency to the number of CPU cores. When uploading over a high-bandwidth connection to S3/GCS, you might want to increase this to saturate the network link. Conversely, if the backup is competing with live database traffic for outbound bandwidth, you should throttle it.
-*   `-concurrency=16`: Increases the number of parallel upload streams.
-*   `-maxBytesPerSecond=104857600`: Throttles the upload to 100 MB/s.
+
+* `-concurrency=16`: Increases the number of parallel upload streams.
+* `-maxBytesPerSecond=104857600`: Throttles the upload to 100 MB/s.
 
 **2. Leveraging Cloud Storage Tiers**
-You should **not** rely on VictoriaMetrics to move old backups to cheaper storage tiers (like AWS Glacier or GCS Coldline). 
+You should **not** rely on VictoriaMetrics to move old backups to cheaper storage tiers (like AWS Glacier or GCS Coldline).
 Instead, push the backups to a standard tier bucket and configure **Storage Lifecycle Rules** directly within the AWS or GCP console. For example:
-*   Day 0 - 30: Keep backups in S3 Standard (fast restoration).
-*   Day 31 - 90: Transition to S3 Standard-IA (Infrequent Access).
-*   Day 91+: Expire and delete the backup.
+
+* Day 0 - 30: Keep backups in S3 Standard (fast restoration).
+* Day 31 - 90: Transition to S3 Standard-IA (Infrequent Access).
+* Day 91+: Expire and delete the backup.
 
 **3. Server-Side Encryption**
 If your compliance requirements dictate that data must be encrypted at rest in the cloud, you configure this at the bucket level. Both S3 and GCS allow you to set default bucket encryption (e.g., AWS KMS). When `vmbackup` streams the files, the cloud provider will seamlessly encrypt them as they land on their storage arrays without requiring any additional configuration on the VictoriaMetrics side.

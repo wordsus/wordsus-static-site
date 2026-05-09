@@ -2,15 +2,16 @@ For many developers, the terminal is an intimidating black box. However, it is a
 
 ## 1.1 What is Bash and the Command Line?
 
-Before you can master the tools, you must understand the workspace. For most developers, system administrators, and power users, that workspace is the command line, and the tool of choice is Bash. 
+Before you can master the tools, you must understand the workspace. For most developers, system administrators, and power users, that workspace is the command line, and the tool of choice is Bash.
 
 ### The Command Line Interface (CLI)
 
-Most modern computer interactions happen through a Graphical User Interface (GUI)—you point, you click, and you drag windows around a screen. The **Command Line Interface (CLI)**, by contrast, is a text-based medium for interacting with your computer. Instead of clicking on an icon to open a folder, you type a command. 
+Most modern computer interactions happen through a Graphical User Interface (GUI)—you point, you click, and you drag windows around a screen. The **Command Line Interface (CLI)**, by contrast, is a text-based medium for interacting with your computer. Instead of clicking on an icon to open a folder, you type a command.
 
-While a GUI is intuitive and visually forgiving, a CLI is precise, extremely fast, and highly automatable. It requires almost no system resources to run and allows you to communicate directly with the operating system without the abstraction of visual menus. 
+While a GUI is intuitive and visually forgiving, a CLI is precise, extremely fast, and highly automatable. It requires almost no system resources to run and allows you to communicate directly with the operating system without the abstraction of visual menus.
 
 When you use the command line, you operate in a loop:
+
 1. You type a text command.
 2. The system evaluates and executes the command.
 3. The system returns plain text output (or an error message) to the screen.
@@ -33,24 +34,26 @@ Without a shell, the command line is just an empty black screen. The shell is th
 
 ### What is Bash?
 
-There is no single "shell." Over the decades, many different shell programs have been created, each with its own syntax, features, and quirks (such as `sh`, `csh`, `ksh`, and `zsh`). 
+There is no single "shell." Over the decades, many different shell programs have been created, each with its own syntax, features, and quirks (such as `sh`, `csh`, `ksh`, and `zsh`).
 
 **Bash** stands for **Bourne Again SHell**. It is a pun on the name of Stephen Bourne, the creator of the original UNIX shell (`sh`), which Bash was designed to replace and improve upon. Developed by Brian Fox for the GNU Project in 1989, Bash was created as a free, open-source upgrade to the Bourne shell, adding features like command history, improved scripting capabilities, and better user convenience.
 
 Today, Bash is arguably the most ubiquitous shell in the world. It is:
+
 * The default shell on almost all Linux distributions (Ubuntu, Debian, Fedora, etc.).
 * Historically the default on macOS (and still universally available, though macOS recently switched its default to `zsh`).
 * Readily available on Windows via the Windows Subsystem for Linux (WSL) or Git Bash.
 
 ### Why Learn Bash?
 
-When you type a command into Bash, you are doing more than just launching an application. You are writing a micro-program. 
+When you type a command into Bash, you are doing more than just launching an application. You are writing a micro-program.
 
 For example, typing a simple command to print the current date and time looks like this:
 
 ```bash
 date
 ```
+
 ```output
 Mon May  4 02:20:06 -03 2026
 ```
@@ -61,11 +64,11 @@ However, Bash is not just an interactive prompt; it is a full-fledged, Turing-co
 
 A very common source of confusion for newcomers to the command line is the difference between a "terminal" and a "shell." In casual conversation, developers often use these terms interchangeably—saying "open a terminal" or "type this into the shell"—but technically, they are two completely distinct pieces of software working together.
 
-To understand the difference, we have to look back at the early days of computing. 
+To understand the difference, we have to look back at the early days of computing.
 
 ### The Historical Context
 
-In the 1970s and 1980s, a "terminal" was a physical piece of hardware. It consisted of a keyboard and a monitor (often a cathode-ray tube, or CRT), connected by a physical cable to a massive, centralized mainframe computer. The physical terminal had no processing power of its own; its only job was to send your keystrokes to the mainframe and display the text the mainframe sent back. 
+In the 1970s and 1980s, a "terminal" was a physical piece of hardware. It consisted of a keyboard and a monitor (often a cathode-ray tube, or CRT), connected by a physical cable to a massive, centralized mainframe computer. The physical terminal had no processing power of its own; its only job was to send your keystrokes to the mainframe and display the text the mainframe sent back.
 
 The "shell" was the software running on the mainframe that received those keystrokes, figured out what they meant, and executed the commands.
 
@@ -76,6 +79,7 @@ Today, we no longer use physical hardware terminals connected to mainframes. Ins
 A terminal emulator is simply a Graphical User Interface (GUI) window that draws text on your screen and captures your keyboard input. It handles fonts, colors, window resizing, tabs, and scrollback history. It does absolutely no command processing on its own.
 
 Common examples of terminal emulators include:
+
 * **Linux:** GNOME Terminal, Konsole, Alacritty, Kitty
 * **macOS:** Terminal.app, iTerm2
 * **Windows:** Windows Terminal, ConEmu, PuTTY
@@ -108,6 +112,7 @@ To see your current shell, print the `$SHELL` environment variable:
 ```bash
 echo $SHELL
 ```
+
 ```output
 /bin/bash
 ```
@@ -117,6 +122,7 @@ To see what type of terminal emulator your shell thinks it is talking to, check 
 ```bash
 echo $TERM
 ```
+
 ```output
 xterm-256color
 ```
@@ -125,7 +131,7 @@ Understanding this separation is crucial. If you don't like the color scheme, th
 
 ## 1.3 The Bash Prompt and Basic Navigation
 
-When you open your terminal emulator, the shell greets you with a line of text ending in a blinking cursor. This is the **Bash Prompt**. It is the shell's way of signaling that it is ready and waiting for your instructions. 
+When you open your terminal emulator, the shell greets you with a line of text ending in a blinking cursor. This is the **Bash Prompt**. It is the shell's way of signaling that it is ready and waiting for your instructions.
 
 Before typing any commands, it is crucial to understand what the prompt is telling you, as it provides immediate context about your environment.
 
@@ -157,13 +163,14 @@ Let’s break down these four key components:
 
 ### Basic Navigation: The Working Directory
 
-Because the shell is text-based, you don't have a graphical folder window to look at. However, you are always "inside" a folder. 
+Because the shell is text-based, you don't have a graphical folder window to look at. However, you are always "inside" a folder.
 
 To explicitly ask Bash where you currently are, you use the `pwd` command, which stands for **Print Working Directory**:
 
 ```bash
 pwd
 ```
+
 ```output
 /home/alice
 ```
@@ -194,9 +201,10 @@ Here are the essential navigation shortcuts you should memorize immediately:
 
 ### Navigating Time: Command History
 
-Bash remembers the commands you type. You never have to manually retype a complex command you executed five minutes ago. 
+Bash remembers the commands you type. You never have to manually retype a complex command you executed five minutes ago.
 
-You can navigate through your command history using the **Up** and **Down** arrow keys on your keyboard. 
+You can navigate through your command history using the **Up** and **Down** arrow keys on your keyboard.
+
 * Pressing **Up** loads the last command you executed into the prompt. Pressing it again goes to the command before that, and so on.
 * Pressing **Down** moves back towards your most recent commands.
 
@@ -205,6 +213,7 @@ If you want to see a full list of everything you've typed recently, simply type:
 ```bash
 history
 ```
+
 ```output
   101  clear
   102  date
@@ -216,9 +225,9 @@ By combining history recall (the Up arrow) with line navigation shortcuts (`Ctrl
 
 ## 1.4 Getting Help: `man`, `info`, and `--help`
 
-One of the most intimidating aspects of the command line for beginners is the lack of discoverability. There are no drop-down menus, no hover tooltips, and no "Help" buttons to click. If you don't know what a command does or what options it accepts, staring at a blinking cursor won't reveal the answer. 
+One of the most intimidating aspects of the command line for beginners is the lack of discoverability. There are no drop-down menus, no hover tooltips, and no "Help" buttons to click. If you don't know what a command does or what options it accepts, staring at a blinking cursor won't reveal the answer.
 
-Fortunately, Linux and macOS systems are deeply self-documenting. You don't need to memorize every command; you only need to master the tools used to look them up. 
+Fortunately, Linux and macOS systems are deeply self-documenting. You don't need to memorize every command; you only need to master the tools used to look them up.
 
 Here is a quick mental map of the help systems available to you:
 
@@ -243,6 +252,7 @@ mkdir --help
 ```
 
 This will typically output:
+
 1. A brief description of the command.
 2. The **Usage** syntax (how to structure the command).
 3. A list of available flags and what they do.
@@ -251,7 +261,7 @@ Because the output is printed directly to your prompt, you can easily scroll up 
 
 ### 2. The `man` Command: The System Manual
 
-The `man` command (short for **manual**) is the gold standard for command-line documentation. It opens the official, deeply detailed manual pages for a given program. 
+The `man` command (short for **manual**) is the gold standard for command-line documentation. It opens the official, deeply detailed manual pages for a given program.
 
 To read the manual for the `ls` command (which lists directory contents), you type:
 
@@ -259,9 +269,10 @@ To read the manual for the `ls` command (which lists directory contents), you ty
 man ls
 ```
 
-Unlike `--help`, `man` opens the documentation in a specialized text viewer program (usually `less`). This takes over your entire terminal window. Beginners frequently get trapped here because they don't know how to navigate or exit. 
+Unlike `--help`, `man` opens the documentation in a specialized text viewer program (usually `less`). This takes over your entire terminal window. Beginners frequently get trapped here because they don't know how to navigate or exit.
 
 **Essential `man` Page Navigation:**
+
 * **Down Arrow / Up Arrow:** Scroll line by line.
 * **Spacebar:** Page down (jump forward one full screen).
 * **b:** Page up (jump backward one full screen).
@@ -274,6 +285,7 @@ Unlike `--help`, `man` opens the documentation in a specialized text viewer prog
 SYNOPSIS
        ls [OPTION]... [FILE]...
 ```
+
 *Brackets `[ ]` mean an element is optional. An ellipsis `...` means you can provide multiple items.*
 
 ### 3. The `info` Command: The GNU Hypertext Manual
@@ -289,6 +301,7 @@ info coreutils
 `info` pages are structured like a text-based website. Instead of a single massive page, the documentation is broken into "nodes" (pages) connected by hyperlinks.
 
 **Essential `info` Navigation:**
+
 * **Tab:** Move your cursor between hyperlinks (which usually look like `* Menu item::`).
 * **Enter:** Follow the currently selected link.
 * **n / p:** Go to the **N**ext or **P**revious page on the current level.
@@ -299,7 +312,7 @@ info coreutils
 
 Sometimes, `man` and `--help` will fail you. For instance, if you try `man cd` (change directory) on many systems, you won't get a manual specifically for `cd`. Instead, you might get dumped into the massive, hundreds-of-pages-long manual for Bash itself.
 
-This happens because `cd` is a **shell built-in**. It is not an independent program sitting on your hard drive; it is a feature baked directly into the Bash shell's source code. 
+This happens because `cd` is a **shell built-in**. It is not an independent program sitting on your hard drive; it is a feature baked directly into the Bash shell's source code.
 
 For shell built-ins, Bash provides its own dedicated documentation tool: the `help` command.
 
@@ -326,9 +339,10 @@ Let’s break down these three components.
 
 ### 1. The Command (The Verb)
 
-The first word you type on the prompt is always the **command**. This is the action you want the system to perform. It tells Bash which program or built-in utility to execute. 
+The first word you type on the prompt is always the **command**. This is the action you want the system to perform. It tells Bash which program or built-in utility to execute.
 
 Examples of commands include:
+
 * `ls` (list directory contents)
 * `mkdir` (make directory)
 * `echo` (print text to the screen)
@@ -342,7 +356,8 @@ Options (often called "flags" or "switches") modify how the command behaves. The
 There are two primary types of options:
 
 **Short Options (Single Dash):**
-Short options consist of a single dash followed by a single letter. 
+Short options consist of a single dash followed by a single letter.
+
 * Example: `ls -l` (lists files using a **l**ong, detailed format).
 * Example: `ls -a` (lists **a**ll files, including hidden ones).
 
@@ -350,6 +365,7 @@ A major convenience of short options is that they can usually be grouped togethe
 
 **Long Options (Double Dash):**
 Long options consist of two dashes followed by a full word. They were popularized by the GNU project to make scripts and commands easier to read.
+
 * Example: `ls --all` (the exact equivalent of `ls -a`).
 * Example: `mkdir --verbose` (tells the command to print a message for every directory it creates).
 
@@ -357,6 +373,7 @@ Long options consist of two dashes followed by a full word. They were popularize
 
 **Options with Values:**
 Sometimes an option requires its own piece of data to work. For example, if you tell a command to output to a specific file, you have to provide the file name.
+
 * Short option format: `command -f filename.txt` (often separated by a space).
 * Long option format: `command --file=filename.txt` (often separated by an equals sign).
 
@@ -378,6 +395,7 @@ ls -l -h /var/log
 ```
 
 Here is how Bash parses this line:
+
 1. **`ls`**: The Command. "List the directory contents."
 2. **`-l`**: A short option. "Use the long format (show permissions, owners, and sizes)."
 3. **`-h`**: A short option. "Make the file sizes **h**uman-readable (e.g., show '1K' instead of '1024')."
@@ -391,7 +409,7 @@ ls -lh /var/log
 
 ### The Golden Rule: Spaces Matter
 
-In a graphical interface, an extra space in a folder name rarely breaks anything. On the command line, **spaces are the delimiters that Bash uses to separate the command, the options, and the arguments**. 
+In a graphical interface, an extra space in a folder name rarely breaks anything. On the command line, **spaces are the delimiters that Bash uses to separate the command, the options, and the arguments**.
 
 * If you type `ls-l`, Bash will look for a single program named exactly "ls-l" and fail.
 * If you type `ls - l`, Bash will execute `ls`, but it will think `-` is an argument and `l` is a second argument, resulting in an error.

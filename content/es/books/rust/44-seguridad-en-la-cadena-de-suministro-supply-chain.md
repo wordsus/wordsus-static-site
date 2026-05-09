@@ -2,7 +2,7 @@ En el desarrollo backend moderno, la seguridad no termina en el código que escr
 
 ## 44.1 Auditoría de dependencias con `cargo-audit`
 
-En el ecosistema de Rust, la facilidad para integrar librerías de terceros gracias a `cargo` y *crates.io* es una de sus mayores ventajas. Sin embargo, esta misma facilidad introduce el riesgo de ataques a la cadena de suministro (Supply Chain). Cuando incluyes una dependencia, también heredas sus posibles fallos de seguridad. 
+En el ecosistema de Rust, la facilidad para integrar librerías de terceros gracias a `cargo` y *crates.io* es una de sus mayores ventajas. Sin embargo, esta misma facilidad introduce el riesgo de ataques a la cadena de suministro (Supply Chain). Cuando incluyes una dependencia, también heredas sus posibles fallos de seguridad.
 
 Para mitigar este riesgo, la comunidad de Rust mantiene la **RustSec Advisory Database**, un repositorio centralizado donde se documentan las vulnerabilidades de seguridad descubiertas en los crates públicos. Aquí es donde entra en juego `cargo-audit`, una herramienta indispensable que contrasta automáticamente las dependencias exactas de tu proyecto contra esta base de datos.
 
@@ -99,7 +99,7 @@ jobs:
 
 ## 44.2 Restricción de licencias y crates de confianza con `cargo-deny`
 
-Mientras que `cargo-audit` es excelente para detectar vulnerabilidades conocidas (CVEs), la seguridad y la salud de la cadena de suministro en un entorno corporativo abarcan mucho más. Como desarrolladores senior o arquitectos de software, también debemos asegurar el **cumplimiento legal** (compliance de licencias) y establecer **políticas de arquitectura** estrictas sobre qué código de terceros tiene permitido ingresar a nuestro grafo de dependencias. 
+Mientras que `cargo-audit` es excelente para detectar vulnerabilidades conocidas (CVEs), la seguridad y la salud de la cadena de suministro en un entorno corporativo abarcan mucho más. Como desarrolladores senior o arquitectos de software, también debemos asegurar el **cumplimiento legal** (compliance de licencias) y establecer **políticas de arquitectura** estrictas sobre qué código de terceros tiene permitido ingresar a nuestro grafo de dependencias.
 
 Para resolver estas necesidades de forma integral, el ecosistema de Rust cuenta con `cargo-deny`, una herramienta desarrollada por Embark Studios que actúa como un "linter para tus dependencias".
 
@@ -123,7 +123,7 @@ Esto creará un archivo `deny.toml` predeterminado. `cargo-deny` evalúa tu proy
 
 Uno de los mayores riesgos no técnicos al integrar dependencias es introducir accidentalmente una licencia restrictiva (como GPL o AGPL) en un backend de código cerrado (propietario). Esto podría obligar legalmente a tu empresa a liberar el código fuente de toda la aplicación.
 
-Con `cargo-deny`, puedes definir un listado en blanco y negro de las licencias permitidas a nivel organizativo. 
+Con `cargo-deny`, puedes definir un listado en blanco y negro de las licencias permitidas a nivel organizativo.
 
 En tu archivo `deny.toml`, la sección de licencias se configura así:
 
@@ -247,6 +247,7 @@ strip = "symbols"
 En Rust, las macros procedurales y declarativas se expanden en tiempo de compilación. El uso de ciertas macros de la Standard Library o de terceros destruye la reproducibilidad inmediatamente.
 
 Debes evitar (o gestionar cuidadosamente) macros como:
+
 * `env!("USER")` o `env!("HOME")`: Inyectan variables de entorno de la máquina que compila.
 * Macros relacionadas con el tiempo (como las que inyectan la fecha de compilación como una constante en el binario). Si compilas hoy y mañana, el código fuente (expandido) será diferente.
 
@@ -254,7 +255,7 @@ Si necesitas inyectar la versión de la aplicación, es preferible usar la varia
 
 ### 4. Entornos de compilación herméticos
 
-La última pieza del rompecabezas es el entorno del sistema operativo. `rustc` puede depender de librerías del sistema en tiempo de compilación (como `pkg-config`, `openssl-sys` o el linker de C, `gcc`/`clang`). 
+La última pieza del rompecabezas es el entorno del sistema operativo. `rustc` puede depender de librerías del sistema en tiempo de compilación (como `pkg-config`, `openssl-sys` o el linker de C, `gcc`/`clang`).
 
 Para garantizar que el binario es reproducible, debes aislar el proceso de construcción utilizando **contenedores herméticos** (como Docker o Podman) y fijando explícitamente la versión de la toolchain de Rust.
 
@@ -273,7 +274,7 @@ Combinado con un `Dockerfile` multiplataforma (Multi-stage build) que fije los h
 
 En la mayoría de los lenguajes de programación, el Análisis Estático de Seguridad de Aplicaciones (SAST, por sus siglas en inglés) es vital para detectar inyecciones SQL, *null pointer dereferences* o vulnerabilidades de concurrencia. En Rust, la buena noticia es que el compilador (`rustc`) y el *borrow checker* ya actúan como el analizador estático más riguroso del mercado, eliminando familias enteras de vulnerabilidades de memoria (CWE-89, CWE-476, etc.) desde la fase de desarrollo.
 
-Sin embargo, el compilador de Rust garantiza la seguridad de la memoria, **no la lógica de negocio ni la seguridad criptográfica**. Un atacante no puede provocar un *buffer overflow* en tu backend de Rust, pero sí puede explotar credenciales hardcodeadas, algoritmos de hashing obsoletos o pánicos no controlados que causen una Denegación de Servicio (DoS). 
+Sin embargo, el compilador de Rust garantiza la seguridad de la memoria, **no la lógica de negocio ni la seguridad criptográfica**. Un atacante no puede provocar un *buffer overflow* en tu backend de Rust, pero sí puede explotar credenciales hardcodeadas, algoritmos de hashing obsoletos o pánicos no controlados que causen una Denegación de Servicio (DoS).
 
 Para un desarrollador senior, implementar SAST en Rust significa configurar herramientas para atrapar estos vectores de ataque lógicos y controlar estrictamente el uso de las "válvulas de escape" del lenguaje.
 
@@ -313,7 +314,7 @@ expect_used = "deny"
 
 El lema de Rust de "seguridad de memoria garantizada" tiene un asterisco importante: el bloque `unsafe`. Si una dependencia (o tu propio código) utiliza `unsafe`, el compilador apaga sus protecciones y confía ciegamente en el desarrollador, abriendo la puerta a las mismas vulnerabilidades que existen en C o C++.
 
-`cargo-geiger` es una herramienta de análisis estático diseñada específicamente para rastrear y cuantificar el uso de `unsafe` en tu proyecto y en todo tu árbol de dependencias. 
+`cargo-geiger` es una herramienta de análisis estático diseñada específicamente para rastrear y cuantificar el uso de `unsafe` en tu proyecto y en todo tu árbol de dependencias.
 
 Para instalarlo:
 

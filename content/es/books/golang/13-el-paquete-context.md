@@ -2,7 +2,7 @@ El paquete `context` es el eje sobre el que pivota la robustez y la eficiencia e
 
 ## 13.1. Propósito y valores del Contexto en el ciclo de vida de una petición
 
-En el ecosistema concurrente de Go, una única petición entrante —ya sea una solicitud HTTP, una llamada RPC o la recepción de un mensaje en una cola— rara vez es procesada de principio a fin por una sola Goroutine. Es habitual que el manejador principal delegue tareas: realice consultas a una base de datos, consuma APIs de terceros o ejecute cálculos pesados en Goroutines secundarias (conceptos que ya abordamos en la Parte 3). 
+En el ecosistema concurrente de Go, una única petición entrante —ya sea una solicitud HTTP, una llamada RPC o la recepción de un mensaje en una cola— rara vez es procesada de principio a fin por una sola Goroutine. Es habitual que el manejador principal delegue tareas: realice consultas a una base de datos, consuma APIs de terceros o ejecute cálculos pesados en Goroutines secundarias (conceptos que ya abordamos en la Parte 3).
 
 Esta ramificación crea un árbol de ejecución para una misma petición. El paquete `context`, introducido en la biblioteca estándar en Go 1.7, nace para resolver dos necesidades críticas en la gestión de este árbol: **la propagación de señales de cancelación** (y tiempos límite) y **la transmisión de datos de ámbito de petición** (request-scoped data) a través de las fronteras de las APIs y los procesos.
 
@@ -19,7 +19,7 @@ type Context interface {
 }
 ```
 
-El diseño de esta interfaz revela que el Contexto no es un contenedor genérico mutante, sino un contrato de solo lectura. Los Contextos en Go son **inmutables** y seguros para el uso concurrente. Cuando necesitamos añadir información o un comportamiento (como una cancelación) a un Contexto existente, no lo modificamos; creamos un "hijo" que envuelve al Contexto "padre". 
+El diseño de esta interfaz revela que el Contexto no es un contenedor genérico mutante, sino un contrato de solo lectura. Los Contextos en Go son **inmutables** y seguros para el uso concurrente. Cuando necesitamos añadir información o un comportamiento (como una cancelación) a un Contexto existente, no lo modificamos; creamos un "hijo" que envuelve al Contexto "padre".
 
 Este capítulo se centrará en el uso del método `Value(key any) any` y cómo los valores fluyen en el ciclo de vida de la petición. Las mecánicas de `Done()`, `Err()` y `Deadline()` se explorarán a fondo en las secciones 13.2 y 13.3.
 
@@ -36,7 +36,7 @@ func WithValue(parent Context, key, val any) Context
 
 #### El mecanismo de búsqueda de valores
 
-Cuando invocamos `ctx.Value(key)`, el Contexto actual verifica si posee ese valor. Si no lo tiene, delega la búsqueda a su padre, ascendiendo recursivamente por el árbol de Contextos hasta encontrar la clave o llegar a la raíz (donde retornará `nil`). 
+Cuando invocamos `ctx.Value(key)`, el Contexto actual verifica si posee ese valor. Si no lo tiene, delega la búsqueda a su padre, ascendiendo recursivamente por el árbol de Contextos hasta encontrar la clave o llegar a la raíz (donde retornará `nil`).
 
 Esta estructura de lista enlazada o árbol invertido implica que la complejidad temporal de buscar un valor en el contexto es $O(N)$, siendo $N$ la profundidad del árbol de contextos. Por esta razón, el Contexto no debe usarse como una caché rápida o un registro de dependencias global, sino estrictamente para datos que nacen y mueren con la petición.
 
@@ -50,8 +50,8 @@ La convención idiomática exige definir un tipo personalizado (habitualmente no
 package middleware
 
 import (
-	"context"
-	"net/http"
+ "context"
+ "net/http"
 )
 
 // 1. Definimos un tipo no exportado para evitar colisiones.
@@ -59,19 +59,19 @@ type contextKey string
 
 // 2. Instanciamos las claves específicas.
 const (
-	requestIDKey contextKey = "requestID"
-	userIDKey    contextKey = "userID"
+ requestIDKey contextKey = "requestID"
+ userIDKey    contextKey = "userID"
 )
 
 // WithRequestID inyecta un ID de petición en el contexto.
 func WithRequestID(ctx context.Context, requestID string) context.Context {
-	return context.WithValue(ctx, requestIDKey, requestID)
+ return context.WithValue(ctx, requestIDKey, requestID)
 }
 
 // RequestIDFromContext extrae de forma segura el ID.
 func RequestIDFromContext(ctx context.Context) (string, bool) {
-	id, ok := ctx.Value(requestIDKey).(string) // Type assertion segura
-	return id, ok
+ id, ok := ctx.Value(requestIDKey).(string) // Type assertion segura
+ return id, ok
 }
 ```
 
@@ -111,14 +111,15 @@ func WithCancel(parent Context) (ctx Context, cancel CancelFunc)
 ```
 
 La función toma un contexto padre y retorna dos elementos:
-1.  **`ctx`**: Un nuevo contexto derivado (el "hijo").
-2.  **`cancel`**: Una función del tipo `context.CancelFunc`.
+
+1. **`ctx`**: Un nuevo contexto derivado (el "hijo").
+2. **`cancel`**: Una función del tipo `context.CancelFunc`.
 
 La premisa de diseño aquí es estricta respecto a los límites de responsabilidad: **el código que recibe el contexto derivado solo puede escuchar la señal de cancelación, nunca emitirla**. La función `cancel` se mantiene en el ámbito de quien originó la operación, garantizando que una Goroutine hija no pueda cancelar erróneamente el contexto de sus hermanas o de su padre.
 
 ### Escuchando la señal: El canal `Done()`
 
-El contexto derivado implementa el método `Done()`, que devuelve un canal de solo lectura (`<-chan struct{}`). Es crucial entender que este canal no transmite datos; su único propósito es actuar como una señal de *broadcast* al ser cerrado. 
+El contexto derivado implementa el método `Done()`, que devuelve un canal de solo lectura (`<-chan struct{}`). Es crucial entender que este canal no transmite datos; su único propósito es actuar como una señal de *broadcast* al ser cerrado.
 
 Como vimos en el Capítulo 9 al estudiar los canales, recibir de un canal cerrado no bloquea la ejecución y devuelve el "valor cero" inmediatamente. Por lo tanto, las Goroutines que realizan trabajo pesado o I/O bloqueante deben monitorear este canal continuamente usando una instrucción `select` para detectar cuándo han sido canceladas.
 
@@ -142,7 +143,7 @@ func ProcesamientoIntensivo(ctx context.Context) error {
 
 ### Prevención de fugas: La regla de oro del `defer cancel()`
 
-Quien invoca `WithCancel` asume la responsabilidad ineludible de llamar a la función `cancel()` en algún momento. Si la operación principal termina (ya sea con éxito o por un error) y la función `cancel` nunca se ejecuta, el contexto hijo y sus recursos internos (como la Goroutine que gestiona la propagación de la cancelación subyacente) permanecerán en memoria hasta que el contexto padre sea recolectado por el Garbage Collector. 
+Quien invoca `WithCancel` asume la responsabilidad ineludible de llamar a la función `cancel()` en algún momento. Si la operación principal termina (ya sea con éxito o por un error) y la función `cancel` nunca se ejecuta, el contexto hijo y sus recursos internos (como la Goroutine que gestiona la propagación de la cancelación subyacente) permanecerán en memoria hasta que el contexto padre sea recolectado por el Garbage Collector.
 
 Este es un vector clásico para provocar los *Goroutine Leaks* que analizamos en el Capítulo 8. Para prevenirlo, el patrón idiomático exige usar `defer` inmediatamente después de crear el contexto:
 
@@ -175,13 +176,13 @@ func OrquestadorDeServicios() error {
 
 ### Cancelación en cascada
 
-La brillantez de este diseño radica en la topología de árbol del Contexto. Al invocar la función `cancel()`, la señal no se limita a ese nodo específico. Internamente, Go propaga el cierre del canal `Done()` de forma recursiva y automática hacia abajo, cancelando a todos los hijos, nietos y descendientes directos de ese contexto. 
+La brillantez de este diseño radica en la topología de árbol del Contexto. Al invocar la función `cancel()`, la señal no se limita a ese nodo específico. Internamente, Go propaga el cierre del canal `Done()` de forma recursiva y automática hacia abajo, cancelando a todos los hijos, nietos y descendientes directos de ese contexto.
 
 Esta "cancelación en cascada" permite derribar un árbol entero de operaciones distribuidas a través de múltiples paquetes y Goroutines con una sola instrucción, asegurando una degradación controlada y limpia del sistema.
 
 ## 13.3. Contextos con límites de tiempo (`WithTimeout`, `WithDeadline`)
 
-Si la cancelación manual que vimos en la sección anterior nos permite reaccionar ante errores o abortos iniciados por el usuario, la cancelación basada en tiempo es nuestra principal línea de defensa contra sistemas degradados, latencias de red impredecibles y el agotamiento de recursos (resource starvation). 
+Si la cancelación manual que vimos en la sección anterior nos permite reaccionar ante errores o abortos iniciados por el usuario, la cancelación basada en tiempo es nuestra principal línea de defensa contra sistemas degradados, latencias de red impredecibles y el agotamiento de recursos (resource starvation).
 
 En arquitecturas distribuidas y microservicios, ninguna llamada a través de la red (ya sea una consulta a la base de datos o una petición HTTP a una API de terceros) debería ejecutarse sin un límite de tiempo estricto. El paquete `context` nos proporciona dos herramientas para automatizar este proceso de cancelación: `WithDeadline` y `WithTimeout`.
 
@@ -196,7 +197,7 @@ Ambas funciones derivan un nuevo contexto a partir de un padre y devuelven una f
 
 Cuando el tiempo límite expira, el canal devuelto por `Done()` se cierra automáticamente, del mismo modo que si hubiéramos llamado manualmente a la función `cancel`. La diferencia radica en el motivo del cierre, el cual podemos inspeccionar utilizando el método `Err()`.
 
-Si el contexto fue cancelado por tiempo, `ctx.Err()` devolverá el error predefinido `context.DeadlineExceeded`. 
+Si el contexto fue cancelado por tiempo, `ctx.Err()` devolverá el error predefinido `context.DeadlineExceeded`.
 
 ```go
 func ConsultarServicioExterno(ctx context.Context) error {
@@ -230,7 +231,7 @@ func ConsultarServicioExterno(ctx context.Context) error {
 
 Una idea equivocada muy común en Go es creer que, dado que el contexto se cancelará solo cuando el tiempo expire, invocar la función `cancel()` devuelta por `WithTimeout` es opcional. **Esto es un error grave que impacta el rendimiento.**
 
-Bajo el capó, tanto `WithTimeout` como `WithDeadline` crean un temporizador (`time.Timer`) en el runtime de Go. Si la operación principal termina *antes* de que se cumpla el tiempo límite (lo cual es el escenario ideal), ese temporizador seguirá vivo en la memoria, contando tictacs en segundo plano hasta que finalmente expire. 
+Bajo el capó, tanto `WithTimeout` como `WithDeadline` crean un temporizador (`time.Timer`) en el runtime de Go. Si la operación principal termina *antes* de que se cumpla el tiempo límite (lo cual es el escenario ideal), ese temporizador seguirá vivo en la memoria, contando tictacs en segundo plano hasta que finalmente expire.
 
 Al ejecutar `defer cancel()`, no solo permitimos la cancelación manual anticipada, sino que le indicamos al runtime de Go que destruya y recolecte el `time.Timer` inmediatamente, liberando recursos valiosos.
 
@@ -248,7 +249,7 @@ En esta sección, desglosaremos los antipatrones más comunes en el uso de `cont
 
 ### Antipatrón 1: El Contexto como contenedor de dependencias (Service Locator)
 
-Uno de los errores más graves y frecuentes en arquitecturas Go es inyectar conexiones de bases de datos (`*sql.DB`), clientes HTTP, o instancias de *loggers* dentro del Contexto. 
+Uno de los errores más graves y frecuentes en arquitecturas Go es inyectar conexiones de bases de datos (`*sql.DB`), clientes HTTP, o instancias de *loggers* dentro del Contexto.
 
 ```go
 // ANTIPATRÓN: Ocultando dependencias en el contexto
@@ -262,7 +263,7 @@ func ObtenerUsuario(ctx context.Context, id int) (*Usuario, error) {
 }
 ```
 
-Este enfoque destruye la inyección de dependencias explícita. La firma de la función `ObtenerUsuario` miente: afirma que solo necesita un Contexto y un ID, pero en realidad fallará si mágicamente no encuentra un objeto de base de datos en el árbol del contexto. 
+Este enfoque destruye la inyección de dependencias explícita. La firma de la función `ObtenerUsuario` miente: afirma que solo necesita un Contexto y un ID, pero en realidad fallará si mágicamente no encuentra un objeto de base de datos en el árbol del contexto.
 
 Las dependencias de infraestructura deben definirse explícitamente en las estructuras (Structs) y pasarse en el momento de la inicialización, aprovechando la seguridad en tiempo de compilación.
 
@@ -304,4 +305,3 @@ func RequestIDDesdeContexto(ctx context.Context) string {
 ```
 
 Al confinar `context.Value` a metadatos de peticiones, utilizar claves no exportadas (como vimos en la sección 13.1) y realizar aserciones de tipo seguras, mantenemos las ventajas de concurrencia y cancelación del Contexto sin sacrificar la robustez y transparencia de nuestro código Go.
-

@@ -2,11 +2,12 @@ Escribir código que funcione es el primer paso, pero escribir código mantenibl
 
 ## 20.1. Aplicación idiomática de los principios SOLID en Go
 
-Los principios SOLID fueron concebidos en una era dominada por lenguajes orientados a objetos basados en clases y jerarquías de herencia profundas (como Java o C++). Go, con su enfoque pragmático, rechaza la herencia en favor de la composición y utiliza un sistema de tipos basado en interfaces implícitas (Duck Typing, como vimos en el Capítulo 7). 
+Los principios SOLID fueron concebidos en una era dominada por lenguajes orientados a objetos basados en clases y jerarquías de herencia profundas (como Java o C++). Go, con su enfoque pragmático, rechaza la herencia en favor de la composición y utiliza un sistema de tipos basado en interfaces implícitas (Duck Typing, como vimos en el Capítulo 7).
 
 Por lo tanto, aplicar SOLID en Go no consiste en transcribir patrones de diseño tradicionales línea por línea, sino en reinterpretar su filosofía central a través del "Go Way". A continuación, desglosamos cómo se materializan de forma idiomática.
 
 ### 1. Single Responsibility Principle (SRP) - Principio de Responsabilidad Única
+>
 > *Una estructura o paquete debe tener una sola razón para cambiar.*
 
 En Go, el SRP se aplica tanto a nivel de funciones y `structs` como a nivel de **paquetes**. Un error común al migrar desde otros lenguajes es crear paquetes genéricos como `utils` o `helpers`, que terminan siendo un cajón desastre con múltiples razones para cambiar.
@@ -32,9 +33,10 @@ type UserHandler struct {
 ```
 
 ### 2. Open/Closed Principle (OCP) - Principio de Abierto/Cerrado
+>
 > *El software debe estar abierto a la extensión, pero cerrado a la modificación.*
 
-Dado que Go no tiene herencia explícita (`extends`), el OCP se logra a través de la **composición de Structs (Embedding)** (sección 6.3) y el polimorfismo mediante **interfaces**. 
+Dado que Go no tiene herencia explícita (`extends`), el OCP se logra a través de la **composición de Structs (Embedding)** (sección 6.3) y el polimorfismo mediante **interfaces**.
 
 En lugar de modificar una estructura existente para añadir un comportamiento, envolvemos o componemos tipos, o diseñamos funciones que acepten interfaces en lugar de tipos concretos.
 
@@ -55,15 +57,17 @@ func (s *AlertService) TriggerAlert(msg string) {
 ```
 
 ### 3. Liskov Substitution Principle (LSP) - Principio de Sustitución de Liskov
+>
 > *Los subtipos deben ser sustituibles por sus tipos base sin alterar la corrección del programa.*
 
-En Go, las interfaces *son* el contrato. El LSP dicta que si un tipo afirma implementar una interfaz, debe cumplir con las expectativas de comportamiento de ese contrato, no solo con las firmas de los métodos. 
+En Go, las interfaces *son* el contrato. El LSP dicta que si un tipo afirma implementar una interfaz, debe cumplir con las expectativas de comportamiento de ese contrato, no solo con las firmas de los métodos.
 
 Si tienes una interfaz `Repository` con un método `Save(User) error`, una implementación que de repente lance un `panic` en lugar de devolver un `error` (sección 4.4) estaría violando el LSP, ya que el consumidor de la interfaz no espera que la aplicación colapse.
 
 El LSP en Go exige que las implementaciones de interfaces sean predecibles y mantengan las precondiciones y postcondiciones tácitas del sistema.
 
 ### 4. Interface Segregation Principle (ISP) - Principio de Segregación de Interfaces
+>
 > *Es mejor tener muchas interfaces pequeñas y específicas del cliente que una sola interfaz general.*
 
 Rob Pike, uno de los creadores de Go, inmortalizó este principio con la frase: *"The bigger the interface, the weaker the abstraction"* (Cuanto más grande es la interfaz, más débil es la abstracción).
@@ -92,6 +96,7 @@ type Writer interface {
 Al segregar, si una función solo necesita leer archivos, aceptará `Reader`. Esto reduce el acoplamiento y facilita enormemente la creación de Mocks para testing (como vimos en el Capítulo 17).
 
 ### 5. Dependency Inversion Principle (DIP) - Principio de Inversión de Dependencias
+>
 > *Los módulos de alto nivel no deben depender de los de bajo nivel. Ambos deben depender de abstracciones.*
 
 En el ecosistema Go, este principio se resume en un proverbio de diseño muy extendido: **"Acepta interfaces, devuelve structs"** (*Accept interfaces, return structs*).
@@ -129,13 +134,13 @@ En Go, la legibilidad y la simplicidad no son solo sugerencias estéticas, son p
 
 ### 1. Nomenclatura Idiomática: Claridad sin verbosidad
 
-La filosofía de Go sobre el nombramiento de variables se resume en una regla de oro: **la longitud del nombre de una variable debe ser proporcional a la distancia entre su declaración y su uso**. 
+La filosofía de Go sobre el nombramiento de variables se resume en una regla de oro: **la longitud del nombre de una variable debe ser proporcional a la distancia entre su declaración y su uso**.
 
 * **Ámbitos cortos, nombres cortos:** Si una variable tiene un ciclo de vida de apenas unas pocas líneas (por ejemplo, dentro de un bucle `for` o un condicional corto), nombres como `i`, `v`, `req` o `err` son perfectamente válidos y preferidos.
 * **Ámbitos amplios, nombres descriptivos:** Las variables a nivel de paquete o los parámetros de configuración global deben ser mucho más explícitos (ej. `MaxIdleConnections`).
 * **Evitar el "Tartamudeo" (Stuttering):** El nombre del paquete ya provee contexto. Cuando uses una variable o tipo desde otro paquete, el nombre del paquete y el tipo se leen juntos.
-    * *Antipatrón:* `usuario.UsuarioManager` (se lee como `usuario.UsuarioManager`).
-    * *Idiomático:* `usuario.Manager` (se lee elegantemente como `usuario.Manager`).
+  * *Antipatrón:* `usuario.UsuarioManager` (se lee como `usuario.UsuarioManager`).
+  * *Idiomático:* `usuario.Manager` (se lee elegantemente como `usuario.Manager`).
 * **Acrónimos en mayúsculas:** En Go, los acrónimos deben mantener su capitalización uniforme. Escribe `ServeHTTP` o `ParseURL`, no `ServeHttp` ni `ParseUrl`.
 * **Interfaces con sufijo "-er":** Como vimos en el Capítulo 12 con `io.Reader` e `io.Writer`, las interfaces de un solo método suelen nombrarse añadiendo el sufijo "-er" al verbo que describen (ej. `Doer`, `Notifier`, `Formatter`).
 
@@ -198,7 +203,7 @@ func NewMemoryStore() Store {
 
 ### 3. Organización de Paquetes orientada a Dominio
 
-El diseño de paquetes en Go debe centrarse en lo que el código *hace*, no en lo que el código *es*. 
+El diseño de paquetes en Go debe centrarse en lo que el código *hace*, no en lo que el código *es*.
 
 * **Prohibidos los paquetes cajón de sastre:** Nombres como `util`, `common`, `helpers` o `base` son antipatrones severos en Go. No aportan ningún contexto sobre su contenido. Si tienes una función para formatear fechas, ponla en un paquete `timeutil` o de formato de fechas, no en `utils`.
 * **Agrupación por contexto/dominio:** En lugar de organizar tu código como en los frameworks MVC tradicionales (un paquete `controllers`, otro `models`, otro `services`), Go favorece la agrupación temática. Por ejemplo, un paquete `invoicing` contendría la lógica de negocio, los modelos y posiblemente los manejadores HTTP relacionados exclusivamente con la facturación.
@@ -208,7 +213,7 @@ Aplicar estas convenciones no solo hará que tu código apruebe las revisiones d
 
 ## 20.3. Manejo centralizado de configuraciones (Viper, variables de entorno)
 
-Una aplicación bien diseñada debe mantener una estricta separación entre su código fuente y su configuración. Siguiendo la metodología *12-Factor App*, la configuración (credenciales, puertos, URLs de bases de datos) debe almacenarse en el entorno, permitiendo que el mismo binario compilado se ejecute sin modificaciones en desarrollo, *staging* o producción. 
+Una aplicación bien diseñada debe mantener una estricta separación entre su código fuente y su configuración. Siguiendo la metodología *12-Factor App*, la configuración (credenciales, puertos, URLs de bases de datos) debe almacenarse en el entorno, permitiendo que el mismo binario compilado se ejecute sin modificaciones en desarrollo, *staging* o producción.
 
 Aunque la biblioteca estándar de Go nos provee herramientas como `os.Getenv` (Capítulo 12) y el paquete `flag` para leer variables y argumentos, gestionar esto manualmente en aplicaciones complejas rápidamente se vuelve frágil y propenso a errores. Es aquí donde entra el manejo centralizado y fuertemente tipado.
 
@@ -228,7 +233,7 @@ func ConnectDatabase() error {
 
 ### 2. Centralización y Tipado Fuerte
 
-La práctica idiomática en arquitecturas limpias es definir una única estructura (`struct`) que represente toda la configuración de la aplicación y validarla en el momento del arranque (*fail-fast*). 
+La práctica idiomática en arquitecturas limpias es definir una única estructura (`struct`) que represente toda la configuración de la aplicación y validarla en el momento del arranque (*fail-fast*).
 
 Para poblar esta estructura de manera flexible desde múltiples fuentes (archivos YAML, JSON, variables de entorno o *flags* de consola), el estándar de facto en la comunidad Go es la librería **Viper** (`github.com/spf13/viper`).
 
@@ -281,9 +286,10 @@ func LoadConfig(path string) (*Config, error) {
 
 ### 4. Jerarquía y sobrescritura de valores
 
-Una de las características más potentes de Viper es su orden de precedencia. Si defines un valor en un archivo `app.yaml`, pero al ejecutar el binario inyectas una variable de entorno con el mismo nombre, **Viper priorizará la variable de entorno**. 
+Una de las características más potentes de Viper es su orden de precedencia. Si defines un valor en un archivo `app.yaml`, pero al ejecutar el binario inyectas una variable de entorno con el mismo nombre, **Viper priorizará la variable de entorno**.
 
 El orden de prioridad de Viper (de mayor a menor) es:
+
 1. Llamadas explícitas a `Set()` en el código.
 2. *Flags* de línea de comandos.
 3. Variables de entorno.
@@ -313,7 +319,7 @@ Al adoptar este patrón, garantizamos que si falta una configuración crítica, 
 
 ## 20.4. Frameworks de Inyección de Dependencias (Wire, Dig) vs. Inyección manual
 
-A diferencia de lenguajes como Java o C#, donde la Inyección de Dependencias (DI) suele estar fuertemente acoplada a *frameworks* monolíticos (como Spring) que utilizan anotaciones y reflexión masiva, el ecosistema de Go aborda la DI desde una perspectiva minimalista y explícita. 
+A diferencia de lenguajes como Java o C#, donde la Inyección de Dependencias (DI) suele estar fuertemente acoplada a *frameworks* monolíticos (como Spring) que utilizan anotaciones y reflexión masiva, el ecosistema de Go aborda la DI desde una perspectiva minimalista y explícita.
 
 En esencia, la inyección de dependencias en Go no es más que pasar parámetros a un constructor o a una función (como vimos en el principio de Inversión de Dependencias en la sección 20.1). Sin embargo, a medida que la arquitectura crece —especialmente en microservicios complejos o aplicaciones basadas en Arquitectura Hexagonal (Capítulo 21)— el grafo de dependencias puede volverse inmanejable. Es aquí donde surgen diferentes estrategias para cablear nuestra aplicación.
 
@@ -322,11 +328,13 @@ En esencia, la inyección de dependencias en Go no es más que pasar parámetros
 La forma más idiomática, pura y recomendada de hacer DI en Go es la inyección manual. Se realiza instanciando las dependencias base y pasándolas explícitamente hacia arriba en la cadena de abstracción, generalmente en el `main.go` o en un paquete `cmd/server`.
 
 **Ventajas:**
+
 * **Seguridad en tiempo de compilación:** Si falta una dependencia o hay un desajuste de tipos, el compilador falla inmediatamente.
 * **Cero magia:** Cualquier desarrollador puede seguir el flujo de ejecución (haciendo *Ctrl+Click* en su IDE) desde el `main` hasta la capa más profunda. No hay comportamientos ocultos.
 * **Rendimiento:** Al no usar reflexión, no hay penalización durante el arranque de la aplicación.
 
 **Desventajas:**
+
 * En aplicaciones de nivel empresarial, el archivo de inicialización puede crecer hasta cientos de líneas, convirtiéndose en un tedioso bloque de código repetitivo (conocido coloquialmente como *Dependency Hell*).
 
 ```go
@@ -358,9 +366,11 @@ Para evitar escribir el código manual de inicialización, surgieron contenedore
 Dig funciona registrando constructores (proveedores) en un contenedor y luego resolviendo el grafo de dependencias en tiempo de ejecución utilizando el paquete `reflect` (Capítulo 14).
 
 **Ventajas:**
+
 * Reduce drásticamente el código repetitivo de inicialización. Añadir una nueva dependencia a un servicio solo requiere modificar su constructor; el contenedor se encarga del resto.
 
 **Desventajas (y por qué suele evitarse en Go purista):**
+
 * **Errores en tiempo de ejecución:** Si olvidas registrar un repositorio que un servicio necesita, tu código compilará perfectamente, pero la aplicación sufrirá un `panic` (crash) al momento de arrancar.
 * **Caja negra:** Rompe la legibilidad lineal de Go. Entender de dónde viene una instancia requiere rastrear el registro del contenedor.
 
@@ -397,6 +407,7 @@ Google identificó los problemas de ambas aproximaciones: la inyección manual e
 Wire es una herramienta de **generación de código** en tiempo de compilación. Tú defines *Providers* (constructores) y *Provider Sets* (agrupaciones lógicas de constructores) en un archivo especial (usualmente `wire.go`). Luego, ejecutas el comando `wire` en tu terminal y la herramienta analiza tu código para generar un archivo `wire_gen.go` que contiene la **inyección manual pura**, escrita por la máquina en lugar de por ti.
 
 **Ventajas:**
+
 * **Lo mejor de ambos mundos:** Tienes la automatización de Dig, pero el código final generado goza de la misma seguridad en tiempo de compilación, legibilidad y rendimiento que la inyección manual.
 * Si el grafo de dependencias está incompleto o hay dependencias cíclicas, Wire fallará durante la generación de código, antes de la compilación de Go, evitando sorpresas en producción.
 
@@ -426,7 +437,6 @@ Al ejecutar `wire`, la herramienta genera automáticamente el código manual exa
 
 ### El Veredicto
 
-La regla de oro en el diseño arquitectónico en Go es: **Empieza con inyección manual**. Es explícita, simple y no requiere dependencias externas. 
+La regla de oro en el diseño arquitectónico en Go es: **Empieza con inyección manual**. Es explícita, simple y no requiere dependencias externas.
 
 Solo debes considerar escalar a herramientas como **Google Wire** cuando tu proyecto cruce el umbral de complejidad donde mantener el `main.go` se convierta en un cuello de botella para el equipo. Por otro lado, la recomendación general de la comunidad es evitar contenedores basados en reflexión como Dig, a menos que estés construyendo plataformas dinámicas o *plugins* donde las dependencias no se conocen en tiempo de compilación.
-

@@ -11,6 +11,7 @@ Currently, the two most prominent high-level frameworks for building APIs are **
 Actix-Web is one of the oldest and most established web frameworks in the Rust ecosystem. Originally built on top of the Actix actor framework, it has largely shed its actor-model roots in recent versions to embrace standard asynchronous Rust, resulting in exceptional performance. It consistently ranks at or near the top of the TechEmpower Web Framework Benchmarks.
 
 **Key Characteristics:**
+
 * **Macro-Driven Routing:** Actix-Web heavily favors procedural macros for defining routes and HTTP methods directly on handler functions.
 * **Independent Ecosystem:** While it runs on Tokio, Actix-Web maintains its own ecosystem of middleware and foundational types. It abstracts away much of the underlying server machinery, offering a highly cohesive developer experience.
 * **Pragmatism:** It provides built-in solutions for many common web tasks, making it a "batteries-included" choice for teams that want to hit the ground running.
@@ -56,9 +57,10 @@ Tower provides a rich ecosystem of middleware (like timeouts, rate limiting, and
 
 ### Axum: The Modular, Tokio-Native Standard
 
-Created and maintained by the Tokio team, Axum is designed to seamlessly integrate with Tokio, Hyper (a low-level HTTP implementation), and Tower. Rather than building an isolated ecosystem, Axum glues together existing, foundational Rust crates. 
+Created and maintained by the Tokio team, Axum is designed to seamlessly integrate with Tokio, Hyper (a low-level HTTP implementation), and Tower. Rather than building an isolated ecosystem, Axum glues together existing, foundational Rust crates.
 
 **Key Characteristics:**
+
 * **Tower Integration:** In Axum, every route is simply a Tower `Service`. This means you can drop any Tower middleware directly into an Axum application.
 * **Macro-Free Routing:** Axum avoids routing macros. Instead, it relies on a fluent API and Rust's powerful type system to construct routing trees.
 * **Compile-Time Verification:** Axum's heavy reliance on traits means that if you misconfigure an extractor or return an invalid response type, the compiler will catch it. While this can sometimes lead to complex error messages, it guarantees runtime safety.
@@ -112,6 +114,7 @@ To decide which framework fits your production system, consider the following ar
 |          (Asynchronous Runtime & TCP/UDP Sockets)           |
 +-------------------------------------------------------------+
 ```
+
 *Figure 15.1: The architectural stack comparison between Axum and Actix-Web.*
 
 For the remainder of this chapter, we will focus primarily on **Axum**. Its tight integration with Tokio and Tower, combined with its uncompromising utilization of Rust's type system to prevent runtime errors, makes it the ideal candidate for modern, maintainable, and production-ready Rust architectures.
@@ -189,7 +192,7 @@ Axum supports handler functions with up to 16 arguments. As we will see in the n
 
 ### State Management: Sharing Data Safely
 
-In a production application, your handlers rarely operate in isolation. They need access to shared resources like database connection pools, configuration settings, or external API clients. 
+In a production application, your handlers rarely operate in isolation. They need access to shared resources like database connection pools, configuration settings, or external API clients.
 
 Because Tokio processes incoming requests concurrently across multiple threads (as detailed in Chapter 12), any shared state must be thread-safe. Recalling our lessons from Chapter 11, this means our state must implement the `Send` and `Sync` traits. We achieve this by wrapping our application state in an `Arc` (Atomic Reference Counted pointer).
 
@@ -317,7 +320,7 @@ pub fn router() -> Router {
 
 ### Parsing URL Queries (`Query<T>`)
 
-Query strings are the key-value pairs attached to the end of a URL after a question mark (e.g., `/search?query=rust&limit=10`). Axum parses these using the `axum::extract::Query` extractor. 
+Query strings are the key-value pairs attached to the end of a URL after a question mark (e.g., `/search?query=rust&limit=10`). Axum parses these using the `axum::extract::Query` extractor.
 
 By utilizing `serde`, you can easily handle optional parameters or default values.
 
@@ -421,7 +424,7 @@ If you attempt to place a body-consuming extractor before a parts-consuming extr
 
 ## 15.4 Middleware and Request/Response Lifecycles
 
-In any production-grade REST API, there are cross-cutting concerns that apply to many—if not all—endpoints. Logging incoming requests, enforcing timeouts, handling Cross-Origin Resource Sharing (CORS), and verifying authentication tokens are all tasks you do not want to duplicate inside every individual handler. 
+In any production-grade REST API, there are cross-cutting concerns that apply to many—if not all—endpoints. Logging incoming requests, enforcing timeouts, handling Cross-Origin Resource Sharing (CORS), and verifying authentication tokens are all tasks you do not want to duplicate inside every individual handler.
 
 This is where **Middleware** comes into play. Middleware allows you to intercept, modify, or even reject HTTP requests before they reach your handler, and similarly intercept and modify HTTP responses before they are sent back to the client.
 
@@ -574,7 +577,7 @@ By intelligently structuring your `Router` nests and layers, you can build highl
 
 Building a robust, performant REST API is only half the battle; if other developers (or frontend teams) do not know how to interact with it, your system's utility is severely limited. Historically, API documentation was maintained manually in wikis or separate JSON/YAML files, a practice that inevitably leads to "documentation drift"—where the code evolves but the documentation is left behind.
 
-In the modern ecosystem, the standard solution to this problem is the **OpenAPI Specification** (formerly known as Swagger). OpenAPI is a machine-readable format for describing API endpoints, request bodies, expected responses, and authentication methods. 
+In the modern ecosystem, the standard solution to this problem is the **OpenAPI Specification** (formerly known as Swagger). OpenAPI is a machine-readable format for describing API endpoints, request bodies, expected responses, and authentication methods.
 
 In Rust, we solve the documentation drift problem by generating this specification directly from our source code at compile time.
 

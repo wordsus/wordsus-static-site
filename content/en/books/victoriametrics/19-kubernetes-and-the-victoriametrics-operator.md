@@ -1,10 +1,10 @@
-As organizations adopt cloud-native architectures, Kubernetes is the de facto standard for deploying distributed systems. Running VictoriaMetrics at scale in Kubernetes introduces challenges around stateful storage, configuration management, and dynamic scaling. 
+As organizations adopt cloud-native architectures, Kubernetes is the de facto standard for deploying distributed systems. Running VictoriaMetrics at scale in Kubernetes introduces challenges around stateful storage, configuration management, and dynamic scaling.
 
 This chapter introduces the official `vm-operator`, a dedicated Kubernetes controller designed to automate the lifecycle of your observability stack. We will explore transitioning from static deployments to declarative Custom Resource Definitions (CRDs), enabling automated cluster provisioning, zero-downtime upgrades, and self-discovering monitoring pipelines.
 
 ## 19.1 Introduction to the `vm-operator`
 
-Kubernetes has firmly established itself as the modern standard for container orchestration. While deploying stateless applications in Kubernetes is relatively straightforward, managing stateful, high-performance database clusters requires a deeper level of operational intelligence. This is where the **`vm-operator`** comes into play. 
+Kubernetes has firmly established itself as the modern standard for container orchestration. While deploying stateless applications in Kubernetes is relatively straightforward, managing stateful, high-performance database clusters requires a deeper level of operational intelligence. This is where the **`vm-operator`** comes into play.
 
 The `vm-operator` brings native VictoriaMetrics automation to Kubernetes. By leveraging the Kubernetes Operator pattern, it acts as a software-encoded site reliability engineer (SRE) dedicated specifically to managing the lifecycle of your VictoriaMetrics deployments.
 
@@ -53,11 +53,11 @@ The `vm-operator` introduces several CRDs that map directly to the components di
 
 Migrating from raw Kubernetes manifests to the `vm-operator` provides several immediate operational advantages:
 
-1.  **Automated Lifecycle Management:** The operator handles rolling updates seamlessly. If you change a configuration flag or upgrade a container image version, the operator ensures pods are restarted in the correct order to maintain high availability and prevent data loss.
-2.  **Configuration Management via CRDs:** Rather than wrestling with complex, monolithic YAML ConfigMaps, configuration is split into modular, manageable custom resources. For instance, adding a new application to be monitored is as simple as applying a small `VMServiceScrape` YAML file alongside the application itself.
-3.  **Dynamic Reloading:** When scrape configurations or alerting rules change, the `vm-operator` automatically triggers the configuration reload mechanisms inside `vmagent` and `vmalert`. There is no need to manually send `SIGHUP` signals or restart pods.
-4.  **Self-Healing:** If a user accidentally deletes a Service or StatefulSet belonging to a `VMCluster`, the operator's reconciliation loop immediately notices the drift from the desired state and recreates the missing components.
-5.  **Scaling Abstractions:** Scaling the query or ingestion tiers of a cluster becomes a matter of changing a single `replicaCount` integer in a `VMCluster` manifest. The operator manages the underlying Pod distribution and network routing changes.
+1. **Automated Lifecycle Management:** The operator handles rolling updates seamlessly. If you change a configuration flag or upgrade a container image version, the operator ensures pods are restarted in the correct order to maintain high availability and prevent data loss.
+2. **Configuration Management via CRDs:** Rather than wrestling with complex, monolithic YAML ConfigMaps, configuration is split into modular, manageable custom resources. For instance, adding a new application to be monitored is as simple as applying a small `VMServiceScrape` YAML file alongside the application itself.
+3. **Dynamic Reloading:** When scrape configurations or alerting rules change, the `vm-operator` automatically triggers the configuration reload mechanisms inside `vmagent` and `vmalert`. There is no need to manually send `SIGHUP` signals or restart pods.
+4. **Self-Healing:** If a user accidentally deletes a Service or StatefulSet belonging to a `VMCluster`, the operator's reconciliation loop immediately notices the drift from the desired state and recreates the missing components.
+5. **Scaling Abstractions:** Scaling the query or ingestion tiers of a cluster becomes a matter of changing a single `replicaCount` integer in a `VMCluster` manifest. The operator manages the underlying Pod distribution and network routing changes.
 
 By abstracting away the low-level infrastructure wiring, the `vm-operator` allows SRE and observability teams to focus entirely on the design, retention, and performance tuning of the monitoring stack, treating the database itself as a declarative cloud-native resource.
 
@@ -182,7 +182,7 @@ vmstorage-example-vmcluster-1                  1/1     Running   0          2m
 
 ### Injecting Advanced Kubernetes Primitives
 
-The `VMCluster` CRD is designed to pass through standard Kubernetes scheduling primitives. For a highly available production deployment, you should ensure that pods of the same component are not scheduled on the same physical node. 
+The `VMCluster` CRD is designed to pass through standard Kubernetes scheduling primitives. For a highly available production deployment, you should ensure that pods of the same component are not scheduled on the same physical node.
 
 You can seamlessly add standard K8s `affinity`, `nodeSelector`, and `tolerations` blocks directly into the `vmstorage`, `vminsert`, or `vmselect` specifications:
 
@@ -205,13 +205,13 @@ By adding this block, the `vm-operator` guarantees that Kubernetes will spread y
 
 ## 19.3 Managing Discovery with VMRule and VMServiceScrape
 
-Once your VictoriaMetrics cluster is deployed, the immediate next step is operationalizing it: you need to ingest data from your applications and configure rules to evaluate that data. In a dynamic Kubernetes environment where Pod IPs are ephemeral and workloads scale horizontally, static configuration files are a severe anti-pattern. 
+Once your VictoriaMetrics cluster is deployed, the immediate next step is operationalizing it: you need to ingest data from your applications and configure rules to evaluate that data. In a dynamic Kubernetes environment where Pod IPs are ephemeral and workloads scale horizontally, static configuration files are a severe anti-pattern.
 
 The `vm-operator` solves this through declarative, label-based discovery using two critical Custom Resource Definitions (CRDs): **`VMServiceScrape`** for data ingestion and **`VMRule`** for data evaluation.
 
 ### Dynamic Ingestion with `VMServiceScrape`
 
-`VMServiceScrape` is the VictoriaMetrics equivalent of the widely known Prometheus `ServiceMonitor`. It instructs the `vmagent` component on how to automatically discover and scrape metric endpoints exposed by Kubernetes Services. 
+`VMServiceScrape` is the VictoriaMetrics equivalent of the widely known Prometheus `ServiceMonitor`. It instructs the `vmagent` component on how to automatically discover and scrape metric endpoints exposed by Kubernetes Services.
 
 Instead of hardcoding targets, a `VMServiceScrape` relies on Kubernetes label selectors. When a new application is deployed with labels matching the selector, `vmagent` immediately begins scraping it without any manual restarts or configuration reloads.
 
@@ -243,6 +243,7 @@ spec:
 ```
 
 **Key Components:**
+
 * **`selector`:** This is the core discovery mechanism. The operator will search for any Kubernetes Service in the cluster that possesses the labels `app: backend-api` and `environment: production`.
 * **`endpoints`:** Defines the technical details of the scrape. Notice that it uses the logical `port` name defined in the Service manifest rather than a hardcoded port number.
 * **`relabelConfigs`:** Allows you to apply relabeling rules directly at the point of discovery, enriching your metrics with Kubernetes metadata before they reach the storage tier.
@@ -251,9 +252,9 @@ spec:
 
 ### Managing Logic with `VMRule`
 
-Data is only as valuable as the insights you extract from it. The `VMRule` CRD allows you to declare Prometheus-compatible alerting and recording rules natively in Kubernetes. 
+Data is only as valuable as the insights you extract from it. The `VMRule` CRD allows you to declare Prometheus-compatible alerting and recording rules natively in Kubernetes.
 
-When you apply a `VMRule` to the cluster, the `vm-operator` detects it, translates the rules, and hot-reloads the `vmalert` instances to apply the new logic. 
+When you apply a `VMRule` to the cluster, the `vm-operator` detects it, translates the rules, and hot-reloads the `vmalert` instances to apply the new logic.
 
 Below is an example defining both an alerting rule and a recording rule:
 
@@ -287,7 +288,7 @@ spec:
 
 ### The Discovery Pipeline: Tying it Together
 
-Creating a `VMServiceScrape` or a `VMRule` will not achieve anything on its own. The `vmagent` and `vmalert` components must be configured to *watch* for them. 
+Creating a `VMServiceScrape` or a `VMRule` will not achieve anything on its own. The `vmagent` and `vmalert` components must be configured to *watch* for them.
 
 This linkage is defined back in your root configuration (either a standalone `VMAgent`/`VMAlert` CRD, or within your `VMCluster` CRD). You must provide label selectors that tell the agents which resources to pick up.
 
@@ -340,7 +341,7 @@ Because the operator understands the intricate dependencies between the ingestio
 
 ### The Declarative Upgrade Process
 
-In a Kubernetes-native environment managed by the `vm-operator`, you do not SSH into servers to replace binaries. Instead, an upgrade is simply a change to the desired state of your `VMCluster` Custom Resource. 
+In a Kubernetes-native environment managed by the `vm-operator`, you do not SSH into servers to replace binaries. Instead, an upgrade is simply a change to the desired state of your `VMCluster` Custom Resource.
 
 To initiate an upgrade, you modify the `image.tag` or `version` field within your CRD manifest to point to the new VictoriaMetrics release version.
 
@@ -382,7 +383,7 @@ The `vm-operator` does not simply restart everything at once. It follows a stric
 
 Here is the step-by-step flow of how the operator handles the rollout:
 
-1. **Stateless Tiers First (Optional but common):** The operator updates the `Deployment` manifests for `vmselect` and `vminsert`. 
+1. **Stateless Tiers First (Optional but common):** The operator updates the `Deployment` manifests for `vmselect` and `vminsert`.
 2. **Pod Replacement:** Kubernetes spins up a new pod with the new version alongside the old ones.
 3. **Readiness Gates:** The operator waits for the new pod's `/health` endpoint to return a successful status.
 4. **Traffic Shifting:** Once healthy, the Kubernetes Service routes traffic to the new pod, and the old pod is gracefully terminated.
@@ -407,7 +408,7 @@ Because `vminsert` routes data to all available `vmstorage` nodes, if one storag
 
 ### Upgrading the Operator Itself
 
-Often, VictoriaMetrics releases updates to the `vm-operator` itself to support new CRD features or Kubernetes versions. It is a best practice to keep the operator updated. 
+Often, VictoriaMetrics releases updates to the `vm-operator` itself to support new CRD features or Kubernetes versions. It is a best practice to keep the operator updated.
 
 When you upgrade the `vm-operator` deployment (via Helm or static manifests), it will automatically update its bundled Custom Resource Definitions. By default, a new version of the operator might also carry a new default VictoriaMetrics image tag. If you have not hardcoded the `image.tag` in your `VMCluster` (allowing the operator to manage the version), upgrading the operator will subsequently trigger a rolling upgrade of your entire VictoriaMetrics cluster to that new default version.
 
@@ -444,21 +445,25 @@ The official VictoriaMetrics Helm repository (`[https://victoriametrics.github.i
 ```
 
 #### 1. The Standalone Charts
+
 Charts like `victoria-metrics-cluster` or `victoria-metrics-single` deploy the database components directly using raw Kubernetes StatefulSets and Deployments, bypassing the `vm-operator` entirely. While useful for teams explicitly avoiding CRDs, this approach lacks the automated lifecycle management, seamless upgrades, and dynamic scrape discovery provided by the operator.
 
 #### 2. The `victoria-metrics-operator` Chart
+
 This is the foundational chart for a cloud-native deployment. It installs the `vm-operator` Deployment, configures the necessary RBAC (Roles and RoleBindings) allowing the operator to interact with the Kubernetes API, and registers the VictoriaMetrics CRDs (`VMCluster`, `VMRule`, etc.) into your cluster.
 
 #### 3. The `victoria-metrics-k8s-stack` Chart
-This is the flagship Helm chart and the recommended entry point for new enterprise deployments. It is designed as a direct, drop-in replacement for the popular `kube-prometheus-stack`. 
+
+This is the flagship Helm chart and the recommended entry point for new enterprise deployments. It is designed as a direct, drop-in replacement for the popular `kube-prometheus-stack`.
 
 Instead of just deploying the database, the `k8s-stack` chart deploys an entire, pre-configured observability platform:
-*   The `vm-operator` itself.
-*   A default `VMCluster` or `VMSingle` instance (managed by the operator).
-*   **kube-state-metrics:** For Kubernetes object metrics (Pod status, Deployment replicas).
-*   **prometheus-node-exporter:** For hardware and OS metrics from K8s worker nodes.
-*   **Grafana:** Pre-wired to use VictoriaMetrics as its default datasource, bundled with dozens of community-vetted dashboards for cluster and application monitoring.
-*   **Default Alerting Rules:** Hundreds of pre-configured `VMRule` manifests covering standard Kubernetes failure modes (e.g., PodCrashLooping, HighCPUUtilization).
+
+* The `vm-operator` itself.
+* A default `VMCluster` or `VMSingle` instance (managed by the operator).
+* **kube-state-metrics:** For Kubernetes object metrics (Pod status, Deployment replicas).
+* **prometheus-node-exporter:** For hardware and OS metrics from K8s worker nodes.
+* **Grafana:** Pre-wired to use VictoriaMetrics as its default datasource, bundled with dozens of community-vetted dashboards for cluster and application monitoring.
+* **Default Alerting Rules:** Hundreds of pre-configured `VMRule` manifests covering standard Kubernetes failure modes (e.g., PodCrashLooping, HighCPUUtilization).
 
 ### Deploying the Kubernetes Stack
 
@@ -526,12 +531,13 @@ helm install vms vm/victoria-metrics-k8s-stack \
 
 ### Managing Infrastructure as Code (IaC)
 
-Integrating these Helm charts into modern GitOps workflows (such as ArgoCD or Flux) provides the ultimate operational maturity. 
+Integrating these Helm charts into modern GitOps workflows (such as ArgoCD or Flux) provides the ultimate operational maturity.
 
 In a GitOps paradigm:
-1.  Your infrastructure team commits changes to the `values.yaml` file in a Git repository (e.g., increasing `vmstorage` replicas from 3 to 5).
-2.  ArgoCD detects the Git commit and renders the Helm chart into Kubernetes manifests (which include the updated `VMCluster` CRD).
-3.  ArgoCD applies the updated CRD to the Kubernetes cluster.
-4.  The `vm-operator` detects the CRD update and performs a safe, rolling expansion of the storage tier.
+
+1. Your infrastructure team commits changes to the `values.yaml` file in a Git repository (e.g., increasing `vmstorage` replicas from 3 to 5).
+2. ArgoCD detects the Git commit and renders the Helm chart into Kubernetes manifests (which include the updated `VMCluster` CRD).
+3. ArgoCD applies the updated CRD to the Kubernetes cluster.
+4. The `vm-operator` detects the CRD update and performs a safe, rolling expansion of the storage tier.
 
 By utilizing Helm to package the deployment and the `vm-operator` to execute the state changes, administrators achieve a self-documenting, version-controlled, and automated VictoriaMetrics architecture.

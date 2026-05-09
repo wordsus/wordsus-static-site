@@ -14,23 +14,23 @@ El enfoque tradicional del logging está diseñado para ser consumido por humano
 package main
 
 import (
-	"errors"
-	"log"
+ "errors"
+ "log"
 )
 
 func main() {
-	userID := 42
-	err := errors.New("timeout connecting to database")
-	
-	// Logging tradicional basado en formato de cadenas
-	log.Printf("Fallo al procesar el usuario %d: %v", userID, err)
+ userID := 42
+ err := errors.New("timeout connecting to database")
+ 
+ // Logging tradicional basado en formato de cadenas
+ log.Printf("Fallo al procesar el usuario %d: %v", userID, err)
 }
 
 // Salida esperada:
 // 2026/03/16 22:02:44 Fallo al procesar el usuario 42: timeout connecting to database
 ```
 
-Para un desarrollador leyendo la terminal, esta línea es clara. Pero en un entorno de producción, los logs no los leen los humanos directamente; los ingieren, indexan y analizan sistemas como Elasticsearch, Splunk o Datadog. 
+Para un desarrollador leyendo la terminal, esta línea es clara. Pero en un entorno de producción, los logs no los leen los humanos directamente; los ingieren, indexan y analizan sistemas como Elasticsearch, Splunk o Datadog.
 
 Para que una máquina extraiga el `userID` de esa cadena, necesitas escribir expresiones regulares. Si mañana otro desarrollador cambia el mensaje a `"Error procesando al usuario con ID %d"`, la expresión regular fallará, el log dejará de indexarse correctamente y la observabilidad del sistema se degradará silenciosamente.
 
@@ -51,6 +51,7 @@ Conceptualizado en JSON, el log anterior pasaría a verse así:
 ```
 
 Las ventajas son inmediatas:
+
 1. **Indexación determinista:** El agregador de logs sabe exactamente qué es `user_id` y que es de tipo numérico. Puedes hacer consultas precisas como: `level:"error" AND user_id:42`.
 2. **Resistencia a refactorizaciones:** Alterar el campo `message` no rompe las reglas de parseo ni las alertas automatizadas, ya que los metadatos viajan en campos separados.
 3. **Riqueza de contexto:** Permite inyectar IDs de correlación (Trace IDs) fácilmente para seguir el flujo de la petición, un concepto que abordaremos a fondo en el Capítulo 41 sobre Tracing Distribuido.
@@ -66,7 +67,7 @@ Hace unos años, `github.com/sirupsen/logrus` se convirtió en el estándar de f
 Para resolver el problema de las asignaciones de memoria, nacieron librerías obsesionadas con el rendimiento. `go.uber.org/zap` y `rs/zerolog` demostraron que era posible tener un logging estructurado con *Zero Allocations* utilizando técnicas avanzadas y evitando la interfaz vacía (`any`) siempre que fuera posible. Hablaremos de su impacto a nivel de rendimiento en la sección 39.3.
 
 **3. El problema de la fragmentación**
-Aunque el rendimiento estaba resuelto, surgió un problema arquitectónico: **la falta de una interfaz común**. 
+Aunque el rendimiento estaba resuelto, surgió un problema arquitectónico: **la falta de una interfaz común**.
 Si escribías una librería de uso público (por ejemplo, un cliente para una API) y querías emitir logs estructurados, ¿qué framework utilizabas? Si dependías de Zap, forzabas a los usuarios de tu librería a usar Zap. Muchos proyectos terminaron creando interfaces abstractas inyectables (adaptadores) solo para desacoplarse del logger, violando el principio de simplicidad de Go.
 
 Este ecosistema fragmentado fue el detonante que llevó al equipo principal de Go a reconocer que el lenguaje necesitaba una solución de logging estructurado nativa, estándar y de alto rendimiento. Esta necesidad histórica es exactamente lo que culminó con la introducción del paquete `log/slog` en Go 1.21, marcando un antes y un después en la forma en que instrumentamos nuestras aplicaciones, como veremos a continuación.
@@ -75,14 +76,14 @@ Este ecosistema fragmentado fue el detonante que llevó al equipo principal de G
 
 La llegada de Go 1.21 marcó un hito en la observabilidad del lenguaje con la introducción del paquete `log/slog`. Su objetivo no era simplemente añadir otra librería de logging al ecosistema, sino proporcionar una interfaz estándar y de alto rendimiento que unificara la forma en que las aplicaciones y librerías de terceros emiten logs estructurados.
 
-Para lograr esto, el equipo de Go diseñó `slog` separando la emisión del log (el "qué") de su procesamiento y formato (el "cómo"). 
+Para lograr esto, el equipo de Go diseñó `slog` separando la emisión del log (el "qué") de su procesamiento y formato (el "cómo").
 
 ### Arquitectura en dos capas: Frontend y Backend
 
 El diseño de `slog` se basa en un patrón de separación de responsabilidades muy elegante, dividido en dos componentes principales:
 
-1.  **Frontend (`slog.Logger`):** Es la API con la que interactúa el desarrollador. Proporciona los métodos familiares como `Info()`, `Error()`, `Debug()`, etc. Su única responsabilidad es recolectar el mensaje, el nivel de severidad y los atributos (pares clave-valor), empaquetándolos en una estructura altamente optimizada llamada `slog.Record`.
-2.  **Backend (`slog.Handler`):** Es una interfaz que recibe el `slog.Record` creado por el Logger y decide qué hacer con él. Un Handler formatea los datos y los escribe en un destino final (`io.Writer`), como la consola, un archivo, o un recolector de logs a través de la red.
+1. **Frontend (`slog.Logger`):** Es la API con la que interactúa el desarrollador. Proporciona los métodos familiares como `Info()`, `Error()`, `Debug()`, etc. Su única responsabilidad es recolectar el mensaje, el nivel de severidad y los atributos (pares clave-valor), empaquetándolos en una estructura altamente optimizada llamada `slog.Record`.
+2. **Backend (`slog.Handler`):** Es una interfaz que recibe el `slog.Record` creado por el Logger y decide qué hacer con él. Un Handler formatea los datos y los escribe en un destino final (`io.Writer`), como la consola, un archivo, o un recolector de logs a través de la red.
 
 Esta separación es la clave de su éxito: las librerías pueden aceptar un `slog.Logger` genérico sin importar si la aplicación principal formatea en JSON, texto plano, o envía los datos a Datadog.
 
@@ -96,37 +97,38 @@ Por defecto, si llamas a `slog.Info()`, Go utiliza un handler básico que emula 
 package main
 
 import (
-	"log/slog"
-	"os"
+ "log/slog"
+ "os"
 )
 
 func main() {
-	// Configuramos un Handler JSON que escribe en la salida estándar
-	opts := &slog.HandlerOptions{
-		Level: slog.LevelDebug, // Habilitamos logs de nivel Debug
-	}
-	
-	jsonHandler := slog.NewJSONHandler(os.Stdout, opts)
-	
-	// Creamos el Logger con nuestro Handler
-	logger := slog.New(jsonHandler)
-	
-	// Sobrescribimos el logger global por defecto
-	slog.SetDefault(logger)
+ // Configuramos un Handler JSON que escribe en la salida estándar
+ opts := &slog.HandlerOptions{
+  Level: slog.LevelDebug, // Habilitamos logs de nivel Debug
+ }
+ 
+ jsonHandler := slog.NewJSONHandler(os.Stdout, opts)
+ 
+ // Creamos el Logger con nuestro Handler
+ logger := slog.New(jsonHandler)
+ 
+ // Sobrescribimos el logger global por defecto
+ slog.SetDefault(logger)
 
-	// A partir de aquí, las llamadas globales usan formato JSON
-	slog.Info("Servicio inicializado", "puerto", 8080, "entorno", "producción")
+ // A partir de aquí, las llamadas globales usan formato JSON
+ slog.Info("Servicio inicializado", "puerto", 8080, "entorno", "producción")
 }
 ```
 
 La salida generada sería un objeto JSON estandarizado:
+
 ```json
 {"time":"2026-03-16T22:04:15Z","level":"INFO","msg":"Servicio inicializado","puerto":8080,"entorno":"producción"}
 ```
 
 ### Atributos fuertemente tipados y rendimiento
 
-En el ejemplo anterior utilizamos una sintaxis de argumentos variables (variádicos) intercalando claves (strings) y valores (tipos genéricos `any`). Aunque esta API es cómoda y ergonómica, tiene un coste: **asignaciones de memoria (allocations)**. 
+En el ejemplo anterior utilizamos una sintaxis de argumentos variables (variádicos) intercalando claves (strings) y valores (tipos genéricos `any`). Aunque esta API es cómoda y ergonómica, tiene un coste: **asignaciones de memoria (allocations)**.
 
 Cada vez que pasas un tipo primitivo (como un `int` o un `bool`) a un argumento de tipo genérico `any` (interfaz vacía), el compilador de Go se ve obligado a realizar una asignación en el *heap* (Escape Analysis, abordado en el Capítulo 44). En aplicaciones con miles de peticiones por segundo, esto genera una presión excesiva sobre el Garbage Collector.
 
@@ -138,8 +140,8 @@ slog.Info("Procesando pago", "usuario", 42, "monto", 150.50)
 
 // Enfoque de alto rendimiento usando Atributos fuertemente tipados
 slog.Info("Procesando pago", 
-	slog.Int("usuario", 42), 
-	slog.Float64("monto", 150.50),
+ slog.Int("usuario", 42), 
+ slog.Float64("monto", 150.50),
 )
 ```
 
@@ -152,8 +154,8 @@ A menudo queremos que todos los logs emitidos dentro de un componente específic
 ```go
 // Creamos un sub-logger que siempre incluirá el module="auth" y worker_id=5
 authLogger := logger.With(
-	slog.String("module", "auth"),
-	slog.Int("worker_id", 5),
+ slog.String("module", "auth"),
+ slog.Int("worker_id", 5),
 )
 
 // Emitirá: {"level":"INFO","msg":"Login exitoso","module":"auth","worker_id":5,"user":"admin"}
@@ -180,7 +182,7 @@ Aunque por defecto los Handlers integrados no hacen nada especial con el context
 
 ## 39.3. Librerías de terceros (Zap, Zerolog) y su impacto en rendimiento
 
-Aunque `log/slog` es hoy el estándar indiscutible para nuevos proyectos, es imposible entender el estado actual del logging estructurado en Go sin estudiar a los gigantes que resolvieron el problema del rendimiento años antes de la llegada de Go 1.21. 
+Aunque `log/slog` es hoy el estándar indiscutible para nuevos proyectos, es imposible entender el estado actual del logging estructurado en Go sin estudiar a los gigantes que resolvieron el problema del rendimiento años antes de la llegada de Go 1.21.
 
 En aplicaciones de altísima concurrencia, emitir cientos de miles de logs por segundo puede convertirse rápidamente en el cuello de botella principal, no por el coste de I/O (escritura en disco o red), sino por la **presión sobre el recolector de basura (Garbage Collector)**. Como exploraremos a fondo en el Capítulo 43, cada vez que una función acepta un argumento de tipo genérico `any` (como hacían las versiones antiguas de `logrus`), el compilador suele verse forzado a alojar esa variable en el *Heap* (asignación de memoria), lo que obliga al GC a trabajar el doble.
 
@@ -192,30 +194,30 @@ Desarrollada por Uber, `go.uber.org/zap` fue diseñada bajo una premisa innegoci
 
 Para ofrecer versatilidad sin comprometer el diseño, Zap introdujo dos interfaces distintas dentro de la misma librería:
 
-1.  **`SugaredLogger`:** Prioriza la ergonomía del desarrollador. Permite interpolación y uso de `any`, similar a `log/slog` en su forma básica. Incurre en algunas asignaciones de memoria, pero sigue siendo más rápido que alternativas antiguas.
-2.  **`Logger`:** Prioriza el rendimiento absoluto. Exige el uso de campos fuertemente tipados (`zap.String`, `zap.Int`) y garantiza cero asignaciones en el "hot path".
+1. **`SugaredLogger`:** Prioriza la ergonomía del desarrollador. Permite interpolación y uso de `any`, similar a `log/slog` en su forma básica. Incurre en algunas asignaciones de memoria, pero sigue siendo más rápido que alternativas antiguas.
+2. **`Logger`:** Prioriza el rendimiento absoluto. Exige el uso de campos fuertemente tipados (`zap.String`, `zap.Int`) y garantiza cero asignaciones en el "hot path".
 
 ```go
 package main
 
 import (
-	"go.uber.org/zap"
-	"time"
+ "go.uber.org/zap"
+ "time"
 )
 
 func main() {
-	// Configuración optimizada para producción (JSON, alta velocidad)
-	logger, _ := zap.NewProduction()
-	defer logger.Sync() // Vacia el buffer antes de salir
+ // Configuración optimizada para producción (JSON, alta velocidad)
+ logger, _ := zap.NewProduction()
+ defer logger.Sync() // Vacia el buffer antes de salir
 
-	url := "http://ejemplo.com/api"
-	
-	// Uso del Logger estricto (Zero Allocations)
-	logger.Info("Petición completada",
-		zap.String("url", url),
-		zap.Int("status", 200),
-		zap.Duration("latencia", time.Millisecond*45),
-	)
+ url := "http://ejemplo.com/api"
+ 
+ // Uso del Logger estricto (Zero Allocations)
+ logger.Info("Petición completada",
+  zap.String("url", url),
+  zap.Int("status", 200),
+  zap.Duration("latencia", time.Millisecond*45),
+ )
 }
 ```
 
@@ -231,21 +233,21 @@ La brillantez de Zerolog radica en que no construye un mapa o una estructura int
 package main
 
 import (
-	"github.com/rs/zerolog"
-	"os"
+ "github.com/rs/zerolog"
+ "os"
 )
 
 func main() {
-	// Configuración global del nivel mínimo
-	zerolog.SetGlobalLevel(zerolog.InfoLevel)
-	
-	logger := zerolog.New(os.Stdout).With().Timestamp().Logger()
+ // Configuración global del nivel mínimo
+ zerolog.SetGlobalLevel(zerolog.InfoLevel)
+ 
+ logger := zerolog.New(os.Stdout).With().Timestamp().Logger()
 
-	// API fluida (Chainable) y Zero Allocations
-	logger.Info().
-		Str("url", "http://ejemplo.com/api").
-		Int("status", 200).
-		Msg("Petición completada")
+ // API fluida (Chainable) y Zero Allocations
+ logger.Info().
+  Str("url", "http://ejemplo.com/api").
+  Int("status", 200).
+  Msg("Petición completada")
 }
 ```
 
@@ -274,7 +276,7 @@ La mayor ventaja del diseño de `slog` (visto en la sección 39.2) es su interfa
 
 ## 39.4. Rastreo de peticiones con IDs de correlación a través de microservicios
 
-Como vimos en el Capítulo 32 al hablar de la transición de monolitos a microservicios, la adopción de arquitecturas distribuidas destruye la linealidad del código. Una única acción de un usuario (por ejemplo, "finalizar compra") puede disparar llamadas a los servicios de inventario, pagos, envíos y notificaciones. 
+Como vimos en el Capítulo 32 al hablar de la transición de monolitos a microservicios, la adopción de arquitecturas distribuidas destruye la linealidad del código. Una única acción de un usuario (por ejemplo, "finalizar compra") puede disparar llamadas a los servicios de inventario, pagos, envíos y notificaciones.
 
 Si el servicio de envíos falla, emitirá un log de error. Pero si tienes 500 compras por minuto, ¿cómo sabes exactamente qué petición inicial del API Gateway causó ese error específico en el servicio de envíos? Aquí es donde el logging estructurado por sí solo no basta; necesitamos **contexto distribuido**.
 
@@ -286,9 +288,10 @@ Al indexar los logs en un sistema centralizado, bastará con filtrar por ese ID 
 
 ### El vehículo perfecto: `context.Context`
 
-En Go, la propagación de datos atados al ciclo de vida de una petición se hace a través del paquete `context` (revisado en el Capítulo 13). 
+En Go, la propagación de datos atados al ciclo de vida de una petición se hace a través del paquete `context` (revisado en el Capítulo 13).
 
 El flujo de trabajo estándar consta de tres pasos:
+
 1. Interceptar la petición HTTP entrante.
 2. Extraer el ID de correlación de las cabeceras HTTP (o generar uno si no existe).
 3. Inyectar ese ID en el `context.Context` de la petición.
@@ -299,10 +302,10 @@ Veamos cómo se implementa esto en un Middleware típico (Capítulo 25):
 package middleware
 
 import (
-	"context"
-	"crypto/rand"
-	"fmt"
-	"net/http"
+ "context"
+ "crypto/rand"
+ "fmt"
+ "net/http"
 )
 
 // Definimos un tipo no exportado para evitar colisiones en el Contexto
@@ -311,35 +314,35 @@ const correlationIDKey contextKey = "correlation_id"
 
 // CorrelationID intercepta la petición y maneja el ID
 func CorrelationID(next http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		// 1. Extraer de la cabecera estándar (o la que use tu equipo)
-		id := r.Header.Get("X-Correlation-ID")
-		if id == "" {
-			// 2. Generar uno si es el punto de entrada (simplificado para el ejemplo)
-			id = generateSimpleID() 
-		}
+ return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+  // 1. Extraer de la cabecera estándar (o la que use tu equipo)
+  id := r.Header.Get("X-Correlation-ID")
+  if id == "" {
+   // 2. Generar uno si es el punto de entrada (simplificado para el ejemplo)
+   id = generateSimpleID() 
+  }
 
-		// 3. Inyectar en el Contexto
-		ctx := context.WithValue(r.Context(), correlationIDKey, id)
+  // 3. Inyectar en el Contexto
+  ctx := context.WithValue(r.Context(), correlationIDKey, id)
 
-		// 4. Opcional: Devolverlo en la respuesta para el cliente
-		w.Header().Set("X-Correlation-ID", id)
+  // 4. Opcional: Devolverlo en la respuesta para el cliente
+  w.Header().Set("X-Correlation-ID", id)
 
-		// Pasar el nuevo contexto al siguiente handler
-		next.ServeHTTP(w, r.WithContext(ctx))
-	})
+  // Pasar el nuevo contexto al siguiente handler
+  next.ServeHTTP(w, r.WithContext(ctx))
+ })
 }
 
 func generateSimpleID() string {
-	b := make([]byte, 8)
-	rand.Read(b)
-	return fmt.Sprintf("%x", b)
+ b := make([]byte, 8)
+ rand.Read(b)
+ return fmt.Sprintf("%x", b)
 }
 ```
 
 ### Integración con `log/slog`: Custom Handlers
 
-Ahora que el ID de correlación viaja silenciosamente en el contexto de cada función de nuestra aplicación, necesitamos que nuestro logger lo extraiga e inyecte en el JSON final. 
+Ahora que el ID de correlación viaja silenciosamente en el contexto de cada función de nuestra aplicación, necesitamos que nuestro logger lo extraiga e inyecte en el JSON final.
 
 En lugar de extraerlo manualmente en cada llamada a `slog.Info`, podemos aprovechar el diseño de `slog` creando un **Custom Handler** que intercepte el log justo antes de ser formateado, extraiga el ID del contexto y lo añada como un atributo.
 
@@ -347,33 +350,33 @@ En lugar de extraerlo manualmente en cada llamada a `slog.Info`, podemos aprovec
 package logger
 
 import (
-	"context"
-	"log/slog"
+ "context"
+ "log/slog"
 )
 
 // ContextHandler envuelve a un Handler existente para inyectar datos del contexto
 type ContextHandler struct {
-	slog.Handler
+ slog.Handler
 }
 
 // Handle sobrescribe el método principal del Handler
 func (h ContextHandler) Handle(ctx context.Context, r slog.Record) error {
-	// Extraemos el Correlation ID del contexto
-	if id, ok := ctx.Value(correlationIDKey).(string); ok {
-		// Añadimos el atributo al registro del log
-		r.AddAttrs(slog.String("correlation_id", id))
-	}
-	
-	// Delegamos el formato final al Handler subyacente (ej. JSONHandler)
-	return h.Handler.Handle(ctx, r)
+ // Extraemos el Correlation ID del contexto
+ if id, ok := ctx.Value(correlationIDKey).(string); ok {
+  // Añadimos el atributo al registro del log
+  r.AddAttrs(slog.String("correlation_id", id))
+ }
+ 
+ // Delegamos el formato final al Handler subyacente (ej. JSONHandler)
+ return h.Handler.Handle(ctx, r)
 }
 
 // Setup inicializa el logger global
 func Setup(baseHandler slog.Handler) {
-	// Envolvemos el handler base (puede ser el JSONHandler estándar o Zap)
-	h := ContextHandler{Handler: baseHandler}
-	logger := slog.New(h)
-	slog.SetDefault(logger)
+ // Envolvemos el handler base (puede ser el JSONHandler estándar o Zap)
+ h := ContextHandler{Handler: baseHandler}
+ logger := slog.New(h)
+ slog.SetDefault(logger)
 }
 ```
 
@@ -383,14 +386,15 @@ Con esta infraestructura en su lugar, la experiencia del desarrollador en los co
 
 ```go
 func procesarPago(ctx context.Context, userID int) {
-	// El logger global extraerá el correlation_id mágicamente del ctx
-	slog.InfoContext(ctx, "Iniciando procesamiento de pago", slog.Int("user_id", userID))
-	
-	// ... lógica de negocio ...
+ // El logger global extraerá el correlation_id mágicamente del ctx
+ slog.InfoContext(ctx, "Iniciando procesamiento de pago", slog.Int("user_id", userID))
+ 
+ // ... lógica de negocio ...
 }
 ```
 
 La salida JSON resultante contendrá automáticamente la clave:
+
 ```json
 {"time":"2026-03-16T22:15:00Z","level":"INFO","msg":"Iniciando procesamiento de pago","user_id":42,"correlation_id":"a1b2c3d4e5f6"}
 ```

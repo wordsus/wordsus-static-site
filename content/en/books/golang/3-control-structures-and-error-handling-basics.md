@@ -8,7 +8,7 @@ At the core of any imperative programming language is the ability to make decisi
 
 ### The Basic `if` Statement
 
-The most fundamental decision-making structure evaluates a boolean expression and executes a block of code only if that expression is `true`. 
+The most fundamental decision-making structure evaluates a boolean expression and executes a block of code only if that expression is `true`.
 
 Unlike many C-family languages, **Go does not require (or conventionally use) parentheses around the condition**. However, **curly braces `{}` are strictly mandatory**, even if the execution block contains only a single line of code.
 
@@ -54,9 +54,10 @@ func main() {
 ```
 
 **The "Same-Line" Rule:**
-Because of how Go's lexer automatically inserts semicolons at the end of lines, an `else` or `else if` keyword **must** appear on the exact same line as the closing brace `}` of the preceding block. 
+Because of how Go's lexer automatically inserts semicolons at the end of lines, an `else` or `else if` keyword **must** appear on the exact same line as the closing brace `}` of the preceding block.
 
 *Incorrect (Will cause a compilation error):*
+
 ```go
 if active {
     // do something
@@ -67,6 +68,7 @@ else { // ERROR: unexpected else
 ```
 
 *Correct:*
+
 ```go
 if active {
     // do something
@@ -106,7 +108,7 @@ One of Go's most distinctive and useful features is the ability to include a sho
 **Syntax:**
 `if initialization; condition { ... }`
 
-This feature is heavily used in Go to evaluate a function, capture its result, and check a condition based on that result all in one line. 
+This feature is heavily used in Go to evaluate a function, capture its result, and check a condition based on that result all in one line.
 
 ```go
 package main
@@ -139,7 +141,7 @@ This localized scoping is a cornerstone of clean Go code. It prevents variable l
 
 ## 3.2 The Versatile `switch` Statement (Expression and Type Switches)
 
-When a program requires routing logic through many mutually exclusive paths based on the value of a single variable or expression, long chains of `if-else if` statements can become visually cluttered and difficult to maintain. Go provides the `switch` statement as a cleaner, more readable alternative. 
+When a program requires routing logic through many mutually exclusive paths based on the value of a single variable or expression, long chains of `if-else if` statements can become visually cluttered and difficult to maintain. Go provides the `switch` statement as a cleaner, more readable alternative.
 
 However, if you are coming from C, C++, or Java, you must unlearn a fundamental rule: **in Go, `switch` cases do not fall through by default.**
 
@@ -170,6 +172,7 @@ func main() {
 ```
 
 #### Grouping Multiple Matches
+
 Because Go breaks automatically, you cannot stack `case` statements vertically to share a code block as you might in C. Instead, Go allows you to evaluate multiple comma-separated values within a single `case`.
 
 ```go
@@ -231,6 +234,7 @@ func main() {
     }
 }
 ```
+
 This pattern is highly recommended in Go whenever you have complex, overlapping, or distinct boolean conditions to check.
 
 ### Initialization in Switch Statements
@@ -259,7 +263,7 @@ func main() {
 
 ### The Type Switch
 
-While expression switches evaluate values, **Type Switches** evaluate data types. 
+While expression switches evaluate values, **Type Switches** evaluate data types.
 
 Go is a statically typed language, but it utilizes interfaces (which will be explored deeply in Chapter 6) to handle dynamic behavior. Sometimes, you receive a variable of an interface type (most commonly the empty interface, `interface{}`) and you need to determine its underlying concrete type to perform operations on it safely.
 
@@ -315,9 +319,9 @@ func main() {
 }
 ```
 
-1.  **Initialization (`i := 0`):** Executed exactly once before the loop begins. Variables declared here are scoped exclusively to the loop block.
-2.  **Condition (`i < 5`):** Evaluated before every iteration. If `true`, the loop body executes. If `false`, the loop terminates.
-3.  **Post-statement (`i++`):** Executed immediately after the loop body finishes, just before the next condition evaluation.
+1. **Initialization (`i := 0`):** Executed exactly once before the loop begins. Variables declared here are scoped exclusively to the loop block.
+2. **Condition (`i < 5`):** Evaluated before every iteration. If `true`, the loop body executes. If `false`, the loop terminates.
+3. **Post-statement (`i++`):** Executed immediately after the loop body finishes, just before the next condition evaluation.
 
 ### The Condition-Only Loop (Go's `while` Loop)
 
@@ -338,6 +342,7 @@ func main() {
     }
 }
 ```
+
 This form is ideal when the iteration step is not a simple increment or when the state changing the condition is being managed internally or externally (e.g., waiting for an I/O operation to finish or reading from a stream).
 
 ### The Infinite Loop
@@ -354,6 +359,7 @@ for {
 #### Loop Control: `break` and `continue`
 
 To manage execution within loops (especially infinite ones), Go provides the standard `break` and `continue` keywords:
+
 * `break`: Instantly halts the loop and transfers execution to the code immediately following the loop block.
 * `continue`: Skips the remainder of the current loop body and immediately proceeds to the post-statement (if any) and the next condition evaluation.
 
@@ -376,7 +382,7 @@ To manage execution within loops (especially infinite ones), Go provides the sta
 
 ### The `for...range` Loop
 
-When working with data structures like strings, arrays, slices, maps, or channels (covered deeply in Chapters 4 and 10), the `for...range` construct is the most idiomatic and safest way to iterate. 
+When working with data structures like strings, arrays, slices, maps, or channels (covered deeply in Chapters 4 and 10), the `for...range` construct is the most idiomatic and safest way to iterate.
 
 The `range` keyword automatically calculates the bounds of the collection, preventing common off-by-one errors and out-of-bounds panics. It unpacks each element into two variables: the **index** (or key) and a **copy of the value**.
 
@@ -397,11 +403,12 @@ func main() {
 
 #### The Blank Identifier (`_`)
 
-Go's compiler is famously strict: if you declare a variable, you **must** use it. However, when using `for...range`, you might only need the value and not the index (or vice versa). 
+Go's compiler is famously strict: if you declare a variable, you **must** use it. However, when using `for...range`, you might only need the value and not the index (or vice versa).
 
 To satisfy the compiler without cluttering your code with unused variables, Go uses the **blank identifier**, an underscore (`_`), which acts as a "black hole" for data you want to discard.
 
 **Ignoring the Index:**
+
 ```go
 for _, value := range languages {
     fmt.Printf("Language: %s\n", value) // Index is discarded safely
@@ -421,7 +428,7 @@ The `for...range` loop is robust and polymorphic. As you progress into complex d
 
 ## 3.4 Control Flow Modifiers (`defer`, `panic`, `recover`)
 
-While `if`, `switch`, and `for` handle the standard, predictable branching of your application, Go provides three specialized keywords designed to manage function lifecycle events, resource cleanup, and catastrophic failure states. These are `defer`, `panic`, and `recover`. 
+While `if`, `switch`, and `for` handle the standard, predictable branching of your application, Go provides three specialized keywords designed to manage function lifecycle events, resource cleanup, and catastrophic failure states. These are `defer`, `panic`, and `recover`.
 
 Unlike exception handling mechanisms in languages like Java or Python (such as `try-catch-finally`), Go's approach is distinctly different. Go firmly believes that standard errors should be handled as normal values (a paradigm we will explore fully in Chapter 3.5). `panic` and `recover` are reserved exclusively for truly exceptional, unrecoverable states.
 
@@ -457,7 +464,7 @@ func processFile(filename string) {
 
 #### The Defer Stack (LIFO)
 
-When you use multiple `defer` statements within a single function, Go pushes them onto an internal stack. Consequently, deferred functions are executed in **Last-In, First-Out (LIFO)** order. 
+When you use multiple `defer` statements within a single function, Go pushes them onto an internal stack. Consequently, deferred functions are executed in **Last-In, First-Out (LIFO)** order.
 
 ```text
        [Function Execution Timeline]
@@ -510,6 +517,7 @@ func main() {
 When a Go program enters a state where it cannot—or should not—continue safely, it panics. A panic can be triggered by runtime errors (like attempting to access an out-of-bounds slice index or dereferencing a `nil` pointer) or explicitly invoked by the developer using the built-in `panic()` function.
 
 When a function panics:
+
 1. Normal execution halts immediately.
 2. Any deferred functions within that specific function are executed.
 3. The function returns control to its caller.
@@ -620,7 +628,7 @@ The interaction between `panic`, `defer`, and `recover` defines Go's failsafe bo
 
 ## 3.5 The Go Error Value Paradigm and Basic Error Checking
 
-Perhaps the most defining—and initially polarizing—feature of Go is its approach to error handling. If you are accustomed to the `try-catch-finally` exception models of Java, Python, or C++, Go's methodology requires a fundamental shift in perspective. 
+Perhaps the most defining—and initially polarizing—feature of Go is its approach to error handling. If you are accustomed to the `try-catch-finally` exception models of Java, Python, or C++, Go's methodology requires a fundamental shift in perspective.
 
 In Go, there are no exceptions. **Errors are just values.** Go treats error handling not as an exceptional, parallel control flow that abruptly halts execution, but as a routine part of standard programming logic. You evaluate, route, and handle errors using the exact same tools (`if` and `switch`) that you use for any other variable. This forces developers to consider failure states explicitly at the exact moment they occur, resulting in highly predictable and robust software.
 
@@ -640,7 +648,7 @@ Any type that possesses an `Error()` method returning a `string` satisfies this 
 
 Because Go functions can return multiple values (as we will explore fully in Chapter 5), the standard idiom is to return the desired result as the first value and an `error` as the final value.
 
-The caller is then responsible for capturing both values and immediately checking if the error is `nil`. 
+The caller is then responsible for capturing both values and immediately checking if the error is `nil`.
 
 ```go
 package main
@@ -734,15 +742,16 @@ The difference between Exceptions and Error Values fundamentally alters how you 
   }                                 |
 ```
 
-In the Exception paradigm, the control flow is implicit. A failure deep within `readFile` instantly ejects the program from its current execution state and launches it up the call stack until it finds a matching `catch` block. 
+In the Exception paradigm, the control flow is implicit. A failure deep within `readFile` instantly ejects the program from its current execution state and launches it up the call stack until it finds a matching `catch` block.
 
-In the Go Error paradigm, the control flow is explicit. `readFile` hands an error object directly back to `main`. `main` is then forced to look at it, acknowledge it, and make a deliberate routing decision using `if err != nil`. 
+In the Go Error paradigm, the control flow is explicit. `readFile` hands an error object directly back to `main`. `main` is then forced to look at it, acknowledge it, and make a deliberate routing decision using `if err != nil`.
 
 ### The Rule of Context
 
 When handling errors, a common anti-pattern is to simply return the error exactly as received from a lower-level function.
 
 *Poor practice:*
+
 ```go
 func initializeApp() error {
     err := loadConfig()
@@ -754,6 +763,7 @@ func initializeApp() error {
 ```
 
 *Idiomatic Go:*
+
 ```go
 func initializeApp() error {
     err := loadConfig()

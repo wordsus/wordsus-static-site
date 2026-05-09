@@ -101,16 +101,18 @@ Si `df` te dice que `/var` está al 99% de capacidad, `du` (Disk Usage) es la he
 **Comandos tácticos para emergencias de almacenamiento:**
 
 * **Ver el peso total de un directorio específico:**
+
 ```bash
 $ du -sh /var/log
 2.5G    /var/log
 
 ```
 
-
 *(Nota: `-s` significa "summary", para no imprimir el tamaño de cada archivo individual dentro del directorio, y `-h` es "human-readable").*
+
 * **Encontrar los directorios más pesados en la raíz (Nivel Pro):**
 Para evitar que `du` escanee infinitamente y te abrume con datos, limitamos la profundidad de búsqueda con `-d 1` (o `--max-depth=1`) y lo combinamos con `sort` (que exploraremos a fondo en el Capítulo 8) para ordenar de mayor a menor:
+
 ```bash
 $ du -h -d 1 / | sort -hr | head -n 5
 45G     /
@@ -158,7 +160,7 @@ Para interactuar con estas estructuras, Linux nos ofrece dos herramientas legend
 Iniciamos la sesión interactiva (requiere privilegios de superusuario):
 
 ```bash
-$ sudo fdisk /dev/sdb
+sudo fdisk /dev/sdb
 
 ```
 
@@ -198,7 +200,7 @@ Esto sucede porque el Kernel de Linux mantiene la tabla de particiones antigua e
 Para obligar al Kernel a releer la tabla de particiones en caliente, utilizamos la herramienta `partprobe` (parte del paquete `parted`):
 
 ```bash
-$ sudo partprobe /dev/sdb
+sudo partprobe /dev/sdb
 
 ```
 
@@ -239,7 +241,7 @@ En Linux, utilizamos el comando `mkfs` (Make Filesystem). En realidad, `mkfs` es
 Supongamos que queremos dar formato a la partición `/dev/sdb1` que acabamos de crear:
 
 ```bash
-$ sudo mkfs.ext4 /dev/sdb1
+sudo mkfs.ext4 /dev/sdb1
 
 ```
 
@@ -261,14 +263,14 @@ $ sudo mkfs.ext4 -m 0 /dev/sdb1
 Si estás configurando un servidor de base de datos PostgreSQL o un clúster de Elasticsearch, es probable que prefieras el rendimiento I/O de XFS. El comando es directo:
 
 ```bash
-$ sudo mkfs.xfs /dev/sdc1
+sudo mkfs.xfs /dev/sdc1
 
 ```
 
 Si por algún motivo necesitas reformatear una partición XFS que ya contenía datos (y estás seguro de querer destruirlos), XFS te obligará a forzar la operación con la bandera `-f` (force):
 
 ```bash
-$ sudo mkfs.xfs -f /dev/sdc1
+sudo mkfs.xfs -f /dev/sdc1
 
 ```
 
@@ -314,14 +316,14 @@ Para montar un disco temporalmente (por ejemplo, para revisar el contenido de un
 Primero, creamos el directorio que servirá como punto de montaje:
 
 ```bash
-$ sudo mkdir -p /mnt/datos_db
+sudo mkdir -p /mnt/datos_db
 
 ```
 
 Luego, conectamos la partición a ese directorio:
 
 ```bash
-$ sudo mount /dev/sdb1 /mnt/datos_db
+sudo mount /dev/sdb1 /mnt/datos_db
 
 ```
 
@@ -333,7 +335,7 @@ Puedes verificar que se montó correctamente ejecutando `df -h`, donde ahora ver
 Cuando termines de usar el disco, debes desmontarlo antes de desconectarlo físicamente o destruirlo, para asegurar que todos los datos en la memoria caché se escriban en el disco.
 
 ```bash
-$ sudo umount /mnt/datos_db
+sudo umount /mnt/datos_db
 
 ```
 
@@ -364,7 +366,7 @@ Como vimos en la sección anterior, los nombres `/dev/sdb1` pueden cambiar si ag
 Editamos el archivo de forma segura:
 
 ```bash
-$ sudo nano /etc/fstab
+sudo nano /etc/fstab
 
 ```
 
@@ -383,7 +385,7 @@ UUID=1a2b3c4d-5e6f-7g8h-9i0j-123456789abc  /mnt/datos_db    xfs     defaults  0 
 Para evitar esta catástrofe, los administradores Senior **siempre** verifican el archivo inmediatamente después de guardarlo ejecutando:
 
 ```bash
-$ sudo mount -a
+sudo mount -a
 
 ```
 
@@ -490,14 +492,14 @@ Aunque el disco subyacente ahora es de 70GB, el sistema de archivos (EXT4 o XFS)
 Si usaste **EXT4**:
 
 ```bash
-$ sudo resize2fs /dev/vg_datos/lv_mysql
+sudo resize2fs /dev/vg_datos/lv_mysql
 
 ```
 
 Si usaste **XFS**:
 
 ```bash
-$ sudo xfs_growfs /mnt/datos_db 
+sudo xfs_growfs /mnt/datos_db 
 
 ```
 

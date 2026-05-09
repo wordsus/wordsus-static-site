@@ -2,13 +2,13 @@
 
 ---
 
-Picture a classic scene from an old spy movie or a tense thriller: the villain tosses a plugged-in toaster or radio into a bathtub, and sparks fly, instantly electrocuting the unfortunate soul in the water. We have been trained by popular culture to believe that water and electricity are a deadly combination, an instant conduit for electric current. But if you were to somehow take a bathtub full of absolutely pure, 100% $H_2O$ molecules with nothing else in it, and toss a plugged-in wire into it, absolutely nothing would happen. 
+Picture a classic scene from an old spy movie or a tense thriller: the villain tosses a plugged-in toaster or radio into a bathtub, and sparks fly, instantly electrocuting the unfortunate soul in the water. We have been trained by popular culture to believe that water and electricity are a deadly combination, an instant conduit for electric current. But if you were to somehow take a bathtub full of absolutely pure, 100% $H_2O$ molecules with nothing else in it, and toss a plugged-in wire into it, absolutely nothing would happen.
 
-The surprising truth is that pure water is an incredibly poor conductor of electricity. In fact, it is classified as an insulator. The deadly sparks in the movie bathtub do not come from the water itself; they come from what is hidden *inside* the water. The invisible, microscopic dissolved substances—minerals, salts, and impurities—are what turn a harmless bath into a dangerous electrical circuit. 
+The surprising truth is that pure water is an incredibly poor conductor of electricity. In fact, it is classified as an insulator. The deadly sparks in the movie bathtub do not come from the water itself; they come from what is hidden *inside* the water. The invisible, microscopic dissolved substances—minerals, salts, and impurities—are what turn a harmless bath into a dangerous electrical circuit.
 
 These hidden conductors are called "electrolytes." To truly understand the magic of chemistry that happens every day, from the batteries powering your smartphone to the electrical impulses firing in your brain right now as you read this, we must understand electrolytes. We need to investigate what happens when certain materials—like common table salt—meet water, breaking apart into mobile, electrically charged particles that bridge the gap between a broken circuit and a flowing current.
 
-Welcome to the hidden world of solutions, ions, and the fascinating conduction of electricity. 
+Welcome to the hidden world of solutions, ions, and the fascinating conduction of electricity.
 
 ## 1. The Myth of Electric Water: Why Pure H2O Fails to Conduct
 
@@ -22,17 +22,17 @@ Let us look at a single water molecule, $H_2O$.
      H   H
 ```
 
-A water molecule consists of one oxygen atom covalently bonded to two hydrogen atoms. A "covalent bond" means the atoms are sharing their electrons. The oxygen and hydrogen atoms are locked in a tight molecular embrace, holding onto their electrons tightly to maintain a stable structure. Because all the electrons are accounted for and firmly bound within the molecule, there are no loose electrons free to drift around. 
+A water molecule consists of one oxygen atom covalently bonded to two hydrogen atoms. A "covalent bond" means the atoms are sharing their electrons. The oxygen and hydrogen atoms are locked in a tight molecular embrace, holding onto their electrons tightly to maintain a stable structure. Because all the electrons are accounted for and firmly bound within the molecule, there are no loose electrons free to drift around.
 
-Furthermore, the entire $H_2O$ molecule has a neutral overall charge. While oxygen pulls slightly harder on the shared electrons (making the oxygen end slightly negative and the hydrogen ends slightly positive), the net charge of the whole molecule is zero. 
+Furthermore, the entire $H_2O$ molecule has a neutral overall charge. While oxygen pulls slightly harder on the shared electrons (making the oxygen end slightly negative and the hydrogen ends slightly positive), the net charge of the whole molecule is zero.
 
 So, if we apply a voltage (an electrical pressure) to a vat of perfectly pure water, the electrons in the wire look out into the liquid and find no pathway, no stepping stones, and no free charges to carry their energy across. The circuit remains broken.
 
 ## 2. Enter the Salts: The Crystal Lattice
 
-Now, let us look at the substance that will change everything: ordinary table salt, known chemically as sodium chloride, or $NaCl$. 
+Now, let us look at the substance that will change everything: ordinary table salt, known chemically as sodium chloride, or $NaCl$.
 
-Unlike water, which is made of neutral molecules sharing electrons, table salt is held together by "ionic bonds." In the world of chemistry, sodium ($Na$) is a metal that desperately wants to give away one electron to become stable. Chlorine ($Cl$) is a non-metal that desperately wants to gain one electron. When they meet, a dramatic transfer occurs. Sodium gives its electron to chlorine. 
+Unlike water, which is made of neutral molecules sharing electrons, table salt is held together by "ionic bonds." In the world of chemistry, sodium ($Na$) is a metal that desperately wants to give away one electron to become stable. Chlorine ($Cl$) is a non-metal that desperately wants to gain one electron. When they meet, a dramatic transfer occurs. Sodium gives its electron to chlorine.
 
 By losing a negative electron, the sodium becomes a positively charged particle called a cation: $Na^+$.
 By gaining a negative electron, the chlorine becomes a negatively charged particle called an anion: $Cl^-$.
@@ -65,33 +65,35 @@ Earlier, we noted that the oxygen atom in water pulls harder on the shared elect
          /   \
   (δ+)  H     H  (δ+)
 ```
+
 *Here, δ (delta) indicates a partial charge.*
 
 When you drop a crystal of $NaCl$ into water, these polar water molecules act like tiny magnets. The partially positive hydrogen ends of the water molecules are highly attracted to the negative chloride ions ($Cl^-$) on the edge of the salt crystal. Simultaneously, the partially negative oxygen ends of the water molecules swarm around the positive sodium ions ($Na^+$).
 
-The collective pulling force of dozens of water molecules is stronger than the ionic bond holding the sodium and chlorine together. The water physically rips the salt crystal apart, ion by ion. 
+The collective pulling force of dozens of water molecules is stronger than the ionic bond holding the sodium and chlorine together. The water physically rips the salt crystal apart, ion by ion.
 
-Once pulled away from the crystal, each ion is immediately surrounded by a protective shell of water molecules, called a "hydration shell." This prevents the positive sodium and negative chlorine from just snapping back together. 
+Once pulled away from the crystal, each ion is immediately surrounded by a protective shell of water molecules, called a "hydration shell." This prevents the positive sodium and negative chlorine from just snapping back together.
 
 The chemical equation for this dissolution process is written as:
 
 $$ NaCl_{(s)} \xrightarrow{H_2O} Na^+_{(aq)} + Cl^-_{(aq)} $$
 
-The subscript $(s)$ means solid, and $(aq)$ stands for "aqueous," meaning dissolved in water. 
+The subscript $(s)$ means solid, and $(aq)$ stands for "aqueous," meaning dissolved in water.
 
 ## 4. The Dance of the Ions: How the Solution Becomes Alive
 
-Let us pause and look at our beaker now. It is no longer just neutral water molecules, nor is it a rigid crystal of salt. It is a dynamic, swirling environment. We have billions of free-floating, positively charged $Na^+$ ions and negatively charged $Cl^-$ ions swimming through the liquid. 
+Let us pause and look at our beaker now. It is no longer just neutral water molecules, nor is it a rigid crystal of salt. It is a dynamic, swirling environment. We have billions of free-floating, positively charged $Na^+$ ions and negatively charged $Cl^-$ ions swimming through the liquid.
 
 We have finally achieved the two required conditions for electricity to flow:
+
 1. We have charged particles.
 2. They are highly mobile.
 
-Any substance that dissolves in water to produce mobile ions is called an **electrolyte**. Because these ions have an electric charge, they are capable of doing the heavy lifting of carrying an electric current across the fluid. 
+Any substance that dissolves in water to produce mobile ions is called an **electrolyte**. Because these ions have an electric charge, they are capable of doing the heavy lifting of carrying an electric current across the fluid.
 
 ## 5. Bridging the Gap: The Mechanism of Electrical Conduction
 
-To visualize exactly how this electrical conduction happens, imagine setting up an electrical circuit. We have a battery, some wires, a lightbulb to show us if current is flowing, and two metal rods (called electrodes) dipping into our beaker of salt water. The electrodes do not touch each other. 
+To visualize exactly how this electrical conduction happens, imagine setting up an electrical circuit. We have a battery, some wires, a lightbulb to show us if current is flowing, and two metal rods (called electrodes) dipping into our beaker of salt water. The electrodes do not touch each other.
 
 ```text
       [ Battery ]
@@ -115,19 +117,21 @@ Here is the step-by-step physics of what happens the moment you connect the batt
 
 1. **The Voltage is Applied:** The battery acts as an electron pump. It pushes electrons down the right wire into the right electrode, making it negatively charged. This electrode is called the **cathode**. Simultaneously, the battery sucks electrons out of the left electrode, leaving it positively charged. This electrode is called the **anode**.
 2. **The Ions React:** Inside the water, the chaotic swimming of the ions suddenly becomes highly organized. The negative $Cl^-$ ions (anions) feel the strong pull of the positive anode. They migrate rapidly toward the left. The positive $Na^+$ ions (cations) feel the pull of the negative cathode. They migrate rapidly toward the right.
-3. **The Chemical Handoff:** When a negative chloride ion ($Cl^-$) bumps into the positive anode, it surrenders its extra electron. That electron travels up the wire, through the battery, and towards the other side. Meanwhile, at the negative cathode, electrons are arriving from the wire. When a positive sodium ion ($Na^+$) or a water molecule touches the cathode, it absorbs an electron. 
+3. **The Chemical Handoff:** When a negative chloride ion ($Cl^-$) bumps into the positive anode, it surrenders its extra electron. That electron travels up the wire, through the battery, and towards the other side. Meanwhile, at the negative cathode, electrons are arriving from the wire. When a positive sodium ion ($Na^+$) or a water molecule touches the cathode, it absorbs an electron.
 4. **The Loop Closes:** Because electrons are being deposited into the liquid at one electrode, transported across the physical space *by the physical movement of the ions*, and extracted at the other electrode, a continuous loop is formed. The circuit is complete. The lightbulb shines brightly.
 
-In a copper wire, electricity is a river of tiny electrons flowing in one direction. In an electrolyte solution, electricity is a two-way street of massive atomic ions—positive ones swimming one way, negative ones swimming the other. 
+In a copper wire, electricity is a river of tiny electrons flowing in one direction. In an electrolyte solution, electricity is a two-way street of massive atomic ions—positive ones swimming one way, negative ones swimming the other.
 
 ## 6. Strong, Weak, and Non-Electrolytes: The Spectrum of Conductivity
 
 Not all substances behave the same way when dumped into water. Depending on their molecular chemistry, materials fall into one of three categories, dictating how well they conduct electricity.
 
 ### Strong Electrolytes
-Strong electrolytes are substances that dissociate (break apart) completely, or nearly 100%, into ions when they dissolve. Table salt ($NaCl$) is a perfect example. If you put one million molecules of $NaCl$ into water, you get one million $Na^+$ ions and one million $Cl^-$ ions. Other examples include strong acids (like hydrochloric acid, $HCl$, found in your stomach) and strong bases (like sodium hydroxide, $NaOH$, used in drain cleaner). Because they flood the water with ions, they are excellent conductors of electricity. 
+
+Strong electrolytes are substances that dissociate (break apart) completely, or nearly 100%, into ions when they dissolve. Table salt ($NaCl$) is a perfect example. If you put one million molecules of $NaCl$ into water, you get one million $Na^+$ ions and one million $Cl^-$ ions. Other examples include strong acids (like hydrochloric acid, $HCl$, found in your stomach) and strong bases (like sodium hydroxide, $NaOH$, used in drain cleaner). Because they flood the water with ions, they are excellent conductors of electricity.
 
 ### Weak Electrolytes
+
 Weak electrolytes are substances that only partially dissociate in water. A classic example is acetic acid ($CH_3COOH$), which is the main component of vinegar. When you pour acetic acid into water, only about 1% of the molecules break apart into positive hydrogen ions ($H^+$) and negative acetate ions ($CH_3COO^-$). The vast majority of the molecules remain stuck together as neutral, whole molecules.
 
 $$ CH_3COOH_{(aq)} \rightleftharpoons CH_3COO^-_{(aq)} + H^+_{(aq)} $$
@@ -135,6 +139,7 @@ $$ CH_3COOH_{(aq)} \rightleftharpoons CH_3COO^-_{(aq)} + H^+_{(aq)} $$
 Notice the two-way arrow in the chemical equation above. This indicates an equilibrium, a chemical tug-of-war where the molecules are constantly breaking apart and recombining, but at any given time, only a tiny fraction are separated. Because there are very few mobile ions in a weak electrolyte solution, it conducts electricity very poorly. If you hooked up a lightbulb circuit to a beaker of vinegar, the bulb would only emit a faint, weak glow.
 
 ### Non-Electrolytes: The Sugar Disappointment
+
 What happens if you stir ordinary table sugar (sucrose, $C_{12}H_{22}O_{11}$) into water? It dissolves beautifully, disappearing into the clear liquid just like salt. However, if you dip your electrodes into sugar water, the lightbulb will remain completely dark.
 
 Why? Because sugar is held together by covalent bonds, not ionic bonds. When water molecules pull a sugar crystal apart, they only separate one whole, neutral sugar molecule from the next whole, neutral sugar molecule. The sugar molecules themselves do not break down into charged ions.
@@ -163,9 +168,9 @@ This scale is incredibly important to chemists and engineers. By measuring exact
 
 The word "electrolyte" probably sounds familiar from sports drink commercials. Companies boast about their brightly colored beverages being "packed with electrolytes." But why does the human body need them?
 
-You are, essentially, a walking, talking bag of saltwater. Up to 60% of the adult human body is water, and within that water are dissolved massive quantities of electrolytes: sodium, potassium, calcium, chloride, and magnesium. 
+You are, essentially, a walking, talking bag of saltwater. Up to 60% of the adult human body is water, and within that water are dissolved massive quantities of electrolytes: sodium, potassium, calcium, chloride, and magnesium.
 
-Just as ions carry electric current across a beaker of water, they carry electric current across the fluid inside you. Your nervous system is a biological electrical grid. When your brain decides to move a muscle, it doesn't send an electron traveling down a copper wire; it triggers a domino effect of electrolyte ions rushing in and out of nerve cells. 
+Just as ions carry electric current across a beaker of water, they carry electric current across the fluid inside you. Your nervous system is a biological electrical grid. When your brain decides to move a muscle, it doesn't send an electron traveling down a copper wire; it triggers a domino effect of electrolyte ions rushing in and out of nerve cells.
 
 This movement of ions creates a tiny biological voltage—an "action potential"—that propagates down the nerve ending, eventually telling your muscle fibers to contract. Your heart beating, your lungs breathing, and your eyes processing these very words are all powered by the careful balance and movement of electrolytes in solution.
 
@@ -173,7 +178,7 @@ When you sweat profusely during a hard workout, you lose water, but you also los
 
 ## Conclusion: The Hidden Power of Solutions
 
-From the cinematic myth of the electrified pure-water bathtub to the microscopic sodium pumps in your nerve cells, the story of electrolytes is the story of chemistry in motion. 
+From the cinematic myth of the electrified pure-water bathtub to the microscopic sodium pumps in your nerve cells, the story of electrolytes is the story of chemistry in motion.
 
 We have explored how pure water, a rigid insulator, acts as a molecular crowbar to tear apart ionic crystals. We have seen how the resulting mobile ions—anions and cations—transform a sterile liquid into a bustling highway for electrical charge, physically ferrying electricity from one electrode to another. We have learned to differentiate between strong electrolytes that flood the system with charge, weak electrolytes that trickle it, and non-electrolytes like sugar that stubbornly refuse to participate in the electrical dance.
 

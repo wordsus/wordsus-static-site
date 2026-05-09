@@ -8,7 +8,7 @@ El objetivo central sigue siendo el mismo: desacoplar la creación de un objeto 
 
 ### El Patrón Builder (Constructor)
 
-El patrón Builder brilla cuando necesitamos construir un objeto complejo que requiere múltiples pasos de inicialización o que posee una gran cantidad de parámetros opcionales. 
+El patrón Builder brilla cuando necesitamos construir un objeto complejo que requiere múltiples pasos de inicialización o que posee una gran cantidad de parámetros opcionales.
 
 En Go, al no existir la sobrecarga de funciones ni los valores por defecto en los parámetros, inicializar un *struct* con docenas de campos puede llevar al antipatrón del "constructor telescópico" (funciones con interminables listas de argumentos ininteligibles).
 
@@ -22,66 +22,67 @@ Este enfoque utiliza una estructura intermedia (el *Builder*) que almacena el es
 package builder
 
 import (
-	"errors"
-	"time"
+ "errors"
+ "time"
 )
 
 // Server representa el objeto complejo a construir.
 type Server struct {
-	Host    string
-	Port    int
-	Timeout time.Duration
-	MaxConn int
+ Host    string
+ Port    int
+ Timeout time.Duration
+ MaxConn int
 }
 
 // ServerBuilder es la estructura encargada de construir el Server.
 type ServerBuilder struct {
-	server *Server
+ server *Server
 }
 
 // NewServerBuilder inicializa el builder con valores por defecto.
 func NewServerBuilder() *ServerBuilder {
-	return &ServerBuilder{
-		server: &Server{
-			Host:    "localhost",
-			Port:    8080,
-			Timeout: 30 * time.Second,
-			MaxConn: 100,
-		},
-	}
+ return &ServerBuilder{
+  server: &Server{
+   Host:    "localhost",
+   Port:    8080,
+   Timeout: 30 * time.Second,
+   MaxConn: 100,
+  },
+ }
 }
 
 func (b *ServerBuilder) SetHost(host string) *ServerBuilder {
-	b.server.Host = host
-	return b
+ b.server.Host = host
+ return b
 }
 
 func (b *ServerBuilder) SetPort(port int) *ServerBuilder {
-	b.server.Port = port
-	return b
+ b.server.Port = port
+ return b
 }
 
 func (b *ServerBuilder) SetTimeout(t time.Duration) *ServerBuilder {
-	b.server.Timeout = t
-	return b
+ b.server.Timeout = t
+ return b
 }
 
 // Build finaliza la construcción y puede incluir lógica de validación.
 func (b *ServerBuilder) Build() (*Server, error) {
-	if b.server.Port < 1 || b.server.Port > 65535 {
-		return nil, errors.New("puerto inválido")
-	}
-	return b.server, nil
+ if b.server.Port < 1 || b.server.Port > 65535 {
+  return nil, errors.New("puerto inválido")
+ }
+ return b.server, nil
 }
 ```
 
 **Uso del Builder clásico:**
+
 ```go
 srv, err := NewServerBuilder().
-	SetHost("0.0.0.0").
-	SetPort(9000).
-	SetTimeout(60 * time.Second).
-	Build()
+ SetHost("0.0.0.0").
+ SetPort(9000).
+ SetTimeout(60 * time.Second).
+ Build()
 ```
 
 #### 2. La alternativa idiomática: Functional Options
@@ -94,9 +95,9 @@ package options
 import "time"
 
 type Server struct {
-	Host    string
-	Port    int
-	Timeout time.Duration
+ Host    string
+ Port    int
+ Timeout time.Duration
 }
 
 // Option define el tipo de función que modificará la configuración del Server.
@@ -104,47 +105,49 @@ type Option func(*Server)
 
 // ConHost es una opción que configura el host.
 func ConHost(h string) Option {
-	return func(s *Server) {
-		s.Host = h
-	}
+ return func(s *Server) {
+  s.Host = h
+ }
 }
 
 // ConPort es una opción que configura el puerto.
 func ConPort(p int) Option {
-	return func(s *Server) {
-		s.Port = p
-	}
+ return func(s *Server) {
+  s.Port = p
+ }
 }
 
 // NewServer utiliza argumentos variádicos para aplicar un número indeterminado de opciones.
 func NewServer(opts ...Option) *Server {
-	// Valores por defecto
-	srv := &Server{
-		Host:    "localhost",
-		Port:    8080,
-		Timeout: 30 * time.Second,
-	}
+ // Valores por defecto
+ srv := &Server{
+  Host:    "localhost",
+  Port:    8080,
+  Timeout: 30 * time.Second,
+ }
 
-	// Aplicamos las opciones funcionales proporcionadas
-	for _, opt := range opts {
-		opt(srv)
-	}
+ // Aplicamos las opciones funcionales proporcionadas
+ for _, opt := range opts {
+  opt(srv)
+ }
 
-	return srv
+ return srv
 }
 ```
 
 **Uso de Functional Options:**
+
 ```go
 // Creación usando valores por defecto
 defaultSrv := NewServer()
 
 // Creación aplicando opciones específicas
 customSrv := NewServer(
-	ConHost("0.0.0.0"),
-	ConPort(443),
+ ConHost("0.0.0.0"),
+ ConPort(443),
 )
 ```
+
 Este enfoque reduce la necesidad de tipos intermedios y métodos de construcción (`Build()`), resultando en una API extremadamente limpia para las librerías exportadas.
 
 ---
@@ -161,45 +164,45 @@ Como se introdujo en el Capítulo 10 al hablar de optimizaciones, la forma idiom
 package singleton
 
 import (
-	"fmt"
-	"sync"
+ "fmt"
+ "sync"
 )
 
 // Database representa la conexión a la base de datos (nuestro Singleton).
 type Database struct {
-	ConnectionURL string
+ ConnectionURL string
 }
 
 var (
-	// instance almacena la única instancia de la base de datos.
-	instance *Database
-	
-	// once garantiza que la inicialización ocurra exactamente una vez.
-	once sync.Once
+ // instance almacena la única instancia de la base de datos.
+ instance *Database
+ 
+ // once garantiza que la inicialización ocurra exactamente una vez.
+ once sync.Once
 )
 
 // GetDatabaseInstance devuelve la única instancia de la estructura Database.
 func GetDatabaseInstance() *Database {
-	// once.Do ejecutará la función anónima proporcionada SOLO la primera
-	// vez que sea invocada, bloqueando internamente a otras goroutines
-	// que llamen a GetDatabaseInstance() hasta que termine la inicialización.
-	once.Do(func() {
-		fmt.Println("Inicializando la conexión a la base de datos...")
-		// Aquí iría la lógica pesada o costosa de instanciación
-		instance = &Database{
-			ConnectionURL: "postgres://user:pass@localhost:5432/db",
-		}
-	})
+ // once.Do ejecutará la función anónima proporcionada SOLO la primera
+ // vez que sea invocada, bloqueando internamente a otras goroutines
+ // que llamen a GetDatabaseInstance() hasta que termine la inicialización.
+ once.Do(func() {
+  fmt.Println("Inicializando la conexión a la base de datos...")
+  // Aquí iría la lógica pesada o costosa de instanciación
+  instance = &Database{
+   ConnectionURL: "postgres://user:pass@localhost:5432/db",
+  }
+ })
 
-	// Las llamadas subsecuentes ignorarán el bloque once.Do() y 
-	// devolverán el puntero directamente, sin coste de bloqueos (locks).
-	return instance
+ // Las llamadas subsecuentes ignorarán el bloque once.Do() y 
+ // devolverán el puntero directamente, sin coste de bloqueos (locks).
+ return instance
 }
 ```
 
 #### ¿Por qué no usar simplemente un `sync.Mutex`?
 
-Podríamos utilizar un Mutex para bloquear la comprobación `if instance == nil`. Sin embargo, esto obligaría a que *cada* acceso al Singleton adquiriera un bloqueo (Lock), creando un cuello de botella grave en el rendimiento (*lock contention*). 
+Podríamos utilizar un Mutex para bloquear la comprobación `if instance == nil`. Sin embargo, esto obligaría a que *cada* acceso al Singleton adquiriera un bloqueo (Lock), creando un cuello de botella grave en el rendimiento (*lock contention*).
 
 La genialidad de `sync.Once` radica en su implementación interna: utiliza operaciones atómicas (`sync/atomic`) implementando un patrón conocido como *Double-Checked Locking* altamente optimizado a nivel del compilador de Go. Esto asegura que el bloqueo solo ocurra durante la primera llamada; las lecturas posteriores son tan rápidas como leer una variable global ordinaria.
 
@@ -226,33 +229,33 @@ import "fmt"
 
 // 1. La interfaz objetivo (Puerto) que espera nuestro dominio.
 type PaymentProcessor interface {
-	Pay(amount float64) error
+ Pay(amount float64) error
 }
 
 // 2. El servicio externo (Incompatible). No podemos modificar este código.
 type StripeAPI struct{}
 
 func (s *StripeAPI) Charge(usdCents int) string {
-	return fmt.Sprintf("Cobrados %d centavos vía Stripe", usdCents)
+ return fmt.Sprintf("Cobrados %d centavos vía Stripe", usdCents)
 }
 
 // 3. El Adaptador. Envuelve el servicio externo.
 type StripeAdapter struct {
-	stripe *StripeAPI
+ stripe *StripeAPI
 }
 
 // Satisfacemos la interfaz PaymentProcessor de forma implícita.
 func (a *StripeAdapter) Pay(amount float64) error {
-	// Traducimos el tipo de dato y la llamada al método
-	cents := int(amount * 100)
-	result := a.stripe.Charge(cents)
-	fmt.Println(result)
-	return nil
+ // Traducimos el tipo de dato y la llamada al método
+ cents := int(amount * 100)
+ result := a.stripe.Charge(cents)
+ fmt.Println(result)
+ return nil
 }
 
 // Uso del adaptador
 func ProcessOrder(p PaymentProcessor, amount float64) {
-	_ = p.Pay(amount)
+ _ = p.Pay(amount)
 }
 
 /*
@@ -281,38 +284,38 @@ Supongamos que tenemos un servicio que ejecuta una tarea y queremos añadirle m�
 package decorator
 
 import (
-	"fmt"
-	"time"
+ "fmt"
+ "time"
 )
 
 // Interfaz base
 type Worker interface {
-	DoWork()
+ DoWork()
 }
 
 // Implementación concreta
 type SimpleWorker struct{}
 
 func (s *SimpleWorker) DoWork() {
-	fmt.Println("Realizando trabajo pesado...")
-	time.Sleep(1 * time.Second) // Simulamos carga
+ fmt.Println("Realizando trabajo pesado...")
+ time.Sleep(1 * time.Second) // Simulamos carga
 }
 
 // El Decorador que añade logging
 type MetricsDecorator struct {
-	// Composición: embebemos la interfaz para envolver el comportamiento
-	worker Worker
+ // Composición: embebemos la interfaz para envolver el comportamiento
+ worker Worker
 }
 
 func (m *MetricsDecorator) DoWork() {
-	start := time.Now()
-	
-	// Delegamos la acción principal al objeto envuelto
-	m.worker.DoWork()
-	
-	// Añadimos el nuevo comportamiento (decoración)
-	duration := time.Since(start)
-	fmt.Printf("Métrica: DoWork tardó %v\n", duration)
+ start := time.Now()
+ 
+ // Delegamos la acción principal al objeto envuelto
+ m.worker.DoWork()
+ 
+ // Añadimos el nuevo comportamiento (decoración)
+ duration := time.Since(start)
+ fmt.Printf("Métrica: DoWork tardó %v\n", duration)
 }
 
 /*
@@ -362,37 +365,38 @@ func (n *Notifier) SendEmail(user, msg string) { fmt.Println("Email enviado a", 
 // --- La Fachada ---
 
 type OrderFacade struct {
-	inventory *Inventory
-	payment   *Payment
-	notifier  *Notifier
+ inventory *Inventory
+ payment   *Payment
+ notifier  *Notifier
 }
 
 // NewOrderFacade inicializa los subsistemas internos.
 func NewOrderFacade() *OrderFacade {
-	return &OrderFacade{
-		inventory: &Inventory{},
-		payment:   &Payment{},
-		notifier:  &Notifier{},
-	}
+ return &OrderFacade{
+  inventory: &Inventory{},
+  payment:   &Payment{},
+  notifier:  &Notifier{},
+ }
 }
 
 // PlaceOrder es el método simplificado que expone la Fachada.
 // Oculta toda la coreografía entre los subsistemas.
 func (o *OrderFacade) PlaceOrder(user, product, amount string) error {
-	if !o.inventory.Check(product) {
-		return fmt.Errorf("producto agotado")
-	}
+ if !o.inventory.Check(product) {
+  return fmt.Errorf("producto agotado")
+ }
 
-	if !o.payment.Process(user, amount) {
-		return fmt.Errorf("fallo en el pago")
-	}
+ if !o.payment.Process(user, amount) {
+  return fmt.Errorf("fallo en el pago")
+ }
 
-	o.inventory.Reserve(product)
-	o.notifier.SendEmail(user, "Su orden ha sido procesada")
-	
-	return nil
+ o.inventory.Reserve(product)
+ o.notifier.SendEmail(user, "Su orden ha sido procesada")
+ 
+ return nil
 }
 ```
+
 Con este enfoque, el punto de entrada de la aplicación simplemente invoca `facade.PlaceOrder("Alice", "Libro Go", "30.00")`, manteniéndose ciego ante la complejidad interna.
 
 ## 23.3. Patrones de Comportamiento (Strategy, Observer)
@@ -405,11 +409,11 @@ El objetivo es lograr un alto grado de desacoplamiento, permitiendo que el compo
 
 El patrón Strategy permite definir una familia de algoritmos, encapsular cada uno de ellos y hacerlos intercambiables. Esto permite que el algoritmo varíe independientemente de los clientes que lo utilizan, eliminando las largas sentencias `switch` o `if/else` anidadas.
 
-En Go, la implementación más idiomática se basa en definir una interfaz pequeña que represente el comportamiento (la estrategia) e inyectarla en un *struct* de contexto. 
+En Go, la implementación más idiomática se basa en definir una interfaz pequeña que represente el comportamiento (la estrategia) e inyectarla en un *struct* de contexto.
 
 #### Ejemplo de Strategy en Go
 
-Supongamos que estamos construyendo un sistema de caché y necesitamos soportar diferentes políticas de desalojo (*eviction policies*) como FIFO (First In, First Out) o LRU (Least Recently Used). 
+Supongamos que estamos construyendo un sistema de caché y necesitamos soportar diferentes políticas de desalojo (*eviction policies*) como FIFO (First In, First Out) o LRU (Least Recently Used).
 
 ```go
 package strategy
@@ -418,7 +422,7 @@ import "fmt"
 
 // 1. La interfaz que define la Estrategia.
 type EvictionStrategy interface {
-	Evict(capacity int)
+ Evict(capacity int)
 }
 
 // 2. Estrategias concretas (implementan la interfaz implícitamente).
@@ -426,50 +430,51 @@ type EvictionStrategy interface {
 type Fifo struct{}
 
 func (f *Fifo) Evict(capacity int) {
-	fmt.Printf("Liberando memoria usando la estrategia FIFO. Capacidad actual: %d\n", capacity)
+ fmt.Printf("Liberando memoria usando la estrategia FIFO. Capacidad actual: %d\n", capacity)
 }
 
 type Lru struct{}
 
 func (l *Lru) Evict(capacity int) {
-	fmt.Printf("Liberando memoria usando la estrategia LRU. Capacidad actual: %d\n", capacity)
+ fmt.Printf("Liberando memoria usando la estrategia LRU. Capacidad actual: %d\n", capacity)
 }
 
 // 3. El Contexto que utiliza la estrategia.
 
 type Cache struct {
-	storage      map[string]string
-	capacity     int
-	maxCapacity  int
-	evictionAlgo EvictionStrategy // Composición de la interfaz
+ storage      map[string]string
+ capacity     int
+ maxCapacity  int
+ evictionAlgo EvictionStrategy // Composición de la interfaz
 }
 
 func NewCache(e EvictionStrategy) *Cache {
-	return &Cache{
-		storage:      make(map[string]string),
-		capacity:     0,
-		maxCapacity:  100,
-		evictionAlgo: e,
-	}
+ return &Cache{
+  storage:      make(map[string]string),
+  capacity:     0,
+  maxCapacity:  100,
+  evictionAlgo: e,
+ }
 }
 
 // SetStrategy permite cambiar el comportamiento en tiempo de ejecución.
 func (c *Cache) SetStrategy(e EvictionStrategy) {
-	c.evictionAlgo = e
+ c.evictionAlgo = e
 }
 
 func (c *Cache) Add(key, value string) {
-	if c.capacity >= c.maxCapacity {
-		// El contexto delega la acción a la estrategia inyectada
-		c.evictionAlgo.Evict(c.capacity)
-		c.capacity-- // Simulamos la liberación
-	}
-	c.storage[key] = value
-	c.capacity++
+ if c.capacity >= c.maxCapacity {
+  // El contexto delega la acción a la estrategia inyectada
+  c.evictionAlgo.Evict(c.capacity)
+  c.capacity-- // Simulamos la liberación
+ }
+ c.storage[key] = value
+ c.capacity++
 }
 ```
 
 **Uso del patrón Strategy:**
+
 ```go
 // Inicializamos el contexto con una estrategia concreta
 cache := strategy.NewCache(&strategy.Fifo{})
@@ -490,6 +495,7 @@ cache.Add("k2", "v2") // Ahora usará LRU al desalojar
 El patrón Observer define una dependencia de uno-a-muchos entre objetos. Cuando el objeto principal (el *Subject* o Sujeto) cambia su estado, notifica automáticamente a todos sus dependientes (los *Observers* u Observadores) para que se actualicen. Es la base arquitectónica de los sistemas orientados a eventos.
 
 En Go, existen dos formas principales de implementarlo:
+
 1. **El enfoque clásico síncrono:** Usando *slices* de interfaces.
 2. **El enfoque concurrente e idiomático:** Usando **Canales** (Channels, como vimos en el Capítulo 9).
 
@@ -506,68 +512,69 @@ import "fmt"
 
 // 1. La interfaz del Observador (quien recibe la notificación)
 type Observer interface {
-	Update(productName string)
+ Update(productName string)
 }
 
 // 2. La interfaz del Sujeto (quien emite la notificación)
 type Subject interface {
-	Register(observer Observer)
-	Deregister(observer Observer)
-	NotifyAll()
+ Register(observer Observer)
+ Deregister(observer Observer)
+ NotifyAll()
 }
 
 // --- Implementaciones Concretas ---
 
 // Customer actúa como el Observador concreto
 type Customer struct {
-	ID string
+ ID string
 }
 
 func (c *Customer) Update(productName string) {
-	fmt.Printf("Email a %s: ¡El producto %s vuelve a estar disponible!\n", c.ID, productName)
+ fmt.Printf("Email a %s: ¡El producto %s vuelve a estar disponible!\n", c.ID, productName)
 }
 
 // Item actúa como el Sujeto concreto
 type Item struct {
-	observerList []Observer
-	name         string
-	inStock      bool
+ observerList []Observer
+ name         string
+ inStock      bool
 }
 
 func NewItem(name string) *Item {
-	return &Item{
-		name: name,
-	}
+ return &Item{
+  name: name,
+ }
 }
 
 func (i *Item) UpdateAvailability() {
-	fmt.Printf("Sistema: Actualizando disponibilidad del item %s\n", i.name)
-	i.inStock = true
-	i.NotifyAll()
+ fmt.Printf("Sistema: Actualizando disponibilidad del item %s\n", i.name)
+ i.inStock = true
+ i.NotifyAll()
 }
 
 func (i *Item) Register(o Observer) {
-	i.observerList = append(i.observerList, o)
+ i.observerList = append(i.observerList, o)
 }
 
 func (i *Item) Deregister(o Observer) {
-	// Lógica genérica en Go para eliminar un elemento de un slice
-	for index, observer := range i.observerList {
-		if observer == o {
-			i.observerList = append(i.observerList[:index], i.observerList[index+1:]...)
-			break
-		}
-	}
+ // Lógica genérica en Go para eliminar un elemento de un slice
+ for index, observer := range i.observerList {
+  if observer == o {
+   i.observerList = append(i.observerList[:index], i.observerList[index+1:]...)
+   break
+  }
+ }
 }
 
 func (i *Item) NotifyAll() {
-	for _, observer := range i.observerList {
-		observer.Update(i.name)
-	}
+ for _, observer := range i.observerList {
+  observer.Update(i.name)
+ }
 }
 ```
 
 **Uso del patrón Observer:**
+
 ```go
 nintendoSwitch := observer.NewItem("Nintendo Switch")
 

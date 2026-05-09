@@ -10,8 +10,8 @@ To master OpenTofu, you must first understand the lexical and structural rules t
 
 OpenTofu recognizes configuration files based on their extensions. The engine exclusively looks for two types of files when evaluating a directory:
 
-1.  **`.tf` files:** The standard extension for native HCL syntax. These files must be encoded in UTF-8. 
-2.  **`.tf.json` files:** An alternative JSON-based syntax. While humans rarely write `.tf.json` files by hand, this format is supported for programmatic generation, allowing external scripts and tools to generate OpenTofu configurations using standard JSON libraries.
+1. **`.tf` files:** The standard extension for native HCL syntax. These files must be encoded in UTF-8.
+2. **`.tf.json` files:** An alternative JSON-based syntax. While humans rarely write `.tf.json` files by hand, this format is supported for programmatic generation, allowing external scripts and tools to generate OpenTofu configurations using standard JSON libraries.
 
 If a file does not end in `.tf` or `.tf.json` (or `.tfvars` for variable definitions, which we will cover later), the OpenTofu parser ignores it completely.
 
@@ -49,6 +49,7 @@ Because of this flat evaluation model, the physical division of code across diff
 To understand the structure of HCL, it is helpful to see how its native syntax maps to standard JSON. HCL is designed to eliminate the bracket fatigue and strict quoting rules of JSON while maintaining the same hierarchical data structure.
 
 **Native HCL Structure (`main.tf`):**
+
 ```hcl
 resource "aws_instance" "web_server" {
   ami           = "ami-0c55b159cbfafe1f0"
@@ -57,6 +58,7 @@ resource "aws_instance" "web_server" {
 ```
 
 **Equivalent JSON Structure (`main.tf.json`):**
+
 ```json
 {
   "resource": {
@@ -70,13 +72,13 @@ resource "aws_instance" "web_server" {
 }
 ```
 
-In the HCL version, the `=` operator separates the key from the value, and the structure is visibly cleaner. HCL inherently understands the difference between the *type* of a container (the resource), its *labels* (aws_instance, web_server), and its *contents* (the arguments inside the curly braces). 
+In the HCL version, the `=` operator separates the key from the value, and the structure is visibly cleaner. HCL inherently understands the difference between the *type* of a container (the resource), its *labels* (aws_instance, web_server), and its *contents* (the arguments inside the curly braces).
 
 This clear separation of concerns at the syntax level allows OpenTofu to rapidly parse configurations and construct the dependency graph required to provision your infrastructure.
 
 ## 4.2 Blocks, Arguments, and Attributes Explained
 
-If HCL is the language of OpenTofu, then blocks, arguments, and attributes form its foundational grammar. Understanding the precise distinction between these three elements is essential for writing clean, error-free infrastructure code and mastering resource dependencies. 
+If HCL is the language of OpenTofu, then blocks, arguments, and attributes form its foundational grammar. Understanding the precise distinction between these three elements is essential for writing clean, error-free infrastructure code and mastering resource dependencies.
 
 ### The Anatomy of a Block
 
@@ -97,10 +99,10 @@ A block consists of a **block type**, zero or more **labels**, and a **body** en
 ```
 
 * **Block Type:** This defines the purpose of the block. Common types include `resource`, `data`, `variable`, `output`, `provider`, and `terraform`. The type dictates how OpenTofu processes the contents of the block and how many labels are required.
-* **Labels:** Labels act as identifiers for the block. The required number of labels depends strictly on the block type. 
-    * A `resource` block requires exactly two labels: the resource type (e.g., `"aws_instance"`) and a localized name you choose (e.g., `"web_server"`).
-    * A `variable` block requires exactly one label: the name of the variable.
-    * A `terraform` block requires zero labels.
+* **Labels:** Labels act as identifiers for the block. The required number of labels depends strictly on the block type.
+  * A `resource` block requires exactly two labels: the resource type (e.g., `"aws_instance"`) and a localized name you choose (e.g., `"web_server"`).
+  * A `variable` block requires exactly one label: the name of the variable.
+  * A `terraform` block requires zero labels.
 * **Block Body:** Enclosed in `{ }`, the body contains the actual configuration parameters for that specific block.
 
 ### Arguments: Your Inputs
@@ -129,7 +131,7 @@ If you fail to provide a required argument, the `tofu plan` command will immedia
 
 ### Attributes: Your Outputs
 
-While arguments are what you *give* to a block, **attributes** are what you *get back* from it. 
+While arguments are what you *give* to a block, **attributes** are what you *get back* from it.
 
 Once OpenTofu evaluates a block—and especially after it creates or updates a resource via the provider API—that resource generates data. Some of this data perfectly mirrors your arguments, but much of it is generated dynamically by the cloud provider (e.g., unique IDs, Amazon Resource Names (ARNs), assigned IP addresses, or creation timestamps). These read-only data points are exported as attributes.
 
@@ -143,7 +145,7 @@ For a resource, this translates to `<RESOURCE_TYPE>.<NAME>.<ATTRIBUTE>`.
 
 ### The Argument vs. Attribute Distinction
 
-The distinction between arguments and attributes is a frequent stumbling block for IaC beginners. 
+The distinction between arguments and attributes is a frequent stumbling block for IaC beginners.
 
 Consider the deployment of a virtual network. When you write the code, you provide the CIDR block as an *argument*. However, you do not know what the network's ID will be until the cloud provider actually creates it. Once created, the network's ID becomes an *attribute* that you can reference.
 
@@ -171,7 +173,8 @@ While OpenTofu compiles all `.tf` files in a directory into a single graph, the 
 HCL supports three distinct styles of comments. Choosing the right one helps maintain clean and readable configuration files.
 
 **1. The Hash (`#`) - The Standard Single-Line Comment**
-This is the universally preferred and most idiomatic way to write single-line comments in OpenTofu. 
+This is the universally preferred and most idiomatic way to write single-line comments in OpenTofu.
+
 ```hcl
 # Create an S3 bucket for application logs
 resource "aws_s3_bucket" "app_logs" {
@@ -201,7 +204,7 @@ resource "aws_security_group" "db_access" {
 
 ### The Standard OpenTofu File Structure
 
-Because OpenTofu automatically merges all `.tf` files, you could technically write an entire enterprise architecture in a single `main.tf` file. Doing so, however, leads to monolithic, unmanageable codebases. 
+Because OpenTofu automatically merges all `.tf` files, you could technically write an entire enterprise architecture in a single `main.tf` file. Doing so, however, leads to monolithic, unmanageable codebases.
 
 The industry standard is to separate configurations by their logical purpose. A well-organized OpenTofu root module typically looks like this:
 
@@ -252,7 +255,7 @@ Consistent naming is the final pillar of code organization. Adhere to these comm
 
 ## 4.4 Enforcing Style Guidelines with `tofu fmt`
 
-In a collaborative engineering environment, debating code style is a notorious waste of time. Whether a team uses two spaces or four, or aligns their assignment operators or leaves them staggered, is far less important than the simple fact that they all do it the *same* way. 
+In a collaborative engineering environment, debating code style is a notorious waste of time. Whether a team uses two spaces or four, or aligns their assignment operators or leaves them staggered, is far less important than the simple fact that they all do it the *same* way.
 
 To eliminate style debates entirely, OpenTofu includes a built-in formatting tool. The `tofu fmt` command parses your HCL files and rewrites them into a standard, canonical format defined by the HashiCorp Configuration Language specification.
 
@@ -260,11 +263,12 @@ To eliminate style debates entirely, OpenTofu includes a built-in formatting too
 
 When you run `tofu fmt`, the engine applies a rigid set of layout rules to your `.tf` and `.tfvars` files. The most noticeable transformations include:
 
-1.  **Indentation:** Two spaces are used for each level of indentation. Tabs are converted to spaces.
-2.  **Alignment:** The equals signs (`=`) for arguments inside a block are vertically aligned. This dramatically improves human readability when scanning long lists of configuration parameters.
-3.  **Spacing:** Extraneous blank lines are removed, and logical spacing is enforced between blocks and operators.
+1. **Indentation:** Two spaces are used for each level of indentation. Tabs are converted to spaces.
+2. **Alignment:** The equals signs (`=`) for arguments inside a block are vertically aligned. This dramatically improves human readability when scanning long lists of configuration parameters.
+3. **Spacing:** Extraneous blank lines are removed, and logical spacing is enforced between blocks and operators.
 
 **Before `tofu fmt` (Messy and Inconsistent):**
+
 ```hcl
 resource "aws_instance" "web"{
   ami="ami-0c55b159cbfafe1f0"
@@ -277,6 +281,7 @@ resource "aws_instance" "web"{
 ```
 
 **After `tofu fmt` (Clean and Canonical):**
+
 ```hcl
 resource "aws_instance" "web" {
   ami           = "ami-0c55b159cbfafe1f0"
@@ -311,6 +316,6 @@ The primary benefit is **reducing Git diff noise**. If developer A uses staggere
 
 Because human memory is fallible, formatting should never be a manual task left to the end of a sprint. Best practices dictate that `tofu fmt` should be automated at multiple layers of your development lifecycle:
 
-1.  **IDE Integration:** Configure your code editor (e.g., VS Code with the official extension) to execute `tofu fmt` automatically on save. This catches formatting drift immediately and invisibly.
-2.  **Pre-Commit Hooks:** Use a tool like `pre-commit` to ensure that `tofu fmt` runs every time a developer attempts to commit code to the local Git repository. If the code is unformatted, the commit is rejected.
-3.  **Continuous Integration (CI):** The ultimate backstop is your CI/CD pipeline. Every pull request should execute `tofu fmt -check -recursive`. If a developer manages to bypass their local IDE and pre-commit hooks, the CI pipeline will fail the build, preventing poorly formatted code from merging into the main branch.
+1. **IDE Integration:** Configure your code editor (e.g., VS Code with the official extension) to execute `tofu fmt` automatically on save. This catches formatting drift immediately and invisibly.
+2. **Pre-Commit Hooks:** Use a tool like `pre-commit` to ensure that `tofu fmt` runs every time a developer attempts to commit code to the local Git repository. If the code is unformatted, the commit is rejected.
+3. **Continuous Integration (CI):** The ultimate backstop is your CI/CD pipeline. Every pull request should execute `tofu fmt -check -recursive`. If a developer manages to bypass their local IDE and pre-commit hooks, the CI pipeline will fail the build, preventing poorly formatted code from merging into the main branch.

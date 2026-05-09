@@ -1,4 +1,4 @@
-Rust’s compiler is famous for preventing bugs, but **type safety alone cannot guarantee business logic correctness**. In production systems, you need a rigorous testing strategy to ensure your code behaves as expected under all conditions. 
+Rust’s compiler is famous for preventing bugs, but **type safety alone cannot guarantee business logic correctness**. In production systems, you need a rigorous testing strategy to ensure your code behaves as expected under all conditions.
 
 This chapter takes you beyond the basics of `cargo test`. We will explore how to structure unit and integration tests, leverage **property-based testing** to uncover hidden edge cases, and isolate components using **mocking frameworks**. Finally, we will build ephemeral, containerized database environments for true integration testing and learn how to enforce strict **code coverage** thresholds within your CI pipelines.
 
@@ -10,7 +10,7 @@ In Rust, testing is broadly divided into two categories: **unit tests** and **in
 
 ### Unit Testing and the `#[cfg(test)]` Attribute
 
-Unit tests are focused, isolated tests designed to verify that individual components (like functions or methods) work perfectly in isolation. By convention, unit tests in Rust are written in the same file as the code they are testing. 
+Unit tests are focused, isolated tests designed to verify that individual components (like functions or methods) work perfectly in isolation. By convention, unit tests in Rust are written in the same file as the code they are testing.
 
 To prevent test code from bloating your production binaries, Rust uses the `#[cfg(test)]` attribute. This attribute instructs the compiler to compile and run the annotated module *only* when you execute `cargo test`, not when you run `cargo build` or `cargo run`.
 
@@ -57,8 +57,8 @@ mod tests {
 **Key components of the unit test module:**
 
 * **`#[cfg(test)]`**: The configuration flag. `cfg` stands for configuration. This guarantees zero overhead in your compiled release builds.
-* **`mod tests`**: It is standard practice to group unit tests in an inner module named `tests`. 
-* **`use super::*;`**: Because `tests` is an inner module, you must bring the code you want to test into scope. 
+* **`mod tests`**: It is standard practice to group unit tests in an inner module named `tests`.
+* **`use super::*;`**: Because `tests` is an inner module, you must bring the code you want to test into scope.
 * **Testing Private Code**: Because the test module is a child of the module it resides in, it bypasses Rust’s privacy rules. You can directly unit test private helper functions (like `internal_add` above) without exposing them to the public API.
 * **`#[test]`**: This attribute marks a specific function as a test runner target.
 * **`#[should_panic]`**: This attribute asserts that the code *must* panic to pass the test. You can optionally include an `expected` substring to ensure it panics for the correct reason.
@@ -137,7 +137,7 @@ By strictly dividing your tests into isolated internal unit tests (`#[cfg(test)]
 
 In traditional unit testing (often called *example-based testing*), you verify your code against a finite, hardcoded set of inputs. You assert that passing `2` and `2` to an `add` function yields `4`. While essential, this approach relies heavily on the developer's ability to imagine edge cases. What if the input is negative? What if it's the maximum value of an `i32`? What if it is an empty string?
 
-**Property-based testing (PBT)** shifts this paradigm. Instead of writing specific test cases, you define the *invariants* (properties) of your code—rules that must always hold true regardless of the input. A testing framework then bombards your code with hundreds or thousands of randomly generated inputs to try and falsify those properties. 
+**Property-based testing (PBT)** shifts this paradigm. Instead of writing specific test cases, you define the *invariants* (properties) of your code—rules that must always hold true regardless of the input. A testing framework then bombards your code with hundreds or thousands of randomly generated inputs to try and falsify those properties.
 
 In the Rust ecosystem, the `proptest` crate (heavily inspired by Haskell's `QuickCheck` and Python's `Hypothesis`) is the standard tool for property-based testing.
 
@@ -163,7 +163,7 @@ To use `proptest`, add it to the `[dev-dependencies]` section of your `Cargo.tom
 proptest = "1.4"
 ```
 
-Consider a simple function that parses an age from a string. If the string is a valid number, it should return `Some(u32)`, otherwise `None`. 
+Consider a simple function that parses an age from a string. If the string is a valid number, it should return `Some(u32)`, otherwise `None`.
 
 An example-based test might only check `"25"` and `"invalid"`. Here is how we write a property-based test using the `proptest!` macro to assert that our parser never crashes, regardless of what garbage string is thrown at it:
 
@@ -281,7 +281,7 @@ By defining clear strategies for your business objects, you can subject your cor
 
 ## 18.3 Mocking Dependencies and Traits (using `mockall`)
 
-A fundamental principle of unit testing is isolation. If you are testing a service that calculates the total price of a shopping cart, that test should not fail because an external payment API went down or a database connection timed out. When your code interacts with the outside world, you need a way to sever those connections during testing and replace them with predictable, controlled substitutes. 
+A fundamental principle of unit testing is isolation. If you are testing a service that calculates the total price of a shopping cart, that test should not fail because an external payment API went down or a database connection timed out. When your code interacts with the outside world, you need a way to sever those connections during testing and replace them with predictable, controlled substitutes.
 
 In object-oriented languages, this is often achieved through mocking frameworks that heavily utilize reflection. Because Rust is statically typed and lacks runtime reflection, mocking is typically handled at compile time using traits and procedural macros. The most robust and widely adopted crate for this in the Rust ecosystem is `mockall`.
 
@@ -323,7 +323,7 @@ The core of `mockall` is the `#[automock]` macro. When applied to a trait, `mock
 
 ### A Practical Example
 
-Let's implement the checkout scenario. We define a `PaymentGateway` trait and a `CheckoutService` that uses it. 
+Let's implement the checkout scenario. We define a `PaymentGateway` trait and a `CheckoutService` that uses it.
 
 ```rust
 use mockall::{automock, predicate::*};
@@ -540,7 +540,7 @@ Writing tests is only half the battle; knowing *what* you have tested is the oth
 
 ### The Modern Standard: `cargo-llvm-cov`
 
-Historically, the Rust ecosystem relied on ptrace-based tools like `cargo-tarpaulin` (which is Linux-only). Today, the gold standard is **`cargo-llvm-cov`**. 
+Historically, the Rust ecosystem relied on ptrace-based tools like `cargo-tarpaulin` (which is Linux-only). Today, the gold standard is **`cargo-llvm-cov`**.
 
 Because `rustc` uses LLVM as its backend, it can leverage LLVM's native, source-based code coverage instrumentation. `cargo-llvm-cov` acts as a wrapper around this capability, providing incredibly accurate, cross-platform coverage metrics with minimal runtime overhead.
 
@@ -556,7 +556,7 @@ Once installed, you can generate a coverage report for your entire workspace sim
 cargo llvm-cov
 ```
 
-This will execute your `#[test]` unit tests and your `tests/` integration tests, aggregating the results into a terminal table showing line-by-line and function-by-function coverage percentages. 
+This will execute your `#[test]` unit tests and your `tests/` integration tests, aggregating the results into a terminal table showing line-by-line and function-by-function coverage percentages.
 
 To visualize exactly which lines were missed, you can generate an interactive HTML report:
 
@@ -631,7 +631,7 @@ If you add this command to your CI script, any PR that adds thousands of lines o
 
 ### Excluding Boilerplate and Generated Code
 
-Not all code *needs* to be tested. FFI bindings, auto-generated gRPC structs (`tonic`), and highly repetitive boilerplate can artificially deflate your coverage score. 
+Not all code *needs* to be tested. FFI bindings, auto-generated gRPC structs (`tonic`), and highly repetitive boilerplate can artificially deflate your coverage score.
 
 You can instruct `cargo-llvm-cov` to ignore specific files or directories using a configuration file. Create a `.cargo/llvm-cov.toml` file at the root of your workspace:
 

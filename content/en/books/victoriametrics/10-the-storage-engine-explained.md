@@ -2,24 +2,25 @@ At the heart of VictoriaMetrics lies a ruthlessly efficient, custom-built storag
 
 ## 10.1 MergeTree-Inspired Design Principles
 
-To truly understand how VictoriaMetrics achieves its remarkable ingestion throughput and query performance, we must examine the foundation of its storage engine. Unlike traditional relational databases that rely on B-Tree variants, or general-purpose NoSQL databases that use standard Log-Structured Merge-trees (LSM), VictoriaMetrics utilizes a custom storage architecture heavily inspired by ClickHouse’s **MergeTree** family of table engines. 
+To truly understand how VictoriaMetrics achieves its remarkable ingestion throughput and query performance, we must examine the foundation of its storage engine. Unlike traditional relational databases that rely on B-Tree variants, or general-purpose NoSQL databases that use standard Log-Structured Merge-trees (LSM), VictoriaMetrics utilizes a custom storage architecture heavily inspired by ClickHouse’s **MergeTree** family of table engines.
 
 This design choice is not accidental; time-series data exhibits a distinct lifecycle. It is almost exclusively append-only, is typically ingested in chronological order, and requires massive sequential scan speeds for aggregation queries over long time ranges. The MergeTree philosophy is uniquely suited to these characteristics.
 
 ### The Concept of Immutable Data Parts
 
-At the core of the MergeTree design is the concept of **immutable parts**. When VictoriaMetrics flushes data from its in-memory buffers (which we will detail in Section 10.2) to persistent storage, it writes this data as a self-contained, read-only directory on disk called a *part*. 
+At the core of the MergeTree design is the concept of **immutable parts**. When VictoriaMetrics flushes data from its in-memory buffers (which we will detail in Section 10.2) to persistent storage, it writes this data as a self-contained, read-only directory on disk called a *part*.
 
-Once a part is written to disk, it is never modified in place. If an update or a deletion is required—which is rare in time-series workloads but possible—it is handled via separate mechanisms (like writing a new version or a tombstone) rather than mutating the existing file. 
+Once a part is written to disk, it is never modified in place. If an update or a deletion is required—which is rare in time-series workloads but possible—it is handled via separate mechanisms (like writing a new version or a tombstone) rather than mutating the existing file.
 
 This immutability provides several critical advantages:
+
 * **Lock-Free Reads:** Queries can read data from parts without acquiring read locks, completely eliminating read-write contention.
 * **Mechanical Sympathy:** Data is written sequentially to disk in large blocks, maximizing write throughput on both SSDs and rotational HDDs.
 * **Crash Resilience:** Because existing files are never overwritten, power failures or process crashes cannot corrupt already-persisted data.
 
 ### The Background Merge Process
 
-If VictoriaMetrics only ever appended new parts, the disk would quickly fill with thousands of tiny files. This would exhaust file descriptors (inodes) and degrade query performance, as every read operation would need to open and scan a multitude of small files. 
+If VictoriaMetrics only ever appended new parts, the disk would quickly fill with thousands of tiny files. This would exhaust file descriptors (inodes) and degrade query performance, as every read operation would need to open and scan a multitude of small files.
 
 To prevent this, the storage engine employs continuous, background **Merge Workers**. These workers scan the disk for smaller data parts and merge them together into larger, more highly optimized parts.
 
@@ -41,8 +42,9 @@ Level 0 (Recent Flushes)    Level 1 (First Merge)        Level 2 (Deep Merge)
 ```
 
 During this merge process, the storage engine does much more than simply concatenate files. The merge phase is where the real magic of VictoriaMetrics happens:
+
 1. **Sorting and Aligning:** Data from the source parts is decompressed, sorted by time and metric identity (TSID), and seamlessly woven together.
-2. **Deduplication:** If configured, identical samples with the exact same timestamp and value are dropped. 
+2. **Deduplication:** If configured, identical samples with the exact same timestamp and value are dropped.
 3. **Aggressive Compression:** The newly merged, larger blocks of data provide a broader context for compression algorithms, resulting in significantly higher compression ratios than the smaller constituent parts could achieve individually.
 
 Once the new merged part (e.g., `Part D`) is fully and successfully written to disk, the original parts (`Part A` and `Part B`) are atomically marked for deletion and eventually garbage collected.
@@ -66,9 +68,9 @@ This strict separation of timestamps, values, and index data allows VictoriaMetr
 
 ### Divergence from ClickHouse's MergeTree
 
-While heavily inspired by ClickHouse, VictoriaMetrics implements a highly specialized version of this architecture tailored specifically for metrics. 
+While heavily inspired by ClickHouse, VictoriaMetrics implements a highly specialized version of this architecture tailored specifically for metrics.
 
-Unlike ClickHouse, which uses a traditional columnar layout where each label/tag might be a separate column, VictoriaMetrics uses a **Time Series ID (TSID)** model. It maps the complex, multi-dimensional labels of a Prometheus metric into a single, highly efficient internal integer (the TSID). The storage engine then groups data strictly by this TSID and time. 
+Unlike ClickHouse, which uses a traditional columnar layout where each label/tag might be a separate column, VictoriaMetrics uses a **Time Series ID (TSID)** model. It maps the complex, multi-dimensional labels of a Prometheus metric into a single, highly efficient internal integer (the TSID). The storage engine then groups data strictly by this TSID and time.
 
 This adaptation means VictoriaMetrics' MergeTree implementation avoids the "wide table" problem where high-cardinality label sets create sparse, inefficient columns, ensuring that the engine remains robust even when faced with high churn rates and complex Kubernetes environments.
 
@@ -80,11 +82,12 @@ To bridge the gap between network speed and disk speed, VictoriaMetrics employs 
 
 ### The In-Memory Buffering Phase
 
-When an ingestion payload (e.g., via Prometheus `remote_write` or InfluxDB line protocol) reaches a `vmstorage` node, the data is immediately routed to the in-memory buffer. 
+When an ingestion payload (e.g., via Prometheus `remote_write` or InfluxDB line protocol) reaches a `vmstorage` node, the data is immediately routed to the in-memory buffer.
 
 The primary goal of this buffer is to absorb the shock of high-throughput writes. It achieves this by focusing on concurrency and mutability:
+
 * **Lock-Free Inserts:** The buffer utilizes highly optimized Go data structures (like `sync.Pool` and atomic operations) to allow thousands of concurrent connections to append data simultaneously without blocking each other.
-* **Row-Oriented Grouping:** As raw samples arrive, they are parsed, their labels are mapped to a unique Time Series ID (TSID), and the values are appended to an array in memory associated with that TSID. 
+* **Row-Oriented Grouping:** As raw samples arrive, they are parsed, their labels are mapped to a unique Time Series ID (TSID), and the values are appended to an array in memory associated with that TSID.
 * **Minimal Processing:** At this stage, data is generally uncompressed (or only lightly compressed). The engine avoids heavy CPU cycles here to keep ingestion latency as low as possible.
 
 ### The Flush: From Memory to Disk
@@ -153,7 +156,7 @@ The entire storage engine (the `values.bin` and `timestamps.bin` files) organize
 
 ### The Inverted Index Structure
 
-An inverted index maps the *content* (the label key-value pairs) to its *location* (the TSID). 
+An inverted index maps the *content* (the label key-value pairs) to its *location* (the TSID).
 
 To understand this, let us look at a simplified example. Imagine we ingest three distinct time series:
 
@@ -179,15 +182,16 @@ status="500"                [103]
 
 When a user executes a PromQL query, the VictoriaMetrics indexing engine performs a rapid series of set operations (intersections, unions, and exclusions) on these arrays of integers.
 
-Consider a query looking for successful GET requests: 
+Consider a query looking for successful GET requests:
 `http_requests_total{method="GET", status="200"}`
 
 The execution flows as follows:
+
 1. **Index Lookup:** The engine queries the inverted index for each exact-match label.
    * `__name__="http_requests_total"` returns `[101, 102, 103]`
    * `method="GET"` returns `[101, 103]`
    * `status="200"` returns `[101, 102]`
-2. **Intersection:** The engine intersects these sorted lists of integers to find the common TSIDs. 
+2. **Intersection:** The engine intersects these sorted lists of integers to find the common TSIDs.
    * `[101, 102, 103] ∩ [101, 103] ∩ [101, 102] = [101]`
 3. **Data Retrieval:** Now knowing that the only relevant TSID is `101`, the query engine goes to the storage layer, opens the parts containing TSID `101`, and sequentially reads only the necessary timestamps and values from disk.
 
@@ -197,19 +201,19 @@ This set-intersection process is mathematically deterministic and incredibly fas
 
 Just like the data points themselves, the index in VictoriaMetrics is massive, constantly updated, and must be persisted to disk. The inverted index is stored in a separate internal database hierarchy known as the **indexdb**.
 
-The `indexdb` uses a structure similar to the MergeTree concepts discussed in Section 10.1. It maintains its own in-memory buffers for newly discovered series and flushes them to disk as immutable, sorted parts. 
+The `indexdb` uses a structure similar to the MergeTree concepts discussed in Section 10.1. It maintains its own in-memory buffers for newly discovered series and flushes them to disk as immutable, sorted parts.
 
 Because labels in cloud-native environments are highly repetitive (e.g., thousands of pods might share the label `kubernetes_namespace="production-backend-services"`), VictoriaMetrics heavily utilizes **Prefix Compression** within the indexdb. Instead of storing the string `"production-backend-services"` thousands of times, the engine stores the string once and uses compact byte-offsets to reference it. This allows the index to remain small enough to fit almost entirely within the operating system's page cache (RAM), ensuring that label lookups rarely incur a physical disk read penalty.
 
 ## 10.4 Data Compression Algorithms under the Hood
 
-The sheer volume of time-series data generated by modern cloud-native environments makes raw storage mathematically and financially untenable. A single raw sample in a time-series database typically consists of an 8-byte (64-bit) timestamp and an 8-byte float value, totaling 16 bytes. At a moderate ingestion rate of 1 million samples per second, uncompressed storage would consume roughly 1.3 terabytes per day just for the data points, excluding indices and metadata. 
+The sheer volume of time-series data generated by modern cloud-native environments makes raw storage mathematically and financially untenable. A single raw sample in a time-series database typically consists of an 8-byte (64-bit) timestamp and an 8-byte float value, totaling 16 bytes. At a moderate ingestion rate of 1 million samples per second, uncompressed storage would consume roughly 1.3 terabytes per day just for the data points, excluding indices and metadata.
 
 VictoriaMetrics addresses this through a multi-stage, highly aggressive compression pipeline. By understanding the predictable nature of time-series data, the storage engine routinely shrinks this 16-byte payload down to an industry-leading **0.4 to 1 byte per sample** on average.
 
 ### Phase 1: Columnar Separation
 
-As discussed in Section 10.1, the foundation of VictoriaMetrics' compression is its columnar storage layout. Compression algorithms perform best when fed a stream of highly similar data. 
+As discussed in Section 10.1, the foundation of VictoriaMetrics' compression is its columnar storage layout. Compression algorithms perform best when fed a stream of highly similar data.
 
 If timestamps and values were interleaved in a row-based format `[(time1, value1), (time2, value2)]`, the bitstream would be chaotic. By splitting the data into a pure array of timestamps `[time1, time2, time3]` and a pure array of values `[value1, value2, value3]`, the engine creates two distinct, highly predictable data streams that can be optimized using domain-specific mathematical algorithms.
 
@@ -218,6 +222,7 @@ If timestamps and values were interleaved in a row-based format `[(time1, value1
 Once separated, VictoriaMetrics applies specialized encoding techniques to the two arrays before passing them to a general-purpose compressor.
 
 #### Compressing Timestamps: Delta-of-Deltas
+
 Prometheus targets are typically scraped at regular intervals (e.g., every 15 seconds). Therefore, timestamps are highly predictable. Instead of storing the full Unix timestamp (a massive 64-bit integer) for every point, VictoriaMetrics calculates the difference (delta) between consecutive timestamps, and then the difference between those deltas.
 
 * **Raw Timestamps:** `1680000000`, `1680000015`, `1680000030`, `1680000045`
@@ -227,9 +232,11 @@ Prometheus targets are typically scraped at regular intervals (e.g., every 15 se
 Because the network introduces minor jitter, the delta-of-deltas might occasionally be `1` or `-1` instead of `0`. Regardless, this encoding transforms massive integers into a stream consisting almost entirely of zeroes, which requires practically zero bits to represent in a variable-length encoding scheme.
 
 #### Compressing Float Values: XOR Encoding
+
 Time-series values also exhibit predictable patterns. A metric like `node_memory_MemTotal_bytes` never changes, and `node_cpu_seconds_total` usually increments by a predictable amount.
 
-VictoriaMetrics utilizes a variant of the **XOR encoding** technique, famously detailed in Facebook's *Gorilla* TSDB paper. 
+VictoriaMetrics utilizes a variant of the **XOR encoding** technique, famously detailed in Facebook's *Gorilla* TSDB paper.
+
 1. The engine takes the binary representation of the current float64 value and performs a bitwise XOR operation against the previous value.
 2. If the values are identical, the XOR result is exactly zero.
 3. If the values are similar, the XOR result contains a large block of leading and trailing zeroes.
@@ -239,7 +246,7 @@ VictoriaMetrics utilizes a variant of the **XOR encoding** technique, famously d
 
 The domain-specific encodings (Delta-of-deltas and XOR) output a dense bitstream heavily populated by zeroes and small integers. To squeeze the final bytes out of this stream, VictoriaMetrics relies heavily on **Zstandard (ZSTD)**, a fast, lossless compression algorithm developed by Facebook.
 
-ZSTD is uniquely suited for time-series databases because it offers a sliding scale of compression levels. 
+ZSTD is uniquely suited for time-series databases because it offers a sliding scale of compression levels.
 
 * **During Ingestion:** The in-memory buffers utilize a very light compression level. This minimizes CPU usage to ensure ingestion throughput remains high.
 * **During Background Merges:** When the background workers merge Level 0 parts into larger Level 1 and Level 2 parts (as detailed in Section 10.1), they have more time and context. The engine applies heavier ZSTD compression during these merges, aggressively shrinking historical data that is less likely to be queried frequently.
@@ -272,6 +279,6 @@ Total Size: ~3 bytes
 
 ### String and Dictionary Compression
 
-It is worth noting that compression is not limited to metric values and timestamps. The inverted index (which stores strings like metric names and labels) also undergoes rigorous compression. 
+It is worth noting that compression is not limited to metric values and timestamps. The inverted index (which stores strings like metric names and labels) also undergoes rigorous compression.
 
 Because labels are highly repetitive (e.g., the string `namespace="production"` might apply to 10,000 different time series), VictoriaMetrics avoids writing the same string to disk multiple times. It builds a localized **dictionary** within each index part. The string `production` is saved exactly once in the dictionary and assigned a short integer ID. Every subsequent appearance of that label in the index simply references the integer ID, massively reducing the disk footprint of the `indexdb` and allowing index lookups to remain entirely within the operating system's fast RAM cache.

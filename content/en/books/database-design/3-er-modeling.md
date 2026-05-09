@@ -271,15 +271,14 @@ Consider the relationship between `EMPLOYEE` and `DEPARTMENT`:
 You read the constraints *looking across* the relationship toward the target entity.
 
 1. **From Employee to Department:** Look at the numbers next to Employee `(1, 1)`. This dictates the rules for a single Employee instance regarding Departments.
+
 * Min = 1: An employee *must* work in a department (Total Participation).
 * Max = 1: An employee can work in *at most one* department.
 
+1. **From Department to Employee:** Look at the numbers next to Department `(1, N)`. This dictates the rules for a single Department instance regarding Employees.
 
-2. **From Department to Employee:** Look at the numbers next to Department `(1, N)`. This dictates the rules for a single Department instance regarding Employees.
 * Min = 1: A department *must* have at least one employee (Total Participation).
 * Max = N: A department can have *many* employees.
-
-
 
 By rigorously defining the minimum and maximum boundaries of every relationship, the database designer establishes the structural integrity rules that will eventually be enforced by physical database constraints and application logic.
 

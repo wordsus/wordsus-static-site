@@ -20,7 +20,7 @@ pub struct User {
 }
 ```
 
-*Nota sobre la visibilidad:* En Rust, todo es privado por defecto. Si estás diseñando un módulo de dominio, deberás usar la palabra clave `pub` tanto en el struct como en los campos que desees exponer al exterior. 
+*Nota sobre la visibilidad:* En Rust, todo es privado por defecto. Si estás diseñando un módulo de dominio, deberás usar la palabra clave `pub` tanto en el struct como en los campos que desees exponer al exterior.
 
 **Instanciación y atajos**
 
@@ -67,6 +67,7 @@ let user2 = User {
     ..user1 // Los campos restantes (username, active) se toman de user1
 };
 ```
+
 *(Atención: Ten en cuenta que si `user1` tuviera campos que no implementan el trait `Copy`, como el `String` de `username`, usar `..user1` movería esos datos, invalidando `user1` para usos posteriores. Profundizaremos en estas mecánicas de movimiento en el Capítulo 4).*
 
 ### 2. Structs de Tupla (Tuple Structs)
@@ -99,8 +100,9 @@ struct StatelessHandler;
 ```
 
 A primera vista pueden parecer inútiles al no almacenar datos, pero son piezas clave en el diseño de software avanzado en Rust. Se utilizan principalmente en dos escenarios:
-1.  **Marcadores de estado:** Útiles en el patrón *Typestate*, donde utilizas diferentes tipos en tiempo de compilación para representar los estados de una máquina de estados.
-2.  **Implementación de Traits sin estado:** Cuando necesitas definir un comportamiento (métodos) sobre un tipo para cumplir con un contrato (un Trait), pero ese comportamiento no requiere almacenar ninguna variable interna.
+
+1. **Marcadores de estado:** Útiles en el patrón *Typestate*, donde utilizas diferentes tipos en tiempo de compilación para representar los estados de una máquina de estados.
+2. **Implementación de Traits sin estado:** Cuando necesitas definir un comportamiento (métodos) sobre un tipo para cumplir con un contrato (un Trait), pero ese comportamiento no requiere almacenar ninguna variable interna.
 
 En la siguiente sección, expandiremos nuestra capacidad de modelado introduciendo los Enums, los cuales, combinados con los Structs, forman la base de los Tipos de Datos Algebraicos (ADT) que hacen tan poderoso y seguro al modelado de dominio en Rust.
 
@@ -143,7 +145,7 @@ pub enum PaymentState {
 }
 ```
 
-En lenguajes sin ADTs, normalmente modelarías esto con una clase gigante que contiene todos los campos (`amount`, `currency`, `error_code`, etc.) y dependerías de la lógica de negocio (y de la disciplina del programador) para no leer el `error_code` si el estado es `Processed`. 
+En lenguajes sin ADTs, normalmente modelarías esto con una clase gigante que contiene todos los campos (`amount`, `currency`, `error_code`, etc.) y dependerías de la lógica de negocio (y de la disciplina del programador) para no leer el `error_code` si el estado es `Processed`.
 
 En Rust, el compilador garantiza que si el estado es `PaymentState::Processed`, los campos `error_code` y `reason` literalmente no existen en ese contexto. No puedes acceder a ellos por error.
 
@@ -157,9 +159,9 @@ Si tienes una variante que ocupa 8 bytes y otra que ocupa 100 bytes, cualquier i
 
 Verás este patrón constantemente a lo largo del libro. Algunos usos clásicos en el desarrollo de APIs y sistemas distribuidos incluyen:
 
-1.  **Eventos de Dominio:** En arquitecturas orientadas a eventos (Event Sourcing), un enum puede representar de forma segura cualquier evento que haya ocurrido en el sistema (`UserCreated`, `EmailUpdated`, `AccountDeleted`).
-2.  **Manejo de Errores:** Como veremos en el Capítulo 5, el manejo de errores en Rust se basa en el enum `Result<T, E>`, que modela el hecho de que una operación solo puede ser un éxito (`Ok(T)`) **o** un error (`Err(E)`).
-3.  **Estados de Websockets o Conexiones:** Para definir si una conexión TCP está `Connecting`, `Established(Stream)` o `Disconnected(Reason)`.
+1. **Eventos de Dominio:** En arquitecturas orientadas a eventos (Event Sourcing), un enum puede representar de forma segura cualquier evento que haya ocurrido en el sistema (`UserCreated`, `EmailUpdated`, `AccountDeleted`).
+2. **Manejo de Errores:** Como veremos en el Capítulo 5, el manejo de errores en Rust se basa en el enum `Result<T, E>`, que modela el hecho de que una operación solo puede ser un éxito (`Ok(T)`) **o** un error (`Err(E)`).
+3. **Estados de Websockets o Conexiones:** Para definir si una conexión TCP está `Connecting`, `Established(Stream)` o `Disconnected(Reason)`.
 
 Para interactuar con los datos que viven "dentro" de las variantes de un enum, Rust utiliza una técnica llamada **Pattern Matching** (que cubriremos en la sección 3.4). Pero antes de llegar a la extracción de datos, necesitamos saber cómo dotar de comportamiento a estos Structs y Enums que acabamos de crear.
 
@@ -173,7 +175,7 @@ Para dotar de comportamiento a nuestros tipos, abrimos un bloque `impl` seguido 
 
 ### 1. Funciones Asociadas (Constructores y utilidades)
 
-Las funciones asociadas están ligadas al tipo en sí, no a una instancia específica del tipo. Se comportan de manera similar a los métodos estáticos (`static`) en otros lenguajes. 
+Las funciones asociadas están ligadas al tipo en sí, no a una instancia específica del tipo. Se comportan de manera similar a los métodos estáticos (`static`) en otros lenguajes.
 
 El uso más común en el backend para una función asociada es actuar como un **constructor**. A diferencia de otros lenguajes, Rust no tiene la palabra clave `new`; por convención, los desarrolladores de Rust crean una función asociada llamada `new` que retorna una instancia del tipo.
 
@@ -205,7 +207,7 @@ let session = UserSession::new(42, String::from("jwt_token_xyz"));
 
 ### 2. Métodos y el parámetro `self`
 
-Los métodos son funciones que operan sobre una instancia específica del tipo. Para que una función dentro de un bloque `impl` se convierta en un método, **su primer parámetro debe ser siempre `self`**. 
+Los métodos son funciones que operan sobre una instancia específica del tipo. Para que una función dentro de un bloque `impl` se convierta en un método, **su primer parámetro debe ser siempre `self`**.
 
 Aquí es donde Rust te obliga a pensar explícitamente en cómo tu método interactúa con la memoria. Existen tres formas principales de pasar `self`, las cuales sirven de preámbulo perfecto para las reglas de *Ownership y Borrowing* que dominaremos en el Capítulo 4:
 
@@ -277,7 +279,7 @@ impl UserSession {
 }
 ```
 
-A este punto, ya sabemos cómo estructurar datos (Structs/Enums) y cómo darles comportamiento (`impl`). Pero cuando tratamos con tipos algebraicos (como los Enums complejos de la sección anterior), necesitamos una forma ergonómica y exhaustiva de desempaquetar la información que contienen en tiempo de ejecución. 
+A este punto, ya sabemos cómo estructurar datos (Structs/Enums) y cómo darles comportamiento (`impl`). Pero cuando tratamos con tipos algebraicos (como los Enums complejos de la sección anterior), necesitamos una forma ergonómica y exhaustiva de desempaquetar la información que contienen en tiempo de ejecución.
 
 ## 3.4 Pattern Matching avanzado con `match` e `if let`
 
@@ -287,7 +289,7 @@ El pattern matching en Rust no es solo una estructura de control de flujo; es un
 
 ### 1. El poder y la exhaustividad de `match`
 
-El operador `match` es similar a un `switch` tradicional, pero con esteroides. Compara un valor contra una serie de patrones y ejecuta el código asociado al primer patrón que coincida. 
+El operador `match` es similar a un `switch` tradicional, pero con esteroides. Compara un valor contra una serie de patrones y ejecuta el código asociado al primer patrón que coincida.
 
 La característica más importante de `match` para un desarrollador backend es su **exhaustividad**. El compilador de Rust te obligará a manejar *todos* los casos posibles. Si añades una nueva variante a tu enum en el futuro, el código no compilará hasta que actualices todos los bloques `match` del proyecto que lo utilicen, eliminando categorías enteras de bugs en refactorizaciones.
 

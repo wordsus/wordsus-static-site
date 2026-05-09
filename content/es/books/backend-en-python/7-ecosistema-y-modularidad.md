@@ -29,6 +29,7 @@ import pandas as pd
 
 **Bajo el capó: ¿Qué ocurre al usar `import`?**
 Cuando ejecutas `import mi_modulo`, Python no lo busca por arte de magia. Sigue un orden estricto de resolución basado en la lista `sys.path`:
+
 1. El directorio actual desde donde se ejecuta el script.
 2. Las rutas definidas en la variable de entorno `PYTHONPATH`.
 3. Los directorios de instalación estándar de Python (donde viven los módulos integrados y las librerías de terceros).
@@ -39,7 +40,7 @@ Cuando ejecutas `import mi_modulo`, Python no lo busca por arte de magia. Sigue 
 
 ### Paquetes y la anatomía de un proyecto
 
-Un paquete no es más que un directorio que contiene módulos y, tradicionalmente, un archivo especial llamado `__init__.py`. 
+Un paquete no es más que un directorio que contiene módulos y, tradicionalmente, un archivo especial llamado `__init__.py`.
 
 Imagina que estamos construyendo una aplicación de comercio electrónico. Podríamos estructurarla de la siguiente manera:
 
@@ -62,17 +63,20 @@ ecommerce/                  # Directorio raíz del paquete
 Dentro de esta estructura, los módulos necesitan comunicarse entre sí.
 
 * **Importaciones Absolutas:** Especifican la ruta completa desde la raíz del proyecto. Son la opción más recomendada (PEP 8) por ser explícitas y fáciles de leer.
+
     ```python
     # Dentro de ecommerce/facturacion/recibos.py
     from ecommerce.inventario.stock import actualizar_stock
     ```
 
 * **Importaciones Relativas:** Usan puntos (`.`) para indicar la ubicación relativa al módulo actual. Útiles en paquetes muy anidados para evitar escribir rutas larguísimas, pero pueden volverse frágiles si refactorizas carpetas.
+
     ```python
     # Dentro de ecommerce/facturacion/recibos.py
     from .impuestos import calcular_iva      # Un punto: mismo directorio
     from ..inventario.stock import consultar # Dos puntos: directorio padre
     ```
+
     *Trampa común:* Las importaciones relativas **solo** funcionan si el archivo se ejecuta como un módulo importado. Si intentas ejecutar `recibos.py` directamente desde la terminal (`python recibos.py`), Python arrojará el temido error `ImportError: attempted relative import with no known parent package`.
 
 ---
@@ -98,6 +102,7 @@ from .recibos import generar_recibo
 ```
 
 Ahora, el consumidor del paquete puede hacer una importación mucho más limpia:
+
 ```python
 # Cualquier otro archivo
 from ecommerce.facturacion import calcular_iva, generar_recibo
@@ -135,21 +140,23 @@ Dominar la estructura de paquetes y las importaciones es lo que te permitirá co
 
 ## 7.2 Aislamiento de proyectos: Entornos virtuales (venv)
 
-Ahora que sabes cómo estructurar tu propio código en módulos y paquetes, surge un nuevo desafío: ¿qué ocurre cuando tu proyecto necesita utilizar código escrito por otras personas? 
+Ahora que sabes cómo estructurar tu propio código en módulos y paquetes, surge un nuevo desafío: ¿qué ocurre cuando tu proyecto necesita utilizar código escrito por otras personas?
 
 Por defecto, cuando instalas una librería de terceros en Python, esta se guarda en un directorio global de tu sistema (comúnmente llamado `site-packages`). Si solo estás escribiendo pequeños scripts espaciados en el tiempo, esto no es un problema. Pero en el mundo real, pronto te enfrentarás al temido **"Infierno de las Dependencias" (Dependency Hell)**.
 
 Imagina este escenario:
+
 * El **Proyecto A** (un sistema heredado de la empresa) utiliza la versión 2.2 de una librería llamada `Django`.
 * El **Proyecto B** (una nueva API que estás desarrollando) requiere las características de la versión 4.2 de `Django`.
 
-Si instalas las dependencias de forma global, la instalación de `Django 4.2` sobrescribirá la versión `2.2`. De repente, tu Proyecto B funciona perfectamente, pero el Proyecto A acaba de romperse por completo. 
+Si instalas las dependencias de forma global, la instalación de `Django 4.2` sobrescribirá la versión `2.2`. De repente, tu Proyecto B funciona perfectamente, pero el Proyecto A acaba de romperse por completo.
 
 La solución de la ingeniería de software a este problema es el **aislamiento**.
 
 ### ¿Qué es un Entorno Virtual?
 
 Un entorno virtual no es una máquina virtual completa como VirtualBox, ni un contenedor como Docker. Es mucho más ligero. Un entorno virtual en Python es, en esencia, **una carpeta aislada** que contiene:
+
 1. Una copia (o enlace simbólico) del ejecutable del intérprete de Python.
 2. Su propia carpeta `site-packages` independiente para instalar librerías.
 3. Scripts para "activar" y "desactivar" este entorno.
@@ -184,9 +191,10 @@ python -m venv .venv
 ```
 
 **Anatomía del comando:**
+
 * `python -m`: Le dice a Python que ejecute un módulo de la librería estándar como si fuera un script.
 * `venv`: Es el nombre del módulo que crea entornos virtuales.
-* `.venv`: Es el nombre de la carpeta que se va a crear. 
+* `.venv`: Es el nombre de la carpeta que se va a crear.
 *(Nota Senior: Usar `.venv` con un punto inicial es el estándar moderno de la industria. El punto hace que la carpeta esté oculta en sistemas tipo Unix, manteniendo el explorador de archivos limpio, ya que es una carpeta de sistema que rara vez necesitas abrir manualmente).*
 
 ### Activación y Desactivación
@@ -194,11 +202,13 @@ python -m venv .venv
 Crear el entorno no es suficiente; tienes que decirle a tu terminal que empiece a usarlo. A esto se le llama "activar" el entorno.
 
 **En Windows (Command Prompt o PowerShell):**
+
 ```powershell
 .venv\Scripts\activate
 ```
 
 **En macOS y Linux (Bash/Zsh):**
+
 ```bash
 source .venv/bin/activate
 ```
@@ -206,6 +216,7 @@ source .venv/bin/activate
 Sabrás que funcionó porque el nombre del entorno aparecerá entre paréntesis al principio de la línea de tu terminal, algo así: `(.venv) usuario@maquina:~/ProyectoB$`.
 
 Para salir del entorno virtual y volver al Python global de tu sistema, simplemente escribe:
+
 ```bash
 deactivate
 ```
@@ -214,7 +225,7 @@ deactivate
 
 Como desarrollador Senior, no basta con saber *cómo* se hace, sino *por qué* funciona. La magia de la activación no es un proceso complejo del sistema operativo. En realidad, el script `activate` hace principalmente una cosa: **modifica temporalmente la variable de entorno `PATH` de tu terminal**.
 
-El `PATH` es la lista de carpetas donde tu sistema operativo busca comandos ejecutables. Al activar el entorno, el script toma la ruta absoluta de la carpeta `.venv/bin` (o `.venv\Scripts` en Windows) y la pone al **principio** del `PATH`. 
+El `PATH` es la lista de carpetas donde tu sistema operativo busca comandos ejecutables. Al activar el entorno, el script toma la ruta absoluta de la carpeta `.venv/bin` (o `.venv\Scripts` en Windows) y la pone al **principio** del `PATH`.
 
 De esta forma, cuando escribes `python` o instalas algo nuevo, el sistema operativo encuentra primero el ejecutable dentro de `.venv` y lo utiliza, ignorando el Python global.
 
@@ -228,7 +239,7 @@ Ahora que tenemos un contenedor seguro e aislado para nuestro proyecto, estamos 
 
 ## 7.3 Gestión moderna de dependencias (pip, requirements.txt, Poetry)
 
-Con tu entorno virtual (`.venv`) activado, has creado una habitación limpia y aislada. El siguiente paso lógico es amueblarla. En el desarrollo de software, rara vez reinventamos la rueda; nos apoyamos en el trabajo de la comunidad utilizando paquetes de terceros. 
+Con tu entorno virtual (`.venv`) activado, has creado una habitación limpia y aislada. El siguiente paso lógico es amueblarla. En el desarrollo de software, rara vez reinventamos la rueda; nos apoyamos en el trabajo de la comunidad utilizando paquetes de terceros.
 
 Esta sección marca una transición importante: pasaremos de la forma tradicional en la que se ha gestionado Python durante años, a las herramientas modernas que exige la industria actual para garantizar que tu código funcione exactamente igual en tu máquina, en la de tu compañero y en el servidor de producción.
 
@@ -263,17 +274,20 @@ Si estás construyendo un proyecto colaborativo, necesitas una forma de decirle 
 El flujo de trabajo clásico es el siguiente:
 
 1. **Congelar el estado:** Una vez que tu código funciona, le pides a `pip` que anote todo lo que hay en tu entorno virtual.
+
    ```bash
    pip freeze > requirements.txt
    ```
+
 2. **Replicar el estado:** Cuando otro desarrollador clona tu proyecto (o cuando se despliega en producción), crea su propio entorno virtual y ejecuta:
+
    ```bash
    pip install -r requirements.txt
    ```
 
 #### El problema Senior: Dependencias Transitivas
 
-Aunque `requirements.txt` es útil y lo verás en miles de proyectos, tiene un fallo arquitectónico importante. 
+Aunque `requirements.txt` es útil y lo verás en miles de proyectos, tiene un fallo arquitectónico importante.
 
 Imagina que instalas `Flask` (un framework web). Flask no funciona solo; internamente necesita otras librerías como `Werkzeug` y `Jinja2`. Cuando ejecutas `pip freeze`, tu `requirements.txt` se llenará con Flask **y con todas sus dependencias transitivas** (las dependencias de tus dependencias).
 
@@ -283,7 +297,7 @@ Si en seis meses quieres actualizar Flask, al mirar tu `requirements.txt` no sab
 
 ### La gestión moderna: `pyproject.toml` y Poetry
 
-Para solucionar el "Infierno de las Dependencias", la comunidad de Python creó el PEP 518, introduciendo el archivo **`pyproject.toml`** como el nuevo estándar unificado para configurar proyectos. 
+Para solucionar el "Infierno de las Dependencias", la comunidad de Python creó el PEP 518, introduciendo el archivo **`pyproject.toml`** como el nuevo estándar unificado para configurar proyectos.
 
 Basado en este estándar, han surgido herramientas modernas de gestión, siendo **Poetry** (junto con alternativas como *Pipenv* o *uv*) el estándar de facto actual en el desarrollo profesional.
 
@@ -295,38 +309,46 @@ En lugar de usar `pip` directamente, Poetry toma el control:
 
 **1. Inicializar un proyecto:**
 Si ya tienes una carpeta, puedes convertirla en un proyecto gestionado por Poetry. Esto generará el archivo `pyproject.toml`.
+
 ```bash
 poetry init
 ```
 
 **2. Añadir dependencias:**
 En lugar de `pip install`, usas `poetry add`.
+
 ```bash
 poetry add fastapi
 ```
+
 *¿Qué ocurre bajo el capó?* * Poetry añade `fastapi` al archivo `pyproject.toml` de forma limpia.
+
 * Calcula un árbol de dependencias matemáticamente perfecto para evitar conflictos de versiones.
 * Genera un archivo **`poetry.lock`**.
 
 **3. Dependencias de desarrollo:**
 ¿Necesitas librerías para hacer pruebas (testing) o formatear código, pero que no deberían ir a producción? Poetry lo maneja de forma nativa mediante grupos.
+
 ```bash
 poetry add pytest black --group dev
 ```
 
 #### La magia del archivo `.lock` (Determinismo Absoluto)
 
-El archivo `poetry.lock` es la verdadera diferencia entre un proyecto amateur y uno profesional. 
+El archivo `poetry.lock` es la verdadera diferencia entre un proyecto amateur y uno profesional.
 
 Mientras el `pyproject.toml` dice *"Necesito FastAPI versión 0.100 o superior"*, el archivo `poetry.lock` anota *"El día que instalé esto, FastAPI trajo consigo la librería Pydantic en su versión exacta 2.3.1 y este es el hash criptográfico del archivo que descargué"*.
 
 Cuando un compañero se une al proyecto, no ejecuta `poetry add`, sino:
+
 ```bash
 poetry install
 ```
+
 Poetry leerá el archivo `.lock` e instalará **exactamente** los mismos bytes que tienes tú. Cero sorpresas. Cero "en mi máquina sí funciona". A esto se le llama **construcciones deterministas (deterministic builds)**.
 
 > **Resumen de la evolución:**
+>
 > * **Nivel Script:** Usa el Python global (Caos a corto plazo).
 > * **Nivel Junior:** Crea un `venv`, usa `pip install` y guarda todo en `requirements.txt`.
 > * **Nivel Senior:** Usa un `pyproject.toml` con **Poetry**, separando dependencias de producción y desarrollo, y comiteando el `poetry.lock` en el repositorio para garantizar el determinismo absoluto.

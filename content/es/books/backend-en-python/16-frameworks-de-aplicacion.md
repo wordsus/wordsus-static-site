@@ -2,7 +2,7 @@ El Capítulo 16 representa la culminación técnica de la arquitectura backend e
 
 ## 16.1 Django: El patrón MVT, el panel de administración y Django REST Framework
 
-Si en el mundo de Python existe un peso pesado para el desarrollo web, ese es Django. Su filosofía fundamental es *"Batteries Included"* (baterías incluidas), lo que significa que el framework te proporciona de fábrica casi todo lo que necesitas para lanzar una aplicación a producción: enrutamiento, autenticación, un ORM potente (que exploramos en el capítulo 15), mitigación de vulnerabilidades y un panel de administración listo para usar. 
+Si en el mundo de Python existe un peso pesado para el desarrollo web, ese es Django. Su filosofía fundamental es *"Batteries Included"* (baterías incluidas), lo que significa que el framework te proporciona de fábrica casi todo lo que necesitas para lanzar una aplicación a producción: enrutamiento, autenticación, un ORM potente (que exploramos en el capítulo 15), mitigación de vulnerabilidades y un panel de administración listo para usar.
 
 A diferencia de los microframeworks que veremos más adelante, Django toma decisiones arquitectónicas por ti. Esto reduce la fatiga de decisión y estandariza el código, permitiendo que un desarrollador Senior pueda entender rápidamente el proyecto de otro equipo.
 
@@ -80,6 +80,7 @@ Aquí es donde entra **Django REST Framework (DRF)**. DRF es una biblioteca exte
 DRF introduce tres conceptos clave que se acoplan perfectamente al ecosistema Django:
 
 #### 1. Serializers (Serializadores)
+
 Los serializadores actúan como traductores. Toman instancias complejas, como los *QuerySets* del ORM de Django, y las convierten en tipos de datos nativos de Python que luego pueden ser fácilmente renderizados a JSON. También hacen el proceso inverso, validando los datos JSON entrantes para crear o actualizar instancias del modelo.
 
 ```python
@@ -95,6 +96,7 @@ class ArticuloSerializer(serializers.ModelSerializer):
 ```
 
 #### 2. Views y ViewSets
+
 Mientras que Django tiene vistas genéricas para HTML, DRF provee vistas genéricas para APIs. Los **ViewSets** llevan esto un paso más allá combinando la lógica de múltiples acciones (lista, creación, obtención, actualización, eliminación) en una sola clase, eliminando código repetitivo.
 
 ```python
@@ -113,6 +115,7 @@ class ArticuloViewSet(viewsets.ModelViewSet):
 ```
 
 #### 3. Routers
+
 Dado que un `ViewSet` ya sabe qué acciones puede realizar (GET para listar, POST para crear, etc.), DRF proporciona **Routers** que generan las URLs de la API automáticamente, asegurando que sigan las convenciones RESTful sin que tengas que definirlas manualmente una por una.
 
 ```python
@@ -150,7 +153,7 @@ Como efecto secundario brillante de esta validación basada en esquemas, FastAPI
 
 ### 2. Asincronía Nativa (ASGI)
 
-FastAPI está construido sobre **Starlette**, un microframework web ASGI (Asynchronous Server Gateway Interface, que contrastaremos con WSGI en el Capítulo 20). Esto significa que soporta de forma nativa `async` y `await` (conceptos que dominamos en el Capítulo 12). 
+FastAPI está construido sobre **Starlette**, un microframework web ASGI (Asynchronous Server Gateway Interface, que contrastaremos con WSGI en el Capítulo 20). Esto significa que soporta de forma nativa `async` y `await` (conceptos que dominamos en el Capítulo 12).
 
 En el desarrollo web moderno, la mayoría de los cuellos de botella no están en el procesamiento de la CPU, sino en la espera de operaciones I/O (lectura de bases de datos, llamadas a APIs externas). Al declarar los *endpoints* con `async def`, FastAPI puede manejar miles de conexiones simultáneas en un solo hilo de ejecución, liberando el *Event Loop* mientras espera la respuesta de la base de datos (por ejemplo, al usar un driver asíncrono como `asyncpg`, visto en la sección 15.1).
 
@@ -269,8 +272,9 @@ En poco más de 40 líneas de código, hemos definido un servicio asíncrono con
 Si Django es la caja de herramientas completa y FastAPI es el torno de alta precisión, **Flask** es la navaja suiza: minimalista, maduro, increíblemente versátil y con un ecosistema de extensiones gigante. Creado originalmente como una broma del *April Fools' Day* por Armin Ronacher, Flask se ha consolidado como uno de los frameworks web más populares del mundo.
 
 La filosofía central de Flask es ser un **microframework**. Esto no significa que carezca de potencia para aplicaciones grandes, sino que el framework principal es extremadamente ligero, manteniendo una base de código pequeña y dejando las decisiones arquitectónicas en tus manos. De fábrica, Flask solo te proporciona dos cosas principales:
-1.  **Werkzeug:** Un robusto conjunto de herramientas WSGI para gestionar el enrutamiento y las peticiones HTTP.
-2.  **Jinja2:** Un potente motor de plantillas (aunque en el contexto de microservicios modernos, rara vez lo usaremos).
+
+1. **Werkzeug:** Un robusto conjunto de herramientas WSGI para gestionar el enrutamiento y las peticiones HTTP.
+2. **Jinja2:** Un potente motor de plantillas (aunque en el contexto de microservicios modernos, rara vez lo usaremos).
 
 No incluye ORM, ni validación de formularios, ni sistema de autenticación. Tú eliges qué piezas acoplar (por ejemplo, usando SQLAlchemy para la base de datos, como vimos en el Capítulo 15). Esta ausencia de "equipaje" lo convierte en el candidato perfecto para la **arquitectura de microservicios**, donde cada servicio debe ser pequeño, tener una única responsabilidad y consumir los mínimos recursos posibles.
 
@@ -311,6 +315,7 @@ Para esto, Flask ofrece los **Blueprints** (Planos). Un Blueprint te permite def
 Veamos cómo estructurar un microservicio de "Usuarios" usando Blueprints:
 
 **1. El módulo de rutas (Blueprint):**
+
 ```python
 # usuarios/rutas.py
 from flask import Blueprint, request, jsonify
@@ -333,6 +338,7 @@ def obtener_usuario(usuario_id):
 ```
 
 **2. El ensamblaje de la aplicación:**
+
 ```python
 # app.py (Punto de entrada del microservicio)
 from flask import Flask
@@ -354,6 +360,7 @@ if __name__ == '__main__':
     app = create_app()
     app.run(host='0.0.0.0', port=5000)
 ```
+
 *Nota Senior: Hemos utilizado el patrón `create_app()` (Application Factory). Este patrón es fundamental para el testing (Capítulo 17), ya que te permite instanciar múltiples versiones de la aplicación con diferentes configuraciones de prueba sin conflictos de estado global.*
 
 ### Ecosistema y Flexibilidad
@@ -378,6 +385,7 @@ En una arquitectura de microservicios en el mundo real, tu ecosistema se verá m
 ```
 
 Flask brilla en este escenario porque te permite ser pragmático:
+
 * ¿El microservicio de Usuarios requiere datos relacionales estrictos? Instalas `Flask-SQLAlchemy`.
 * ¿El de Inventario necesita alta flexibilidad de esquema? Usas `PyMongo` sin que el framework se queje.
 * ¿Necesitas integrar un linter estricto y serialización robusta porque te gusta lo que hace Pydantic en FastAPI? Puedes instalar `Flask-Pydantic` o usar `Marshmallow`.
@@ -386,6 +394,6 @@ Flask brilla en este escenario porque te permite ser pragmático:
 
 Con esta sección cerramos la triada de los frameworks backend de Python. Como desarrollador Senior, tu trabajo no es casarte con un framework, sino entender sus *trade-offs* para elegir el adecuado según el proyecto:
 
-1.  **Django:** Elígelo cuando necesites construir un monolito robusto y rápido, cuando el panel de administración autogenerado ahorre semanas de trabajo, o cuando el proyecto requiera renderizado del lado del servidor pesado.
-2.  **FastAPI:** Elígelo cuando construyas APIs de alto rendimiento que requieran asincronía pura (I/O intensivo), cuando necesites autodocumentación estricta y cuando la validación de tipos sea crucial desde el primer día.
-3.  **Flask:** Elígelo para construir microservicios pequeños e independientes, cuando necesites control absoluto sobre las bibliotecas de terceros que utilizas, o cuando estés modernizando un sistema *legacy* pieza por pieza.
+1. **Django:** Elígelo cuando necesites construir un monolito robusto y rápido, cuando el panel de administración autogenerado ahorre semanas de trabajo, o cuando el proyecto requiera renderizado del lado del servidor pesado.
+2. **FastAPI:** Elígelo cuando construyas APIs de alto rendimiento que requieran asincronía pura (I/O intensivo), cuando necesites autodocumentación estricta y cuando la validación de tipos sea crucial desde el primer día.
+3. **Flask:** Elígelo para construir microservicios pequeños e independientes, cuando necesites control absoluto sobre las bibliotecas de terceros que utilizas, o cuando estés modernizando un sistema *legacy* pieza por pieza.

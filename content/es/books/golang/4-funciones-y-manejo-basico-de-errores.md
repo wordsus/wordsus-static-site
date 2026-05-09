@@ -6,7 +6,7 @@ En Go, las funciones son la piedra angular de la abstracción y la modularidad. 
 
 ### Anatomía de la declaración de una función
 
-La declaración de una función en Go utiliza la palabra clave `func`, seguida del identificador, la firma de parámetros, la firma de retornos (opcional) y el bloque de ejecución. 
+La declaración de una función en Go utiliza la palabra clave `func`, seguida del identificador, la firma de parámetros, la firma de retornos (opcional) y el bloque de ejecución.
 
 Un rasgo sintáctico característico de Go es la agrupación de parámetros del mismo tipo. Si múltiples parámetros consecutivos comparten el mismo tipo, puedes omitir la declaración de tipo en todos menos en el último:
 
@@ -35,6 +35,7 @@ func dividir(a, b float64) (float64, bool) {
 ```
 
 Este mecanismo es la base de dos de los patrones más idiomáticos de Go:
+
 1. **El patrón "Comma-ok":** Utilizado extensamente para indicar si una operación fue exitosa o si un valor existe (como se verá en el manejo de Maps en el Capítulo 5).
 2. **El paradigma de errores:** Retornar el resultado esperado junto con un valor de tipo `error` (que profundizaremos en la sección 4.4).
 
@@ -57,10 +58,10 @@ func procesarDatos(input string) (resultado int, exito bool) {
 }
 ```
 
-A la instrucción `return` sin argumentos se le conoce como **"naked return"** (retorno desnudo). 
+A la instrucción `return` sin argumentos se le conoce como **"naked return"** (retorno desnudo).
 
 **Consideraciones avanzadas sobre los Naked Returns:**
-Aunque los retornos nombrados son útiles para documentar la firma de la función (indicando explícitamente qué representa cada tipo retornado), el uso de *naked returns* en funciones medianas o largas es considerado un antipatrón de *Clean Code*. 
+Aunque los retornos nombrados son útiles para documentar la firma de la función (indicando explícitamente qué representa cada tipo retornado), el uso de *naked returns* en funciones medianas o largas es considerado un antipatrón de *Clean Code*.
 El problema principal radica en el *shadowing* (sombreado) de variables y la pérdida de legibilidad: el desarrollador tiene que rastrear visualmente hacia arriba en el bloque de código para descubrir qué valor exacto tienen las variables de retorno en el momento de la salida. Por convención, se recomienda usar retornos explícitos `return resultado, exito` a menos que la función sea extremadamente corta.
 
 ### Bajo el capó: La ABI (Application Binary Interface) de Go
@@ -90,6 +91,7 @@ func sumar(valores ...int) int {
 ```
 
 El diseño del compilador de Go impone **dos reglas estrictas** sobre las funciones variádicas para evitar ambigüedades durante el análisis sintáctico (parsing):
+
 1. **Unicidad:** Solo puede existir un parámetro variádico por función.
 2. **Posición terminal:** El parámetro variádico debe ser obligatoriamente el **último** en la firma de la función.
 
@@ -103,7 +105,7 @@ func registrarUsuario(nombre string, edad int, roles ...string) { /* ... */ }
 
 ### Bajo el capó: Slices implícitos
 
-La elegancia de las funciones variádicas en Go radica en cómo se implementan a nivel interno. Cuando declaras un parámetro como `...T`, en el cuerpo de la función ese parámetro se comporta exacta y literalmente como un Slice de tipo `[]T`. 
+La elegancia de las funciones variádicas en Go radica en cómo se implementan a nivel interno. Cuando declaras un parámetro como `...T`, en el cuerpo de la función ese parámetro se comporta exacta y literalmente como un Slice de tipo `[]T`.
 
 Si el consumidor de tu API invoca la función sin pasar ningún argumento variádico (ej. `sumar()`), el compilador no inyecta un Slice vacío preasignado, sino que inyecta un valor `nil`. Esto es altamente eficiente en términos de memoria, ya que un Slice `nil` tiene un costo de asignación cero. Puedes iterar de forma segura sobre este valor `nil` usando `for range` sin que el programa entre en pánico.
 
@@ -132,11 +134,11 @@ func calcularTotal(montos ...float64) float64 {
 
 ### Consideraciones de rendimiento y asignación de memoria
 
-Aunque las funciones variádicas ofrecen una sintaxis limpia, tienen un costo oculto que es crucial entender al programar aplicaciones de alto rendimiento. 
+Aunque las funciones variádicas ofrecen una sintaxis limpia, tienen un costo oculto que es crucial entender al programar aplicaciones de alto rendimiento.
 
-Cuando invocas una función pasando parámetros individuales explícitos (ej. `sumar(1, 2, 3)`), el compilador de Go debe crear un *array subyacente* (backing array) para alojar temporalmente esos valores y construir el Slice que la función consumirá. 
+Cuando invocas una función pasando parámetros individuales explícitos (ej. `sumar(1, 2, 3)`), el compilador de Go debe crear un *array subyacente* (backing array) para alojar temporalmente esos valores y construir el Slice que la función consumirá.
 
-Si el análisis de escape (Escape Analysis, que veremos en detalle en el Capítulo 44) determina que este Slice temporal no "escapa" de la función (es decir, no se devuelve ni se asigna a una variable global), el compilador optimizará la operación y asignará este array en la pila (Stack). Sin embargo, si la función almacena ese Slice en otro lugar, el array será forzado a ubicarse en el montón (Heap), generando trabajo extra para el Garbage Collector. 
+Si el análisis de escape (Escape Analysis, que veremos en detalle en el Capítulo 44) determina que este Slice temporal no "escapa" de la función (es decir, no se devuelve ni se asigna a una variable global), el compilador optimizará la operación y asignará este array en la pila (Stack). Sin embargo, si la función almacena ese Slice en otro lugar, el array será forzado a ubicarse en el montón (Heap), generando trabajo extra para el Garbage Collector.
 
 Si bien este overhead de asignación es microscópico y despreciable en el 99% de las aplicaciones HTTP o herramientas de línea de comandos, es un patrón que debes vigilar en bucles muy ajustados o código de baja latencia.
 
@@ -203,7 +205,7 @@ func main() {
 
 ### La trampa clásica: Captura de variables en bucles (`for`)
 
-Históricamente, el uso de *closures* dentro de bucles ha sido la fuente de uno de los *bugs* más infames y comunes en Go. 
+Históricamente, el uso de *closures* dentro de bucles ha sido la fuente de uno de los *bugs* más infames y comunes en Go.
 
 Antes de Go 1.22, la variable de iteración en un bucle `for` se creaba una sola vez y su valor se actualizaba en cada ciclo. Si lanzabas una *Goroutine* o guardabas un *closure* que hacía referencia a esa variable, todas las instancias capturaban **la misma dirección de memoria**. Para cuando los *closures* se ejecutaban, el bucle ya había terminado y todos leían el último valor de la iteración.
 
@@ -273,7 +275,7 @@ Para crear errores básicos, la Standard Library proporciona el paquete `errors`
 
 ### La revolución de Go 1.13: Wrapping, `errors.Is` y `errors.As`
 
-A medida que las aplicaciones Go crecían, surgió un problema: cuando un error burbujeaba hacia arriba en la pila de llamadas, a menudo perdía su contexto original. Si una función de base de datos fallaba y solo retornaba el error, la capa HTTP superior no sabía *qué* había fallado exactamente. 
+A medida que las aplicaciones Go crecían, surgió un problema: cuando un error burbujeaba hacia arriba en la pila de llamadas, a menudo perdía su contexto original. Si una función de base de datos fallaba y solo retornaba el error, la capa HTTP superior no sabía *qué* había fallado exactamente.
 
 Para resolver esto, Go 1.13 introdujo el concepto de **Error Wrapping** (Envolvimiento de errores). Usando el verbo `%w` en `fmt.Errorf`, puedes "envolver" un error original dentro de un nuevo error con más contexto, preservando la cadena completa de fallos.
 
@@ -290,19 +292,19 @@ func consultarUsuario(id int) error {
 
 Al introducir el *wrapping*, comparar errores con el operador `==` (ej. `err == sql.ErrNoRows`) dejó de ser seguro, ya que el error original ahora podía estar oculto bajo varias capas de envoltorios. Para solucionar esto, se introdujeron dos funciones fundamentales:
 
-1.  **`errors.Is(err, target)`:** Inspecciona el error y toda su cadena de envolturas buscando un error específico (como un *Sentinel Error*). Es el reemplazo idiomático moderno para `err == target`.
-    
+1. **`errors.Is(err, target)`:** Inspecciona el error y toda su cadena de envolturas buscando un error específico (como un *Sentinel Error*). Es el reemplazo idiomático moderno para `err == target`.
+
     ```go
     if errors.Is(err, sql.ErrNoRows) {
         fmt.Println("El usuario no existe")
     }
     ```
 
-2.  **`errors.As(err, &target)`:** Busca en la cadena de errores si algún error coincide con un *tipo* específico (generalmente un error personalizado tipo *struct*) y, de ser así, extrae sus datos en la variable `target`. Es el equivalente a una aserción de tipo (`err.(MiErrorPersonalizado)`) pero seguro para cadenas envueltas.
+2. **`errors.As(err, &target)`:** Busca en la cadena de errores si algún error coincide con un *tipo* específico (generalmente un error personalizado tipo *struct*) y, de ser así, extrae sus datos en la variable `target`. Es el equivalente a una aserción de tipo (`err.(MiErrorPersonalizado)`) pero seguro para cadenas envueltas.
 
 ### Errores personalizados (Custom Errors)
 
-Para dominios complejos (como el desarrollo de APIs REST que veremos en la Parte 7), retornar solo un *string* no es suficiente. Necesitas metadatos estructurados, como códigos de estado HTTP o campos de validación. 
+Para dominios complejos (como el desarrollo de APIs REST que veremos en la Parte 7), retornar solo un *string* no es suficiente. Necesitas metadatos estructurados, como códigos de estado HTTP o campos de validación.
 
 Al ser una interfaz, puedes crear estructuras (Structs) que implementen `error`:
 
@@ -328,13 +330,13 @@ Al utilizar `errors.As` en el *middleware* de tu aplicación, podrías extraer e
 
 ## 4.5. Control de pánico: defer, panic y recover
 
-Como vimos en la sección anterior, el paradigma de Go dicta que los errores esperados (como un archivo no encontrado o una conexión de red fallida) deben manejarse explícitamente como valores. Sin embargo, ¿qué sucede cuando un programa se encuentra con un error catastrófico del cual no puede o no debe recuperarse, como acceder a un índice fuera de los límites de un *slice* o desreferenciar un puntero nulo? 
+Como vimos en la sección anterior, el paradigma de Go dicta que los errores esperados (como un archivo no encontrado o una conexión de red fallida) deben manejarse explícitamente como valores. Sin embargo, ¿qué sucede cuando un programa se encuentra con un error catastrófico del cual no puede o no debe recuperarse, como acceder a un índice fuera de los límites de un *slice* o desreferenciar un puntero nulo?
 
 Para estas situaciones excepcionales, Go provee un mecanismo de "pánico" y recuperación, fuertemente orquestado por la instrucción `defer`. Es fundamental entender que este trío (`defer`, `panic`, `recover`) **no debe utilizarse como un sistema tradicional de excepciones** (tipo `try/catch`) para el control de flujo regular.
 
 ### La instrucción `defer`: Garantizando la limpieza
 
-La palabra clave `defer` programa la ejecución de una llamada a una función para que ocurra inmediatamente antes de que la función que la contiene retorne (ya sea por una terminación normal o por un pánico). 
+La palabra clave `defer` programa la ejecución de una llamada a una función para que ocurra inmediatamente antes de que la función que la contiene retorne (ya sea por una terminación normal o por un pánico).
 
 Es el mecanismo idiomático en Go para la gestión de recursos: cerrar archivos, liberar bloqueos (*mutexes*) o cerrar conexiones a bases de datos.
 
@@ -353,16 +355,18 @@ func procesarArchivo(ruta string) error {
 ```
 
 **Reglas clave de `defer`:**
-1.  **Evaluación inmediata de argumentos:** Los argumentos de la función diferida se evalúan en el momento en que se declara el `defer`, no cuando se ejecuta.
-2.  **Ejecución LIFO (Last-In, First-Out):** Si hay múltiples declaraciones `defer` en una misma función, se apilan y se ejecutan en orden inverso a su declaración. El último `defer` programado será el primero en ejecutarse.
+
+1. **Evaluación inmediata de argumentos:** Los argumentos de la función diferida se evalúan en el momento en que se declara el `defer`, no cuando se ejecuta.
+2. **Ejecución LIFO (Last-In, First-Out):** Si hay múltiples declaraciones `defer` en una misma función, se apilan y se ejecutan en orden inverso a su declaración. El último `defer` programado será el primero en ejecutarse.
 
 *Nota de rendimiento:* Históricamente, usar `defer` introducía un ligero *overhead* de rendimiento debido a la asignación en el montón (*heap*). Sin embargo, desde Go 1.14, el compilador implementa **open-coded defers**, lo que expande la llamada en tiempo de compilación directamente al final de la función, haciendo que en la mayoría de los casos su costo de ejecución sea virtualmente nulo.
 
 ### `panic`: Fallando rápido (Failing Fast)
 
-La función incorporada `panic` detiene el flujo de control normal. Cuando llamas a `panic` (o cuando el *runtime* de Go lo invoca debido a un error grave en tiempo de ejecución), la ejecución de la función actual se detiene inmediatamente. 
+La función incorporada `panic` detiene el flujo de control normal. Cuando llamas a `panic` (o cuando el *runtime* de Go lo invoca debido a un error grave en tiempo de ejecución), la ejecución de la función actual se detiene inmediatamente.
 
 A partir de ese momento, Go inicia un proceso conocido como **desenrollado de la pila (Stack Unwinding)**:
+
 1. Ejecuta todas las funciones diferidas (`defer`) de la función actual.
 2. Retorna a la función llamadora y ejecuta sus funciones diferidas.
 3. Este proceso burbujea hacia arriba por la pila de llamadas (*call stack*) hasta llegar a la cima de la *Goroutine* actual, momento en el cual el programa colapsa (crashea) y se imprime la traza de la pila (*stack trace*).
@@ -378,7 +382,7 @@ func inicializarConfiguracion() {
 
 ### `recover`: Recuperando el control
 
-El desenrollado de la pila provocado por un `panic` solo puede ser detenido mediante la función incorporada `recover()`. 
+El desenrollado de la pila provocado por un `panic` solo puede ser detenido mediante la función incorporada `recover()`.
 
 Para que `recover` tenga efecto, **debe ser llamado directamente dentro de una función diferida**. Si llamas a `recover` en el flujo normal de ejecución, simplemente devolverá `nil` y no hará nada. Cuando se invoca durante un pánico, `recover` captura el valor que fue pasado a `panic`, detiene el desenrollado de la pila y permite que la ejecución continúe (retornando normalmente desde la función donde se programó el `defer`).
 
@@ -405,7 +409,7 @@ func lanzarPanico() {
 
 ### El límite del paquete (Package Boundary Rule)
 
-Una de las reglas de oro en la arquitectura de Go (que abordaremos en profundidad en la Parte 6) es la **regla de los límites del paquete**. 
+Una de las reglas de oro en la arquitectura de Go (que abordaremos en profundidad en la Parte 6) es la **regla de los límites del paquete**.
 
 Es aceptable que un paquete interno utilice `panic` y `recover` para manejar lógicas complejas de fallo localmente (la propia Standard Library lo hace en paquetes como `encoding/json` o `fmt`). Sin embargo, **un pánico nunca debe cruzar los límites de tu paquete público**. Si tu librería tiene una falla interna, debes usar un bloque `defer` con `recover` en tu API pública para capturar ese pánico y devolverlo al consumidor de la librería como un valor `error` estándar.
 

@@ -12,22 +12,22 @@ The simplest way to serve HTTPS in Go is by replacing `http.ListenAndServe` with
 package main
 
 import (
-	"log"
-	"net/http"
+ "log"
+ "net/http"
 )
 
 func main() {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/secure", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("This connection is encrypted."))
-	})
+ mux := http.NewServeMux()
+ mux.HandleFunc("/secure", func(w http.ResponseWriter, r *http.Request) {
+  w.Write([]byte("This connection is encrypted."))
+ })
 
-	log.Println("Starting server on :443...")
-	// Requires cert.pem and key.pem to be present in the working directory
-	err := http.ListenAndServeTLS(":443", "cert.pem", "key.pem", mux)
-	if err != nil {
-		log.Fatalf("Server failed to start: %v", err)
-	}
+ log.Println("Starting server on :443...")
+ // Requires cert.pem and key.pem to be present in the working directory
+ err := http.ListenAndServeTLS(":443", "cert.pem", "key.pem", mux)
+ if err != nil {
+  log.Fatalf("Server failed to start: %v", err)
+ }
 }
 ```
 
@@ -43,52 +43,52 @@ To customize these settings, you must instantiate an `http.Server` struct manual
 package main
 
 import (
-	"crypto/tls"
-	"log"
-	"net/http"
-	"time"
+ "crypto/tls"
+ "log"
+ "net/http"
+ "time"
 )
 
 func main() {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Hardened HTTPS Server"))
-	})
+ mux := http.NewServeMux()
+ mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+  w.Write([]byte("Hardened HTTPS Server"))
+ })
 
-	tlsConfig := &tls.Config{
-		// Enforce TLS 1.2 as the minimum version (TLS 1.3 is strongly recommended)
-		MinVersion: tls.VersionTLS12,
-		
-		// Map of curves preferred for perfect forward secrecy
-		CurvePreferences: []tls.CurveID{
-			tls.CurveP521,
-			tls.CurveP384,
-			tls.X25519,
-		},
-		
-		// Explicitly define acceptable cipher suites (applicable to TLS 1.2 and below)
-		// Note: Go 1.13+ automatically ignores this for TLS 1.3 as it only uses secure ciphers.
-		CipherSuites: []uint16{
-			tls.TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,
-			tls.TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
-			tls.TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,
-			tls.TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,
-			tls.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
-			tls.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
-		},
-	}
+ tlsConfig := &tls.Config{
+  // Enforce TLS 1.2 as the minimum version (TLS 1.3 is strongly recommended)
+  MinVersion: tls.VersionTLS12,
+  
+  // Map of curves preferred for perfect forward secrecy
+  CurvePreferences: []tls.CurveID{
+   tls.CurveP521,
+   tls.CurveP384,
+   tls.X25519,
+  },
+  
+  // Explicitly define acceptable cipher suites (applicable to TLS 1.2 and below)
+  // Note: Go 1.13+ automatically ignores this for TLS 1.3 as it only uses secure ciphers.
+  CipherSuites: []uint16{
+   tls.TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,
+   tls.TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
+   tls.TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,
+   tls.TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,
+   tls.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+   tls.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
+  },
+ }
 
-	srv := &http.Server{
-		Addr:         ":443",
-		Handler:      mux,
-		TLSConfig:    tlsConfig,
-		TLSNextProto: make(map[string]func(*http.Server, *tls.Conn, http.Handler)), // Disable HTTP/2 if required
-		ReadTimeout:  5 * time.Second,
-		WriteTimeout: 10 * time.Second,
-		IdleTimeout:  120 * time.Second,
-	}
+ srv := &http.Server{
+  Addr:         ":443",
+  Handler:      mux,
+  TLSConfig:    tlsConfig,
+  TLSNextProto: make(map[string]func(*http.Server, *tls.Conn, http.Handler)), // Disable HTTP/2 if required
+  ReadTimeout:  5 * time.Second,
+  WriteTimeout: 10 * time.Second,
+  IdleTimeout:  120 * time.Second,
+ }
 
-	log.Fatal(srv.ListenAndServeTLS("cert.pem", "key.pem"))
+ log.Fatal(srv.ListenAndServeTLS("cert.pem", "key.pem"))
 }
 ```
 
@@ -116,41 +116,41 @@ When a client makes a TLS handshake, the `autocert` manager intercepts the reque
 package main
 
 import (
-	"crypto/tls"
-	"golang.org/x/crypto/acme/autocert"
-	"log"
-	"net/http"
+ "crypto/tls"
+ "golang.org/x/crypto/acme/autocert"
+ "log"
+ "net/http"
 )
 
 func main() {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Auto-secured by Let's Encrypt!"))
-	})
+ mux := http.NewServeMux()
+ mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+  w.Write([]byte("Auto-secured by Let's Encrypt!"))
+ })
 
-	certManager := autocert.Manager{
-		Prompt:     autocert.AcceptTOS,
-		HostPolicy: autocert.HostWhitelist("api.yourdomain.com"), // Prevent domain fronting
-		Cache:      autocert.DirCache("certs"),                   // Cache certs to disk
-	}
+ certManager := autocert.Manager{
+  Prompt:     autocert.AcceptTOS,
+  HostPolicy: autocert.HostWhitelist("api.yourdomain.com"), // Prevent domain fronting
+  Cache:      autocert.DirCache("certs"),                   // Cache certs to disk
+ }
 
-	srv := &http.Server{
-		Addr:    ":443",
-		Handler: mux,
-		TLSConfig: &tls.Config{
-			GetCertificate: certManager.GetCertificate,
-			MinVersion:     tls.VersionTLS12,
-		},
-	}
+ srv := &http.Server{
+  Addr:    ":443",
+  Handler: mux,
+  TLSConfig: &tls.Config{
+   GetCertificate: certManager.GetCertificate,
+   MinVersion:     tls.VersionTLS12,
+  },
+ }
 
-	// Start a goroutine to handle HTTP-01 challenges and HTTP->HTTPS redirects
-	go func() {
-		log.Fatal(http.ListenAndServe(":80", certManager.HTTPHandler(nil)))
-	}()
+ // Start a goroutine to handle HTTP-01 challenges and HTTP->HTTPS redirects
+ go func() {
+  log.Fatal(http.ListenAndServe(":80", certManager.HTTPHandler(nil)))
+ }()
 
-	log.Println("Listening on :443 with Let's Encrypt auto-provisioning...")
-	// Pass empty strings since GetCertificate handles the cert logic
-	log.Fatal(srv.ListenAndServeTLS("", "")) 
+ log.Println("Listening on :443 with Let's Encrypt auto-provisioning...")
+ // Pass empty strings since GetCertificate handles the cert logic
+ log.Fatal(srv.ListenAndServeTLS("", "")) 
 }
 ```
 
@@ -162,25 +162,25 @@ If you are using `autocert`, the `certManager.HTTPHandler(nil)` method handles t
 
 ```go
 func redirectHTTP(w http.ResponseWriter, r *http.Request) {
-	// Construct the HTTPS URL
-	target := "https://" + r.Host + r.URL.Path
-	if len(r.URL.RawQuery) > 0 {
-		target += "?" + r.URL.RawQuery
-	}
-	
-	// Issue a 308 Permanent Redirect (preserves HTTP method)
-	http.Redirect(w, r, target, http.StatusPermanentRedirect)
+ // Construct the HTTPS URL
+ target := "https://" + r.Host + r.URL.Path
+ if len(r.URL.RawQuery) > 0 {
+  target += "?" + r.URL.RawQuery
+ }
+ 
+ // Issue a 308 Permanent Redirect (preserves HTTP method)
+ http.Redirect(w, r, target, http.StatusPermanentRedirect)
 }
 
 func main() {
-	// ... HTTPS server setup ...
-	
-	// Run the redirect server concurrently
-	go func() {
-		log.Fatal(http.ListenAndServe(":80", http.HandlerFunc(redirectHTTP)))
-	}()
-	
-	// log.Fatal(srv.ListenAndServeTLS(...))
+ // ... HTTPS server setup ...
+ 
+ // Run the redirect server concurrently
+ go func() {
+  log.Fatal(http.ListenAndServe(":80", http.HandlerFunc(redirectHTTP)))
+ }()
+ 
+ // log.Fatal(srv.ListenAndServeTLS(...))
 }
 ```
 
@@ -200,36 +200,36 @@ To implement secure sessions in Go, you must ensure that the cookies transportin
 package main
 
 import (
-	"crypto/rand"
-	"encoding/base64"
-	"net/http"
-	"time"
+ "crypto/rand"
+ "encoding/base64"
+ "net/http"
+ "time"
 )
 
 // In production, use a battle-tested library like github.com/gorilla/sessions
 // This demonstrates the core mechanics of a secure cookie.
 func loginHandler(w http.ResponseWriter, r *http.Request) {
-	// 1. Authenticate user credentials (omitted for brevity)
-	
-	// 2. Generate a secure, random Session ID
-	b := make([]byte, 32)
-	rand.Read(b)
-	sessionID := base64.URLEncoding.EncodeToString(b)
+ // 1. Authenticate user credentials (omitted for brevity)
+ 
+ // 2. Generate a secure, random Session ID
+ b := make([]byte, 32)
+ rand.Read(b)
+ sessionID := base64.URLEncoding.EncodeToString(b)
 
-	// 3. Save sessionID to Redis/Database linked to the User ID (omitted)
+ // 3. Save sessionID to Redis/Database linked to the User ID (omitted)
 
-	// 4. Issue the secure cookie
-	http.SetCookie(w, &http.Cookie{
-		Name:     "session_token",
-		Value:    sessionID,
-		Path:     "/",
-		Expires:  time.Now().Add(24 * time.Hour),
-		HttpOnly: true,                  // Prevents JavaScript access (mitigates XSS)
-		Secure:   true,                  // Only sent over HTTPS
-		SameSite: http.SameSiteStrictMode, // Mitigates Cross-Site Request Forgery (CSRF)
-	})
+ // 4. Issue the secure cookie
+ http.SetCookie(w, &http.Cookie{
+  Name:     "session_token",
+  Value:    sessionID,
+  Path:     "/",
+  Expires:  time.Now().Add(24 * time.Hour),
+  HttpOnly: true,                  // Prevents JavaScript access (mitigates XSS)
+  Secure:   true,                  // Only sent over HTTPS
+  SameSite: http.SameSiteStrictMode, // Mitigates Cross-Site Request Forgery (CSRF)
+ })
 
-	w.Write([]byte("Successfully logged in."))
+ w.Write([]byte("Successfully logged in."))
 }
 ```
 
@@ -255,7 +255,7 @@ JSON Web Tokens (JWT) solve the distributed state problem by packing the user's 
                                                 +---------------+
 ```
 
-The standard library in the Go ecosystem for this is `github.com/golang-jwt/jwt/v5`. 
+The standard library in the Go ecosystem for this is `github.com/golang-jwt/jwt/v5`.
 
 #### Issuing a JWT
 
@@ -263,35 +263,35 @@ The standard library in the Go ecosystem for this is `github.com/golang-jwt/jwt/
 package auth
 
 import (
-	"time"
-	"github.com/golang-jwt/jwt/v5"
+ "time"
+ "github.com/golang-jwt/jwt/v5"
 )
 
 var jwtKey = []byte("your_super_secret_key_keep_out_of_source_code")
 
 // CustomClaims embeds standard claims and adds app-specific data
 type CustomClaims struct {
-	UserID string `json:"uid"`
-	Role   string `json:"role"`
-	jwt.RegisteredClaims
+ UserID string `json:"uid"`
+ Role   string `json:"role"`
+ jwt.RegisteredClaims
 }
 
 func GenerateToken(userID, role string) (string, error) {
-	claims := CustomClaims{
-		UserID: userID,
-		Role:   role,
-		RegisteredClaims: jwt.RegisteredClaims{
-			ExpiresAt: jwt.NewNumericDate(time.Now().Add(1 * time.Hour)),
-			IssuedAt:  jwt.NewNumericDate(time.Now()),
-			Issuer:    "go-auth-service",
-		},
-	}
+ claims := CustomClaims{
+  UserID: userID,
+  Role:   role,
+  RegisteredClaims: jwt.RegisteredClaims{
+   ExpiresAt: jwt.NewNumericDate(time.Now().Add(1 * time.Hour)),
+   IssuedAt:  jwt.NewNumericDate(time.Now()),
+   Issuer:    "go-auth-service",
+  },
+ }
 
-	// Create a new token object, specifying signing method and the claims
-	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
+ // Create a new token object, specifying signing method and the claims
+ token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 
-	// Sign and get the complete encoded token as a string
-	return token.SignedString(jwtKey)
+ // Sign and get the complete encoded token as a string
+ return token.SignedString(jwtKey)
 }
 ```
 
@@ -301,34 +301,34 @@ The critical security rule when validating a JWT in Go is to **explicitly verify
 
 ```go
 func JWTMiddleware(next http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		authHeader := r.Header.Get("Authorization")
-		if authHeader == "" || len(authHeader) < 7 || authHeader[:7] != "Bearer " {
-			http.Error(w, "Unauthorized", http.StatusUnauthorized)
-			return
-		}
+ return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+  authHeader := r.Header.Get("Authorization")
+  if authHeader == "" || len(authHeader) < 7 || authHeader[:7] != "Bearer " {
+   http.Error(w, "Unauthorized", http.StatusUnauthorized)
+   return
+  }
 
-		tokenString := authHeader[7:]
+  tokenString := authHeader[7:]
 
-		claims := &CustomClaims{}
-		token, err := jwt.ParseWithClaims(tokenString, claims, func(token *jwt.Token) (interface{}, error) {
-			// CRITICAL: Validate the alg is what you expect
-			if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
-				return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])
-			}
-			return jwtKey, nil
-		})
+  claims := &CustomClaims{}
+  token, err := jwt.ParseWithClaims(tokenString, claims, func(token *jwt.Token) (interface{}, error) {
+   // CRITICAL: Validate the alg is what you expect
+   if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
+    return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])
+   }
+   return jwtKey, nil
+  })
 
-		if err != nil || !token.Valid {
-			http.Error(w, "Invalid token", http.StatusUnauthorized)
-			return
-		}
+  if err != nil || !token.Valid {
+   http.Error(w, "Invalid token", http.StatusUnauthorized)
+   return
+  }
 
-		// Token is valid. Inject claims into the request context.
-		// (Context management covered in Chapter 11.4)
-		ctx := context.WithValue(r.Context(), "userContext", claims)
-		next.ServeHTTP(w, r.WithContext(ctx))
-	})
+  // Token is valid. Inject claims into the request context.
+  // (Context management covered in Chapter 11.4)
+  ctx := context.WithValue(r.Context(), "userContext", claims)
+  next.ServeHTTP(w, r.WithContext(ctx))
+ })
 }
 ```
 
@@ -366,36 +366,36 @@ First, define your OAuth2 configuration. This requires credentials obtained from
 package main
 
 import (
-	"crypto/rand"
-	"encoding/base64"
-	"net/http"
-	"golang.org/x/oauth2"
-	"golang.org/x/oauth2/google"
+ "crypto/rand"
+ "encoding/base64"
+ "net/http"
+ "golang.org/x/oauth2"
+ "golang.org/x/oauth2/google"
 )
 
 var oauthConfig = &oauth2.Config{
-	ClientID:     "YOUR_CLIENT_ID",
-	ClientSecret: "YOUR_CLIENT_SECRET",
-	RedirectURL:  "https://yourapp.com/callback",
-	Scopes:       []string{"https://www.googleapis.com/auth/userinfo.email"},
-	Endpoint:     google.Endpoint,
+ ClientID:     "YOUR_CLIENT_ID",
+ ClientSecret: "YOUR_CLIENT_SECRET",
+ RedirectURL:  "https://yourapp.com/callback",
+ Scopes:       []string{"https://www.googleapis.com/auth/userinfo.email"},
+ Endpoint:     google.Endpoint,
 }
 
 // generateState creates a random state string to prevent CSRF attacks
 func generateState() string {
-	b := make([]byte, 16)
-	rand.Read(b)
-	return base64.URLEncoding.EncodeToString(b)
+ b := make([]byte, 16)
+ rand.Read(b)
+ return base64.URLEncoding.EncodeToString(b)
 }
 
 func handleLogin(w http.ResponseWriter, r *http.Request) {
-	state := generateState()
-	// Store state in a secure, short-lived cookie to verify in the callback
-	http.SetCookie(w, &http.Cookie{Name: "oauth_state", Value: state, HttpOnly: true, Secure: true})
-	
-	// Redirect user to Google's consent page
-	url := oauthConfig.AuthCodeURL(state)
-	http.Redirect(w, r, url, http.StatusTemporaryRedirect)
+ state := generateState()
+ // Store state in a secure, short-lived cookie to verify in the callback
+ http.SetCookie(w, &http.Cookie{Name: "oauth_state", Value: state, HttpOnly: true, Secure: true})
+ 
+ // Redirect user to Google's consent page
+ url := oauthConfig.AuthCodeURL(state)
+ http.Redirect(w, r, url, http.StatusTemporaryRedirect)
 }
 ```
 
@@ -403,33 +403,33 @@ When the user grants permission, the IdP redirects them back to your `RedirectUR
 
 ```go
 func handleCallback(w http.ResponseWriter, r *http.Request) {
-	// 1. Verify the state matches the cookie
-	stateCookie, err := r.Cookie("oauth_state")
-	if err != nil || r.FormValue("state") != stateCookie.Value {
-		http.Error(w, "State mismatch", http.StatusBadRequest)
-		return
-	}
+ // 1. Verify the state matches the cookie
+ stateCookie, err := r.Cookie("oauth_state")
+ if err != nil || r.FormValue("state") != stateCookie.Value {
+  http.Error(w, "State mismatch", http.StatusBadRequest)
+  return
+ }
 
-	// 2. Exchange the authorization code for an access token
-	code := r.FormValue("code")
-	token, err := oauthConfig.Exchange(r.Context(), code)
-	if err != nil {
-		http.Error(w, "Failed to exchange token", http.StatusInternalServerError)
-		return
-	}
+ // 2. Exchange the authorization code for an access token
+ code := r.FormValue("code")
+ token, err := oauthConfig.Exchange(r.Context(), code)
+ if err != nil {
+  http.Error(w, "Failed to exchange token", http.StatusInternalServerError)
+  return
+ }
 
-	// 3. Use the token to create an HTTP client and fetch user data
-	client := oauthConfig.Client(r.Context(), token)
-	resp, err := client.Get("https://www.googleapis.com/oauth2/v2/userinfo")
-	if err != nil {
-		http.Error(w, "Failed to get user info", http.StatusInternalServerError)
-		return
-	}
-	defer resp.Body.Close()
+ // 3. Use the token to create an HTTP client and fetch user data
+ client := oauthConfig.Client(r.Context(), token)
+ resp, err := client.Get("https://www.googleapis.com/oauth2/v2/userinfo")
+ if err != nil {
+  http.Error(w, "Failed to get user info", http.StatusInternalServerError)
+  return
+ }
+ defer resp.Body.Close()
 
-	// 4. Create a local session or JWT for the user based on the retrieved data
-	// ...
-	w.Write([]byte("Authentication successful!"))
+ // 4. Create a local session or JWT for the user based on the retrieved data
+ // ...
+ w.Write([]byte("Authentication successful!"))
 }
 ```
 
@@ -469,50 +469,50 @@ First, define the permission mappings:
 package authz
 
 import (
-	"context"
-	"net/http"
+ "context"
+ "net/http"
 )
 
 // Define permissions as constants to avoid typos
 const (
-	PermReadPosts  = "posts:read"
-	PermWritePosts = "posts:write"
-	PermReadUsers  = "users:read"
-	PermWriteUsers = "users:write"
+ PermReadPosts  = "posts:read"
+ PermWritePosts = "posts:write"
+ PermReadUsers  = "users:read"
+ PermWriteUsers = "users:write"
 )
 
 // Role defines a collection of granted permissions
 type Role string
 
 const (
-	RoleAdmin  Role = "admin"
-	RoleEditor Role = "editor"
-	RoleViewer Role = "viewer"
+ RoleAdmin  Role = "admin"
+ RoleEditor Role = "editor"
+ RoleViewer Role = "viewer"
 )
 
 // rolePermissions maps roles to their granted capabilities
 var rolePermissions = map[Role]map[string]bool{
-	RoleAdmin: {
-		PermReadPosts:  true,
-		PermWritePosts: true,
-		PermReadUsers:  true,
-		PermWriteUsers: true,
-	},
-	RoleEditor: {
-		PermReadPosts:  true,
-		PermWritePosts: true,
-	},
-	RoleViewer: {
-		PermReadPosts: true,
-	},
+ RoleAdmin: {
+  PermReadPosts:  true,
+  PermWritePosts: true,
+  PermReadUsers:  true,
+  PermWriteUsers: true,
+ },
+ RoleEditor: {
+  PermReadPosts:  true,
+  PermWritePosts: true,
+ },
+ RoleViewer: {
+  PermReadPosts: true,
+ },
 }
 
 // CheckPermission verifies if a given role has a specific permission
 func CheckPermission(role Role, permission string) bool {
-	if perms, exists := rolePermissions[role]; exists {
-		return perms[permission]
-	}
-	return false
+ if perms, exists := rolePermissions[role]; exists {
+  return perms[permission]
+ }
+ return false
 }
 ```
 
@@ -521,28 +521,28 @@ Next, create an authorization middleware that wraps your HTTP handlers. This mid
 ```go
 // RequirePermission creates a middleware that enforces a specific permission
 func RequirePermission(requiredPermission string) func(http.Handler) http.Handler {
-	return func(next http.Handler) http.Handler {
-		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			// Extract user claims from context (implementation depends on your AuthN setup)
-			// Assuming "userContext" holds a struct with a Role field
-			claims, ok := r.Context().Value("userContext").(*CustomClaims)
-			if !ok {
-				http.Error(w, "Unauthorized: No user context", http.StatusUnauthorized)
-				return
-			}
+ return func(next http.Handler) http.Handler {
+  return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+   // Extract user claims from context (implementation depends on your AuthN setup)
+   // Assuming "userContext" holds a struct with a Role field
+   claims, ok := r.Context().Value("userContext").(*CustomClaims)
+   if !ok {
+    http.Error(w, "Unauthorized: No user context", http.StatusUnauthorized)
+    return
+   }
 
-			userRole := Role(claims.Role)
+   userRole := Role(claims.Role)
 
-			// Evaluate permission
-			if !CheckPermission(userRole, requiredPermission) {
-				http.Error(w, "Forbidden: Insufficient permissions", http.StatusForbidden)
-				return
-			}
+   // Evaluate permission
+   if !CheckPermission(userRole, requiredPermission) {
+    http.Error(w, "Forbidden: Insufficient permissions", http.StatusForbidden)
+    return
+   }
 
-			// User is authorized, proceed to the next handler
-			next.ServeHTTP(w, r)
-		})
-	}
+   // User is authorized, proceed to the next handler
+   next.ServeHTTP(w, r)
+  })
+ }
 }
 ```
 
@@ -550,17 +550,17 @@ You can then chain this middleware in your router setup:
 
 ```go
 func main() {
-	mux := http.NewServeMux()
+ mux := http.NewServeMux()
 
-	// Handler with authorization
-	createPostHandler := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Post created successfully"))
-	})
+ // Handler with authorization
+ createPostHandler := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+  w.Write([]byte("Post created successfully"))
+ })
 
-	// Wrap handler: Require AuthN -> Require AuthZ (Write Posts)
-	secureHandler := JWTMiddleware(authz.RequirePermission(authz.PermWritePosts)(createPostHandler))
-	
-	mux.Handle("POST /posts", secureHandler)
+ // Wrap handler: Require AuthN -> Require AuthZ (Write Posts)
+ secureHandler := JWTMiddleware(authz.RequirePermission(authz.PermWritePosts)(createPostHandler))
+ 
+ mux.Handle("POST /posts", secureHandler)
 }
 ```
 
@@ -571,10 +571,12 @@ As systems evolve into complex microservices architectures, hardcoding roles and
 In the Go ecosystem, **Casbin** (`github.com/casbin/casbin/v2`) is the industry-standard authorization library. It abstracts the authorization logic into external configuration files using a Policy Enforcement Point (PEP) model.
 
 Casbin requires two configurations:
+
 1. **Model:** Defines the authorization paradigm (e.g., RBAC, ABAC) using a specific configuration language.
 2. **Policy:** The actual rules defining who can do what.
 
 **model.conf (RBAC setup):**
+
 ```ini
 [request_definition]
 r = sub, obj, act
@@ -593,6 +595,7 @@ m = g(r.sub, p.sub) && r.obj == p.obj && r.act == p.act
 ```
 
 **policy.csv:**
+
 ```csv
 p, admin, data1, read
 p, admin, data1, write
@@ -607,35 +610,35 @@ Integrating Casbin into your Go application shifts the authorization logic from 
 package main
 
 import (
-	"fmt"
-	"log"
-	"github.com/casbin/casbin/v2"
+ "fmt"
+ "log"
+ "github.com/casbin/casbin/v2"
 )
 
 func main() {
-	// Initialize the Casbin enforcer with the model and policy files
-	// In production, policies are usually loaded from a database adapter (e.g., PostgreSQL, Redis)
-	enforcer, err := casbin.NewEnforcer("model.conf", "policy.csv")
-	if err != nil {
-		log.Fatalf("Failed to load Casbin: %v", err)
-	}
+ // Initialize the Casbin enforcer with the model and policy files
+ // In production, policies are usually loaded from a database adapter (e.g., PostgreSQL, Redis)
+ enforcer, err := casbin.NewEnforcer("model.conf", "policy.csv")
+ if err != nil {
+  log.Fatalf("Failed to load Casbin: %v", err)
+ }
 
-	// Example request: Alice wants to read data1
-	sub := "alice" // the user
-	obj := "data1" // the resource
-	act := "read"  // the operation
+ // Example request: Alice wants to read data1
+ sub := "alice" // the user
+ obj := "data1" // the resource
+ act := "read"  // the operation
 
-	// Enforce the policy
-	allowed, err := enforcer.Enforce(sub, obj, act)
-	if err != nil {
-		log.Fatalf("Error enforcing policy: %v", err)
-	}
+ // Enforce the policy
+ allowed, err := enforcer.Enforce(sub, obj, act)
+ if err != nil {
+  log.Fatalf("Error enforcing policy: %v", err)
+ }
 
-	if allowed {
-		fmt.Printf("%s is allowed to %s %s\n", sub, act, obj)
-	} else {
-		fmt.Printf("%s is DENIED to %s %s\n", sub, act, obj)
-	}
+ if allowed {
+  fmt.Printf("%s is allowed to %s %s\n", sub, act, obj)
+ } else {
+  fmt.Printf("%s is DENIED to %s %s\n", sub, act, obj)
+ }
 }
 ```
 
@@ -672,34 +675,34 @@ The absolute defense against SQLi is to use parameterized queries (prepared stat
 package main
 
 import (
-	"database/sql"
-	"log"
-	"net/http"
+ "database/sql"
+ "log"
+ "net/http"
 )
 
 func getUser(db *sql.DB, w http.ResponseWriter, r *http.Request) {
-	username := r.FormValue("username")
+ username := r.FormValue("username")
 
-	// SAFE: Using parameterized queries.
-	// The database driver handles the sanitization and escaping automatically.
-	query := "SELECT id, email FROM users WHERE username = $1"
-	
-	var id int
-	var email string
-	
-	// QueryRow automatically closes the connection when Scan is called
-	err := db.QueryRow(query, username).Scan(&id, &email)
-	if err != nil {
-		if err == sql.ErrNoRows {
-			http.Error(w, "User not found", http.StatusNotFound)
-			return
-		}
-		log.Printf("Database error: %v", err)
-		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
-		return
-	}
+ // SAFE: Using parameterized queries.
+ // The database driver handles the sanitization and escaping automatically.
+ query := "SELECT id, email FROM users WHERE username = $1"
+ 
+ var id int
+ var email string
+ 
+ // QueryRow automatically closes the connection when Scan is called
+ err := db.QueryRow(query, username).Scan(&id, &email)
+ if err != nil {
+  if err == sql.ErrNoRows {
+   http.Error(w, "User not found", http.StatusNotFound)
+   return
+  }
+  log.Printf("Database error: %v", err)
+  http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+  return
+ }
 
-	w.Write([]byte(email))
+ w.Write([]byte(email))
 }
 ```
 
@@ -727,9 +730,9 @@ Go provides a remarkable built-in defense against XSS via the `html/template` pa
 
 If an attacker sets their `Username` to `<script>alert('XSS')</script>`, the `html/template` package will automatically render:
 
-1.  **In the HTML body:** `&lt;script&gt;alert(&#39;XSS&#39;)&lt;/script&gt;`
-2.  **In the attribute:** URL-encoded if necessary.
-3.  **In the JavaScript:** Properly escaped as a JSON string to prevent breaking out of the variable declaration.
+1. **In the HTML body:** `&lt;script&gt;alert(&#39;XSS&#39;)&lt;/script&gt;`
+2. **In the attribute:** URL-encoded if necessary.
+3. **In the JavaScript:** Properly escaped as a JSON string to prevent breaking out of the variable declaration.
 
 #### The Pitfall: `template.HTML`
 
@@ -741,8 +744,8 @@ import "html/template"
 // If you pass this struct to your template, Go assumes you have 
 // ALREADY sanitized the Bio field and will render it as raw HTML.
 type Profile struct {
-	Username string        // Safe: automatically escaped
-	Bio      template.HTML // DANGER: rendered as raw, unescaped HTML
+ Username string        // Safe: automatically escaped
+ Bio      template.HTML // DANGER: rendered as raw, unescaped HTML
 }
 ```
 
@@ -750,7 +753,7 @@ type Profile struct {
 
 ### Cross-Site Request Forgery (CSRF)
 
-CSRF is an attack that forces an authenticated user to execute unwanted actions on a web application in which they are currently authenticated. 
+CSRF is an attack that forces an authenticated user to execute unwanted actions on a web application in which they are currently authenticated.
 
 ```text
 +---------+                                   +---------------+
@@ -785,11 +788,11 @@ In the Go ecosystem, `github.com/gorilla/csrf` is the standard middleware for th
 package main
 
 import (
-	"fmt"
-	"html/template"
-	"net/http"
-	"github.com/gorilla/csrf"
-	"github.com/gorilla/mux"
+ "fmt"
+ "html/template"
+ "net/http"
+ "github.com/gorilla/csrf"
+ "github.com/gorilla/mux"
 )
 
 var formTemplate = template.Must(template.New("").Parse(`
@@ -801,34 +804,34 @@ var formTemplate = template.Must(template.New("").Parse(`
 `))
 
 func showForm(w http.ResponseWriter, r *http.Request) {
-	// csrf.TemplateField creates the hidden input HTML
-	err := formTemplate.Execute(w, map[string]interface{}{
-		"csrfField": csrf.TemplateField(r), 
-	})
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
+ // csrf.TemplateField creates the hidden input HTML
+ err := formTemplate.Execute(w, map[string]interface{}{
+  "csrfField": csrf.TemplateField(r), 
+ })
+ if err != nil {
+  http.Error(w, err.Error(), http.StatusInternalServerError)
+ }
 }
 
 func processTransfer(w http.ResponseWriter, r *http.Request) {
-	// If the request reaches this handler, the CSRF token was valid.
-	amount := r.FormValue("amount")
-	fmt.Fprintf(w, "Successfully transferred: %s", amount)
+ // If the request reaches this handler, the CSRF token was valid.
+ amount := r.FormValue("amount")
+ fmt.Fprintf(w, "Successfully transferred: %s", amount)
 }
 
 func main() {
-	r := mux.NewRouter()
-	r.HandleFunc("/transfer", showForm).Methods("GET")
-	r.HandleFunc("/transfer", processTransfer).Methods("POST")
+ r := mux.NewRouter()
+ r.HandleFunc("/transfer", showForm).Methods("GET")
+ r.HandleFunc("/transfer", processTransfer).Methods("POST")
 
-	// 32-byte authentication key used to authenticate the CSRF cookie
-	authKey := []byte("32-byte-long-auth-key-goes-here-")
+ // 32-byte authentication key used to authenticate the CSRF cookie
+ authKey := []byte("32-byte-long-auth-key-goes-here-")
 
-	// Wrap the router with the CSRF middleware
-	// Set Secure(false) ONLY for local HTTP development.
-	csrfMiddleware := csrf.Protect(authKey, csrf.Secure(false))
+ // Wrap the router with the CSRF middleware
+ // Set Secure(false) ONLY for local HTTP development.
+ csrfMiddleware := csrf.Protect(authKey, csrf.Secure(false))
 
-	http.ListenAndServe(":8080", csrfMiddleware(r))
+ http.ListenAndServe(":8080", csrfMiddleware(r))
 }
 ```
 
@@ -840,7 +843,7 @@ While TLS protects data in transit, applications must also secure data at rest a
 
 ### Cryptographic Hashing vs. Password Hashing
 
-A common developer pitfall is conflating general-purpose cryptographic hashing with password hashing. 
+A common developer pitfall is conflating general-purpose cryptographic hashing with password hashing.
 
 General-purpose hashes like SHA-256 (`crypto/sha256`) are designed to be extremely fast. While excellent for verifying file integrity or generating checksums, their speed makes them vulnerable to brute-force and rainbow table attacks if used to store user passwords. Attackers using modern GPUs can calculate billions of SHA-256 hashes per second.
 
@@ -854,22 +857,22 @@ Bcrypt automatically handles salt generation—appending a random string to the 
 package auth
 
 import (
-	"log"
-	"golang.org/x/crypto/bcrypt"
+ "log"
+ "golang.org/x/crypto/bcrypt"
 )
 
 // HashPassword generates a bcrypt hash of the password using a default cost.
 func HashPassword(password string) (string, error) {
-	// bcrypt.DefaultCost is currently 10, meaning 2^10 iterations.
-	// As hardware improves, this cost should be increased.
-	bytes, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
-	return string(bytes), err
+ // bcrypt.DefaultCost is currently 10, meaning 2^10 iterations.
+ // As hardware improves, this cost should be increased.
+ bytes, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
+ return string(bytes), err
 }
 
 // CheckPassword verifies if the provided password matches the hashed version.
 func CheckPassword(password, hash string) bool {
-	err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password))
-	return err == nil
+ err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password))
+ return err == nil
 }
 ```
 
@@ -896,71 +899,71 @@ A critical requirement of AES-GCM is the **Nonce** (Number Used Once). You must 
 package cryptohelpers
 
 import (
-	"crypto/aes"
-	"crypto/cipher"
-	"crypto/rand"
-	"errors"
-	"io"
+ "crypto/aes"
+ "crypto/cipher"
+ "crypto/rand"
+ "errors"
+ "io"
 )
 
 // Encrypt secures a plaintext string using AES-GCM.
 // The key must be exactly 16, 24, or 32 bytes long.
 func Encrypt(plaintext []byte, key []byte) ([]byte, error) {
-	block, err := aes.NewCipher(key)
-	if err != nil {
-		return nil, err
-	}
+ block, err := aes.NewCipher(key)
+ if err != nil {
+  return nil, err
+ }
 
-	aesGCM, err := cipher.NewGCM(block)
-	if err != nil {
-		return nil, err
-	}
+ aesGCM, err := cipher.NewGCM(block)
+ if err != nil {
+  return nil, err
+ }
 
-	// Create a nonce of the standard size (12 bytes for GCM)
-	nonce := make([]byte, aesGCM.NonceSize())
-	if _, err = io.ReadFull(rand.Reader, nonce); err != nil {
-		return nil, err
-	}
+ // Create a nonce of the standard size (12 bytes for GCM)
+ nonce := make([]byte, aesGCM.NonceSize())
+ if _, err = io.ReadFull(rand.Reader, nonce); err != nil {
+  return nil, err
+ }
 
-	// Seal appends the encrypted data and auth tag to the nonce.
-	// Storing the nonce alongside the ciphertext is safe and necessary.
-	ciphertext := aesGCM.Seal(nonce, nonce, plaintext, nil)
-	return ciphertext, nil
+ // Seal appends the encrypted data and auth tag to the nonce.
+ // Storing the nonce alongside the ciphertext is safe and necessary.
+ ciphertext := aesGCM.Seal(nonce, nonce, plaintext, nil)
+ return ciphertext, nil
 }
 
 // Decrypt extracts the plaintext from an AES-GCM ciphertext.
 func Decrypt(ciphertext []byte, key []byte) ([]byte, error) {
-	block, err := aes.NewCipher(key)
-	if err != nil {
-		return nil, err
-	}
+ block, err := aes.NewCipher(key)
+ if err != nil {
+  return nil, err
+ }
 
-	aesGCM, err := cipher.NewGCM(block)
-	if err != nil {
-		return nil, err
-	}
+ aesGCM, err := cipher.NewGCM(block)
+ if err != nil {
+  return nil, err
+ }
 
-	nonceSize := aesGCM.NonceSize()
-	if len(ciphertext) < nonceSize {
-		return nil, errors.New("ciphertext too short")
-	}
+ nonceSize := aesGCM.NonceSize()
+ if len(ciphertext) < nonceSize {
+  return nil, errors.New("ciphertext too short")
+ }
 
-	// Split the nonce from the actual ciphertext
-	nonce, actualCiphertext := ciphertext[:nonceSize], ciphertext[nonceSize:]
+ // Split the nonce from the actual ciphertext
+ nonce, actualCiphertext := ciphertext[:nonceSize], ciphertext[nonceSize:]
 
-	// Open authenticates the ciphertext and decrypts it
-	plaintext, err := aesGCM.Open(nil, nonce, actualCiphertext, nil)
-	if err != nil {
-		return nil, err
-	}
+ // Open authenticates the ciphertext and decrypts it
+ plaintext, err := aesGCM.Open(nil, nonce, actualCiphertext, nil)
+ if err != nil {
+  return nil, err
+ }
 
-	return plaintext, nil
+ return plaintext, nil
 }
 ```
 
 ### Asymmetric Cryptography and Digital Signatures
 
-Asymmetric cryptography utilizes a pair of keys: a **Public Key** (shared openly) and a **Private Key** (guarded securely). While it can be used for encryption, its most common use case in modern Go microservices is creating **Digital Signatures**. 
+Asymmetric cryptography utilizes a pair of keys: a **Public Key** (shared openly) and a **Private Key** (guarded securely). While it can be used for encryption, its most common use case in modern Go microservices is creating **Digital Signatures**.
 
 Signatures prove that a piece of data originated from the holder of the private key and has not been altered. This is the underlying mechanic of JSON Web Tokens (JWTs) using RS256 or ES256 algorithms.
 
@@ -970,48 +973,48 @@ For new systems, **ECDSA** (Elliptic Curve Digital Signature Algorithm) is prefe
 package cryptohelpers
 
 import (
-	"crypto/ecdsa"
-	"crypto/elliptic"
-	"crypto/rand"
-	"crypto/sha256"
-	"log"
+ "crypto/ecdsa"
+ "crypto/elliptic"
+ "crypto/rand"
+ "crypto/sha256"
+ "log"
 )
 
 func SignAndVerifyExample() {
-	// 1. Generate a Private/Public Keypair using the P-256 curve
-	privateKey, err := ecdsa.GenerateKey(elliptic.P256(), rand.Reader)
-	if err != nil {
-		log.Fatal(err)
-	}
-	publicKey := &privateKey.PublicKey
+ // 1. Generate a Private/Public Keypair using the P-256 curve
+ privateKey, err := ecdsa.GenerateKey(elliptic.P256(), rand.Reader)
+ if err != nil {
+  log.Fatal(err)
+ }
+ publicKey := &privateKey.PublicKey
 
-	// 2. The data we want to sign
-	message := []byte("Authorize transaction ID 99482")
+ // 2. The data we want to sign
+ message := []byte("Authorize transaction ID 99482")
 
-	// 3. Hash the data before signing (ECDSA operates on hashes, not raw data)
-	hash := sha256.Sum256(message)
+ // 3. Hash the data before signing (ECDSA operates on hashes, not raw data)
+ hash := sha256.Sum256(message)
 
-	// 4. Sign the hash with the Private Key
-	r, s, err := ecdsa.Sign(rand.Reader, privateKey, hash[:])
-	if err != nil {
-		log.Fatal(err)
-	}
+ // 4. Sign the hash with the Private Key
+ r, s, err := ecdsa.Sign(rand.Reader, privateKey, hash[:])
+ if err != nil {
+  log.Fatal(err)
+ }
 
-	// 5. Verify the signature using the Public Key
-	// Anyone with the public key can verify this message came from us
-	valid := ecdsa.Verify(publicKey, hash[:], r, s)
-	
-	if valid {
-		log.Println("Signature is valid. Data is authentic.")
-	} else {
-		log.Println("Signature verification failed!")
-	}
+ // 5. Verify the signature using the Public Key
+ // Anyone with the public key can verify this message came from us
+ valid := ecdsa.Verify(publicKey, hash[:], r, s)
+ 
+ if valid {
+  log.Println("Signature is valid. Data is authentic.")
+ } else {
+  log.Println("Signature verification failed!")
+ }
 }
 ```
 
 ### The Rule of Randomness
 
-A recurring theme in the snippets above is the use of `crypto/rand`. 
+A recurring theme in the snippets above is the use of `crypto/rand`.
 
 Go contains two random number generators: `math/rand` and `crypto/rand`. `math/rand` generates *pseudo-random* numbers based on a deterministic seed. If an attacker knows the seed (or can guess the internal state), they can predict all future "random" numbers.
 

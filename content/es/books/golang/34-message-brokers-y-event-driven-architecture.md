@@ -23,14 +23,14 @@ En una arquitectura distribuida, los servicios publican eventos de dominio o de 
 
 La principal ventaja de adoptar eventos en microservicios es lograr un alto nivel de desacoplamiento, el cual se manifiesta en dos dimensiones principales:
 
-1.  **Desacoplamiento Espacial:** El productor del evento no necesita conocer la dirección en la red (IP/Puerto) de los consumidores, ni siquiera cuántos existen. El enrutamiento se delega a la infraestructura subyacente.
-2.  **Desacoplamiento Temporal:** El productor y el consumidor no necesitan estar operativos simultáneamente. Si el consumidor está inactivo (por mantenimiento o fallo), la infraestructura retiene el evento hasta que el consumidor se recupera.
+1. **Desacoplamiento Espacial:** El productor del evento no necesita conocer la dirección en la red (IP/Puerto) de los consumidores, ni siquiera cuántos existen. El enrutamiento se delega a la infraestructura subyacente.
+2. **Desacoplamiento Temporal:** El productor y el consumidor no necesitan estar operativos simultáneamente. Si el consumidor está inactivo (por mantenimiento o fallo), la infraestructura retiene el evento hasta que el consumidor se recupera.
 
 ---
 
 ### Garantías de Entrega (Delivery Semantics)
 
-Cuando introducimos la red asíncrona, debemos lidiar con los teoremas de sistemas distribuidos. Un aspecto fundamental que guiará la elección de la tecnología en las próximas secciones (RabbitMQ, Kafka, NATS) es la semántica de entrega de mensajes. 
+Cuando introducimos la red asíncrona, debemos lidiar con los teoremas de sistemas distribuidos. Un aspecto fundamental que guiará la elección de la tecnología en las próximas secciones (RabbitMQ, Kafka, NATS) es la semántica de entrega de mensajes.
 
 Ningún sistema distribuido es perfecto, por lo que las herramientas ofrecen diferentes niveles de garantía:
 
@@ -54,15 +54,15 @@ El siguiente ejemplo ilustra un mediador (Event Bus) básico en memoria que desp
 package main
 
 import (
-	"fmt"
-	"sync"
-	"time"
+ "fmt"
+ "sync"
+ "time"
 )
 
 // Event encapsula el tipo de evento y su carga útil.
 type Event struct {
-	Type    string
-	Payload any
+ Type    string
+ Payload any
 }
 
 // EventHandler define la firma para las funciones que consumirán eventos.
@@ -70,57 +70,57 @@ type EventHandler func(Event)
 
 // EventBus maneja las suscripciones y el despacho de eventos.
 type EventBus struct {
-	mu          sync.RWMutex
-	subscribers map[string][]EventHandler
+ mu          sync.RWMutex
+ subscribers map[string][]EventHandler
 }
 
 func NewEventBus() *EventBus {
-	return &EventBus{
-		subscribers: make(map[string][]EventHandler),
-	}
+ return &EventBus{
+  subscribers: make(map[string][]EventHandler),
+ }
 }
 
 // Subscribe registra un manejador para un tipo de evento específico.
 func (eb *EventBus) Subscribe(eventType string, handler EventHandler) {
-	eb.mu.Lock()
-	defer eb.mu.Unlock()
-	eb.subscribers[eventType] = append(eb.subscribers[eventType], handler)
+ eb.mu.Lock()
+ defer eb.mu.Unlock()
+ eb.subscribers[eventType] = append(eb.subscribers[eventType], handler)
 }
 
 // Publish emite un evento a todos sus suscriptores de forma asíncrona.
 func (eb *EventBus) Publish(event Event) {
-	eb.mu.RLock()
-	defer eb.mu.RUnlock()
+ eb.mu.RLock()
+ defer eb.mu.RUnlock()
 
-	if handlers, found := eb.subscribers[event.Type]; found {
-		for _, handler := range handlers {
-			// Fan-out: despachamos cada manejador en su propia goroutine
-			go handler(event)
-		}
-	}
+ if handlers, found := eb.subscribers[event.Type]; found {
+  for _, handler := range handlers {
+   // Fan-out: despachamos cada manejador en su propia goroutine
+   go handler(event)
+  }
+ }
 }
 
 func main() {
-	bus := NewEventBus()
+ bus := NewEventBus()
 
-	// Consumidor 1: Sistema de Notificaciones
-	bus.Subscribe("UserCreated", func(e Event) {
-		fmt.Printf("[Notificaciones] Enviando email de bienvenida al usuario: %v\n", e.Payload)
-	})
+ // Consumidor 1: Sistema de Notificaciones
+ bus.Subscribe("UserCreated", func(e Event) {
+  fmt.Printf("[Notificaciones] Enviando email de bienvenida al usuario: %v\n", e.Payload)
+ })
 
-	// Consumidor 2: Sistema de Analítica
-	bus.Subscribe("UserCreated", func(e Event) {
-		fmt.Printf("[Analítica] Registrando nuevo usuario en métricas: %v\n", e.Payload)
-	})
+ // Consumidor 2: Sistema de Analítica
+ bus.Subscribe("UserCreated", func(e Event) {
+  fmt.Printf("[Analítica] Registrando nuevo usuario en métricas: %v\n", e.Payload)
+ })
 
-	// Productor: Emite el evento sin acoplarse a los consumidores
-	bus.Publish(Event{
-		Type:    "UserCreated",
-		Payload: "gopher@example.com",
-	})
+ // Productor: Emite el evento sin acoplarse a los consumidores
+ bus.Publish(Event{
+  Type:    "UserCreated",
+  Payload: "gopher@example.com",
+ })
 
-	// Pausa artificial para permitir que las goroutines finalicen antes de salir
-	time.Sleep(100 * time.Millisecond)
+ // Pausa artificial para permitir que las goroutines finalicen antes de salir
+ time.Sleep(100 * time.Millisecond)
 }
 ```
 
@@ -142,12 +142,12 @@ A diferencia del simple patrón de "publicar en una cola", AMQP introduce una ca
 
 ### El cliente oficial en Go
 
-El paquete estándar de facto para interactuar con RabbitMQ en Go es `github.com/rabbitmq/amqp091-go` (mantenido oficialmente tras la migración del clásico `streadway/amqp`). 
+El paquete estándar de facto para interactuar con RabbitMQ en Go es `github.com/rabbitmq/amqp091-go` (mantenido oficialmente tras la migración del clásico `streadway/amqp`).
 
 Una distinción arquitectónica fundamental que debes comprender al usar esta librería es la diferencia entre una **Conexión TCP** y un **Canal AMQP**:
 
-1.  **Conexión (`amqp091.Connection`):** Es la conexión TCP pesada y persistente entre tu aplicación Go y el clúster de RabbitMQ. Debes mantenerla abierta durante el ciclo de vida de tu aplicación.
-2.  **Canal (`amqp091.Channel`):** Es una conexión virtual (multiplexada) dentro de la conexión TCP. Las operaciones de publicación y consumo se realizan a través de canales. Crear un canal es barato; establecer una conexión TCP no lo es.
+1. **Conexión (`amqp091.Connection`):** Es la conexión TCP pesada y persistente entre tu aplicación Go y el clúster de RabbitMQ. Debes mantenerla abierta durante el ciclo de vida de tu aplicación.
+2. **Canal (`amqp091.Channel`):** Es una conexión virtual (multiplexada) dentro de la conexión TCP. Las operaciones de publicación y consumo se realizan a través de canales. Crear un canal es barato; establecer una conexión TCP no lo es.
 
 > **Nota de concurrencia:** Aunque puedes tener múltiples Goroutines publicando en el *mismo* Canal, es idiomático y más seguro en entornos de alta concurrencia abrir un Canal AMQP por cada Goroutine productora/consumidora, compartiendo la misma Conexión TCP subyacente.
 
@@ -161,44 +161,44 @@ Para construir un productor robusto, utilizaremos `PublishWithContext` (aprovech
 package main
 
 import (
-	"context"
-	"log"
-	"time"
+ "context"
+ "log"
+ "time"
 
-	amqp "github.com/rabbitmq/amqp091-go"
+ amqp "github.com/rabbitmq/amqp091-go"
 )
 
 func publishMessage(conn *amqp.Connection, exchange, routingKey, body string) error {
-	// 1. Abrimos un canal efímero para la operación
-	ch, err := conn.Channel()
-	if err != nil {
-		return err
-	}
-	defer ch.Close()
+ // 1. Abrimos un canal efímero para la operación
+ ch, err := conn.Channel()
+ if err != nil {
+  return err
+ }
+ defer ch.Close()
 
-	// 2. Usamos Context para definir un tiempo límite de red
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	defer cancel()
+ // 2. Usamos Context para definir un tiempo límite de red
+ ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+ defer cancel()
 
-	// 3. Publicamos el mensaje
-	err = ch.PublishWithContext(ctx,
-		exchange,   // exchange
-		routingKey, // routing key
-		false,      // mandatory (si no encuentra cola, descarta)
-		false,      // immediate
-		amqp.Publishing{
-			ContentType:  "application/json",
-			DeliveryMode: amqp.Persistent, // Asegura persistencia en disco si RabbitMQ reinicia
-			Body:         []byte(body),
-			Timestamp:    time.Now(),
-		})
+ // 3. Publicamos el mensaje
+ err = ch.PublishWithContext(ctx,
+  exchange,   // exchange
+  routingKey, // routing key
+  false,      // mandatory (si no encuentra cola, descarta)
+  false,      // immediate
+  amqp.Publishing{
+   ContentType:  "application/json",
+   DeliveryMode: amqp.Persistent, // Asegura persistencia en disco si RabbitMQ reinicia
+   Body:         []byte(body),
+   Timestamp:    time.Now(),
+  })
 
-	if err != nil {
-		return err
-	}
+ if err != nil {
+  return err
+ }
 
-	log.Printf("Mensaje enviado a %s: %s", exchange, body)
-	return nil
+ log.Printf("Mensaje enviado a %s: %s", exchange, body)
+ return nil
 }
 ```
 
@@ -206,7 +206,7 @@ func publishMessage(conn *amqp.Connection, exchange, routingKey, body string) er
 
 ### Implementación del Consumidor y Backpressure (QoS)
 
-Al consumir mensajes, un error común en sistemas Go novatos es permitir que RabbitMQ inunde la aplicación con miles de mensajes a la vez, agotando la memoria o colapsando los recursos externos (como una base de datos de la Parte 8). 
+Al consumir mensajes, un error común en sistemas Go novatos es permitir que RabbitMQ inunde la aplicación con miles de mensajes a la vez, agotando la memoria o colapsando los recursos externos (como una base de datos de la Parte 8).
 
 Para evitar esto, configuramos la **Calidad de Servicio (QoS)** estableciendo el `PrefetchCount`. Esto le indica a RabbitMQ cuántos mensajes sin confirmar (unacknowledged) puede tener el consumidor simultáneamente en memoria.
 
@@ -214,57 +214,57 @@ El siguiente ejemplo demuestra un consumidor asíncrono avanzado con confirmaci�
 
 ```go
 func startConsumer(conn *amqp.Connection, queueName string) error {
-	ch, err := conn.Channel()
-	if err != nil {
-		return err
-	}
-	// No hacemos defer ch.Close() aquí porque el consumo es continuo y asíncrono
+ ch, err := conn.Channel()
+ if err != nil {
+  return err
+ }
+ // No hacemos defer ch.Close() aquí porque el consumo es continuo y asíncrono
 
-	// 1. Configurar Backpressure (QoS): Procesar un máximo de 10 mensajes a la vez
-	err = ch.Qos(
-		10,    // prefetch count
-		0,     // prefetch size
-		false, // global
-	)
-	if err != nil {
-		return err
-	}
+ // 1. Configurar Backpressure (QoS): Procesar un máximo de 10 mensajes a la vez
+ err = ch.Qos(
+  10,    // prefetch count
+  0,     // prefetch size
+  false, // global
+ )
+ if err != nil {
+  return err
+ }
 
-	// 2. Registrar el consumidor
-	msgs, err := ch.Consume(
-		queueName, // queue
-		"",        // consumer tag
-		false,     // auto-ack (PUESTO EN FALSE PARA CONFIRMACIÓN MANUAL)
-		false,     // exclusive
-		false,     // no-local
-		false,     // no-wait
-		nil,       // args
-	)
-	if err != nil {
-		return err
-	}
+ // 2. Registrar el consumidor
+ msgs, err := ch.Consume(
+  queueName, // queue
+  "",        // consumer tag
+  false,     // auto-ack (PUESTO EN FALSE PARA CONFIRMACIÓN MANUAL)
+  false,     // exclusive
+  false,     // no-local
+  false,     // no-wait
+  nil,       // args
+ )
+ if err != nil {
+  return err
+ }
 
-	// 3. Procesar el canal de entrega de mensajes en una goroutine
-	go func() {
-		for d := range msgs {
-			log.Printf("Procesando evento: %s", d.Body)
+ // 3. Procesar el canal de entrega de mensajes en una goroutine
+ go func() {
+  for d := range msgs {
+   log.Printf("Procesando evento: %s", d.Body)
 
-			// Simulamos un procesamiento asíncrono o interacción con DB
-			time.Sleep(500 * time.Millisecond)
+   // Simulamos un procesamiento asíncrono o interacción con DB
+   time.Sleep(500 * time.Millisecond)
 
-			// 4. Confirmación manual (Acknowledge)
-			// d.Ack(false) indica que solo confirmamos este mensaje específico.
-			if err := d.Ack(false); err != nil {
-				log.Printf("Error al confirmar el mensaje: %v", err)
-				// En un escenario real, aquí se evaluaría un d.Nack() o requeue
-			} else {
-				log.Printf("Evento procesado y confirmado")
-			}
-		}
-	}()
+   // 4. Confirmación manual (Acknowledge)
+   // d.Ack(false) indica que solo confirmamos este mensaje específico.
+   if err := d.Ack(false); err != nil {
+    log.Printf("Error al confirmar el mensaje: %v", err)
+    // En un escenario real, aquí se evaluaría un d.Nack() o requeue
+   } else {
+    log.Printf("Evento procesado y confirmado")
+   }
+  }
+ }()
 
-	log.Println("Consumidor iniciado. Esperando eventos...")
-	return nil
+ log.Println("Consumidor iniciado. Esperando eventos...")
+ return nil
 }
 ```
 
@@ -282,8 +282,8 @@ En Kafka, los eventos se añaden secuencialmente a un archivo en disco (Log) y p
 
 A la hora de integrar Kafka en Go, la comunidad se divide principalmente entre dos grandes librerías, cada una con compromisos arquitectónicos que debes evaluar:
 
-1.  **`IBM/sarama` (anteriormente de Shopify):** Es una implementación nativa 100% en Go. Su gran ventaja es que compila estáticamente sin dependencias externas, lo que facilita enormemente la creación de imágenes Docker ligeras (como vimos en el Capítulo 47). Sin embargo, al tener que reimplementar el protocolo de Kafka, a veces se queda rezagada frente a las últimas funcionalidades del ecosistema.
-2.  **`confluentinc/confluent-kafka-go`:** Es la librería oficial de Confluent. Es un *wrapper* (envoltorio) sobre la robusta librería C `librdkafka`. Ofrece el máximo rendimiento posible y paridad total con las características de Kafka. Su principal desventaja es que **requiere Cgo** (Capítulo 46), lo que introduce dependencias del compilador de C (`gcc`) en tu pipeline de CI/CD y un ligero impacto en el rendimiento al cruzar la frontera entre Go y C.
+1. **`IBM/sarama` (anteriormente de Shopify):** Es una implementación nativa 100% en Go. Su gran ventaja es que compila estáticamente sin dependencias externas, lo que facilita enormemente la creación de imágenes Docker ligeras (como vimos en el Capítulo 47). Sin embargo, al tener que reimplementar el protocolo de Kafka, a veces se queda rezagada frente a las últimas funcionalidades del ecosistema.
+2. **`confluentinc/confluent-kafka-go`:** Es la librería oficial de Confluent. Es un *wrapper* (envoltorio) sobre la robusta librería C `librdkafka`. Ofrece el máximo rendimiento posible y paridad total con las características de Kafka. Su principal desventaja es que **requiere Cgo** (Capítulo 46), lo que introduce dependencias del compilador de C (`gcc`) en tu pipeline de CI/CD y un ligero impacto en el rendimiento al cruzar la frontera entre Go y C.
 
 Dado que `confluent-kafka-go` es el estándar empresarial para cargas de trabajo críticas, basaremos nuestros ejemplos en esta implementación.
 
@@ -299,55 +299,55 @@ Para saber si un mensaje llegó a Kafka con éxito, debemos escuchar de forma as
 package main
 
 import (
-	"fmt"
-	"log"
+ "fmt"
+ "log"
 
-	"github.com/confluentinc/confluent-kafka-go/v2/kafka"
+ "github.com/confluentinc/confluent-kafka-go/v2/kafka"
 )
 
 func main() {
-	// 1. Configuración del Productor
-	p, err := kafka.NewProducer(&kafka.ConfigMap{
-		"bootstrap.servers": "localhost:9092",
-		"acks":              "all", // Máxima garantía de durabilidad
-	})
-	if err != nil {
-		log.Fatalf("Error creando productor: %v", err)
-	}
-	defer p.Close()
+ // 1. Configuración del Productor
+ p, err := kafka.NewProducer(&kafka.ConfigMap{
+  "bootstrap.servers": "localhost:9092",
+  "acks":              "all", // Máxima garantía de durabilidad
+ })
+ if err != nil {
+  log.Fatalf("Error creando productor: %v", err)
+ }
+ defer p.Close()
 
-	// 2. Goroutine para procesar los Delivery Reports (Eventos de red)
-	go func() {
-		for e := range p.Events() {
-			switch ev := e.(type) {
-			case *kafka.Message:
-				if ev.TopicPartition.Error != nil {
-					log.Printf("Error de entrega: %v\n", ev.TopicPartition.Error)
-				} else {
-					log.Printf("Mensaje entregado al topic %s [Partición: %d] en el Offset %v\n",
-						*ev.TopicPartition.Topic, ev.TopicPartition.Partition, ev.TopicPartition.Offset)
-				}
-			}
-		}
-	}()
+ // 2. Goroutine para procesar los Delivery Reports (Eventos de red)
+ go func() {
+  for e := range p.Events() {
+   switch ev := e.(type) {
+   case *kafka.Message:
+    if ev.TopicPartition.Error != nil {
+     log.Printf("Error de entrega: %v\n", ev.TopicPartition.Error)
+    } else {
+     log.Printf("Mensaje entregado al topic %s [Partición: %d] en el Offset %v\n",
+      *ev.TopicPartition.Topic, ev.TopicPartition.Partition, ev.TopicPartition.Offset)
+    }
+   }
+  }
+ }()
 
-	// 3. Producción asíncrona de mensajes
-	topic := "transacciones_financieras"
-	key := "usuario_123" // La clave garantiza el orden en la misma partición
-	value := `{"monto": 1500.50, "moneda": "USD"}`
+ // 3. Producción asíncrona de mensajes
+ topic := "transacciones_financieras"
+ key := "usuario_123" // La clave garantiza el orden en la misma partición
+ value := `{"monto": 1500.50, "moneda": "USD"}`
 
-	err = p.Produce(&kafka.Message{
-		TopicPartition: kafka.TopicPartition{Topic: &topic, Partition: kafka.PartitionAny},
-		Key:            []byte(key),
-		Value:          []byte(value),
-	}, nil)
+ err = p.Produce(&kafka.Message{
+  TopicPartition: kafka.TopicPartition{Topic: &topic, Partition: kafka.PartitionAny},
+  Key:            []byte(key),
+  Value:          []byte(value),
+ }, nil)
 
-	if err != nil {
-		log.Printf("Error encolando mensaje: %v", err)
-	}
+ if err != nil {
+  log.Printf("Error encolando mensaje: %v", err)
+ }
 
-	// Esperamos a que se vacíen los búferes internos antes de salir (Graceful shutdown)
-	p.Flush(15 * 1000) 
+ // Esperamos a que se vacíen los búferes internos antes de salir (Graceful shutdown)
+ p.Flush(15 * 1000) 
 }
 ```
 
@@ -357,7 +357,7 @@ func main() {
 
 ### Consumo y Grupos de Consumidores (Consumer Groups)
 
-A diferencia de RabbitMQ, donde múltiples trabajadores compiten por vaciar una cola, Kafka utiliza el concepto de **Grupos de Consumidores**. 
+A diferencia de RabbitMQ, donde múltiples trabajadores compiten por vaciar una cola, Kafka utiliza el concepto de **Grupos de Consumidores**.
 
 Si lanzas tres réplicas de tu microservicio Go configuradas con el mismo `group.id`, Kafka asignará automáticamente diferentes particiones del Topic a cada instancia. Esto permite escalar el consumo horizontalmente sin esfuerzo. Kafka lleva el registro del último mensaje leído por cada grupo mediante un puntero llamado **Offset**.
 
@@ -367,67 +367,67 @@ El siguiente patrón ilustra un consumidor continuo (polling loop):
 package main
 
 import (
-	"fmt"
-	"log"
-	"os"
-	"os/signal"
-	"syscall"
+ "fmt"
+ "log"
+ "os"
+ "os/signal"
+ "syscall"
 
-	"github.com/confluentinc/confluent-kafka-go/v2/kafka"
+ "github.com/confluentinc/confluent-kafka-go/v2/kafka"
 )
 
 func main() {
-	c, err := kafka.NewConsumer(&kafka.ConfigMap{
-		"bootstrap.servers": "localhost:9092",
-		"group.id":          "microservicio_analitica",
-		"auto.offset.reset": "earliest", // Si no hay offset previo, lee desde el principio
-	})
-	if err != nil {
-		log.Fatalf("Error creando consumidor: %v", err)
-	}
-	defer c.Close()
+ c, err := kafka.NewConsumer(&kafka.ConfigMap{
+  "bootstrap.servers": "localhost:9092",
+  "group.id":          "microservicio_analitica",
+  "auto.offset.reset": "earliest", // Si no hay offset previo, lee desde el principio
+ })
+ if err != nil {
+  log.Fatalf("Error creando consumidor: %v", err)
+ }
+ defer c.Close()
 
-	// Suscripción al topic
-	err = c.SubscribeTopics([]string{"transacciones_financieras"}, nil)
-	if err != nil {
-		log.Fatalf("Error al suscribirse: %v", err)
-	}
+ // Suscripción al topic
+ err = c.SubscribeTopics([]string{"transacciones_financieras"}, nil)
+ if err != nil {
+  log.Fatalf("Error al suscribirse: %v", err)
+ }
 
-	// Canal para manejar el apagado elegante (Graceful Shutdown - Cap. 49)
-	sigchan := make(chan os.Signal, 1)
-	signal.Notify(sigchan, syscall.SIGINT, syscall.SIGTERM)
+ // Canal para manejar el apagado elegante (Graceful Shutdown - Cap. 49)
+ sigchan := make(chan os.Signal, 1)
+ signal.Notify(sigchan, syscall.SIGINT, syscall.SIGTERM)
 
-	run := true
-	log.Println("Iniciando consumo de eventos...")
+ run := true
+ log.Println("Iniciando consumo de eventos...")
 
-	for run {
-		select {
-		case sig := <-sigchan:
-			log.Printf("Señal terminación recibida: %v\n", sig)
-			run = false
-		default:
-			// Polling bloqueante con timeout
-			ev := c.Poll(100) 
-			if ev == nil {
-				continue
-			}
+ for run {
+  select {
+  case sig := <-sigchan:
+   log.Printf("Señal terminación recibida: %v\n", sig)
+   run = false
+  default:
+   // Polling bloqueante con timeout
+   ev := c.Poll(100) 
+   if ev == nil {
+    continue
+   }
 
-			switch e := ev.(type) {
-			case *kafka.Message:
-				fmt.Printf("Mensaje procesado de la partición %d: %s\n", 
+   switch e := ev.(type) {
+   case *kafka.Message:
+    fmt.Printf("Mensaje procesado de la partición %d: %s\n", 
                     e.TopicPartition.Partition, string(e.Value))
-				// El commit de offsets es automático por defecto en esta librería,
-				// pero en sistemas críticos se desactiva "enable.auto.commit" 
-				// y se llama a c.Commit() manualmente tras procesar la base de datos.
-			case kafka.Error:
-				// Errores del cliente o del broker
-				fmt.Fprintf(os.Stderr, "Error: %v\n", e)
-				if e.Code() == kafka.ErrAllBrokersDown {
-					run = false
-				}
-			}
-		}
-	}
+    // El commit de offsets es automático por defecto en esta librería,
+    // pero en sistemas críticos se desactiva "enable.auto.commit" 
+    // y se llama a c.Commit() manualmente tras procesar la base de datos.
+   case kafka.Error:
+    // Errores del cliente o del broker
+    fmt.Fprintf(os.Stderr, "Error: %v\n", e)
+    if e.Code() == kafka.ErrAllBrokersDown {
+     run = false
+    }
+   }
+  }
+ }
 }
 ```
 
@@ -435,7 +435,7 @@ El diseño de bucle cerrado con `Poll()` y el manejo de señales del sistema ope
 
 ## 34.4. NATS y NATS JetStream para alta disponibilidad y baja latencia
 
-Tras haber analizado el enrutamiento complejo de RabbitMQ y la retención masiva de registros de Kafka, cerramos este capítulo con una tecnología que tiene un lugar especial en el ecosistema: **NATS**. 
+Tras haber analizado el enrutamiento complejo de RabbitMQ y la retención masiva de registros de Kafka, cerramos este capítulo con una tecnología que tiene un lugar especial en el ecosistema: **NATS**.
 
 A diferencia de los anteriores, el servidor de NATS (`nats-server`) está escrito íntegramente en Go. Esto no es solo una curiosidad; significa que se despliega como un único binario estático ultraligero, sin dependencias de la Máquina Virtual de Java (JVM) ni de Erlang, y es capaz de procesar millones de mensajes por segundo con una latencia de microsegundos en hardware modesto.
 
@@ -455,40 +455,40 @@ El cliente oficial en Go (`github.com/nats-io/nats.go`) hace que esta interacci�
 package main
 
 import (
-	"fmt"
-	"log"
-	"time"
+ "fmt"
+ "log"
+ "time"
 
-	"github.com/nats-io/nats.go"
+ "github.com/nats-io/nats.go"
 )
 
 func main() {
-	// 1. Conexión al servidor NATS
-	nc, err := nats.Connect(nats.DefaultURL)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer nc.Close()
+ // 1. Conexión al servidor NATS
+ nc, err := nats.Connect(nats.DefaultURL)
+ if err != nil {
+  log.Fatal(err)
+ }
+ defer nc.Close()
 
-	// 2. Suscriptor (Actúa como un microservicio que responde peticiones)
-	_, err = nc.Subscribe("servicios.facturacion", func(m *nats.Msg) {
-		log.Printf("Petición recibida: %s", string(m.Data))
-		
-		// Responde al remitente usando la bandeja de entrada efímera del mensaje
-		m.Respond([]byte("Factura generada con éxito"))
-	})
-	if err != nil {
-		log.Fatal(err)
-	}
+ // 2. Suscriptor (Actúa como un microservicio que responde peticiones)
+ _, err = nc.Subscribe("servicios.facturacion", func(m *nats.Msg) {
+  log.Printf("Petición recibida: %s", string(m.Data))
+  
+  // Responde al remitente usando la bandeja de entrada efímera del mensaje
+  m.Respond([]byte("Factura generada con éxito"))
+ })
+ if err != nil {
+  log.Fatal(err)
+ }
 
-	// 3. Productor (Hace una petición Request-Reply síncrona sobre la red asíncrona)
-	log.Println("Solicitando generación de factura...")
-	msg, err := nc.Request("servicios.facturacion", []byte("ID_ORDEN: 9982"), 2*time.Second)
-	if err != nil {
-		log.Fatalf("Error en la petición: %v", err)
-	}
+ // 3. Productor (Hace una petición Request-Reply síncrona sobre la red asíncrona)
+ log.Println("Solicitando generación de factura...")
+ msg, err := nc.Request("servicios.facturacion", []byte("ID_ORDEN: 9982"), 2*time.Second)
+ if err != nil {
+  log.Fatalf("Error en la petición: %v", err)
+ }
 
-	fmt.Printf("Respuesta del servicio: %s\n", string(msg.Data))
+ fmt.Printf("Respuesta del servicio: %s\n", string(msg.Data))
 }
 ```
 
@@ -508,72 +508,72 @@ A continuación, un ejemplo de cómo interactuar con el motor JetStream desde Go
 package main
 
 import (
-	"context"
-	"fmt"
-	"log"
-	"time"
+ "context"
+ "fmt"
+ "log"
+ "time"
 
-	"github.com/nats-io/nats.go"
-	"github.com/nats-io/nats.go/jetstream"
+ "github.com/nats-io/nats.go"
+ "github.com/nats-io/nats.go/jetstream"
 )
 
 func main() {
-	nc, err := nats.Connect(nats.DefaultURL)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer nc.Close()
+ nc, err := nats.Connect(nats.DefaultURL)
+ if err != nil {
+  log.Fatal(err)
+ }
+ defer nc.Close()
 
-	// 1. Inicializar el cliente JetStream moderno (nats.go v1.30+)
-	js, err := jetstream.New(nc)
-	if err != nil {
-		log.Fatal(err)
-	}
+ // 1. Inicializar el cliente JetStream moderno (nats.go v1.30+)
+ js, err := jetstream.New(nc)
+ if err != nil {
+  log.Fatal(err)
+ }
 
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	defer cancel()
+ ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+ defer cancel()
 
-	// 2. Declarar un Stream (Idempotente: si existe, lo actualiza o lo ignora)
-	stream, err := js.CreateStream(ctx, jetstream.StreamConfig{
-		Name:     "AUDITORIA",
-		Subjects: []string{"auditoria.>"}, // Captura cualquier evento que empiece con "auditoria."
-		Storage:  jetstream.FileStorage,   // Persistencia en disco
-	})
-	if err != nil {
-		log.Fatal(err)
-	}
+ // 2. Declarar un Stream (Idempotente: si existe, lo actualiza o lo ignora)
+ stream, err := js.CreateStream(ctx, jetstream.StreamConfig{
+  Name:     "AUDITORIA",
+  Subjects: []string{"auditoria.>"}, // Captura cualquier evento que empiece con "auditoria."
+  Storage:  jetstream.FileStorage,   // Persistencia en disco
+ })
+ if err != nil {
+  log.Fatal(err)
+ }
 
-	// 3. Publicar un mensaje persistente
-	ack, err := js.Publish(ctx, "auditoria.login.exitoso", []byte("Usuario admin conectado"))
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Printf("Mensaje persistido en el Stream %s, Secuencia: %d\n", stream.CachedInfo().Config.Name, ack.Sequence)
+ // 3. Publicar un mensaje persistente
+ ack, err := js.Publish(ctx, "auditoria.login.exitoso", []byte("Usuario admin conectado"))
+ if err != nil {
+  log.Fatal(err)
+ }
+ fmt.Printf("Mensaje persistido en el Stream %s, Secuencia: %d\n", stream.CachedInfo().Config.Name, ack.Sequence)
 
-	// 4. Crear un Consumidor Duradero (recuerda su estado aunque la app se reinicie)
-	cons, err := js.CreateOrUpdateConsumer(ctx, "AUDITORIA", jetstream.ConsumerConfig{
-		Durable:       "monitor_seguridad",
-		DeliverPolicy: jetstream.DeliverAllPolicy,
-		AckPolicy:     jetstream.AckExplicitPolicy, // Requiere confirmación manual
-	})
-	if err != nil {
-		log.Fatal(err)
-	}
+ // 4. Crear un Consumidor Duradero (recuerda su estado aunque la app se reinicie)
+ cons, err := js.CreateOrUpdateConsumer(ctx, "AUDITORIA", jetstream.ConsumerConfig{
+  Durable:       "monitor_seguridad",
+  DeliverPolicy: jetstream.DeliverAllPolicy,
+  AckPolicy:     jetstream.AckExplicitPolicy, // Requiere confirmación manual
+ })
+ if err != nil {
+  log.Fatal(err)
+ }
 
-	// 5. Consumir mensajes
-	msgCtx, err := cons.Consume(func(msg jetstream.Msg) {
-		fmt.Printf("Evento de auditoría detectado: %s\n", string(msg.Data()))
-		
-		// Confirmación manual (esencial en semántica At-least-once)
-		msg.Ack()
-	})
-	if err != nil {
-		log.Fatal(err)
-	}
+ // 5. Consumir mensajes
+ msgCtx, err := cons.Consume(func(msg jetstream.Msg) {
+  fmt.Printf("Evento de auditoría detectado: %s\n", string(msg.Data()))
+  
+  // Confirmación manual (esencial en semántica At-least-once)
+  msg.Ack()
+ })
+ if err != nil {
+  log.Fatal(err)
+ }
 
-	// Esperar un momento para recibir el mensaje antes de cerrar
-	time.Sleep(1 * time.Second)
-	msgCtx.Stop()
+ // Esperar un momento para recibir el mensaje antes de cerrar
+ time.Sleep(1 * time.Second)
+ msgCtx.Stop()
 }
 ```
 

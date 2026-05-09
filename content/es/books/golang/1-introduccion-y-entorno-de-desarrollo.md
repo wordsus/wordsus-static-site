@@ -13,6 +13,7 @@ El lenguaje fue presentado al código abierto en noviembre de 2009. Posteriormen
 La filosofía central de Go se resume en una búsqueda implacable de la simplicidad y la legibilidad. En un ecosistema donde los lenguajes modernos tienden a acumular características complejas con cada nueva versión (un fenómeno conocido como "feature bloat"), Go toma la dirección opuesta. Rob Pike popularizó la máxima "menos es exponencialmente más" para ilustrar cómo la ausencia de ciertas mecánicas tradicionales facilita el mantenimiento y la escalabilidad del código a lo largo del tiempo.
 
 Go rechaza explícitamente paradigmas que en otros lenguajes se consideran estándar de la industria:
+
 * Carece de herencia basada en clases, optando en su lugar por la composición de estructuras.
 * Omite la sobrecarga de funciones y de operadores.
 * Evita el manejo de excepciones mediante bloques `try/catch`, implementando en su lugar el retorno explícito de errores como valores.
@@ -24,10 +25,10 @@ Esta rigidez intencional, sumada a herramientas estandarizadas de formateo, elim
 
 Desde la perspectiva de la ingeniería, el diseño de Go se asienta sobre cuatro pilares fundamentales que dictarán la manera en la que estructuraremos las aplicaciones a lo largo de este libro:
 
-1.  **Tipado estático y compilación veloz:** Go es un lenguaje fuertemente tipado que se compila directamente a código máquina nativo, prescindiendo de máquinas virtuales o intérpretes en tiempo de ejecución. Su compilador está diseñado algorítmicamente para ser extremadamente rápido, resolviendo dependencias de forma estricta al inicio del archivo para evitar compilaciones cíclicas e innecesarias.
-2.  **Concurrencia como ciudadano de primera clase:** Inspirado fuertemente en el modelo CSP (Communicating Sequential Processes) de Tony Hoare propuesto en 1978, Go integra la concurrencia a nivel sintáctico. Mediante el uso de *Goroutines* y *Channels*, abandona la dependencia directa de los pesados hilos del sistema operativo. Las goroutines son rutinas ligeras gestionadas por el propio runtime de Go, permitiendo multiplexar eficientemente cientos de miles de ejecuciones concurrentes.
-3.  **Recolección de basura (GC) de baja latencia:** Para mantener la seguridad de memoria sin sacrificar rendimiento, Go incorpora un recolector de basura concurrente que prioriza sistemáticamente la reducción de los tiempos de pausa (Stop-The-World) por encima del *throughput* bruto. Este diseño hace que Go sea una opción excepcional para sistemas distribuidos y APIs RESTful donde una latencia predecible es crítica.
-4.  **Ortogonalidad y Duck Typing estático:** A diferencia de los lenguajes orientados a objetos tradicionales, las interfaces en Go se satisfacen de manera implícita. Si un tipo implementa los métodos requeridos por una interfaz, entonces pertenece a ella, sin necesidad de declarar explícitamente esa relación.
+1. **Tipado estático y compilación veloz:** Go es un lenguaje fuertemente tipado que se compila directamente a código máquina nativo, prescindiendo de máquinas virtuales o intérpretes en tiempo de ejecución. Su compilador está diseñado algorítmicamente para ser extremadamente rápido, resolviendo dependencias de forma estricta al inicio del archivo para evitar compilaciones cíclicas e innecesarias.
+2. **Concurrencia como ciudadano de primera clase:** Inspirado fuertemente en el modelo CSP (Communicating Sequential Processes) de Tony Hoare propuesto en 1978, Go integra la concurrencia a nivel sintáctico. Mediante el uso de *Goroutines* y *Channels*, abandona la dependencia directa de los pesados hilos del sistema operativo. Las goroutines son rutinas ligeras gestionadas por el propio runtime de Go, permitiendo multiplexar eficientemente cientos de miles de ejecuciones concurrentes.
+3. **Recolección de basura (GC) de baja latencia:** Para mantener la seguridad de memoria sin sacrificar rendimiento, Go incorpora un recolector de basura concurrente que prioriza sistemáticamente la reducción de los tiempos de pausa (Stop-The-World) por encima del *throughput* bruto. Este diseño hace que Go sea una opción excepcional para sistemas distribuidos y APIs RESTful donde una latencia predecible es crítica.
+4. **Ortogonalidad y Duck Typing estático:** A diferencia de los lenguajes orientados a objetos tradicionales, las interfaces en Go se satisfacen de manera implícita. Si un tipo implementa los métodos requeridos por una interfaz, entonces pertenece a ella, sin necesidad de declarar explícitamente esa relación.
 
 Para ilustrar cómo esta filosofía se traduce en la práctica, el siguiente fragmento de código demuestra la ortogonalidad en la definición de comportamientos. Observa cómo el tipo concreto no necesita "saber" sobre la interfaz para cumplir su contrato:
 
@@ -35,37 +36,37 @@ Para ilustrar cómo esta filosofía se traduce en la práctica, el siguiente fra
 package main
 
 import (
-	"fmt"
-	"math"
+ "fmt"
+ "math"
 )
 
 // Shape define un comportamiento abstracto (el "qué").
 type Shape interface {
-	Area() float64
+ Area() float64
 }
 
 // Circle es un tipo de dato concreto.
 // Nota que no se usa ninguna palabra clave "implements".
 type Circle struct {
-	Radius float64
+ Radius float64
 }
 
 // Area es el método que asocia la lógica a Circle.
 // Por el simple hecho de existir y coincidir con la firma, Circle satisface Shape.
 func (c Circle) Area() float64 {
-	return math.Pi * c.Radius * c.Radius
+ return math.Pi * c.Radius * c.Radius
 }
 
 // PrintArea acepta cualquier entidad que cumpla con el contrato de Shape.
 func PrintArea(s Shape) {
-	fmt.Printf("El área calculada es: %.2f\n", s.Area())
+ fmt.Printf("El área calculada es: %.2f\n", s.Area())
 }
 
 func main() {
-	c := Circle{Radius: 5.5}
-	// El compilador verifica estáticamente en tiempo de compilación
-	// que 'c' posee el método Area() float64.
-	PrintArea(c)
+ c := Circle{Radius: 5.5}
+ // El compilador verifica estáticamente en tiempo de compilación
+ // que 'c' posee el método Area() float64.
+ PrintArea(c)
 }
 ```
 
@@ -75,7 +76,7 @@ Este enfoque deliberado en el diseño fomenta la creación de componentes de sof
 
 ### La anatomía de la instalación y GOROOT
 
-A diferencia de lenguajes que dependen de pesados entornos de ejecución o máquinas virtuales, la instalación de Go es fundamentalmente la descarga de un conjunto de herramientas (toolchain) y la Standard Library precompilada. Ya sea utilizando gestores de paquetes (`apt`, `brew`) o descargando los binarios oficiales, el núcleo de la instalación reside en la variable de entorno `GOROOT`. 
+A diferencia de lenguajes que dependen de pesados entornos de ejecución o máquinas virtuales, la instalación de Go es fundamentalmente la descarga de un conjunto de herramientas (toolchain) y la Standard Library precompilada. Ya sea utilizando gestores de paquetes (`apt`, `brew`) o descargando los binarios oficiales, el núcleo de la instalación reside en la variable de entorno `GOROOT`.
 
 Históricamente, los desarrolladores debían configurar `GOROOT` manualmente para indicar al sistema dónde residía el compilador de Go. En las versiones modernas, el *toolchain* es capaz de inferir su propia ubicación de forma automática. Modificar `GOROOT` hoy en día es una práctica reservada casi exclusivamente para escenarios donde se compila el propio lenguaje desde el código fuente o se mantienen múltiples versiones del SDK en entornos altamente personalizados.
 
@@ -89,7 +90,7 @@ Antes de la versión 1.11, Go imponía una convención estricta sobre la organiz
 * `pkg/`: Almacenaba los objetos precompilados (archivos `.a`) para acelerar compilaciones subsecuentes.
 * `bin/`: El destino de los binarios ejecutables compilados.
 
-Bajo este paradigma, si querías importar una librería, el compilador la buscaba ciegamente en `$GOPATH/src`. 
+Bajo este paradigma, si querías importar una librería, el compilador la buscaba ciegamente en `$GOPATH/src`.
 
 ```go
 // Bajo el modelo GOPATH, el compilador buscaba esto en:
@@ -108,7 +109,7 @@ Este rediseño liberó a los desarrolladores de la tiranía del `GOPATH`. Con Go
 Al ejecutar el comando de inicialización dentro de un directorio vacío:
 
 ```bash
-$ go mod init github.com/mi-empresa/mi-api
+go mod init github.com/mi-empresa/mi-api
 ```
 
 Se genera un archivo `go.mod` básico. A medida que importas dependencias en tu código y compilas, la herramienta de Go (que exploraremos a fondo en la sección 1.3) actualiza este archivo automáticamente y aplica un algoritmo conocido como *Minimal Version Selection* (MVS) basado en *Semantic Versioning* (SemVer).
@@ -133,7 +134,7 @@ Junto al `go.mod`, el sistema genera un archivo **`go.sum`**. A diferencia de un
 
 ### ¿Qué pasó con el GOPATH en la actualidad?
 
-Es un error común pensar que `GOPATH` fue eliminado. En el ecosistema moderno, la variable `GOPATH` sigue existiendo, pero ha cambiado su rol drásticamente. Ya no dicta dónde debes escribir tu código, sino que actúa como una caché de lectura global. 
+Es un error común pensar que `GOPATH` fue eliminado. En el ecosistema moderno, la variable `GOPATH` sigue existiendo, pero ha cambiado su rol drásticamente. Ya no dicta dónde debes escribir tu código, sino que actúa como una caché de lectura global.
 
 Cuando Go Modules descarga la versión `v1.6.0` de `github.com/google/uuid`, no la guarda en el directorio de tu proyecto (a menos que utilices el modo *vendoring* explícitamente). En su lugar, la almacena en caché en modo de solo lectura dentro de `$GOPATH/pkg/mod/...`. Esto significa que si tienes diez microservicios en tu máquina que utilizan la misma versión de una librería, esta solo se descarga y almacena una vez en el disco, optimizando drásticamente el uso del almacenamiento y la velocidad de resolución en los entornos de desarrollo.
 
@@ -141,7 +142,7 @@ Cuando Go Modules descarga la versión `v1.6.0` de `github.com/google/uuid`, no 
 
 ### El toolchain como ciudadano de primera clase
 
-Una de las decisiones de ingeniería más celebradas de Go es la inclusión de un conjunto de herramientas (toolchain) exhaustivo y estandarizado directamente en su instalación base. En ecosistemas como JavaScript o Python, los equipos de desarrollo suelen invertir una cantidad significativa de tiempo debatiendo, configurando y manteniendo herramientas de terceros para formateo, análisis estático y empaquetado (Webpack, Babel, Flake8, Prettier, etc.). 
+Una de las decisiones de ingeniería más celebradas de Go es la inclusión de un conjunto de herramientas (toolchain) exhaustivo y estandarizado directamente en su instalación base. En ecosistemas como JavaScript o Python, los equipos de desarrollo suelen invertir una cantidad significativa de tiempo debatiendo, configurando y manteniendo herramientas de terceros para formateo, análisis estático y empaquetado (Webpack, Babel, Flake8, Prettier, etc.).
 
 Go elimina esta fricción cognitiva proporcionando el comando `go`, una interfaz unificada (frontend) que interactúa con el compilador, el enlazador (linker) y el sistema de gestión de módulos. Comprender a fondo esta CLI es fundamental para dominar el ciclo de vida del desarrollo en Go.
 
@@ -158,6 +159,7 @@ El verdadero poder de `go build` brilla en la **compilación cruzada (Cross-Comp
 # Compilando un binario para un servidor Linux con arquitectura ARM64
 $ GOOS=linux GOARCH=arm64 go build -o mi-api-linux-arm main.go
 ```
+
 La bandera `-o` permite especificar el nombre y la ruta de salida del artefacto generado.
 
 ### El fin de las guerras de estilo: `go fmt`
@@ -178,9 +180,9 @@ package main
 import "fmt"
 
 func main() {
-	usuario := "Admin"
-	// El código compila, pero el verbo %d espera un entero, no un string.
-	fmt.Printf("Iniciando sesión como: %d\n", usuario) 
+ usuario := "Admin"
+ // El código compila, pero el verbo %d espera un entero, no un string.
+ fmt.Printf("Iniciando sesión como: %d\n", usuario) 
 }
 ```
 
@@ -190,6 +192,7 @@ Si ejecutas `go build`, el compilador lo permitirá, y en tiempo de ejecución v
 $ go vet main.go
 ./main.go:7:2: fmt.Printf format %d has arg usuario of wrong type string
 ```
+
 Es una práctica estándar incluir `go vet` como un paso obligatorio en las tuberías de Integración Continua (CI).
 
 ### Documentación viva: `go doc`
@@ -217,7 +220,7 @@ Esta integración nativa fomenta que los desarrolladores escriban comentarios cl
 
 A diferencia de *frameworks* de desarrollo monolíticos como Ruby on Rails, Django o Angular, que imponen una jerarquía de directorios rígida y autogenerada, el compilador de Go es notablemente agnóstico respecto a cómo organizas tus archivos. Si lo deseas, puedes colocar mil archivos `.go` en el directorio raíz de tu proyecto y el comando `go build` los ensamblará sin emitir una sola queja.
 
-Sin embargo, a medida que los repositorios crecen en complejidad integrando microservicios, configuraciones de despliegue, *scripts* de infraestructura y definiciones de API, la anarquía estructural se vuelve insostenible. Para resolver esto, la comunidad adoptó de facto un patrón organizativo conocido como el **Standard Go Project Layout** (inspirado en repositorios masivos como Kubernetes o Docker). 
+Sin embargo, a medida que los repositorios crecen en complejidad integrando microservicios, configuraciones de despliegue, *scripts* de infraestructura y definiciones de API, la anarquía estructural se vuelve insostenible. Para resolver esto, la comunidad adoptó de facto un patrón organizativo conocido como el **Standard Go Project Layout** (inspirado en repositorios masivos como Kubernetes o Docker).
 
 Es vital comprender que este diseño no es un estándar impuesto por el equipo central de Google, sino un conjunto de convenciones comunitarias. Aplicarlo a un microservicio trivial de cien líneas de código es un claro antipatrón de sobreingeniería. Su valor real emerge en proyectos empresariales a gran escala.
 
@@ -247,13 +250,13 @@ mi-proyecto-backend/
 
 **1. El directorio `/cmd` (Puntos de entrada)**
 
-El directorio `cmd` aloja los puntos de entrada (entry points) de la aplicación. Es común que un mismo repositorio (monorepo) genere múltiples binarios distintos, por ejemplo: un servidor HTTP REST, un demonio gRPC y un consumidor de colas de mensajes. 
+El directorio `cmd` aloja los puntos de entrada (entry points) de la aplicación. Es común que un mismo repositorio (monorepo) genere múltiples binarios distintos, por ejemplo: un servidor HTTP REST, un demonio gRPC y un consumidor de colas de mensajes.
 
 Cada aplicación tiene su propio subdirectorio dentro de `cmd` que contiene un archivo `main.go`. La regla de oro aquí es que el paquete `main` no debe contener lógica de negocio. Su única responsabilidad es inicializar configuraciones, establecer conexiones, inyectar dependencias y ceder el control al código alojado en los paquetes internos.
 
 **2. El directorio `/internal` (Encapsulamiento garantizado por el compilador)**
 
-Esta es la carpeta más importante y la única que tiene un comportamiento especial a nivel del propio compilador de Go (introducido en Go 1.4). Cualquier paquete que coloques dentro de un directorio llamado `internal` **no podrá ser importado por proyectos externos**. 
+Esta es la carpeta más importante y la única que tiene un comportamiento especial a nivel del propio compilador de Go (introducido en Go 1.4). Cualquier paquete que coloques dentro de un directorio llamado `internal` **no podrá ser importado por proyectos externos**.
 
 Si estás construyendo una API y publicas tu repositorio en GitHub, otros desarrolladores no podrán hacer un `import "github.com/tu-usuario/tu-api/internal/auth"`. El compilador de Go lanzará un error de importación inmediatamente. Esta es la forma idiomática en Go de ocultar tu lógica de dominio, tus modelos de base de datos y tus reglas de negocio críticas, protegiéndolas de convertirse inadvertidamente en una API pública que te veas obligado a mantener por retrocompatibilidad.
 

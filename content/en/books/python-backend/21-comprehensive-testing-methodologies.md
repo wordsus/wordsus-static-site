@@ -6,7 +6,7 @@ To engineer a robust Python backend, testing cannot be an afterthought; it must 
 
 ### The Testing Pyramid in Backend Systems
 
-The testing pyramid visually represents how tests should be distributed across your codebase to maximize confidence while minimizing execution time and maintenance overhead. 
+The testing pyramid visually represents how tests should be distributed across your codebase to maximize confidence while minimizing execution time and maintenance overhead.
 
 ```text
                / \
@@ -21,9 +21,9 @@ The testing pyramid visually represents how tests should be distributed across y
       /-------------------\
 ```
 
-1.  **Unit Tests (The Base):** These tests isolate individual components—functions, methods, and classes. They mock external dependencies and execute in milliseconds. In a Python backend, this means testing your business logic, utility functions, and domain models in a vacuum.
-2.  **Integration Tests (The Middle):** These tests verify that multiple units function correctly when wired together. For backend systems, this typically involves testing API endpoints against a test database, ensuring your ORM models correctly translate to SQL, or verifying interaction with a local cache.
-3.  **End-to-End (E2E) Tests (The Apex):** These validate the entire system from the user's perspective, traversing the network, load balancers, application servers, and databases. Because they are brittle and slow, they should be reserved for critical user journeys (e.g., user registration, checkout flows).
+1. **Unit Tests (The Base):** These tests isolate individual components—functions, methods, and classes. They mock external dependencies and execute in milliseconds. In a Python backend, this means testing your business logic, utility functions, and domain models in a vacuum.
+2. **Integration Tests (The Middle):** These tests verify that multiple units function correctly when wired together. For backend systems, this typically involves testing API endpoints against a test database, ensuring your ORM models correctly translate to SQL, or verifying interaction with a local cache.
+3. **End-to-End (E2E) Tests (The Apex):** These validate the entire system from the user's perspective, traversing the network, load balancers, application servers, and databases. Because they are brittle and slow, they should be reserved for critical user journeys (e.g., user registration, checkout flows).
 
 ### The `pytest` Advantage: Introspection and Boilerplate Reduction
 
@@ -33,13 +33,13 @@ Through advanced Abstract Syntax Tree (AST) manipulation, `pytest` introspects y
 
 ### Fixture Architecture: The Heart of `pytest`
 
-The true architectural power of `pytest` lies in its **fixtures**. Unlike the rigid `setUp()` and `tearDown()` methods of `unittest`, `pytest` fixtures utilize a powerful Dependency Injection (DI) system. 
+The true architectural power of `pytest` lies in its **fixtures**. Unlike the rigid `setUp()` and `tearDown()` methods of `unittest`, `pytest` fixtures utilize a powerful Dependency Injection (DI) system.
 
 A fixture is essentially a function that sets up system state or provides data, which can then be "injected" into any test function simply by declaring the fixture's name as an argument.
 
 #### 1. Defining and Injecting Fixtures
 
-Fixtures are defined using the `@pytest.fixture` decorator. 
+Fixtures are defined using the `@pytest.fixture` decorator.
 
 ```python
 import pytest
@@ -114,7 +114,7 @@ def test_file_creation(temporary_workspace):
 
 Fixtures are highly modular because they can request *other* fixtures. This allows you to build complex states from simple, reusable building blocks.
 
-Furthermore, you do not need to import fixtures. By placing them in a file named `conftest.py` at the root of your test directory (or within specific subdirectories), `pytest` automatically discovers them and makes them available globally to all tests within that scope. 
+Furthermore, you do not need to import fixtures. By placing them in a file named `conftest.py` at the root of your test directory (or within specific subdirectories), `pytest` automatically discovers them and makes them available globally to all tests within that scope.
 
 ```python
 # conftest.py
@@ -320,11 +320,11 @@ If unit tests verify that your application's internal gears mesh correctly, inte
 
 ### Database Integration: The Transaction Rollback Pattern
 
-Testing against a real database introduces the risk of state leakage. If Test A inserts a user and fails to clean it up, Test B might fail because it expects an empty table or encounters a unique constraint violation. 
+Testing against a real database introduces the risk of state leakage. If Test A inserts a user and fails to clean it up, Test B might fail because it expects an empty table or encounters a unique constraint violation.
 
 The naive approach is to execute a `TRUNCATE` or `DROP/CREATE` statement between every test. However, disk I/O and schema generation are expensive operations; doing this hundreds of times will cripple your test suite's execution speed.
 
-The industry standard for relational database testing is the **Transaction Rollback Pattern**. Instead of resetting the database schema, we wrap every individual test in a database transaction that is intentionally rolled back during the teardown phase. 
+The industry standard for relational database testing is the **Transaction Rollback Pattern**. Instead of resetting the database schema, we wrap every individual test in a database transaction that is intentionally rolled back during the teardown phase.
 
 Because the transaction is never committed, the database engine discards the changes entirely in memory, sparing the disk and guaranteeing an atomic, pristine state for the next test.
 
@@ -376,7 +376,7 @@ def test_user_creation_persists(db_session):
 
 ### Infrastructure as Code: Ephemeral Databases with Testcontainers
 
-When your application relies on advanced, database-specific features—such as PostgreSQL's `JSONB` indexing or PostGIS extensions—using SQLite in memory as a stand-in is no longer sufficient. 
+When your application relies on advanced, database-specific features—such as PostgreSQL's `JSONB` indexing or PostGIS extensions—using SQLite in memory as a stand-in is no longer sufficient.
 
 **Testcontainers** is a pattern (and a Python library, `testcontainers-python`) that programmatically spins up isolated Docker containers for the duration of your test session.
 
@@ -410,9 +410,10 @@ This guarantees absolute parity with your production environment without requiri
 ### Network Integration: Taming Third-Party APIs
 
 Network integration tests verify your application's ability to communicate over HTTP/TCP with external services (e.g., Stripe, AWS, GitHub). Hitting live third-party APIs during automated testing introduces severe anti-patterns:
-1.  **Rate Limiting:** Continuous Integration (CI) servers will quickly exhaust API quotas.
-2.  **Non-Determinism:** Network latency or third-party outages cause flaky tests.
-3.  **Financial Cost:** Testing billing pipelines against live endpoints can incur actual charges.
+
+1. **Rate Limiting:** Continuous Integration (CI) servers will quickly exhaust API quotas.
+2. **Non-Determinism:** Network latency or third-party outages cause flaky tests.
+3. **Financial Cost:** Testing billing pipelines against live endpoints can incur actual charges.
 
 While Section 21.2 demonstrated patching the `requests` library, integration testing requires a higher fidelity approach: **Record and Replay**.
 
@@ -456,19 +457,21 @@ By committing these cassettes to your version control system, you achieve the pe
 
 The testing methodologies discussed so far—unit, integration, and end-to-end—rely almost entirely on **example-based testing**. In this paradigm, the developer provides a specific set of inputs and asserts a hardcoded output. While effective, this approach suffers from a fundamental human limitation: your tests are only as robust as your imagination. If you fail to anticipate a bizarre edge case, your test suite will silently ignore it.
 
-To achieve enterprise-grade reliability, backend systems must employ generative testing methodologies that explore the unknown and evaluate the quality of the tests themselves. 
+To achieve enterprise-grade reliability, backend systems must employ generative testing methodologies that explore the unknown and evaluate the quality of the tests themselves.
 
 ### Property-Based Testing: Testing the Infinite
 
 Instead of writing individual examples, **property-based testing** requires you to define the *invariants* (properties) of your code—rules that must logically hold true for *any* valid input. The testing framework then bombards your function with hundreds of automatically generated, randomized inputs to try and falsify those properties.
 
-In the Python ecosystem, **Hypothesis** is the gold standard for property-based testing. 
+In the Python ecosystem, **Hypothesis** is the gold standard for property-based testing.
 
 #### Identifying Properties
+
 Properties often fall into common architectural patterns:
-1.  **The Roundtrip (Serialization):** If you serialize data and then deserialize it, you should get the exact original data back.
-2.  **Invariants:** Applying a valid discount to a cart should never result in a negative total price.
-3.  **Idempotency:** Calling a pure function twice with the same input should yield the same result as calling it once (e.g., `sort(sort(x)) == sort(x)`).
+
+1. **The Roundtrip (Serialization):** If you serialize data and then deserialize it, you should get the exact original data back.
+2. **Invariants:** Applying a valid discount to a cart should never result in a negative total price.
+3. **Idempotency:** Calling a pure function twice with the same input should yield the same result as calling it once (e.g., `sort(sort(x)) == sort(x)`).
 
 #### Implementing Hypothesis
 
@@ -506,6 +509,7 @@ def test_discount_invariants(price, discount):
 ```
 
 #### The Power of Shrinking
+
 If Hypothesis finds an input that fails an assertion (e.g., `price=999999.99999, discount=0.51234`), it does not just report that random mess. It immediately enters a phase called **shrinking**. It systematically simplifies the failing input until it finds the *absolute minimal, simplest example* that triggers the bug (e.g., `price=0.01, discount=0.5`), making debugging significantly easier.
 
 ### Mutation Testing: Testing the Tests
@@ -558,7 +562,7 @@ def can_access_admin(user_age: int, is_staff: bool) -> bool:
     return False
 ```
 
-`mutmut` then runs your test suite against this broken code. Because your test only checks an age of `25` (which passes `> 18`) and `15` (which fails `> 18`), **the test suite passes**. 
+`mutmut` then runs your test suite against this broken code. Because your test only checks an age of `25` (which passes `> 18`) and `15` (which fails `> 18`), **the test suite passes**.
 
 The mutant *survives*, exposing that you completely forgot to test the exact boundary condition: `age = 18`. To kill this mutant, you must strengthen your test suite by asserting the boundary behavior:
 

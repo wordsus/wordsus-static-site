@@ -7,6 +7,7 @@ En lenguajes con gestión manual de memoria como C o C++, el programador tiene l
 A nivel de ejecución, un programa en Go gestiona los datos de tu aplicación utilizando principalmente estas dos áreas de memoria, cada una con características de rendimiento radicalmente distintas.
 
 ### El Stack (La Pila)
+
 El Stack es un área de memoria que opera bajo una estructura estricta LIFO (Last-In, First-Out). En Go, cada Goroutine nace con su propia porción de Stack aislada.
 
 * **Tamaño dinámico y eficiente:** A diferencia de los hilos del sistema operativo tradicionales que reservan un bloque fijo y grande de memoria (típicamente de 1 a 8 MB), el Stack de una Goroutine en las versiones modernas de Go comienza con un tamaño minúsculo, habitualmente de **2 KB**. Si la Goroutine necesita más espacio debido a llamadas a funciones profundamente anidadas, el *runtime* de Go copia automáticamente el Stack a un bloque de memoria más grande (crecimiento del stack).
@@ -14,15 +15,17 @@ El Stack es un área de memoria que opera bajo una estructura estricta LIFO (Las
 * **Ausencia de recolección:** La memoria en el Stack no necesita ser rastreada ni limpiada por el Garbage Collector. Su ciclo de vida es determinista: cuando una función termina su ejecución, su marco de pila (*stack frame*) se invalida instantáneamente moviendo el puntero de vuelta.
 
 ### El Heap (El Montículo)
+
 El Heap es el área de memoria global compartida que se utiliza para almacenar valores cuyo ciclo de vida no está estrictamente atado a la función que los creó, o cuyo tamaño es demasiado grande o desconocido en tiempo de compilación.
 
 * **Gestión compleja:** Asignar memoria en el Heap es computacionalmente más costoso. Requiere buscar un bloque contiguo de memoria libre que satisfaga el tamaño solicitado y manejar la sincronización (locks) si múltiples hilos intentan asignar memoria simultáneamente.
 * **El dominio del Garbage Collector:** Todo lo que se asigna en el Heap debe ser eventualmente procesado y liberado por el GC. Como vimos en el Capítulo 43, aunque el GC de Go está altamente optimizado para baja latencia, un exceso de asignaciones en el Heap aumenta inevitablemente la frecuencia de los ciclos de marcado y limpieza, consumiendo CPU e impactando el rendimiento general.
 
 ### El mito de los punteros en Go
+
 Un error muy común al transicionar a Go desde otros lenguajes es asumir la siguiente regla de oro: *"Si uso un puntero, la variable se asigna en el Heap"*. **Esto es falso en Go.**
 
-El compilador de Go es lo suficientemente inteligente como para asignar un valor referenciado por un puntero directamente en el Stack, siempre y cuando pueda demostrar matemáticamente que ese puntero no será utilizado después de que la función retorne. 
+El compilador de Go es lo suficientemente inteligente como para asignar un valor referenciado por un puntero directamente en el Stack, siempre y cuando pueda demostrar matemáticamente que ese puntero no será utilizado después de que la función retorne.
 
 Observa el siguiente ejemplo práctico para contrastar ambos comportamientos:
 
@@ -125,8 +128,9 @@ La salida del compilador será similar a esta:
 ```
 
 **Interpretación de la salida:**
-1.  **`moved to heap: sum`**: El compilador confirma que la variable local `sum` de la función `calculateSum` ha sido movida al Heap porque su referencia es retornada al llamador.
-2.  **`x escapes to heap`**: Aunque `x` es un simple entero declarado en `main` que no se retorna, escapa al Heap porque se pasa como argumento a `fmt.Println`, la cual espera un variádico de `interface{}`. 
+
+1. **`moved to heap: sum`**: El compilador confirma que la variable local `sum` de la función `calculateSum` ha sido movida al Heap porque su referencia es retornada al llamador.
+2. **`x escapes to heap`**: Aunque `x` es un simple entero declarado en `main` que no se retorna, escapa al Heap porque se pasa como argumento a `fmt.Println`, la cual espera un variádico de `interface{}`.
 
 > **Nota de Rendimiento:** Usar `fmt.Println` es inofensivo en código general, pero en bucles cerrados (hot paths) donde el rendimiento es crítico, estas pequeñas fugas al Heap por el uso de interfaces pueden acumularse y disparar la actividad del Garbage Collector. En sistemas de altísima concurrencia, evitar estas asignaciones "invisibles" marca la diferencia.
 
@@ -140,14 +144,14 @@ El **Inlining** (o expansión en línea) es una técnica de optimización del co
 
 El compilador de Go aplica esta optimización de forma automática, pero no lo hace con todas las funciones. Si el compilador expandiera cada llamada a función, el tamaño del binario final crecería de forma desproporcionada, lo que saturaría la caché de instrucciones de la CPU (Instruction Cache Miss) y terminaría degradando el rendimiento en lugar de mejorarlo.
 
-Para mantener el equilibrio, Go utiliza un sistema de heurísticas basado en un "presupuesto de inlining" (*inlining budget* o *cost model*). 
+Para mantener el equilibrio, Go utiliza un sistema de heurísticas basado en un "presupuesto de inlining" (*inlining budget* o *cost model*).
 
 * **Funciones candidatas:** El compilador analiza la complejidad estructural de una función (número de expresiones, asignaciones, llamadas a otras funciones). Si el "costo" de la función es inferior a un umbral predeterminado, se marca como apta para inlining. Funciones cortas, *getters*, *setters* y operaciones matemáticas simples son candidatas perfectas.
 * **Funciones excluidas:** Históricamente, y dependiendo de la versión exacta de Go, funciones que contienen bucles complejos, bloques `select`, recursividad excesiva o sentencias `defer` suelen superar el presupuesto de complejidad y se excluyen del inlining.
 
 ### Sinergia con el Análisis de Escape
 
-El inlining no solo ahorra los ciclos de CPU que consume la llamada a la función; su mayor superpoder en Go es cómo interactúa con el Garbage Collector. 
+El inlining no solo ahorra los ciclos de CPU que consume la llamada a la función; su mayor superpoder en Go es cómo interactúa con el Garbage Collector.
 
 Cuando una función se inlina, sus variables locales pasan a ser parte del ámbito de la función que hace la llamada (*caller*). Esto proporciona al compilador un contexto mucho más amplio durante el Análisis de Escape (sección 44.2), permitiendo que variables que de otro modo escaparían al Heap por ser pasadas a través de llamadas a funciones, puedan quedarse de forma segura en el Stack.
 
@@ -214,7 +218,8 @@ En aplicaciones de alto rendimiento donde se instancian millones de estructuras 
 
 Para entender este concepto, debemos mirar cómo la CPU interactúa con la memoria RAM. Las CPUs modernas no leen la memoria byte por byte; lo hacen en bloques de tamaño fijo llamados "palabras" (*words*). En una arquitectura de 64 bits (la más común hoy en día para servidores), una palabra equivale a 8 bytes.
 
-Para que la CPU pueda leer o escribir un dato en un solo ciclo de reloj, la dirección de memoria de ese dato debe ser un múltiplo de su tamaño. A esto se le llama **alineación**. 
+Para que la CPU pueda leer o escribir un dato en un solo ciclo de reloj, la dirección de memoria de ese dato debe ser un múltiplo de su tamaño. A esto se le llama **alineación**.
+
 * Un `int8` (1 byte) puede estar en cualquier dirección.
 * Un `int16` (2 bytes) debe estar en una dirección par.
 * Un `int64` (8 bytes) debe estar en una dirección múltiplo de 8.
@@ -249,15 +254,16 @@ func main() {
 Si sumamos mentalmente los bytes (`1 + 8 + 2`), esperaríamos que esta estructura ocupe 11 bytes. Sin embargo, si ejecutas este código, la salida será **24 bytes**. ¡Más del doble del tamaño real de los datos!
 
 **¿Qué ocurrió bajo el capó?**
+
 1. `isActive` ocupa 1 byte.
 2. El siguiente campo es `id`, que requiere 8 bytes y debe estar alineado a un múltiplo de 8. El compilador se ve obligado a insertar **7 bytes de padding** después de `isActive`.
 3. `id` ocupa sus 8 bytes.
-4. `level` ocupa 2 bytes. 
+4. `level` ocupa 2 bytes.
 5. Finalmente, el `struct` completo debe estar alineado al tamaño de su campo más grande (8 bytes), por lo que se añaden **6 bytes de padding al final** para redondear el tamaño total a 24 (múltiplo de 8).
 
 ### La solución: Ordenamiento descendente
 
-La regla de oro para evitar este desperdicio de memoria es extremadamente simple: **ordena los campos de tu `struct` de mayor a menor tamaño**. 
+La regla de oro para evitar este desperdicio de memoria es extremadamente simple: **ordena los campos de tu `struct` de mayor a menor tamaño**.
 
 Reescribamos la estructura aplicando este principio:
 
@@ -270,7 +276,8 @@ type GoodStruct struct {
 }
 ```
 
-Al medir `unsafe.Sizeof(GoodStruct{})`, el resultado ahora es de **16 bytes**. 
+Al medir `unsafe.Sizeof(GoodStruct{})`, el resultado ahora es de **16 bytes**.
+
 1. `id` ocupa los primeros 8 bytes perfectamente alineados.
 2. `level` ocupa los siguientes 2 bytes.
 3. `isActive` ocupa 1 byte inmediatamente después.

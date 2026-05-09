@@ -19,7 +19,6 @@ getopts optstring variable
 * If a character is followed by a colon (`:`), the option is expected to have an argument.
 * If the very first character of the `optstring` is a colon (`:`), `getopts` operates in "silent error reporting" mode, allowing you to handle errors customly rather than relying on the shell's default error messages.
 
-
 * **`variable`**: The name of the variable that `getopts` will populate with the parsed option character for each iteration.
 
 ### Crucial `getopts` Variables
@@ -203,13 +202,13 @@ If your script relies on a command located in `/usr/local/bin` (like a custom in
 #### Strategies for Handling the Environment
 
 1. **Use Absolute Paths:** Always use absolute paths for both the script being called and the commands inside the script.
+
 ```bash
 # Instead of calling 'grep', call '/bin/grep'
 
 ```
 
-
-2. **Define Variables in the Crontab:** You can define environment variables at the top of the crontab file itself.
+1. **Define Variables in the Crontab:** You can define environment variables at the top of the crontab file itself.
 
 ```bash
     PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin

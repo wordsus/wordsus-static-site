@@ -33,7 +33,7 @@ let buffer = vec![0u8; 1024];
 
 Para leer los elementos de un vector, puedes usar la sintaxis de indexación (como `roles[0]`) o el método `.get()`. En el contexto de un servidor backend, la diferencia entre ambos es vital.
 
-Como vimos al hablar de errores irrecuperables en el Capítulo 5, acceder a un índice fuera de los límites con `[]` provocará un `panic!`. Si ese índice proviene del input de un usuario (por ejemplo, un parámetro en la URL), un usuario malintencionado podría tumbar el hilo de tu aplicación. 
+Como vimos al hablar de errores irrecuperables en el Capítulo 5, acceder a un índice fuera de los límites con `[]` provocará un `panic!`. Si ese índice proviene del input de un usuario (por ejemplo, un parámetro en la URL), un usuario malintencionado podría tumbar el hilo de tu aplicación.
 
 La forma segura y recomendada es utilizar el método `.get()`, que devuelve un `Option<&T>` (profundizaremos en `Option` en la sección 6.4):
 
@@ -80,13 +80,14 @@ for latencia in latencias {
 ### El enfoque Senior: Capacidad y Reasignaciones
 
 Para un desarrollador backend de nivel senior, entender cómo `Vec<T>` gestiona la memoria bajo el capó es crucial para optimizar el rendimiento. Un vector consta de tres partes:
+
 1. Un puntero a los datos en el Heap.
 2. La longitud (`len`): cuántos elementos tiene actualmente.
 3. La capacidad (`capacity`): cuánta memoria ha reservado en el Heap.
 
 Cuando usas `push` y el vector alcanza su capacidad máxima, Rust debe buscar un nuevo bloque de memoria en el Heap (generalmente el doble de grande), copiar todos los elementos antiguos allí, liberar la memoria anterior e insertar el nuevo elemento. Esta operación de **reasignación (reallocation)** es costosa (O(n)).
 
-Si estás obteniendo 1,000 registros de una base de datos y haciéndoles `push` a un vector vacío creado con `Vec::new()`, forzarás múltiples reasignaciones en el proceso. 
+Si estás obteniendo 1,000 registros de una base de datos y haciéndoles `push` a un vector vacío creado con `Vec::new()`, forzarás múltiples reasignaciones en el proceso.
 
 **La mejor práctica en estos casos es usar `Vec::with_capacity()`:**
 
@@ -102,6 +103,7 @@ for i in 0..1000 {
     usuarios_procesados.push(i);
 }
 ```
+
 Pre-asignar la capacidad de los vectores siempre que sea posible es uno de los "quick wins" más efectivos para reducir el trabajo del asignador de memoria en aplicaciones de alta concurrencia.
 
 ## 6.2 Representaciones de texto (`String` vs `&str`)
@@ -110,11 +112,12 @@ El manejo de cadenas de texto suele ser uno de los primeros grandes obstáculos 
 
 Comprender la diferencia exacta entre ambos, y saber cuándo usar cuál, es la diferencia entre un microservicio web que consume 20 MB de RAM y responde en microsegundos, y uno ahogado en recolecciones de memoria innecesarias.
 
-Ambos tipos tienen una regla estricta en común: **siempre garantizan ser texto UTF-8 válido**. 
+Ambos tipos tienen una regla estricta en común: **siempre garantizan ser texto UTF-8 válido**.
 
 ### `&str`: La Vista (String Slice)
 
 El tipo `&str` es una "rebanada" (slice) de texto. Es una referencia inmutable a una secuencia de caracteres UTF-8 almacenada en algún lugar de la memoria. Bajo el capó, un `&str` se compone de dos cosas (conocido como un *fat pointer*):
+
 1. Un puntero al inicio del texto.
 2. La longitud del texto en bytes.
 
@@ -184,6 +187,7 @@ pub struct UsuarioRequest {
     pub email: String,
 }
 ```
+
 El pequeño costo de asignar estos `Strings` en memoria al recibir una petición HTTP (usando frameworks como Axum o Actix) vale la pena para mantener la ergonomía del código y evitar la "fatiga de Lifetimes" en toda la arquitectura.
 
 ### El enfoque Senior: `Cow<'a, str>` (Clone-On-Write)
@@ -244,11 +248,12 @@ if let Some(token) = cabeceras.get("Authorization") {
     println!("Token recibido: {}", token);
 }
 ```
+
 *Nota Senior:* Gracias a la magia del trait `Borrow` en Rust, aunque la clave del mapa sea un `String`, podemos usar un simple `&str` (como `"Authorization"`) para realizar las búsquedas. Esto evita que tengamos que alojar un nuevo `String` en el Heap solo para consultar el mapa.
 
 ### La Joya de la Corona: La API `Entry`
 
-Uno de los patrones más comunes en el backend es: *"Buscar si una clave existe; si existe, actualizar su valor; si no existe, insertarla con un valor por defecto"*. 
+Uno de los patrones más comunes en el backend es: *"Buscar si una clave existe; si existe, actualizar su valor; si no existe, insertarla con un valor por defecto"*.
 
 En muchos lenguajes, esto requiere dos búsquedas (lookups) en el mapa: una para comprobar y otra para insertar. En Rust, la API `.entry()` nos permite hacerlo en una sola pasada de forma elegante y concurrente (algo vital cuando usemos `Mutex` más adelante).
 
@@ -291,15 +296,16 @@ if permisos_usuario.contains("admin:all") {
 
 ### El Enfoque Senior: Rendimiento y el Algoritmo de Hashing
 
-Aquí es donde se separan los juniors de los seniors en Rust. Por defecto, el `HashMap` de la Standard Library utiliza un algoritmo de hashing llamado **SipHash 1-3**. 
+Aquí es donde se separan los juniors de los seniors en Rust. Por defecto, el `HashMap` de la Standard Library utiliza un algoritmo de hashing llamado **SipHash 1-3**.
 
 SipHash está diseñado para ser criptográficamente resistente contra ataques de denegación de servicio (HashDoS), donde un atacante envía miles de claves maliciosamente crafteadas para que colisionen en el mismo "bucket" del mapa, degradando el rendimiento de O(1) a O(n) y bloqueando tu servidor.
 
 Sin embargo, esta seguridad tiene un coste: **SipHash es relativamente lento**.
 
 Como desarrollador backend, debes aplicar este criterio:
+
 1. **Datos expuestos al exterior (Inputs de usuarios, JSONs de red):** Usa el `HashMap` estándar de `std::collections`. La protección contra DoS es innegociable.
-2. **Datos internos de confianza (Cachés de base de datos, mapeo de IDs internos):** El SipHash es un cuello de botella innecesario. 
+2. **Datos internos de confianza (Cachés de base de datos, mapeo de IDs internos):** El SipHash es un cuello de botella innecesario.
 
 Para datos internos, el ecosistema de Rust prefiere algoritmos de hashing mucho más rápidos. Dos de los más populares son **AHash** (usado internamente por el compilador de Rust) o **FxHash** (usado por Firefox). Puedes usarlos integrando crates como `ahash` o `rustc-hash`.
 
@@ -379,13 +385,14 @@ let tamano_maximo: u32 = header_opt
 
 println!("Límite establecido a: {} bytes", tamano_maximo);
 ```
+
 Este enfoque evita variables mutables temporales, bucles complejos y sentencias `if` anidadas, logrando un código lineal y a prueba de fallos.
 
 ### Zero-Cost Abstraction: La Optimización del "Nicho" (Niche Optimization)
 
-Podrías pensar que envolver datos en un enum añade sobrecarga (overhead) de memoria, ya que un enum normalmente necesita bits extra (el discriminante) para saber si es la variante `Some` o `None`. 
+Podrías pensar que envolver datos en un enum añade sobrecarga (overhead) de memoria, ya que un enum normalmente necesita bits extra (el discriminante) para saber si es la variante `Some` o `None`.
 
-Aquí es donde brilla el diseño del compilador de Rust. Para ciertos tipos de datos que nunca pueden ser ceros en memoria —como las referencias (`&T`), o los *smart pointers* (`Box<T>`)— Rust aplica una técnica llamada **Niche Optimization**. 
+Aquí es donde brilla el diseño del compilador de Rust. Para ciertos tipos de datos que nunca pueden ser ceros en memoria —como las referencias (`&T`), o los *smart pointers* (`Box<T>`)— Rust aplica una técnica llamada **Niche Optimization**.
 
 Dado que el compilador sabe que un puntero válido jamás tendrá la dirección de memoria `0x0`, utiliza ese espacio "prohibido" (el nicho) para representar la variante `None`.
 

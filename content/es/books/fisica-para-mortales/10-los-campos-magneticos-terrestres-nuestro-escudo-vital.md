@@ -4,7 +4,7 @@
 
 Imagina por un momento que eres el capitán de una nave espacial monumental. Tu nave viaja a la asombrosa velocidad de 107.000 kilómetros por hora a través de un vacío que no está realmente vacío. El espacio exterior es un entorno brutal, implacable y caótico. Está repleto de radiación letal, tormentas de partículas cargadas que viajan a velocidades vertiginosas y rayos cósmicos provenientes de explosiones de estrellas lejanas. Si tu nave no tuviera un sistema de escudos de máxima potencia, cualquier forma de vida en su interior sería calcinada y su atmósfera sería arrancada violentamente hacia la nada.
 
-Esa nave espacial es la Tierra. Y ese sistema de escudos de ciencia ficción no es una fantasía: es nuestro campo magnético. 
+Esa nave espacial es la Tierra. Y ese sistema de escudos de ciencia ficción no es una fantasía: es nuestro campo magnético.
 
 A simple vista, no podemos verlo, no podemos escucharlo, ni olerlo, ni saborearlo. Salvo que tengas una brújula en la mano o tengas el privilegio de contemplar una aurora boreal, el campo magnético pasa completamente desapercibido en nuestra vida diaria. Sin embargo, en este mismo instante, millones de toneladas de plasma solar se están estrellando contra este escudo invisible a miles de kilómetros por encima de tu cabeza, siendo desviadas para que puedas seguir leyendo este artículo en paz.
 
@@ -12,7 +12,7 @@ En esta entrega de *Física para Mortales*, vamos a emprender un viaje fascinant
 
 ## 1. ¿Qué es exactamente un campo magnético?
 
-Antes de sumergirnos en el centro de la Tierra, necesitamos entender qué es un campo magnético en términos sencillos. En física, cuando hablamos de un "campo", no nos referimos a un prado verde lleno de vacas, sino a una región del espacio donde una fuerza invisible hace sentir su influencia. 
+Antes de sumergirnos en el centro de la Tierra, necesitamos entender qué es un campo magnético en términos sencillos. En física, cuando hablamos de un "campo", no nos referimos a un prado verde lleno de vacas, sino a una región del espacio donde una fuerza invisible hace sentir su influencia.
 
 Piensa en un imán de nevera o en uno de esos imanes de barra clásicos que usábamos en la escuela, con un Polo Norte y un Polo Sur. Si esparces limaduras de hierro sobre un papel y colocas el imán debajo, verás que las limaduras no se distribuyen al azar. Se alinean formando un patrón muy específico de líneas curvas que salen de un polo y entran por el otro. Estas son las "líneas de campo magnético".
 
@@ -33,6 +33,7 @@ Podemos visualizar la forma más básica de este campo de la siguiente manera:
            . .                 . .
                . . . . . . . . 
 ```
+
 *(Nota curiosa: ¡El Polo Norte magnético de la Tierra es en realidad el polo sur del "imán" terrestre! Por eso atrae al polo norte de la aguja de tu brújula. Los opuestos se atraen).*
 
 Pero a diferencia de un trozo de hierro magnetizado y sólido, el imán de la Tierra es dinámico, fluido, cambia con el tiempo y requiere una fuente de energía constante para mantenerse vivo. Para encontrar esa fuente, tenemos que cavar profundo.
@@ -41,16 +42,16 @@ Pero a diferencia de un trozo de hierro magnetizado y sólido, el imán de la Ti
 
 Julio Verne escribió sobre un "Viaje al centro de la Tierra", pero la realidad geológica es mucho más caliente e inhóspita que cualquier cueva subterránea llena de dinosaurios. Si pudiéramos cavar un pozo directo al centro del planeta, atravesaríamos varias capas:
 
-1.  **La Corteza:** Donde vivimos, una capa delgada como la piel de una manzana (de 5 a 70 km de grosor).
-2.  **El Manto:** Roca sólida pero maleable, extremadamente caliente, que fluye lentamente a lo largo de millones de años (unos 2.900 km de grosor).
-3.  **El Núcleo Externo:** Aquí empieza la magia. Es un océano turbulento de hierro y níquel fundidos, a más de 4.000 grados Celsius. Está a unos 3.000 km de profundidad.
-4.  **El Núcleo Interno:** Una esfera sólida de hierro puro, casi tan caliente como la superficie del Sol (unos 5.400 °C), pero que se mantiene sólida debido a la presión aplastante de todo el planeta sobre ella.
+1. **La Corteza:** Donde vivimos, una capa delgada como la piel de una manzana (de 5 a 70 km de grosor).
+2. **El Manto:** Roca sólida pero maleable, extremadamente caliente, que fluye lentamente a lo largo de millones de años (unos 2.900 km de grosor).
+3. **El Núcleo Externo:** Aquí empieza la magia. Es un océano turbulento de hierro y níquel fundidos, a más de 4.000 grados Celsius. Está a unos 3.000 km de profundidad.
+4. **El Núcleo Interno:** Una esfera sólida de hierro puro, casi tan caliente como la superficie del Sol (unos 5.400 °C), pero que se mantiene sólida debido a la presión aplastante de todo el planeta sobre ella.
 
 El secreto de nuestro escudo vital reside en el **Núcleo Externo**. Imagina una olla de agua hirviendo en la estufa. El agua en el fondo se calienta, se vuelve menos densa y sube. Al llegar a la superficie, se enfría un poco, se vuelve más densa y vuelve a bajar. Este movimiento circular se llama **corriente de convección**.
 
 En el núcleo externo ocurre exactamente lo mismo, pero en lugar de agua, tenemos millones de kilómetros cúbicos de metal líquido e hirviente, calentados por el calor residual de la formación del planeta y por la descomposición de elementos radiactivos en el interior.
 
-A esto hay que sumarle otro ingrediente crucial: **la rotación de la Tierra**. Mientras el planeta gira, arrastra consigo este océano de metal líquido, creando espirales caóticas y complejas debido a un fenómeno conocido como el Efecto Coriolis (el mismo efecto que hace que los huracanes giren). 
+A esto hay que sumarle otro ingrediente crucial: **la rotación de la Tierra**. Mientras el planeta gira, arrastra consigo este océano de metal líquido, creando espirales caóticas y complejas debido a un fenómeno conocido como el Efecto Coriolis (el mismo efecto que hace que los huracanes giren).
 
 Dado que el hierro líquido es un excelente conductor de la electricidad, este movimiento constante de fluidos conductores dentro de un campo magnético preexistente (incluso uno muy débil de origen solar o estelar inicial) genera corrientes eléctricas masivas. Y aquí entra una regla fundamental del universo, descubierta por el físico electromagnetista James Clerk Maxwell: **las corrientes eléctricas en movimiento generan campos magnéticos.**
 
@@ -81,9 +82,9 @@ Visualicemos esta batalla cósmica de manera esquemática:
 
 **Las principales fronteras de nuestra fortaleza:**
 
-*   **Arco de Choque (Bow Shock):** Es la primera línea de defensa. Funciona igual que la onda que se forma en el agua delante de la proa de un barco en movimiento. Aquí, el viento solar choca abruptamente y se ralentiza violentamente, desviándose alrededor del planeta.
-*   **Magnetopausa:** Es la frontera física real donde la presión del viento solar se equilibra perfectamente con la presión del campo magnético terrestre. Es el muro de nuestro castillo.
-*   **Cinturones de Van Allen:** Dos zonas en forma de dona muy cerca de la Tierra donde partículas cargadas de alta energía quedan atrapadas por nuestro campo. Son extremadamente radiactivas y las naves espaciales intentan evitarlas o cruzarlas lo más rápido posible.
+* **Arco de Choque (Bow Shock):** Es la primera línea de defensa. Funciona igual que la onda que se forma en el agua delante de la proa de un barco en movimiento. Aquí, el viento solar choca abruptamente y se ralentiza violentamente, desviándose alrededor del planeta.
+* **Magnetopausa:** Es la frontera física real donde la presión del viento solar se equilibra perfectamente con la presión del campo magnético terrestre. Es el muro de nuestro castillo.
+* **Cinturones de Van Allen:** Dos zonas en forma de dona muy cerca de la Tierra donde partículas cargadas de alta energía quedan atrapadas por nuestro campo. Son extremadamente radiactivas y las naves espaciales intentan evitarlas o cruzarlas lo más rápido posible.
 
 ## 4. El enemigo invisible: ¿De qué nos protege?
 
@@ -114,8 +115,8 @@ Cuando un electrón a altísima velocidad choca con un átomo de oxígeno o nitr
 
 Miles de millones de estos choques microscópicos ocurriendo simultáneamente crean las cortinas ondulantes de luz que vemos en el cielo. El color de la aurora es pura química atmosférica revelada:
 
-*   **Verde y Rojo:** Ocurre cuando las partículas chocan con átomos de **Oxígeno**. El verde (el color más común) sucede a altitudes más bajas (unos 100 km), mientras que el rojo profundo ocurre a grandes altitudes (hasta 300 km).
-*   **Azul y Púrpura:** Es el resultado de las colisiones con moléculas de **Nitrógeno**.
+* **Verde y Rojo:** Ocurre cuando las partículas chocan con átomos de **Oxígeno**. El verde (el color más común) sucede a altitudes más bajas (unos 100 km), mientras que el rojo profundo ocurre a grandes altitudes (hasta 300 km).
+* **Azul y Púrpura:** Es el resultado de las colisiones con moléculas de **Nitrógeno**.
 
 ## 6. La brújula matemática: Un poco de física para curiosos
 
@@ -127,10 +128,10 @@ $$ \mathbf{F} = q(\mathbf{v} \times \mathbf{B}) $$
 
 Analicémosla paso a paso, sin pánico:
 
-*   $ \mathbf{F} $ es la **Fuerza** magnética que sentirá la partícula.
-*   $ q $ es la **carga eléctrica** de la partícula (por ejemplo, la carga de un electrón del Sol).
-*   $ \mathbf{v} $ es la **velocidad** a la que viaja esa partícula.
-*   $ \mathbf{B} $ es la fuerza del **campo magnético** de la Tierra.
+* $ \mathbf{F} $ es la **Fuerza** magnética que sentirá la partícula.
+* $ q $ es la **carga eléctrica** de la partícula (por ejemplo, la carga de un electrón del Sol).
+* $ \mathbf{v} $ es la **velocidad** a la que viaja esa partícula.
+* $ \mathbf{B} $ es la fuerza del **campo magnético** de la Tierra.
 
 Lo verdaderamente mágico de esta ecuación es el símbolo $ \times $, conocido como producto cruz o producto vectorial. En la física del día a día, si empujas un auto hacia adelante, la fuerza va hacia adelante. Pero en el electromagnetismo, el producto cruz dicta una regla extraña: la fuerza magnética siempre empuja **hacia un lado**. Es decir, es perpendicular tanto a la dirección en la que viaja la partícula como a la dirección del campo magnético.
 
@@ -144,9 +145,9 @@ La brújula fue uno de los inventos más transformadores de la humanidad. Una ag
 
 Pero la humanidad llegó tarde a este invento. La naturaleza lleva millones de años utilizando brújulas integradas. A esto se le llama **magnetorrecepción**.
 
-*   **Aves migratorias:** Especies como el charrán ártico viajan decenas de miles de kilómetros cada año. Se ha descubierto que poseen unas proteínas especiales llamadas *criptocromos* en sus ojos. A través de efectos cuánticos complejos, el campo magnético de la Tierra altera sutilmente cómo estas proteínas reaccionan a la luz, permitiendo a los pájaros, literalmente, "ver" el campo magnético.
-*   **Tortugas marinas:** Nacen en una playa, nadan durante años por el océano abierto y luego regresan a poner sus huevos exactamente a la misma playa donde nacieron. Utilizan la "firma magnética" única de su lugar de nacimiento para navegar.
-*   **Bacterias magnetotácticas:** Incluso los organismos más diminutos entran en el juego. Existen bacterias que contienen en su interior pequeñas cadenas de cristales de magnetita (un mineral magnético). La bacteria usa esto como una aguja de brújula microscópica para saber dónde está "arriba" y "abajo" en el fango de los fondos marinos y encontrar la capa exacta de oxígeno que necesitan para sobrevivir.
+* **Aves migratorias:** Especies como el charrán ártico viajan decenas de miles de kilómetros cada año. Se ha descubierto que poseen unas proteínas especiales llamadas *criptocromos* en sus ojos. A través de efectos cuánticos complejos, el campo magnético de la Tierra altera sutilmente cómo estas proteínas reaccionan a la luz, permitiendo a los pájaros, literalmente, "ver" el campo magnético.
+* **Tortugas marinas:** Nacen en una playa, nadan durante años por el océano abierto y luego regresan a poner sus huevos exactamente a la misma playa donde nacieron. Utilizan la "firma magnética" única de su lugar de nacimiento para navegar.
+* **Bacterias magnetotácticas:** Incluso los organismos más diminutos entran en el juego. Existen bacterias que contienen en su interior pequeñas cadenas de cristales de magnetita (un mineral magnético). La bacteria usa esto como una aguja de brújula microscópica para saber dónde está "arriba" y "abajo" en el fango de los fondos marinos y encontrar la capa exacta de oxígeno que necesitan para sobrevivir.
 
 ## 8. Inversiones magnéticas: Cuando el norte se vuelve sur
 
@@ -159,9 +160,9 @@ Pero esto no es nada comparado con lo que sucede en escalas de tiempo geológica
 A lo largo de la historia de la Tierra, de manera irregular cada cientos de miles de años, el campo magnético se debilita enormemente, se vuelve caótico con múltiples polos repartidos por el planeta, y finalmente vuelve a estabilizarse... pero al revés. El norte se vuelve sur y el sur se vuelve norte. Si pudieras viajar en el tiempo hace 800.000 años, tu brújula apuntaría hacia la Antártida.
 
 **¿Estamos a punto de sufrir una inversión?**
-Algunos científicos observan que el campo magnético de la Tierra ha perdido alrededor de un 9% de su fuerza en los últimos 200 años. Además, existe una región sobre Sudamérica y el Océano Atlántico sur conocida como la **Anomalía del Atlántico Sur**, donde el campo es significativamente más débil. Los satélites que pasan por esta zona suelen experimentar fallos informáticos porque la radiación solar penetra más profundo allí. 
+Algunos científicos observan que el campo magnético de la Tierra ha perdido alrededor de un 9% de su fuerza en los últimos 200 años. Además, existe una región sobre Sudamérica y el Océano Atlántico sur conocida como la **Anomalía del Atlántico Sur**, donde el campo es significativamente más débil. Los satélites que pasan por esta zona suelen experimentar fallos informáticos porque la radiación solar penetra más profundo allí.
 
-Muchos sugieren que esta debilidad y el rápido movimiento del polo norte podrían ser los primeros indicios de que se avecina una inversión geomagnética. 
+Muchos sugieren que esta debilidad y el rápido movimiento del polo norte podrían ser los primeros indicios de que se avecina una inversión geomagnética.
 
 Sin embargo, no hay motivos para el pánico al estilo de Hollywood. Estas inversiones tardan miles de años en completarse. Durante el proceso, el campo no desaparece por completo (se estima que mantiene alrededor del 10% de su fuerza), pero se vuelve más complejo. El registro fósil no muestra extinciones masivas coincidentes con inversiones pasadas, lo que sugiere que la atmósfera terrestre es lo suficientemente densa para brindar cierta protección contra la radiación en caso de que el campo magnético baje la guardia. No obstante, en nuestra era moderna dependiente de la tecnología, una inversión sin duda plantearía inmensos desafíos para nuestras redes eléctricas, satélites de comunicaciones y la vida de los astronautas en órbita.
 

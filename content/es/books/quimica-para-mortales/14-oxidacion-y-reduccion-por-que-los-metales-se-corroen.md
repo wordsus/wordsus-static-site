@@ -2,11 +2,11 @@
 
 ---
 
-Imagina por un momento una bicicleta vieja y olvidada bajo la lluvia durante meses. El metal brillante de su cadena y su marco se ha transformado en una costra rojiza y áspera. Ahora, toma tu teléfono inteligente y enciende la pantalla. El brillo que ilumina tu rostro proviene de la energía suministrada por una batería ultradelgada y eficiente. A simple vista, el deterioro ruinoso de la bicicleta y el milagro tecnológico de tu teléfono no podrían parecer más opuestos. Sin embargo, ambos son gobernados por exactamente el mismo fenómeno fundamental del universo: una guerra invisible, silenciosa y constante por el control de unas partículas diminutas llamadas electrones. 
+Imagina por un momento una bicicleta vieja y olvidada bajo la lluvia durante meses. El metal brillante de su cadena y su marco se ha transformado en una costra rojiza y áspera. Ahora, toma tu teléfono inteligente y enciende la pantalla. El brillo que ilumina tu rostro proviene de la energía suministrada por una batería ultradelgada y eficiente. A simple vista, el deterioro ruinoso de la bicicleta y el milagro tecnológico de tu teléfono no podrían parecer más opuestos. Sin embargo, ambos son gobernados por exactamente el mismo fenómeno fundamental del universo: una guerra invisible, silenciosa y constante por el control de unas partículas diminutas llamadas electrones.
 
 A este fenómeno los químicos lo llaman "reacciones de óxido-reducción", o para abreviar, **reacciones redox**.
 
-Vivimos sumergidos en un mundo redox. Es el fuego que arde en una fogata, es el motor de tu automóvil quemando combustible, es la manzana que se vuelve marrón minutos después de morderla, y es el proceso mediante el cual las células de tu propio cuerpo extraen energía de la comida que acabas de ingerir. Entender las reacciones redox es, en esencia, entender cómo fluye la energía en nuestro planeta. 
+Vivimos sumergidos en un mundo redox. Es el fuego que arde en una fogata, es el motor de tu automóvil quemando combustible, es la manzana que se vuelve marrón minutos después de morderla, y es el proceso mediante el cual las células de tu propio cuerpo extraen energía de la comida que acabas de ingerir. Entender las reacciones redox es, en esencia, entender cómo fluye la energía en nuestro planeta.
 
 En este artículo, vamos a desmitificar la química detrás de estos procesos. Vamos a reducir la ciencia a su forma más simple y accesible, sin jerga innecesaria, para que puedas comprender por qué los puentes se caen por la corrosión, cómo hemos aprendido a enjaular este poder en forma de baterías y por qué, en el fondo, toda la química se trata de un simple juego de dar y recibir.
 
@@ -26,10 +26,10 @@ Sin embargo, a medida que la ciencia avanzó, los químicos se dieron cuenta de 
 
 Por lo tanto, la definición moderna cambió para ser mucho más amplia y precisa:
 
-*   **Oxidación:** Es el proceso mediante el cual un átomo o molécula **pierde electrones**.
-*   **Reducción:** Es el proceso mediante el cual un átomo o molécula **gana electrones**.
+* **Oxidación:** Es el proceso mediante el cual un átomo o molécula **pierde electrones**.
+* **Reducción:** Es el proceso mediante el cual un átomo o molécula **gana electrones**.
 
-Es probable que la palabra "reducción" te parezca contraintuitiva. ¿Por qué se llama "reducción" si está *ganando* algo (electrones)? La respuesta está en la carga eléctrica. Como los electrones tienen carga negativa, cuando un átomo gana un electrón, su carga eléctrica total "se reduce" (se vuelve más negativa). 
+Es probable que la palabra "reducción" te parezca contraintuitiva. ¿Por qué se llama "reducción" si está *ganando* algo (electrones)? La respuesta está en la carga eléctrica. Como los electrones tienen carga negativa, cuando un átomo gana un electrón, su carga eléctrica total "se reduce" (se vuelve más negativa).
 
 Para visualizarlo en términos matemáticos simples, la química utiliza ecuaciones donde la letra $e^-$ representa un electrón.
 
@@ -103,17 +103,20 @@ A continuación, un diagrama en texto plano que ilustra este campo de batalla mi
 La corrosión cuesta a la economía mundial billones de dólares cada año. Reparar puentes, reemplazar tuberías, arreglar maquinaria oxidada... es una batalla constante. Afortunadamente, al comprender que la corrosión es una reacción redox, los ingenieros han desarrollado formas ingeniosas de detenerla.
 
 ### La Barrera Física (El método más antiguo)
+
 La forma más sencilla de evitar que el hierro pierda electrones es evitar que el oxígeno y el agua se acerquen a él. Esto se logra aplicando una barrera física. La pintura, el barniz, la grasa y el aceite cumplen esta función. Si la gota de agua no puede tocar el hierro puro porque hay una capa de pintura en el medio, el circuito eléctrico microscópico se rompe y no hay corrosión. El problema es que, ante el menor rasguño en la pintura, el hierro queda expuesto y la corrosión comienza bajo la capa de pintura, causando burbujas y levantamientos.
 
 ### La Galvanización (La armadura de Zinc)
+
 Una solución mucho más elegante es la galvanización. Consiste en recubrir la pieza de hierro con una fina capa de otro metal: el zinc. Los clavos galvanizados, los cubos de metal y las farolas de la calle están tratados así.
 
-¿Por qué zinc? Aquí es donde la química redox se vuelve fascinante. Los diferentes metales tienen diferentes "ganas" de perder electrones. A esto se le llama *potencial de oxidación*. Resulta que el zinc tiene mucha más facilidad para perder sus electrones que el hierro. 
+¿Por qué zinc? Aquí es donde la química redox se vuelve fascinante. Los diferentes metales tienen diferentes "ganas" de perder electrones. A esto se le llama *potencial de oxidación*. Resulta que el zinc tiene mucha más facilidad para perder sus electrones que el hierro.
 
 Cuando una pieza de hierro galvanizado se raya y queda expuesta al agua, el oxígeno intenta robar electrones. Pero el zinc "salta" a la línea de fuego y dice: "¡Tómalos de mí, no del hierro!". El zinc se oxida voluntariamente para proteger al hierro. A esto se le conoce como **protección catódica**, y es uno de los triunfos más grandes de la química de materiales.
 
 ### Ánodos de Sacrificio (Los héroes del mar)
-Este mismo principio se utiliza a una escala mucho mayor en los barcos y oleoductos submarinos. El casco de un barco está hecho de acero (principalmente hierro) y está sumergido en agua salada, que es el electrolito perfecto (¡un paraíso para la corrosión!). 
+
+Este mismo principio se utiliza a una escala mucho mayor en los barcos y oleoductos submarinos. El casco de un barco está hecho de acero (principalmente hierro) y está sumergido en agua salada, que es el electrolito perfecto (¡un paraíso para la corrosión!).
 
 Para evitar que el barco se desintegre en el mar, los ingenieros sueldan grandes bloques de zinc o magnesio en la parte inferior del casco. Estos bloques actúan como "ánodos de sacrificio". Toda la fuerza corrosiva del océano se dirige a estos bloques, oxidándolos lentamente hasta que desaparecen. El casco de acero del barco permanece inmaculado. Cada cierto tiempo, el barco entra al astillero, se retiran los restos oxidados de los bloques de zinc, se colocan unos nuevos, y el barco está listo para volver al mar. Un bloque de metal ha sacrificado su "vida" química para salvar la del barco.
 
@@ -125,11 +128,11 @@ Eso es exactamente, ni más ni menos, lo que es una **batería**. Es la domestic
 
 Imagina que tienes a nuestro amigo que quiere perder electrones (por ejemplo, zinc) y a nuestro ladrón que quiere ganarlos (por ejemplo, cobre o manganeso). En lugar de ponerlos en contacto directo donde reaccionarían inmediatamente, los encerramos en dos habitaciones separadas dentro de un cilindro metálico. A estas habitaciones las llamamos **semiceldas**.
 
-Como están separados, la reacción no puede ocurrir. El zinc quiere desesperadamente empujar sus electrones, pero no tienen a dónde ir. 
+Como están separados, la reacción no puede ocurrir. El zinc quiere desesperadamente empujar sus electrones, pero no tienen a dónde ir.
 
 Luego, conectas un cable de cobre (un excelente conductor) desde la habitación del zinc hasta la habitación del elemento que quiere los electrones, pasando por fuera de la batería. De repente, los electrones ven una ruta de escape. Comienzan a correr a través del cable desde el lado donde ocurre la oxidación (llamado **Ánodo**, el polo negativo de la batería) hacia el lado donde ocurre la reducción (llamado **Cátodo**, el polo positivo).
 
-Ese flujo ordenado, masivo y dirigido de electrones a través del cable es lo que llamamos **corriente eléctrica**. 
+Ese flujo ordenado, masivo y dirigido de electrones a través del cable es lo que llamamos **corriente eléctrica**.
 
 Si en el medio de ese cable colocas la bombilla de una linterna, el motor de un coche de juguete, o el procesador de tu teléfono móvil, la estampida de electrones tendrá que pasar por esos dispositivos, entregando su energía para hacerlos funcionar antes de llegar a su destino final.
 
@@ -170,7 +173,7 @@ Las maravillas de la transferencia de electrones no están limitadas al hierro y
 
 Cuando comes, tu cuerpo descompone los alimentos en azúcares simples como la glucosa. La glucosa es una molécula rica en energía, cargada de electrones listos para ser liberados. Sin embargo, tu cuerpo no puede usar la glucosa directamente para mover un músculo o enviar un impulso nervioso. Necesita "quemar" esa glucosa de manera controlada.
 
-Entra el oxígeno que inspiras en tus pulmones. El oxígeno viaja por tu sangre hasta llegar a tus células. Allí, en unas pequeñas centrales de energía llamadas **mitocondrias**, la glucosa dona sus electrones al oxígeno. 
+Entra el oxígeno que inspiras en tus pulmones. El oxígeno viaja por tu sangre hasta llegar a tus células. Allí, en unas pequeñas centrales de energía llamadas **mitocondrias**, la glucosa dona sus electrones al oxígeno.
 
 La glucosa se **oxida** (pierde electrones y se convierte en dióxido de carbono que luego exhalas).
 El oxígeno se **reduce** (gana esos electrones y, al unirse al hidrógeno, se convierte en agua).
@@ -179,11 +182,11 @@ La ecuación general de este proceso, conocido como respiración celular, se ve 
 $$ C_6H_{12}O_6 + 6O_2 \rightarrow 6CO_2 + 6H_2O + \text{Energía Vital} $$
 *(Glucosa + Oxígeno -> Dióxido de carbono + Agua + Energía).*
 
-Es, a nivel químico, exactamente el mismo proceso que ocurre cuando quemas un tronco de madera en una fogata. La madera reacciona con el oxígeno, liberando luz y calor. Pero dentro de tu cuerpo, esta "combustión" ocurre en múltiples pasos minúsculos y altamente regulados, de modo que la energía no se libera como una explosión de fuego, sino como pequeñas baterías biológicas (una molécula llamada ATP) que tus células pueden usar para funcionar. 
+Es, a nivel químico, exactamente el mismo proceso que ocurre cuando quemas un tronco de madera en una fogata. La madera reacciona con el oxígeno, liberando luz y calor. Pero dentro de tu cuerpo, esta "combustión" ocurre en múltiples pasos minúsculos y altamente regulados, de modo que la energía no se libera como una explosión de fuego, sino como pequeñas baterías biológicas (una molécula llamada ATP) que tus células pueden usar para funcionar.
 
 ### Los temidos Radicales Libres y la importancia de los Antioxidantes
 
-A veces, este proceso de manipulación de electrones en el cuerpo se vuelve un poco desordenado. Ocasionalmente, un molécula de oxígeno escapa del proceso llevándose un electrón de menos o de más, convirtiéndose en lo que se conoce como un **radical libre**. 
+A veces, este proceso de manipulación de electrones en el cuerpo se vuelve un poco desordenado. Ocasionalmente, un molécula de oxígeno escapa del proceso llevándose un electrón de menos o de más, convirtiéndose en lo que se conoce como un **radical libre**.
 
 Imagina a un radical libre como un átomo desesperado y altamente reactivo al que le falta un electrón. Viajará por tu cuerpo robando violentamente ese electrón faltante a la primera estructura que encuentre: puede ser la membrana de una célula, una proteína, o incluso tu ADN. Cuando roba ese electrón, crea un nuevo radical libre, iniciando una reacción en cadena que daña las células. Con los años, este daño celular acumulativo contribuye al envejecimiento, a la inflamación y a diversas enfermedades.
 
@@ -204,7 +207,7 @@ Vitaminas como la C o la E son moléculas especiales que tienen un "superpoder" 
 
 Comprender y manipular la danza de los electrones es la clave absoluta para el futuro de la humanidad. A medida que el mundo intenta alejarse de la quema de combustibles fósiles (que, por cierto, es otra reacción redox masiva y sucia que libera toneladas de carbono a la atmósfera), la esperanza recae en procesos de óxido-reducción más limpios.
 
-El ejemplo perfecto es la **pila de combustible de hidrógeno**. En lugar de usar gasolina, los vehículos del futuro cercano podrían usar gas hidrógeno. Dentro de la pila de combustible, el hidrógeno gaseoso ($H_2$) se divide, entregando sus electrones (oxidación). Esos electrones fluyen a través del motor del automóvil, dándole la potencia para avanzar a 100 km/h en la carretera. 
+El ejemplo perfecto es la **pila de combustible de hidrógeno**. En lugar de usar gasolina, los vehículos del futuro cercano podrían usar gas hidrógeno. Dentro de la pila de combustible, el hidrógeno gaseoso ($H_2$) se divide, entregando sus electrones (oxidación). Esos electrones fluyen a través del motor del automóvil, dándole la potencia para avanzar a 100 km/h en la carretera.
 
 Luego, esos electrones llegan al otro lado de la pila, donde el oxígeno del aire ($O_2$) los está esperando. El hidrógeno y el oxígeno se combinan amablemente con los electrones (reducción) produciendo un único residuo que sale por el tubo de escape: **agua pura** ($H_2O$).
 
@@ -215,8 +218,8 @@ Hemos pasado de la revolución industrial impulsada por fuego humeante a una era
 
 ## Conclusión: El baile que nunca se detiene
 
-Desde el óxido implacable que devora los barcos hundidos en el fondo del océano, hasta los destellos de electricidad en tu cerebro que te permiten leer y comprender estas mismas palabras, el universo está impulsado por el incesante comercio de electrones. 
+Desde el óxido implacable que devora los barcos hundidos en el fondo del océano, hasta los destellos de electricidad en tu cerebro que te permiten leer y comprender estas mismas palabras, el universo está impulsado por el incesante comercio de electrones.
 
-La próxima vez que veas una puerta de hierro descascarada en una casa abandonada, no la mires simplemente como un objeto viejo y arruinado. Mírala como lo que realmente es: un campo de batalla épico y silencioso. Y cuando enciendas tu teléfono inteligente, recuerda el milagro de ingeniería que representa: millones de átomos cooperando en habitaciones separadas, bombeando electrones a través del laberinto de silicio para conectarte con el mundo. 
+La próxima vez que veas una puerta de hierro descascarada en una casa abandonada, no la mires simplemente como un objeto viejo y arruinado. Mírala como lo que realmente es: un campo de batalla épico y silencioso. Y cuando enciendas tu teléfono inteligente, recuerda el milagro de ingeniería que representa: millones de átomos cooperando en habitaciones separadas, bombeando electrones a través del laberinto de silicio para conectarte con el mundo.
 
 La química no es solo ecuaciones aburridas en un pizarrón de la escuela; es el lenguaje oculto de la materia. Y palabras como "oxidación" y "reducción" son los verbos de ese idioma, describiendo el tango eterno que da forma, destruye y da vida a absolutamente todo lo que nos rodea.

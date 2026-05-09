@@ -36,7 +36,7 @@ cargo flamegraph --bin my_server
 
 #### Reading a Flamegraph
 
-When you open the generated `.svg` file in a browser, you are presented with a hierarchical stack. 
+When you open the generated `.svg` file in a browser, you are presented with a hierarchical stack.
 
 * **Y-axis:** Represents stack depth. The base of the stack is at the bottom (usually `main`), and the functions called by `main` are stacked on top.
 * **X-axis:** Represents the *population* of samples, not the passage of time. The wider a block is, the more frequently it appeared in the samples.
@@ -59,7 +59,7 @@ When you open the generated `.svg` file in a browser, you are presented with a h
 
 ### Memory Profiling with Heaptrack
 
-While Rust prevents use-after-free and double-free errors, it will happily let you allocate gigabytes of memory if you ask it to. To track down memory bloat, **Heaptrack** is a modern, low-overhead heap profiler for Linux. 
+While Rust prevents use-after-free and double-free errors, it will happily let you allocate gigabytes of memory if you ask it to. To track down memory bloat, **Heaptrack** is a modern, low-overhead heap profiler for Linux.
 
 Heaptrack intercepts `malloc`, `free`, and related calls, logging the exact call stack that requested the memory. Because it only hooks allocations, it is significantly faster than full CPU emulators.
 
@@ -78,15 +78,15 @@ When you stop the application, Heaptrack generates a `.zst` data file. You can a
 
 #### Key Metrics Tracked
 
-1.  **Peak Heap Memory:** The absolute maximum memory your program required. Spikes here often indicate large payloads being loaded entirely into memory rather than being streamed.
-2.  **Memory Leaks:** Allocations that were never freed before the program exited. In Rust, this usually points to an unbounded global `HashMap`, leaked `Box`es, or a static `DashMap` accumulating stale keys.
-3.  **Temporary Allocations:** High rates of allocations and immediate deallocations. This thrashes the allocator and fragments memory. In Rust, this is often caused by allocating intermediate `String`s or `Vec`s instead of operating on string slices (`&str`) and iterators.
+1. **Peak Heap Memory:** The absolute maximum memory your program required. Spikes here often indicate large payloads being loaded entirely into memory rather than being streamed.
+2. **Memory Leaks:** Allocations that were never freed before the program exited. In Rust, this usually points to an unbounded global `HashMap`, leaked `Box`es, or a static `DashMap` accumulating stale keys.
+3. **Temporary Allocations:** High rates of allocations and immediate deallocations. This thrashes the allocator and fragments memory. In Rust, this is often caused by allocating intermediate `String`s or `Vec`s instead of operating on string slices (`&str`) and iterators.
 
 ---
 
 ### Deep Dive Profiling with Valgrind
 
-When `perf` and `heaptrack` are not granular enough, **Valgrind** is the ultimate heavy-duty profiling framework. Valgrind runs your Rust application inside a synthetic CPU (a virtual machine), instrumenting every single instruction. 
+When `perf` and `heaptrack` are not granular enough, **Valgrind** is the ultimate heavy-duty profiling framework. Valgrind runs your Rust application inside a synthetic CPU (a virtual machine), instrumenting every single instruction.
 
 > **Warning:** Valgrind will slow down your application by a factor of 10x to 50x. It is not suitable for running on live production traffic, but rather for reproducible load tests in a staging environment.
 
@@ -101,6 +101,7 @@ valgrind --tool=callgrind ./target/release/my_server
 ```
 
 You can view the resulting `callgrind.out.<pid>` file using a visualizer like **KCachegrind**. Callgrind allows you to see:
+
 * **Instruction Reads (Ir):** The exact number of CPU instructions executed.
 * **Cache Misses:** Where your data structures are not cache-friendly. For example, traversing a `LinkedList<T>` will show massive cache misses compared to a contiguous `Vec<T>`.
 * **Branch Mispredictions:** Where the CPU pipeline is stalling due to unpredictable `if/else` or `match` branches.
@@ -118,9 +119,9 @@ Massif outputs an ASCII graph showing memory consumption over time, alongside de
 
 ### Summary of Profiling Heuristics
 
-1.  **CPU Spikes / High Load:** Start with **Flamegraphs**. They have near-zero overhead and immediately point to the offending module.
-2.  **OOM Kills / High RAM Usage:** Use **Heaptrack** (or Massif). Look for unbounded collections or missing `drop` implementations.
-3.  **Micro-optimizations / Cache Tuning:** Use **Callgrind**. When you need to optimize a hot-path algorithm for maximum throughput, eliminating cache misses becomes critical.
+1. **CPU Spikes / High Load:** Start with **Flamegraphs**. They have near-zero overhead and immediately point to the offending module.
+2. **OOM Kills / High RAM Usage:** Use **Heaptrack** (or Massif). Look for unbounded collections or missing `drop` implementations.
+3. **Micro-optimizations / Cache Tuning:** Use **Callgrind**. When you need to optimize a hot-path algorithm for maximum throughput, eliminating cache misses becomes critical.
 
 ## 23.2 Understanding LLVM Optimization Passes and Code Monomorphization
 
@@ -158,21 +159,24 @@ Once `rustc` proves your code is safe via MIR, it translates the program into LL
 
 ### LLVM Optimization Passes
 
-LLVM optimizes this IR by running it through a series of "passes." Each pass is a modular algorithm that analyzes or transforms the IR to make it faster or smaller. When you compile with `cargo build --release`, LLVM aggressively applies hundreds of these passes. 
+LLVM optimizes this IR by running it through a series of "passes." Each pass is a modular algorithm that analyzes or transforms the IR to make it faster or smaller. When you compile with `cargo build --release`, LLVM aggressively applies hundreds of these passes.
 
 Here are the most critical passes you should understand as a Rust developer:
 
 #### 1. Inlining (The Mother of All Optimizations)
-Function calls have overhead (pushing arguments to the stack, jumping to an address, returning). The inliner replaces a function call with the actual body of the function. 
+
+Function calls have overhead (pushing arguments to the stack, jumping to an address, returning). The inliner replaces a function call with the actual body of the function.
 
 *Why it matters:* Inlining is the key that unlocks almost all other optimizations. Once a function body is inlined into the caller, LLVM has a broader context and can eliminate redundant calculations between the caller and the callee. Rust's heavily iterative style (e.g., `iter().map().filter().collect()`) relies entirely on the inliner to flatten the deeply nested method calls into a single, tight loop.
 
 #### 2. Constant Folding and Dead Code Elimination (DCE)
+
 LLVM evaluates expressions at compile time if all inputs are known. If the result of a branch (`if/else`) is deterministic, LLVM will completely remove the branch that is never taken.
 
 *Why it matters:* You can write highly readable, abstract code with `if cfg!(target_os = "linux")` or use constants, knowing that LLVM will strip away the abstractions and unused paths, leaving zero runtime overhead.
 
 #### 3. Loop Unrolling and Vectorization
+
 Loop unrolling duplicates the body of a loop multiple times to reduce the overhead of the loop counter and jump instructions. Vectorization (SIMD - Single Instruction, Multiple Data) takes it a step further: it packs multiple data points into wide CPU registers to process them simultaneously in a single clock cycle.
 
 *Why it matters:* Contiguous memory structures like `Vec<T>` and slices (`&[T]`) are highly amenable to vectorization. This is why iterating over a `Vec` is dramatically faster than traversing a `LinkedList`.
@@ -224,7 +228,7 @@ fn main() {
 
 #### The Trade-off: Performance vs. Binary Size
 
-Monomorphization is the engine behind Rust's "zero-cost abstractions." 
+Monomorphization is the engine behind Rust's "zero-cost abstractions."
 
 **The Good:** Because LLVM receives concrete functions with exact sizes and types (`print_item_i32`), it can optimize each one independently. It knows exactly how many bytes an `i32` takes, allowing for aggressive inlining, memory alignment, and register allocation. There is no dynamic dispatch, no vtable lookups, and no pointer chasing at runtime.
 
@@ -249,6 +253,7 @@ By using `&mut dyn Read`, the compiler only generates *one* version of the `proc
 ## 23.3 Zero-Cost Abstractions and Minimizing Allocations
 
 The term "zero-cost abstraction" was coined by C++ creator Bjarne Stroustrup and is a foundational pillar of Rust's design. It dictates two rules:
+
 1. What you don't use, you don't pay for.
 2. What you do use, you couldn't hand-code any better.
 
@@ -256,9 +261,10 @@ In Rust, "zero-cost" does not mean "zero compile time" (as discussed in the prev
 
 ### The Anatomy of a Zero-Cost Abstraction
 
-To understand this, we must look at how high-level constructs are erased at compile time. 
+To understand this, we must look at how high-level constructs are erased at compile time.
 
 #### 1. The Newtype Pattern
+
 A common pattern in domain-driven design is wrapping primitive types in structs to enforce type safety (e.g., preventing a `UserId` from being passed into a `ProductId` function).
 
 ```rust
@@ -271,9 +277,11 @@ fn process_user(id: UserId) { /* ... */ }
 In languages with object overhead, this might allocate an object header or a reference on the heap. In Rust, a struct with a single field has the exact same memory layout and calling convention as the inner field. At runtime, `UserId` does not exist; the CPU simply sees a 64-bit integer moving through registers.
 
 #### 2. Iterators vs. Manual Loops
+
 Consider processing a sequence of numbers: filtering out evens, squaring the odds, and summing them.
 
 **The Imperative Way:**
+
 ```rust
 let mut sum = 0;
 for i in 0..nums.len() {
@@ -284,6 +292,7 @@ for i in 0..nums.len() {
 ```
 
 **The Iterator Way:**
+
 ```rust
 let sum: i32 = nums.iter()
     .filter(|&&x| x % 2 != 0)
@@ -298,6 +307,7 @@ The iterator version uses closures, method chaining, and intermediate objects. A
 While zero-cost abstractions make CPU operations fast, they cannot magically eliminate the cost of memory allocation. Every time you call `String::new()` or `Box::new()`, you are requesting memory from the global allocator on the heap.
 
 Heap allocation is slow for several reasons:
+
 * **System Calls:** The allocator may need to request pages from the OS via `mmap` or `sbrk`.
 * **Searching:** The allocator must search its free lists to find a contiguous block of memory large enough for your data.
 * **Cache Misses:** Heap data is scattered, destroying CPU cache locality (pointer chasing).
@@ -307,6 +317,7 @@ Minimizing allocations is the single most effective way to squeeze the last 10-2
 ### Strategies for Minimizing Allocations
 
 #### 1. Reusing Capacity (`clear` vs. Re-assignment)
+
 If you have a loop that processes strings or vectors, do not create a new `String` or `Vec` inside the loop. Instead, hoist the collection outside the loop and `.clear()` it.
 
 ```rust
@@ -327,6 +338,7 @@ for user in &users {
 ```
 
 #### 2. The `Cow` (Clone-on-Write) Smart Pointer
+
 Often, you write functions that *might* need to mutate or allocate a string, but usually don't. Returning a `String` forces an allocation every time. Returning a `&str` prevents mutation. The standard library provides `std::borrow::Cow` to solve this cleanly.
 
 `Cow` allows you to return a borrowed reference (`&str`) in the fast path, and a heap-allocated owned value (`String`) only when necessary.
@@ -347,6 +359,7 @@ fn sanitize(input: &str) -> Cow<str> {
 ```
 
 #### 3. Stack Allocation via `SmallVec` / `ArrayVec`
+
 Sometimes you need a dynamic array, but you know 99% of the time it will contain 4 or fewer items. A standard `Vec<T>` always allocates on the heap, even for 1 item.
 
 By leveraging community crates like `smallvec` or `arrayvec`, you can keep elements on the fast stack memory up to a certain threshold, only spilling over to the heap if that capacity is exceeded.
@@ -362,17 +375,18 @@ Stack: [ inline_data: 8, 16, 24, _ | len: 3 ] (Zero heap allocation!)
 ```
 
 #### 4. Pre-allocation (`with_capacity`)
-When you *must* allocate on the heap, but you know or can estimate the final size, always use `::with_capacity()`. 
+
+When you *must* allocate on the heap, but you know or can estimate the final size, always use `::with_capacity()`.
 
 When a `Vec` or `HashMap` runs out of space, it must allocate a new, larger chunk of memory, copy all existing elements to the new chunk, and deallocate the old chunk. This reallocation is disastrous for performance. Pre-allocating circumvents this entirely.
 
 ## 23.4 Advanced Memory Allocators (jemalloc, mimalloc)
 
-Rust uses the system's default memory allocator by default (`malloc` on Linux/macOS, `HeapAlloc` on Windows). While system allocators are highly optimized for general-purpose computing, they often become a severe bottleneck in extreme-performance, highly concurrent, allocation-heavy applications. 
+Rust uses the system's default memory allocator by default (`malloc` on Linux/macOS, `HeapAlloc` on Windows). While system allocators are highly optimized for general-purpose computing, they often become a severe bottleneck in extreme-performance, highly concurrent, allocation-heavy applications.
 
 When hundreds of asynchronous tasks or threads attempt to allocate heap memory simultaneously, the system allocator must use mutexes or spinlocks to prevent memory corruption. This creates **lock contention**, effectively serializing your concurrent program at the OS level. Furthermore, long-running applications using the default allocator often suffer from memory fragmentation, causing Resident Set Size (RSS) to bloat over time.
 
-Rust provides a seamless mechanism to replace the system allocator globally via the `GlobalAlloc` trait. 
+Rust provides a seamless mechanism to replace the system allocator globally via the `GlobalAlloc` trait.
 
 ### The `#[global_allocator]` Attribute
 
@@ -422,6 +436,7 @@ Advanced allocators request massive chunks of memory (pages) from the OS upfront
 Originally developed for FreeBSD and later heavily optimized by Meta and Mozilla (for Firefox), **jemalloc** is the industry standard for long-running, multi-threaded server applications. In the Rust ecosystem, it is typically consumed via the `tikv-jemallocator` crate.
 
 **Key Characteristics:**
+
 * **Fragmentation Resistance:** jemalloc is exceptionally good at combating memory fragmentation over days or weeks of uptime. If your Rust web server's memory usage constantly creeps upward but Heaptrack shows no logical leaks, switching to jemalloc often flattens the curve.
 * **Concurrency:** It uses multiple arenas, drastically reducing lock contention in heavily threaded runtimes like Tokio.
 * **Observability:** jemalloc includes built-in heap profiling capabilities that can be enabled at runtime via environment variables (`MALLOC_CONF`), allowing you to extract memory profiles without recompiling your binary.
@@ -431,6 +446,7 @@ Originally developed for FreeBSD and later heavily optimized by Meta and Mozilla
 **Mimalloc** is a relatively newer allocator developed by Microsoft Research. It was designed from the ground up to have extreme raw performance and predictable, low latency. It is available in Rust via the `mimalloc` crate.
 
 **Key Characteristics:**
+
 * **Extreme Throughput:** In many benchmarks, mimalloc outperforms jemalloc and the system allocator in raw allocation/deallocation speed. It achieves this via aggressive free-list sharding.
 * **Temporal Locality:** Mimalloc is highly optimized to return memory blocks that are already hot in the CPU's L1/L2 cache, naturally synergizing with the optimization passes discussed in previous sections.
 * **Security:** Mimalloc includes "secure mode" variants that randomize allocation addresses and add guard pages to mitigate buffer overflows and use-after-free exploits, though this comes with a slight performance penalty.
@@ -546,7 +562,7 @@ panic = "abort"
 
 #### Stripping Debug Symbols and Optimizing for Size
 
-If you are compiling for WebAssembly, embedded devices, or deploying over a constrained network, binary size is more critical than CPU speed. 
+If you are compiling for WebAssembly, embedded devices, or deploying over a constrained network, binary size is more critical than CPU speed.
 
 ```toml
 [profile.release]

@@ -8,7 +8,7 @@ A continuación, desglosaremos los mecanismos fundamentales para reservar memori
 
 ### La palabra clave `var` y los "Zero Values"
 
-La forma más explícita de declarar una variable en Go es utilizando la palabra clave `var`, seguida del nombre de la variable y su tipo. 
+La forma más explícita de declarar una variable en Go es utilizando la palabra clave `var`, seguida del nombre de la variable y su tipo.
 
 Una de las características más importantes de Go es que **no existen las variables sin inicializar**. Si declaras una variable pero no le asignas un valor explícito, el compilador le asignará automáticamente su *Zero Value* (valor cero) por defecto. Esto elimina una categoría entera de bugs relacionados con memoria no inicializada.
 
@@ -69,6 +69,7 @@ func loadConfig() {
     metrics, err := parseFile("metrics.json") 
 }
 ```
+
 *(Nota: El uso descuidado de `:=` en bloques anidados puede llevar a problemas de "Shadowing", un concepto que abordaremos en detalle en la sección 2.4).*
 
 ### Constantes y el sistema de tipos no tipados
@@ -140,21 +141,24 @@ Go ofrece una rica variedad de tipos numéricos, divididos principalmente en ent
 
 **1. Enteros específicos por tamaño:**
 Garantizan el tamaño en memoria independientemente de la arquitectura del sistema.
+
 * **Con signo:** `int8`, `int16`, `int32`, `int64`
 * **Sin signo:** `uint8`, `uint16`, `uint32`, `uint64`
 
 **2. Alias integrados:**
 Go proporciona dos alias fundamentales para mejorar la semántica del código:
+
 * `byte`: Alias exacto de `uint8`. Se utiliza por convención para distinguir datos binarios en bruto de simples operaciones matemáticas.
 * `rune`: Alias exacto de `int32`. Representa un *code point* de Unicode (trataremos esto con mayor profundidad junto con las cadenas en el Capítulo 14).
 
 **3. Enteros dependientes de la arquitectura:**
-Los tipos `int` y `uint` tienen el tamaño de la palabra nativa de la plataforma de compilación (32 bits en sistemas de 32 bits, y 64 bits en sistemas de 64 bits). 
+Los tipos `int` y `uint` tienen el tamaño de la palabra nativa de la plataforma de compilación (32 bits en sistemas de 32 bits, y 64 bits en sistemas de 64 bits).
 
 > **Nota arquitectónica:** A menos que estés optimizando estructuras de datos muy grandes donde el ahorro de memoria sea crítico (usando `int8` o `int16`), la convención idiomática en Go es utilizar `int` para contadores, longitudes y aritmética general.
 
 **4. Números de Punto Flotante y Complejos:**
 Go implementa el estándar IEEE-754 para números fraccionarios:
+
 * `float32` y `float64`
 * `complex64` y `complex128` (con partes reales e imaginarias integradas a nivel sintáctico).
 
@@ -200,7 +204,7 @@ Por defecto, Go asume que el texto está codificado en UTF-8, lo cual es vital a
 
 ## 2.3. Conversión de tipos explícita (Casting)
 
-En el ecosistema de Go, la seguridad del sistema de tipos es una prioridad absoluta de diseño. A diferencia de lenguajes como C, C++ o JavaScript, donde el compilador o el intérprete realizan "coerciones" o conversiones implícitas en segundo plano (por ejemplo, sumar un entero a un número de punto flotante de forma transparente), Go adopta una postura estricta: **no existe la conversión de tipos implícita**. 
+En el ecosistema de Go, la seguridad del sistema de tipos es una prioridad absoluta de diseño. A diferencia de lenguajes como C, C++ o JavaScript, donde el compilador o el intérprete realizan "coerciones" o conversiones implícitas en segundo plano (por ejemplo, sumar un entero a un número de punto flotante de forma transparente), Go adopta una postura estricta: **no existe la conversión de tipos implícita**.
 
 Si tienes una variable de tipo `int32` y otra de tipo `int64`, no puedes sumarlas directamente, ni siquiera asignarlas entre sí. El compilador exigirá que el desarrollador manifieste su intención de forma unívoca.
 
@@ -244,6 +248,7 @@ func overflowExample() {
     fmt.Println(smallNum) // Salida: 44 (Comportamiento de wrap-around binario)
 }
 ```
+
 *Mejor práctica:* Como arquitectos de software en Go, debemos asegurarnos de que el valor original esté dentro del rango seguro del tipo destino antes de forzar una conversión estrecha, especialmente al lidiar con protocolos de red o I/O, donde los tamaños de los tipos están dictados por estándares externos.
 
 ### Conversiones entre Strings y Slices de Bytes o Runas
@@ -266,6 +271,7 @@ func stringSlices() {
     restoredString := string(byteSlice)
 }
 ```
+
 *(Nota de rendimiento: En rutas de código críticas de latencia (hot paths), las constantes asignaciones por conversiones `string <-> []byte` pueden presionar al Garbage Collector. En el Capítulo 44 exploraremos técnicas avanzadas con el paquete `unsafe` para evitar estas copias, asumiendo los riesgos correspondientes).*
 
 ### El peligro de convertir enteros a cadenas
@@ -301,7 +307,7 @@ Convertir texto en números implica el riesgo inherente de que la cadena no cont
 
 Para conversiones rápidas de texto a `int` en base 10, la función más idiomática es `strconv.Atoi` (ASCII to Integer).
 
-Si necesitas control granular sobre la base numérica (binario, hexadecimal) o el tamaño del entero (para evitar desbordamientos), debes usar `strconv.ParseInt` o `strconv.ParseUint`. 
+Si necesitas control granular sobre la base numérica (binario, hexadecimal) o el tamaño del entero (para evitar desbordamientos), debes usar `strconv.ParseInt` o `strconv.ParseUint`.
 
 > **Advertencia de tipado:** `strconv.ParseInt` siempre retorna un `int64` por diseño. Si tu variable destino es de tipo `int` o `int32`, deberás aplicar una conversión explícita `int()` al resultado, *después* de comprobar que no hubo errores.
 
@@ -376,7 +382,7 @@ func formatExamples() {
 
 ### Un apunte sobre rendimiento: `strconv` vs `fmt.Sprintf`
 
-Es muy común ver a desarrolladores que provienen de otros lenguajes utilizar `fmt.Sprintf("%d", numero)` para convertir enteros a cadenas. Aunque es sintácticamente correcto y muy flexible, **`fmt.Sprintf` hace uso extensivo del paquete `reflect` (reflexión en tiempo de ejecución) para inferir los tipos**. 
+Es muy común ver a desarrolladores que provienen de otros lenguajes utilizar `fmt.Sprintf("%d", numero)` para convertir enteros a cadenas. Aunque es sintácticamente correcto y muy flexible, **`fmt.Sprintf` hace uso extensivo del paquete `reflect` (reflexión en tiempo de ejecución) para inferir los tipos**.
 
 Como regla general en arquitectura de alto rendimiento en Go: las funciones del paquete `strconv` son significativamente más rápidas y generan menos presión sobre el Garbage Collector, ya que están optimizadas a nivel de ensamblador para tipos de datos específicos. Usa `fmt.Sprintf` para construir mensajes complejos o logs, pero prefiere `strconv` para conversiones puras de tipos en rutas críticas de datos.
 
@@ -386,15 +392,15 @@ La gestión de la memoria y la limpieza del código en Go no dependen únicament
 
 ### Bloques y Jerarquía de Ámbitos (Scope)
 
-Go utiliza un sistema de **ámbito léxico (lexical scoping)** estático. El alcance temporal y espacial de una variable se define estrictamente por el bloque de código (delimitado por llaves `{}`) donde es declarada. 
+Go utiliza un sistema de **ámbito léxico (lexical scoping)** estático. El alcance temporal y espacial de una variable se define estrictamente por el bloque de código (delimitado por llaves `{}`) donde es declarada.
 
 La jerarquía de resolución de nombres en Go fluye de adentro hacia afuera a través de cuatro niveles principales:
 
-1.  **Bloque Universal:** Abarca todo el código fuente. Contiene los identificadores pre-declarados del lenguaje como `int`, `bool`, `true`, `false` y `nil`.
-2.  **Bloque de Paquete (Package Block):** Las variables, constantes, tipos y funciones declaradas fuera de cualquier función pertenecen a este ámbito. Son visibles para todos los archivos `.go` que compartan la misma declaración `package`.
+1. **Bloque Universal:** Abarca todo el código fuente. Contiene los identificadores pre-declarados del lenguaje como `int`, `bool`, `true`, `false` y `nil`.
+2. **Bloque de Paquete (Package Block):** Las variables, constantes, tipos y funciones declaradas fuera de cualquier función pertenecen a este ámbito. Son visibles para todos los archivos `.go` que compartan la misma declaración `package`.
     * *Nota arquitectónica:* La visibilidad fuera del paquete se controla mediante la capitalización de la primera letra del identificador (mayúscula = Exportado/Público, minúscula = No exportado/Privado). Profundizaremos en esto en el Capítulo 20.
-3.  **Bloque de Archivo (File Block):** Aplica a las importaciones de paquetes. Un `import "fmt"` en un archivo no hace que `fmt` esté disponible mágicamente en otro archivo del mismo paquete.
-4.  **Bloques Locales y Anidados:** Cada par de llaves `{}` (como el cuerpo de una función, un `if`, un `for` o un `switch`) crea un nuevo ámbito local.
+3. **Bloque de Archivo (File Block):** Aplica a las importaciones de paquetes. Un `import "fmt"` en un archivo no hace que `fmt` esté disponible mágicamente en otro archivo del mismo paquete.
+4. **Bloques Locales y Anidados:** Cada par de llaves `{}` (como el cuerpo de una función, un `if`, un `for` o un `switch`) crea un nuevo ámbito local.
 
 ### La trampa del Sombreado de Variables (Shadowing)
 
@@ -437,7 +443,7 @@ Para evitar el sombreado accidental, si necesitas actualizar una variable del bl
 
 El compilador de Go es inflexible con la higiene del código: **es un error de compilación declarar una variable local y no utilizarla**. Esto garantiza que el código de producción no acumule "código muerto", reduciendo la carga cognitiva y mejorando la eficiencia de la compilación.
 
-Sin embargo, dado que en Go es idiomático que las funciones devuelvan múltiples valores (generalmente un resultado y un error), con frecuencia te encontrarás en situaciones donde solo necesitas uno de esos valores de retorno. 
+Sin embargo, dado que en Go es idiomático que las funciones devuelvan múltiples valores (generalmente un resultado y un error), con frecuencia te encontrarás en situaciones donde solo necesitas uno de esos valores de retorno.
 
 Para resolver esta fricción sin provocar errores de compilación, Go introduce el **Identificador en Blanco (Blank Identifier)**, representado por un guion bajo `_`.
 
@@ -445,7 +451,8 @@ El identificador en blanco actúa como un "agujero negro" o un sumidero de datos
 
 **Casos de uso comunes:**
 
-1.  **Ignorar valores de retorno múltiples:**
+1. **Ignorar valores de retorno múltiples:**
+
     ```go
     // os.MkdirAll retorna un error. Si por alguna razón (anti-patrón) 
     // queremos ignorar si falló, usamos el identificador en blanco.
@@ -455,8 +462,9 @@ El identificador en blanco actúa como un "agujero negro" o un sumidero de datos
     value, _ := strconv.Atoi("100") 
     ```
 
-2.  **Ignorar el índice en bucles de iteración (`range`):**
+2. **Ignorar el índice en bucles de iteración (`range`):**
     (Veremos el bucle `for range` a fondo en el próximo capítulo).
+
     ```go
     nombres := []string{"Ana", "Carlos", "Elena"}
     
@@ -466,8 +474,9 @@ El identificador en blanco actúa como un "agujero negro" o un sumidero de datos
     }
     ```
 
-3.  **Evitar errores de importación temporalmente:**
+3. **Evitar errores de importación temporalmente:**
     Al igual que con las variables, importar un paquete y no usarlo detiene la compilación. Durante la fase de desarrollo, si estás depurando y comentas el código que usa el paquete, puedes silenciar el error usando el identificador en blanco a nivel global.
+
     ```go
     import (
         "fmt"

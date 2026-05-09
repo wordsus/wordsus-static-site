@@ -2,13 +2,13 @@ Asegurar que los componentes de un sistema Go funcionen en aislamiento es solo e
 
 ## 18.1. Diferencias de alcance entre tests unitarios y de integración
 
-En los capítulos anteriores (16 y 17), exploramos cómo probar la lógica de nuestra aplicación en total aislamiento. Utilizamos inyección de dependencias y herramientas como *Mocks* y *Stubs* para simular cualquier componente externo. Sin embargo, un sistema donde cada unidad funciona perfectamente por separado puede fallar catastróficamente cuando esas unidades interactúan. 
+En los capítulos anteriores (16 y 17), exploramos cómo probar la lógica de nuestra aplicación en total aislamiento. Utilizamos inyección de dependencias y herramientas como *Mocks* y *Stubs* para simular cualquier componente externo. Sin embargo, un sistema donde cada unidad funciona perfectamente por separado puede fallar catastróficamente cuando esas unidades interactúan.
 
 Es aquí donde entra en juego el testing de integración. Para dominar el testing en Go y construir aplicaciones resilientes, es fundamental trazar una línea clara entre qué probamos en una prueba unitaria y qué delegamos a una prueba de integración.
 
 ### El límite de la I/O (Entrada/Salida)
 
-La diferencia arquitectónica más importante entre ambos enfoques es **el cruce de las fronteras de Entrada/Salida (I/O)**. 
+La diferencia arquitectónica más importante entre ambos enfoques es **el cruce de las fronteras de Entrada/Salida (I/O)**.
 
 * **Tests Unitarios:** Se ejecutan estrictamente en memoria (CPU y RAM). No tocan el disco, no abren conexiones de red, no leen variables de entorno externas ni interactúan con bases de datos reales. Su objetivo es validar la lógica de negocio pura, algoritmos y transformaciones de datos.
 * **Tests de Integración:** Cruzan deliberadamente la barrera de I/O. Su propósito es validar que nuestro código Go se comunica correctamente con el mundo exterior: que nuestras sentencias SQL son válidas en el motor de base de datos real, que el mapeo de JSON de una API externa es correcto, o que las políticas de reintento de un cliente HTTP funcionan frente a latencia real.
@@ -26,23 +26,23 @@ Veamos un ejemplo de cómo se contrastan ambos alcances en el mismo paquete:
 package user_test
 
 import (
-	"testing"
-	"tu-proyecto/internal/user"
-	"tu-proyecto/internal/user/mocks" // Generado en el Cap. 17
+ "testing"
+ "tu-proyecto/internal/user"
+ "tu-proyecto/internal/user/mocks" // Generado en el Cap. 17
 )
 
 func TestService_CreateUser_Unit(t *testing.T) {
-	// 1. Instanciamos el mock (Cero I/O)
-	mockRepo := mocks.NewMockRepository(t)
-	mockRepo.EXPECT().Save(mock.Anything).Return(nil)
+ // 1. Instanciamos el mock (Cero I/O)
+ mockRepo := mocks.NewMockRepository(t)
+ mockRepo.EXPECT().Save(mock.Anything).Return(nil)
 
-	// 2. Probamos la lógica del servicio aislada
-	svc := user.NewService(mockRepo)
-	err := svc.CreateUser("gopher@golang.org")
+ // 2. Probamos la lógica del servicio aislada
+ svc := user.NewService(mockRepo)
+ err := svc.CreateUser("gopher@golang.org")
 
-	if err != nil {
-		t.Fatalf("se esperaba éxito, se obtuvo: %v", err)
-	}
+ if err != nil {
+  t.Fatalf("se esperaba éxito, se obtuvo: %v", err)
+ }
 }
 ```
 
@@ -57,31 +57,31 @@ Ahora, observemos el test de integración para el mismo dominio. Nota la directi
 package user_test
 
 import (
-	"context"
-	"testing"
-	"tu-proyecto/internal/user/postgres"
-	// Asumimos un helper para conectar a la DB
-	"tu-proyecto/pkg/testutils" 
+ "context"
+ "testing"
+ "tu-proyecto/internal/user/postgres"
+ // Asumimos un helper para conectar a la DB
+ "tu-proyecto/pkg/testutils" 
 )
 
 func TestRepository_Save_Integration(t *testing.T) {
-	// 1. Conexión a un recurso real (I/O). 
-	// (En la sección 18.2 veremos cómo Testcontainers automatiza esto).
-	db := testutils.SetupTestDB(t) 
-	repo := postgres.NewRepository(db)
+ // 1. Conexión a un recurso real (I/O). 
+ // (En la sección 18.2 veremos cómo Testcontainers automatiza esto).
+ db := testutils.SetupTestDB(t) 
+ repo := postgres.NewRepository(db)
 
-	// 2. Ejecución contra el motor real
-	err := repo.Save(context.Background(), user.User{Email: "real@golang.org"})
-	
-	if err != nil {
-		t.Fatalf("fallo al guardar en la base de datos real: %v", err)
-	}
+ // 2. Ejecución contra el motor real
+ err := repo.Save(context.Background(), user.User{Email: "real@golang.org"})
+ 
+ if err != nil {
+  t.Fatalf("fallo al guardar en la base de datos real: %v", err)
+ }
 
-	// 3. Verificación de estado en el mundo exterior
-	count := testutils.CountUsersInDB(t, db)
-	if count != 1 {
-		t.Errorf("se esperaba 1 usuario, hay %d", count)
-	}
+ // 3. Verificación de estado en el mundo exterior
+ count := testutils.CountUsersInDB(t, db)
+ if count != 1 {
+  t.Errorf("se esperaba 1 usuario, hay %d", count)
+ }
 }
 ```
 
@@ -107,7 +107,7 @@ Para resolver este problema exacto y devolverle el determinismo y aislamiento a 
 
 Como vimos en la sección anterior, el mayor obstáculo de los tests de integración es garantizar un entorno determinista y aislado cuando dependemos de infraestructura externa. Históricamente, los equipos de desarrollo recurrían a bases de datos compartidas (que causan colisiones de datos) o a complejos scripts de `docker-compose` externos al ciclo de vida del test (que son difíciles de orquestar y limpiar).
 
-**Testcontainers-go** emerge como la solución idiomática y definitiva a este problema en el ecosistema Go. Es una librería que proporciona APIs para instanciar contenedores Docker efímeros directamente desde tu código de pruebas. 
+**Testcontainers-go** emerge como la solución idiomática y definitiva a este problema en el ecosistema Go. Es una librería que proporciona APIs para instanciar contenedores Docker efímeros directamente desde tu código de pruebas.
 
 En lugar de requerir que la infraestructura esté levantada *antes* de correr `go test`, el propio test solicita, configura, espera y destruye la infraestructura que necesita.
 
@@ -115,9 +115,9 @@ En lugar de requerir que la infraestructura esté levantada *antes* de correr `g
 
 Testcontainers no es un simple *wrapper* para ejecutar comandos de consola `docker run`. Interactúa directamente con la API del demonio de Docker y expone tres conceptos fundamentales:
 
-1.  **ContainerRequest:** Una estructura (`struct`) declarativa donde defines qué imagen necesitas, qué puertos exponer, variables de entorno y mapeos de volúmenes.
-2.  **Wait Strategies:** El componente más crítico. Un contenedor puede estar "corriendo" según Docker, pero el servicio interno (ej. el motor de base de datos) podría tardar varios segundos en estar listo para recibir conexiones. Las estrategias de espera pausan la ejecución del test hasta que se cumpla una condición (un log específico, un puerto a la escucha, o un script de healthcheck exitoso).
-3.  **Lifecycle Management:** Métodos nativos integrados con el `context.Context` de Go para garantizar que los contenedores se destruyan al finalizar la prueba, evitando el consumo de recursos (contenedores "zombies").
+1. **ContainerRequest:** Una estructura (`struct`) declarativa donde defines qué imagen necesitas, qué puertos exponer, variables de entorno y mapeos de volúmenes.
+2. **Wait Strategies:** El componente más crítico. Un contenedor puede estar "corriendo" según Docker, pero el servicio interno (ej. el motor de base de datos) podría tardar varios segundos en estar listo para recibir conexiones. Las estrategias de espera pausan la ejecución del test hasta que se cumpla una condición (un log específico, un puerto a la escucha, o un script de healthcheck exitoso).
+3. **Lifecycle Management:** Métodos nativos integrados con el `context.Context` de Go para garantizar que los contenedores se destruyan al finalizar la prueba, evitando el consumo de recursos (contenedores "zombies").
 
 > **Requisito indispensable:** Para que Testcontainers-go funcione, la máquina donde se ejecuta `go test` (ya sea el ordenador del desarrollador o el agente de CI/CD) debe tener un demonio de Docker compatible ejecutándose (Docker Desktop, Colima, Rancher Desktop, o el motor Docker nativo en Linux).
 
@@ -131,7 +131,7 @@ go get github.com/testcontainers/testcontainers-go
 
 ### Anatomía de una petición Testcontainers
 
-Aunque en la sección 18.3 profundizaremos en bases de datos específicas usando los módulos prefabricados de la librería, es fundamental entender cómo levantar un contenedor genérico utilizando la API base. 
+Aunque en la sección 18.3 profundizaremos en bases de datos específicas usando los módulos prefabricados de la librería, es fundamental entender cómo levantar un contenedor genérico utilizando la API base.
 
 A continuación, se muestra un ejemplo introductorio levantando un servidor Nginx efímero para validar la sintaxis y configuración básica. Observa cómo integramos el paquete `testing`, el paquete `context` (visto en el Capítulo 13) y la estrategia de espera:
 
@@ -141,74 +141,75 @@ A continuación, se muestra un ejemplo introductorio levantando un servidor Ngin
 package infrastructure_test
 
 import (
-	"context"
-	"io"
-	"net/http"
-	"testing"
+ "context"
+ "io"
+ "net/http"
+ "testing"
 
-	"github.com/testcontainers/testcontainers-go"
-	"github.com/testcontainers/testcontainers-go/wait"
+ "github.com/testcontainers/testcontainers-go"
+ "github.com/testcontainers/testcontainers-go/wait"
 )
 
 func TestGenericContainer_Nginx(t *testing.T) {
-	ctx := context.Background()
+ ctx := context.Background()
 
-	// 1. Definimos la petición del contenedor
-	req := testcontainers.ContainerRequest{
-		Image:        "nginx:alpine",
-		ExposedPorts: []string{"80/tcp"},
-		// Estrategia de espera: el test se pausa hasta que el puerto 80 responda
-		WaitingFor:   wait.ForListeningPort("80/tcp"),
-	}
+ // 1. Definimos la petición del contenedor
+ req := testcontainers.ContainerRequest{
+  Image:        "nginx:alpine",
+  ExposedPorts: []string{"80/tcp"},
+  // Estrategia de espera: el test se pausa hasta que el puerto 80 responda
+  WaitingFor:   wait.ForListeningPort("80/tcp"),
+ }
 
-	// 2. Instanciamos el contenedor
-	nginxC, err := testcontainers.GenericContainer(ctx, testcontainers.GenericContainerRequest{
-		ContainerRequest: req,
-		Started:          true, // Arrancar inmediatamente tras crearlo
-	})
-	if err != nil {
-		t.Fatalf("No se pudo iniciar el contenedor de Nginx: %v", err)
-	}
+ // 2. Instanciamos el contenedor
+ nginxC, err := testcontainers.GenericContainer(ctx, testcontainers.GenericContainerRequest{
+  ContainerRequest: req,
+  Started:          true, // Arrancar inmediatamente tras crearlo
+ })
+ if err != nil {
+  t.Fatalf("No se pudo iniciar el contenedor de Nginx: %v", err)
+ }
 
-	// 3. Garantizamos la limpieza al finalizar el test (Crucial)
-	// Profundizaremos en la limpieza avanzada en la sección 18.4
-	defer func() {
-		if err := nginxC.Terminate(ctx); err != nil {
-			t.Fatalf("Fallo al terminar el contenedor: %v", err)
-		}
-	}()
+ // 3. Garantizamos la limpieza al finalizar el test (Crucial)
+ // Profundizaremos en la limpieza avanzada en la sección 18.4
+ defer func() {
+  if err := nginxC.Terminate(ctx); err != nil {
+   t.Fatalf("Fallo al terminar el contenedor: %v", err)
+  }
+ }()
 
-	// 4. Obtenemos el host y el puerto mapeado aleatoriamente
-	// Docker mapea el puerto 80 interno a un puerto efímero disponible en el host
-	ip, err := nginxC.Host(ctx)
-	if err != nil {
-		t.Fatalf("No se pudo obtener la IP del host: %v", err)
-	}
+ // 4. Obtenemos el host y el puerto mapeado aleatoriamente
+ // Docker mapea el puerto 80 interno a un puerto efímero disponible en el host
+ ip, err := nginxC.Host(ctx)
+ if err != nil {
+  t.Fatalf("No se pudo obtener la IP del host: %v", err)
+ }
 
-	mappedPort, err := nginxC.MappedPort(ctx, "80")
-	if err != nil {
-		t.Fatalf("No se pudo obtener el puerto mapeado: %v", err)
-	}
+ mappedPort, err := nginxC.MappedPort(ctx, "80")
+ if err != nil {
+  t.Fatalf("No se pudo obtener el puerto mapeado: %v", err)
+ }
 
-	// 5. Ejecutamos nuestra prueba HTTP real contra el contenedor efímero
-	uri := "http://" + ip + ":" + mappedPort.Port()
-	resp, err := http.Get(uri)
-	if err != nil {
-		t.Fatalf("Fallo en la petición HTTP: %v", err)
-	}
-	defer resp.Body.Close()
+ // 5. Ejecutamos nuestra prueba HTTP real contra el contenedor efímero
+ uri := "http://" + ip + ":" + mappedPort.Port()
+ resp, err := http.Get(uri)
+ if err != nil {
+  t.Fatalf("Fallo en la petición HTTP: %v", err)
+ }
+ defer resp.Body.Close()
 
-	if resp.StatusCode != http.StatusOK {
-		t.Errorf("Se esperaba código 200, se obtuvo %d", resp.StatusCode)
-	}
+ if resp.StatusCode != http.StatusOK {
+  t.Errorf("Se esperaba código 200, se obtuvo %d", resp.StatusCode)
+ }
 }
 ```
 
 ### Ventajas del puerto dinámico (`MappedPort`)
 
-Uno de los detalles más potentes expuestos en el código anterior es el uso de puertos dinámicos. Fíjate que solicitamos exponer `"80/tcp"`, pero no forzamos que se mapee al puerto `8080` de nuestra máquina local (como haríamos habitualmente con `-p 8080:80` en la CLI de Docker). 
+Uno de los detalles más potentes expuestos en el código anterior es el uso de puertos dinámicos. Fíjate que solicitamos exponer `"80/tcp"`, pero no forzamos que se mapee al puerto `8080` de nuestra máquina local (como haríamos habitualmente con `-p 8080:80` en la CLI de Docker).
 
 Testcontainers asigna automáticamente **un puerto libre aleatorio** en la máquina host. Esto elimina por completo el temido error `bind: address already in use`, permitiendo que:
+
 * Múltiples tests de integración se ejecuten en paralelo (`t.Parallel()`).
 * Varios desarrolladores o pipelines de CI puedan correr baterías de tests concurrentemente en servidores compartidos sin interferir entre sí.
 
@@ -236,56 +237,56 @@ El módulo de Postgres nos permite definir el nombre de la base de datos, el usu
 package database_test
 
 import (
-	"context"
-	"database/sql"
-	"testing"
-	"time"
+ "context"
+ "database/sql"
+ "testing"
+ "time"
 
-	_ "github.com/lib/pq" // Driver de Postgres
-	"github.com/testcontainers/testcontainers-go"
-	"github.com/testcontainers/testcontainers-go/modules/postgres"
+ _ "github.com/lib/pq" // Driver de Postgres
+ "github.com/testcontainers/testcontainers-go"
+ "github.com/testcontainers/testcontainers-go/modules/postgres"
 )
 
 func TestPostgresIntegration(t *testing.T) {
-	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
-	defer cancel()
+ ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+ defer cancel()
 
-	// 1. Instanciación del contenedor con opciones específicas del módulo
-	pgContainer, err := postgres.RunContainer(ctx,
-		testcontainers.WithImage("postgres:15-alpine"),
-		postgres.WithDatabase("testdb"),
-		postgres.WithUsername("gopher"),
-		postgres.WithPassword("secret"),
-		// La estrategia de espera de Postgres ya está implícita en RunContainer
-	)
-	if err != nil {
-		t.Fatalf("fallo al iniciar Postgres: %v", err)
-	}
+ // 1. Instanciación del contenedor con opciones específicas del módulo
+ pgContainer, err := postgres.RunContainer(ctx,
+  testcontainers.WithImage("postgres:15-alpine"),
+  postgres.WithDatabase("testdb"),
+  postgres.WithUsername("gopher"),
+  postgres.WithPassword("secret"),
+  // La estrategia de espera de Postgres ya está implícita en RunContainer
+ )
+ if err != nil {
+  t.Fatalf("fallo al iniciar Postgres: %v", err)
+ }
 
-	// Limpieza delegada al sistema de testing de Go (más seguro que defer)
-	t.Cleanup(func() {
-		if err := pgContainer.Terminate(context.Background()); err != nil {
-			t.Fatalf("fallo al terminar el contenedor: %v", err)
-		}
-	})
+ // Limpieza delegada al sistema de testing de Go (más seguro que defer)
+ t.Cleanup(func() {
+  if err := pgContainer.Terminate(context.Background()); err != nil {
+   t.Fatalf("fallo al terminar el contenedor: %v", err)
+  }
+ })
 
-	// 2. Obtención mágica de la cadena de conexión
-	connStr, err := pgContainer.ConnectionString(ctx, "sslmode=disable")
-	if err != nil {
-		t.Fatalf("fallo al obtener connection string: %v", err)
-	}
+ // 2. Obtención mágica de la cadena de conexión
+ connStr, err := pgContainer.ConnectionString(ctx, "sslmode=disable")
+ if err != nil {
+  t.Fatalf("fallo al obtener connection string: %v", err)
+ }
 
-	// 3. Conexión real usando el driver database/sql
-	db, err := sql.Open("postgres", connStr)
-	if err != nil {
-		t.Fatalf("fallo al abrir la base de datos: %v", err)
-	}
-	defer db.Close()
+ // 3. Conexión real usando el driver database/sql
+ db, err := sql.Open("postgres", connStr)
+ if err != nil {
+  t.Fatalf("fallo al abrir la base de datos: %v", err)
+ }
+ defer db.Close()
 
-	// 4. Verificación de conectividad (I/O real)
-	if err := db.Ping(); err != nil {
-		t.Fatalf("fallo al hacer ping a Postgres: %v", err)
-	}
+ // 4. Verificación de conectividad (I/O real)
+ if err := db.Ping(); err != nil {
+  t.Fatalf("fallo al hacer ping a Postgres: %v", err)
+ }
 }
 ```
 
@@ -294,6 +295,7 @@ func TestPostgresIntegration(t *testing.T) {
 El patrón es idéntico para Redis. La ventaja aquí es que el contenedor de Redis arranca en fracciones de segundo, haciendo que los tests de integración que dependen de él sean casi tan rápidos como los unitarios.
 
 Instalación:
+
 ```bash
 go get github.com/testcontainers/testcontainers-go/modules/redis
 ```
@@ -306,47 +308,47 @@ Implementación:
 package cache_test
 
 import (
-	"context"
-	"testing"
+ "context"
+ "testing"
 
-	"github.com/redis/go-redis/v9"
-	"github.com/testcontainers/testcontainers-go"
-	tcredis "github.com/testcontainers/testcontainers-go/modules/redis"
+ "github.com/redis/go-redis/v9"
+ "github.com/testcontainers/testcontainers-go"
+ tcredis "github.com/testcontainers/testcontainers-go/modules/redis"
 )
 
 func TestRedisIntegration(t *testing.T) {
-	ctx := context.Background()
+ ctx := context.Background()
 
-	redisContainer, err := tcredis.RunContainer(ctx,
-		testcontainers.WithImage("redis:7-alpine"),
-	)
-	if err != nil {
-		t.Fatalf("fallo al iniciar Redis: %v", err)
-	}
-	t.Cleanup(func() {
-		if err := redisContainer.Terminate(ctx); err != nil {
-			t.Fatalf("fallo al terminar el contenedor: %v", err)
-		}
-	})
+ redisContainer, err := tcredis.RunContainer(ctx,
+  testcontainers.WithImage("redis:7-alpine"),
+ )
+ if err != nil {
+  t.Fatalf("fallo al iniciar Redis: %v", err)
+ }
+ t.Cleanup(func() {
+  if err := redisContainer.Terminate(ctx); err != nil {
+   t.Fatalf("fallo al terminar el contenedor: %v", err)
+  }
+ })
 
-	uri, err := redisContainer.ConnectionString(ctx)
-	if err != nil {
-		t.Fatalf("fallo al obtener URI de Redis: %v", err)
-	}
+ uri, err := redisContainer.ConnectionString(ctx)
+ if err != nil {
+  t.Fatalf("fallo al obtener URI de Redis: %v", err)
+ }
 
-	// Configuración del cliente go-redis usando la URI dinámica
-	opt, err := redis.ParseURL(uri)
-	if err != nil {
-		t.Fatalf("fallo al parsear URL: %v", err)
-	}
-	client := redis.NewClient(opt)
-	defer client.Close()
+ // Configuración del cliente go-redis usando la URI dinámica
+ opt, err := redis.ParseURL(uri)
+ if err != nil {
+  t.Fatalf("fallo al parsear URL: %v", err)
+ }
+ client := redis.NewClient(opt)
+ defer client.Close()
 
-	// Prueba real contra Redis
-	err = client.Set(ctx, "clave_test", "valor_go", 0).Err()
-	if err != nil {
-		t.Fatalf("fallo al escribir en Redis: %v", err)
-	}
+ // Prueba real contra Redis
+ err = client.Set(ctx, "clave_test", "valor_go", 0).Err()
+ if err != nil {
+  t.Fatalf("fallo al escribir en Redis: %v", err)
+ }
 }
 ```
 
@@ -355,6 +357,7 @@ func TestRedisIntegration(t *testing.T) {
 Para sistemas orientados a documentos, Testcontainers también ofrece soporte de primera clase. A diferencia de Redis o Postgres, MongoDB (especialmente si se configura como un Replica Set para soportar transacciones) puede tardar un poco más en inicializarse. El módulo de Testcontainers se encarga de sondear el estado del clúster hasta que está listo para recibir operaciones de lectura/escritura.
 
 Instalación:
+
 ```bash
 go get github.com/testcontainers/testcontainers-go/modules/mongodb
 ```
@@ -396,50 +399,50 @@ Veamos cómo estructurar el archivo base de tests de nuestro paquete de reposito
 package repository_test
 
 import (
-	"context"
-	"database/sql"
-	"log"
-	"os"
-	"testing"
+ "context"
+ "database/sql"
+ "log"
+ "os"
+ "testing"
 
-	"github.com/testcontainers/testcontainers-go/modules/postgres"
+ "github.com/testcontainers/testcontainers-go/modules/postgres"
 )
 
 // Variable global accesible por todos los tests del paquete
 var testDB *sql.DB
 
 func TestMain(m *testing.M) {
-	ctx := context.Background()
+ ctx := context.Background()
 
-	// 1. Setup Global: Levantar el contenedor UNA VEZ
-	pgContainer, err := postgres.RunContainer(ctx,
-		postgres.WithDatabase("integration_db"),
-		postgres.WithUsername("testuser"),
-		postgres.WithPassword("testpass"),
-	)
-	if err != nil {
-		log.Fatalf("Fallo fatal al iniciar Postgres: %v", err)
-	}
+ // 1. Setup Global: Levantar el contenedor UNA VEZ
+ pgContainer, err := postgres.RunContainer(ctx,
+  postgres.WithDatabase("integration_db"),
+  postgres.WithUsername("testuser"),
+  postgres.WithPassword("testpass"),
+ )
+ if err != nil {
+  log.Fatalf("Fallo fatal al iniciar Postgres: %v", err)
+ }
 
-	// 2. Extraer conexión y guardarla en la variable global
-	connStr, _ := pgContainer.ConnectionString(ctx, "sslmode=disable")
-	testDB, err = sql.Open("postgres", connStr)
-	if err != nil {
-		log.Fatalf("Fallo al conectar a la DB: %v", err)
-	}
+ // 2. Extraer conexión y guardarla en la variable global
+ connStr, _ := pgContainer.ConnectionString(ctx, "sslmode=disable")
+ testDB, err = sql.Open("postgres", connStr)
+ if err != nil {
+  log.Fatalf("Fallo al conectar a la DB: %v", err)
+ }
 
-	// 3. Ejecutar todos los tests del paquete
-	// m.Run() bloquea hasta que todos los tests finalizan y devuelve el código de salida
-	exitCode := m.Run()
+ // 3. Ejecutar todos los tests del paquete
+ // m.Run() bloquea hasta que todos los tests finalizan y devuelve el código de salida
+ exitCode := m.Run()
 
-	// 4. Teardown Global: Limpiar recursos
-	testDB.Close()
-	if err := pgContainer.Terminate(ctx); err != nil {
-		log.Fatalf("Fallo al destruir el contenedor: %v", err)
-	}
+ // 4. Teardown Global: Limpiar recursos
+ testDB.Close()
+ if err := pgContainer.Terminate(ctx); err != nil {
+  log.Fatalf("Fallo al destruir el contenedor: %v", err)
+ }
 
-	// 5. Salir con el código resultante de las pruebas
-	os.Exit(exitCode)
+ // 5. Salir con el código resultante de las pruebas
+ os.Exit(exitCode)
 }
 ```
 
@@ -458,12 +461,13 @@ Consiste en ejecutar un comando de limpieza al inicio (o final) de cada test. Es
 * **En MongoDB:** Ejecutar `db.dropDatabase()` y recrear colecciones.
 
 Ejemplo en Redis:
+
 ```go
 func TestUserRepository_Cache(t *testing.T) {
-	// Limpiar la caché antes de empezar la prueba
-	redisClient.FlushAll(context.Background())
-	
-	// ... ejecución del test ...
+ // Limpiar la caché antes de empezar la prueba
+ redisClient.FlushAll(context.Background())
+ 
+ // ... ejecución del test ...
 }
 ```
 
@@ -475,28 +479,28 @@ Para que esto funcione, la arquitectura de tu aplicación debe permitir inyectar
 
 ```go
 func TestRepository_CreateOrder_Isolated(t *testing.T) {
-	// 1. Iniciamos una transacción desde la conexión global compartida
-	tx, err := testDB.Begin()
-	if err != nil {
-		t.Fatalf("Fallo al iniciar transacción: %v", err)
-	}
-	
-	// 2. Garantizamos el rollback sin importar cómo termine el test
-	// Esto limpia la base de datos mágicamente sin hacer TRUNCATE
-	defer tx.Rollback()
+ // 1. Iniciamos una transacción desde la conexión global compartida
+ tx, err := testDB.Begin()
+ if err != nil {
+  t.Fatalf("Fallo al iniciar transacción: %v", err)
+ }
+ 
+ // 2. Garantizamos el rollback sin importar cómo termine el test
+ // Esto limpia la base de datos mágicamente sin hacer TRUNCATE
+ defer tx.Rollback()
 
-	// 3. Instanciamos el repositorio pasándole la transacción en lugar de la DB
-	// (Requiere que tu repositorio acepte una interfaz que abstraiga *sql.DB y *sql.Tx)
-	repo := repository.NewOrderRepository(tx)
+ // 3. Instanciamos el repositorio pasándole la transacción en lugar de la DB
+ // (Requiere que tu repositorio acepte una interfaz que abstraiga *sql.DB y *sql.Tx)
+ repo := repository.NewOrderRepository(tx)
 
-	// 4. Ejecutamos la prueba con normalidad
-	err = repo.Create(context.Background(), domain.Order{ID: 1, Total: 100})
-	if err != nil {
-		t.Errorf("No se esperaba error al crear orden: %v", err)
-	}
+ // 4. Ejecutamos la prueba con normalidad
+ err = repo.Create(context.Background(), domain.Order{ID: 1, Total: 100})
+ if err != nil {
+  t.Errorf("No se esperaba error al crear orden: %v", err)
+ }
 
-	// Como nunca llamamos a tx.Commit(), al salir de la función el defer
-	// hace Rollback y el siguiente test encuentra la base de datos vacía.
+ // Como nunca llamamos a tx.Commit(), al salir de la función el defer
+ // hace Rollback y el siguiente test encuentra la base de datos vacía.
 }
 ```
 
@@ -526,27 +530,27 @@ La forma más nativa y eficiente de cargar el esquema base y los catálogos est�
 package repository_test
 
 import (
-	"context"
-	"testing"
-	"github.com/testcontainers/testcontainers-go/modules/postgres"
+ "context"
+ "testing"
+ "github.com/testcontainers/testcontainers-go/modules/postgres"
 )
 
 func TestMain(m *testing.M) {
-	ctx := context.Background()
+ ctx := context.Background()
 
-	// Inicializamos el contenedor inyectando el esquema y datos semilla
-	pgContainer, err := postgres.RunContainer(ctx,
-		postgres.WithDatabase("testdb"),
-		postgres.WithUsername("testuser"),
-		postgres.WithPassword("testpass"),
-		// Los scripts se ejecutan en orden secuencial por convención de nombres
-		postgres.WithInitScripts(
-			"../../testdata/01_schema.sql",
-			"../../testdata/02_fixtures.sql",
-		),
-	)
-	
-	// ... manejo de la conexión global y ciclo de vida (visto en 18.4) ...
+ // Inicializamos el contenedor inyectando el esquema y datos semilla
+ pgContainer, err := postgres.RunContainer(ctx,
+  postgres.WithDatabase("testdb"),
+  postgres.WithUsername("testuser"),
+  postgres.WithPassword("testpass"),
+  // Los scripts se ejecutan en orden secuencial por convención de nombres
+  postgres.WithInitScripts(
+   "../../testdata/01_schema.sql",
+   "../../testdata/02_fixtures.sql",
+  ),
+ )
+ 
+ // ... manejo de la conexión global y ciclo de vida (visto en 18.4) ...
 }
 ```
 
@@ -561,28 +565,28 @@ La alternativa idiomática en Go es utilizar el **Patrón Builder** (o *Test Fac
 
 ```go
 func TestUserRepository_FindActiveUsers(t *testing.T) {
-	// 1. Iniciamos transacción aislada (garantizamos la limpieza con defer)
-	tx := testutils.BeginTransaction(t, globalDB)
-	defer tx.Rollback()
+ // 1. Iniciamos transacción aislada (garantizamos la limpieza con defer)
+ tx := testutils.BeginTransaction(t, globalDB)
+ defer tx.Rollback()
 
-	repo := user.NewRepository(tx)
+ repo := user.NewRepository(tx)
 
-	// 2. Arrange: Carga de fixtures programática y explícita para este test.
-	// Se usan helpers (factories) que insertan la entidad o fallan el test.
-	factory.CreateUser(t, tx, factory.User{Status: "active", Email: "a@test.com"})
-	factory.CreateUser(t, tx, factory.User{Status: "inactive", Email: "b@test.com"})
-	factory.CreateUser(t, tx, factory.User{Status: "active", Email: "c@test.com"})
+ // 2. Arrange: Carga de fixtures programática y explícita para este test.
+ // Se usan helpers (factories) que insertan la entidad o fallan el test.
+ factory.CreateUser(t, tx, factory.User{Status: "active", Email: "a@test.com"})
+ factory.CreateUser(t, tx, factory.User{Status: "inactive", Email: "b@test.com"})
+ factory.CreateUser(t, tx, factory.User{Status: "active", Email: "c@test.com"})
 
-	// 3. Act: Ejecutamos el método del dominio
-	users, err := repo.FindActiveUsers(context.Background())
+ // 3. Act: Ejecutamos el método del dominio
+ users, err := repo.FindActiveUsers(context.Background())
 
-	// 4. Assert: Verificamos contra el estado que acabamos de construir localmente
-	if err != nil {
-		t.Fatalf("error inesperado en el repositorio: %v", err)
-	}
-	if len(users) != 2 {
-		t.Errorf("se esperaban 2 usuarios activos, se obtuvieron %d", len(users))
-	}
+ // 4. Assert: Verificamos contra el estado que acabamos de construir localmente
+ if err != nil {
+  t.Fatalf("error inesperado en el repositorio: %v", err)
+ }
+ if len(users) != 2 {
+  t.Errorf("se esperaban 2 usuarios activos, se obtuvieron %d", len(users))
+ }
 }
 ```
 

@@ -8,7 +8,7 @@ Implementar estas comprobaciones mediante cadenas interminables de condicionales
 
 ### El patrón de instancia única (Singleton)
 
-Como vimos en el Capítulo 14, el uso de la reflexión (`reflect`) tiene un costo de rendimiento. `go-playground/validator` utiliza reflexión para leer las etiquetas de los *structs*. Para mitigar esta penalización, la librería implementa una caché interna. 
+Como vimos en el Capítulo 14, el uso de la reflexión (`reflect`) tiene un costo de rendimiento. `go-playground/validator` utiliza reflexión para leer las etiquetas de los *structs*. Para mitigar esta penalización, la librería implementa una caché interna.
 
 Por lo tanto, **es una regla estricta instanciar el validador una única vez** a nivel de aplicación (típicamente al inicializar el servidor o inyectarlo como dependencia) y reutilizarlo en todas las peticiones concurrentes, ya que es seguro (Thread-Safe).
 
@@ -16,15 +16,15 @@ Por lo tanto, **es una regla estricta instanciar el validador una única vez** a
 package main
 
 import (
-	"fmt"
-	"github.com/go-playground/validator/v10"
+ "fmt"
+ "github.com/go-playground/validator/v10"
 )
 
 // validate es una instancia global o inyectada a nivel de aplicación
 var validate *validator.Validate
 
 func init() {
-	validate = validator.New()
+ validate = validator.New()
 }
 ```
 
@@ -34,17 +34,17 @@ La validación se define añadiendo la etiqueta `validate` a los campos exportad
 
 ```go
 type CreateUserPayload struct {
-	// Requerido, debe ser un email válido y con una longitud máxima
-	Email string `json:"email" validate:"required,email,max=100"`
+ // Requerido, debe ser un email válido y con una longitud máxima
+ Email string `json:"email" validate:"required,email,max=100"`
 
-	// Requerido, longitud mínima de 8 caracteres
-	Password string `json:"password" validate:"required,min=8"`
+ // Requerido, longitud mínima de 8 caracteres
+ Password string `json:"password" validate:"required,min=8"`
 
-	// Solo es requerido si se envía. Si se envía, debe ser mayor a 18
-	Age int `json:"age" validate:"omitempty,gte=18"`
-	
-	// Validaciones de colecciones (Slices)
-	Roles []string `json:"roles" validate:"required,min=1,dive,oneof=admin user guest"`
+ // Solo es requerido si se envía. Si se envía, debe ser mayor a 18
+ Age int `json:"age" validate:"omitempty,gte=18"`
+ 
+ // Validaciones de colecciones (Slices)
+ Roles []string `json:"roles" validate:"required,min=1,dive,oneof=admin user guest"`
 }
 ```
 
@@ -56,21 +56,22 @@ Una necesidad habitual en las APIs es validar un campo basándose en el valor de
 
 ```go
 type BookingPayload struct {
-	StartDate time.Time `json:"start_date" validate:"required"`
-	// EndDate debe ser posterior (Greater Than Field) a StartDate
-	EndDate   time.Time `json:"end_date" validate:"required,gtfield=StartDate"`
+ StartDate time.Time `json:"start_date" validate:"required"`
+ // EndDate debe ser posterior (Greater Than Field) a StartDate
+ EndDate   time.Time `json:"end_date" validate:"required,gtfield=StartDate"`
 }
 ```
+
 *Nota: Es crucial que el valor pasado a `gtfield` sea el nombre del campo en el struct en Go (con mayúscula), no el nombre de la etiqueta JSON.*
 
 ### Validaciones personalizadas (Custom Validations)
 
-Cuando las reglas de negocio son muy específicas (por ejemplo, validar un formato de código de producto interno), podemos registrar nuestras propias funciones de validación. 
+Cuando las reglas de negocio son muy específicas (por ejemplo, validar un formato de código de producto interno), podemos registrar nuestras propias funciones de validación.
 
 ```go
 import (
-	"regexp"
-	"github.com/go-playground/validator/v10"
+ "regexp"
+ "github.com/go-playground/validator/v10"
 )
 
 // skuRegex define un formato de ejemplo: 3 letras, guion, 4 números (ej. ABC-1234)
@@ -78,22 +79,22 @@ var skuRegex = regexp.MustCompile(`^[A-Z]{3}-\d{4}$`)
 
 // ValidateSKU es la función personalizada
 func ValidateSKU(fl validator.FieldLevel) bool {
-	// Obtenemos el valor del campo como string
-	sku := fl.Field().String()
-	return skuRegex.MatchString(sku)
+ // Obtenemos el valor del campo como string
+ sku := fl.Field().String()
+ return skuRegex.MatchString(sku)
 }
 
 func main() {
-	validate := validator.New()
-	
-	// Registramos la etiqueta "is_sku"
-	err := validate.RegisterValidation("is_sku", ValidateSKU)
-	if err != nil {
-		panic(err)
-	}
+ validate := validator.New()
+ 
+ // Registramos la etiqueta "is_sku"
+ err := validate.RegisterValidation("is_sku", ValidateSKU)
+ if err != nil {
+  panic(err)
+ }
 
-	// Uso en un struct:
-	// ProductID string `validate:"required,is_sku"`
+ // Uso en un struct:
+ // ProductID string `validate:"required,is_sku"`
 }
 ```
 
@@ -103,34 +104,34 @@ Cuando la función `validate.Struct()` devuelve un error, no debemos enviarlo en
 
 ```go
 func processValidation(payload interface{}) map[string]string {
-	err := validate.Struct(payload)
-	if err == nil {
-		return nil
-	}
+ err := validate.Struct(payload)
+ if err == nil {
+  return nil
+ }
 
-	errorsResponse := make(map[string]string)
+ errorsResponse := make(map[string]string)
 
-	// Aserción de tipo para extraer los errores de validación específicos
-	if validationErrors, ok := err.(validator.ValidationErrors); ok {
-		for _, fieldError := range validationErrors {
-			// Construimos un mensaje basado en el tag que falló
-			field := fieldError.Field()
-			tag := fieldError.Tag()
-			
-			switch tag {
-			case "required":
-				errorsResponse[field] = "Este campo es obligatorio"
-			case "email":
-				errorsResponse[field] = "Debe ser un correo electrónico válido"
-			case "gte":
-				errorsResponse[field] = fmt.Sprintf("El valor debe ser mayor o igual a %s", fieldError.Param())
-			default:
-				errorsResponse[field] = fmt.Sprintf("Fallo en la validación de la regla: %s", tag)
-			}
-		}
-	}
+ // Aserción de tipo para extraer los errores de validación específicos
+ if validationErrors, ok := err.(validator.ValidationErrors); ok {
+  for _, fieldError := range validationErrors {
+   // Construimos un mensaje basado en el tag que falló
+   field := fieldError.Field()
+   tag := fieldError.Tag()
+   
+   switch tag {
+   case "required":
+    errorsResponse[field] = "Este campo es obligatorio"
+   case "email":
+    errorsResponse[field] = "Debe ser un correo electrónico válido"
+   case "gte":
+    errorsResponse[field] = fmt.Sprintf("El valor debe ser mayor o igual a %s", fieldError.Param())
+   default:
+    errorsResponse[field] = fmt.Sprintf("Fallo en la validación de la regla: %s", tag)
+   }
+  }
+ }
 
-	return errorsResponse
+ return errorsResponse
 }
 ```
 
@@ -154,51 +155,52 @@ Generalmente, el cliente envía estos valores a través de los *Query Params* de
 package handlers
 
 import (
-	"database/sql"
-	"net/http"
-	"strconv"
+ "database/sql"
+ "net/http"
+ "strconv"
 )
 
 func GetUsersOffsetHandler(db *sql.DB) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-		// Valores por defecto
-		page := 1
-		limit := 10
+ return func(w http.ResponseWriter, r *http.Request) {
+  // Valores por defecto
+  page := 1
+  limit := 10
 
-		// Parseo de Query Params (Capítulo 24)
-		if p := r.URL.Query().Get("page"); p != "" {
-			if parsedPage, err := strconv.Atoi(p); err == nil && parsedPage > 0 {
-				page = parsedPage
-			}
-		}
-		if l := r.URL.Query().Get("limit"); l != "" {
-			if parsedLimit, err := strconv.Atoi(l); err == nil && parsedLimit > 0 {
-				limit = parsedLimit
-			}
-		}
+  // Parseo de Query Params (Capítulo 24)
+  if p := r.URL.Query().Get("page"); p != "" {
+   if parsedPage, err := strconv.Atoi(p); err == nil && parsedPage > 0 {
+    page = parsedPage
+   }
+  }
+  if l := r.URL.Query().Get("limit"); l != "" {
+   if parsedLimit, err := strconv.Atoi(l); err == nil && parsedLimit > 0 {
+    limit = parsedLimit
+   }
+  }
 
-		// Cálculo matemático del offset
-		offset := (page - 1) * limit
+  // Cálculo matemático del offset
+  offset := (page - 1) * limit
 
-		// Ejecución de la consulta preparada (Capítulo 28)
-		query := `SELECT id, name, email FROM users ORDER BY created_at DESC LIMIT $1 OFFSET $2`
-		rows, err := db.QueryContext(r.Context(), query, limit, offset)
-		if err != nil {
-			http.Error(w, "Error en la base de datos", http.StatusInternalServerError)
-			return
-		}
-		defer rows.Close()
+  // Ejecución de la consulta preparada (Capítulo 28)
+  query := `SELECT id, name, email FROM users ORDER BY created_at DESC LIMIT $1 OFFSET $2`
+  rows, err := db.QueryContext(r.Context(), query, limit, offset)
+  if err != nil {
+   http.Error(w, "Error en la base de datos", http.StatusInternalServerError)
+   return
+  }
+  defer rows.Close()
 
-		// Lógica de escaneo a structs omitida por brevedad...
-	}
+  // Lógica de escaneo a structs omitida por brevedad...
+ }
 }
 ```
 
 #### Limitaciones del Offset
 
 A pesar de su simplicidad y de permitir "saltar" a una página específica (ej. página 50), este enfoque tiene dos grandes debilidades:
-1.  **Rendimiento en consultas profundas:** Para resolver `OFFSET 1000000 LIMIT 10`, el motor SQL (PostgreSQL, MySQL) debe buscar en el disco, cargar y luego *descartar* un millón de filas antes de devolver las 10 solicitadas. Esto degrada el rendimiento de forma lineal (O(N)).
-2.  **Inconsistencia de datos:** Si se inserta un nuevo registro en la base de datos mientras el cliente navega de la página 1 a la página 2, el desplazamiento se desincroniza. Esto provoca que el cliente vea elementos duplicados o se salte registros.
+
+1. **Rendimiento en consultas profundas:** Para resolver `OFFSET 1000000 LIMIT 10`, el motor SQL (PostgreSQL, MySQL) debe buscar en el disco, cargar y luego *descartar* un millón de filas antes de devolver las 10 solicitadas. Esto degrada el rendimiento de forma lineal (O(N)).
+2. **Inconsistencia de datos:** Si se inserta un nuevo registro en la base de datos mientras el cliente navega de la página 1 a la página 2, el desplazamiento se desincroniza. Esto provoca que el cliente vea elementos duplicados o se salte registros.
 
 ### Paginación basada en Cursor (Keyset Pagination)
 
@@ -214,79 +216,79 @@ El cliente realiza su primera petición (`GET /users?limit=10`). La API devuelve
 package handlers
 
 import (
-	"database/sql"
-	"encoding/json"
-	"net/http"
-	"strconv"
+ "database/sql"
+ "encoding/json"
+ "net/http"
+ "strconv"
 )
 
 // UserResponse define la estructura de salida paginada
 type UserResponse struct {
-	Data       []User `json:"data"`
-	NextCursor string `json:"next_cursor,omitempty"`
+ Data       []User `json:"data"`
+ NextCursor string `json:"next_cursor,omitempty"`
 }
 
 func GetUsersCursorHandler(db *sql.DB) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-		limit := 10
-		if l := r.URL.Query().Get("limit"); l != "" {
-			if parsedLimit, err := strconv.Atoi(l); err == nil && parsedLimit > 0 {
-				limit = parsedLimit
-			}
-		}
+ return func(w http.ResponseWriter, r *http.Request) {
+  limit := 10
+  if l := r.URL.Query().Get("limit"); l != "" {
+   if parsedLimit, err := strconv.Atoi(l); err == nil && parsedLimit > 0 {
+    limit = parsedLimit
+   }
+  }
 
-		cursor := r.URL.Query().Get("cursor")
+  cursor := r.URL.Query().Get("cursor")
 
-		var rows *sql.Rows
-		var err error
+  var rows *sql.Rows
+  var err error
 
-		// Si hay cursor, filtramos por él usando índices; si no, es la primera página.
-		// Asumimos orden ascendente por ID.
-		if cursor != "" {
-			query := `SELECT id, name, email FROM users WHERE id > $1 ORDER BY id ASC LIMIT $2`
-			rows, err = db.QueryContext(r.Context(), query, cursor, limit)
-		} else {
-			query := `SELECT id, name, email FROM users ORDER BY id ASC LIMIT $1`
-			rows, err = db.QueryContext(r.Context(), query, limit)
-		}
+  // Si hay cursor, filtramos por él usando índices; si no, es la primera página.
+  // Asumimos orden ascendente por ID.
+  if cursor != "" {
+   query := `SELECT id, name, email FROM users WHERE id > $1 ORDER BY id ASC LIMIT $2`
+   rows, err = db.QueryContext(r.Context(), query, cursor, limit)
+  } else {
+   query := `SELECT id, name, email FROM users ORDER BY id ASC LIMIT $1`
+   rows, err = db.QueryContext(r.Context(), query, limit)
+  }
 
-		if err != nil {
-			http.Error(w, "Error consultando usuarios", http.StatusInternalServerError)
-			return
-		}
-		defer rows.Close()
+  if err != nil {
+   http.Error(w, "Error consultando usuarios", http.StatusInternalServerError)
+   return
+  }
+  defer rows.Close()
 
-		var users []User
-		var lastID int
-		for rows.Next() {
-			var u User
-			if err := rows.Scan(&u.ID, &u.Name, &u.Email); err != nil {
-				continue
-			}
-			users = append(users, u)
-			lastID = u.ID // Actualizamos el último ID visto
-		}
+  var users []User
+  var lastID int
+  for rows.Next() {
+   var u User
+   if err := rows.Scan(&u.ID, &u.Name, &u.Email); err != nil {
+    continue
+   }
+   users = append(users, u)
+   lastID = u.ID // Actualizamos el último ID visto
+  }
 
-		// Construcción de la respuesta con el siguiente cursor
-		response := UserResponse{
-			Data: users,
-		}
-		
-		// Si obtuvimos la cantidad máxima solicitada, es probable que haya más páginas
-		if len(users) == limit {
-			// Usamos el ID del último elemento como cursor para la siguiente petición
-			response.NextCursor = strconv.Itoa(lastID)
-		}
+  // Construcción de la respuesta con el siguiente cursor
+  response := UserResponse{
+   Data: users,
+  }
+  
+  // Si obtuvimos la cantidad máxima solicitada, es probable que haya más páginas
+  if len(users) == limit {
+   // Usamos el ID del último elemento como cursor para la siguiente petición
+   response.NextCursor = strconv.Itoa(lastID)
+  }
 
-		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(response)
-	}
+  w.Header().Set("Content-Type", "application/json")
+  json.NewEncoder(w).Encode(response)
+ }
 }
 ```
 
 #### Ventajas del Cursor
 
-Al utilizar la cláusula `WHERE id > $1`, la base de datos aprovecha directamente el índice B-Tree (o similar) de la columna subyacente. El tiempo de búsqueda es logarítmico o casi constante (O(1)), sin importar si solicitamos la primera página o el registro número dos millones. Además, es resiliente a inserciones o borrados concurrentes, garantizando un flujo de datos sin duplicados ni omisiones. 
+Al utilizar la cláusula `WHERE id > $1`, la base de datos aprovecha directamente el índice B-Tree (o similar) de la columna subyacente. El tiempo de búsqueda es logarítmico o casi constante (O(1)), sin importar si solicitamos la primera página o el registro número dos millones. Además, es resiliente a inserciones o borrados concurrentes, garantizando un flujo de datos sin duplicados ni omisiones.
 
 ### Comparativa y Elección
 
@@ -302,7 +304,7 @@ Para facilitar la decisión arquitectónica durante el diseño de la API, consid
 
 ## 26.3. Filtros dinámicos y ordenamiento en peticiones GET
 
-A medida que una API evoluciona, los clientes necesitan consultar subconjuntos de datos cada vez más específicos. Una petición para obtener usuarios (`GET /users`) pronto requerirá variaciones como "usuarios activos", "usuarios creados este mes" o "usuarios ordenados por fecha de registro de forma descendente". 
+A medida que una API evoluciona, los clientes necesitan consultar subconjuntos de datos cada vez más específicos. Una petición para obtener usuarios (`GET /users`) pronto requerirá variaciones como "usuarios activos", "usuarios creados este mes" o "usuarios ordenados por fecha de registro de forma descendente".
 
 Codificar un *Handler* y una consulta SQL estática para cada combinación posible (ej. `GetActiveUsers`, `GetUsersByRole`, `GetActiveUsersByRole`) es insostenible y viola el principio DRY (*Don't Repeat Yourself*). La solución es implementar filtros dinámicos y ordenamiento manejados directamente a través de los parámetros de consulta de la URL (*Query Parameters*).
 
@@ -320,6 +322,7 @@ En Go, extraemos estos valores utilizando el método `Query()` del objeto `*http
 Al construir consultas dinámicas con el paquete `database/sql` (que veremos a fondo en el Capítulo 28), utilizamos marcadores de posición (`$1`, `?`) para pasar valores a la cláusula `WHERE`. Esto previene la inyección SQL porque el controlador de la base de datos escapa los valores de forma segura.
 
 **Sin embargo, los marcadores de posición no se pueden usar para nombres de columnas ni direcciones de ordenamiento en la cláusula `ORDER BY`.** El siguiente código es una **vulnerabilidad crítica de seguridad**:
+
 ```go
 // ¡NUNCA HAGAS ESTO! Vulnerable a inyección SQL
 sortBy := r.URL.Query().Get("sort")
@@ -338,95 +341,95 @@ A continuación, implementamos un *Handler* que construye dinámicamente la clá
 package handlers
 
 import (
-	"database/sql"
-	"fmt"
-	"net/http"
-	"strings"
+ "database/sql"
+ "fmt"
+ "net/http"
+ "strings"
 )
 
 func GetUsersDynamicHandler(db *sql.DB) http.HandlerFunc {
-	// Definimos las columnas permitidas para ordenar
-	allowedSortColumns := map[string]bool{
-		"created_at": true,
-		"name":       true,
-		"email":      true,
-	}
+ // Definimos las columnas permitidas para ordenar
+ allowedSortColumns := map[string]bool{
+  "created_at": true,
+  "name":       true,
+  "email":      true,
+ }
 
-	return func(w http.ResponseWriter, r *http.Request) {
-		queryValues := r.URL.Query()
+ return func(w http.ResponseWriter, r *http.Request) {
+  queryValues := r.URL.Query()
 
-		// 1. Construcción dinámica del WHERE
-		var conditions []string
-		var args []any
-		argId := 1
+  // 1. Construcción dinámica del WHERE
+  var conditions []string
+  var args []any
+  argId := 1
 
-		// Filtro por estado
-		if status := queryValues.Get("status"); status != "" {
-			conditions = append(conditions, fmt.Sprintf("status = $%d", argId))
-			args = append(args, status)
-			argId++
-		}
+  // Filtro por estado
+  if status := queryValues.Get("status"); status != "" {
+   conditions = append(conditions, fmt.Sprintf("status = $%d", argId))
+   args = append(args, status)
+   argId++
+  }
 
-		// Filtro por rol
-		if role := queryValues.Get("role"); role != "" {
-			conditions = append(conditions, fmt.Sprintf("role = $%d", argId))
-			args = append(args, role)
-			argId++
-		}
+  // Filtro por rol
+  if role := queryValues.Get("role"); role != "" {
+   conditions = append(conditions, fmt.Sprintf("role = $%d", argId))
+   args = append(args, role)
+   argId++
+  }
 
-		whereClause := ""
-		if len(conditions) > 0 {
-			whereClause = " WHERE " + strings.Join(conditions, " AND ")
-		}
+  whereClause := ""
+  if len(conditions) > 0 {
+   whereClause = " WHERE " + strings.Join(conditions, " AND ")
+  }
 
-		// 2. Validación y construcción del ORDER BY
-		sortParam := queryValues.Get("sort")
-		orderByClause := " ORDER BY id ASC" // Orden por defecto
+  // 2. Validación y construcción del ORDER BY
+  sortParam := queryValues.Get("sort")
+  orderByClause := " ORDER BY id ASC" // Orden por defecto
 
-		if sortParam != "" {
-			direction := "ASC"
-			column := sortParam
+  if sortParam != "" {
+   direction := "ASC"
+   column := sortParam
 
-			// Verificamos si tiene el prefijo '-' para orden descendente
-			if strings.HasPrefix(sortParam, "-") {
-				direction = "DESC"
-				column = sortParam[1:] // Removemos el '-'
-			}
+   // Verificamos si tiene el prefijo '-' para orden descendente
+   if strings.HasPrefix(sortParam, "-") {
+    direction = "DESC"
+    column = sortParam[1:] // Removemos el '-'
+   }
 
-			// Validamos contra la lista blanca
-			if allowedSortColumns[column] {
-				// Es seguro concatenar porque ha pasado la lista blanca
-				orderByClause = fmt.Sprintf(" ORDER BY %s %s", column, direction)
-			}
-		}
+   // Validamos contra la lista blanca
+   if allowedSortColumns[column] {
+    // Es seguro concatenar porque ha pasado la lista blanca
+    orderByClause = fmt.Sprintf(" ORDER BY %s %s", column, direction)
+   }
+  }
 
-		// 3. Ensamblaje final de la consulta
-		finalQuery := fmt.Sprintf("SELECT id, name, email, status, role FROM users%s%s", whereClause, orderByClause)
+  // 3. Ensamblaje final de la consulta
+  finalQuery := fmt.Sprintf("SELECT id, name, email, status, role FROM users%s%s", whereClause, orderByClause)
 
-		// Ejecutamos la consulta preparada de forma segura
-		rows, err := db.QueryContext(r.Context(), finalQuery, args...)
-		if err != nil {
-			http.Error(w, "Error ejecutando la consulta", http.StatusInternalServerError)
-			return
-		}
-		defer rows.Close()
+  // Ejecutamos la consulta preparada de forma segura
+  rows, err := db.QueryContext(r.Context(), finalQuery, args...)
+  if err != nil {
+   http.Error(w, "Error ejecutando la consulta", http.StatusInternalServerError)
+   return
+  }
+  defer rows.Close()
 
-		// (Procesamiento de las filas a JSON omitido para mantener el foco)
-		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(`{"message": "Consulta ejecutada con éxito"}`))
-	}
+  // (Procesamiento de las filas a JSON omitido para mantener el foco)
+  w.WriteHeader(http.StatusOK)
+  w.Write([]byte(`{"message": "Consulta ejecutada con éxito"}`))
+ }
 }
 ```
 
 ### Abstracción de Filtros Múltiples
 
-Cuando un campo permite múltiples valores (por ejemplo, `?status=active,pending` o `?status=active&status=pending`), la construcción manual de la cláusula `IN (...)` se vuelve tediosa debido a que cada elemento requiere su propio marcador de posición (`$1, $2, $3`). 
+Cuando un campo permite múltiples valores (por ejemplo, `?status=active,pending` o `?status=active&status=pending`), la construcción manual de la cláusula `IN (...)` se vuelve tediosa debido a que cada elemento requiere su propio marcador de posición (`$1, $2, $3`).
 
 En Go estándar, esto implica generar una cadena con la cantidad exacta de interrogaciones o símbolos de dólar basándonos en la longitud del *slice* de parámetros. En estos escenarios complejos, donde los filtros dinámicos crecen exponencialmente, es donde se justifica la transición desde código SQL manual (con `strings.Builder` o concatenación) hacia el uso de bibliotecas de construcción de consultas (Query Builders) o extensiones como `sqlx`, temas que dominaremos en el Capítulo 29.
 
 ## 26.4. Respuestas estandarizadas y manejo de errores (Problem Details RFC 7807)
 
-A lo largo del desarrollo de una API RESTful, es inevitable que ocurran errores: peticiones mal formadas, credenciales inválidas, recursos no encontrados o fallos internos del servidor. El error más común en el diseño de APIs es devolver estructuras JSON inconsistentes para representar estos problemas. 
+A lo largo del desarrollo de una API RESTful, es inevitable que ocurran errores: peticiones mal formadas, credenciales inválidas, recursos no encontrados o fallos internos del servidor. El error más común en el diseño de APIs es devolver estructuras JSON inconsistentes para representar estos problemas.
 
 Si un *endpoint* devuelve `{"error": "usuario no encontrado"}` y otro devuelve `{"mensaje": "id inválido", "codigo": 400}`, los clientes de la API (aplicaciones móviles, *frontends* web u otros microservicios) se ven obligados a escribir código defensivo y frágil para adivinar cómo analizar la respuesta de error.
 
@@ -452,40 +455,40 @@ Para aplicar este estándar, comenzamos definiendo una estructura que mapee los 
 package problem
 
 import (
-	"encoding/json"
-	"net/http"
+ "encoding/json"
+ "net/http"
 )
 
 // Details define la estructura estándar del RFC 7807
 type Details struct {
-	Type     string `json:"type"`
-	Title    string `json:"title"`
-	Status   int    `json:"status"`
-	Detail   string `json:"detail,omitempty"`
-	Instance string `json:"instance,omitempty"`
-	
-	// Extensiones para añadir campos personalizados, como errores de validación
-	Extensions map[string]interface{} `json:"-"` 
+ Type     string `json:"type"`
+ Title    string `json:"title"`
+ Status   int    `json:"status"`
+ Detail   string `json:"detail,omitempty"`
+ Instance string `json:"instance,omitempty"`
+ 
+ // Extensiones para añadir campos personalizados, como errores de validación
+ Extensions map[string]interface{} `json:"-"` 
 }
 
 // MarshalJSON personaliza la serialización para aplanar las extensiones
 // en el mismo nivel que los campos estándar.
 func (d Details) MarshalJSON() ([]byte, error) {
-	type Alias Details
-	
-	// Creamos un mapa para fusionar los campos base y las extensiones
-	merged := make(map[string]interface{})
-	
-	// Convertimos la estructura base a JSON y luego a mapa
-	baseBytes, _ := json.Marshal((Alias)(d))
-	json.Unmarshal(baseBytes, &merged)
-	
-	// Añadimos las extensiones al nivel principal
-	for k, v := range d.Extensions {
-		merged[k] = v
-	}
-	
-	return json.Marshal(merged)
+ type Alias Details
+ 
+ // Creamos un mapa para fusionar los campos base y las extensiones
+ merged := make(map[string]interface{})
+ 
+ // Convertimos la estructura base a JSON y luego a mapa
+ baseBytes, _ := json.Marshal((Alias)(d))
+ json.Unmarshal(baseBytes, &merged)
+ 
+ // Añadimos las extensiones al nivel principal
+ for k, v := range d.Extensions {
+  merged[k] = v
+ }
+ 
+ return json.Marshal(merged)
 }
 ```
 
@@ -499,53 +502,53 @@ Crearemos una función de ayuda (Helper) que facilite la escritura de estas resp
 package handlers
 
 import (
-	"encoding/json"
-	"net/http"
-	"tu_proyecto/problem" // Importamos nuestro paquete problem
+ "encoding/json"
+ "net/http"
+ "tu_proyecto/problem" // Importamos nuestro paquete problem
 )
 
 // WriteProblem formatea y envía la respuesta según el RFC 7807
 func WriteProblem(w http.ResponseWriter, p problem.Details) {
-	w.Header().Set("Content-Type", "application/problem+json")
-	w.WriteHeader(p.Status)
-	json.NewEncoder(w).Encode(p)
+ w.Header().Set("Content-Type", "application/problem+json")
+ w.WriteHeader(p.Status)
+ json.NewEncoder(w).Encode(p)
 }
 
 // CreateUserHandler demuestra el uso de Problem Details ante un fallo
 func CreateUserHandler(w http.ResponseWriter, r *http.Request) {
-	var payload CreateUserPayload // Estructura definida en 26.1
-	
-	if err := json.NewDecoder(r.Body).Decode(&payload); err != nil {
-		WriteProblem(w, problem.Details{
-			Type:   "https://api.tu-dominio.com/errors/bad-request",
-			Title:  "Cuerpo de la petición mal formado",
-			Status: http.StatusBadRequest,
-			Detail: "El JSON enviado no tiene un formato válido.",
-		})
-		return
-	}
+ var payload CreateUserPayload // Estructura definida en 26.1
+ 
+ if err := json.NewDecoder(r.Body).Decode(&payload); err != nil {
+  WriteProblem(w, problem.Details{
+   Type:   "https://api.tu-dominio.com/errors/bad-request",
+   Title:  "Cuerpo de la petición mal formado",
+   Status: http.StatusBadRequest,
+   Detail: "El JSON enviado no tiene un formato válido.",
+  })
+  return
+ }
 
-	// Supongamos que `processValidation` (de 26.1) devuelve map[string]string con los fallos
-	validationErrors := processValidation(payload)
-	
-	if len(validationErrors) > 0 {
-		// Construimos el error estándar y añadimos los fallos de validación como extensión
-		prob := problem.Details{
-			Type:   "https://api.tu-dominio.com/errors/validation-failed",
-			Title:  "Fallo de validación de datos",
-			Status: http.StatusUnprocessableEntity, // 422 es ideal para errores de negocio
-			Detail: "La petición contiene datos que no cumplen las reglas de negocio.",
-			Extensions: map[string]interface{}{
-				"invalid_params": validationErrors,
-			},
-		}
-		
-		WriteProblem(w, prob)
-		return
-	}
+ // Supongamos que `processValidation` (de 26.1) devuelve map[string]string con los fallos
+ validationErrors := processValidation(payload)
+ 
+ if len(validationErrors) > 0 {
+  // Construimos el error estándar y añadimos los fallos de validación como extensión
+  prob := problem.Details{
+   Type:   "https://api.tu-dominio.com/errors/validation-failed",
+   Title:  "Fallo de validación de datos",
+   Status: http.StatusUnprocessableEntity, // 422 es ideal para errores de negocio
+   Detail: "La petición contiene datos que no cumplen las reglas de negocio.",
+   Extensions: map[string]interface{}{
+    "invalid_params": validationErrors,
+   },
+  }
+  
+  WriteProblem(w, prob)
+  return
+ }
 
-	// Lógica de éxito...
-	w.WriteHeader(http.StatusCreated)
+ // Lógica de éxito...
+ w.WriteHeader(http.StatusCreated)
 }
 ```
 

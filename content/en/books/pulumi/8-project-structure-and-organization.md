@@ -4,23 +4,25 @@ In this chapter, we will explore the architectural decisions that shape your inf
 
 ## 8.1 Monorepos vs. Polyrepos for Infrastructure
 
-When organizing your Pulumi codebase, the fundamental decision of where your infrastructure code lives dictates your team's workflow, CI/CD pipelines, and access control mechanisms. Because Pulumi utilizes general-purpose programming languages, the repository structure you choose closely mirrors software development practices. 
+When organizing your Pulumi codebase, the fundamental decision of where your infrastructure code lives dictates your team's workflow, CI/CD pipelines, and access control mechanisms. Because Pulumi utilizes general-purpose programming languages, the repository structure you choose closely mirrors software development practices.
 
-The two primary architectural strategies for organizing your Pulumi projects are the **monorepo** (a single repository for all infrastructure) and the **polyrepo** (multiple repositories divided by domain, team, or service). 
+The two primary architectural strategies for organizing your Pulumi projects are the **monorepo** (a single repository for all infrastructure) and the **polyrepo** (multiple repositories divided by domain, team, or service).
 
 ### The Monorepo Approach
 
-In a monorepo, all of your organization’s Pulumi projects—from base networking to application-specific resources—reside in a single version control repository. 
+In a monorepo, all of your organization’s Pulumi projects—from base networking to application-specific resources—reside in a single version control repository.
 
 **Advantages:**
+
 * **Atomic Changes:** You can make cross-cutting changes in a single commit. If a network configuration change requires an update to an application's deployment script, both can be reviewed and merged together.
 * **Frictionless Code Sharing:** Sharing local helper functions or custom `ComponentResources` is as simple as importing a local module. You do not need to publish packages to external registries (like npm or PyPI) just to share logic between your networking and compute stacks.
 * **Unified Tooling:** Linting, formatting, and security policies (like CrossGuard) can be applied uniformly across the entire infrastructure codebase from a single root configuration.
 * **Discoverability:** Engineers have a centralized view of the entire infrastructure landscape, making it easier to search for prior art or debug cross-stack issues.
 
 **Disadvantages:**
+
 * **Blast Radius:** A misconfigured CI/CD pipeline in a monorepo can potentially execute a `pulumi up` or `pulumi destroy` across all projects simultaneously.
-* **Pipeline Complexity:** As the repository grows, CI/CD pipelines must become intelligent enough to only trigger updates for the specific Pulumi projects that have changed. 
+* **Pipeline Complexity:** As the repository grows, CI/CD pipelines must become intelligent enough to only trigger updates for the specific Pulumi projects that have changed.
 * **Access Control:** Granular permission management is harder. If a developer has read/write access to the repository, they typically have access to all infrastructure code, requiring you to rely heavily on branch protection rules and code owner assignments.
 
 **Typical Monorepo Structure:**
@@ -48,13 +50,15 @@ infrastructure-monorepo/
 In a polyrepo architecture, infrastructure code is decentralized. A single repository typically maps to a single Pulumi project or a tightly coupled group of projects managed by a specific team.
 
 **Advantages:**
+
 * **Strict Isolation:** The blast radius is naturally contained. A syntax error or malicious commit in the `frontend-app-infra` repository cannot affect the `core-network` repository.
 * **Granular Access Control:** Repository-level permissions map directly to infrastructure domains. You can grant the data team access to the database repository while restricting application developers to their specific service repositories.
 * **Simplified CI/CD:** Pipelines are straightforward. A push to the `main` branch of a repository simply triggers a `pulumi up` for that specific project.
 * **Independent Lifecycles:** Teams can upgrade their Pulumi CLI versions, language runtimes, or provider versions at their own pace without forcing an organization-wide migration.
 
 **Disadvantages:**
-* **Sharing Code is Harder:** To share a custom `ComponentResource` across repositories, you must version, build, and publish it to an internal package registry. 
+
+* **Sharing Code is Harder:** To share a custom `ComponentResource` across repositories, you must version, build, and publish it to an internal package registry.
 * **Complex Refactoring:** Changing an output in a base network stack that is consumed by multiple downstream repositories requires coordinated, multi-repository pull requests.
 * **Visibility Fragmentation:** It becomes difficult to see the "big picture." Tracking down how an application connects to a database might require digging through three different repositories.
 
@@ -76,7 +80,7 @@ Repository 3: frontend-app-infra/
 
 ### Bridging the Gap: StackReferences
 
-Whether you choose a monorepo or a polyrepo, Pulumi projects rarely exist in isolation. You will frequently need to pass data from a foundational project (like a VPC) to a dependent project (like an ECS cluster). 
+Whether you choose a monorepo or a polyrepo, Pulumi projects rarely exist in isolation. You will frequently need to pass data from a foundational project (like a VPC) to a dependent project (like an ECS cluster).
 
 In a polyrepo, because the codebases do not live together, you **must** rely on Pulumi `StackReferences` to query the state of other stacks. In a monorepo, while you *could* theoretically hardcode values, using `StackReferences` remains the best practice to maintain loose coupling between your directories.
 
@@ -95,7 +99,7 @@ There is no one-size-fits-all answer. The ideal choice depends entirely on your 
 
 ## 8.2 Modularizing Your Pulumi Code
 
-When you first begin using Pulumi, it is tempting to place all of your infrastructure definitions into a single entrypoint file—typically `index.ts`, `__main__.py`, or `main.go`. While this monolithic approach is perfectly fine for tutorials or prototyping, it quickly devolves into an unmaintainable "Big Ball of Mud" as your infrastructure footprint grows. 
+When you first begin using Pulumi, it is tempting to place all of your infrastructure definitions into a single entrypoint file—typically `index.ts`, `__main__.py`, or `main.go`. While this monolithic approach is perfectly fine for tutorials or prototyping, it quickly devolves into an unmaintainable "Big Ball of Mud" as your infrastructure footprint grows.
 
 Because Pulumi leverages general-purpose programming languages, you are not forced into proprietary templating structures to organize your code. You can—and should—use the native modularization techniques provided by your chosen language, such as functions, classes, modules, and packages.
 
@@ -120,7 +124,7 @@ my-infrastructure-project/
 
 ### Functional Modularization
 
-When extracting infrastructure into standard functions, the best practice is to design those functions to accept configuration parameters as inputs and return the created resources (or their key attributes) as outputs. 
+When extracting infrastructure into standard functions, the best practice is to design those functions to accept configuration parameters as inputs and return the created resources (or their key attributes) as outputs.
 
 Here is an example in TypeScript demonstrating how to extract networking logic into a reusable module.
 
@@ -211,15 +215,15 @@ export const dbEndpoint = database.endpoint;
 
 Organizing code with basic functions and files is highly effective for structuring a single Pulumi project. However, as you utilize this approach, you will notice a limitation: Pulumi tracks resources in the state file in a flat structure based on the parent-child relationships defined during execution. Standard language functions do not group resources logically in the Pulumi state file; they only group them visually in your code editor.
 
-When you run `pulumi up`, the engine will display the VPC and the Subnets as top-level resources, completely independent of the `createNetwork` function that spawned them. 
+When you run `pulumi up`, the engine will display the VPC and the Subnets as top-level resources, completely independent of the `createNetwork` function that spawned them.
 
 While this functional modularity solves immediate code organization problems, true logical encapsulation of state—where multiple resources are treated as a single, cohesive unit in the Pulumi console and state file—requires `ComponentResources`. We will explore authoring these higher-level abstractions in **Chapter 13: ComponentResources and Abstractions**. Until then, relying on standard software modularity is the necessary first step toward clean Infrastructure as Code.
 
 ## 8.3 Dependency Management Across Teams
 
-As your organization scales, the responsibility for provisioning infrastructure naturally decentralizes. A dedicated platform or network team might manage the foundational Virtual Private Clouds (VPCs) and transit gateways, while autonomous application teams are responsible for deploying their own containers and serverless functions. 
+As your organization scales, the responsibility for provisioning infrastructure naturally decentralizes. A dedicated platform or network team might manage the foundational Virtual Private Clouds (VPCs) and transit gateways, while autonomous application teams are responsible for deploying their own containers and serverless functions.
 
-This separation of concerns prevents the "Big Ball of Mud" architecture, but it introduces a new challenge: **how do these teams share resource data?** The application team needs the VPC ID and Subnet IDs created by the network team to deploy their load balancers. 
+This separation of concerns prevents the "Big Ball of Mud" architecture, but it introduces a new challenge: **how do these teams share resource data?** The application team needs the VPC ID and Subnet IDs created by the network team to deploy their load balancers.
 
 Relying on hardcoded values, manual copy-pasting, or out-of-band communication (like Slack messages or wiki pages) leads to brittle infrastructure and configuration drift. Pulumi solves this programmatically through a mechanism called **Stack References**.
 
@@ -316,16 +320,16 @@ When you use Stack References across teams, you are essentially establishing an 
 
 To manage dependencies effectively across organizational boundaries:
 
-1.  **Version Your Exports:** While Pulumi doesn't natively version stack outputs like a REST API (e.g., `/v1/`), you can adopt naming conventions for major architectural shifts, such as exporting `vpcIdV2` if migrating to a completely new network topology, allowing downstream teams time to migrate.
-2.  **Use Strongly Typed Config:** In languages like TypeScript or Go, you can wrap your Stack Reference calls in a strongly typed interface or helper function within a shared internal library. This provides autocomplete and compile-time warnings for consumers if a key is misspelled.
-3.  **Deprecation Periods:** Before removing an output, communicate with downstream teams. You can use Pulumi's CrossGuard (Policy as Code) or internal scripts to query the Pulumi API and see which stacks are currently depending on a specific output.
+1. **Version Your Exports:** While Pulumi doesn't natively version stack outputs like a REST API (e.g., `/v1/`), you can adopt naming conventions for major architectural shifts, such as exporting `vpcIdV2` if migrating to a completely new network topology, allowing downstream teams time to migrate.
+2. **Use Strongly Typed Config:** In languages like TypeScript or Go, you can wrap your Stack Reference calls in a strongly typed interface or helper function within a shared internal library. This provides autocomplete and compile-time warnings for consumers if a key is misspelled.
+3. **Deprecation Periods:** Before removing an output, communicate with downstream teams. You can use Pulumi's CrossGuard (Policy as Code) or internal scripts to query the Pulumi API and see which stacks are currently depending on a specific output.
 
 ### Security and Access Control Boundaries
 
-Cross-team dependencies introduce security considerations. A `StackReference` requires read access to the target stack's state file. 
+Cross-team dependencies introduce security considerations. A `StackReference` requires read access to the target stack's state file.
 
 * **Pulumi Cloud:** If you are using the managed Pulumi Service, you can utilize Role-Based Access Control (RBAC). You can configure the `core-network` stack so that the Platform Team has `Admin` (Read/Write) access, while the Application Team is granted `Read` access. This allows the App team's CI/CD pipeline to query the network state without the risk of them accidentally modifying or destroying the network infrastructure.
-* **Self-Managed Backends (S3/Azure Blob):** If you manage your own state files, you must configure the IAM policies or Bucket Policies to allow the application team's execution role to perform `s3:GetObject` on the specific state files belonging to the platform team. 
+* **Self-Managed Backends (S3/Azure Blob):** If you manage your own state files, you must configure the IAM policies or Bucket Policies to allow the application team's execution role to perform `s3:GetObject` on the specific state files belonging to the platform team.
 
 By defining strict access boundaries, teams can safely share necessary context without compromising the security or integrity of foundational infrastructure.
 
@@ -383,7 +387,7 @@ By publishing these components to standard package managers (like npm, PyPI, or 
 
 ### 4. Code Version vs. State Version
 
-It is crucial to understand the distinction between your code history and your state history. 
+It is crucial to understand the distinction between your code history and your state history.
 
 * **Git History:** Tracks *what you intended* the infrastructure to look like over time.
 * **Pulumi State History:** Tracks *what actually happened* during deployments over time.

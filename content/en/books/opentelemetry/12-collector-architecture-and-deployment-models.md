@@ -2,7 +2,7 @@ Instrumenting applications is only the first step; routing that telemetry effici
 
 ## 12.1 Deploying as an Agent (DaemonSet/Sidecar) vs. Gateway
 
-The OpenTelemetry Collector is distributed as a single, compiled binary, yet its role within your infrastructure is entirely dictated by where you place it and how you configure it. Because the Collector decoupled telemetry extraction from data transmission, architecting its deployment is one of the most critical decisions in your observability strategy. 
+The OpenTelemetry Collector is distributed as a single, compiled binary, yet its role within your infrastructure is entirely dictated by where you place it and how you configure it. Because the Collector decoupled telemetry extraction from data transmission, architecting its deployment is one of the most critical decisions in your observability strategy.
 
 Broadly, Collector deployments fall into two primary architectural patterns: the **Agent** model and the **Gateway** model. While they can be used in isolation, enterprise environments almost universally combine them.
 
@@ -10,8 +10,8 @@ Broadly, Collector deployments fall into two primary architectural patterns: the
 
 In the Agent pattern, the Collector is deployed geographically or logically close to the application emitting the telemetry. This typically takes one of two forms in containerized environments:
 
-1.  **Sidecar:** The Collector runs as a container within the exact same Pod (or task definition) as the application. There is a 1:1 relationship between application instances and Collectors.
-2.  **DaemonSet (Host Agent):** The Collector runs as a background service on the host operating system or as a DaemonSet in Kubernetes. There is a 1:N relationship: one Collector serves all application instances running on that specific physical or virtual node.
+1. **Sidecar:** The Collector runs as a container within the exact same Pod (or task definition) as the application. There is a 1:1 relationship between application instances and Collectors.
+2. **DaemonSet (Host Agent):** The Collector runs as a background service on the host operating system or as a DaemonSet in Kubernetes. There is a 1:N relationship: one Collector serves all application instances running on that specific physical or virtual node.
 
 The primary directive of the Agent is to act as a localized offloading point. Applications do not need to manage complex retry logic, batching, or authentication to external vendors; they simply fire-and-forget their OTLP payloads to `localhost` or the local node IP.
 
@@ -29,11 +29,13 @@ The primary directive of the Agent is to act as a localized offloading point. Ap
 ```
 
 **Advantages of the Agent Model:**
+
 * **Simplicity for Applications:** SDKs can be configured with default local endpoints (e.g., `127.0.0.1:4317`), completely decoupling the application from the ultimate telemetry destination.
 * **Rich Infrastructure Context:** A host-level Agent inherently knows which node it is running on. It can easily scrape host metrics (CPU, memory, disk) and append infrastructure-specific resource attributes (like `host.name` or `k8s.pod.uid`) to incoming application telemetry before forwarding it.
 * **Network Efficiency:** If network partitions occur, the local Agent can buffer data in memory or on the local disk, preventing application memory from bloating.
 
 **Disadvantages of the Agent Model:**
+
 * **Resource Overhead:** Running hundreds or thousands of sidecars or node agents consumes cumulative CPU and memory across the cluster.
 * **Configuration Sprawl:** Updating processing logic or changing destination endpoints requires rolling out updates to thousands of Agent instances.
 * **Limited Processing Scope:** Because an Agent only sees a fraction of the system's traffic (just its local node or pod), it *cannot* perform cluster-wide aggregations or global tail-based sampling.
@@ -60,23 +62,25 @@ In the Gateway pattern, the Collector is deployed as a standalone, scalable clus
 ```
 
 **Advantages of the Gateway Model:**
+
 * **Centralized Configuration and Security:** API keys, authentication tokens for observability vendors, and TLS certificates are managed centrally. Agents and applications do not need access to external credentials.
 * **Advanced Processing:** Since the Gateway cluster receives telemetry from the entire infrastructure, it has a holistic view. This is mandatory for stateful operations like Tail-Based Sampling (where the decision to keep a trace is made only after the trace completes) and span-to-metrics generation.
 * **Data Routing and Redaction:** It serves as a central firewall for telemetry, dropping sensitive PII, enforcing global rate limits, and routing specific signals to different backends (e.g., metrics to Prometheus, traces to Jaeger, billing logs to an S3 bucket).
 
 **Disadvantages of the Gateway Model:**
+
 * **Single Point of Failure:** If the Gateway cluster goes down or the load balancer is misconfigured, all telemetry from the infrastructure is dropped.
 * **Network Traffic:** Telemetry must traverse the network to reach the Gateway, potentially incurring cross-AZ egress costs if not architected carefully.
 
 ### The Standard Enterprise Architecture: Agent + Gateway
 
-In production environments, it is rarely an "either/or" decision. The industry standard pattern chains these deployments together. 
+In production environments, it is rarely an "either/or" decision. The industry standard pattern chains these deployments together.
 
 Applications send OTLP to a lightweight local **Agent** (handling immediate offloading and infrastructure enrichment). The Agent forwards this partially processed data to the central **Gateway** cluster (handling heavy processing, data masking, vendor authentication, and tail-based sampling). Finally, the Gateway exports to the observability backends.
 
 #### Configuration Differences
 
-The deployment model directly influences how you configure the Collector's receivers and exporters. 
+The deployment model directly influences how you configure the Collector's receivers and exporters.
 
 **Agent Configuration Snippet:**
 An Agent typically listens on local interfaces and exports to the internal Gateway over gRPC without TLS (relying on internal network security).
@@ -169,6 +173,7 @@ Every pipeline consists of three distinct phases: **Ingest (Receivers)**, **Proc
 ### 1. Ingest: Receivers
 
 Receivers dictate how data gets into the Collector. They can operate in two modes:
+
 * **Push-based:** The receiver opens a network port and listens for incoming payloads (e.g., the OTLP receiver listening on gRPC port 4317).
 * **Pull-based:** The receiver actively reaches out to external systems to scrape data (e.g., the Prometheus receiver scraping a `/metrics` endpoint, or the Host Metrics receiver querying the host OS).
 
@@ -176,16 +181,16 @@ Receivers dictate how data gets into the Collector. They can operate in two mode
 
 ### 2. Process: Processors
 
-Processors are the mutators and filters of the pipeline. They sit between receivers and exporters, taking in `pdata`, applying logic, and passing the mutated `pdata` to the next step. 
+Processors are the mutators and filters of the pipeline. They sit between receivers and exporters, taking in `pdata`, applying logic, and passing the mutated `pdata` to the next step.
 
-**Order is strictly enforced.** The order in which you define processors in your pipeline array dictates the exact sequence of execution. A misordered processor chain can lead to out-of-memory (OOM) errors or dropped telemetry. 
+**Order is strictly enforced.** The order in which you define processors in your pipeline array dictates the exact sequence of execution. A misordered processor chain can lead to out-of-memory (OOM) errors or dropped telemetry.
 
 While custom processors can be built for specific business logic, the industry-standard sequence for production pipelines follows this pattern:
 
-1.  **`memory_limiter` (Mandatory First Step):** Monitors the Collector's memory usage and drops data or forces garbage collection if thresholds are breached, preventing the Collector from crashing the node.
-2.  **Enrichment/Mutation (`attributes`, `resource`):** Appending cluster names, environment tags, or redacting Personally Identifiable Information (PII) before the data is batched.
-3.  **Filtering (`filter`, `tail_sampling`):** Dropping spans or metrics that are unnecessary (e.g., dropping health check endpoint traces) to save backend costs.
-4.  **`batch` (Mandatory Last Step):** Accumulates individual spans, metrics, or log records over a specific time window or size limit before sending them to the exporter. Batching drastically reduces network overhead and prevents overwhelming backend APIs.
+1. **`memory_limiter` (Mandatory First Step):** Monitors the Collector's memory usage and drops data or forces garbage collection if thresholds are breached, preventing the Collector from crashing the node.
+2. **Enrichment/Mutation (`attributes`, `resource`):** Appending cluster names, environment tags, or redacting Personally Identifiable Information (PII) before the data is batched.
+3. **Filtering (`filter`, `tail_sampling`):** Dropping spans or metrics that are unnecessary (e.g., dropping health check endpoint traces) to save backend costs.
+4. **`batch` (Mandatory Last Step):** Accumulates individual spans, metrics, or log records over a specific time window or size limit before sending them to the exporter. Batching drastically reduces network overhead and prevents overwhelming backend APIs.
 
 ### 3. Export: Exporters
 
@@ -195,7 +200,7 @@ Exporters inherently rely on the `batch` processor from the previous stage to en
 
 ### Constructing the Pipeline: The `service` Block
 
-To bring these components to life, they must be declared in their respective sections and then explicitly linked in the `service::pipelines` block. 
+To bring these components to life, they must be declared in their respective sections and then explicitly linked in the `service::pipelines` block.
 
 A component can be defined but never used if it isn't added to a pipeline. Conversely, **Fan-in** and **Fan-out** patterns are natively supported: multiple receivers can feed a single pipeline (Fan-in), and a single pipeline can broadcast to multiple exporters (Fan-out).
 
@@ -250,9 +255,10 @@ service:
 
 ## 12.3 Generating Custom Binaries with the OpenTelemetry Collector Builder (ocb)
 
-While downloading a pre-compiled OpenTelemetry Collector binary is the fastest way to get started, it is rarely the optimal deployment strategy for a mature enterprise environment. The OpenTelemetry community provides two primary distributions: **Core** (which contains only foundational components) and **Contrib** (which contains hundreds of community-contributed receivers, processors, and exporters). 
+While downloading a pre-compiled OpenTelemetry Collector binary is the fastest way to get started, it is rarely the optimal deployment strategy for a mature enterprise environment. The OpenTelemetry community provides two primary distributions: **Core** (which contains only foundational components) and **Contrib** (which contains hundreds of community-contributed receivers, processors, and exporters).
 
 Deploying the full Contrib distribution introduces several architectural risks:
+
 * **Security Attack Surface:** The Contrib binary includes hundreds of Go modules spanning integrations for AWS, GCP, Azure, countless databases, and proprietary vendors. If a vulnerability (CVE) is discovered in an integration you aren't even using, your security scanners will still flag your Collector, forcing emergency patching.
 * **Binary Bloat:** The compiled Contrib binary frequently exceeds 150MB. In large-scale DaemonSet deployments, pulling and storing this image across thousands of nodes wastes network bandwidth and storage.
 * **Memory Overhead:** Even if components are unconfigured, their underlying libraries and initialization routines can incrementally consume memory.
@@ -340,10 +346,11 @@ The output will detail the generation and compilation process:
 In an enterprise environment, this process should never be performed on a local developer machine. Instead, `ocb` should be integrated directly into your CI/CD pipelines.
 
 A standard pipeline pattern involves:
-1.  **Version Control:** Storing the `builder-config.yaml` in a Git repository.
-2.  **Compilation Stage:** A CI runner (e.g., GitHub Actions, GitLab CI) running a standard Golang container executes `ocb`.
-3.  **Containerization Stage:** A multi-stage Dockerfile takes the resulting static binary and injects it into a distroless or Alpine Linux image.
-4.  **Distribution:** The resulting lean, highly secure Docker image (often weighing under 40MB) is pushed to the internal container registry, ready to be pulled by Kubernetes DaemonSets or Deployments. 
+
+1. **Version Control:** Storing the `builder-config.yaml` in a Git repository.
+2. **Compilation Stage:** A CI runner (e.g., GitHub Actions, GitLab CI) running a standard Golang container executes `ocb`.
+3. **Containerization Stage:** A multi-stage Dockerfile takes the resulting static binary and injects it into a distroless or Alpine Linux image.
+4. **Distribution:** The resulting lean, highly secure Docker image (often weighing under 40MB) is pushed to the internal container registry, ready to be pulled by Kubernetes DaemonSets or Deployments.
 
 By taking ownership of the compilation process via `ocb`, platform teams drastically reduce their security burden and ensure that the Collector scales efficiently alongside the workloads it monitors.
 
@@ -358,6 +365,7 @@ Understanding the architectural boundaries between these two distributions is cr
 The Core distribution is the upstream foundation of the Collector. It is maintained directly by the core OpenTelemetry governance committee and is designed to be as lean and strictly standardized as possible.
 
 **What it includes:**
+
 * **Essential Receivers:** OTLP (gRPC/HTTP), Prometheus, Jaeger, Zipkin, and Host Metrics.
 * **Standard Processors:** `memory_limiter`, `batch`, `filter`, and basic `attributes` manipulation.
 * **Fundamental Exporters:** OTLP, Prometheus, logging (stdout), and File.
@@ -367,7 +375,7 @@ The Core distribution is ideal for internal routing tiers where telemetry is exc
 
 ### The Contrib Distribution (`otelcol-contrib`)
 
-The Contrib distribution is a massive superset of Core. It includes the entire Core distribution, plus hundreds of community-maintained and vendor-contributed components. 
+The Contrib distribution is a massive superset of Core. It includes the entire Core distribution, plus hundreds of community-maintained and vendor-contributed components.
 
 ```text
 +-------------------------------------------------------------------+
@@ -386,6 +394,7 @@ The Contrib distribution is a massive superset of Core. It includes the entire C
 ```
 
 **What it includes:**
+
 * **Vendor Exporters:** Proprietary exporters for almost every commercial observability backend (Datadog, Dynatrace, Honeycomb, Splunk, New Relic, etc.).
 * **Infrastructure Receivers:** Components to scrape databases (PostgreSQL, MongoDB), message queues (RabbitMQ, Kafka), and web servers (Nginx, Apache).
 * **Advanced Processors:** Tail-based sampling, complex routing, span metrics generation, and PII redaction capabilities.
@@ -407,10 +416,10 @@ When architecting your deployment, evaluate the trade-offs between the two distr
 
 ### The Third Path: Vendor Distributions
 
-It is worth noting a prevalent third option in the enterprise landscape: **Vendor-packaged Distributions**. 
+It is worth noting a prevalent third option in the enterprise landscape: **Vendor-packaged Distributions**.
 
 Major cloud providers and observability platforms often fork the OpenTelemetry Collector, package it with their specific Contrib exporters, strip out competitors' exporters, and provide native support agreements for it. Examples include the AWS Distro for OpenTelemetry (ADOT) or the Splunk OpenTelemetry Collector.
 
-If your organization has an exclusive contract with a specific cloud provider or observability vendor, utilizing their supported distribution can simplify compliance and guarantee that your Collector versions align perfectly with their backend ingestion APIs. However, this re-introduces a degree of vendor lock-in that the core OpenTelemetry project was designed to eliminate. 
+If your organization has an exclusive contract with a specific cloud provider or observability vendor, utilizing their supported distribution can simplify compliance and guarantee that your Collector versions align perfectly with their backend ingestion APIs. However, this re-introduces a degree of vendor lock-in that the core OpenTelemetry project was designed to eliminate.
 
 **Architectural Recommendation:** Start your journey with the `otelcol-contrib` distribution to prove the value of OpenTelemetry in your environment. As your deployment scales to production and your pipeline topology solidifies, transition to generating a custom, hardened binary (via `ocb`) that strips away the unused bloat of Contrib while retaining the exact custom processors your business logic demands.

@@ -1,4 +1,4 @@
-VictoriaMetrics is built for extreme performance, but production deployments require robust security to protect sensitive operational data. By default, open-source VictoriaMetrics prioritizes speed over built-in authentication, relying on network boundaries. 
+VictoriaMetrics is built for extreme performance, but production deployments require robust security to protect sensitive operational data. By default, open-source VictoriaMetrics prioritizes speed over built-in authentication, relying on network boundaries.
 
 This chapter explores how to secure your telemetry pipeline from end to end. We will cover encrypting inter-node traffic with mTLS, implementing token authentication via proxies, and leveraging `vmauth` for advanced multi-tenant Role-Based Access Control (RBAC). Finally, we will establish best practices for firewalls to ensure a resilient, zero-trust perimeter.
 
@@ -10,9 +10,9 @@ Depending on whether you are using the Open-Source or Enterprise edition of Vict
 
 ### Native mTLS in VictoriaMetrics Enterprise
 
-The VictoriaMetrics Enterprise edition includes native, built-in support for mutual TLS (mTLS) across all cluster components. This approach encrypts the traffic directly at the application layer without requiring third-party sidecars. 
+The VictoriaMetrics Enterprise edition includes native, built-in support for mutual TLS (mTLS) across all cluster components. This approach encrypts the traffic directly at the application layer without requiring third-party sidecars.
 
-To enable native mTLS, you must generate your own Certificate Authority (CA), server certificates for the `vmstorage` nodes, and client certificates for the `vminsert` and `vmselect` nodes. 
+To enable native mTLS, you must generate your own Certificate Authority (CA), server certificates for the `vmstorage` nodes, and client certificates for the `vminsert` and `vmselect` nodes.
 
 **Configuring `vmstorage` (Server Side):**
 The `vmstorage` nodes must be configured to listen for TLS connections and verify the client certificates coming from the ingestion and query layers. Apply the following command-line flags to your `vmstorage` instances:
@@ -76,6 +76,7 @@ In this architecture, the VictoriaMetrics components communicate locally via pla
 Ghostunnel is an excellent choice for this pattern as it is designed specifically to secure non-native TCP services.
 
 1. **Storage Node (Server-side):** Start a Ghostunnel server to listen on the public network interface, require mutual authentication, and forward traffic to the local `vmstorage` instance (which defaults to port `8400` for `vminsert` connections).
+
    ```bash
    ghostunnel server \
      --listen 0.0.0.0:8443 \
@@ -86,6 +87,7 @@ Ghostunnel is an excellent choice for this pattern as it is designed specificall
    ```
 
 2. **Insert/Select Node (Client-side):** Start a Ghostunnel client to listen locally and forward traffic over mTLS to the remote Storage Node.
+
    ```bash
    ghostunnel client \
      --listen 127.0.0.1:8400 \
@@ -106,7 +108,7 @@ For **Open-Source users**, Kubernetes provides built-in mechanisms for transpare
 
 ## 22.2 Implementing Basic Auth and Bearer Tokens
 
-By design, the core open-source VictoriaMetrics components (`vminsert`, `vmselect`, and `vmstorage`) do not natively enforce authentication on their primary data ingestion and query pathways. The architectural philosophy is to keep the TSDB layer strictly focused on performance and efficiency, delegating client authentication and network security to dedicated proxy infrastructure. 
+By design, the core open-source VictoriaMetrics components (`vminsert`, `vmselect`, and `vmstorage`) do not natively enforce authentication on their primary data ingestion and query pathways. The architectural philosophy is to keep the TSDB layer strictly focused on performance and efficiency, delegating client authentication and network security to dedicated proxy infrastructure.
 
 To secure your primary data endpoints, you must place a reverse proxy in front of your cluster. However, VictoriaMetrics *does* provide native, lightweight token protection for its sensitive internal administrative endpoints.
 
@@ -114,9 +116,10 @@ To secure your primary data endpoints, you must place a reverse proxy in front o
 
 ### Securing Data Pathways with a Reverse Proxy
 
-The industry-standard approach for adding Basic Authentication or Bearer Token validation to open-source VictoriaMetrics is deploying a robust reverse proxy like NGINX, HAProxy, or relying on a Kubernetes Ingress controller. 
+The industry-standard approach for adding Basic Authentication or Bearer Token validation to open-source VictoriaMetrics is deploying a robust reverse proxy like NGINX, HAProxy, or relying on a Kubernetes Ingress controller.
 
 #### 1. Basic Authentication via NGINX
+
 Basic Auth requires clients to send a base64-encoded username and password combination. To implement this with NGINX, you first generate a password file using the `htpasswd` utility:
 
 ```bash
@@ -145,7 +148,8 @@ server {
 ```
 
 #### 2. Bearer Token Authentication via NGINX
-Bearer tokens are generally preferred over Basic Auth in modern deployments. They eliminate the need to pass passwords over the network, are easily rotated via CI/CD pipelines, and integrate natively with the Prometheus `remote_write` specification. 
+
+Bearer tokens are generally preferred over Basic Auth in modern deployments. They eliminate the need to pass passwords over the network, are easily rotated via CI/CD pipelines, and integrate natively with the Prometheus `remote_write` specification.
 
 You can configure NGINX to validate an `Authorization: Bearer <token>` header using the `map` directive for efficient token matching:
 
@@ -177,9 +181,10 @@ http {
 
 ### Native Authentication for Operational Endpoints
 
-While the ingestion and querying pathways require an external proxy, VictoriaMetrics components contain sensitive internal endpoints that reveal cluster state or trigger heavy administrative operations. To protect these, VictoriaMetrics includes native, lightweight token authentication via **`*AuthKey` flags**. 
+While the ingestion and querying pathways require an external proxy, VictoriaMetrics components contain sensitive internal endpoints that reveal cluster state or trigger heavy administrative operations. To protect these, VictoriaMetrics includes native, lightweight token authentication via **`*AuthKey` flags**.
 
 When one of these flags is configured, the component will reject requests to that specific endpoint unless the exact string is provided. The client can provide this token in one of two ways:
+
 1. As an HTTP header: `Authorization: Bearer <your-key>`
 2. As a URL query parameter: `?authKey=<your-key>`
 
@@ -220,14 +225,14 @@ To bridge this gap, the VictoriaMetrics toolchain includes **`vmauth`**: a light
 
 `vmauth` serves as the intelligent front door to your cluster. It evaluates every incoming HTTP request and applies logic that standard proxies struggle to implement efficiently without complex scripting:
 
-1.  **Multi-Tenant Routing:** It can map a simple Bearer token or Basic Auth credential to a specific `AccountID` and `ProjectID` in the cluster, completely hiding the multi-tenant URL structure from the end user.
-2.  **Read/Write Separation:** It can inspect the request payload or URL path to determine if a query is a read (e.g., PromQL evaluation) or a write (e.g., `remote_write` ingestion) and route it to `vmselect` or `vminsert` accordingly.
-3.  **Load Balancing and High Availability:** It can distribute requests across multiple backend nodes and automatically failover if a node becomes unresponsive.
-4.  **Request Manipulation:** It can append or drop specific HTTP headers, or rewrite URL paths on the fly before passing the request to the backend.
+1. **Multi-Tenant Routing:** It can map a simple Bearer token or Basic Auth credential to a specific `AccountID` and `ProjectID` in the cluster, completely hiding the multi-tenant URL structure from the end user.
+2. **Read/Write Separation:** It can inspect the request payload or URL path to determine if a query is a read (e.g., PromQL evaluation) or a write (e.g., `remote_write` ingestion) and route it to `vmselect` or `vminsert` accordingly.
+3. **Load Balancing and High Availability:** It can distribute requests across multiple backend nodes and automatically failover if a node becomes unresponsive.
+4. **Request Manipulation:** It can append or drop specific HTTP headers, or rewrite URL paths on the fly before passing the request to the backend.
 
 ### The `vmauth` Architecture
 
-When deployed, `vmauth` sits between your clients (Prometheus, Grafana, user scripts) and the VictoriaMetrics cluster components. 
+When deployed, `vmauth` sits between your clients (Prometheus, Grafana, user scripts) and the VictoriaMetrics cluster components.
 
 ```text
                            +-------------------+
@@ -287,14 +292,15 @@ users:
 One of the most crucial concepts to grasp when using `vmauth` is how it handles the HTTP request paths. By default, `vmauth` takes the original path requested by the client and **appends** it to the `url_prefix` defined in the configuration.
 
 For example, if Grafana sends a query to `vmauth` using the reader token from the config above:
-*   **Client Request to `vmauth`:** `GET /api/v1/query?query=up`
-*   **`vmauth` Translates to:** `GET http://vmselect-node:8481/select/100/prometheus/api/v1/query?query=up`
 
-This mechanism allows Grafana to act as if it is communicating with a standard, non-clustered Prometheus instance. `vmauth` invisibly injects the complex `select/100/prometheus/` cluster routing path on the fly. 
+* **Client Request to `vmauth`:** `GET /api/v1/query?query=up`
+* **`vmauth` Translates to:** `GET http://vmselect-node:8481/select/100/prometheus/api/v1/query?query=up`
+
+This mechanism allows Grafana to act as if it is communicating with a standard, non-clustered Prometheus instance. `vmauth` invisibly injects the complex `select/100/prometheus/` cluster routing path on the fly.
 
 ### Hot Reloading Configurations
 
-In a dynamic infrastructure, tokens and routing rules change frequently. You do not need to restart the `vmauth` process to apply updates to the `auth_config.yml` file. 
+In a dynamic infrastructure, tokens and routing rules change frequently. You do not need to restart the `vmauth` process to apply updates to the `auth_config.yml` file.
 
 Whenever you modify the file, you can trigger a seamless hot-reload by sending a `SIGHUP` signal to the `vmauth` process, or by calling its internal reload endpoint:
 
@@ -312,7 +318,7 @@ Building on the basic routing capabilities of `vmauth`, we can implement advance
 
 ### Granular Roles via `url_map`
 
-The core mechanism for enforcing RBAC in `vmauth` is the `url_map` directive. By combining regular expressions with HTTP methods, you can strictly define which endpoints a specific token is allowed to access. 
+The core mechanism for enforcing RBAC in `vmauth` is the `url_map` directive. By combining regular expressions with HTTP methods, you can strictly define which endpoints a specific token is allowed to access.
 
 If a request matches the user's token but fails to match any of the defined `src_paths` in their `url_map`, `vmauth` immediately drops the request and returns an `HTTP 403 Forbidden` error.
 
@@ -357,9 +363,9 @@ users:
 
 ### Row-Level Security: Enforcing Label Filters
 
-One of the most powerful security features in the VictoriaMetrics ecosystem is the ability to enforce "row-level security" using the `extra_label` query parameter. 
+One of the most powerful security features in the VictoriaMetrics ecosystem is the ability to enforce "row-level security" using the `extra_label` query parameter.
 
-Imagine a scenario where multiple teams share the same VictoriaMetrics tenant (e.g., `AccountID 100`), but you want to restrict the Frontend team so they can only query metrics containing the label `team="frontend"`. 
+Imagine a scenario where multiple teams share the same VictoriaMetrics tenant (e.g., `AccountID 100`), but you want to restrict the Frontend team so they can only query metrics containing the label `team="frontend"`.
 
 Instead of relying on the users to honestly add this label to their PromQL queries, `vmauth` can forcibly inject it into the request URL before forwarding it to `vmselect`. VictoriaMetrics will then silently append this label matcher to every query the user executes.
 
@@ -417,7 +423,7 @@ By leveraging `url_map` for granular role definition, `extra_label` injection fo
 
 ## 22.5 Best Practices for Network Policies and Firewalls
 
-Even with rigorous application-layer security like TLS and `vmauth` in place, a robust VictoriaMetrics deployment requires a "defense-in-depth" approach. Network-level security forms the foundational perimeter, ensuring that if an application vulnerability or misconfiguration occurs, the blast radius is strictly contained. 
+Even with rigorous application-layer security like TLS and `vmauth` in place, a robust VictoriaMetrics deployment requires a "defense-in-depth" approach. Network-level security forms the foundational perimeter, ensuring that if an application vulnerability or misconfiguration occurs, the blast radius is strictly contained.
 
 Whether you are deploying on bare metal, virtual machines, or Kubernetes, you must implement strict network policies and firewalls based on the principle of least privilege.
 
@@ -461,6 +467,7 @@ Here is the ideal traffic flow enforced by Security Groups:
 ```
 
 **Implementation Checklist:**
+
 1. **Drop Default Ingress:** Set the default inbound rule to `DENY` for all nodes.
 2. **Whitelisting `vmauth`:** Allow port `8427` into the `vmauth` load balancer. If your metric producers (like external data centers) have static IPs, restrict this rule to those specific IP CIDR blocks.
 3. **Internal Cluster Rules:** Create a dedicated Security Group for the cluster. Allow all TCP traffic on ports `8400`, `8401`, `8480`, `8481`, and `8482` *only* if the source is another instance within the exact same Security Group.

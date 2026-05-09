@@ -2,7 +2,7 @@ With the theoretical foundations of Infrastructure as Code and the history of Op
 
 ## 3.1 Installing OpenTofu on Linux, macOS, and Windows
 
-Before you can begin writing configuration files and provisioning infrastructure, you need to install the OpenTofu Command Line Interface (CLI). Because OpenTofu is written in Go, it is distributed as a single, statically compiled binary. This makes the installation process remarkably straightforward across all major operating systems, as there are no complex dependencies or runtimes to configure. 
+Before you can begin writing configuration files and provisioning infrastructure, you need to install the OpenTofu Command Line Interface (CLI). Because OpenTofu is written in Go, it is distributed as a single, statically compiled binary. This makes the installation process remarkably straightforward across all major operating systems, as there are no complex dependencies or runtimes to configure.
 
 You can choose between using your operating system's package manager—which simplifies future version upgrades (a topic we will cover in Section 3.5)—or downloading the standalone binary manually for restricted environments.
 
@@ -48,7 +48,7 @@ rm tofu_1.6.0_linux_amd64.zip
 
 ### macOS
 
-On macOS, the most efficient and maintainable way to install OpenTofu is via Homebrew, the ubiquitous package manager for Apple platforms. 
+On macOS, the most efficient and maintainable way to install OpenTofu is via Homebrew, the ubiquitous package manager for Apple platforms.
 
 **Method 1: Homebrew (Recommended)**
 
@@ -98,6 +98,7 @@ scoop install opentofu
 **Method 3: Standalone Binary and Modifying the PATH**
 
 To install OpenTofu without a package manager:
+
 1. Download the `windows_amd64.zip` file from the official OpenTofu GitHub Releases page.
 2. Extract the `tofu.exe` file to a dedicated directory on your system, such as `C:\Program Files\OpenTofu\`.
 3. Add that directory to your system's Environment Variables so Windows knows where to find the executable.
@@ -166,10 +167,11 @@ Open the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`), type `Preferences: O
 
 Standard IDE extensions are excellent for syntax highlighting and autocompletion, but they often miss deeper logical errors or cloud-specific misconfigurations (such as using an invalid EC2 instance type). This is where **TFLint** comes in.
 
-TFLint is a pluggable linter that parses your code and checks it against provider-specific rules. 
+TFLint is a pluggable linter that parses your code and checks it against provider-specific rules.
 
 **Step 1: Install the TFLint CLI**
 Depending on your OS, install TFLint via your package manager:
+
 * **macOS:** `brew install tflint`
 * **Linux/Windows:** Download the binary from the TFLint GitHub releases.
 
@@ -178,9 +180,11 @@ Search for **TFLint** in the VS Code Extensions marketplace and install the one 
 
 **Step 3: Initialize TFLint**
 In the root of your OpenTofu project directory, run:
+
 ```bash
 tflint --init
 ```
+
 This command downloads the necessary plugins based on the providers declared in your code. Once integrated, TFLint will surface warnings and errors directly in your VS Code "Problems" panel, complete with inline squiggly lines underneath offending code.
 
 ### The IDE Workflow
@@ -226,7 +230,7 @@ OpenTofu provides a built-in command to install autocomplete for Bash and Zsh sh
 tofu -install-autocomplete
 ```
 
-This command automatically detects your active shell and appends the necessary autocomplete script to your `.bashrc` or `.zshrc` file. 
+This command automatically detects your active shell and appends the necessary autocomplete script to your `.bashrc` or `.zshrc` file.
 
 For the changes to take effect, you must either restart your terminal or source your configuration file:
 
@@ -248,7 +252,7 @@ OpenTofu itself does not deploy infrastructure; it acts as an orchestrator. The 
 
 #### Amazon Web Services (AWS)
 
-The AWS provider looks for credentials in the exact same locations as the standard AWS CLI. 
+The AWS provider looks for credentials in the exact same locations as the standard AWS CLI.
 
 1. Install the AWS CLI.
 2. Run the configuration wizard:
@@ -268,7 +272,7 @@ tofu plan
 
 #### Google Cloud Platform (GCP)
 
-The Google Cloud provider relies on Application Default Credentials (ADC). 
+The Google Cloud provider relies on Application Default Credentials (ADC).
 
 1. Install the Google Cloud CLI (`gcloud`).
 2. Authenticate your local workstation by running:
@@ -336,7 +340,7 @@ By completing this step, your workstation is now fully capable of authenticating
 
 ## 3.4 Writing and Executing Your First `tofu apply`
 
-With your CLI installed, your IDE configured, and your environment ready, it is time to write your first infrastructure configuration and bring it to life. 
+With your CLI installed, your IDE configured, and your environment ready, it is time to write your first infrastructure configuration and bring it to life.
 
 While we configured cloud credentials in the previous section, the most foolproof way to understand the core OpenTofu workflow—without worrying about cloud billing, region selection, or global naming collisions—is to provision a local resource. The operational workflow you learn here is exactly identical whether you are creating a local file or a massive multi-region Kubernetes cluster.
 
@@ -368,6 +372,7 @@ resource "local_file" "hello_world" {
 ```
 
 This simple configuration does two things:
+
 1. It declares a dependency on the `local` provider, which allows OpenTofu to interact with the local filesystem.
 2. It defines a `resource` of type `local_file` named `hello_world`, specifying what the file should be called and what text it should contain.
 
@@ -385,7 +390,7 @@ You will see output indicating that OpenTofu is initializing the backend and dow
 
 ### Step 3: The Dry Run (`tofu plan`)
 
-Before making any changes to your infrastructure, you should always preview what OpenTofu intends to do. This ensures the execution matches your expectations. 
+Before making any changes to your infrastructure, you should always preview what OpenTofu intends to do. This ensures the execution matches your expectations.
 
 Run the following command:
 
@@ -437,7 +442,7 @@ local_file.hello_world: Creation complete after 0s [id=3e...]
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ```
 
-Check your project directory. You will now see a `hello.txt` file containing your exact string. 
+Check your project directory. You will now see a `hello.txt` file containing your exact string.
 
 More importantly, you will see a new file named `terraform.tfstate`. This JSON file is how OpenTofu keeps track of the infrastructure it manages. We will explore state deeply in Chapter 9, but for now, know that this file is the source of truth linking your `main.tf` code to the physical `hello.txt` file.
 
@@ -455,7 +460,7 @@ Once again, OpenTofu will present a plan—this time showing a `-` (destroy) sym
 
 ### The Core OpenTofu Lifecycle
 
-You have just completed the fundamental lifecycle of Infrastructure as Code. Regardless of the complexity of your architecture, you will repeat this pattern daily. 
+You have just completed the fundamental lifecycle of Infrastructure as Code. Regardless of the complexity of your architecture, you will repeat this pattern daily.
 
 ```text
 +--------------+      +--------------+      +--------------+      +--------------+
@@ -478,9 +483,9 @@ This section covers the risks of version drift, how to upgrade your CLI, and the
 
 ### The State File Trap
 
-OpenTofu tracks your infrastructure in a `terraform.tfstate` file. When you run `tofu apply`, OpenTofu records the CLI version used to execute the run inside that state file. 
+OpenTofu tracks your infrastructure in a `terraform.tfstate` file. When you run `tofu apply`, OpenTofu records the CLI version used to execute the run inside that state file.
 
-If Developer A uses OpenTofu v1.6.0 and Developer B uses OpenTofu v1.7.0, the moment Developer B applies a change, the state file is permanently upgraded to format version 1.7.0. Because OpenTofu state files are strictly backwards-incompatible, Developer A will be completely locked out from running any further operations until they also upgrade their local CLI. 
+If Developer A uses OpenTofu v1.6.0 and Developer B uses OpenTofu v1.7.0, the moment Developer B applies a change, the state file is permanently upgraded to format version 1.7.0. Because OpenTofu state files are strictly backwards-incompatible, Developer A will be completely locked out from running any further operations until they also upgrade their local CLI.
 
 To prevent this, you must explicitly manage and pin your OpenTofu versions.
 
@@ -489,6 +494,7 @@ To prevent this, you must explicitly manage and pin your OpenTofu versions.
 If you installed OpenTofu using a system package manager (as covered in Section 3.1) and you are working on an isolated project where state file upgrades will not impact others, upgrading is trivial.
 
 **Linux (APT/YUM):**
+
 ```bash
 # Debian/Ubuntu
 sudo apt-get update && sudo apt-get install --only-upgrade opentofu
@@ -498,11 +504,13 @@ sudo dnf upgrade opentofu
 ```
 
 **macOS (Homebrew):**
+
 ```bash
 brew upgrade opentofu
 ```
 
 **Windows (Winget):**
+
 ```powershell
 winget upgrade opentofu
 ```
@@ -531,7 +539,7 @@ Using the pessimistic constraint operator (`~>`) allows for patch updates (e.g.,
 
 ### Managing Multiple Versions with `tenv`
 
-If you are working across multiple projects—perhaps maintaining an older legacy environment on v1.6.0 and a greenfield project on v1.7.0—constantly uninstalling and reinstalling OpenTofu via a package manager is not viable. 
+If you are working across multiple projects—perhaps maintaining an older legacy environment on v1.6.0 and a greenfield project on v1.7.0—constantly uninstalling and reinstalling OpenTofu via a package manager is not viable.
 
 The industry standard solution is to use a version manager. For OpenTofu, **`tenv`** (a successor to tools like `tfenv`) is the recommended version manager. It allows you to seamlessly install and switch between multiple versions of OpenTofu, Terraform, and Terragrunt.
 

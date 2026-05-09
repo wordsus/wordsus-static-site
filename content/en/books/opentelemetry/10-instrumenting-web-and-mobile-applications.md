@@ -2,15 +2,15 @@ Our observability journey has largely focused on the backend—controlled enviro
 
 ## 10.1 Unique Challenges of Client-Side Browser Instrumentation
 
-Instrumenting a backend microservice is an exercise in measuring a controlled environment. You dictate the runtime, the allocated memory, the network topology, and the security perimeter. Transitioning OpenTelemetry to the client-side browser inverts this paradigm entirely. The browser is a fundamentally hostile, constrained, and unpredictable environment. 
+Instrumenting a backend microservice is an exercise in measuring a controlled environment. You dictate the runtime, the allocated memory, the network topology, and the security perimeter. Transitioning OpenTelemetry to the client-side browser inverts this paradigm entirely. The browser is a fundamentally hostile, constrained, and unpredictable environment.
 
 When extending your telemetry pipeline to the edge, you must account for challenges that simply do not exist in server-side observability.
 
 ### 1. The Untrusted Environment and Security Perimeters
 
-The most critical architectural difference when instrumenting a browser is that the client is public. Any code, configuration, or API key shipped to the browser can be read by the end-user or malicious actors. 
+The most critical architectural difference when instrumenting a browser is that the client is public. Any code, configuration, or API key shipped to the browser can be read by the end-user or malicious actors.
 
-You cannot embed raw OTLP exporter credentials (such as an AWS IAM role, a Splunk token, or a Honeycomb API key) directly into your frontend JavaScript. Doing so exposes your observability backend to arbitrary data injection, quota exhaustion, and denial-of-wallet attacks. 
+You cannot embed raw OTLP exporter credentials (such as an AWS IAM role, a Splunk token, or a Honeycomb API key) directly into your frontend JavaScript. Doing so exposes your observability backend to arbitrary data injection, quota exhaustion, and denial-of-wallet attacks.
 
 To mitigate this, client-side telemetry mandates the deployment of a public-facing OpenTelemetry Collector acting as a telemetry gateway or Backend-For-Frontend (BFF).
 
@@ -59,7 +59,7 @@ Server-side processes run for days or weeks. A browser tab might exist for three
 
 OpenTelemetry processors rely on batching (as detailed in Chapter 14) to optimize network egress. If the browser tab is closed while telemetry is sitting in the Web SDK's `BatchSpanProcessor` memory queue, that data is lost forever. You lose the exact telemetry—errors and high-latency spans—that likely caused the user to abandon the page in frustration.
 
-To combat this, web-specific exporters often hook into the browser's `visibilitychange` event and utilize the `navigator.sendBeacon()` API or the `fetch` API with the `keepalive: true` flag. 
+To combat this, web-specific exporters often hook into the browser's `visibilitychange` event and utilize the `navigator.sendBeacon()` API or the `fetch` API with the `keepalive: true` flag.
 
 ```javascript
 // Conceptual representation of a web-aware exporter flush mechanism
@@ -73,11 +73,12 @@ document.addEventListener('visibilitychange', () => {
   }
 });
 ```
+
 *Note: While `sendBeacon` allows data to be transmitted after the page unloads, it only supports HTTP POST requests and has strict payload limits (typically ~64KB), requiring careful tuning of the `BatchSpanProcessor` size limits.*
 
 ### 5. Clock Skew and Timestamp Alignment
 
-Distributed tracing relies heavily on chronological alignment to render waterfall diagrams. Backend servers utilize NTP (Network Time Protocol) to keep their clocks synchronized to within milliseconds. 
+Distributed tracing relies heavily on chronological alignment to render waterfall diagrams. Backend servers utilize NTP (Network Time Protocol) to keep their clocks synchronized to within milliseconds.
 
 Client device clocks, however, are notoriously unreliable. Users may manually change their system time, or their device battery may die, causing the hardware clock to drift significantly. If a browser reports a span that started at 10:00:00 AM, but the server received the API request at 09:55:00 AM (server time), the resulting trace visualization will be broken, showing child spans executing minutes before their parents.
 
@@ -85,7 +86,7 @@ To maintain temporal accuracy, the OpenTelemetry Web SDK primarily relies on the
 
 ## 10.2 Integrating Session Replay and Real User Monitoring (RUM)
 
-Distributed tracing excels at answering *why* a backend request was slow, but it falls short in answering *how* that slowness impacted the user. A frontend API call might return in 50 milliseconds, but if the browser's main thread is locked up parsing a massive JavaScript bundle, the user experiences the application as frozen. 
+Distributed tracing excels at answering *why* a backend request was slow, but it falls short in answering *how* that slowness impacted the user. A frontend API call might return in 50 milliseconds, but if the browser's main thread is locked up parsing a massive JavaScript bundle, the user experiences the application as frozen.
 
 Real User Monitoring (RUM) and Session Replay bridge this gap. By extending OpenTelemetry to capture user-centric telemetry, you create a continuous thread of observability from a mouse click in the browser down to a database query in your infrastructure.
 
@@ -121,7 +122,7 @@ const resource = new Resource({
 // Pass this resource to your TracerProvider and MeterProvider
 ```
 
-By ensuring `'session.id'` is attached at the `Resource` level, every span (like a `fetch` request or a route change) and every metric (like a Core Web Vital) automatically inherits this tag. 
+By ensuring `'session.id'` is attached at the `Resource` level, every span (like a `fetch` request or a route change) and every metric (like a Core Web Vital) automatically inherits this tag.
 
 ### 2. Capturing Real User Monitoring (RUM) Telemetry
 
@@ -168,7 +169,7 @@ The architectural pattern for this integration relies on cross-pollinating ident
 
 To achieve tight synchronization, the integration must go beyond just the `session.id`:
 
-1. **Trace to Replay Linkage:** When an error occurs in the frontend, the OpenTelemetry SDK can capture the exact timestamp or the specific Replay "tick" and record it as a span attribute (e.g., `replay.timestamp = 162983749281`). 
+1. **Trace to Replay Linkage:** When an error occurs in the frontend, the OpenTelemetry SDK can capture the exact timestamp or the specific Replay "tick" and record it as a span attribute (e.g., `replay.timestamp = 162983749281`).
 2. **Replay to Trace Linkage:** The Session Replay payload can embed active `trace_id`s. If a user clicks a button that triggers a 5-second API call, the replay viewer can overlay the exact OpenTelemetry distributed trace waterfall directly alongside the video timeline of the frozen UI.
 
 ### 4. Privacy, PII, and Data Redaction
@@ -177,7 +178,7 @@ Recording DOM mutations introduces immense security and privacy risks. If your a
 
 When integrating these tools, data sanitization must happen **client-side**, before the payload ever reaches the network.
 
-* **Input Masking:** All password fields and sensitive inputs must be strictly ignored by the replay library. 
+* **Input Masking:** All password fields and sensitive inputs must be strictly ignored by the replay library.
 * **DOM Scrubbing:** Replay libraries typically offer CSS-class-based redaction (e.g., `.rr-block` or `.mask-pii`). Any DOM element carrying this class will have its text content replaced with asterisks (`***`) or blurred blocks before serialization.
 
 Failing to strictly enforce client-side redaction transforms your observability pipeline into a massive compliance violation, exposing you to severe GDPR, CCPA, and HIPAA penalties. Telemetry is meant to measure the system, not spy on the user.
@@ -186,7 +187,7 @@ Failing to strictly enforce client-side redaction transforms your observability 
 
 While browser-based telemetry contends with ephemeral sessions and CORS restrictions, mobile applications present an entirely different set of environmental hostilities. Mobile devices operate in a state of constant physical and network flux. Users seamlessly transition between high-speed Wi-Fi, spotty 4G cell towers, and complete offline isolation (e.g., entering a subway). Furthermore, the operating systems (iOS and Android) aggressively manage battery and memory, frequently suspending or terminating applications without warning.
 
-To effectively instrument mobile applications, the OpenTelemetry ecosystem provides dedicated native SDKs: `opentelemetry-swift` for iOS/macOS and `opentelemetry-android` (which builds upon the core Java SDK) for Android. 
+To effectively instrument mobile applications, the OpenTelemetry ecosystem provides dedicated native SDKs: `opentelemetry-swift` for iOS/macOS and `opentelemetry-android` (which builds upon the core Java SDK) for Android.
 
 Deploying these SDKs requires architecting for the unique realities of the mobile ecosystem.
 
@@ -248,6 +249,7 @@ let urlSessionInstrumentation = URLSessionInstrumentation(
 ### 3. Application Lifecycle and App Start Metrics
 
 A critical metric for mobile performance is App Start Time (the duration from the user tapping the app icon to the first frame being rendered). The OS handles app launches in two distinct ways:
+
 * **Cold Start:** The app process does not exist in memory. The OS must allocate memory, load the binary, and initialize the application object.
 * **Warm/Hot Start:** The app was suspended in the background and is merely brought to the foreground.
 
@@ -257,14 +259,15 @@ Furthermore, lifecycle events dictate telemetry flushing. When the OS broadcasts
 
 ### 4. Managing Battery Drain and Cellular Data Constraints
 
-Exporting telemetry consumes two highly protected resources on a mobile device: the battery (via radio usage) and the user's cellular data allowance. 
+Exporting telemetry consumes two highly protected resources on a mobile device: the battery (via radio usage) and the user's cellular data allowance.
 
 A poorly configured OpenTelemetry integration can result in the app constantly waking up the device's cellular radio to transmit a few kilobytes of spans, draining the battery and causing negative app store reviews.
 
 To optimize for the mobile environment:
-1.  **gRPC over HTTP/JSON:** Always configure the mobile OTLP exporter to use gRPC or HTTP/Protobuf. Protobuf payloads are significantly smaller than JSON, reducing data usage and shortening the time the radio must remain powered on.
-2.  **Aggressive Batching:** Increase the `scheduleDelayMillis` in the `BatchSpanProcessor` compared to server-side configurations. Instead of flushing every 5 seconds, flush every 30 seconds or even 60 seconds to bundle more data into a single network request.
-3.  **Network-Aware Exporting:** In highly optimized deployments, custom exporters are written to check the `NetworkCapabilities` (Android) or `NWPathMonitor` (iOS). If the device is on a metered cellular connection and the battery is low, the exporter can defer sending non-critical metrics and traces to the disk cache, only waking up the radio to transmit critical errors or waiting until the device is connected to unmetered Wi-Fi and charging.
+
+1. **gRPC over HTTP/JSON:** Always configure the mobile OTLP exporter to use gRPC or HTTP/Protobuf. Protobuf payloads are significantly smaller than JSON, reducing data usage and shortening the time the radio must remain powered on.
+2. **Aggressive Batching:** Increase the `scheduleDelayMillis` in the `BatchSpanProcessor` compared to server-side configurations. Instead of flushing every 5 seconds, flush every 30 seconds or even 60 seconds to bundle more data into a single network request.
+3. **Network-Aware Exporting:** In highly optimized deployments, custom exporters are written to check the `NetworkCapabilities` (Android) or `NWPathMonitor` (iOS). If the device is on a metered cellular connection and the battery is low, the exporter can defer sending non-critical metrics and traces to the disk cache, only waking up the radio to transmit critical errors or waiting until the device is connected to unmetered Wi-Fi and charging.
 
 ## 10.4 Managing Client-Side Overhead and Payload Sizes
 
@@ -299,6 +302,7 @@ window.addEventListener('load', () => {
   }, 1000); // 1-second deferral
 });
 ```
+
 *Note: Deferring initialization means you will miss spans for the very beginning of the page load. To capture initial document load metrics while deferring the heavy SDK, you can utilize the browser's native `PerformanceObserver` API to capture the metrics natively, and then retroactively convert them into OpenTelemetry Spans once the SDK boots.*
 
 ### 2. Offloading Serialization to Web Workers
@@ -324,7 +328,7 @@ By intercepting the span export process and passing the raw span objects over th
 
 ### 3. Payload Compression and Transport Optimization
 
-Once telemetry is serialized, transmitting it over the public internet presents another bottleneck. Sending raw JSON over HTTP/1.1 is incredibly inefficient. 
+Once telemetry is serialized, transmitting it over the public internet presents another bottleneck. Sending raw JSON over HTTP/1.1 is incredibly inefficient.
 
 To reduce payload sizes, you must enforce strict limits and compression:
 
@@ -340,6 +344,6 @@ If you implement a simple probabilistic sampler on the client (e.g., only keepin
 
 Instead of blanket probabilistic sampling, client-side overhead is best managed through:
 
-1.  **Strict Rate Limiting:** Rather than sampling based on a percentage, implement a leaky bucket or token bucket rate limiter in the browser. Allow a maximum of, for example, 50 spans per minute per user. This protects both the client's network and your backend ingestion limits during infinite loop bugs or rapid user clicking.
-2.  **Semantic Dropping:** Configure your instrumentations to ignore high-volume, low-value noise. For example, configure the `FetchInstrumentation` to explicitly ignore polling requests to `GET /api/health` or analytics requests to third-party marketing tools.
-3.  **Session-Based Sampling:** If sampling is necessary for cost control, perform the sampling decision at the *session* level, not the request level. When the `session.id` is generated (as discussed in Section 10.2), use a deterministic hash of that ID to decide if the entire session should be recorded. This ensures that if a user is selected for telemetry, you receive 100% of their traces, providing a complete picture without broken correlation.
+1. **Strict Rate Limiting:** Rather than sampling based on a percentage, implement a leaky bucket or token bucket rate limiter in the browser. Allow a maximum of, for example, 50 spans per minute per user. This protects both the client's network and your backend ingestion limits during infinite loop bugs or rapid user clicking.
+2. **Semantic Dropping:** Configure your instrumentations to ignore high-volume, low-value noise. For example, configure the `FetchInstrumentation` to explicitly ignore polling requests to `GET /api/health` or analytics requests to third-party marketing tools.
+3. **Session-Based Sampling:** If sampling is necessary for cost control, perform the sampling decision at the *session* level, not the request level. When the `session.id` is generated (as discussed in Section 10.2), use a deterministic hash of that ID to decide if the entire session should be recorded. This ensures that if a user is selected for telemetry, you receive 100% of their traces, providing a complete picture without broken correlation.

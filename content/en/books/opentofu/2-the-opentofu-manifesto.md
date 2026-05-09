@@ -2,7 +2,7 @@ In August 2023, the Infrastructure as Code landscape experienced a seismic shift
 
 ## 2.1 The History and the Fork from Terraform
 
-To understand OpenTofu, one must first understand the tool from which it originated: Terraform. Created by HashiCorp in 2014, Terraform revolutionized infrastructure management by providing a cloud-agnostic, declarative language for provisioning resources. For nearly a decade, it reigned as the undisputed, de facto standard for Infrastructure as Code (IaC). 
+To understand OpenTofu, one must first understand the tool from which it originated: Terraform. Created by HashiCorp in 2014, Terraform revolutionized infrastructure management by providing a cloud-agnostic, declarative language for provisioning resources. For nearly a decade, it reigned as the undisputed, de facto standard for Infrastructure as Code (IaC).
 
 A critical factor in Terraform's widespread adoption was its open-source nature. Released under the Mozilla Public License v2.0 (MPL 2.0), the project encouraged a massive ecosystem of individual contributors, enterprise users, and third-party vendors to build integrations, modules, and automation wrappers without fear of legal reprisal or vendor lock-in.
 
@@ -10,13 +10,14 @@ A critical factor in Terraform's widespread adoption was its open-source nature.
 
 On August 10, 2023, HashiCorp announced a fundamental shift in its licensing model. The company stated that, starting with version 1.6, Terraform (along with several other HashiCorp products) would no longer be distributed under the MPL 2.0. Instead, future releases would be governed by the Business Source License (BSL or BUSL) v1.1.
 
-The BSL is not recognized as a true open-source license by the Open Source Initiative (OSI). The new license included a "competitive use" clause, which explicitly restricted organizations from using the software in production if they offered a product or service that HashiCorp deemed competitive. 
+The BSL is not recognized as a true open-source license by the Open Source Initiative (OSI). The new license included a "competitive use" clause, which explicitly restricted organizations from using the software in production if they offered a product or service that HashiCorp deemed competitive.
 
 This change sent shockwaves through the IaC ecosystem. While end-users deploying their own infrastructure were generally unaffected, the ambiguity of the "competitive" definition created immediate legal and operational uncertainty for startups, massive enterprises, and vendors who had built their platforms on top of the Terraform core.
 
 ### The OpenTF Manifesto and the Fork
 
 Within days of the announcement, a coalition of IaC practitioners, community leaders, and automation vendors drafted and published the "OpenTF Manifesto." The manifesto served two purposes:
+
 1. It publicly urged HashiCorp to revert Terraform to a true open-source license.
 2. It declared that if HashiCorp refused, the coalition would fork the project to ensure the continued existence of an open-source, community-driven IaC tool.
 
@@ -47,7 +48,7 @@ v1.0 ... v1.4 ---> v1.5.0 ---> v1.5.5 (Final MPL 2.0 Release)
 
 Initially dubbed "OpenTF," the project was swiftly renamed to "OpenTofu" shortly after its inception. This renaming was primarily driven by trademark considerations, ensuring a clean legal break from HashiCorp's brand, while also embracing a friendlier, distinct identity for the community-led project.
 
-A key technical decision made during this initial fork was maintaining strict backward compatibility. To prevent breaking millions of existing codebases, OpenTofu retained the `.tf` file extension and continued to parse the `terraform {}` configuration block. 
+A key technical decision made during this initial fork was maintaining strict backward compatibility. To prevent breaking millions of existing codebases, OpenTofu retained the `.tf` file extension and continued to parse the `terraform {}` configuration block.
 
 ```hcl
 # To ensure a seamless transition for existing users, 
@@ -70,7 +71,7 @@ By branching from version 1.5.5, OpenTofu began its life with absolute feature p
 
 ## 2.2 Open-Source Governance and the Linux Foundation
 
-Following the dramatic fork from Terraform, the OpenTofu coalition faced an immediate and existential challenge: establishing trust. If the fork was simply controlled by another single vendor—or even a small, closed group of vendors—the community would merely be trading one benevolent dictator for another. The risk of future license changes or closed-door product decisions would remain. 
+Following the dramatic fork from Terraform, the OpenTofu coalition faced an immediate and existential challenge: establishing trust. If the fork was simply controlled by another single vendor—or even a small, closed group of vendors—the community would merely be trading one benevolent dictator for another. The risk of future license changes or closed-door product decisions would remain.
 
 To permanently eliminate this risk, the creators of OpenTofu recognized that the project required a legally binding, neutral home. On September 20, 2023, it was announced that OpenTofu would become an official project under the **Linux Foundation**.
 
@@ -88,9 +89,10 @@ This move provides several critical guarantees to the IaC community:
 
 Under the Linux Foundation framework, OpenTofu operates via an open governance model led by a **Technical Steering Committee (TSC)**. The TSC is the ultimate authority on the technical direction, release schedule, and feature roadmap of the project.
 
-To prevent monopolization, the TSC is intentionally structured to require representation from multiple distinct organizations. At its inception, the TSC included core engineers from companies like Gruntwork, Spacelift, Harness, env0, and independent community contributors. 
+To prevent monopolization, the TSC is intentionally structured to require representation from multiple distinct organizations. At its inception, the TSC included core engineers from companies like Gruntwork, Spacelift, Harness, env0, and independent community contributors.
 
 The TSC's responsibilities include:
+
 * Reviewing and approving architectural changes.
 * Managing the security disclosure process.
 * Promoting core contributors to maintainer status based on merit, not corporate affiliation.
@@ -170,11 +172,12 @@ The table below outlines the high-level distinctions between OpenTofu and other 
 
 ### 1. The Registry Architecture: Decentralized vs. Walled Garden
 
-One of the most immediate and critical differences between OpenTofu and legacy Terraform lies in how they handle providers and modules. 
+One of the most immediate and critical differences between OpenTofu and legacy Terraform lies in how they handle providers and modules.
 
-Historically, Terraform relied on a centralized registry operated exclusively by HashiCorp. Following the license change, the Terms of Service for that registry were also altered, strictly prohibiting non-Terraform clients (including OpenTofu) from downloading providers from it. 
+Historically, Terraform relied on a centralized registry operated exclusively by HashiCorp. Following the license change, the Terms of Service for that registry were also altered, strictly prohibiting non-Terraform clients (including OpenTofu) from downloading providers from it.
 
-In response, OpenTofu engineered the **OpenTofu Registry**. Rather than building a monolithic, centralized web application, the OpenTofu Registry operates as a highly available, decentralized redirection service. 
+In response, OpenTofu engineered the **OpenTofu Registry**. Rather than building a monolithic, centralized web application, the OpenTofu Registry operates as a highly available, decentralized redirection service.
+
 * It uses standard Git protocols and GitHub releases to source providers.
 * It is fundamentally open; anyone can publish a provider or module without submitting to a single vendor's arbitrary approval process.
 * It is designed for absolute resilience, ensuring that CI/CD pipelines do not break if a single central server experiences downtime.
@@ -219,19 +222,19 @@ This governance difference manifests in the rapid addition of advanced language 
 
 ### 4. Declarative vs. Procedural Lineage
 
-When comparing OpenTofu to legacy Configuration Management tools (like Ansible, Chef, or Puppet), the key difference is the execution model. Legacy configuration management is primarily procedural (imperative); you write scripts to install software, start services, and mutate the operating system of an existing server. 
+When comparing OpenTofu to legacy Configuration Management tools (like Ansible, Chef, or Puppet), the key difference is the execution model. Legacy configuration management is primarily procedural (imperative); you write scripts to install software, start services, and mutate the operating system of an existing server.
 
 OpenTofu is strictly declarative and focused on the *infrastructure layer*. It does not care *how* a virtual network is created; it simply communicates with the AWS or Azure API to ensure the network exists with the exact parameters defined in the code. While legacy tools struggle with "state drift" (where a server's manual changes conflict with the script), OpenTofu's state machine accurately detects these changes and forces the infrastructure back into compliance.
 
 ## 2.4 The Future Roadmap and Community Contributions
 
-Because OpenTofu is governed by the Linux Foundation and maintained by a coalition of organizations and independent engineers, its future is not dictated by closed-door product managers aiming for quarterly revenue targets. Instead, the project's trajectory is determined by practitioner pain points, public upvotes, and open architectural discussions. 
+Because OpenTofu is governed by the Linux Foundation and maintained by a coalition of organizations and independent engineers, its future is not dictated by closed-door product managers aiming for quarterly revenue targets. Instead, the project's trajectory is determined by practitioner pain points, public upvotes, and open architectural discussions.
 
 There are no "Enterprise Only" features hidden behind a paywall in OpenTofu. Every feature merged into the core CLI is, and will remain, strictly open source.
 
 ### The Open Roadmap Philosophy
 
-Traditional enterprise software roadmaps are often opaque, with delivery dates heavily guarded. OpenTofu takes a fundamentally different approach. The roadmap is managed entirely in the open via GitHub Projects and public milestones. 
+Traditional enterprise software roadmaps are often opaque, with delivery dates heavily guarded. OpenTofu takes a fundamentally different approach. The roadmap is managed entirely in the open via GitHub Projects and public milestones.
 
 The Technical Steering Committee (TSC) categorizes the roadmap into three distinct horizons:
 

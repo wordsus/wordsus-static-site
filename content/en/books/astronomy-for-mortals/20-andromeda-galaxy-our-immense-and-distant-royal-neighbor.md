@@ -2,13 +2,13 @@
 
 ---
 
-Step outside on a clear, dark, moonless night, far from the suffocating glow of city lights. Allow your eyes to adjust to the inky blackness. If you look toward the constellation of Pegasus, you might notice a faint, elongated smudge of light, no larger than a grain of rice held at arm's length. It is not a star. It is not a cloud in our atmosphere. That pale ghost of light is the Andromeda Galaxy, also known to astronomers as M31. 
+Step outside on a clear, dark, moonless night, far from the suffocating glow of city lights. Allow your eyes to adjust to the inky blackness. If you look toward the constellation of Pegasus, you might notice a faint, elongated smudge of light, no larger than a grain of rice held at arm's length. It is not a star. It is not a cloud in our atmosphere. That pale ghost of light is the Andromeda Galaxy, also known to astronomers as M31.
 
-To the naked eye, it is entirely unassuming. Yet, that faint smudge is the most distant object a human being can see without the aid of a telescope. The light hitting your retina at that very moment has been traveling through the absolute freezing void of intergalactic space for 2.5 million years. When the photons you are seeing right now first began their journey, our ancestors, *Homo habilis*, were just beginning to craft the very first primitive stone tools in eastern Africa. 
+To the naked eye, it is entirely unassuming. Yet, that faint smudge is the most distant object a human being can see without the aid of a telescope. The light hitting your retina at that very moment has been traveling through the absolute freezing void of intergalactic space for 2.5 million years. When the photons you are seeing right now first began their journey, our ancestors, *Homo habilis*, were just beginning to craft the very first primitive stone tools in eastern Africa.
 
-Welcome to the ultimate neighbor. In the vast, expanding, and mostly empty cosmos, galaxies tend to be profoundly isolated. But humanity is lucky enough to live in a small, gravitationally bound cosmic village known as the Local Group. And in this village, Andromeda is the undisputed giant. It is a sprawling, majestic spiral of stars, gas, dust, and dark matter that dwarfs our own home galaxy. 
+Welcome to the ultimate neighbor. In the vast, expanding, and mostly empty cosmos, galaxies tend to be profoundly isolated. But humanity is lucky enough to live in a small, gravitationally bound cosmic village known as the Local Group. And in this village, Andromeda is the undisputed giant. It is a sprawling, majestic spiral of stars, gas, dust, and dark matter that dwarfs our own home galaxy.
 
-But Andromeda is not just a beautiful celestial object to be admired from afar. It is an active participant in our ultimate cosmic destiny. While the rest of the universe is expanding, rushing away from us in all directions, Andromeda is the terrifying, beautiful exception. It is falling directly toward us. 
+But Andromeda is not just a beautiful celestial object to be admired from afar. It is an active participant in our ultimate cosmic destiny. While the rest of the universe is expanding, rushing away from us in all directions, Andromeda is the terrifying, beautiful exception. It is falling directly toward us.
 
 In this journey, we will dissect this colossal neighbor, understand its staggering scale, explore its hidden secrets, and walk step-by-step through the inevitable day when our two great galactic empires will violently, beautifully merge into one.
 
@@ -18,7 +18,7 @@ For most of human history, the true nature of Andromeda was completely unknown. 
 
 This belief persisted until the early 1920s, a time when humanity's understanding of the universe was staggeringly small. The consensus of the day was that the Milky Way *was* the entire universe. Everything we could see, every star, every cloud of gas, was thought to be contained within our home galaxy.
 
-The paradigm shattered thanks to an astronomer named Edwin Hubble, operating the massive 100-inch Hooker Telescope at Mount Wilson Observatory. Hubble focused his lens on Andromeda and began looking for a very specific type of star known as a Cepheid variable. These stars pulsate, growing brighter and dimmer in a predictable rhythm. A few years earlier, Henrietta Swan Leavitt, a brilliant astronomer working at Harvard, discovered a direct mathematical relationship between the period of a Cepheid's pulsation and its true, intrinsic luminosity. 
+The paradigm shattered thanks to an astronomer named Edwin Hubble, operating the massive 100-inch Hooker Telescope at Mount Wilson Observatory. Hubble focused his lens on Andromeda and began looking for a very specific type of star known as a Cepheid variable. These stars pulsate, growing brighter and dimmer in a predictable rhythm. A few years earlier, Henrietta Swan Leavitt, a brilliant astronomer working at Harvard, discovered a direct mathematical relationship between the period of a Cepheid's pulsation and its true, intrinsic luminosity.
 
 By measuring how fast a Cepheid blinked, Hubble could calculate exactly how bright it *should* be. By comparing that true brightness to how dim it *appeared* from Earth, he could calculate its distance using the inverse-square law of light.
 
@@ -28,11 +28,11 @@ When Hubble ran the numbers for the Cepheid variables inside Andromeda, the resu
 
 To understand Andromeda, we must first abandon our terrestrial sense of scale. The human brain evolved to understand the distance to the next river or mountain, not the distance between stars.
 
-Our Milky Way is undeniably massive. It spans approximately 100,000 light-years from edge to edge and contains roughly 100 billion to 400 billion stars. Yet, next to Andromeda, our home is the smaller sibling. 
+Our Milky Way is undeniably massive. It spans approximately 100,000 light-years from edge to edge and contains roughly 100 billion to 400 billion stars. Yet, next to Andromeda, our home is the smaller sibling.
 
-Andromeda spans an unfathomable 220,000 light-years in diameter. It is more than twice the width of our galaxy. If Andromeda were bright enough to be fully visible to the naked eye in our night sky, it would appear larger than six full moons lined up end-to-end. 
+Andromeda spans an unfathomable 220,000 light-years in diameter. It is more than twice the width of our galaxy. If Andromeda were bright enough to be fully visible to the naked eye in our night sky, it would appear larger than six full moons lined up end-to-end.
 
-Within this sprawling expanse lies a staggering population of stars. While the Milky Way holds perhaps a few hundred billion, Andromeda is estimated to contain **one trillion** stars. 
+Within this sprawling expanse lies a staggering population of stars. While the Milky Way holds perhaps a few hundred billion, Andromeda is estimated to contain **one trillion** stars.
 
 ```text
 =========================================================
@@ -58,13 +58,13 @@ And speaking of that black hole, Andromeda's central monster dwarfs our own. Whi
 
 ## 3. The Invisible Web: Dark Matter and the Galactic Halo
 
-If you were to count up all the stars, all the nebulas, all the planets, and all the black holes in Andromeda, you would still be missing the vast majority of the galaxy. 
+If you were to count up all the stars, all the nebulas, all the planets, and all the black holes in Andromeda, you would still be missing the vast majority of the galaxy.
 
-Visible light only tells a fraction of the story. Like an iceberg where 90% of the mass is hidden beneath the ocean waves, galaxies are encased in immense, invisible structures known as dark matter halos. Dark matter is a mysterious substance that does not emit, absorb, or reflect light. We only know it exists because of its gravitational pull on the visible stars and gas. 
+Visible light only tells a fraction of the story. Like an iceberg where 90% of the mass is hidden beneath the ocean waves, galaxies are encased in immense, invisible structures known as dark matter halos. Dark matter is a mysterious substance that does not emit, absorb, or reflect light. We only know it exists because of its gravitational pull on the visible stars and gas.
 
 When astronomers measure the rotation speed of Andromeda, they find that the outer edges are spinning far too fast. Based on the visible matter alone, the outer stars should be flung out into deep space. The only explanation is that an invisible web of dark matter, weighing billions of times more than our Sun, is holding the galaxy together.
 
-Furthermore, Andromeda is surrounded by a massive sphere of hot, ionized gas. Recent studies utilizing the ultraviolet capabilities of the Hubble Space Telescope have mapped this gaseous halo, and the results are astounding. Andromeda's halo extends over 1.3 million light-years from the galaxy's center—halfway to the Milky Way. 
+Furthermore, Andromeda is surrounded by a massive sphere of hot, ionized gas. Recent studies utilizing the ultraviolet capabilities of the Hubble Space Telescope have mapped this gaseous halo, and the results are astounding. Andromeda's halo extends over 1.3 million light-years from the galaxy's center—halfway to the Milky Way.
 
 Because the Milky Way also has its own immense, invisible halo of gas and dark matter, a startling realization has emerged: **We are already touching.** The outer, invisible edges of Andromeda's halo and the Milky Way's halo have already begun to intermingle in the deep void of intergalactic space. The collision has, in a very subtle way, already begun.
 
@@ -92,9 +92,9 @@ However, in 2012, researchers using the Hubble Space Telescope spent years pains
 
 When we hear the word "collision," our terrestrial minds conjure images of car crashes, shattered glass, and violent impacts. A galactic collision is entirely different. It is a slow, graceful, and beautifully destructive ballet driven entirely by gravity.
 
-Despite containing hundreds of billions of stars, galaxies are overwhelmingly composed of empty space. To understand how empty, imagine our Sun is the size of a ping-pong ball sitting in the middle of a room. On that scale, the nearest star to us (Proxima Centauri) would be another ping-pong ball located over 1,000 kilometers away. 
+Despite containing hundreds of billions of stars, galaxies are overwhelmingly composed of empty space. To understand how empty, imagine our Sun is the size of a ping-pong ball sitting in the middle of a room. On that scale, the nearest star to us (Proxima Centauri) would be another ping-pong ball located over 1,000 kilometers away.
 
-Because the distances between stars are so unfathomably vast, the odds of two individual stars physically colliding during a galactic merger are practically zero. When the Milky Way and Andromeda collide, the stars will simply slip past one another like ghosts. There will be no explosive stellar crashes. 
+Because the distances between stars are so unfathomably vast, the odds of two individual stars physically colliding during a galactic merger are practically zero. When the Milky Way and Andromeda collide, the stars will simply slip past one another like ghosts. There will be no explosive stellar crashes.
 
 Instead, the true violence will be gravitational. As the two galaxies interpenetrate, their immense gravitational fields will tear at each other. The beautiful spiral arms of both galaxies will be stretched, distorted, and eventually destroyed.
 
@@ -133,28 +133,28 @@ are gone, replaced by a massive, featureless elliptical galaxy.
 ```
 
 **The Approaching Storm (Next 3 Billion Years)**
-For the next few billion years, Andromeda will simply grow larger and brighter in our night sky. What is currently a faint smudge will become a prominent, glowing oval, eventually spanning across half the visible heavens. 
+For the next few billion years, Andromeda will simply grow larger and brighter in our night sky. What is currently a faint smudge will become a prominent, glowing oval, eventually spanning across half the visible heavens.
 
 **The Starburst Phase (3.7 Billion Years)**
-While the stars will not collide, the massive clouds of interstellar gas and dust within both galaxies *will* crash into each other. These immense gas clouds will be violently compressed by the impact. This compression will trigger a ferocious wave of star formation known as a "starburst." The night sky will light up with the brilliant, blue-white light of millions of massive, newborn stars, and the cosmos will be painted with the pinks and reds of glowing hydrogen nebulae. 
+While the stars will not collide, the massive clouds of interstellar gas and dust within both galaxies *will* crash into each other. These immense gas clouds will be violently compressed by the impact. This compression will trigger a ferocious wave of star formation known as a "starburst." The night sky will light up with the brilliant, blue-white light of millions of massive, newborn stars, and the cosmos will be painted with the pinks and reds of glowing hydrogen nebulae.
 
 **The Gravitational Slingshot (3.9 Billion Years)**
 During the first close pass, the sheer gravitational torsion will rip stars from their usual orbits. Immense "tidal tails"—long ribbons containing millions of stars—will be ejected deep into the void. It is highly likely that our own solar system will be flung far out into the fringes of the newly merging system, exiled far from the galactic core.
 
 **The Dance of the Black Holes (5 to 6 Billion Years)**
-As the main bodies of the galaxies merge, their central supermassive black holes will sink toward the gravitational center of the new, combined galaxy. These two titans, one weighing 4 million solar masses and the other 140 million, will begin a death spiral. 
+As the main bodies of the galaxies merge, their central supermassive black holes will sink toward the gravitational center of the new, combined galaxy. These two titans, one weighing 4 million solar masses and the other 140 million, will begin a death spiral.
 
 As they orbit each other at a fraction of the speed of light, they will churn the fabric of spacetime itself, emitting massive amounts of gravitational waves. Eventually, they will crash together and merge into a single, unimaginable cosmic behemoth, releasing an explosion of energy that will temporarily outshine the rest of the galaxy.
 
 ## 7. What Happens to the Earth?
 
-It is natural to wonder what will happen to humanity, or our planet, during this cosmic upheaval. 
+It is natural to wonder what will happen to humanity, or our planet, during this cosmic upheaval.
 
-As established, our Sun will not physically hit another star. Furthermore, the orbits of the planets around our Sun will remain completely unaffected; the gravity holding the Earth to the Sun is vastly stronger than the passing gravitational tug of a distant, alien star. 
+As established, our Sun will not physically hit another star. Furthermore, the orbits of the planets around our Sun will remain completely unaffected; the gravity holding the Earth to the Sun is vastly stronger than the passing gravitational tug of a distant, alien star.
 
 However, the Earth's position within the larger galaxy *will* change. Computer simulations suggest there is a 12% chance that our solar system will be entirely ejected from the newly merged galaxy, cast adrift as a rogue solar system wandering the dark void of intergalactic space. There is also a small chance we could be hurled into the dense, chaotic center of the new galaxy, where radiation from supernovae and the active central black hole could strip away planetary atmospheres.
 
-But there is a more pressing, local reality. This galactic collision is scheduled to peak in about 4 to 5 billion years. By that time, our own Sun will be reaching the end of its life. As its core runs out of hydrogen fuel, the Sun will expand into a Red Giant. Its outer layers will swell outwards, completely swallowing Mercury, Venus, and almost certainly the Earth. Long before Andromeda fills our sky, the oceans of Earth will have boiled away, and the surface will be a molten sea of rock under the terrifying glare of a dying star. 
+But there is a more pressing, local reality. This galactic collision is scheduled to peak in about 4 to 5 billion years. By that time, our own Sun will be reaching the end of its life. As its core runs out of hydrogen fuel, the Sun will expand into a Red Giant. Its outer layers will swell outwards, completely swallowing Mercury, Venus, and almost certainly the Earth. Long before Andromeda fills our sky, the oceans of Earth will have boiled away, and the surface will be a molten sea of rock under the terrifying glare of a dying star.
 
 The great galactic collision is a show that the Earth will likely not survive to witness, at least not in a habitable state. If descendants of humanity exist to watch the night sky burn with the fire of a trillion merging stars, they will have to be watching from the surface of a different world.
 
@@ -162,9 +162,9 @@ The great galactic collision is a show that the Earth will likely not survive to
 
 When the gravitational dust finally settles in about 7 billion years, the Milky Way and Andromeda will be no more. The two beautiful, spiraling pinwheels of light will have utterly destroyed each other's delicate structures.
 
-In their place will be a single, unimaginably massive galaxy. Astronomers have already given this future home a name: **Milkomeda** (or occasionally, the Andromeda-Milky Way). 
+In their place will be a single, unimaginably massive galaxy. Astronomers have already given this future home a name: **Milkomeda** (or occasionally, the Andromeda-Milky Way).
 
-Milkomeda will not be a spiral galaxy. The chaotic, intersecting orbits of the stars during the collision will scramble the neat, flat disks of the parent galaxies. The resulting structure will be an "elliptical galaxy"—a giant, featureless sphere or football shape made of stars swarming in random, buzzing orbits like bees in a hive. 
+Milkomeda will not be a spiral galaxy. The chaotic, intersecting orbits of the stars during the collision will scramble the neat, flat disks of the parent galaxies. The resulting structure will be an "elliptical galaxy"—a giant, featureless sphere or football shape made of stars swarming in random, buzzing orbits like bees in a hive.
 
 Furthermore, Milkomeda will be a dying galaxy. The violent starburst phase during the collision will consume almost all of the available interstellar gas and dust. With the raw materials for new stars exhausted, star formation will completely stop. This process, known in astrophysics as "quenching," marks the beginning of a galaxy's twilight years.
 
@@ -174,6 +174,6 @@ The brilliant, hot, blue stars will quickly burn out and detonate as supernovae.
 
 The story of the Andromeda galaxy is the ultimate reminder of our place in the universe. It teaches us about the staggering scales of distance and time that govern reality—scales in which human history is less than a blink of an eye.
 
-When you look up at that faint smudge of light in the autumn sky, you are not just looking across millions of light-years of space; you are looking at our destiny. You are looking at a trillion stars, hurtling towards us through the dark, carrying with them the inevitable end of the Milky Way as we know it. 
+When you look up at that faint smudge of light in the autumn sky, you are not just looking across millions of light-years of space; you are looking at our destiny. You are looking at a trillion stars, hurtling towards us through the dark, carrying with them the inevitable end of the Milky Way as we know it.
 
 Yet, there is no cause for fear. The dance of the galaxies is the natural order of the cosmos. Structures are built, they endure for billions of years, and then they are swept away by gravity to build something new, massive, and entirely different. We are incredibly privileged to have evolved at this exact moment in cosmic time—a time when we can peer out from our tiny, blue world, understand the majestic machinery of the heavens, and witness the slow, beautiful approach of our great royal neighbor.

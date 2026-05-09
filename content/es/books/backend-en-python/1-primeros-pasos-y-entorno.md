@@ -2,13 +2,13 @@
 
 Es probable que ya sepas que Python se caracteriza por su sintaxis amigable y su curva de aprendizaje accesible. Puedes escribir tu primer script en minutos y tener una API funcional en un par de horas. Sin embargo, existe un abismo enorme entre escribir código que simplemente "funciona" en tu máquina local y diseñar sistemas backend robustos, escalables y preparados para el estrés de un entorno de producción real.
 
-Este libro nace con un propósito claro: ser el puente definitivo que te permita cruzar ese abismo. 
+Este libro nace con un propósito claro: ser el puente definitivo que te permita cruzar ese abismo.
 
-A lo largo de estas páginas, no nos limitaremos a recitar la documentación oficial. El objetivo no es que memorices funciones, sino que comprendas los "porqués" detrás de cada herramienta. Empezaremos consolidando los cimientos del lenguaje para asegurarnos de que no haya grietas en tu conocimiento base. A partir de ahí, nos adentraremos en terrenos más profundos: desmitificaremos el manejo de memoria, la metaprogramación y la concurrencia, para luego escalar hacia el diseño de APIs eficientes, la interacción compleja con bases de datos y la implementación de patrones de arquitectura limpios. 
+A lo largo de estas páginas, no nos limitaremos a recitar la documentación oficial. El objetivo no es que memorices funciones, sino que comprendas los "porqués" detrás de cada herramienta. Empezaremos consolidando los cimientos del lenguaje para asegurarnos de que no haya grietas en tu conocimiento base. A partir de ahí, nos adentraremos en terrenos más profundos: desmitificaremos el manejo de memoria, la metaprogramación y la concurrencia, para luego escalar hacia el diseño de APIs eficientes, la interacción compleja con bases de datos y la implementación de patrones de arquitectura limpios.
 
 No nos detendremos en el código. Un desarrollador Senior entiende el ciclo de vida completo del software, por lo que también dominaremos las pruebas automatizadas, la seguridad, la contenerización y las prácticas modernas de despliegue continuo.
 
-Ya sea que busques dar el salto hacia tu primera posición Mid-Level, o estés afinando tus habilidades para consolidarte como un líder técnico Senior, aquí encontrarás el mapa de ruta, el rigor analítico y las mejores prácticas necesarias para construir software que perdure. 
+Ya sea que busques dar el salto hacia tu primera posición Mid-Level, o estés afinando tus habilidades para consolidarte como un líder técnico Senior, aquí encontrarás el mapa de ruta, el rigor analítico y las mejores prácticas necesarias para construir software que perdure.
 
 Prepárate para cuestionar lo que creías saber, romper código y, sobre todo, aprender a reconstruirlo con la visión y la mentalidad de un verdadero experto. El viaje hacia la maestría en el backend comienza aquí.
 
@@ -16,19 +16,19 @@ Prepárate para cuestionar lo que creías saber, romper código y, sobre todo, a
 
 El primer paso en el camino para dominar Python no es escribir código, sino preparar el terreno. Un error muy común entre los desarrolladores que recién comienzan es ir directamente a `python.org`, descargar el instalador, hacer clic en "Siguiente" hasta finalizar, y comenzar a programar. Aunque esto funciona para un script rápido de fin de semana, en un entorno profesional es la receta perfecta para el caos.
 
-A medida que crezcas como desarrollador, te enfrentarás a un problema inevitable: diferentes proyectos requerirán diferentes versiones de Python. El Proyecto A heredado de hace tres años puede requerir Python 3.8, mientras que el Proyecto B que inicias hoy aprovechará las nuevas características de Python 3.12. 
+A medida que crezcas como desarrollador, te enfrentarás a un problema inevitable: diferentes proyectos requerirán diferentes versiones de Python. El Proyecto A heredado de hace tres años puede requerir Python 3.8, mientras que el Proyecto B que inicias hoy aprovechará las nuevas características de Python 3.12.
 
 Aquí es donde entra en juego la diferencia entre una instalación "amateur" y un entorno "senior".
 
 ### El Problema del "Python del Sistema"
 
-Tu sistema operativo (especialmente si usas Linux o macOS) ya viene con una versión de Python instalada por defecto. Esta versión es utilizada por el propio sistema operativo para tareas internas. Si intentas modificarla, actualizarla o instalar librerías globales en ella, corres el riesgo de romper dependencias críticas de tu sistema. 
+Tu sistema operativo (especialmente si usas Linux o macOS) ya viene con una versión de Python instalada por defecto. Esta versión es utilizada por el propio sistema operativo para tareas internas. Si intentas modificarla, actualizarla o instalar librerías globales en ella, corres el riesgo de romper dependencias críticas de tu sistema.
 
 **Regla de oro:** Nunca toques el Python del sistema operativo. Déjalo en paz.
 
 ### La Solución Senior: Gestores de Versiones (`pyenv`)
 
-Para manejar múltiples versiones de Python sin conflictos, la herramienta estándar de la industria es **`pyenv`**. 
+Para manejar múltiples versiones de Python sin conflictos, la herramienta estándar de la industria es **`pyenv`**.
 
 En lugar de instalar Python directamente en tu sistema, instalas `pyenv`. Esta herramienta actúa como un "director de tráfico". Cuando escribes `python` en tu terminal, `pyenv` intercepta la llamada y la redirige a la versión exacta de Python que hayas configurado para ese directorio específico.
 
@@ -53,26 +53,32 @@ La instalación de `pyenv` varía según tu sistema operativo. En sistemas basad
 Una vez instalado, el flujo de trabajo es extremadamente sencillo:
 
 **1. Ver qué versiones están disponibles para instalar:**
+
 ```bash
 pyenv install --list
 ```
 
 **2. Instalar una versión específica de Python:**
+
 ```bash
 pyenv install 3.12.2
 ```
+
 *(Nota: pyenv descargará el código fuente y lo compilará en tu máquina, por lo que este paso puede tardar unos minutos).*
 
 **3. Establecer una versión global (la que se usará por defecto en toda tu computadora):**
+
 ```bash
 pyenv global 3.12.2
 ```
 
 **4. Establecer una versión local (solo para el proyecto en la carpeta actual):**
+
 ```bash
 cd mi_proyecto_heredado
 pyenv local 3.9.18
 ```
+
 Este último comando creará un archivo oculto llamado `.python-version` en tu carpeta. A partir de ese momento, cada vez que entres a esa carpeta, `pyenv` cambiará automáticamente a Python 3.9.18 de forma transparente.
 
 *(Nota: En el Capítulo 7 abordaremos cómo aislar las librerías de estos proyectos usando entornos virtuales, lo cual es el siguiente paso lógico después de fijar la versión base con pyenv).*
@@ -86,11 +92,13 @@ Con la base de Python correctamente gestionada, el siguiente paso es tu herramie
 Para Python, el mercado está dominado por dos gigantes, ambos excelentes opciones:
 
 **1. Visual Studio Code (VS Code):**
+
 * **Naturaleza:** Es un editor de texto ligero que se transforma en un IDE potente mediante extensiones.
 * **Ventajas:** Es gratuito, de código abierto, extremadamente rápido y altamente personalizable. Es el estándar de facto si trabajas como Full-Stack (escribiendo Python en el backend y JavaScript/TypeScript en el frontend).
 * **Configuración esencial:** Necesitas instalar la extensión oficial de **Python** (desarrollada por Microsoft) y **Pylance** (para un análisis de código y autocompletado ultrarrápido).
 
 **2. PyCharm (de JetBrains):**
+
 * **Naturaleza:** Un IDE "baterías incluidas" diseñado específicamente y exclusivamente para Python.
 * **Ventajas:** Su indexación de código, refactorización y herramientas de resolución de conflictos son inigualables directamente "fuera de la caja". No necesitas instalar docenas de extensiones para tener una experiencia premium.
 * **Consideración:** Tiene una versión *Community* (gratuita y perfecta para el 90% de los casos) y una versión *Professional* (de pago, que brilla en el desarrollo web con Django/FastAPI y bases de datos).
@@ -136,7 +144,7 @@ Hola, Desarrollador
 ```
 
 **La perspectiva Senior del REPL:**
-Muchos principiantes abandonan el REPL en cuanto aprenden a escribir scripts, considerándolo una mera "calculadora". Un desarrollador avanzado, por el contrario, lo utiliza constantemente como una herramienta de **introspección**. 
+Muchos principiantes abandonan el REPL en cuanto aprenden a escribir scripts, considerándolo una mera "calculadora". Un desarrollador avanzado, por el contrario, lo utiliza constantemente como una herramienta de **introspección**.
 
 El REPL es el lugar perfecto para explorar cómo funcionan las cosas en memoria sin tener que escribir pruebas formales. Herramientas integradas como `dir()` (para ver los métodos de un objeto), `type()` (para verificar su clase) y `help()` (para leer la documentación interactiva) convierten al REPL en tu mejor aliado al depurar o explorar nuevas librerías.
 
@@ -178,7 +186,7 @@ Aquí tienes el diagrama de flujo interno de la ejecución de un script:
 
 A medida que escribas scripts, notarás que tus archivos `.py` tendrán una doble vida: a veces los ejecutarás directamente (`python mi_script.py`) y otras veces querrás importar sus funciones desde otro archivo (`import mi_script`).
 
-Cuando Python ejecuta un archivo, le asigna un nombre especial internamente a través de la variable mágica `__name__`. 
+Cuando Python ejecuta un archivo, le asigna un nombre especial internamente a través de la variable mágica `__name__`.
 
 * Si ejecutas el archivo **directamente**, Python le asigna el valor `"__main__"`.
 * Si **importas** el archivo desde otro script, `__name__` toma el nombre del archivo (ej. `"mi_script"`).
@@ -242,6 +250,7 @@ True
 Python tiene cuatro tipos de datos escalares (primitivos) principales. Más allá de su uso obvio, cada uno tiene particularidades "bajo el capó" que debes conocer.
 
 #### 1. Enteros (`int`)
+
 Representan números sin parte decimal.
 
 * **Lo básico:** `edad = 30`
@@ -255,6 +264,7 @@ Representan números sin parte decimal.
 ```
 
 #### 2. Flotantes (`float`)
+
 Representan números reales con precisión decimal.
 
 * **Lo básico:** `precio = 19.99`
@@ -264,13 +274,15 @@ Representan números reales con precisión decimal.
 >>> 0.1 + 0.2
 0.30000000000000004  # ¡Sorpresa! No es 0.3 exacto.
 ```
+
 **Regla de oro:** Nunca uses `float` para representar dinero o realizar cálculos financieros precisos. Para esos casos, la biblioteca estándar de Python incluye el módulo `decimal` o se suele trabajar en centavos (usando `int`).
 
 #### 3. Booleanos (`bool`)
+
 Representan la lógica binaria: `True` (Verdadero) o `False` (Falso).
 
 * **Lo básico:** `es_admin = True`
-* **La perspectiva Senior:** En Python, los booleanos no son un tipo completamente independiente de los números. En realidad, **`bool` es una subclase de `int`**. Bajo el capó, `True` es literalmente el número `1` y `False` es el número `0`. 
+* **La perspectiva Senior:** En Python, los booleanos no son un tipo completamente independiente de los números. En realidad, **`bool` es una subclase de `int`**. Bajo el capó, `True` es literalmente el número `1` y `False` es el número `0`.
 
 ```python
 >>> True + True
@@ -278,9 +290,11 @@ Representan la lógica binaria: `True` (Verdadero) o `False` (Falso).
 >>> issubclass(bool, int)
 True
 ```
+
 Además, Python evalúa el concepto de "Truthiness" (veracidad). Cualquier objeto vacío o nulo se evalúa como `False` en un contexto condicional (como un `if`), y el resto como `True`. Valores falsos comunes: `0`, `0.0`, `""` (string vacío), `None`, o listas/diccionarios vacíos.
 
 #### 4. Cadenas de Texto (`str`)
+
 Representan secuencias de caracteres.
 
 * **Lo básico:** `mensaje = "Hola Mundo"`
@@ -300,7 +314,7 @@ Como adelanto al siguiente capítulo: los `str`, los `int`, los `float` y los `b
 
 Si en el capítulo anterior lograste desaprender la idea de que las variables son "cajas" y aceptaste que son **etiquetas pegadas a objetos**, acabas de desbloquear la capacidad de entender el concepto que causa el 90% de los errores lógicos en los desarrolladores de Python Junior: la mutabilidad.
 
-El ciclo de vida de un objeto en Python tiene una regla estricta: una vez que el objeto es creado en la memoria, ¿se le permite cambiar su estado interno (su valor) o no? 
+El ciclo de vida de un objeto en Python tiene una regla estricta: una vez que el objeto es creado en la memoria, ¿se le permite cambiar su estado interno (su valor) o no?
 
 * Si **puede** cambiar su contenido sin cambiar su identidad en memoria, es **Mutable**.
 * Si **no puede** cambiar su contenido bajo ninguna circunstancia, es **Inmutable**.
@@ -328,6 +342,7 @@ False  # ¡La dirección de memoria cambió!
 
 **¿Qué ocurrió realmente bajo el capó?**
 Como el número `10` es inmutable, Python no lo modificó. En su lugar:
+
 1. Calculó el resultado de `10 + 1`.
 2. Creó un **nuevo** objeto en memoria con el valor `11`.
 3. Arrancó la etiqueta `x` del `10` y la pegó en el `11`.

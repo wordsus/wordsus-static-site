@@ -228,8 +228,6 @@ The system cannot assume the downstream service is permanently dead, nor can it 
 * If the test requests succeed, it indicates the downstream service has recovered. The breaker resets its counters and transitions back to the **Closed** state.
 * If any of the test requests fail, it indicates the dependency is still unhealthy. The breaker immediately reverts to the **Open** state and resets its timeout timer.
 
-
-
 ### Fallback Strategies
 
 When a circuit breaker is Open, the calling application must handle the instant failures gracefully. This is typically achieved by defining a **Fallback Strategy**. Instead of simply returning an HTTP 503 (Service Unavailable) to the end-user, the system can:

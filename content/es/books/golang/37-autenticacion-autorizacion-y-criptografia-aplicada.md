@@ -20,63 +20,64 @@ A continuación, se detalla un ejemplo robusto utilizando criptografía simétri
 package auth
 
 import (
-	"errors"
-	"fmt"
-	"time"
+ "errors"
+ "fmt"
+ "time"
 
-	"github.com/golang-jwt/jwt/v5"
-	"github.com/google/uuid"
+ "github.com/golang-jwt/jwt/v5"
+ "github.com/google/uuid"
 )
 
 // CustomClaims extiende las claims estándar con datos específicos del dominio.
 type CustomClaims struct {
-	UserID string `json:"user_id"`
-	Role   string `json:"role"`
-	jwt.RegisteredClaims
+ UserID string `json:"user_id"`
+ Role   string `json:"role"`
+ jwt.RegisteredClaims
 }
 
 // GenerarJWT crea un token firmado. Las claves simétricas deben rotarse y protegerse (Capítulo 38).
 func GenerarJWT(userID, role string, secretKey []byte) (string, error) {
-	claims := CustomClaims{
-		UserID: userID,
-		Role:   role,
-		RegisteredClaims: jwt.RegisteredClaims{
-			ExpiresAt: jwt.NewNumericDate(time.Now().Add(15 * time.Minute)), // Tiempo de vida corto
-			IssuedAt:  jwt.NewNumericDate(time.Now()),
-			NotBefore: jwt.NewNumericDate(time.Now()),
-			Issuer:    "mi-api-auth",
-			Subject:   userID,
-			ID:        uuid.NewString(), // JTI único para mitigación de repetición/revocación
-		},
-	}
+ claims := CustomClaims{
+  UserID: userID,
+  Role:   role,
+  RegisteredClaims: jwt.RegisteredClaims{
+   ExpiresAt: jwt.NewNumericDate(time.Now().Add(15 * time.Minute)), // Tiempo de vida corto
+   IssuedAt:  jwt.NewNumericDate(time.Now()),
+   NotBefore: jwt.NewNumericDate(time.Now()),
+   Issuer:    "mi-api-auth",
+   Subject:   userID,
+   ID:        uuid.NewString(), // JTI único para mitigación de repetición/revocación
+  },
+ }
 
-	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
-	return token.SignedString(secretKey)
+ token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
+ return token.SignedString(secretKey)
 }
 
 // ValidarJWT parsea y valida el token asegurando que el algoritmo no ha sido alterado.
 func ValidarJWT(tokenString string, secretKey []byte) (*CustomClaims, error) {
-	token, err := jwt.ParseWithClaims(tokenString, &CustomClaims{}, func(token *jwt.Token) (interface{}, error) {
-		// ¡CRÍTICO! Validar explícitamente el algoritmo de firma esperado.
-		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
-			return nil, fmt.Errorf("método de firma inesperado: %v", token.Header["alg"])
-		}
-		return secretKey, nil
-	})
+ token, err := jwt.ParseWithClaims(tokenString, &CustomClaims{}, func(token *jwt.Token) (interface{}, error) {
+  // ¡CRÍTICO! Validar explícitamente el algoritmo de firma esperado.
+  if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
+   return nil, fmt.Errorf("método de firma inesperado: %v", token.Header["alg"])
+  }
+  return secretKey, nil
+ })
 
-	if err != nil {
-		return nil, fmt.Errorf("error al procesar el token: %w", err)
-	}
+ if err != nil {
+  return nil, fmt.Errorf("error al procesar el token: %w", err)
+ }
 
-	if claims, ok := token.Claims.(*CustomClaims); ok && token.Valid {
-		return claims, nil
-	}
+ if claims, ok := token.Claims.(*CustomClaims); ok && token.Valid {
+  return claims, nil
+ }
 
-	return nil, errors.New("token inválido")
+ return nil, errors.New("token inválido")
 }
 ```
 
 **Consideraciones críticas para JWT:**
+
 * **Asimetría recomendada:** Si múltiples servicios necesitan validar el token pero no generarlo, sustituye `HS256` (simétrico) por `RS256` o `ES256` (asimétrico, usando pares de claves pública/privada).
 * **Tiempo de vida:** Mantén el `ExpiresAt` corto (10-15 minutos). Si requieres sesiones largas, implementa un flujo de *Refresh Tokens* opaco almacenado en base de datos.
 
@@ -87,8 +88,9 @@ func ValidarJWT(tokenString string, secretKey []byte) (*CustomClaims, error) {
 PASETO es una alternativa diseñada para corregir los errores arquitectónicos de JWT. En lugar de darle al desarrollador un "menú" de algoritmos criptográficos donde es fácil elegir mal, PASETO utiliza **versiones** (`v1`, `v2`, `v3`, `v4`). Cada versión encapsula una suite criptográfica fuerte y predefinida. Actualmente, se recomienda usar la versión 4 (v4).
 
 PASETO define dos propósitos principales:
-1.  **Local (Symmetric):** El payload está *encriptado* y autenticado (AEAD). El cliente no puede leer el contenido del token.
-2.  **Public (Asymmetric):** El payload está codificado (como en JWT) y firmado digitalmente (Ed25519). Cualquiera con la clave pública puede leerlo y validarlo.
+
+1. **Local (Symmetric):** El payload está *encriptado* y autenticado (AEAD). El cliente no puede leer el contenido del token.
+2. **Public (Asymmetric):** El payload está codificado (como en JWT) y firmado digitalmente (Ed25519). Cualquiera con la clave pública puede leerlo y validarlo.
 
 Utilizando el paquete `github.com/aidarkhanov/paseto` (una implementación moderna y auditada para v4 en Go), podemos generar tokens inmunes a los ataques de confusión de algoritmos.
 
@@ -96,61 +98,62 @@ Utilizando el paquete `github.com/aidarkhanov/paseto` (una implementación moder
 package auth
 
 import (
-	"time"
-	"github.com/aidarkhanov/paseto"
-	"github.com/aidarkhanov/paseto/token"
+ "time"
+ "github.com/aidarkhanov/paseto"
+ "github.com/aidarkhanov/paseto/token"
 )
 
 // GenerarPASETO crea un token V4 Local (encriptado simétricamente).
 func GenerarPASETO(userID string, symmetricKey []byte) (string, error) {
-	// PASETO v4 requiere una clave simétrica exacta de 32 bytes.
-	secretKey, err := paseto.NewV4SymmetricKeyFromBytes(symmetricKey)
-	if err != nil {
-		return "", err
-	}
+ // PASETO v4 requiere una clave simétrica exacta de 32 bytes.
+ secretKey, err := paseto.NewV4SymmetricKeyFromBytes(symmetricKey)
+ if err != nil {
+  return "", err
+ }
 
-	t := token.NewToken()
-	t.SetAudience("mi-api-clientes")
-	t.SetJti("identificador-unico-token")
-	t.SetExpiration(time.Now().Add(15 * time.Minute))
-	t.SetString("user_id", userID) // Custom claim
+ t := token.NewToken()
+ t.SetAudience("mi-api-clientes")
+ t.SetJti("identificador-unico-token")
+ t.SetExpiration(time.Now().Add(15 * time.Minute))
+ t.SetString("user_id", userID) // Custom claim
 
-	// Genera el token: v4.local.xxxxx
-	return paseto.MakeV4Local(t, secretKey)
+ // Genera el token: v4.local.xxxxx
+ return paseto.MakeV4Local(t, secretKey)
 }
 
 // ValidarPASETO desencripta y valida automáticamente la expiración y las reglas criptográficas.
 func ValidarPASETO(tokenString string, symmetricKey []byte) (string, error) {
-	secretKey, err := paseto.NewV4SymmetricKeyFromBytes(symmetricKey)
-	if err != nil {
-		return "", err
-	}
+ secretKey, err := paseto.NewV4SymmetricKeyFromBytes(symmetricKey)
+ if err != nil {
+  return "", err
+ }
 
-	parser := paseto.NewParserWithoutExpiryCheck() // Validaremos claims manualmente por control
-	
-	// Analiza y desencripta
-	t, err := parser.ParseV4Local(secretKey, tokenString, nil)
-	if err != nil {
-		return "", err
-	}
+ parser := paseto.NewParserWithoutExpiryCheck() // Validaremos claims manualmente por control
+ 
+ // Analiza y desencripta
+ t, err := parser.ParseV4Local(secretKey, tokenString, nil)
+ if err != nil {
+  return "", err
+ }
 
-	// Validaciones de tiempo y negocio
-	if err := paseto.ValidateExpectedClaims(t, paseto.ExpectedClaims{
-		Audience: "mi-api-clientes",
-	}); err != nil {
-		return "", err
-	}
+ // Validaciones de tiempo y negocio
+ if err := paseto.ValidateExpectedClaims(t, paseto.ExpectedClaims{
+  Audience: "mi-api-clientes",
+ }); err != nil {
+  return "", err
+ }
 
-	expireTime, err := t.GetExpiration()
-	if err != nil || time.Now().After(expireTime) {
-		return "", paseto.ErrTokenExpired
-	}
+ expireTime, err := t.GetExpiration()
+ if err != nil || time.Now().After(expireTime) {
+  return "", paseto.ErrTokenExpired
+ }
 
-	return t.GetString("user_id")
+ return t.GetString("user_id")
 }
 ```
 
 **¿Por qué preferir PASETO sobre JWT en nuevos proyectos Go?**
+
 * **A prueba de tontos (Foolproof):** La librería en Go no te preguntará qué algoritmo usar al validar. La versión del token (`v4.local`) dicta la regla criptográfica, eliminando la ambigüedad.
 * **Privacidad por defecto:** A diferencia de JWT, donde los datos son visibles en base64url, `v4.local` encripta el contenido. Puedes incluir correos electrónicos o roles sin exponerlos al cliente.
 
@@ -159,7 +162,7 @@ func ValidarPASETO(tokenString string, symmetricKey []byte) (string, error) {
 
 ## 37.2. Integración de flujos OAuth2 y OpenID Connect
 
-En la sección anterior vimos cómo emitir y validar nuestros propios tokens. Sin embargo, en el ecosistema actual es una práctica estándar delegar la gestión de identidades a un Proveedor de Identidad (IdP) externo, como Google, GitHub, Auth0 o Keycloak. Para ello, utilizamos **OAuth2** (el protocolo de autorización) y **OpenID Connect (OIDC)** (la capa de autenticación construida sobre OAuth2). 
+En la sección anterior vimos cómo emitir y validar nuestros propios tokens. Sin embargo, en el ecosistema actual es una práctica estándar delegar la gestión de identidades a un Proveedor de Identidad (IdP) externo, como Google, GitHub, Auth0 o Keycloak. Para ello, utilizamos **OAuth2** (el protocolo de autorización) y **OpenID Connect (OIDC)** (la capa de autenticación construida sobre OAuth2).
 
 La distinción es crucial: OAuth2 otorga *acceso* a una API (mediante un `access_token`), mientras que OIDC certifica *quién* es el usuario (mediante un `id_token`, que típicamente es un JWT como los que analizamos en la sección 37.1).
 
@@ -175,41 +178,41 @@ El flujo más seguro y recomendado para aplicaciones backend (server-side) es el
 package auth
 
 import (
-	"context"
-	"log"
-	"os"
+ "context"
+ "log"
+ "os"
 
-	"github.com/coreos/go-oidc/v3/oidc"
-	"golang.org/x/oauth2"
+ "github.com/coreos/go-oidc/v3/oidc"
+ "golang.org/x/oauth2"
 )
 
 var (
-	OAuthConfig *oauth2.Config
-	OIDCProvider *oidc.Provider
-	Verifier     *oidc.IDTokenVerifier
+ OAuthConfig *oauth2.Config
+ OIDCProvider *oidc.Provider
+ Verifier     *oidc.IDTokenVerifier
 )
 
 // InicializarOAuth se llama al arrancar el servidor.
 // Los secretos deben inyectarse de forma segura (ver Capítulo 38), nunca harcodearse.
 func InicializarOAuth(ctx context.Context) {
-	provider, err := oidc.NewProvider(ctx, "https://accounts.google.com")
-	if err != nil {
-		log.Fatalf("Error inicializando el proveedor OIDC: %v", err)
-	}
-	OIDCProvider = provider
+ provider, err := oidc.NewProvider(ctx, "https://accounts.google.com")
+ if err != nil {
+  log.Fatalf("Error inicializando el proveedor OIDC: %v", err)
+ }
+ OIDCProvider = provider
 
-	OIDCConfig := &oidc.Config{
-		ClientID: os.Getenv("OAUTH_CLIENT_ID"),
-	}
-	Verifier = provider.Verifier(OIDCConfig)
+ OIDCConfig := &oidc.Config{
+  ClientID: os.Getenv("OAUTH_CLIENT_ID"),
+ }
+ Verifier = provider.Verifier(OIDCConfig)
 
-	OAuthConfig = &oauth2.Config{
-		ClientID:     os.Getenv("OAUTH_CLIENT_ID"),
-		ClientSecret: os.Getenv("OAUTH_CLIENT_SECRET"),
-		Endpoint:     provider.Endpoint(),
-		RedirectURL:  "https://mi-api.com/auth/callback",
-		Scopes:       []string{oidc.ScopeOpenID, "profile", "email"},
-	}
+ OAuthConfig = &oauth2.Config{
+  ClientID:     os.Getenv("OAUTH_CLIENT_ID"),
+  ClientSecret: os.Getenv("OAUTH_CLIENT_SECRET"),
+  Endpoint:     provider.Endpoint(),
+  RedirectURL:  "https://mi-api.com/auth/callback",
+  Scopes:       []string{oidc.ScopeOpenID, "profile", "email"},
+ }
 }
 ```
 
@@ -226,35 +229,35 @@ Como se discutió en el Capítulo 36, el parámetro `state` es obligatorio para 
 package auth
 
 import (
-	"crypto/rand"
-	"encoding/base64"
-	"net/http"
-	"time"
+ "crypto/rand"
+ "encoding/base64"
+ "net/http"
+ "time"
 )
 
 // GenerarState crea un token aleatorio seguro.
 func generarState() string {
-	b := make([]byte, 32)
-	rand.Read(b)
-	return base64.URLEncoding.EncodeToString(b)
+ b := make([]byte, 32)
+ rand.Read(b)
+ return base64.URLEncoding.EncodeToString(b)
 }
 
 // HandleLogin inicia el flujo OAuth2.
 func HandleLogin(w http.ResponseWriter, r *http.Request) {
-	state := generarState()
-	
-	// En un entorno real, guardamos el 'state' en una cookie HttpOnly, Secure
-	http.SetCookie(w, &http.Cookie{
-		Name:     "oauth_state",
-		Value:    state,
-		Expires:  time.Now().Add(10 * time.Minute),
-		HttpOnly: true,
-		Secure:   true, // Requiere HTTPS (Capítulo 38)
-	})
+ state := generarState()
+ 
+ // En un entorno real, guardamos el 'state' en una cookie HttpOnly, Secure
+ http.SetCookie(w, &http.Cookie{
+  Name:     "oauth_state",
+  Value:    state,
+  Expires:  time.Now().Add(10 * time.Minute),
+  HttpOnly: true,
+  Secure:   true, // Requiere HTTPS (Capítulo 38)
+ })
 
-	// Redirigimos al usuario al IdP
-	url := OAuthConfig.AuthCodeURL(state, oauth2.AccessTypeOffline)
-	http.Redirect(w, r, url, http.StatusTemporaryRedirect)
+ // Redirigimos al usuario al IdP
+ url := OAuthConfig.AuthCodeURL(state, oauth2.AccessTypeOffline)
+ http.Redirect(w, r, url, http.StatusTemporaryRedirect)
 }
 ```
 
@@ -263,50 +266,50 @@ El Handler del callback es donde ocurre el intercambio de contexto y la validaci
 ```go
 // HandleCallback procesa la respuesta del IdP.
 func HandleCallback(w http.ResponseWriter, r *http.Request) {
-	// 1. Validar el parámetro State contra la cookie
-	cookieState, err := r.Cookie("oauth_state")
-	if err != nil || r.FormValue("state") != cookieState.Value {
-		http.Error(w, "Estado OAuth inválido (Posible ataque CSRF)", http.StatusBadRequest)
-		return
-	}
+ // 1. Validar el parámetro State contra la cookie
+ cookieState, err := r.Cookie("oauth_state")
+ if err != nil || r.FormValue("state") != cookieState.Value {
+  http.Error(w, "Estado OAuth inválido (Posible ataque CSRF)", http.StatusBadRequest)
+  return
+ }
 
-	// 2. Intercambiar el Código de Autorización por un Token
-	oauth2Token, err := OAuthConfig.Exchange(r.Context(), r.FormValue("code"))
-	if err != nil {
-		http.Error(w, "Fallo al intercambiar el token", http.StatusInternalServerError)
-		return
-	}
+ // 2. Intercambiar el Código de Autorización por un Token
+ oauth2Token, err := OAuthConfig.Exchange(r.Context(), r.FormValue("code"))
+ if err != nil {
+  http.Error(w, "Fallo al intercambiar el token", http.StatusInternalServerError)
+  return
+ }
 
-	// 3. Extraer y verificar el ID Token (OIDC)
-	rawIDToken, ok := oauth2Token.Extra("id_token").(string)
-	if !ok {
-		http.Error(w, "No se encontró el id_token en la respuesta", http.StatusInternalServerError)
-		return
-	}
+ // 3. Extraer y verificar el ID Token (OIDC)
+ rawIDToken, ok := oauth2Token.Extra("id_token").(string)
+ if !ok {
+  http.Error(w, "No se encontró el id_token en la respuesta", http.StatusInternalServerError)
+  return
+ }
 
-	idToken, err := Verifier.Verify(r.Context(), rawIDToken)
-	if err != nil {
-		http.Error(w, "ID Token inválido", http.StatusUnauthorized)
-		return
-	}
+ idToken, err := Verifier.Verify(r.Context(), rawIDToken)
+ if err != nil {
+  http.Error(w, "ID Token inválido", http.StatusUnauthorized)
+  return
+ }
 
-	// 4. Extraer los Claims (Datos del usuario)
-	var claims struct {
-		Email         string `json:"email"`
-		EmailVerified bool   `json:"email_verified"`
-		Name          string `json:"name"`
-	}
-	
-	if err := idToken.Claims(&claims); err != nil {
-		http.Error(w, "Fallo al decodificar claims", http.StatusInternalServerError)
-		return
-	}
+ // 4. Extraer los Claims (Datos del usuario)
+ var claims struct {
+  Email         string `json:"email"`
+  EmailVerified bool   `json:"email_verified"`
+  Name          string `json:"name"`
+ }
+ 
+ if err := idToken.Claims(&claims); err != nil {
+  http.Error(w, "Fallo al decodificar claims", http.StatusInternalServerError)
+  return
+ }
 
-	// Llegados a este punto, el usuario está autenticado. 
-	// Aquí normalmente generaríamos nuestra propia sesión o JWT (Sección 37.1)
-	// y redirigiríamos al cliente al frontend.
-	
-	w.Write([]byte("Bienvenido, " + claims.Name))
+ // Llegados a este punto, el usuario está autenticado. 
+ // Aquí normalmente generaríamos nuestra propia sesión o JWT (Sección 37.1)
+ // y redirigiríamos al cliente al frontend.
+ 
+ w.Write([]byte("Bienvenido, " + claims.Name))
 }
 ```
 
@@ -335,31 +338,31 @@ La librería `golang.org/x/crypto/bcrypt` es extremadamente ergonómica, ya que 
 package auth
 
 import (
-	"errors"
-	"golang.org/x/crypto/bcrypt"
+ "errors"
+ "golang.org/x/crypto/bcrypt"
 )
 
 // HashearPassword genera un hash Bcrypt a partir de una contraseña en texto plano.
 func HashearPassword(password string) (string, error) {
-	// bcrypt.DefaultCost es actualmente 10. Para mayor seguridad,
-	// puedes aumentarlo (ej. 12 o 14), pero aumentará el tiempo de respuesta de tu API.
-	hash, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
-	if err != nil {
-		return "", err
-	}
-	return string(hash), nil
+ // bcrypt.DefaultCost es actualmente 10. Para mayor seguridad,
+ // puedes aumentarlo (ej. 12 o 14), pero aumentará el tiempo de respuesta de tu API.
+ hash, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
+ if err != nil {
+  return "", err
+ }
+ return string(hash), nil
 }
 
 // VerificarPassword compara una contraseña en texto plano con un hash Bcrypt.
 func VerificarPassword(password, hash string) error {
-	err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password))
-	if err != nil {
-		if errors.Is(err, bcrypt.ErrMismatchedHashAndPassword) {
-			return errors.New("credenciales inválidas")
-		}
-		return err
-	}
-	return nil
+ err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password))
+ if err != nil {
+  if errors.Is(err, bcrypt.ErrMismatchedHashAndPassword) {
+   return errors.New("credenciales inválidas")
+  }
+  return err
+ }
+ return nil
 }
 ```
 
@@ -380,91 +383,93 @@ En Go, usamos `golang.org/x/crypto/argon2`. A diferencia de Bcrypt, Argon2 en Go
 package auth
 
 import (
-	"bytes"
-	"crypto/rand"
-	"encoding/base64"
-	"errors"
-	"fmt"
-	"strings"
+ "bytes"
+ "crypto/rand"
+ "encoding/base64"
+ "errors"
+ "fmt"
+ "strings"
 
-	"golang.org/x/crypto/argon2"
+ "golang.org/x/crypto/argon2"
 )
 
 // Parámetros recomendados por OWASP para Argon2id
 type ArgonConfig struct {
-	Time    uint32 // Iteraciones
-	Memory  uint32 // Memoria en KB (ej. 64*1024 = 64MB)
-	Threads uint8  // Grado de paralelismo
-	KeyLen  uint32 // Longitud del hash generado
+ Time    uint32 // Iteraciones
+ Memory  uint32 // Memoria en KB (ej. 64*1024 = 64MB)
+ Threads uint8  // Grado de paralelismo
+ KeyLen  uint32 // Longitud del hash generado
 }
 
 var defaultConfig = ArgonConfig{
-	Time:    1,
-	Memory:  64 * 1024,
-	Threads: 4,
-	KeyLen:  32,
+ Time:    1,
+ Memory:  64 * 1024,
+ Threads: 4,
+ KeyLen:  32,
 }
 
 // HashearArgon2id genera un hash seguro y lo devuelve en formato PHC.
 func HashearArgon2id(password string) (string, error) {
-	// 1. Generar una sal criptográficamente segura (16 bytes)
-	salt := make([]byte, 16)
-	if _, err := rand.Read(salt); err != nil {
-		return "", err
-	}
+ // 1. Generar una sal criptográficamente segura (16 bytes)
+ salt := make([]byte, 16)
+ if _, err := rand.Read(salt); err != nil {
+  return "", err
+ }
 
-	// 2. Generar el hash usando Argon2id
-	hash := argon2.IDKey([]byte(password), salt, defaultConfig.Time, defaultConfig.Memory, defaultConfig.Threads, defaultConfig.KeyLen)
+ // 2. Generar el hash usando Argon2id
+ hash := argon2.IDKey([]byte(password), salt, defaultConfig.Time, defaultConfig.Memory, defaultConfig.Threads, defaultConfig.KeyLen)
 
-	// 3. Codificar en formato estándar (ej. $argon2id$v=19$m=65536,t=1,p=4$salBase64$hashBase64)
-	b64Salt := base64.RawStdEncoding.EncodeToString(salt)
-	b64Hash := base64.RawStdEncoding.EncodeToString(hash)
+ // 3. Codificar en formato estándar (ej. $argon2id$v=19$m=65536,t=1,p=4$salBase64$hashBase64)
+ b64Salt := base64.RawStdEncoding.EncodeToString(salt)
+ b64Hash := base64.RawStdEncoding.EncodeToString(hash)
 
-	encodedHash := fmt.Sprintf("$argon2id$v=%d$m=%d,t=%d,p=%d$%s$%s",
-		argon2.Version, defaultConfig.Memory, defaultConfig.Time, defaultConfig.Threads, b64Salt, b64Hash)
+ encodedHash := fmt.Sprintf("$argon2id$v=%d$m=%d,t=%d,p=%d$%s$%s",
+  argon2.Version, defaultConfig.Memory, defaultConfig.Time, defaultConfig.Threads, b64Salt, b64Hash)
 
-	return encodedHash, nil
+ return encodedHash, nil
 }
 
 // VerificarArgon2id extrae los parámetros de la cadena y valida la contraseña.
 func VerificarArgon2id(password, encodedHash string) error {
-	// Parsear la cadena formateada (omito validaciones exhaustivas de longitud por brevedad)
-	partes := strings.Split(encodedHash, "$")
-	if len(partes) != 6 || partes[1] != "argon2id" {
-		return errors.New("formato de hash no soportado")
-	}
+ // Parsear la cadena formateada (omito validaciones exhaustivas de longitud por brevedad)
+ partes := strings.Split(encodedHash, "$")
+ if len(partes) != 6 || partes[1] != "argon2id" {
+  return errors.New("formato de hash no soportado")
+ }
 
-	var memory uint32
-	var time uint32
-	var threads uint8
-	_, err := fmt.Sscanf(partes[3], "m=%d,t=%d,p=%d", &memory, &time, &threads)
-	if err != nil {
-		return err
-	}
+ var memory uint32
+ var time uint32
+ var threads uint8
+ _, err := fmt.Sscanf(partes[3], "m=%d,t=%d,p=%d", &memory, &time, &threads)
+ if err != nil {
+  return err
+ }
 
-	salt, err := base64.RawStdEncoding.DecodeString(partes[4])
-	if err != nil {
-		return err
-	}
+ salt, err := base64.RawStdEncoding.DecodeString(partes[4])
+ if err != nil {
+  return err
+ }
 
-	hashGuardado, err := base64.RawStdEncoding.DecodeString(partes[5])
-	if err != nil {
-		return err
-	}
+ hashGuardado, err := base64.RawStdEncoding.DecodeString(partes[5])
+ if err != nil {
+  return err
+ }
 
-	// Volver a calcular el hash con los parámetros extraídos
-	hashCalculado := argon2.IDKey([]byte(password), salt, time, memory, threads, uint32(len(hashGuardado)))
+ // Volver a calcular el hash con los parámetros extraídos
+ hashCalculado := argon2.IDKey([]byte(password), salt, time, memory, threads, uint32(len(hashGuardado)))
 
-	// Comparación en tiempo constante para evitar ataques de timing (Timing Attacks)
-	if subtle.ConstantTimeCompare(hashGuardado, hashCalculado) == 1 {
-		return nil
-	}
-	return errors.New("credenciales inválidas")
+ // Comparación en tiempo constante para evitar ataques de timing (Timing Attacks)
+ if subtle.ConstantTimeCompare(hashGuardado, hashCalculado) == 1 {
+  return nil
+ }
+ return errors.New("credenciales inválidas")
 }
 ```
+
 *(Nota: Asegúrate de importar `crypto/subtle` para usar `ConstantTimeCompare`, vital para evitar que un atacante deduzca información midiendo el tiempo de respuesta de la comparación).*
 
-### Resumen de decisión para tu API en Go:
+### Resumen de decisión para tu API en Go
+
 * Usa **Bcrypt** si estás manteniendo un sistema *legacy*, si necesitas la máxima simplicidad en el código y si el riesgo de ataques dirigidos con granjas de GPUs es bajo.
 * Usa **Argon2id** para cualquier desarrollo nuevo (Greenfield). El coste de escribir unas líneas extra para estructurar el string compensa con creces su superioridad arquitectónica contra hardware especializado.
 
@@ -473,6 +478,7 @@ func VerificarArgon2id(password, encodedHash string) error {
 Una vez que hemos resuelto la **autenticación** (quién es el usuario) en las secciones anteriores, nos enfrentamos al problema de la **autorización** (qué puede hacer ese usuario). En aplicaciones triviales, solemos ver sentencias dispersas por el código como `if user.Role == "admin"`. En sistemas empresariales y arquitecturas de microservicios, esta práctica genera deuda técnica, lógica fragmentada y fallos de seguridad.
 
 Para resolver esto de forma escalable, la industria confía en modelos formales de control de acceso. Los dos más adoptados son:
+
 * **RBAC (Role-Based Access Control):** Los permisos se asignan a roles (ej. *Admin*, *Editor*, *Viewer*), y los usuarios adquieren esos permisos al asumir un rol. Es excelente para dominios estructurados y jerárquicos.
 * **ABAC (Attribute-Based Access Control):** Las políticas se evalúan dinámicamente basándose en atributos del usuario, del recurso y del entorno (ej. *"Un usuario puede editar un documento si el departamento del usuario coincide con el del documento y la hora actual está dentro del horario laboral"*). Ofrece una granularidad extrema a costa de mayor complejidad computacional.
 
@@ -520,32 +526,32 @@ En desarrollo, las políticas (`p`) y las asignaciones de roles (`g`) se pueden 
 package authz
 
 import (
-	"log"
-	"github.com/casbin/casbin/v2"
+ "log"
+ "github.com/casbin/casbin/v2"
 )
 
 // InicializarRBAC crea el Enforcer de Casbin.
 // En producción, reemplazaríamos "policy.csv" por un adaptador de base de datos.
 func InicializarRBAC() *casbin.Enforcer {
-	enforcer, err := casbin.NewEnforcer("rbac_model.conf", "policy.csv")
-	if err != nil {
-		log.Fatalf("Fallo al inicializar Casbin: %v", err)
-	}
-	
-	// Carga las reglas a memoria (esencial para rendimiento)
-	enforcer.LoadPolicy()
-	return enforcer
+ enforcer, err := casbin.NewEnforcer("rbac_model.conf", "policy.csv")
+ if err != nil {
+  log.Fatalf("Fallo al inicializar Casbin: %v", err)
+ }
+ 
+ // Carga las reglas a memoria (esencial para rendimiento)
+ enforcer.LoadPolicy()
+ return enforcer
 }
 
 // VerificarPermiso evalúa la petición contra el motor de Casbin.
 func VerificarPermiso(e *casbin.Enforcer, usuario, recurso, accion string) bool {
-	// e.Enforce evalúa los parámetros contra los [matchers] del modelo.
-	ok, err := e.Enforce(usuario, recurso, accion)
-	if err != nil {
-		// Loggear el error interno (Capítulo 39)
-		return false
-	}
-	return ok
+ // e.Enforce evalúa los parámetros contra los [matchers] del modelo.
+ ok, err := e.Enforce(usuario, recurso, accion)
+ if err != nil {
+  // Loggear el error interno (Capítulo 39)
+  return false
+ }
+ return ok
 }
 ```
 
@@ -581,34 +587,34 @@ En Go, definimos nuestras entidades del dominio (Capítulo 22) y se las pasamos 
 package authz
 
 import (
-	"fmt"
-	"github.com/casbin/casbin/v2"
+ "fmt"
+ "github.com/casbin/casbin/v2"
 )
 
 type Usuario struct {
-	ID         int
-	Role       string
-	Department string
+ ID         int
+ Role       string
+ Department string
 }
 
 type Documento struct {
-	ID         int
-	Title      string
-	Department string
+ ID         int
+ Title      string
+ Department string
 }
 
 func EvaluarABAC(e *casbin.Enforcer) {
-	usuarioActual := Usuario{ID: 101, Role: "empleado", Department: "Finanzas"}
-	documento := Documento{ID: 50, Title: "Balance Q3", Department: "Finanzas"}
+ usuarioActual := Usuario{ID: 101, Role: "empleado", Department: "Finanzas"}
+ documento := Documento{ID: 50, Title: "Balance Q3", Department: "Finanzas"}
 
-	// Casbin usará reflexión (Capítulo 14) para acceder a los campos de los structs en el matcher
-	permitido, _ := e.Enforce(usuarioActual, documento, "write")
-	
-	if permitido {
-		fmt.Println("Acceso concedido mediante evaluación de atributos.")
-	} else {
-		fmt.Println("Acceso denegado.")
-	}
+ // Casbin usará reflexión (Capítulo 14) para acceder a los campos de los structs en el matcher
+ permitido, _ := e.Enforce(usuarioActual, documento, "write")
+ 
+ if permitido {
+  fmt.Println("Acceso concedido mediante evaluación de atributos.")
+ } else {
+  fmt.Println("Acceso denegado.")
+ }
 }
 ```
 

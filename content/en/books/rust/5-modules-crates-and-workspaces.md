@@ -7,20 +7,23 @@ As your Rust projects grow beyond a single file, maintaining a clear mental mode
 While these terms are often used interchangeably in casual conversation, they have strict, distinct definitions within the Rust compiler and Cargo ecosystems.
 
 ### The Crate: The Compilation Unit
+
 A crate is the smallest amount of code that the Rust compiler (`rustc`) considers at a time. Even if you invoke the compiler on a single file, that file acts as a crate. Crates come in two distinct forms:
 
 * **Binary Crates:** These are programs you can compile into an executable to be run. They must contain a `main` function, which acts as the entry point. A web server, a command-line tool, or a background worker are all binary crates.
 * **Library Crates:** These do not have a `main` function and cannot be executed directly. Instead, they define shared functionality intended to be used by other crates. When Rust developers say they are "publishing a crate to crates.io," they are almost always referring to a library crate.
 
-Every crate has a **crate root**. This is the source file that the Rust compiler starts from, and it forms the root module of your crate. 
+Every crate has a **crate root**. This is the source file that the Rust compiler starts from, and it forms the root module of your crate.
 
 ### The Package: The Cargo Workspace
+
 A package is a bundle of one or more crates that provides a set of functionality. A package is defined by the presence of a `Cargo.toml` file, which describes how to build those crates and lists the dependencies they require.
 
 Rust enforces strict architectural rules on what a package can contain:
-1.  A package **must** contain at least one crate (binary or library).
-2.  A package can contain **at most one** library crate.
-3.  A package can contain **as many** binary crates as you want.
+
+1. A package **must** contain at least one crate (binary or library).
+2. A package can contain **at most one** library crate.
+3. A package can contain **as many** binary crates as you want.
 
 ### Visualizing the Boundary
 
@@ -38,13 +41,14 @@ my_ecommerce_package/
 ```
 
 In this structure, Cargo automatically infers the following code boundaries:
+
 * `src/lib.rs` tells Cargo to build a library crate with the same name as the package (`my_ecommerce_package`).
 * `src/main.rs` tells Cargo to build a binary crate with the same name as the package.
 * Files placed in the `src/bin/` directory are compiled as separate, distinct binary crates.
 
 ### Leveraging the Boundary for Architecture
 
-Why does this distinction matter? Separating your project into a single library crate and multiple binary crates is a foundational Rust pattern for building robust, testable applications. 
+Why does this distinction matter? Separating your project into a single library crate and multiple binary crates is a foundational Rust pattern for building robust, testable applications.
 
 By pushing the core business logic into `src/lib.rs`, you establish a firm architectural boundary. Your binary crates (`src/main.rs` or those in `src/bin/`) become thin execution wrappers. They handle parsing command-line arguments, setting up configuration, and starting runtimes, but they immediately delegate the heavy lifting to the library crate.
 
@@ -83,13 +87,13 @@ Understanding that packages build crates, and that crates form the highest-level
 
 ## 5.2 Defining Modules to Control Scope and Privacy
 
-While crates and packages establish the external boundaries of your project, **modules** form the internal architecture. If a crate is a building, modules are the rooms and hallways inside. They allow you to group related functions, structs, and traits together, establishing a clear hierarchy and preventing naming collisions. 
+While crates and packages establish the external boundaries of your project, **modules** form the internal architecture. If a crate is a building, modules are the rooms and hallways inside. They allow you to group related functions, structs, and traits together, establishing a clear hierarchy and preventing naming collisions.
 
 Crucially, modules act as the primary mechanism for encapsulating logic. In Rust, you use modules to draw strict privacy boundaries, hiding implementation details while exposing a clean public API.
 
 ### The Module Tree and the `mod` Keyword
 
-Every crate has a root module—typically `src/main.rs` for binary crates or `src/lib.rs` for library crates. From this root, you can declare child modules using the `mod` keyword. 
+Every crate has a root module—typically `src/main.rs` for binary crates or `src/lib.rs` for library crates. From this root, you can declare child modules using the `mod` keyword.
 
 Modules form a strict tree structure. Consider a simplified logical representation of a backend service's module tree:
 
@@ -124,8 +128,9 @@ In the example above, we have defined a `network` module containing a `server` m
 In many languages, items are public by default or heavily rely on naming conventions (like a leading underscore) to imply privacy. Rust takes the opposite approach: **every item in Rust is private by default**.
 
 This includes functions, structs, traits, and even other modules. Rust's privacy rules dictate two fundamental laws:
-1.  **Parents cannot look into children:** Code in a parent module cannot access private items defined in a child module.
-2.  **Children can look into parents:** Code in a child module *can* access any item defined in its ancestor modules, regardless of privacy.
+
+1. **Parents cannot look into children:** Code in a parent module cannot access private items defined in a child module.
+2. **Children can look into parents:** Code in a child module *can* access any item defined in its ancestor modules, regardless of privacy.
 
 This design ensures that child modules can utilize the internal context established by their parents, but parents cannot arbitrarily depend on the hidden implementation details of their children.
 
@@ -229,7 +234,7 @@ Rust provides two ways to construct a path, and choosing between them usually de
 * **Absolute Paths:** These start from the root of your crate by using the literal keyword `crate`. In external crates, the absolute path starts with the crate's name (e.g., `std::collections::HashMap`).
 * **Relative Paths:** These start from the current module. You can traverse the tree using `self` (the current module) or `super` (the parent module), much like `./` and `../` in a POSIX file system.
 
-Paths use the double colon (`::`) as a separator. 
+Paths use the double colon (`::`) as a separator.
 
 ```rust
 mod sound {
@@ -315,13 +320,14 @@ For rapid prototyping or in test modules, you might want to bring *everything* f
 ```rust
 use std::collections::*;
 ```
+
 > **Warning:** Use the glob operator sparingly in production code. It pollutes your local namespace and makes it difficult to trace where a specific function or type originated. It is primarily considered acceptable in `tests` modules (e.g., `use super::*;`).
 
 ### The Facade Pattern: Re-exporting with `pub use`
 
-One of the most powerful architectural patterns in Rust involves decoupling your internal module structure from your public API. 
+One of the most powerful architectural patterns in Rust involves decoupling your internal module structure from your public API.
 
-As your library grows, you might heavily nest modules to keep your own code organized. However, you do not want to force your users to type `my_crate::internal::networking::tcp::Connection` just to use your connection struct. 
+As your library grows, you might heavily nest modules to keep your own code organized. However, you do not want to force your users to type `my_crate::internal::networking::tcp::Connection` just to use your connection struct.
 
 By combining `pub` and `use`, you can **re-export** items. This takes an item defined deep in your private module tree and exposes it at the root of your crate as if it were defined there.
 
@@ -358,7 +364,7 @@ pub use crate::core::connection::connect;
 pub use crate::core::pool::Pool;
 ```
 
-External users who add your crate as a dependency will never know about the `core` module. Their documentation will simply show `my_database_driver::connect` and `my_database_driver::Pool`. 
+External users who add your crate as a dependency will never know about the `core` module. Their documentation will simply show `my_database_driver::connect` and `my_database_driver::Pool`.
 
 Re-exporting allows you to refactor and completely alter your internal module hierarchy without ever introducing breaking changes to the external developers consuming your crate.
 
@@ -366,13 +372,13 @@ Re-exporting allows you to refactor and completely alter your internal module hi
 
 Defining modules inline using blocks (`mod name { ... }`) is excellent for small scripts or grouping tests, but as your crate grows, a single file will quickly become unmanageable. Rust allows you to extract module definitions into their own files, mapping your logical module tree directly to your operating system's file directory structure.
 
-It is crucial to understand one common misconception immediately: **the `mod` keyword is not an import statement**. It does not work like `import` in Python or `#include` in C/C++. 
+It is crucial to understand one common misconception immediately: **the `mod` keyword is not an import statement**. It does not work like `import` in Python or `#include` in C/C++.
 
 When you write `mod my_module;`, you are not importing a file. You are telling the Rust compiler: *"I am declaring a module named `my_module` right here in the module tree, but I have placed its actual contents in another file. Go find it and compile it as if it were written inline here."*
 
 ### The Semicolon Syntax
 
-To separate a module into another file, you replace the module block with a semicolon. 
+To separate a module into another file, you replace the module block with a semicolon.
 
 Suppose your `src/main.rs` looks like this:
 
@@ -431,7 +437,7 @@ pub fn connect() {
 }
 ```
 
-Now, the compiler needs to find `queries.rs`. Because `queries` is a child of `database`, Rust expects you to create a directory named `database` to hold the children of that module. 
+Now, the compiler needs to find `queries.rs`. Because `queries` is a child of `database`, Rust expects you to create a directory named `database` to hold the children of that module.
 
 Your file system will look like this:
 
@@ -457,7 +463,7 @@ pub fn get_users() {
 
 ### Structuring Submodules: The Legacy Approach (`mod.rs`)
 
-If you explore older Rust codebases, or standard libraries written before the Rust 2018 edition, you will encounter a different file structure for submodules. 
+If you explore older Rust codebases, or standard libraries written before the Rust 2018 edition, you will encounter a different file structure for submodules.
 
 Historically, Rust did not allow a file (`database.rs`) and a directory (`database/`) to share the same name to represent a module. Instead, if a module had children, the parent module had to be named `mod.rs` and placed *inside* the directory.
 
@@ -479,7 +485,7 @@ my_project/
 
 The most powerful aspect of separating modules into files is that **it does not change your code's logical structure or paths**.
 
-Whether your modules are defined inline in a massive 10,000-line `main.rs` file, or perfectly split across dozens of files and directories, the path to call your function remains exactly the same: `crate::database::queries::get_users()`. 
+Whether your modules are defined inline in a massive 10,000-line `main.rs` file, or perfectly split across dozens of files and directories, the path to call your function remains exactly the same: `crate::database::queries::get_users()`.
 
 The file system is merely an ergonomic illusion for the developer. The compiler still stitches it all back together into a single, cohesive crate root before evaluating scope, privacy, and compilation.
 

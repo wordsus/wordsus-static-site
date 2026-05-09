@@ -4,7 +4,7 @@
 
 Desde que somos pequeños, la gravedad es una de las primeras fuerzas de la naturaleza con las que interactuamos. Si soltamos un juguete, cae. Si saltamos, volvemos a tocar el suelo. Durante siglos, la humanidad aceptó esta realidad basándose en la genial intuición de Isaac Newton, quien nos enseñó que la gravedad era una fuerza invisible, una especie de cuerda elástica que tiraba de las masas atrayéndolas entre sí. La fórmula de Newton funcionaba (y sigue funcionando) maravillosamente bien para lanzar cohetes a la Luna o para calcular la trayectoria de una manzana al caer.
 
-Sin embargo, a principios del siglo XX, un joven empleado de la oficina de patentes de Berna llamado Albert Einstein se dio cuenta de que la historia no estaba completa. Había un problema fundamental con la gravedad de Newton: era incompatible con las nuevas reglas del universo que el propio Einstein acababa de descubrir. 
+Sin embargo, a principios del siglo XX, un joven empleado de la oficina de patentes de Berna llamado Albert Einstein se dio cuenta de que la historia no estaba completa. Había un problema fundamental con la gravedad de Newton: era incompatible con las nuevas reglas del universo que el propio Einstein acababa de descubrir.
 
 Para resolver este enigma, Einstein no solo ajustó las ecuaciones matemáticas de su predecesor, sino que reescribió por completo nuestra comprensión de la realidad. Nos invitó a abandonar la idea de una fuerza invisible que tira de las cosas y, en su lugar, nos presentó un universo dinámico, un escenario que se dobla, se estira y se curva. Bienvenidos al fascinante mundo de la Relatividad General, la teoría que convirtió a la gravedad en simple y pura geometría.
 
@@ -22,11 +22,11 @@ No te preocupes si la matemática parece compleja. Lo que esta ecuación nos dic
 
 ## 2. El problema con la gravedad de Newton
 
-Si la Relatividad Especial funcionaba tan bien, ¿por qué Einstein necesitó inventar la Relatividad *General*? El problema era la gravedad. 
+Si la Relatividad Especial funcionaba tan bien, ¿por qué Einstein necesitó inventar la Relatividad *General*? El problema era la gravedad.
 
-La ley de la gravitación universal de Newton establecía que la fuerza de gravedad entre dos objetos se transmitía de forma **instantánea**. Según Newton, si el Sol desapareciera mágicamente en este mismo instante, la Tierra saldría disparada de su órbita en ese exacto milisegundo. 
+La ley de la gravitación universal de Newton establecía que la fuerza de gravedad entre dos objetos se transmitía de forma **instantánea**. Según Newton, si el Sol desapareciera mágicamente en este mismo instante, la Tierra saldría disparada de su órbita en ese exacto milisegundo.
 
-Pero la Relatividad Especial de Einstein había establecido una regla de oro inquebrantable en el universo: **nada, ninguna señal, ninguna información y ninguna fuerza, puede viajar más rápido que la luz**. La luz tarda unos 8 minutos y 20 segundos en viajar del Sol a la Tierra. Por lo tanto, si el Sol desapareciera, la Tierra no debería "enterarse" de este cambio gravitacional hasta pasados 8 minutos. 
+Pero la Relatividad Especial de Einstein había establecido una regla de oro inquebrantable en el universo: **nada, ninguna señal, ninguna información y ninguna fuerza, puede viajar más rápido que la luz**. La luz tarda unos 8 minutos y 20 segundos en viajar del Sol a la Tierra. Por lo tanto, si el Sol desapareciera, la Tierra no debería "enterarse" de este cambio gravitacional hasta pasados 8 minutos.
 
 La gravedad de Newton violaba el límite de velocidad cósmico. Einstein pasó una década entera intentando reconciliar la gravedad con la velocidad de la luz. La solución requirió el pensamiento más audaz de la historia de la física.
 
@@ -34,9 +34,10 @@ La gravedad de Newton violaba el límite de velocidad cósmico. Einstein pasó u
 
 La semilla de la Relatividad General surgió en 1907 a través de lo que Einstein llamó "el pensamiento más feliz de mi vida". Fue un experimento mental que cualquiera puede imaginar.
 
-Imagina que estás encerrado en una caja cerrada (como un ascensor sin ventanas) en el espacio profundo, lejos de cualquier planeta, flotando en gravedad cero. De repente, sientes que tus pies se presionan contra el suelo de la caja. Tomas una manzana y la sueltas, y ves que cae hacia el suelo. 
+Imagina que estás encerrado en una caja cerrada (como un ascensor sin ventanas) en el espacio profundo, lejos de cualquier planeta, flotando en gravedad cero. De repente, sientes que tus pies se presionan contra el suelo de la caja. Tomas una manzana y la sueltas, y ves que cae hacia el suelo.
 
 ¿Qué está pasando? Tienes dos explicaciones lógicas:
+
 1. La caja ha sido transportada a la Tierra y está posada sobre su superficie, por lo que la gravedad terrestre te empuja hacia abajo.
 2. Un cohete se ha enganchado al techo de la caja y la está acelerando "hacia arriba" a un ritmo de $9.8 m/s^2$ (la aceleración de la gravedad terrestre). El suelo simplemente está subiendo para encontrarse con tus pies.
 
@@ -50,7 +51,7 @@ Aquí es donde llegamos al núcleo de la Relatividad General. Si la gravedad no 
 
 La analogía más famosa para entender esto es la de una cama elástica o una lámina de goma elástica. Imagina una cama elástica tensa y completamente plana. Si haces rodar una pequeña canica por ella, viajará en línea recta. Esto representa el espaciotiempo vacío, sin masas, donde los objetos se mueven en línea recta a velocidad constante.
 
-Ahora, coloca una bola de boliche pesada en el centro de la cama elástica. El peso de la bola creará una hondonada, curvando la superficie a su alrededor. 
+Ahora, coloca una bola de boliche pesada en el centro de la cama elástica. El peso de la bola creará una hondonada, curvando la superficie a su alrededor.
 
 ```text
     Espaciotiempo Plano               Espaciotiempo Curvado por una Masa
@@ -81,7 +82,7 @@ Aunque parezca jeroglífico, la belleza de esta ecuación radica en su estructur
 
 ## 5. La danza de los planetas: ¿Por qué orbitamos?
 
-Bajo esta nueva perspectiva, la Tierra no orbita al Sol porque una cuerda invisible de gravedad tire de ella. De hecho, la Tierra no siente ninguna fuerza gravitatoria en absoluto. La Tierra simplemente está avanzando libremente por el espacio, intentando seguir una línea recta constante a través del espaciotiempo. 
+Bajo esta nueva perspectiva, la Tierra no orbita al Sol porque una cuerda invisible de gravedad tire de ella. De hecho, la Tierra no siente ninguna fuerza gravitatoria en absoluto. La Tierra simplemente está avanzando libremente por el espacio, intentando seguir una línea recta constante a través del espaciotiempo.
 
 A estas trayectorias naturales en un espacio curvado se les llama **geodésicas**.
 
@@ -123,7 +124,7 @@ Mercurio, el planeta más cercano al Sol, tiene una órbita ovalada que no perma
 
 ## 7. Ondas gravitacionales: Los ecos del universo
 
-Si la materia curva el espaciotiempo, ¿qué sucede cuando dos objetos súper masivos, como dos agujeros negros, giran violentamente uno alrededor del otro y chocan? 
+Si la materia curva el espaciotiempo, ¿qué sucede cuando dos objetos súper masivos, como dos agujeros negros, giran violentamente uno alrededor del otro y chocan?
 
 Einstein predijo en 1916 que estos eventos cataclísmicos deberían crear perturbaciones en el propio tejido del espaciotiempo, enviando ondas que viajan a la velocidad de la luz en todas direcciones, estirando y comprimiendo el espacio mismo a su paso. Las llamó **ondas gravitacionales**.
 
@@ -143,6 +144,6 @@ El borde de esta región de no-retorno se llama el *Horizonte de Eventos*. Y en 
 
 La Relatividad General de Albert Einstein es más que un simple conjunto de ecuaciones; es una obra de arte del intelecto humano. Cambió de raíz nuestra forma de percibir la realidad. Nos enseñó que no vivimos en un universo pasivo, sino en un escenario interactivo que reacciona a nuestra presencia, que se dobla bajo nuestros pies y moldea nuestro movimiento celestial.
 
-Hoy en día, la gravedad como curvatura espacial es el pilar sobre el que descansa toda la cosmología moderna. Gracias a ella, entendemos la expansión del universo, el Big Bang y la danza de las galaxias. 
+Hoy en día, la gravedad como curvatura espacial es el pilar sobre el que descansa toda la cosmología moderna. Gracias a ella, entendemos la expansión del universo, el Big Bang y la danza de las galaxias.
 
 Sin embargo, el viaje de la física aún no termina. Así como la teoría de Newton falló al encontrarse con velocidades extremas, la teoría de Einstein encuentra su límite en el mundo de lo microscópico (la física cuántica), específicamente en el centro de los agujeros negros o en el instante mismo del Big Bang. El próximo gran desafío para los mortales que estudian física es encontrar una teoría de la "Gravedad Cuántica" que unifique el espaciotiempo maleable de Einstein con el caótico mundo subatómico. Pero esa, querido lector, será la historia de una futura revolución cósmica.

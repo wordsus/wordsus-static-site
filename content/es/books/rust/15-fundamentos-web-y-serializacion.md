@@ -2,7 +2,7 @@ Entrar en el desarrollo web con Rust exige un cambio de mentalidad: la seguridad
 
 ## 15.1 El ecosistema web de Rust
 
-Si vienes de lenguajes como Go o Node.js, es probable que estés acostumbrado a encontrar un servidor HTTP funcional directamente en la librería estándar. En Rust, la filosofía es diferente. Como vimos en el Capítulo 13, la Standard Library (`std`) te proporciona las primitivas de red a nivel de sistema operativo (TCP y UDP), pero se detiene ahí. No existe un módulo `std::http`. 
+Si vienes de lenguajes como Go o Node.js, es probable que estés acostumbrado a encontrar un servidor HTTP funcional directamente en la librería estándar. En Rust, la filosofía es diferente. Como vimos en el Capítulo 13, la Standard Library (`std`) te proporciona las primitivas de red a nivel de sistema operativo (TCP y UDP), pero se detiene ahí. No existe un módulo `std::http`.
 
 El ecosistema web de Rust está diseñado de forma **modular y descentralizada**. En lugar de frameworks monolíticos tipo "baterías incluidas" (como Django en Python o Ruby on Rails), Rust apuesta por componentes altamente especializados que se apilan unos sobre otros. Esta arquitectura en capas permite a los desarrolladores backend construir aplicaciones extremadamente rápidas, seguras y adaptadas a sus necesidades exactas.
 
@@ -54,7 +54,7 @@ Con esta base arquitectónica en mente, estamos listos para entender cómo los d
 
 ## 15.2 Serialización y deserialización con `serde` y `serde_json`
 
-En el desarrollo de APIs RESTful modernas, JSON es la *lingua franca*. Para que nuestra aplicación web en Rust pueda comunicarse con el mundo exterior (frontend, aplicaciones móviles u otros microservicios), necesitamos traducir las representaciones de texto en formato JSON a nuestras rigurosas estructuras de datos en Rust, y viceversa. 
+En el desarrollo de APIs RESTful modernas, JSON es la *lingua franca*. Para que nuestra aplicación web en Rust pueda comunicarse con el mundo exterior (frontend, aplicaciones móviles u otros microservicios), necesitamos traducir las representaciones de texto en formato JSON a nuestras rigurosas estructuras de datos en Rust, y viceversa.
 
 Aquí es donde entra **`serde`** (abreviatura de **SER**ializer y **DE**serializer), el estándar absoluto y de facto en el ecosistema de Rust.
 
@@ -66,10 +66,10 @@ Rust no tiene reflexión en tiempo de ejecución. En su lugar, `serde` utiliza e
 
 ### La separación entre el modelo y el formato
 
-Un concepto arquitectónico clave de `serde` es que es agnóstico al formato. 
+Un concepto arquitectónico clave de `serde` es que es agnóstico al formato.
 
 * **`serde`**: Proporciona los *Traits* (`Serialize` y `Deserialize`) y el modelo de datos interno.
-* **`serde_json`**: Es la implementación específica para leer y escribir JSON. 
+* **`serde_json`**: Es la implementación específica para leer y escribir JSON.
 
 Esta separación significa que puedes usar las mismas estructuras exactas para hablar JSON con un cliente web (`serde_json`), comunicarte internamente con MessagePack (`rmp-serde`) o leer archivos de configuración YAML (`serde_yaml`), sin tocar la lógica de tu dominio.
 
@@ -178,13 +178,13 @@ Como veremos en las siguientes secciones, los frameworks web modernos de Rust ut
 
 ## 15.3 Estructuración de requests y responses HTTP
 
-Ahora que entendemos la arquitectura general del ecosistema y cómo traducir datos con `serde`, debemos abordar el protocolo que une todo: HTTP. 
+Ahora que entendemos la arquitectura general del ecosistema y cómo traducir datos con `serde`, debemos abordar el protocolo que une todo: HTTP.
 
 En lenguajes dinámicos, una petición HTTP suele representarse como un gran diccionario o un objeto mutable donde puedes inyectar o leer propiedades arbitrarias. Rust, fiel a su enfoque en la seguridad y el rendimiento, maneja esto de una manera mucho más estructurada y estricta a través del crate fundamental **`http`**.
 
 ### El crate `http`: El vocabulario universal
 
-En el ecosistema Rust, el crate `http` proporciona un conjunto de tipos base (`Request`, `Response`, `Method`, `StatusCode`, `HeaderMap`, etc.) que actúan como el vocabulario universal. Frameworks como Axum, Actix, o clientes como Reqwest, utilizan estos mismos tipos bajo el capó. 
+En el ecosistema Rust, el crate `http` proporciona un conjunto de tipos base (`Request`, `Response`, `Method`, `StatusCode`, `HeaderMap`, etc.) que actúan como el vocabulario universal. Frameworks como Axum, Actix, o clientes como Reqwest, utilizan estos mismos tipos bajo el capó.
 
 Lo crucial de entender sobre el crate `http` es que **no realiza ninguna operación de red**. Simplemente define las estructuras de datos. Esto permite que el ecosistema comparta librerías (middlewares, validadores) sin importar qué framework de red estés usando finalmente.
 
@@ -215,7 +215,7 @@ assert_eq!(request.headers().get("Content-Type").unwrap(), "application/json");
 
 ### De HTTP a Rust: El patrón de Extractores
 
-En un servidor web real, tú no construyes el `Request`; el framework lo recibe de la red y te lo entrega. Sin embargo, trabajar directamente con `Request<Body>` a bajo nivel para sacar cabeceras o parsear JSON es tedioso. 
+En un servidor web real, tú no construyes el `Request`; el framework lo recibe de la red y te lo entrega. Sin embargo, trabajar directamente con `Request<Body>` a bajo nivel para sacar cabeceras o parsear JSON es tedioso.
 
 Aquí es donde los frameworks web de Rust brillan utilizando un patrón llamado **Extractores**. Un extractor es un tipo que sabe cómo tomar una pieza específica de información de la petición HTTP y convertirla en un tipo de Rust seguro.
 
@@ -238,7 +238,7 @@ El framework analiza la firma de tu función. Si pides un `Json<UsuarioPayload>`
 
 ### La anatomía de una Respuesta (`Response<T>`)
 
-De manera análoga, una respuesta HTTP se compone de un código de estado, cabeceras y un cuerpo. 
+De manera análoga, una respuesta HTTP se compone de un código de estado, cabeceras y un cuerpo.
 
 ```rust
 use http::{Response, StatusCode};
@@ -278,7 +278,7 @@ Esta separación entre la definición estricta de HTTP (el crate `http`) y la er
 
 ## 15.4 Manejo avanzado de rutas y queries
 
-Hasta ahora hemos visto cómo estructurar peticiones y respuestas, y cómo `serde` nos ayuda a traducir el cuerpo (body) de los mensajes. Sin embargo, en una API RESTful madura, gran parte de la información crucial no viaja en el cuerpo de la petición, sino en la propia URL. 
+Hasta ahora hemos visto cómo estructurar peticiones y respuestas, y cómo `serde` nos ayuda a traducir el cuerpo (body) de los mensajes. Sin embargo, en una API RESTful madura, gran parte de la información crucial no viaja en el cuerpo de la petición, sino en la propia URL.
 
 El enrutamiento (routing) en Rust va mucho más allá de la simple coincidencia de cadenas de texto (string matching). En el ecosistema moderno, el enrutador actúa como una barrera de validación estricta: si la URL no cumple con los tipos de datos esperados, la petición es rechazada con un error HTTP 400 antes de que siquiera alcance tu lógica de negocio.
 
@@ -391,4 +391,4 @@ A medida que tu API crece, es posible que definas rutas que parezcan superponers
 
 En lenguajes como Node.js (con Express), el orden en el que declaras las rutas importa enormemente, ya que el framework evalúa de arriba hacia abajo. En Rust, frameworks modernos como **Axum** utilizan árboles radix (Radix Trees) increíblemente rápidos bajo el capó. Estos árboles son capaces de resolver superposiciones de forma inteligente, priorizando siempre las rutas estáticas exactas (`/recursos/recientes`) sobre las dinámicas con parámetros (`/recursos/:id`), independientemente del orden en que las hayas escrito en el código. Esto elimina una clase entera de bugs sutiles de enrutamiento.
 
-Con esto concluimos el Capítulo 15. Ahora tienes una comprensión sólida de la arquitectura subyacente, cómo viajan los datos y cómo el tipado estricto protege la frontera (edge) de tu aplicación. 
+Con esto concluimos el Capítulo 15. Ahora tienes una comprensión sólida de la arquitectura subyacente, cómo viajan los datos y cómo el tipado estricto protege la frontera (edge) de tu aplicación.

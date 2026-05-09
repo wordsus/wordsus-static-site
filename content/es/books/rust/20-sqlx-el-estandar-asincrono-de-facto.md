@@ -2,13 +2,13 @@ SQLx redefine la interacción con bases de datos en Rust al priorizar la segurid
 
 ## 20.1 Consultas comprobadas en tiempo de compilación (`query!`)
 
-Uno de los mayores dolores de cabeza en el desarrollo backend tradicional es descubrir que una consulta SQL tiene un error de sintaxis, o que el nombre de una columna ha cambiado, **en tiempo de ejecución**. Esto suele requerir escribir extensos tests de integración solo para validar que las consultas no provoquen un *panic* en producción. 
+Uno de los mayores dolores de cabeza en el desarrollo backend tradicional es descubrir que una consulta SQL tiene un error de sintaxis, o que el nombre de una columna ha cambiado, **en tiempo de ejecución**. Esto suele requerir escribir extensos tests de integración solo para validar que las consultas no provoquen un *panic* en producción.
 
 SQLx cambia este paradigma radicalmente introduciendo las **consultas comprobadas en tiempo de compilación** mediante sus macros, siendo `query!` la más fundamental. Esta característica es, sin duda, el "superpoder" principal que hace que SQLx sea el estándar de facto en el ecosistema asíncrono de Rust.
 
 ### ¿Cómo funciona la magia bajo el capó?
 
-A diferencia de los clientes SQL tradicionales que envían un *string* de texto a la base de datos durante la ejecución, la macro `query!` es una **macro procedural** (como vimos en el Capítulo 10) que se ejecuta mientras ejecutas `cargo check` o `cargo build`. 
+A diferencia de los clientes SQL tradicionales que envían un *string* de texto a la base de datos durante la ejecución, la macro `query!` es una **macro procedural** (como vimos en el Capítulo 10) que se ejecuta mientras ejecutas `cargo check` o `cargo build`.
 
 Su funcionamiento se divide en los siguientes pasos:
 
@@ -52,6 +52,7 @@ pub async fn find_user_email(pool: &PgPool, user_id: uuid::Uuid) -> Result<(), s
 ```
 
 **Lo que hace que esto sea brillante:**
+
 * **Prevención de Inyección SQL:** Al usar `$1` (la sintaxis de bind parameters de Postgres), los parámetros se envían por separado de la consulta. Esto neutraliza las inyecciones SQL por diseño.
 * **Mapeo de Nulos:** Dado que el compilador sabe que la columna `bio` admite valores nulos, te obliga a manejarlo como un `Option<String>`. No puedes acceder a `record.bio` como un simple `String` sin que el compilador te detenga (gracias a las reglas de tipos que vimos en el Capítulo 6).
 * **Tipado estricto en parámetros:** Si intentas pasar un `String` en el parámetro `user_id` en lugar de un `Uuid`, el código simplemente no compilará.
@@ -82,7 +83,7 @@ Mediante la CLI de SQLx (`cargo install sqlx-cli`), puedes ejecutar:
 cargo sqlx prepare
 ```
 
-Este comando se conecta a tu base de datos de desarrollo local, extrae toda la metadata de las consultas de tu proyecto y genera un archivo llamado `sqlx-data.json` en la raíz de tu proyecto. 
+Este comando se conecta a tu base de datos de desarrollo local, extrae toda la metadata de las consultas de tu proyecto y genera un archivo llamado `sqlx-data.json` en la raíz de tu proyecto.
 
 Debes hacer *commit* de este archivo a tu repositorio de control de versiones. Posteriormente, en tu entorno de CI o en un entorno de producción donde `DATABASE_URL` no esté disponible durante el *build*, puedes forzar a SQLx a leer este archivo activando la característica de compilación offline:
 
@@ -96,9 +97,9 @@ De este modo, obtienes lo mejor de ambos mundos: validación estricta contra una
 
 ## 20.2 Mapeo de resultados a Structs de Rust
 
-En la sección anterior vimos cómo `query!` nos protege de errores en tiempo de ejecución validando la sintaxis y los tipos de nuestras consultas. Sin embargo, su comportamiento por defecto es devolver un registro anónimo (un *struct* generado al vuelo por la macro). 
+En la sección anterior vimos cómo `query!` nos protege de errores en tiempo de ejecución validando la sintaxis y los tipos de nuestras consultas. Sin embargo, su comportamiento por defecto es devolver un registro anónimo (un *struct* generado al vuelo por la macro).
 
-Si bien esto es útil para prototipos rápidos, en aplicaciones robustas —especialmente aquellas que siguen principios de Arquitectura Limpia o Domain-Driven Design (que abordaremos en los Capítulos 29 y 31)— necesitamos que nuestra capa de persistencia devuelva **estructuras de dominio fuertemente tipadas**. 
+Si bien esto es útil para prototipos rápidos, en aplicaciones robustas —especialmente aquellas que siguen principios de Arquitectura Limpia o Domain-Driven Design (que abordaremos en los Capítulos 29 y 31)— necesitamos que nuestra capa de persistencia devuelva **estructuras de dominio fuertemente tipadas**.
 
 Para resolver esta necesidad, SQLx nos ofrece la macro `query_as!` y el trait `FromRow`.
 
@@ -237,7 +238,7 @@ pub async fn transfer_funds(
 
 ### El "Superpoder" del Rollback Automático en Rust
 
-¿Qué ocurre si la segunda consulta (`to_account`) falla debido a un error de red o porque la cuenta no existe? El operador `?` retornará el error inmediatamente, saliendo de la función. 
+¿Qué ocurre si la segunda consulta (`to_account`) falla debido a un error de red o porque la cuenta no existe? El operador `?` retornará el error inmediatamente, saliendo de la función.
 
 En muchos lenguajes, esto podría dejar una transacción "colgada" o requeriría un bloque `try/catch/finally` explícito para hacer el `rollback()`. En Rust, gracias al patrón RAII (*Resource Acquisition Is Initialization*) y al trait `Drop`, **si el objeto `tx` sale de su ámbito (scope) sin que se haya llamado a `.commit()`, SQLx ejecuta un `ROLLBACK` automáticamente de fondo.** Esto elimina por completo una categoría entera de bugs relacionados con fugas de conexiones y bloqueos fantasmas en la base de datos.
 
@@ -246,6 +247,7 @@ En muchos lenguajes, esto podría dejar una transacción "colgada" o requeriría
 En un entorno altamente concurrente como el que provee el runtime asíncrono de Tokio, es probable que múltiples hilos intenten modificar los mismos registros simultáneamente. Un *deadlock* (abrazo mortal) ocurre cuando dos transacciones se bloquean mutuamente esperando que la otra libere un recurso.
 
 Por ejemplo:
+
 * La Transacción A bloquea la Fila 1 y necesita la Fila 2.
 * La Transacción B bloquea la Fila 2 y necesita la Fila 1.
 * Ambas esperan infinitamente. El motor de base de datos (como PostgreSQL) detectará esto y cancelará una de las transacciones, devolviendo un error de deadlock.
@@ -289,7 +291,7 @@ Implementar esta resiliencia distingue a una API frágil de una preparada para a
 
 ## 20.4 Integración nativa de migraciones en SQLx
 
-El esquema de una base de datos nunca es estático; evoluciona a medida que crecen los requerimientos del negocio. Para gestionar estos cambios de forma predecible y reproducible, utilizamos **migraciones**. 
+El esquema de una base de datos nunca es estático; evoluciona a medida que crecen los requerimientos del negocio. Para gestionar estos cambios de forma predecible y reproducible, utilizamos **migraciones**.
 
 Históricamente, en arquitecturas backend, la ejecución de migraciones en producción requería dependencias externas (como Flyway, Liquibase) o contenedores de *init* en Kubernetes que ejecutaran un script antes de levantar la aplicación principal. SQLx elimina esta complejidad operativa mediante una característica brillante: **la incrustación de migraciones directamente en el binario compilado**.
 
@@ -353,9 +355,10 @@ Adoptar la ejecución de migraciones en el arranque de la aplicación ofrece ben
 
 ### Consideraciones para entornos Senior
 
-Aunque ejecutar migraciones en el arranque es excelente, en sistemas de altísima disponibilidad (donde no puedes permitirte ni un segundo de *downtime* y usas despliegues *Blue/Green*), debes tener cuidado con **migraciones destructivas** (como borrar una columna o cambiar su tipo). 
+Aunque ejecutar migraciones en el arranque es excelente, en sistemas de altísima disponibilidad (donde no puedes permitirte ni un segundo de *downtime* y usas despliegues *Blue/Green*), debes tener cuidado con **migraciones destructivas** (como borrar una columna o cambiar su tipo).
 
 En esos escenarios, la regla de oro, independientemente de la herramienta que uses, es realizar los cambios en fases compatibles hacia atrás:
+
 1. Añadir la nueva columna.
 2. Desplegar el código que escribe en ambas.
 3. Desplegar el código que lee de la nueva.

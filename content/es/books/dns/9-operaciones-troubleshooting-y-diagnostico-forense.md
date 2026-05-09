@@ -70,7 +70,7 @@ SOA ns1.midominio.com. admin.midominio.com. 2026042001 7200 3600 1209600 3600 fr
 En el Capítulo 7 vimos cómo funciona GeoDNS. Si quieres probar cómo resuelve tu CDN o tu balanceador global para un usuario en Japón, puedes inyectar la subred del cliente en la consulta:
 
 ```bash
-$ dig @8.8.8.8 netflix.com +subnet=210.130.0.0/24 +short
+dig @8.8.8.8 netflix.com +subnet=210.130.0.0/24 +short
 
 ```
 
@@ -78,14 +78,14 @@ $ dig @8.8.8.8 netflix.com +subnet=210.130.0.0/24 +short
 A veces el firewall o la red MTU están rompiendo paquetes UDP grandes. Puedes forzar a `dig` a usar TCP:
 
 ```bash
-$ dig @1.1.1.1 midominio.com +tcp
+dig @1.1.1.1 midominio.com +tcp
 
 ```
 
 Para auditar la validación DNSSEC (visto en el Capítulo 6), solicita la información criptográfica completa pidiendo los registros y haciendo la salida legible:
 
 ```bash
-$ dig midominio.com +dnssec +multi
+dig midominio.com +dnssec +multi
 
 ```
 
@@ -164,7 +164,7 @@ $ tcpdump -i eth0 -n port 53
 Si necesitas ver los *flags* (como NXDOMAIN o SERVFAIL) sin salir de la terminal, aumenta la verbosidad (`-vvv`) y asegúrate de capturar el paquete completo (`-s 1500` o `-s 0` en versiones antiguas):
 
 ```bash
-$ tcpdump -i eth0 -n -vvv -s 1500 port 53
+tcpdump -i eth0 -n -vvv -s 1500 port 53
 
 ```
 
@@ -207,24 +207,18 @@ Wireshark es inútil si no sabes cómo filtrar. Aquí tienes los **Display Filte
 * **Aislar una conversación completa:** Filtra por el ID de la transacción. Si un cliente se queja de que una consulta falló, busca su ID.
 * `dns.id == 0x3039`
 
-
 * **Cazando errores (Troubleshooting de NXDOMAIN/SERVFAIL):**
 * `dns.flags.rcode == 3` (Muestra solo las respuestas NXDOMAIN).
 * `dns.flags.rcode == 2` (Muestra solo las fallas del servidor SERVFAIL).
 
-
 * **Rastreando respuestas truncadas (El problema del MTU):** Si un paquete UDP supera los 512 bytes (común con DNSSEC), el servidor activa el flag de "Truncado" indicándole al cliente que reintente por TCP. Si el firewall bloquea el puerto 53 TCP, el cliente nunca recibe la respuesta.
 * `dns.flags.tc == 1` (Encuentra todos los paquetes truncados).
-
 
 * **Análisis de latencia (Detectando servidores lentos):**
 * `dns.time >= 0.1` (Muestra consultas que tardaron más de 100 milisegundos en responderse. Fundamental para optimizar recursivos).
 
-
 * **Ataques de Amplificación DNS:** Si ves respuestas enormes hacia una misma IP que nunca envió una consulta, estás presenciando (o siendo víctima de) un ataque.
 * `dns.qry.type == 255` (Filtra consultas de tipo ANY, clásicas en ataques de amplificación para maximizar el tamaño de la respuesta).
-
-
 
 Entender el tráfico a nivel de paquete te da la última palabra en cualquier discusión de red. Cuando el equipo de infraestructura culpa al DNS, o cuando el equipo de desarrollo culpa a la red, un archivo `.pcap` filtrado en Wireshark es la evidencia irrefutable que separa los mitos de la realidad.
 
@@ -284,7 +278,6 @@ $ dig @ns1.midominio.com google.com
 
 * **Rotura de DNSSEC (La causa moderna #1):** Si rotaste las llaves (ZSK/KSK) incorrectamente o el registro `DS` en el registrador no coincide con la llave en tu zona, la validación criptográfica falla. Para proteger al usuario, el resolutor recursivo aborta y devuelve `SERVFAIL`.
 * *El truco del Senior:* Usa `dig midominio.com +cd` (Checking Disabled). Si con `+cd` te devuelve la IP y sin `+cd` te da `SERVFAIL`, **tienes un problema de DNSSEC**. Usa `drill -S` (como vimos en 9.1) para encontrar el eslabón roto.
-
 
 * **Timeouts en la cadena de recursión:** El recursivo local intentó contactar a los servidores autoritativos del dominio, pero un firewall o una ruta BGP caída bloqueó el tráfico en el puerto 53. El recursivo se rinde y devuelve `SERVFAIL`.
 * **Archivos de zona corruptos:** En servidores como BIND, si editaste el archivo de zona a mano y olvidaste un punto y coma, o la sintaxis es inválida, el servidor no cargará la zona. Al recibir una consulta, responderá con `SERVFAIL`. (Prevención: usa siempre `named-checkzone` antes de recargar).

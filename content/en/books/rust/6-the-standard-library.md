@@ -2,7 +2,7 @@ Rust’s standard library (`std`) is the essential toolkit bridging the gap betw
 
 ## 6.1 Common Collections: `Vec<T>`, `String`, and `HashMap<K, V>`
 
-Rust’s standard library provides a set of highly optimized, general-purpose data structures called collections. Unlike primitive compound types such as arrays and tuples—which have a fixed size known at compile time and are stored on the stack—collections dictate that the data they contain is allocated on the heap. This means the amount of data does not need to be known at compile time and can grow or shrink dynamically as your program runs. 
+Rust’s standard library provides a set of highly optimized, general-purpose data structures called collections. Unlike primitive compound types such as arrays and tuples—which have a fixed size known at compile time and are stored on the stack—collections dictate that the data they contain is allocated on the heap. This means the amount of data does not need to be known at compile time and can grow or shrink dynamically as your program runs.
 
 While the standard library includes several collections (like `LinkedList`, `VecDeque`, and `BTreeMap`), the vast majority of use cases are solved by three fundamental types: `Vec<T>`, `String`, and `HashMap<K, V>`.
 
@@ -13,6 +13,7 @@ While the standard library includes several collections (like `LinkedList`, `Vec
 A vector allows you to store more than one value in a single data structure that puts all the values next to each other in memory. Vectors can only store values of the same type.
 
 #### Internal Representation
+
 Under the hood, a `Vec<T>` is a struct consisting of three words (typically stored on the stack) that manage a contiguous block of memory on the heap:
 
 ```text
@@ -25,6 +26,7 @@ len   |        4          |               (Elements are stored contiguously)
 cap   |        6          |
       +-------------------+
 ```
+
 * **ptr:** A pointer to the heap memory where the data is stored.
 * **len:** The number of elements currently in the vector.
 * **cap (capacity):** The total amount of space allocated for the vector. When `len` equals `cap`, pushing a new element requires allocating a new, larger block of memory and copying the old elements over.
@@ -111,13 +113,14 @@ let s_format = format!("{}-{}-{}", s1_again, s2, s3);
 
 #### The UTF-8 Constraint and Indexing
 
-Because `String` is UTF-8 encoded, it does **not** support direct indexing (e.g., `&s[0]`). A single human-readable character (a Unicode scalar value) may take anywhere from 1 to 4 bytes. 
+Because `String` is UTF-8 encoded, it does **not** support direct indexing (e.g., `&s[0]`). A single human-readable character (a Unicode scalar value) may take anywhere from 1 to 4 bytes.
 
 ```rust
 let hello = String::from("Здравствуйте"); // Cyrillic
 // let h = hello[0]; // ERROR: String cannot be indexed by integer
 ```
-In the example above, `hello.len()` returns 24, not 12, because each Cyrillic letter takes 2 bytes in UTF-8. If Rust allowed `hello[0]`, it would return the first byte of the character `З`, which is not a valid character on its own. 
+
+In the example above, `hello.len()` returns 24, not 12, because each Cyrillic letter takes 2 bytes in UTF-8. If Rust allowed `hello[0]`, it would return the first byte of the character `З`, which is not a valid character on its own.
 
 To iterate over strings safely, you must be explicit about whether you want bytes or characters:
 
@@ -176,11 +179,11 @@ map.insert(field_name, field_value);
 
 #### Updating a Hash Map
 
-When updating a `HashMap`, you must decide what happens if the key already exists. 
+When updating a `HashMap`, you must decide what happens if the key already exists.
 
-1.  **Overwrite the value:** Calling `insert` on an existing key replaces the old value.
-2.  **Insert only if the key has no value:** The `entry` API returns an `Entry` enum representing a value that might or might not exist.
-3.  **Update a value based on the old value:** You can get a mutable reference to the existing value and modify it in place.
+1. **Overwrite the value:** Calling `insert` on an existing key replaces the old value.
+2. **Insert only if the key has no value:** The `entry` API returns an `Entry` enum representing a value that might or might not exist.
+3. **Update a value based on the old value:** You can get a mutable reference to the existing value and modify it in place.
 
 ```rust
 use std::collections::HashMap;
@@ -257,7 +260,7 @@ fn main() -> io::Result<()> {
 
 ### Buffered I/O for Performance
 
-Every time an application reads or writes to a file descriptor, it triggers a system call (syscall). Syscalls require a context switch from user space to kernel space, which is computationally expensive. 
+Every time an application reads or writes to a file descriptor, it triggers a system call (syscall). Syscalls require a context switch from user space to kernel space, which is computationally expensive.
 
 If you iterate over a file byte-by-byte or line-by-line using a raw `File` handle, you will trigger a syscall for every small read, crippling your application's performance. Rust solves this via `BufReader` and `BufWriter`, which wrap the file handle and perform large, batched I/O operations in memory.
 
@@ -339,7 +342,7 @@ fn inspect_file() -> io::Result<()> {
 
 ## 6.3 Standard Library Networking Primitives (`std::net`)
 
-Rust provides robust, cross-platform networking primitives through the `std::net` module. This module focuses on the two foundational transport-layer protocols of the internet: TCP (Transmission Control Protocol) and UDP (User Datagram Protocol). 
+Rust provides robust, cross-platform networking primitives through the `std::net` module. This module focuses on the two foundational transport-layer protocols of the internet: TCP (Transmission Control Protocol) and UDP (User Datagram Protocol).
 
 It is crucial to understand that the primitives in `std::net` are **synchronous and blocking**. When you ask a `TcpStream` to read data, the current thread will halt execution until data is available. While this is perfect for simple scripts, CLI tools, or thread-per-connection architectures, extreme high-throughput systems will utilize asynchronous networking (which we will cover extensively in Chapter 12 using Tokio).
 
@@ -348,7 +351,7 @@ It is crucial to understand that the primitives in `std::net` are **synchronous 
 Before transmitting data, you must define where it is going. Rust strictly types networking addresses to prevent formatting errors and to seamlessly handle both IPv4 and IPv6.
 
 * `IpAddr`: An enum representing an IP address, which can be either `V4(Ipv4Addr)` or `V6(Ipv6Addr)`.
-* `SocketAddr`: A combination of an `IpAddr` and a 16-bit port number. 
+* `SocketAddr`: A combination of an `IpAddr` and a 16-bit port number.
 
 You can construct these manually, but in practice, they are almost always parsed from strings using the `FromStr` trait (accessed via the `parse()` method).
 
@@ -494,7 +497,7 @@ Both `TcpStream` and `UdpSocket` offer methods to fine-tune their behavior at th
 
 ## 6.4 Time, Threading, and Synchronization Primitives in `std`
 
-The Rust standard library provides essential tools for measuring time, pausing execution, and managing concurrent tasks. While Rust relies heavily on the operating system for these capabilities, the standard library wraps them in safe, zero-cost abstractions that prevent common concurrency pitfalls. 
+The Rust standard library provides essential tools for measuring time, pausing execution, and managing concurrent tasks. While Rust relies heavily on the operating system for these capabilities, the standard library wraps them in safe, zero-cost abstractions that prevent common concurrency pitfalls.
 
 *(Note: While this section introduces the standard library's primitives, Chapter 11: Fearless Concurrency will dive deeply into complex concurrent architectures, the `Send` and `Sync` traits, and message passing).*
 
@@ -503,6 +506,7 @@ The Rust standard library provides essential tools for measuring time, pausing e
 When working with time in Rust, the `std::time` module provides two distinct types of clocks. Choosing the wrong one can lead to subtle production bugs.
 
 #### 1. The Monotonic Clock: `Instant`
+
 An `Instant` represents an opaque measurement of time given by the operating system's monotonic clock. Monotonic clocks are guaranteed to never go backward, making them the only correct choice for measuring elapsed time, calculating timeouts, or benchmarking code.
 
 ```rust
@@ -520,6 +524,7 @@ println!("Computation took: {:?}", duration);
 ```
 
 #### 2. The Wall Clock: `SystemTime`
+
 `SystemTime` represents the actual real-world time (e.g., April 27, 2026, 2:17 AM). Unlike `Instant`, `SystemTime` is not monotonic. It can jump forward or backward if the user changes the system clock or if the system synchronizes with an NTP (Network Time Protocol) server. `SystemTime` should be used for timestamps, logging, or interacting with file system metadata.
 
 ```rust
@@ -531,7 +536,7 @@ match SystemTime::now().duration_since(UNIX_EPOCH) {
 }
 ```
 
-Both `Instant` and `SystemTime` interact heavily with `Duration`, a type representing a span of time (internally stored as seconds and nanoseconds). 
+Both `Instant` and `SystemTime` interact heavily with `Duration`, a type representing a span of time (internally stored as seconds and nanoseconds).
 
 ---
 
@@ -541,7 +546,7 @@ Rust's standard library implements a 1:1 threading model. This means that every 
 
 #### Spawning and Joining Threads
 
-To create a new thread, you pass a closure to `thread::spawn`. The main thread will continue executing immediately. If the main thread finishes, all spawned threads are abruptly terminated, regardless of whether they have finished their work. 
+To create a new thread, you pass a closure to `thread::spawn`. The main thread will continue executing immediately. If the main thread finishes, all spawned threads are abruptly terminated, regardless of whether they have finished their work.
 
 To ensure a spawned thread completes, you must capture its `JoinHandle` and call `.join()` on it.
 
@@ -575,10 +580,12 @@ Calling `.join()` returns a `Result`. If the spawned thread panicked during exec
 When multiple threads need to read or modify the same data, Rust's strict ownership rules prevent you from simply passing a reference to both threads. Instead, the `std::sync` module provides thread-safe primitives to manage shared access.
 
 #### Arc: Atomic Reference Counting
+
 `Arc<T>` allows multiple threads to own the same piece of data. It keeps a thread-safe count of how many owners exist. When the last `Arc` goes out of scope, the underlying data is dropped. However, `Arc` only provides *immutable* shared access.
 
 #### Mutex: Mutual Exclusion
-To mutate shared data, you must wrap it in a `Mutex<T>`. A Mutex ensures that only one thread can access the inner data at a time by blocking all other threads until the current owner releases the lock. 
+
+To mutate shared data, you must wrap it in a `Mutex<T>`. A Mutex ensures that only one thread can access the inner data at a time by blocking all other threads until the current owner releases the lock.
 
 The combination of `Arc` and `Mutex` is the most common pattern for shared-state concurrency in Rust:
 
@@ -738,7 +745,7 @@ fn print_app_environment() {
 
 #### Setting Environment Variables
 
-You can set or remove environment variables for the currently running process using `std::env::set_var` and `std::env::remove_var`. 
+You can set or remove environment variables for the currently running process using `std::env::set_var` and `std::env::remove_var`.
 
 ```rust
 use std::env;
@@ -758,9 +765,9 @@ fn setup_test_env() {
 
 When building production-ready applications, it is an industry standard to merge multiple configuration sources. The generally accepted hierarchy of precedence (from highest priority to lowest) is:
 
-1.  **Command-Line Arguments:** Explicit overrides by the user for this specific execution.
-2.  **Environment Variables:** System or container-level configuration.
-3.  **Configuration Files:** (e.g., `config.toml`, `.env`) Persistent, project-level defaults.
-4.  **Hardcoded Defaults:** Fallback values defined in the Rust code.
+1. **Command-Line Arguments:** Explicit overrides by the user for this specific execution.
+2. **Environment Variables:** System or container-level configuration.
+3. **Configuration Files:** (e.g., `config.toml`, `.env`) Persistent, project-level defaults.
+4. **Hardcoded Defaults:** Fallback values defined in the Rust code.
 
 While `std::env` provides the primitives for steps 1 and 2, crates like `figment` or `config` are typically used to seamlessly merge these layers together into a single, strongly-typed Rust struct.

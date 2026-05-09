@@ -30,8 +30,7 @@ Capacity planning is not a one-time task performed during database creation; it 
 
 $$C_{future} = C_{current} \times (1 + r)^n$$
 
-
-4. **Monitor & Adjust:** Continuously measuring actual growth against the forecast to refine future predictions.
+1. **Monitor & Adjust:** Continuously measuring actual growth against the forecast to refine future predictions.
 
 ### Core Hardware Dimensions for Database Systems
 
@@ -52,7 +51,6 @@ Storage provisioning involves two distinct metrics: **Capacity** (how much data 
 * **RAID Configurations:** Provisioning physical storage often requires configuring RAID (Redundant Array of Independent Disks) to balance performance and fault tolerance.
 * *RAID 10 (Stripe of Mirrors):* The gold standard for transactional (OLTP) databases. It provides the high write performance of striping with the fault tolerance of mirroring, though it requires dedicating 50% of raw disk capacity to redundancy.
 * *RAID 5 / RAID 6:* Sometimes used for data warehouses (OLAP) where read operations heavily outnumber write operations, as the parity calculation penalty impacts write performance significantly.
-
 
 * **Direct-Attached Storage (DAS) vs. Storage Area Networks (SAN):** DAS offers lower latency and simpler provisioning, while SANs offer greater flexibility, easier expansion, and shared storage for High Availability (HA) clusters.
 
@@ -198,13 +196,13 @@ Modern DBMS platforms (such as Azure SQL, Oracle, and advanced PostgreSQL extens
 
 1. **Workload Capture:** The database engine continuously logs queries, execution times, and resource consumption (leveraging the telemetry discussed in Section 18.2).
 2. **Identification & Analysis:** The tuning engine analyzes the captured workload to identify:
+
 * *Missing Indexes:* Queries performing expensive table scans where an index would drastically reduce I/O.
 * *Unused or Redundant Indexes:* Indexes that have not been read by any query over a predefined retention period, yet are consuming storage and slowing down writes.
 
-
-3. **Implementation:** The system automatically executes `CREATE INDEX` or `DROP INDEX` commands. To avoid disrupting production, these operations are typically built as *online* operations (not locking the table).
-4. **Verification:** The engine compares the performance of queries *after* the index change against the historical baseline.
-5. **Retain/Revert:** If query performance degrades or the anticipated CPU savings are not realized, the system automatically reverts the change by dropping the new index or recreating the dropped one.
+1. **Implementation:** The system automatically executes `CREATE INDEX` or `DROP INDEX` commands. To avoid disrupting production, these operations are typically built as *online* operations (not locking the table).
+2. **Verification:** The engine compares the performance of queries *after* the index change against the historical baseline.
+3. **Retain/Revert:** If query performance degrades or the anticipated CPU savings are not realized, the system automatically reverts the change by dropping the new index or recreating the dropped one.
 
 ### Essential Automated Routine Maintenance Tasks
 
@@ -232,8 +230,6 @@ While auto-tuning addresses *which* indexes exist, maintenance must address the 
 * **The Automation:** Maintenance scripts should routinely assess index fragmentation levels.
 * *Low Fragmentation (e.g., 5-30%):* Trigger an index **reorganize** (compacting pages in place).
 * *High Fragmentation (e.g., >30%):* Trigger an index **rebuild** (dropping and recreating the index entirely).
-
-
 
 #### 4. Automated Consistency Checks
 

@@ -2,13 +2,13 @@ Rust’s standard library provides robust abstractions, but building low-level s
 
 ## 24.1 Interacting directly with the Operating System (Syscalls and `nix`)
 
-While Rust's standard library (`std`) provides robust, cross-platform abstractions for common system operations—such as file I/O, networking, and thread management—systems programming frequently requires crossing the boundary into OS-specific territory. When building high-performance databases, custom hypervisors, or low-level daemons, you will eventually encounter features that `std` either does not support or abstracts in a way that limits control. 
+While Rust's standard library (`std`) provides robust, cross-platform abstractions for common system operations—such as file I/O, networking, and thread management—systems programming frequently requires crossing the boundary into OS-specific territory. When building high-performance databases, custom hypervisors, or low-level daemons, you will eventually encounter features that `std` either does not support or abstracts in a way that limits control.
 
 To utilize these features, you must interact directly with the operating system via **system calls (syscalls)**.
 
 ### The System Call Boundary
 
-A system call is a programmatic request from user-space to the OS kernel to perform a privileged operation (e.g., allocating memory pages, manipulating file descriptors, or changing process priorities). 
+A system call is a programmatic request from user-space to the OS kernel to perform a privileged operation (e.g., allocating memory pages, manipulating file descriptors, or changing process priorities).
 
 In the Rust ecosystem, traversing from your high-level application code down to the kernel typically follows a specific architectural stack:
 
@@ -69,12 +69,13 @@ While functional, using `libc` directly pollutes your codebase with `unsafe` blo
 
 ### The Idiomatic Approach: The `nix` Crate
 
-For Unix-like systems (Linux, macOS, BSDs), the `nix` crate is the defacto standard for systems programming in Rust. It serves as a zero-cost, safe(r) wrapper around `libc`. 
+For Unix-like systems (Linux, macOS, BSDs), the `nix` crate is the defacto standard for systems programming in Rust. It serves as a zero-cost, safe(r) wrapper around `libc`.
 
 Instead of dealing with raw pointers and `errno`, `nix` leverages Rust's type system to provide:
-1.  **Strong Typing:** C integer flags are replaced with Rust `bitflags!` or `enum` types.
-2.  **Safe Abstractions:** Lifetimes and slices are used instead of raw pointers and lengths.
-3.  **Idiomatic Error Handling:** Return values are wrapped in a `nix::Result<T>`, mapping `errno` directly to a `nix::Error` enum.
+
+1. **Strong Typing:** C integer flags are replaced with Rust `bitflags!` or `enum` types.
+2. **Safe Abstractions:** Lifetimes and slices are used instead of raw pointers and lengths.
+3. **Idiomatic Error Handling:** Return values are wrapped in a `nix::Result<T>`, mapping `errno` directly to a `nix::Error` enum.
 
 Let's rewrite the previous example using `nix`:
 
@@ -161,7 +162,7 @@ By leveraging `libc` for raw FFI and `nix` for safe Unix abstractions, you can b
 
 ## 24.2 Building Advanced CLI Tools with `clap`
 
-In Chapter 6.5, we explored parsing command-line arguments using the standard library's `std::env::args`. While sufficient for simple scripts, manually matching positional arguments, handling optional flags, generating `--help` menus, and enforcing type validation quickly becomes a maintenance nightmare in production systems. 
+In Chapter 6.5, we explored parsing command-line arguments using the standard library's `std::env::args`. While sufficient for simple scripts, manually matching positional arguments, handling optional flags, generating `--help` menus, and enforcing type validation quickly becomes a maintenance nightmare in production systems.
 
 For professional-grade command-line interfaces, the Rust ecosystem has standardized around the `clap` (Command Line Argument Parser) crate. `clap` handles the boilerplate of argument parsing, allowing you to declaratively define your CLI's interface while it automatically generates robust validation, help menus, and version information.
 
@@ -212,9 +213,10 @@ fn main() {
 ```
 
 By leveraging `clap`, we achieve several advanced features immediately:
-1.  **Type Safety:** `clap` automatically attempts to parse string inputs into the defined Rust types (e.g., `usize`, `u16`, `PathBuf`). If a user passes `--port abc`, the CLI will gracefully reject it before your application logic even begins.
-2.  **Environment Variable Integration:** The `env = "PORT"` attribute creates a seamless fallback hierarchy: CLI argument > Environment Variable > Default Value.
-3.  **Automatic Help Generation:** Running `cargo run -- --help` will output a beautifully formatted help menu utilizing your doc-comments.
+
+1. **Type Safety:** `clap` automatically attempts to parse string inputs into the defined Rust types (e.g., `usize`, `u16`, `PathBuf`). If a user passes `--port abc`, the CLI will gracefully reject it before your application logic even begins.
+2. **Environment Variable Integration:** The `env = "PORT"` attribute creates a seamless fallback hierarchy: CLI argument > Environment Variable > Default Value.
+3. **Automatic Help Generation:** Running `cargo run -- --help` will output a beautifully formatted help menu utilizing your doc-comments.
 
 ### Structuring Complex Tools with Subcommands
 
@@ -343,18 +345,19 @@ In a production scenario, you would typically expose this as a hidden subcommand
 
 ## 24.3 Signal Handling, Graceful Shutdowns, and Cancellation Tokens
 
-When an operating system or a container orchestration platform (like Kubernetes or Docker) needs to stop a running process, it does not simply pull the plug. Instead, it sends an Inter-Process Communication (IPC) message known as a **signal**. 
+When an operating system or a container orchestration platform (like Kubernetes or Docker) needs to stop a running process, it does not simply pull the plug. Instead, it sends an Inter-Process Communication (IPC) message known as a **signal**.
 
-By default, when a Rust application receives a `SIGINT` (Interrupt, typically triggered by `Ctrl+C`) or a `SIGTERM` (Terminate), the process aborts immediately. In a production environment, this abrupt termination is catastrophic. It leaves database transactions uncommitted, network connections unclosed, and file writes partially flushed, leading to data corruption and degraded system availability. 
+By default, when a Rust application receives a `SIGINT` (Interrupt, typically triggered by `Ctrl+C`) or a `SIGTERM` (Terminate), the process aborts immediately. In a production environment, this abrupt termination is catastrophic. It leaves database transactions uncommitted, network connections unclosed, and file writes partially flushed, leading to data corruption and degraded system availability.
 
 To build resilient systems, you must intercept these signals and orchestrate a **graceful shutdown**.
 
 ### The Graceful Shutdown Architecture
 
 A robust graceful shutdown sequence involves three distinct phases:
-1.  **Interception:** Catching the OS signal before it kills the process.
-2.  **Notification:** Broadcasting a cancellation message to all running threads, asynchronous tasks, and connection pools.
-3.  **Completion:** Waiting for all active tasks to finish their current unit of work, release their resources, and exit before finally terminating the `main` thread.
+
+1. **Interception:** Catching the OS signal before it kills the process.
+2. **Notification:** Broadcasting a cancellation message to all running threads, asynchronous tasks, and connection pools.
+3. **Completion:** Waiting for all active tasks to finish their current unit of work, release their resources, and exit before finally terminating the `main` thread.
 
 ```text
 [OS / Container Runtime]
@@ -547,10 +550,10 @@ On Unix and Linux systems, a process is traditionally daemonized using a strict 
                     (Runs indefinitely in background)
 ```
 
-1.  **Fork 1 & Parent Exit:** The initial process spawns a child and immediately terminates. This returns control to the shell, making the user think the command has finished. The child process continues running in the background.
-2.  **Create a New Session (`setsid`):** The child calls `setsid()` to become the leader of a new process group and session, detaching from the terminal that launched it.
-3.  **Fork 2:** The process forks a second time. This prevents the new daemon from ever legally re-acquiring a controlling terminal, as only session leaders can do so.
-4.  **Environment Cleanup:** The daemon changes its working directory to the root (`/`) to ensure it doesn't block any file systems from being unmounted. It resets the file mode creation mask (`umask`) and closes standard file descriptors (`stdin`, `stdout`, `stderr`), redirecting them to `/dev/null` or dedicated log files.
+1. **Fork 1 & Parent Exit:** The initial process spawns a child and immediately terminates. This returns control to the shell, making the user think the command has finished. The child process continues running in the background.
+2. **Create a New Session (`setsid`):** The child calls `setsid()` to become the leader of a new process group and session, detaching from the terminal that launched it.
+3. **Fork 2:** The process forks a second time. This prevents the new daemon from ever legally re-acquiring a controlling terminal, as only session leaders can do so.
+4. **Environment Cleanup:** The daemon changes its working directory to the root (`/`) to ensure it doesn't block any file systems from being unmounted. It resets the file mode creation mask (`umask`) and closes standard file descriptors (`stdin`, `stdout`, `stderr`), redirecting them to `/dev/null` or dedicated log files.
 
 ### Implementing Daemons in Rust
 
@@ -599,7 +602,7 @@ fn run_server_loop() {
 
 ### Cross-Platform Challenges: Windows Services
 
-The Unix double-fork pattern is entirely incompatible with Windows. Windows does not use signals or forks in the same manner. Instead, background processes are managed by the **Service Control Manager (SCM)**. 
+The Unix double-fork pattern is entirely incompatible with Windows. Windows does not use signals or forks in the same manner. Instead, background processes are managed by the **Service Control Manager (SCM)**.
 
 To create a Windows Service in Rust, your application must register a specific callback loop using Foreign Function Interface (FFI) bindings to the Windows API. The `windows-service` crate abstracts this complexity.
 
@@ -607,14 +610,15 @@ If you are building a tool that must run as a background service on both Linux a
 
 ### The Modern Production Paradigm: Systemd and Containerization
 
-While understanding manual daemonization is a crucial systems programming skill, it is increasingly considered an anti-pattern in modern cloud-native deployments. 
+While understanding manual daemonization is a crucial systems programming skill, it is increasingly considered an anti-pattern in modern cloud-native deployments.
 
-If your Rust application is being deployed via **Docker/Kubernetes** or managed by **systemd/launchd**, you **should not** double-fork or daemonize your process natively. 
+If your Rust application is being deployed via **Docker/Kubernetes** or managed by **systemd/launchd**, you **should not** double-fork or daemonize your process natively.
 
 Modern orchestrators and init systems expect applications to:
-1.  Run continuously in the **foreground**.
-2.  Log cleanly to **`stdout` and `stderr`** (instead of writing to file paths).
-3.  Exit gracefully upon receiving OS signals (as discussed in Section 24.3).
+
+1. Run continuously in the **foreground**.
+2. Log cleanly to **`stdout` and `stderr`** (instead of writing to file paths).
+3. Exit gracefully upon receiving OS signals (as discussed in Section 24.3).
 
 When using `systemd`, for example, process management is handled declaratively. You write a unit file (`/etc/systemd/system/my_app.service`):
 

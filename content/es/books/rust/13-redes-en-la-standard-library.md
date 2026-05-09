@@ -2,7 +2,7 @@ El desarrollo backend moderno es, en esencia, comunicación. En este capítulo e
 
 ## 13.1 Conexiones TCP (`TcpListener`, `TcpStream`)
 
-Hasta este punto del libro, hemos interactuado principalmente con la memoria local y el sistema de archivos (Capítulo 12). Sin embargo, en el desarrollo backend, la comunicación a través de la red es el núcleo de nuestro trabajo. La Standard Library de Rust nos proporciona el módulo `std::net` para manejar redes de forma nativa. 
+Hasta este punto del libro, hemos interactuado principalmente con la memoria local y el sistema de archivos (Capítulo 12). Sin embargo, en el desarrollo backend, la comunicación a través de la red es el núcleo de nuestro trabajo. La Standard Library de Rust nos proporciona el módulo `std::net` para manejar redes de forma nativa.
 
 En esta sección, nos enfocaremos en el Protocolo de Control de Transmisión (TCP), el cual es la base de la mayoría de los protocolos de la capa de aplicación, como HTTP o WebSockets. Rust maneja las conexiones TCP síncronas principalmente a través de dos estructuras: `TcpListener` (para el servidor) y `TcpStream` (para la conexión en sí).
 
@@ -13,6 +13,7 @@ En esta sección, nos enfocaremos en el Protocolo de Control de Transmisión (TC
 Para que una aplicación backend pueda recibir conexiones, necesita "escuchar" en un puerto específico de una interfaz de red. Para esto utilizamos `TcpListener`.
 
 El flujo básico para levantar un servidor TCP es:
+
 1. Enlazar (bind) el listener a una dirección IP y un puerto.
 2. Escuchar las conexiones entrantes (incoming).
 3. Aceptar y procesar cada conexión.
@@ -103,7 +104,7 @@ fn main() -> std::io::Result<()> {
 
 ### El Cliente: Conectándose a un Servidor
 
-Aunque como desarrolladores backend pasamos la mayor parte del tiempo escribiendo servidores, a menudo necesitamos construir clientes para comunicarnos con otras APIs, bases de datos o microservicios. 
+Aunque como desarrolladores backend pasamos la mayor parte del tiempo escribiendo servidores, a menudo necesitamos construir clientes para comunicarnos con otras APIs, bases de datos o microservicios.
 
 Para actuar como cliente, utilizamos el método `connect` de `TcpStream`. Este método intenta resolver la dirección y establecer el handshake de TCP con el servidor remoto.
 
@@ -140,7 +141,7 @@ Al trabajar directamente con `std::net`, hay comportamientos internos que debes 
 
 ## 13.2 Comunicación UDP (`UdpSocket`)
 
-Mientras que TCP es el equivalente informático a una llamada telefónica —donde se establece una conexión previa, se garantiza el orden de los mensajes y se confirma la recepción—, el Protocolo de Datagramas de Usuario (UDP) es más parecido a enviar una postal por correo tradicional. 
+Mientras que TCP es el equivalente informático a una llamada telefónica —donde se establece una conexión previa, se garantiza el orden de los mensajes y se confirma la recepción—, el Protocolo de Datagramas de Usuario (UDP) es más parecido a enviar una postal por correo tradicional.
 
 UDP es un protocolo "sin conexión" (connectionless). No garantiza que los paquetes (datagramas) lleguen a su destino, ni que lleguen en el mismo orden en que fueron enviados, ni evita que lleguen duplicados. A cambio de sacrificar estas garantías, UDP elimina el *overhead* del *handshake* inicial y de la validación constante de paquetes, ofreciendo una transmisión de datos extremadamente rápida y ligera.
 
@@ -208,7 +209,7 @@ fn main() -> std::io::Result<()> {
 
 ### El método `connect` en UDP (Sintaxis Avanzada)
 
-Un patrón que a veces confunde a los desarrolladores intermedios es ver el método `connect` utilizado en un `UdpSocket`. 
+Un patrón que a veces confunde a los desarrolladores intermedios es ver el método `connect` utilizado en un `UdpSocket`.
 
 ```rust
 // Esto NO establece una conexión real en la red
@@ -236,7 +237,7 @@ Para manejar esto, la Standard Library de Rust nos ofrece un sistema de tipos ro
 
 El secreto detrás de por qué pudimos pasar un `&str` a funciones como `TcpStream::connect` radica en el trait `std::net::ToSocketAddrs`. Este trait convierte representaciones de direcciones (como cadenas de texto o tuplas) en un iterador de estructuras `SocketAddr` (que combinan una IP y un puerto).
 
-Cuando le pasas un dominio a una función que requiere `ToSocketAddrs`, Rust realiza una **resolución DNS síncrona** utilizando las llamadas nativas del sistema operativo. 
+Cuando le pasas un dominio a una función que requiere `ToSocketAddrs`, Rust realiza una **resolución DNS síncrona** utilizando las llamadas nativas del sistema operativo.
 
 ```rust
 use std::net::{TcpStream, ToSocketAddrs};
@@ -289,6 +290,7 @@ let addr_parseada: SocketAddr = "192.168.1.100:5432".parse()
 Una vez que tienes un `TcpStream` o un `UdpSocket`, puedes alterar su comportamiento interactuando con las opciones de socket del sistema operativo subyacente. Esto es crítico en sistemas distribuidos.
 
 #### 1. Desactivar el Algoritmo de Nagle (`TCP_NODELAY`)
+
 Por defecto, TCP utiliza el algoritmo de Nagle, el cual agrupa paquetes pequeños en uno más grande antes de enviarlos a la red para ahorrar ancho de banda. Si estás programando un backend para un videojuego en tiempo real o un sistema de trading financiero donde la latencia es más importante que el ancho de banda, **debes** desactivarlo.
 
 ```rust
@@ -298,6 +300,7 @@ stream.set_nodelay(true)?;
 ```
 
 #### 2. Configurar el Time-To-Live (TTL)
+
 El TTL define cuántos "saltos" (routers) puede atravesar tu paquete antes de que la red lo descarte. Si estás diseñando herramientas de red (como un traceroute) o te comunicas estrictamente dentro de una subred local, ajustar el TTL es una práctica común.
 
 ```rust
@@ -305,6 +308,7 @@ stream.set_ttl(64)?; // Limita los saltos a 64
 ```
 
 #### 3. I/O No Bloqueante Básico
+
 Aunque la librería estándar es síncrona, puedes configurar un socket para que retorne un error inmediatamente en lugar de bloquear el hilo si no hay datos listos. Esta es la base de cómo funcionan las librerías asíncronas por debajo.
 
 ```rust
@@ -360,22 +364,25 @@ fn main() -> std::io::Result<()> {
 Este es el modelo de concurrencia clásico que utilizaban servidores como las primeras versiones de Apache. Aunque funciona y es fácil de razonar mentalmente, presenta tres limitaciones arquitectónicas severas conocidas históricamente como el problema **C10K** (manejar 10.000 conexiones concurrentes).
 
 #### 1. Consumo Excesivo de Memoria
-Cada vez que invocas `thread::spawn`, el sistema operativo debe reservar un bloque contiguo de memoria para la pila (stack) del nuevo hilo. En Linux, el tamaño por defecto de la pila de un hilo suele ser de 2 MB (o hasta 8 MB en algunos entornos). 
+
+Cada vez que invocas `thread::spawn`, el sistema operativo debe reservar un bloque contiguo de memoria para la pila (stack) del nuevo hilo. En Linux, el tamaño por defecto de la pila de un hilo suele ser de 2 MB (o hasta 8 MB en algunos entornos).
 
 Si tu servidor recibe 10.000 conexiones simultáneas (un número trivial para un backend moderno), el sistema operativo necesitará reservar **20 Gigabytes de memoria RAM exclusivamente para mantener las pilas de los hilos**, incluso si esos clientes están inactivos y no están enviando datos.
 
 #### 2. Overhead de Cambio de Contexto (Context Switching)
+
 Cuando tienes más hilos activos que núcleos físicos en tu CPU, el sistema operativo tiene que repartir el tiempo de ejecución entre ellos. Este proceso de pausar un hilo, guardar su estado en memoria, cargar el estado de otro hilo y reanudarlo se llama "cambio de contexto".
 
 A medida que el número de hilos crece, el planificador (scheduler) del sistema operativo empieza a consumir más ciclos de CPU decidiendo qué hilo ejecutar que ejecutando tu código de negocio real. El rendimiento de tu servidor colapsa bajo su propio peso.
 
 #### 3. Latencia Inducida por I/O
+
 Las operaciones de red son tareas ligadas a la entrada/salida (*I/O bound*), no a la CPU (*CPU bound*). La mayor parte del tiempo, un hilo que maneja un socket no está calculando nada; simplemente está "durmiendo" a la espera de que los electrones viajen por un cable de fibra óptica. Desperdiciar un costoso hilo del sistema operativo para que se quede de brazos cruzados esperando la red es altamente ineficiente.
 
 ### El Camino Hacia la Asincronía
 
 El modelo bloqueante de `std::net` es robusto, seguro y perfecto para operaciones simples. No obstante, las limitaciones descritas son la razón exacta por la que los lenguajes modernos y los backends de alto rendimiento han adoptado la **I/O Asíncrona**.
 
-En lugar de tener un hilo bloqueado por cada conexión, los sistemas asíncronos configuran los sockets en modo no bloqueante (como vimos brevemente en la sección 13.3) y delegan la vigilancia de miles de sockets a una única API ultraeficiente del sistema operativo (como `epoll` en Linux o `kqueue` en macOS). 
+En lugar de tener un hilo bloqueado por cada conexión, los sistemas asíncronos configuran los sockets en modo no bloqueante (como vimos brevemente en la sección 13.3) y delegan la vigilancia de miles de sockets a una única API ultraeficiente del sistema operativo (como `epoll` en Linux o `kqueue` en macOS).
 
 En el ecosistema de Rust, no construimos este complejo bucle de eventos desde cero cada vez. Utilizamos *runtimes* asíncronos como **Tokio**. Sin embargo, antes de saltar a la asincronía en la Parte VIII del libro, debemos entender cómo manejar el estado compartido y dominar las herramientas de sincronización tradicionales.

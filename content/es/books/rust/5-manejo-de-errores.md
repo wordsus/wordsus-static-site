@@ -2,7 +2,7 @@ En el desarrollo backend, la resiliencia es innegociable. Rust abandona el model
 
 ## 5.1 Errores irrecuperables: la macro `panic!`
 
-En el desarrollo de software backend, nos enfrentamos constantemente a situaciones inesperadas: una base de datos rechaza una conexión, un usuario envía un JSON malformado o un archivo de configuración desaparece. La mayoría de estos problemas son predecibles y, lo más importante, *recuperables*. Sin embargo, existe una categoría de errores donde el programa entra en un estado corrupto o ilógico del cual no puede, ni debe, intentar recuperarse. 
+En el desarrollo de software backend, nos enfrentamos constantemente a situaciones inesperadas: una base de datos rechaza una conexión, un usuario envía un JSON malformado o un archivo de configuración desaparece. La mayoría de estos problemas son predecibles y, lo más importante, *recuperables*. Sin embargo, existe una categoría de errores donde el programa entra en un estado corrupto o ilógico del cual no puede, ni debe, intentar recuperarse.
 
 Para estos escenarios, Rust nos proporciona la macro `panic!`.
 
@@ -12,8 +12,8 @@ Un "panic" (pánico) en Rust es la forma que tiene el lenguaje de decir: *"Ha oc
 
 Cuando se invoca un `panic!`, por defecto, Rust hace dos cosas importantes:
 
-1.  **Imprime un mensaje de error:** Muestra en la salida estándar (stderr) el mensaje proporcionado junto con la ubicación exacta (archivo, línea y columna) donde ocurrió el pánico.
-2.  **Unwinding (Desenrollado de la pila):** Rust retrocede por la pila de llamadas de funciones, limpiando y liberando la memoria de cada variable y recurso que encuentra a su paso. Esto garantiza que no haya fugas de memoria, aprovechando el sistema de *Ownership* que vimos en el Capítulo 4.
+1. **Imprime un mensaje de error:** Muestra en la salida estándar (stderr) el mensaje proporcionado junto con la ubicación exacta (archivo, línea y columna) donde ocurrió el pánico.
+2. **Unwinding (Desenrollado de la pila):** Rust retrocede por la pila de llamadas de funciones, limpiando y liberando la memoria de cada variable y recurso que encuentra a su paso. Esto garantiza que no haya fugas de memoria, aprovechando el sistema de *Ownership* que vimos en el Capítulo 4.
 
 Veamos el uso más básico y directo de esta macro:
 
@@ -88,27 +88,27 @@ fn process_payment(method: &str) {
 
 ### Depuración: El Backtrace al rescate
 
-Cuando tu aplicación backend falla en un entorno de desarrollo o staging, saber en qué línea ocurrió el pánico a menudo no es suficiente; necesitas saber *cómo* llegó la ejecución hasta ahí. 
+Cuando tu aplicación backend falla en un entorno de desarrollo o staging, saber en qué línea ocurrió el pánico a menudo no es suficiente; necesitas saber *cómo* llegó la ejecución hasta ahí.
 
-Rust te permite generar un *backtrace* (traza de la pila) configurando la variable de entorno `RUST_BACKTRACE`. 
+Rust te permite generar un *backtrace* (traza de la pila) configurando la variable de entorno `RUST_BACKTRACE`.
 
 Si ejecutas tu programa con `RUST_BACKTRACE=1 cargo run`, Rust imprimirá la lista completa de funciones llamadas que condujeron al pánico, facilitando enormemente la depuración. Es importante notar que para que el backtrace sea legible, el código debe ser compilado con símbolos de depuración (que es el comportamiento por defecto en perfiles de desarrollo, `cargo build`).
 
 ### ¿Cuándo es correcto entrar en pánico en un Backend?
 
-Una regla de oro para desarrolladores senior en Rust es: **Un usuario enviando datos inválidos nunca debería causar un `panic!`**. 
+Una regla de oro para desarrolladores senior en Rust es: **Un usuario enviando datos inválidos nunca debería causar un `panic!`**.
 
 Si un endpoint REST recibe un email mal formado, el servidor debe devolver un *HTTP 400 Bad Request* mediante un error recuperable (como veremos con `Result`), no colapsar el hilo de ejecución.
 
 Entonces, ¿cuándo *sí* debes usar (o permitir) un pánico en tu código?
 
-1.  **En la fase de inicialización (Startup):** Si tu servidor arranca y no puede conectarse a la base de datos principal, o le faltan variables de entorno críticas, hacer un *panic* temprano (Fail Fast) es la mejor opción. No tiene sentido levantar un servidor que no puede atender peticiones de manera funcional.
-2.  **En violaciones de invariantes internas:** Cuando detectas que el estado interno del programa está irremediablemente corrupto debido a un bug en tu propia lógica (ej. una máquina de estados que llega a una transición imposible).
-3.  **En las pruebas (Tests):** Como veremos en la Parte VI del libro, la macro `#[test]` considera que un test falla precisamente si ocurre un pánico durante su ejecución.
+1. **En la fase de inicialización (Startup):** Si tu servidor arranca y no puede conectarse a la base de datos principal, o le faltan variables de entorno críticas, hacer un *panic* temprano (Fail Fast) es la mejor opción. No tiene sentido levantar un servidor que no puede atender peticiones de manera funcional.
+2. **En violaciones de invariantes internas:** Cuando detectas que el estado interno del programa está irremediablemente corrupto debido a un bug en tu propia lógica (ej. una máquina de estados que llega a una transición imposible).
+3. **En las pruebas (Tests):** Como veremos en la Parte VI del libro, la macro `#[test]` considera que un test falla precisamente si ocurre un pánico durante su ejecución.
 
 ## 5.2 Errores recuperables: el enum `Result<T, E>`
 
-En la sección anterior vimos cómo `panic!` destruye el proceso actual cuando nos encontramos ante un callejón sin salida lógico. Sin embargo, en el desarrollo backend del mundo real, el 99% de los errores no son críticos para el ciclo de vida de la aplicación, sino que son simplemente parte del flujo de negocio. 
+En la sección anterior vimos cómo `panic!` destruye el proceso actual cuando nos encontramos ante un callejón sin salida lógico. Sin embargo, en el desarrollo backend del mundo real, el 99% de los errores no son críticos para el ciclo de vida de la aplicación, sino que son simplemente parte del flujo de negocio.
 
 Si un usuario intenta autenticarse con una contraseña incorrecta, o si un microservicio externo tarda demasiado en responder, nuestro servidor no debe colapsar. En su lugar, debe capturar el error, registrarlo, y devolver una respuesta adecuada (como un *HTTP 401 Unauthorized* o *504 Gateway Timeout*).
 
@@ -126,6 +126,7 @@ enum Result<T, E> {
 ```
 
 Es un tipo algebraico (como vimos en el Capítulo 3) fuertemente tipado mediante dos parámetros genéricos:
+
 * **`T` (Type):** El tipo del valor que se devolverá en caso de éxito, envuelto en la variante `Ok`.
 * **`E` (Error):** El tipo del valor que se devolverá en caso de fallo, envuelto en la variante `Err`.
 
@@ -133,7 +134,7 @@ La ventaja arquitectónica de este diseño es masiva: **la firma de la función 
 
 ### Extrayendo valores con `match`
 
-Imaginemos un escenario común en una API REST: recibimos el ID de un usuario como una cadena de texto (desde un *path parameter*) y necesitamos convertirlo a un entero de 32 bits antes de consultar la base de datos. 
+Imaginemos un escenario común en una API REST: recibimos el ID de un usuario como una cadena de texto (desde un *path parameter*) y necesitamos convertirlo a un entero de 32 bits antes de consultar la base de datos.
 
 El método `parse()` de las cadenas en Rust devuelve un `Result`, ya que la conversión puede fallar (por ejemplo, si recibimos `"123a"`). La forma más exhaustiva de manejar esto es usando `match`:
 
@@ -200,7 +201,7 @@ Rust soluciona esto de manera brillante permitiéndonos propagar los errores hac
 
 ## 5.3 Propagación de errores con el operador `?`
 
-En la sección anterior observamos cómo `match` nos obliga a ser explícitos y seguros al manejar un `Result<T, E>`. Sin embargo, en la arquitectura de un backend, es muy común que una sola petición HTTP desencadene una serie de operaciones dependientes: validar un token, leer de la base de datos, serializar un JSON y enviarlo a una cola de mensajes. 
+En la sección anterior observamos cómo `match` nos obliga a ser explícitos y seguros al manejar un `Result<T, E>`. Sin embargo, en la arquitectura de un backend, es muy común que una sola petición HTTP desencadene una serie de operaciones dependientes: validar un token, leer de la base de datos, serializar un JSON y enviarlo a una cola de mensajes.
 
 Si usamos `match` para manejar el posible error de *cada una* de estas operaciones, terminaremos con un código profundamente anidado y difícil de leer, conocido en ingeniería de software como el "Arrow Anti-Pattern" (el código toma forma de flecha apuntando hacia la derecha).
 
@@ -210,8 +211,8 @@ Para resolver este problema de ergonomía sin sacrificar la seguridad de tipos, 
 
 El operador `?` se coloca al final de una expresión que devuelve un `Result` (o un `Option`). Su comportamiento es simple pero increíblemente poderoso:
 
-1.  **Si el valor es `Ok(T)`:** El operador extrae internamente el valor `T` y la ejecución de la función continúa normalmente. Es como un `.unwrap()`, pero seguro.
-2.  **Si el valor es `Err(E)`:** El operador **retorna anticipadamente (early return)** de la función actual, propagando el error `Err(E)` hacia la función superior que la llamó.
+1. **Si el valor es `Ok(T)`:** El operador extrae internamente el valor `T` y la ejecución de la función continúa normalmente. Es como un `.unwrap()`, pero seguro.
+2. **Si el valor es `Err(E)`:** El operador **retorna anticipadamente (early return)** de la función actual, propagando el error `Err(E)` hacia la función superior que la llamó.
 
 ### El "Antes y Después": Refactorizando la anidación
 
@@ -275,6 +276,7 @@ Esto significa que si tu función declara que retorna un error de tipo `AppError
 ### La regla de oro del operador `?`
 
 El operador `?` **solo puede usarse en funciones cuyo tipo de retorno sea compatible**. Principalmente, esto significa funciones que devuelven:
+
 * `Result<T, E>`
 * `Option<T>` (en cuyo caso, un `None` provocará un return temprano de `None`)
 * Cualquier tipo que implemente el trait interno `FromResidual`.
@@ -294,13 +296,14 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 ```
 
-Para cerrar este capítulo de manejo de errores y preparar el terreno para aplicaciones backend de nivel senior, el siguiente paso lógico es aprender a centralizar y tipar nuestros propios errores de dominio (aprovechando esa conversión implícita del `?`). 
+Para cerrar este capítulo de manejo de errores y preparar el terreno para aplicaciones backend de nivel senior, el siguiente paso lógico es aprender a centralizar y tipar nuestros propios errores de dominio (aprovechando esa conversión implícita del `?`).
 
 ## 5.4 Creación de tipos de error personalizados con `thiserror` y `anyhow`
 
-Hasta ahora hemos visto cómo propagar errores con el operador `?` utilizando tipos genéricos como `String` o el "cajón de sastre" `Box<dyn std::error::Error>`. Si bien esto es suficiente para scripts rápidos, en un backend de nivel de producción es inaceptable. 
+Hasta ahora hemos visto cómo propagar errores con el operador `?` utilizando tipos genéricos como `String` o el "cajón de sastre" `Box<dyn std::error::Error>`. Si bien esto es suficiente para scripts rápidos, en un backend de nivel de producción es inaceptable.
 
 Si tu capa de acceso a datos falla, tu controlador HTTP necesita saber *exactamente* por qué falló para responder correctamente:
+
 * ¿No se encontró el registro? -> **HTTP 404 Not Found**
 * ¿Violación de unicidad (email duplicado)? -> **HTTP 409 Conflict**
 * ¿Se cayó la base de datos? -> **HTTP 500 Internal Server Error**
@@ -349,6 +352,7 @@ fn fetch_user(id: i32) -> Result<String, UserError> {
 ```
 
 **Ventajas clave para el Backend:**
+
 * **Manejo exhaustivo:** El controlador HTTP puede hacer un `match` sobre `UserError` y estar 100% seguro de que ha mapeado cada caso a un código de estado HTTP adecuado.
 * **Cero sobrecarga en runtime:** `thiserror` solo genera código en tiempo de compilación.
 
@@ -378,6 +382,7 @@ fn load_server_config(path: &str) -> Result<String> {
 ```
 
 Si el archivo no existe, el error impreso en los logs será una cadena de causalidad hermosa y fácil de seguir:
+
 ```text
 Error: Fallo crítico: No se pudo leer el archivo de configuración en la ruta '/etc/config.json'
 
@@ -392,4 +397,4 @@ Saber cuándo usar cuál es una marca de un desarrollador Rust Senior:
 * **Usa `thiserror` (Errores Estructurados):** En librerías, crates internos, capas de dominio y acceso a datos. Úsalo siempre que el código que llame a tu función necesite inspeccionar el error para tomar una decisión lógica (ej. reintentar la conexión, mapear a un código HTTP específico o ejecutar un fallback).
 * **Usa `anyhow` (Errores de Contexto):** En binarios finales, scripts de CLI, inicialización del servidor (función `main`) o capas de la aplicación donde el único camino a seguir ante un error es abortar la operación actual, devolver un error 500 genérico y registrar el contexto en los logs.
 
-Con esto concluimos el **Capítulo 5: Manejo de Errores**, estableciendo una base sólida y segura para evitar caídas inesperadas en producción. 
+Con esto concluimos el **Capítulo 5: Manejo de Errores**, estableciendo una base sólida y segura para evitar caídas inesperadas en producción.

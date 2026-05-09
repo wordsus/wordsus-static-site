@@ -19,6 +19,7 @@ The lowest-risk strategy for introducing Pulumi is to restrict its use to entire
 In the Coexistence Model, Pulumi is introduced into an environment that already relies heavily on another IaC tool. Rather than replacing the legacy tool, Pulumi operates alongside it, with clear architectural boundaries defining the responsibilities of each.
 
 A common implementation of this strategy is the **Core vs. Application** split:
+
 * **Legacy IaC (e.g., Terraform):** Maintains the foundational network infrastructure (VPCs, Transit Gateways, foundational IAM roles).
 * **Pulumi:** Manages application-specific infrastructure (ECS clusters, Lambda functions, API Gateways, application-specific databases).
 
@@ -57,9 +58,9 @@ const appSecurityGroup = new aws.ec2.SecurityGroup("app-sg", {
 
 ### 3. The Strangler Fig Pattern
 
-Adapted from software modernization techniques, the Strangler Fig pattern involves gradually wrapping and replacing legacy infrastructure components until the old system can be safely decommissioned. 
+Adapted from software modernization techniques, the Strangler Fig pattern involves gradually wrapping and replacing legacy infrastructure components until the old system can be safely decommissioned.
 
-Instead of rewriting everything, you import existing resources into Pulumi state (detailed in Section 20.2) one architectural layer at a time. 
+Instead of rewriting everything, you import existing resources into Pulumi state (detailed in Section 20.2) one architectural layer at a time.
 
 ```text
 Migration Flow: The Strangler Fig Pattern
@@ -93,15 +94,16 @@ By adopting this strategy, the organization benefits from the power of general-p
 
 ## 20.2 Using `pulumi import` for Brownfield Projects
 
-A "brownfield" project is any environment where infrastructure already exists. This infrastructure might have been provisioned manually via the cloud provider's web console (often colloquially referred to as "ClickOps"), created by custom bash scripts, or managed by a legacy tool that the organization is moving away from. 
+A "brownfield" project is any environment where infrastructure already exists. This infrastructure might have been provisioned manually via the cloud provider's web console (often colloquially referred to as "ClickOps"), created by custom bash scripts, or managed by a legacy tool that the organization is moving away from.
 
-The primary challenge in a brownfield scenario is bringing these existing, untracked resources under Pulumi's management *without* destroying and recreating them. Recreating stateful resources like databases or core networking components usually means unacceptable downtime or data loss. 
+The primary challenge in a brownfield scenario is bringing these existing, untracked resources under Pulumi's management *without* destroying and recreating them. Recreating stateful resources like databases or core networking components usually means unacceptable downtime or data loss.
 
 To solve this, Pulumi provides the `pulumi import` command.
 
 ### The Import Workflow
 
 When you import a resource, Pulumi performs two critical actions simultaneously:
+
 1. **State Acquisition:** It queries the cloud provider for the current configuration of the physical resource and saves this baseline into the Pulumi state file.
 2. **Code Generation:** It analyzes the physical resource and automatically generates the corresponding Pulumi code (in your chosen language) required to manage it moving forward.
 
@@ -179,11 +181,11 @@ This approach is highly programmable. Many teams write simple scripts to query t
 
 ### The "Zero Diff" Verification
 
-The final and most crucial step of importing brownfield infrastructure is verifying that the generated code perfectly matches reality. 
+The final and most crucial step of importing brownfield infrastructure is verifying that the generated code perfectly matches reality.
 
-After you have integrated the generated code into your Pulumi project, you must run `pulumi preview`. 
+After you have integrated the generated code into your Pulumi project, you must run `pulumi preview`.
 
-Because the code was generated based on the actual state of the cloud resources, the preview should indicate that **0 resources will be created, updated, or deleted**. 
+Because the code was generated based on the actual state of the cloud resources, the preview should indicate that **0 resources will be created, updated, or deleted**.
 
 ```bash
 $ pulumi preview
@@ -199,7 +201,7 @@ If `pulumi preview` attempts to modify the imported resources, it means there is
 
 ## 20.3 Converting Terraform to Pulumi (tf2pulumi)
 
-While the `pulumi import` workflow discussed in the previous section is excellent for bringing existing physical resources into Pulumi, it still requires you to write the target Pulumi code by hand. If your organization has already invested heavily in Terraform, you likely have thousands of lines of HCL (HashiCorp Configuration Language) that you want to reuse. 
+While the `pulumi import` workflow discussed in the previous section is excellent for bringing existing physical resources into Pulumi, it still requires you to write the target Pulumi code by hand. If your organization has already invested heavily in Terraform, you likely have thousands of lines of HCL (HashiCorp Configuration Language) that you want to reuse.
 
 To accelerate this specific migration path, Pulumi provides automated conversion tools to translate existing Terraform code directly into Pulumi programs.
 
@@ -239,6 +241,7 @@ The conversion engine parses the HCL syntax, maps the Terraform providers to the
 **Example Conversion:**
 
 *Terraform HCL (`main.tf`):*
+
 ```hcl
 resource "aws_s3_bucket" "b" {
   bucket = "my-tf-test-bucket"
@@ -255,6 +258,7 @@ output "bucket_name" {
 ```
 
 *Generated Pulumi TypeScript (`index.ts`):*
+
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
@@ -288,13 +292,13 @@ Automated conversion is a massive time-saver, but it is rarely a 100% perfect, p
 
 ### The "Day 2" Refactoring Phase
 
-Because of these limitations, `pulumi convert` should be viewed as the *starting point* of your migration, not the finish line. 
+Because of these limitations, `pulumi convert` should be viewed as the *starting point* of your migration, not the finish line.
 
 Once you have a zero-diff deployment (meaning your Pulumi code matches reality and your state is migrated), you should immediately begin refactoring. Replace clunky HCL-style loops with native programming constructs (like `map` and `filter` in TypeScript), encapsulate repetitive resource blocks into reusable classes or functions, and implement standard error handling. This ensures you are actually leveraging the power of general-purpose programming languages, rather than just writing Terraform syntax in a different file extension.
 
 ## 20.4 Reconciling State Drifts and Manual Changes
 
-No matter how strictly an organization mandates the use of Infrastructure as Code, "ClickOps" happens. During a severe outage, an engineer might log directly into the AWS Console to open a security group port, scale up a database instance, or manually flush a queue. 
+No matter how strictly an organization mandates the use of Infrastructure as Code, "ClickOps" happens. During a severe outage, an engineer might log directly into the AWS Console to open a security group port, scale up a database instance, or manually flush a queue.
 
 When physical infrastructure is modified outside of Pulumi's execution cycle, it creates a condition known as **State Drift**. Reconciling this drift—bridging the gap between what your code says, what your state file remembers, and what actually exists in the cloud—is a critical day-to-day operational task.
 
@@ -302,11 +306,11 @@ When physical infrastructure is modified outside of Pulumi's execution cycle, it
 
 To understand how to fix drift, you must first understand the three layers of truth in Pulumi:
 
-1.  **Desired Truth:** Your Pulumi code (e.g., TypeScript, Python).
-2.  **Recorded Truth:** The Pulumi state file (managed by Pulumi Service or a self-managed backend).
-3.  **Actual Truth:** The physical configuration running in the cloud provider.
+1. **Desired Truth:** Your Pulumi code (e.g., TypeScript, Python).
+2. **Recorded Truth:** The Pulumi state file (managed by Pulumi Service or a self-managed backend).
+3. **Actual Truth:** The physical configuration running in the cloud provider.
 
-Drift occurs when the Actual Truth diverges from the Recorded Truth. 
+Drift occurs when the Actual Truth diverges from the Recorded Truth.
 
 ```text
 State Drift Scenario
@@ -325,7 +329,7 @@ inadvertently overwrite the Cloud back to Port 80 without warning.
 
 ### Detecting Drift with `pulumi refresh`
 
-The primary tool for diagnosing drift is the `pulumi refresh` command. 
+The primary tool for diagnosing drift is the `pulumi refresh` command.
 
 Unlike `pulumi up`, which pushes changes *to* the cloud, `pulumi refresh` pulls changes *from* the cloud. It queries the cloud provider APIs for every resource currently tracked in your state file and updates the state file to match reality.
 
@@ -334,7 +338,7 @@ Unlike `pulumi up`, which pushes changes *to* the cloud, `pulumi refresh` pulls 
 pulumi refresh
 ```
 
-**Crucially, `pulumi refresh` does not alter your code.** After running a refresh, your State matches the Cloud, but your Code is now out of sync. 
+**Crucially, `pulumi refresh` does not alter your code.** After running a refresh, your State matches the Cloud, but your Code is now out of sync.
 
 If you run `pulumi preview` immediately after a refresh that detected drift, Pulumi will show a diff indicating that it wants to change the cloud resources back to match your code.
 
@@ -343,12 +347,14 @@ If you run `pulumi preview` immediately after a refresh that detected drift, Pul
 Once you have identified drift, you face a binary choice. You must align the Code and the Cloud, and the direction you choose depends entirely on *why* the manual change occurred.
 
 #### Strategy 1: Eradicate the Drift (Reality Conforms to Code)
+
 If the manual change was unauthorized, a mistake, or a temporary fix that is no longer needed, you want to revert the infrastructure back to its codified baseline.
 
 1. Run `pulumi refresh` to ensure the state is aware of the rogue changes.
 2. Run `pulumi up`. Pulumi will calculate the difference between your code (the desired state) and the refreshed state (the drifted reality) and apply the necessary modifications to revert the physical resources back to what is defined in code.
 
 #### Strategy 2: Absorb the Drift (Code Conforms to Reality)
+
 If the manual change was a necessary hotfix (e.g., scaling up a database to handle a traffic spike) and needs to become the new permanent baseline, you must update your code to match the new reality.
 
 1. Run `pulumi refresh` to update the state.
@@ -363,7 +369,7 @@ If the manual change was a necessary hotfix (e.g., scaling up a database to hand
 
 In mature enterprise environments, drift detection should not rely on an engineer remembering to run a command. It should be automated.
 
-The standard pattern is to configure a scheduled CI/CD job (e.g., a nightly GitHub Action or GitLab Pipeline) that executes a programmatic drift check. 
+The standard pattern is to configure a scheduled CI/CD job (e.g., a nightly GitHub Action or GitLab Pipeline) that executes a programmatic drift check.
 
 ```yaml
 # Example snippet for a GitHub Action Drift Detector

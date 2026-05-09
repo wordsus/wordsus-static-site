@@ -72,7 +72,7 @@ user2 = Usuario("sysadmin", "admin@empresa.com")
 user1.desactivar_cuenta() 
 ```
 
-Fíjate en la última línea: al llamar a `user1.desactivar_cuenta()`, no estamos pasando ningún argumento, a pesar de que en la definición del método (`def desactivar_cuenta(self):`) declaramos que requiere uno. 
+Fíjate en la última línea: al llamar a `user1.desactivar_cuenta()`, no estamos pasando ningún argumento, a pesar de que en la definición del método (`def desactivar_cuenta(self):`) declaramos que requiere uno.
 
 Esto funciona porque cuando llamas a un método desde una instancia, Python transforma esa llamada de forma transparente en esto:
 
@@ -86,8 +86,8 @@ Usuario.desactivar_cuenta(user1)
 
 Python inyecta automáticamente la instancia sobre la cual se invocó el método como el **primer argumento posicional** (`self`). Por eso es crucial incluir `self` en:
 
-1.  **La definición de los métodos:** Para poder recibir la referencia de la instancia.
-2.  **El acceso a los atributos:** Al usar `self.nombre_usuario = nombre_usuario`, le estamos diciendo explícitamente a Python: *"toma el valor local que me pasaron y guárdalo en el espacio de memoria de ESTA instancia en particular, no como una variable local de la función"*.
+1. **La definición de los métodos:** Para poder recibir la referencia de la instancia.
+2. **El acceso a los atributos:** Al usar `self.nombre_usuario = nombre_usuario`, le estamos diciendo explícitamente a Python: *"toma el valor local que me pasaron y guárdalo en el espacio de memoria de ESTA instancia en particular, no como una variable local de la función"*.
 
 Si olvidamos poner `self.` al declarar un atributo dentro de `__init__`, ese dato morirá en el momento en que el método termine su ejecución (recordando la regla LEGB que vimos en el Capítulo 4 sobre el alcance local de las funciones). `self` es el puente que ancla los datos a la persistencia del objeto.
 
@@ -103,8 +103,8 @@ La forma de interactuar con este modelo de datos es a través de los **métodos 
 
 En el capítulo 5.1 mencionamos que `__init__` es el inicializador, no el constructor estricto. Ahora que estamos en las entrañas del modelo de datos, es momento de aclarar esto:
 
-1.  **`__new__(cls, ...)`**: Es el verdadero constructor. Es un método a nivel de clase que se encarga de asignar el espacio en memoria para el nuevo objeto y retornarlo. Rara vez necesitarás sobreescribir este método en el día a día, a menos que estés implementando el patrón *Singleton* o heredando de tipos inmutables como `tuple` o `str`.
-2.  **`__init__(self, ...)`**: Una vez que `__new__` retorna la instancia recién creada en memoria, Python se la pasa automáticamente a `__init__` (como `self`) para que configures su estado inicial.
+1. **`__new__(cls, ...)`**: Es el verdadero constructor. Es un método a nivel de clase que se encarga de asignar el espacio en memoria para el nuevo objeto y retornarlo. Rara vez necesitarás sobreescribir este método en el día a día, a menos que estés implementando el patrón *Singleton* o heredando de tipos inmutables como `tuple` o `str`.
+2. **`__init__(self, ...)`**: Una vez que `__new__` retorna la instancia recién creada en memoria, Python se la pasa automáticamente a `__init__` (como `self`) para que configures su estado inicial.
 
 ### Representación de Objetos: `__str__` vs. `__repr__`
 
@@ -204,7 +204,7 @@ El modelo de datos de Python es extenso e incluye métodos mágicos para el cont
 
 ## 5.3 Herencia (simple y múltiple), Polimorfismo y el MRO (Method Resolution Order)
 
-Una de las promesas fundamentales de la Programación Orientada a Objetos es la reutilización de código. En lugar de copiar y pegar la misma lógica en múltiples lugares, la POO nos permite crear jerarquías donde las entidades más específicas heredan y extienden el comportamiento de entidades más generales. 
+Una de las promesas fundamentales de la Programación Orientada a Objetos es la reutilización de código. En lugar de copiar y pegar la misma lógica en múltiples lugares, la POO nos permite crear jerarquías donde las entidades más específicas heredan y extienden el comportamiento de entidades más generales.
 
 ### Herencia Simple y la función `super()`
 
@@ -240,9 +240,9 @@ La función `super()` es crucial aquí. Actúa como un proxy que nos da acceso a
 
 ### Polimorfismo y la filosofía "Duck Typing"
 
-El polimorfismo (del griego "muchas formas") es la capacidad de diferentes objetos de responder de manera distinta a la misma llamada de método. 
+El polimorfismo (del griego "muchas formas") es la capacidad de diferentes objetos de responder de manera distinta a la misma llamada de método.
 
-En lenguajes estrictamente tipados (como Java o C#), el polimorfismo suele depender de interfaces explícitas. Python, siendo de tipado dinámico, adopta una filosofía conocida como **Duck Typing** (Tipado del pato): *"Si camina como un pato y grazna como un pato, entonces debe ser un pato"*. 
+En lenguajes estrictamente tipados (como Java o C#), el polimorfismo suele depender de interfaces explícitas. Python, siendo de tipado dinámico, adopta una filosofía conocida como **Duck Typing** (Tipado del pato): *"Si camina como un pato y grazna como un pato, entonces debe ser un pato"*.
 
 A Python no le importa de qué clase exacta provenga un objeto, siempre y cuando implemente el método que se está invocando. A menudo, esto se logra **sobrescribiendo** (overriding) los métodos de la clase padre en las subclases:
 
@@ -291,9 +291,10 @@ Si `PadreA` y `PadreB` sobrescriben un método de `ClaseBase` (por ejemplo, `pro
 Para resolver ambigüedades en la herencia múltiple, Python utiliza un algoritmo llamado **C3 Linearization** para calcular el **MRO (Orden de Resolución de Métodos)**. El MRO es simplemente una lista plana y ordenada de las clases por las que Python buscará un método cuando lo invoques.
 
 Las reglas básicas del MRO de Python son:
-1.  Busca primero en la clase actual.
-2.  Luego busca en las clases padre, de **izquierda a derecha** (según el orden en que se declararon en los paréntesis).
-3.  Busca en la jerarquía hacia arriba (profundidad), pero **retrasando la búsqueda en ancestros comunes** hasta que todos los descendientes de ese ancestro hayan sido revisados.
+
+1. Busca primero en la clase actual.
+2. Luego busca en las clases padre, de **izquierda a derecha** (según el orden en que se declararon en los paréntesis).
+3. Busca en la jerarquía hacia arriba (profundidad), pero **retrasando la búsqueda en ancestros comunes** hasta que todos los descendientes de ese ancestro hayan sido revisados.
 
 Puedes inspeccionar el MRO de cualquier clase utilizando el atributo mágico `__mro__` o el método `.mro()`:
 
@@ -342,7 +343,7 @@ Si un atributo o método comienza con un guion bajo (por ejemplo, `_saldo` o `_c
 
 **2. Atributos "Privados" y el *Name Mangling* (Doble guion bajo inicial)**
 
-Si necesitas una capa extra de protección (generalmente para evitar colisiones de nombres en jerarquías de herencia complejas), puedes usar dos guiones bajos iniciales (ej. `__contrasena`). 
+Si necesitas una capa extra de protección (generalmente para evitar colisiones de nombres en jerarquías de herencia complejas), puedes usar dos guiones bajos iniciales (ej. `__contrasena`).
 
 Al hacer esto, Python aplica un mecanismo llamado **Name Mangling** (alteración de nombres). El intérprete reescribe el nombre del atributo internamente, anteponiendo `_NombreDeLaClase` al inicio.
 
@@ -370,6 +371,7 @@ Como ves, la privacidad real no existe en Python; el *Name Mangling* es un mecan
 El encapsulamiento suele requerir la validación de los datos antes de modificarlos. En otros lenguajes, esto se logra creando métodos "Getters" y "Setters".
 
 **El estilo "Anti-Python":**
+
 ```python
 class Termostato:
     def __init__(self):
@@ -394,6 +396,7 @@ Este enfoque rompe la elegancia de la sintaxis de Python. Queremos usar `t.tempe
 Una "propiedad" permite definir métodos que se comportan como si fueran atributos normales.
 
 **El estilo "Pythónico":**
+
 ```python
 class Termostato:
     def __init__(self):
@@ -420,6 +423,7 @@ t.temperatura = 25    # Llama al setter con validación
 ```
 
 Las propiedades son excelentes para:
+
 * Exponer atributos internos (`_algo`) de forma controlada.
 * Crear **propiedades calculadas** (ej. un método `area` que se calcula al vuelo multiplicando `ancho * alto`, pero se accede como `rectangulo.area`).
 * Refactorizar código antiguo: Si empezaste usando atributos públicos y luego necesitas añadir validación, puedes convertirlos en propiedades sin romper el código que ya dependía de la sintaxis `objeto.atributo`.
@@ -428,7 +432,7 @@ Las propiedades son excelentes para:
 
 Ya vimos que un decorador (como `@property`) modifica el comportamiento de un método. En Python, también podemos aplicar decoradores directamente a la definición de una **clase entera**.
 
-Un decorador de clase es simplemente una función que recibe una clase como argumento, la altera (añadiendo métodos, atributos o registrándola en algún sistema) y devuelve la clase modificada. 
+Un decorador de clase es simplemente una función que recibe una clase como argumento, la altera (añadiendo métodos, atributos o registrándola en algún sistema) y devuelve la clase modificada.
 
 *Nota: Profundizaremos en la creación desde cero de decoradores avanzados en el Capítulo 10, pero aquí veremos su uso práctico.*
 
@@ -448,7 +452,7 @@ class ServicioUsuarios:
 print(ServicioUsuarios.API_VERSION) # Salida: v1.5
 ```
 
-Los decoradores de clase evitan tener que usar herencia (crear una clase base `ServicioVersionado`) para compartir comportamientos transversales simples. 
+Los decoradores de clase evitan tener que usar herencia (crear una clase base `ServicioVersionado`) para compartir comportamientos transversales simples.
 
 De hecho, uno de los decoradores de clase más potentes e importantes del ecosistema moderno de Python es el que veremos en la siguiente sección: `@dataclass`, que utiliza la metaprogramación para escribir automáticamente el código repetitivo (`__init__`, `__repr__`, `__eq__`) por ti.
 
@@ -505,7 +509,7 @@ class Producto:
 
 ### Trampas comunes: El problema de los mutables y `default_factory`
 
-¿Qué pasa si queremos que nuestro producto tenga una lista de etiquetas (tags) por defecto? 
+¿Qué pasa si queremos que nuestro producto tenga una lista de etiquetas (tags) por defecto?
 
 Si intentas hacer `etiquetas: list = []`, Python levantará un error. Esto te protege de un error clásico del lenguaje: usar estructuras mutables como valores por defecto hace que todas las instancias compartan exactamente la misma lista en memoria.
 
@@ -540,7 +544,7 @@ Una ventaja oculta de usar `frozen=True` es que Python generará automáticament
 
 ### Validación tardía: El gancho `__post_init__`
 
-Puesto que `@dataclass` genera el `__init__` por ti, ¿dónde pones la lógica si necesitas validar datos o crear un atributo calculado a partir de otros? 
+Puesto que `@dataclass` genera el `__init__` por ti, ¿dónde pones la lógica si necesitas validar datos o crear un atributo calculado a partir de otros?
 
 Para esto existe un método especial reservado llamado `__post_init__`, que la clase ejecutará automáticamente justo después de terminar la inicialización generada.
 

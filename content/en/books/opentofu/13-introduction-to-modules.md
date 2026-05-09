@@ -4,7 +4,7 @@ As your infrastructure footprint expands, relying on flat, monolithic configurat
 
 In the early stages of adopting Infrastructure as Code (IaC), it is common to place all configuration files into a single directory. As your infrastructure grows from a handful of resources to hundreds or thousands, this monolithic approach quickly becomes unmanageable. Files grow to thousands of lines, finding specific resources becomes a chore, and replicating environments (like development, staging, and production) often devolves into dangerous copy-and-paste exercises.
 
-This is where **modules** come in. 
+This is where **modules** come in.
 
 In OpenTofu, a module is simply a container for multiple resources that are used together. You can think of a module as the OpenTofu equivalent of a function or method in traditional programming languages. Just as functions allow you to encapsulate logic, define inputs (parameters), and return outputs, modules allow you to group related infrastructure components, parameterize them with variables, and expose specific data as outputs.
 
@@ -31,10 +31,12 @@ It is worth noting that if you have written any OpenTofu code up to this point, 
 Modules are not just an organizational convenience; they are a fundamental building block for scalable, maintainable, and secure infrastructure. Embracing a modular architecture provides several critical benefits:
 
 #### 1. The DRY Principle (Don't Repeat Yourself)
-Without modules, creating a second web architecture requires copying all the resource blocks from your first architecture. If a bug is found or an update is needed, you must manually track down and modify every duplicated instance across your codebase. Modules allow you to write the HCL code once and instantiate it multiple times, passing different variable values for each instance. 
+
+Without modules, creating a second web architecture requires copying all the resource blocks from your first architecture. If a bug is found or an update is needed, you must manually track down and modify every duplicated instance across your codebase. Modules allow you to write the HCL code once and instantiate it multiple times, passing different variable values for each instance.
 
 #### 2. Logical Abstraction and Reduced Cognitive Load
-Infrastructure can be complex. Provisioning a secure network architecture on AWS, for example, might require configuring a VPC, multiple public and private subnets, NAT gateways, Internet gateways, and complex route tables. 
+
+Infrastructure can be complex. Provisioning a secure network architecture on AWS, for example, might require configuring a VPC, multiple public and private subnets, NAT gateways, Internet gateways, and complex route tables.
 
 By wrapping these resources in a `network` module, you abstract that complexity away from the end-user (the engineer calling the module). The caller does not need to understand the intricate routing relationships; they only need to know which inputs the module requires, such as `cidr_block` and `environment_name`.
 
@@ -52,11 +54,13 @@ module "secure_network" {
 ```
 
 #### 3. Enforcing Consistency and Security Baselines
-Modules are a powerful tool for governance. If your organization mandates that every storage bucket must be encrypted at rest, have versioning enabled, and include specific billing tags, you can bake these requirements directly into a custom `secure_storage` module. 
 
-By instructing your teams to consume this module rather than writing raw `aws_s3_bucket` resources, you guarantee that every deployed bucket automatically adheres to corporate security policies. 
+Modules are a powerful tool for governance. If your organization mandates that every storage bucket must be encrypted at rest, have versioning enabled, and include specific billing tags, you can bake these requirements directly into a custom `secure_storage` module.
+
+By instructing your teams to consume this module rather than writing raw `aws_s3_bucket` resources, you guarantee that every deployed bucket automatically adheres to corporate security policies.
 
 #### 4. Managing Blast Radius
+
 When a monolithic configuration is applied, a mistake can potentially impact the entire infrastructure footprint. By breaking infrastructure down into independent modules (and eventually separating their state files, as discussed in Chapter 11), you isolate changes. Modifying a standalone `database` module allows you to test and deploy database changes with confidence that you are not inadvertently altering your core routing infrastructure.
 
 In the subsequent sections of this chapter, we will explore how to structure these reusable containers, how to invoke them properly from your root configurations, and how to seamlessly pass data between them.
@@ -119,7 +123,7 @@ As your modules grow in complexity or are published for wider organizational use
 
 ## 13.3 Calling a Local Module within Your Configuration
 
-Once you have structured your reusable module, the next step is to actually put it to work. In OpenTofu, you instantiate a child module from your root configuration using the `module` block. 
+Once you have structured your reusable module, the next step is to actually put it to work. In OpenTofu, you instantiate a child module from your root configuration using the `module` block.
 
 Think of the `module` block as the mechanism for calling a function. You declare the module, tell OpenTofu where the code lives, and pass in the necessary arguments (variables) that the module requires to execute.
 
@@ -145,7 +149,7 @@ my-infrastructure/
         └── outputs.tf
 ```
 
-Let's assume the `modules/web_server/variables.tf` file defines two required inputs: `instance_type` and `environment_name`. 
+Let's assume the `modules/web_server/variables.tf` file defines two required inputs: `instance_type` and `environment_name`.
 
 To deploy a staging server and a production server using this single module, your root `main.tf` would look like this:
 
@@ -174,7 +178,7 @@ In this example, OpenTofu reads the `web_server` module code twice. During the f
 
 ### The Initialization Requirement (`tofu init`)
 
-There is a critical step in the OpenTofu workflow that engineers often forget when working with modules. 
+There is a critical step in the OpenTofu workflow that engineers often forget when working with modules.
 
 When you add a new `module` block to your configuration, modify the `source` argument, or change the version of a remote module, OpenTofu does not automatically recognize the code. Before you can successfully run `tofu plan` or `tofu apply`, you **must** run:
 
@@ -182,7 +186,7 @@ When you add a new `module` block to your configuration, modify the `source` arg
 tofu init
 ```
 
-During initialization, OpenTofu reads your configuration files, identifies all `module` blocks, and resolves the `source` paths. For local modules, it simply creates a symbolic link or copies the files into the hidden `.terraform/modules/` directory. This internal directory is what OpenTofu actually uses when compiling the execution graph. 
+During initialization, OpenTofu reads your configuration files, identifies all `module` blocks, and resolves the `source` paths. For local modules, it simply creates a symbolic link or copies the files into the hidden `.terraform/modules/` directory. This internal directory is what OpenTofu actually uses when compiling the execution graph.
 
 If you forget to run `tofu init` after adding a new local module, OpenTofu will halt execution and throw an error stating that the module has not been installed. Note that if you are only modifying the internal logic of a module *already* initialized (e.g., changing a resource inside `./modules/web_server/main.tf`), you do not need to re-run `tofu init`.
 
@@ -192,7 +196,7 @@ To make modules truly reusable and dynamic, they must be able to accept external
 
 ### Passing Variables (The Inputs)
 
-When you define a variable in a child module's `variables.tf` file, that variable automatically becomes an available argument within the `module` block when called from the root configuration. 
+When you define a variable in a child module's `variables.tf` file, that variable automatically becomes an available argument within the `module` block when called from the root configuration.
 
 If a variable in the child module does not have a `default` value, it is considered a **required** input. Failing to provide it in the root module block will cause OpenTofu to throw an error during the `plan` phase.
 
@@ -232,7 +236,7 @@ Notice that in the root module, we are taking a variable defined at the root lev
 
 ### Extracting Outputs (The Returns)
 
-Just as variables act as inputs, OpenTofu uses `output` blocks to return data from a module. 
+Just as variables act as inputs, OpenTofu uses `output` blocks to return data from a module.
 
 A common misconception among engineers new to OpenTofu is that outputs defined in a child module will automatically print to the console when `tofu apply` finishes. **This is false.** Child module outputs are only exposed to the parent module that called them. If you want a child module's output to print to the console, you must explicitly capture it and output it again from the root module.
 

@@ -10,21 +10,21 @@ Welcome to *Astronomy for Mortals*. Today, we are going to leave the comfort of 
 
 ## 1. The Edge of the Observable Universe: The Quilted Multiverse
 
-To understand how there could be other universes, we first need to define the limits of our own. We often hear astronomers talk about the "observable universe." This is a crucial distinction. The observable universe is essentially a spherical bubble centered on Earth, representing the absolute maximum distance from which light has had time to reach us since the Big Bang occurred approximately 13.8 billion years ago. 
+To understand how there could be other universes, we first need to define the limits of our own. We often hear astronomers talk about the "observable universe." This is a crucial distinction. The observable universe is essentially a spherical bubble centered on Earth, representing the absolute maximum distance from which light has had time to reach us since the Big Bang occurred approximately 13.8 billion years ago.
 
-Because the universe has been expanding since its birth, the edge of our observable bubble is currently calculated to be about 46.5 billion light-years away in any direction, giving our observable universe a diameter of about 93 billion light-years. 
+Because the universe has been expanding since its birth, the edge of our observable bubble is currently calculated to be about 46.5 billion light-years away in any direction, giving our observable universe a diameter of about 93 billion light-years.
 
-But what lies beyond that edge? 
+But what lies beyond that edge?
 
-Cosmologists overwhelmingly agree that the universe does not just abruptly end. There is no brick wall, no edge of the map where "Here Be Dragons" is written in glowing cosmic letters. If you were to teleport to a planet situated 46 billion light-years away, at the very edge of our observable bubble, you would find yourself in the center of your *own* observable universe. You would look around and see stars and galaxies similar to ours, governed by the exact same laws of physics. 
+Cosmologists overwhelmingly agree that the universe does not just abruptly end. There is no brick wall, no edge of the map where "Here Be Dragons" is written in glowing cosmic letters. If you were to teleport to a planet situated 46 billion light-years away, at the very edge of our observable bubble, you would find yourself in the center of your *own* observable universe. You would look around and see stars and galaxies similar to ours, governed by the exact same laws of physics.
 
-This leads us to the most basic type of parallel reality, which physicist Brian Greene calls the **Quilted Multiverse**. 
+This leads us to the most basic type of parallel reality, which physicist Brian Greene calls the **Quilted Multiverse**.
 
-If the entirety of space is infinite—as many cosmological models suggest—then an infinite expanse must contain an infinite number of these "observable bubbles" or cosmic patches. Here is where the math forces a startling conclusion. In any finite patch of space, there are only a finite number of ways that elementary particles can be arranged. 
+If the entirety of space is infinite—as many cosmological models suggest—then an infinite expanse must contain an infinite number of these "observable bubbles" or cosmic patches. Here is where the math forces a startling conclusion. In any finite patch of space, there are only a finite number of ways that elementary particles can be arranged.
 
 Think of it like a deck of cards. A standard deck has 52 cards. If you shuffle it, you will get a specific sequence. There is a massive number of possible sequences (about $8 \times 10^{67}$), but that number is still finite. If you shuffle the deck an *infinite* number of times, eventually, by pure mathematical necessity, the exact sequences will start to repeat.
 
-In the Quilted Multiverse, the "deck of cards" is the arrangement of quantum particles in a given cosmic patch. If space goes on forever, the combinations of particles must eventually repeat. This means that somewhere out there, an unimaginably vast distance away, there is a patch of space where the particles arranged themselves exactly as they did here. 
+In the Quilted Multiverse, the "deck of cards" is the arrangement of quantum particles in a given cosmic patch. If space goes on forever, the combinations of particles must eventually repeat. This means that somewhere out there, an unimaginably vast distance away, there is a patch of space where the particles arranged themselves exactly as they did here.
 
 ```text
 The Quilted Multiverse (Infinite Space)
@@ -43,9 +43,9 @@ In that distant patch, there is another Milky Way, another Earth, and another yo
 
 Let us go deeper and look at the actual birth of our universe. The prevailing theory for the origin of the cosmos is the Big Bang. However, the Big Bang theory had a few massive holes in it. Namely, it couldn't explain why the universe is so incredibly uniform on a large scale, or why it appears so perfectly "flat" geometrically.
 
-In the 1980s, physicist Alan Guth proposed a brilliant solution called **Cosmic Inflation**. Guth theorized that in the first fraction of a microscopic second after the Big Bang (around $10^{-36}$ seconds), the universe underwent a brief, unimaginably violent period of exponential expansion. Space itself stretched faster than the speed of light, smoothing out all irregularities. 
+In the 1980s, physicist Alan Guth proposed a brilliant solution called **Cosmic Inflation**. Guth theorized that in the first fraction of a microscopic second after the Big Bang (around $10^{-36}$ seconds), the universe underwent a brief, unimaginably violent period of exponential expansion. Space itself stretched faster than the speed of light, smoothing out all irregularities.
 
-The math of inflation works beautifully and solves the problems of the standard Big Bang model. However, as physicists refined the equations of inflation, they stumbled upon an alarming consequence: once inflation starts, it is nearly impossible to stop it everywhere at once. 
+The math of inflation works beautifully and solves the problems of the standard Big Bang model. However, as physicists refined the equations of inflation, they stumbled upon an alarming consequence: once inflation starts, it is nearly impossible to stop it everywhere at once.
 
 This concept is known as **Eternal Inflation**. The idea is that space is expanding exponentially, acting like a rapidly rising loaf of bread dough. While the bulk of the dough continues to expand infinitely, certain localized pockets stop inflating and stabilize. When a pocket stops inflating, its massive energy is converted into matter and radiation. That "stopping" process is exactly what we call a Big Bang.
 
@@ -62,7 +62,7 @@ The Bubble Multiverse (Eternal Inflation)
        *        *          *         *
 ```
 
-In this model, our entire observable universe is just one tiny, stabilized bubble (Bubble A) embedded within an eternally expanding, hyper-fast cosmic background. Furthermore, because the background is expanding so violently, the bubbles are moving away from each other faster than the speed of light. Even if we could travel at light-speed, we could never reach Bubble B or Bubble C. 
+In this model, our entire observable universe is just one tiny, stabilized bubble (Bubble A) embedded within an eternally expanding, hyper-fast cosmic background. Furthermore, because the background is expanding so violently, the bubbles are moving away from each other faster than the speed of light. Even if we could travel at light-speed, we could never reach Bubble B or Bubble C.
 
 What's fascinating about the Bubble Multiverse is that the laws of physics might not be the same in every bubble. The process of a bubble stabilizing acts like a roll of cosmic dice. The universe next door might have stronger gravity, or no electromagnetic force, or electrons that weigh ten times as much as ours. Most of these universes would be chaotic, lifeless voids, but in an infinite sea of bubbles, a few will inevitably have the exact right conditions to support life—like ours.
 
@@ -108,15 +108,15 @@ There is a reality where you are the President of your country. There is a reali
 
 ## 4. String Theory and the Brane Multiverse
 
-Let's shift gears and look at another cutting-edge area of physics: String Theory. For decades, physicists have been trying to find a "Theory of Everything"—a single mathematical framework that unites the smooth, continuous physics of gravity (General Relativity) with the jumpy, probabilistic physics of the subatomic world (Quantum Mechanics). 
+Let's shift gears and look at another cutting-edge area of physics: String Theory. For decades, physicists have been trying to find a "Theory of Everything"—a single mathematical framework that unites the smooth, continuous physics of gravity (General Relativity) with the jumpy, probabilistic physics of the subatomic world (Quantum Mechanics).
 
 String theory attempts to do this by proposing that the fundamental ingredients of reality are not tiny dots or particles, but incredibly microscopic, vibrating loops of energy called "strings." Just as different vibrations on a guitar string produce different musical notes, different vibrations of these quantum strings produce the different particles we see in nature—quarks, electrons, photons, and so on.
 
-However, the mathematics of string theory only works if the universe has more dimensions than the ones we experience. We know of three dimensions of space (up-down, left-right, forward-backward) and one dimension of time. String theory requires up to **eleven dimensions**. 
+However, the mathematics of string theory only works if the universe has more dimensions than the ones we experience. We know of three dimensions of space (up-down, left-right, forward-backward) and one dimension of time. String theory requires up to **eleven dimensions**.
 
 Where are these extra dimensions? Physicists believe they are curled up so tightly, at such microscopic scales, that we cannot perceive them. But the mathematics of these higher dimensions led to the discovery of multi-dimensional membranes, or **"Branes."**
 
-In this view of the multiverse, our entire three-dimensional universe is a single "brane" floating through a higher-dimensional bulk space. Think of it like a slice of bread in a larger cosmic loaf. 
+In this view of the multiverse, our entire three-dimensional universe is a single "brane" floating through a higher-dimensional bulk space. Think of it like a slice of bread in a larger cosmic loaf.
 
 ```text
 The Brane Multiverse (String Theory)
@@ -133,7 +133,7 @@ Higher Dimensional "Bulk" Space
 ===================================================
 ```
 
-In the Brane Multiverse, other universes could be hovering literally millimeters away from ours, separated not by distance in our three dimensions, but by distance in a higher dimension that we cannot point to or access. 
+In the Brane Multiverse, other universes could be hovering literally millimeters away from ours, separated not by distance in our three dimensions, but by distance in a higher dimension that we cannot point to or access.
 
 Some theoretical physicists have even proposed that the Big Bang itself was caused by two branes colliding in the higher-dimensional space. The immense energy released by the collision would look exactly like the fiery birth of a universe from the perspective of anyone inside the brane. If branes are constantly rippling and bumping into one another, then "Big Bangs" are happening all the time throughout the bulk, generating a continuous symphony of parallel realities.
 
@@ -141,25 +141,25 @@ Furthermore, string theory provides a vast "landscape" of possible universes. Th
 
 ## 5. The Ultimate Abstraction: The Mathematical Multiverse
 
-If your mind isn't stretched enough yet, let's explore the most extreme version of the multiverse, proposed by cosmologist Max Tegmark. Tegmark categorizes multiverses into four distinct levels (Level I is the Quilted Multiverse, Level II is the Bubble Multiverse, Level III is the Quantum Many-Worlds). 
+If your mind isn't stretched enough yet, let's explore the most extreme version of the multiverse, proposed by cosmologist Max Tegmark. Tegmark categorizes multiverses into four distinct levels (Level I is the Quilted Multiverse, Level II is the Bubble Multiverse, Level III is the Quantum Many-Worlds).
 
 Tegmark's final frontier is the **Level IV Multiverse: The Ultimate Ensemble.**
 
-This theory dives deep into the philosophical relationship between reality and mathematics. In physics, we use mathematics to describe the universe. We use equations to predict the trajectory of a baseball, the orbit of a planet, and the collision of black holes. The universe seems remarkably obedient to mathematical rules. 
+This theory dives deep into the philosophical relationship between reality and mathematics. In physics, we use mathematics to describe the universe. We use equations to predict the trajectory of a baseball, the orbit of a planet, and the collision of black holes. The universe seems remarkably obedient to mathematical rules.
 
-Why is math so unreasonably effective at describing physical reality? Tegmark's answer is radical: *The universe is not merely described by mathematics; the universe IS mathematics.* 
+Why is math so unreasonably effective at describing physical reality? Tegmark's answer is radical: *The universe is not merely described by mathematics; the universe IS mathematics.*
 
-If our universe is nothing more than a physical manifestation of a specific mathematical structure, then what about all the other mathematical structures? Mathematics is infinite. There are geometries, equations, and structures that we can write down on paper that have nothing to do with the physical laws of our universe. 
+If our universe is nothing more than a physical manifestation of a specific mathematical structure, then what about all the other mathematical structures? Mathematics is infinite. There are geometries, equations, and structures that we can write down on paper that have nothing to do with the physical laws of our universe.
 
-Tegmark argues that *every* mathematical structure that exists in the abstract realm also exists physically. 
+Tegmark argues that *every* mathematical structure that exists in the abstract realm also exists physically.
 
 If a set of equations can be written without logical contradictions, a universe governed by those exact equations physically exists. In the Level IV Multiverse, reality is entirely democratic. No mathematical framework is given preferential treatment over another. Our universe just happens to be the specific mathematical structure that contains self-aware substructures (us) capable of observing it.
 
 ## 6. Can We Ever Prove It? The Boundary of Science
 
-At this point, it is perfectly reasonable to ask a crucial, skeptical question: Is this actually science? 
+At this point, it is perfectly reasonable to ask a crucial, skeptical question: Is this actually science?
 
-The cornerstone of the scientific method is testability. If an idea cannot be tested, observed, or falsified, it traditionally falls into the realm of philosophy or metaphysics, not physics. Because, by definition, parallel universes are disconnected from ours—whether lying beyond the cosmic horizon, separated by quantum decoherence, or floating in higher dimensions—we cannot send a probe to them. We cannot take pictures of them. 
+The cornerstone of the scientific method is testability. If an idea cannot be tested, observed, or falsified, it traditionally falls into the realm of philosophy or metaphysics, not physics. Because, by definition, parallel universes are disconnected from ours—whether lying beyond the cosmic horizon, separated by quantum decoherence, or floating in higher dimensions—we cannot send a probe to them. We cannot take pictures of them.
 
 Because of this, some scientists fiercely criticize the multiverse, calling it a theoretical dead-end, an excuse used when our equations fail to yield a single, elegant answer.
 
@@ -176,7 +176,7 @@ David Deutsch, a pioneer in quantum computing, argues that a working quantum com
 
 ## Conclusion: Our Place in the Multiverse
 
-The history of astronomy is a history of humanity's demotion from the center of existence. First, we learned the Earth was not the center of the solar system. Then, we learned our sun was just an ordinary star at the edge of the Milky Way. Later, we discovered the Milky Way was just one of hundreds of billions of galaxies in the observable universe. 
+The history of astronomy is a history of humanity's demotion from the center of existence. First, we learned the Earth was not the center of the solar system. Then, we learned our sun was just an ordinary star at the edge of the Milky Way. Later, we discovered the Milky Way was just one of hundreds of billions of galaxies in the observable universe.
 
 The multiverse theory is the ultimate extension of this humbling journey. It suggests that our entire universe—everything we have ever seen, touched, or known—is merely a microscopic speck in an infinite, unimaginable expanse of realities.
 

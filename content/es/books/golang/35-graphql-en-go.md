@@ -10,7 +10,7 @@ A continuación, analizaremos las diferencias arquitectónicas fundamentales y c
 
 ### 1. Topología de Enrutamiento: Múltiples Endpoints vs. Endpoint Único
 
-La diferencia más visible a nivel de infraestructura HTTP es la forma en que el cliente se comunica con el servidor. 
+La diferencia más visible a nivel de infraestructura HTTP es la forma en que el cliente se comunica con el servidor.
 
 En **REST**, la URL identifica el recurso y el método HTTP (GET, POST, PUT, DELETE) define la acción. Esto requiere que el enrutador de nuestra aplicación Go mantenga un mapa extenso de rutas y handlers, como vimos en el Capítulo 25.
 
@@ -32,7 +32,7 @@ El `graphqlHandler` en Go ya no se encarga de procesar la lógica de negocio dir
 
 ### 2. El problema del *Over-fetching* y *Under-fetching*
 
-Una limitación arquitectónica de REST es que la estructura de la respuesta (`struct` en Go que luego serializamos a JSON) está definida unívocamente por el servidor. 
+Una limitación arquitectónica de REST es que la estructura de la respuesta (`struct` en Go que luego serializamos a JSON) está definida unívocamente por el servidor.
 
 * **Over-fetching:** Si una aplicación móvil solo necesita el `Username` y el `AvatarURL` de un usuario para renderizar un menú, pero llama al endpoint `GET /users/{id}`, el servidor ejecutará la consulta completa a la base de datos y serializará el `struct` entero (incluyendo email, fecha de registro, roles, etc.). Estamos desperdiciando ancho de banda, ciclos de CPU en la serialización (`encoding/json`) y memoria.
 * **Under-fetching (Problema N+1 en la red):** Si la misma vista requiere los últimos 3 posts del usuario, el cliente se ve obligado a realizar una segunda petición HTTP a `GET /users/{id}/posts`.
@@ -40,6 +40,7 @@ Una limitación arquitectónica de REST es que la estructura de la respuesta (`s
 GraphQL resuelve esto invirtiendo el control: **el cliente define el contrato de datos**. El cliente envía exactamente qué campos necesita y de qué entidades asociadas.
 
 *Ejemplo de payload enviado al servidor GraphQL:*
+
 ```graphql
 query {
   user(id: "123") {
@@ -105,7 +106,7 @@ La adopción de GraphQL en Go no elimina la necesidad de REST, sino que desplaza
 
 ## 35.2. Definición de Esquemas, Queries, Mutations y Subscriptions
 
-El núcleo de cualquier API GraphQL es su esquema. Escrito en el **Lenguaje de Definición de Esquemas (SDL)**, este archivo (usualmente con extensión `.graphql` o `.graphqls`) actúa como el contrato irrompible entre el cliente y el servidor. 
+El núcleo de cualquier API GraphQL es su esquema. Escrito en el **Lenguaje de Definición de Esquemas (SDL)**, este archivo (usualmente con extensión `.graphql` o `.graphqls`) actúa como el contrato irrompible entre el cliente y el servidor.
 
 Para un desarrollador backend en Go, el esquema no es solo documentación; es la fuente de verdad estática a partir de la cual generaremos nuestro código, interfaces y modelos de datos. Comprender la semántica del SDL y cómo sus tipos se mapean mentalmente a las estructuras de Go es el primer paso antes de escribir la lógica de resolución.
 
@@ -113,7 +114,7 @@ A continuación, desglosamos los bloques de construcción fundamentales del SDL.
 
 ### 1. Tipos de Objeto, Escalares y la Semántica de Nulidad
 
-El bloque más básico en GraphQL es el tipo de objeto (`type`), que representa un recurso con campos fuertemente tipados. 
+El bloque más básico en GraphQL es el tipo de objeto (`type`), que representa un recurso con campos fuertemente tipados.
 
 ```graphql
 type User {
@@ -128,8 +129,8 @@ type User {
 Existen dos conceptos técnicos críticos en esta definición que impactan directamente en Go:
 
 * **Tipos Escalares:** GraphQL incluye por defecto `Int`, `Float`, `String`, `Boolean` e `ID`. Sin embargo, puedes definir escalares personalizados (como `Time` en el ejemplo superior). En Go, un escalar personalizado requerirá que implementemos las interfaces `graphql.Marshaler` y `graphql.Unmarshaler` para enseñarle al motor cómo convertir ese valor (por ejemplo, mapear el escalar `Time` al struct `time.Time` de la Standard Library).
-* **Modificador de No-Nulidad (`!`):** En GraphQL, todos los campos son opcionales (nulables) por defecto. Al añadir `!`, indicamos que el campo nunca devolverá `null`. 
-    * **El impacto en Go:** Esta distinción es vital. Un campo `email: String` (opcional) generará típicamente un puntero `*string` en el `struct` de Go asociado, permitiendo representar la ausencia de valor con `nil`. Por el contrario, `username: String!` generará un valor semántico directo `string`.
+* **Modificador de No-Nulidad (`!`):** En GraphQL, todos los campos son opcionales (nulables) por defecto. Al añadir `!`, indicamos que el campo nunca devolverá `null`.
+  * **El impacto en Go:** Esta distinción es vital. Un campo `email: String` (opcional) generará típicamente un puntero `*string` en el `struct` de Go asociado, permitiendo representar la ausencia de valor con `nil`. Por el contrario, `username: String!` generará un valor semántico directo `string`.
 
 ### 2. Queries: El punto de entrada para lecturas
 
@@ -150,7 +151,7 @@ Cada uno de estos campos (`user`, `users`) requerirá una función en Go, denomi
 
 ### 3. Mutations: Modificación de estado
 
-Para cualquier operación que altere el estado en el servidor (el equivalente a POST, PUT, PATCH o DELETE en REST), GraphQL utiliza el tipo raíz `Mutation`. 
+Para cualquier operación que altere el estado en el servidor (el equivalente a POST, PUT, PATCH o DELETE en REST), GraphQL utiliza el tipo raíz `Mutation`.
 
 Por convención y para evitar firmas de funciones con decenas de argumentos, las mutaciones complejas agrupan sus parámetros de entrada utilizando el modificador `input`.
 
@@ -184,13 +185,13 @@ type Subscription {
 ```
 
 **La ventaja competitiva de Go:**
-Aquí es donde la arquitectura de Go brilla con luz propia frente a lenguajes single-thread como Node.js o PHP. Una suscripción en GraphQL se mapea de forma natural y elegante a los **Canales de Go** (Capítulo 9). 
+Aquí es donde la arquitectura de Go brilla con luz propia frente a lenguajes single-thread como Node.js o PHP. Una suscripción en GraphQL se mapea de forma natural y elegante a los **Canales de Go** (Capítulo 9).
 
 Cuando un cliente se suscribe a `postCreated`, el resolver en Go simplemente devuelve un canal de lectura unidireccional (`<-chan *Post`). Cada vez que otra goroutine ejecuta una mutación que crea un post, publica el evento en un *Message Broker* (como Redis Pub/Sub o NATS, vistos en el Capítulo 34) o directamente en el canal, y el motor GraphQL de Go se encarga de serializar el objeto y enviarlo a través del WebSocket de forma concurrente y no bloqueante.
 
 ## 35.3. Implementación de servidores usando `gqlgen`
 
-En el ecosistema de Go existen dos filosofías principales para construir servidores GraphQL: *Code-first* (donde el esquema se define dinámicamente usando estructuras y funciones en Go, a menudo abusando del paquete `reflect` que analizamos en el Capítulo 14) y *Schema-first*. 
+En el ecosistema de Go existen dos filosofías principales para construir servidores GraphQL: *Code-first* (donde el esquema se define dinámicamente usando estructuras y funciones en Go, a menudo abusando del paquete `reflect` que analizamos en el Capítulo 14) y *Schema-first*.
 
 Para aplicaciones de alto rendimiento y mantenibilidad a escala, el enfoque **Schema-first** es el estándar de facto, y `gqlgen` (desarrollado originalmente por 99designs) es la herramienta dominante. `gqlgen` toma el esquema estricto (SDL) que definimos en la sección anterior y genera código Go idiomático, estáticamente tipado y libre de reflexión para la capa de transporte HTTP.
 
@@ -299,7 +300,7 @@ La separación de responsabilidades aquí es clara: `gqlgen` se encarga de parse
 
 ## 35.4. Optimización de consultas de bases de datos y el patrón Dataloader (Resolución N+1)
 
-La flexibilidad que GraphQL ofrece al cliente viene con un costo oculto en el backend: la forma en que los motores GraphQL resuelven los grafos campo por campo hace que las aplicaciones sean extremadamente susceptibles al infame **problema de las consultas N+1**. 
+La flexibilidad que GraphQL ofrece al cliente viene con un costo oculto en el backend: la forma en que los motores GraphQL resuelven los grafos campo por campo hace que las aplicaciones sean extremadamente susceptibles al infame **problema de las consultas N+1**.
 
 En esta sección, analizaremos por qué ocurre este cuello de botella y cómo mitigarlo idiomáticamente en Go utilizando el patrón Dataloader, apoyándonos en nuestra comprensión previa de Goroutines (Capítulo 8) y el paquete Context (Capítulo 13).
 
@@ -320,8 +321,9 @@ query {
 ```
 
 Si implementamos los *resolvers* de forma ingenua, el motor de `gqlgen` ejecutará esto en dos fases:
-1.  **El resolver raíz (`Posts`):** Ejecuta 1 consulta a la base de datos: `SELECT * FROM posts LIMIT 50`. Hasta aquí todo bien.
-2.  **El resolver del campo (`Author`):** `gqlgen` iterará sobre los 50 posts devueltos. Para *cada* post, invocará el resolver de `author`. Esto generará 50 consultas individuales secuenciales (o concurrentes, pero igualmente ineficientes): `SELECT * FROM users WHERE id = ?`.
+
+1. **El resolver raíz (`Posts`):** Ejecuta 1 consulta a la base de datos: `SELECT * FROM posts LIMIT 50`. Hasta aquí todo bien.
+2. **El resolver del campo (`Author`):** `gqlgen` iterará sobre los 50 posts devueltos. Para *cada* post, invocará el resolver de `author`. Esto generará 50 consultas individuales secuenciales (o concurrentes, pero igualmente ineficientes): `SELECT * FROM users WHERE id = ?`.
 
 El resultado: **1 + 50 = 51 consultas** a la base de datos para satisfacer una sola petición HTTP. Si nuestra base de datos no está en la misma red local que la aplicación, la latencia de red acumulada destruirá el rendimiento.
 

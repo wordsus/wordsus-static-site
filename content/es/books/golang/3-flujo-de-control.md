@@ -53,6 +53,7 @@ En un libro avanzado de Go, es crucial hablar de estilo. La comunidad de Go rech
 Esto significa que debemos manejar los casos negativos o excepcionales primero y salir de la función, dejando el flujo principal de ejecución (el *Happy Path*) sin anidar al final de la función.
 
 **Antipatrón (Código no idiomático):**
+
 ```go
 func procesarDato(valido bool) string {
     if valido {
@@ -69,6 +70,7 @@ func procesarDato(valido bool) string {
 ```
 
 **Patrón Idiomático (Guard Clauses):**
+
 ```go
 func procesarDato(valido bool) string {
     // 1. Descartar el caso negativo inmediatamente
@@ -117,7 +119,7 @@ default:
 
 ### El patrón "Switch true" (Switch sin condición)
 
-Una de las formas más elegantes del `switch` en Go es omitir por completo la expresión a evaluar. Cuando se hace esto, el `switch` actúa lógicamente como un `switch true { ... }`. 
+Una de las formas más elegantes del `switch` en Go es omitir por completo la expresión a evaluar. Cuando se hace esto, el `switch` actúa lógicamente como un `switch true { ... }`.
 
 Este patrón es el reemplazo idiomático para las largas y anidadas cadenas de `if - else if - else`. Permite evaluar condiciones completamente dispares en cada `case`, mejorando drásticamente la alineación vertical y la legibilidad del código:
 
@@ -162,7 +164,7 @@ func procesarNivel(nivel int) {
 
 ### La declaración `select`: Multiplexación de control
 
-Aunque sintácticamente es idéntico a un `switch`, la declaración `select` tiene un propósito completamente distinto: **controlar operaciones de concurrencia**. 
+Aunque sintácticamente es idéntico a un `switch`, la declaración `select` tiene un propósito completamente distinto: **controlar operaciones de concurrencia**.
 
 Mientras que un `switch` evalúa expresiones o valores, un `select` evalúa **operaciones de envío o recepción sobre Canales (*Channels*)**. Como veremos a fondo en el **Capítulo 9**, `select` permite a una Goroutine esperar a que múltiples operaciones de comunicación estén listas.
 
@@ -185,7 +187,7 @@ default:
 
 ## 3.3. El único bucle de Go: for (clásico, condicional, infinito) y for range
 
-En su búsqueda por la simplicidad y la ortogonalidad, los diseñadores de Go tomaron una decisión radical respecto a las estructuras de iteración: eliminar por completo las palabras clave `while` y `do-while`. En Go, la única palabra reservada para construir bucles es `for`. 
+En su búsqueda por la simplicidad y la ortogonalidad, los diseñadores de Go tomaron una decisión radical respecto a las estructuras de iteración: eliminar por completo las palabras clave `while` y `do-while`. En Go, la única palabra reservada para construir bucles es `for`.
 
 Esta única estructura es lo suficientemente versátil como para cubrir todos los paradigmas de iteración, alterando únicamente la sintaxis que la acompaña.
 
@@ -193,9 +195,9 @@ Esta única estructura es lo suficientemente versátil como para cubrir todos lo
 
 La forma más tradicional del bucle `for` en Go es herencia directa de C, pero con la característica omisión de los paréntesis. Consta de tres componentes opcionales separados por punto y coma (`;`):
 
-1.  **Inicialización:** Se ejecuta una sola vez antes de que comience el bucle. Suele ser una declaración corta (`:=`) que limita el ámbito de la variable estrictamente al bloque del bucle.
-2.  **Condición:** Evaluada antes de cada iteración. Si es `false`, el bucle termina.
-3.  **Post-ejecución:** Se ejecuta al final de cada iteración, generalmente para incrementar o actualizar el contador.
+1. **Inicialización:** Se ejecuta una sola vez antes de que comience el bucle. Suele ser una declaración corta (`:=`) que limita el ámbito de la variable estrictamente al bloque del bucle.
+2. **Condición:** Evaluada antes de cada iteración. Si es `false`, el bucle termina.
+3. **Post-ejecución:** Se ejecuta al final de cada iteración, generalmente para incrementar o actualizar el contador.
 
 ```go
 // El ámbito de 'i' está restringido a este bloque
@@ -285,7 +287,7 @@ for i := 0; i < 10; i++ {
 
 ### El poder de las Etiquetas (Labels)
 
-Para resolver la ambigüedad en estructuras anidadas (un bucle dentro de otro bucle, o un `select` dentro de un `for`), Go soporta **saltos etiquetados** (*labeled statements*). 
+Para resolver la ambigüedad en estructuras anidadas (un bucle dentro de otro bucle, o un `select` dentro de un `for`), Go soporta **saltos etiquetados** (*labeled statements*).
 
 Una etiqueta es un identificador arbitrario seguido de dos puntos (`:`) colocado justo antes de un bucle, un `switch` o un `select`. Al pasar esta etiqueta a un `break` o `continue`, le indicamos explícitamente al compilador exactamente qué estructura queremos afectar.
 
@@ -320,8 +322,8 @@ En Go, un `goto` no puede saltar hacia adentro de otro bloque de código, ni pue
 
 ¿Por qué se usa entonces en código avanzado? En la Standard Library de Go (como en los paquetes `math`, `regexp` o `encoding`), el `goto` se utiliza estratégicamente por dos razones principales:
 
-1.  **Máquinas de estado finito (FSM):** Cuando se construyen analizadores léxicos (*lexers*) o parsers extremadamente rápidos, saltar entre estados usando `goto` evita la sobrecarga de múltiples llamadas a funciones o la complejidad de grandes bloques `switch` anidados.
-2.  **Centralización de limpieza (antes de la optimización de `defer`):** Históricamente, y en rutas críticas de altísimo rendimiento (*hot paths*), se utilizaba `goto` para saltar a un bloque final de manejo de errores y liberación de recursos dentro de la misma función, evitando el costo que antiguamente tenía la instrucción `defer`.
+1. **Máquinas de estado finito (FSM):** Cuando se construyen analizadores léxicos (*lexers*) o parsers extremadamente rápidos, saltar entre estados usando `goto` evita la sobrecarga de múltiples llamadas a funciones o la complejidad de grandes bloques `switch` anidados.
+2. **Centralización de limpieza (antes de la optimización de `defer`):** Históricamente, y en rutas críticas de altísimo rendimiento (*hot paths*), se utilizaba `goto` para saltar a un bloque final de manejo de errores y liberación de recursos dentro de la misma función, evitando el costo que antiguamente tenía la instrucción `defer`.
 
 ```go
 // Ejemplo de un hot path usando goto para manejo de errores centralizado

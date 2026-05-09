@@ -1,16 +1,16 @@
-Concurrency in systems programming has historically been a minefield of data races and unpredictable crashes. Rust fundamentally changes this narrative. By leveraging the exact same ownership and borrowing rules that guarantee memory safety, Rust extends its protections to multithreaded environments, offering what is famously known as "fearless concurrency." 
+Concurrency in systems programming has historically been a minefield of data races and unpredictable crashes. Rust fundamentally changes this narrative. By leveraging the exact same ownership and borrowing rules that guarantee memory safety, Rust extends its protections to multithreaded environments, offering what is famously known as "fearless concurrency."
 
 In this chapter, we transition from single-threaded execution to harnessing the full power of modern multi-core processors. You will learn to spawn native OS threads, safely transfer data via message passing, manage shared state with locks, and master the traits that enforce compile-time thread safety.
 
 ## 11.1 Creating Threads and Using `move` Closures
 
-Concurrency in Rust is famously characterized by the phrase "fearless concurrency." By leaning on the strict rules of ownership and type checking you learned in Part I, Rust's compiler catches the most common, notoriously difficult-to-debug concurrency bugs—such as data races and dangling pointers—at compile time rather than runtime. 
+Concurrency in Rust is famously characterized by the phrase "fearless concurrency." By leaning on the strict rules of ownership and type checking you learned in Part I, Rust's compiler catches the most common, notoriously difficult-to-debug concurrency bugs—such as data races and dangling pointers—at compile time rather than runtime.
 
 In this section, we begin our exploration of concurrent programming by interacting directly with the operating system's threading capabilities via the standard library.
 
 ### The 1:1 Threading Model
 
-Rust’s standard library utilizes a *1:1 threading model*. This means that when you spawn a thread in Rust, it maps directly to one underlying operating system thread. This approach provides low overhead regarding runtime size (there is no heavy runtime or garbage collector to manage green threads) but relies entirely on the OS for context switching and scheduling. 
+Rust’s standard library utilizes a *1:1 threading model*. This means that when you spawn a thread in Rust, it maps directly to one underlying operating system thread. This approach provides low overhead regarding runtime size (there is no heavy runtime or garbage collector to manage green threads) but relies entirely on the OS for context switching and scheduling.
 
 *Note: For scenarios requiring massive concurrency with lightweight tasks (M:N threading), Rust relies on asynchronous programming, which we will explore in Chapter 12.*
 
@@ -40,6 +40,7 @@ fn main() {
 ```
 
 If you run this code, you will notice two important behaviors:
+
 1. The outputs from the main thread and the spawned thread are interleaved, depending on how the OS schedules them.
 2. The spawned thread likely will not finish printing all five numbers.
 
@@ -73,7 +74,7 @@ fn main() {
 }
 ```
 
-Calling `join()` returns a `thread::Result`. We call `unwrap()` here because `join()` will return an `Err` if the spawned thread panicked (as covered in Chapter 8). 
+Calling `join()` returns a `thread::Result`. We call `unwrap()` here because `join()` will return an `Err` if the spawned thread panicked (as covered in Chapter 8).
 
 The execution flow can be visualized like this:
 
@@ -152,19 +153,19 @@ fn main() {
 }
 ```
 
-By using `move`, the vector's ownership is transferred from the main thread to the spawned thread. The borrow checker is satisfied because the spawned thread now independently owns the data it is operating on, completely eliminating the risk of a dangling pointer. 
+By using `move`, the vector's ownership is transferred from the main thread to the spawned thread. The borrow checker is satisfied because the spawned thread now independently owns the data it is operating on, completely eliminating the risk of a dangling pointer.
 
 While `move` closures solve the problem of giving a thread its own data to work with, they do not solve the problem of *sharing* data across multiple threads simultaneously. If you need two threads to read or modify the exact same memory, transferring ownership to a single thread isn't enough. We will tackle the mechanisms for shared-state and message-passing concurrency in the upcoming sections.
 
 ## 11.2 Message Passing with Channels (`std::sync::mpsc`)
 
-While the previous section demonstrated how to isolate data within individual threads using `move` closures, real-world concurrent applications usually require threads to communicate. One of the most popular and safest ways to achieve this in Rust is through **message passing**. 
+While the previous section demonstrated how to isolate data within individual threads using `move` closures, real-world concurrent applications usually require threads to communicate. One of the most popular and safest ways to achieve this in Rust is through **message passing**.
 
 Rust heavily embraces the concurrency philosophy popularized by the Go programming language: *"Do not communicate by sharing memory; instead, share memory by communicating."* To facilitate this, Rust's standard library provides channels. You can think of a channel as a unidirectional water pipe. You put data in one end, and it flows out the other, ensuring that data is safely transferred from one thread to another without the risk of data races.
 
 ### The `mpsc` Paradigm
 
-Rust’s standard library channel implementation lives in `std::sync::mpsc`. The acronym **mpsc** stands for **Multi-Producer, Single-Consumer**. 
+Rust’s standard library channel implementation lives in `std::sync::mpsc`. The acronym **mpsc** stands for **Multi-Producer, Single-Consumer**.
 
 This means a standard Rust channel can have multiple sending ends (transmitters) that pump data into the channel, but only exactly one receiving end (receiver) that consumes that data.
 
@@ -204,9 +205,10 @@ fn main() {
 ```
 
 Notice the following mechanics in this code:
-1.  **`move` is required:** We must move `tx` into the spawned thread's closure so it owns the transmitter.
-2.  **`tx.send()`:** The `send` method attempts to push data into the channel. It returns a `Result<() , SendError<T>>`. If the receiving end of the channel has already been dropped (for instance, if the main thread panicked or finished early), `send` will return an error because there is nowhere for the data to go. We use `unwrap()` here to assert we expect it to succeed.
-3.  **`rx.recv()`:** The `recv` (receive) method blocks the main thread's execution until a value is sent down the channel. Once a value is available, it returns `Result<T, RecvError>`. If all transmitters (`tx`) have been dropped, the channel is considered "closed," and `recv` will return an error to signal that no more messages will ever arrive.
+
+1. **`move` is required:** We must move `tx` into the spawned thread's closure so it owns the transmitter.
+2. **`tx.send()`:** The `send` method attempts to push data into the channel. It returns a `Result<() , SendError<T>>`. If the receiving end of the channel has already been dropped (for instance, if the main thread panicked or finished early), `send` will return an error because there is nowhere for the data to go. We use `unwrap()` here to assert we expect it to succeed.
+3. **`rx.recv()`:** The `recv` (receive) method blocks the main thread's execution until a value is sent down the channel. Once a value is available, it returns `Result<T, RecvError>`. If all transmitters (`tx`) have been dropped, the channel is considered "closed," and `recv` will return an error to signal that no more messages will ever arrive.
 
 > **Non-Blocking Receives:** If you do not want to block the thread while waiting for a message, you can use `rx.try_recv()`. This method returns immediately, yielding an `Ok` with the message if one is available, or an `Err` if the channel is currently empty or completely disconnected.
 
@@ -272,7 +274,7 @@ Because we iterate over `rx`, the main thread blocks and waits for each message.
 
 ### Cloning Transmitters for Multiple Producers
 
-To take advantage of the "Multi-Producer" capability of `mpsc`, we can clone the transmitter before moving it into different threads. 
+To take advantage of the "Multi-Producer" capability of `mpsc`, we can clone the transmitter before moving it into different threads.
 
 ```rust
 use std::sync::mpsc;
@@ -308,7 +310,7 @@ fn main() {
 }
 ```
 
-If you run this code, you will see the messages from both threads interleaved depending on OS scheduling. 
+If you run this code, you will see the messages from both threads interleaved depending on OS scheduling.
 
 Message passing is an incredibly robust way to handle concurrent workflows, particularly pipeline architectures or worker pools where tasks are distributed and results are funneled back to a central coordinator. However, there are scenarios where data is too large to pass back and forth, or where multiple threads need read-and-write access to the exact same state simultaneously. For those situations, we must turn to shared-state concurrency.
 
@@ -348,12 +350,13 @@ fn main() {
 ```
 
 Notice two critical details:
+
 1. **`lock().unwrap()`**: The `lock` method returns a `Result`. It will return an `Err` if the Mutex is "poisoned"—which happens if another thread panicked while holding the lock. We use `unwrap` to panic if the state is hopelessly corrupted.
 2. **RAII and `MutexGuard`**: The `lock` method does not return the data directly; it returns a smart pointer called a `MutexGuard`. This guard implements `Deref` and `DerefMut` to let you touch the data. More importantly, it implements the `Drop` trait. When the guard goes out of scope at the end of the block, it automatically unlocks the Mutex. You can never "forget" to unlock a Mutex in Rust.
 
 ### Thread-Safe Multiple Ownership with `Arc<T>`
 
-To share a Mutex across multiple threads, we encounter an ownership problem. We cannot simply move the Mutex into multiple spawned threads because ownership can only reside in one place. 
+To share a Mutex across multiple threads, we encounter an ownership problem. We cannot simply move the Mutex into multiple spawned threads because ownership can only reside in one place.
 
 In Chapter 10, we solved multiple ownership using `Rc<T>` (Reference Counted pointer). However, if we try to use `Rc<T>` across threads, the compiler will aggressively reject it. The internal counter used by `Rc<T>` is not thread-safe; multiple threads modifying the counter simultaneously would cause a data race, potentially leading to a use-after-free vulnerability.
 
@@ -411,11 +414,12 @@ Because of `Arc`, the `counter` outlives all the threads. Because of `Mutex`, th
 
 ### Optimizing Reads with `RwLock<T>`
 
-A `Mutex` is a blunt instrument. It forces all access—both reading and writing—to be strictly sequential. If you have a workload where data is read very frequently but modified rarely (like a shared configuration object or an in-memory cache), a `Mutex` creates an unnecessary performance bottleneck. 
+A `Mutex` is a blunt instrument. It forces all access—both reading and writing—to be strictly sequential. If you have a workload where data is read very frequently but modified rarely (like a shared configuration object or an in-memory cache), a `Mutex` creates an unnecessary performance bottleneck.
 
 For these scenarios, the standard library provides `std::sync::RwLock<T>` (Read-Write Lock).
 
 An `RwLock` allows either:
+
 1. **Multiple readers at the same time** (no one can write).
 2. **Exactly one writer at a time** (no one else can read or write).
 
@@ -443,15 +447,15 @@ fn main() {
 }
 ```
 
-If a thread attempts to call `lock.write()` while there are active read locks, it will block until all readers have finished. Conversely, if a write lock is active, any incoming `read()` or `write()` calls will block until the writer completes. 
+If a thread attempts to call `lock.write()` while there are active read locks, it will block until all readers have finished. Conversely, if a write lock is active, any incoming `read()` or `write()` calls will block until the writer completes.
 
 Choosing between `Mutex` and `RwLock` depends entirely on your system's read-to-write ratio. If you are constantly mutating the data, `RwLock` actually performs *worse* than a `Mutex` due to the overhead of managing complex reader/writer queues. If you are predominantly reading, `RwLock` will vastly improve the throughput of your concurrent application.
 
 ## 11.4 The `Send` and `Sync` Marker Traits
 
-Throughout the previous sections, we relied heavily on the compiler to catch concurrency bugs. We saw that `Arc<T>` is allowed to be shared across threads, while `Rc<T>` is strictly forbidden. We also saw that `Mutex<T>` allows us to safely mutate data across threads, while `RefCell<T>` (from Chapter 10) cannot be used in a multithreaded context. 
+Throughout the previous sections, we relied heavily on the compiler to catch concurrency bugs. We saw that `Arc<T>` is allowed to be shared across threads, while `Rc<T>` is strictly forbidden. We also saw that `Mutex<T>` allows us to safely mutate data across threads, while `RefCell<T>` (from Chapter 10) cannot be used in a multithreaded context.
 
-But how does the Rust compiler actually *know* which types are thread-safe and which are not? 
+But how does the Rust compiler actually *know* which types are thread-safe and which are not?
 
 The answer lies in two fundamental traits defined in `std::marker`: **`Send`** and **`Sync`**. These traits form the bedrock of Rust’s "fearless concurrency" guarantees.
 
@@ -460,12 +464,13 @@ The answer lies in two fundamental traits defined in `std::marker`: **`Send`** a
 Unlike standard traits (such as `Display` or `Iterator`), `Send` and `Sync` have absolutely no methods to implement. They are **marker traits**, meaning they exist purely to communicate specific properties about a type to the compiler at compile time.
 
 Furthermore, they are **auto traits**. You rarely implement them manually. The Rust compiler automatically evaluates every type you define:
+
 * If a struct is composed entirely of fields that are `Send`, the struct itself is automatically `Send`.
 * If a struct is composed entirely of fields that are `Sync`, the struct itself is automatically `Sync`.
 
 ### The `Send` Trait: Transferring Ownership
 
-The `Send` trait indicates that **ownership of a value of this type can be safely transferred to another thread.** Almost all primitive types in Rust (integers, floats, booleans, characters) are `Send`. Most standard library types, like `String` and `Vec<T>` (as long as `T` is `Send`), are also `Send`. 
+The `Send` trait indicates that **ownership of a value of this type can be safely transferred to another thread.** Almost all primitive types in Rust (integers, floats, booleans, characters) are `Send`. Most standard library types, like `String` and `Vec<T>` (as long as `T` is `Send`), are also `Send`.
 
 When you use `thread::spawn(move || { ... })`, the compiler checks the bounds of the closure. The closure requires that all values moved into it implement `Send`.
 
@@ -510,14 +515,14 @@ Because `Rc<T>` uses non-atomic reference counting, cloning it or dropping it ac
 
 The `Sync` trait indicates that **it is safe for multiple threads to hold shared references (`&T`) to a value at the same time.**
 
-More formally, a type `T` is `Sync` if and only if a reference to it, `&T`, is `Send`. 
+More formally, a type `T` is `Sync` if and only if a reference to it, `&T`, is `Send`.
 
 If `Send` is about safely moving *ownership*, `Sync` is about safely sharing *references*. Primitive types are `Sync`. A `String` is `Sync` because multiple threads reading the same string simultaneously cannot cause memory corruption.
 
 However, interior mutability primitives behave differently based on their thread-safety guarantees:
 
 * **`RefCell<T>` is `!Sync`**: It allows interior mutability using runtime borrow checking, but its internal borrow counter is not atomic. If two threads called `.borrow_mut()` at the exact same time, a data race would occur on the counter.
-* **`Mutex<T>` and `RwLock<T>` are `Sync`**: They provide interior mutability, but use operating-system-level atomic locks to ensure that simultaneous access is safely queued. 
+* **`Mutex<T>` and `RwLock<T>` are `Sync`**: They provide interior mutability, but use operating-system-level atomic locks to ensure that simultaneous access is safely queued.
 
 ### How Types Compose: A Matrix
 
@@ -539,10 +544,11 @@ Notice the entry for `Mutex<T>`. A `Mutex` takes a type `T` that might only be `
 Conversely, look at `Arc<T>`. An `Arc` is only `Send` and `Sync` if the inner data `T` is *both* `Send` and `Sync`. If you put a `RefCell<T>` inside an `Arc`, the `Arc` will compile, but you won't be able to send it across threads because the `RefCell` corrupts the thread-safety guarantee.
 
 This is why `Arc<Mutex<T>>` is the golden standard for shared state:
-1.  `T` must be `Send` (can be moved).
-2.  `Mutex<T>` makes it `Sync` (safe to share via references).
-3.  `Arc<Mutex<T>>` requires the inner type to be `Send + Sync`, which `Mutex` satisfies. 
-4.  The result is a completely thread-safe, multiply-owned type.
+
+1. `T` must be `Send` (can be moved).
+2. `Mutex<T>` makes it `Sync` (safe to share via references).
+3. `Arc<Mutex<T>>` requires the inner type to be `Send + Sync`, which `Mutex` satisfies.
+4. The result is a completely thread-safe, multiply-owned type.
 
 ### Implementing `Send` and `Sync` Manually
 
@@ -571,9 +577,10 @@ A data race is considered *undefined behavior*, which safe Rust strictly forbids
 
 ### The Anatomy of a Deadlock
 
-A deadlock typically occurs in shared-state concurrency when two or more threads acquire mutual exclusion locks (`Mutex` or `RwLock`) in a cyclical order. 
+A deadlock typically occurs in shared-state concurrency when two or more threads acquire mutual exclusion locks (`Mutex` or `RwLock`) in a cyclical order.
 
 Consider the classic scenario:
+
 1. Thread A acquires Lock 1.
 2. Thread B acquires Lock 2.
 3. Thread A attempts to acquire Lock 2 (and blocks, waiting for Thread B).
@@ -641,9 +648,10 @@ If you compile and run this code, it will hang indefinitely. The execution flow 
 
 ### Strategies for Avoiding Deadlocks
 
-Because the compiler will not save you from deadlocks, you must rely on architectural patterns and defensive programming techniques. 
+Because the compiler will not save you from deadlocks, you must rely on architectural patterns and defensive programming techniques.
 
 #### 1. Strict Lock Ordering
+
 The most robust way to prevent deadlocks is to establish a global hierarchy of locks. If every thread in your application is forced to acquire locks in the exact same order, a cyclical dependency cannot form.
 
 If we fix the previous example so that both threads *must* acquire `resource_a` before `resource_b`, the deadlock vanishes:
@@ -657,6 +665,7 @@ let _guard_b = resource_b.lock().unwrap(); // Then Lock B
 Even if Thread 2 executes first, Thread 1 will simply block on `resource_a` until Thread 2 is completely finished. The cycle is broken.
 
 #### 2. Minimizing Lock Scope
+
 The longer you hold a lock, the higher the probability of a deadlock. You should keep the "critical section" (the code executing while the lock is held) as small as possible.
 
 In Rust, a `MutexGuard` is dropped at the end of the block in which it was created. You can artificially constrain this scope using inner blocks `{ ... }` or by explicitly calling `drop()`:
@@ -675,6 +684,7 @@ let thread1 = thread::spawn(move || {
 ```
 
 #### 3. Using `try_lock` Backoffs
+
 Instead of using `lock()`, which blocks the thread unconditionally, `Mutex` and `RwLock` offer a `try_lock()` method. This method attempts to acquire the lock but returns immediately if the lock is already held by another thread, returning a `TryLockError::WouldBlock`.
 
 You can use `try_lock` to build a "backoff" strategy:
@@ -706,6 +716,7 @@ loop {
 This pattern is called a *livelock* avoidance strategy. While it prevents a hard deadlock, it can introduce inefficiency if threads constantly back off and retry. It is generally better to fix the underlying architectural issue (via Lock Ordering) than to rely heavily on `try_lock` loops.
 
 #### 4. Prefer Message Passing
-As we explored in Section 11.2, channels (`mpsc`) drastically reduce the surface area for deadlocks. Because ownership of data is transferred rather than shared, there are fewer locks to manage. While it is technically possible to deadlock channels (e.g., Thread 1 blocks on receiving from Thread 2, while Thread 2 blocks on receiving from Thread 1), the flow of data is usually much easier to reason about than intersecting `Arc<Mutex<T>>` webs. 
+
+As we explored in Section 11.2, channels (`mpsc`) drastically reduce the surface area for deadlocks. Because ownership of data is transferred rather than shared, there are fewer locks to manage. While it is technically possible to deadlock channels (e.g., Thread 1 blocks on receiving from Thread 2, while Thread 2 blocks on receiving from Thread 1), the flow of data is usually much easier to reason about than intersecting `Arc<Mutex<T>>` webs.
 
 By combining Rust's strict compile-time checks for data races with conscious runtime strategies for deadlock avoidance, you can write highly concurrent systems that are profoundly more stable and predictable than those written in traditional systems languages.

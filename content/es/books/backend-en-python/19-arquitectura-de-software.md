@@ -2,7 +2,7 @@ En el Capítulo 19, damos el salto de la sintaxis a la estrategia. Un ingeniero 
 
 ## 19.1 Implementación de Patrones de Diseño del GoF en Python
 
-Cuando el clásico libro *Design Patterns: Elements of Reusable Object-Oriented Software* (la "Banda de los Cuatro" o GoF) se publicó en 1994, los ejemplos estaban escritos en C++ y Smalltalk. Muchos de estos patrones nacieron para sortear las limitaciones de lenguajes estáticamente tipados y sin funciones de primera clase. 
+Cuando el clásico libro *Design Patterns: Elements of Reusable Object-Oriented Software* (la "Banda de los Cuatro" o GoF) se publicó en 1994, los ejemplos estaban escritos en C++ y Smalltalk. Muchos de estos patrones nacieron para sortear las limitaciones de lenguajes estáticamente tipados y sin funciones de primera clase.
 
 En Python, la historia es diferente. Como hemos visto en capítulos anteriores, la naturaleza dinámica del lenguaje, el modelo de datos (*dunder methods*), las funciones de primera clase y la metaprogramación transforman drásticamente cómo aplicamos estos patrones. Algunos se vuelven invisibles, otros se simplifican a una sola línea de código, y algunos incluso se consideran antipatrones si se implementan al estilo Java o C++.
 
@@ -15,9 +15,9 @@ A continuación, analizaremos cómo implementar de forma **"pythónica"** los pa
 Estos patrones abstraen el proceso de instanciación. En Python, la creación de objetos ya es dinámica, lo que reduce la necesidad de fábricas complejas.
 
 **El Singleton (y por qué deberías evitarlo)**
-El Singleton garantiza que una clase tenga una única instancia y proporciona un punto de acceso global a ella. En lenguajes estrictos, requiere constructores privados y métodos estáticos. 
+El Singleton garantiza que una clase tenga una única instancia y proporciona un punto de acceso global a ella. En lenguajes estrictos, requiere constructores privados y métodos estáticos.
 
-En Python, **el módulo en sí mismo es un Singleton natural**. Como vimos en el *Capítulo 7*, cuando importas un módulo, Python lo ejecuta una vez y lo cachea en `sys.modules`. 
+En Python, **el módulo en sí mismo es un Singleton natural**. Como vimos en el *Capítulo 7*, cuando importas un módulo, Python lo ejecuta una vez y lo cachea en `sys.modules`.
 
 Si *absolutamente* necesitas un Singleton a nivel de clase, puedes usar el método mágico `__new__` (del *Capítulo 5*) o una Metaclase (del *Capítulo 10*).
 
@@ -71,10 +71,11 @@ def get_pet(pet_type: str, name: str):
 
 ### 2. Patrones Estructurales
 
-Se ocupan de cómo se componen las clases y objetos para formar estructuras más grandes. 
+Se ocupan de cómo se componen las clases y objetos para formar estructuras más grandes.
 
 **Decorator (El Patrón vs. La Sintaxis)**
-Es vital no confundir el *Patrón Decorador* del GoF con la *sintaxis de decoradores* de Python (`@decorator` vista en el *Capítulo 10*). 
+Es vital no confundir el *Patrón Decorador* del GoF con la *sintaxis de decoradores* de Python (`@decorator` vista en el *Capítulo 10*).
+
 * El **Patrón Decorador (GoF)** añade comportamiento a una *instancia específica* en tiempo de ejecución mediante composición.
 * Los **Decoradores de Python** modifican funciones o clases enteras en tiempo de definición (metaprogramación).
 
@@ -170,6 +171,7 @@ subject.state = "Activo"
 ```
 
 ### Resumen Arquitectónico
+
 Implementar patrones GoF en Python requiere un cambio de mentalidad. No traduzcas código C++ o Java línea por línea. Aprovecha las herramientas nativas del lenguaje que exploramos en las Partes I, II y III de este libro: las comprensiones, las funciones de orden superior, los decoradores y el *duck typing* son tus verdaderos "patrones de diseño" en el día a día.
 
 ## 19.2 Arquitectura Limpia (Clean Architecture) y Arquitectura Hexagonal
@@ -309,20 +311,22 @@ def create_user(request: UserCreateRequest):
 Como Ingeniero Senior, tu trabajo no es aplicar la Arquitectura Limpia a todo lo que se mueva, sino evaluar su costo-beneficio.
 
 **Ventajas:**
-1.  **Agnóstica del Framework:** Si FastAPI deja de ser mantenido mañana, puedes migrar a Litestar o Flask cambiando solo la capa de enrutamiento; tus casos de uso y entidades quedan intactos.
-2.  **Agnóstica de la Base de Datos:** Cambiar de MongoDB a PostgreSQL solo requiere escribir un nuevo Adaptador, no reescribir la lógica de negocio.
-3.  **Altamente Testeable:** Puedes probar toda la lógica de negocio en milisegundos inyectando *Mocks* o adaptadores en memoria (como `InMemoryUserRepository`), sin necesidad de levantar bases de datos de prueba (*Capítulo 17.2*).
+
+1. **Agnóstica del Framework:** Si FastAPI deja de ser mantenido mañana, puedes migrar a Litestar o Flask cambiando solo la capa de enrutamiento; tus casos de uso y entidades quedan intactos.
+2. **Agnóstica de la Base de Datos:** Cambiar de MongoDB a PostgreSQL solo requiere escribir un nuevo Adaptador, no reescribir la lógica de negocio.
+3. **Altamente Testeable:** Puedes probar toda la lógica de negocio en milisegundos inyectando *Mocks* o adaptadores en memoria (como `InMemoryUserRepository`), sin necesidad de levantar bases de datos de prueba (*Capítulo 17.2*).
 
 **Desventajas:**
-1.  **Exceso de Ingeniería (Over-engineering):** Requiere escribir mucho código *boilerplate* (repetitivo). Tienes que mapear datos entre modelos del ORM, entidades de dominio y esquemas Pydantic.
-2.  **Curva de Aprendizaje:** Para equipos junior, entender la inversión de dependencias y seguir el flujo de ejecución a través de múltiples capas puede ser abrumador.
+
+1. **Exceso de Ingeniería (Over-engineering):** Requiere escribir mucho código *boilerplate* (repetitivo). Tienes que mapear datos entre modelos del ORM, entidades de dominio y esquemas Pydantic.
+2. **Curva de Aprendizaje:** Para equipos junior, entender la inversión de dependencias y seguir el flujo de ejecución a través de múltiples capas puede ser abrumador.
 
 **El Veredicto:**
 Si estás construyendo un CRUD sencillo, un MVP o un panel de administración rápido, el acoplamiento que proveen frameworks como Django es una ventaja competitiva de velocidad. Sin embargo, si estás construyendo el núcleo financiero de un banco, un sistema ERP complejo, o un microservicio que tendrá una vida útil de muchos años y reglas de negocio complejas, aislar el dominio mediante Arquitectura Hexagonal/Limpia es la decisión más inteligente y rentable a largo plazo.
 
 ## 19.3 Transición de Monolitos a Microservicios: Trade-offs
 
-En la industria del software actual, la palabra "microservicios" a menudo se presenta como la solución mágica a todos los problemas de escalabilidad y rendimiento. Sin embargo, como Ingeniero Senior, tu responsabilidad es ver más allá del *hype*. La arquitectura de microservicios no es inherentemente "mejor" que un monolito; es simplemente una arquitectura diferente con un conjunto distinto de compromisos (*trade-offs*). 
+En la industria del software actual, la palabra "microservicios" a menudo se presenta como la solución mágica a todos los problemas de escalabilidad y rendimiento. Sin embargo, como Ingeniero Senior, tu responsabilidad es ver más allá del *hype*. La arquitectura de microservicios no es inherentemente "mejor" que un monolito; es simplemente una arquitectura diferente con un conjunto distinto de compromisos (*trade-offs*).
 
 Si aplicaste correctamente los conceptos de Arquitectura Limpia del subcapítulo anterior (19.2), separar tu código en microservicios será un proceso técnico. Si tu monolito es una "bola de barro" (Big Ball of Mud) fuertemente acoplada, dividirlo resultará en un "monolito distribuido", el peor de los escenarios posibles.
 
@@ -365,7 +369,7 @@ Antes de iniciar una migración, debes evaluar cuidadosamente lo que ganas frent
 
 ### La Regla de Oro: "Monolith First" (El Monolito Primero)
 
-Martin Fowler, una de las voces más respetadas en arquitectura de software, acuñó el principio *Monolith First*. 
+Martin Fowler, una de las voces más respetadas en arquitectura de software, acuñó el principio *Monolith First*.
 
 Casi todos los sistemas exitosos de microservicios comenzaron como un monolito que se volvió demasiado grande. Por el contrario, casi todos los sistemas construidos como microservicios desde el día cero terminan en serios problemas. ¿Por qué? Porque en las etapas tempranas de un proyecto, **los límites del dominio (los "Bounded Contexts") casi nunca se entienden correctamente.**
 
@@ -379,9 +383,9 @@ En su lugar, utiliza el **Patrón de la Higuera Estranguladora (Strangler Fig Pa
 
 **Cómo implementarlo:**
 
-1.  **Introduce un API Gateway (Enrutador):** Coloca un proxy inverso (como Nginx, Traefik o un Gateway en la nube) delante de tu Monolito. Al principio, el 100% del tráfico va al Monolito.
-2.  **Identifica las "Costuras":** Busca un subdominio que sea relativamente independiente (ej. el servicio de envío de correos o la generación de facturas).
-3.  **Extrae y Redirige:** Crea el nuevo Microservicio (por ejemplo, usando FastAPI). Configura el API Gateway para que el tráfico dirigido a las rutas de facturas (ej. `/api/invoices/`) vaya al nuevo microservicio, mientras el resto sigue yendo al monolito.
+1. **Introduce un API Gateway (Enrutador):** Coloca un proxy inverso (como Nginx, Traefik o un Gateway en la nube) delante de tu Monolito. Al principio, el 100% del tráfico va al Monolito.
+2. **Identifica las "Costuras":** Busca un subdominio que sea relativamente independiente (ej. el servicio de envío de correos o la generación de facturas).
+3. **Extrae y Redirige:** Crea el nuevo Microservicio (por ejemplo, usando FastAPI). Configura el API Gateway para que el tráfico dirigido a las rutas de facturas (ej. `/api/invoices/`) vaya al nuevo microservicio, mientras el resto sigue yendo al monolito.
 
 ```text
     ETAPA 1: Inicio             ETAPA 2: Extracción             ETAPA 3: Estrangulamiento
@@ -400,7 +404,8 @@ En su lugar, utiliza el **Patrón de la Higuera Estranguladora (Strangler Fig Pa
 
 ### Resumen para el Ecosistema Python
 
-Python es un excelente lenguaje para ambas arquitecturas. 
+Python es un excelente lenguaje para ambas arquitecturas.
+
 * Para **monolitos robustos**, *Django* sigue siendo el rey indiscutible gracias a su convención sobre configuración.
 * Para **microservicios ágiles**, *FastAPI* o *Litestar* son ideales debido a su bajo consumo de memoria, alto rendimiento asíncrono y generación automática de contratos OpenAPI.
 
@@ -408,7 +413,7 @@ Sin embargo, recuerda: el código es la parte fácil de los microservicios. La v
 
 ## 19.4 Procesamiento asíncrono y colas de mensajes (Celery, RabbitMQ, Redis)
 
-En el *Capítulo 12* exploramos la concurrencia con `asyncio`, ideal para manejar miles de conexiones I/O simultáneas sin bloquear el hilo principal. Sin embargo, ¿qué sucede cuando un usuario sube un video de 1 GB para ser transcodificado, o cuando necesitas generar y enviar 10,000 facturas en PDF a fin de mes? 
+En el *Capítulo 12* exploramos la concurrencia con `asyncio`, ideal para manejar miles de conexiones I/O simultáneas sin bloquear el hilo principal. Sin embargo, ¿qué sucede cuando un usuario sube un video de 1 GB para ser transcodificado, o cuando necesitas generar y enviar 10,000 facturas en PDF a fin de mes?
 
 Ni siquiera `asyncio` te salvará aquí. Si ejecutas una tarea pesada (intensiva en CPU o de larga duración) en el ciclo de vida de una petición HTTP, el usuario experimentará un *timeout*, la interfaz quedará congelada y tu servidor WSGI/ASGI se saturará rápidamente.
 
@@ -418,9 +423,9 @@ La solución de arquitectura para esto es el **procesamiento en segundo plano (B
 
 Para delegar el trabajo pesado fuera de la API principal, dividimos el sistema en tres componentes fundamentales:
 
-1.  **El Productor (Tu aplicación web):** Recibe la petición del usuario, empaqueta los datos de la tarea como un mensaje y lo envía a la cola. Responde inmediatamente al usuario con un mensaje tipo "Su solicitud está siendo procesada".
-2.  **El Broker de Mensajes (La Cola):** Un servicio intermedio de alta disponibilidad que recibe los mensajes y los mantiene en orden hasta que alguien esté libre para procesarlos.
-3.  **El Worker (El Consumidor):** Procesos independientes (a menudo en servidores separados) que están constantemente escuchando al broker. Toman un mensaje, ejecutan la tarea pesada, y guardan el resultado.
+1. **El Productor (Tu aplicación web):** Recibe la petición del usuario, empaqueta los datos de la tarea como un mensaje y lo envía a la cola. Responde inmediatamente al usuario con un mensaje tipo "Su solicitud está siendo procesada".
+2. **El Broker de Mensajes (La Cola):** Un servicio intermedio de alta disponibilidad que recibe los mensajes y los mantiene en orden hasta que alguien esté libre para procesarlos.
+3. **El Worker (El Consumidor):** Procesos independientes (a menudo en servidores separados) que están constantemente escuchando al broker. Toman un mensaje, ejecutan la tarea pesada, y guardan el resultado.
 
 ```text
 +--------------+ 1. Petición HTTP  +---------------+ 2. Envía Mensaje  +---------------+
@@ -497,9 +502,9 @@ Finalmente, levantas un proceso de Celery en tu terminal para que actúe como Wo
 
 Mover lógica a un procesamiento en segundo plano resuelve los cuellos de botella de la API, pero introduce nuevos desafíos de sistemas distribuidos:
 
-1.  **Idempotencia Obligatoria:** En sistemas distribuidos, la garantía suele ser *At-Least-Once delivery* (entrega al menos una vez), no *Exactly-Once*. Si hay un fallo de red durante la confirmación, un *worker* podría recibir la misma tarea dos veces. Tus tareas **deben ser idempotentes**: ejecutarlas una vez debe tener el mismo resultado en el sistema que ejecutarlas diez veces (ej. usar `UPDATE` en lugar de agregar ciegamente a un saldo).
-2.  **Granularidad de los Argumentos:** **Nunca** pases objetos complejos o instancias del ORM como argumentos a `.delay()`. Los parámetros se serializan (usualmente en JSON o Pickle, *Capítulo 8*). Si pasas un objeto `User`, y el *worker* lo procesa 5 minutos después, los datos del usuario podrían haber cambiado en la base de datos. Pasa siempre identificadores (IDs) primitivos y deja que el *worker* obtenga la información fresca de la base de datos.
-3.  **Manejo de Errores y Dead Letter Queues (DLQ):** ¿Qué pasa si la API de correo externa está caída? Configura reintentos automáticos (`retry`) con retroceso exponencial (*exponential backoff*). Si la tarea falla tras varios intentos, debe enviarse a una *Dead Letter Queue* (Cola de mensajes muertos) para ser inspeccionada manualmente por los desarrolladores y no bloquear el flujo normal de la cola principal.
-4.  **Monitoreo:** El estado de las colas es el pulso de tu sistema asíncrono. Herramientas como Flower (para Celery) o los dashboards nativos de RabbitMQ son cruciales para detectar si tus *workers* están caídos o si la cola de tareas está creciendo sin control (*backpressure*).
+1. **Idempotencia Obligatoria:** En sistemas distribuidos, la garantía suele ser *At-Least-Once delivery* (entrega al menos una vez), no *Exactly-Once*. Si hay un fallo de red durante la confirmación, un *worker* podría recibir la misma tarea dos veces. Tus tareas **deben ser idempotentes**: ejecutarlas una vez debe tener el mismo resultado en el sistema que ejecutarlas diez veces (ej. usar `UPDATE` en lugar de agregar ciegamente a un saldo).
+2. **Granularidad de los Argumentos:** **Nunca** pases objetos complejos o instancias del ORM como argumentos a `.delay()`. Los parámetros se serializan (usualmente en JSON o Pickle, *Capítulo 8*). Si pasas un objeto `User`, y el *worker* lo procesa 5 minutos después, los datos del usuario podrían haber cambiado en la base de datos. Pasa siempre identificadores (IDs) primitivos y deja que el *worker* obtenga la información fresca de la base de datos.
+3. **Manejo de Errores y Dead Letter Queues (DLQ):** ¿Qué pasa si la API de correo externa está caída? Configura reintentos automáticos (`retry`) con retroceso exponencial (*exponential backoff*). Si la tarea falla tras varios intentos, debe enviarse a una *Dead Letter Queue* (Cola de mensajes muertos) para ser inspeccionada manualmente por los desarrolladores y no bloquear el flujo normal de la cola principal.
+4. **Monitoreo:** El estado de las colas es el pulso de tu sistema asíncrono. Herramientas como Flower (para Celery) o los dashboards nativos de RabbitMQ son cruciales para detectar si tus *workers* están caídos o si la cola de tareas está creciendo sin control (*backpressure*).
 
 Con este patrón cerramos las decisiones arquitectónicas core. Dominar cuándo procesar de forma síncrona, cuándo usar asincronía en I/O y cuándo delegar a colas de mensajes es, en esencia, la diferencia entre un desarrollador que hace que las cosas funcionen y un Ingeniero Senior que construye sistemas que escalan.

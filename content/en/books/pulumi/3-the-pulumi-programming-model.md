@@ -4,7 +4,7 @@ We will explore how Pulumi organizes deployments using Programs, Projects, and S
 
 ## 3.1 Programs, Projects, and Stacks
 
-To build infrastructure effectively with Pulumi, you must first understand how it organizes your code and the resulting deployments. Unlike traditional tools that might rely on a flat directory of configuration files, Pulumi structures infrastructure into three distinct, hierarchical concepts: **Programs**, **Projects**, and **Stacks**. 
+To build infrastructure effectively with Pulumi, you must first understand how it organizes your code and the resulting deployments. Unlike traditional tools that might rely on a flat directory of configuration files, Pulumi structures infrastructure into three distinct, hierarchical concepts: **Programs**, **Projects**, and **Stacks**.
 
 Understanding the boundaries and responsibilities of these three components is the foundation of the Pulumi programming model.
 
@@ -30,7 +30,7 @@ pulumi.export("bucket_name", bucket.id)
 
 ### The Project
 
-A **Project** is the organizational unit of Pulumi. Conceptually, a project is a directory that contains your Pulumi Program along with metadata that tells the Pulumi CLI how to run that code. 
+A **Project** is the organizational unit of Pulumi. Conceptually, a project is a directory that contains your Pulumi Program along with metadata that tells the Pulumi CLI how to run that code.
 
 The defining characteristic of a project is the presence of a `Pulumi.yaml` file at the root of the directory. This file specifies the project's name, its description, and the language runtime required to execute the program.
 
@@ -41,19 +41,20 @@ description: Core networking and compute for the frontend web application
 runtime: python
 ```
 
-The project acts as the bounding box for your infrastructure code. Everything required to define a specific set of infrastructure—whether that is a single server or a complex, multi-region Kubernetes cluster—lives within a project. 
+The project acts as the bounding box for your infrastructure code. Everything required to define a specific set of infrastructure—whether that is a single server or a complex, multi-region Kubernetes cluster—lives within a project.
 
 ### The Stack
 
-While the Project contains the *definition* of your infrastructure (the Program), a **Stack** represents an *independently configurable instance* of that Project. 
+While the Project contains the *definition* of your infrastructure (the Program), a **Stack** represents an *independently configurable instance* of that Project.
 
-If your program dictates that you need a database, a web server, and a load balancer, your stack is the actual deployment of those resources. Because a stack is an instance of a project, a single Pulumi project can have multiple stacks. 
+If your program dictates that you need a database, a web server, and a load balancer, your stack is the actual deployment of those resources. Because a stack is an instance of a project, a single Pulumi project can have multiple stacks.
 
 Stacks are most commonly used to represent different deployment environments, such as `development`, `staging`, and `production`. However, they can also be used to deploy the same infrastructure across different regions (e.g., `us-east-1` and `eu-central-1`) or to provision isolated environments for individual tenants in a SaaS application.
 
 Each stack maintains its own:
+
 1. **Configuration:** Values specific to that instance (e.g., the `production` stack might configure a larger database size than the `development` stack). These are stored in stack-specific configuration files like `Pulumi.dev.yaml` or `Pulumi.prod.yaml`.
-2. **State:** A distinct record of the resources that have been provisioned for this specific instance. 
+2. **State:** A distinct record of the resources that have been provisioned for this specific instance.
 
 ### The Architectural Relationship
 
@@ -115,10 +116,10 @@ The Pulumi engine acts as the bridge between these two realms, mapping the logic
 
 Regardless of the programming language you choose, declaring a resource in Pulumi generally follows a standardized signature consisting of four primary components:
 
-1.  **Type:** The specific class or package representing the cloud resource (e.g., `aws.ec2.Instance`).
-2.  **Logical Name:** A string you provide to uniquely identify the resource *within your Pulumi program*.
-3.  **Arguments (Inputs):** A set of configuration properties that define the desired state of the resource (e.g., the AMI ID, instance size, or open ports).
-4.  **Resource Options (Optional):** Advanced settings that control how Pulumi manages the resource's lifecycle (e.g., explicit dependencies, provider selection, or deletion protection).
+1. **Type:** The specific class or package representing the cloud resource (e.g., `aws.ec2.Instance`).
+2. **Logical Name:** A string you provide to uniquely identify the resource *within your Pulumi program*.
+3. **Arguments (Inputs):** A set of configuration properties that define the desired state of the resource (e.g., the AMI ID, instance size, or open ports).
+4. **Resource Options (Optional):** Advanced settings that control how Pulumi manages the resource's lifecycle (e.g., explicit dependencies, provider selection, or deletion protection).
 
 Here is how this structure looks in TypeScript:
 
@@ -164,7 +165,7 @@ Understanding how to leverage and manipulate these building blocks is the first 
 
 ## 3.3 Inputs and Outputs (Promises and Awaitables)
 
-One of the most powerful features of Pulumi—the ability to use general-purpose programming languages—also introduces one of the steepest learning curves for newcomers: managing asynchronous data flow. 
+One of the most powerful features of Pulumi—the ability to use general-purpose programming languages—also introduces one of the steepest learning curves for newcomers: managing asynchronous data flow.
 
 When you write a Pulumi program, you are not waiting for the cloud provider to build a resource before moving to the next line of code. Cloud provisioning takes time. If Pulumi paused execution for every database or virtual machine to spin up, your program would take hours to evaluate. Instead, Pulumi executes your code almost instantly to build a dependency graph, and then the engine handles the slow, asynchronous provisioning in the background.
 
@@ -172,17 +173,18 @@ This execution model is handled through the concepts of **Inputs** and **Outputs
 
 ### Understanding `Output<T>`
 
-When you create a resource, its properties are not immediately available as raw strings, integers, or booleans. Instead, they are returned as `Output` objects (e.g., `Output<string>` in TypeScript or `Output[str]` in Python). 
+When you create a resource, its properties are not immediately available as raw strings, integers, or booleans. Instead, they are returned as `Output` objects (e.g., `Output<string>` in TypeScript or `Output[str]` in Python).
 
 An `Output` is conceptually similar to a `Promise` in JavaScript, a `Task` in C#, or a `Future` in Python. It represents a value that *will* be available in the future once the Pulumi engine finishes deploying the resource.
 
 However, an `Output` is smarter than a standard language Promise. It serves two critical functions:
+
 1. **Eventual Value:** It holds the resolved value from the cloud provider (like an auto-generated IP address or ARN).
 2. **Dependency Tracking:** It secretly carries metadata about *which resource generated it*.
 
 ### Passing Outputs as Inputs
 
-Because Outputs carry dependency metadata, passing an Output from one resource directly into the argument of another is how Pulumi builds its execution graph. 
+Because Outputs carry dependency metadata, passing an Output from one resource directly into the argument of another is how Pulumi builds its execution graph.
 
 When a resource argument accepts an `Input<T>`, it means it can accept either a raw, hardcoded value (like `"my-server"`) *or* an `Output<T>` from another resource.
 
@@ -227,7 +229,7 @@ Here is how Pulumi interprets the code above:
 
 ### The Trap: Treating Outputs as Strings
 
-The most common mistake new users make is attempting to use an `Output` as if it were a resolved primitive value. 
+The most common mistake new users make is attempting to use an `Output` as if it were a resolved primitive value.
 
 For example, you might try to concatenate an output to build a URL:
 
@@ -262,6 +264,7 @@ pulumi.export("server_url", url)
 Because formatting strings with Outputs is so common, Pulumi provides syntax sugar for it across its supported languages. In TypeScript, this is `pulumi.interpolate`, and in Python, it is `Output.concat`.
 
 **TypeScript Interpolation Example:**
+
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 // Instead of .apply(), use the interpolate template literal:
@@ -281,19 +284,19 @@ While you *can* resolve an Output into a raw Promise to use `await`, it breaks P
 
 ## 3.4 Understanding the Pulumi Engine and Language Hosts
 
-Up to this point, we have explored how to declare resources and pass data between them using standard programming languages. However, a fundamental question remains: how does a Python script or a compiled Go binary safely and predictably translate into a complex series of cloud API calls? 
+Up to this point, we have explored how to declare resources and pass data between them using standard programming languages. However, a fundamental question remains: how does a Python script or a compiled Go binary safely and predictably translate into a complex series of cloud API calls?
 
-Traditional IaC tools often use custom, domain-specific languages (DSLs) that their execution engines can parse directly. Because Pulumi allows you to use general-purpose languages, it requires a decoupled architecture to bridge the gap between your code and the cloud. 
+Traditional IaC tools often use custom, domain-specific languages (DSLs) that their execution engines can parse directly. Because Pulumi allows you to use general-purpose languages, it requires a decoupled architecture to bridge the gap between your code and the cloud.
 
 This bridge is built upon two distinct components working in tandem: the **Language Host** and the **Pulumi Engine**.
 
 ### The Language Host
 
-When you run a Pulumi command, the first thing that happens is the initialization of a Language Host. 
+When you run a Pulumi command, the first thing that happens is the initialization of a Language Host.
 
-The Language Host is a specialized process tailored to the programming language you chose for your project. If you wrote your program in TypeScript, the Language Host spins up a Node.js process; if you wrote it in Python, it starts a Python interpreter. 
+The Language Host is a specialized process tailored to the programming language you chose for your project. If you wrote your program in TypeScript, the Language Host spins up a Node.js process; if you wrote it in Python, it starts a Python interpreter.
 
-The primary responsibility of the Language Host is to **evaluate your Pulumi program**. However, as it evaluates the code, it does *not* make any calls to AWS, Azure, or GCP. 
+The primary responsibility of the Language Host is to **evaluate your Pulumi program**. However, as it evaluates the code, it does *not* make any calls to AWS, Azure, or GCP.
 
 Instead, whenever your code instantiates a new resource (e.g., `new aws.s3.Bucket(...)`), the Pulumi SDK intercepts that call. The SDK packages up the resource's type, its logical name, and its inputs, and sends a remote procedure call (RPC) to the Pulumi Engine requesting that this resource be registered.
 

@@ -2,7 +2,7 @@ La transición de un script local a una solución empresarial exige trascender e
 
 ## 20.1 Contenerización de aplicaciones Python con Docker y Docker Compose
 
-En el Capítulo 7 exploramos cómo aislar las dependencias de nuestros proyectos utilizando entornos virtuales (`venv`) y gestores modernos como Poetry. Sin embargo, en un entorno de producción o en un equipo de desarrollo distribuido, aislar los paquetes de Python no es suficiente. ¿Qué ocurre con la versión del sistema operativo, las bibliotecas del sistema a nivel de C, o los servicios externos como bases de datos y colas de mensajes? 
+En el Capítulo 7 exploramos cómo aislar las dependencias de nuestros proyectos utilizando entornos virtuales (`venv`) y gestores modernos como Poetry. Sin embargo, en un entorno de producción o en un equipo de desarrollo distribuido, aislar los paquetes de Python no es suficiente. ¿Qué ocurre con la versión del sistema operativo, las bibliotecas del sistema a nivel de C, o los servicios externos como bases de datos y colas de mensajes?
 
 Aquí es donde entra **Docker**. La contenerización nos permite empaquetar nuestra aplicación junto con todo su entorno de ejecución a nivel de sistema operativo, garantizando la promesa de: *"Si funciona en mi máquina, funcionará en producción"*.
 
@@ -28,7 +28,7 @@ Conceptualmente, la contenerización sigue un flujo estricto y unidireccional:
 
 ### Diseñando un `Dockerfile` para Producción (Multi-stage)
 
-Un error común es utilizar imágenes base excesivamente pesadas (como `python:3.11`) o dejar herramientas de compilación en la imagen final, lo que aumenta tanto el peso del contenedor como la superficie de ataque (vulnerabilidades). 
+Un error común es utilizar imágenes base excesivamente pesadas (como `python:3.11`) o dejar herramientas de compilación en la imagen final, lo que aumenta tanto el peso del contenedor como la superficie de ataque (vulnerabilidades).
 
 Para aplicaciones serias (por ejemplo, una API en FastAPI como vimos en el Capítulo 16, que requiere compilar drivers como `asyncpg`), la mejor práctica es utilizar **Multi-stage builds** (Construcción en múltiples etapas) y ejecutar la aplicación como un usuario sin privilegios.
 
@@ -92,11 +92,14 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
 #### Variables de Entorno Clave
+
 En el bloque anterior hemos definido dos variables fundamentales para Python:
+
 * `PYTHONDONTWRITEBYTECODE=1`: Evita que Python escriba archivos `.pyc` en el disco. En un contenedor efímero, esto es escritura innecesaria que degrada el rendimiento.
 * `PYTHONUNBUFFERED=1`: Fuerza a que la salida estándar (stdout/stderr) no se almacene en búfer. Esto garantiza que los logs de tu aplicación (Capítulo 20.4) lleguen instantáneamente al sistema de observabilidad del contenedor.
 
 #### El archivo `.dockerignore`
+
 Al igual que Git, Docker necesita saber qué archivos **no** enviar al demonio de Docker durante el `build`. Un archivo `.dockerignore` es vital para evitar sobreescribir configuraciones del contenedor con archivos locales o subir accidentalmente secretos.
 
 ```text
@@ -185,6 +188,7 @@ networks:
 ```
 
 #### Aspectos Arquitectónicos del Compose
+
 1. **Resolución de DNS interna:** No necesitas conocer la IP de la base de datos. En la variable `DATABASE_URL` de la API, el host es simplemente `db` (el nombre del servicio). Docker incluye un servidor DNS interno que resuelve los nombres de los servicios dentro de la misma red (`backend_net`).
 2. **Healthchecks (Controles de salud):** Nota cómo el servicio `api` tiene una dependencia con `db` usando `condition: service_healthy`. Un contenedor de base de datos arranca rápido, pero el motor SQL tarda unos segundos en inicializarse. Si la API arranca inmediatamente, fallará al intentar conectarse (un crash por excepción de red). El `healthcheck` garantiza que la API solo se levante cuando la base de datos informe que está *lista* para recibir queries.
 3. **Persistencia (Volumes):** Los contenedores son efímeros. Si borras el contenedor `db`, pierdes los datos. Mapear un volumen gestionado (`pg_data`) al directorio interno de Postgres (`/var/lib/postgresql/data`) asegura que los datos de la base de datos sobrevivan a la destrucción del contenedor.
@@ -199,7 +203,7 @@ Para conectar el mundo web (peticiones HTTP) con el ecosistema de Python en un e
 
 ### El Problema de la Comunicación Web
 
-Los servidores web de alto rendimiento (como Nginx o el balanceador de carga de AWS) no entienden el código Python de forma nativa. Necesitan un "traductor" que tome una petición HTTP pura y la convierta en un diccionario de datos que Python pueda procesar. 
+Los servidores web de alto rendimiento (como Nginx o el balanceador de carga de AWS) no entienden el código Python de forma nativa. Necesitan un "traductor" que tome una petición HTTP pura y la convierta en un diccionario de datos que Python pueda procesar.
 
 ```text
 [Cliente] ---> [Servidor Web / Proxy (Nginx)] ---> [Traductor (WSGI/ASGI)] ---> [Framework (Django/FastAPI)]
@@ -207,7 +211,7 @@ Los servidores web de alto rendimiento (como Nginx o el balanceador de carga de 
 
 ### WSGI (Web Server Gateway Interface)
 
-Introducido hace años (PEP 3333), WSGI es el estándar tradicional y **síncrono** para aplicaciones web en Python. 
+Introducido hace años (PEP 3333), WSGI es el estándar tradicional y **síncrono** para aplicaciones web en Python.
 
 * **Comportamiento:** Es puramente secuencial. Por cada petición entrante, el servidor asigna un "worker" (un proceso o un hilo de ejecución). Si ese worker tiene que esperar a que la base de datos responda, se queda bloqueado (I/O bound, como vimos en el Capítulo 12) y no puede atender otra petición hasta terminar.
 * **Casos de uso:** Aplicaciones Django tradicionales, Flask (sin soporte asíncrono avanzado).
@@ -301,7 +305,7 @@ La respuesta es la implementación de un pipeline de Integración Continua (CI) 
 
 ### Anatomía de un Pipeline Moderno
 
-Un pipeline es una secuencia automatizada de pasos (o "trabajos") que se dispara ante un evento en el sistema de control de versiones (por ejemplo, un `git push` a la rama `main`). 
+Un pipeline es una secuencia automatizada de pasos (o "trabajos") que se dispara ante un evento en el sistema de control de versiones (por ejemplo, un `git push` a la rama `main`).
 
 Podemos visualizar el flujo estándar de la siguiente manera:
 
@@ -514,6 +518,7 @@ procesar_pago(user_id=884, amount=15000.00)
 ```
 
 **Salida resultante (formato JSON de una sola línea, legible por máquinas):**
+
 ```json
 {"user_id": 884, "transaction_amount": 15000.0, "event": "Fallo al procesar el pago", "error_detail": "L\u00edmite de tarjeta excedido", "level": "error", "logger": "auth_service", "timestamp": "2023-10-27T10:00:00Z", "exc_info": "..."}
 ```
@@ -579,6 +584,7 @@ La **Trazabilidad Distribuida** resuelve esto utilizando **OpenTelemetry** (el e
 * **Span (Tramo):** Representa una unidad de trabajo individual dentro de la traza (ej. una consulta a la base de datos, una llamada a otra API). Cada Span tiene un inicio, un fin y metadatos.
 
 #### El Mecanismo de Inyección de Contexto
+
 Para que todos los servicios sepan que pertenecen a la misma "petición padre", el Trace ID se inyecta en las cabeceras HTTP (usualmente la cabecera `traceparent` bajo el estándar W3C) cuando la petición viaja de un servicio a otro.
 
 ```text

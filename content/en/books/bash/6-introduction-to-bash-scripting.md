@@ -289,12 +289,11 @@ There are two notable situations where a `#` does *not* start a comment:
 
 1. **The Shebang:** As we learned in Section 6.1, `#!/bin/bash` on the very first line is processed by the kernel, not ignored as a comment.
 2. **Inside Quotes:** If a hash is wrapped in single or double quotes, Bash treats it as a literal string character.
+
 ```bash
 echo "Please press the # key to continue." # Only the text after this second hash is a comment.
 
 ```
-
-
 
 ### Multi-Line Comments (Block Commenting)
 
@@ -383,4 +382,3 @@ if [ "$day_of_week" -gt 7 ]; then # ...
 ```
 
 By combining a robust script header, strategic inline comments for complex logic, and self-documenting variable names, you ensure your scripts are professional, maintainable, and accessible to anyone who inherits your code.
-

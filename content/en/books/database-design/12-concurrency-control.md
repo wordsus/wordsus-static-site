@@ -234,12 +234,9 @@ Two common timestamp-based prevention protocols are:
 * If the requesting transaction is *older*, it is allowed to **wait**.
 * If the requesting transaction is *younger*, it immediately **dies** (rolls back) and restarts with its original timestamp.
 
-
 * **Wound-Wait Protocol (Preemptive):**
 * If the requesting transaction is *older*, it preempts or **wounds** the younger transaction (forcing the younger one to roll back and release its locks).
 * If the requesting transaction is *younger*, it is allowed to **wait**.
-
-
 
 While prevention guarantees deadlocks won't happen, it is highly aggressive. It often forces the rollback of transactions that *might* have completed successfully without actually causing a deadlock, thereby wasting system resources.
 

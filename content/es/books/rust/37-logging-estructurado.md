@@ -32,8 +32,8 @@ Desarrollado y mantenido por el equipo detrás de Tokio, el crate `tracing` no e
 
 `tracing` introduce dos conceptos fundamentales que lo separan de `log`:
 
-1.  **Eventos (Events):** Representan algo que ocurrió en un momento específico en el tiempo. Son el equivalente directo a una línea de log (`info!`, `error!`), pero en lugar de ser solo texto, son pares de **clave-valor** (Logging estructurado).
-2.  **Spans (Lapsos/Contextos):** Representan un período de tiempo con un inicio y un fin. Los Spans pueden contener información estructurada (como un `request_id` o `usuario_id`) y **envuelven** a los eventos que ocurren dentro de ellos.
+1. **Eventos (Events):** Representan algo que ocurrió en un momento específico en el tiempo. Son el equivalente directo a una línea de log (`info!`, `error!`), pero en lugar de ser solo texto, son pares de **clave-valor** (Logging estructurado).
+2. **Spans (Lapsos/Contextos):** Representan un período de tiempo con un inicio y un fin. Los Spans pueden contener información estructurada (como un `request_id` o `usuario_id`) y **envuelven** a los eventos que ocurren dentro de ellos.
 
 Veamos la diferencia conceptual aplicada al código:
 
@@ -62,7 +62,7 @@ En este caso, cualquier evento emitido dentro de la función `procesar_pago` (o 
 
 ### El problema asíncrono y la magia de `.instrument()`
 
-El verdadero superpoder de `tracing` frente a `log` brilla en las funciones `async`. 
+El verdadero superpoder de `tracing` frente a `log` brilla en las funciones `async`.
 
 En Tokio, una tarea asíncrona puede hacer un `.await` (por ejemplo, esperando a la base de datos). Mientras espera, el hilo de Tokio pausa esa tarea y comienza a ejecutar otra. Si usamos el `span.enter()` tradicional de manera síncrona a través de un punto `.await`, el hilo podría empezar a ejecutar código de *otra* petición web, pero los logs de esa nueva petición quedarían erróneamente registrados bajo el Span de la petición original.
 
@@ -91,11 +91,12 @@ pub async fn procesar_pago_async(usuario_id: u32, monto: f64) {
     .await;
 }
 ```
+
 *(Nota: En la práctica, como veremos en la siguiente sección, esto se simplifica enormemente usando la macro `#[tracing::instrument]` encima de la función).*
 
 ### Compatibilidad hacia atrás
 
-Una preocupación común al migrar un backend maduro es qué ocurre con las cientos de dependencias (crates de terceros) que todavía usan las macros estándar de `log`. 
+Una preocupación común al migrar un backend maduro es qué ocurre con las cientos de dependencias (crates de terceros) que todavía usan las macros estándar de `log`.
 
 Afortunadamente, el ecosistema de `tracing` incluye compatibilidad bidireccional. Mediante crates como `tracing-log`, puedes configurar tu aplicación para que intercepte todas las llamadas tradicionales de `log` (como un viejo `log::info!` de una librería de base de datos) y las convierta automáticamente en Eventos de `tracing` dentro del Span activo. Esto permite modernizar la observabilidad de tu aplicación sin necesidad de reescribir todo el ecosistema de crates que utilizas.
 
@@ -112,9 +113,10 @@ Cuando una petición HTTP llega a tu servidor Axum, rara vez ejecuta una sola fu
 Aunque puedes crear Spans manualmente usando macros como `info_span!()` y gestionando el guardia `span.enter()`, la forma idiomática y más limpia de trabajar en Rust moderno es mediante la macro procedimental `#[tracing::instrument]`.
 
 Esta macro se coloca encima de cualquier función (síncrona o asíncrona) y hace el trabajo pesado por ti:
-1.  Crea un nuevo Span con el nombre de la función.
-2.  Adjunta automáticamente todos los argumentos de la función como campos estructurados (clave-valor) del Span.
-3.  Entra en el Span al iniciar la función y sale al terminar (o maneja correctamente el contexto a través de los `.await` si es asíncrona).
+
+1. Crea un nuevo Span con el nombre de la función.
+2. Adjunta automáticamente todos los argumentos de la función como campos estructurados (clave-valor) del Span.
+3. Entra en el Span al iniciar la función y sale al terminar (o maneja correctamente el contexto a través de los `.await` si es asíncrona).
 
 ```rust
 use tracing::{info, instrument};
@@ -193,13 +195,14 @@ pub async fn autenticar(
 
 ### Construyendo el contexto desde Axum
 
-Para que esta jerarquía tenga sentido, necesitamos un Span "raíz" en el límite de nuestra aplicación. En Axum, esto se logra típicamente mediante middlewares (como veremos al hablar de la integración con `tower-http`). 
+Para que esta jerarquía tenga sentido, necesitamos un Span "raíz" en el límite de nuestra aplicación. En Axum, esto se logra típicamente mediante middlewares (como veremos al hablar de la integración con `tower-http`).
 
 Un flujo ideal en tu backend funcionará así:
-1.  **Middleware de Axum:** Crea el Span raíz `request HTTP` (adjuntando `method=POST`, `uri=/login`, `request_id=1234`).
-2.  **Handler:** Hereda el Span raíz y llama al servicio.
-3.  **Servicio (`#[instrument]`):** Crea un Span hijo `autenticar_usuario`.
-4.  **Repositorio (`#[instrument]`):** Crea un Span nieto `db_query`.
+
+1. **Middleware de Axum:** Crea el Span raíz `request HTTP` (adjuntando `method=POST`, `uri=/login`, `request_id=1234`).
+2. **Handler:** Hereda el Span raíz y llama al servicio.
+3. **Servicio (`#[instrument]`):** Crea un Span hijo `autenticar_usuario`.
+4. **Repositorio (`#[instrument]`):** Crea un Span nieto `db_query`.
 
 Cualquier advertencia o error que ocurra en la capa de base de datos viajará hacia arriba, incluyendo el `request_id`, el `email` del intento de login, y el método HTTP, permitiendo una depuración clínica y sin ambigüedades en producción.
 
@@ -207,7 +210,7 @@ Cualquier advertencia o error que ocurra en la capa de base de datos viajará ha
 
 A estas alturas, sabemos cómo generar eventos estructurados y organizarlos en jerarquías usando Spans. Sin embargo, en un entorno de producción con miles de peticiones por segundo, registrar cada evento de nivel `DEBUG` o `TRACE` generará gigabytes de texto en cuestión de minutos. Esto no solo satura los sistemas de almacenamiento (como Elasticsearch o Loki), sino que también degrada severamente el rendimiento del servidor por el costo de I/O.
 
-El ecosistema `tracing` resuelve este problema separando la *emisión* de logs de su *consumo*. Mientras que el crate `tracing` (que usamos en el código de nuestra app) emite los eventos, el crate `tracing-subscriber` se encarga de recolectarlos, filtrarlos y darles formato. 
+El ecosistema `tracing` resuelve este problema separando la *emisión* de logs de su *consumo*. Mientras que el crate `tracing` (que usamos en el código de nuestra app) emite los eventos, el crate `tracing-subscriber` se encarga de recolectarlos, filtrarlos y darles formato.
 
 Para controlar exactamente qué se registra y qué se descarta de forma extremadamente eficiente, utilizamos la capa **`EnvFilter`**.
 
@@ -301,13 +304,13 @@ Con esta arquitectura, tu backend puede operar silenciosamente en nivel `ERROR` 
 
 ## 37.4 Salida JSON y exportación a ELK/Loki
 
-Hasta ahora, hemos configurado `tracing` para emitir logs estructurados y filtrarlos dinámicamente, pero la salida por defecto de `tracing_subscriber::fmt` está pensada para el ojo humano (texto plano en la terminal). 
+Hasta ahora, hemos configurado `tracing` para emitir logs estructurados y filtrarlos dinámicamente, pero la salida por defecto de `tracing_subscriber::fmt` está pensada para el ojo humano (texto plano en la terminal).
 
 En un entorno de producción moderno, los humanos rara vez leen los logs directamente desde la consola del servidor. En su lugar, utilizamos sistemas de agregación y búsqueda como **ELK** (Elasticsearch, Logstash, Kibana) o el ecosistema de Grafana con **Loki**. Para que estas herramientas puedan indexar, buscar y crear dashboards de manera eficiente, nuestros logs deben abandonar el formato de texto plano y adoptar el estándar universal de la web: **JSON**.
 
 ### Configuración de la capa JSON
 
-Convertir nuestra salida jerárquica a JSON es trivial con `tracing-subscriber`. Solo necesitamos modificar la capa de formateo llamando al método `.json()`. 
+Convertir nuestra salida jerárquica a JSON es trivial con `tracing-subscriber`. Solo necesitamos modificar la capa de formateo llamando al método `.json()`.
 
 Sin embargo, a nivel de arquitectura, imprimir JSON directamente a la salida estándar (`stdout`) en un servidor asíncrono de alto rendimiento introduce un riesgo oculto: **el bloqueo por I/O**.
 

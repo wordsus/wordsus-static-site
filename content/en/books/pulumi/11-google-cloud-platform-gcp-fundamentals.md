@@ -1,4 +1,4 @@
-Google Cloud Platform (GCP) offers a powerful suite of services emphasizing containerization, serverless computing, and global data distribution. In this chapter, we bridge the gap between GCP’s developer-centric philosophy and Pulumi’s infrastructure as code model. 
+Google Cloud Platform (GCP) offers a powerful suite of services emphasizing containerization, serverless computing, and global data distribution. In this chapter, we bridge the gap between GCP’s developer-centric philosophy and Pulumi’s infrastructure as code model.
 
 We will explore how to securely authenticate the Pulumi GCP provider and provision foundational services. You will learn to deploy serverless containers with Cloud Run, orchestrate Kubernetes clusters with GKE, and manage stateful resources like Cloud SQL and Cloud Storage to build production-ready, highly available architectures.
 
@@ -41,6 +41,7 @@ Authentication Resolution Pipeline:
 Depending on the environment where Pulumi is executing, you will typically choose one of three authentication strategies: Local Development, Long-Lived Service Account Keys, or Workload Identity Federation.
 
 #### 1. Local Development: Application Default Credentials (ADC)
+
 For daily infrastructure development on a local machine, the most secure and convenient method is using Application Default Credentials via the Google Cloud CLI. This avoids the need to download or manage static JSON keys on your workstation.
 
 Ensure the `gcloud` CLI is installed, then run:
@@ -52,7 +53,8 @@ gcloud auth application-default login
 This command opens a browser window, prompts you to log in with your Google identity, and securely stores short-lived credentials locally. Pulumi automatically detects these credentials.
 
 #### 2. Traditional CI/CD: Service Account Keys (JSON)
-When running Pulumi in a headless environment like Jenkins or an older CI system, you often authenticate using a GCP Service Account key. 
+
+When running Pulumi in a headless environment like Jenkins or an older CI system, you often authenticate using a GCP Service Account key.
 
 After creating a Service Account with the necessary IAM roles (e.g., `roles/editor` or specific least-privilege roles), generate a JSON key and expose it to the Pulumi process via the standard GCP environment variable:
 
@@ -63,6 +65,7 @@ export GOOGLE_APPLICATION_CREDENTIALS="/path/to/service-account-key.json"
 *Note: As discussed in Chapter 6, never commit this JSON file to version control. In a CI/CD pipeline, inject the JSON content securely using your platform's secrets manager.*
 
 #### 3. Modern CI/CD: Workload Identity Federation (WIF)
+
 For modern continuous integration platforms like GitHub Actions or GitLab CI (covered extensively in Chapter 18), Workload Identity Federation is the best practice. WIF eliminates the need to export long-lived JSON keys entirely. Instead, it establishes a trust relationship between your CI provider and GCP, allowing Pulumi to request ephemeral, short-lived access tokens dynamically during the `pulumi up` execution.
 
 ### Configuring Provider Scope (Project, Region, Zone)
@@ -121,7 +124,7 @@ By mastering this authentication pipeline and the distinction between default an
 
 ## 11.2 Cloud Run and Serverless Deployments
 
-Serverless computing has shifted the operational burden from infrastructure teams to cloud providers, and Google Cloud Run is arguably one of the most elegant implementations of this paradigm. Cloud Run allows you to deploy scalable, stateless HTTP containers without managing underlying Kubernetes clusters or Virtual Machines. 
+Serverless computing has shifted the operational burden from infrastructure teams to cloud providers, and Google Cloud Run is arguably one of the most elegant implementations of this paradigm. Cloud Run allows you to deploy scalable, stateless HTTP containers without managing underlying Kubernetes clusters or Virtual Machines.
 
 For Pulumi users, managing Cloud Run is exceptionally streamlined. It allows you to define your container's environment variables, concurrency limits, and access policies in the same language you use to write your application code, treating your serverless infrastructure as true software.
 
@@ -148,9 +151,9 @@ Google Cloud offers two Pulumi namespaces for Cloud Run: `cloudrun` (v1) and `cl
 
 Deploying a publicly accessible Cloud Run service requires three primary steps in Pulumi:
 
-1.  **Sourcing the Image:** Cloud Run requires a container image hosted in a registry accessible by GCP. While you can build and push images dynamically using the `@pulumi/docker` provider, production workflows typically reference an image already pushed to Google Artifact Registry via a CI/CD pipeline.
-2.  **Defining the Service:** The `gcp.cloudrunv2.Service` resource defines *how* the container runs. This includes setting environment variables, allocating CPU/Memory, defining VPC egress rules, and setting scaling boundaries (e.g., maximum instances to prevent cost overruns).
-3.  **Configuring IAM:** By default, all newly created Cloud Run services are secure and private. To expose the service to the public internet, you must explicitly grant the `roles/run.invoker` role to the special `allUsers` identity.
+1. **Sourcing the Image:** Cloud Run requires a container image hosted in a registry accessible by GCP. While you can build and push images dynamically using the `@pulumi/docker` provider, production workflows typically reference an image already pushed to Google Artifact Registry via a CI/CD pipeline.
+2. **Defining the Service:** The `gcp.cloudrunv2.Service` resource defines *how* the container runs. This includes setting environment variables, allocating CPU/Memory, defining VPC egress rules, and setting scaling boundaries (e.g., maximum instances to prevent cost overruns).
+3. **Configuring IAM:** By default, all newly created Cloud Run services are secure and private. To expose the service to the public internet, you must explicitly grant the `roles/run.invoker` role to the special `allUsers` identity.
 
 ### Implementing the Deployment
 
@@ -240,7 +243,7 @@ When managing GKE with Pulumi, it is crucial to understand the boundary between 
 
 ### GKE Architecture and Pulumi Resource Mapping
 
-A GKE Standard cluster consists of a Google-managed Control Plane and user-managed worker nodes organized into Node Pools. 
+A GKE Standard cluster consists of a Google-managed Control Plane and user-managed worker nodes organized into Node Pools.
 
 ```text
 GKE Cluster Architecture:
@@ -264,8 +267,9 @@ GKE Cluster Architecture:
 A common anti-pattern in Infrastructure as Code is deploying a GKE cluster with the default node pool attached directly to the cluster resource. This binds the lifecycle of your nodes tightly to the cluster itself, making it difficult to update machine types or scale without recreating the entire cluster.
 
 The Pulumi best practice is to decouple these resources:
-1.  Create the `gcp.container.Cluster` and explicitly delete the default node pool upon creation.
-2.  Create separate `gcp.container.NodePool` resources and attach them to the cluster.
+
+1. Create the `gcp.container.Cluster` and explicitly delete the default node pool upon creation.
+2. Create separate `gcp.container.NodePool` resources and attach them to the cluster.
 
 ### Provisioning a Standard Cluster
 
@@ -353,7 +357,7 @@ users:
 
 Generating the `kubeconfig` directly within Pulumi is one of the most powerful aspects of its programming model. Because Pulumi uses full programming languages, we can use string interpolation to construct the YAML file directly from the cluster's outputs.
 
-Notice the use of `pulumi.all([...]).apply(...)`. Because `cluster.name`, `cluster.endpoint`, and `cluster.masterAuth` are `Output` values (promises representing values that won't exist until the cluster is provisioned), we cannot use standard JavaScript string concatenation. `pulumi.all()` gathers these asynchronous outputs and passes their resolved values into a callback function once the cloud provider has finished creating the cluster. 
+Notice the use of `pulumi.all([...]).apply(...)`. Because `cluster.name`, `cluster.endpoint`, and `cluster.masterAuth` are `Output` values (promises representing values that won't exist until the cluster is provisioned), we cannot use standard JavaScript string concatenation. `pulumi.all()` gathers these asynchronous outputs and passes their resolved values into a callback function once the cloud provider has finished creating the cluster.
 
 Furthermore, modern GKE versions require the `gke-gcloud-auth-plugin` for authentication. The dynamically generated kubeconfig instructs the Kubernetes client to execute this plugin, seamlessly utilizing the machine's active `gcloud` credentials to securely authenticate with the cluster.
 
@@ -494,7 +498,7 @@ const dbUser = new gcp.sql.User("app-db-user", {
 
 ### Unifying Access with Service Accounts
 
-The final piece of the integration puzzle is connecting your compute resources to these data stores securely. The legacy approach involved exporting the database password and a downloaded JSON Service Account key as environment variables. 
+The final piece of the integration puzzle is connecting your compute resources to these data stores securely. The legacy approach involved exporting the database password and a downloaded JSON Service Account key as environment variables.
 
 The modern, secure approach is to create a dedicated GCP Service Account representing your application, grant that specific account the exact IAM roles it needs, and bind that identity to your Cloud Run service or GKE Pods (via Workload Identity).
 

@@ -8,7 +8,7 @@ While standard TLS ensures that the client (an application SDK or an Agent Colle
 
 ### The Agent-to-Gateway Security Model
 
-In an enterprise deployment, telemetry typically originates from application SDKs, travels to a local Agent Collector (running as a sidecar or DaemonSet), and is then forwarded to a centralized Gateway Collector. 
+In an enterprise deployment, telemetry typically originates from application SDKs, travels to a local Agent Collector (running as a sidecar or DaemonSet), and is then forwarded to a centralized Gateway Collector.
 
 Because the SDK-to-Agent hop usually happens over a trusted local interface (e.g., `localhost` or a Unix domain socket), it is often left unencrypted to reduce overhead. However, the Agent-to-Gateway hop traverses the broader network and must be secured.
 
@@ -156,6 +156,7 @@ In the OpenTelemetry Collector, authentication is decoupled from the receivers a
 When operating a centralized Collector Gateway, you must ensure that only authorized agents or applications can ingest data.
 
 #### Static Bearer Tokens
+
 The simplest form of application-level authentication is the static bearer token. In this model, the client sends a pre-shared secret in the HTTP `Authorization` header. While easy to implement, static tokens carry the risk of being compromised and are notoriously difficult to rotate across hundreds of microservices without downtime.
 
 To implement this, you use the `bearertokenauth` extension. You can provide a hardcoded list of valid tokens, or point the extension to a file on disk that contains the tokens (which allows for easier rotation via external configuration management).
@@ -189,6 +190,7 @@ service:
 *Note: The `auth` block inside the receiver configuration is what ties the receiver's inbound requests to the specified authenticator extension.*
 
 #### OpenID Connect (OIDC) / OAuth2
+
 For enterprise environments, OIDC provides a significantly more secure and dynamic approach. Instead of static secrets, clients obtain short-lived JSON Web Tokens (JWTs) from an Identity Provider (IdP) like Okta, Auth0, or Keycloak. The Collector intercepts the incoming request, parses the JWT, verifies its cryptographic signature against the IdP's public keys, and validates claims such as the token's audience (`aud`) and issuer (`iss`).
 
 To configure OIDC, you utilize the `oidc` extension. The Collector will automatically fetch the necessary JSON Web Key Sets (JWKS) from the IdP's discovery URL to validate the signatures.
@@ -221,9 +223,10 @@ By configuring `username_claim` or `groups_claim`, the Collector can automatical
 
 Authentication is a two-way street. Just as your Gateway Collector must authenticate incoming data, it must also authenticate itself when forwarding data to an observability vendor (like Datadog, Honeycomb, or Grafana Cloud) or a secured internal backend.
 
-Exporters use a similar extension mechanism, but the extensions are designed to *attach* credentials rather than validate them. 
+Exporters use a similar extension mechanism, but the extensions are designed to *attach* credentials rather than validate them.
 
 #### Attaching Static Tokens
+
 If your observability vendor provides a static API key, you use the `bearertokenauth` extension configured in client mode, or the more standard `headers` configuration available directly on many exporters.
 
 Using the `bearertokenauth` client extension:
@@ -255,6 +258,7 @@ exporters:
 ```
 
 #### Utilizing OAuth2 Client Credentials
+
 If your backend requires dynamic OAuth2 authentication (common in strict zero-trust architectures), the Collector can act as an OAuth2 client. It will automatically negotiate with the IdP, obtain a short-lived access token, attach it to outgoing telemetry, and refresh the token automatically before it expires.
 
 This requires the `oauth2client` extension:
@@ -294,9 +298,9 @@ Pipeline-level RBAC ensures that a compromised microservice cannot flood the pip
 
 The OpenTelemetry Collector does not feature a monolithic "RBAC Engine." Instead, authorization is an emergent property achieved by combining three distinct pipeline components:
 
-1.  **Authentication Extensions:** Validate the token and extract identity claims (roles, groups, tenant IDs) into the request context.
-2.  **Context Propagators / Receivers:** Map these transient identity claims onto the telemetry data itself (typically as Resource Attributes).
-3.  **Processors and Connectors:** Evaluate the attributes using the OpenTelemetry Transformation Language (OTTL) to filter, drop, or route the data accordingly.
+1. **Authentication Extensions:** Validate the token and extract identity claims (roles, groups, tenant IDs) into the request context.
+2. **Context Propagators / Receivers:** Map these transient identity claims onto the telemetry data itself (typically as Resource Attributes).
+3. **Processors and Connectors:** Evaluate the attributes using the OpenTelemetry Transformation Language (OTTL) to filter, drop, or route the data accordingly.
 
 ```text
   Incoming Telemetry + JWT: { "sub": "payment-api", "group": "tier-1" }
@@ -368,7 +372,7 @@ pipelines:
 
 ### Restricting Access to Sensitive Data
 
-Another critical application of pipeline RBAC is preventing unauthorized applications from logging highly sensitive events or modifying reserved resource attributes. 
+Another critical application of pipeline RBAC is preventing unauthorized applications from logging highly sensitive events or modifying reserved resource attributes.
 
 Using the **Filter Processor** and OTTL, you can establish policies that drop telemetry if the authenticated role does not possess the required permissions. For example, you may want to ensure that only services explicitly tagged with the `pci-compliant` role are allowed to send spans containing payment processing metadata.
 
@@ -494,15 +498,17 @@ pipelines:
 
 ### Auditing the Observability Pipeline
 
-Compliance frameworks like SOC2 require you to prove *how* your data is handled and alert on anomalies. The telemetry pipeline itself must be observable and auditable. 
+Compliance frameworks like SOC2 require you to prove *how* your data is handled and alert on anomalies. The telemetry pipeline itself must be observable and auditable.
 
 #### 1. Tamper-Proof Audit Trails
+
 Certain classes of logs—such as authentication failures, privilege escalations, or database schema changes—are too critical to be mixed with standard application logs. They must be routed to a secure, tamper-proof destination (like AWS S3 with Object Lock or a dedicated SIEM) where they cannot be modified or deleted by standard engineering roles.
 
 You can achieve this by filtering based on a semantic convention like `event.name` or `log.level` and routing those specific events to an immutable storage exporter, bypassing your standard observability vendor.
 
 #### 2. Collector Self-Auditing
-To prove the pipeline has not been tampered with or misconfigured, the Collector’s internal logs and metrics must be aggregated and monitored. 
+
+To prove the pipeline has not been tampered with or misconfigured, the Collector’s internal logs and metrics must be aggregated and monitored.
 
 * **Configuration Drift:** Ensure that the checksum of the Collector's YAML configuration file is monitored. Any unauthorized change to the configuration (e.g., an attacker disabling the PII redaction processor) should trigger an immediate high-severity alert.
 * **Pipeline Drops:** Monitor the `otelcol_processor_dropped_spans` and `otelcol_exporter_send_failed_requests` metrics. In a compliance context, silently dropping audit logs due to backpressure is a severe violation. You must configure persistent queuing (via the `sending_queue` configuration in exporters) to ensure telemetry survives temporary network outages or backend downtime.

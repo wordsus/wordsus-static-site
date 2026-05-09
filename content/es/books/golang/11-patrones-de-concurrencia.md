@@ -4,7 +4,7 @@ Aprenderemos a implementar el **Worker Pool** para gestionar cargas masivas sin 
 
 ## 11.1. Patrón Worker Pool
 
-En aplicaciones sometidas a alta carga, la filosofía de Go invita a pensar: *"Si tienes una tarea independiente, lánzala en una goroutine"*. Sin embargo, como analizamos en el Capítulo 8, aunque el modelo M:N hace que las goroutines sean extremadamente ligeras, los recursos de hardware subyacentes (CPU, memoria, descriptores de archivos) son finitos. 
+En aplicaciones sometidas a alta carga, la filosofía de Go invita a pensar: *"Si tienes una tarea independiente, lánzala en una goroutine"*. Sin embargo, como analizamos en el Capítulo 8, aunque el modelo M:N hace que las goroutines sean extremadamente ligeras, los recursos de hardware subyacentes (CPU, memoria, descriptores de archivos) son finitos.
 
 Si un servidor recibe un millón de peticiones repentinas y lanza un millón de goroutines concurrentes para consultar una base de datos, lo más probable es que se agoten las conexiones del pool o se provoque una caída por falta de memoria (OOM). Aquí es donde el patrón **Worker Pool** (Piscina de Trabajadores) se vuelve indispensable.
 
@@ -13,9 +13,10 @@ Si un servidor recibe un millón de peticiones repentinas y lanza un millón de 
 El patrón Worker Pool controla y limita estrictamente el nivel de concurrencia en una aplicación. En lugar de crear una goroutine por cada tarea entrante, se pre-instancia un número fijo de goroutines de larga duración (los *workers*). Estos workers actúan como consumidores continuos que extraen trabajos de una cola compartida, los procesan y, opcionalmente, envían el resultado a otra cola.
 
 La arquitectura se compone típicamente de tres elementos, integrando las primitivas que cubrimos en los Capítulos 9 y 10:
-1.  **Canal de Trabajos (Jobs Channel):** Un canal (generalmente con búfer) donde el productor envía las tareas pendientes.
-2.  **Los Workers:** Un grupo de goroutines iterando de forma segura (`for range`) sobre el canal de trabajos.
-3.  **Canal de Resultados (Results Channel):** Un canal donde los workers depositan la salida de su procesamiento.
+
+1. **Canal de Trabajos (Jobs Channel):** Un canal (generalmente con búfer) donde el productor envía las tareas pendientes.
+2. **Los Workers:** Un grupo de goroutines iterando de forma segura (`for range`) sobre el canal de trabajos.
+3. **Canal de Resultados (Results Channel):** Un canal donde los workers depositan la salida de su procesamiento.
 
 ### Implementación Idiomática en Go
 
@@ -25,88 +26,89 @@ A continuación, implementaremos un Worker Pool robusto. Observa cómo combinamo
 package main
 
 import (
-	"fmt"
-	"sync"
-	"time"
+ "fmt"
+ "sync"
+ "time"
 )
 
 // Job representa la unidad de trabajo.
 type Job struct {
-	ID      int
-	Payload string
+ ID      int
+ Payload string
 }
 
 // Result envuelve el resultado y los posibles errores del procesamiento.
 type Result struct {
-	JobID int
-	Err   error
+ JobID int
+ Err   error
 }
 
 // worker es la función concurrente instanciada múltiples veces.
 // Utilizamos canales direccionales (<-chan para recibir, chan<- para enviar).
 func worker(id int, jobs <-chan Job, results chan<- Result, wg *sync.WaitGroup) {
-	// Garantizamos notificar al WaitGroup cuando el worker termine (Capítulo 10.2).
-	defer wg.Done()
+ // Garantizamos notificar al WaitGroup cuando el worker termine (Capítulo 10.2).
+ defer wg.Done()
 
-	// El ciclo range termina automáticamente cuando el canal 'jobs' se cierra.
-	for j := range jobs {
-		fmt.Printf("Worker [%d] procesando Job %d\n", id, j.ID)
-		
-		// Simulamos un trabajo pesado (ej. I/O, llamadas a red o cálculos)
-		time.Sleep(time.Millisecond * 500) 
-		
-		// Enviamos el resultado al canal de salida
-		results <- Result{JobID: j.ID, Err: nil}
-	}
-	fmt.Printf("Worker [%d] finalizado. \n", id)
+ // El ciclo range termina automáticamente cuando el canal 'jobs' se cierra.
+ for j := range jobs {
+  fmt.Printf("Worker [%d] procesando Job %d\n", id, j.ID)
+  
+  // Simulamos un trabajo pesado (ej. I/O, llamadas a red o cálculos)
+  time.Sleep(time.Millisecond * 500) 
+  
+  // Enviamos el resultado al canal de salida
+  results <- Result{JobID: j.ID, Err: nil}
+ }
+ fmt.Printf("Worker [%d] finalizado. \n", id)
 }
 
 func main() {
-	const numWorkers = 3
-	const numJobs = 10
+ const numWorkers = 3
+ const numJobs = 10
 
-	jobs := make(chan Job, numJobs)
-	results := make(chan Result, numJobs)
-	var wg sync.WaitGroup
+ jobs := make(chan Job, numJobs)
+ results := make(chan Result, numJobs)
+ var wg sync.WaitGroup
 
-	// 1. Inicializar el Pool de Workers
-	for w := 1; w <= numWorkers; w++ {
-		wg.Add(1)
-		go worker(w, jobs, results, &wg)
-	}
+ // 1. Inicializar el Pool de Workers
+ for w := 1; w <= numWorkers; w++ {
+  wg.Add(1)
+  go worker(w, jobs, results, &wg)
+ }
 
-	// 2. Producción de trabajos (Encolado)
-	for j := 1; j <= numJobs; j++ {
-		jobs <- Job{ID: j, Payload: "Data"}
-	}
-	
-	// Fundamental: Cerrar el canal de trabajos indica a los workers 
-	// que no habrá más tareas, permitiendo que salgan de su bucle 'for range'.
-	close(jobs)
+ // 2. Producción de trabajos (Encolado)
+ for j := 1; j <= numJobs; j++ {
+  jobs <- Job{ID: j, Payload: "Data"}
+ }
+ 
+ // Fundamental: Cerrar el canal de trabajos indica a los workers 
+ // que no habrá más tareas, permitiendo que salgan de su bucle 'for range'.
+ close(jobs)
 
-	// 3. Goroutine orquestadora para el cierre seguro
-	// Esperamos a que todos los workers terminen antes de cerrar el canal de resultados.
-	// Esto se hace en una goroutine anónima para no bloquear el hilo principal.
-	go func() {
-		wg.Wait()
-		close(results)
-	}()
+ // 3. Goroutine orquestadora para el cierre seguro
+ // Esperamos a que todos los workers terminen antes de cerrar el canal de resultados.
+ // Esto se hace en una goroutine anónima para no bloquear el hilo principal.
+ go func() {
+  wg.Wait()
+  close(results)
+ }()
 
-	// 4. Recolección de resultados
-	// Iteramos hasta que el canal de resultados sea cerrado por la goroutine anterior.
-	for res := range results {
-		if res.Err != nil {
-			fmt.Printf("Error en Job %d: %v\n", res.JobID, res.Err)
-			continue
-		}
-		fmt.Printf("Resultado del Job %d procesado exitosamente.\n", res.JobID)
-	}
-	
-	fmt.Println("Todo el trabajo ha concluido.")
+ // 4. Recolección de resultados
+ // Iteramos hasta que el canal de resultados sea cerrado por la goroutine anterior.
+ for res := range results {
+  if res.Err != nil {
+   fmt.Printf("Error en Job %d: %v\n", res.JobID, res.Err)
+   continue
+  }
+  fmt.Printf("Resultado del Job %d procesado exitosamente.\n", res.JobID)
+ }
+ 
+ fmt.Println("Todo el trabajo ha concluido.")
 }
 ```
 
 **Puntos clave del código:**
+
 * **Orquestación asíncrona:** La recolección de llamadas `wg.Wait()` dentro de una goroutine anónima (Paso 3) es un estándar de diseño. Si ejecutáramos `wg.Wait()` directamente en el hilo principal antes de consumir los resultados, provocaríamos un *deadlock*, ya que los workers se quedarían bloqueados intentando enviar a un canal `results` no consumido.
 * **Cierre de canales propagado:** Al cerrar `jobs`, cada worker finaliza su iteración. Al finalizar todos los workers, el `WaitGroup` llega a cero, lo que desencadena el cierre de `results`, permitiendo a la función `main` terminar su ejecución.
 
@@ -134,7 +136,7 @@ A nivel mecánico, el Fan-out es muy similar al Worker Pool, pero conceptualment
 
 ### Fan-in (Convergencia o Multiplexación)
 
-El patrón **Fan-in** es el proceso inverso. Ocurre cuando una única función o goroutine lee de múltiples canales de entrada y consolida todos esos flujos en un único canal de salida. 
+El patrón **Fan-in** es el proceso inverso. Ocurre cuando una única función o goroutine lee de múltiples canales de entrada y consolida todos esos flujos en un único canal de salida.
 
 Si conocemos la cantidad exacta de canales de entrada en tiempo de compilación, podemos realizar un Fan-in utilizando la instrucción `select` (como vimos en el Capítulo 9.4). Sin embargo, cuando el número de canales es dinámico (por ejemplo, como resultado de un Fan-out previo de tamaño variable), la instrucción `select` se vuelve insuficiente. La solución idiomática en Go requiere el uso de `sync.WaitGroup` para orquestar la convergencia.
 
@@ -146,110 +148,110 @@ El poder real de estos patrones se manifiesta cuando se combinan. A continuació
 package main
 
 import (
-	"fmt"
-	"math/rand"
-	"sync"
-	"time"
+ "fmt"
+ "math/rand"
+ "sync"
+ "time"
 )
 
 // generador simula un flujo continuo de datos entrantes.
 func generador(done <-chan struct{}, nums ...int) <-chan int {
-	out := make(chan int)
-	go func() {
-		defer close(out)
-		for _, n := range nums {
-			select {
-			case out <- n:
-			case <-done: // Previene goroutine leaks (Capítulo 8.4)
-				return
-			}
-		}
-	}()
-	return out
+ out := make(chan int)
+ go func() {
+  defer close(out)
+  for _, n := range nums {
+   select {
+   case out <- n:
+   case <-done: // Previene goroutine leaks (Capítulo 8.4)
+    return
+   }
+  }
+ }()
+ return out
 }
 
 // procesador simula una tarea pesada sobre el dato (Ej. cifrado, compresión).
 // Es la pieza que utilizaremos para hacer Fan-out.
 func procesador(done <-chan struct{}, in <-chan int, id int) <-chan int {
-	out := make(chan int)
-	go func() {
-		defer close(out)
-		for n := range in {
-			// Simulamos carga de trabajo variable
-			time.Sleep(time.Duration(rand.Intn(100)) * time.Millisecond)
-			resultado := n * n
-			
-			select {
-			case out <- resultado:
-			case <-done:
-				return
-			}
-		}
-	}()
-	return out
+ out := make(chan int)
+ go func() {
+  defer close(out)
+  for n := range in {
+   // Simulamos carga de trabajo variable
+   time.Sleep(time.Duration(rand.Intn(100)) * time.Millisecond)
+   resultado := n * n
+   
+   select {
+   case out <- resultado:
+   case <-done:
+    return
+   }
+  }
+ }()
+ return out
 }
 
 // merge implementa el patrón Fan-in dinámico.
 // Toma 'n' canales de entrada y devuelve un único canal de salida.
 func merge(done <-chan struct{}, cs ...<-chan int) <-chan int {
-	var wg sync.WaitGroup
-	out := make(chan int)
+ var wg sync.WaitGroup
+ out := make(chan int)
 
-	// output es la función que extrae datos de un canal específico
-	// y los envía al canal unificado.
-	output := func(c <-chan int) {
-		defer wg.Done()
-		for n := range c {
-			select {
-			case out <- n:
-			case <-done:
-				return
-			}
-		}
-	}
+ // output es la función que extrae datos de un canal específico
+ // y los envía al canal unificado.
+ output := func(c <-chan int) {
+  defer wg.Done()
+  for n := range c {
+   select {
+   case out <- n:
+   case <-done:
+    return
+   }
+  }
+ }
 
-	wg.Add(len(cs))
-	for _, c := range cs {
-		go output(c)
-	}
+ wg.Add(len(cs))
+ for _, c := range cs {
+  go output(c)
+ }
 
-	// Goroutine orquestadora para cerrar el canal unificado
-	// cuando todos los canales de entrada hayan sido procesados.
-	go func() {
-		wg.Wait()
-		close(out)
-	}()
+ // Goroutine orquestadora para cerrar el canal unificado
+ // cuando todos los canales de entrada hayan sido procesados.
+ go func() {
+  wg.Wait()
+  close(out)
+ }()
 
-	return out
+ return out
 }
 
 func main() {
-	// Canal de señalización para cancelación global
-	done := make(chan struct{})
-	defer close(done)
+ // Canal de señalización para cancelación global
+ done := make(chan struct{})
+ defer close(done)
 
-	// 1. Iniciamos el generador de datos
-	datosEntrantes := generador(done, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+ // 1. Iniciamos el generador de datos
+ datosEntrantes := generador(done, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
-	// 2. FAN-OUT: Distribuimos la carga leyendo del mismo canal 'datosEntrantes'
-	// Instanciamos tres procesadores independientes.
-	p1 := procesador(done, datosEntrantes, 1)
-	p2 := procesador(done, datosEntrantes, 2)
-	p3 := procesador(done, datosEntrantes, 3)
+ // 2. FAN-OUT: Distribuimos la carga leyendo del mismo canal 'datosEntrantes'
+ // Instanciamos tres procesadores independientes.
+ p1 := procesador(done, datosEntrantes, 1)
+ p2 := procesador(done, datosEntrantes, 2)
+ p3 := procesador(done, datosEntrantes, 3)
 
-	// 3. FAN-IN: Convergemos los tres canales resultantes en uno solo.
-	resultados := merge(done, p1, p2, p3)
+ // 3. FAN-IN: Convergemos los tres canales resultantes en uno solo.
+ resultados := merge(done, p1, p2, p3)
 
-	// 4. Consumo final
-	for r := range resultados {
-		fmt.Printf("Resultado consolidado: %d\n", r)
-	}
+ // 4. Consumo final
+ for r := range resultados {
+  fmt.Printf("Resultado consolidado: %d\n", r)
+ }
 }
 ```
 
 ### Análisis del Diseño Idiomático
 
-El código anterior introduce una práctica crítica que distingue el código Go aficionado del código de grado de producción: **la señalización de cancelación mediante el canal `done`**. 
+El código anterior introduce una práctica crítica que distingue el código Go aficionado del código de grado de producción: **la señalización de cancelación mediante el canal `done`**.
 
 Como detallamos en el Capítulo 8.4, si el consumidor final decide dejar de leer de `resultados` antes de que los procesadores hayan terminado, las goroutines de `procesador` y `merge` se bloquearían eternamente intentando enviar a un canal no consumido (Goroutine Leak). Pasar un canal `done` (o utilizar el paquete `context`, que abordaremos en el Capítulo 13) como primer argumento de las funciones concurrentes asegura que toda la ramificación del Fan-out/Fan-in pueda ser derribada de forma segura liberando recursos de memoria.
 
@@ -270,9 +272,10 @@ Al encadenar estas etapas, el primer dato puede estar terminando su procesamient
 ### Estructura de una Etapa (Stage)
 
 Para que el patrón Pipeline sea componible e idiomático, cada etapa debe ser una función que cumpla con la siguiente firma conceptual:
-1.  Acepta, al menos, un canal de lectura (`<-chan T`) y un canal de señalización para cancelación (`done`).
-2.  Devuelve un canal de solo lectura (`<-chan U`, donde `T` y `U` pueden ser el mismo tipo).
-3.  Lanza internamente una goroutine que lee de la entrada, procesa, envía a la salida y cierra el canal resultante antes de terminar.
+
+1. Acepta, al menos, un canal de lectura (`<-chan T`) y un canal de señalización para cancelación (`done`).
+2. Devuelve un canal de solo lectura (`<-chan U`, donde `T` y `U` pueden ser el mismo tipo).
+3. Lanza internamente una goroutine que lee de la entrada, procesa, envía a la salida y cierra el canal resultante antes de terminar.
 
 ### Implementación del Patrón
 
@@ -282,83 +285,83 @@ A continuación, construiremos un pipeline de tres etapas. Observa cómo la firm
 package main
 
 import (
-	"fmt"
+ "fmt"
 )
 
 // Etapa 1: Generador (Source)
 // Convierte una lista de enteros en un flujo de datos a través de un canal.
 func generar(done <-chan struct{}, nums ...int) <-chan int {
-	out := make(chan int)
-	go func() {
-		defer close(out) // El productor siempre cierra el canal
-		for _, n := range nums {
-			select {
-			case out <- n:
-			case <-done:
-				return // Salida temprana si el pipeline se cancela
-			}
-		}
-	}()
-	return out
+ out := make(chan int)
+ go func() {
+  defer close(out) // El productor siempre cierra el canal
+  for _, n := range nums {
+   select {
+   case out <- n:
+   case <-done:
+    return // Salida temprana si el pipeline se cancela
+   }
+  }
+ }()
+ return out
 }
 
 // Etapa 2: Multiplicador (Transformación)
 // Recibe enteros, los eleva al cuadrado y los emite al siguiente canal.
 func elevarCuadrado(done <-chan struct{}, in <-chan int) <-chan int {
-	out := make(chan int)
-	go func() {
-		defer close(out)
-		for n := range in {
-			select {
-			case out <- (n * n):
-			case <-done:
-				return
-			}
-		}
-	}()
-	return out
+ out := make(chan int)
+ go func() {
+  defer close(out)
+  for n := range in {
+   select {
+   case out <- (n * n):
+   case <-done:
+    return
+   }
+  }
+ }()
+ return out
 }
 
 // Etapa 3: Filtro (Condicional)
 // Solo permite el paso de números pares.
 func filtrarPares(done <-chan struct{}, in <-chan int) <-chan int {
-	out := make(chan int)
-	go func() {
-		defer close(out)
-		for n := range in {
-			if n%2 == 0 {
-				select {
-				case out <- n:
-				case <-done:
-					return
-				}
-			}
-		}
-	}()
-	return out
+ out := make(chan int)
+ go func() {
+  defer close(out)
+  for n := range in {
+   if n%2 == 0 {
+    select {
+    case out <- n:
+    case <-done:
+     return
+    }
+   }
+  }
+ }()
+ return out
 }
 
 func main() {
-	// Canal global de cancelación para evitar fugas de goroutines
-	done := make(chan struct{})
-	defer close(done) // Se ejecutará al salir de main, cancelando etapas activas
+ // Canal global de cancelación para evitar fugas de goroutines
+ done := make(chan struct{})
+ defer close(done) // Se ejecutará al salir de main, cancelando etapas activas
 
-	// Composición del Pipeline:
-	// Generar -> Elevar al Cuadrado -> Filtrar Pares
-	
-	flujoInicial := generar(done, 1, 2, 3, 4, 5, 6, 7, 8)
-	flujoCuadrados := elevarCuadrado(done, flujoInicial)
-	flujoFinal := filtrarPares(done, flujoCuadrados)
+ // Composición del Pipeline:
+ // Generar -> Elevar al Cuadrado -> Filtrar Pares
+ 
+ flujoInicial := generar(done, 1, 2, 3, 4, 5, 6, 7, 8)
+ flujoCuadrados := elevarCuadrado(done, flujoInicial)
+ flujoFinal := filtrarPares(done, flujoCuadrados)
 
-	// Etapa Final: Consumidor (Sink)
-	// Extrae los datos del final de la tubería.
-	for resultado := range flujoFinal {
-		fmt.Printf("Dato procesado: %d\n", resultado)
-	}
-	
-	// Nota: Podríamos encadenarlo todo en una sola línea si no necesitamos 
-	// referencias intermedias:
-	// for res := range filtrarPares(done, elevarCuadrado(done, generar(done, 1...)))
+ // Etapa Final: Consumidor (Sink)
+ // Extrae los datos del final de la tubería.
+ for resultado := range flujoFinal {
+  fmt.Printf("Dato procesado: %d\n", resultado)
+ }
+ 
+ // Nota: Podríamos encadenarlo todo en una sola línea si no necesitamos 
+ // referencias intermedias:
+ // for res := range filtrarPares(done, elevarCuadrado(done, generar(done, 1...)))
 }
 ```
 
@@ -382,9 +385,10 @@ Aquí es donde brilla el patrón **Semaphore** (Semáforo). A diferencia de un M
 Aunque otros lenguajes proporcionan clases específicas en su biblioteca estándar para semáforos, en Go la forma más idiomática, elegante y eficiente de implementarlos es utilizando **canales con búfer** (discutidos en el Capítulo 9.1).
 
 La mecánica es sorprendentemente simple:
-1.  Creamos un canal con una capacidad igual al límite de concurrencia deseado.
-2.  Para **adquirir** un permiso, enviamos un valor al canal. Si el búfer está lleno, la goroutine se bloquea hasta que haya espacio.
-3.  Para **liberar** el permiso, leemos un valor del canal, liberando un espacio en el búfer para que otra goroutine en espera pueda avanzar.
+
+1. Creamos un canal con una capacidad igual al límite de concurrencia deseado.
+2. Para **adquirir** un permiso, enviamos un valor al canal. Si el búfer está lleno, la goroutine se bloquea hasta que haya espacio.
+3. Para **liberar** el permiso, leemos un valor del canal, liberando un espacio en el búfer para que otra goroutine en espera pueda avanzar.
 
 Usamos el tipo `struct{}` (el *empty struct*) porque ocupa exactamente cero bytes de memoria, optimizando al máximo el patrón sin desperdiciar recursos en datos de señalización inútiles.
 
@@ -392,47 +396,47 @@ Usamos el tipo `struct{}` (el *empty struct*) porque ocupa exactamente cero byte
 package main
 
 import (
-	"fmt"
-	"sync"
-	"time"
+ "fmt"
+ "sync"
+ "time"
 )
 
 func main() {
-	tareas := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
-	
-	// Definimos el límite de concurrencia (Semáforo de capacidad 3)
-	limiteConcurrencia := 3
-	semaforo := make(chan struct{}, limiteConcurrencia)
-	
-	var wg sync.WaitGroup
+ tareas := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+ 
+ // Definimos el límite de concurrencia (Semáforo de capacidad 3)
+ limiteConcurrencia := 3
+ semaforo := make(chan struct{}, limiteConcurrencia)
+ 
+ var wg sync.WaitGroup
 
-	fmt.Printf("Iniciando procesamiento de %d tareas (Max %d concurrentes)\n", len(tareas), limiteConcurrencia)
+ fmt.Printf("Iniciando procesamiento de %d tareas (Max %d concurrentes)\n", len(tareas), limiteConcurrencia)
 
-	for _, tarea := range tareas {
-		wg.Add(1)
-		
-		// A diferencia del Worker Pool, aquí lanzamos una goroutine por CADA tarea
-		go func(id int) {
-			defer wg.Done()
+ for _, tarea := range tareas {
+  wg.Add(1)
+  
+  // A diferencia del Worker Pool, aquí lanzamos una goroutine por CADA tarea
+  go func(id int) {
+   defer wg.Done()
 
-			// 1. Acquire (Adquirir permiso)
-			// Bloquea la ejecución si el canal ya tiene 3 elementos
-			semaforo <- struct{}{} 
+   // 1. Acquire (Adquirir permiso)
+   // Bloquea la ejecución si el canal ya tiene 3 elementos
+   semaforo <- struct{}{} 
 
-			// 2. Sección Crítica Limitada
-			fmt.Printf("-> Tarea %d en ejecución...\n", id)
-			time.Sleep(1 * time.Second) // Simulamos trabajo I/O o de red
-			fmt.Printf("<- Tarea %d completada\n", id)
+   // 2. Sección Crítica Limitada
+   fmt.Printf("-> Tarea %d en ejecución...\n", id)
+   time.Sleep(1 * time.Second) // Simulamos trabajo I/O o de red
+   fmt.Printf("<- Tarea %d completada\n", id)
 
-			// 3. Release (Liberar permiso)
-			// Extrae un elemento, permitiendo que otra goroutine avance
-			<-semaforo 
-		}(tarea)
-	}
+   // 3. Release (Liberar permiso)
+   // Extrae un elemento, permitiendo que otra goroutine avance
+   <-semaforo 
+  }(tarea)
+ }
 
-	// Esperamos a que todas las goroutines finalicen su ciclo de vida
-	wg.Wait()
-	fmt.Println("Todas las tareas han finalizado de forma controlada.")
+ // Esperamos a que todas las goroutines finalicen su ciclo de vida
+ wg.Wait()
+ fmt.Println("Todas las tareas han finalizado de forma controlada.")
 }
 ```
 
@@ -452,4 +456,3 @@ Ambos patrones resuelven el problema de limitar la concurrencia, pero lo hacen c
 | **Gestión de Memoria** | Riesgosa ante picos masivos. Si entran 1 millón de peticiones, se crearán 1 millón de goroutines (bloqueadas, pero vivas), consumiendo RAM. | Segura y constante. No importa si hay 1 o 1 millón de tareas en cola, solo existen $N$ goroutines vivas. |
 | **Complejidad del Código** | Muy baja. Se implementa encapsulando el inicio y fin de la goroutine con envío/recepción en el canal. | Alta. Requiere orquestación cuidadosa de canales de entrada/salida y manejo preciso de cierres. |
 | **Caso de Uso Ideal** | Tareas finitas, procesos *batch* limitados o scripts locales donde la simplicidad prima sobre la presión de memoria extrema. | Servidores web de alta disponibilidad, demonios continuos y sistemas donde la resiliencia y el control de *Heap* son innegociables. |
-

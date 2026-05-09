@@ -12,7 +12,7 @@ Podemos clasificar los puertos en dos grandes categorías según la dirección d
 
 ### Puertos de Salida (Driven / Secondary Ports)
 
-Los Puertos de Salida son los contratos que el núcleo de la aplicación define para interactuar con el mundo exterior. Es aquí donde la inversión de dependencias brilla. El núcleo no depende de SQLx, de Redis o de un cliente HTTP; depende de un Trait. 
+Los Puertos de Salida son los contratos que el núcleo de la aplicación define para interactuar con el mundo exterior. Es aquí donde la inversión de dependencias brilla. El núcleo no depende de SQLx, de Redis o de un cliente HTTP; depende de un Trait.
 
 En un entorno backend moderno (como vimos en los capítulos de Axum y Actix), estos puertos suelen ser asíncronos y deben ser seguros para compartirse entre hilos.
 
@@ -35,13 +35,14 @@ pub trait UserRepository: Send + Sync {
 ```
 
 **Puntos clave para el desarrollador Senior:**
+
 1. **Tipos de Dominio en las Firmas:** Observa que los parámetros y valores de retorno utilizan tipos estrictamente definidos en el dominio (`User`, `DomainError`, `Uuid`). Un puerto **nunca** debe devolver tipos de la base de datos (como un `UserRow` de SQLx). Si lo hace, la infraestructura estaría filtrándose hacia el dominio.
 2. **`Send + Sync`:** Al definir puertos de salida en Rust que serán inyectados en frameworks web, estos *bounds* son innegociables. Nos garantizan en tiempo de compilación que cualquier adaptador que implemente este Trait podrá ser compartido de forma segura entre los workers del servidor.
 3. **Async Traits nativos:** Gracias a la estabilización de `async fn` en traits en versiones recientes de Rust, ya no es estrictamente necesario depender de crates externos como `async_trait` (que internamente hace un Boxeo del Future), permitiendo contratos más limpios y con mejor rendimiento.
 
 ### Puertos de Entrada (Driving / Primary Ports)
 
-Los Puertos de Entrada definen cómo el mundo exterior (un controlador REST, un handler de gRPC, o una CLI) interactúa con el núcleo de tu aplicación. 
+Los Puertos de Entrada definen cómo el mundo exterior (un controlador REST, un handler de gRPC, o una CLI) interactúa con el núcleo de tu aplicación.
 
 Mientras que en otros lenguajes orientados a objetos siempre se crea una interfaz para los casos de uso, en Rust tienes dos caminos válidos para los puertos de entrada:
 
@@ -108,7 +109,8 @@ impl<R: UserRepository> UserRegistrationPort for UserRegistrationService<R> {
 }
 ```
 
-En este diseño, `UserRegistrationService` es completamente agnóstico de la infraestructura. Hemos delimitado perfectamente las fronteras: 
+En este diseño, `UserRegistrationService` es completamente agnóstico de la infraestructura. Hemos delimitado perfectamente las fronteras:
+
 * El adaptador REST llamará a `register()` (Puerto de Entrada).
 * El servicio ejecutará su lógica y llamará a `save()` (Puerto de Salida).
 * El adaptador de PostgreSQL ejecutará la query final.
@@ -321,7 +323,7 @@ impl UserRepository for PostgresUserRepository {
 
 ### Clientes HTTP Externos
 
-El mismo principio aplica si nuestra lógica de negocio requiere comunicarse con una API externa, por ejemplo, para enviar un correo de bienvenida. 
+El mismo principio aplica si nuestra lógica de negocio requiere comunicarse con una API externa, por ejemplo, para enviar un correo de bienvenida.
 
 Primero, existiría un puerto en el núcleo:
 
@@ -385,7 +387,7 @@ impl EmailSenderPort for SendgridEmailAdapter {
 
 ## 30.4 Ensamblaje de la aplicación (El patrón Registry / AppState)
 
-Hemos construido nuestro dominio protegido, hemos definido contratos mediante Puertos (Traits), y hemos implementado tanto Adaptadores Primarios (controladores HTTP/CLI) como Secundarios (PostgreSQL, APIs externas). Sin embargo, todos estos componentes están desconectados. Necesitamos un lugar central donde se instancien y se conecten entre sí. 
+Hemos construido nuestro dominio protegido, hemos definido contratos mediante Puertos (Traits), y hemos implementado tanto Adaptadores Primarios (controladores HTTP/CLI) como Secundarios (PostgreSQL, APIs externas). Sin embargo, todos estos componentes están desconectados. Necesitamos un lugar central donde se instancien y se conecten entre sí.
 
 En el diseño de software, a este lugar se le conoce como el **Composition Root** (Raíz de Composición). En una aplicación Rust típica, este rol recae casi de forma exclusiva en la función `main()` (o en una función de inicialización llamada desde `main`).
 

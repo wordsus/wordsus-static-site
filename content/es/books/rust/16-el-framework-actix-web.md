@@ -34,7 +34,7 @@ async fn main() -> std::io::Result<()> {
 
 **¿Por qué un closure `|| { App::new() }` en lugar de simplemente pasarle la instancia?**
 
-Esta es una pregunta clásica de entrevistas para desarrolladores Rust. Actix-Web no levanta un solo hilo para procesar peticiones. Por defecto, clona tu entorno y levanta un grupo de hilos de trabajo (**workers**). El closure actúa como una "fábrica": Actix-Web lo ejecutará una vez por cada worker que inicie. Esto garantiza que cada hilo del sistema operativo tenga su propia instancia aislada de la aplicación, evitando cuellos de botella por bloqueos de memoria (locks) en el enrutador. 
+Esta es una pregunta clásica de entrevistas para desarrolladores Rust. Actix-Web no levanta un solo hilo para procesar peticiones. Por defecto, clona tu entorno y levanta un grupo de hilos de trabajo (**workers**). El closure actúa como una "fábrica": Actix-Web lo ejecutará una vez por cada worker que inicie. Esto garantiza que cada hilo del sistema operativo tenga su propia instancia aislada de la aplicación, evitando cuellos de botella por bloqueos de memoria (locks) en el enrutador.
 
 Veremos cómo compartir estado global entre estos workers de forma segura en la sección 16.3, pero por ahora, asume que cada worker es un universo independiente.
 
@@ -127,7 +127,7 @@ Comprender la separación entre el servidor que gestiona la red (`HttpServer`) y
 
 ## 16.2 Extractors (Path, Query, Json, Form)
 
-En la sección anterior logramos que nuestros workers aceptaran conexiones HTTP. Ahora, el siguiente desafío es interpretar los datos que los clientes nos envían. En lenguajes dinámicos, normalmente inspeccionamos un objeto global `request` y verificamos manualmente si un campo existe. En Rust, esto sería inseguro y propenso a errores en tiempo de ejecución. 
+En la sección anterior logramos que nuestros workers aceptaran conexiones HTTP. Ahora, el siguiente desafío es interpretar los datos que los clientes nos envían. En lenguajes dinámicos, normalmente inspeccionamos un objeto global `request` y verificamos manualmente si un campo existe. En Rust, esto sería inseguro y propenso a errores en tiempo de ejecución.
 
 Actix-Web resuelve esto mediante **Extractors** (Extractores). Un extractor es cualquier tipo de dato que implemente el trait `FromRequest`. La magia de Actix-Web radica en que el framework se encarga de inspeccionar la petición HTTP, validar los encabezados, leer el cuerpo (si lo hay) y deserializar los datos directamente en los parámetros de nuestra función controladora (Handler). Si la extracción falla, Actix-Web rechaza automáticamente la petición con una respuesta de error adecuada (usualmente un `400 Bad Request`), sin que nuestro código llegue a ejecutarse.
 
@@ -366,7 +366,7 @@ Puedes imaginar el sistema de middlewares de Actix-Web como una cebolla. La peti
 
 ### Middlewares integrados (Built-in)
 
-Actix-Web incluye por defecto varios middlewares esenciales que puedes aplicar a toda tu aplicación (o a un *scope* específico) utilizando el método `.wrap()`. 
+Actix-Web incluye por defecto varios middlewares esenciales que puedes aplicar a toda tu aplicación (o a un *scope* específico) utilizando el método `.wrap()`.
 
 ```rust
 use actix_web::{middleware::{Compress, Logger, NormalizePath}, web, App, HttpServer};
@@ -393,8 +393,8 @@ async fn main() -> std::io::Result<()> {
 ```
 
 > **La Trampa de Nivel Senior (Gotcha): El Orden de Ejecución.**
-> En Actix-Web, los middlewares registrados con `.wrap()` se ejecutan en **orden inverso** a como los defines en el código para la petición entrante, y en orden directo para la respuesta saliente. 
-> 
+> En Actix-Web, los middlewares registrados con `.wrap()` se ejecutan en **orden inverso** a como los defines en el código para la petición entrante, y en orden directo para la respuesta saliente.
+>
 > En el código anterior, la petición entrante pasa primero por `NormalizePath`, luego por `Logger` y finalmente por `Compress`. Entender esto te ahorrará horas de depuración cuando un middleware dependa de modificaciones hechas por otro.
 
 ### Creación de Middlewares Personalizados: La forma moderna (`from_fn`)
@@ -472,9 +472,10 @@ async fn main() -> std::io::Result<()> {
 Como desarrollador senior, debes saber que `from_fn` cubre el 95% de los casos de uso (autenticación, métricas simples, inyección de dependencias por request). Sin embargo, `from_fn` tiene un pequeño costo de rendimiento debido a la asignación de memoria dinámica (boxing) de los futuros subyacentes.
 
 Debes recurrir a implementar `Service` y `Transform` manualmente **solo cuando**:
+
 1. Estás construyendo una librería pública (un crate) para el ecosistema Actix, donde el rendimiento y la flexibilidad son críticos.
 2. Tu middleware necesita mantener un estado interno complejo que debe inicializarse una sola vez al arrancar el servidor (en la fase `Transform`) antes de que comiencen a procesarse las peticiones.
 
 Con la comprensión de los workers, los extractores, la inyección de estado y los middlewares, ahora posees el mapa completo de cómo fluye la información dentro de Actix-Web, desde que el socket TCP acepta la conexión hasta que tu lógica de dominio la procesa.
 
-Con esto concluimos el **Capítulo 16**. El libro avanza hacia una alternativa moderna que ha ganado una tracción masiva en la comunidad debido a su integración nativa con Tokio. 
+Con esto concluimos el **Capítulo 16**. El libro avanza hacia una alternativa moderna que ha ganado una tracción masiva en la comunidad debido a su integración nativa con Tokio.

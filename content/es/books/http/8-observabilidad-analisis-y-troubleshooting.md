@@ -1,6 +1,7 @@
 La administración de sistemas moderna no termina en el despliegue; comienza con la visibilidad. Este capítulo aborda la **observabilidad** como el pilar para garantizar la fiabilidad del protocolo HTTP. Exploramos desde la estructuración de **logs en JSON** para una ingesta eficiente, hasta la implementación de **métricas RED** que transforman datos crudos en indicadores de salud del servicio. Analizaremos cómo la **trazabilidad distribuida** permite seguir el rastro de peticiones en microservicios y dominaremos las herramientas de **CLI y análisis de red** (como `cURL` y `Wireshark`) para diagnosticar fallos profundos, interceptar tráfico y resolver incidentes en entornos complejos.
 
 ## 8.1. Formatos de Logs y estandarización (Common Log Format, Combined, JSON estructurado)
+
 La observabilidad de cualquier infraestructura web comienza en los cimientos: los logs de acceso. Aunque los capítulos anteriores detallan la anatomía de los mensajes HTTP y las arquitecturas de red, toda esa actividad es invisible sin un registro sistemático. Un log de acceso HTTP es, en esencia, la bitácora transaccional del servidor; cada línea representa una interacción entre un cliente y la infraestructura.
 
 Para los administradores de sistemas, elegir y configurar correctamente el formato de estos registros no es una decisión trivial. Un formato inadecuado puede resultar en expresiones regulares frágiles, altos consumos de CPU durante la ingesta de datos en sistemas centralizados (como ELK o Splunk) y puntos ciegos durante la respuesta a incidentes.
@@ -10,6 +11,7 @@ A continuación, analizaremos la evolución de los formatos de logs HTTP, desde 
 ---
 
 ### Common Log Format (CLF)
+
 El **Common Log Format (CLF)**, también conocido como formato NCSA (National Center for Supercomputing Applications), es el abuelo de los formatos de registro web. Estandarizado en los primeros días de la web para el servidor NCSA HTTPd (y posteriormente adoptado por Apache), proporcionó la primera forma unificada de registrar el tráfico.
 
 El formato se define mediante una cadena de variables estandarizada (generalmente representada en configuraciones como `%h %l %u %t \"%r\" %>s %b`).
@@ -40,6 +42,7 @@ El formato se define mediante una cadena de variables estandarizada (generalment
 ---
 
 ### Combined Log Format
+
 Para solventar las deficiencias del CLF, la industria adoptó rápidamente el **Combined Log Format**. Este formato toma la base del CLF y le añade dos de los encabezados (headers) más críticos para el análisis de tráfico: `Referer` y `User-Agent`.
 
 En la configuración de servidores como Apache o Nginx, su directiva suele representarse así: `%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-agent}i\"`.
@@ -60,6 +63,7 @@ A medida que la infraestructura evolucionó hacia microservicios, proxies invers
 ---
 
 ### La transición a JSON Estructurado
+
 En las arquitecturas modernas y Cloud Native, la lectura humana directa del log en el servidor mediante `tail -f` es una práctica secundaria (y a veces imposible en contenedores efímeros). Los logs son consumidos por máquinas (Fluentd, Logstash, Vector) para ser indexados y consultados en bases de datos documentales (Elasticsearch, OpenSearch) o sistemas SaaS (Datadog, Splunk).
 
 Aquí es donde los **Logs Estructurados en JSON** se vuelven obligatorios. En lugar de forzar a un recolector a ejecutar costosas expresiones regulares (RegEx) para extraer valores de una cadena de texto, el servidor HTTP serializa directamente el estado de la petición en pares clave-valor nativos.
@@ -104,24 +108,26 @@ log_format json_structured escape=json
 
 ```
 
-#### Ventajas Operativas del formato JSON:
+#### Ventajas Operativas del formato JSON
+
 1. **Cero *Parsing* Complejo:** Las herramientas de ingesta no necesitan reglas RegEx. Interpretan el JSON nativamente, reduciendo el consumo de CPU en la canalización de observabilidad.
 2. **Tipado de Datos:** En el formato Combined, el código de estado `200` y el tiempo de respuesta son simples cadenas de texto. En JSON, son números enteros y flotantes (ej. `"status": 502`, `"request_time": 2.045`), lo que permite realizar cálculos matemáticos directos (como percentiles o promedios) en la base de datos de logs.
 3. **Extensibilidad Dinámica:** Se pueden añadir nuevos campos al log (como el `trace_id` para la trazabilidad distribuida, que veremos en la sección 8.3) sin romper la integración con el sistema de análisis existente.
 4. **Uso avanzado de CLI:** Permite la manipulación local extremadamente potente utilizando herramientas como `jq`. Por ejemplo, para encontrar todas las peticiones lentas mayores a 1 segundo desde la terminal:
+
 ```bash
 cat access.log | jq 'select(.request_time > 1) | {uri: .request_uri, time: .request_time}'
 
 ```
 
-
-
 ### Consideraciones de Seguridad y Estandarización
+
 Al diseñar un formato estructurado, es imperativo establecer políticas de estandarización en toda la organización (como adoptar convenciones similares al *Elastic Common Schema (ECS)* o los estándares de *OpenTelemetry*). Esto asegura que un log generado por Nginx comparta las mismas claves de objeto (ej. `http.request.method`) que un log generado por el Ingress Controller de Kubernetes o un balanceador de carga gestionado.
 
 **Advertencia de Seguridad:** Sea cual sea el formato elegido, los logs HTTP son un vector clásico de fuga de información (Data Leak). Es fundamental configurar el servidor o el proxy para **enmascarar o excluir** parámetros sensibles que viajan en las URIs (Query Strings) o en ciertas cabeceras, como contraseñas, tokens JWT en la cabecera `Authorization` (Capítulo 6), o información de identificación personal (PII) inadvertida.
 
 ## 8.2. Métricas RED (Rate, Errors, Duration) aplicadas a tráfico HTTP
+
 Mientras que los logs de acceso (vistos en la sección anterior) nos proporcionan una bitácora detallada de cada transacción individual, intentar entender el estado general de un sistema leyendo miles de líneas por segundo es imposible. Para obtener una visión macroscópica y accionar alertas en tiempo real, los administradores de sistemas recurren a las **métricas**.
 
 Dentro de las arquitecturas orientadas a microservicios y Cloud Native, el estándar de facto para monitorear servicios transaccionales (como los servidores HTTP) es el **Método RED**. Este enfoque, derivado de los principios de Site Reliability Engineering (SRE), dictamina que para entender la "felicidad" de un servicio y de sus usuarios, debes medir tres indicadores clave: **R**ate (Tasa), **E**rrors (Errores) y **D**uration (Duración).
@@ -131,6 +137,7 @@ A diferencia de las métricas de infraestructura tradicionales (CPU, Memoria, Di
 ---
 
 ### 1. Rate (Tasa de peticiones)
+
 El *Rate* mide el volumen de tráfico que está manejando tu servidor web o proxy. En el contexto de HTTP, esto se traduce en **Peticiones por Segundo (RPS)** o *Requests Per Second*.
 
 Conocer tu tasa base es fundamental para la planificación de capacidad (Capacity Planning) y para identificar anomalías, como ataques DDoS o picos virales de tráfico.
@@ -138,14 +145,14 @@ Conocer tu tasa base es fundamental para la planificación de capacidad (Capacit
 * **Implementación técnica:** Los servidores HTTP exponen un contador monótono que se incrementa con cada petición recibida (ej. `http_requests_total`).
 * **Ejemplo de consulta en PromQL (Prometheus):**
 Para calcular las peticiones por segundo promediadas en los últimos 5 minutos:
+
 ```promql
 sum(rate(http_requests_total[5m])) by (vhost, method)
 
 ```
 
-
-
 ### 2. Errors (Tasa de errores)
+
 La métrica de errores cuantifica cuántas de esas peticiones están fallando. Aquí es donde el conocimiento de los códigos de estado HTTP (Capítulo 1.6) se vuelve crítico para definir qué constituye un "error".
 
 Desde la perspectiva de la operatividad del sistema:
@@ -154,6 +161,7 @@ Desde la perspectiva de la operatividad del sistema:
 * **Errores 4xx (Client Errors):** Un 404 (Not Found) o un 401 (Unauthorized) indican que el cliente se equivocó, no que tu servidor esté fallando. Sin embargo, un pico repentino de errores `429 Too Many Requests` (Rate Limiting, Capítulo 6.4) o `403 Forbidden` puede indicar un ataque de fuerza bruta o un despliegue defectuoso en el frontend.
 * **Ejemplo de consulta en PromQL:**
 Para calcular el porcentaje de errores críticos (5xx) sobre el tráfico total:
+
 ```promql
 sum(rate(http_requests_total{status=~"5.."}[5m])) 
 / 
@@ -161,9 +169,8 @@ sum(rate(http_requests_total[5m])) * 100
 
 ```
 
-
-
 ### 3. Duration (Duración o Latencia)
+
 El *Duration* mide el tiempo que tarda el servidor en procesar la petición HTTP y devolver la respuesta. Es el indicador de rendimiento más importante para la experiencia del usuario.
 
 **La trampa del Promedio:**
@@ -176,16 +183,16 @@ En su lugar, los administradores de sistemas utilizan **Percentiles** (p50, p90,
 * **p99:** La "cola de latencia". Muestra el peor escenario para el 1% de tus usuarios (útil para detectar pausas de *Garbage Collection* o bloqueos en bases de datos).
 * **Ejemplo de consulta en PromQL:**
 Para calcular el percentil 95 de la latencia usando un histograma:
+
 ```promql
 histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket[5m])) by (le))
 
 ```
 
-
-
 ---
 
 ### Diagrama conceptual de Instrumentación RED
+
 Para que estas métricas existan, la infraestructura debe estar instrumentada correctamente. En arquitecturas modernas, esto se logra mediante módulos específicos en los servidores web (como `ngx_http_stub_status_module` en Nginx) o exportadores nativos:
 
 ```text
@@ -214,9 +221,11 @@ Para que estas métricas existan, la infraestructura debe estar instrumentada co
 ```
 
 ### Integración de RED en la operativa diaria
+
 Implementar el método RED permite establecer **SLIs** (Service Level Indicators) y **SLOs** (Service Level Objectives) claros. Por ejemplo, en lugar de alertar si "la CPU del servidor Apache llega al 90%", un administrador moderno configurará una alerta si "la tasa de errores 5xx supera el 1% durante 5 minutos" o si "el p95 de latencia supera los 500 milisegundos". Esto reduce drásticamente la fatiga de alertas, enfocando al equipo de operaciones en lo que realmente impacta al cliente.
 
 ## 8.3. Trazabilidad Distribuida (Distributed Tracing): Correlación de requests mediante `X-Request-Id` y W3C Trace Context
+
 Si los logs estructurados (sección 8.1) nos dan el detalle granular de un evento, y las métricas RED (sección 8.2) nos muestran la salud global de un servicio, la **Trazabilidad Distribuida** (Distributed Tracing) es el pegamento que une toda la historia.
 
 En la era monolítica, una petición HTTP entraba al servidor, ejecutaba la lógica y devolvía una respuesta; todo ocurría en un mismo proceso de sistema operativo. Sin embargo, en las arquitecturas modernas (microservicios, mallas de servicios o *Service Meshes*), un simple clic del usuario (ej. "Finalizar Compra") puede desencadenar una cascada de decenas de peticiones HTTP internas entre diferentes APIs, bases de datos y colas de mensajes.
@@ -266,6 +275,7 @@ De este modo, si el administrador de sistemas busca el string `a1b2c3d4...` en s
 ---
 
 ### La estandarización moderna: W3C Trace Context
+
 Aunque `X-Request-Id` solucionaba la búsqueda básica en logs, las herramientas modernas de APM (Application Performance Monitoring) como Jaeger, Datadog o Dynatrace, necesitaban más información. Querían medir no solo *qué* servicios se tocaron, sino *cuánto tiempo* tomó cada salto.
 
 Esto dio origen a los conceptos de:
@@ -298,12 +308,14 @@ Ejemplo: `tracestate: rojo=00f067aa0ba902b7,congo=t61rcWkgMzE`
 ---
 
 ### Implicaciones Operativas para el Administrador de Sistemas
+
 Para que la trazabilidad distribuida funcione, la cadena de confianza HTTP no puede romperse. Un solo servidor mal configurado destruirá la visibilidad (creando lo que se conoce como *trazas huérfanas*).
 
 **Reglas operativas de oro:**
 
 1. **Terminación y Generación en el Borde (Edge):** El Ingress Controller (ej. Traefik, Nginx) debe ser siempre el encargado de iniciar la traza si un cliente externo no proporciona una válida.
 *Ejemplo básico en Nginx delegando a OpenTelemetry (si está compilado el módulo):*
+
 ```nginx
 # Inicia la traza si no existe, o confía en el W3C trace context entrante
 opentelemetry on;
@@ -311,9 +323,8 @@ opentelemetry_propagate tracecontext;
 
 ```
 
-
-2. **Propagación en Proxies Intermedios:** Si utilizas proxies internos (ej. un Envoy en un Service Mesh), debes asegurar que están configurados para propagar sin alterar de forma destructiva las cabeceras `traceparent` o `X-Request-Id`.
-3. **Cuidado con el borrado de cabeceras de seguridad:** A veces, las reglas estrictas de WAF (Web Application Firewall) o las configuraciones de seguridad defensivas purgan cabeceras "desconocidas". Debes incluir explícitamente `traceparent` y `tracestate` (o tu cabecera de elección) en las listas de permitidos (*allowlists*) de tu red interna.
+1. **Propagación en Proxies Intermedios:** Si utilizas proxies internos (ej. un Envoy en un Service Mesh), debes asegurar que están configurados para propagar sin alterar de forma destructiva las cabeceras `traceparent` o `X-Request-Id`.
+2. **Cuidado con el borrado de cabeceras de seguridad:** A veces, las reglas estrictas de WAF (Web Application Firewall) o las configuraciones de seguridad defensivas purgan cabeceras "desconocidas". Debes incluir explícitamente `traceparent` y `tracestate` (o tu cabecera de elección) en las listas de permitidos (*allowlists*) de tu red interna.
 
 ## 8.4. Herramientas de CLI imprescindibles: Maestría en `cURL`, `wget` y `httpie`
 
@@ -324,32 +335,34 @@ Como administrador de sistemas, cuando necesitas depurar un problema de enrutami
 ---
 
 ### 1. `cURL`: La navaja suiza del protocolo HTTP
+
 `cURL` (Client URL) es, sin discusión, el estándar de facto en el mundo UNIX y Cloud Native. Impulsado por la robusta biblioteca `libcurl`, soporta docenas de protocolos, pero su dominio absoluto reside en HTTP/HTTPS.
 
 Su filosofía es simple: hace exactamente lo que le pides, ni más ni menos. No sigue redirecciones por defecto y muestra la salida estándar tal cual llega del servidor.
 
-#### Comandos esenciales para diagnóstico operativo:
+#### Comandos esenciales para diagnóstico operativo
+
 * **Ver las cabeceras sin descargar el cuerpo (`-I`):** Realiza una petición `HEAD`. Ideal para comprobar rápidamente códigos de estado (ej. verificar si una página da 200 o 404) o leer el `Cache-Control`.
+
 ```bash
 curl -I https://api.ejemplo.com/v1/health
 
 ```
 
-
 * **El modo Verboso (`-v`):** Es la radiografía de la petición. Muestra el apretón de manos (handshake) TLS, las cabeceras que se envían (líneas que empiezan por `>`) y las que se reciben (líneas que empiezan por `<`).
+
 ```bash
 curl -v https://ejemplo.com
 
 ```
 
-
 * **Forzar la resolución DNS (`--resolve`):** Crítico para probar migraciones de servidores o balanceadores de carga sin tener que editar el archivo `/etc/hosts` local.
+
 ```bash
 # Conecta a la IP 10.0.0.5 solicitando el Host "ejemplo.com"
 curl -v --resolve ejemplo.com:443:10.0.0.5 https://ejemplo.com
 
 ```
-
 
 * **Seguir redirecciones (`-L`):** Si un servidor responde con un 301 o 302, `cURL` se detendrá a menos que uses esta bandera para seguir la cadena hasta su destino final.
 
@@ -380,35 +393,39 @@ Este comando es invaluable para determinar si la lentitud de un sitio se debe a 
 ---
 
 ### 2. `wget`: El recolector resiliente
+
 Mientras que `cURL` brilla en la manipulación de APIs y el diagnóstico interactivo de cabeceras, `wget` brilla en la **descarga de archivos y la persistencia**. Su nombre proviene de "World Wide Web get".
 
 La principal diferencia arquitectónica es que `wget` está diseñado para funcionar en segundo plano, manejar conexiones inestables y guardar la salida en archivos del disco por defecto (a diferencia de `cURL`, que imprime en la salida estándar de la consola).
 
-#### Casos de uso operativos:
+#### Casos de uso operativos
+
 * **Reanudar descargas interrumpidas (`-c`):** Cuando estás descargando un volcado de base de datos de 50 GB o una imagen ISO y la conexión SSH se cae a la mitad, `wget` puede retomar el progreso donde lo dejó usando el encabezado HTTP `Range`.
+
 ```bash
 wget -c https://servidor.com/backup_enorme.tar.gz
 
 ```
 
-
 * **Modo Espejo (Mirroring) (`-m`):** Descarga de forma recursiva todo un sitio web o directorio expuesto, recreando la estructura de carpetas localmente. Es muy útil para respaldar sitios estáticos o repositorios de paquetes (ej. espejos de apt/yum).
+
 ```bash
 wget -m -np -k https://repo.ejemplo.com/paquetes/
 
 ```
-
 
 * **Descargas en segundo plano (`-b`):** Inicia la petición, se desvincula de la terminal y escribe el progreso en un archivo `wget-log`.
 
 ---
 
 ### 3. `HTTPie`: Ergonomía y modernidad para APIs
+
 `cURL` es poderoso, pero su sintaxis, especialmente al enviar cargas JSON complejas, puede volverse farragosa (requiriendo múltiples `-H "Content-Type: application/json"` y un denso escape de comillas con `-d '{"key":"value"}'`).
 
 **HTTPie** (ejecutable bajo el comando `http` o `https`) nació para resolver la ergonomía. Está diseñado específicamente para la era de las APIs RESTful y el JSON. Automáticamente formatea y colorea la salida, haciéndola legible para el humano sin necesidad de pasarlo por `jq`.
 
-#### Comparativa de simplicidad:
+#### Comparativa de simplicidad
+
 **El problema: Enviar una petición POST con JSON a una API usando `cURL`:**
 
 ```bash
@@ -432,19 +449,21 @@ http POST https://api.ejemplo.com/v1/usuarios \
 
 *Observa cómo HTTPie asume automáticamente `application/json`, construye el cuerpo y diferencia entre cabeceras (usando `:` ) y campos de datos (usando `=` ).*
 
-#### Características clave para administradores:
+#### Características clave para administradores
+
 * **Colores y formato automático:** Las cabeceras y los cuerpos (JSON, XML, HTML) se muestran con sintaxis resaltada por defecto.
 * **Gestión de sesiones (`--session`):** Permite mantener el estado entre peticiones. Muy útil cuando pruebas sistemas con autenticación basada en Cookies (Capítulo 2.4).
+
 ```bash
 http --session=misession POST api.ejemplo.com/login usuario=admin pass=123
 http --session=misession GET api.ejemplo.com/dashboard # Utiliza la cookie guardada
 
 ```
 
-
 * **Inspección bidireccional (`-v`):** Al igual que cURL, permite ver todo, pero separando visualmente el Request del Response con colores, lo que acelera dramáticamente el diagnóstico visual durante un incidente.
 
 ### Resumen de Selección de Herramienta
+
 | Escenario Operativo | Herramienta Recomendada | Por qué |
 | --- | --- | --- |
 | **Diagnóstico de latencia, TLS o scripts en Bash** | `cURL` | Presente en todas las distribuciones; gran control granular de la conexión y extracción de métricas. |
@@ -460,6 +479,7 @@ Cuando las abstracciones fallan, el administrador de sistemas debe descender a l
 ---
 
 ### 1. `tcpdump`: El primer interviniente (First Responder)
+
 `tcpdump` es un analizador de paquetes de línea de comandos. Su mayor ventaja es su ubicuidad: está preinstalado (o fácilmente disponible) en prácticamente cualquier distribución Linux o sistema UNIX. Operativamente, es la herramienta que ejecutas en un servidor remoto sin interfaz gráfica para capturar el tráfico en el momento del incidente.
 
 **Caso de uso típico:** Capturar tráfico HTTP puro para identificar qué está enviando exactamente un cliente.
@@ -468,44 +488,45 @@ Cuando las abstracciones fallan, el administrador de sistemas debe descender a l
 
 * **Inspección rápida en texto plano (Solo HTTP):**
 Si solo necesitas ver las cabeceras HTTP de forma rápida en la terminal, puedes forzar a `tcpdump` a imprimir la carga útil en formato ASCII (`-A`):
+
 ```bash
 tcpdump -i eth0 -n -A -s 0 'tcp port 80 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)'
 
 ```
 
-
 *(Nota: Este complejo filtro BPF asegura que solo capturamos paquetes que contienen datos, ignorando los paquetes vacíos de control TCP como SYN o ACK puros).*
+
 * **Captura para análisis forense (Recomendado):**
 Leer tráfico directamente en la terminal es propenso a errores y se vuelve ilegible bajo carga. La mejor práctica es capturar el tráfico crudo en un archivo PCAP (Packet Capture) para analizarlo offline:
+
 ```bash
 tcpdump -i any port 80 or port 443 -n -s 0 -w captura_incidente.pcap
 
 ```
-
 
 * `-i any`: Escucha en todas las interfaces de red.
 * `-n`: Desactiva la resolución DNS inversa (evita lentitud y tráfico DNS extra en la captura).
 * `-s 0`: *Snaplength*. Captura el paquete completo (fundamental para ver el cuerpo del HTTP), no solo las cabeceras.
 * `-w`: Escribe la salida en un archivo binario.
 
-
-
 ---
 
 ### 2. `Wireshark`: El microscopio de red
+
 Una vez que tienes tu archivo `captura_incidente.pcap`, lo descargas a tu estación de trabajo y lo abres con **Wireshark**. Es una herramienta con interfaz gráfica (GUI) que incorpora cientos de "disectores de protocolos", capaces de interpretar los bytes crudos y mostrarlos de forma estructurada.
 
 **Técnicas esenciales en Wireshark para HTTP:**
 
 1. **Filtros de visualización (Display Filters):** A diferencia de los filtros de captura de `tcpdump`, estos se aplican *después* de capturar.
+
 * `http`: Muestra solo paquetes interpretados como HTTP.
 * `http.request.method == "POST"`: Aísla peticiones específicas.
 * `http.response.code >= 400`: Encuentra rápidamente errores devolviendo al cliente.
 
-
-2. **Follow TCP Stream (Seguir flujo TCP):** Haciendo clic derecho en un paquete HTTP, esta opción ensambla todos los paquetes fragmentados de esa conexión TCP específica y te muestra la conversación completa (Request y Response) en una sola ventana de texto legible.
+1. **Follow TCP Stream (Seguir flujo TCP):** Haciendo clic derecho en un paquete HTTP, esta opción ensambla todos los paquetes fragmentados de esa conexión TCP específica y te muestra la conversación completa (Request y Response) en una sola ventana de texto legible.
 
 #### El gran reto: La desencriptación de HTTPS / TLS
+
 Hoy en día, casi todo el tráfico es HTTPS. Si abres una captura del puerto 443 en Wireshark, el disector HTTP no funcionará; solo verás la capa TLS y paquetes marcados como *Application Data* (datos cifrados e ininteligibles).
 
 Para poder analizar HTTPS, **no** necesitas la clave privada del servidor (de hecho, con algoritmos modernos como Diffie-Hellman efímero o PFS, la clave privada no sirve para descifrar tráfico pasado). Lo que necesitas son las **Claves de Sesión Simétricas**.
@@ -529,20 +550,21 @@ Los navegadores modernos (Chrome, Firefox) y herramientas como `cURL` soportan l
 **Paso a paso operativo:**
 
 1. En tu terminal, define la variable de entorno:
+
 ```bash
 export SSLKEYLOGFILE=/tmp/tls_keys.log
 
 ```
 
-
-2. Inicia la captura con `tcpdump` en otra ventana.
-3. Ejecuta la petición con `cURL` (o lanza Chrome desde esa terminal).
-4. Carga el archivo `.pcap` en Wireshark. Ve a *Edit -> Preferences -> Protocols -> TLS* y en el campo *(Pre)-Master-Secret log filename*, selecciona tu archivo `/tmp/tls_keys.log`.
+1. Inicia la captura con `tcpdump` en otra ventana.
+2. Ejecuta la petición con `cURL` (o lanza Chrome desde esa terminal).
+3. Carga el archivo `.pcap` en Wireshark. Ve a *Edit -> Preferences -> Protocols -> TLS* y en el campo *(Pre)-Master-Secret log filename*, selecciona tu archivo `/tmp/tls_keys.log`.
 Magia: De repente, la pestaña cifrada revelará todo el tráfico HTTP/2 o HTTP/1.1 subyacente.
 
 ---
 
 ### 3. `tshark`: El puente hacia la automatización
+
 `Wireshark` es fenomenal para el análisis visual, pero es inútil si necesitas integrar el análisis de paquetes en un script automatizado, una tubería (pipeline) de CI/CD, o si necesitas procesar un archivo PCAP de 10 GB en un servidor donde no puedes exportar una interfaz gráfica.
 
 Aquí es donde entra **`tshark`**. Es, esencialmente, el motor de análisis de Wireshark ejecutado desde la línea de comandos. Combina la capacidad de leer archivos PCAP con el inmenso poder de los disectores de Wireshark, produciendo texto que puedes filtrar con `grep` o `awk`.
@@ -551,16 +573,15 @@ Aquí es donde entra **`tshark`**. Es, esencialmente, el motor de análisis de W
 
 * **Extraer campos específicos (Data Mining de paquetes):**
 Supongamos que tienes una captura y quieres extraer un listado rápido de todos los *User-Agents* y las *URIs* solicitadas que no son visibles en tus logs tradicionales:
+
 ```bash
 tshark -r captura.pcap -Y "http.request" -T fields -e http.host -e http.request.uri -e http.user_agent
 
 ```
 
-
 * `-r`: Lee el archivo.
 * `-Y "http.request"`: Aplica el filtro de visualización de Wireshark.
 * `-T fields -e ...`: Formatea la salida como un TSV (valores separados por tabulaciones) extrayendo solo los campos lógicos de HTTP solicitados.
-
 
 * **Análisis de latencia a nivel TCP para HTTP:**
 A veces necesitas demostrar a los desarrolladores que la lentitud no es de la red, sino del tiempo de procesamiento (TTFB) de su aplicación. Con `tshark` puedes calcular el tiempo transcurrido entre el último paquete del Request HTTP y el primer paquete del Response HTTP.
@@ -568,6 +589,7 @@ A veces necesitas demostrar a los desarrolladores que la lentitud no es de la re
 En conclusión, un administrador de sistemas HTTP domina este flujo: utiliza `tcpdump` como herramienta quirúrgica de recolección en el servidor; emplea `Wireshark` para la investigación profunda de incidentes complejos (especialmente descifrando TLS); y recurre a `tshark` cuando necesita escalar o automatizar la extracción de datos a partir de capturas masivas.
 
 ## 8.6. Interceptación y depuración con proxies locales (Mitmproxy, Charles)
+
 A lo largo de este capítulo, hemos explorado cómo leer logs pasivos (8.1), medir métricas globales (8.2), rastrear peticiones a través de microservicios (8.3), y usar herramientas activas como `cURL` (8.4) o `Wireshark` (8.5). Sin embargo, existe un escenario de depuración donde todas estas herramientas resultan insuficientes: **cuando necesitas pausar, modificar o falsear (mockear) el tráfico HTTP/HTTPS en tiempo real sin tocar el código fuente del cliente o del servidor.**
 
 Imagina que eres un administrador intentando diagnosticar por qué una aplicación móvil de terceros falla al comunicarse con tu API bajo ciertas condiciones de red, o necesitas probar cómo reacciona tu frontend si el backend devuelve un error `500 Internal Server Error` intermitente.
@@ -577,6 +599,7 @@ Para resolver esto, introducimos los **proxies HTTP de interceptación locales**
 ---
 
 ### La Anatomía del Ataque MITM (Man-in-the-Middle) Controlado
+
 Herramientas como Mitmproxy o Charles Proxy funcionan ejecutando un ataque "Hombre en el Medio" benigno contra tu propia máquina.
 
 Como aprendimos en el Capítulo 5 (Criptografía y Seguridad), HTTPS está diseñado específicamente para evitar que alguien lea o modifique el tráfico. Por lo tanto, un proxy local no puede simplemente "mirar" dentro del túnel TLS. En su lugar, el proxy actúa como el servidor para el cliente, y como el cliente para el servidor real.
@@ -609,6 +632,7 @@ Para que esto funcione sin que el navegador o el sistema operativo arrojen error
 ---
 
 ### 1. Mitmproxy: La herramienta del Sysadmin y el Hacker
+
 `Mitmproxy` es una herramienta de código abierto escrita en Python. Su interfaz principal se ejecuta en la terminal (similar a `htop` o `vim`), aunque también incluye `mitmweb` (una interfaz gráfica en el navegador) y `mitmdump` (una versión no interactiva para scripts).
 
 Es la herramienta predilecta para administradores que se sienten cómodos en la CLI y prefieren la automatización.
@@ -639,6 +663,7 @@ def response(flow):
 ---
 
 ### 2. Charles Proxy: El estándar visual para depuración
+
 Mientras que Mitmproxy domina en la terminal, **Charles Proxy** (y su alternativa moderna, *Proxyman*) es el estándar de facto en entornos con interfaz gráfica. Es extremadamente popular cuando los administradores o desarrolladores necesitan depurar tráfico proveniente de emuladores iOS/Android o clientes "gordos" (Thick Clients).
 
 **Características imprescindibles para el diagnóstico:**
@@ -650,6 +675,7 @@ Mientras que Mitmproxy domina en la terminal, **Charles Proxy** (y su alternativ
 ---
 
 ### El gran obstáculo: Certificate Pinning (SSL Pinning)
+
 Como administrador, al intentar usar estas herramientas con aplicaciones móviles o de escritorio modernas (como Spotify, clientes bancarios o APIs estrictas), a menudo te encontrarás con que, a pesar de haber instalado el certificado CA de tu proxy, la conexión falla abruptamente.
 
 Esto se debe al **Certificate Pinning**. Es un mecanismo de seguridad donde la aplicación cliente tiene "incrustada" (hardcoded) la huella digital exacta del certificado TLS legítimo del servidor, o su clave pública.

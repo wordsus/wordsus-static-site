@@ -76,6 +76,7 @@ The SQL Expression Language allows you to write SQL queries using Python objects
 To execute these expressions, we require an `Engine` and a `Connection`. Relying on the context manager concepts from Chapter 6, we use `engine.begin()` to automatically handle transaction commits and rollbacks.
 
 #### 1. Inserting Data
+
 To insert data, we use the `insert()` construct.
 
 ```python
@@ -109,6 +110,7 @@ with engine.begin() as conn:
 ```
 
 #### 2. Selecting Data
+
 The `select()` construct replaces the SQL `SELECT` keyword. Notice how Python's standard comparison operators (`==`, `>`, `<`) are overloaded (leveraging the dunder methods discussed in Chapter 8) to generate SQL `WHERE` clauses.
 
 ```python
@@ -134,6 +136,7 @@ with engine.connect() as conn:
 *Note the use of `.c` (e.g., `users_table.c.username`). The `.c` attribute is an alias for the `columns` collection on the `Table` object, providing namespace access to all columns defined on that table.*
 
 #### 3. Updating and Deleting Data
+
 Updates and deletes follow the same chainable, expression-based syntax, combining `.where()` and `.values()`.
 
 ```python
@@ -162,9 +165,9 @@ with engine.begin() as conn:
 
 While the declarative ORM (covered in 18.2) is ideal for complex business logic and state management, Core shines in specific architectural scenarios:
 
-1.  **Bulk Operations:** Core bypasses the identity map and unit-of-work mechanics, making it exponentially faster for bulk inserts, updates, and ETL (Extract, Transform, Load) pipelines.
-2.  **Complex Analytics:** When writing massive, multi-table aggregate queries with complex window functions, Core's Expression Language is often easier to reason about and tune than the ORM.
-3.  **Schema Reflection:** Core excels at dynamically reading an existing database schema and mapping it at runtime, which is highly useful for building database administration tools or reporting dashboards.
+1. **Bulk Operations:** Core bypasses the identity map and unit-of-work mechanics, making it exponentially faster for bulk inserts, updates, and ETL (Extract, Transform, Load) pipelines.
+2. **Complex Analytics:** When writing massive, multi-table aggregate queries with complex window functions, Core's Expression Language is often easier to reason about and tune than the ORM.
+3. **Schema Reflection:** Core excels at dynamically reading an existing database schema and mapping it at runtime, which is highly useful for building database administration tools or reporting dashboards.
 
 ## 18.2 SQLAlchemy ORM: Declarative Mapping and Session Lifecycle
 
@@ -214,6 +217,7 @@ class Address(Base):
 ```
 
 In this setup:
+
 * `__tablename__` links the class to a specific database table.
 * `Mapped[type]` provides static typing for IDEs and Mypy.
 * `mapped_column()` defines the SQLAlchemy-specific constraints (primary keys, string lengths).
@@ -244,10 +248,10 @@ As an object interacts with the Session, it transitions through four distinct st
                                                                           +----------------+
 ```
 
-1.  **Transient:** The object exists in memory but is entirely disconnected from the ORM. It has no database identity (no primary key) and is not associated with any Session.
-2.  **Pending:** You have called `session.add(object)`. The Session knows about the object and plans to insert it into the database upon the next flush or commit, but it does not yet have a database identity.
-3.  **Persistent:** The object has a corresponding row in the database and an assigned primary key. It is actively being tracked by the Session. Any modifications to its attributes will trigger an `UPDATE` statement.
-4.  **Detached:** The object corresponds to a row in the database, but the Session that loaded it has been closed. Modifications to a detached object are not tracked and will not be saved unless the object is merged or re-added to a new Session.
+1. **Transient:** The object exists in memory but is entirely disconnected from the ORM. It has no database identity (no primary key) and is not associated with any Session.
+2. **Pending:** You have called `session.add(object)`. The Session knows about the object and plans to insert it into the database upon the next flush or commit, but it does not yet have a database identity.
+3. **Persistent:** The object has a corresponding row in the database and an assigned primary key. It is actively being tracked by the Session. Any modifications to its attributes will trigger an `UPDATE` statement.
+4. **Detached:** The object corresponds to a row in the database, but the Session that loaded it has been closed. Modifications to a detached object are not tracked and will not be saved unless the object is merged or re-added to a new Session.
 
 #### Executing the Lifecycle
 
@@ -297,7 +301,7 @@ with Session(engine) as session:
 
 ### Identity Map Pattern
 
-A crucial optimization within the Session is the **Identity Map**. The Session ensures that for a given database row (identified by its primary key), only *one* unique Python object exists within that Session. 
+A crucial optimization within the Session is the **Identity Map**. The Session ensures that for a given database row (identified by its primary key), only *one* unique Python object exists within that Session.
 
 If you execute two different queries that return the same user row, the Session will intercept the second result and return a reference to the exact same Python object already sitting in memory. This prevents memory bloat, ensures consistency, and is the reason why `id(user_result_1) == id(user_result_2)` will evaluate to `True` within a single session context.
 
@@ -340,7 +344,7 @@ SELECT * FROM addresses WHERE user_id = 3;
 SELECT * FROM addresses WHERE user_id = 100;
 ```
 
-If the database is on a different server, the network latency of executing 101 separate round-trips will cripple your application's throughput. 
+If the database is on a different server, the network latency of executing 101 separate round-trips will cripple your application's throughput.
 
 ### Eager Loading Strategies
 
@@ -363,6 +367,7 @@ users = session.scalars(stmt).unique().all()
 ```
 
 **Generated SQL:**
+
 ```sql
 SELECT users.id, users.username, addresses.id, addresses.email, addresses.user_id 
 FROM users 
@@ -385,6 +390,7 @@ users = session.scalars(stmt).all()
 ```
 
 **Generated SQL:**
+
 ```sql
 -- Query 1: Fetch the users
 SELECT users.id, users.username FROM users;
@@ -400,7 +406,7 @@ WHERE addresses.user_id IN (1, 2, 3, ...);
 
 ### Explicit Routing: `contains_eager`
 
-Sometimes, you need to manually write the `JOIN` yourself—not just to load data, but because you need to filter the parents based on the children (e.g., "Find all users who have an address ending in '@example.com'"). 
+Sometimes, you need to manually write the `JOIN` yourself—not just to load data, but because you need to filter the parents based on the children (e.g., "Find all users who have an address ending in '@example.com'").
 
 If you use a standard `join()`, SQLAlchemy will filter the rows, but it *won't* populate the ORM relationship by default. To tell the ORM "I already joined the table, please use that data to populate the relationship," you use `contains_eager`.
 
@@ -462,7 +468,7 @@ Alembic maintains a special table in your database called `alembic_version`. Thi
 To introduce Alembic into a project, you initialize it via the command line. This creates an `alembic.ini` configuration file and an `alembic/` directory containing the migration environment.
 
 ```bash
-$ alembic init alembic
+alembic init alembic
 ```
 
 The most critical configuration step occurs inside `alembic/env.py`. You must import your SQLAlchemy `DeclarativeBase` and assign it to Alembic's `target_metadata` variable. This gives Alembic the "blueprint" of what your database *should* look like.
@@ -494,7 +500,7 @@ Once configured, you can generate migration scripts. While you can write these m
 Suppose we add a `bio` column to our `User` model. We would run:
 
 ```bash
-$ alembic revision --autogenerate -m "add user bio column"
+alembic revision --autogenerate -m "add user bio column"
 ```
 
 This creates a new Python file in `alembic/versions/` (e.g., `8f9a3b4c1d2e_add_user_bio_column.py`).
@@ -532,13 +538,13 @@ Every migration script contains an `upgrade()` function (how to apply the change
 To apply the pending migrations to your database, you execute the upgrade command, targeting the `head` (the latest available revision).
 
 ```bash
-$ alembic upgrade head
+alembic upgrade head
 ```
 
 If you introduce a bug or need to roll back the schema, you can step backward using the downgrade command. For example, to undo the single most recent migration:
 
 ```bash
-$ alembic downgrade -1
+alembic downgrade -1
 ```
 
 ### Advanced Migration Strategies

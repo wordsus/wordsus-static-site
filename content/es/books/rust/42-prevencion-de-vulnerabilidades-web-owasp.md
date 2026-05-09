@@ -26,9 +26,10 @@ let query = format!("SELECT id, email FROM users WHERE username = '{}'", usernam
 
 ### Prevención en SQLx: Comprobación en Compilación y Binds
 
-Como vimos en el Capítulo 20, SQLx es agnóstico pero fuertemente tipado. Su mayor virtud de seguridad es que fomenta por defecto el uso de *Prepared Statements*. 
+Como vimos en el Capítulo 20, SQLx es agnóstico pero fuertemente tipado. Su mayor virtud de seguridad es que fomenta por defecto el uso de *Prepared Statements*.
 
 #### 1. Uso de la macro `query!` (La Vía Dorada)
+
 La forma más segura y recomendada de ejecutar consultas estáticas en SQLx es utilizar las macros de la familia `query!` (`query!`, `query_as!`, etc.). Estas macros no solo verifican la sintaxis SQL y los tipos contra la base de datos en tiempo de compilación, sino que **transforman automáticamente las variables pasadas en parámetros bind**.
 
 ```rust
@@ -43,6 +44,7 @@ let user = sqlx::query!(
 ```
 
 #### 2. Consultas Dinámicas con `query()` y `.bind()`
+
 Cuando la consulta no puede conocerse en tiempo de compilación (y por ende no puedes usar la macro), debes usar la función `sqlx::query()`. En este escenario, **jamás debes interpolar variables en la cadena de texto**. Debes colocar los marcadores correspondientes a tu motor (ej. `$1`, `$2` para Postgres, o `?` para MySQL/SQLite) y encadenar el método `.bind()`.
 
 ```rust
@@ -57,6 +59,7 @@ let user = sqlx::query(query_str)
 ```
 
 #### 3. El peligro del QueryBuilder
+
 Si necesitas construir consultas altamente dinámicas (como un `WHERE ... IN (...)` o filtros opcionales múltiples), SQLx proporciona un `QueryBuilder`. Aquí el riesgo de inyección reaparece si concatenas strings en el builder. Debes usar **siempre** el método `push_bind()`.
 
 ```rust
@@ -78,6 +81,7 @@ if let Some(role) = filter_role {
 Diesel (visto en el Capítulo 21) aborda el problema desde otro ángulo: abstrae el SQL mediante un Lenguaje Específico de Dominio (DSL) fuertemente tipado.
 
 #### 1. El DSL de Diesel (Seguro por Diseño)
+
 Cuando utilizas el Query Builder de Diesel, estás protegido por defecto. Diesel compila tu código Rust en sentencias preparadas de manera subyacente. Es virtualmente imposible inyectar SQL si te mantienes dentro de los límites del DSL.
 
 ```rust
@@ -92,7 +96,8 @@ let user = users
 ```
 
 #### 2. La Zona de Peligro: `sql_query`
-La vulnerabilidad en Diesel suele aparecer cuando los desarrolladores se encuentran con una consulta muy compleja que el DSL no soporta fácilmente y deciden usar la función de escape: `diesel::sql_query`. 
+
+La vulnerabilidad en Diesel suele aparecer cuando los desarrolladores se encuentran con una consulta muy compleja que el DSL no soporta fácilmente y deciden usar la función de escape: `diesel::sql_query`.
 
 Si vas a usar SQL crudo en Diesel, la regla de oro se mantiene: **nunca uses `format!`**. Debes utilizar marcadores de parámetros y la función `.bind::<TipoSQL, _>()`.
 
@@ -231,15 +236,15 @@ async fn handler_data() -> &'static str {
 }
 ```
 
-### Resumen de mitigación XSS para el Backend:
+### Resumen de mitigación XSS para el Backend
 
-1.  **Valida en la entrada:** Usa `validator` para asegurar que la estructura y el contenido de la petición (`Request`) son los esperados.
-2.  **Sanitiza para texto enriquecido:** Si el modelo de negocio requiere guardar HTML, pásalo siempre por `ammonia` antes de guardarlo en la base de datos.
-3.  **Aplica Headers de Seguridad:** Utiliza middlewares para añadir `Content-Security-Policy`, `X-Content-Type-Options: nosniff` y `X-Frame-Options` a tus respuestas HTTP.
+1. **Valida en la entrada:** Usa `validator` para asegurar que la estructura y el contenido de la petición (`Request`) son los esperados.
+2. **Sanitiza para texto enriquecido:** Si el modelo de negocio requiere guardar HTML, pásalo siempre por `ammonia` antes de guardarlo en la base de datos.
+3. **Aplica Headers de Seguridad:** Utiliza middlewares para añadir `Content-Security-Policy`, `X-Content-Type-Options: nosniff` y `X-Frame-Options` a tus respuestas HTTP.
 
 ## 42.3 Cross-Site Request Forgery (CSRF) tokens
 
-Mientras que el XSS (visto en la sección anterior) busca inyectar código malicioso para robar datos o alterar la interfaz, el Cross-Site Request Forgery (CSRF) tiene un objetivo distinto: **aprovecharse de la confianza que el backend tiene en el navegador del usuario**. 
+Mientras que el XSS (visto en la sección anterior) busca inyectar código malicioso para robar datos o alterar la interfaz, el Cross-Site Request Forgery (CSRF) tiene un objetivo distinto: **aprovecharse de la confianza que el backend tiene en el navegador del usuario**.
 
 El ataque ocurre cuando un sitio web malicioso engaña al navegador de la víctima para que envíe una petición HTTP (por ejemplo, un POST para cambiar su contraseña o transferir fondos) a nuestra aplicación Rust, donde el usuario ya tiene una sesión activa. Como los navegadores adjuntan automáticamente las cookies de sesión al dominio de destino, nuestro servidor podría procesar la petición creyendo que fue iniciada legítimamente por el usuario.
 
@@ -279,6 +284,7 @@ pub fn build_session_cookie(session_id: &str) -> Cookie<'static> {
 Depender exclusivamente de `SameSite` no es suficiente para aplicaciones de misión crítica, ya que navegadores antiguos podrían ignorar el atributo. La defensa histórica y más robusta es el uso de **Tokens CSRF**.
 
 El flujo funciona así:
+
 1. Cuando el cliente carga un formulario (o la SPA hace su primera carga), el servidor de Rust genera un token criptográficamente seguro, único para esa sesión, y se lo envía al cliente.
 2. El cliente debe incluir este token en cualquier petición que mute el estado (POST, PUT, DELETE, PATCH), ya sea en un campo oculto del formulario HTML o en un *Header* HTTP (`X-CSRF-Token`).
 3. El servidor compara el token recibido con el que tiene almacenado o encriptado para esa sesión. Si no coinciden o el token no existe, la petición es rechazada (`403 Forbidden`).
@@ -342,6 +348,7 @@ Un error muy común en desarrolladores intermedios es intentar implementar middl
 ¿Por qué? Porque la vulnerabilidad CSRF se basa en que el navegador *adjunta automáticamente* las cookies. Un navegador jamás leerá un JWT del *Local Storage* para inyectarlo mágicamente en un *Header* de una petición *cross-origin*. Eso requiere código JavaScript explícito, y si un atacante puede ejecutar JavaScript en tu dominio, ya tiene un problema mucho mayor (XSS), haciendo que el CSRF sea irrelevante.
 
 Por lo tanto:
+
 * **Aplicaciones tradicionales (Server-Side Rendering) con `Session Cookies`**: Necesitan `SameSite` + Tokens CSRF.
 * **Single Page Applications (SPAs) que usan Cookies `HttpOnly` para la sesión**: Necesitan Tokens CSRF (usualmente mediante el patrón *Double Submit Cookie*).
 * **APIs puras consumidas por SPAs/Móviles que usan `Authorization: Bearer`**: NO necesitan protección CSRF.

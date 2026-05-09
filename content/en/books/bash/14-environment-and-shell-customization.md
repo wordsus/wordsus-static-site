@@ -493,7 +493,7 @@ PS1="\u@\h:\w\$ "
 
 ```
 
-This translates to: `username@hostname:~/current/dir$ `
+This translates to: `username@hostname:~/current/dir$`
 
 ### Testing Custom Prompts
 
@@ -567,7 +567,7 @@ Save the file and run `source ~/.bashrc`. Your custom, colorful prompt is now th
 
 While `PS1` is the star of the show, it is worth knowing about `PS2`. This is the "secondary prompt," which Bash displays when a command expects further input. You see this most often when you type a command, end a line with a backslash `\`, and hit Enter to continue typing on the next line.
 
-The default value for `PS2` is `> `.
+The default value for `PS2` is `>`.
 
 ```bash
 $ echo "This is a very \

@@ -14,7 +14,7 @@ En la antigüedad bíblica, la supervivencia dependía de la comunidad y de la f
 
 Por lo tanto, la elección de la pareja recaía casi siempre en los padres, particularmente en los padres del novio. Ellos eran quienes iniciaban las gestiones, a menudo utilizando a un intermediario o casamentero (llamado *shadjan*). A pesar de ser matrimonios arreglados, la tradición judía, basada en relatos como el de Rebeca e Isaac en el Génesis, establecía que la joven debía dar su consentimiento libre. No se la podía obligar a casarse con un hombre que ella rechazara abiertamente, pero la voluntad familiar pesaba enormemente.
 
-Este proceso sentaba las bases para un sistema matrimonial dividido en tres etapas muy marcadas, cada una con sus propias reglas, ceremonias y pesos legales. 
+Este proceso sentaba las bases para un sistema matrimonial dividido en tres etapas muy marcadas, cada una con sus propias reglas, ceremonias y pesos legales.
 
 A continuación, un diagrama que ilustra el proceso completo del matrimonio judío en el primer siglo:
 
@@ -39,7 +39,7 @@ A continuación, un diagrama que ilustra el proceso completo del matrimonio jud�
 
 ## 2. Primera etapa: El Shidujín y la promesa
 
-El *Shidujín* era la etapa del arreglo. Era el momento en que las dos familias se sentaban a negociar y acordaban que sus hijos se casarían en el futuro. Esto podía ocurrir cuando los futuros novios eran aún muy jóvenes (en el caso de las mujeres, a menudo alrededor de los 12 o 13 años, y los hombres entre los 18 y 20 años). 
+El *Shidujín* era la etapa del arreglo. Era el momento en que las dos familias se sentaban a negociar y acordaban que sus hijos se casarían en el futuro. Esto podía ocurrir cuando los futuros novios eran aún muy jóvenes (en el caso de las mujeres, a menudo alrededor de los 12 o 13 años, y los hombres entre los 18 y 20 años).
 
 Durante esta etapa se establecían los términos económicos del futuro enlace, lo cual nos lleva a dos conceptos fundamentales: el *Mohar* y la *Ketubá*.
 
@@ -47,20 +47,20 @@ Durante esta etapa se establecían los términos económicos del futuro enlace, 
 
 En nuestra cultura, a menudo malinterpretamos las costumbres antiguas pensando que "se compraba a las mujeres". El *Mohar*, a menudo traducido como "precio de la novia", no era una transacción comercial donde la mujer era tratada como ganado. Era, por el contrario, una compensación económica que la familia del novio entregaba a la familia de la novia por la pérdida de una trabajadora valiosa en el hogar, y servía como demostración de que el joven tenía la capacidad económica para sostener a una esposa.
 
-Aún más importante era la **Ketubá**, el contrato matrimonial escrito. Este documento era una auténtica innovación legal del judaísmo antiguo diseñada para proteger a la mujer. En una sociedad patriarcal donde la mujer dependía económicamente del hombre, la *Ketubá* especificaba las obligaciones del esposo hacia su mujer: proveerle alimento, ropa y derechos conyugales. 
+Aún más importante era la **Ketubá**, el contrato matrimonial escrito. Este documento era una auténtica innovación legal del judaísmo antiguo diseñada para proteger a la mujer. En una sociedad patriarcal donde la mujer dependía económicamente del hombre, la *Ketubá* especificaba las obligaciones del esposo hacia su mujer: proveerle alimento, ropa y derechos conyugales.
 
 Además, la *Ketubá* establecía una suma de dinero que el esposo debía pagar a la mujer en caso de que él se divorciara de ella o falleciera. Este contrato era la red de seguridad de la mujer; sin él, no podía haber matrimonio. El hecho de que estuviera por escrito y firmado por testigos lo convertía en un documento legal inviolable.
 
 ## 4. Segunda etapa: El Erusín (Los Esponsales)
 
-Aquí es donde llegamos al núcleo de la historia de María y José. Una vez acordados los términos, se celebraba el *Erusín* (o *Kidushín*, que significa "santificación" o "consagración"). 
+Aquí es donde llegamos al núcleo de la historia de María y José. Una vez acordados los términos, se celebraba el *Erusín* (o *Kidushín*, que significa "santificación" o "consagración").
 
-El *Erusín* se traduce en nuestras Biblias como "desposorio" o "compromiso", pero **estas palabras modernas se quedan extremadamente cortas**. El *Erusín* no era una simple promesa de matrimonio futuro; **era el matrimonio legal en sí mismo**. 
+El *Erusín* se traduce en nuestras Biblias como "desposorio" o "compromiso", pero **estas palabras modernas se quedan extremadamente cortas**. El *Erusín* no era una simple promesa de matrimonio futuro; **era el matrimonio legal en sí mismo**.
 
 Durante una ceremonia formal ante testigos, el novio entregaba a la novia un objeto de valor (usualmente una moneda o un anillo) y le decía: *"Quedas consagrada a mí mediante esto, según la ley de Moisés y de Israel"*. A partir de ese momento preciso, el estatus de la pareja cambiaba drásticamente:
 
 1. **Eran considerados legalmente esposo y esposa.**
-2. **La mujer era consagrada (separada) exclusivamente para su marido.** 
+2. **La mujer era consagrada (separada) exclusivamente para su marido.**
 3. **Cualquier infidelidad de la mujer durante este período no era considerada "engaño de novios", sino adulterio.**
 4. **Si el hombre moría durante este tiempo, la joven era considerada una "viuda" legal, aunque no hubieran convivido.**
 
@@ -81,7 +81,7 @@ Para ilustrar mejor las abismales diferencias con nuestra época, observemos el 
 
 ## 5. El período de separación y preparación
 
-¿Por qué se casaban legalmente pero no vivían juntos? El *Erusín* inauguraba un período de espera que habitualmente duraba un año completo. 
+¿Por qué se casaban legalmente pero no vivían juntos? El *Erusín* inauguraba un período de espera que habitualmente duraba un año completo.
 
 Este tiempo tenía propósitos muy específicos. Para el novio, era el tiempo de regresar a la casa de su padre y construir la habitación, la nueva morada donde viviría con su esposa. Él debía demostrar que podía proveer un hogar adecuado. (Esta es la hermosa imagen que usa Jesús en Juan 14:2: *"En la casa de mi Padre hay muchas moradas... voy, pues, a preparar lugar para vosotros"*).
 
@@ -99,9 +99,10 @@ Es exactamente en la etapa media, durante el rígido e inquebrantable *Erusín*,
 
 El Evangelio de Mateo (1:18) lo relata con una claridad que, para un judío del primer siglo, era estremecedora: *"El nacimiento de Jesucristo fue así: Estando desposada María su madre con José, antes que se juntasen, se halló que había concebido del Espíritu Santo."*
 
-Detengámonos a analizar el peso de estas palabras. María y José están "desposados" (en *Erusín*). Son marido y mujer legalmente, pero "antes que se juntasen" (antes de la convivencia y el *Nisuín*), María resulta estar embarazada. 
+Detengámonos a analizar el peso de estas palabras. María y José están "desposados" (en *Erusín*). Son marido y mujer legalmente, pero "antes que se juntasen" (antes de la convivencia y el *Nisuín*), María resulta estar embarazada.
 
 En la estrecha, conservadora y piadosa aldea de Nazaret, esto no era un mero escándalo de la prensa rosa; era una catástrofe social y un delito capital. Según la perspectiva de la ley y de la comunidad que no sabía nada del milagro celestial, solo había dos explicaciones lógicas:
+
 1. José y María habían roto la ley de castidad y se habían acostado antes del *Nisuín*.
 2. María había cometido adulterio con otro hombre durante su tiempo de consagración a José.
 
@@ -115,7 +116,7 @@ Como el prometido engañado, José tenía el derecho absoluto, e incluso la obli
 
 Pero el texto bíblico nos revela el corazón de este hombre extraordinario: *"José su marido, como era justo, y no quería infamarla, quiso dejarla secretamente"* (Mateo 1:19).
 
-La palabra "justo" (*tsaddiq* en hebreo) no significaba solo alguien que sigue las reglas, sino alguien de un carácter moral intachable, misericordioso y alineado con el corazón de Dios. José se encuentra en la encrucijada más dolorosa de su vida. Ama a la Ley y ama a Dios, pero también amaba a María. 
+La palabra "justo" (*tsaddiq* en hebreo) no significaba solo alguien que sigue las reglas, sino alguien de un carácter moral intachable, misericordioso y alineado con el corazón de Dios. José se encuentra en la encrucijada más dolorosa de su vida. Ama a la Ley y ama a Dios, pero también amaba a María.
 
 La única salida legal para romper un *Erusín* era darle a la mujer una carta de divorcio legal llamada *Guet*. José elabora un plan lleno de gracia: no la llevará a juicio público. Le entregará el *Guet* en privado, ante el mínimo de dos testigos requeridos, rompiendo el contrato de esponsales de forma discreta para salvarle la vida, asumiendo quizás que la gente pensaría que él era el padre que huía de su responsabilidad, o al menos permitiendo que María se fuera a vivir lejos con su deshonra pero conservando la vida.
 
@@ -125,7 +126,7 @@ Es en medio de este tormento legal y emocional que el ángel del Señor se le ap
 
 Con todo este contexto legal en mente, la visita del ángel Gabriel a María en el Evangelio de Lucas cobra una dimensión heroica que a menudo pasamos por alto.
 
-Cuando el ángel le anuncia que concebirá en su vientre por obra del Espíritu Santo, María no era una niña ignorante. Ella conocía perfectamente las leyes de su pueblo. Conocía la *Ketubá*, conocía el *Erusín*, y conocía las piedras de Deuteronomio. 
+Cuando el ángel le anuncia que concebirá en su vientre por obra del Espíritu Santo, María no era una niña ignorante. Ella conocía perfectamente las leyes de su pueblo. Conocía la *Ketubá*, conocía el *Erusín*, y conocía las piedras de Deuteronomio.
 
 Ella sabía exactamente lo que un embarazo inexplicable significaría: la furia de su familia, el repudio de José, la condena de los líderes religiosos de Nazaret y, muy posiblemente, una ejecución pública y violenta. Dios no le estaba ofreciendo simplemente un privilegio teológico; le estaba pidiendo que pusiera su vida, su reputación y su futuro en la línea de fuego del rigorismo legal de su época.
 

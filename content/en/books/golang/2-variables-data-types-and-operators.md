@@ -1,10 +1,10 @@
-How you define, store, and manipulate data dictates the performance and reliability of your software. Unlike dynamically typed languages, Go is strictly and statically typed. This deliberate design choice trades implicit magic for explicit safety, ensuring the compiler catches type mismatches before they become production outages. 
+How you define, store, and manipulate data dictates the performance and reliability of your software. Unlike dynamically typed languages, Go is strictly and statically typed. This deliberate design choice trades implicit magic for explicit safety, ensuring the compiler catches type mismatches before they become production outages.
 
 In this chapter, we explore the mechanics of state management in Go. We will cover how to idiomatically declare variables and constants, navigate Go's foundational primitive types, safely execute type conversions, and utilize operators to manipulate data at both the application and bitwise levels.
 
 ## 2.1 Declaring Variables and Constants (`var`, `const`, `:=`)
 
-In Go, managing state safely and efficiently begins with how you declare variables and constants. As a statically typed language, Go requires the compiler to know the type of every variable. However, Go's designers prioritized ergonomics, providing multiple ways to declare variables to balance explicit intent with concise syntax. 
+In Go, managing state safely and efficiently begins with how you declare variables and constants. As a statically typed language, Go requires the compiler to know the type of every variable. However, Go's designers prioritized ergonomics, providing multiple ways to declare variables to balance explicit intent with concise syntax.
 
 ### The `var` Keyword: Explicit and Package-Level Declarations
 
@@ -18,6 +18,7 @@ var port int
 
 **The "Zero Value" Concept**
 Unlike languages like C where uninitialized variables hold garbage memory, Go guarantees that uninitialized variables are immediately usable and hold a default "zero value" determined by their type:
+
 * Numeric types (`int`, `float64`): `0`
 * Booleans (`bool`): `false`
 * Strings (`string`): `""` (empty string)
@@ -58,6 +59,7 @@ func startServer() {
 ```
 
 **Key Rules for `:=`**
+
 1. **Function-Scoped Only:** You cannot use `:=` outside of a function body. Package-level variables must use `var`.
 2. **Must Declare at Least One New Variable:** The `:=` operator requires that at least one variable on its left side is entirely new. It can be used to reassign existing variables *only* if they are grouped with a newly declared variable (a common pattern in error handling).
 
@@ -128,14 +130,14 @@ const (
 
 ## 2.2 Primitive Data Types (Integers, Floats, Strings, Booleans)
 
-Go is a statically typed language, which means the compiler must know the type of every variable to allocate the correct amount of memory and enforce type safety. Primitive data types are the foundational building blocks for all complex structures in Go. 
+Go is a statically typed language, which means the compiler must know the type of every variable to allocate the correct amount of memory and enforce type safety. Primitive data types are the foundational building blocks for all complex structures in Go.
 
 ### Integers and Aliases
 
 Go provides a rich set of integer types, split into two primary categories: architecture-dependent and architecture-independent.
 
 **Architecture-Dependent Integers**
-The sizes of `int` and `uint` (unsigned integer) are determined by the underlying hardware architecture of the machine compiling or running the code. On a 32-bit system, an `int` is 32 bits (4 bytes); on a 64-bit system, it is 64 bits (8 bytes). 
+The sizes of `int` and `uint` (unsigned integer) are determined by the underlying hardware architecture of the machine compiling or running the code. On a 32-bit system, an `int` is 32 bits (4 bytes); on a 64-bit system, it is 64 bits (8 bytes).
 
 *Idiom:* In Go, you should use `int` for integer values by default unless you have a specific reason to restrict the size or use unsigned numbers.
 
@@ -159,8 +161,9 @@ When developing network protocols, file formats, or memory-constrained cloud app
 
 **Special Aliases (`byte` and `rune`)**
 To make code more readable, Go includes two built-in type aliases:
-1.  `byte`: An alias for `uint8`. It is universally used to represent raw binary data, such as reading payloads from an HTTP request.
-2.  `rune`: An alias for `int32`. It is used to represent a single Unicode code point. Because UTF-8 characters can take up to 4 bytes, `int32` provides enough space to hold any Unicode character (like an emoji or a character from a non-Latin alphabet).
+
+1. `byte`: An alias for `uint8`. It is universally used to represent raw binary data, such as reading payloads from an HTTP request.
+2. `rune`: An alias for `int32`. It is used to represent a single Unicode code point. Because UTF-8 characters can take up to 4 bytes, `int32` provides enough space to hold any Unicode character (like an emoji or a character from a non-Latin alphabet).
 
 ```go
 var rawData byte = 0x41      // Hexadecimal for 'A'
@@ -172,7 +175,7 @@ var userIcon rune = '🚀'     // Single quotes denote a rune
 Go implements the IEEE-754 standard for floating-point numbers. There is no unsized `float` type; you must explicitly choose between precision levels.
 
 * `float32`: Offers roughly 7 decimal digits of precision.
-* `float64`: Offers roughly 15 decimal digits of precision. 
+* `float64`: Offers roughly 15 decimal digits of precision.
 
 By default, if you declare a float using short variable declaration (`:=`), Go infers `float64`, as modern processors handle 64-bit floats highly efficiently, and the added precision prevents common rounding errors.
 
@@ -188,7 +191,7 @@ var gravity float32 = 9.81
 
 ### Booleans
 
-The `bool` type represents truth values and can only be `true` or `false`. 
+The `bool` type represents truth values and can only be `true` or `false`.
 
 Unlike C or Python, Go is exceptionally strict about booleans. There is **no implicit conversion** between integers and booleans. A `1` does not equal `true`, a `0` does not equal `false`, and you cannot use a non-boolean variable as a condition in an `if` statement.
 
@@ -208,7 +211,7 @@ if count == 1 {
 
 ### Strings
 
-In Go, a `string` is an immutable, read-only slice of bytes. By default, Go strings are UTF-8 encoded. 
+In Go, a `string` is an immutable, read-only slice of bytes. By default, Go strings are UTF-8 encoded.
 
 Because strings are immutable, any operation that appears to modify a string (like concatenation) actually allocates new memory and creates a completely new string. This is a critical design choice for concurrent programming, as immutable data can be safely shared across thousands of Goroutines without complex locking mechanisms.
 
@@ -235,7 +238,7 @@ jsonPayload := `
 
 ## 2.3 Type Casting, Conversion, and Custom Types
 
-A core tenet of Go's design philosophy is that implicit behavior leads to elusive bugs. In languages like C or JavaScript, the compiler or interpreter will often implicitly convert (or "coerce") a variable of one type to another to make an operation succeed. Go strictly forbids this. 
+A core tenet of Go's design philosophy is that implicit behavior leads to elusive bugs. In languages like C or JavaScript, the compiler or interpreter will often implicitly convert (or "coerce") a variable of one type to another to make an operation succeed. Go strictly forbids this.
 
 In Go, there is no implicit type coercion. If you have an `int32` and an `int64`, you cannot add them together without explicitly converting one to match the other. Furthermore, Go prefers the term **conversion** over **casting**, because converting often involves a change in underlying memory representation, not just telling the compiler to treat a block of memory differently.
 
@@ -255,7 +258,7 @@ sum := int64(x) + y
 ```
 
 **Converting Between Integers and Floats**
-When converting from floating-point numbers to integers, Go does not round the number; it **truncates** the decimal portion entirely. 
+When converting from floating-point numbers to integers, Go does not round the number; it **truncates** the decimal portion entirely.
 
 ```go
 var f float64 = 3.999
@@ -314,7 +317,7 @@ original := string(rawBytes) // "Hello"
 
 ### Custom Types (Defined Types)
 
-Go allows you to define your own types using the `type` keyword. Creating a custom type is not just about writing clean code; it is a powerful compile-time safety mechanism. 
+Go allows you to define your own types using the `type` keyword. Creating a custom type is not just about writing clean code; it is a powerful compile-time safety mechanism.
 
 When you define a new type based on an existing underlying type, the new type and the underlying type are **distinct and incompatible** without explicit conversion.
 
@@ -434,7 +437,7 @@ isValid := int64(x) == y // true
 
 ### Logical Operators
 
-Logical operators are used exclusively with boolean values to form complex conditions. 
+Logical operators are used exclusively with boolean values to form complex conditions.
 
 * `&&` (Logical AND): True if both operands are true.
 * `||` (Logical OR): True if at least one operand is true.
@@ -475,7 +478,7 @@ Go supports the following bitwise operations on integer types:
 ```
 
 **The Bit Clear Operator (`&^`)**
-While `&`, `|`, `^`, `<<`, and `>>` are common across most C-style languages, Go's `&^` (Bit Clear) is unique. It conceptually means "AND NOT". 
+While `&`, `|`, `^`, `<<`, and `>>` are common across most C-style languages, Go's `&^` (Bit Clear) is unique. It conceptually means "AND NOT".
 
 If a bit in the right operand is `1`, the corresponding bit in the left operand is forced to `0`. If the bit in the right operand is `0`, the left operand's bit remains unchanged. It is heavily used for unsetting specific configuration flags.
 

@@ -15,6 +15,7 @@ In Go, SRP applies not just to structs and functions, but primarily to **package
 Consider a system that manages user registrations. A common anti-pattern is creating a massive "god struct" that handles everything from HTTP parsing to database inserts.
 
 **Non-Idiomatic:**
+
 ```go
 type UserService struct {
     db *sql.DB
@@ -105,6 +106,7 @@ If you implement a `RedisStorage` that silently truncates data longer than 1MB w
 This principle is the cornerstone of Go’s design philosophy. Rob Pike notably stated, *"The bigger the interface, the weaker the abstraction."* Go developers favor tiny, focused interfaces—often consisting of a single method (e.g., `io.Reader`, `io.Writer`, `fmt.Stringer`).
 
 **Non-Idiomatic (Fat Interface):**
+
 ```go
 type DocumentStore interface {
     Save(doc Document) error
@@ -113,6 +115,7 @@ type DocumentStore interface {
     Search(query string) ([]Document, error)
 }
 ```
+
 If a worker function only needs to save a document, forcing it to accept `DocumentStore` exposes it to unnecessary operations and makes mocking difficult.
 
 **Idiomatic Go:**
@@ -133,6 +136,7 @@ type DocumentReadWriter interface {
     DocumentWriter
 }
 ```
+
 Now, a function that only archives data can explicitly ask for a `DocumentWriter`, adhering strictly to ISP.
 
 ### Dependency Inversion Principle (DIP)
@@ -183,14 +187,15 @@ Domain-Driven Design (DDD), pioneered by Eric Evans, is a software development a
 
 ### The Ubiquitous Language
 
-Before writing any code, DDD demands a **Ubiquitous Language**: a shared vocabulary used by both domain experts (business stakeholders) and developers. If the business calls a customer a "Guest," your Go structs should be named `Guest`, not `User` or `Account`. In Go, this translates directly to how you name your packages, structs, and interfaces. 
+Before writing any code, DDD demands a **Ubiquitous Language**: a shared vocabulary used by both domain experts (business stakeholders) and developers. If the business calls a customer a "Guest," your Go structs should be named `Guest`, not `User` or `Account`. In Go, this translates directly to how you name your packages, structs, and interfaces.
 
 ### Core Building Blocks: Entities and Value Objects
 
 DDD separates domain concepts into two primary categories based on how they are identified and mutated.
 
 #### 1. Value Objects
-A Value Object models a concept defined entirely by its attributes. It has no unique identity; if two Value Objects have the exact same fields, they are considered equivalent. Crucially, Value Objects must be **immutable**. 
+
+A Value Object models a concept defined entirely by its attributes. It has no unique identity; if two Value Objects have the exact same fields, they are considered equivalent. Crucially, Value Objects must be **immutable**.
 
 In Go, we model Value Objects as simple structs and enforce immutability by passing them by value and hiding their internal fields where necessary.
 
@@ -223,6 +228,7 @@ func (m Money) Add(other Money) (Money, error) {
 ```
 
 #### 2. Entities
+
 An Entity has a distinct, continuous identity that runs through time and different states. Two orders with the same items and total are still two different orders if they have different IDs.
 
 In Go, Entities are typically structs that include an ID field and are manipulated via pointers to reflect their changing state.
@@ -372,8 +378,8 @@ Communication between the outside world and the core domain happens strictly thr
 
 There are two sides to the hexagon:
 
-1.  **Driving (Primary) Side:** The actors that *initiate* interaction with the application (e.g., a user clicking a button, an API gateway routing a request, a cron job). They use **Driving Adapters** (like an HTTP handler) to talk to **Driving Ports** (interfaces implemented by the core).
-2.  **Driven (Secondary) Side:** The external services that the application *relies on* to do its job (e.g., databases, third-party APIs, message brokers). The core dictates its needs via **Driven Ports** (interfaces), which are implemented by **Driven Adapters** (like a SQL query builder).
+1. **Driving (Primary) Side:** The actors that *initiate* interaction with the application (e.g., a user clicking a button, an API gateway routing a request, a cron job). They use **Driving Adapters** (like an HTTP handler) to talk to **Driving Ports** (interfaces implemented by the core).
+2. **Driven (Secondary) Side:** The external services that the application *relies on* to do its job (e.g., databases, third-party APIs, message brokers). The core dictates its needs via **Driven Ports** (interfaces), which are implemented by **Driven Adapters** (like a SQL query builder).
 
 ```text
 // Plain Text Diagram: The Hexagonal Flow
@@ -614,17 +620,18 @@ Outer Layer (Mechanisms) -----> Inner Layer (Policies)
 
 When implementing Clean Architecture in Go, we map these conceptual layers to packages.
 
-1.  **Entities (`domain` package):** The core business objects and their immediate validation rules. These have zero dependencies on any other package in your project.
-2.  **Use Cases (`usecase` package):** The application-specific business rules. These orchestrate the flow of data to and from the entities. They depend only on the `domain` package.
-3.  **Interface Adapters (`delivery` and `repository` packages):** * *Delivery:* HTTP handlers or gRPC servers that translate outside requests into Use Case calls.
+1. **Entities (`domain` package):** The core business objects and their immediate validation rules. These have zero dependencies on any other package in your project.
+2. **Use Cases (`usecase` package):** The application-specific business rules. These orchestrate the flow of data to and from the entities. They depend only on the `domain` package.
+3. **Interface Adapters (`delivery` and `repository` packages):** * *Delivery:* HTTP handlers or gRPC servers that translate outside requests into Use Case calls.
     * *Repository:* Implementations that translate Use Case data requests into database queries (SQL, NoSQL).
-4.  **Frameworks & Drivers (`cmd` and `infrastructure` packages):** The outermost layer containing the database drivers, web frameworks (like Gin or Echo), and the `main.go` file (the composition root).
+4. **Frameworks & Drivers (`cmd` and `infrastructure` packages):** The outermost layer containing the database drivers, web frameworks (like Gin or Echo), and the `main.go` file (the composition root).
 
 ### Building a Highly Testable Use Case
 
 To demonstrate the power of Clean Architecture, let's build a "Create Article" use case for a blogging platform. We will focus on the `usecase` layer to show how the Dependency Rule makes it perfectly testable.
 
 #### 1. The Domain (Inner Layer)
+
 ```go
 package domain
 
@@ -650,6 +657,7 @@ type ArticleRepository interface {
 ```
 
 #### 2. The Use Case (Application Layer)
+
 The Use Case orchestrates the business logic. It relies on the `ArticleRepository` interface, remaining blissfully unaware of whether the underlying storage is Postgres, MongoDB, or a memory map.
 
 ```go
@@ -699,6 +707,7 @@ func (uc *ArticleUsecase) Create(title, content string) (*domain.Article, error)
 ```
 
 #### 3. The Payoff: Frictionless Unit Testing
+
 Because the `ArticleUsecase` depends only on the `domain.ArticleRepository` interface, we can test it exhaustively using a simple mock. We do not need a database connection, network access, or Docker containers.
 
 ```go
@@ -789,15 +798,16 @@ Idiomatic Go favors explicit mapping over "magic" frameworks. Embracing this map
 
 ## 18.5 CQRS (Command Query Responsibility Segregation) and Event Sourcing
 
-As cloud-native applications scale, the traditional CRUD (Create, Read, Update, Delete) model often becomes a bottleneck. In many systems, the frequency of reads heavily outweighs the frequency of writes. Furthermore, the optimal data structure for enforcing complex business invariants (writes) is rarely the optimal structure for serving fast, aggregated API responses (reads). 
+As cloud-native applications scale, the traditional CRUD (Create, Read, Update, Delete) model often becomes a bottleneck. In many systems, the frequency of reads heavily outweighs the frequency of writes. Furthermore, the optimal data structure for enforcing complex business invariants (writes) is rarely the optimal structure for serving fast, aggregated API responses (reads).
 
 **CQRS (Command Query Responsibility Segregation)** solves this by fundamentally splitting the architectural paths for reading data and writing data. **Event Sourcing** pairs naturally with CQRS by treating every state change as a discrete, append-only event rather than updating a row in a database.
 
 ### Understanding CQRS
 
 At its core, CQRS asserts that a system should have two distinct models:
-1.  **The Write Model (Commands):** Handles operations that mutate state. Commands are tasked with validation, enforcing business rules (often using DDD Aggregates), and saving the new state. They do not return data, only success or failure.
-2.  **The Read Model (Queries):** Handles operations that fetch data. Queries do not mutate state. They read from a data store that is specifically optimized for presentation, bypassing complex domain logic.
+
+1. **The Write Model (Commands):** Handles operations that mutate state. Commands are tasked with validation, enforcing business rules (often using DDD Aggregates), and saving the new state. They do not return data, only success or failure.
+2. **The Read Model (Queries):** Handles operations that fetch data. Queries do not mutate state. They read from a data store that is specifically optimized for presentation, bypassing complex domain logic.
 
 ```text
 // Plain Text Diagram: The CQRS and Event Sourcing Flow
@@ -834,7 +844,7 @@ In Go, we implement CQRS by defining explicit input structs for our requests and
 
 #### 1. The Command Side
 
-A Command represents an intent to change state. 
+A Command represents an intent to change state.
 
 ```go
 package cqrs
@@ -911,7 +921,8 @@ func (h *GetOrderSummaryHandler) Handle(ctx context.Context, q GetOrderSummaryQu
 
 In a traditional CRUD system, if an order's status changes from `PENDING` to `SHIPPED`, you UPDATE the row in the database. The previous state is lost.
 
-**Event Sourcing** dictates that instead of storing the *current state*, you store a sequence of *state-changing events*. 
+**Event Sourcing** dictates that instead of storing the *current state*, you store a sequence of *state-changing events*.
+
 * `OrderCreated`
 * `ItemAdded`
 * `OrderShipped`
@@ -1008,7 +1019,7 @@ func (o *EventSourcedOrder) AddItem(sku string) {
 
 ### The Synergy: Projections and Go Concurrency
 
-How does the data get from the Write DB (Event Store) to the Read DB? Through **Projections**. 
+How does the data get from the Write DB (Event Store) to the Read DB? Through **Projections**.
 
 When an aggregate saves its uncommitted `changes` to the Event Store, those events are published to a message broker (like Kafka or RabbitMQ) or an internal Go channel. A background worker (projection engine) listens for these events and updates the Read models.
 

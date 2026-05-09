@@ -6,7 +6,7 @@ Observability is built on three pillars: logs, traces, and metrics. This chapter
 
 In a cloud-native environment, logs are not read by humans tailing a file on a single server; they are aggregated, parsed, and indexed by centralized platforms like Elasticsearch, Splunk, or Datadog. When relying on the traditional `log` package (which outputs unstructured plain text), you force these ingestion systems to rely on fragile regular expressions to extract meaningful metrics.
 
-Structured logging solves this by emitting logs as machine-readable data structures—most commonly JSON. Every log entry becomes an event containing a consistent set of key-value pairs. 
+Structured logging solves this by emitting logs as machine-readable data structures—most commonly JSON. Every log entry becomes an event containing a consistent set of key-value pairs.
 
 ### The Anatomy of a Structured Log
 
@@ -37,7 +37,7 @@ Over Go's history, the community has relied heavily on third-party libraries for
 
 ### Logrus: The Pioneer
 
-For years, Sirupsen/logrus was the undisputed standard for structured logging in Go. It introduced the `WithFields` API, which became a foundational pattern for Go developers. 
+For years, Sirupsen/logrus was the undisputed standard for structured logging in Go. It introduced the `WithFields` API, which became a foundational pattern for Go developers.
 
 While Logrus is exceptionally easy to use and integrates with almost everything, it is currently in "maintenance mode." No new features are being added, and it is notably slower and more memory-intensive than modern alternatives due to its heavy use of allocations and reflection.
 
@@ -45,23 +45,23 @@ While Logrus is exceptionally easy to use and integrates with almost everything,
 package main
 
 import (
-	"os"
-	"github.com/sirupsen/logrus"
+ "os"
+ "github.com/sirupsen/logrus"
 )
 
 func main() {
-	// Initialize Logrus to output JSON
-	log := logrus.New()
-	log.SetFormatter(&logrus.JSONFormatter{})
-	log.SetOutput(os.Stdout)
-	log.SetLevel(logrus.InfoLevel)
+ // Initialize Logrus to output JSON
+ log := logrus.New()
+ log.SetFormatter(&logrus.JSONFormatter{})
+ log.SetOutput(os.Stdout)
+ log.SetLevel(logrus.InfoLevel)
 
-	// Contextual logging with fields
-	log.WithFields(logrus.Fields{
-		"service": "payment-api",
-		"user_id": 8472,
-		"action":  "checkout",
-	}).Info("Payment processed successfully")
+ // Contextual logging with fields
+ log.WithFields(logrus.Fields{
+  "service": "payment-api",
+  "user_id": 8472,
+  "action":  "checkout",
+ }).Info("Payment processed successfully")
 }
 ```
 
@@ -74,39 +74,40 @@ func main() {
 Developed by Uber, `go.uber.org/zap` was designed from the ground up for absolute maximum performance and zero memory allocations in the hot path. If your microservice handles thousands of requests per second, logging overhead becomes a critical bottleneck. Zap mitigates this.
 
 Zap offers two APIs:
-1.  **`SugaredLogger`:** Slower, but offers a loosely typed, ergonomic API similar to Logrus.
-2.  **`Logger`:** Extremely fast, but requires strongly typed field definitions (e.g., `zap.String`, `zap.Int`) to avoid reflection and allocations.
+
+1. **`SugaredLogger`:** Slower, but offers a loosely typed, ergonomic API similar to Logrus.
+2. **`Logger`:** Extremely fast, but requires strongly typed field definitions (e.g., `zap.String`, `zap.Int`) to avoid reflection and allocations.
 
 ```go
 package main
 
 import (
-	"time"
-	"go.uber.org/zap"
+ "time"
+ "go.uber.org/zap"
 )
 
 func main() {
-	// NewProduction creates a fast, JSON-formatted logger
-	logger, _ := zap.NewProduction()
-	
-	// Flushes buffer, if any, before application exit
-	defer logger.Sync() 
+ // NewProduction creates a fast, JSON-formatted logger
+ logger, _ := zap.NewProduction()
+ 
+ // Flushes buffer, if any, before application exit
+ defer logger.Sync() 
 
-	url := "https://api.stripe.com/v1/charges"
-	
-	// Using the strongly-typed Logger for zero-allocation performance
-	logger.Error("failed to process payment",
-		zap.String("url", url),
-		zap.Int("attempt", 3),
-		zap.Duration("backoff", time.Second),
-	)
+ url := "https://api.stripe.com/v1/charges"
+ 
+ // Using the strongly-typed Logger for zero-allocation performance
+ logger.Error("failed to process payment",
+  zap.String("url", url),
+  zap.Int("attempt", 3),
+  zap.Duration("backoff", time.Second),
+ )
 
-	// Converting to a SugaredLogger for less critical paths
-	sugar := logger.Sugar()
-	sugar.Infow("Retrying connection",
-		"url", url,
-		"attempt", 4,
-	)
+ // Converting to a SugaredLogger for less critical paths
+ sugar := logger.Sugar()
+ sugar.Infow("Retrying connection",
+  "url", url,
+  "attempt", 4,
+ )
 }
 ```
 
@@ -118,45 +119,46 @@ func main() {
 
 Introduced in Go 1.21, `log/slog` finally brings high-performance structured logging to the standard library. It adopts the best ideas from Zap and Logrus, offering excellent performance while eliminating the need to pull in external dependencies.
 
-`slog` separates the frontend API (what developers call, like `slog.Info`) from the backend `Handler` (how the logs are formatted and written, like JSON or Text). 
+`slog` separates the frontend API (what developers call, like `slog.Info`) from the backend `Handler` (how the logs are formatted and written, like JSON or Text).
 
 ```go
 package main
 
 import (
-	"log/slog"
-	"os"
+ "log/slog"
+ "os"
 )
 
 func main() {
-	// Create a JSON handler writing to standard output
-	handler := slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{
-		Level: slog.LevelDebug, // Set minimum log level
-	})
-	
-	// Instantiate the logger
-	logger := slog.New(handler)
+ // Create a JSON handler writing to standard output
+ handler := slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{
+  Level: slog.LevelDebug, // Set minimum log level
+ })
+ 
+ // Instantiate the logger
+ logger := slog.New(handler)
 
-	// Set as the global default (makes standard 'log' package use this internally)
-	slog.SetDefault(logger)
+ // Set as the global default (makes standard 'log' package use this internally)
+ slog.SetDefault(logger)
 
-	// Basic structured logging
-	slog.Info("database connection established", 
-		"driver", "postgres", 
-		"pool_size", 20,
-	)
+ // Basic structured logging
+ slog.Info("database connection established", 
+  "driver", "postgres", 
+  "pool_size", 20,
+ )
 
-	// Grouping fields allows for nested JSON objects
-	slog.Warn("resource limits approaching",
-		slog.Group("memory",
-			slog.Int("used_mb", 450),
-			slog.Int("limit_mb", 512),
-		),
-	)
+ // Grouping fields allows for nested JSON objects
+ slog.Warn("resource limits approaching",
+  slog.Group("memory",
+   slog.Int("used_mb", 450),
+   slog.Int("limit_mb", 512),
+  ),
+ )
 }
 ```
 
 #### Strong Typing in `slog`
+
 Like Zap, `slog` supports strongly typed attributes to avoid allocation penalties via `slog.Attr`. Instead of passing alternating keys and values (which allocates an `interface{}` slice), you can pass `slog.String("key", "value")` or `slog.Int("key", 1)`.
 
 **When to use `slog`:** For almost all new Go projects. It provides standard library guarantees, excellent performance, and a unified interface that other packages can write against without locking users into a specific third-party logger.
@@ -171,9 +173,9 @@ Distributed tracing solves this by tracking a request's progression across proce
 
 To understand distributed tracing, you must be familiar with three foundational concepts:
 
-1.  **Trace:** The complete journey of a request as it moves through the distributed system. A trace is represented by a globally unique `TraceID`.
-2.  **Span:** A single operation or unit of work within a trace (e.g., a database query, an HTTP call, or a computationally heavy function). Spans have a start time, duration, and a `SpanID`. They can also contain metadata (attributes) and logs (events). Spans are hierarchical; a trace is essentially a tree of nested spans.
-3.  **Context Propagation:** The mechanism of passing the `TraceID` and `SpanID` between services, typically via HTTP headers (like the W3C `traceparent` header) or gRPC metadata.
+1. **Trace:** The complete journey of a request as it moves through the distributed system. A trace is represented by a globally unique `TraceID`.
+2. **Span:** A single operation or unit of work within a trace (e.g., a database query, an HTTP call, or a computationally heavy function). Spans have a start time, duration, and a `SpanID`. They can also contain metadata (attributes) and logs (events). Spans are hierarchical; a trace is essentially a tree of nested spans.
+3. **Context Propagation:** The mechanism of passing the `TraceID` and `SpanID` between services, typically via HTTP headers (like the W3C `traceparent` header) or gRPC metadata.
 
 Here is a visual representation of how a single Trace (TraceID: `5b8a9...`) propagates through a microservice topology, creating nested Spans:
 
@@ -210,58 +212,58 @@ Below is an example of creating spans and adding attributes within a service:
 package main
 
 import (
-	"context"
-	"errors"
-	"time"
+ "context"
+ "errors"
+ "time"
 
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/codes"
+ "go.opentelemetry.io/otel"
+ "go.opentelemetry.io/otel/attribute"
+ "go.opentelemetry.io/otel/codes"
 )
 
 // Initialize a package-level tracer. The name should typically match the package or service.
 var tracer = otel.Tracer("checkout-service")
 
 func ProcessCheckout(ctx context.Context, userID int, cartID string) error {
-	// Start a new span. It automatically inherits the TraceID from the incoming ctx
-	// if one exists (e.g., extracted from incoming HTTP headers).
-	ctx, span := tracer.Start(ctx, "ProcessCheckout")
-	
-	// defer span.End() is critical to ensure the span's duration is calculated
-	// and the span is dispatched to the exporter.
-	defer span.End()
+ // Start a new span. It automatically inherits the TraceID from the incoming ctx
+ // if one exists (e.g., extracted from incoming HTTP headers).
+ ctx, span := tracer.Start(ctx, "ProcessCheckout")
+ 
+ // defer span.End() is critical to ensure the span's duration is calculated
+ // and the span is dispatched to the exporter.
+ defer span.End()
 
-	// Attach business metadata to the span
-	span.SetAttributes(
-		attribute.Int("user.id", userID),
-		attribute.String("cart.id", cartID),
-	)
+ // Attach business metadata to the span
+ span.SetAttributes(
+  attribute.Int("user.id", userID),
+  attribute.String("cart.id", cartID),
+ )
 
-	// Pass the context down to the next function
-	if err := reserveInventory(ctx, cartID); err != nil {
-		// Record the error and set the span status to Error
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "failed to reserve inventory")
-		return err
-	}
+ // Pass the context down to the next function
+ if err := reserveInventory(ctx, cartID); err != nil {
+  // Record the error and set the span status to Error
+  span.RecordError(err)
+  span.SetStatus(codes.Error, "failed to reserve inventory")
+  return err
+ }
 
-	return nil
+ return nil
 }
 
 func reserveInventory(ctx context.Context, cartID string) error {
-	// Create a child span. Its parent is the "ProcessCheckout" span.
-	_, span := tracer.Start(ctx, "reserveInventory")
-	defer span.End()
+ // Create a child span. Its parent is the "ProcessCheckout" span.
+ _, span := tracer.Start(ctx, "reserveInventory")
+ defer span.End()
 
-	// Simulate a database call
-	time.Sleep(50 * time.Millisecond)
+ // Simulate a database call
+ time.Sleep(50 * time.Millisecond)
 
-	// Simulating a failure scenario
-	if cartID == "empty" {
-		return errors.New("cart is empty")
-	}
+ // Simulating a failure scenario
+ if cartID == "empty" {
+  return errors.New("cart is empty")
+ }
 
-	return nil
+ return nil
 }
 ```
 
@@ -275,28 +277,28 @@ The OpenTelemetry Go SDK provides standard interceptors and middleware to handle
 package main
 
 import (
-	"context"
-	"net/http"
+ "context"
+ "net/http"
 
-	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/propagation"
+ "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
+ "go.opentelemetry.io/otel"
+ "go.opentelemetry.io/otel/propagation"
 )
 
 func fetchPaymentStatus(ctx context.Context, orderID string) {
-	// Create an HTTP client wrapped with OpenTelemetry transport
-	client := http.Client{
-		Transport: otelhttp.NewTransport(http.DefaultTransport),
-	}
+ // Create an HTTP client wrapped with OpenTelemetry transport
+ client := http.Client{
+  Transport: otelhttp.NewTransport(http.DefaultTransport),
+ }
 
-	req, _ := http.NewRequestWithContext(ctx, "GET", "http://payment-service/api/v1/status", nil)
-	
-	// The otelhttp.NewTransport automatically injects the W3C trace context 
-	// from the 'ctx' into the req.Header before making the network call.
-	resp, err := client.Do(req)
-	if err == nil {
-		defer resp.Body.Close()
-	}
+ req, _ := http.NewRequestWithContext(ctx, "GET", "http://payment-service/api/v1/status", nil)
+ 
+ // The otelhttp.NewTransport automatically injects the W3C trace context 
+ // from the 'ctx' into the req.Header before making the network call.
+ resp, err := client.Do(req)
+ if err == nil {
+  defer resp.Body.Close()
+ }
 }
 ```
 
@@ -340,14 +342,14 @@ Unlike traditional monitoring systems where your application "pushes" metrics to
 
 Prometheus defines four core metric types that you will use to instrument your Go code:
 
-1.  **Counter:** A cumulative metric that represents a single monotonically increasing counter whose value can only increase or be reset to zero on restart. Use it for things like total HTTP requests, total errors, or total tasks processed.
-2.  **Gauge:** A metric that represents a single numerical value that can arbitrarily go up and down. Use it for things like current memory usage, the number of active goroutines, or concurrent database connections.
-3.  **Histogram:** Samples observations (usually things like request durations or response sizes) and counts them in configurable buckets. It also provides a sum of all observed values.
-4.  **Summary:** Similar to a histogram, but calculates configurable quantiles (e.g., the 95th percentile) directly on the client side. (Histograms are generally preferred in distributed systems because they can be aggregated across multiple instances, whereas summaries cannot).
+1. **Counter:** A cumulative metric that represents a single monotonically increasing counter whose value can only increase or be reset to zero on restart. Use it for things like total HTTP requests, total errors, or total tasks processed.
+2. **Gauge:** A metric that represents a single numerical value that can arbitrarily go up and down. Use it for things like current memory usage, the number of active goroutines, or concurrent database connections.
+3. **Histogram:** Samples observations (usually things like request durations or response sizes) and counts them in configurable buckets. It also provides a sum of all observed values.
+4. **Summary:** Similar to a histogram, but calculates configurable quantiles (e.g., the 95th percentile) directly on the client side. (Histograms are generally preferred in distributed systems because they can be aggregated across multiple instances, whereas summaries cannot).
 
 ### Instrumenting Go with `client_golang`
 
-To expose metrics, you will use the official `github.com/prometheus/client_golang/prometheus` package. 
+To expose metrics, you will use the official `github.com/prometheus/client_golang/prometheus` package.
 
 The most idiomatic way to declare metrics is using the `promauto` subpackage, which automatically registers the metric with the default global registry. To expose the `/metrics` endpoint, you use the `promhttp` handler.
 
@@ -355,65 +357,65 @@ The most idiomatic way to declare metrics is using the `promauto` subpackage, wh
 package main
 
 import (
-	"log"
-	"math/rand"
-	"net/http"
-	"time"
+ "log"
+ "math/rand"
+ "net/http"
+ "time"
 
-	"github.com/prometheus/client_golang/prometheus"
-	"github.com/prometheus/client_golang/prometheus/promauto"
-	"github.com/prometheus/client_golang/prometheus/promhttp"
+ "github.com/prometheus/client_golang/prometheus"
+ "github.com/prometheus/client_golang/prometheus/promauto"
+ "github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 // 1. Define Metrics
 var (
-	// Counter: Tracks total number of processed payments
-	paymentsProcessed = promauto.NewCounter(prometheus.CounterOpts{
-		Name: "app_payments_processed_total",
-		Help: "The total number of processed payments",
-	})
+ // Counter: Tracks total number of processed payments
+ paymentsProcessed = promauto.NewCounter(prometheus.CounterOpts{
+  Name: "app_payments_processed_total",
+  Help: "The total number of processed payments",
+ })
 
-	// Gauge: Tracks currently active users
-	activeUsers = promauto.NewGauge(prometheus.GaugeOpts{
-		Name: "app_active_users_current",
-		Help: "The current number of active user sessions",
-	})
+ // Gauge: Tracks currently active users
+ activeUsers = promauto.NewGauge(prometheus.GaugeOpts{
+  Name: "app_active_users_current",
+  Help: "The current number of active user sessions",
+ })
 
-	// Histogram: Tracks the latency of database queries in seconds
-	dbQueryDuration = promauto.NewHistogram(prometheus.HistogramOpts{
-		Name:    "app_db_query_duration_seconds",
-		Help:    "Latency of database queries",
-		Buckets: prometheus.DefBuckets, // Uses default buckets (e.g., 0.005s, 0.01s, 0.025s...)
-	})
+ // Histogram: Tracks the latency of database queries in seconds
+ dbQueryDuration = promauto.NewHistogram(prometheus.HistogramOpts{
+  Name:    "app_db_query_duration_seconds",
+  Help:    "Latency of database queries",
+  Buckets: prometheus.DefBuckets, // Uses default buckets (e.g., 0.005s, 0.01s, 0.025s...)
+ })
 )
 
 func main() {
-	// 2. Simulate application activity in a background goroutine
-	go simulateTraffic()
+ // 2. Simulate application activity in a background goroutine
+ go simulateTraffic()
 
-	// 3. Expose the /metrics endpoint
-	http.Handle("/metrics", promhttp.Handler())
+ // 3. Expose the /metrics endpoint
+ http.Handle("/metrics", promhttp.Handler())
 
-	log.Println("Starting server on :8080")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+ log.Println("Starting server on :8080")
+ log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
 func simulateTraffic() {
-	for {
-		// Increment the counter
-		paymentsProcessed.Inc()
+ for {
+  // Increment the counter
+  paymentsProcessed.Inc()
 
-		// Randomly adjust the gauge up or down
-		activeUsers.Set(float64(rand.Intn(100)))
+  // Randomly adjust the gauge up or down
+  activeUsers.Set(float64(rand.Intn(100)))
 
-		// Time a simulated operation and observe it in the histogram
-		start := time.Now()
-		time.Sleep(time.Duration(rand.Intn(100)) * time.Millisecond) // Simulate DB work
-		duration := time.Since(start).Seconds()
-		dbQueryDuration.Observe(duration)
+  // Time a simulated operation and observe it in the histogram
+  start := time.Now()
+  time.Sleep(time.Duration(rand.Intn(100)) * time.Millisecond) // Simulate DB work
+  duration := time.Since(start).Seconds()
+  dbQueryDuration.Observe(duration)
 
-		time.Sleep(2 * time.Second)
-	}
+  time.Sleep(2 * time.Second)
+ }
 }
 ```
 
@@ -441,21 +443,21 @@ A crucial feature of Prometheus is multidimensional data modeling using labels. 
 
 ```go
 var paymentCounter = promauto.NewCounterVec(
-	prometheus.CounterOpts{
-		Name: "app_payments_total",
-		Help: "Total payments processed partitioned by status",
-	},
-	[]string{"status", "currency"}, // Define the labels
+ prometheus.CounterOpts{
+  Name: "app_payments_total",
+  Help: "Total payments processed partitioned by status",
+ },
+ []string{"status", "currency"}, // Define the labels
 )
 
 func processPayment(success bool, currency string) {
-	status := "failed"
-	if success {
-		status = "success"
-	}
-	
-	// Increment the specific time series based on labels
-	paymentCounter.WithLabelValues(status, currency).Inc()
+ status := "failed"
+ if success {
+  status = "success"
+ }
+ 
+ // Increment the specific time series based on labels
+ paymentCounter.WithLabelValues(status, currency).Inc()
 }
 ```
 
@@ -465,7 +467,7 @@ func processPayment(success bool, currency string) {
 
 While Prometheus ships with a basic expression browser, it is not designed for building persistent dashboards. That is where Grafana comes in.
 
-Grafana connects to your Prometheus server as a data source. You then use **PromQL** (Prometheus Query Language) to turn the raw metric data into visual charts. 
+Grafana connects to your Prometheus server as a data source. You then use **PromQL** (Prometheus Query Language) to turn the raw metric data into visual charts.
 
 For example, to display the rate of successful payments per second over a 5-minute window, you would use this PromQL query in a Grafana Time Series panel:
 
@@ -485,34 +487,35 @@ By heavily instrumenting your Go applications with Counters, Gauges, and Histogr
 
 In a traditional deployment, an operations team might monitor an application by checking if the process ID (PID) is still running. In cloud-native environments and container orchestrators like Kubernetes, a running process does not guarantee a functioning application. A Go application might be deadlocked, caught in an infinite loop, or disconnected from its primary database, all while the binary continues to run.
 
-To solve this, orchestrators rely on the application to report its own state via network-accessible health checks. 
+To solve this, orchestrators rely on the application to report its own state via network-accessible health checks.
 
 ### The Three Types of Probes
 
 Kubernetes and similar orchestrators define three distinct types of health checks. Conflating them is one of the most common causes of cascading failures in microservice architectures.
 
-1.  **Liveness Probes (Am I broken?):** * **Action on failure:** The orchestrator forcefully kills the container and restarts it.
+1. **Liveness Probes (Am I broken?):** * **Action on failure:** The orchestrator forcefully kills the container and restarts it.
     * **Purpose:** To recover from non-recoverable states like deadlocks.
-2.  **Readiness Probes (Can I serve traffic?):**
+2. **Readiness Probes (Can I serve traffic?):**
     * **Action on failure:** The orchestrator removes the pod's IP address from the service load balancer. The container is *not* restarted.
     * **Purpose:** To ensure traffic is only routed to instances that are fully warmed up and connected to their backing services.
-3.  **Startup Probes (Am I initialized?):**
+3. **Startup Probes (Am I initialized?):**
     * **Action on failure:** The container is restarted. Once it succeeds, it hands over monitoring to the Liveness probe.
     * **Purpose:** To protect slow-starting applications (e.g., those parsing massive local caches) from being prematurely killed by a Liveness probe timeout.
 
 ### The Dependency Trap: What to Check?
 
-The most critical architectural decision you will make regarding health checks is deciding *what* dependencies to verify. 
+The most critical architectural decision you will make regarding health checks is deciding *what* dependencies to verify.
 
-A common anti-pattern is checking the database connection in the **Liveness** probe. If your database goes offline for 30 seconds, the Liveness probes of all your microservices will fail. Kubernetes will respond by restarting every single instance of your application. When the database comes back online, it will be immediately crushed by hundreds of microservices booting up simultaneously and opening new connection pools (a "thundering herd" problem). 
+A common anti-pattern is checking the database connection in the **Liveness** probe. If your database goes offline for 30 seconds, the Liveness probes of all your microservices will fail. Kubernetes will respond by restarting every single instance of your application. When the database comes back online, it will be immediately crushed by hundreds of microservices booting up simultaneously and opening new connection pools (a "thundering herd" problem).
 
 **Rule of Thumb:**
+
 * **Liveness probes** should be exceptionally lightweight. They should return `HTTP 200 OK` as long as the HTTP server is capable of accepting connections. They should *never* depend on external network calls.
 * **Readiness probes** should verify absolute minimum requirements for the service to function. If the application cannot do anything without a database, check the database. If a non-critical downstream service (like an email-sending queue) is down, the readiness probe should *still pass*, and the application should gracefully degrade instead of dropping off the load balancer entirely.
 
 ### Implementing Probes in Go
 
-Implementing health checks in Go is straightforward using the standard `net/http` package. By convention, these are typically exposed on `/healthz` (liveness) and `/readyz` (readiness). 
+Implementing health checks in Go is straightforward using the standard `net/http` package. By convention, these are typically exposed on `/healthz` (liveness) and `/readyz` (readiness).
 
 In highly secure environments, these endpoints are often exposed on a separate internal port (e.g., `8081`) rather than the main application port (`8080`) to ensure they are never accidentally exposed to the public internet via the API gateway.
 
@@ -520,74 +523,74 @@ In highly secure environments, these endpoints are often exposed on a separate i
 package main
 
 import (
-	"context"
-	"database/sql"
-	"encoding/json"
-	"log"
-	"net/http"
-	"time"
+ "context"
+ "database/sql"
+ "encoding/json"
+ "log"
+ "net/http"
+ "time"
 
-	_ "github.com/lib/pq" // Example using Postgres
+ _ "github.com/lib/pq" // Example using Postgres
 )
 
 type App struct {
-	DB *sql.DB
+ DB *sql.DB
 }
 
 func main() {
-	// Initialize dependencies
-	db, err := sql.Open("postgres", "postgres://user:pass@localhost/db")
-	if err != nil {
-		log.Fatal("Failed to configure database:", err)
-	}
-	app := &App{DB: db}
+ // Initialize dependencies
+ db, err := sql.Open("postgres", "postgres://user:pass@localhost/db")
+ if err != nil {
+  log.Fatal("Failed to configure database:", err)
+ }
+ app := &App{DB: db}
 
-	// Application routes
-	mux := http.NewServeMux()
-	mux.HandleFunc("/api/v1/users", app.usersHandler)
+ // Application routes
+ mux := http.NewServeMux()
+ mux.HandleFunc("/api/v1/users", app.usersHandler)
 
-	// Health Check routes (often attached to the same mux, or a separate internal one)
-	mux.HandleFunc("/healthz", app.livenessHandler)
-	mux.HandleFunc("/readyz", app.readinessHandler)
+ // Health Check routes (often attached to the same mux, or a separate internal one)
+ mux.HandleFunc("/healthz", app.livenessHandler)
+ mux.HandleFunc("/readyz", app.readinessHandler)
 
-	log.Println("Starting server on :8080")
-	log.Fatal(http.ListenAndServe(":8080", mux))
+ log.Println("Starting server on :8080")
+ log.Fatal(http.ListenAndServe(":8080", mux))
 }
 
 // livenessHandler indicates if the process is capable of executing code.
 // It does NO external checks.
 func (a *App) livenessHandler(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(http.StatusOK)
-	w.Write([]byte("OK"))
+ w.WriteHeader(http.StatusOK)
+ w.Write([]byte("OK"))
 }
 
 // readinessHandler checks if the application is ready to accept user traffic.
 // This involves checking critical dependencies like the database.
 func (a *App) readinessHandler(w http.ResponseWriter, r *http.Request) {
-	// Use a strict timeout context. A slow database ping is functionally 
-	// equivalent to a failed database ping in a distributed system.
-	ctx, cancel := context.WithTimeout(r.Context(), 2*time.Second)
-	defer cancel()
+ // Use a strict timeout context. A slow database ping is functionally 
+ // equivalent to a failed database ping in a distributed system.
+ ctx, cancel := context.WithTimeout(r.Context(), 2*time.Second)
+ defer cancel()
 
-	// Verify database connectivity
-	if err := a.DB.PingContext(ctx); err != nil {
-		w.WriteHeader(http.StatusServiceUnavailable)
-		
-		// Optionally return JSON detailing *why* the service is not ready
-		// Useful for human operators debugging the cluster.
-		json.NewEncoder(w).Encode(map[string]string{
-			"status": "unavailable",
-			"error":  "database ping failed",
-		})
-		return
-	}
+ // Verify database connectivity
+ if err := a.DB.PingContext(ctx); err != nil {
+  w.WriteHeader(http.StatusServiceUnavailable)
+  
+  // Optionally return JSON detailing *why* the service is not ready
+  // Useful for human operators debugging the cluster.
+  json.NewEncoder(w).Encode(map[string]string{
+   "status": "unavailable",
+   "error":  "database ping failed",
+  })
+  return
+ }
 
-	w.WriteHeader(http.StatusOK)
-	w.Write([]byte("Ready"))
+ w.WriteHeader(http.StatusOK)
+ w.Write([]byte("Ready"))
 }
 
 func (a *App) usersHandler(w http.ResponseWriter, r *http.Request) {
-	// ... normal business logic ...
+ // ... normal business logic ...
 }
 ```
 
@@ -615,7 +618,7 @@ Time --->
 
 ### Advanced Considerations: Graceful Shutdown
 
-Readiness probes are also essential during application termination. When you deploy a new version of your Go application, Kubernetes sends a `SIGTERM` signal to the old pod. 
+Readiness probes are also essential during application termination. When you deploy a new version of your Go application, Kubernetes sends a `SIGTERM` signal to the old pod.
 
 Before your Go application shuts down its HTTP server, it should immediately mark its `/readyz` endpoint as unhealthy (e.g., returning `HTTP 503`). This ensures that the load balancer stops routing new requests to the instance while the `http.Server.Shutdown(ctx)` method finishes processing the existing, in-flight requests. If you skip this, requests sent precisely during the pod termination window will result in dropped connections.
 
@@ -623,7 +626,7 @@ Before your Go application shuts down its HTTP server, it should immediately mar
 
 Metrics and distributed traces will alert you *that* a microservice is consuming too much memory or taking too long to respond. However, they rarely tell you *why*. To identify the exact line of code responsible for a memory leak or a CPU bottleneck, you need to peek inside the running application.
 
-Go makes this exceptionally easy with its built-in profiling tool, `pprof`. Unlike many languages where profiling requires attaching heavy external agents that degrade performance, Go's profiler is designed to be lightweight and safe for production environments. 
+Go makes this exceptionally easy with its built-in profiling tool, `pprof`. Unlike many languages where profiling requires attaching heavy external agents that degrade performance, Go's profiler is designed to be lightweight and safe for production environments.
 
 ### How `pprof` Works in Go
 
@@ -645,7 +648,7 @@ The `net/http/pprof` package works by registering a set of HTTP handlers that ex
 
 ### Implementing `pprof` Safely
 
-The simplest way to enable profiling is by adding a blank import: `import _ "net/http/pprof"`. This automatically registers the profiling endpoints on the default `http.DefaultServeMux`. 
+The simplest way to enable profiling is by adding a blank import: `import _ "net/http/pprof"`. This automatically registers the profiling endpoints on the default `http.DefaultServeMux`.
 
 **This is extremely dangerous if your application uses the default mux for public traffic.** Exposing `pprof` to the internet leaks internal application structure and allows malicious actors to trigger CPU-intensive profiling tasks, resulting in a Denial of Service (DoS).
 
@@ -655,35 +658,35 @@ In a cloud-native architecture, the best practice is to spin up a dedicated, int
 package main
 
 import (
-	"log"
-	"net/http"
-	"net/http/pprof"
-	"time"
+ "log"
+ "net/http"
+ "net/http/pprof"
+ "time"
 )
 
 func main() {
-	// 1. The Main Application Server (Publicly Accessible)
-	go func() {
-		publicMux := http.NewServeMux()
-		publicMux.HandleFunc("/api/v1/resource", func(w http.ResponseWriter, r *http.Request) {
-			w.Write([]byte("Business Logic Here"))
-		})
-		log.Println("Starting public server on :8080")
-		log.Fatal(http.ListenAndServe(":8080", publicMux))
-	}()
+ // 1. The Main Application Server (Publicly Accessible)
+ go func() {
+  publicMux := http.NewServeMux()
+  publicMux.HandleFunc("/api/v1/resource", func(w http.ResponseWriter, r *http.Request) {
+   w.Write([]byte("Business Logic Here"))
+  })
+  log.Println("Starting public server on :8080")
+  log.Fatal(http.ListenAndServe(":8080", publicMux))
+ }()
 
-	// 2. The Observability/Admin Server (Internal Network Only)
-	adminMux := http.NewServeMux()
-	
-	// Manually register pprof handlers to the internal mux
-	adminMux.HandleFunc("/debug/pprof/", pprof.Index)
-	adminMux.HandleFunc("/debug/pprof/cmdline", pprof.Cmdline)
-	adminMux.HandleFunc("/debug/pprof/profile", pprof.Profile) // CPU profile
-	adminMux.HandleFunc("/debug/pprof/symbol", pprof.Symbol)
-	adminMux.HandleFunc("/debug/pprof/trace", pprof.Trace)
+ // 2. The Observability/Admin Server (Internal Network Only)
+ adminMux := http.NewServeMux()
+ 
+ // Manually register pprof handlers to the internal mux
+ adminMux.HandleFunc("/debug/pprof/", pprof.Index)
+ adminMux.HandleFunc("/debug/pprof/cmdline", pprof.Cmdline)
+ adminMux.HandleFunc("/debug/pprof/profile", pprof.Profile) // CPU profile
+ adminMux.HandleFunc("/debug/pprof/symbol", pprof.Symbol)
+ adminMux.HandleFunc("/debug/pprof/trace", pprof.Trace)
 
-	log.Println("Starting admin server (pprof/metrics) on 127.0.0.1:8081")
-	log.Fatal(http.ListenAndServe("127.0.0.1:8081", adminMux))
+ log.Println("Starting admin server (pprof/metrics) on 127.0.0.1:8081")
+ log.Fatal(http.ListenAndServe("127.0.0.1:8081", adminMux))
 }
 ```
 
@@ -698,7 +701,7 @@ Once exposed, `pprof` provides several distinct profiles. The most critical for 
 
 ### Analyzing Profiles with the Go Toolchain
 
-You do not read the binary profile data directly. Instead, you use the `go tool pprof` command-line utility from your local machine, pointing it at the live production endpoint. 
+You do not read the binary profile data directly. Instead, you use the `go tool pprof` command-line utility from your local machine, pointing it at the live production endpoint.
 
 To analyze memory allocations, you would run:
 

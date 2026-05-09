@@ -34,9 +34,9 @@ async def get_redis_client() -> AsyncGenerator[redis.Redis, None]:
 
 ### 1. High-Speed Caching: The Cache-Aside Pattern
 
-The most ubiquitous use of Redis is as a look-aside (or cache-aside) layer to shield the primary database from read-heavy, compute-intensive, or frequently accessed endpoints. 
+The most ubiquitous use of Redis is as a look-aside (or cache-aside) layer to shield the primary database from read-heavy, compute-intensive, or frequently accessed endpoints.
 
-In the Cache-Aside pattern, the application code, rather than the database or cache itself, orchestrates the data retrieval. 
+In the Cache-Aside pattern, the application code, rather than the database or cache itself, orchestrates the data retrieval.
 
 ```text
 [Client] --> [Python Backend]
@@ -124,7 +124,7 @@ Using Redis Hashes (`HSET`, `HGETALL`) for sessions allows the backend to retrie
 
 ### 3. Rate Limiting via Lua Scripting
 
-Rate limiting protects APIs from abuse, brute-force attacks, and cascading failures. The most common algorithm for this is the **Fixed Window Counter**. 
+Rate limiting protects APIs from abuse, brute-force attacks, and cascading failures. The most common algorithm for this is the **Fixed Window Counter**.
 
 A naive Python implementation might execute a `GET`, check the value, and then `INCR` (increment) it. However, under high concurrency, this introduces race conditions. Two requests arriving simultaneously might both read the count as `9` and increment it to `10`, bypassing a limit of `10`.
 
@@ -174,7 +174,7 @@ In an API framework like FastAPI, this function can be injected as a middleware 
 
 While relational databases force data into highly normalized, two-dimensional tables (as discussed in Chapter 17), document databases like MongoDB persist data as flexible, hierarchical BSON (Binary JSON) documents. This structure is exceptionally well-suited for domain models with highly nested data, arrays, or polymorphic shapes that would otherwise require expensive, complex SQL `JOIN` operations.
 
-However, extracting analytical insights from nested, unstructured data requires a paradigm shift from standard SQL. In MongoDB, complex queries are handled via the **Aggregation Pipeline**. 
+However, extracting analytical insights from nested, unstructured data requires a paradigm shift from standard SQL. In MongoDB, complex queries are handled via the **Aggregation Pipeline**.
 
 Conceptually, the aggregation pipeline operates much like a Unix shell pipeline (`|`). You pass an initial stream of documents through a sequence of processing stages. Each stage transforms the data in memory—filtering, reshaping, sorting, or grouping—and passes the output to the next stage.
 
@@ -207,7 +207,7 @@ Conceptually, the aggregation pipeline operates much like a Unix shell pipeline 
 
 ### Implementing Pipelines in Python with Motor
 
-Because our backend architecture relies on asynchronous I/O (Chapter 12), we interact with MongoDB using `motor`, the official asynchronous Python driver, rather than the synchronous `pymongo`. 
+Because our backend architecture relies on asynchronous I/O (Chapter 12), we interact with MongoDB using `motor`, the official asynchronous Python driver, rather than the synchronous `pymongo`.
 
 Consider an e-commerce scenario. A single `Order` document contains top-level metadata and an array of nested `items`. We need to generate a real-time analytics report showing the total revenue and units sold per product category over the last 30 days.
 
@@ -289,23 +289,24 @@ async def get_category_revenue_report() -> List[Dict[str, Any]]:
 
 When designing aggregation pipelines in a high-traffic Python backend, three strict rules apply:
 
-1.  **Filter Early:** The `$match` and `$sort` stages should appear as early in the pipeline as possible. If a `$match` is the first stage, MongoDB can utilize B-Tree indexes to retrieve documents. Once the pipeline passes a stage like `$unwind` or `$group`, indexes can no longer be used.
-2.  **Memory Limits:** MongoDB enforces a strict 100-megabyte RAM limit per pipeline stage. If a `$group` or `$sort` stage exceeds this, the query will violently crash. For massive aggregations, you must pass `allowDiskUse=True` to the `aggregate()` method, which allows MongoDB to write temporary files to disk (albeit with a severe latency penalty).
-3.  **The `$lookup` Operator:** While MongoDB is primarily denormalized, the `$lookup` stage allows for left-outer joins between different collections. However, performing joins in a distributed database is computationally expensive. If you find yourself writing pipelines with multiple `$lookup` stages, you are likely treating MongoDB like a relational database, and should either redesign your schema to embed the data or migrate back to PostgreSQL.
+1. **Filter Early:** The `$match` and `$sort` stages should appear as early in the pipeline as possible. If a `$match` is the first stage, MongoDB can utilize B-Tree indexes to retrieve documents. Once the pipeline passes a stage like `$unwind` or `$group`, indexes can no longer be used.
+2. **Memory Limits:** MongoDB enforces a strict 100-megabyte RAM limit per pipeline stage. If a `$group` or `$sort` stage exceeds this, the query will violently crash. For massive aggregations, you must pass `allowDiskUse=True` to the `aggregate()` method, which allows MongoDB to write temporary files to disk (albeit with a severe latency penalty).
+3. **The `$lookup` Operator:** While MongoDB is primarily denormalized, the `$lookup` stage allows for left-outer joins between different collections. However, performing joins in a distributed database is computationally expensive. If you find yourself writing pipelines with multiple `$lookup` stages, you are likely treating MongoDB like a relational database, and should either redesign your schema to embed the data or migrate back to PostgreSQL.
 
 ## 19.3 Wide-Column Stores and Time-Series Databases for Telemetry
 
-As a backend scales, the data it generates splits into two distinct categories: *operational state* (users, orders, sessions) and *telemetry* (server metrics, IoT sensor readings, application logs, and audit trails). 
+As a backend scales, the data it generates splits into two distinct categories: *operational state* (users, orders, sessions) and *telemetry* (server metrics, IoT sensor readings, application logs, and audit trails).
 
 Telemetry data possesses unique characteristics: it is generated in massive, unrelenting volumes; it is almost entirely append-only (immutable); and it is primarily queried across time windows rather than via complex joins. Storing this firehose of data in a traditional relational database (Chapter 17) will rapidly lead to index bloat and disastrous write-latency. To handle telemetry effectively, we must shift to architectures optimized for high-throughput, time-sequenced ingestion: Wide-Column Stores and Time-Series Databases (TSDBs).
 
 ### Wide-Column Stores: Distributed Write Superiority
 
-Wide-column stores, originally pioneered by Google's Bigtable and popularized by Apache Cassandra and ScyllaDB, are designed for extreme write availability and horizontal scalability across multiple datacenters. 
+Wide-column stores, originally pioneered by Google's Bigtable and popularized by Apache Cassandra and ScyllaDB, are designed for extreme write availability and horizontal scalability across multiple datacenters.
 
 Unlike relational tables or MongoDB documents, data in a wide-column store is organized using a multi-dimensional map. The defining feature of this architecture is the two-part primary key:
-1.  **Partition Key:** Determines which physical node in the distributed cluster holds the data.
-2.  **Clustering Key:** Determines how the data is sorted on disk *within* that partition.
+
+1. **Partition Key:** Determines which physical node in the distributed cluster holds the data.
+2. **Clustering Key:** Determines how the data is sorted on disk *within* that partition.
 
 For telemetry, this structure is immensely powerful. By setting a device ID or metric name as the partition key, and the timestamp as the clustering key, we ensure that all time-series data for a specific entity is stored sequentially on disk. This makes retrieving a time slice incredibly fast.
 
@@ -367,6 +368,7 @@ async def record_sensor_reading(sensor_id: str, timestamp: int, temp: float):
 While wide-column stores are excellent for raw scale, they lack domain-specific features for time-bound data analysis. If your application relies heavily on calculating moving averages, downsampling old data to save disk space, or interpolating missing data points, a specialized Time-Series Database like InfluxDB or TimescaleDB is the superior choice.
 
 TSDBs introduce specific time-series concepts:
+
 * **Tags:** Indexed metadata (e.g., `region=us-east`, `version=1.2`).
 * **Fields:** Unindexed, actual measured values (e.g., `cpu_usage=85.4`, `memory_free=1024`).
 * **Retention Policies:** Automated background jobs that drop data older than a specific threshold (e.g., keeping granular 1-second data for 7 days, then rolling it up into 1-hour averages for 1 year).
@@ -410,7 +412,7 @@ async def log_api_latency(endpoint: str, method: str, latency_ms: float):
 
 ### TimescaleDB: The Relational Bridge
 
-If your team is already deeply invested in PostgreSQL and SQLAlchemy (Chapter 18), TimescaleDB offers a compelling alternative. It is an extension for PostgreSQL that abstracts time-series data into "hypertables." 
+If your team is already deeply invested in PostgreSQL and SQLAlchemy (Chapter 18), TimescaleDB offers a compelling alternative. It is an extension for PostgreSQL that abstracts time-series data into "hypertables."
 
 To the Python backend, a hypertable looks and acts exactly like a standard relational table, meaning you can write standard `INSERT` and `SELECT` queries using SQLAlchemy or `asyncpg`. Behind the scenes, TimescaleDB automatically partitions the data into time-based chunks, enabling massive ingest rates while allowing you to join your telemetry data directly with your operational relational data (e.g., joining an `api_requests` hypertable with a `users` table to analyze latency per subscription tier).
 
@@ -426,7 +428,7 @@ Failing to invalidate a cache correctly leads to data anomalies, such as users s
 
 #### 1. Time-To-Live (TTL) with Jitter
 
-The simplest form of invalidation is passive: assigning a TTL to every cached item. Once the TTL expires, the key is evicted, and the next request will repopulate it from the database. 
+The simplest form of invalidation is passive: assigning a TTL to every cached item. Once the TTL expires, the key is evicted, and the next request will repopulate it from the database.
 
 However, assigning a hard-coded TTL to frequently accessed resources creates a critical vulnerability known as a **Cache Stampede** (or Thundering Herd). If the cache for a highly popular endpoint (e.g., the homepage configuration) expires, thousands of concurrent requests will experience a cache miss simultaneously, overwhelming the primary database.
 
@@ -487,7 +489,7 @@ async def update_user_email(
 
 #### 3. Tag-Based Invalidation via Redis Sets
 
-A significant challenge arises when a single database update affects multiple disparate cache entries. For instance, updating an author's name requires invalidating the author's profile, but also every cached article written by that author. 
+A significant challenge arises when a single database update affects multiple disparate cache entries. For instance, updating an author's name requires invalidating the author's profile, but also every cached article written by that author.
 
 Because Redis is a key-value store, we cannot run a SQL-like `DELETE WHERE author_id = X`. Instead, we construct a secondary index using Redis Sets to group related cache keys.
 
@@ -561,7 +563,7 @@ When a key is hashed, the algorithm traverses clockwise around the ring until it
 
 When deploying distributed Redis, you must choose between two primary topologies depending on your goal: High Availability or Horizontal Scalability.
 
-1.  **Redis Sentinel (High Availability):** Operates on a primary/replica model. All writes go to the primary, which asynchronously replicates to read-only replicas. If the primary node crashes, Sentinel processes detect the failure, automatically elect a replica as the new primary, and update the routing tables. It provides redundancy but does *not* partition your data (every node holds a copy of the entire dataset).
-2.  **Redis Cluster (Sharding):** Provides true distributed data partitioning. Redis Cluster utilizes a form of consistent hashing using 16,384 "hash slots." Every node in the cluster is responsible for a subset of these slots. When your Python client requests a key, the driver calculates the hash slot (`CRC16(key) mod 16384`) and routes the request directly to the responsible node. This allows the cache capacity to scale horizontally beyond the RAM limits of a single machine.
+1. **Redis Sentinel (High Availability):** Operates on a primary/replica model. All writes go to the primary, which asynchronously replicates to read-only replicas. If the primary node crashes, Sentinel processes detect the failure, automatically elect a replica as the new primary, and update the routing tables. It provides redundancy but does *not* partition your data (every node holds a copy of the entire dataset).
+2. **Redis Cluster (Sharding):** Provides true distributed data partitioning. Redis Cluster utilizes a form of consistent hashing using 16,384 "hash slots." Every node in the cluster is responsible for a subset of these slots. When your Python client requests a key, the driver calculates the hash slot (`CRC16(key) mod 16384`) and routes the request directly to the responsible node. This allows the cache capacity to scale horizontally beyond the RAM limits of a single machine.
 
 For large-scale Python backends, migrating from a single `redis.Redis` client to a clustered environment typically involves switching to the `redis.cluster.RedisCluster` class provided by `redis-py`, which automatically handles slot discovery and node redirection under the hood.

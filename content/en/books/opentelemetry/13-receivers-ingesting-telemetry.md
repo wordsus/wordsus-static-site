@@ -20,11 +20,11 @@ receivers:
       http:
 ```
 
-By default, this minimal configuration binds the gRPC receiver to `0.0.0.0:4317` and the HTTP receiver to `0.0.0.0:4318`. 
+By default, this minimal configuration binds the gRPC receiver to `0.0.0.0:4317` and the HTTP receiver to `0.0.0.0:4318`.
 
 ### Configuring the gRPC Transport
 
-The gRPC protocol is highly recommended for backend service-to-Collector communication due to its efficiency, connection multiplexing, and binary serialization. 
+The gRPC protocol is highly recommended for backend service-to-Collector communication due to its efficiency, connection multiplexing, and binary serialization.
 
 When configuring the gRPC block, the most common adjustment is the `endpoint`. You can also configure connection parameters such as maximum receive message sizes, which is crucial for applications that generate massive trace payloads containing deep span event histories.
 
@@ -63,6 +63,7 @@ receivers:
 ```
 
 The HTTP block introduces configurations specific to web traffic:
+
 * **`cors`**: Cross-Origin Resource Sharing (CORS) is mandatory if you are ingesting telemetry directly from web applications operating on different domains. Without explicitly defining `allowed_origins`, browser security policies will block OTLP HTTP requests from reaching the Collector.
 * **`max_age`**: Caches the preflight response for a specified number of seconds, reducing the overhead of `OPTIONS` requests on high-traffic browser endpoints.
 
@@ -144,6 +145,7 @@ receivers:
 ```
 
 When the receiver pulls data, it performs a crucial translation step. Prometheus time-series data (which lacks strict OTel concepts like Resources or specific Aggregation Temporalities) is mapped to the OpenTelemetry Metric Data Model. For example:
+
 * Prometheus `Gauge` becomes an OTel `Gauge`.
 * Prometheus `Counter` becomes an OTel `Sum` with monotonic and cumulative properties.
 * Prometheus `Summary` and `Histogram` map to their respective OTel equivalents.
@@ -227,7 +229,7 @@ To bridge this gap, OpenTelemetry provides the `hostmetrics` receiver. Available
 
 ### How the Hostmetrics Receiver Works
 
-Unlike the OTLP receiver (which waits for data to be pushed) or the Prometheus receiver (which pulls data over a network), the `hostmetrics` receiver interfaces directly with local operating system APIs (such as `/proc` and `/sys` on Linux, or WMI/Performance Counters on Windows). 
+Unlike the OTLP receiver (which waits for data to be pushed) or the Prometheus receiver (which pulls data over a network), the `hostmetrics` receiver interfaces directly with local operating system APIs (such as `/proc` and `/sys` on Linux, or WMI/Performance Counters on Windows).
 
 Because of this direct OS interaction, the `hostmetrics` receiver mandates a specific deployment topology: **it must be run as a local agent**. You cannot deploy a centralized Collector Gateway and configure it to scrape remote hosts using this receiver. It must be deployed as a `systemd` service on virtual machines or as a `DaemonSet` on Kubernetes nodes.
 
@@ -291,11 +293,11 @@ receivers:
 * **`collection_interval`**: Determines how often the Collector polls the OS. 10 to 15 seconds is standard. Setting this too low (e.g., 1 second) can introduce unnecessary CPU overhead on the host.
 * **`cpu` / `memory` / `disk`**: These basic scrapers gather overall system utilization. Notice that specific metrics, like `system.cpu.utilization`, can be explicitly enabled or disabled within a scraper's block.
 * **`filesystem`**: Scrapes disk space usage. It is highly recommended to exclude virtual or ephemeral mount points (like `/proc` or `/dev` on Linux) to avoid noisy, irrelevant metrics.
-* **`process`**: This scraper gathers CPU, memory, and disk I/O metrics *per running process*. 
+* **`process`**: This scraper gathers CPU, memory, and disk I/O metrics *per running process*.
 
 ### Managing Cardinality with the Process Scraper
 
-While the `process` scraper is incredibly powerful for identifying "noisy neighbor" applications on a shared host, it introduces a significant risk: **metric cardinality explosion**. 
+While the `process` scraper is incredibly powerful for identifying "noisy neighbor" applications on a shared host, it introduces a significant risk: **metric cardinality explosion**.
 
 If your host runs hundreds of short-lived processes (e.g., cron jobs, container probes, bash scripts), the Collector will generate new time-series data for every single Process ID (PID). This can overwhelm your observability backend and inflate storage costs.
 
@@ -360,7 +362,7 @@ receivers:
 
 ### Implementing Receiver Authentication
 
-While TLS encrypts the connection, it does not inherently authorize the client to write data (unless strict mTLS is used). To validate identity, the Collector utilizes **Authentication Extensions**. 
+While TLS encrypts the connection, it does not inherently authorize the client to write data (unless strict mTLS is used). To validate identity, the Collector utilizes **Authentication Extensions**.
 
 In the OpenTelemetry architecture, receivers do not implement authentication logic themselves. Instead, they delegate this responsibility to centralized extensions. This decoupling allows you to define an authentication strategy once and apply it across multiple receivers.
 

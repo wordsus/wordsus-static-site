@@ -2,7 +2,7 @@ As infrastructure scales, ensuring deployments adhere to corporate security, com
 
 ## 15.1 Introduction to Pulumi CrossGuard
 
-As infrastructure codebases scale across teams and environments, ensuring that every deployed resource adheres to corporate security standards, compliance requirements, and cost constraints becomes a significant challenge. Relying solely on manual code reviews or out-of-band audits is error-prone and creates bottlenecks. This is where **Policy as Code (PaC)** becomes an essential practice. 
+As infrastructure codebases scale across teams and environments, ensuring that every deployed resource adheres to corporate security standards, compliance requirements, and cost constraints becomes a significant challenge. Relying solely on manual code reviews or out-of-band audits is error-prone and creates bottlenecks. This is where **Policy as Code (PaC)** becomes an essential practice.
 
 Pulumi CrossGuard is Pulumi’s native Policy as Code framework. It allows platform engineers, security teams, and cloud architects to express organizational rules using code and enforce them automatically during the infrastructure deployment lifecycle. Instead of finding out about an open S3 bucket or an oversized EC2 instance after it has been provisioned, CrossGuard evaluates these rules *before* any infrastructure is created or modified.
 
@@ -10,7 +10,7 @@ Pulumi CrossGuard is Pulumi’s native Policy as Code framework. It allows platf
 
 Traditional infrastructure governance often relies on reactive, runtime scanning tools (like AWS Config or Azure Policy). While these tools are valuable for continuous compliance, they evaluate resources that already exist. If a non-compliant resource is deployed, there is a window of vulnerability before the runtime scanner detects and remediates it.
 
-CrossGuard shifts this validation "left" into the provisioning phase. By integrating directly with the Pulumi engine, CrossGuard acts as a gatekeeper. If a developer attempts to deploy infrastructure that violates a mandatory policy, the deployment fails before any API calls are made to the cloud provider. 
+CrossGuard shifts this validation "left" into the provisioning phase. By integrating directly with the Pulumi engine, CrossGuard acts as a gatekeeper. If a developer attempts to deploy infrastructure that violates a mandatory policy, the deployment fails before any API calls are made to the cloud provider.
 
 ### The CrossGuard Evaluation Flow
 
@@ -42,17 +42,20 @@ Because this evaluation happens during both the `preview` and `up` phases, devel
 To understand how CrossGuard operates, you must be familiar with its foundational components: Policy Packs, Policy Types, and Enforcement Levels.
 
 #### 1. Policy Packs
-A Policy Pack is a standalone Pulumi project dedicated entirely to governance. It is a collection of individual policies packaged together. Unlike your standard Pulumi infrastructure code, Policy Packs do not provision resources; they only inspect them. You can write Policy Packs in TypeScript, Python, Go, or even using Open Policy Agent (OPA) Rego. 
+
+A Policy Pack is a standalone Pulumi project dedicated entirely to governance. It is a collection of individual policies packaged together. Unlike your standard Pulumi infrastructure code, Policy Packs do not provision resources; they only inspect them. You can write Policy Packs in TypeScript, Python, Go, or even using Open Policy Agent (OPA) Rego.
 
 Policy Packs can be executed locally by pointing the CLI to a directory (e.g., `pulumi up --policy-pack /path/to/policies`), or they can be published to the Pulumi Service to be enforced globally across an entire organization.
 
 #### 2. Policy Types: Resource vs. Stack
+
 CrossGuard evaluates rules at two distinct scopes:
 
 * **Resource Policies:** These are evaluated on a per-resource basis. As the Pulumi engine processes the desired state of a specific resource (like a single AWS S3 Bucket or an Azure Storage Account), it runs any applicable Resource Policies against its inputs. This is ideal for localized checks, such as enforcing encryption on all databases or tagging requirements on all virtual machines.
 * **Stack Policies:** These are evaluated comprehensively against the entire stack once all resources have been resolved. Stack Policies have access to the complete graph of resources. This makes them suitable for complex, cross-resource validations. For example, a Stack Policy could verify that every compute instance in a VPC is properly attached to a specific security group, or calculate the aggregate cost of the entire stack to ensure it stays below a specific budget threshold.
 
 #### 3. Enforcement Levels
+
 Not all policies require the deployment to halt. CrossGuard provides three enforcement levels to allow for flexible governance strategies:
 
 * **Advisory:** If an advisory policy is violated, CrossGuard logs a warning message to the console but allows the deployment to proceed. This is highly useful for introducing new policies smoothly, giving teams time to remediate issues before the rule becomes strict, or for establishing "best practice" recommendations.
@@ -61,7 +64,7 @@ Not all policies require the deployment to halt. CrossGuard provides three enfor
 
 ### The Developer Experience
 
-One of the primary advantages of CrossGuard over domain-specific policy languages is its use of general-purpose programming languages. Because policies are written in the same languages used to define the infrastructure, developers can leverage existing tooling. 
+One of the primary advantages of CrossGuard over domain-specific policy languages is its use of general-purpose programming languages. Because policies are written in the same languages used to define the infrastructure, developers can leverage existing tooling.
 
 Policies can utilize standard testing frameworks (like Jest or PyTest) to ensure the rules themselves are accurate. They can import external libraries, make HTTP requests to fetch dynamic compliance data, or share reusable logic via standard package managers. This unifies the workflow: infrastructure and the policies that govern it are both treated as standard software engineering artifacts.
 
@@ -75,10 +78,10 @@ This unified approach breaks down silos. Infrastructure engineers and security t
 
 Regardless of the language you choose, a CrossGuard policy generally consists of four primary components:
 
-1.  **Name:** A unique, concise identifier for the policy.
-2.  **Description:** A clear explanation of what the policy enforces and why it exists.
-3.  **Enforcement Level:** The strictness of the rule (`mandatory`, `advisory`, or `disabled`), determining whether a violation blocks the deployment.
-4.  **Validation Logic:** A callback function that inspects the properties of the resource or stack and triggers a violation report if the rules are broken.
+1. **Name:** A unique, concise identifier for the policy.
+2. **Description:** A clear explanation of what the policy enforces and why it exists.
+3. **Enforcement Level:** The strictness of the rule (`mandatory`, `advisory`, or `disabled`), determining whether a violation blocks the deployment.
+4. **Validation Logic:** A callback function that inspects the properties of the resource or stack and triggers a violation report if the rules are broken.
 
 ### Authoring in TypeScript
 
@@ -163,13 +166,13 @@ def run_pack():
 run_pack()
 ```
 
-In the Python example, because we don't have an equivalent to TypeScript's `validateResourceOfType`, we check the `args.resource_type` string (the Pulumi URN type) to ensure we are only evaluating EC2 instances. We then extract the properties using `args.props.get()`. 
+In the Python example, because we don't have an equivalent to TypeScript's `validateResourceOfType`, we check the `args.resource_type` string (the Pulumi URN type) to ensure we are only evaluating EC2 instances. We then extract the properties using `args.props.get()`.
 
 ### Testing Your Policies
 
 Because these policies are standard software, they can—and should—be tested using standard unit testing frameworks. You do not need to stand up actual infrastructure to verify your policy logic.
 
-In TypeScript, you can use Mocha or Jest to pass mock resource objects into your validation function and assert whether `reportViolation` was called. In Python, you can achieve the same using `unittest` or `pytest`. 
+In TypeScript, you can use Mocha or Jest to pass mock resource objects into your validation function and assert whether `reportViolation` was called. In Python, you can achieve the same using `unittest` or `pytest`.
 
 ```text
 +-----------------------+      +-----------------------+      +-----------------------+
@@ -184,13 +187,13 @@ This testing paradigm shifts infrastructure governance even further left. You va
 
 ## 15.3 Enforcing Security and Cost Controls
 
-While knowing how to write and test policies is foundational, the true value of Pulumi CrossGuard emerges when you apply it to real-world business problems. For most organizations, infrastructure governance is driven by two primary mandates: preventing security breaches and controlling cloud spend. 
+While knowing how to write and test policies is foundational, the true value of Pulumi CrossGuard emerges when you apply it to real-world business problems. For most organizations, infrastructure governance is driven by two primary mandates: preventing security breaches and controlling cloud spend.
 
 By encoding these mandates into Policy Packs, platform teams establish automated "guardrails." These guardrails enable developers to provision their own infrastructure self-sufficiently, with the cryptographic guarantee that their deployments will not violate the organization's risk tolerance or budget.
 
 ### Enforcing Security Posture
 
-Security in the cloud is a shared responsibility, but misconfigurations remain the leading cause of cloud data breaches. CrossGuard mitigates this risk by ensuring that resources are secure by default before they ever reach the cloud provider's API. 
+Security in the cloud is a shared responsibility, but misconfigurations remain the leading cause of cloud data breaches. CrossGuard mitigates this risk by ensuring that resources are secure by default before they ever reach the cloud provider's API.
 
 Common security policies implemented via CrossGuard include:
 
@@ -304,8 +307,8 @@ The CI/CD pipeline acts as the authoritative choke point. By executing CrossGuar
 
 There are two primary architectural approaches to integrating Policy Packs into your pipelines:
 
-1.  **Decentralized (Local Paths):** The Policy Pack source code lives in the same repository as the infrastructure code (a monorepo approach), or is cloned down during the pipeline run. The pipeline executes `pulumi preview --policy-pack /path/to/policies`.
-2.  **Centralized (Pulumi Service Enforcement):** The security or platform team manages the Policy Pack in an independent repository. They publish the compiled policies directly to the Pulumi Service (or Pulumi Enterprise) using `pulumi policy publish`. Once published and assigned to an organization or specific environment, the Pulumi Service automatically enforces these policies on all applicable stacks.
+1. **Decentralized (Local Paths):** The Policy Pack source code lives in the same repository as the infrastructure code (a monorepo approach), or is cloned down during the pipeline run. The pipeline executes `pulumi preview --policy-pack /path/to/policies`.
+2. **Centralized (Pulumi Service Enforcement):** The security or platform team manages the Policy Pack in an independent repository. They publish the compiled policies directly to the Pulumi Service (or Pulumi Enterprise) using `pulumi policy publish`. Once published and assigned to an organization or specific environment, the Pulumi Service automatically enforces these policies on all applicable stacks.
 
 For enterprise environments, the **Centralized** approach is highly recommended. It guarantees that individual infrastructure teams cannot bypass policies by simply modifying their CI scripts, and it ensures that policy updates roll out uniformly across the organization.
 
@@ -413,8 +416,8 @@ If the policy violated is categorized as **Advisory**, the `pulumi preview` will
 
 It is crucial to treat your Policy Packs with the same engineering rigor as your application and infrastructure code. The Policy Packs themselves should have their own CI/CD pipeline.
 
-1.  **Testing:** When a security engineer updates a policy rule, a CI pipeline should run unit tests against mock infrastructure resources to ensure the rule behaves as expected.
-2.  **Publishing:** Once the PR for the policy update is approved, the CD pipeline runs `pulumi policy publish`, pushing a new, versioned artifact to the Pulumi Service.
-3.  **Enforcement Groups:** The Pulumi Service allows you to configure which Policy Packs apply to which stacks (e.g., applying PCI-DSS compliance policies only to stacks tagged with `environment: production` and `data: sensitive`).
+1. **Testing:** When a security engineer updates a policy rule, a CI pipeline should run unit tests against mock infrastructure resources to ensure the rule behaves as expected.
+2. **Publishing:** Once the PR for the policy update is approved, the CD pipeline runs `pulumi policy publish`, pushing a new, versioned artifact to the Pulumi Service.
+3. **Enforcement Groups:** The Pulumi Service allows you to configure which Policy Packs apply to which stacks (e.g., applying PCI-DSS compliance policies only to stacks tagged with `environment: production` and `data: sensitive`).
 
 By decoupling the lifecycle of policies from the lifecycle of the infrastructure, organizations can iterate on security requirements dynamically, ensuring that all subsequent infrastructure deployments are instantly measured against the most up-to-date corporate standards.

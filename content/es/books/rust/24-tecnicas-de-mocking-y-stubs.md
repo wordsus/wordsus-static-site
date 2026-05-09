@@ -2,7 +2,7 @@ En el desarrollo de backend con Rust, la fiabilidad no solo depende del sistema 
 
 ## 24.1 Cuándo usar Mocks en Rust
 
-En lenguajes dinámicos como Python, Ruby o JavaScript, la práctica de crear "mocks" (objetos simulados) es omnipresente. La facilidad para sobrescribir métodos o interceptar llamadas en tiempo de ejecución hace que aislar componentes sea trivial. Sin embargo, en Rust, el tipado estático, las estrictas reglas de *ownership* y la ausencia de herencia tradicional cambian drásticamente las reglas del juego. 
+En lenguajes dinámicos como Python, Ruby o JavaScript, la práctica de crear "mocks" (objetos simulados) es omnipresente. La facilidad para sobrescribir métodos o interceptar llamadas en tiempo de ejecución hace que aislar componentes sea trivial. Sin embargo, en Rust, el tipado estático, las estrictas reglas de *ownership* y la ausencia de herencia tradicional cambian drásticamente las reglas del juego.
 
 En el ecosistema de Rust, los mocks no se aplican por defecto a cada dependencia. En su lugar, se utilizan estratégicamente en las fronteras de nuestra aplicación. Entender **cuándo** introducirlos es fundamental para mantener una suite de pruebas que sea rápida, determinista y, sobre todo, resistente a refactorizaciones.
 
@@ -19,16 +19,16 @@ Rust favorece fuertemente el **testing basado en estado**. Gracias a que el sist
 
 Debes recurrir a los mocks cuando interactúas con componentes que están fuera del control determinista de tu test unitario. Los casos de uso ideales incluyen:
 
-1.  **APIs de Terceros (Sistemas Externos):**
+1. **APIs de Terceros (Sistemas Externos):**
     Si tu backend se comunica con pasarelas de pago (Stripe), proveedores de email (SendGrid) o servicios en la nube (AWS S3), **siempre** debes mockear estas interacciones en tus tests unitarios. No quieres que tu CI/CD falle porque la API de Stripe esté caída, ni quieres realizar cargos reales a tarjetas de crédito durante el desarrollo.
 
-2.  **Comportamiento No Determinista:**
+2. **Comportamiento No Determinista:**
     Cualquier código que dependa del tiempo real (`std::time::SystemTime`) o de la generación de números aleatorios puros. Si tu lógica de negocio dicta que un token expira en 15 minutos, mockear el reloj del sistema te permite "viajar en el tiempo" instantáneamente en tus tests sin tener que hacer un `sleep` de 15 minutos.
 
-3.  **Efectos Secundarios Destructivos o Irreversibles:**
+3. **Efectos Secundarios Destructivos o Irreversibles:**
     Acciones como enviar notificaciones push a usuarios, borrar archivos irrecuperables del disco o emitir eventos a un bus de mensajes (como Kafka o RabbitMQ) hacia otros microservicios.
 
-4.  **Sistemas Extremadamente Lentos:**
+4. **Sistemas Extremadamente Lentos:**
     Si la inicialización de una dependencia real toma varios segundos, destruirá el ciclo de feedback rápido que buscamos en los tests unitarios.
 
 **Ejemplo de una frontera ideal para un Mock:**
@@ -55,13 +55,13 @@ Uno de los errores más comunes de los desarrolladores Senior que migran a Rust 
 
 Evita usar mocks en los siguientes escenarios:
 
-1.  **Bases de Datos Relacionales (Postgres, MySQL):**
+1. **Bases de Datos Relacionales (Postgres, MySQL):**
     Aunque podrías crear un `Trait` para tu repositorio y mockearlo, la experiencia demuestra que los tests de repositorios mockeados son frágiles y proporcionan falsa seguridad (no detectan errores de sintaxis SQL o violaciones de constraints). En Rust, es preferible levantar una base de datos efímera real utilizando **Testcontainers** (que abordaremos en profundidad en el Capítulo 26) o usar transacciones con rollback automático mediante SQLx (Capítulo 20).
 
-2.  **Lógica de Dominio Pura (Value Objects y Entidades):**
+2. **Lógica de Dominio Pura (Value Objects y Entidades):**
     Si estás aplicando Domain-Driven Design (Capítulo 31), el núcleo de tu dominio no debería tener dependencias externas. Una función que calcula impuestos basándose en un struct de entrada debería ser testeada pasando valores reales, no mockeando la función de cálculo.
 
-3.  **Operaciones de I/O Estándar (Archivos y Buffers):**
+3. **Operaciones de I/O Estándar (Archivos y Buffers):**
     No necesitas mockear el sistema de archivos si tu función simplemente necesita leer datos secuenciales. En lugar de recibir un `File`, haz que tu función acepte cualquier cosa que implemente el trait `std::io::Read` o `std::io::Write`. En tus tests, simplemente pásale un `std::io::Cursor<Vec<u8>>` que vive enteramente en la memoria RAM.
 
 ```rust
@@ -82,7 +82,7 @@ fn process_data<R: Read>(mut reader: R) -> Result<String> {
 
 ### El Costo de los Mocks
 
-En Rust, introducir un mock significa introducir una barrera de abstracción genérica o de *dynamic dispatch* (`dyn Trait`). Esto tiene implicaciones en el diseño de tu software. Un diseño fuertemente basado en interfaces mockeadas puede llevar a una arquitectura más compleja de mantener y entender. 
+En Rust, introducir un mock significa introducir una barrera de abstracción genérica o de *dynamic dispatch* (`dyn Trait`). Esto tiene implicaciones en el diseño de tu software. Un diseño fuertemente basado en interfaces mockeadas puede llevar a una arquitectura más compleja de mantener y entender.
 
 La regla de oro para el Backend Developer en Rust es: **Usa objetos reales siempre que el costo de instanciarlos (en tiempo, determinismo o infraestructura) sea insignificante. Reserva los mocks como escudos protectores en las fronteras incontrolables de tu aplicación.**
 
@@ -90,7 +90,7 @@ Con esta premisa clara sobre *cuándo* necesitamos simular comportamientos, en l
 
 ## 24.2 Creación de Mocks manuales mediante Traits
 
-En lenguajes orientados a objetos tradicionales, las librerías de testing suelen utilizar técnicas de reflexión o herencia para interceptar llamadas a métodos y generar *mocks* al vuelo. En Rust, la ausencia de herencia tradicional y la estricta seguridad de memoria impiden este enfoque mágico. 
+En lenguajes orientados a objetos tradicionales, las librerías de testing suelen utilizar técnicas de reflexión o herencia para interceptar llamadas a métodos y generar *mocks* al vuelo. En Rust, la ausencia de herencia tradicional y la estricta seguridad de memoria impiden este enfoque mágico.
 
 Para crear un mock en Rust, la regla es simple: **si quieres simular un comportamiento, ese comportamiento debe estar definido por un `Trait`.** Un mock manual no es más que un `struct` de prueba que implementa dicho trait, almacenando el estado necesario para verificar que se llamó correctamente.
 
@@ -126,7 +126,7 @@ impl<E: EmailSender> UserRegistration<E> {
 
 ### Implementando el Mock y el problema del Ownership
 
-Para probar `UserRegistration`, necesitamos un `MockEmailSender`. Queremos que este mock registre cuántas veces se llamó a `send_email` y con qué argumentos, para luego hacer un `assert!` en nuestro test. 
+Para probar `UserRegistration`, necesitamos un `MockEmailSender`. Queremos que este mock registre cuántas veces se llamó a `send_email` y con qué argumentos, para luego hacer un `assert!` en nuestro test.
 
 Aquí nos encontramos con un desafío clásico de Rust: el método `send_email` toma `&self` (una referencia inmutable), pero para registrar que el método fue llamado, ¡necesitamos mutar el estado interno del mock! Además, `UserRegistration` toma *ownership* (propiedad) del mock al instanciarse.
 
@@ -214,15 +214,17 @@ mod tests {
 Hacer mocks manuales es una técnica excelente y, en muchos equipos, es la estrategia preferida por las siguientes razones:
 
 **Ventajas:**
+
 * **Transparencia absoluta:** No hay "magia" de macros. El código hace exactamente lo que lees.
 * **Tiempos de compilación:** A diferencia de las macros procedurales complejas, compilar un struct normal es instantáneo.
 * **Seguridad de tipos estricta:** El compilador de Rust te guiará y te avisará si la firma del Trait original cambia, obligándote a actualizar tu mock.
 
 **Desventajas:**
+
 * **Boilerplate (Código repetitivo):** Si tu `Trait` tiene 10 métodos, tendrás que implementar los 10 en tu mock manual, creando múltiples `Rc<RefCell<T>>` para rastrear los argumentos de cada uno.
 * **Flexibilidad limitada:** Configurar el mock para que devuelva diferentes valores en llamadas secuenciales (ej. "falla la primera vez, acierta la segunda") requiere escribir lógica condicional compleja dentro del propio mock.
 
-Crear mocks manuales es ideal para interfaces pequeñas (de 1 a 3 métodos) con comportamientos predecibles. Sin embargo, a medida que tu aplicación escale, este boilerplate se volverá insostenible. 
+Crear mocks manuales es ideal para interfaces pequeñas (de 1 a 3 métodos) con comportamientos predecibles. Sin embargo, a medida que tu aplicación escale, este boilerplate se volverá insostenible.
 
 ## 24.3 Uso del crate `mockall`
 
@@ -243,7 +245,7 @@ mockall = "0.12" # Asegúrate de usar la versión más reciente
 
 ### La macro `#[automock]`
 
-La forma más sencilla de utilizar `mockall` es aplicando el atributo `#[automock]` directamente sobre la definición de nuestro Trait. 
+La forma más sencilla de utilizar `mockall` es aplicando el atributo `#[automock]` directamente sobre la definición de nuestro Trait.
 
 Retomemos el ejemplo de nuestro `EmailSender` de la sección 24.2 y veamos cómo `mockall` reduce drásticamente el código necesario:
 
@@ -325,13 +327,13 @@ La fluidez de `mockall` te permite cubrir casos de uso muy específicos sin esfu
 
 * **Verificación de argumentos (`.with()`):** Utiliza funciones del módulo `mockall::predicate::*` como `eq` (igual a), `ge` (mayor o igual), o `always()` si no te importa el valor de un parámetro específico.
 * **Secuencias de retorno (`.returning()` vs `.return_const()`):**
-    * Usa `.return_const(Ok(()))` si el valor de retorno siempre es el mismo y es estático/clonable.
-    * Usa `.returning(|arg1, arg2| ...)` para calcular un valor de retorno de forma dinámica basándote en los parámetros de entrada.
+  * Usa `.return_const(Ok(()))` si el valor de retorno siempre es el mismo y es estático/clonable.
+  * Usa `.returning(|arg1, arg2| ...)` para calcular un valor de retorno de forma dinámica basándote en los parámetros de entrada.
 * **Frecuencia (`.times()`, `.never()`, `.at_least()`):** Valida de forma estricta cuántas veces el código de producción invoca a la dependencia. Si configuras `.never()` y el método se ejecuta, el test fallará inmediatamente.
 
 ### Mockeando Traits Externos (`mock!`)
 
-¿Qué ocurre si quieres mockear un Trait que no definiste tú, sino que proviene de la Standard Library o de otro crate externo (por ejemplo, `std::io::Write`)? 
+¿Qué ocurre si quieres mockear un Trait que no definiste tú, sino que proviene de la Standard Library o de otro crate externo (por ejemplo, `std::io::Write`)?
 
 Dado que no puedes modificar el código fuente externo para añadirle `#[automock]`, `mockall` provee la macro `mock! { ... }` para generar mocks de Traits foráneos:
 
@@ -357,13 +359,13 @@ mock! {
 * **Tiempos de compilación:** Las macros procedurales como `#[automock]` tienen un impacto en el tiempo de compilación. Úsalas en los límites arquitectónicos reales, no en cada struct de tu aplicación.
 * **Tipos de retorno no clonables:** Si tu método devuelve un tipo que no implementa `Clone` ni `Default`, configurar retornos consecutivos puede ser un poco más verboso que en lenguajes dinámicos.
 
-Con `mockall` en tu caja de herramientas, ya tienes la capacidad técnica de aislar cualquier componente. Sin embargo, para que el código sea verdaderamente testeable, la arquitectura debe permitir que estas dependencias simuladas se introduzcan fácilmente. 
+Con `mockall` en tu caja de herramientas, ya tienes la capacidad técnica de aislar cualquier componente. Sin embargo, para que el código sea verdaderamente testeable, la arquitectura debe permitir que estas dependencias simuladas se introduzcan fácilmente.
 
 ## 24.4 Inyección de dependencias para facilitar el testing
 
 La Inyección de Dependencias (DI, por sus siglas en inglés) suele evocar imágenes de frameworks pesados, contenedores mágicos y análisis de código en tiempo de ejecución, típicos de ecosistemas como Java (Spring) o Node.js (NestJS). En Rust, la historia es radicalmente diferente: **la DI no requiere un framework, es un patrón de diseño estructural puro.**
 
-En su esencia más básica, la inyección de dependencias significa que un componente no debe instanciar sus propias dependencias internas, sino que debe recibirlas desde el exterior (generalmente a través de su función constructora). 
+En su esencia más básica, la inyección de dependencias significa que un componente no debe instanciar sus propias dependencias internas, sino que debe recibirlas desde el exterior (generalmente a través de su función constructora).
 
 Si no aplicamos este principio, todo lo que aprendimos en las secciones 24.1, 24.2 y 24.3 sobre la creación de mocks se vuelve completamente inútil, ya que no tendríamos por dónde introducir el objeto simulado en nuestra lógica de negocio.
 
@@ -391,7 +393,7 @@ impl PaymentService {
 
 ### La Solución: Inversión de Control mediante Traits
 
-Para aplicar la Inyección de Dependencias en Rust, debemos depender de abstracciones (Traits) y no de implementaciones concretas (Structs). 
+Para aplicar la Inyección de Dependencias en Rust, debemos depender de abstracciones (Traits) y no de implementaciones concretas (Structs).
 
 En este punto, como desarrollador Backend en Rust, te enfrentarás a una de las decisiones arquitectónicas más importantes: ¿utilizar **Despacho Estático (Genéricos)** o **Despacho Dinámico (`dyn Trait`)**?
 
@@ -430,7 +432,7 @@ impl<G: PaymentGateway> PaymentService<G> {
 
 #### Opción B: Despacho Dinámico (Trait Objects)
 
-Para aplicaciones backend complejas (como las que construiremos con Actix o Axum en los próximos capítulos), la opción preferida suele ser el despacho dinámico usando `Box<dyn Trait>` o `Arc<dyn Trait>`. 
+Para aplicaciones backend complejas (como las que construiremos con Actix o Axum en los próximos capítulos), la opción preferida suele ser el despacho dinámico usando `Box<dyn Trait>` o `Arc<dyn Trait>`.
 
 Esto implica usar punteros inteligentes que resuelven qué método llamar en tiempo de ejecución (mediante una *vtable*).
 
@@ -491,7 +493,7 @@ mod tests {
 
 ### ¿Necesitamos un contenedor de inyección (DI Container)?
 
-En lenguajes como C#, registrarías tus servicios en un contenedor (`services.AddTransient<IPayment, StripePayment>()`). En Rust, lo más idiomático es hacer esta "composición" o "ensamblaje" manualmente en la raíz de tu aplicación (normalmente en `main.rs` o en una función de configuración). 
+En lenguajes como C#, registrarías tus servicios en un contenedor (`services.AddTransient<IPayment, StripePayment>()`). En Rust, lo más idiomático es hacer esta "composición" o "ensamblaje" manualmente en la raíz de tu aplicación (normalmente en `main.rs` o en una función de configuración).
 
 A este patrón se le conoce como **Pure DI** o **Vanilla DI**. Profundizaremos en cómo estructurar este ensamblaje de forma limpia cuando abordemos la Arquitectura Hexagonal y el patrón *Registry* en el Capítulo 30.
 

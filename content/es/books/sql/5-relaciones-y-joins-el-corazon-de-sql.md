@@ -205,7 +205,7 @@ Para que quede totalmente claro cuándo usar cuál, aquí tienes una tabla compa
 | **`LEFT JOIN`** | **Toda** la tabla 1 (izquierda) + coincidencias de la tabla 2. | Cuando la tabla 1 es tu base principal y no quieres perder ninguno de sus registros (ej. Todos los usuarios, con o sin compras). |
 | **`RIGHT JOIN`** | **Toda** la tabla 2 (derecha) + coincidencias de la tabla 1. | Mismo caso que el anterior, pero priorizando la segunda tabla. Se recomienda usar `LEFT JOIN` invirtiendo las tablas por legibilidad. |
 
-Ya dominamos la intersección y la priorización de un lado u otro. Pero, ¿qué sucede si queremos absolutamente todo de ambas tablas, coincidan o no? 
+Ya dominamos la intersección y la priorización de un lado u otro. Pero, ¿qué sucede si queremos absolutamente todo de ambas tablas, coincidan o no?
 
 ## 5.4. `FULL OUTER JOIN`: La unión completa
 

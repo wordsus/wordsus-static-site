@@ -8,7 +8,7 @@ To develop a custom provider, you must understand this client-server architectur
 
 ### The Core-to-Plugin Boundary
 
-The architecture is built on the `hashicorp/go-plugin` system. OpenTofu Core acts as the **RPC Client**, and your Go provider acts as the **gRPC Server**. 
+The architecture is built on the `hashicorp/go-plugin` system. OpenTofu Core acts as the **RPC Client**, and your Go provider acts as the **gRPC Server**.
 
 Here is a structural view of the execution model:
 
@@ -28,21 +28,22 @@ When you run `tofu apply`, OpenTofu Core determines which resources need to be c
 
 ### The Plugin Framework Ecosystem
 
-Because OpenTofu is a drop-in replacement for Terraform, it maintains 100% compatibility with the existing provider ecosystem. This means you will build your OpenTofu provider using the standard HashiCorp Go libraries. 
+Because OpenTofu is a drop-in replacement for Terraform, it maintains 100% compatibility with the existing provider ecosystem. This means you will build your OpenTofu provider using the standard HashiCorp Go libraries.
 
 Historically, providers were built using the `terraform-plugin-sdk/v2`. However, modern provider development relies on the **Terraform Plugin Framework** (`hashicorp/terraform-plugin-framework`). The Framework was designed specifically to address limitations in the older SDK, offering a cleaner Go API, better type safety, and robust support for advanced HCL features like nested attributes and unknown values.
 
 When architecting a provider with the Framework, you are primarily working with three core Go interfaces:
 
-1.  **`provider.Provider`**: The root configuration. This interface defines the provider-level schema (e.g., API keys, region settings) and configures the underlying API client used by the rest of the resources.
-2.  **`resource.Resource`**: Defines a manageable infrastructure object. This interface handles the CRUD (Create, Read, Update, Delete) lifecycle and instructs OpenTofu on how to map the target API's state to the OpenTofu state.
-3.  **`datasource.DataSource`**: Defines a read-only object. It allows OpenTofu to fetch data from the external API to be used elsewhere in the HCL configuration.
+1. **`provider.Provider`**: The root configuration. This interface defines the provider-level schema (e.g., API keys, region settings) and configures the underlying API client used by the rest of the resources.
+2. **`resource.Resource`**: Defines a manageable infrastructure object. This interface handles the CRUD (Create, Read, Update, Delete) lifecycle and instructs OpenTofu on how to map the target API's state to the OpenTofu state.
+3. **`datasource.DataSource`**: Defines a read-only object. It allows OpenTofu to fetch data from the external API to be used elsewhere in the HCL configuration.
 
 ### Go Types vs. Framework Types
 
 One of the most critical architectural paradigms to understand in provider development is the distinction between native Go types and Framework types.
 
 In standard Go programming, a string is a `string`, and an integer is an `int64`. However, OpenTofu requires a concept of state that standard Go types cannot handle. An attribute in HCL can be:
+
 * **Null:** The user explicitly omitted the value.
 * **Unknown:** The value is not known until after the `apply` phase (e.g., an auto-generated cloud ID).
 * **Known:** The value is populated.
@@ -119,17 +120,20 @@ OpenTofu provider development requires a modern version of Go. The Terraform Plu
 
 1. Download and install Go from the official site (`go.dev`).
 2. Verify the installation and version:
+
    ```bash
    go version
    ```
+
 3. Ensure your `GOBIN` directory is in your system's `PATH`. When you eventually compile and install your provider locally for testing, OpenTofu will need to be able to locate the executable.
+
    ```bash
    export PATH=$PATH:$(go env GOPATH)/bin
    ```
 
 ### 2. Initializing the Go Module and Naming Conventions
 
-OpenTofu relies on a strict naming convention to discover and execute local provider binaries. Even though you are building for OpenTofu, you **must** prefix your repository and binary name with `terraform-provider-` to maintain registry and CLI compatibility. 
+OpenTofu relies on a strict naming convention to discover and execute local provider binaries. Even though you are building for OpenTofu, you **must** prefix your repository and binary name with `terraform-provider-` to maintain registry and CLI compatibility.
 
 Create a new directory for your provider and initialize a Go module:
 
@@ -187,53 +191,54 @@ Create `main.go` at the root of your project:
 package main
 
 import (
-	"context"
-	"flag"
-	"log"
+ "context"
+ "flag"
+ "log"
 
-	"github.com/hashicorp/terraform-plugin-framework/providerserver"
-	"github.com/mycorp/terraform-provider-mycorp/internal/provider"
+ "github.com/hashicorp/terraform-plugin-framework/providerserver"
+ "github.com/mycorp/terraform-provider-mycorp/internal/provider"
 )
 
 // Run the docs generation tool, keep this as a go:generate directive
 //go:generate go run github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs
 
 func main() {
-	var debug bool
+ var debug bool
 
-	// OpenTofu executes this binary with a -debug flag when running in debug mode
-	flag.BoolVar(&debug, "debug", false, "set to true to run the provider with support for debuggers like delve")
-	flag.Parse()
+ // OpenTofu executes this binary with a -debug flag when running in debug mode
+ flag.BoolVar(&debug, "debug", false, "set to true to run the provider with support for debuggers like delve")
+ flag.Parse()
 
-	opts := providerserver.ServeOpts{
-		// The address must match the registry namespace and name
-		Address: "registry.terraform.io/mycorp/mycorp",
-		Debug:   debug,
-	}
+ opts := providerserver.ServeOpts{
+  // The address must match the registry namespace and name
+  Address: "registry.terraform.io/mycorp/mycorp",
+  Debug:   debug,
+ }
 
-	// provider.New is a constructor function you will define in internal/provider/provider.go
-	err := providerserver.Serve(context.Background(), provider.New("dev"), opts)
+ // provider.New is a constructor function you will define in internal/provider/provider.go
+ err := providerserver.Serve(context.Background(), provider.New("dev"), opts)
 
-	if err != nil {
-		log.Fatal(err.Error())
-	}
+ if err != nil {
+  log.Fatal(err.Error())
+ }
 }
 ```
 
 ### 6. IDE Configuration and Debugging
 
-Writing a provider without a step-through debugger is exceptionally difficult due to the complex state management happening under the hood. Because OpenTofu manages the provider process, you cannot simply click "Debug" in your IDE as you would with a standard Go application. 
+Writing a provider without a step-through debugger is exceptionally difficult due to the complex state management happening under the hood. Because OpenTofu manages the provider process, you cannot simply click "Debug" in your IDE as you would with a standard Go application.
 
 To configure your IDE (like VS Code or GoLand) for OpenTofu provider debugging, you must use **Delve** (`dlv`) and the `TF_REATTACH_PROVIDERS` environment variable.
 
-1.  **Configure the IDE to run `main.go` with the `-debug` flag.** 2.  When the debugger starts, the Go binary will pause and print a specific environment variable block to the standard output, looking like this:
+1. **Configure the IDE to run `main.go` with the `-debug` flag.** 2.  When the debugger starts, the Go binary will pause and print a specific environment variable block to the standard output, looking like this:
+
     ```bash
     Provider started. To attach OpenTofu to this provider, set the following env var:
     TF_REATTACH_PROVIDERS='{"registry.terraform.io/mycorp/mycorp":{"Protocol":"grpc","ProtocolVersion":6,"Pid":12345,"Test":true,"Addr":{"Network":"unix","String":"/tmp/plugin12345"}}}'
     ```
-3.  Copy that output.
-4.  Open a separate terminal window, paste the export command to set `TF_REATTACH_PROVIDERS` in your environment, and then run `tofu apply`.
-5.  OpenTofu will read the environment variable, bypass launching its own background process, and instead attach directly to the debug session running in your IDE. You can now set breakpoints inside your `Create`, `Read`, `Update`, and `Delete` methods to inspect HCL state variables at runtime.
+2. Copy that output.
+3. Open a separate terminal window, paste the export command to set `TF_REATTACH_PROVIDERS` in your environment, and then run `tofu apply`.
+4. OpenTofu will read the environment variable, bypass launching its own background process, and instead attach directly to the debug session running in your IDE. You can now set breakpoints inside your `Create`, `Read`, `Update`, and `Delete` methods to inspect HCL state variables at runtime.
 
 ## 22.3 Implementing the Provider Plugin Framework and Schema
 
@@ -243,7 +248,7 @@ With your Go environment configured, the next step is to define how OpenTofu int
 
 In OpenTofu, a **schema** is the definitive contract between the user's HCL code and your Go logic. It specifies which arguments are expected, their data types, whether they are required or optional, and if they contain sensitive information (like passwords or API tokens).
 
-Within your `internal/provider/provider.go` file, you will define a struct for your provider and implement the `Schema` method. 
+Within your `internal/provider/provider.go` file, you will define a struct for your provider and implement the `Schema` method.
 
 Here is an example of setting up a provider schema that requires a target API URL and an API token:
 
@@ -251,13 +256,13 @@ Here is an example of setting up a provider schema that requires a target API UR
 package provider
 
 import (
-	"context"
-	"os"
+ "context"
+ "os"
 
-	"github.com/hashicorp/terraform-plugin-framework/provider"
-	"github.com/hashicorp/terraform-plugin-framework/provider/schema"
-	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/mycorp/mycorp-go-client" // Hypothetical internal SDK
+ "github.com/hashicorp/terraform-plugin-framework/provider"
+ "github.com/hashicorp/terraform-plugin-framework/provider/schema"
+ "github.com/hashicorp/terraform-plugin-framework/types"
+ "github.com/mycorp/mycorp-go-client" // Hypothetical internal SDK
 )
 
 // Ensure MyCorpProvider satisfies the provider.Provider interface.
@@ -265,31 +270,31 @@ var _ provider.Provider = &MyCorpProvider{}
 
 // MyCorpProvider defines the provider implementation.
 type MyCorpProvider struct {
-	// version is set to the provider version on release, "dev" when in development.
-	version string
+ // version is set to the provider version on release, "dev" when in development.
+ version string
 }
 
 // MyCorpProviderModel describes the provider data model.
 type MyCorpProviderModel struct {
-	Endpoint types.String `tfsdk:"endpoint"`
-	Token    types.String `tfsdk:"token"`
+ Endpoint types.String `tfsdk:"endpoint"`
+ Token    types.String `tfsdk:"token"`
 }
 
 func (p *MyCorpProvider) Schema(ctx context.Context, req provider.SchemaRequest, resp *provider.SchemaResponse) {
-	resp.Schema = schema.Schema{
-		MarkdownDescription: "The MyCorp provider is used to interact with the MyCorp API.",
-		Attributes: map[string]schema.Attribute{
-			"endpoint": schema.StringAttribute{
-				MarkdownDescription: "The base URL for the MyCorp API. Can also be set via the `MYCORP_ENDPOINT` environment variable.",
-				Optional:            true,
-			},
-			"token": schema.StringAttribute{
-				MarkdownDescription: "The API token for authentication. Can also be set via the `MYCORP_TOKEN` environment variable.",
-				Optional:            true,
-				Sensitive:           true, // Prevents the value from showing up in CLI output
-			},
-		},
-	}
+ resp.Schema = schema.Schema{
+  MarkdownDescription: "The MyCorp provider is used to interact with the MyCorp API.",
+  Attributes: map[string]schema.Attribute{
+   "endpoint": schema.StringAttribute{
+    MarkdownDescription: "The base URL for the MyCorp API. Can also be set via the `MYCORP_ENDPOINT` environment variable.",
+    Optional:            true,
+   },
+   "token": schema.StringAttribute{
+    MarkdownDescription: "The API token for authentication. Can also be set via the `MYCORP_TOKEN` environment variable.",
+    Optional:            true,
+    Sensitive:           true, // Prevents the value from showing up in CLI output
+   },
+  },
+ }
 }
 ```
 
@@ -301,48 +306,48 @@ Once OpenTofu reads the HCL schema, it triggers the `Configure` method. This is 
 
 ```go
 func (p *MyCorpProvider) Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse) {
-	var config MyCorpProviderModel
+ var config MyCorpProviderModel
 
-	// Read configuration data into the model
-	diags := req.Config.Get(ctx, &config)
-	resp.Diagnostics.Append(diags...)
-	if resp.Diagnostics.HasError() {
-		return
-	}
+ // Read configuration data into the model
+ diags := req.Config.Get(ctx, &config)
+ resp.Diagnostics.Append(diags...)
+ if resp.Diagnostics.HasError() {
+  return
+ }
 
-	// Handle environment variable fallbacks if HCL values are null
-	endpoint := os.Getenv("MYCORP_ENDPOINT")
-	if !config.Endpoint.IsNull() {
-		endpoint = config.Endpoint.ValueString()
-	}
+ // Handle environment variable fallbacks if HCL values are null
+ endpoint := os.Getenv("MYCORP_ENDPOINT")
+ if !config.Endpoint.IsNull() {
+  endpoint = config.Endpoint.ValueString()
+ }
 
-	token := os.Getenv("MYCORP_TOKEN")
-	if !config.Token.IsNull() {
-		token = config.Token.ValueString()
-	}
+ token := os.Getenv("MYCORP_TOKEN")
+ if !config.Token.IsNull() {
+  token = config.Token.ValueString()
+ }
 
-	// Validate that we have the required credentials
-	if endpoint == "" || token == "" {
-		resp.Diagnostics.AddError(
-			"Missing API Credentials",
-			"The provider requires an endpoint and a token to communicate with the API.",
-		)
-		return
-	}
+ // Validate that we have the required credentials
+ if endpoint == "" || token == "" {
+  resp.Diagnostics.AddError(
+   "Missing API Credentials",
+   "The provider requires an endpoint and a token to communicate with the API.",
+  )
+  return
+ }
 
-	// Initialize the external API client
-	client, err := mycorpclient.NewClient(endpoint, token)
-	if err != nil {
-		resp.Diagnostics.AddError(
-			"Unable to Create API Client",
-			"An unexpected error occurred when creating the MyCorp API client: "+err.Error(),
-		)
-		return
-	}
+ // Initialize the external API client
+ client, err := mycorpclient.NewClient(endpoint, token)
+ if err != nil {
+  resp.Diagnostics.AddError(
+   "Unable to Create API Client",
+   "An unexpected error occurred when creating the MyCorp API client: "+err.Error(),
+  )
+  return
+ }
 
-	// Make the client available to resources and data sources
-	resp.DataSourceData = client
-	resp.ResourceData = client
+ // Make the client available to resources and data sources
+ resp.DataSourceData = client
+ resp.ResourceData = client
 }
 ```
 
@@ -354,25 +359,25 @@ Finally, the provider must declare exactly which resources and data sources it s
 
 ```go
 func (p *MyCorpProvider) Resources(ctx context.Context) []func() resource.Resource {
-	return []func() resource.Resource{
-		NewOrderResource,    // References a constructor in resource_order.go
-		NewCustomerResource, // References a constructor in resource_customer.go
-	}
+ return []func() resource.Resource{
+  NewOrderResource,    // References a constructor in resource_order.go
+  NewCustomerResource, // References a constructor in resource_customer.go
+ }
 }
 
 func (p *MyCorpProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
-	return []func() datasource.DataSource{
-		NewOrderDataSource, // References a constructor in data_source_order.go
-	}
+ return []func() datasource.DataSource{
+  NewOrderDataSource, // References a constructor in data_source_order.go
+ }
 }
 
 // New is a helper function to simplify provider server and testing implementation.
 func New(version string) func() provider.Provider {
-	return func() provider.Provider {
-		return &MyCorpProvider{
-			version: version,
-		}
-	}
+ return func() provider.Provider {
+  return &MyCorpProvider{
+   version: version,
+  }
+ }
 }
 ```
 
@@ -419,43 +424,43 @@ Create a file named `resource_order_test.go` alongside your resource implementat
 package provider
 
 import (
-	"testing"
+ "testing"
 
-	"github.com/hashicorp/terraform-plugin-testing/helper/resource"
+ "github.com/hashicorp/terraform-plugin-testing/helper/resource"
 )
 
 func TestAccOrderResource(t *testing.T) {
-	resource.Test(t, resource.TestCase{
-		ProtoV6ProviderFactories: testAccProtoV6ProviderFactories, // Configured in your test setup
-		Steps: []resource.TestStep{
-			// Step 1: Create the resource
-			{
-				Config: `
-					resource "mycorp_order" "test" {
-						item_name = "Server Rack"
-						quantity  = 5
-					}
-				`,
-				Check: resource.ComposeAggregateTestCheckFunc(
-					resource.TestCheckResourceAttr("mycorp_order.test", "item_name", "Server Rack"),
-					resource.TestCheckResourceAttr("mycorp_order.test", "quantity", "5"),
-					resource.TestCheckResourceAttrSet("mycorp_order.test", "id"), // Ensure ID was generated
-				),
-			},
-			// Step 2: Update the resource
-			{
-				Config: `
-					resource "mycorp_order" "test" {
-						item_name = "Server Rack"
-						quantity  = 10
-					}
-				`,
-				Check: resource.ComposeAggregateTestCheckFunc(
-					resource.TestCheckResourceAttr("mycorp_order.test", "quantity", "10"),
-				),
-			},
-		},
-	})
+ resource.Test(t, resource.TestCase{
+  ProtoV6ProviderFactories: testAccProtoV6ProviderFactories, // Configured in your test setup
+  Steps: []resource.TestStep{
+   // Step 1: Create the resource
+   {
+    Config: `
+     resource "mycorp_order" "test" {
+      item_name = "Server Rack"
+      quantity  = 5
+     }
+    `,
+    Check: resource.ComposeAggregateTestCheckFunc(
+     resource.TestCheckResourceAttr("mycorp_order.test", "item_name", "Server Rack"),
+     resource.TestCheckResourceAttr("mycorp_order.test", "quantity", "5"),
+     resource.TestCheckResourceAttrSet("mycorp_order.test", "id"), // Ensure ID was generated
+    ),
+   },
+   // Step 2: Update the resource
+   {
+    Config: `
+     resource "mycorp_order" "test" {
+      item_name = "Server Rack"
+      quantity  = 10
+     }
+    `,
+    Check: resource.ComposeAggregateTestCheckFunc(
+     resource.TestCheckResourceAttr("mycorp_order.test", "quantity", "10"),
+    ),
+   },
+  },
+ })
 }
 ```
 
@@ -469,17 +474,18 @@ TF_ACC=1 go test ./... -v -timeout 120m
 
 OpenTofu providers must be cross-compiled for multiple operating systems (Linux, macOS, Windows) and architectures (amd64, arm64). Furthermore, the binaries must be packaged in ZIP archives, cryptographically signed with a GPG key, and accompanied by a SHA256 checksum file. Doing this manually is error-prone.
 
-The industry standard for automating this process is **GoReleaser** combined with GitHub Actions. 
+The industry standard for automating this process is **GoReleaser** combined with GitHub Actions.
 
-1.  **Generate a GPG Key:** You need a GPG key to sign your releases. This guarantees to OpenTofu users that the binary was compiled by you and hasn't been tampered with.
-2.  **Configure GoReleaser:** Create a `.goreleaser.yml` file in your repository. HashiCorp provides a standard template for providers that configures the correct archive names, binary names, and signature mechanisms.
-3.  **Setup GitHub Actions:** Create a workflow in `.github/workflows/release.yml` that triggers when you push a Git tag (e.g., `v1.0.0`). The action will securely import your GPG private key, run GoReleaser, and attach the compiled binaries, the `SHA256SUMS` file, and the `.sig` signature to a GitHub Release.
+1. **Generate a GPG Key:** You need a GPG key to sign your releases. This guarantees to OpenTofu users that the binary was compiled by you and hasn't been tampered with.
+2. **Configure GoReleaser:** Create a `.goreleaser.yml` file in your repository. HashiCorp provides a standard template for providers that configures the correct archive names, binary names, and signature mechanisms.
+3. **Setup GitHub Actions:** Create a workflow in `.github/workflows/release.yml` that triggers when you push a Git tag (e.g., `v1.0.0`). The action will securely import your GPG private key, run GoReleaser, and attach the compiled binaries, the `SHA256SUMS` file, and the `.sig` signature to a GitHub Release.
 
 ### Publishing to the Registry
 
-OpenTofu can consume providers directly from the public OpenTofu Registry or an internal, private registry. 
+OpenTofu can consume providers directly from the public OpenTofu Registry or an internal, private registry.
 
 To publish your provider to the public registry, your repository must meet several strict requirements:
+
 * The GitHub repository must be public.
 * The repository name must exactly match the format `terraform-provider-<NAME>`.
 * You must have valid GitHub releases containing the specific assets generated by GoReleaser (`.zip`, `SHA256SUMS`, and `SHA256SUMS.sig`).

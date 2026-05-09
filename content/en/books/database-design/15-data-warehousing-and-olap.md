@@ -364,11 +364,8 @@ These operations filter the cube to focus on specific subsets of data.
 * **Slice:** Extracts a single two-dimensional plane from the cube by fixing one dimension to a single value.
 * *Example:* Slicing the cube for `Time = 'Q1'` yields a 2D table showing only Geography vs. Product sales for that specific quarter.
 
-
 * **Dice:** Extracts a smaller sub-cube by selecting specific ranges or multiple values across multiple dimensions.
 * *Example:* Dicing the cube to show only `(Time = 'Q1' OR 'Q2') AND (Geography = 'North America') AND (Product = 'Mobile')`.
-
-
 
 #### 4. Pivot (Rotate)
 

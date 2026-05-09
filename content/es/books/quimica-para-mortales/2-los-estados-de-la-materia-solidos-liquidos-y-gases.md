@@ -21,22 +21,24 @@ La temperatura de un cuerpo es, de hecho, una medida directa de la energía cin�
 $$E_k = \frac{3}{2} k_B T$$
 
 Donde:
-*   $E_k$ es la energía cinética promedio de la partícula.
-*   $k_B$ es la constante de Boltzmann (un número muy pequeño que relaciona energía y temperatura).
-*   $T$ es la temperatura absoluta (medida en Kelvin).
+
+* $E_k$ es la energía cinética promedio de la partícula.
+* $k_B$ es la constante de Boltzmann (un número muy pequeño que relaciona energía y temperatura).
+* $T$ es la temperatura absoluta (medida en Kelvin).
 
 Lo que esta ecuación nos dice de forma matemática es muy simple de entender en la práctica: **si la temperatura sube, el movimiento molecular sube**. El estado de la materia (sólido, líquido o gas) en el que se encuentra una sustancia en un momento dado es simplemente el resultado de quién está ganando ese juego de tira y afloja: las fuerzas de atracción que intentan unir a las partículas, o la energía cinética que intenta separarlas.
 
 ## 2. Los Sólidos: El orden, la disciplina y la fortaleza
 
-Cuando las fuerzas de atracción ganan la batalla por goleada, tenemos un sólido. En el estado sólido, la energía cinética (el movimiento) de las partículas es tan baja que no pueden vencer las fuerzas que las mantienen unidas. 
+Cuando las fuerzas de atracción ganan la batalla por goleada, tenemos un sólido. En el estado sólido, la energía cinética (el movimiento) de las partículas es tan baja que no pueden vencer las fuerzas que las mantienen unidas.
 
 Imagina a un grupo de soldados en una formación militar perfecta, o un grupo de personas en un cine donde todos están sentados en su asiento asignado. No pueden caminar por la sala, pero eso no significa que estén congelados como estatuas; pueden respirar, moverse en su asiento y temblar. A nivel microscópico, esto es exactamente lo que hacen las moléculas en un sólido: no se desplazan, pero **vibran** en sus posiciones fijas.
 
 Esta falta de movilidad traslacional es lo que otorga a los sólidos sus características macroscópicas principales:
-*   **Forma definida:** Un bloque de hierro no toma la forma del recipiente que lo contiene. Sus moléculas están bloqueadas en su lugar.
-*   **Volumen definido:** No puedes comprimir un ladrillo fácilmente porque sus moléculas ya están empaquetadas lo más cerca posible.
-*   **Alta densidad:** Al estar tan juntas, hay mucha masa en poco espacio (con excepciones notables, como el hielo, del cual hablaremos más adelante).
+
+* **Forma definida:** Un bloque de hierro no toma la forma del recipiente que lo contiene. Sus moléculas están bloqueadas en su lugar.
+* **Volumen definido:** No puedes comprimir un ladrillo fácilmente porque sus moléculas ya están empaquetadas lo más cerca posible.
+* **Alta densidad:** Al estar tan juntas, hay mucha masa en poco espacio (con excepciones notables, como el hielo, del cual hablaremos más adelante).
 
 La mayoría de los sólidos en la naturaleza adoptan una estructura altamente ordenada llamada **red cristalina**. Desde un humilde grano de sal de mesa (cloruro de sodio) hasta un diamante invaluable, sus átomos están dispuestos en patrones geométricos tridimensionales que se repiten una y otra vez.
 
@@ -67,9 +69,10 @@ Si encendemos el fuego bajo nuestro sólido, comenzamos a introducir energía t�
 Volviendo a nuestra analogía, ya no estamos en el cine con asientos asignados. Ahora estamos en una pista de baile muy concurrida. Las personas (moléculas) siguen estando muy juntas, rozándose unas con otras, pero ahora pueden moverse, caminar, cambiar de lugar y fluir por toda la pista.
 
 Las características de los líquidos reflejan este caos controlado:
-*   **Forma indefinida:** Como las moléculas pueden deslizarse unas sobre otras, el líquido fluye y adopta exactamente la forma del recipiente que lo contiene.
-*   **Volumen definido:** Aunque pueden moverse, la fuerza de atracción sigue siendo lo suficientemente fuerte como para mantenerlas juntas. Por eso, un litro de agua sigue ocupando un litro, ya sea que esté en una jarra alta o derramado en el suelo.
-*   **Incompresibilidad relativa:** Al igual que los sólidos, las moléculas de los líquidos ya están prácticamente "tocándose", por lo que es extremadamente difícil obligarlas a ocupar un volumen menor apretándolas. Esta es la base de la hidráulica (los frenos de tu coche funcionan gracias a esto).
+
+* **Forma indefinida:** Como las moléculas pueden deslizarse unas sobre otras, el líquido fluye y adopta exactamente la forma del recipiente que lo contiene.
+* **Volumen definido:** Aunque pueden moverse, la fuerza de atracción sigue siendo lo suficientemente fuerte como para mantenerlas juntas. Por eso, un litro de agua sigue ocupando un litro, ya sea que esté en una jarra alta o derramado en el suelo.
+* **Incompresibilidad relativa:** Al igual que los sólidos, las moléculas de los líquidos ya están prácticamente "tocándose", por lo que es extremadamente difícil obligarlas a ocupar un volumen menor apretándolas. Esta es la base de la hidráulica (los frenos de tu coche funcionan gracias a esto).
 
 Visualmente, el estado líquido a nivel microscópico se vería así:
 
@@ -85,6 +88,7 @@ Estructura de un Líquido
 ```
 
 ### Propiedades únicas de los líquidos
+
 El estado líquido tiene comportamientos fascinantes que vemos en nuestro día a día. Uno de ellos es la **viscosidad**, que es la resistencia de un líquido a fluir. La miel es muy viscosa porque sus moléculas son grandes y se enredan entre sí, mientras que el agua tiene una viscosidad baja.
 
 Otra propiedad espectacular es la **tensión superficial**. Las moléculas en el interior de un líquido son atraídas en todas las direcciones por las moléculas vecinas. Pero las moléculas en la superficie (en contacto con el aire) solo sienten atracción hacia abajo y hacia los lados. Esto crea una especie de "piel" invisible o cama elástica en la superficie del líquido. Es gracias a la tensión superficial que las gotas de lluvia son esféricas y que ciertos insectos, como los zapateros, pueden caminar sobre los estanques sin hundirse.
@@ -96,9 +100,10 @@ Continuemos calentando nuestra sustancia. Las moléculas en el líquido bailan c
 Nuestra pista de baile abarrotada se ha transformado ahora en un enjambre de abejas hiperactivas encerradas en un estadio gigantesco. En un gas, las moléculas son completamente independientes. Viajan en línea recta a velocidades increíbles (a temperatura ambiente, las moléculas de aire chocan contra ti a cientos de kilómetros por hora) hasta que rebotan contra otra molécula o contra las paredes del recipiente.
 
 Las características de los gases son drásticamente diferentes a las de los sólidos y líquidos:
-*   **Forma indefinida:** Ocupan cualquier forma posible.
-*   **Volumen indefinido:** Esta es la clave. Un gas no tiene un volumen fijo; se **expandirá** infinitamente hasta llenar por completo el recipiente que lo contiene, sin importar lo grande que sea.
-*   **Alta compresibilidad:** Debido a que en un gas las moléculas están extremadamente separadas (el gas es en su mayor parte espacio vacío), puedes comprimirlo fácilmente empujando las moléculas para que estén más cerca. Por eso puedes meter litros y litros de oxígeno en un pequeño tanque de buceo.
+
+* **Forma indefinida:** Ocupan cualquier forma posible.
+* **Volumen indefinido:** Esta es la clave. Un gas no tiene un volumen fijo; se **expandirá** infinitamente hasta llenar por completo el recipiente que lo contiene, sin importar lo grande que sea.
+* **Alta compresibilidad:** Debido a que en un gas las moléculas están extremadamente separadas (el gas es en su mayor parte espacio vacío), puedes comprimirlo fácilmente empujando las moléculas para que estén más cerca. Por eso puedes meter litros y litros de oxígeno en un pequeño tanque de buceo.
 
 Así se vería la distribución de un gas en el mismo espacio que ocupaban nuestros diagramas anteriores:
 
@@ -121,11 +126,12 @@ El comportamiento de los gases está tan intrínsecamente ligado a la temperatur
 $$P \cdot V = n \cdot R \cdot T$$
 
 Donde:
-*   $P$ es la Presión (la fuerza de los miles de millones de choques de las moléculas contra las paredes).
-*   $V$ es el Volumen (el espacio donde están encerradas).
-*   $n$ es la cantidad de sustancia (cuántas moléculas hay, medido en moles).
-*   $R$ es la constante universal de los gases.
-*   $T$ es la Temperatura.
+
+* $P$ es la Presión (la fuerza de los miles de millones de choques de las moléculas contra las paredes).
+* $V$ es el Volumen (el espacio donde están encerradas).
+* $n$ es la cantidad de sustancia (cuántas moléculas hay, medido en moles).
+* $R$ es la constante universal de los gases.
+* $T$ es la Temperatura.
 
 Esta simple fórmula te explica fenómenos de la vida diaria. ¿Por qué estalla un neumático si lo dejas al sol? Porque al aumentar la temperatura ($T$), el volumen ($V$) no puede cambiar mucho ya que la goma tiene un límite, así que la presión ($P$) de las moléculas chocando a lo loco aumenta hasta que el neumático cede.
 
@@ -211,18 +217,18 @@ Aquí tienes el diagrama de los flujos entre los tres estados principales:
 
 Desglosemos rápidamente cada uno de estos procesos:
 
-1.  **Fusión:** Es el paso de sólido a líquido. Ocurre cuando el hielo se derrite o cuando los metales se funden en la industria siderúrgica a miles de grados de temperatura.
-2.  **Solidificación (o congelación):** Es el proceso inverso, de líquido a sólido. Las moléculas pierden energía, se ralentizan y las fuerzas de atracción vuelven a atraparlas en una red cristalina. Ocurre al hacer cubitos de hielo o cuando la lava volcánica se enfría para formar roca.
-3.  **Vaporización:** Es el paso de líquido a gas. Puede ocurrir de dos formas: por **ebullición** (cuando todo el líquido alcanza la temperatura necesaria, viendo burbujas formarse desde el fondo, como el agua hirviendo) o por **evaporación** (un proceso más lento y silencioso que ocurre solo en la superficie del líquido a cualquier temperatura, razón por la cual un charco se seca al sol sin necesidad de hervir).
-4.  **Condensación:** Es el paso de gas a líquido. Las moléculas de gas chocan contra una superficie fría, pierden su energía y se agrupan en gotas líquidas. Es lo que ocurre en el exterior de tu vaso de refresco helado en verano; el vapor de agua del aire choca contra el vaso frío y se vuelve líquido. También es el proceso que forma las nubes en la atmósfera.
-5.  **Sublimación:** Este es un atajo geográfico. Es el paso directo de Sólido a Gas, saltándose por completo la fase líquida. Un ejemplo clásico es el "hielo seco" (dióxido de carbono congelado), que al sacarlo a temperatura ambiente se convierte directamente en un humo blanco y frío, sin dejar ningún charco de líquido.
-6.  **Deposición (o sublimación inversa):** Es el atajo contrario, pasando de Gas directamente a Sólido. El ejemplo más hermoso de deposición es la escarcha de invierno en las ventanas. El vapor de agua del ambiente se congela directamente sobre el vidrio sin pasar por el estado líquido, formando cristales de hielo geométricos.
+1. **Fusión:** Es el paso de sólido a líquido. Ocurre cuando el hielo se derrite o cuando los metales se funden en la industria siderúrgica a miles de grados de temperatura.
+2. **Solidificación (o congelación):** Es el proceso inverso, de líquido a sólido. Las moléculas pierden energía, se ralentizan y las fuerzas de atracción vuelven a atraparlas en una red cristalina. Ocurre al hacer cubitos de hielo o cuando la lava volcánica se enfría para formar roca.
+3. **Vaporización:** Es el paso de líquido a gas. Puede ocurrir de dos formas: por **ebullición** (cuando todo el líquido alcanza la temperatura necesaria, viendo burbujas formarse desde el fondo, como el agua hirviendo) o por **evaporación** (un proceso más lento y silencioso que ocurre solo en la superficie del líquido a cualquier temperatura, razón por la cual un charco se seca al sol sin necesidad de hervir).
+4. **Condensación:** Es el paso de gas a líquido. Las moléculas de gas chocan contra una superficie fría, pierden su energía y se agrupan en gotas líquidas. Es lo que ocurre en el exterior de tu vaso de refresco helado en verano; el vapor de agua del aire choca contra el vaso frío y se vuelve líquido. También es el proceso que forma las nubes en la atmósfera.
+5. **Sublimación:** Este es un atajo geográfico. Es el paso directo de Sólido a Gas, saltándose por completo la fase líquida. Un ejemplo clásico es el "hielo seco" (dióxido de carbono congelado), que al sacarlo a temperatura ambiente se convierte directamente en un humo blanco y frío, sin dejar ningún charco de líquido.
+6. **Deposición (o sublimación inversa):** Es el atajo contrario, pasando de Gas directamente a Sólido. El ejemplo más hermoso de deposición es la escarcha de invierno en las ventanas. El vapor de agua del ambiente se congela directamente sobre el vidrio sin pasar por el estado líquido, formando cristales de hielo geométricos.
 
 ## 7. ¿Un universo de solo tres estados? Una mención al Plasma
 
 A lo largo de este artículo nos hemos enfocado en los "Tres Grandes": sólidos, líquidos y gases. Son los que interactuamos diariamente, los que tocamos, bebemos y respiramos. Sin embargo, para que nuestra aventura en la Química para Mortales esté completa, debemos levantar la vista hacia las estrellas.
 
-Si tomamos un gas y le aplicamos una cantidad de calor verdaderamente colosal (hablamos de miles o millones de grados), la energía cinética se vuelve tan absurdamente alta que las moléculas no solo rebotan entre sí, sino que se destrozan. Los choques son tan violentos que los electrones son arrancados de sus átomos. 
+Si tomamos un gas y le aplicamos una cantidad de calor verdaderamente colosal (hablamos de miles o millones de grados), la energía cinética se vuelve tan absurdamente alta que las moléculas no solo rebotan entre sí, sino que se destrozan. Los choques son tan violentos que los electrones son arrancados de sus átomos.
 
 Este nuevo estado, una sopa hirviente de electrones libres y núcleos atómicos cargados positivamente, se conoce como **Plasma**.
 
@@ -230,10 +236,10 @@ Aunque en la Tierra el plasma no es común en estado natural (lo encontramos en 
 
 ## Conclusión: La danza universal de la materia
 
-La próxima vez que sirvas un vaso de agua con hielo, tómate un segundo para observar ese pequeño milagro termodinámico en tu cocina. Estás presenciando una coreografía cósmica. 
+La próxima vez que sirvas un vaso de agua con hielo, tómate un segundo para observar ese pequeño milagro termodinámico en tu cocina. Estás presenciando una coreografía cósmica.
 
 Los cubos de hielo flotando (una rareza del agua, cuyo sólido es menos denso que su líquido porque su red cristalina tiene forma de hexágonos vacíos) están absorbiendo el calor latente del líquido. Las moléculas de agua del líquido están bajando su ritmo cardíaco, enfriándose. Al mismo tiempo, en la superficie de tu vaso, el vapor de agua invisible de la cocina se agota de tanto volar, choca contra el vidrio frío, se condensa y derrama lágrimas líquidas sobre la mesa.
 
-Comprender los estados de la materia: sólidos, líquidos y gases; no es solo memorizar vocabulario escolar. Es adquirir una nueva lente para ver el mundo. Es entender por qué las tuberías estallan en invierno, por qué sudamos para refrescarnos (el agua en nuestra piel absorbe nuestro calor corporal al evaporarse), y por qué las nubes de tormenta se alzan majestuosas en el cielo de verano. 
+Comprender los estados de la materia: sólidos, líquidos y gases; no es solo memorizar vocabulario escolar. Es adquirir una nueva lente para ver el mundo. Es entender por qué las tuberías estallan en invierno, por qué sudamos para refrescarnos (el agua en nuestra piel absorbe nuestro calor corporal al evaporarse), y por qué las nubes de tormenta se alzan majestuosas en el cielo de verano.
 
 La materia, en todas sus formas, está inmersa en un baile eterno dictado por la temperatura. Las moléculas pueden estar encerradas en la estricta formación de un diamante o volando libres en la inmensidad de la atmósfera, pero las reglas del juego son siempre las mismas. Al conocerlas, hemos dado un paso de gigante en nuestro camino para desentrañar los secretos del universo cotidiano. Y eso, sin duda, es magia real explicada para mortales.

@@ -37,7 +37,6 @@ El formato BIND tiene reglas sintácticas muy específicas. Desconocerlas es la 
 * Si un nombre termina en un punto (`.` ), es un **FQDN** (Fully Qualified Domain Name) o nombre absoluto. El servidor DNS lo leerá tal cual: `servidor.ejemplo.com.`.
 * Si un nombre **no** termina en un punto, es un nombre relativo. El servidor DNS automáticamente le añadirá el nombre del dominio base al final. Si escribes `www` en el archivo de la zona `ejemplo.com`, el sistema interpretará `www.ejemplo.com.`. Si cometes el error de escribir `www.ejemplo.com` (sin el punto final), el DNS interpretará `www.ejemplo.com.ejemplo.com.`.
 
-
 * **Comentarios (`;`):** Cualquier texto después de un punto y coma (`;`) es ignorado por el servidor. Se usa para documentar.
 * **El símbolo de arroba (`@`):** Representa el nombre del dominio base de la zona en curso (definido por el `$ORIGIN`). Es una forma rápida de referirse a la "raíz" de ese archivo de zona.
 * **Espacios en blanco al inicio:** Si una línea comienza con un espacio en blanco o una tabulación en lugar de un `<nombre>`, el servidor asume que este registro pertenece al **mismo nombre** que el registro de la línea anterior.
@@ -176,10 +175,9 @@ api IN  AAAA  2001:db8::100:55
 1. El *Stub Resolver* (el cliente DNS en el sistema operativo del usuario) solicita a su resolutor recursivo tanto el registro A como el AAAA.
 2. Si la red del usuario solo soporta IPv4, ignorará el AAAA y se conectará a la dirección del registro A.
 3. Si la red del usuario soporta IPv6, los sistemas operativos y navegadores modernos emplean un algoritmo llamado **Happy Eyeballs** (RFC 8305).
+
 * *Happy Eyeballs* inicia la conexión TCP hacia la dirección IPv6 y, de manera casi simultánea (con un retraso de apenas milisegundos), inicia otra conexión hacia la IPv4.
 * La primera conexión que se establezca exitosamente (suele ser la IPv6 si el enrutamiento es óptimo) es la que se utiliza, cancelando la otra. Esto garantiza que si la red IPv6 del usuario está mal configurada o es inestable ("blackholing"), el servicio web no se quede "colgado" esperando un *timeout*, sino que cambie instantáneamente a IPv4 de forma invisible para el usuario.
-
-
 
 ---
 
@@ -379,32 +377,24 @@ Veamos un ejemplo real y diseccionemos cada campo:
 * **`MNAME` (Master Name Server):** `ns1.ejemplo.com.`
 * Es el servidor principal donde se edita la zona. Originalmente, aquí es donde los DNS dinámicos (DDNS) debían enviar sus actualizaciones.
 
-
 * **`RNAME` (Responsible Name):** `admin.ejemplo.com.`
 * Es el correo electrónico del administrador del dominio. **Presta atención a la trampa de sintaxis:** El símbolo `@` tiene un significado especial en BIND (representa el dominio base), por lo que se reemplaza por un punto. `admin.ejemplo.com.` significa en realidad `admin@ejemplo.com`.
-
 
 * **`SERIAL`:** `2023102401`
 * Es el "número de versión" de la zona. Cuando haces un cambio en tus registros, **debes incrementar este número**. Los servidores secundarios consultan periódicamente este serial; si el número es mayor al que ellos tienen, inician una transferencia de zona (AXFR/IXFR) para actualizarse.
 * *Mejor práctica:* Usar el formato `AAAAMMDDnn` (Año, Mes, Día, y un número correlativo de dos dígitos para las revisiones de ese mismo día).
 
-
 * **`REFRESH`:** `7200`
 * Tiempo (en segundos) que un servidor secundario esperará antes de preguntarle al primario si hay un nuevo Serial.
-
 
 * **`RETRY`:** `3600`
 * Si el servidor secundario intenta contactar al primario por el *Refresh* y este no responde (está caído), el *Retry* indica cuánto tiempo esperará antes de intentar contactarlo de nuevo.
 
-
 * **`EXPIRE`:** `1209600`
 * El límite de tiempo crítico. Si el primario se cae de forma catastrófica, el secundario seguirá respondiendo consultas basándose en su caché durante este tiempo. Una vez alcanzado el *Expire*, el secundario considerará que sus datos son obsoletos y **dejará de responder** consultas para esa zona por seguridad. Suele configurarse entre 1 y 4 semanas.
 
-
 * **`MINIMUM` (Negative Caching TTL):** `3600`
 * *El concepto peor entendido del DNS.* Históricamente, definía el TTL por defecto de la zona. Hoy (desde el RFC 2308), define el tiempo que un resolutor recursivo (como el 8.8.8.8) debe mantener en caché una respuesta de **NXDOMAIN** (dominio no existente). Si alguien consulta `no-existo.ejemplo.com`, tu servidor devolverá un error y el resolutor no volverá a molestarte preguntando por ese subdominio fantasma hasta que pase este tiempo.
-
-
 
 **El resumen del Senior:**
 El registro SOA es el puente de comunicación entre tus propios servidores DNS. Modificar mal el SOA no suele "romper" tu sitio web inmediatamente, pero destruye la replicación en la sombra. Un SysAdmin novato cambia un registro A, olvida actualizar el Serial en el SOA y se pasa horas preguntándose por qué el mundo exterior sigue viendo la IP vieja (porque los secundarios nunca bajaron la nueva zona). El SOA impone la disciplina operativa.
@@ -413,7 +403,7 @@ El registro SOA es el puente de comunicación entre tus propios servidores DNS. 
 
 En los albores de Internet, era común que un único servidor monolítico alojara la página web y también gestionara los correos electrónicos del dominio. Hoy en día, esa práctica es la excepción. Las organizaciones modernas alojan su web en proveedores de nube (como AWS o Vercel) y delegan su correo a plataformas especializadas (como Google Workspace, Microsoft 365 o clústeres de correo dedicados).
 
-El registro **MX (Mail Exchanger)** es el mecanismo que hace posible esta separación. Su única misión es decirle al mundo: *"Si quieres enviar un correo a alguien @https://www.google.com/url?sa=E&source=gmail&q=ejemplo.com, no busques en la IP de la página web; entrégalo en este servidor específico"*.
+El registro **MX (Mail Exchanger)** es el mecanismo que hace posible esta separación. Su única misión es decirle al mundo: *"Si quieres enviar un correo a alguien @<https://www.google.com/url?sa=E&source=gmail&q=ejemplo.com>, no busques en la IP de la página web; entrégalo en este servidor específico"*.
 
 Es importante aclarar desde ahora: el registro MX solo controla el **correo entrante** (hacia dónde se enrutan los mensajes que te envían). No tiene absolutamente nada que ver con el correo saliente ni con autorizar quién puede enviar en tu nombre (eso lo veremos en la sección 3.6).
 
@@ -558,8 +548,6 @@ Funciona publicando una lista blanca de IPs y servicios autorizados en un regist
 * `-all` (HardFail): "Si no está en la lista, recházalo y bota la conexión".
 * `+all` (Pass): "Permite a todo el mundo". **Jamás uses esto.**
 
-
-
 **La Trampa del Senior (El límite de los 10 Lookups):**
 El error más común con SPF es superar el límite de búsquedas DNS. Para evitar ataques de denegación de servicio (DDoS), el RFC dicta que un validador SPF **no realizará más de 10 consultas DNS (Lookups)** para resolver tu política. Cada `include` o `a` en tu regla suma un lookup (y si esos includes tienen más includes adentro, se suman). Si llegas a 11, tu SPF se rompe y tus correos válidos rebotarán con un error *PermError*.
 
@@ -609,7 +597,6 @@ _dmarc  IN  TXT  "v=DMARC1; p=quarantine; pct=100; rua=mailto:postmaster@ejemplo
 * `p=none`: Modo monitor. "No hagas nada, entrega el correo igual, pero mándame un reporte". (Para cuando recién estás implementando).
 * `p=quarantine`: "Mándalo a la carpeta de Spam".
 * `p=reject`: La meta dorada. "Rechaza el correo y bloquéalo completamente".
-
 
 * **`pct=100`**: Aplica esta política al 100% de los correos que fallen.
 * **`rua=mailto:...`**: Aquí el mundo te enviará reportes XML agregados sobre qué IPs están intentando usar tu dominio y cómo están resultando las validaciones.

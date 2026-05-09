@@ -54,12 +54,12 @@ orange banana apple
 To change the behavior of the substitution, you append flags after the final delimiter.
 
 * **`g` (Global):** Replaces *all* occurrences on a line, not just the first.
+
 ```bash
 $ echo "apple banana apple" | sed 's/apple/orange/g'
 orange banana orange
 
 ```
-
 
 * **`p` (Print):** Prints the modified line. This is almost always used with the `-n` option.
 * **`i` or `I` (Case-Insensitive):** Ignores case when matching the search pattern (GNU `sed` extension).
@@ -546,4 +546,3 @@ SECURE_PASSWORD_123
 $ cat messy_file.txt | tr -s '[:space:]' ' '
 
 ```
-

@@ -12,9 +12,9 @@ El crate `testcontainers` (conocido en el ecosistema como `testcontainers-rs`) e
 
 ### La filosofía de Testcontainers en Rust
 
-Testcontainers se apoya en una premisa fundamental: **el entorno de pruebas debe ser efímero, reproducible y aislado**. 
+Testcontainers se apoya en una premisa fundamental: **el entorno de pruebas debe ser efímero, reproducible y aislado**.
 
-En el contexto de Rust, esta librería brilla de manera excepcional gracias al modelo de *Ownership* y el trait `Drop`. Cuando instancias un contenedor dentro de una función de prueba `#[test]` (o `#[tokio::test]`), la librería se comunica con el demonio de Docker (vía el socket local) para descargar la imagen y levantar el contenedor. 
+En el contexto de Rust, esta librería brilla de manera excepcional gracias al modelo de *Ownership* y el trait `Drop`. Cuando instancias un contenedor dentro de una función de prueba `#[test]` (o `#[tokio::test]`), la librería se comunica con el demonio de Docker (vía el socket local) para descargar la imagen y levantar el contenedor.
 
 Lo verdaderamente poderoso ocurre al final de la prueba: sin importar si el test pasa exitosamente o entra en pánico (`panic!`), la variable que representa al contenedor sale de su ámbito (scope). Rust invoca automáticamente su método `Drop`, el cual envía la orden a Docker para detener y eliminar el contenedor instantáneamente. No quedan contenedores "zombies" consumiendo recursos en tu máquina ni en tus pipelines de CI/CD.
 
@@ -85,7 +85,7 @@ Un error común en desarrolladores junior es forzar que el contenedor de pruebas
 
 ## 26.2 Configuración de bases de datos de prueba en Docker (Postgres, Redis)
 
-En la sección anterior vimos cómo utilizar `GenericImage` para levantar cualquier contenedor. Aunque esta flexibilidad es excelente, definir manualmente los puertos, las credenciales por defecto y, sobre todo, las estrategias de espera (*wait strategies*) para cada servicio puede volverse repetitivo y propenso a errores. 
+En la sección anterior vimos cómo utilizar `GenericImage` para levantar cualquier contenedor. Aunque esta flexibilidad es excelente, definir manualmente los puertos, las credenciales por defecto y, sobre todo, las estrategias de espera (*wait strategies*) para cada servicio puede volverse repetitivo y propenso a errores.
 
 Para resolver esto, el ecosistema nos ofrece el crate `testcontainers-modules`. Esta colección comunitaria provee imágenes preconfiguradas y fuertemente tipadas para los servicios más comunes del backend, garantizando que el contenedor solo se reporte como "listo" cuando la base de datos realmente puede aceptar conexiones.
 
@@ -102,7 +102,7 @@ tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
 
 ### Integración con PostgreSQL
 
-Cuando testeamos repositorios relacionales, necesitamos una base de datos real para verificar que nuestras sentencias SQL (especialmente las complejas con `JOIN`s o funciones específicas del motor) funcionen correctamente. 
+Cuando testeamos repositorios relacionales, necesitamos una base de datos real para verificar que nuestras sentencias SQL (especialmente las complejas con `JOIN`s o funciones específicas del motor) funcionen correctamente.
 
 Veamos cómo levantar una instancia de PostgreSQL efímera, conectarla con `sqlx` (que estudiamos en el Capítulo 20) y ejecutar una migración antes de nuestra prueba:
 
@@ -178,7 +178,7 @@ mod tests {
 
 ### Abstracción de Entornos (Fixture Pattern)
 
-A medida que tu suite de pruebas crezca, copiar y pegar la inicialización del contenedor y la creación del pool de conexiones en cada función `#[tokio::test]` violará el principio DRY (*Don't Repeat Yourself*). 
+A medida que tu suite de pruebas crezca, copiar y pegar la inicialización del contenedor y la creación del pool de conexiones en cada función `#[tokio::test]` violará el principio DRY (*Don't Repeat Yourself*).
 
 En Rust, una práctica excelente a nivel de arquitectura de pruebas es crear una estructura auxiliar o *Fixture* que encapsule este estado:
 
@@ -231,7 +231,7 @@ Existen dos estrategias principales para lograr este aislamiento utilizando Test
 
 ### Estrategia 1: Aislamiento Físico (Contenedores Múltiples por Prueba)
 
-La forma más directa de garantizar que ninguna prueba interfiera con otra es instanciar un ecosistema completo y efímero para cada función `#[tokio::test]`. 
+La forma más directa de garantizar que ninguna prueba interfiera con otra es instanciar un ecosistema completo y efímero para cada función `#[tokio::test]`.
 
 Podemos evolucionar nuestra estructura `TestApp` (introducida en la sección 26.2) para que orqueste múltiples dependencias:
 
@@ -280,7 +280,7 @@ impl TestApp {
 
 ### Estrategia 2: Aislamiento Lógico (El enfoque Senior)
 
-Para *codebases* grandes, instanciar contenedores físicos por cada prueba no es escalable. La solución de nivel senior consiste en levantar **un único contenedor de base de datos para toda la suite de pruebas**, pero crear un **aislamiento lógico** dentro de él. 
+Para *codebases* grandes, instanciar contenedores físicos por cada prueba no es escalable. La solución de nivel senior consiste en levantar **un único contenedor de base de datos para toda la suite de pruebas**, pero crear un **aislamiento lógico** dentro de él.
 
 En PostgreSQL, esto significa crear una base de datos única (generada con un UUID o un sufijo aleatorio) para cada prueba. En Redis, se puede lograr utilizando prefijos únicos en las claves o seleccionando diferentes índices de base de datos lógicos (`SELECT 1`, `SELECT 2`).
 
@@ -342,6 +342,7 @@ impl IsolatedApp {
 ```
 
 En este escenario, cuando ejecutas `cargo test`:
+
 1. La primera prueba que llame a `IsolatedApp::new()` iniciará el contenedor físico de Testcontainers.
 2. Las pruebas subsiguientes reutilizarán el mismo contenedor que ya está en ejecución (gracias a `OnceCell`).
 3. **Cada prueba crea su propia base de datos lógica en milisegundos**, ejecuta las migraciones y corre las aserciones sin pisarse con las demás.
@@ -358,7 +359,7 @@ Para mantener la agilidad en tu ciclo de desarrollo a nivel senior, debes aplica
 
 ### 1. Deshabilitar la durabilidad del motor de base de datos
 
-El mayor cuello de botella al levantar bases de datos relacionales en pruebas es la escritura en disco. Por defecto, motores como PostgreSQL priorizan la integridad de los datos, asegurándose de que cada transacción se escriba físicamente en el disco mediante llamadas al sistema como `fsync`. 
+El mayor cuello de botella al levantar bases de datos relacionales en pruebas es la escritura en disco. Por defecto, motores como PostgreSQL priorizan la integridad de los datos, asegurándose de que cada transacción se escriba físicamente en el disco mediante llamadas al sistema como `fsync`.
 
 En un entorno de pruebas efímero, **la integridad de los datos ante caídas eléctricas nos es completamente irrelevante**. Si el contenedor se apaga abruptamente, la prueba falla de todos modos. Podemos instruir a Postgres para que desactive estas garantías, lo que incrementa masivamente el rendimiento de las operaciones `INSERT` y `UPDATE` durante nuestros tests.
 

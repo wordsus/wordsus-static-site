@@ -2,7 +2,7 @@ As applications scale, monolithic designs often reach their limits. This chapter
 
 ## 14.1 Microservices Architecture Principles in Go
 
-Transitioning from building monolithic RESTful APIs to distributed microservices requires a fundamental shift in both design philosophy and operational maturity. A microservices architecture decomposes a unified application into a suite of small, independently deployable services. Each service runs in its own process and communicates with lightweight mechanisms, often an HTTP resource API or an RPC protocol. 
+Transitioning from building monolithic RESTful APIs to distributed microservices requires a fundamental shift in both design philosophy and operational maturity. A microservices architecture decomposes a unified application into a suite of small, independently deployable services. Each service runs in its own process and communicates with lightweight mechanisms, often an HTTP resource API or an RPC protocol.
 
 Go has emerged as a premier language for microservices architecture. To understand how to design these systems effectively, we must look at the intersection of general distributed systems principles and Go’s specific language features.
 
@@ -10,10 +10,10 @@ Go has emerged as a premier language for microservices architecture. To understa
 
 While microservices can be written in any language, Go provides a unique combination of features that perfectly align with the operational demands of distributed environments:
 
-1.  **Static Binaries and Minimal Footprint:** Go compiles down to a single statically linked binary. This means your deployment artifact contains everything it needs to run, without requiring a bulky runtime environment (like the JVM or Node.js). This results in highly optimized, minimal container images, often under 20MB.
-2.  **Instantaneous Startup Time:** In a dynamic microservices environment—where orchestrators like Kubernetes constantly create and destroy pods to handle scaling—startup time is critical. Go applications typically start in milliseconds, avoiding the "cold start" penalties associated with interpreted languages or heavy frameworks.
-3.  **Low Memory Overhead:** A baseline Go HTTP server requires only a few megabytes of RAM. This allows organizations to pack thousands of microservice instances onto a single cluster with high density, drastically reducing infrastructure costs.
-4.  **Native Concurrency:** As we covered in Part III, Go’s `goroutine` and channel primitives allow services to handle high-throughput, asynchronous network I/O gracefully without the need for complex, nested callbacks.
+1. **Static Binaries and Minimal Footprint:** Go compiles down to a single statically linked binary. This means your deployment artifact contains everything it needs to run, without requiring a bulky runtime environment (like the JVM or Node.js). This results in highly optimized, minimal container images, often under 20MB.
+2. **Instantaneous Startup Time:** In a dynamic microservices environment—where orchestrators like Kubernetes constantly create and destroy pods to handle scaling—startup time is critical. Go applications typically start in milliseconds, avoiding the "cold start" penalties associated with interpreted languages or heavy frameworks.
+3. **Low Memory Overhead:** A baseline Go HTTP server requires only a few megabytes of RAM. This allows organizations to pack thousands of microservice instances onto a single cluster with high density, drastically reducing infrastructure costs.
+4. **Native Concurrency:** As we covered in Part III, Go’s `goroutine` and channel primitives allow services to handle high-throughput, asynchronous network I/O gracefully without the need for complex, nested callbacks.
 
 ### Core Architectural Principles
 
@@ -41,13 +41,13 @@ Anti-Pattern: The Distributed Monolith         Ideal: Decoupled Microservices
 
 #### 2. Decentralized Data Management
 
-A strict rule of microservices is that **services do not share databases**. If the Order Service needs user information, it must query the User Service via its API, rather than reaching directly into the User database. Sharing databases creates hidden coupling, making schema migrations dangerous and defeating the purpose of independent deployments. 
+A strict rule of microservices is that **services do not share databases**. If the Order Service needs user information, it must query the User Service via its API, rather than reaching directly into the User database. Sharing databases creates hidden coupling, making schema migrations dangerous and defeating the purpose of independent deployments.
 
 In Go, this means configuring dedicated database connection pools (via `database/sql` or an ORM) scoped entirely to the boundaries of the specific service binary.
 
 #### 3. Designing for Failure: Resiliency Patterns
 
-In a monolithic application, a function call rarely fails unless the application itself crashes. In a microservices architecture, network partitions, latency spikes, and downstream service failures are guaranteed. 
+In a monolithic application, a function call rarely fails unless the application itself crashes. In a microservices architecture, network partitions, latency spikes, and downstream service failures are guaranteed.
 
 Your Go services must be designed defensively. This involves implementing timeouts (using the `context` package) and retries. Below is an idiomatic Go pattern for implementing a resilient retry mechanism with exponential backoff:
 
@@ -55,33 +55,33 @@ Your Go services must be designed defensively. This involves implementing timeou
 package resiliency
 
 import (
-	"context"
-	"errors"
-	"time"
+ "context"
+ "errors"
+ "time"
 )
 
 // DoWithRetry executes an operation, retrying up to maxRetries with exponential backoff.
 func DoWithRetry(ctx context.Context, maxRetries int, operation func() error) error {
-	var err error
-	backoff := 100 * time.Millisecond
+ var err error
+ backoff := 100 * time.Millisecond
 
-	for i := 0; i < maxRetries; i++ {
-		err = operation()
-		if err == nil {
-			return nil // Operation succeeded
-		}
+ for i := 0; i < maxRetries; i++ {
+  err = operation()
+  if err == nil {
+   return nil // Operation succeeded
+  }
 
-		// Wait before retrying, but respect context cancellation
-		select {
-		case <-ctx.Done():
-			// The overall request timed out or was cancelled
-			return ctx.Err()
-		case <-time.After(backoff):
-			backoff *= 2 // Double the wait time for the next iteration
-		}
-	}
+  // Wait before retrying, but respect context cancellation
+  select {
+  case <-ctx.Done():
+   // The overall request timed out or was cancelled
+   return ctx.Err()
+  case <-time.After(backoff):
+   backoff *= 2 // Double the wait time for the next iteration
+  }
+ }
 
-	return errors.Join(errors.New("max retries exceeded"), err)
+ return errors.Join(errors.New("max retries exceeded"), err)
 }
 ```
 
@@ -142,8 +142,9 @@ Using the `protoc` compiler with the Go plugins (`protoc-gen-go` and `protoc-gen
 ### The gRPC Architecture
 
 When compiled, gRPC generates two primary components:
-1.  **The Client Stub:** A local object that provides the exact same methods as the remote server.
-2.  **The Server Skeleton:** An interface that you must implement in your Go server code to handle the incoming requests.
+
+1. **The Client Stub:** A local object that provides the exact same methods as the remote server.
+2. **The Server Skeleton:** An interface that you must implement in your Go server code to handle the incoming requests.
 
 ```text
 +-----------------------+                         +-----------------------+
@@ -171,53 +172,53 @@ To implement the server, you create a struct that satisfies the generated interf
 package main
 
 import (
-	"context"
-	"log"
-	"net"
+ "context"
+ "log"
+ "net"
 
-	"google.golang.org/grpc"
-	pb "yourproject/internal/pb/billing" // Import generated code
+ "google.golang.org/grpc"
+ pb "yourproject/internal/pb/billing" // Import generated code
 )
 
 // billingServer implements the generated pb.BillingServiceServer interface
 type billingServer struct {
-	pb.UnimplementedBillingServiceServer // Forward compatibility
+ pb.UnimplementedBillingServiceServer // Forward compatibility
 }
 
 // ProcessCharge contains the actual business logic
 func (s *billingServer) ProcessCharge(ctx context.Context, req *pb.ChargeRequest) (*pb.ChargeResponse, error) {
-	log.Printf("Processing charge of %f %s for user %s", req.Amount, req.Currency, req.UserId)
+ log.Printf("Processing charge of %f %s for user %s", req.Amount, req.Currency, req.UserId)
 
-	// Simulate business logic...
-	if req.Amount <= 0 {
-		return &pb.ChargeResponse{
-			Success:      false,
-			ErrorMessage: "Amount must be greater than zero",
-		}, nil
-	}
+ // Simulate business logic...
+ if req.Amount <= 0 {
+  return &pb.ChargeResponse{
+   Success:      false,
+   ErrorMessage: "Amount must be greater than zero",
+  }, nil
+ }
 
-	return &pb.ChargeResponse{
-		Success:       true,
-		TransactionId: "txn_897453",
-	}, nil
+ return &pb.ChargeResponse{
+  Success:       true,
+  TransactionId: "txn_897453",
+ }, nil
 }
 
 func main() {
-	listener, err := net.Listen("tcp", ":50051")
-	if err != nil {
-		log.Fatalf("Failed to listen: %v", err)
-	}
+ listener, err := net.Listen("tcp", ":50051")
+ if err != nil {
+  log.Fatalf("Failed to listen: %v", err)
+ }
 
-	// Create a new gRPC server instance
-	grpcServer := grpc.NewServer()
+ // Create a new gRPC server instance
+ grpcServer := grpc.NewServer()
 
-	// Register our implementation with the gRPC server
-	pb.RegisterBillingServiceServer(grpcServer, &billingServer{})
+ // Register our implementation with the gRPC server
+ pb.RegisterBillingServiceServer(grpcServer, &billingServer{})
 
-	log.Println("gRPC server listening on port 50051...")
-	if err := grpcServer.Serve(listener); err != nil {
-		log.Fatalf("Failed to serve: %v", err)
-	}
+ log.Println("gRPC server listening on port 50051...")
+ if err := grpcServer.Serve(listener); err != nil {
+  log.Fatalf("Failed to serve: %v", err)
+ }
 }
 ```
 
@@ -229,42 +230,42 @@ The client side is remarkably clean. Because gRPC abstracts away the network lay
 package main
 
 import (
-	"context"
-	"log"
-	"time"
+ "context"
+ "log"
+ "time"
 
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
-	pb "yourproject/internal/pb/billing"
+ "google.golang.org/grpc"
+ "google.golang.org/grpc/credentials/insecure"
+ pb "yourproject/internal/pb/billing"
 )
 
 func main() {
-	// Establish a connection to the server.
-	// In production, you would configure TLS credentials here.
-	conn, err := grpc.Dial("localhost:50051", grpc.WithTransportCredentials(insecure.NewCredentials()))
-	if err != nil {
-		log.Fatalf("Failed to connect: %v", err)
-	}
-	defer conn.Close()
+ // Establish a connection to the server.
+ // In production, you would configure TLS credentials here.
+ conn, err := grpc.Dial("localhost:50051", grpc.WithTransportCredentials(insecure.NewCredentials()))
+ if err != nil {
+  log.Fatalf("Failed to connect: %v", err)
+ }
+ defer conn.Close()
 
-	// Initialize the generated client stub
-	client := pb.NewBillingServiceClient(conn)
+ // Initialize the generated client stub
+ client := pb.NewBillingServiceClient(conn)
 
-	// Set up a context with a timeout for the remote call
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
-	defer cancel()
+ // Set up a context with a timeout for the remote call
+ ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+ defer cancel()
 
-	// Call the remote method
-	res, err := client.ProcessCharge(ctx, &pb.ChargeRequest{
-		UserId:   "usr_123",
-		Amount:   49.99,
-		Currency: "USD",
-	})
-	if err != nil {
-		log.Fatalf("RPC failed: %v", err)
-	}
+ // Call the remote method
+ res, err := client.ProcessCharge(ctx, &pb.ChargeRequest{
+  UserId:   "usr_123",
+  Amount:   49.99,
+  Currency: "USD",
+ })
+ if err != nil {
+  log.Fatalf("RPC failed: %v", err)
+ }
 
-	log.Printf("Transaction Status: Success=%t, ID=%s, Error=%s", res.Success, res.TransactionId, res.ErrorMessage)
+ log.Printf("Transaction Status: Success=%t, ID=%s, Error=%s", res.Success, res.TransactionId, res.ErrorMessage)
 }
 ```
 
@@ -280,9 +281,9 @@ This architectural shift enables gRPC's most powerful feature: **Streaming RPCs*
 
 ## 14.3 Event-Driven Systems: Kafka and RabbitMQ Integration
 
-While the synchronous communication patterns discussed in Chapter 14.2 (HTTP and gRPC) are excellent for direct queries and immediate actions, they introduce **temporal coupling**. If the Order Service synchronously calls the Billing Service, and the Billing Service is down, the entire transaction fails. 
+While the synchronous communication patterns discussed in Chapter 14.2 (HTTP and gRPC) are excellent for direct queries and immediate actions, they introduce **temporal coupling**. If the Order Service synchronously calls the Billing Service, and the Billing Service is down, the entire transaction fails.
 
-Event-Driven Architecture (EDA) solves this by decoupling services through asynchronous message passing. Instead of commanding another service to do something, a service emits an *event* stating that something has happened. Other services listen for those events and react accordingly. 
+Event-Driven Architecture (EDA) solves this by decoupling services through asynchronous message passing. Instead of commanding another service to do something, a service emits an *event* stating that something has happened. Other services listen for those events and react accordingly.
 
 ```text
 Synchronous (Temporal Coupling):
@@ -310,68 +311,68 @@ The officially supported Go client is `github.com/rabbitmq/amqp091-go`. Below is
 package main
 
 import (
-	"context"
-	"log"
-	"time"
+ "context"
+ "log"
+ "time"
 
-	amqp "github.com/rabbitmq/amqp091-go"
+ amqp "github.com/rabbitmq/amqp091-go"
 )
 
 func main() {
-	// 1. Establish connection to the broker
-	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
-	if err != nil {
-		log.Fatalf("Failed to connect to RabbitMQ: %v", err)
-	}
-	defer conn.Close()
+ // 1. Establish connection to the broker
+ conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
+ if err != nil {
+  log.Fatalf("Failed to connect to RabbitMQ: %v", err)
+ }
+ defer conn.Close()
 
-	// 2. Open a multiplexed channel over the connection
-	ch, err := conn.Channel()
-	if err != nil {
-		log.Fatalf("Failed to open a channel: %v", err)
-	}
-	defer ch.Close()
+ // 2. Open a multiplexed channel over the connection
+ ch, err := conn.Channel()
+ if err != nil {
+  log.Fatalf("Failed to open a channel: %v", err)
+ }
+ defer ch.Close()
 
-	// 3. Declare the exchange (idempotent operation)
-	err = ch.ExchangeDeclare(
-		"orders_exchange", // name
-		"direct",          // type
-		true,              // durable (survives broker restarts)
-		false,             // auto-deleted
-		false,             // internal
-		false,             // no-wait
-		nil,               // arguments
-	)
-	if err != nil {
-		log.Fatalf("Failed to declare an exchange: %v", err)
-	}
+ // 3. Declare the exchange (idempotent operation)
+ err = ch.ExchangeDeclare(
+  "orders_exchange", // name
+  "direct",          // type
+  true,              // durable (survives broker restarts)
+  false,             // auto-deleted
+  false,             // internal
+  false,             // no-wait
+  nil,               // arguments
+ )
+ if err != nil {
+  log.Fatalf("Failed to declare an exchange: %v", err)
+ }
 
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	defer cancel()
+ ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+ defer cancel()
 
-	body := `{"order_id": "ord_123", "status": "created"}`
+ body := `{"order_id": "ord_123", "status": "created"}`
 
-	// 4. Publish the message
-	err = ch.PublishWithContext(ctx,
-		"orders_exchange", // exchange
-		"order.created",   // routing key
-		false,             // mandatory
-		false,             // immediate
-		amqp.Publishing{
-			ContentType:  "application/json",
-			DeliveryMode: amqp.Persistent, // Persist message to disk
-			Body:         []byte(body),
-		})
-	if err != nil {
-		log.Fatalf("Failed to publish a message: %v", err)
-	}
-	log.Println("Successfully published Order Created event.")
+ // 4. Publish the message
+ err = ch.PublishWithContext(ctx,
+  "orders_exchange", // exchange
+  "order.created",   // routing key
+  false,             // mandatory
+  false,             // immediate
+  amqp.Publishing{
+   ContentType:  "application/json",
+   DeliveryMode: amqp.Persistent, // Persist message to disk
+   Body:         []byte(body),
+  })
+ if err != nil {
+  log.Fatalf("Failed to publish a message: %v", err)
+ }
+ log.Println("Successfully published Order Created event.")
 }
 ```
 
 ### Apache Kafka: The Distributed Log
 
-Unlike RabbitMQ, Kafka is not a queue; it is an immutable, append-only distributed log. It operates on a "dumb broker, smart consumer" model. Kafka blindly appends events to *Topics*, which are split into *Partitions* for horizontal scaling. 
+Unlike RabbitMQ, Kafka is not a queue; it is an immutable, append-only distributed log. It operates on a "dumb broker, smart consumer" model. Kafka blindly appends events to *Topics*, which are split into *Partitions* for horizontal scaling.
 
 Consumers pull data from these partitions and track their own progress using an *offset*. Because Kafka does not delete messages when read (they are retained based on a configured time or size), multiple independent services can read the same stream of events at different paces.
 
@@ -387,63 +388,63 @@ Below is an example of a robust Kafka consumer group reader that gracefully hand
 package main
 
 import (
-	"context"
-	"fmt"
-	"log"
-	"os"
-	"os/signal"
-	"syscall"
+ "context"
+ "fmt"
+ "log"
+ "os"
+ "os/signal"
+ "syscall"
 
-	"github.com/segmentio/kafka-go"
+ "github.com/segmentio/kafka-go"
 )
 
 func main() {
-	// Initialize a new reader with the Consumer Group pattern
-	r := kafka.NewReader(kafka.ReaderConfig{
-		Brokers:  []string{"localhost:9092"},
-		GroupID:  "inventory-service-group",
-		Topic:    "orders-topic",
-		MinBytes: 10e3, // 10KB
-		MaxBytes: 10e6, // 10MB
-	})
+ // Initialize a new reader with the Consumer Group pattern
+ r := kafka.NewReader(kafka.ReaderConfig{
+  Brokers:  []string{"localhost:9092"},
+  GroupID:  "inventory-service-group",
+  Topic:    "orders-topic",
+  MinBytes: 10e3, // 10KB
+  MaxBytes: 10e6, // 10MB
+ })
 
-	// Setup context that listens for termination signals (Ctrl+C, Docker stop)
-	ctx, cancel := context.WithCancel(context.Background())
-	defer cancel()
+ // Setup context that listens for termination signals (Ctrl+C, Docker stop)
+ ctx, cancel := context.WithCancel(context.Background())
+ defer cancel()
 
-	sigChan := make(chan os.Signal, 1)
-	signal.Notify(sigChan, syscall.SIGINT, syscall.SIGTERM)
+ sigChan := make(chan os.Signal, 1)
+ signal.Notify(sigChan, syscall.SIGINT, syscall.SIGTERM)
 
-	go func() {
-		<-sigChan
-		log.Println("Received termination signal, shutting down consumer...")
-		cancel()
-	}()
+ go func() {
+  <-sigChan
+  log.Println("Received termination signal, shutting down consumer...")
+  cancel()
+ }()
 
-	log.Println("Starting Kafka consumer...")
+ log.Println("Starting Kafka consumer...")
 
-	// The consumer loop
-	for {
-		// ReadMessage automatically commits offsets when successful
-		m, err := r.ReadMessage(ctx)
-		if err != nil {
-			if err == context.Canceled {
-				break // Graceful exit
-			}
-			log.Printf("Error reading message: %v\n", err)
-			continue
-		}
+ // The consumer loop
+ for {
+  // ReadMessage automatically commits offsets when successful
+  m, err := r.ReadMessage(ctx)
+  if err != nil {
+   if err == context.Canceled {
+    break // Graceful exit
+   }
+   log.Printf("Error reading message: %v\n", err)
+   continue
+  }
 
-		fmt.Printf("Message at topic/partition/offset %v/%v/%v: %s = %s\n",
-			m.Topic, m.Partition, m.Offset, string(m.Key), string(m.Value))
-			
-		// Execute business logic here...
-	}
+  fmt.Printf("Message at topic/partition/offset %v/%v/%v: %s = %s\n",
+   m.Topic, m.Partition, m.Offset, string(m.Key), string(m.Value))
+   
+  // Execute business logic here...
+ }
 
-	if err := r.Close(); err != nil {
-		log.Fatal("Failed to close reader:", err)
-	}
-	log.Println("Consumer closed gracefully.")
+ if err := r.Close(); err != nil {
+  log.Fatal("Failed to close reader:", err)
+ }
+ log.Println("Consumer closed gracefully.")
 }
 ```
 
@@ -462,13 +463,13 @@ Selecting the right broker depends entirely on the architectural requirements of
 
 ## 14.4 Real-Time Bidirectional Communication with WebSockets
 
-The communication protocols we have explored thus far—REST (Chapter 13), gRPC, and message brokers (Chapter 14.2 & 14.3)—are primarily designed for service-to-service interaction or client-to-server requests. However, modern cloud-native applications frequently require pushing data from the backend to the user interface in real-time. Whether it is a live trading dashboard, a collaborative document editor, or instantaneous chat notifications, the traditional HTTP request-response cycle falls short. 
+The communication protocols we have explored thus far—REST (Chapter 13), gRPC, and message brokers (Chapter 14.2 & 14.3)—are primarily designed for service-to-service interaction or client-to-server requests. However, modern cloud-native applications frequently require pushing data from the backend to the user interface in real-time. Whether it is a live trading dashboard, a collaborative document editor, or instantaneous chat notifications, the traditional HTTP request-response cycle falls short.
 
 While techniques like HTTP Long-Polling exist, they are inefficient and resource-intensive. **WebSockets** provide a standardized solution: a persistent, full-duplex communication channel established over a single TCP connection.
 
 ### The WebSocket Upgrade Protocol
 
-WebSockets do not replace HTTP; they begin as a standard HTTP `GET` request. The client sends a request asking the server to "upgrade" the protocol. If the server supports WebSockets and accepts the request, it responds with an `HTTP 101 Switching Protocols` status code. 
+WebSockets do not replace HTTP; they begin as a standard HTTP `GET` request. The client sends a request asking the server to "upgrade" the protocol. If the server supports WebSockets and accepts the request, it responds with an `HTTP 101 Switching Protocols` status code.
 
 From that moment onward, the HTTP protocol is abandoned, and the connection becomes a raw, bidirectional TCP socket framed by the WebSocket protocol.
 
@@ -498,20 +499,20 @@ To accept WebSocket connections, you must first define an `Upgrader`. The upgrad
 package main
 
 import (
-	"log"
-	"net/http"
+ "log"
+ "net/http"
 
-	"github.com/gorilla/websocket"
+ "github.com/gorilla/websocket"
 )
 
 // Configure the Upgrader
 var upgrader = websocket.Upgrader{
-	ReadBufferSize:  1024,
-	WriteBufferSize: 1024,
-	// In production, explicitly check the Origin header to prevent CSRF attacks
-	CheckOrigin: func(r *http.Request) bool {
-		return true // Allow all origins for demonstration
-	},
+ ReadBufferSize:  1024,
+ WriteBufferSize: 1024,
+ // In production, explicitly check the Origin header to prevent CSRF attacks
+ CheckOrigin: func(r *http.Request) bool {
+  return true // Allow all origins for demonstration
+ },
 }
 ```
 
@@ -521,41 +522,41 @@ Next, we write a standard HTTP handler function that intercepts the request and 
 
 ```go
 func serveWs(w http.ResponseWriter, r *http.Request) {
-	// Upgrade the HTTP connection to a WebSocket connection
-	conn, err := upgrader.Upgrade(w, r, nil)
-	if err != nil {
-		log.Println("Upgrade error:", err)
-		return
-	}
-	// Ensure the connection closes when the function returns
-	defer conn.Close()
+ // Upgrade the HTTP connection to a WebSocket connection
+ conn, err := upgrader.Upgrade(w, r, nil)
+ if err != nil {
+  log.Println("Upgrade error:", err)
+  return
+ }
+ // Ensure the connection closes when the function returns
+ defer conn.Close()
 
-	log.Println("Client connected!")
+ log.Println("Client connected!")
 
-	// The Read/Write Loop
-	for {
-		// Read a message from the client
-		messageType, message, err := conn.ReadMessage()
-		if err != nil {
-			log.Println("Read error or client disconnected:", err)
-			break
-		}
+ // The Read/Write Loop
+ for {
+  // Read a message from the client
+  messageType, message, err := conn.ReadMessage()
+  if err != nil {
+   log.Println("Read error or client disconnected:", err)
+   break
+  }
 
-		log.Printf("Received: %s", message)
+  log.Printf("Received: %s", message)
 
-		// Echo the message back to the client
-		err = conn.WriteMessage(messageType, message)
-		if err != nil {
-			log.Println("Write error:", err)
-			break
-		}
-	}
+  // Echo the message back to the client
+  err = conn.WriteMessage(messageType, message)
+  if err != nil {
+   log.Println("Write error:", err)
+   break
+  }
+ }
 }
 
 func main() {
-	http.HandleFunc("/ws", serveWs)
-	log.Println("WebSocket server listening on :8080")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+ http.HandleFunc("/ws", serveWs)
+ log.Println("WebSocket server listening on :8080")
+ log.Fatal(http.ListenAndServe(":8080", nil))
 }
 ```
 
@@ -570,43 +571,44 @@ To solve this, idiomatic Go applications use the **Hub Pattern**. A Hub is a cen
 ```go
 // Hub maintains the set of active clients and broadcasts messages.
 type Hub struct {
-	// Registered clients. The boolean acts as a simple placeholder.
-	clients map[*Client]bool
+ // Registered clients. The boolean acts as a simple placeholder.
+ clients map[*Client]bool
 
-	// Inbound messages from the clients or internal microservices.
-	broadcast chan []byte
+ // Inbound messages from the clients or internal microservices.
+ broadcast chan []byte
 
-	// Register requests from the clients.
-	register chan *Client
+ // Register requests from the clients.
+ register chan *Client
 
-	// Unregister requests from clients.
-	unregister chan *Client
+ // Unregister requests from clients.
+ unregister chan *Client
 }
 
 // Client is a middleman between the websocket connection and the hub.
 type Client struct {
-	hub  *Hub
-	conn *websocket.Conn
-	// Buffered channel of outbound messages.
-	send chan []byte
+ hub  *Hub
+ conn *websocket.Conn
+ // Buffered channel of outbound messages.
+ send chan []byte
 }
 ```
 
 By decoupling the WebSocket connection from the business logic, you ensure that:
-1.  **Writes are synchronized:** Each `Client` runs a dedicated `writePump` goroutine that listens to its `send` channel and writes to the network.
-2.  **Reads do not block writes:** Each `Client` runs a dedicated `readPump` goroutine that listens for network traffic and forwards it to the Hub's `broadcast` channel.
+
+1. **Writes are synchronized:** Each `Client` runs a dedicated `writePump` goroutine that listens to its `send` channel and writes to the network.
+2. **Reads do not block writes:** Each `Client` runs a dedicated `readPump` goroutine that listens for network traffic and forwards it to the Hub's `broadcast` channel.
 
 ### Bridging the Backend to the Frontend
 
-WebSockets truly shine when combined with the Event-Driven concepts discussed in Section 14.3. 
+WebSockets truly shine when combined with the Event-Driven concepts discussed in Section 14.3.
 
 Consider a cloud-native architecture where an Order Service processes a transaction and emits an `OrderCompleted` event to a Kafka topic. How does the user's browser know the order is complete without constantly polling the server?
 
-1.  A **Notification Microservice** consumes the Kafka topic.
-2.  Upon receiving the `OrderCompleted` event, this service identifies the specific user.
-3.  The service forwards the payload to its internal WebSocket `Hub` via the `broadcast` channel.
-4.  The Hub routes the message to the specific `Client`'s `send` channel.
-5.  The client's `writePump` goroutine pushes the message over the WebSocket connection to the browser.
+1. A **Notification Microservice** consumes the Kafka topic.
+2. Upon receiving the `OrderCompleted` event, this service identifies the specific user.
+3. The service forwards the payload to its internal WebSocket `Hub` via the `broadcast` channel.
+4. The Hub routes the message to the specific `Client`'s `send` channel.
+5. The client's `writePump` goroutine pushes the message over the WebSocket connection to the browser.
 
 By chaining Kafka/RabbitMQ in the backend with WebSockets on the edge, you create a fully reactive, end-to-end asynchronous architecture capable of handling massive concurrency with minimal latency.
 
@@ -622,8 +624,8 @@ Service Discovery is the mechanism by which services locate each other dynamical
 
 There are two primary patterns for service discovery:
 
-1.  **Client-Side Discovery:** The client queries the Service Registry directly, retrieves a list of available instances, and routes the request itself.
-2.  **Server-Side Discovery (Proxy):** The client sends the request to a Load Balancer or Proxy, which queries the registry and forwards the traffic.
+1. **Client-Side Discovery:** The client queries the Service Registry directly, retrieves a list of available instances, and routes the request itself.
+2. **Server-Side Discovery (Proxy):** The client sends the request to a Load Balancer or Proxy, which queries the registry and forwards the traffic.
 
 Modern cloud-native Go applications frequently leverage orchestrators like Kubernetes, which natively provide server-side discovery via internal CoreDNS. However, when building system-level tooling or operating outside Kubernetes, tools like **Consul** or **etcd** are standard.
 
@@ -648,40 +650,40 @@ To solve this, Go's `grpc` package includes built-in support for **Client-Side L
 package main
 
 import (
-	"context"
-	"log"
+ "context"
+ "log"
 
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
-	pb "yourproject/internal/pb/billing"
+ "google.golang.org/grpc"
+ "google.golang.org/grpc/credentials/insecure"
+ pb "yourproject/internal/pb/billing"
 )
 
 func main() {
-	// 1. Use the dns:/// scheme to resolve multiple backend IPs
-	// 2. Inject a Service Config to enable Round Robin load balancing
-	serviceConfig := `{"loadBalancingPolicy": "round_robin"}`
-	
-	conn, err := grpc.Dial(
-		"dns:///billing-service.internal.svc.cluster.local:50051",
-		grpc.WithTransportCredentials(insecure.NewCredentials()),
-		grpc.WithDefaultServiceConfig(serviceConfig),
-	)
-	if err != nil {
-		log.Fatalf("did not connect: %v", err)
-	}
-	defer conn.Close()
+ // 1. Use the dns:/// scheme to resolve multiple backend IPs
+ // 2. Inject a Service Config to enable Round Robin load balancing
+ serviceConfig := `{"loadBalancingPolicy": "round_robin"}`
+ 
+ conn, err := grpc.Dial(
+  "dns:///billing-service.internal.svc.cluster.local:50051",
+  grpc.WithTransportCredentials(insecure.NewCredentials()),
+  grpc.WithDefaultServiceConfig(serviceConfig),
+ )
+ if err != nil {
+  log.Fatalf("did not connect: %v", err)
+ }
+ defer conn.Close()
 
-	client := pb.NewBillingServiceClient(conn)
-	
-	// Subsequent calls will now be automatically round-robined 
-	// across all resolved IPs of the Billing Service.
-	_, _ = client.ProcessCharge(context.Background(), &pb.ChargeRequest{})
+ client := pb.NewBillingServiceClient(conn)
+ 
+ // Subsequent calls will now be automatically round-robined 
+ // across all resolved IPs of the Billing Service.
+ _, _ = client.ProcessCharge(context.Background(), &pb.ChargeRequest{})
 }
 ```
 
 ### The API Gateway Pattern
 
-While internal microservices communicate freely within a private, trusted network (often via gRPC or message brokers), exposing them directly to external clients (web browsers, mobile apps) is an anti-pattern. 
+While internal microservices communicate freely within a private, trusted network (often via gRPC or message brokers), exposing them directly to external clients (web browsers, mobile apps) is an anti-pattern.
 
 An **API Gateway** acts as the single entry point—the "front door"—for all external traffic. It provides a unified interface and shields the internal complexity of your microservices from the outside world.
 
@@ -702,49 +704,49 @@ You can implement a highly concurrent reverse proxy using just the `net/http/htt
 package main
 
 import (
-	"log"
-	"net/http"
-	"net/http/httputil"
-	"net/url"
-	"strings"
+ "log"
+ "net/http"
+ "net/http/httputil"
+ "net/url"
+ "strings"
 )
 
 // newProxy creates a reverse proxy that rewrites the URL and forwards the request
 func newProxy(targetHost string) *httputil.ReverseProxy {
-	target, err := url.Parse(targetHost)
-	if err != nil {
-		log.Fatalf("Invalid target URL: %v", err)
-	}
+ target, err := url.Parse(targetHost)
+ if err != nil {
+  log.Fatalf("Invalid target URL: %v", err)
+ }
 
-	proxy := httputil.NewSingleHostReverseProxy(target)
-	
-	// You can modify the request before it is sent to the internal service
-	originalDirector := proxy.Director
-	proxy.Director = func(req *http.Request) {
-		originalDirector(req)
-		req.Header.Set("X-Gateway-Proxy", "Go-Micro-Gateway")
-		// E.g., Strip the /api/orders prefix before sending to the Order Service
-		req.URL.Path = strings.TrimPrefix(req.URL.Path, "/api/orders")
-	}
+ proxy := httputil.NewSingleHostReverseProxy(target)
+ 
+ // You can modify the request before it is sent to the internal service
+ originalDirector := proxy.Director
+ proxy.Director = func(req *http.Request) {
+  originalDirector(req)
+  req.Header.Set("X-Gateway-Proxy", "Go-Micro-Gateway")
+  // E.g., Strip the /api/orders prefix before sending to the Order Service
+  req.URL.Path = strings.TrimPrefix(req.URL.Path, "/api/orders")
+ }
 
-	return proxy
+ return proxy
 }
 
 func main() {
-	// Map external routes to internal service URLs
-	orderProxy := newProxy("http://order-service:8081")
-	userProxy := newProxy("http://user-service:8082")
+ // Map external routes to internal service URLs
+ orderProxy := newProxy("http://order-service:8081")
+ userProxy := newProxy("http://user-service:8082")
 
-	mux := http.NewServeMux()
+ mux := http.NewServeMux()
 
-	// Route traffic based on URL prefix
-	mux.Handle("/api/orders/", orderProxy)
-	mux.Handle("/api/users/", userProxy)
+ // Route traffic based on URL prefix
+ mux.Handle("/api/orders/", orderProxy)
+ mux.Handle("/api/users/", userProxy)
 
-	log.Println("API Gateway listening on :8080")
-	if err := http.ListenAndServe(":8080", mux); err != nil {
-		log.Fatalf("Gateway failed: %v", err)
-	}
+ log.Println("API Gateway listening on :8080")
+ if err := http.ListenAndServe(":8080", mux); err != nil {
+  log.Fatalf("Gateway failed: %v", err)
+ }
 }
 ```
 

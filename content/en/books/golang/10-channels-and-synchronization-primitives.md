@@ -20,13 +20,14 @@ ch := make(chan int)
 msgCh := make(chan string, 5)
 ```
 
-The distinction between unbuffered and buffered channels fundamentally changes how your concurrent code synchronizes and behaves. 
+The distinction between unbuffered and buffered channels fundamentally changes how your concurrent code synchronizes and behaves.
 
 ### Unbuffered Channels: The Synchronous Handshake
 
-An unbuffered channel is created without a capacity argument (or with a capacity of `0`). It has no internal storage to hold data in transit. 
+An unbuffered channel is created without a capacity argument (or with a capacity of `0`). It has no internal storage to hold data in transit.
 
-Because there is no buffer, **communication over an unbuffered channel is strictly synchronous**. 
+Because there is no buffer, **communication over an unbuffered channel is strictly synchronous**.
+
 * If a goroutine attempts to **send** data into an unbuffered channel, it will block indefinitely until another goroutine is ready to **receive** from that exact channel.
 * Conversely, if a goroutine attempts to **receive**, it will block until another goroutine **sends** a value.
 
@@ -57,27 +58,27 @@ This creates a guaranteed point of synchronization—a "handshake"—between two
 package main
 
 import (
-	"fmt"
-	"time"
+ "fmt"
+ "time"
 )
 
 func main() {
-	syncChan := make(chan bool)
+ syncChan := make(chan bool)
 
-	go func() {
-		fmt.Println("Worker: Doing heavy lifting...")
-		time.Sleep(2 * time.Second)
-		fmt.Println("Worker: Finished!")
-		
-		// This send will block until main is ready to receive
-		syncChan <- true 
-	}()
+ go func() {
+  fmt.Println("Worker: Doing heavy lifting...")
+  time.Sleep(2 * time.Second)
+  fmt.Println("Worker: Finished!")
+  
+  // This send will block until main is ready to receive
+  syncChan <- true 
+ }()
 
-	fmt.Println("Main: Waiting for worker to finish...")
-	
-	// Main blocks here until the worker sends a value
-	<-syncChan 
-	fmt.Println("Main: Worker confirmed completion. Exiting.")
+ fmt.Println("Main: Waiting for worker to finish...")
+ 
+ // Main blocks here until the worker sends a value
+ <-syncChan 
+ fmt.Println("Main: Worker confirmed completion. Exiting.")
 }
 ```
 
@@ -88,6 +89,7 @@ Unbuffered channels are ideal when you need absolute certainty that a piece of d
 A buffered channel is created by providing a capacity greater than zero to the `make` function. This capacity defines an internal queue that can hold a specific number of elements before the channel enforces blocking behavior.
 
 Communication over a buffered channel is **asynchronous**, up to the limit of the buffer:
+
 * A **send** operation only blocks if the buffer is entirely **full**.
 * A **receive** operation only blocks if the buffer is entirely **empty**.
 
@@ -112,23 +114,23 @@ package main
 import "fmt"
 
 func main() {
-	// Create a buffered channel with a capacity of 3
-	messageQueue := make(chan string, 3)
+ // Create a buffered channel with a capacity of 3
+ messageQueue := make(chan string, 3)
 
-	// Because of the buffer, we can send 3 values without a receiving goroutine
-	messageQueue <- "Task 1"
-	messageQueue <- "Task 2"
-	messageQueue <- "Task 3"
+ // Because of the buffer, we can send 3 values without a receiving goroutine
+ messageQueue <- "Task 1"
+ messageQueue <- "Task 2"
+ messageQueue <- "Task 3"
 
-	fmt.Printf("Queue length: %d, Capacity: %d\n", len(messageQueue), cap(messageQueue))
+ fmt.Printf("Queue length: %d, Capacity: %d\n", len(messageQueue), cap(messageQueue))
 
-	// If we tried to send a 4th value here, main would block and deadlock!
-	// messageQueue <- "Task 4" 
+ // If we tried to send a 4th value here, main would block and deadlock!
+ // messageQueue <- "Task 4" 
 
-	// Dequeue the values
-	fmt.Println(<-messageQueue)
-	fmt.Println(<-messageQueue)
-	fmt.Println(<-messageQueue)
+ // Dequeue the values
+ fmt.Println(<-messageQueue)
+ fmt.Println(<-messageQueue)
+ fmt.Println(<-messageQueue)
 }
 ```
 
@@ -141,13 +143,13 @@ It is a common pitfall for Go beginners to default to buffered channels to "prev
 
 ## 10.2 Channel Operations: Sending, Receiving, Closing, and Ranging
 
-With the foundation of channel memory models established, we must explore the syntax and operational mechanics of working with channels. Go utilizes the arrow operator (`<-`) to denote the direction of data flow, making channel operations highly visual and intuitive. 
+With the foundation of channel memory models established, we must explore the syntax and operational mechanics of working with channels. Go utilizes the arrow operator (`<-`) to denote the direction of data flow, making channel operations highly visual and intuitive.
 
 There are four primary operations you can perform on a channel: sending data, receiving data, closing the channel, and ranging over the channel until it is closed.
 
 ### 1. Sending and Receiving
 
-The arrow operator specifies whether data is flowing into or out of a channel. 
+The arrow operator specifies whether data is flowing into or out of a channel.
 
 * **Sending:** To send a value into a channel, place the channel variable on the left of the arrow and the value on the right.
 * **Receiving:** To receive a value, place the arrow to the left of the channel variable. The received value can be assigned to a variable or evaluated directly.
@@ -165,6 +167,7 @@ fmt.Println(<-ch) // Receive and print directly (prints 100)
 ```
 
 #### The "Comma ok" Idiom for Receiving
+
 When receiving from a channel, you can optionally assign a second boolean variable. This is known as the "comma ok" idiom, and it tells you whether the value received was actually sent by a goroutine, or if it is a default zero-value generated because the channel has been closed.
 
 ```go
@@ -196,38 +199,38 @@ Closing a channel introduces specific state transitions and rules that you must 
 
 When a receiver needs to process an unknown number of values from a channel, repeatedly calling `<-ch` and checking the `ok` boolean becomes tedious. Go provides a much more elegant solution by allowing the `for ... range` loop to iterate directly over a channel.
 
-A `range` loop over a channel will continuously pull values out of the channel until the channel is both **closed** and **drained** (empty). 
+A `range` loop over a channel will continuously pull values out of the channel until the channel is both **closed** and **drained** (empty).
 
 ```go
 package main
 
 import (
-	"fmt"
-	"time"
+ "fmt"
+ "time"
 )
 
 func main() {
-	jobs := make(chan string, 3)
+ jobs := make(chan string, 3)
 
-	// Sender Goroutine
-	go func() {
-		jobs <- "Job 1"
-		jobs <- "Job 2"
-		jobs <- "Job 3"
-		
-		fmt.Println("Sender: All jobs sent. Closing channel.")
-		// Closing is necessary here, otherwise the range loop below would block forever
-		close(jobs) 
-	}()
+ // Sender Goroutine
+ go func() {
+  jobs <- "Job 1"
+  jobs <- "Job 2"
+  jobs <- "Job 3"
+  
+  fmt.Println("Sender: All jobs sent. Closing channel.")
+  // Closing is necessary here, otherwise the range loop below would block forever
+  close(jobs) 
+ }()
 
-	// Receiver using range
-	// This loop will automatically terminate when 'jobs' is closed and empty
-	for job := range jobs {
-		fmt.Printf("Receiver: Processing %s\n", job)
-		time.Sleep(500 * time.Millisecond) // Simulate work
-	}
+ // Receiver using range
+ // This loop will automatically terminate when 'jobs' is closed and empty
+ for job := range jobs {
+  fmt.Printf("Receiver: Processing %s\n", job)
+  time.Sleep(500 * time.Millisecond) // Simulate work
+ }
 
-	fmt.Println("Main: All jobs processed. Exiting.")
+ fmt.Println("Main: All jobs processed. Exiting.")
 }
 ```
 
@@ -253,25 +256,25 @@ By implicitly converting bidirectional channels to directional ones at function 
 ```go
 // This function is guaranteed by the compiler to only SEND data
 func producer(out chan<- int) {
-	for i := 0; i < 5; i++ {
-		out <- i
-	}
-	close(out) // Valid: Senders can close
+ for i := 0; i < 5; i++ {
+  out <- i
+ }
+ close(out) // Valid: Senders can close
 }
 
 // This function is guaranteed by the compiler to only RECEIVE data
 func consumer(in <-chan int) {
-	for val := range in {
-		fmt.Println("Consumed:", val)
-	}
-	// close(in) -> ERROR: Cannot close receive-only channel
+ for val := range in {
+  fmt.Println("Consumed:", val)
+ }
+ // close(in) -> ERROR: Cannot close receive-only channel
 }
 
 func main() {
-	ch := make(chan int) // Bidirectional
-	
-	go producer(ch)      // Implicitly cast to chan<- int
-	consumer(ch)         // Implicitly cast to <-chan int
+ ch := make(chan int) // Bidirectional
+ 
+ go producer(ch)      // Implicitly cast to chan<- int
+ consumer(ch)         // Implicitly cast to <-chan int
 }
 ```
 
@@ -279,7 +282,7 @@ Using directional channels documents your API intent clearly and prevents a whol
 
 ## 10.3 Multiplexing Concurrency with the `select` Statement
 
-As you build more complex concurrent applications, you will inevitably encounter situations where a single goroutine must manage data from multiple channels simultaneously. For example, a worker goroutine might need to listen for incoming tasks on one channel while simultaneously listening for a cancellation signal on another. 
+As you build more complex concurrent applications, you will inevitably encounter situations where a single goroutine must manage data from multiple channels simultaneously. For example, a worker goroutine might need to listen for incoming tasks on one channel while simultaneously listening for a cancellation signal on another.
 
 If you attempt to use standard channel receives (`<-ch`) sequentially, your goroutine will block on the first channel, completely ignoring the others until the first one yields a value. To solve this, Go provides the `select` statement—a powerful control structure designed exclusively for routing concurrency.
 
@@ -301,9 +304,10 @@ The `select` statement looks and behaves similarly to a standard `switch` statem
 ```
 
 The runtime evaluates a `select` statement based on strict rules:
-1.  **Blocking by Default:** A `select` block will halt the execution of the goroutine until at least one of its `case` operations is ready to proceed.
-2.  **Pseudo-Random Execution:** If multiple channels are ready simultaneously, the `select` statement does *not* evaluate them top-to-bottom. Instead, it chooses one at pseudo-random. This is a deliberate design choice by the Go team to prevent channel starvation (where a high-traffic channel prevents a lower-traffic channel from ever being processed).
-3.  **Evaluating Channels, Not Values:** The cases are evaluated to see if the *communication* can proceed (e.g., is there data in the buffer? is there a receiver ready?).
+
+1. **Blocking by Default:** A `select` block will halt the execution of the goroutine until at least one of its `case` operations is ready to proceed.
+2. **Pseudo-Random Execution:** If multiple channels are ready simultaneously, the `select` statement does *not* evaluate them top-to-bottom. Instead, it chooses one at pseudo-random. This is a deliberate design choice by the Go team to prevent channel starvation (where a high-traffic channel prevents a lower-traffic channel from ever being processed).
+3. **Evaluating Channels, Not Values:** The cases are evaluated to see if the *communication* can proceed (e.g., is there data in the buffer? is there a receiver ready?).
 
 **Code Example: Basic Multiplexing**
 
@@ -311,35 +315,36 @@ The runtime evaluates a `select` statement based on strict rules:
 package main
 
 import (
-	"fmt"
-	"time"
+ "fmt"
+ "time"
 )
 
 func main() {
-	fastChannel := make(chan string)
-	slowChannel := make(chan string)
+ fastChannel := make(chan string)
+ slowChannel := make(chan string)
 
-	go func() {
-		time.Sleep(100 * time.Millisecond)
-		fastChannel <- "Fast response"
-	}()
+ go func() {
+  time.Sleep(100 * time.Millisecond)
+  fastChannel <- "Fast response"
+ }()
 
-	go func() {
-		time.Sleep(2 * time.Second)
-		slowChannel <- "Slow response"
-	}()
+ go func() {
+  time.Sleep(2 * time.Second)
+  slowChannel <- "Slow response"
+ }()
 
-	// The select statement blocks until one of the cases can execute
-	select {
-	case msg1 := <-fastChannel:
-		fmt.Println("Received from fast:", msg1)
-	case msg2 := <-slowChannel:
-		fmt.Println("Received from slow:", msg2)
-	}
-	
-	fmt.Println("Select block finished.")
+ // The select statement blocks until one of the cases can execute
+ select {
+ case msg1 := <-fastChannel:
+  fmt.Println("Received from fast:", msg1)
+ case msg2 := <-slowChannel:
+  fmt.Println("Received from slow:", msg2)
+ }
+ 
+ fmt.Println("Select block finished.")
 }
 ```
+
 *In this example, the `select` block will execute the `fastChannel` case after 100 milliseconds and then exit, completely abandoning the `slowChannel`.*
 
 ### Implementing Timeouts
@@ -350,23 +355,24 @@ In cloud-native architecture, relying on external services means you must antici
 
 ```go
 func fetchUserData(userID string, resultChan chan<- string) {
-	// Simulate an unpredictable database call
-	time.Sleep(3 * time.Second) 
-	resultChan <- "User Data: {name: 'Alice'}"
+ // Simulate an unpredictable database call
+ time.Sleep(3 * time.Second) 
+ resultChan <- "User Data: {name: 'Alice'}"
 }
 
 func main() {
-	dataChan := make(chan string)
-	go fetchUserData("123", dataChan)
+ dataChan := make(chan string)
+ go fetchUserData("123", dataChan)
 
-	select {
-	case data := <-dataChan:
-		fmt.Println("Success:", data)
-	case <-time.After(2 * time.Second): // Timeout threshold
-		fmt.Println("Error: Request timed out. Proceeding with fallback behavior.")
-	}
+ select {
+ case data := <-dataChan:
+  fmt.Println("Success:", data)
+ case <-time.After(2 * time.Second): // Timeout threshold
+  fmt.Println("Error: Request timed out. Proceeding with fallback behavior.")
+ }
 }
 ```
+
 Because the `time.After` channel fires at 2 seconds, and the worker takes 3 seconds, the `select` statement executes the timeout case, preventing the main goroutine from hanging.
 
 ### Non-Blocking Operations with `default`
@@ -377,23 +383,23 @@ If none of the channel operations are immediately ready, the `select` block will
 
 ```go
 func main() {
-	messages := make(chan string, 1)
+ messages := make(chan string, 1)
 
-	// Attempt a non-blocking receive
-	select {
-	case msg := <-messages:
-		fmt.Println("Received message:", msg)
-	default:
-		fmt.Println("No messages available right now. Moving on.")
-	}
+ // Attempt a non-blocking receive
+ select {
+ case msg := <-messages:
+  fmt.Println("Received message:", msg)
+ default:
+  fmt.Println("No messages available right now. Moving on.")
+ }
 
-	// Attempt a non-blocking send
-	select {
-	case messages <- "Ping!":
-		fmt.Println("Message sent successfully.")
-	default:
-		fmt.Println("Channel buffer is full. Dropping message.")
-	}
+ // Attempt a non-blocking send
+ select {
+ case messages <- "Ping!":
+  fmt.Println("Message sent successfully.")
+ default:
+  fmt.Println("Channel buffer is full. Dropping message.")
+ }
 }
 ```
 
@@ -403,15 +409,15 @@ The most ubiquitous concurrency pattern in Go is wrapping a `select` statement i
 
 ```go
 func workerDaemon(workChan <-chan string, quitChan <-chan struct{}) {
-	for {
-		select {
-		case task := <-workChan:
-			fmt.Println("Processing task:", task)
-		case <-quitChan:
-			fmt.Println("Daemon received quit signal. Shutting down...")
-			return // Exits the for-loop and the goroutine
-		}
-	}
+ for {
+  select {
+  case task := <-workChan:
+   fmt.Println("Processing task:", task)
+  case <-quitChan:
+   fmt.Println("Daemon received quit signal. Shutting down...")
+   return // Exits the for-loop and the goroutine
+  }
+ }
 }
 ```
 
@@ -419,17 +425,18 @@ Notice the use of `struct{}` for the `quitChan`. An empty struct `struct{}` occu
 
 ## 10.4 The `sync` Package: `WaitGroup`, `Mutex`, and `RWMutex`
 
-While Go strongly advocates for "sharing memory by communicating" via channels, channels are not a silver bullet. In certain scenarios—particularly when you simply need to protect a shared piece of state or wait for a batch of background tasks to complete—using channels can introduce unnecessary complexity and overhead. 
+While Go strongly advocates for "sharing memory by communicating" via channels, channels are not a silver bullet. In certain scenarios—particularly when you simply need to protect a shared piece of state or wait for a batch of background tasks to complete—using channels can introduce unnecessary complexity and overhead.
 
 For these traditional shared-memory use cases, Go provides the `sync` package. It contains highly optimized, low-level synchronization primitives. The three most fundamental tools in this package are the `WaitGroup`, the `Mutex`, and the `RWMutex`.
 
 ### 1. `sync.WaitGroup`: Coordinating Fleets of Goroutines
 
-When you launch multiple goroutines, the main goroutine (or the launching goroutine) does not automatically wait for them to finish. If the main goroutine exits, all other goroutines are abruptly terminated. 
+When you launch multiple goroutines, the main goroutine (or the launching goroutine) does not automatically wait for them to finish. If the main goroutine exits, all other goroutines are abruptly terminated.
 
 A `sync.WaitGroup` acts as a concurrency-safe counter that allows one goroutine to wait until a specified number of other goroutines have completed their execution.
 
 It exposes three methods:
+
 * **`Add(delta int)`**: Increases or decreases the internal counter by the given `delta`. This is typically called *before* launching the goroutine.
 * **`Done()`**: Decrements the counter by 1. This is typically called via `defer` inside the worker goroutine.
 * **`Wait()`**: Blocks the calling goroutine until the internal counter reaches zero.
@@ -456,34 +463,34 @@ wg.Wait()
 package main
 
 import (
-	"fmt"
-	"sync"
-	"time"
+ "fmt"
+ "sync"
+ "time"
 )
 
 func fetchResource(id int, wg *sync.WaitGroup) {
-	// Ensure Done is called even if a panic occurs
-	defer wg.Done() 
-	
-	fmt.Printf("Worker %d: Fetching...\n", id)
-	time.Sleep(time.Duration(id) * 100 * time.Millisecond)
-	fmt.Printf("Worker %d: Complete\n", id)
+ // Ensure Done is called even if a panic occurs
+ defer wg.Done() 
+ 
+ fmt.Printf("Worker %d: Fetching...\n", id)
+ time.Sleep(time.Duration(id) * 100 * time.Millisecond)
+ fmt.Printf("Worker %d: Complete\n", id)
 }
 
 func main() {
-	var wg sync.WaitGroup
+ var wg sync.WaitGroup
 
-	for i := 1; i <= 3; i++ {
-		wg.Add(1) // Increment counter BEFORE launching
-		
-		// Note: We pass the WaitGroup by pointer so the worker 
-		// decrements the original counter, not a copy.
-		go fetchResource(i, &wg) 
-	}
+ for i := 1; i <= 3; i++ {
+  wg.Add(1) // Increment counter BEFORE launching
+  
+  // Note: We pass the WaitGroup by pointer so the worker 
+  // decrements the original counter, not a copy.
+  go fetchResource(i, &wg) 
+ }
 
-	fmt.Println("Main: Waiting for all workers to finish.")
-	wg.Wait()
-	fmt.Println("Main: All workers finished. Exiting.")
+ fmt.Println("Main: Waiting for all workers to finish.")
+ wg.Wait()
+ fmt.Println("Main: All workers finished. Exiting.")
 }
 ```
 
@@ -493,7 +500,7 @@ func main() {
 
 A "critical section" is a piece of code that accesses a shared resource (like a map, slice, or struct) and must not be executed by more than one goroutine at the same time. If multiple goroutines attempt to read and write to the same memory address simultaneously without synchronization, a **race condition** occurs, leading to corrupted data or fatal application crashes.
 
-A `sync.Mutex` (Mutual Exclusion lock) solves this by enforcing exclusive access. 
+A `sync.Mutex` (Mutual Exclusion lock) solves this by enforcing exclusive access.
 
 * **`Lock()`**: Claims the lock. If another goroutine already holds the lock, the caller will block until it is released.
 * **`Unlock()`**: Releases the lock, allowing one of the waiting goroutines to claim it.
@@ -506,46 +513,46 @@ Standard Go maps are not safe for concurrent use. If we want to build a shared c
 package main
 
 import (
-	"fmt"
-	"sync"
+ "fmt"
+ "sync"
 )
 
 // SafeCounter is safe to use concurrently.
 type SafeCounter struct {
-	mu sync.Mutex
-	v  map[string]int
+ mu sync.Mutex
+ v  map[string]int
 }
 
 // Increment adds 1 to the given key.
 func (c *SafeCounter) Increment(key string) {
-	c.mu.Lock()
-	// Critical section: Only one goroutine can execute this at a time
-	c.v[key]++
-	c.mu.Unlock()
+ c.mu.Lock()
+ // Critical section: Only one goroutine can execute this at a time
+ c.v[key]++
+ c.mu.Unlock()
 }
 
 // Value returns the current value of the counter for the given key.
 func (c *SafeCounter) Value(key string) int {
-	c.mu.Lock()
-	defer c.mu.Unlock() // Idiomatic Go: ensure unlock happens upon return
-	return c.v[key]
+ c.mu.Lock()
+ defer c.mu.Unlock() // Idiomatic Go: ensure unlock happens upon return
+ return c.v[key]
 }
 
 func main() {
-	c := SafeCounter{v: make(map[string]int)}
-	var wg sync.WaitGroup
+ c := SafeCounter{v: make(map[string]int)}
+ var wg sync.WaitGroup
 
-	// 1000 goroutines trying to increment the same map key simultaneously
-	for i := 0; i < 1000; i++ {
-		wg.Add(1)
-		go func() {
-			c.Increment("visitors")
-			wg.Done()
-		}()
-	}
+ // 1000 goroutines trying to increment the same map key simultaneously
+ for i := 0; i < 1000; i++ {
+  wg.Add(1)
+  go func() {
+   c.Increment("visitors")
+   wg.Done()
+  }()
+ }
 
-	wg.Wait()
-	fmt.Println("Total visitors:", c.Value("visitors")) // Guaranteed to be 1000
+ wg.Wait()
+ fmt.Println("Total visitors:", c.Value("visitors")) // Guaranteed to be 1000
 }
 ```
 
@@ -558,6 +565,7 @@ A standard `sync.Mutex` is a blunt instrument: it blocks *everything*. If one go
 The `sync.RWMutex` (Reader/Writer Mutex) provides a more granular approach. It distinguishes between readers and writers, allowing multiple readers to hold the lock simultaneously.
 
 It provides four key methods:
+
 * **`RLock()`**: Acquires a read lock. Multiple goroutines can hold this simultaneously.
 * **`RUnlock()`**: Releases a read lock.
 * **`Lock()`**: Acquires a write lock. This blocks *all* other goroutines (both readers and writers). It waits until all active `RLock`s are released before taking control.
@@ -575,25 +583,25 @@ Unlocked    | Yes          | Yes
 
 ```go
 type ConfigCache struct {
-	mu     sync.RWMutex
-	config map[string]string
+ mu     sync.RWMutex
+ config map[string]string
 }
 
 // Get is optimized for high-throughput reads
 func (c *ConfigCache) Get(key string) (string, bool) {
-	c.mu.RLock()         // Take a READ lock
-	defer c.mu.RUnlock()
-	
-	val, exists := c.config[key]
-	return val, exists
+ c.mu.RLock()         // Take a READ lock
+ defer c.mu.RUnlock()
+ 
+ val, exists := c.config[key]
+ return val, exists
 }
 
 // Set requires exclusive access
 func (c *ConfigCache) Set(key, value string) {
-	c.mu.Lock()          // Take a WRITE lock (blocks everything)
-	defer c.mu.Unlock()
-	
-	c.config[key] = value
+ c.mu.Lock()          // Take a WRITE lock (blocks everything)
+ defer c.mu.Unlock()
+ 
+ c.config[key] = value
 }
 ```
 
@@ -627,42 +635,42 @@ Goroutine C:  once.Do(setup) -----------------------------> Returns (setup not r
 package main
 
 import (
-	"fmt"
-	"sync"
-	"time"
+ "fmt"
+ "sync"
+ "time"
 )
 
 var (
-	once sync.Once
-	db   *Database // Simulated database instance
+ once sync.Once
+ db   *Database // Simulated database instance
 )
 
 type Database struct{}
 
 func initDB() {
-	fmt.Println("Initializing database connection... (This should only happen once)")
-	time.Sleep(1 * time.Second) // Simulate expensive connection
-	db = &Database{}
+ fmt.Println("Initializing database connection... (This should only happen once)")
+ time.Sleep(1 * time.Second) // Simulate expensive connection
+ db = &Database{}
 }
 
 func GetDB() *Database {
-	// once.Do guarantees initDB is called exactly once, even if 
-	// thousands of goroutines call GetDB() at the exact same time.
-	once.Do(initDB)
-	return db
+ // once.Do guarantees initDB is called exactly once, even if 
+ // thousands of goroutines call GetDB() at the exact same time.
+ once.Do(initDB)
+ return db
 }
 
 func main() {
-	var wg sync.WaitGroup
-	for i := 0; i < 5; i++ {
-		wg.Add(1)
-		go func(id int) {
-			defer wg.Done()
-			GetDB() // All 5 goroutines try to get the DB
-			fmt.Printf("Worker %d got DB instance\n", id)
-		}(i)
-	}
-	wg.Wait()
+ var wg sync.WaitGroup
+ for i := 0; i < 5; i++ {
+  wg.Add(1)
+  go func(id int) {
+   defer wg.Done()
+   GetDB() // All 5 goroutines try to get the DB
+   fmt.Printf("Worker %d got DB instance\n", id)
+  }(i)
+ }
+ wg.Wait()
 }
 ```
 
@@ -680,44 +688,44 @@ In high-throughput systems, constantly allocating and garbage-collecting short-l
 package main
 
 import (
-	"bytes"
-	"fmt"
-	"sync"
+ "bytes"
+ "fmt"
+ "sync"
 )
 
 // Create a pool of bytes.Buffer objects
 var bufferPool = sync.Pool{
-	New: func() interface{} {
-		// This runs only if the pool is empty when Get() is called
-		fmt.Println("Allocating new buffer")
-		return new(bytes.Buffer)
-	},
+ New: func() interface{} {
+  // This runs only if the pool is empty when Get() is called
+  fmt.Println("Allocating new buffer")
+  return new(bytes.Buffer)
+ },
 }
 
 func processRequest(data string) {
-	// 1. Fetch a buffer from the pool (or allocate a new one)
-	buf := bufferPool.Get().(*bytes.Buffer)
-	
-	// 2. Clear the buffer before use, as it might contain old data
-	buf.Reset() 
-	
-	// 3. Use the buffer
-	buf.WriteString("Processed: ")
-	buf.WriteString(data)
-	
-	// 4. Return it to the pool
-	bufferPool.Put(buf) 
+ // 1. Fetch a buffer from the pool (or allocate a new one)
+ buf := bufferPool.Get().(*bytes.Buffer)
+ 
+ // 2. Clear the buffer before use, as it might contain old data
+ buf.Reset() 
+ 
+ // 3. Use the buffer
+ buf.WriteString("Processed: ")
+ buf.WriteString(data)
+ 
+ // 4. Return it to the pool
+ bufferPool.Put(buf) 
 }
 
 func main() {
-	processRequest("payload A")
-	processRequest("payload B") // Reuses the buffer allocated for A
+ processRequest("payload A")
+ processRequest("payload B") // Reuses the buffer allocated for A
 }
 ```
 
 ### 3. `sync.Cond`: Condition Variables and Broadcasting
 
-A `sync.Cond` (Condition Variable) is used when goroutines need to wait for a specific state or condition to change before proceeding. While you can often achieve this with channels, `sync.Cond` excels at **broadcasting**. 
+A `sync.Cond` (Condition Variable) is used when goroutines need to wait for a specific state or condition to change before proceeding. While you can often achieve this with channels, `sync.Cond` excels at **broadcasting**.
 
 If you have 100 goroutines waiting for a single event (e.g., "configuration updated" or "race started"), closing a channel works once, but you cannot reuse that closed channel. `sync.Cond` allows you to repeatedly pause goroutines and wake them all up using `Broadcast()`, or wake just one up using `Signal()`.
 
@@ -737,7 +745,7 @@ Every `sync.Cond` must be associated with a `sync.Locker` (usually a `*sync.Mute
 
 ### 4. `sync/atomic`: Lock-Free Synchronization
 
-Mutexes are highly optimized in Go, but they still involve the OS scheduler. If you only need to increment a simple integer or flip a boolean flag, a mutex is overkill. 
+Mutexes are highly optimized in Go, but they still involve the OS scheduler. If you only need to increment a simple integer or flip a boolean flag, a mutex is overkill.
 
 The `sync/atomic` package utilizes low-level CPU instructions to perform hardware-level atomic operations. These operations are "lock-free" and bypass the Go scheduler entirely, making them incredibly fast.
 
@@ -749,31 +757,31 @@ Historically, this package relied on functions like `atomic.AddInt64(&val, 1)`. 
 package main
 
 import (
-	"fmt"
-	"sync"
-	"sync/atomic"
+ "fmt"
+ "sync"
+ "sync/atomic"
 )
 
 func main() {
-	var wg sync.WaitGroup
-	
-	// Using Go 1.19+ atomic types
-	var atomicCounter atomic.Int64 
+ var wg sync.WaitGroup
+ 
+ // Using Go 1.19+ atomic types
+ var atomicCounter atomic.Int64 
 
-	for i := 0; i < 1000; i++ {
-		wg.Add(1)
-		go func() {
-			defer wg.Done()
-			
-			// Increment atomically without needing a mutex
-			atomicCounter.Add(1) 
-		}()
-	}
+ for i := 0; i < 1000; i++ {
+  wg.Add(1)
+  go func() {
+   defer wg.Done()
+   
+   // Increment atomically without needing a mutex
+   atomicCounter.Add(1) 
+  }()
+ }
 
-	wg.Wait()
-	
-	// Safely read the value
-	fmt.Println("Final Counter:", atomicCounter.Load()) 
+ wg.Wait()
+ 
+ // Safely read the value
+ fmt.Println("Final Counter:", atomicCounter.Load()) 
 }
 ```
 

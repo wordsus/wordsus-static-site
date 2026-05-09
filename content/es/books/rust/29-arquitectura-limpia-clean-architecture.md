@@ -4,7 +4,7 @@ Exploraremos cómo modelar **Entidades** que protejan sus invariantes y **Casos 
 
 ## 29.1 Principios SOLID aplicados a Rust
 
-Los principios SOLID nacieron en el corazón de la Programación Orientada a Objetos (POO), acuñados por Robert C. Martin para resolver problemas de código espagueti, alta acoplación y fragilidad en sistemas empresariales. 
+Los principios SOLID nacieron en el corazón de la Programación Orientada a Objetos (POO), acuñados por Robert C. Martin para resolver problemas de código espagueti, alta acoplación y fragilidad en sistemas empresariales.
 
 Al llegar a Rust, un lenguaje que favorece la composición sobre la herencia y carece de "clases" en el sentido tradicional, es muy común que los desarrolladores se pregunten: *¿Siguen siendo válidos estos principios aquí?*
 
@@ -16,11 +16,12 @@ A continuación, traduciremos la visión tradicional de SOLID al paradigma y las
 
 > *Una estructura o módulo debe tener una, y solo una, razón para cambiar.*
 
-En Rust, este principio se aplica a nivel de funciones, `structs` y módulos. Es una tentación común (especialmente al usar frameworks web) crear un `struct` masivo que gestione la validación de un request, la lógica de negocio y la persistencia en base de datos. 
+En Rust, este principio se aplica a nivel de funciones, `structs` y módulos. Es una tentación común (especialmente al usar frameworks web) crear un `struct` masivo que gestione la validación de un request, la lógica de negocio y la persistencia en base de datos.
 
 Para respetar el SRP, debemos dividir estas responsabilidades.
 
 **Ejemplo de violación del SRP:**
+
 ```rust
 struct OrderProcessor;
 
@@ -65,6 +66,7 @@ struct OrderProcessor {
     notifier: EmailSender,
 }
 ```
+
 *Nota: Este ejemplo usa dependencias concretas para ilustrar el SRP, pero pronto veremos cómo mejorarlo con el principio DIP.*
 
 ### O - Principio de Abierto/Cerrado (Open/Closed Principle)
@@ -76,6 +78,7 @@ En lenguajes orientados a objetos, esto se logra mediante herencia o polimorfism
 Imagina que tienes una API que exporta reportes. Si usas un `enum` y un `match` masivo, cada vez que agregues un formato (por ejemplo, Excel), tendrás que modificar la función central.
 
 **Aplicando OCP con Traits:**
+
 ```rust
 trait ReportGenerator {
     fn generate(&self, data: &ReportData) -> String;
@@ -123,6 +126,7 @@ En Rust, el sistema de tipos fuerte (`Result`, `Option`) ya nos empuja fuertemen
 En el contexto de Rust, esto significa: **Crea Traits pequeños y enfocados en lugar de "God Traits" (Traits monolíticos).** La *Standard Library* de Rust es un excelente ejemplo de este principio. No existe un trait `FileOperations` que agrupe lectura, escritura y búsqueda. En su lugar, tenemos `std::io::Read`, `std::io::Write` y `std::io::Seek`.
 
 **Violación del ISP:**
+
 ```rust
 trait Worker {
     fn work(&self);
@@ -138,6 +142,7 @@ impl Worker for Robot {
 ```
 
 **Refactorización idiomática:**
+
 ```rust
 trait Workable { fn work(&self); }
 trait Feedable { fn eat(&self); }
@@ -155,9 +160,9 @@ impl Workable for Robot { /* ... */ }
 
 > *1. Los módulos de alto nivel no deberían depender de módulos de bajo nivel. Ambos deberían depender de abstracciones.* > *2. Las abstracciones no deberían depender de los detalles. Los detalles deberían depender de las abstracciones.*
 
-Este es, con diferencia, **el principio más crítico para la Arquitectura Limpia** que desarrollaremos en este capítulo. Si el dominio de tu aplicación (alto nivel) depende directamente de `sqlx::PgPool` (bajo nivel), estás acoplado a PostgreSQL. 
+Este es, con diferencia, **el principio más crítico para la Arquitectura Limpia** que desarrollaremos en este capítulo. Si el dominio de tu aplicación (alto nivel) depende directamente de `sqlx::PgPool` (bajo nivel), estás acoplado a PostgreSQL.
 
-En Rust, invertimos las dependencias inyectando **Traits** en lugar de `structs` concretos. 
+En Rust, invertimos las dependencias inyectando **Traits** en lugar de `structs` concretos.
 
 ```rust
 // 1. La abstracción (El Puerto / Interfaz)
@@ -196,6 +201,7 @@ impl UserRepository for PostgresUserRepository {
 ```
 
 Al aplicar DIP de esta manera, logramos dos cosas fundamentales para el testing y la escalabilidad:
+
 1. `UserService` puede ser testeado pasando un `MockUserRepository` (algo que exploramos en el Capítulo 24).
 2. Si el día de mañana migramos de PostgreSQL a MongoDB, `UserService` no cambia ni una sola línea de código.
 
@@ -209,9 +215,9 @@ Las dos capas más profundas son las **Entidades** (Reglas de Negocio de la Empr
 
 ### La Capa de Entidades: El Corazón del Dominio
 
-Las Entidades son los objetos fundamentales de tu dominio. En Rust, se modelan utilizando `structs` y `enums` puros. 
+Las Entidades son los objetos fundamentales de tu dominio. En Rust, se modelan utilizando `structs` y `enums` puros.
 
-**Regla de oro de las Entidades:** No deben tener dependencias externas. No deben importar `sqlx`, `actix_web`, ni ningún otro framework. Idealmente, ni siquiera deberían depender de `serde` (aunque en la práctica muchos equipos hacen esta concesión por pragmatismo). 
+**Regla de oro de las Entidades:** No deben tener dependencias externas. No deben importar `sqlx`, `actix_web`, ni ningún otro framework. Idealmente, ni siquiera deberían depender de `serde` (aunque en la práctica muchos equipos hacen esta concesión por pragmatismo).
 
 Además de contener datos, las Entidades en Rust deben encapsular sus propias reglas de negocio e invariantes. No deben ser simples "bolsas de datos" (anémicas) con getters y setters públicos, sino que deben proteger su estado interno.
 
@@ -279,6 +285,7 @@ Como puedes ver, la entidad `Wallet` garantiza que nunca se pueda retirar más d
 Los Casos de Uso (o Interactors) representan las acciones que un usuario o sistema puede realizar en la aplicación. Son los "verbos" de tu sistema (ej. `TransferFunds`, `RegisterUser`, `GenerateInvoice`).
 
 El trabajo de un Caso de Uso es:
+
 1. Recibir datos de entrada (generalmente un DTO o una simple estructura).
 2. Orquestar la obtención de las **Entidades** necesarias desde el exterior (a través de puertos/interfaces).
 3. Invocar la lógica de negocio en las Entidades.
@@ -369,13 +376,14 @@ impl<R: WalletRepository> TransferFundsUseCase<R> {
 
 ## 29.3 Aislamiento de frameworks y la base de datos
 
-Hasta ahora, hemos construido un núcleo inmaculado. Nuestras Entidades dictan las reglas de negocio y nuestros Casos de Uso orquestan los flujos. Ninguno de los dos sabe si el sistema se ejecuta en un servidor HTTP, en una CLI, o qué motor de base de datos guarda la información. 
+Hasta ahora, hemos construido un núcleo inmaculado. Nuestras Entidades dictan las reglas de negocio y nuestros Casos de Uso orquestan los flujos. Ninguno de los dos sabe si el sistema se ejecuta en un servidor HTTP, en una CLI, o qué motor de base de datos guarda la información.
 
 En la Arquitectura Limpia, **los frameworks web y las bases de datos son detalles de implementación**. Pertenecen a la capa más externa: la de los **Adaptadores** (o *Infrastructure/Delivery*). El objetivo de esta sección es conectar ese núcleo puro con el mundo exterior (como Axum o SQLx) sin contaminarlo.
 
 ### El Adaptador Web: Frontera de Entrada
 
 El trabajo de un framework web (Actix, Axum, Rocket) debe limitarse estrictamente a:
+
 1. Recibir la petición HTTP.
 2. Extraer y validar el *payload* (JSON, Path, Query).
 3. Transformar ese *payload* en un Comando/DTO que el Caso de Uso entienda.
@@ -548,10 +556,10 @@ impl<R: UserRepository> GetUserUseCase<R> {
 ```
 
 * **Ventajas:** * **Zero-cost abstraction:** Es increíblemente rápido. Al conocer el tipo exacto en tiempo de compilación, el compilador puede realizar optimizaciones agresivas, como el *inlining* (reemplazar la llamada a la función por su cuerpo).
-    * No requiere asignaciones en el montículo (*heap*), lo que lo hace ideal para sistemas embebidos o código crítico de alta frecuencia.
+  * No requiere asignaciones en el montículo (*heap*), lo que lo hace ideal para sistemas embebidos o código crítico de alta frecuencia.
 * **Desventajas:**
-    * **Genéricos virales:** Este es el mayor dolor de cabeza en el desarrollo backend. Si tu framework web necesita guardar `GetUserUseCase` en el estado global, el estado también debe volverse genérico. Rápidamente, tu `AppState` termina teniendo firmas ilegibles como `AppState<R1, R2, R3, S1, S2>`.
-    * Tiempos de compilación más lentos y binarios más pesados debido a la duplicación de código.
+  * **Genéricos virales:** Este es el mayor dolor de cabeza en el desarrollo backend. Si tu framework web necesita guardar `GetUserUseCase` en el estado global, el estado también debe volverse genérico. Rápidamente, tu `AppState` termina teniendo firmas ilegibles como `AppState<R1, R2, R3, S1, S2>`.
+  * Tiempos de compilación más lentos y binarios más pesados debido a la duplicación de código.
 
 ### 2. Despacho Dinámico (Dynamic Dispatch) con `dyn Trait`
 
@@ -583,23 +591,24 @@ impl GetUserUseCase {
 ```
 
 * **Ventajas:**
-    * **Ergonomía absoluta:** Tu `AppState` y tus structs se mantienen limpios, sin parámetros angulares `<T>` por todas partes.
-    * Tiempos de compilación marginalmente más rápidos al evitar la monomorfización masiva.
-    * Facilita enormemente la creación de colecciones heterogéneas (ej. un `Vec<Arc<dyn Notifier>>` que contenga notificadores por Email, SMS y Push).
+  * **Ergonomía absoluta:** Tu `AppState` y tus structs se mantienen limpios, sin parámetros angulares `<T>` por todas partes.
+  * Tiempos de compilación marginalmente más rápidos al evitar la monomorfización masiva.
+  * Facilita enormemente la creación de colecciones heterogéneas (ej. un `Vec<Arc<dyn Notifier>>` que contenga notificadores por Email, SMS y Push).
 * **Desventajas:**
-    * **Costo de ejecución:** Hay una penalización de rendimiento microscópica por seguir el puntero y buscar en la *vtable*.
-    * Requiere asignación en el *heap* (`Arc` o `Box`).
-    * Inhabilita ciertas optimizaciones del compilador (como el *inlining* a través de ese límite).
+  * **Costo de ejecución:** Hay una penalización de rendimiento microscópica por seguir el puntero y buscar en la *vtable*.
+  * Requiere asignación en el *heap* (`Arc` o `Box`).
+  * Inhabilita ciertas optimizaciones del compilador (como el *inlining* a través de ese límite).
 
 ### El veredicto pragmático para Backend
 
 En la comunidad de Rust, a menudo hay una obsesión por el rendimiento puro que empuja a los desarrolladores a usar genéricos para todo. Sin embargo, en la Arquitectura Limpia aplicada a servicios web, **el consenso general (y la recomendación de este libro) es favorecer fuertemente `Arc<dyn Trait>` para los límites de los Casos de Uso y Adaptadores.**
 
 ¿Por qué?
+
 1. **El cuello de botella no es la CPU:** El costo de un *vtable lookup* se mide en nanosegundos (billonésimas de segundo). El costo de la consulta a PostgreSQL o Redis a través de la red se mide en milisegundos (milésimas de segundo). Tratar de optimizar nanosegundos ensuciando toda tu arquitectura web con genéricos virales es una optimización prematura.
 2. **Productividad:** `Arc<dyn Trait>` te permite maquetar, testear y refactorizar tu código mucho más rápido, manteniendo las firmas de tus funciones simples.
 
 **Cuándo usar Genéricos entonces:**
 Reserva el despacho estático para el núcleo algorítmico de tu dominio (las Entidades), para funciones de procesamiento matemático intensivo, parsers, o librerías utilitarias de muy bajo nivel. Para las costuras arquitectónicas (inyectar la base de datos, inyectar un cliente HTTP), la flexibilidad de `dyn Trait` es imbatible.
 
-Con esto, hemos cerrado el Capítulo 29 y establecido las reglas de oro para mantener nuestro código de dominio puro, aislado e inyectado correctamente. 
+Con esto, hemos cerrado el Capítulo 29 y establecido las reglas de oro para mantener nuestro código de dominio puro, aislado e inyectado correctamente.

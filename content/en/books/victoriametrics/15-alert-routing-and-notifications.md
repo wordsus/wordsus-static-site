@@ -2,7 +2,7 @@ While `vmalert` excels at evaluating MetricsQL queries to detect anomalies, it i
 
 ## 15.1 Integration with Prometheus Alertmanager
 
-While `vmalert` is highly efficient at evaluating complex MetricsQL expressions and determining when a system state breaches predefined thresholds, it intentionally does not handle the delivery of notifications (like sending emails, Slack messages, or PagerDuty pages). Following the Unix philosophy of doing one thing well, VictoriaMetrics delegates the responsibilities of deduplication, grouping, and notification routing to Prometheus Alertmanager. 
+While `vmalert` is highly efficient at evaluating complex MetricsQL expressions and determining when a system state breaches predefined thresholds, it intentionally does not handle the delivery of notifications (like sending emails, Slack messages, or PagerDuty pages). Following the Unix philosophy of doing one thing well, VictoriaMetrics delegates the responsibilities of deduplication, grouping, and notification routing to Prometheus Alertmanager.
 
 To bridge the gap between alert evaluation and human notification, `vmalert` implements the exact same notification push protocol as a standard Prometheus server. This makes `vmalert` a drop-in replacement; any existing Alertmanager infrastructure will accept alerts from `vmalert` seamlessly.
 
@@ -38,7 +38,7 @@ Once configured, `vmalert` will begin sending active alerts to Alertmanager. It 
 
 ### High Availability and Multiple Alertmanagers
 
-In production environments, Alertmanager is typically deployed in a highly available (HA) cluster to prevent a single point of failure from dropping critical notifications. 
+In production environments, Alertmanager is typically deployed in a highly available (HA) cluster to prevent a single point of failure from dropping critical notifications.
 
 To integrate `vmalert` with an HA Alertmanager cluster, you pass the `-notifier.url` flag multiple times—once for each Alertmanager replica:
 
@@ -88,9 +88,10 @@ Here is an example of the payload `vmalert` transmits:
 ```
 
 Key takeaways from the payload mapping:
-1.  **Labels:** These dictate how Alertmanager groups, routes, and silences the alert. The labels include everything statically defined in the `vmalert` rule file, plus any dynamic labels inherited from the time series data that triggered the alert.
-2.  **Annotations:** These provide the human-readable context. They are typically passed directly into your Slack templates or email bodies.
-3.  **GeneratorURL:** `vmalert` automatically injects a link back to its own UI. This allows operators receiving the alert to click the link and immediately view the specific rule evaluation state in `vmalert` that triggered the notification.
+
+1. **Labels:** These dictate how Alertmanager groups, routes, and silences the alert. The labels include everything statically defined in the `vmalert` rule file, plus any dynamic labels inherited from the time series data that triggered the alert.
+2. **Annotations:** These provide the human-readable context. They are typically passed directly into your Slack templates or email bodies.
+3. **GeneratorURL:** `vmalert` automatically injects a link back to its own UI. This allows operators receiving the alert to click the link and immediately view the specific rule evaluation state in `vmalert` that triggered the notification.
 
 ## 15.2 Deploying and Configuring `vmalertmanager`
 
@@ -156,15 +157,15 @@ spec:
 
 ### Namespace Enforcement and Security
 
-To prevent one team from accidentally (or maliciously) intercepting or silencing another team's alerts, the `VMAlertmanagerConfig` includes built-in safeguards. 
+To prevent one team from accidentally (or maliciously) intercepting or silencing another team's alerts, the `VMAlertmanagerConfig` includes built-in safeguards.
 
-By default, the operator enforces a namespace matcher. If a `VMAlertmanagerConfig` is deployed in the `payments` namespace, the operator automatically rewrites the underlying routing tree to ensure it only applies to alerts that carry a `namespace="payments"` label. 
+By default, the operator enforces a namespace matcher. If a `VMAlertmanagerConfig` is deployed in the `payments` namespace, the operator automatically rewrites the underlying routing tree to ensure it only applies to alerts that carry a `namespace="payments"` label.
 
-If you are managing cluster-wide infrastructure and explicitly want to route alerts regardless of their origin namespace, you can disable this enforcement by setting `disableNamespaceMatcher: true` at the `VMAlertmanager` specification level, though this should be reserved for global administration environments. 
+If you are managing cluster-wide infrastructure and explicitly want to route alerts regardless of their origin namespace, you can disable this enforcement by setting `disableNamespaceMatcher: true` at the `VMAlertmanager` specification level, though this should be reserved for global administration environments.
 
 ### Connecting vmalert to vmalertmanager
 
-Once the `VMAlertmanager` is running, the operator exposes it via a Kubernetes Service. To complete the integration, your `vmalert` configuration must point its `-notifier.url` to this service. 
+Once the `VMAlertmanager` is running, the operator exposes it via a Kubernetes Service. To complete the integration, your `vmalert` configuration must point its `-notifier.url` to this service.
 
 In a fully operator-managed setup, this connection is handled implicitly. You simply reference the deployed `VMAlertmanager` service endpoint inside your `VMAlert` CRD:
 
@@ -236,7 +237,8 @@ Here is a plain text representation of a typical routing tree topology:
 ```
 
 #### Traversal Logic
-By default, Alertmanager stops evaluating a branch as soon as it finds the first child route that matches the alert's labels. If an alert matches `team=database` (Route A), it will not be evaluated against Route B, even if it is also a critical alert. 
+
+By default, Alertmanager stops evaluating a branch as soon as it finds the first child route that matches the alert's labels. If an alert matches `team=database` (Route A), it will not be evaluated against Route B, even if it is also a critical alert.
 
 If you want an alert to match multiple sibling routes (for example, to send a notification to a specific team's Slack, but *also* send all critical alerts to a global security channel), you must use the `continue: true` directive on the matching node.
 
@@ -294,7 +296,7 @@ When designing your tree, keep the root node as generic as possible to act as a 
 
 ## 15.4 Managing Alert Silences and Inhibition Rules
 
-No matter how well you tune your `vmalert` rules or design your `vmalertmanager` routing trees, there will always be scenarios where you need to suppress notifications. Maintenance windows, known systemic outages, and cascading failures can quickly generate a storm of irrelevant alerts, burying the actual root cause and causing severe alert fatigue. 
+No matter how well you tune your `vmalert` rules or design your `vmalertmanager` routing trees, there will always be scenarios where you need to suppress notifications. Maintenance windows, known systemic outages, and cascading failures can quickly generate a storm of irrelevant alerts, burying the actual root cause and causing severe alert fatigue.
 
 To manage this, the Alertmanager ecosystem provides two distinct mechanisms for suppression: **Silences** (which are manual and time-bound) and **Inhibition Rules** (which are automatic and state-bound).
 
@@ -303,6 +305,7 @@ To manage this, the Alertmanager ecosystem provides two distinct mechanisms for 
 A silence is a temporary, manual override that prevents notifications for any alerts matching a specific set of labels. Silences are not defined in your configuration files; instead, they are created dynamically at runtime via the Alertmanager Web UI, the HTTP API, or the `amtool` command-line utility.
 
 **Common Use Cases for Silences:**
+
 * Muting hardware failure alerts while a technician replaces a physical disk.
 * Suppressing "high latency" warnings during a scheduled database migration.
 * Temporarily pausing alerts for a non-critical service that is flapping while a patch is being developed.
@@ -326,18 +329,20 @@ When an alert triggered by `vmalert` arrives at Alertmanager, it is evaluated ag
 While silences are reactive, **Inhibition Rules** are proactive. An inhibition rule is a static configuration that mutes a target alert if a specific source alert is already actively firing. This is your primary defense against cascading failure notifications.
 
 **Common Use Cases for Inhibition Rules:**
+
 * If an entire physical host goes down (Source Alert), suppress the individual "Service Down" alerts (Target Alerts) for every application running on that host.
 * If a cluster loses network connectivity, suppress "High Query Latency" alerts, as the latency is a symptom of the network failure.
 * If a `critical` alert is firing for a specific component, suppress any `warning` level alerts for that exact same component.
 
-Inhibition rules are defined in the `alertmanager.yaml` file or within the `VMAlertmanagerConfig` Custom Resource Definition in Kubernetes. 
+Inhibition rules are defined in the `alertmanager.yaml` file or within the `VMAlertmanagerConfig` Custom Resource Definition in Kubernetes.
 
 #### Anatomy of an Inhibition Rule
 
 An inhibition rule requires three components:
-1.  **`source_matchers`**: The labels that must be present on an alert for it to trigger the suppression behavior.
-2.  **`target_matchers`**: The labels that define which alerts should be suppressed.
-3.  **`equal`**: A list of labels that must have the exact same values on *both* the source and the target alert for the suppression to take effect.
+
+1. **`source_matchers`**: The labels that must be present on an alert for it to trigger the suppression behavior.
+2. **`target_matchers`**: The labels that define which alerts should be suppressed.
+3. **`equal`**: A list of labels that must have the exact same values on *both* the source and the target alert for the suppression to take effect.
 
 Here is a practical configuration example:
 
@@ -363,10 +368,10 @@ inhibit_rules:
 
 When evaluating the second rule in the example above, `vmalertmanager` performs the following logic:
 
-1.  It checks if an alert named `NodeDown` is actively firing. Let's say `NodeDown` is firing with the label `instance="node-05.prod.local"`.
-2.  A new alert arrives from `vmalert`: `HighCPUUsage` with labels `severity="critical"` and `instance="node-05.prod.local"`.
-3.  The new alert matches the `target_matchers` (it has a critical severity).
-4.  The `vmalertmanager` checks the `equal` condition. Both the source and target alerts share the exact same value for the `instance` label (`node-05.prod.local`).
-5.  Because all conditions are met, the `HighCPUUsage` notification is suppressed. The operators only receive the `NodeDown` notification, pointing them directly to the root cause.
+1. It checks if an alert named `NodeDown` is actively firing. Let's say `NodeDown` is firing with the label `instance="node-05.prod.local"`.
+2. A new alert arrives from `vmalert`: `HighCPUUsage` with labels `severity="critical"` and `instance="node-05.prod.local"`.
+3. The new alert matches the `target_matchers` (it has a critical severity).
+4. The `vmalertmanager` checks the `equal` condition. Both the source and target alerts share the exact same value for the `instance` label (`node-05.prod.local`).
+5. Because all conditions are met, the `HighCPUUsage` notification is suppressed. The operators only receive the `NodeDown` notification, pointing them directly to the root cause.
 
 By carefully combining `vmalert`'s precise MetricsQL evaluations with `vmalertmanager`'s routing, grouping, silences, and inhibition rules, you can build an alerting pipeline that guarantees operators are notified quickly, with high-context data, and minimal noise.

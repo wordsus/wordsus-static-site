@@ -8,7 +8,7 @@ Go’s approach to Input/Output is defined by its simplicity and profound compos
 
 ### The Foundation: The `io` Package
 
-At the heart of Go's I/O ecosystem reside two single-method interfaces defined in the `io` package: `Reader` and `Writer`. 
+At the heart of Go's I/O ecosystem reside two single-method interfaces defined in the `io` package: `Reader` and `Writer`.
 
 ```go
 type Reader interface {
@@ -20,7 +20,7 @@ type Writer interface {
 }
 ```
 
-Because these are standard interfaces (as discussed in Chapter 6), any custom or standard library type that implements a `Read` method with this exact signature is treated as an `io.Reader`. 
+Because these are standard interfaces (as discussed in Chapter 6), any custom or standard library type that implements a `Read` method with this exact signature is treated as an `io.Reader`.
 
 * **`Read`** populates the provided byte slice `p` with up to `len(p)` bytes, returning the number of bytes read and an error (often `io.EOF` when the data stream ends).
 * **`Write`** takes a byte slice `p` and writes its contents to the underlying data stream, returning the number of bytes written and an error if it fails to write the full slice.
@@ -44,20 +44,20 @@ Here is an example demonstrating how `io.Copy` bridges a string reader and stand
 package main
 
 import (
-	"io"
-	"os"
-	"strings"
+ "io"
+ "os"
+ "strings"
 )
 
 func main() {
-	// strings.NewReader returns an io.Reader
-	reader := strings.NewReader("Streaming data from a string to standard output.\n")
-	
-	// os.Stdout is an *os.File, which implements io.Writer
-	_, err := io.Copy(os.Stdout, reader)
-	if err != nil {
-		panic(err)
-	}
+ // strings.NewReader returns an io.Reader
+ reader := strings.NewReader("Streaming data from a string to standard output.\n")
+ 
+ // os.Stdout is an *os.File, which implements io.Writer
+ _, err := io.Copy(os.Stdout, reader)
+ if err != nil {
+  panic(err)
+ }
 }
 ```
 
@@ -71,32 +71,33 @@ These functions take an `io.Writer` as their first argument, allowing you to dir
 package main
 
 import (
-	"bytes"
-	"fmt"
-	"os"
+ "bytes"
+ "fmt"
+ "os"
 )
 
 type ServerConfig struct {
-	Port int
-	Host string
+ Port int
+ Host string
 }
 
 func main() {
-	config := ServerConfig{Port: 8080, Host: "localhost"}
+ config := ServerConfig{Port: 8080, Host: "localhost"}
 
-	// Formatting directly to standard output
-	fmt.Fprintf(os.Stdout, "Starting server on %s:%d...\n", config.Host, config.Port)
+ // Formatting directly to standard output
+ fmt.Fprintf(os.Stdout, "Starting server on %s:%d...\n", config.Host, config.Port)
 
-	// Formatting into an in-memory buffer (which implements io.Writer)
-	var buf bytes.Buffer
-	fmt.Fprintf(&buf, "Config Details: %+v\n", config)
-	
-	fmt.Print(buf.String())
+ // Formatting into an in-memory buffer (which implements io.Writer)
+ var buf bytes.Buffer
+ fmt.Fprintf(&buf, "Config Details: %+v\n", config)
+ 
+ fmt.Print(buf.String())
 }
 ```
 
 **Essential Formatting Verbs:**
 When using functions like `Printf` or `Fprintf`, Go relies on "verbs" to dictate how values are formatted:
+
 * `%v`: The default format for the value.
 * `%+v`: When printing structs, adds field names.
 * `%#v`: A Go-syntax representation of the value (useful for debugging).
@@ -107,7 +108,7 @@ When using functions like `Printf` or `Fprintf`, Go relies on "verbs" to dictate
 
 Relying solely on `io.Reader` and `io.Writer` can be inefficient for certain workloads. If you read a file one byte at a time using raw `os.File` operations, you will trigger a system call for every single byte, severely degrading application performance.
 
-The `bufio` package solves this by wrapping an `io.Reader` or `io.Writer` object and creating an in-memory buffer. 
+The `bufio` package solves this by wrapping an `io.Reader` or `io.Writer` object and creating an in-memory buffer.
 
 ```text
 Unbuffered Read: Program -> Syscall -> Disk (Expensive for small, frequent reads)
@@ -125,35 +126,35 @@ One of the most common I/O tasks is reading text line-by-line. While you could i
 package main
 
 import (
-	"bufio"
-	"fmt"
-	"strings"
+ "bufio"
+ "fmt"
+ "strings"
 )
 
 func main() {
-	csvData := `id,name,role
+ csvData := `id,name,role
 1,Alice,Admin
 2,Bob,User
 3,Charlie,User`
 
-	// 1. Create a Reader from the string
-	reader := strings.NewReader(csvData)
+ // 1. Create a Reader from the string
+ reader := strings.NewReader(csvData)
 
-	// 2. Wrap the Reader in a Scanner
-	scanner := bufio.NewScanner(reader)
+ // 2. Wrap the Reader in a Scanner
+ scanner := bufio.NewScanner(reader)
 
-	lineCount := 0
-	// 3. Scan() advances to the next token (default is line), returning false at EOF
-	for scanner.Scan() {
-		lineCount++
-		// scanner.Text() returns the current token as a string
-		fmt.Printf("Line %d: %s\n", lineCount, scanner.Text())
-	}
+ lineCount := 0
+ // 3. Scan() advances to the next token (default is line), returning false at EOF
+ for scanner.Scan() {
+  lineCount++
+  // scanner.Text() returns the current token as a string
+  fmt.Printf("Line %d: %s\n", lineCount, scanner.Text())
+ }
 
-	// 4. Always check for errors after the loop
-	if err := scanner.Err(); err != nil {
-		fmt.Printf("Error reading input: %v\n", err)
-	}
+ // 4. Always check for errors after the loop
+ if err := scanner.Err(); err != nil {
+  fmt.Printf("Error reading input: %v\n", err)
+ }
 }
 ```
 
@@ -175,34 +176,34 @@ The `strings` package provides a suite of self-explanatory functions for inspect
 package main
 
 import (
-	"fmt"
-	"strings"
+ "fmt"
+ "strings"
 )
 
 func main() {
-	path := "/var/log/application.log"
+ path := "/var/log/application.log"
 
-	fmt.Println(strings.HasPrefix(path, "/var/"))     // true
-	fmt.Println(strings.HasSuffix(path, ".log"))      // true
-	fmt.Println(strings.Contains(path, "application")) // true
-	
-	// Index returns the byte offset of the first instance, or -1 if not found
-	fmt.Println(strings.Index(path, "log"))           // 5
+ fmt.Println(strings.HasPrefix(path, "/var/"))     // true
+ fmt.Println(strings.HasSuffix(path, ".log"))      // true
+ fmt.Println(strings.Contains(path, "application")) // true
+ 
+ // Index returns the byte offset of the first instance, or -1 if not found
+ fmt.Println(strings.Index(path, "log"))           // 5
 }
 ```
 
 #### Manipulation and Transformation
 
-When cleaning or formatting data, functions like `TrimSpace`, `ToLower`, and `ReplaceAll` are indispensable. 
+When cleaning or formatting data, functions like `TrimSpace`, `ToLower`, and `ReplaceAll` are indispensable.
 
 ```go
 func cleanUserInput(input string) string {
-	// Removes leading/trailing whitespace and normalizes to lowercase
-	clean := strings.TrimSpace(input)
-	clean = strings.ToLower(clean)
-	
-	// Replace all instances of "badword" with "***"
-	return strings.ReplaceAll(clean, "badword", "***")
+ // Removes leading/trailing whitespace and normalizes to lowercase
+ clean := strings.TrimSpace(input)
+ clean = strings.ToLower(clean)
+ 
+ // Replace all instances of "badword" with "***"
+ return strings.ReplaceAll(clean, "badword", "***")
 }
 ```
 
@@ -248,24 +249,24 @@ Memory Allocation Strategy Comparison:
 package main
 
 import (
-	"fmt"
-	"strings"
+ "fmt"
+ "strings"
 )
 
 func buildQuery(columns []string, table string) string {
-	var builder strings.Builder
-	
-	// Optional: Pre-allocate memory if you know the approximate size
-	// builder.Grow(100) 
+ var builder strings.Builder
+ 
+ // Optional: Pre-allocate memory if you know the approximate size
+ // builder.Grow(100) 
 
-	builder.WriteString("SELECT ")
-	builder.WriteString(strings.Join(columns, ", "))
-	builder.WriteString(" FROM ")
-	builder.WriteString(table)
-	builder.WriteString(";")
+ builder.WriteString("SELECT ")
+ builder.WriteString(strings.Join(columns, ", "))
+ builder.WriteString(" FROM ")
+ builder.WriteString(table)
+ builder.WriteString(";")
 
-	// String() returns the assembled string without copying the underlying bytes
-	return builder.String() 
+ // String() returns the assembled string without copying the underlying bytes
+ return builder.String() 
 }
 ```
 
@@ -278,28 +279,29 @@ When literal string functions are insufficient—such as validating an email add
 Regular expressions must be compiled into a state machine before they can be used. This compilation process is computationally expensive. **Never compile a regex inside a loop or a frequently called function.**
 
 Go provides two ways to compile a regex:
-1.  `regexp.Compile()`: Returns the compiled regex and an error. Used when the pattern is provided dynamically at runtime.
-2.  `regexp.MustCompile()`: Panics if the pattern is invalid. Used for static, hardcoded patterns initialized at the package level.
+
+1. `regexp.Compile()`: Returns the compiled regex and an error. Used when the pattern is provided dynamically at runtime.
+2. `regexp.MustCompile()`: Panics if the pattern is invalid. Used for static, hardcoded patterns initialized at the package level.
 
 ```go
 package main
 
 import (
-	"fmt"
-	"regexp"
+ "fmt"
+ "regexp"
 )
 
 // Good: Compiled once at program startup
 var emailRegex = regexp.MustCompile(`^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`)
 
 func isValidEmail(email string) bool {
-	// Uses the pre-compiled regex
-	return emailRegex.MatchString(email)
+ // Uses the pre-compiled regex
+ return emailRegex.MatchString(email)
 }
 
 func main() {
-	fmt.Println(isValidEmail("user@example.com")) // true
-	fmt.Println(isValidEmail("invalid-email"))    // false
+ fmt.Println(isValidEmail("user@example.com")) // true
+ fmt.Println(isValidEmail("invalid-email"))    // false
 }
 ```
 
@@ -309,21 +311,21 @@ Beyond simple boolean matching, `regexp` excels at extracting specific substring
 
 ```go
 func extractAndReplace() {
-	text := "Contact support at support@example.com or sales@company.org."
-	
-	// FindString returns the first match
-	firstEmail := emailRegex.FindString(text)
-	fmt.Println("First found:", firstEmail) // support@example.com
-	
-	// FindAllString returns a slice of all matches. 
-	// The -1 argument means "find all" (no limit).
-	allEmails := emailRegex.FindAllString(text, -1)
-	fmt.Println("All found:", allEmails) // [support@example.com sales@company.org]
+ text := "Contact support at support@example.com or sales@company.org."
+ 
+ // FindString returns the first match
+ firstEmail := emailRegex.FindString(text)
+ fmt.Println("First found:", firstEmail) // support@example.com
+ 
+ // FindAllString returns a slice of all matches. 
+ // The -1 argument means "find all" (no limit).
+ allEmails := emailRegex.FindAllString(text, -1)
+ fmt.Println("All found:", allEmails) // [support@example.com sales@company.org]
 
-	// ReplaceAllString allows pattern-based substitution
-	redacted := emailRegex.ReplaceAllString(text, "[REDACTED]")
-	fmt.Println("Redacted text:", redacted) 
-	// Contact support at [REDACTED] or [REDACTED].
+ // ReplaceAllString allows pattern-based substitution
+ redacted := emailRegex.ReplaceAllString(text, "[REDACTED]")
+ fmt.Println("Redacted text:", redacted) 
+ // Contact support at [REDACTED] or [REDACTED].
 }
 ```
 
@@ -346,23 +348,23 @@ Because `time.Duration` is based on nanoseconds, Go provides convenient constant
 package main
 
 import (
-	"fmt"
-	"time"
+ "fmt"
+ "time"
 )
 
 func main() {
-	// Capturing the current instant
-	start := time.Now()
+ // Capturing the current instant
+ start := time.Now()
 
-	// Adding a duration (e.g., 2 hours and 30 minutes)
-	future := start.Add(2*time.Hour + 30*time.Minute)
-	fmt.Printf("Future: %v\n", future)
+ // Adding a duration (e.g., 2 hours and 30 minutes)
+ future := start.Add(2*time.Hour + 30*time.Minute)
+ fmt.Printf("Future: %v\n", future)
 
-	// Subtracting two instants yields a time.Duration
-	elapsed := future.Sub(start)
-	
-	// time.Since is a convenient wrapper for time.Now().Sub(start)
-	fmt.Printf("Elapsed: %v\n", elapsed)
+ // Subtracting two instants yields a time.Duration
+ elapsed := future.Sub(start)
+ 
+ // time.Since is a convenient wrapper for time.Now().Sub(start)
+ fmt.Printf("Elapsed: %v\n", elapsed)
 }
 ```
 
@@ -393,32 +395,32 @@ To convert a `time.Time` to a string, use the `Format` method. To convert a stri
 package main
 
 import (
-	"fmt"
-	"time"
+ "fmt"
+ "time"
 )
 
 func main() {
-	now := time.Now()
+ now := time.Now()
 
-	// 1. Formatting Dates
-	// Using standard library predefined layouts (e.g., RFC3339 for JSON/APIs)
-	fmt.Println(now.Format(time.RFC3339)) 
+ // 1. Formatting Dates
+ // Using standard library predefined layouts (e.g., RFC3339 for JSON/APIs)
+ fmt.Println(now.Format(time.RFC3339)) 
 
-	// Custom Layout: DD/MM/YYYY
-	fmt.Println(now.Format("02/01/2006"))
+ // Custom Layout: DD/MM/YYYY
+ fmt.Println(now.Format("02/01/2006"))
 
-	// Custom Layout: 12-hour clock with AM/PM
-	fmt.Println(now.Format("03:04 PM")) 
+ // Custom Layout: 12-hour clock with AM/PM
+ fmt.Println(now.Format("03:04 PM")) 
 
-	// 2. Parsing Dates
-	dateString := "2023-10-31 18:30:00"
-	layout := "2006-01-02 15:04:05" // The layout must perfectly match the string's structure
+ // 2. Parsing Dates
+ dateString := "2023-10-31 18:30:00"
+ layout := "2006-01-02 15:04:05" // The layout must perfectly match the string's structure
 
-	parsedTime, err := time.Parse(layout, dateString)
-	if err != nil {
-		panic(err)
-	}
-	fmt.Printf("Successfully parsed: %v\n", parsedTime)
+ parsedTime, err := time.Parse(layout, dateString)
+ if err != nil {
+  panic(err)
+ }
+ fmt.Printf("Successfully parsed: %v\n", parsedTime)
 }
 ```
 
@@ -432,27 +434,27 @@ Go uses the IANA Time Zone database (e.g., `America/New_York`, `Europe/Berlin`) 
 package main
 
 import (
-	"fmt"
-	"time"
+ "fmt"
+ "time"
 )
 
 func main() {
-	// Always store and process in UTC
-	utcNow := time.Now().UTC()
-	fmt.Println("System Time (UTC):", utcNow.Format(time.RFC1123))
+ // Always store and process in UTC
+ utcNow := time.Now().UTC()
+ fmt.Println("System Time (UTC):", utcNow.Format(time.RFC1123))
 
-	// Load a specific timezone
-	// Note: This requires the timezone database to be present on the host OS.
-	// In minimal Docker containers (like alpine or scratch), you may need to 
-	// import _ "time/tzdata" to embed the timezone database into your binary.
-	loc, err := time.LoadLocation("Asia/Tokyo")
-	if err != nil {
-		panic(err)
-	}
+ // Load a specific timezone
+ // Note: This requires the timezone database to be present on the host OS.
+ // In minimal Docker containers (like alpine or scratch), you may need to 
+ // import _ "time/tzdata" to embed the timezone database into your binary.
+ loc, err := time.LoadLocation("Asia/Tokyo")
+ if err != nil {
+  panic(err)
+ }
 
-	// Convert the UTC time to Tokyo local time
-	tokyoTime := utcNow.In(loc)
-	fmt.Println("Tokyo Time:", tokyoTime.Format(time.RFC1123))
+ // Convert the UTC time to Tokyo local time
+ tokyoTime := utcNow.In(loc)
+ fmt.Println("Tokyo Time:", tokyoTime.Format(time.RFC1123))
 }
 ```
 
@@ -464,7 +466,7 @@ Interacting with the file system is a fundamental requirement for most backend a
 
 ### Cross-Platform Pathing: The `path/filepath` Package
 
-A common mistake among new Go developers is using string concatenation (`dir + "/" + filename`) or the standard `path` package to build file paths. The `path` package always uses forward slashes and is designed strictly for URLs and logical URIs. 
+A common mistake among new Go developers is using string concatenation (`dir + "/" + filename`) or the standard `path` package to build file paths. The `path` package always uses forward slashes and is designed strictly for URLs and logical URIs.
 
 For the local file system, you must use `path/filepath`. It automatically understands the host operating system's path separator (`/` on Linux/macOS, `\` on Windows), ensuring your application is truly cross-platform.
 
@@ -472,31 +474,31 @@ For the local file system, you must use `path/filepath`. It automatically unders
 package main
 
 import (
-	"fmt"
-	"path/filepath"
+ "fmt"
+ "path/filepath"
 )
 
 func main() {
-	// 1. Join: The only way you should build paths
-	// On Linux/Mac: "var/log/app.log" | On Windows: "var\log\app.log"
-	fullPath := filepath.Join("var", "log", "app.log")
-	fmt.Println("Path:", fullPath)
+ // 1. Join: The only way you should build paths
+ // On Linux/Mac: "var/log/app.log" | On Windows: "var\log\app.log"
+ fullPath := filepath.Join("var", "log", "app.log")
+ fmt.Println("Path:", fullPath)
 
-	// 2. Extraction functions
-	fmt.Println("Directory:", filepath.Dir(fullPath))   // var/log
-	fmt.Println("Filename:", filepath.Base(fullPath))   // app.log
-	fmt.Println("Extension:", filepath.Ext(fullPath))   // .log
+ // 2. Extraction functions
+ fmt.Println("Directory:", filepath.Dir(fullPath))   // var/log
+ fmt.Println("Filename:", filepath.Base(fullPath))   // app.log
+ fmt.Println("Extension:", filepath.Ext(fullPath))   // .log
 
-	// 3. Clean: Resolves ".." and "." to find the shortest lexical path
-	messyPath := filepath.Join("var", "log", "..", "run", "app.pid")
-	cleanPath := filepath.Clean(messyPath)
-	fmt.Println("Cleaned:", cleanPath)                  // var/run/app.pid
+ // 3. Clean: Resolves ".." and "." to find the shortest lexical path
+ messyPath := filepath.Join("var", "log", "..", "run", "app.pid")
+ cleanPath := filepath.Clean(messyPath)
+ fmt.Println("Cleaned:", cleanPath)                  // var/run/app.pid
 }
 ```
 
 ### Direct File Operations: The `os` Package
 
-Starting with Go 1.16, the standard library deprecated the `io/ioutil` package, migrating its highly convenient, whole-file read/write functions directly into the `os` package. 
+Starting with Go 1.16, the standard library deprecated the `io/ioutil` package, migrating its highly convenient, whole-file read/write functions directly into the `os` package.
 
 For small files that fit comfortably in memory, `os.ReadFile` and `os.WriteFile` are the most idiomatic choices.
 
@@ -504,28 +506,28 @@ For small files that fit comfortably in memory, `os.ReadFile` and `os.WriteFile`
 package main
 
 import (
-	"fmt"
-	"os"
+ "fmt"
+ "os"
 )
 
 func main() {
-	data := []byte("Hello, File System!\n")
-	filename := "greeting.txt"
+ data := []byte("Hello, File System!\n")
+ filename := "greeting.txt"
 
-	// WriteFile creates the file if it doesn't exist, or truncates it if it does.
-	// 0644 sets standard permissions: Read/Write for owner, Read for others.
-	err := os.WriteFile(filename, data, 0644)
-	if err != nil {
-		panic(err)
-	}
+ // WriteFile creates the file if it doesn't exist, or truncates it if it does.
+ // 0644 sets standard permissions: Read/Write for owner, Read for others.
+ err := os.WriteFile(filename, data, 0644)
+ if err != nil {
+  panic(err)
+ }
 
-	// ReadFile loads the entire file into a byte slice.
-	readData, err := os.ReadFile(filename)
-	if err != nil {
-		panic(err)
-	}
+ // ReadFile loads the entire file into a byte slice.
+ readData, err := os.ReadFile(filename)
+ if err != nil {
+  panic(err)
+ }
 
-	fmt.Print(string(readData))
+ fmt.Print(string(readData))
 }
 ```
 
@@ -551,17 +553,17 @@ Example: os.O_APPEND | os.O_CREATE | os.O_WRONLY
 
 ```go
 func appendLog(filename, message string) error {
-	// Open file for appending, creating it if necessary
-	file, err := os.OpenFile(filename, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-	if err != nil {
-		return err
-	}
-	
-	// CRITICAL: Always defer the close operation immediately after checking the error
-	defer file.Close()
+ // Open file for appending, creating it if necessary
+ file, err := os.OpenFile(filename, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+ if err != nil {
+  return err
+ }
+ 
+ // CRITICAL: Always defer the close operation immediately after checking the error
+ defer file.Close()
 
-	_, err = file.WriteString(message + "\n")
-	return err
+ _, err = file.WriteString(message + "\n")
+ return err
 }
 ```
 
@@ -569,7 +571,7 @@ func appendLog(filename, message string) error {
 
 Creating directories is straightforward using `os.Mkdir` (creates a single directory) or `os.MkdirAll` (creates the directory and any necessary parent directories, identical to `mkdir -p` in Unix).
 
-However, traversing existing directories is where Go provides powerful, specialized tools. 
+However, traversing existing directories is where Go provides powerful, specialized tools.
 
 #### Flat Directory Reading: `os.ReadDir`
 
@@ -577,24 +579,24 @@ To get the immediate contents of a single directory, use `os.ReadDir`. It return
 
 ```go
 func listDirectory(path string) {
-	entries, err := os.ReadDir(path)
-	if err != nil {
-		panic(err)
-	}
+ entries, err := os.ReadDir(path)
+ if err != nil {
+  panic(err)
+ }
 
-	for _, entry := range entries {
-		if entry.IsDir() {
-			fmt.Println("[DIR] ", entry.Name())
-		} else {
-			fmt.Println("[FILE]", entry.Name())
-		}
-	}
+ for _, entry := range entries {
+  if entry.IsDir() {
+   fmt.Println("[DIR] ", entry.Name())
+  } else {
+   fmt.Println("[FILE]", entry.Name())
+  }
+ }
 }
 ```
 
 #### Recursive Traversal: `filepath.WalkDir`
 
-When you need to scan an entire directory tree (e.g., finding all `.json` files in a deeply nested project), `filepath.WalkDir` is the modern standard. 
+When you need to scan an entire directory tree (e.g., finding all `.json` files in a deeply nested project), `filepath.WalkDir` is the modern standard.
 
 *Note: Go also has `filepath.Walk`, but `WalkDir` (introduced in Go 1.16) is significantly faster because it avoids calling `os.Lstat` on every single file, instead utilizing the cached file type information provided by `ReadDir`.*
 
@@ -602,44 +604,44 @@ When you need to scan an entire directory tree (e.g., finding all `.json` files 
 package main
 
 import (
-	"fmt"
-	"io/fs"
-	"path/filepath"
+ "fmt"
+ "io/fs"
+ "path/filepath"
 )
 
 func main() {
-	root := "./project" // Assume this directory exists
+ root := "./project" // Assume this directory exists
 
-	// WalkDir visits the root, and then recursively visits all children.
-	err := filepath.WalkDir(root, func(path string, d fs.DirEntry, err error) error {
-		// 1. Handle errors encountered during the walk (e.g., permission denied)
-		if err != nil {
-			fmt.Printf("Prevent panic by handling failure accessing a path %q: %v\n", path, err)
-			return err
-		}
+ // WalkDir visits the root, and then recursively visits all children.
+ err := filepath.WalkDir(root, func(path string, d fs.DirEntry, err error) error {
+  // 1. Handle errors encountered during the walk (e.g., permission denied)
+  if err != nil {
+   fmt.Printf("Prevent panic by handling failure accessing a path %q: %v\n", path, err)
+   return err
+  }
 
-		// 2. Skip specific directories to optimize traversal
-		if d.IsDir() && d.Name() == ".git" {
-			return filepath.SkipDir // Tells WalkDir to ignore this branch entirely
-		}
+  // 2. Skip specific directories to optimize traversal
+  if d.IsDir() && d.Name() == ".git" {
+   return filepath.SkipDir // Tells WalkDir to ignore this branch entirely
+  }
 
-		// 3. Process the file
-		if !d.IsDir() && filepath.Ext(path) == ".go" {
-			fmt.Println("Found Go source file:", path)
-		}
+  // 3. Process the file
+  if !d.IsDir() && filepath.Ext(path) == ".go" {
+   fmt.Println("Found Go source file:", path)
+  }
 
-		return nil // Continue walking
-	})
+  return nil // Continue walking
+ })
 
-	if err != nil {
-		fmt.Printf("Error walking the path %v\n", err)
-	}
+ if err != nil {
+  fmt.Printf("Error walking the path %v\n", err)
+ }
 }
 ```
 
 ## 7.5 Encoding and Decoding Formats (`encoding/json`, `encoding/xml`)
 
-In the context of cloud-native architecture and microservices, applications rarely exist in isolation. They constantly exchange data with other services, mobile clients, and web frontends. This necessitates converting Go's internal, memory-bound data structures into universal text or binary formats—a process known as serialization (encoding) and deserialization (decoding). 
+In the context of cloud-native architecture and microservices, applications rarely exist in isolation. They constantly exchange data with other services, mobile clients, and web frontends. This necessitates converting Go's internal, memory-bound data structures into universal text or binary formats—a process known as serialization (encoding) and deserialization (decoding).
 
 The Go standard library provides robust, reflection-based packages for the most ubiquitous data formats: `encoding/json` and `encoding/xml`.
 
@@ -649,18 +651,18 @@ Both the JSON and XML packages rely heavily on a Go feature called **struct tags
 
 ```go
 type User struct {
-	// Maps to "id", ignores the field if the value is empty/zero
-	ID        int      `json:"id,omitempty" xml:"id,attr"` 
-	
-	// Maps to "username" in JSON, and an element <UserName> in XML
-	Username  string   `json:"username" xml:"UserName"`
-	
-	// The "-" tag explicitly tells the encoder to ignore this field entirely
-	Password  string   `json:"-" xml:"-"`
-	
-	// Unexported fields (lowercase) are ALWAYS ignored by the encoding packages, 
-	// regardless of tags.
-	loginTries int
+ // Maps to "id", ignores the field if the value is empty/zero
+ ID        int      `json:"id,omitempty" xml:"id,attr"` 
+ 
+ // Maps to "username" in JSON, and an element <UserName> in XML
+ Username  string   `json:"username" xml:"UserName"`
+ 
+ // The "-" tag explicitly tells the encoder to ignore this field entirely
+ Password  string   `json:"-" xml:"-"`
+ 
+ // Unexported fields (lowercase) are ALWAYS ignored by the encoding packages, 
+ // regardless of tags.
+ loginTries int
 }
 ```
 
@@ -679,40 +681,40 @@ When you already have the entire JSON payload loaded in memory as a byte slice (
 package main
 
 import (
-	"encoding/json"
-	"fmt"
+ "encoding/json"
+ "fmt"
 )
 
 type Config struct {
-	Host string `json:"host"`
-	Port int    `json:"port"`
+ Host string `json:"host"`
+ Port int    `json:"port"`
 }
 
 func main() {
-	// 1. Encoding (Struct -> JSON bytes)
-	cfg := Config{Host: "localhost", Port: 8080}
-	jsonData, err := json.Marshal(cfg) // Use MarshalIndent for pretty-printing
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println("Serialized:", string(jsonData))
+ // 1. Encoding (Struct -> JSON bytes)
+ cfg := Config{Host: "localhost", Port: 8080}
+ jsonData, err := json.Marshal(cfg) // Use MarshalIndent for pretty-printing
+ if err != nil {
+  panic(err)
+ }
+ fmt.Println("Serialized:", string(jsonData))
 
-	// 2. Decoding (JSON bytes -> Struct)
-	payload := []byte(`{"host":"api.example.com","port":443}`)
-	var parsedCfg Config
-	
-	// CRITICAL: Must pass a pointer to parsedCfg
-	err = json.Unmarshal(payload, &parsedCfg) 
-	if err != nil {
-		panic(err)
-	}
-	fmt.Printf("Deserialized: %+v\n", parsedCfg)
+ // 2. Decoding (JSON bytes -> Struct)
+ payload := []byte(`{"host":"api.example.com","port":443}`)
+ var parsedCfg Config
+ 
+ // CRITICAL: Must pass a pointer to parsedCfg
+ err = json.Unmarshal(payload, &parsedCfg) 
+ if err != nil {
+  panic(err)
+ }
+ fmt.Printf("Deserialized: %+v\n", parsedCfg)
 }
 ```
 
 #### Paradigm 2: Streaming I/O (`Encoder` / `Decoder`)
 
-In cloud-native applications, buffering a massive JSON response from a database or a large HTTP payload into a byte slice before processing it can lead to massive memory spikes and Out-Of-Memory (OOM) crashes. 
+In cloud-native applications, buffering a massive JSON response from a database or a large HTTP payload into a byte slice before processing it can lead to massive memory spikes and Out-Of-Memory (OOM) crashes.
 
 To solve this, Go allows you to connect the `encoding/json` package directly to the `io.Reader` and `io.Writer` interfaces (discussed in Section 7.1) using `json.Encoder` and `json.Decoder`.
 
@@ -733,22 +735,22 @@ Here is how you decode an HTTP request body directly into a struct without alloc
 ```go
 // Example inside an HTTP handler
 func handleCreateUser(w http.ResponseWriter, r *http.Request) {
-	var user User
-	
-	// Create a decoder that reads directly from the HTTP request body
-	decoder := json.NewDecoder(r.Body)
-	
-	// Optional but recommended: prevent silently ignoring unknown fields
-	decoder.DisallowUnknownFields() 
+ var user User
+ 
+ // Create a decoder that reads directly from the HTTP request body
+ decoder := json.NewDecoder(r.Body)
+ 
+ // Optional but recommended: prevent silently ignoring unknown fields
+ decoder.DisallowUnknownFields() 
 
-	if err := decoder.Decode(&user); err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
-		return
-	}
+ if err := decoder.Decode(&user); err != nil {
+  http.Error(w, err.Error(), http.StatusBadRequest)
+  return
+ }
 
-	// Write JSON directly to the HTTP response writer
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(map[string]string{"status": "success"})
+ // Write JSON directly to the HTTP response writer
+ w.Header().Set("Content-Type", "application/json")
+ json.NewEncoder(w).Encode(map[string]string{"status": "success"})
 }
 ```
 
@@ -766,35 +768,35 @@ While JSON dominates new development, many legacy enterprise systems, SOAP APIs,
 package main
 
 import (
-	"encoding/xml"
-	"fmt"
+ "encoding/xml"
+ "fmt"
 )
 
 // The XMLName field dictates the name of the root element
 type Server struct {
-	XMLName xml.Name `xml:"server"`
-	ID      string   `xml:"id,attr"`         // Maps to an attribute: <server id="123">
-	Name    string   `xml:"name"`            // Maps to an element: <name>Prod</name>
-	Tags    []string `xml:"tags>tag"`        // Handles nested lists automatically
+ XMLName xml.Name `xml:"server"`
+ ID      string   `xml:"id,attr"`         // Maps to an attribute: <server id="123">
+ Name    string   `xml:"name"`            // Maps to an element: <name>Prod</name>
+ Tags    []string `xml:"tags>tag"`        // Handles nested lists automatically
 }
 
 func main() {
-	xmlData := []byte(`
-		<server id="1042">
-			<name>Web-Frontend-01</name>
-			<tags>
-				<tag>production</tag>
-				<tag>us-east</tag>
-			</tags>
-		</server>
-	`)
+ xmlData := []byte(`
+  <server id="1042">
+   <name>Web-Frontend-01</name>
+   <tags>
+    <tag>production</tag>
+    <tag>us-east</tag>
+   </tags>
+  </server>
+ `)
 
-	var srv Server
-	if err := xml.Unmarshal(xmlData, &srv); err != nil {
-		panic(err)
-	}
+ var srv Server
+ if err := xml.Unmarshal(xmlData, &srv); err != nil {
+  panic(err)
+ }
 
-	fmt.Printf("Parsed XML: %+v\n", srv)
+ fmt.Printf("Parsed XML: %+v\n", srv)
 }
 ```
 

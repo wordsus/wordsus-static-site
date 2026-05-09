@@ -18,7 +18,7 @@ http.ListenAndServe(":8080", nil)
 respuesta, err := http.Get("https://api.externa.com/datos")
 ```
 
-Aunque estas líneas son excelentes para prototipado rápido, esconden un peligro arquitectónico crítico: **no tienen tiempos de espera (timeouts) configurados**. 
+Aunque estas líneas son excelentes para prototipado rápido, esconden un peligro arquitectónico crítico: **no tienen tiempos de espera (timeouts) configurados**.
 
 Un cliente sin *timeout* esperará indefinidamente si el servidor remoto deja de responder pero mantiene la conexión TCP abierta. Un servidor sin *timeouts* de lectura es vulnerable a ataques de tipo *Slowloris*, donde un cliente malicioso envía datos muy lentamente para agotar todas las Goroutines disponibles (recordemos del Capítulo 8 que cada conexión HTTP en Go lanza una nueva Goroutine).
 
@@ -30,27 +30,27 @@ Para construir un servidor resistente, debemos instanciar explícitamente la est
 package main
 
 import (
-	"log"
-	"net/http"
-	"time"
+ "log"
+ "net/http"
+ "time"
 )
 
 func main() {
-	// Definimos el servidor explícitamente
-	srv := &http.Server{
-		Addr:         ":8080",
-		Handler:      nil, // Usaremos el DefaultServeMux por ahora (ver 24.2)
-		
-		// Timeouts críticos para evitar fugas de recursos y ataques DDoS
-		ReadTimeout:  5 * time.Second,  // Tiempo máximo para leer la petición (cabeceras + cuerpo)
-		WriteTimeout: 10 * time.Second, // Tiempo máximo para escribir la respuesta
-		IdleTimeout:  120 * time.Second,// Tiempo máximo que una conexión Keep-Alive puede estar inactiva
-	}
+ // Definimos el servidor explícitamente
+ srv := &http.Server{
+  Addr:         ":8080",
+  Handler:      nil, // Usaremos el DefaultServeMux por ahora (ver 24.2)
+  
+  // Timeouts críticos para evitar fugas de recursos y ataques DDoS
+  ReadTimeout:  5 * time.Second,  // Tiempo máximo para leer la petición (cabeceras + cuerpo)
+  WriteTimeout: 10 * time.Second, // Tiempo máximo para escribir la respuesta
+  IdleTimeout:  120 * time.Second,// Tiempo máximo que una conexión Keep-Alive puede estar inactiva
+ }
 
-	log.Println("Iniciando servidor robusto en el puerto 8080...")
-	if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-		log.Fatalf("Error crítico en el servidor: %v", err)
-	}
+ log.Println("Iniciando servidor robusto en el puerto 8080...")
+ if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+  log.Fatalf("Error crítico en el servidor: %v", err)
+ }
 }
 ```
 
@@ -66,45 +66,46 @@ Para crear un cliente robusto, no solo debemos configurar un `Timeout` global, s
 package main
 
 import (
-	"log"
-	"net/http"
-	"time"
+ "log"
+ "net/http"
+ "time"
 )
 
 func main() {
-	// 1. Configuramos el Transporte para optimizar la reutilización de conexiones
-	t := &http.Transport{
-		MaxIdleConns:          100,              // Máximo de conexiones inactivas en el pool global
-		MaxIdleConnsPerHost:   10,               // Máximo de conexiones inactivas por dominio/host
-		IdleConnTimeout:       90 * time.Second, // Tiempo tras el cual se cierra una conexión inactiva
-		TLSHandshakeTimeout:   10 * time.Second, // Límite para la negociación TLS
-		ExpectContinueTimeout: 1 * time.Second,
-	}
+ // 1. Configuramos el Transporte para optimizar la reutilización de conexiones
+ t := &http.Transport{
+  MaxIdleConns:          100,              // Máximo de conexiones inactivas en el pool global
+  MaxIdleConnsPerHost:   10,               // Máximo de conexiones inactivas por dominio/host
+  IdleConnTimeout:       90 * time.Second, // Tiempo tras el cual se cierra una conexión inactiva
+  TLSHandshakeTimeout:   10 * time.Second, // Límite para la negociación TLS
+  ExpectContinueTimeout: 1 * time.Second,
+ }
 
-	// 2. Inyectamos el Transporte en un Cliente con un Timeout global estricto
-	client := &http.Client{
-		Transport: t,
-		Timeout:   15 * time.Second, // Límite absoluto para la petición completa (dial, envío, lectura)
-	}
+ // 2. Inyectamos el Transporte en un Cliente con un Timeout global estricto
+ client := &http.Client{
+  Transport: t,
+  Timeout:   15 * time.Second, // Límite absoluto para la petición completa (dial, envío, lectura)
+ }
 
-	// 3. Uso seguro del cliente
-	req, err := http.NewRequest(http.MethodGet, "https://api.github.com/zen", nil)
-	if err != nil {
-		log.Fatalf("Error creando la petición: %v", err)
-	}
+ // 3. Uso seguro del cliente
+ req, err := http.NewRequest(http.MethodGet, "https://api.github.com/zen", nil)
+ if err != nil {
+  log.Fatalf("Error creando la petición: %v", err)
+ }
 
-	// (El manejo de Contextos en peticiones HTTP se profundizará, basándonos en el Cap 13)
-	resp, err := client.Do(req)
-	if err != nil {
-		log.Fatalf("Error ejecutando la petición HTTP: %v", err)
-	}
-	defer resp.Body.Close() // Fundamental para devolver la conexión al pool
+ // (El manejo de Contextos en peticiones HTTP se profundizará, basándonos en el Cap 13)
+ resp, err := client.Do(req)
+ if err != nil {
+  log.Fatalf("Error ejecutando la petición HTTP: %v", err)
+ }
+ defer resp.Body.Close() // Fundamental para devolver la conexión al pool
 
-	log.Printf("Petición exitosa. Código de estado: %d", resp.StatusCode)
+ log.Printf("Petición exitosa. Código de estado: %d", resp.StatusCode)
 }
 ```
 
-#### Reglas de oro para Clientes HTTP en Go:
+#### Reglas de oro para Clientes HTTP en Go
+
 * **Comparte el Cliente:** El `http.Client` es seguro para el uso concurrente (Thread-safe). Instáncialo una sola vez a nivel de aplicación (o por dominio) y compártelo entre tus Goroutines. Crear un cliente nuevo por cada petición destruye los beneficios del *Connection Pooling*.
 * **Cierra siempre el Body:** Omitir `defer resp.Body.Close()` causa una fuga de recursos. Si el cuerpo no se cierra, la conexión TCP subyacente no puede ser devuelta al *pool* administrado por el `http.Transport`.
 * **Drena el Body antes de cerrar (Opcional pero recomendado):** Si no necesitas leer la respuesta completa pero quieres reutilizar la conexión TCP, debes leer y descartar el cuerpo (`io.Copy(io.Discard, resp.Body)`) antes de cerrarlo.
@@ -138,23 +139,23 @@ Aunque podemos crear *structs* personalizados que implementen esta interfaz (muy
 package main
 
 import (
-	"fmt"
-	"net/http"
+ "fmt"
+ "net/http"
 )
 
 // Un handler basado en una función regular
 func healthCheckHandler(w http.ResponseWriter, r *http.Request) {
-	// Escribimos una respuesta simple
-	fmt.Fprintln(w, "OK: El servicio está operativo")
+ // Escribimos una respuesta simple
+ fmt.Fprintln(w, "OK: El servicio está operativo")
 }
 
 // Un handler basado en un struct (útil para inyectar dependencias)
 type DatabaseHandler struct {
-	dbConnString string
+ dbConnString string
 }
 
 func (h *DatabaseHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Conectado a la BD usando: %s\n", h.dbConnString)
+ fmt.Fprintf(w, "Conectado a la BD usando: %s\n", h.dbConnString)
 }
 ```
 
@@ -166,7 +167,7 @@ Curiosamente, un `ServeMux` es en sí mismo un `http.Handler`. Su implementació
 
 #### El peligro del `DefaultServeMux`
 
-Si has visto tutoriales básicos de Go, es probable que hayas encontrado funciones como `http.HandleFunc("/ruta", miHandler)`. Esta función de paquete registra la ruta en una instancia global compartida llamada `http.DefaultServeMux`. 
+Si has visto tutoriales básicos de Go, es probable que hayas encontrado funciones como `http.HandleFunc("/ruta", miHandler)`. Esta función de paquete registra la ruta en una instancia global compartida llamada `http.DefaultServeMux`.
 
 **Para aplicaciones a nivel de producción, el uso del `DefaultServeMux` es un antipatrón.** Al ser una variable global exportada, cualquier paquete de terceros que importes podría registrar rutas arbitrarias (como endpoints de *debug* o *profiling* expuestos accidentalmente) en tu servidor sin tu conocimiento, abriendo graves brechas de seguridad.
 
@@ -176,35 +177,35 @@ La práctica correcta es instanciar explícitamente tu propio `ServeMux`:
 package main
 
 import (
-	"log"
-	"net/http"
-	"time"
+ "log"
+ "net/http"
+ "time"
 )
 
 func main() {
-	// 1. Instanciamos un multiplexor privado y aislado
-	mux := http.NewServeMux()
+ // 1. Instanciamos un multiplexor privado y aislado
+ mux := http.NewServeMux()
 
-	// 2. Registramos rutas usando el adaptador HandleFunc
-	mux.HandleFunc("/api/health", healthCheckHandler)
+ // 2. Registramos rutas usando el adaptador HandleFunc
+ mux.HandleFunc("/api/health", healthCheckHandler)
 
-	// 3. Registramos un struct que implementa Handler directamente
-	dbHandler := &DatabaseHandler{dbConnString: "postgres://user:pass@localhost/db"}
-	mux.Handle("/api/db-status", dbHandler)
+ // 3. Registramos un struct que implementa Handler directamente
+ dbHandler := &DatabaseHandler{dbConnString: "postgres://user:pass@localhost/db"}
+ mux.Handle("/api/db-status", dbHandler)
 
-	// 4. Inyectamos nuestro multiplexor en el servidor robusto
-	srv := &http.Server{
-		Addr:         ":8080",
-		Handler:      mux, // Aquí asignamos nuestro ServeMux personalizado
-		ReadTimeout:  5 * time.Second,
-		WriteTimeout: 10 * time.Second,
-		IdleTimeout:  120 * time.Second,
-	}
+ // 4. Inyectamos nuestro multiplexor en el servidor robusto
+ srv := &http.Server{
+  Addr:         ":8080",
+  Handler:      mux, // Aquí asignamos nuestro ServeMux personalizado
+  ReadTimeout:  5 * time.Second,
+  WriteTimeout: 10 * time.Second,
+  IdleTimeout:  120 * time.Second,
+ }
 
-	log.Println("Servidor escuchando en http://localhost:8080")
-	if err := srv.ListenAndServe(); err != nil {
-		log.Fatalf("Error en el servidor: %v", err)
-	}
+ log.Println("Servidor escuchando en http://localhost:8080")
+ if err := srv.ListenAndServe(); err != nil {
+  log.Fatalf("Error en el servidor: %v", err)
+ }
 }
 ```
 
@@ -212,10 +213,10 @@ func main() {
 
 Antes de la llegada de las mejoras de enrutamiento en Go 1.22 (que exploraremos a fondo en el Capítulo 25), el `ServeMux` clásico operaba bajo reglas muy precisas y limitadas:
 
-1.  **Coincidencia exacta vs. Prefijos:** * Una ruta que *no* termina en barra (ej. `/api/health`) solo coincidirá con esa URL exacta. Si alguien pide `/api/health/`, recibirá un error 404 (Not Found).
+1. **Coincidencia exacta vs. Prefijos:** * Una ruta que *no* termina en barra (ej. `/api/health`) solo coincidirá con esa URL exacta. Si alguien pide `/api/health/`, recibirá un error 404 (Not Found).
     * Una ruta que *sí* termina en barra (ej. `/api/`) actúa como un prefijo o "capturador universal" (catch-all) para ese árbol de directorios. Coincidirá con `/api/`, `/api/usuarios`, `/api/archivos/foto.png`, etc., a menos que exista una ruta más específica registrada.
-2.  **Ruta raíz (`/`):** Al terminar en barra, registrar el patrón `/` atrapará absolutamente todas las peticiones que no coincidan con ninguna otra ruta definida. Es el lugar ideal para implementar una respuesta 404 personalizada o servir una Single Page Application (SPA).
-3.  **Redirecciones automáticas:** Si registras `/arbol/` y un cliente solicita `/arbol` (sin la barra final), el `ServeMux` automáticamente emitirá una redirección HTTP 301 (Moved Permanently) hacia `/arbol/`, a menos que `/arbol` haya sido explícitamente registrado.
+2. **Ruta raíz (`/`):** Al terminar en barra, registrar el patrón `/` atrapará absolutamente todas las peticiones que no coincidan con ninguna otra ruta definida. Es el lugar ideal para implementar una respuesta 404 personalizada o servir una Single Page Application (SPA).
+3. **Redirecciones automáticas:** Si registras `/arbol/` y un cliente solicita `/arbol` (sin la barra final), el `ServeMux` automáticamente emitirá una redirección HTTP 301 (Moved Permanently) hacia `/arbol/`, a menos que `/arbol` haya sido explícitamente registrado.
 
 El `ServeMux` clásico es extremadamente rápido y seguro debido a su simplicidad (utiliza árboles de búsqueda optimizados internamente). Sin embargo, carece de soporte nativo para extracción de variables de la URL (ej. `/usuarios/{id}`) o filtrado por método HTTP (GET, POST) en versiones anteriores a Go 1.22. Es por esto que los *handlers* a menudo debían comenzar con validaciones manuales del método HTTP, algo que abordaremos en las siguientes secciones al leer y validar la petición.
 
@@ -227,26 +228,26 @@ Comprender cómo manipular estos dos elementos de forma segura y eficiente es el
 
 ### Extracción de Query Parameters
 
-Los parámetros de consulta (*Query Params*) son los pares clave-valor que se añaden al final de una URL tras el signo de interrogación (ej. `/api/usuarios?rol=admin&activo=true`). 
+Los parámetros de consulta (*Query Params*) son los pares clave-valor que se añaden al final de una URL tras el signo de interrogación (ej. `/api/usuarios?rol=admin&activo=true`).
 
 En Go, la estructura `*http.Request` contiene un campo `URL` de tipo `*url.URL`. Para acceder a los parámetros, utilizamos el método `Query()`, el cual analiza la cadena de consulta y devuelve un mapa subyacente de tipo `url.Values` (que internamente es un `map[string][]string`).
 
 ```go
 func buscarUsuariosHandler(w http.ResponseWriter, r *http.Request) {
-	// r.URL.Query() parsea la URL y devuelve url.Values
-	queryParams := r.URL.Query()
+ // r.URL.Query() parsea la URL y devuelve url.Values
+ queryParams := r.URL.Query()
 
-	// Obtener un valor único (devuelve un string vacío si no existe)
-	rol := queryParams.Get("rol")
-	if rol == "" {
-		rol = "usuario_base" // Valor por defecto
-	}
+ // Obtener un valor único (devuelve un string vacío si no existe)
+ rol := queryParams.Get("rol")
+ if rol == "" {
+  rol = "usuario_base" // Valor por defecto
+ }
 
-	// Como es un map[string][]string, podemos iterar si hay múltiples valores
-	// Ej: ?etiqueta=golang&etiqueta=backend
-	etiquetas := queryParams["etiqueta"] // Devuelve un slice: []string{"golang", "backend"}
+ // Como es un map[string][]string, podemos iterar si hay múltiples valores
+ // Ej: ?etiqueta=golang&etiqueta=backend
+ etiquetas := queryParams["etiqueta"] // Devuelve un slice: []string{"golang", "backend"}
 
-	// ... lógica de búsqueda ...
+ // ... lógica de búsqueda ...
 }
 ```
 
@@ -262,42 +263,43 @@ La práctica recomendada en el libro técnico avanzado de Go es envolver **siemp
 
 ```go
 type UsuarioPayload struct {
-	Nombre string `json:"nombre"`
-	Email  string `json:"email"`
+ Nombre string `json:"nombre"`
+ Email  string `json:"email"`
 }
 
 func crearUsuarioHandler(w http.ResponseWriter, r *http.Request) {
-	// 1. Limitar el tamaño del cuerpo a 1 MB (1 << 20 bytes)
-	// Si el cliente envía más de 1MB, r.Body devolverá un error y abortará la lectura.
-	r.Body = http.MaxBytesReader(w, r.Body, 1<<20)
+ // 1. Limitar el tamaño del cuerpo a 1 MB (1 << 20 bytes)
+ // Si el cliente envía más de 1MB, r.Body devolverá un error y abortará la lectura.
+ r.Body = http.MaxBytesReader(w, r.Body, 1<<20)
 
-	// 2. Decodificar el JSON directamente desde el flujo (Stream)
-	var payload UsuarioPayload
-	decoder := json.NewDecoder(r.Body)
-	
-	// DisallowUnknownFields rechaza el JSON si contiene campos que no están en el Struct
-	decoder.DisallowUnknownFields() 
+ // 2. Decodificar el JSON directamente desde el flujo (Stream)
+ var payload UsuarioPayload
+ decoder := json.NewDecoder(r.Body)
+ 
+ // DisallowUnknownFields rechaza el JSON si contiene campos que no están en el Struct
+ decoder.DisallowUnknownFields() 
 
-	if err := decoder.Decode(&payload); err != nil {
-		// Manejo de errores (se profundizará en la sección 26.4)
-		http.Error(w, "Payload inválido o demasiado grande", http.StatusBadRequest)
-		return
-	}
+ if err := decoder.Decode(&payload); err != nil {
+  // Manejo de errores (se profundizará en la sección 26.4)
+  http.Error(w, "Payload inválido o demasiado grande", http.StatusBadRequest)
+  return
+ }
 
-	// ... lógica de creación ...
+ // ... lógica de creación ...
 }
 ```
+
 *A diferencia del cliente HTTP (sección 24.1), en el lado del servidor el `ServeMux` de Go se encarga automáticamente de cerrar el `r.Body` al finalizar el handler, por lo que no es estrictamente necesario (aunque no hace daño) usar `defer r.Body.Close()`.*
 
 ### Escritura de Responses (El orden importa)
 
 La interfaz `http.ResponseWriter` es la herramienta para enviar datos de vuelta al cliente. Para usarla correctamente, es vital entender que **el orden de las operaciones es estricto e inmutable**. Las respuestas HTTP se componen de tres partes, y el `ResponseWriter` exige que se escriban en este orden exacto:
 
-1.  **Cabeceras (Headers):** Se manipulan a través del mapa devuelto por `w.Header()`.
-2.  **Código de Estado (Status Code):** Se envía usando `w.WriteHeader(int)`.
-3.  **Cuerpo (Body):** Se envía usando `w.Write([]byte)`.
+1. **Cabeceras (Headers):** Se manipulan a través del mapa devuelto por `w.Header()`.
+2. **Código de Estado (Status Code):** Se envía usando `w.WriteHeader(int)`.
+3. **Cuerpo (Body):** Se envía usando `w.Write([]byte)`.
 
-**La regla de oro:** Una vez que llamas a `w.WriteHeader()` o a `w.Write()`, las cabeceras se "congelan" y se envían al cliente. Cualquier modificación posterior al mapa `w.Header()` será ignorada silenciosamente por Go. 
+**La regla de oro:** Una vez que llamas a `w.WriteHeader()` o a `w.Write()`, las cabeceras se "congelan" y se envían al cliente. Cualquier modificación posterior al mapa `w.Header()` será ignorada silenciosamente por Go.
 
 Además, si llamas a `w.Write()` sin haber llamado antes a `w.WriteHeader()`, Go asumirá automáticamente un código `200 OK` y determinará el `Content-Type` basándose en los primeros 512 bytes de los datos usando `http.DetectContentType`.
 
@@ -305,25 +307,25 @@ Veamos cómo estructurar una respuesta JSON idiomática:
 
 ```go
 func obtenerPerfilHandler(w http.ResponseWriter, r *http.Request) {
-	perfil := map[string]string{
-		"nombre": "Ada Lovelace",
-		"rol":    "admin",
-	}
+ perfil := map[string]string{
+  "nombre": "Ada Lovelace",
+  "rol":    "admin",
+ }
 
-	// 1. Establecer las cabeceras (ANTES de escribir el estado o el cuerpo)
-	w.Header().Set("Content-Type", "application/json; charset=utf-8")
-	w.Header().Set("X-Powered-By", "Go")
+ // 1. Establecer las cabeceras (ANTES de escribir el estado o el cuerpo)
+ w.Header().Set("Content-Type", "application/json; charset=utf-8")
+ w.Header().Set("X-Powered-By", "Go")
 
-	// 2. Establecer el código de estado HTTP
-	w.WriteHeader(http.StatusOK) // 200
+ // 2. Establecer el código de estado HTTP
+ w.WriteHeader(http.StatusOK) // 200
 
-	// 3. Escribir el cuerpo
-	// json.NewEncoder es más eficiente que json.Marshal para escribir directamente en la red
-	if err := json.NewEncoder(w).Encode(perfil); err != nil {
-		// Si ocurre un error aquí, ya no podemos cambiar el código a 500
-		// porque WriteHeader(200) ya fue llamado. Por eso el logging es crucial.
-		log.Printf("Error codificando respuesta: %v", err)
-	}
+ // 3. Escribir el cuerpo
+ // json.NewEncoder es más eficiente que json.Marshal para escribir directamente en la red
+ if err := json.NewEncoder(w).Encode(perfil); err != nil {
+  // Si ocurre un error aquí, ya no podemos cambiar el código a 500
+  // porque WriteHeader(200) ya fue llamado. Por eso el logging es crucial.
+  log.Printf("Error codificando respuesta: %v", err)
+ }
 }
 ```
 
@@ -364,18 +366,18 @@ Esta estructura interna (un *slice* por cada clave) existe porque el protocolo H
 
 ```go
 func authHandler(w http.ResponseWriter, r *http.Request) {
-	// Set: Garantiza que solo haya un Content-Type
-	w.Header().Set("Content-Type", "application/json")
+ // Set: Garantiza que solo haya un Content-Type
+ w.Header().Set("Content-Type", "application/json")
 
-	// Add: Permite enviar múltiples cookies en la misma respuesta
-	w.Header().Add("Set-Cookie", "session_id=abc1234; HttpOnly; Secure")
-	w.Header().Add("Set-Cookie", "theme=dark; Path=/")
+ // Add: Permite enviar múltiples cookies en la misma respuesta
+ w.Header().Add("Set-Cookie", "session_id=abc1234; HttpOnly; Secure")
+ w.Header().Add("Set-Cookie", "theme=dark; Path=/")
 
-	// Del: Elimina una cabecera previamente establecida
-	w.Header().Del("X-Powered-By") // Buena práctica de seguridad por ofuscación
+ // Del: Elimina una cabecera previamente establecida
+ w.Header().Del("X-Powered-By") // Buena práctica de seguridad por ofuscación
 
-	w.WriteHeader(http.StatusOK)
-	// ... escritura del cuerpo ...
+ w.WriteHeader(http.StatusOK)
+ // ... escritura del cuerpo ...
 }
 ```
 
@@ -384,6 +386,7 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 Un detalle fascinante (y a veces frustrante para los principiantes) del paquete `net/http` es que **Go canoniza automáticamente las claves de las cabeceras**.
 
 La canonización significa que la primera letra y cualquier letra que siga a un guion se convierten en mayúsculas, mientras que el resto pasa a minúsculas. Por ejemplo:
+
 * `content-type` se convierte en `Content-Type`
 * `x-api-key` se convierte en `X-Api-Key`
 
@@ -400,21 +403,20 @@ Para normalizar cualquier string tú mismo, puedes usar la función pública `ht
 
 Para respuestas de error simples en texto plano o para redirecciones, Go ofrece atajos que encapsulan la escritura de cabeceras, el código de estado y el cuerpo en una sola línea.
 
-1.  **`http.Error`**: Envía un mensaje de texto puro, establece la cabecera `X-Content-Type-Options: nosniff` (para evitar vulnerabilidades de tipo MIME sniffing) y escribe el código de error.
-2.  **`http.Redirect`**: Establece la cabecera `Location` y escribe un código de estado 3xx.
+1. **`http.Error`**: Envía un mensaje de texto puro, establece la cabecera `X-Content-Type-Options: nosniff` (para evitar vulnerabilidades de tipo MIME sniffing) y escribe el código de error.
+2. **`http.Redirect`**: Establece la cabecera `Location` y escribe un código de estado 3xx.
 
 ```go
 func legacyEndpointHandler(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodGet {
-		// Atajo seguro para errores rápidos (texto plano)
-		http.Error(w, "Método no permitido", http.StatusMethodNotAllowed)
-		return
-	}
+ if r.Method != http.MethodGet {
+  // Atajo seguro para errores rápidos (texto plano)
+  http.Error(w, "Método no permitido", http.StatusMethodNotAllowed)
+  return
+ }
 
-	// Atajo para redirecciones seguras
-	http.Redirect(w, r, "/api/v2/nuevo-endpoint", http.StatusMovedPermanently)
+ // Atajo para redirecciones seguras
+ http.Redirect(w, r, "/api/v2/nuevo-endpoint", http.StatusMovedPermanently)
 }
 ```
 
 *Importante: `http.Error` está diseñado para respuestas de texto simple. Si tu API debe devolver errores estructurados en JSON (como veremos en el Capítulo 26 con el RFC 7807 Problem Details), deberás construir la respuesta manualmente usando `Set`, `WriteHeader` y `json.NewEncoder`.*
-

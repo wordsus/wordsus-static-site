@@ -2,7 +2,7 @@
 
 ---
 
-Imagina que tienes una caja opaca frente a ti. Dentro de esa caja, has colocado a un gato junto con un mecanismo un tanto macabro: un átomo radiactivo, un contador Geiger, un pequeño martillo y un frasco de gas venenoso. Cierras la caja. Ahora te hago una pregunta que parece ridículamente simple: en este momento, sin mirar dentro de la caja, ¿el gato está vivo o está muerto? 
+Imagina que tienes una caja opaca frente a ti. Dentro de esa caja, has colocado a un gato junto con un mecanismo un tanto macabro: un átomo radiactivo, un contador Geiger, un pequeño martillo y un frasco de gas venenoso. Cierras la caja. Ahora te hago una pregunta que parece ridículamente simple: en este momento, sin mirar dentro de la caja, ¿el gato está vivo o está muerto?
 
 El sentido común te dirá que el gato está vivo, o bien, está muerto. Que su estado es uno de los dos, independientemente de si tú lo estás mirando o no. Tu falta de conocimiento sobre el interior de la caja no cambia la realidad física del animal. Sin embargo, si le hicieras esta misma pregunta a los pioneros de la mecánica cuántica en la década de 1930, la respuesta que te darían te dejaría boquiabierto: hasta que no abras la caja y mires, el gato está vivo y muerto **al mismo tiempo**.
 
@@ -16,7 +16,7 @@ Durante siglos, la física estuvo dominada por las leyes de Isaac Newton. Este e
 
 Pero a principios del siglo XX, los científicos empezaron a desarrollar herramientas para mirar más de cerca la materia, bajando al nivel de los átomos, los electrones y los fotones (las partículas de luz). Y allí, en el reino de lo ultrapequeño, descubrieron consternados que las reglas de Newton dejaban de funcionar. El reloj suizo se rompía.
 
-Habían entrado en el mundo **cuántico**. 
+Habían entrado en el mundo **cuántico**.
 
 En este mundo microscópico, la certeza absoluta desaparece y es reemplazada por la **probabilidad**. Las partículas subatómicas no se comportan como pequeñas bolas de billar con posiciones y trayectorias definidas. En cambio, se comportan de maneras que desafían toda intuición humana. Un electrón no orbita el núcleo de un átomo como la Tierra orbita el Sol; más bien, existe en una "nube de probabilidades", difuminado en el espacio.
 
@@ -26,7 +26,7 @@ Albert Einstein, uno de los padres fundadores de la teoría cuántica, odiaba pr
 
 El corazón del experimento del gato de Schrödinger, y de casi toda la extrañeza cuántica, reside en un concepto llamado **superposición**.
 
-En nuestro mundo macroscópico, un objeto solo puede estar en un estado a la vez. Una puerta está abierta o está cerrada. Una bombilla está encendida o apagada. Tú estás sentado o estás de pie. 
+En nuestro mundo macroscópico, un objeto solo puede estar en un estado a la vez. Una puerta está abierta o está cerrada. Una bombilla está encendida o apagada. Tú estás sentado o estás de pie.
 
 En el mundo cuántico, sin embargo, una partícula puede existir en múltiples estados posibles simultáneamente. No es que esté saltando rápidamente de un estado a otro, ni que no sepamos en qué estado está. Literalmente, su realidad física es una combinación de todas las posibilidades a la vez.
 
@@ -40,7 +40,7 @@ $$ \mid \Psi \rangle = \alpha \mid \text{Estado A} \rangle + \beta \mid \text{Es
 
 Aquí, los símbolos $\alpha$ y $\beta$ son números complejos relacionados con la probabilidad de encontrar el sistema en el Estado A o en el Estado B al medirlo. Hasta que se realiza la medición, la partícula es verdaderamente una suma de ambos estados.
 
-La prueba definitiva de este fenómeno es el famoso **experimento de la doble rendija**. Si disparas electrones individuales a través de una barrera con dos pequeñas rendijas, y no observas por cuál rendija pasan, en la pantalla de atrás se forma un patrón de interferencia (como el que harían las olas del agua). Esto indica que el electrón, una partícula individual, actuó como una onda, pasó por *ambas* rendijas a la vez (en superposición), e interfirió consigo mismo. Si pones un detector para ver por qué rendija pasa, el patrón de interferencia desaparece. La partícula vuelve a comportarse como una bolita sólida y pasa por una o por la otra. 
+La prueba definitiva de este fenómeno es el famoso **experimento de la doble rendija**. Si disparas electrones individuales a través de una barrera con dos pequeñas rendijas, y no observas por cuál rendija pasan, en la pantalla de atrás se forma un patrón de interferencia (como el que harían las olas del agua). Esto indica que el electrón, una partícula individual, actuó como una onda, pasó por *ambas* rendijas a la vez (en superposición), e interfirió consigo mismo. Si pones un detector para ver por qué rendija pasa, el patrón de interferencia desaparece. La partícula vuelve a comportarse como una bolita sólida y pasa por una o por la otra.
 
 El simple acto de observar destruyó la superposición. Quédate con esta idea, porque es vital para nuestro amigo felino.
 
@@ -78,17 +78,17 @@ Aquí está la configuración paso a paso, ilustrada en un diagrama de flujo sim
 [GATO MUERTO]                       [GATO VIVO]
 ```
 
-El golpe maestro de Schrödinger fue vincular directamente un evento cuántico microscópico (la desintegración del átomo) con un objeto macroscópico gigantesco (el gato). 
+El golpe maestro de Schrödinger fue vincular directamente un evento cuántico microscópico (la desintegración del átomo) con un objeto macroscópico gigantesco (el gato).
 
 El átomo radiactivo está sujeto a las reglas cuánticas. Durante el tiempo del experimento (digamos, una hora), existe un 50% de probabilidades de que emita una partícula y un 50% de probabilidades de que no lo haga. Según la interpretación de Copenhague, durante esa hora, el átomo no ha decaído ni ha permanecido intacto; está en una **superposición** de ambos estados a la vez.
 
-Pero aquí está la trampa: debido a cómo está construido el mecanismo diabólico de la caja, el destino del gato está entrelazado con el estado del átomo. 
+Pero aquí está la trampa: debido a cómo está construido el mecanismo diabólico de la caja, el destino del gato está entrelazado con el estado del átomo.
 
 ## 4. El corazón de la paradoja: Vivo y muerto
 
 Si el átomo está en una superposición de "desintegrado" y "no desintegrado", y el mecanismo de veneno está atado a él, entonces el contador Geiger también debe estar en una superposición de "detectar" y "no detectar". El martillo está en una superposición de "caer" y "no caer". El veneno está "liberado" y "contenido".
 
-¿Y el gato? 
+¿Y el gato?
 
 Por simple deducción lógica, si seguimos las reglas de la mecánica cuántica impulsadas por Bohr, el gato debe heredar la superposición del átomo. Hasta que abramos la caja y miremos, el estado del gato se puede describir matemáticamente así:
 
@@ -100,7 +100,7 @@ Aquí está la genialidad y la absurdidad. Schrödinger argumentó: "¡Miren est
 
 Para Schrödinger y Einstein, esto era una prueba de que la interpretación cuántica estándar tenía un agujero inmenso. Un gato no puede estar vivo y muerto a la vez. Es una tontería. El estado del gato debe estar definido, independientemente de que haya un humano abriendo una caja.
 
-Sin embargo, para consternación de Schrödinger, la historia dio un giro inesperado. En lugar de descartar la mecánica cuántica al ver esta paradoja, muchos físicos de la época (y posteriores) la abrazaron. Dijeron: "Sí, el experimento es contraintuitivo, pero matemáticamente, eso es exactamente lo que está sucediendo. El mundo *es* así de extraño". 
+Sin embargo, para consternación de Schrödinger, la historia dio un giro inesperado. En lugar de descartar la mecánica cuántica al ver esta paradoja, muchos físicos de la época (y posteriores) la abrazaron. Dijeron: "Sí, el experimento es contraintuitivo, pero matemáticamente, eso es exactamente lo que está sucediendo. El mundo *es* así de extraño".
 
 El experimento mental diseñado para destruir la teoría se convirtió en su mascota oficial.
 
@@ -108,7 +108,7 @@ El experimento mental diseñado para destruir la teoría se convirtió en su mas
 
 Volvamos al momento en que se abre la caja. ¿Qué sucede exactamente en ese instante crítico?
 
-Todos sabemos que cuando levantamos la tapa, no vemos un fantasma semitransparente de un gato vivo superpuesto con el cuerpo de un gato muerto. Vemos una de dos realidades muy crudas: o un animal asustado maullando, o un cuerpo sin vida. 
+Todos sabemos que cuando levantamos la tapa, no vemos un fantasma semitransparente de un gato vivo superpuesto con el cuerpo de un gato muerto. Vemos una de dos realidades muy crudas: o un animal asustado maullando, o un cuerpo sin vida.
 
 ¿A dónde fue la superposición?
 
@@ -117,7 +117,7 @@ En el lenguaje de la mecánica cuántica, al abrir la caja, hemos realizado una 
 Antes de abrir la caja: 50% vivo, 50% muerto.
 En el instante de mirar: ¡Pum! 100% vivo y 0% muerto (o viceversa). El universo elimina instantáneamente la otra posibilidad.
 
-Esto plantea preguntas filosóficas profundas que han atormentado a las mentes más brillantes durante casi un siglo. ¿Qué tiene de especial un "observador"? ¿Necesita el universo de la conciencia humana para que la realidad se vuelva concreta? Si un robot abre la caja y graba el resultado en un disco duro que nadie lee hasta dentro de un año, ¿cuándo ocurre el colapso? ¿Cuando el robot mira, o cuando el humano lee el disco duro? 
+Esto plantea preguntas filosóficas profundas que han atormentado a las mentes más brillantes durante casi un siglo. ¿Qué tiene de especial un "observador"? ¿Necesita el universo de la conciencia humana para que la realidad se vuelva concreta? Si un robot abre la caja y graba el resultado en un disco duro que nadie lee hasta dentro de un año, ¿cuándo ocurre el colapso? ¿Cuando el robot mira, o cuando el humano lee el disco duro?
 
 Y yendo aún más lejos, ¿qué pasa con la perspectiva del propio gato? ¿Acaso el gato no es un observador en sí mismo? Seguramente el gato sabe si está vivo o si acaba de ser envenenado. Para el gato en la caja, nunca hubo superposición. Él experimenta un destino definido. Es solo para el humano *afuera* de la caja que el animal está en superposición. Esta idea sugiere que la realidad cuántica es **relacional**; el estado de un sistema depende de con quién esté interactuando.
 
@@ -128,12 +128,14 @@ Puesto que las matemáticas de la mecánica cuántica funcionan perfectamente y 
 Aquí están las tres formas principales en que la ciencia trata de resolver el problema del gato de Schrödinger:
 
 ### A. La Interpretación de Copenhague (La visión "oficial")
+
 Como ya hemos discutido, esta fue liderada por Niels Bohr. Afirma que no tiene sentido preguntar qué estaba haciendo el gato (o el átomo) antes de abrir la caja. La realidad física simplemente no existe de una forma definida antes de ser medida. La observación es la que crea la realidad. Es una visión radical que nos dice que el universo a nivel fundamental es vago y solo se enfoca cuando interactuamos con él.
 
 ### B. La Teoría de los Muchos Mundos (La visión de ciencia ficción)
-Propuesta por Hugh Everett en 1957, esta interpretación es la favorita de las películas de Hollywood. Everett afirmó que la función de onda *nunca* colapsa. La superposición es permanente. 
 
-¿Entonces por qué solo vemos un resultado al abrir la caja? Porque en el momento de abrirla, **el universo mismo se divide en dos**. 
+Propuesta por Hugh Everett en 1957, esta interpretación es la favorita de las películas de Hollywood. Everett afirmó que la función de onda *nunca* colapsa. La superposición es permanente.
+
+¿Entonces por qué solo vemos un resultado al abrir la caja? Porque en el momento de abrirla, **el universo mismo se divide en dos**.
 
 Imagina un gráfico de árbol:
 
@@ -146,11 +148,12 @@ Imagina un gráfico de árbol:
 En la teoría de los Muchos Mundos, ambas posibilidades ocurren realmente, pero en ramas diferentes de la realidad. Tú, el observador, también te divides. Hay un "tú" celebrando que el gato sobrevivió, y un "tú" paralelo lidiando con un gato envenenado. Como ambas versiones de ti habitan universos que ya no pueden interactuar, tú solo percibes un resultado, dándote la ilusión de que la otra posibilidad desapareció.
 
 ### C. Variables Ocultas (La visión conservadora)
+
 Esta es la visión que prefería Einstein y que físicos como David Bohm desarrollaron más tarde. Sugiere que el gato siempre estuvo vivo o siempre estuvo muerto. El problema no es que el universo esté borroso, sino que *nuestra teoría* es incompleta. Hay fuerzas o variables secretas (ocultas) que operan por debajo del nivel cuántico que determinan exactamente cuándo decaerá el átomo, pero aún no las hemos descubierto. Si las conociéramos, el universo volvería a ser tan predecible como el reloj suizo de Newton. Sin embargo, los experimentos modernos (como el Teorema de Bell) han demostrado que las versiones más simples de esta idea son incorrectas. La rareza cuántica es, de hecho, real.
 
 ## 7. La respuesta moderna: ¿Por qué no vemos gatos cuánticos en la calle?
 
-A medida que avanzamos en el artículo, es crucial abordar la pregunta más grande que todo esto deja en la cabeza de cualquier persona lógica. Si estamos hechos de átomos, y los átomos se rigen por la superposición cuántica, ¿por qué nosotros no estamos en superposición? ¿Por qué nunca vemos un auto que esté estacionado en el garaje y conduciendo por la autopista al mismo tiempo? 
+A medida que avanzamos en el artículo, es crucial abordar la pregunta más grande que todo esto deja en la cabeza de cualquier persona lógica. Si estamos hechos de átomos, y los átomos se rigen por la superposición cuántica, ¿por qué nosotros no estamos en superposición? ¿Por qué nunca vemos un auto que esté estacionado en el garaje y conduciendo por la autopista al mismo tiempo?
 
 La respuesta de la física moderna a la paradoja de Schrödinger se llama **Decoherencia Cuántica**.
 
@@ -186,7 +189,7 @@ Las computadoras que usas a diario (incluyendo tu teléfono inteligente) procesa
 
 Pero una computadora cuántica usa **qubits** (bits cuánticos). Un qubit es un átomo, un electrón o una partícula de luz cuidadosamente aislado (para evitar la decoherencia de la que hablamos antes) que se pone en un estado de superposición. Como la moneda girando, un qubit es un 0 y un 1 simultáneamente.
 
-Matemáticamente, si tienes 2 bits clásicos, solo pueden estar en uno de 4 estados posibles a la vez (00, 01, 10, o 11). Pero 2 qubits en superposición están en esos 4 estados *al mismo tiempo*. 
+Matemáticamente, si tienes 2 bits clásicos, solo pueden estar en uno de 4 estados posibles a la vez (00, 01, 10, o 11). Pero 2 qubits en superposición están en esos 4 estados *al mismo tiempo*.
 
 Si tienes 300 qubits enlazados juntos, pueden representar simultáneamente más estados posibles que el número total de átomos que hay en el universo observable. Esto permite a las computadoras cuánticas realizar una cantidad asombrosa de cálculos en paralelo. Problemas que a la supercomputadora clásica más potente del mundo le tomaría millones de años resolver (como simular la química exacta de nuevos medicamentos o romper sistemas de encriptación complejos), una computadora cuántica madura podría resolverlos en cuestión de segundos o minutos.
 
@@ -196,7 +199,7 @@ En esencia, los ingenieros de computación cuántica son domadores profesionales
 
 El gato de Schrödinger comenzó su existencia como una burla. Erwin Schrödinger lo concibió para señalar el dedo inquisidor a sus colegas y decirles: *"¿Se dan cuenta de las locuras que están afirmando?"*. Pero la naturaleza resultó ser mucho más extraña y maravillosa de lo que nuestra intuición forjada en la sabana africana puede procesar cómodamente.
 
-La mecánica cuántica nos obliga a aceptar una humildad radical. Nos enseña que las herramientas que utilizamos para navegar nuestro día a día —los conceptos de "aquí", "allí", "antes", "después", "esto" y "aquello"— son en realidad simplificaciones groseras de una realidad subyacente que es vibrante, fluida y probabilística. 
+La mecánica cuántica nos obliga a aceptar una humildad radical. Nos enseña que las herramientas que utilizamos para navegar nuestro día a día —los conceptos de "aquí", "allí", "antes", "después", "esto" y "aquello"— son en realidad simplificaciones groseras de una realidad subyacente que es vibrante, fluida y probabilística.
 
 Aunque la decoherencia explica por qué tú y yo no nos difuminamos en múltiples lugares a la vez mientras caminamos por la calle, la verdad subyacente es que todo el universo está construido sobre bloques fundamentales regidos por el azar y la superposición.
 

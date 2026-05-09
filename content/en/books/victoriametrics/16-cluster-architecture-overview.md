@@ -31,13 +31,13 @@ When a data source pushes metrics to the cluster, the lifecycle within `vminsert
 1. **Protocol Termination:** `vminsert` listens on various ports to terminate incoming connections. As discussed in Chapter 4, it natively understands multiple ingestion protocols (Prometheus `remote_write`, InfluxDB Line Protocol, Graphite, JSON, etc.). `vminsert` identifies the protocol based on the HTTP endpoint or port used by the client.
 2. **Parsing and Validation:** The raw payload is parsed into internal VictoriaMetrics data structures. During this phase, `vminsert` validates the data, dropping malformed payloads, checking for wildly out-of-bounds timestamps, and ensuring the data conforms to expected metric formats.
 3. **Tenant Identification:** Because the VictoriaMetrics cluster is inherently multi-tenant (detailed further in Chapter 18), `vminsert` extracts the `AccountID` and `ProjectID` from the request URL (e.g., `/insert/123/prometheus/api/v1/write` maps to `AccountID=123`). If no tenant is specified, it routes the data to a default tenant.
-4. **Hashing and Routing:** This is the most critical function of `vminsert`. Once a metric data point (consisting of a metric name, labels, timestamp, and value) is parsed, `vminsert` must decide which `vmstorage` node should persist it. 
+4. **Hashing and Routing:** This is the most critical function of `vminsert`. Once a metric data point (consisting of a metric name, labels, timestamp, and value) is parsed, `vminsert` must decide which `vmstorage` node should persist it.
 
 ### Consistent Hashing and Sharding
 
-To distribute the ingestion load and storage requirements evenly across the cluster, `vminsert` employs a consistent hashing algorithm. 
+To distribute the ingestion load and storage requirements evenly across the cluster, `vminsert` employs a consistent hashing algorithm.
 
-When a data point is processed, `vminsert` generates a unique 64-bit hash based on the **Tenant ID** and the **Time Series Identity** (the metric name combined with all its label key-value pairs). 
+When a data point is processed, `vminsert` generates a unique 64-bit hash based on the **Tenant ID** and the **Time Series Identity** (the metric name combined with all its label key-value pairs).
 
 ```go
 // A simplified conceptual representation of the hashing logic
@@ -53,7 +53,7 @@ This hash-based routing guarantees that all data points belonging to a specific 
 
 `vminsert` does not open a new connection to a `vmstorage` node for every incoming data point. That would introduce catastrophic latency overhead. Instead, it maintains a pool of persistent, highly optimized RPC connections (using an internal binary protocol over TCP) to all configured `vmstorage` instances.
 
-When data points are routed, they are placed into in-memory buffers associated with their destination `vmstorage` nodes. `vminsert` batches these points and flushes them to the storage nodes asynchronously. 
+When data points are routed, they are placed into in-memory buffers associated with their destination `vmstorage` nodes. `vminsert` batches these points and flushes them to the storage nodes asynchronously.
 
 This buffering mechanism provides a slight shock absorber against network latency spikes or micro-outages on the storage nodes. However, because `vminsert` is stateless, these buffers live entirely in RAM. If a `vminsert` process crashes or is forcefully restarted, any data points residing in its memory buffers that haven't yet been acknowledged by `vmstorage` will be lost. This is why pairing `vminsert` with a robust buffer upstream—like `vmagent` (Chapter 5)—is a recommended best practice.
 
@@ -65,10 +65,11 @@ Deploying and scaling `vminsert` is straightforward. The primary configuration f
 ./vminsert -storageNode=vmstorage-1:8400,vmstorage-2:8400,vmstorage-3:8400
 ```
 
-Because it holds no state, scaling `vminsert` is simply a matter of spinning up more instances behind an HTTP load balancer. 
+Because it holds no state, scaling `vminsert` is simply a matter of spinning up more instances behind an HTTP load balancer.
 
 **Resource Profiling:**
-* **CPU:** `vminsert` is highly CPU-bound. Parsing text-based protocols (especially InfluxDB Line Protocol or massive Prometheus remote_write Snappy payloads) and calculating hashes for millions of series per second requires significant compute power. 
+
+* **CPU:** `vminsert` is highly CPU-bound. Parsing text-based protocols (especially InfluxDB Line Protocol or massive Prometheus remote_write Snappy payloads) and calculating hashes for millions of series per second requires significant compute power.
 * **Network:** It is also network-bound, acting as a proxy that takes in external HTTP traffic and outputs internal RPC traffic.
 * **Memory:** Memory usage is generally low and stable, dictated primarily by the size of the internal routing buffers and the volume of active concurrent connections.
 * **Disk:** Disk I/O is effectively zero.
@@ -98,6 +99,7 @@ The most defining characteristic of `vmstorage` is its strict "shared-nothing" d
 ```
 
 This deliberate design choice yields massive operational advantages:
+
 1. **Zero East-West Traffic:** Network bandwidth is reserved entirely for ingesting data and serving queries, rather than cluster management overhead.
 2. **Infinite Horizontal Scalability:** Adding a new node does not increase the coordination complexity of the cluster.
 3. **Blast Radius Isolation:** If `vmstorage-1` experiences a catastrophic hardware failure, `vmstorage-2` continues operating without any degraded performance caused by cluster recalculations or blocked quorum votes.
@@ -111,13 +113,14 @@ When a `vmstorage` node receives a batch of time series data from `vminsert`, it
 
 **2. Handling Reads (Queries):**
 When a user executes a PromQL query, `vmselect` broadcasts a request for raw data to the `vmstorage` nodes. The `vmstorage` node performs the heavy lifting:
+
 * It searches its local inverted index to find which time series match the requested label selectors (e.g., `env="prod"`).
 * It locates the corresponding compressed data blocks on disk.
 * It decompresses the blocks, filters the data points by the requested time range, and streams the raw data points back to `vmselect` via a fast, internal RPC protocol.
 
 ### Storage Layout and Tenant Data
 
-Because VictoriaMetrics is multi-tenant natively, `vmstorage` organizes its on-disk structures by `AccountID` and `ProjectID`. 
+Because VictoriaMetrics is multi-tenant natively, `vmstorage` organizes its on-disk structures by `AccountID` and `ProjectID`.
 
 Inside the `-storageDataPath` directory, you will find a hierarchy structured roughly like this:
 
@@ -138,9 +141,10 @@ Even though data is logically separated by tenant at the ingestion layer, `vmsto
 A critical concept to grasp about `vmstorage` is how it handles cluster expansion. Because of the shared-nothing architecture, **VictoriaMetrics does not automatically rebalance historical data** when you add a new `vmstorage` node to the cluster.
 
 If you have a 2-node cluster and add a third `vmstorage` node:
+
 1. `vminsert` recalculates its hash rings (discussed in Section 16.1) and immediately begins routing roughly 1/3 of *new* incoming data to the new node.
 2. The historical data remains sitting exactly where it was on nodes 1 and 2.
-3. `vmselect` simply queries all three nodes. 
+3. `vmselect` simply queries all three nodes.
 
 This behavior is a feature, not a bug. Shuffling terabytes of historical data across a network to achieve perfect disk-usage symmetry is an expensive, risky operation that degrades database performance. VictoriaMetrics avoids this entirely. Over time, as old data hits its retention limit and is deleted, the disk usage across all nodes will naturally equalize.
 
@@ -154,13 +158,13 @@ When provisioning hardware or Kubernetes pods for `vmstorage`, understand its re
 
 ## 16.3 The `vmselect` Component: Merging Query Results
 
-Completing the trifecta of the VictoriaMetrics cluster architecture is the `vmselect` component. If `vminsert` is responsible for writing data and `vmstorage` for keeping it safe, `vmselect` is the analytical engine responsible for retrieving, processing, and serving that data to users and dashboards. 
+Completing the trifecta of the VictoriaMetrics cluster architecture is the `vmselect` component. If `vminsert` is responsible for writing data and `vmstorage` for keeping it safe, `vmselect` is the analytical engine responsible for retrieving, processing, and serving that data to users and dashboards.
 
 Like `vminsert`, `vmselect` is entirely **stateless**. It accepts incoming PromQL and MetricsQL queries via HTTP, fetches the necessary raw data from the stateful `vmstorage` nodes, computes the results in memory, and returns the formatted response to the client (typically Grafana or an alerting engine).
 
 ### The Scatter-Gather Architecture
 
-Because `vmstorage` nodes do not communicate with each other, they lack a global view of the cluster's data. A single time series might have older data residing on `vmstorage-1` and newer data on `vmstorage-2` if the cluster was scaled up recently. 
+Because `vmstorage` nodes do not communicate with each other, they lack a global view of the cluster's data. A single time series might have older data residing on `vmstorage-1` and newer data on `vmstorage-2` if the cluster was scaled up recently.
 
 To overcome this, `vmselect` employs a highly concurrent **scatter-gather** pattern:
 
@@ -216,6 +220,7 @@ Deploying `vmselect` requires pointing it at the cluster's storage nodes, using 
 *(Note that `vmselect` typically communicates with `vmstorage` on port `8401`, whereas `vminsert` uses `8400`.)*
 
 **Resource Profiling:**
+
 * **CPU:** `vmselect` is heavily CPU-bound during complex analytical queries. Sorting, merging, and applying complex math (like regex matching or standard deviation calculations) over millions of data points requires significant processing power.
 * **Memory (RAM):** Memory consumption can spike dramatically during heavy queries. Because `vmselect` pulls raw data into memory to evaluate PromQL functions, queries that return high cardinality results (fetching millions of unique time series at once) will consume proportional RAM. VictoriaMetrics includes safeguards to terminate queries that exceed memory limits to prevent out-of-memory (OOM) crashes.
 * **Network:** High network bandwidth is required to stream raw data blocks from the `vmstorage` nodes.
@@ -230,10 +235,10 @@ This section explores the mathematics of how `vminsert` guarantees deterministic
 
 ### The Problem with Simple Hashing
 
-In Section 16.1, we introduced a simplified concept of hashing: `hash(TimeSeries) % NumberOfNodes`. While conceptually easy to understand, this modulo-based approach is disastrous in a dynamic cluster environment. 
+In Section 16.1, we introduced a simplified concept of hashing: `hash(TimeSeries) % NumberOfNodes`. While conceptually easy to understand, this modulo-based approach is disastrous in a dynamic cluster environment.
 
-Imagine a cluster with 3 `vmstorage` nodes. A time series hash calculates to `100`. `100 % 3 = 1` (Node 1). 
-If you scale the cluster to 4 nodes to handle increased load, the math changes: `100 % 4 = 0` (Node 0). 
+Imagine a cluster with 3 `vmstorage` nodes. A time series hash calculates to `100`. `100 % 3 = 1` (Node 1).
+If you scale the cluster to 4 nodes to handle increased load, the math changes: `100 % 4 = 0` (Node 0).
 
 By simply adding one node, the destination for nearly *every single time series* in the cluster changes. Because VictoriaMetrics does not automatically shuffle historical data to match new routing topologies, queries would immediately become fragmented, and the system's efficiency would plummet.
 
@@ -253,11 +258,11 @@ Series C -> Node 1          Series C -> Node 3 (Re-routed to new node)
 Series D -> Node 2          Series D -> Node 2 (Unchanged)
 ```
 
-This mathematical stability is what allows you to add `vmstorage` nodes to a live VictoriaMetrics cluster without needing to perform expensive cluster rebalancing operations. 
+This mathematical stability is what allows you to add `vmstorage` nodes to a live VictoriaMetrics cluster without needing to perform expensive cluster rebalancing operations.
 
 ### Understanding Replication Factors
 
-While consistent hashing dictates *where* a single copy of data goes, it does not protect against node failures. If `vmstorage-1` suffers a catastrophic disk failure, all time series currently routed to it would be lost. 
+While consistent hashing dictates *where* a single copy of data goes, it does not protect against node failures. If `vmstorage-1` suffers a catastrophic disk failure, all time series currently routed to it would be lost.
 
 VictoriaMetrics handles high availability natively via the **Replication Factor (RF)**, configured using the `-replicationFactor=N` flag.
 

@@ -42,7 +42,6 @@ First, we calculate the Queries Per Second (QPS) to understand the load on our A
 * On average, each user requests their timeline 100 times a day (opening the app, scrolling, refreshing) = 30 billion read requests/day.
 * Read-to-Write Ratio = 30,000,000,000 / 150,000,000 = **200:1**.
 
-
 * **Write QPS (Average):**
 150,000,000 posts / 86,400 seconds (in a day) = ~1,736 writes/second.
 *Peak Write QPS* (assuming peak traffic is 2x average): ~3,472 writes/second.
@@ -61,16 +60,14 @@ Next, we calculate the volume of new data generated to size our database and obj
 * 20% of posts contain an image averaging 1 MB.
 * 5% of posts contain a short video averaging 10 MB.
 
-
 * **Daily Storage Calculation:**
 * Text data: 150 million * 1 KB = 150 GB / day.
-* Image data: (150 million * 20%) * 1 MB = 30 million * 1 MB = 30 TB / day.
-* Video data: (150 million * 5%) * 10 MB = 7.5 million * 10 MB = 75 TB / day.
+* Image data: (150 million *20%)* 1 MB = 30 million * 1 MB = 30 TB / day.
+* Video data: (150 million *5%)* 10 MB = 7.5 million * 10 MB = 75 TB / day.
 * **Total Daily Storage:** ~105 TB / day.
 
-
 * **Long-Term Storage (5-Year Capacity):**
-105 TB * 365 days * 5 years = **~191.6 Petabytes (PB)**.
+105 TB *365 days* 5 years = **~191.6 Petabytes (PB)**.
 
 *Architectural Takeaway:* Relational databases alone cannot handle this volume efficiently. Media files must be separated into distributed object storage, while metadata and text can reside in a highly partitioned NoSQL or NewSQL store.
 
@@ -417,10 +414,9 @@ Routing all of this traffic through the core data centers would require an unsus
 2. **Client Request:** The mobile app makes a parallel HTTP request directly to that CDN URL.
 3. **Edge Node Routing:** DNS routing directs the user to the closest physical CDN Edge Node (e.g., a server in Tokyo for a Japanese user, rather than a data center in Virginia).
 4. **Cache Hit / Miss:**
+
 * *Cache Hit:* If the edge node has the image (because another user in Tokyo recently requested it), it returns it immediately. Latency is often under 20ms.
 * *Cache Miss:* If the edge node does not have the image, it acts as a reverse proxy, pulls the image from the origin Object Storage bucket, serves it to the user, and caches a copy locally for the next request.
-
-
 
 ### 4. Mitigating Stale Data and Cache Invalidation
 

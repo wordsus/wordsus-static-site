@@ -17,14 +17,15 @@ La física nos dice que la velocidad de escape depende de dos cosas: la masa del
 $$v_e = \sqrt{\frac{2GM}{R}}$$
 
 Donde:
-*   $v_e$ es la velocidad de escape.
-*   $G$ es la Constante de Gravitación Universal (un número fijo en el universo).
-*   $M$ es la Masa del objeto.
-*   $R$ es el Radio del objeto.
 
-Si comprimes la Tierra para hacerla más pequeña (reduces la $R$), sin quitarle masa, la gravedad en su superficie se volvería más intensa, y la velocidad de escape ($v_e$) aumentaría. 
+* $v_e$ es la velocidad de escape.
+* $G$ es la Constante de Gravitación Universal (un número fijo en el universo).
+* $M$ es la Masa del objeto.
+* $R$ es el Radio del objeto.
 
-Ahora, lleva este experimento mental al extremo. Imagina que tomas una estrella varias veces más masiva que nuestro Sol y la aplastas hasta que tenga el tamaño de una ciudad pequeña. La gravedad se vuelve tan colosal que la velocidad de escape necesaria para huir de su superficie superaría la velocidad de la luz (cerca de $300,000$ kilómetros por segundo). 
+Si comprimes la Tierra para hacerla más pequeña (reduces la $R$), sin quitarle masa, la gravedad en su superficie se volvería más intensa, y la velocidad de escape ($v_e$) aumentaría.
+
+Ahora, lleva este experimento mental al extremo. Imagina que tomas una estrella varias veces más masiva que nuestro Sol y la aplastas hasta que tenga el tamaño de una ciudad pequeña. La gravedad se vuelve tan colosal que la velocidad de escape necesaria para huir de su superficie superaría la velocidad de la luz (cerca de $300,000$ kilómetros por segundo).
 
 Dado que la teoría de la relatividad de Einstein nos enseña que nada en el universo puede viajar más rápido que la luz, la conclusión es inevitable: **nada puede escapar**. Ni las naves espaciales, ni las rocas, ni siquiera la propia luz. Por eso son "negros". Son invisibles contra el telón de fondo del espacio sideral.
 
@@ -46,14 +47,14 @@ A lo largo de toda su vida, una estrella se encuentra en un delicado estado de "
      Fusión Nuclear (empuja hacia afuera)
 ```
 
-1.  **La Gravedad:** La inmensa masa de la estrella genera una gravedad brutal que intenta aplastar la estrella hacia su centro en todo momento.
-2.  **La Fusión Nuclear:** En el núcleo de la estrella, la presión y el calor son tan altos que los átomos de hidrógeno chocan y se fusionan para formar helio. Este proceso libera una cantidad titánica de energía hacia afuera, creando una presión que contrarresta exactamente a la gravedad.
+1. **La Gravedad:** La inmensa masa de la estrella genera una gravedad brutal que intenta aplastar la estrella hacia su centro en todo momento.
+2. **La Fusión Nuclear:** En el núcleo de la estrella, la presión y el calor son tan altos que los átomos de hidrógeno chocan y se fusionan para formar helio. Este proceso libera una cantidad titánica de energía hacia afuera, creando una presión que contrarresta exactamente a la gravedad.
 
 Mientras a la estrella le quede combustible nuclear (hidrógeno, helio, y elementos más pesados), la batalla está empatada. La estrella brilla y se mantiene estable. Nuestro Sol, por ejemplo, está a la mitad de su vida, disfrutando de este equilibrio pacífico.
 
-Sin embargo, las estrellas gigantes (aquellas con al menos $8$ a $20$ veces la masa de nuestro Sol) son derrochadoras. Queman su combustible a una velocidad furiosa. Eventualmente, el núcleo comienza a fusionar elementos cada vez más pesados: carbono, neón, oxígeno, silicio... hasta que llega al hierro. 
+Sin embargo, las estrellas gigantes (aquellas con al menos $8$ a $20$ veces la masa de nuestro Sol) son derrochadoras. Queman su combustible a una velocidad furiosa. Eventualmente, el núcleo comienza a fusionar elementos cada vez más pesados: carbono, neón, oxígeno, silicio... hasta que llega al hierro.
 
-El hierro es el asesino de las estrellas masivas. Fusionar hierro no libera energía; al contrario, *absorbe* energía. En el instante en que el núcleo se convierte en hierro, el horno nuclear se apaga de golpe. La presión hacia afuera desaparece en una fracción de segundo. 
+El hierro es el asesino de las estrellas masivas. Fusionar hierro no libera energía; al contrario, *absorbe* energía. En el instante en que el núcleo se convierte en hierro, el horno nuclear se apaga de golpe. La presión hacia afuera desaparece en una fracción de segundo.
 
 La gravedad, que había estado esperando pacientemente durante millones de años, finalmente gana la partida. El peso de toda la estrella cae hacia el núcleo a una velocidad cercana a la de la luz. Este colapso genera una onda de choque tan poderosa que expulsa las capas externas de la estrella en una de las explosiones más brillantes del universo: una **supernova**.
 
@@ -89,7 +90,7 @@ Si no podemos verlos, ¿cómo sabemos qué forma tienen o cómo están estructur
 En el corazón exacto del agujero negro se encuentra la singularidad. Toda la masa de la estrella colapsada está contenida en este punto. Dado que tiene masa pero ocupa cero volumen físico, su densidad es, según nuestras ecuaciones actuales, **infinita**. Aquí es donde la física que conocemos se rompe. Las leyes de la naturaleza simplemente dejan de tener sentido en la singularidad. Es el mayor misterio sin resolver de la astrofísica moderna.
 
 **2. El Horizonte de Sucesos:**
-Es la frontera invisible, la "superficie" esférica del agujero negro. No es una superficie sólida contra la que puedas chocar, sino una frontera matemática en el espacio. Es la línea de demarcación exacta donde la velocidad de escape se iguala a la velocidad de la luz. 
+Es la frontera invisible, la "superficie" esférica del agujero negro. No es una superficie sólida contra la que puedas chocar, sino una frontera matemática en el espacio. Es la línea de demarcación exacta donde la velocidad de escape se iguala a la velocidad de la luz.
 
 Podemos calcular el radio de esta esfera oscura (la distancia desde la singularidad hasta el horizonte de sucesos) usando una ecuación simple llamada el Radio de Schwarzschild:
 
@@ -107,30 +108,30 @@ A unos $26,000$ años luz de la Tierra, en la constelación de Sagitario, se enc
 
 Descubrieron un grupo de estrellas (la más famosa es conocida como "S2") que orbitaban alrededor de un espacio que parecía estar... completamente vacío.
 
-> **Nota mental astronómica:** Las estrellas en el centro de la galaxia se mueven a velocidades absurdas. La estrella S2 alcanza velocidades de más de $5,000$ kilómetros por segundo (¡casi un $2\%$ de la velocidad de la luz!) cuando pasa cerca del centro de su órbita. 
+> **Nota mental astronómica:** Las estrellas en el centro de la galaxia se mueven a velocidades absurdas. La estrella S2 alcanza velocidades de más de $5,000$ kilómetros por segundo (¡casi un $2\%$ de la velocidad de la luz!) cuando pasa cerca del centro de su órbita.
 
-Al usar las leyes del movimiento de Kepler y Newton que aprendemos en el colegio, los científicos pudieron calcular cuánta masa debía haber en ese "punto vacío" para obligar a esas estrellas a girar tan rápido sin salir volando por el espacio. 
+Al usar las leyes del movimiento de Kepler y Newton que aprendemos en el colegio, los científicos pudieron calcular cuánta masa debía haber en ese "punto vacío" para obligar a esas estrellas a girar tan rápido sin salir volando por el espacio.
 
-La respuesta fue escalofriante: en un espacio no mucho más grande que nuestro Sistema Solar, hay una masa equivalente a **$4.3$ millones de veces la masa de nuestro Sol**. 
+La respuesta fue escalofriante: en un espacio no mucho más grande que nuestro Sistema Solar, hay una masa equivalente a **$4.3$ millones de veces la masa de nuestro Sol**.
 
-No hay absolutamente nada en el universo conocido que pueda ser tan masivo, tan pequeño y completamente invisible, excepto un agujero negro supermasivo. Lo bautizaron como **Sagitario A*** (pronunciado "Sagitario A estrella"). Este descubrimiento monumental le otorgó a los científicos Andrea Ghez y Reinhard Genzel el Premio Nobel de Física en 2020. 
+No hay absolutamente nada en el universo conocido que pueda ser tan masivo, tan pequeño y completamente invisible, excepto un agujero negro supermasivo. Lo bautizaron como **Sagitario A*** (pronunciado "Sagitario A estrella"). Este descubrimiento monumental le otorgó a los científicos Andrea Ghez y Reinhard Genzel el Premio Nobel de Física en 2020.
 
-A diferencia de los agujeros negros estelares, todavía no estamos completamente seguros de cómo se forman estos gigantes supermasivos. Podrían formarse por la colisión continua de miles de agujeros negros más pequeños, o quizás provienen del colapso de inmensas nubes de gas en las etapas tempranas del universo. 
+A diferencia de los agujeros negros estelares, todavía no estamos completamente seguros de cómo se forman estos gigantes supermasivos. Podrían formarse por la colisión continua de miles de agujeros negros más pequeños, o quizás provienen del colapso de inmensas nubes de gas en las etapas tempranas del universo.
 
 ## 5. Espaguetización: El fatal destino al cruzar el horizonte
 
 Supongamos que la curiosidad te supera y decides subirte a una nave espacial indestructible para visitar un agujero negro estelar de masa promedio y averiguar qué se siente acercarse a él. (Un consejo rápido: mala idea).
 
-A medida que te acercas al agujero negro, sientes que la gravedad te atrae. Hasta ahí, todo normal. Pero hay un problema fundamental con la gravedad: disminuye con la distancia. Cuando estás de pie en la Tierra, la gravedad en tus pies es técnicamente un poquito más fuerte que en tu cabeza (porque tus pies están más cerca del centro del planeta). En la Tierra, esta diferencia es tan microscópica que no la notamos. 
+A medida que te acercas al agujero negro, sientes que la gravedad te atrae. Hasta ahí, todo normal. Pero hay un problema fundamental con la gravedad: disminuye con la distancia. Cuando estás de pie en la Tierra, la gravedad en tus pies es técnicamente un poquito más fuerte que en tu cabeza (porque tus pies están más cerca del centro del planeta). En la Tierra, esta diferencia es tan microscópica que no la notamos.
 
-Pero cerca de un agujero negro, el espacio-tiempo se curva de forma tan violenta que este efecto, llamado **fuerza de marea**, se magnifica a niveles catastróficos. 
+Pero cerca de un agujero negro, el espacio-tiempo se curva de forma tan violenta que este efecto, llamado **fuerza de marea**, se magnifica a niveles catastróficos.
 
-Imagina que caes hacia el agujero negro con los pies por delante. A miles de kilómetros del horizonte de sucesos, la atracción gravitacional sobre tus pies comienza a ser astronómicamente mayor que la atracción sobre tu cabeza. El resultado no es agradable. 
+Imagina que caes hacia el agujero negro con los pies por delante. A miles de kilómetros del horizonte de sucesos, la atracción gravitacional sobre tus pies comienza a ser astronómicamente mayor que la atracción sobre tu cabeza. El resultado no es agradable.
 
-1.  **El estiramiento:** Sientes que una fuerza invisible tira de tus piernas hacia abajo mientras empuja tu cabeza hacia arriba. Te estás estirando.
-2.  **La compresión lateral:** Al mismo tiempo que te estiras, el tejido del espacio se curva de tal forma que toda tu anatomía es empujada hacia el centro. Es decir, mientras te alargas, también te comprimes por los lados.
+1. **El estiramiento:** Sientes que una fuerza invisible tira de tus piernas hacia abajo mientras empuja tu cabeza hacia arriba. Te estás estirando.
+2. **La compresión lateral:** Al mismo tiempo que te estiras, el tejido del espacio se curva de tal forma que toda tu anatomía es empujada hacia el centro. Es decir, mientras te alargas, también te comprimes por los lados.
 
-En astrofísica, este proceso tiene un nombre técnico, real y sorprendentemente cómico inventado por el mismísimo Stephen Hawking: **Espaguetización**. 
+En astrofísica, este proceso tiene un nombre técnico, real y sorprendentemente cómico inventado por el mismísimo Stephen Hawking: **Espaguetización**.
 
 Mucho antes de alcanzar el Horizonte de Sucesos, la diferencia de gravedad te estiraría hasta convertirte en una fina línea de átomos, un hilo de "espagueti" humano incandescente que cae hacia la singularidad en un remolino cósmico.
 
@@ -138,7 +139,7 @@ Mucho antes de alcanzar el Horizonte de Sucesos, la diferencia de gravedad te es
 
 ## 6. Dilatación del tiempo: El reloj que se detiene
 
-Quizás el aspecto más alucinante de los agujeros negros no es lo que le hacen a la materia, sino lo que le hacen al tiempo. 
+Quizás el aspecto más alucinante de los agujeros negros no es lo que le hacen a la materia, sino lo que le hacen al tiempo.
 
 Gracias a la Relatividad General de Einstein, sabemos que el tiempo no es un reloj universal inmutable que marca los segundos igual en todo el cosmos. El tiempo es maleable. La gravedad extrema tiene la capacidad de "doblar" el tiempo, haciendo que transcurra más lentamente. Este fenómeno se conoce como **dilatación temporal gravitacional**.
 
@@ -150,7 +151,7 @@ Para los mortales que no queremos lidiar con la raíz cuadrada de la ecuación, 
 
 Imagina que estás observando a un valiente (y condenado) robot astronauta caer hacia un agujero negro desde tu nave espacial segura a años luz de distancia. El robot tiene un reloj gigante pegado en su espalda que parpadea cada un segundo.
 
-A medida que el robot se acerca al enorme pozo gravitacional del agujero negro, notas algo extraño. Su reloj empieza a parpadear más lento. Ya no es cada segundo. Ahora parpadea cada diez segundos. Luego cada minuto. Luego cada hora. 
+A medida que el robot se acerca al enorme pozo gravitacional del agujero negro, notas algo extraño. Su reloj empieza a parpadear más lento. Ya no es cada segundo. Ahora parpadea cada diez segundos. Luego cada minuto. Luego cada hora.
 
 Además de ver que el tiempo del robot se ralentiza, verás que la luz que emite cambia de color. Las ondas de luz tienen que luchar tan duro para salir de la intensa gravedad que se estiran, volviéndose más rojas, en un proceso llamado **corrimiento al rojo gravitacional**.
 
@@ -172,7 +173,7 @@ Hagamos un experimento mental definitivo para entender esto. Imagina que, en est
 
 **La respuesta es un rotundo no.**
 
-Dado que la masa del sistema no ha cambiado (sigue habiendo $1$ masa solar en el centro del Sistema Solar), la atracción gravitacional que siente la Tierra a $150$ millones de kilómetros de distancia permanecería exactamente igual. 
+Dado que la masa del sistema no ha cambiado (sigue habiendo $1$ masa solar en el centro del Sistema Solar), la atracción gravitacional que siente la Tierra a $150$ millones de kilómetros de distancia permanecería exactamente igual.
 
 ```text
     ÓRBITA TERRESTRE ANTES Y DESPUÉS DEL SOL NEGRO

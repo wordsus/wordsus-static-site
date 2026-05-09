@@ -459,11 +459,11 @@ To solve this, Bash provides the `<<-` operator. This operator **strips all lead
 
 ```bash
 if [[ -f "/etc/nginx/nginx.conf" ]]; then
-	# Notice the dash in <<- and the indented EOF
-	cat <<- EOF
-	Configuration found!
-	Please review the settings before restarting the service.
-	EOF
+ # Notice the dash in <<- and the indented EOF
+ cat <<- EOF
+ Configuration found!
+ Please review the settings before restarting the service.
+ EOF
 fi
 
 ```

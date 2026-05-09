@@ -125,7 +125,6 @@ Configurar BIND para que "simplemente responda" es fácil. Configurar BIND para 
 * `named-checkconf`: Valida la estructura de tu `named.conf`. Si no devuelve salida, todo está correcto.
 * `named-checkzone midominio.com /ruta/al/db.midominio.com`: Verifica los registros, los números de serie del SOA y la sintaxis del archivo de zona antes de cargarlo en memoria.
 
-
 * **Entornos enjaulados (Chroot Jail):** Ejecutar BIND como el usuario `root` es un riesgo inaceptable. Por defecto, en distribuciones modernas corre bajo el usuario sin privilegios `bind` o `named`. Para añadir una capa extra de seguridad, es altamente recomendable configurar BIND dentro de un entorno *chroot* (`/var/lib/named/`), asegurando que, si el demonio es comprometido, el atacante no tenga acceso al sistema de archivos real del sistema operativo.
 
 ## 5.2 Unbound y Knot Resolver: Maestros de la recursión y la caché
@@ -226,11 +225,11 @@ policy.add(policy.suffix(policy.STUB('192.168.10.50'), {todname('miempresa.local
 Tanto si eliges Unbound como Knot Resolver, la configuración de la caché es donde un Senior SysAdmin demuestra su valor. El objetivo no es solo responder rápido, sino garantizar la disponibilidad cuando Internet (o un servidor autoritativo) falla.
 
 1. **Serve Stale (RFC 8767):** Esta es quizás la directiva más salvavidas en un resolutor moderno. Si el servidor autoritativo de un dominio se cae, el registro en tu caché eventualmente caducará (TTL llega a 0). Con "Serve Stale" habilitado, el resolutor devolverá la respuesta caducada al cliente con un TTL muy corto (ej. 30 segundos) en lugar de devolver un error `SERVFAIL`. Es mejor dar una IP posiblemente antigua que dejar al usuario sin servicio.
+
 * *En Unbound:* `serve-expired: yes`
 
-
-2. **Afinación de Memoria:** La regla de oro en Unbound es que la caché de conjuntos de registros (`rrset-cache-size`) debe ser aproximadamente el doble del tamaño de la caché de mensajes (`msg-cache-size`).
-3. **Seguridad contra envenenamiento (Cache Poisoning):** Los resolutores recursivos son el objetivo principal de ataques como el de Kaminsky (que exploraremos en el Capítulo 6). Herramientas como la aleatorización de puertos de origen (Source Port Randomization) y la validación estricta de bailiwick ya vienen activadas por defecto en Unbound y Knot Resolver, pero siempre debes asegurar que estás corriendo una versión reciente para tener los últimos parches de seguridad.
+1. **Afinación de Memoria:** La regla de oro en Unbound es que la caché de conjuntos de registros (`rrset-cache-size`) debe ser aproximadamente el doble del tamaño de la caché de mensajes (`msg-cache-size`).
+2. **Seguridad contra envenenamiento (Cache Poisoning):** Los resolutores recursivos son el objetivo principal de ataques como el de Kaminsky (que exploraremos en el Capítulo 6). Herramientas como la aleatorización de puertos de origen (Source Port Randomization) y la validación estricta de bailiwick ya vienen activadas por defecto en Unbound y Knot Resolver, pero siempre debes asegurar que estás corriendo una versión reciente para tener los últimos parches de seguridad.
 
 En resumen: Deja que BIND maneje tus zonas autoritativas si así lo deseas, pero cuando se trate de atender las consultas de miles de usuarios locales hacia Internet, delega la recursión a los maestros modernos: Unbound o Knot Resolver.
 

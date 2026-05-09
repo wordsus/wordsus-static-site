@@ -65,7 +65,7 @@ components:
 
 ### El Mapeo Estructural en Go
 
-El poder de OpenAPI radica en su correspondencia directa con las estructuras de datos fuertemente tipadas de Go. El componente `User` definido en el YAML anterior se traduce naturalmente a un `struct` en Go. 
+El poder de OpenAPI radica en su correspondencia directa con las estructuras de datos fuertemente tipadas de Go. El componente `User` definido en el YAML anterior se traduce naturalmente a un `struct` en Go.
 
 Considerando lo que vimos en la sección 26.1 sobre la validación estructurada, el contrato OpenAPI y nuestras etiquetas (`tags`) de Go deben estar en perfecta sincronía:
 
@@ -73,19 +73,19 @@ Considerando lo que vimos en la sección 26.1 sobre la validación estructurada,
 package domain
 
 import (
-	"time"
+ "time"
 )
 
 // User representa el esquema de usuario mapeado desde OpenAPI.
 type User struct {
-	// ID corresponde a type: string, format: uuid
-	ID string `json:"id" validate:"required,uuid"`
+ // ID corresponde a type: string, format: uuid
+ ID string `json:"id" validate:"required,uuid"`
 
-	// Email corresponde a type: string, format: email
-	Email string `json:"email" validate:"required,email"`
+ // Email corresponde a type: string, format: email
+ Email string `json:"email" validate:"required,email"`
 
-	// CreatedAt corresponde a type: string, format: date-time
-	CreatedAt time.Time `json:"createdAt"`
+ // CreatedAt corresponde a type: string, format: date-time
+ CreatedAt time.Time `json:"createdAt"`
 }
 ```
 
@@ -95,15 +95,17 @@ Al adoptar OpenAPI en ecosistemas Go, los equipos de arquitectura se enfrentan a
 
 **1. Enfoque Code-First (El código manda)**
 En este modelo, los desarrolladores escriben primero el código Go (handlers, structs, routers) y utilizan anotaciones o comentarios especiales para que una herramienta genere el archivo `swagger.json` o `swagger.yaml` durante el proceso de compilación o CI/CD.
+
 * *Ventaja:* Menor fricción inicial para el desarrollador backend. El código siempre refleja la realidad porque la documentación se deriva de él.
 * *El contexto:* Este es el enfoque que exploraremos a fondo en la siguiente sección (27.2) utilizando herramientas como `swaggo`.
 
 **2. Enfoque Contract-First / Design-First (El contrato manda)**
 Bajo este paradigma, el equipo escribe y acuerda primero el archivo YAML de OpenAPI de forma colaborativa (backend, frontend, QA). Una vez cerrado el contrato, se utilizan herramientas generadoras de código para crear los esqueletos (*stubs*) de los handlers, las validaciones y los modelos en Go.
+
 * *Ventaja:* Permite el desarrollo en paralelo. El equipo de frontend puede empezar a crear *mocks* basándose en el YAML sin esperar a que el backend de Go esté terminado.
 * *Herramientas destacadas:* En Go, librerías como `oapi-codegen` son el estándar de facto para este enfoque. Esta herramienta lee el archivo OpenAPI y genera automáticamente el boilerplate del servidor (compatible con routers como Chi o Echo, que vimos en el Capítulo 25) y los tipos de datos estrictos.
 
-Ambos enfoques son válidos y la elección dependerá de la topología de tu equipo y de si estás construyendo un microservicio interno o una API pública expuesta a terceros. 
+Ambos enfoques son válidos y la elección dependerá de la topología de tu equipo y de si estás construyendo un microservicio interno o una API pública expuesta a terceros.
 
 ## 27.2. Generación automática de documentación a partir del código (swaggo)
 
@@ -119,10 +121,10 @@ El primer paso es definir el contrato general de la API. Esto se hace típicamen
 package main
 
 import (
-	"log"
-	"net/http"
-	// Es crucial importar el paquete docs generado (lo crearemos en breve)
-	_ "mi-proyecto/docs" 
+ "log"
+ "net/http"
+ // Es crucial importar el paquete docs generado (lo crearemos en breve)
+ _ "mi-proyecto/docs" 
 )
 
 // @title           API de Gestión de Usuarios
@@ -158,8 +160,8 @@ Tomemos como ejemplo un endpoint de creación de usuario. Recuerda que en el Cap
 package handlers
 
 import (
-	"net/http"
-	"mi-proyecto/domain"
+ "net/http"
+ "mi-proyecto/domain"
 )
 
 // CreateUser godoc
@@ -176,7 +178,7 @@ import (
 // @Security     BearerAuth
 // @Router       /users [post]
 func (h *UserHandler) CreateUser(w http.ResponseWriter, r *http.Request) {
-	// Lógica de decodificación, validación (Capítulo 26) y delegación al servicio.
+ // Lógica de decodificación, validación (Capítulo 26) y delegación al servicio.
 }
 ```
 
@@ -188,20 +190,23 @@ Swaggo es lo suficientemente inteligente como para seguir las referencias a `dom
 Una vez que el código está instrumentado con los comentarios, debes compilar la documentación.
 
 1. **Instalación de la CLI:**
+
    ```bash
    go install github.com/swaggo/swag/cmd/swag@latest
    ```
 
 2. **Generación de artefactos:**
    Ejecuta el siguiente comando en la raíz de tu proyecto (donde reside `main.go`).
+
    ```bash
    swag init --parseDependency --parseInternal
    ```
+
    *Consejo avanzado:* Los flags `--parseDependency` y `--parseInternal` son esenciales si tus *structs* de respuesta o *payloads* (como `ProblemDetails`) viven en módulos externos o en paquetes internos separados del *handler*, algo estándar en la Arquitectura Limpia (Capítulo 21).
 
-Este comando generará un directorio `docs/` que contiene `docs.go`, `swagger.json` y `swagger.yaml`. 
+Este comando generará un directorio `docs/` que contiene `docs.go`, `swagger.json` y `swagger.yaml`.
 
-3. **Exposición mediante un Router:**
+1. **Exposición mediante un Router:**
    Finalmente, necesitas servir la interfaz gráfica de Swagger. Swaggo proporciona *wrappers* para los enrutadores más populares que analizamos en el Capítulo 25 (Gin, Echo, Chi, o el ServeMux estándar).
 
    Ejemplo usando `go-chi/chi` y `swaggo/http-swagger`:
@@ -231,7 +236,7 @@ Al ejecutar tu servidor y navegar a `http://localhost:8080/swagger/index.html`, 
 
 ## 27.3. Versionado de APIs RESTful en Go
 
-Una vez que un contrato de API (como los definidos con OpenAPI en la sección 27.1) es consumido en producción por clientes de frontend, aplicaciones móviles u otros microservicios (Capítulo 32), dicho contrato se vuelve inmutable. Cualquier alteración destructiva —como renombrar un campo, cambiar un tipo de dato o eliminar un *endpoint*— romperá las integraciones existentes. 
+Una vez que un contrato de API (como los definidos con OpenAPI en la sección 27.1) es consumido en producción por clientes de frontend, aplicaciones móviles u otros microservicios (Capítulo 32), dicho contrato se vuelve inmutable. Cualquier alteración destructiva —como renombrar un campo, cambiar un tipo de dato o eliminar un *endpoint*— romperá las integraciones existentes.
 
 El versionado es la estrategia arquitectónica que permite que una API evolucione, introduciendo cambios disruptivos (*breaking changes*) sin afectar a los consumidores heredados.
 
@@ -239,17 +244,17 @@ El versionado es la estrategia arquitectónica que permite que una API evolucion
 
 Existen múltiples enfoques para versionar una API, cada uno con compromisos técnicos que impactan el enrutamiento y el almacenamiento en caché:
 
-1.  **Versionado por URI (El estándar de facto):**
+1. **Versionado por URI (El estándar de facto):**
     La versión se incluye explícitamente en la ruta: `https://api.empresa.com/v1/users`.
     * *Ventaja:* Es altamente visible, fácil de probar directamente en el navegador y trivial de enrutar a nivel de balanceador de carga o API Gateway.
     * *Desventaja:* Purísticamente, viola los principios REST, ya que un mismo recurso (el usuario) tiene múltiples identificadores (URIs) dependiendo de la versión.
 
-2.  **Versionado por Cabeceras Estándar (Content Negotiation):**
+2. **Versionado por Cabeceras Estándar (Content Negotiation):**
     Se utiliza la cabecera `Accept` del protocolo HTTP: `Accept: application/vnd.empresa.v2+json`.
     * *Ventaja:* Mantiene las URIs limpias y semánticamente correctas (`/users`).
     * *Desventaja:* Dificulta la exploración manual, incrementa la complejidad del cliente y puede generar problemas severos con sistemas de caché (CDNs) si no se configura correctamente la cabecera `Vary`.
 
-3.  **Versionado por Cabecera Personalizada:**
+3. **Versionado por Cabecera Personalizada:**
     Uso de cabeceras propietarias como `X-API-Version: 2`. Ofrece un término medio, pero sufre de los mismos problemas de caché que la negociación de contenido.
 
 Dada su simplicidad operativa y la facilidad para integrarlo con herramientas como Swaggo (27.2), **el versionado por URI es el patrón más idiomático y recomendado en la mayoría de los proyectos Go**.
@@ -284,32 +289,32 @@ Utilizando el enrutador avanzado de la standard library (disponible desde Go 1.2
 package main
 
 import (
-	"net/http"
-	
-	"mi-proyecto/internal/application"
-	v1 "mi-proyecto/internal/transport/http/v1"
-	v2 "mi-proyecto/internal/transport/http/v2"
+ "net/http"
+ 
+ "mi-proyecto/internal/application"
+ v1 "mi-proyecto/internal/transport/http/v1"
+ v2 "mi-proyecto/internal/transport/http/v2"
 )
 
 func main() {
-	mux := http.NewServeMux()
-	
-	// Instanciamos el servicio central (única versión de la lógica)
-	userService := application.NewUserService()
-	
-	// Instanciamos los handlers inyectando el mismo servicio
-	handlerV1 := v1.NewUserHandler(userService)
-	handlerV2 := v2.NewUserHandler(userService)
+ mux := http.NewServeMux()
+ 
+ // Instanciamos el servicio central (única versión de la lógica)
+ userService := application.NewUserService()
+ 
+ // Instanciamos los handlers inyectando el mismo servicio
+ handlerV1 := v1.NewUserHandler(userService)
+ handlerV2 := v2.NewUserHandler(userService)
 
-	// Rutas v1
-	mux.HandleFunc("GET /v1/users/{id}", handlerV1.GetUser)
-	mux.HandleFunc("POST /v1/users", handlerV1.CreateUser)
+ // Rutas v1
+ mux.HandleFunc("GET /v1/users/{id}", handlerV1.GetUser)
+ mux.HandleFunc("POST /v1/users", handlerV1.CreateUser)
 
-	// Rutas v2 (ej: introduciendo un nuevo formato de ID o payload distinto)
-	mux.HandleFunc("GET /v2/users/{id}", handlerV2.GetUser)
-	mux.HandleFunc("POST /v2/users", handlerV2.CreateUser)
+ // Rutas v2 (ej: introduciendo un nuevo formato de ID o payload distinto)
+ mux.HandleFunc("GET /v2/users/{id}", handlerV2.GetUser)
+ mux.HandleFunc("POST /v2/users", handlerV2.CreateUser)
 
-	http.ListenAndServe(":8080", mux)
+ http.ListenAndServe(":8080", mux)
 }
 ```
 
@@ -317,7 +322,7 @@ En este patrón, el trabajo del `handlerV1` o `handlerV2` es simplemente traduci
 
 ### El Ciclo de Vida: Deprecación Segura
 
-Mantener múltiples versiones activas en producción tiene un alto coste de mantenimiento. Cuando lanzas la versión `v2`, debes establecer un plan para apagar la `v1`. 
+Mantener múltiples versiones activas en producción tiene un alto coste de mantenimiento. Cuando lanzas la versión `v2`, debes establecer un plan para apagar la `v1`.
 
 Para hacerlo de forma profesional y comunicativa, debes aprovechar las cabeceras HTTP estándar (RFC 8594):
 

@@ -2,7 +2,7 @@ As your Infrastructure as Code practice scales, security and compliance become p
 
 ## 21.1 Securing the Pulumi Console
 
-The Pulumi Console (often referred to as Pulumi Cloud or the Pulumi Service) acts as the central control plane for your infrastructure deployments. Because it houses your organization's state files, coordinates concurrent deployments, and acts as the broker for encrypted secrets, securing the console is the foundational step in hardening your enterprise infrastructure practice. 
+The Pulumi Console (often referred to as Pulumi Cloud or the Pulumi Service) acts as the central control plane for your infrastructure deployments. Because it houses your organization's state files, coordinates concurrent deployments, and acts as the broker for encrypted secrets, securing the console is the foundational step in hardening your enterprise infrastructure practice.
 
 While earlier chapters covered encrypting secrets (Chapter 6) and managing state files (Chapter 5), this section focuses on securing the perimeter and the operational guardrails of the Pulumi Console itself. When operating at an enterprise scale, securing the console means strictly controlling *who* can access it, *where* they can access it from, and *what* default behaviors are enforced organization-wide.
 
@@ -39,7 +39,7 @@ While human users will eventually be secured via SAML/SSO (which we will explore
 
 1. **Personal Access Tokens (PATs):** Tied to an individual user. If the user leaves the organization or is removed from the Identity Provider (IdP), their PAT is invalidated. PATs should be restricted to local development environments and never embedded in shared CI/CD environments.
 2. **Team Access Tokens:** Tied to a specific team within the Pulumi organization. These are useful for departmental automation but carry the risk of broad access if a team is granted sweeping permissions across many projects.
-3. **Organization Access Tokens (Runner Tokens):** These are specifically designed for CI/CD pipelines. They operate independently of any single human user's lifecycle. 
+3. **Organization Access Tokens (Runner Tokens):** These are specifically designed for CI/CD pipelines. They operate independently of any single human user's lifecycle.
 
 **Best Practice:** Always apply the Principle of Least Privilege to tokens. When generating a token for a GitHub Actions pipeline, for example, generate a Team or Runner token scoped *only* to the stacks that the specific pipeline is responsible for. Furthermore, organization administrators should regularly audit the **Access Tokens** page in the console settings to revoke stale or unused tokens.
 
@@ -48,6 +48,7 @@ While human users will eventually be secured via SAML/SSO (which we will explore
 Even if an attacker compromises a valid Pulumi Access Token, you can prevent them from accessing your infrastructure state by enforcing network boundaries. The Pulumi Console provides **IP Allowlisting**, which restricts access to your organization's data to requests originating from explicitly approved IP addresses or CIDR blocks.
 
 When configuring IP Allowlisting, you must account for all legitimate traffic sources:
+
 * **Corporate VPNs / Office Networks:** Ensuring developers can run `pulumi up` or `pulumi preview` locally.
 * **CI/CD Runners:** The static outbound IP addresses of your build agents (e.g., GitHub Actions hosted runners, self-hosted GitLab runners).
 * **VPC NAT Gateways:** If you are utilizing the Pulumi Automation API from within your own cloud environments (as covered in Chapter 19).
@@ -114,7 +115,7 @@ Integrating your IdP with Pulumi unlocks several critical administrative capabil
 
 The true power of SAML/SSO integration lies in **Group Sync**. Managing individual user permissions within Pulumi is an anti-pattern at scale. Instead, organizations should map groups from their IdP directly to Pulumi Teams.
 
-For example, an Okta group named `aws-platform-engineers` can be mapped to a Pulumi Team of the same name. When a user is added to the Okta group, they automatically inherit the Pulumi Team's permissions upon their next login. 
+For example, an Okta group named `aws-platform-engineers` can be mapped to a Pulumi Team of the same name. When a user is added to the Okta group, they automatically inherit the Pulumi Team's permissions upon their next login.
 
 Interestingly, you can manage these Pulumi Teams and their stack permissions using Infrastructure as Code via the official `pulumiservice` provider. This allows you to treat your Pulumi access controls with the same rigor as your cloud infrastructure.
 
@@ -149,15 +150,15 @@ const networkStackAccess = new pulumiservice.TeamStackPermission("platform-netwo
 
 ### Enforcing Strict SSO
 
-Once SAML/SSO is configured and validated, administrators should enable **Strict SSO Mode** within the Pulumi organization settings. 
+Once SAML/SSO is configured and validated, administrators should enable **Strict SSO Mode** within the Pulumi organization settings.
 
-Without Strict Mode, users might still be able to bypass the IdP and log in using their underlying GitHub or email credentials. Enabling Strict SSO ensures that the *only* pathway into your organization's workspace is through the corporate IdP. 
+Without Strict Mode, users might still be able to bypass the IdP and log in using their underlying GitHub or email credentials. Enabling Strict SSO ensures that the *only* pathway into your organization's workspace is through the corporate IdP.
 
 *Note: Before enabling Strict SSO, ensure you have established a "break-glass" administrative account. If your IdP experiences an outage, or if a configuration error breaks the SAML trust relationship, a dedicated, highly secured machine account (using standard authentication) ensures you do not permanently lock yourself out of your infrastructure state.*
 
 ## 21.3 Managing Team Permissions and Scopes
 
-With identity federation handled via SAML/SSO (as covered in Section 21.2), the next step in establishing a robust enterprise security posture is defining exactly what those authenticated identities are allowed to do. Pulumi Cloud implements a granular Role-Based Access Control (RBAC) system designed to enforce the Principle of Least Privilege across your infrastructure estate. 
+With identity federation handled via SAML/SSO (as covered in Section 21.2), the next step in establishing a robust enterprise security posture is defining exactly what those authenticated identities are allowed to do. Pulumi Cloud implements a granular Role-Based Access Control (RBAC) system designed to enforce the Principle of Least Privilege across your infrastructure estate.
 
 Managing permissions effectively means navigating two distinct scopes: **Organization Roles**, which dictate administrative control over the workspace itself, and **Stack Permissions**, which govern access to the actual infrastructure states and deployments.
 
@@ -165,7 +166,7 @@ Managing permissions effectively means navigating two distinct scopes: **Organiz
 
 At the highest level, every user in a Pulumi organization is assigned an organization role. This role defines their baseline capabilities before any stack-specific permissions are evaluated.
 
-* **Organization Admin:** Has unrestricted access. Admins can manage billing, configure SSO, adjust IP allowlists, manage access tokens, and implicitly possess "Admin" rights over every stack within the organization. 
+* **Organization Admin:** Has unrestricted access. Admins can manage billing, configure SSO, adjust IP allowlists, manage access tokens, and implicitly possess "Admin" rights over every stack within the organization.
 * **Organization Member:** The default role for developers. Members can view other users and teams, but they cannot access or modify any stacks unless explicitly granted permission via Team or individual assignments.
 
 ### Stack-Level Permissions
@@ -188,7 +189,7 @@ Pulumi defines three primary permission tiers for stacks:
 
 ### Project-Level Defaults vs. Explicit Scopes
 
-Assigning permissions to hundreds of individual stacks manually is prone to human error. To streamline this, Pulumi allows you to assign permissions at the **Project** level. 
+Assigning permissions to hundreds of individual stacks manually is prone to human error. To streamline this, Pulumi allows you to assign permissions at the **Project** level.
 
 When a team is granted access to a project, they automatically inherit that permission level for all *current and future* stacks within that project. However, you can override this inheritance with explicit stack-level assignments. A common pattern is to grant a development team `write` access to a project, but explicitly downgrade their access to `read` on the `production` stack.
 
@@ -233,9 +234,10 @@ const prodStackOverride = new pulumiservice.TeamStackPermission("dev-prod-read",
 
 When integrating CI/CD pipelines (Chapter 18), the concept of "scopes" becomes vital. A common mistake is using a single Organization Access Token with administrative privileges for all deployment pipelines. If that token is compromised, the entire infrastructure is at risk.
 
-Instead, map CI/CD workflows to dedicated machine-user teams or use carefully scoped Pulumi Access Tokens. 
-1.  **Dev Pipeline:** Uses a token scoped strictly to `write` on `*-dev` stacks.
-2.  **Prod Pipeline:** Uses a token scoped to `write` or `admin` only on `*-prod` stacks, and is physically restricted to run only from the static IPs of your production deployment runners (utilizing the IP Allowlisting discussed in Section 21.1).
+Instead, map CI/CD workflows to dedicated machine-user teams or use carefully scoped Pulumi Access Tokens.
+
+1. **Dev Pipeline:** Uses a token scoped strictly to `write` on `*-dev` stacks.
+2. **Prod Pipeline:** Uses a token scoped to `write` or `admin` only on `*-prod` stacks, and is physically restricted to run only from the static IPs of your production deployment runners (utilizing the IP Allowlisting discussed in Section 21.1).
 
 By meticulously scoping team permissions and segregating human access from machine access, you establish a blast radius that protects your critical state files from both malicious actors and well-intentioned mistakes.
 
@@ -247,11 +249,12 @@ Pulumi Cloud addresses this requirement through comprehensive, immutable Audit L
 
 ### What the Audit Logs Capture
 
-It is important to distinguish between **Stack History** and **Audit Logs**. 
+It is important to distinguish between **Stack History** and **Audit Logs**.
 
-Stack History (visible on a stack's timeline) records the technical details of infrastructure changes: which resources were created, modified, or destroyed during a `pulumi up`. 
+Stack History (visible on a stack's timeline) records the technical details of infrastructure changes: which resources were created, modified, or destroyed during a `pulumi up`.
 
 Audit Logs, conversely, track the *security and administrative* lifecycle of the organization itself. Key events captured include:
+
 * **Authentication Events:** User logins, SSO assertions, and the creation or revocation of Access Tokens.
 * **Workspace Management:** Creating or deleting projects and stacks.
 * **Access Control Changes:** Modifying Team memberships, altering Organization Roles, or changing stack-level permissions.
@@ -260,7 +263,7 @@ Audit Logs, conversely, track the *security and administrative* lifecycle of the
 
 ### The Audit Logging Architecture
 
-While Pulumi retains these logs for a set period (typically 30 days for Enterprise), best practices dictate that audit logs should be ingested into your organization's centralized Security Information and Event Management (SIEM) system, such as Splunk, Datadog, or AWS CloudTrail. 
+While Pulumi retains these logs for a set period (typically 30 days for Enterprise), best practices dictate that audit logs should be ingested into your organization's centralized Security Information and Event Management (SIEM) system, such as Splunk, Datadog, or AWS CloudTrail.
 
 This prevents tampering and allows security teams to correlate Pulumi activity with broader network or identity events.
 
@@ -310,10 +313,10 @@ echo "Logs successfully extracted and ready for ingestion."
 
 ### Compliance Tracking and Policy as Code
 
-Audit logs tell you when rules change, but **Compliance Tracking** ensures your infrastructure remains in a compliant state between audits. 
+Audit logs tell you when rules change, but **Compliance Tracking** ensures your infrastructure remains in a compliant state between audits.
 
-By utilizing Pulumi CrossGuard (introduced in Chapter 15) in conjunction with the Pulumi Console, you can generate compliance reports. When a Policy Pack is enforced organization-wide, the Pulumi Service aggregates policy evaluations across all deployments. 
+By utilizing Pulumi CrossGuard (introduced in Chapter 15) in conjunction with the Pulumi Console, you can generate compliance reports. When a Policy Pack is enforced organization-wide, the Pulumi Service aggregates policy evaluations across all deployments.
 
-If a new compliance mandate dictates that all databases must use customer-managed encryption keys, you can update your Policy Pack. The Pulumi Console will then surface a compliance dashboard showing which stacks are currently violating the new policy, long before a formal security audit takes place. 
+If a new compliance mandate dictates that all databases must use customer-managed encryption keys, you can update your Policy Pack. The Pulumi Console will then surface a compliance dashboard showing which stacks are currently violating the new policy, long before a formal security audit takes place.
 
 By combining SSO (ensuring verified identities), RBAC (enforcing least privilege), Policy as Code (mandating secure infrastructure), and Audit Logs (recording all meta-actions), the Pulumi Console transforms Infrastructure as Code from a simple deployment mechanism into a verifiable, enterprise-grade security platform.

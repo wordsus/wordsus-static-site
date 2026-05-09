@@ -2,7 +2,7 @@ Provisioning a Kubernetes cluster is only half the battle; the true complexity l
 
 ## 12.1 The Pulumi Kubernetes Provider
 
-While the cloud providers discussed in Part III (AWS, Azure, GCP) handle the provisioning of managed control planes and worker nodes, the Pulumi Kubernetes Provider is responsible for managing the workloads, configuration, and infrastructure running *inside* those clusters. 
+While the cloud providers discussed in Part III (AWS, Azure, GCP) handle the provisioning of managed control planes and worker nodes, the Pulumi Kubernetes Provider is responsible for managing the workloads, configuration, and infrastructure running *inside* those clusters.
 
 Unlike traditional Kubernetes management tools that rely heavily on templated YAML or intermediate domain-specific languages, the Pulumi Kubernetes provider offers direct, strongly-typed access to the entire Kubernetes API. Because the provider is generated directly from the upstream Kubernetes OpenAPI specification, day-zero support is guaranteed for new Kubernetes releases; every `apiVersion` and `kind` translates identically into a corresponding namespace and class within the Pulumi SDKs.
 
@@ -26,7 +26,7 @@ The Kubernetes provider acts as a specialized translator between the Pulumi Engi
 
 ### From YAML to Code: 1-to-1 Mapping
 
-The defining characteristic of the Pulumi Kubernetes provider is its predictable mapping of standard Kubernetes manifest schemas to programmatic objects. 
+The defining characteristic of the Pulumi Kubernetes provider is its predictable mapping of standard Kubernetes manifest schemas to programmatic objects.
 
 For instance, an `apps/v1/Deployment` in YAML translates directly to the `kubernetes.apps.v1.Deployment` class in Pulumi. The inputs for this class mirror the standard `spec` and `metadata` blocks.
 
@@ -130,7 +130,7 @@ const service = new k8s.core.v1.Service("nginx-service", {
 
 One of the most complex aspects of Kubernetes automation is timing. Executing `kubectl apply` merely registers intent with the API server; it does not mean the underlying pods are running or that a LoadBalancer has received a public IP.
 
-The Pulumi Kubernetes provider solves this through built-in **Await Logic**. When you declare a resource, Pulumi actively watches the cluster state and blocks the deployment's completion until the resource is fully operational. 
+The Pulumi Kubernetes provider solves this through built-in **Await Logic**. When you declare a resource, Pulumi actively watches the cluster state and blocks the deployment's completion until the resource is fully operational.
 
 * **Deployments/StatefulSets:** Pulumi waits until the requested number of replicas are available and all containers pass their readiness probes.
 * **Services (LoadBalancer):** Pulumi waits until the cloud provider successfully provisions the external IP or hostname and attaches it to the `status` block.
@@ -197,7 +197,7 @@ const monitoringStack = new k8s.yaml.ConfigGroup("monitoring-stack", {
 
 Applying static YAML is useful, but the real power of Pulumi emerges when you need to bridge the gap between static manifests and dynamic infrastructure. How do you inject a newly generated database password or an RDS endpoint from AWS into a static Kubernetes `Secret` or `Deployment` YAML?
 
-Pulumi solves this with **Transformations**. A transformation is a callback function that Pulumi executes on every resource parsed from a YAML file *before* it is registered with the Pulumi Engine. 
+Pulumi solves this with **Transformations**. A transformation is a callback function that Pulumi executes on every resource parsed from a YAML file *before* it is registered with the Pulumi Engine.
 
 ```text
 [Static YAML Manifests]
@@ -284,15 +284,15 @@ When using `kustomize.Directory`, Pulumi tracks the individual resources produce
 
 ## 12.3 Managing Helm Charts via Code
 
-Helm has long established itself as the de facto package manager for Kubernetes. It allows developers to bundle complex applications—comprising Deployments, Services, Secrets, and Custom Resources—into reusable templates called Charts. 
+Helm has long established itself as the de facto package manager for Kubernetes. It allows developers to bundle complex applications—comprising Deployments, Services, Secrets, and Custom Resources—into reusable templates called Charts.
 
-Historically, orchestrating Helm deployments alongside underlying cloud infrastructure required fragile bash scripts or CI/CD pipeline glue. You would provision a database using Terraform, extract the connection string, and pass it via `--set` flags to a `helm install` command. 
+Historically, orchestrating Helm deployments alongside underlying cloud infrastructure required fragile bash scripts or CI/CD pipeline glue. You would provision a database using Terraform, extract the connection string, and pass it via `--set` flags to a `helm install` command.
 
 Pulumi integrates Helm directly into its resource model, eliminating this friction. It provides two distinct methodologies for managing Helm charts: **Client-Side Rendering** (`helm.v3.Chart`) and **Server-Side Releases** (`helm.v3.Release`). Understanding the difference between these two approaches is crucial for designing a robust deployment strategy.
 
 ### The `Chart` Resource: Client-Side Rendering
 
-When you use the `helm.v3.Chart` class, Pulumi does not use the Helm binary to manage the deployment lifecycle on the cluster. Instead, Pulumi fetches the chart, injects the values you provide, and executes the Go templates *locally* (client-side) to generate standard Kubernetes YAML. 
+When you use the `helm.v3.Chart` class, Pulumi does not use the Helm binary to manage the deployment lifecycle on the cluster. Instead, Pulumi fetches the chart, injects the values you provide, and executes the Go templates *locally* (client-side) to generate standard Kubernetes YAML.
 
 Pulumi then parses this YAML and registers each generated object (the Deployment, the ConfigMap, the Service, etc.) as an individual resource in the Pulumi state file.
 
@@ -304,6 +304,7 @@ Pulumi then parses this YAML and registers each generated object (the Deployment
 ```
 
 **Advantages of the `Chart` resource:**
+
 * **Granular Diffs:** During `pulumi up`, you will see exactly which specific Kubernetes resources are being created, modified, or deleted, rather than a monolithic update to a Helm release.
 * **Transformations:** Because Pulumi parses the rendered YAML before sending it to the API server, you can use the transformations feature discussed in Chapter 12.2 to programmatically mutate resources (e.g., forcing a specific `StorageClass` or injecting an init-container) even if the original Helm chart doesn't expose a value for it.
 
@@ -354,6 +355,7 @@ The `helm.v3.Release` resource takes the opposite approach. It behaves identical
 ```
 
 **Advantages of the `Release` resource:**
+
 * **Helm Hooks:** Many complex charts rely heavily on Helm lifecycle hooks (e.g., `pre-install` jobs to run database migrations, or `post-delete` hooks to clean up volumes). The `Chart` resource ignores these hooks because it merely renders templates. The `Release` resource fully supports them.
 * **Native Tooling Compatibility:** Because the deployment creates standard Helm release secrets in the cluster, operations teams can still run commands like `helm list`, `helm rollback`, or `helm status` to interact with the workloads.
 
@@ -442,7 +444,7 @@ Integrating Pulumi into a GitOps workflow requires a strategic choice between th
 
 The most straightforward way to implement GitOps with Pulumi is through standard continuous integration pipelines (e.g., GitHub Actions, GitLab CI). In this approach, Git remains the source of truth, but the reconciliation engine is your external CI/CD runner rather than an in-cluster agent.
 
-When a developer merges a pull request containing changes to a Pulumi program, a pipeline triggers, authenticates with the cloud provider and the Kubernetes cluster, and executes `pulumi up`. 
+When a developer merges a pull request containing changes to a Pulumi program, a pipeline triggers, authenticates with the cloud provider and the Kubernetes cluster, and executes `pulumi up`.
 
 ```text
 [ Developer ] -> (git push) -> [ Git Repository ] -> (webhook) -> [ CI/CD Runner ]
@@ -455,10 +457,12 @@ When a developer merges a pull request containing changes to a Pulumi program, a
 ```
 
 **Pros:**
+
 * Unified workflow for both cloud infrastructure (VPCs, databases) and Kubernetes resources.
 * Leverages existing CI/CD infrastructure and secrets management.
 
 **Cons:**
+
 * The CI/CD runner needs direct network access and high-level credentials to the Kubernetes cluster API.
 * Does not automatically detect and revert "configuration drift" (manual changes made via `kubectl`) until the next pipeline run.
 
@@ -500,6 +504,7 @@ spec:
 ```
 
 **Pros:**
+
 * **Enhanced Security:** The CI/CD system never needs credentials to access the Kubernetes API. The Operator handles everything internally.
 * **Continuous Drift Detection:** The Operator can be configured to continuously monitor the resulting resources and automatically correct any manual changes, providing true GitOps reconciliation.
 
@@ -516,7 +521,7 @@ A standard hybrid architecture follows the **"Infrastructure + Bootstrapping"** 
 
 **Implementing the Boundary**
 
-To prevent Pulumi and Argo CD from fighting over the state of the same resources, you must enforce a strict separation of concerns. If Pulumi deploys an Argo CD `Application` that subsequently creates a `Deployment`, Pulumi *does not* track that `Deployment` in its state file. 
+To prevent Pulumi and Argo CD from fighting over the state of the same resources, you must enforce a strict separation of concerns. If Pulumi deploys an Argo CD `Application` that subsequently creates a `Deployment`, Pulumi *does not* track that `Deployment` in its state file.
 
 If you must manage a resource with Pulumi but allow another controller (like an autoscaler or a GitOps agent) to modify specific fields, you utilize the `ignoreChanges` resource option.
 

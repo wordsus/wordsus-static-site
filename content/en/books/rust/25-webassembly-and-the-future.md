@@ -1,4 +1,4 @@
-WebAssembly (Wasm) represents one of the most profound paradigm shifts in modern computing, and Rust is at the absolute forefront of this revolution. Originally designed to execute high-performance code inside web browsers, Wasm has rapidly evolved into a secure, portable, and incredibly fast execution environment for the server edge as well. 
+WebAssembly (Wasm) represents one of the most profound paradigm shifts in modern computing, and Rust is at the absolute forefront of this revolution. Originally designed to execute high-performance code inside web browsers, Wasm has rapidly evolved into a secure, portable, and incredibly fast execution environment for the server edge as well.
 
 In this final chapter, we will explore how to bridge Rust and JavaScript using `wasm-bindgen`, orchestrate browser-ready modules with `wasm-pack`, and break out of the browser entirely using WASI and Wasmtime. Finally, we will see how frameworks like Leptos are redefining full-stack Rust development.
 
@@ -10,11 +10,11 @@ Rust is uniquely suited for WebAssembly. Unlike languages that require a heavy r
 
 ### The Impedance Mismatch
 
-At its core, a WebAssembly module is heavily sandboxed and computationally isolated. It natively understands only four basic data types, all of which are numbers: 32-bit and 64-bit integers, and 32-bit and 64-bit floats. 
+At its core, a WebAssembly module is heavily sandboxed and computationally isolated. It natively understands only four basic data types, all of which are numbers: 32-bit and 64-bit integers, and 32-bit and 64-bit floats.
 
 This presents a significant challenge when trying to build rich applications. A web browser's JavaScript environment operates with complex objects, dynamic strings, arrays, and closures. WebAssembly, by itself, has no concept of a JavaScript `String` or a DOM element. It only possesses a single, contiguous block of linear memory.
 
-To pass a string from JavaScript to Rust, you cannot simply pass the string object. You must allocate space in the WebAssembly linear memory, encode the string into bytes (e.g., UTF-8), copy those bytes into the allocated space, and then pass a pointer and a length to the WebAssembly function. Returning data requires the inverse process. 
+To pass a string from JavaScript to Rust, you cannot simply pass the string object. You must allocate space in the WebAssembly linear memory, encode the string into bytes (e.g., UTF-8), copy those bytes into the allocated space, and then pass a pointer and a length to the WebAssembly function. Returning data requires the inverse process.
 
 Doing this manually for every function call is error-prone and tedious. This is exactly the problem `wasm-bindgen` solves.
 
@@ -217,14 +217,16 @@ To execute the compiled WebAssembly in a browser, you need an HTML file and a st
 
 Because WebAssembly modules must be fetched via the network, browser security policies (CORS) prevent them from being loaded using the local `file://` protocol. If you simply double-click `index.html`, the browser will throw a fetch error.
 
-To test your application, you must serve the directory using a local HTTP server. You can use any static file server. 
+To test your application, you must serve the directory using a local HTTP server. You can use any static file server.
 
 If you have Python installed:
+
 ```bash
 python3 -m http.server 8080
 ```
 
 Alternatively, you can use a Rust-based tool like `miniserve`:
+
 ```bash
 cargo install miniserve
 miniserve --index index.html -p 8080 .
@@ -234,9 +236,9 @@ Navigating to `http://localhost:8080` in your browser will load the page, fetch 
 
 ## 25.3 Wasm on the Server: WASI and the Wasmtime Runtime
 
-While WebAssembly was born in the browser, its defining characteristics—portability, predictable performance, and strict sandboxing—make it an incredibly compelling technology for backend servers, edge computing, and distributed systems. However, executing a Wasm module outside of a JavaScript engine introduces a fundamental problem: how does the module interact with the outside world? 
+While WebAssembly was born in the browser, its defining characteristics—portability, predictable performance, and strict sandboxing—make it an incredibly compelling technology for backend servers, edge computing, and distributed systems. However, executing a Wasm module outside of a JavaScript engine introduces a fundamental problem: how does the module interact with the outside world?
 
-A pure WebAssembly module cannot open a file, read an environment variable, or open a network socket. In the browser, `wasm-bindgen` bridges this gap by calling JavaScript APIs. On a server, there is no JavaScript engine to act as the intermediary. 
+A pure WebAssembly module cannot open a file, read an environment variable, or open a network socket. In the browser, `wasm-bindgen` bridges this gap by calling JavaScript APIs. On a server, there is no JavaScript engine to act as the intermediary.
 
 ### The WebAssembly System Interface (WASI)
 
@@ -398,6 +400,7 @@ While Yew is mature and battle-tested, the overhead of allocating and diffing th
 Dioxus also embraces a React-like, Virtual DOM-based architecture, but its defining characteristic is its portability. Dioxus was designed from the ground up to be a cross-platform framework. The core reactivity and VDOM engine are decoupled from the renderer.
 
 With Dioxus, you can write your UI components once using the `rsx!` macro and render them to:
+
 * **Web:** Using WebAssembly and the browser DOM.
 * **Desktop:** Using a native webview (Tauri-style) without Electron's overhead.
 * **Mobile:** Natively rendering on iOS and Android.
@@ -457,8 +460,8 @@ pub fn UserProfile() -> impl IntoView {
 
 Frameworks like Leptos and Dioxus rely on a unified compilation process to achieve this seamless full-stack illusion. The build tooling (like `cargo-leptos` or `dx`) compiles the crate twice:
 
-1.  **Server Build:** Compiles to the host architecture (e.g., `x86_64-unknown-linux-gnu`). UI macros act as generators for HTML strings (Server-Side Rendering, or SSR). Server functions execute their actual bodies.
-2.  **Client Build:** Compiles to WebAssembly (`wasm32-unknown-unknown`). UI macros act as DOM manipulators (Hydration and client-side rendering). Server functions are stubbed out and replaced with network fetch requests.
+1. **Server Build:** Compiles to the host architecture (e.g., `x86_64-unknown-linux-gnu`). UI macros act as generators for HTML strings (Server-Side Rendering, or SSR). Server functions execute their actual bodies.
+2. **Client Build:** Compiles to WebAssembly (`wasm32-unknown-unknown`). UI macros act as DOM manipulators (Hydration and client-side rendering). Server functions are stubbed out and replaced with network fetch requests.
 
 ```text
 +--------------------------------------------------------------------------+

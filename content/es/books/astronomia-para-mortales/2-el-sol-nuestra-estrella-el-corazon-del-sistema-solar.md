@@ -53,19 +53,19 @@ El Sol no es una masa uniforme. Al igual que una cebolla (o como la Tierra), tie
 [CENTRO DEL SOL]
 ```
 
-**La Atmósfera Solar (Corona y Cromosfera):** 
+**La Atmósfera Solar (Corona y Cromosfera):**
 Aunque no la vemos en un día normal por el intenso brillo del Sol, la estrella tiene una extensa atmósfera. La corona es la parte más externa, un halo de plasma fantasmal que se extiende por millones de kilómetros en el espacio. Solo podemos verla con nuestros propios ojos durante un eclipse solar total.
 
-**La Fotosfera:** 
+**La Fotosfera:**
 Esta es la capa que emite la luz visible que llega a nuestros ojos. Puedes pensar en ella como la "superficie" del Sol, aunque no es sólida. Si pudieras pararte allí, te hundirías. Aquí es donde aparecen las famosas "manchas solares", regiones oscuras que son un poco más frías que su entorno debido a intensos campos magnéticos que bloquean temporalmente el calor desde el interior.
 
-**La Zona Convectiva:** 
+**La Zona Convectiva:**
 Justo debajo de la superficie, el plasma solar "hierve" como agua en una olla. El material caliente sube desde el interior profundo, se enfría al llegar a la fotosfera y vuelve a hundirse. Este constante burbujeo transporta el calor hacia afuera.
 
-**La Zona Radiativa:** 
+**La Zona Radiativa:**
 Aquí la densidad es tan alta que el calor no puede moverse burbujeando. En cambio, viaja como radiación (luz). Pero es tan espeso que un solo fotón (una partícula de luz) que intenta salir rebota trillones de veces contra las partículas de plasma. Este "paseo aleatorio" es tan lento que un fotón de luz puede tardar entre 100.000 y 1 millón de años en atravesar esta capa. ¡La luz que te calienta hoy se generó en el centro del Sol hace cientos de miles de años!
 
-**El Núcleo:** 
+**El Núcleo:**
 El corazón de la bestia. Es una región inimaginablemente densa y caliente donde la presión es tan fuerte que la materia colapsa sobre sí misma, obligando a los átomos a chocar con una violencia extrema. Aquí es donde nace la energía del Sol.
 
 ## 3. El motor de la vida: La fusión nuclear
@@ -108,7 +108,7 @@ Sin embargo, a medida que te alejas de la superficie y entras en la corona (la p
 
 El Sol no es una estrella tranquila. Es un monstruo magnético y turbulento. Dado que está hecho de plasma y sus diferentes partes giran a diferentes velocidades (el ecuador gira más rápido que los polos), sus líneas de campo magnético se enredan, se retuercen y, a veces, se rompen violentamente.
 
-Esta dinámica crea lo que llamamos el "clima espacial". Cuando estas líneas magnéticas se tensan demasiado, explotan, creando llamaradas solares o "Eyecciones de Masa Coronal" (CMEs). Estas últimas son como erupciones volcánicas colosales que arrojan miles de millones de toneladas de plasma cargado al espacio a millones de kilómetros por hora. 
+Esta dinámica crea lo que llamamos el "clima espacial". Cuando estas líneas magnéticas se tensan demasiado, explotan, creando llamaradas solares o "Eyecciones de Masa Coronal" (CMEs). Estas últimas son como erupciones volcánicas colosales que arrojan miles de millones de toneladas de plasma cargado al espacio a millones de kilómetros por hora.
 
 Constantemente, el Sol también emite una brisa constante de partículas llamada el "viento solar". Afortunadamente para nosotros, la Tierra tiene un núcleo de hierro líquido que genera su propio campo magnético, una burbuja protectora llamada magnetosfera. Cuando el violento viento solar choca con nuestro escudo, las partículas cargadas son desviadas hacia los polos, donde interactúan con nuestra atmósfera creando uno de los espectáculos más hermosos de la naturaleza: las auroras boreales y australes. Sin este campo magnético, el viento solar habría arrancado la atmósfera terrestre hace miles de millones de años, dejándonos como Marte, un mundo seco y estéril.
 
@@ -122,7 +122,7 @@ Las plantas, las algas y ciertas bacterias han evolucionado para actuar como peq
 
 $$ 6\text{CO}_{2} + 6\text{H}_{2}\text{O} + \text{Luz Solar} \rightarrow \text{C}_{6}\text{H}_{12}\text{O}_{6} + 6\text{O}_{2} $$
 
-Es decir, la naturaleza toma agua y gas carbónico, y utilizando el fotón de luz que viajó desde el núcleo solar hasta la hoja de un árbol, lo convierte en glucosa (azúcar, la energía base para casi todos los seres vivos) y expulsa oxígeno puro ($O_{2}$) como subproducto. Cada bocado de comida que comes, y cada respiración profunda que tomas de aire fresco, es posible directamente gracias a la energía del Sol. 
+Es decir, la naturaleza toma agua y gas carbónico, y utilizando el fotón de luz que viajó desde el núcleo solar hasta la hoja de un árbol, lo convierte en glucosa (azúcar, la energía base para casi todos los seres vivos) y expulsa oxígeno puro ($O_{2}$) como subproducto. Cada bocado de comida que comes, y cada respiración profunda que tomas de aire fresco, es posible directamente gracias a la energía del Sol.
 
 Además, el calentamiento desigual de la superficie terrestre por parte del Sol es lo que crea el viento, dirige las corrientes oceánicas y alimenta el ciclo del agua, evaporando los océanos para crear las nubes que traen lluvia a la tierra. Nuestro clima y nuestro entorno están enteramente bajo el control rítmico de nuestra estrella.
 
@@ -130,7 +130,7 @@ Además, el calentamiento desigual de la superficie terrestre por parte del Sol 
 
 A pesar de su inmensidad, el Sol no es eterno. El combustible nuclear es finito. Actualmente, el Sol tiene unos 4.600 millones de años, lo que lo sitúa justo en la mitad de su vida. Es una estrella de mediana edad disfrutando de su fase más estable y próspera.
 
-Continuará brillando con relativa calma durante otros 5.000 millones de años. Pero eventualmente, el hidrógeno en el núcleo comenzará a agotarse. A medida que falte combustible, la gravedad empezará a ganar la batalla y aplastará el núcleo con más fuerza. Este aumento de presión y temperatura permitirá al Sol empezar a quemar helio. 
+Continuará brillando con relativa calma durante otros 5.000 millones de años. Pero eventualmente, el hidrógeno en el núcleo comenzará a agotarse. A medida que falte combustible, la gravedad empezará a ganar la batalla y aplastará el núcleo con más fuerza. Este aumento de presión y temperatura permitirá al Sol empezar a quemar helio.
 
 Durante esta etapa, la energía empujará hacia afuera con tanta fuerza que el Sol se hinchará desmesuradamente, transformándose en una estrella "Gigante Roja". Su tamaño crecerá tanto que engullirá las órbitas de Mercurio, Venus, y muy posiblemente, de la Tierra. Nuestro cielo se llenaría con un muro de plasma rojo ardiente antes de que el planeta se vaporizara. (Afortunadamente, falta muchísimo tiempo para que la humanidad, o lo que seamos en ese entonces, deba preocuparse o mudarse a otros sistemas solares).
 

@@ -40,16 +40,20 @@ OpenTofu Data Types
 ```
 
 #### Primitive Types
-Primitives represent single, scalar values. 
+
+Primitives represent single, scalar values.
+
 * **`string`**: A sequence of Unicode characters representing text.
 * **`number`**: A numeric value. OpenTofu does not distinguish between integers and floats; both are represented as `number`.
 * **`bool`**: A boolean value, either `true` or `false`.
 
 #### Collection Types
+
 Collections group multiple values of the *same* primitive or complex type.
+
 * **`list`**: An ordered sequence of values. You define the inner type, such as `list(string)`. Elements are accessed by their zero-based index (e.g., `var.availability_zones[0]`).
 * **`set`**: An unordered collection of unique values. Sets are particularly useful when order doesn't matter and you want to prevent duplicate entries, such as a list of IAM user names.
-* **`map`**: A collection of key-value pairs where the keys are always strings, and the values are of the specified type, such as `map(string)`. 
+* **`map`**: A collection of key-value pairs where the keys are always strings, and the values are of the specified type, such as `map(string)`.
 
 ```hcl
 variable "resource_tags" {
@@ -63,6 +67,7 @@ variable "resource_tags" {
 ```
 
 #### Structural Types
+
 When you need to pass a complex, nested data structure where elements have different types, you use structural types.
 
 * **`object`**: The most common structural type. It allows you to define a schema with specific attribute names and their corresponding types.
@@ -85,15 +90,17 @@ variable "database_config" {
 
 ### Implementing Strict Validation
 
-Data types ensure a variable is a `string` or a `number`, but they do not ensure the value makes logical sense for your infrastructure. For example, an AWS region must be a string, but `"moon-base-alpha"` is not a valid AWS region. 
+Data types ensure a variable is a `string` or a `number`, but they do not ensure the value makes logical sense for your infrastructure. For example, an AWS region must be a string, but `"moon-base-alpha"` is not a valid AWS region.
 
-OpenTofu allows you to enforce arbitrary constraints using the `validation` block nested inside a `variable` block. 
+OpenTofu allows you to enforce arbitrary constraints using the `validation` block nested inside a `variable` block.
 
 A `validation` block requires two arguments:
-1.  **`condition`**: An expression that evaluates to `true` if the value is valid, and `false` if it is not.
-2.  **`error_message`**: A string that is displayed to the user if the condition evaluates to `false`. This message should explicitly tell the user what the acceptable values are.
+
+1. **`condition`**: An expression that evaluates to `true` if the value is valid, and `false` if it is not.
+2. **`error_message`**: A string that is displayed to the user if the condition evaluates to `false`. This message should explicitly tell the user what the acceptable values are.
 
 #### Validating Against a List of Allowed Values
+
 You can use the `contains` function to restrict a variable to a specific set of allowed strings (essentially creating an enum).
 
 ```hcl
@@ -109,6 +116,7 @@ variable "environment_tier" {
 ```
 
 #### Enforcing Naming Conventions with Regex
+
 The `can` and `regex` functions are frequently paired to enforce strict naming conventions, ensuring that user-provided names comply with cloud provider restrictions or organizational policies.
 
 ```hcl
@@ -124,6 +132,7 @@ variable "storage_bucket_name" {
 ```
 
 #### Multiple Validation Blocks
+
 You are not limited to a single validation rule. OpenTofu allows you to define multiple `validation` blocks within a single `variable`. OpenTofu evaluates all validation blocks; if any condition fails, it outputs the respective error message.
 
 ```hcl
@@ -144,11 +153,12 @@ variable "app_port" {
 ```
 
 #### Validation Limitations
+
 When writing validation conditions, the expression can only refer to the variable itself (e.g., `var.app_port`). You cannot cross-reference other variables, local values, or resource attributes within a standard variable validation block. The validation rule must be entirely self-contained, ensuring that the variable's validity is evaluated solely based on its own input.
 
 ## 7.2 Passing Variables via Files, CLI, and Environment
 
-In the previous section, we established how to define input variables and enforce strict data validation. However, defining a variable is only half the equation; you must also provide the actual values during the execution of your OpenTofu workflow. 
+In the previous section, we established how to define input variables and enforce strict data validation. However, defining a variable is only half the equation; you must also provide the actual values during the execution of your OpenTofu workflow.
 
 Hardcoding values directly into your `.tf` files defeats the purpose of modular infrastructure. Instead, OpenTofu provides several mechanisms to inject values at runtime, allowing you to deploy the exact same code across different environments (e.g., Development, Staging, Production) simply by swapping out the inputs.
 
@@ -159,7 +169,7 @@ There are three primary ways to pass variable values to OpenTofu: through dedica
 For most deployments, especially those managed within version control, variable definitions files are the standard and most reliable method for passing inputs. These files use the same HCL syntax as your main configuration but are dedicated solely to assigning values to previously defined variables.
 
 **The `terraform.tfvars` File**
-By default, OpenTofu automatically looks for and loads a file named exactly `terraform.tfvars` or `terraform.tfvars.json` in the current working directory. 
+By default, OpenTofu automatically looks for and loads a file named exactly `terraform.tfvars` or `terraform.tfvars.json` in the current working directory.
 
 ```hcl
 # terraform.tfvars
@@ -174,7 +184,7 @@ resource_tags = {
 ```
 
 **Auto-loaded Files (`*.auto.tfvars`)**
-If you need to split your variable assignments into multiple files for better organization (e.g., separating networking variables from database variables), you can use the `.auto.tfvars` extension. OpenTofu automatically loads any file matching `*.auto.tfvars` or `*.auto.tfvars.json`. 
+If you need to split your variable assignments into multiple files for better organization (e.g., separating networking variables from database variables), you can use the `.auto.tfvars` extension. OpenTofu automatically loads any file matching `*.auto.tfvars` or `*.auto.tfvars.json`.
 
 ```text
 Project Structure Example
@@ -186,7 +196,7 @@ Project Structure Example
 
 ### 2. Command-Line Flags (`-var` and `-var-file`)
 
-When you need to override a specific value for a one-off run, or when you are testing configurations locally, passing variables via the Command-Line Interface (CLI) is highly effective. 
+When you need to override a specific value for a one-off run, or when you are testing configurations locally, passing variables via the Command-Line Interface (CLI) is highly effective.
 
 **The `-var` Flag**
 You can assign individual variables directly in your `tofu plan` or `tofu apply` commands using the `-var` flag. This is useful for temporary overrides but becomes unwieldy for complex structural types like maps or objects.
@@ -220,7 +230,7 @@ tofu apply
 
 ### The Variable Definition Precedence
 
-A common scenario in mature infrastructure projects is having the same variable defined in multiple places—for instance, a default value in `variables.tf`, a team-wide standard in `terraform.tfvars`, and a temporary override via a `-var` CLI flag. 
+A common scenario in mature infrastructure projects is having the same variable defined in multiple places—for instance, a default value in `variables.tf`, a team-wide standard in `terraform.tfvars`, and a temporary override via a `-var` CLI flag.
 
 OpenTofu resolves these conflicts using a strict order of precedence. The list below goes from lowest priority to highest priority. Values defined lower down this list will silently override values defined higher up.
 
@@ -310,7 +320,7 @@ Module Data Flow
 ```
 
 **3. Cross-Workspace Data Sharing (Remote State)**
-In massive, enterprise-scale environments, you rarely deploy all infrastructure in a single state file. You might have a "Networking" workspace managed by the Network Team, and an "Application" workspace managed by developers. 
+In massive, enterprise-scale environments, you rarely deploy all infrastructure in a single state file. You might have a "Networking" workspace managed by the Network Team, and an "Application" workspace managed by developers.
 
 Outputs exposed in the Networking workspace's root module are saved in its state file. The Application workspace can then use the `terraform_remote_state` data source to read those exact outputs, allowing loosely coupled configurations to share critical IDs and endpoints.
 
@@ -319,7 +329,8 @@ Outputs exposed in the Networking workspace's root module are saved in its state
 Beyond simply passing data, OpenTofu outputs support advanced arguments for handling dependencies and data validation.
 
 #### Explicit Dependencies (`depends_on`)
-Normally, OpenTofu infers dependencies automatically. If an output references `aws_instance.web.id`, OpenTofu knows it cannot compute the output until the instance is created. However, occasionally you need an output to wait for a side effect that it doesn't directly reference in its `value`. 
+
+Normally, OpenTofu infers dependencies automatically. If an output references `aws_instance.web.id`, OpenTofu knows it cannot compute the output until the instance is created. However, occasionally you need an output to wait for a side effect that it doesn't directly reference in its `value`.
 
 You can force this using the `depends_on` meta-argument within the output block.
 
@@ -336,6 +347,7 @@ output "api_gateway_url" {
 ```
 
 #### Output Validation (`precondition`)
+
 Just as you can validate input variables, you can use `precondition` blocks within a `lifecycle` block to validate outputs before they are returned. This is exceptionally useful for module authors who want to guarantee the integrity of the data their module produces.
 
 If the precondition fails, OpenTofu halts the apply process and returns your custom error message.
@@ -356,7 +368,7 @@ output "secure_endpoint" {
 
 ## 7.4 Protecting Sensitive Variables and Redacting Outputs
 
-Modern infrastructure relies heavily on secrets. Whether you are provisioning a database that requires an initial master password, configuring an API gateway with authentication tokens, or generating TLS certificates, your OpenTofu configurations will inevitably handle highly sensitive data. 
+Modern infrastructure relies heavily on secrets. Whether you are provisioning a database that requires an initial master password, configuring an API gateway with authentication tokens, or generating TLS certificates, your OpenTofu configurations will inevitably handle highly sensitive data.
 
 By default, OpenTofu is transparent. When you run a `tofu plan` or `tofu apply`, it prints the exact values being assigned to resource arguments. In a Continuous Integration (CI) pipeline, this transparency is a massive security vulnerability, as secrets can be permanently logged in plaintext for anyone with pipeline access to read.
 
@@ -397,7 +409,7 @@ When this configuration is evaluated, OpenTofu recognizes the sensitive flag. Du
 
 ### Cascading Sensitivity and Outputs
 
-OpenTofu tracks the sensitivity of a value throughout your entire configuration graph. If you pass a sensitive variable into a resource, any attribute of that resource that derives from the sensitive variable is often treated as sensitive. 
+OpenTofu tracks the sensitivity of a value throughout your entire configuration graph. If you pass a sensitive variable into a resource, any attribute of that resource that derives from the sensitive variable is often treated as sensitive.
 
 More importantly, if you attempt to create an `output` that exposes a sensitive variable (or a provider attribute that is inherently sensitive, like a generated private key), OpenTofu will purposefully throw a validation error to prevent accidental data leakage.
 
@@ -447,6 +459,6 @@ Marking variables and outputs as `sensitive = true` **does not encrypt the value
 
 Because of this limitation, `sensitive = true` must be part of a broader security strategy:
 
-1.  **Never hardcode secrets:** Never write secrets in your `.tf` or `.tfvars` files. Inject them via environment variables (`TF_VAR_db_password`) in your CI/CD pipeline, or use native cloud secret managers.
-2.  **Use Secret Manager Data Sources:** The most secure pattern is to pass an identifier (like a secret name) into OpenTofu, and use a `data` block to fetch the actual secret directly from a vault (e.g., AWS Secrets Manager, HashiCorp Vault) at runtime.
-3.  **Encrypt State at Rest:** Always store your remote state in a secure backend (like an S3 bucket or Azure Blob Storage) with strict IAM access controls and at-rest encryption enabled. This will be explored deeply in Chapter 10.
+1. **Never hardcode secrets:** Never write secrets in your `.tf` or `.tfvars` files. Inject them via environment variables (`TF_VAR_db_password`) in your CI/CD pipeline, or use native cloud secret managers.
+2. **Use Secret Manager Data Sources:** The most secure pattern is to pass an identifier (like a secret name) into OpenTofu, and use a `data` block to fetch the actual secret directly from a vault (e.g., AWS Secrets Manager, HashiCorp Vault) at runtime.
+3. **Encrypt State at Rest:** Always store your remote state in a secure backend (like an S3 bucket or Azure Blob Storage) with strict IAM access controls and at-rest encryption enabled. This will be explored deeply in Chapter 10.

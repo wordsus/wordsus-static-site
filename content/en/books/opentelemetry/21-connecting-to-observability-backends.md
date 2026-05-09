@@ -1,16 +1,16 @@
-The true power of OpenTelemetry lies in its vendor-neutral architecture. After instrumenting applications and processing telemetry through the Collector, that data must be routed to specialized backends for storage, querying, and visualization. 
+The true power of OpenTelemetry lies in its vendor-neutral architecture. After instrumenting applications and processing telemetry through the Collector, that data must be routed to specialized backends for storage, querying, and visualization.
 
 This chapter explores how the Collector serves as the ultimate universal router. We will detail exporting metrics to Prometheus and Grafana Mimir, sending distributed traces to Jaeger and Tempo, routing logs to Elasticsearch and Loki, and seamlessly integrating with commercial SaaS platforms like Datadog and Honeycomb—all without altering a single line of your application's instrumentation code.
 
 ## 21.1 Exporting Metrics to Prometheus and Grafana Mimir
 
-Integrating OpenTelemetry with the Prometheus ecosystem bridges the gap between the standardized, vendor-neutral OTLP format and one of the most widely adopted metric storage and querying engines in the cloud-native landscape. While OpenTelemetry and Prometheus share common goals, their underlying architectures—specifically regarding telemetry transmission (push vs. pull) and metric temporality (delta vs. cumulative)—present unique integration challenges. 
+Integrating OpenTelemetry with the Prometheus ecosystem bridges the gap between the standardized, vendor-neutral OTLP format and one of the most widely adopted metric storage and querying engines in the cloud-native landscape. While OpenTelemetry and Prometheus share common goals, their underlying architectures—specifically regarding telemetry transmission (push vs. pull) and metric temporality (delta vs. cumulative)—present unique integration challenges.
 
 Grafana Mimir, as a highly scalable, multi-tenant, long-term storage backend for Prometheus, inherits these exact paradigms but also introduces modern native OTLP ingestion paths.
 
 ### Bridging the Push/Pull Divide
 
-OpenTelemetry was designed with a heavy emphasis on a "push" architecture via OTLP, whereas Prometheus is fundamentally built around a "pull" (scrape) model. Furthermore, as discussed in Chapter 5, OpenTelemetry supports both Delta and Cumulative aggregation temporalities. Prometheus, however, strictly operates on Cumulative temporality. 
+OpenTelemetry was designed with a heavy emphasis on a "push" architecture via OTLP, whereas Prometheus is fundamentally built around a "pull" (scrape) model. Furthermore, as discussed in Chapter 5, OpenTelemetry supports both Delta and Cumulative aggregation temporalities. Prometheus, however, strictly operates on Cumulative temporality.
 
 When exporting metrics from the OpenTelemetry Collector to Prometheus or Mimir, you must decide which architectural model fits your infrastructure:
 
@@ -113,7 +113,7 @@ If you cannot change the SDK configuration to output Cumulative metrics, you mus
 
 ## 21.2 Integrating with Tracing Backends (Jaeger, Tempo, Zipkin)
 
-While metrics provide macroscopic visibility into system health, distributed tracing is the microscope required to diagnose latency bottlenecks and complex transaction failures. OpenTelemetry standardizes the generation and collection of spans, but you still need a dedicated tracing backend to index, visualize, and query this highly relational data. 
+While metrics provide macroscopic visibility into system health, distributed tracing is the microscope required to diagnose latency bottlenecks and complex transaction failures. OpenTelemetry standardizes the generation and collection of spans, but you still need a dedicated tracing backend to index, visualize, and query this highly relational data.
 
 The OpenTelemetry Collector acts as a universal router, capable of translating and exporting traces to various open-source backends, regardless of their native data models.
 
@@ -237,7 +237,7 @@ Because the underlying architectures of logging backends vary drastically—from
 
 ### 1. Elasticsearch and OpenSearch
 
-Elasticsearch and its open-source fork, OpenSearch, are Lucene-based document databases. They excel at full-text search and complex querying across heavily indexed JSON documents. 
+Elasticsearch and its open-source fork, OpenSearch, are Lucene-based document databases. They excel at full-text search and complex querying across heavily indexed JSON documents.
 
 When exporting logs to these systems, the Collector flattens the nested OpenTelemetry Log Data Model (which separates Resource Attributes, Scope Attributes, and Log Records) into individual JSON documents. Both the `elasticsearch` and `opensearch` exporters handle this translation automatically. They also support dynamic index routing, allowing you to partition logs by date, service, or environment.
 
@@ -258,7 +258,7 @@ exporters:
 
 **Collector Configuration (OpenSearch):**
 
-The OpenSearch exporter configuration is structurally similar but relies on a slightly different internal HTTP client implementation. 
+The OpenSearch exporter configuration is structurally similar but relies on a slightly different internal HTTP client implementation.
 
 ```yaml
 exporters:
@@ -307,7 +307,7 @@ service:
 
 **Native OTLP Ingestion in Loki:**
 
-Just as Mimir and Tempo evolved, recent versions of Loki (3.0+) have introduced native support for ingesting OTLP directly. This allows you to use the standard `otlphttp` or `otlp` (gRPC) exporters. 
+Just as Mimir and Tempo evolved, recent versions of Loki (3.0+) have introduced native support for ingesting OTLP directly. This allows you to use the standard `otlphttp` or `otlp` (gRPC) exporters.
 
 When using native OTLP ingestion, Loki automatically handles the translation, promoting key resource attributes to labels based on its internal heuristics, and storing the rest of the structured OpenTelemetry log data as structured metadata alongside the log line. This drastically simplifies Collector configuration and prevents mapping drift.
 
@@ -331,7 +331,7 @@ service:
 Log pipelines are notoriously high-volume. A single misconfigured application in debug mode can easily overwhelm your network or storage backend.
 
 1. **Aggressive Batching:** Logs should never be exported one by one. The `batch` processor is non-negotiable here. Configure it to send large payloads (e.g., `send_batch_size: 10000`) to optimize connection reuse and compression ratios.
-2. **Filtering at the Edge:** Use the `filter` processor to drop low-value logs (like routine health checks or verbose debug statements) *before* they reach the exporter. 
+2. **Filtering at the Edge:** Use the `filter` processor to drop low-value logs (like routine health checks or verbose debug statements) *before* they reach the exporter.
 3. **Format Translation:** If your backend expects a specific timestamp format or requires certain fields to be present (e.g., a rigid `@timestamp` field for older Elasticsearch deployments), utilize the OpenTelemetry Transformation Language (OTTL) within the `transform` processor to mutate the logs inline prior to export.
 
 ## 21.4 Integrating with Commercial Platforms (Datadog, Honeycomb, Dynatrace)
@@ -358,7 +358,7 @@ While many commercial vendors now support native OTLP ingestion, their internal 
 
 ### 1. Datadog: Translation and Enrichment
 
-Datadog was an early contributor to the OpenTelemetry project, but its backend predates the OTLP standard. Therefore, exporting to Datadog typically involves translating OTLP into Datadog's proprietary payload formats. 
+Datadog was an early contributor to the OpenTelemetry project, but its backend predates the OTLP standard. Therefore, exporting to Datadog typically involves translating OTLP into Datadog's proprietary payload formats.
 
 This translation is handled by the dedicated `datadog` exporter, which is maintained in the `opentelemetry-collector-contrib` repository. This exporter maps OpenTelemetry resource attributes to Datadog tags, converts OTLP histograms into Datadog distributions (sketches), and ensures traces are formatted correctly for Datadog APM.
 
@@ -420,7 +420,7 @@ service:
 
 ### 3. Dynatrace: Multi-Signal Native Ingestion
 
-Dynatrace has also transitioned to support native OTLP ingestion for traces, metrics, and logs. Like Honeycomb, you utilize the standard `otlphttp` exporter. 
+Dynatrace has also transitioned to support native OTLP ingestion for traces, metrics, and logs. Like Honeycomb, you utilize the standard `otlphttp` exporter.
 
 Dynatrace requires a specific tenant-based URL endpoint and an API token passed via the `Authorization` header. Because Dynatrace heavily relies on topological mapping (its "Smartscape" feature), ensuring that your OpenTelemetry Resource Attributes (like `host.name`, `k8s.pod.uid`, and `service.instance.id`) are accurately populated is critical for achieving full value within the Dynatrace UI.
 

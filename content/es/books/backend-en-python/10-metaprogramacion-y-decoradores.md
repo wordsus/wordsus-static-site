@@ -7,6 +7,7 @@ En el Capítulo 4 establecimos dos pilares fundamentales: la regla LEGB para la 
 Un **closure** ocurre cuando una función anidada "recuerda" el estado de su entorno léxico (las variables de su función contenedora) incluso después de que la función exterior haya terminado su ejecución. Es, en esencia, una función atada a un paquete de datos persistente.
 
 Para que exista un closure en Python, deben cumplirse tres condiciones:
+
 1. Debe haber una función anidada (una función dentro de otra).
 2. La función anidada debe hacer referencia a un valor definido en la función exterior.
 3. La función exterior debe retornar la función anidada.
@@ -37,7 +38,7 @@ Cuando llamamos a `crear_multiplicador(2)`, la función termina y su alcance loc
 
 ### Bajo el capó: Celdas (Cells) y el atributo `__closure__`
 
-Como desarrolladores Senior, no nos basta con saber que funciona; debemos entender *cómo* Python retiene este estado. 
+Como desarrolladores Senior, no nos basta con saber que funciona; debemos entender *cómo* Python retiene este estado.
 
 Cuando Python compila una función anidada que referencia variables de un alcance superior, no guarda simplemente el valor numérico. En su lugar, crea un objeto intermedio llamado **Cell** (celda). La función interior y el entorno exterior apuntan a esta misma celda.
 
@@ -110,7 +111,7 @@ Si observamos el ejemplo de la alcancía, notaremos que un closure resuelve un p
 * **POO (Clases):** Datos (estado) con métodos (comportamiento) adjuntos.
 * **Closures:** Funciones (comportamiento) con un entorno de datos (estado) adjunto.
 
-Para interfaces de un solo método (como nuestro `depositar`), un closure suele ser más rápido de instanciar, consume menos memoria y resulta más elegante que definir una clase completa con un método `__init__` y un método `__call__`. 
+Para interfaces de un solo método (como nuestro `depositar`), un closure suele ser más rápido de instanciar, consume menos memoria y resulta más elegante que definir una clase completa con un método `__init__` y un método `__call__`.
 
 Comprender la retención de estado mediante closures es el requisito indispensable para dar el siguiente paso en la metaprogramación: envolver funciones con otras funciones para extender su comportamiento, técnica que en Python conocemos formalmente como **Decoradores** y que abordaremos en la próxima sección.
 
@@ -226,6 +227,7 @@ def conectar_servicio_inestable():
 Es crucial como desarrolladores Senior no confundir estos dos conceptos. Tienen propósitos arquitectónicos distintos.
 
 #### 1. Clases como decoradores (Gestionando el estado)
+
 A veces, un decorador necesita mantener un estado complejo a lo largo de las ejecuciones (por ejemplo, limitar la tasa de peticiones o hacer una caché). Si bien podemos hacerlo con closures y `nonlocal` (como vimos en 10.1), usar una clase aprovechando el método mágico `__call__` (visto en el Capítulo 5) resulta mucho más limpio.
 
 ```python
@@ -253,6 +255,7 @@ print(peticion_api()) # Ok
 ```
 
 #### 2. Decoradores de clases (Modificando clases enteras)
+
 En lugar de decorar una función, podemos decorar la definición de una clase completa. El decorador recibe la clase como argumento y devuelve la clase (generalmente la misma, pero modificada). Es una alternativa más legible y directa a las metaclases (que veremos en la sección 10.4) cuando solo necesitamos inyectar propiedades o métodos simples.
 
 ```python
@@ -283,7 +286,7 @@ Tanto las fábricas de decoradores como el manejo de decoradores basados en clas
 
 ## 10.3 Preservación de metadatos con `functools.wraps`
 
-En la sección anterior, concluimos con una advertencia sobre un efecto secundario crítico de los decoradores: la alteración dinámica de una función provoca la pérdida de su identidad original. 
+En la sección anterior, concluimos con una advertencia sobre un efecto secundario crítico de los decoradores: la alteración dinámica de una función provoca la pérdida de su identidad original.
 
 Cuando decoramos una función, lo que realmente estamos haciendo es sustituir la función original por el *closure* (el `wrapper`) que hemos definido dentro del decorador. Para el intérprete de Python, la función resultante es literalmente otra función, con otro nombre, otra ubicación en memoria y otra documentación.
 
@@ -317,6 +320,7 @@ print(calcular_impuesto.__doc__)
 ```
 
 Para un script de 50 líneas, esto podría parecer un detalle menor. Para un ingeniero Senior trabajando en código de producción, es un desastre:
+
 1. **El autocompletado en los IDEs** (VS Code, PyCharm) mostrará la firma y el docstring del `wrapper`, dejando al desarrollador a ciegas sobre qué argumentos reales necesita la función.
 2. Herramientas de generación automática de documentación como **Sphinx o pdoc** generarán páginas inútiles llenas de funciones llamadas `wrapper`.
 3. El **debugging** se vuelve una pesadilla, ya que el trazado de pila (stack trace) y los perfiladores (profilers) apuntarán repetidamente a la función interna del decorador en lugar de a la función original que falló.
@@ -383,11 +387,11 @@ resultado_puro = calcular_impuesto_seguro.__wrapped__(100, 0.21)
 
 ## 10.4 Introducción a Metaclases: controlando la creación de clases
 
-En el Capítulo 5 (Programación Orientada a Objetos) establecimos una premisa fundamental: en Python, **absolutamente todo es un objeto**. Los números son objetos, las funciones son objetos (como vimos en 10.1) y, por supuesto, las instancias de tus clases son objetos. 
+En el Capítulo 5 (Programación Orientada a Objetos) establecimos una premisa fundamental: en Python, **absolutamente todo es un objeto**. Los números son objetos, las funciones son objetos (como vimos en 10.1) y, por supuesto, las instancias de tus clases son objetos.
 
 Pero esto nos lleva a una pregunta inevitable: si una instancia es un objeto creado por una clase, y todo es un objeto... **¿quién crea a la clase misma?**
 
-La respuesta es la **metaclase**. Así como una clase define el comportamiento de sus instancias, una metaclase define el comportamiento de las clases. 
+La respuesta es la **metaclase**. Así como una clase define el comportamiento de sus instancias, una metaclase define el comportamiento de las clases.
 
 ### El creador maestro: `type`
 
@@ -419,7 +423,7 @@ El flujo de creación se puede visualizar así:
 
 ### Creando tu propia Metaclase
 
-Para intervenir en el proceso de creación de una clase, debemos heredar de `type` y sobrescribir sus métodos mágicos, principalmente `__new__` (que asigna la memoria y construye la clase) y `__init__` (que la inicializa). 
+Para intervenir en el proceso de creación de una clase, debemos heredar de `type` y sobrescribir sus métodos mágicos, principalmente `__new__` (que asigna la memoria y construye la clase) y `__init__` (que la inicializa).
 
 El uso clásico de una metaclase es **imponer reglas o estándares** en el momento de la definición de la clase, antes incluso de que exista una sola instancia de la misma.
 
@@ -461,6 +465,7 @@ Notemos algo crucial: el error se lanzaría en el momento en que Python lee el a
 ### Patrones comunes con Metaclases
 
 Además de la validación, las metaclases se utilizan en el desarrollo de librerías Senior para:
+
 1. **Patrón Singleton:** Alterar el método `__call__` de la metaclase para interceptar la instanciación y asegurar que solo exista un objeto de la clase.
 2. **Registro Automático (Registry):** Guardar automáticamente cada subclase que se crea en un diccionario central (muy útil para sistemas de plugins o serializadores).
 3. **Modificación de atributos (ORMs):** Transformar campos declarativos en descriptores complejos. Así es exactamente como frameworks como Django ORM o SQLAlchemy Core convierten clases simples en representaciones de tablas de bases de datos.

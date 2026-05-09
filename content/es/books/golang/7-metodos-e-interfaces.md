@@ -18,9 +18,10 @@ func (receptor Tipo) NombreMetodo(parametros) retornos {
 
 ### Receptores de Valor (Value Receivers)
 
-Cuando declaras un método con un receptor de valor (`T`), Go pasa una **copia exacta** del valor original al método al momento de la invocación. 
+Cuando declaras un método con un receptor de valor (`T`), Go pasa una **copia exacta** del valor original al método al momento de la invocación.
 
 **Características principales:**
+
 * **Inmutabilidad local:** Cualquier mutación que realices sobre el receptor dentro del método afectará únicamente a la copia local. El valor original en la función que hizo la llamada permanecerá inalterado.
 * **Seguridad en concurrencia:** Al operar sobre copias, los métodos con receptores de valor son intrínsecamente más seguros en entornos concurrentes (siempre que el tipo no contenga punteros internos como Slices o Maps, como vimos en el Capítulo 5).
 
@@ -43,9 +44,10 @@ func (u Usuario) CambiarEmail(nuevoEmail string) {
 
 ### Receptores de Puntero (Pointer Receivers)
 
-Cuando declaras un método con un receptor de puntero (`*T`), Go pasa la **dirección de memoria** del valor original. 
+Cuando declaras un método con un receptor de puntero (`*T`), Go pasa la **dirección de memoria** del valor original.
 
 **Características principales:**
+
 * **Mutabilidad:** Permiten que el método modifique el estado del receptor de forma que los cambios se reflejen en el origen.
 * **Eficiencia de memoria:** Evitan la sobrecarga de copiar toda la estructura de datos en cada llamada. Si tienes un `struct` con docenas de campos, un receptor de valor copiará todo el bloque de memoria; un receptor de puntero solo pasará la dirección de memoria (típicamente 8 bytes en arquitecturas de 64 bits).
 
@@ -84,11 +86,11 @@ func main() {
 
 Para mantener un código limpio e idiomático, la comunidad de Go sigue estas directrices concretas:
 
-1.  **Si necesitas mutar el estado:** Usa un receptor de puntero. No hay otra opción viable.
-2.  **Si la estructura es grande:** Usa un receptor de puntero para evitar la copia costosa de memoria, incluso si el método es de solo lectura. (Como regla general, si el struct tiene más de 4-5 campos, considera el puntero).
-3.  **Si el tipo encapsula primitivas de sincronización:** Tipos que contienen `sync.Mutex` (que veremos en el Capítulo 10) **nunca** deben copiarse. Deben usar receptores de puntero obligatoriamente para no copiar el estado del cerrojo.
-4.  **Tipos básicos pequeños y sin estado mutable:** Para tipos derivados de `int`, `string` o `structs` pequeños que representan valores inmutables (como un punto en coordenadas `X, Y` o el paquete `time.Time` nativo), usa receptores de valor.
-5.  **Consistencia ante todo:** Si una estructura tiene varios métodos y al menos uno de ellos *debe* ser un receptor de puntero, la convención estricta es que **todos** los métodos de esa estructura utilicen receptores de puntero, incluso los que solo leen datos. Mezclar receptores en un mismo tipo crea APIs confusas y problemas al implementar interfaces (lo cual exploraremos en la siguiente sección, 7.2).
+1. **Si necesitas mutar el estado:** Usa un receptor de puntero. No hay otra opción viable.
+2. **Si la estructura es grande:** Usa un receptor de puntero para evitar la copia costosa de memoria, incluso si el método es de solo lectura. (Como regla general, si el struct tiene más de 4-5 campos, considera el puntero).
+3. **Si el tipo encapsula primitivas de sincronización:** Tipos que contienen `sync.Mutex` (que veremos en el Capítulo 10) **nunca** deben copiarse. Deben usar receptores de puntero obligatoriamente para no copiar el estado del cerrojo.
+4. **Tipos básicos pequeños y sin estado mutable:** Para tipos derivados de `int`, `string` o `structs` pequeños que representan valores inmutables (como un punto en coordenadas `X, Y` o el paquete `time.Time` nativo), usa receptores de valor.
+5. **Consistencia ante todo:** Si una estructura tiene varios métodos y al menos uno de ellos *debe* ser un receptor de puntero, la convención estricta es que **todos** los métodos de esa estructura utilicen receptores de puntero, incluso los que solo leen datos. Mezclar receptores en un mismo tipo crea APIs confusas y problemas al implementar interfaces (lo cual exploraremos en la siguiente sección, 7.2).
 
 ## 7.2. Interfaces implícitas (Duck Typing) y satisfacción de contratos
 
@@ -189,8 +191,8 @@ var valor2 any
 
 Para un desarrollador avanzado, es crucial entender que un `any` no es un "comodín mágico" de coste cero. Bajo el capó (en el *runtime* de Go), un valor de interfaz se representa en memoria como una estructura de **dos palabras** (two-word data structure):
 
-1.  **Puntero al tipo (`_type`):** Apunta a los metadatos que describen el tipo dinámico real almacenado (ej. `int`, `*Usuario`, `string`).
-2.  **Puntero a los datos (`data`):** Apunta a la ubicación en memoria donde reside el valor real.
+1. **Puntero al tipo (`_type`):** Apunta a los metadatos que describen el tipo dinámico real almacenado (ej. `int`, `*Usuario`, `string`).
+2. **Puntero a los datos (`data`):** Apunta a la ubicación en memoria donde reside el valor real.
 
 Esta indirección tiene consecuencias en el rendimiento. Asignar un valor a un `any` frecuentemente provoca que el valor "escape al Heap" (Escape Analysis, que veremos en el Capítulo 44), forzando al Recolector de Basura (GC) a trabajar más de la cuenta.
 
@@ -219,15 +221,15 @@ El mayor error que cometen los programadores que llegan a Go desde lenguajes din
 
 **Usar `any` como argumento de función o valor de retorno generalizado es un antipatrón grave por tres razones:**
 
-1.  **Destruye el tipado estático:** El compilador ya no puede protegerte. Si una función espera un ID y tú le pasas un `any`, puedes pasarle un `int`, un `string` o un `bool` sin que el compilador rechiste.
-2.  **Oculta la intención (Pobreza de API):** Una firma `func Procesar(datos any) any` no le dice absolutamente nada al desarrollador que consume tu paquete sobre qué debe enviar y qué va a recibir.
-3.  **Riesgo de Pánico (Panic):** Para volver a usar el valor subyacente de un `any`, tendrás que hacer una aserción de tipo en tiempo de ejecución. Si te equivocas, tu programa colapsará (`panic`).
+1. **Destruye el tipado estático:** El compilador ya no puede protegerte. Si una función espera un ID y tú le pasas un `any`, puedes pasarle un `int`, un `string` o un `bool` sin que el compilador rechiste.
+2. **Oculta la intención (Pobreza de API):** Una firma `func Procesar(datos any) any` no le dice absolutamente nada al desarrollador que consume tu paquete sobre qué debe enviar y qué va a recibir.
+3. **Riesgo de Pánico (Panic):** Para volver a usar el valor subyacente de un `any`, tendrás que hacer una aserción de tipo en tiempo de ejecución. Si te equivocas, tu programa colapsará (`panic`).
 
 > **Regla de Clean Code en Go:** Utiliza tipos concretos siempre que sea posible. Si necesitas abstracción, diseña interfaces pequeñas (1-2 métodos). Usa genéricos (`[T any]`) si necesitas algoritmos que operen sobre múltiples tipos sin sacrificar la seguridad en tiempo de compilación. Deja el tipo `any` puro estrictamente para los límites del sistema (I/O, JSON dinámico, o *logging*).
 
 ## 7.4. Aserciones de tipo (Type Assertions) y Type Switches
 
-Ahora que entendemos que una variable de tipo interfaz (incluyendo `any`) es un contenedor que oculta el tipo dinámico real, surge la pregunta inevitable: ¿cómo desempaquetamos ese valor para utilizar sus campos o métodos concretos? 
+Ahora que entendemos que una variable de tipo interfaz (incluyendo `any`) es un contenedor que oculta el tipo dinámico real, surge la pregunta inevitable: ¿cómo desempaquetamos ese valor para utilizar sus campos o métodos concretos?
 
 Dado que el compilador de Go no sabe qué hay dentro de esa interfaz hasta el tiempo de ejecución (runtime), intentar acceder directamente a un campo del tipo subyacente resultará en un error de compilación. Para resolver esto, Go proporciona dos mecanismos fundamentales: las **aserciones de tipo** y los **Type Switches**.
 
@@ -301,12 +303,13 @@ func ProcesarMensaje(mensaje any) {
 
 ### El dilema arquitectónico: Abuso de aserciones
 
-Desde una perspectiva de diseño de software avanzado, el uso frecuente de aserciones de tipo y Type Switches suele ser un **"code smell"** (síntoma de mal diseño). 
+Desde una perspectiva de diseño de software avanzado, el uso frecuente de aserciones de tipo y Type Switches suele ser un **"code smell"** (síntoma de mal diseño).
 
 Si te encuentras escribiendo Type Switches constantemente para determinar qué hacer con un objeto, probablemente estés ignorando el polimorfismo que ofrecen las interfaces.
 
-**El principio es:** El código cliente no debería necesitar saber qué tipo exacto está manejando. Si necesitas un comportamiento específico, define ese comportamiento como un método en una interfaz. Deja que cada tipo concreto implemente su propia lógica y que el *runtime* de Go decida dinámicamente qué método ejecutar (Dynamic Dispatch). 
+**El principio es:** El código cliente no debería necesitar saber qué tipo exacto está manejando. Si necesitas un comportamiento específico, define ese comportamiento como un método en una interfaz. Deja que cada tipo concreto implemente su propia lógica y que el *runtime* de Go decida dinámicamente qué método ejecutar (Dynamic Dispatch).
 
 Reserva los Type Switches para:
-1.  Parsear estructuras de datos dinámicas (como JSON no estructurado).
-2.  Manejo de errores personalizados, donde necesitas extraer el tipo de error específico (`*os.PathError`, `*net.OpError`) para decidir si aplicar reintentos lógicos, aunque en versiones modernas de Go esto se hace preferiblemente con `errors.As` (que veremos en el manejo de errores avanzados).
+
+1. Parsear estructuras de datos dinámicas (como JSON no estructurado).
+2. Manejo de errores personalizados, donde necesitas extraer el tipo de error específico (`*os.PathError`, `*net.OpError`) para decidir si aplicar reintentos lógicos, aunque en versiones modernas de Go esto se hace preferiblemente con `errors.As` (que veremos en el manejo de errores avanzados).

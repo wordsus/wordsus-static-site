@@ -41,9 +41,10 @@ pub struct Claims {
 ### Creación y Firma del Token (Encoding)
 
 Para emitir un token tras un inicio de sesión exitoso, necesitamos tres elementos:
-1.  **Header:** Define el algoritmo de firma (por defecto HS256).
-2.  **Claims:** Nuestra estructura de datos instanciada.
-3.  **EncodingKey:** La clave criptográfica para firmar el token.
+
+1. **Header:** Define el algoritmo de firma (por defecto HS256).
+2. **Claims:** Nuestra estructura de datos instanciada.
+3. **EncodingKey:** La clave criptográfica para firmar el token.
 
 ```rust
 use jsonwebtoken::{encode, Algorithm, EncodingKey, Header};
@@ -73,8 +74,9 @@ pub fn generar_token(user_id: &str, secret: &str) -> Result<String, jsonwebtoken
 ### Validación y Deserialización (Decoding)
 
 Cuando el cliente envía el token de vuelta (usualmente en la cabecera `Authorization: Bearer <token>`), debemos decodificarlo. Esta operación realiza dos tareas críticas simultáneamente:
-1.  **Verificación criptográfica:** Asegura que el token fue firmado con nuestro secreto y no ha sido alterado.
-2.  **Validación de Claims:** Comprueba la caducidad (`exp`) y deserializa el JSON en nuestra estructura `Claims`. Si falta un campo requerido o el token expiró, la función fallará.
+
+1. **Verificación criptográfica:** Asegura que el token fue firmado con nuestro secreto y no ha sido alterado.
+2. **Validación de Claims:** Comprueba la caducidad (`exp`) y deserializa el JSON en nuestra estructura `Claims`. Si falta un campo requerido o el token expiró, la función fallará.
 
 ```rust
 use jsonwebtoken::{decode, Algorithm, DecodingKey, Validation, TokenData};
@@ -105,15 +107,16 @@ Antes de integrar esto en los middlewares de Actix o Axum (como veremos más ade
 
 ## 18.2 Manejo de sesiones y cookies
 
-Mientras que los JWT (vistos en la sección anterior) brillan en arquitecturas *stateless* (sin estado), presentan un desafío inherente: la revocación instantánea. Si un usuario cierra sesión de forma anómala o su cuenta es comprometida, un JWT seguirá siendo válido hasta que expire, a menos que introduzcamos mecanismos complejos como listas de denegación (denylists). 
+Mientras que los JWT (vistos en la sección anterior) brillan en arquitecturas *stateless* (sin estado), presentan un desafío inherente: la revocación instantánea. Si un usuario cierra sesión de forma anómala o su cuenta es comprometida, un JWT seguirá siendo válido hasta que expire, a menos que introduzcamos mecanismos complejos como listas de denegación (denylists).
 
 Para aplicaciones web tradicionales o APIs que requieren un control estricto y centralizado sobre la autenticación, el patrón tradicional de **sesiones en el servidor y cookies** sigue siendo la opción más robusta. En este modelo, el estado reside en el backend (en memoria o en una base de datos) y el cliente solo almacena un identificador único (Session ID) de forma segura.
 
 ### El ecosistema de Cookies en Rust
 
-En el ecosistema web de Rust, la manipulación de bajo nivel de cookies suele delegarse al crate `cookie`. Sin embargo, frameworks como Axum y Actix-Web proporcionan abstracciones de alto nivel o middlewares que facilitan enormemente este proceso. 
+En el ecosistema web de Rust, la manipulación de bajo nivel de cookies suele delegarse al crate `cookie`. Sin embargo, frameworks como Axum y Actix-Web proporcionan abstracciones de alto nivel o middlewares que facilitan enormemente este proceso.
 
 Las cookies de sesión deben configurarse siempre con tres directivas de seguridad fundamentales:
+
 * **`HttpOnly`**: Evita que el código JavaScript del cliente (como en un ataque XSS) pueda leer la cookie.
 * **`Secure`**: Garantiza que la cookie solo se transmita a través de conexiones cifradas (HTTPS).
 * **`SameSite`**: Mitiga los ataques de falsificación de peticiones en sitios cruzados (CSRF) controlando cuándo se envía la cookie en peticiones a otros dominios.
@@ -236,8 +239,8 @@ Al utilizar sesiones, el ciclo de vida del estado es tu responsabilidad. Es cruc
 
 A medida que las aplicaciones escalan, gestionar contraseñas locales se vuelve un riesgo de seguridad y una barrera de entrada para los usuarios. Delegar la autenticación y autorización a proveedores de identidad (IdP) como Google, GitHub o Auth0 es la práctica estándar de la industria. Para lograr esto, utilizamos dos protocolos estrechamente relacionados:
 
-1.  **OAuth 2.0:** Es un protocolo de *autorización*. Permite a tu aplicación acceder a recursos del usuario en otro servicio (como leer sus repositorios en GitHub) sin conocer su contraseña.
-2.  **OpenID Connect (OIDC):** Es una capa de *autenticación* construida sobre OAuth 2.0. Estandariza la forma en que el proveedor comunica la identidad del usuario a tu backend, típicamente devolviendo un JWT llamado `id_token`.
+1. **OAuth 2.0:** Es un protocolo de *autorización*. Permite a tu aplicación acceder a recursos del usuario en otro servicio (como leer sus repositorios en GitHub) sin conocer su contraseña.
+2. **OpenID Connect (OIDC):** Es una capa de *autenticación* construida sobre OAuth 2.0. Estandariza la forma en que el proveedor comunica la identidad del usuario a tu backend, típicamente devolviendo un JWT llamado `id_token`.
 
 En Rust, el crate más maduro y seguro para manejar ambos estándares es `oauth2` (y su hermano `openidconnect` si necesitas validación estricta del estándar OIDC).
 
@@ -372,9 +375,9 @@ Es importante notar que el flujo anterior asume que tu backend de Rust renderiza
 
 ## 18.4 Control de Acceso Basado en Roles (RBAC) en endpoints
 
-En las secciones anteriores resolvimos la **autenticación** (saber *quién* es el usuario, ya sea vía JWT, sesiones o OAuth2). Ahora debemos abordar la **autorización**: saber *qué* tiene permitido hacer ese usuario en nuestro sistema. 
+En las secciones anteriores resolvimos la **autenticación** (saber *quién* es el usuario, ya sea vía JWT, sesiones o OAuth2). Ahora debemos abordar la **autorización**: saber *qué* tiene permitido hacer ese usuario en nuestro sistema.
 
-El Control de Acceso Basado en Roles (RBAC) es el patrón más extendido para gestionar permisos. En lugar de asignar permisos específicos a cada usuario, agrupamos los permisos en "Roles" (ej. Administrador, Moderador, Usuario Estándar) y asignamos estos roles a los usuarios. 
+El Control de Acceso Basado en Roles (RBAC) es el patrón más extendido para gestionar permisos. En lugar de asignar permisos específicos a cada usuario, agrupamos los permisos en "Roles" (ej. Administrador, Moderador, Usuario Estándar) y asignamos estos roles a los usuarios.
 
 Rust nos proporciona herramientas fantásticas para implementar RBAC de forma segura y elegante, aprovechando su sistema de tipos estricto y el patrón de Extractors de Axum.
 
@@ -478,6 +481,6 @@ pub fn configurar_rutas() -> Router {
 
 ### Escalando RBAC a ABAC (Attribute-Based Access Control)
 
-A medida que el backend crece, el RBAC puro puede quedarse corto. Por ejemplo: *"Un usuario puede editar un artículo, pero solo si es el autor original"*. En este caso, el rol no basta; necesitas evaluar los atributos del recurso (ABAC). 
+A medida que el backend crece, el RBAC puro puede quedarse corto. Por ejemplo: *"Un usuario puede editar un artículo, pero solo si es el autor original"*. En este caso, el rol no basta; necesitas evaluar los atributos del recurso (ABAC).
 
 Para resolver esto en Rust, es común pasar la responsabilidad a la capa de servicios o utilizar crates especializados como `oso` (un motor de autorización de políticas), pero el patrón de Extractors que acabamos de ver sigue siendo la primera línea de defensa para restringir el acceso a nivel de enrutamiento.

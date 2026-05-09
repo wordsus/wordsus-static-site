@@ -6,7 +6,7 @@ Imagina que pudieras encogerte a un tamaño microscópico, tan pequeño que un s
 
 En el vasto universo de la biología, la célula es la unidad básica de la vida. Todo organismo vivo que conoces (tú mismo, tu perro, el árbol de tu calle, e incluso los hongos de la humedad) está formado por células eucariotas. El término "eucariota" proviene del griego *eu* (verdadero) y *karyon* (nuez o núcleo). Es decir, son las células que poseen un núcleo verdadero, un compartimento acorazado donde guardan su tesoro más preciado: el manual de instrucciones genético.
 
-A diferencia de las bacterias (células procariotas), que son como pequeños estudios de un solo ambiente donde todo está mezclado, las células eucariotas son como enormes mansiones o ciudades modernas con habitaciones separadas y especializadas. A estas "habitaciones" las llamamos **organelas** u orgánulos. 
+A diferencia de las bacterias (células procariotas), que son como pequeños estudios de un solo ambiente donde todo está mezclado, las células eucariotas son como enormes mansiones o ciudades modernas con habitaciones separadas y especializadas. A estas "habitaciones" las llamamos **organelas** u orgánulos.
 
 En este artículo, vamos a hacer un recorrido guiado por esta ciudad microscópica. Vamos a conocer sus murallas, sus bibliotecas, sus plantas de energía y sus centros de reciclaje. Prepárate, porque el viaje al interior de ti mismo está a punto de comenzar.
 
@@ -31,17 +31,17 @@ Aquí tienes un diagrama simplificado en texto plano para que lo visualices:
 =========================================================
 ```
 
-Pero la membrana no es solo grasa. Incrustadas en este "mar" de lípidos, flotan diversas **proteínas**. Algunas actúan como puertas con cerraduras inteligentes, permitiendo el paso de nutrientes esenciales (como la glucosa) y expulsando los desechos. Otras actúan como antenas receptoras, captando señales del exterior, como hormonas, para que la célula sepa qué está pasando en el resto del cuerpo. 
+Pero la membrana no es solo grasa. Incrustadas en este "mar" de lípidos, flotan diversas **proteínas**. Algunas actúan como puertas con cerraduras inteligentes, permitiendo el paso de nutrientes esenciales (como la glucosa) y expulsando los desechos. Otras actúan como antenas receptoras, captando señales del exterior, como hormonas, para que la célula sepa qué está pasando en el resto del cuerpo.
 
 La membrana plasmática es el guardián absoluto de la célula: decide quién entra, quién sale y quién tiene prohibido el paso.
 
 ## 2. El Ayuntamiento y la Biblioteca: El Núcleo
 
-Si avanzamos hacia el centro de la ciudad celular, nos toparemos con la estructura más grande y prominente: **el núcleo**. Este es el centro de mando, el ayuntamiento desde donde se dirigen todas las actividades celulares. 
+Si avanzamos hacia el centro de la ciudad celular, nos toparemos con la estructura más grande y prominente: **el núcleo**. Este es el centro de mando, el ayuntamiento desde donde se dirigen todas las actividades celulares.
 
 El núcleo está protegido por su propia barrera de seguridad doble, la **envoltura nuclear**, la cual está perforada por "poros nucleares". Estos poros son muy selectivos; regulan qué moléculas pueden entrar a consultar la información y qué moléculas pueden salir con órdenes.
 
-¿Qué hay dentro de esta gran bóveda? El **ADN** (Ácido Desoxirribonucleico). El ADN es, literalmente, el manual de instrucciones para fabricarte a ti. Contiene los planos para crear cada proteína de tu cuerpo, determinando desde el color de tus ojos hasta cómo digieres el desayuno. 
+¿Qué hay dentro de esta gran bóveda? El **ADN** (Ácido Desoxirribonucleico). El ADN es, literalmente, el manual de instrucciones para fabricarte a ti. Contiene los planos para crear cada proteína de tu cuerpo, determinando desde el color de tus ojos hasta cómo digieres el desayuno.
 
 Dentro del núcleo, el ADN no está suelto flotando al azar. Normalmente, se encuentra desenrollado en una forma llamada **cromatina**, como si fuera un plato de espaguetis muy finos, lo que permite que la maquinaria celular pueda "leer" las instrucciones. Solo cuando la célula está a punto de dividirse, este ADN se empaqueta fuertemente en estructuras con forma de X que llamamos **cromosomas**.
 
@@ -53,15 +53,15 @@ Además, dentro del núcleo hay una zona aún más densa llamada **nucléolo**. 
 
 ## 3. Las Calles y el Andamiaje: Citoplasma y Citoesqueleto
 
-Todo el espacio que queda entre el núcleo y la membrana plasmática se conoce como **citoplasma**. No es un espacio vacío, sino que está relleno de una sustancia gelatinosa llamada **citosol**, compuesta principalmente por agua, sales y diversas moléculas disueltas. 
+Todo el espacio que queda entre el núcleo y la membrana plasmática se conoce como **citoplasma**. No es un espacio vacío, sino que está relleno de una sustancia gelatinosa llamada **citosol**, compuesta principalmente por agua, sales y diversas moléculas disueltas.
 
-Sin embargo, si la célula fuera solo una bolsa de gelatina, se aplastaría fácilmente. Para mantener su forma, moverse y organizar sus calles internas, la célula cuenta con el **citoesqueleto**. 
+Sin embargo, si la célula fuera solo una bolsa de gelatina, se aplastaría fácilmente. Para mantener su forma, moverse y organizar sus calles internas, la célula cuenta con el **citoesqueleto**.
 
 El citoesqueleto es una red tridimensional asombrosa de filamentos y tubos de proteínas. Sus tres componentes principales son:
 
-*   **Microtúbulos:** Son como las grandes autopistas de la ciudad. Son tubos huecos y gruesos que mantienen la forma de la célula y sirven como pistas por donde "caminan" unas proteínas motoras que transportan cargamentos de un lado a otro.
-*   **Filamentos de actina (Microfilamentos):** Son más finos y se encuentran justo debajo de la membrana. Permiten que la célula se contraiga (¡vital para tus células musculares!) y cambie de forma.
-*   **Filamentos intermedios:** Son los cables de acero que anclan las organelas en su lugar y proporcionan resistencia mecánica para que la célula no se rompa bajo tensión.
+* **Microtúbulos:** Son como las grandes autopistas de la ciudad. Son tubos huecos y gruesos que mantienen la forma de la célula y sirven como pistas por donde "caminan" unas proteínas motoras que transportan cargamentos de un lado a otro.
+* **Filamentos de actina (Microfilamentos):** Son más finos y se encuentran justo debajo de la membrana. Permiten que la célula se contraiga (¡vital para tus células musculares!) y cambie de forma.
+* **Filamentos intermedios:** Son los cables de acero que anclan las organelas en su lugar y proporcionan resistencia mecánica para que la célula no se rompa bajo tensión.
 
 ## 4. Las Centrales Eléctricas: Las Mitocondrias
 
@@ -80,22 +80,23 @@ $$C_6H_{12}O_6 + 6O_2 \longrightarrow 6CO_2 + 6H_2O + \text{Energía (ATP)}$$
 
 ## 5. El Parque Industrial: Ribosomas y Retículo Endoplasmático
 
-Ya tenemos las instrucciones (en el núcleo) y la energía (de las mitocondrias). Ahora toca fabricar los productos que la célula necesita para vivir, principalmente proteínas y lípidos (grasas). 
+Ya tenemos las instrucciones (en el núcleo) y la energía (de las mitocondrias). Ahora toca fabricar los productos que la célula necesita para vivir, principalmente proteínas y lípidos (grasas).
 
-Los obreros de la célula son los **ribosomas**. Son pequeñas y complejas máquinas moleculares que leen las copias del manual de instrucciones (el ARN que salió del núcleo) y ensamblan los ladrillos fundamentales para crear proteínas. 
+Los obreros de la célula son los **ribosomas**. Son pequeñas y complejas máquinas moleculares que leen las copias del manual de instrucciones (el ARN que salió del núcleo) y ensamblan los ladrillos fundamentales para crear proteínas.
 
 Estos ribosomas pueden estar flotando libres por el citoplasma, pero muchos prefieren establecerse en un enorme parque industrial pegado al núcleo: el **Retículo Endoplasmático (RE)**. Esta organela es una inmensa red de túbulos y sacos aplanados. Se divide en dos sectores con funciones muy distintas:
 
-1.  **Retículo Endoplasmático Rugoso (RER):** Se llama "rugoso" porque está tachonado de miles de ribosomas en su superficie, dándole un aspecto granulado al microscopio. Es la fábrica principal de proteínas. Las proteínas que se fabrican aquí suelen estar destinadas a ser exportadas fuera de la célula o a formar parte de la membrana celular.
-2.  **Retículo Endoplasmático Liso (REL):** Este sector no tiene ribosomas, por lo que se ve "liso". Su trabajo es diferente: es la fábrica de lípidos (como el colesterol y los fosfolípidos de la membrana). Además, el REL es el centro de desintoxicación de la célula. Si tomas alcohol o medicamentos, son las células de tu hígado, repletas de Retículo Endoplasmático Liso, las que trabajan horas extras para procesar y eliminar esas toxinas.
+1. **Retículo Endoplasmático Rugoso (RER):** Se llama "rugoso" porque está tachonado de miles de ribosomas en su superficie, dándole un aspecto granulado al microscopio. Es la fábrica principal de proteínas. Las proteínas que se fabrican aquí suelen estar destinadas a ser exportadas fuera de la célula o a formar parte de la membrana celular.
+2. **Retículo Endoplasmático Liso (REL):** Este sector no tiene ribosomas, por lo que se ve "liso". Su trabajo es diferente: es la fábrica de lípidos (como el colesterol y los fosfolípidos de la membrana). Además, el REL es el centro de desintoxicación de la célula. Si tomas alcohol o medicamentos, son las células de tu hígado, repletas de Retículo Endoplasmático Liso, las que trabajan horas extras para procesar y eliminar esas toxinas.
 
 ## 6. La Oficina Postal: El Aparato de Golgi
 
 Una vez que el Retículo Endoplasmático fabrica una proteína o un lípido, el producto está "crudo". Necesita ser modificado, clasificado y empaquetado antes de ser enviado a su destino final. Aquí entra en juego el **Aparato de Golgi**.
 
-Visualmente, el Aparato de Golgi parece una pila de panqueques aplastados. Funciona exactamente como un centro de distribución logística (piensa en una oficina de correos o un centro de Amazon). 
+Visualmente, el Aparato de Golgi parece una pila de panqueques aplastados. Funciona exactamente como un centro de distribución logística (piensa en una oficina de correos o un centro de Amazon).
 
 El flujo de trabajo es el siguiente:
+
 1. Las proteínas recién hechas viajan desde el Retículo Endoplasmático en pequeñas burbujas llamadas **vesículas de transporte**.
 2. Estas vesículas se fusionan con la cara receptora (cara *cis*) del Aparato de Golgi.
 3. A medida que las moléculas pasan a través de las distintas capas de "panqueques" del Golgi, sufren modificaciones químicas. Se les agregan "etiquetas" (frecuentemente carbohidratos) que actúan como códigos postales.
@@ -136,9 +137,9 @@ Hasta ahora, hemos descrito principalmente las características de una célula a
 
 Si visitáramos la "ciudad" de una célula vegetal, notaríamos tres grandes diferencias estructurales en su paisaje:
 
-1.  **La Pared Celular:** Las células vegetales no solo tienen una membrana plasmática flexible; por fuera de ella han construido un muro rígido hecho de celulosa. Esta pared celular es lo que le da a los troncos de los árboles su dureza y a los tallos de las flores su capacidad para mantenerse erguidos buscando el sol.
-2.  **La Gran Vacuola Central:** Mientras que las células animales tienen vacuolas pequeñas (pequeños sacos de almacenamiento), la célula vegetal posee una vacuola gigantesca que puede ocupar hasta el 90% del volumen celular. Es un enorme tanque de reserva de agua, nutrientes y productos de desecho. Cuando olvidas regar una planta y se marchita, es porque estas vacuolas centrales se han vaciado y han perdido su presión interna.
-3.  **Los Cloroplastos:** Esta es la joya de la corona del reino vegetal. Las plantas son autótrofas (fabrican su propia comida), y lo hacen gracias a los cloroplastos. Estas organelas contienen un pigmento verde llamado clorofila y actúan como paneles solares. Realizan la **fotosíntesis**, capturando la luz del sol, el dióxido de carbono del aire y el agua, para fabricar glucosa. 
+1. **La Pared Celular:** Las células vegetales no solo tienen una membrana plasmática flexible; por fuera de ella han construido un muro rígido hecho de celulosa. Esta pared celular es lo que le da a los troncos de los árboles su dureza y a los tallos de las flores su capacidad para mantenerse erguidos buscando el sol.
+2. **La Gran Vacuola Central:** Mientras que las células animales tienen vacuolas pequeñas (pequeños sacos de almacenamiento), la célula vegetal posee una vacuola gigantesca que puede ocupar hasta el 90% del volumen celular. Es un enorme tanque de reserva de agua, nutrientes y productos de desecho. Cuando olvidas regar una planta y se marchita, es porque estas vacuolas centrales se han vaciado y han perdido su presión interna.
+3. **Los Cloroplastos:** Esta es la joya de la corona del reino vegetal. Las plantas son autótrofas (fabrican su propia comida), y lo hacen gracias a los cloroplastos. Estas organelas contienen un pigmento verde llamado clorofila y actúan como paneles solares. Realizan la **fotosíntesis**, capturando la luz del sol, el dióxido de carbono del aire y el agua, para fabricar glucosa.
 
 Podemos contrastar la ecuación de la fotosíntesis con la de la respiración que vimos antes:
 
@@ -158,8 +159,8 @@ Aquí tienes un cuadro comparativo rápido para no perder de vista las diferenci
 
 ## Conclusión: La Sinfonía de la Vida
 
-Al terminar este recorrido microscópico, es imposible no maravillarse ante la complejidad de la célula eucariota. No es un simple saco de líquidos biológicos, sino un universo finamente calibrado donde cada elemento sabe exactamente qué hacer. 
+Al terminar este recorrido microscópico, es imposible no maravillarse ante la complejidad de la célula eucariota. No es un simple saco de líquidos biológicos, sino un universo finamente calibrado donde cada elemento sabe exactamente qué hacer.
 
-El núcleo da las órdenes, las mitocondrias proveen la energía, los ribosomas y el retículo fabrican los productos necesarios, el Golgi los empaqueta y los lisosomas mantienen todo limpio. Todo esto ocurre mientras el citoesqueleto mantiene la estructura y la membrana plasmática vigila las fronteras. 
+El núcleo da las órdenes, las mitocondrias proveen la energía, los ribosomas y el retículo fabrican los productos necesarios, el Golgi los empaqueta y los lisosomas mantienen todo limpio. Todo esto ocurre mientras el citoesqueleto mantiene la estructura y la membrana plasmática vigila las fronteras.
 
 Y lo más impactante de todo es la escala: mientras lees estas palabras, este frenético e implacable nivel de actividad de producción, transporte y consumo de energía está ocurriendo simultáneamente en cada una de las más de 30 billones de células eucariotas que componen tu cuerpo. Es una cooperación silenciosa y perfecta que, segundo a segundo, crea eso que llamamos el milagro de estar vivos.

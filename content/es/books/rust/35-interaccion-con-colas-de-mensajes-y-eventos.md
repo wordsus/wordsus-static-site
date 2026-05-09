@@ -85,6 +85,7 @@ pub async fn produce_event(brokers: &str, topic: &str) -> Result<()> {
 ```
 
 **Puntos clave del productor:**
+
 * **Gestión de claves (Keys):** Al asignar `event.user_id` como clave, Kafka garantiza que todos los eventos del mismo usuario irán a la misma partición, asegurando el orden de procesamiento.
 * **Rendimiento:** `producer.send(...)` no espera inmediatamente a que el mensaje viaje por la red; lo encola internamente y lo agrupa por lotes (batching) en segundo plano, maximizando el throughput.
 
@@ -152,9 +153,10 @@ pub async fn consume_events(brokers: &str, group_id: &str, topic: &str) -> Resul
 En el ejemplo anterior, establecimos `"enable.auto.commit"` en `"true"`. Aunque es conveniente para empezar, en aplicaciones backend de nivel Senior donde la resiliencia es crítica, esto puede llevar a la pérdida de mensajes si el proceso hace *panic* (Capítulo 5) justo después de leer el mensaje pero antes de procesarlo en la base de datos.
 
 Para lograr una **semántica de "Al menos una vez" (At-least-once)**, debes:
-1.  Desactivar el auto-commit: `.set("enable.auto.commit", "false")`.
-2.  Procesar el mensaje de forma íntegra (ej. transacción en base de datos).
-3.  Hacer el commit manualmente utilizando `consumer.commit_message(&message, CommitMode::Async)`.
+
+1. Desactivar el auto-commit: `.set("enable.auto.commit", "false")`.
+2. Procesar el mensaje de forma íntegra (ej. transacción en base de datos).
+3. Hacer el commit manualmente utilizando `consumer.commit_message(&message, CommitMode::Async)`.
 
 Esto garantiza que si tu worker de Tokio se reinicia inesperadamente, el último mensaje no procesado se volverá a entregar.
 
@@ -180,9 +182,10 @@ anyhow = "1.0"
 ```
 
 A nivel arquitectónico, AMQP requiere entender tres componentes que configuraremos desde Rust:
-1.  **Exchanges:** Reciben los mensajes del productor y deciden a qué colas enviarlos según reglas de enrutamiento (*routing keys*).
-2.  **Queues:** Almacenan los mensajes hasta que un consumidor los procesa.
-3.  **Bindings:** Las reglas que unen un Exchange con una Queue.
+
+1. **Exchanges:** Reciben los mensajes del productor y deciden a qué colas enviarlos según reglas de enrutamiento (*routing keys*).
+2. **Queues:** Almacenan los mensajes hasta que un consumidor los procesa.
+3. **Bindings:** Las reglas que unen un Exchange con una Queue.
 
 Además, por razones de rendimiento, las conexiones TCP son costosas. `lapin` utiliza **Channels** (canales virtuales) multiplexados sobre una única conexión TCP subyacente. En una aplicación robusta, abrirás una conexión por proceso y un canal por hilo o tarea (worker).
 
@@ -340,7 +343,7 @@ En Rust, el sistema de tipos nos obliga a pensar explícitamente en el flujo de 
 
 ## 35.3 Patrones de resiliencia: Dead Letter Queues y Circuit Breakers
 
-En el desarrollo de sistemas distribuidos y microservicios, asumir que la red es confiable o que los servicios dependientes siempre estarán disponibles es un error crítico. Las fallas no son una posibilidad; son una garantía. Como ingenieros backend senior, nuestro objetivo no es evitar las fallas por completo, sino diseñar sistemas que se degraden con elegancia y se recuperen de forma autónoma, evitando fallos en cascada. 
+En el desarrollo de sistemas distribuidos y microservicios, asumir que la red es confiable o que los servicios dependientes siempre estarán disponibles es un error crítico. Las fallas no son una posibilidad; son una garantía. Como ingenieros backend senior, nuestro objetivo no es evitar las fallas por completo, sino diseñar sistemas que se degraden con elegancia y se recuperen de forma autónoma, evitando fallos en cascada.
 
 En esta sección exploraremos dos de los patrones de resiliencia más importantes: las **Dead Letter Queues (DLQ)** para el manejo de mensajes envenenados, y los **Circuit Breakers** para proteger los recursos de la aplicación.
 
@@ -348,7 +351,7 @@ En esta sección exploraremos dos de los patrones de resiliencia más importante
 
 ### 1. Dead Letter Queues (DLQs): Aislamiento de mensajes problemáticos
 
-En las secciones 35.1 y 35.2 vimos cómo consumir eventos de Kafka y RabbitMQ. Sin embargo, ¿qué sucede si un mensaje tiene un formato JSON inválido o requiere un dato que ha sido eliminado de la base de datos? 
+En las secciones 35.1 y 35.2 vimos cómo consumir eventos de Kafka y RabbitMQ. Sin embargo, ¿qué sucede si un mensaje tiene un formato JSON inválido o requiere un dato que ha sido eliminado de la base de datos?
 
 Si el consumidor rechaza el mensaje y lo vuelve a encolar (requeue) infinitamente, se crea un *Poison Pill* (píldora envenenada). Este mensaje bloqueará el procesamiento de la partición o consumirá recursos de CPU en un ciclo inútil. Si simplemente descartamos el mensaje, perdemos datos críticos.
 
@@ -416,9 +419,10 @@ pub async fn setup_queue_with_dlq(channel: &lapin::Channel) -> Result<()> {
 
 ### 2. Circuit Breakers: Cortando fallos en cascada
 
-Imagina que tu aplicación Rust procesa mensajes de una cola y, por cada mensaje, realiza una llamada HTTP a un servicio externo de facturación. Si ese servicio externo se cae y comienza a tardar 30 segundos en responder con un error `504 Gateway Timeout`, tus workers se quedarán bloqueados esperando, las conexiones a RabbitMQ/Kafka se acumularán, y tu propia aplicación se quedará sin memoria o sin hilos disponibles. 
+Imagina que tu aplicación Rust procesa mensajes de una cola y, por cada mensaje, realiza una llamada HTTP a un servicio externo de facturación. Si ese servicio externo se cae y comienza a tardar 30 segundos en responder con un error `504 Gateway Timeout`, tus workers se quedarán bloqueados esperando, las conexiones a RabbitMQ/Kafka se acumularán, y tu propia aplicación se quedará sin memoria o sin hilos disponibles.
 
 El patrón **Circuit Breaker** (Cortacircuitos) actúa como un interruptor eléctrico:
+
 * **Cerrado (Closed):** El flujo es normal. Se permiten las llamadas al servicio externo.
 * **Abierto (Open):** Si los fallos superan un umbral (ej. 5 fallos consecutivos), el circuito se abre. Las llamadas subsiguientes fallan inmediatamente en tu código Rust sin intentar siquiera hacer la petición por red (Fail Fast).
 * **Semi-abierto (Half-Open):** Después de un tiempo de gracia, el circuito permite pasar una única petición de prueba. Si tiene éxito, se cierra de nuevo. Si falla, se vuelve a abrir.
@@ -647,9 +651,9 @@ Si el estado muta mediante eventos, ¿cómo hacemos una consulta del tipo `SELEC
 
 Aquí entra el **Projector**. Utilizando los consumidores asíncronos de `rdkafka` o `lapin` que construimos en las secciones 35.1 y 35.2, un worker en segundo plano escucha el flujo de eventos y actualiza un modelo de lectura altamente optimizado (una vista materializada en PostgreSQL, un documento en MongoDB, o un caché en Redis).
 
-1.  El consumidor recibe `OrderEvent::OrderCreated`.
-2.  Hace un `INSERT` en una tabla relacional `read_orders`.
-3.  El consumidor recibe `OrderEvent::OrderPaid`.
-4.  Hace un `UPDATE read_orders SET status = 'Paid' WHERE id = ...`.
+1. El consumidor recibe `OrderEvent::OrderCreated`.
+2. Hace un `INSERT` en una tabla relacional `read_orders`.
+3. El consumidor recibe `OrderEvent::OrderPaid`.
+4. Hace un `UPDATE read_orders SET status = 'Paid' WHERE id = ...`.
 
 Esta separación permite escalar asimétricamente: tu API de lectura (usando Axum, por ejemplo) consulta directamente la tabla `read_orders` con tiempos de respuesta de sub-milisegundos, totalmente aislada de la carga transaccional y las reglas de negocio complejas del modelo de escritura.

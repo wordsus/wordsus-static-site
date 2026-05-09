@@ -14,7 +14,7 @@ Para entender el estricto control del siglo I, debemos retroceder un poco en el 
 
 En el año 63 a.C., el general romano Pompeyo el Grande aprovechó estas disputas internas y marchó sobre Jerusalén. La entrada de Pompeyo, quien llegó a profanar el Lugar Santísimo del Templo al entrar en él, marcó el fin de la soberanía judía y el inicio de la dominación romana. Al principio, Roma gobernó a través de reyes vasallos, siendo el más famoso Herodes el Grande. Herodes fue un constructor magnífico y un político astuto, pero también un tirano paranoico que gobernaba en beneficio de Roma.
 
-Tras la muerte de Herodes (poco después del nacimiento de Jesús), su reino fue dividido entre sus hijos. Arquelao recibió el control de Judea, pero resultó ser un gobernante tan incompetente y cruel que los propios judíos y samaritanos enviaron una delegación a Roma para suplicar que lo destituyeran. El emperador Augusto accedió en el año 6 d.C. A partir de ese momento, Judea dejó de ser un reino vasallo y se convirtió en una provincia imperial (técnicamente, una provincia ecuestre de segunda categoría) gobernada directamente por funcionarios romanos enviados desde la capital: los prefectos. 
+Tras la muerte de Herodes (poco después del nacimiento de Jesús), su reino fue dividido entre sus hijos. Arquelao recibió el control de Judea, pero resultó ser un gobernante tan incompetente y cruel que los propios judíos y samaritanos enviaron una delegación a Roma para suplicar que lo destituyeran. El emperador Augusto accedió en el año 6 d.C. A partir de ese momento, Judea dejó de ser un reino vasallo y se convirtió en una provincia imperial (técnicamente, una provincia ecuestre de segunda categoría) gobernada directamente por funcionarios romanos enviados desde la capital: los prefectos.
 
 Es en este escenario de control directo, humillante para un pueblo que se sabía portador de las promesas de Dios, donde comienza la historia de la iglesia primitiva y el ministerio de Cristo.
 
@@ -60,8 +60,9 @@ Esta ubicación no era casualidad. Roma sabía que el Templo no era solo un luga
 La maquinaria militar y administrativa de Roma no era barata, y el Imperio no la financiaba con sus propios fondos; los pueblos conquistados debían pagar su propia subyugación. El sistema impositivo romano era una de las fuentes de mayor fricción y sufrimiento para la población de Judea en el siglo I.
 
 Había dos grandes categorías de impuestos imperiales que un habitante de Judea debía pagar:
-1.  **Tributum soli (Impuesto sobre la tierra):** Un impuesto sobre la producción agrícola y los bienes. Gran parte del grano, el vino y el aceite producido en Israel iba directamente a alimentar las arcas de Roma.
-2.  **Tributum capitis (Impuesto de capitación):** Un impuesto directo que debía pagar todo adulto. Este era un tributo profundamente humillante, ya que era un recordatorio constante de que no eran libres, sino súbditos del César.
+
+1. **Tributum soli (Impuesto sobre la tierra):** Un impuesto sobre la producción agrícola y los bienes. Gran parte del grano, el vino y el aceite producido en Israel iba directamente a alimentar las arcas de Roma.
+2. **Tributum capitis (Impuesto de capitación):** Un impuesto directo que debía pagar todo adulto. Este era un tributo profundamente humillante, ya que era un recordatorio constante de que no eran libres, sino súbditos del César.
 
 Para recaudar ciertos impuestos indirectos (peajes, aduanas, impuestos sobre el transporte), Roma subcontrataba a recaudadores locales conocidos como **publicanos**. El sistema fomentaba la corrupción: Roma exigía una cantidad fija, y todo lo que el publicano pudiera extraer por encima de esa cifra era su ganancia personal. Esta es la razón por la que figuras como Zaqueo o Mateo eran tan despreciadas por la sociedad judía. No solo eran vistos como extorsionadores y ladrones, sino como traidores a Dios y a la patria por colaborar voluntariamente con la maquinaria opresora de los gentiles.
 
@@ -72,9 +73,10 @@ El choque económico y espiritual culmina en el famoso episodio bíblico del tri
 La máxima autoridad romana dentro de la provincia de Judea era el gobernador, que durante el tiempo de Jesús ostentaba el título de **Prefecto** (más tarde, en el tiempo del apóstol Pablo, el título cambió a *Procurador*). El prefecto provenía de la orden ecuestre (la clase media-alta de la nobleza romana) y era nombrado directamente por el Emperador.
 
 Las responsabilidades principales del prefecto eran tres:
-1.  Mantener el orden público y sofocar rebeliones.
-2.  Asegurar la recolección y el envío de los impuestos a Roma.
-3.  Administrar justicia en casos de máxima gravedad, especialmente aquellos que conllevaban la pena de muerte.
+
+1. Mantener el orden público y sofocar rebeliones.
+2. Asegurar la recolección y el envío de los impuestos a Roma.
+3. Administrar justicia en casos de máxima gravedad, especialmente aquellos que conllevaban la pena de muerte.
 
 El prefecto romano no vivía en Jerusalén. La ciudad santa de los judíos, con su fervor religioso y sus estrictas leyes de pureza, resultaba incómoda para un magistrado romano acostumbrado a los teatros, los baños termales y los templos paganos. Por ello, la capital administrativa y militar de la provincia era **Cesarea Marítima**, una espléndida ciudad costera de estilo grecorromano construida por Herodes el Grande. El prefecto solo subía a Jerusalén, acompañado de una fuerte escolta militar, durante las grandes festividades religiosas judías, precisamente para asegurarse de que las multitudes no aprovecharan la aglomeración para iniciar un levantamiento.
 
@@ -84,7 +86,7 @@ El prefecto romano no vivía en Jerusalén. La ciudad santa de los judíos, con 
 
 A pesar de su abrumador poder militar, Roma era pragmática. El Imperio sabía que gobernar directamente los asuntos cotidianos y religiosos de un pueblo tan peculiar y celoso como el judío sería una pesadilla logística. Por tanto, Roma permitía cierto grado de autonomía local, siempre y cuando no interfiriera con los impuestos o la paz imperial.
 
-Esta autonomía local estaba en manos del **Sanedrín**, el tribunal supremo y consejo legislativo judío. 
+Esta autonomía local estaba en manos del **Sanedrín**, el tribunal supremo y consejo legislativo judío.
 
 ```text
 [Estructura y Composición del Sanedrín en el Siglo I]
@@ -106,24 +108,25 @@ Esta autonomía local estaba en manos del **Sanedrín**, el tribunal supremo y c
 
 El Sanedrín tenía su sede en los atrios del Templo de Jerusalén. Tenía su propia fuerza policial (la guardia del Templo) y tenía autoridad para juzgar asuntos civiles, criminales de menor escala y, por supuesto, cualquier violación de la Ley de Moisés.
 
-Sin embargo, aquí es donde entra el "estricto control" romano: la relación entre el Prefecto y el Sanedrín era un delicadísimo juego de equilibrio de poder. 
+Sin embargo, aquí es donde entra el "estricto control" romano: la relación entre el Prefecto y el Sanedrín era un delicadísimo juego de equilibrio de poder.
 
-*   **La vestidura del Sumo Sacerdote:** Durante gran parte del siglo I, los romanos mantenían las vestiduras sagradas del Sumo Sacerdote guardadas bajo llave en la Fortaleza Antonia. Solo se las entregaban a los judíos para los días de fiesta. Esto era un poderoso símbolo de que, en última instancia, Roma tenía a la religión judía "bajo custodia".
-*   **El monopolio de la muerte (*Ius Gladii*):** El Sanedrín podía arrestar, juzgar y azotar, pero Roma se reservaba estrictamente el *ius gladii* (el derecho de la espada), es decir, la autoridad para ejecutar la pena de muerte.
+* **La vestidura del Sumo Sacerdote:** Durante gran parte del siglo I, los romanos mantenían las vestiduras sagradas del Sumo Sacerdote guardadas bajo llave en la Fortaleza Antonia. Solo se las entregaban a los judíos para los días de fiesta. Esto era un poderoso símbolo de que, en última instancia, Roma tenía a la religión judía "bajo custodia".
+* **El monopolio de la muerte (*Ius Gladii*):** El Sanedrín podía arrestar, juzgar y azotar, pero Roma se reservaba estrictamente el *ius gladii* (el derecho de la espada), es decir, la autoridad para ejecutar la pena de muerte.
 
 Esta dinámica de poder es exactamente lo que vemos desplegarse en el juicio de Jesús. El Sanedrín lo arresta y lo juzga por blasfemia, un crimen religioso merecedor de muerte según la ley judía. Pero como no tienen autoridad para ejecutarlo, se ven obligados a llevarlo ante el Prefecto romano (Pilato). Para que Pilato se interese en el caso, la acusación debe ser traducida de términos religiosos a términos políticos: acusan a Jesús de sedición, de prohibir pagar impuestos al César y de autoproclamarse Rey.
 
 ## 6. El choque cultural: El conflicto diario entre la pureza y el paganismo
 
-El control de Roma no era solo militar y económico; era una presión cultural e ideológica constante. La cosmovisión judía estaba fundamentada en la creencia de un único Dios verdadero, invisible y santo, y en el llamado a mantenerse apartados (santos) de las naciones paganas. 
+El control de Roma no era solo militar y económico; era una presión cultural e ideológica constante. La cosmovisión judía estaba fundamentada en la creencia de un único Dios verdadero, invisible y santo, y en el llamado a mantenerse apartados (santos) de las naciones paganas.
 
 Roma, por el contrario, era un imperio politeísta que, con el tiempo, comenzó a rendir culto divino a sus emperadores. Las ciudades construidas por romanos o herodianos en la región estaban llenas de teatros, baños públicos, hipódromos y templos paganos. La vida grecorromana glorificaba el poder humano, la estética física y la conquista.
 
 Para un judío piadoso, caminar por una ciudad, transitar una calzada romana o usar una moneda imperial significaba estar en contacto constante con lo impuro. Esta asfixia cultural generó diversas reacciones en la sociedad de la época:
-*   **Los Esenios** decidieron retirarse por completo de la sociedad corrupta, aislándose en comunidades en el desierto (como Qumrán) para esperar la intervención divina.
-*   **Los Saduceos** decidieron asimilarse y cooperar para sobrevivir y mantener sus privilegios.
-*   **Los Fariseos** eligieron resistir mediante un cumplimiento extremo y riguroso de la Ley, creando "cercos" alrededor de los mandamientos para mantener la pureza espiritual en medio de la contaminación pagana.
-*   **Los Zelotes**, radicalizados por el nacionalismo, optaron por la resistencia armada, el sabotaje y el asesinato, creyendo que Dios solo los liberaría si ellos tomaban la espada contra Roma.
+
+* **Los Esenios** decidieron retirarse por completo de la sociedad corrupta, aislándose en comunidades en el desierto (como Qumrán) para esperar la intervención divina.
+* **Los Saduceos** decidieron asimilarse y cooperar para sobrevivir y mantener sus privilegios.
+* **Los Fariseos** eligieron resistir mediante un cumplimiento extremo y riguroso de la Ley, creando "cercos" alrededor de los mandamientos para mantener la pureza espiritual en medio de la contaminación pagana.
+* **Los Zelotes**, radicalizados por el nacionalismo, optaron por la resistencia armada, el sabotaje y el asesinato, creyendo que Dios solo los liberaría si ellos tomaban la espada contra Roma.
 
 ## 7. El ministerio de Jesús en el centro del huracán
 
@@ -131,9 +134,9 @@ Es en este polvorín político, económico y social donde Jesús de Nazaret irru
 
 Para los oídos del siglo I, la frase "Reino de Dios" no era solo un concepto espiritual celestial; era una afirmación profundamente subversiva. Si Dios es Rey, entonces César no lo es. El Evangelio (la *euangelion*, un término que curiosamente los romanos usaban para anunciar las victorias militares o el nacimiento de un nuevo emperador) anunciaba que había un nuevo Señor.
 
-Sin embargo, Jesús desconcertó a todos los grupos de su época. No se retiró al desierto como los esenios, ni cooperó con Roma como los saduceos. No adoptó el legalismo de los fariseos ni tomó la espada como los zelotes. Jesús propuso un camino revolucionario que desafiaba a ambas esferas de poder. 
+Sin embargo, Jesús desconcertó a todos los grupos de su época. No se retiró al desierto como los esenios, ni cooperó con Roma como los saduceos. No adoptó el legalismo de los fariseos ni tomó la espada como los zelotes. Jesús propuso un camino revolucionario que desafiaba a ambas esferas de poder.
 
-Cuando dijo *"Dad a César lo que es de César, y a Dios lo que es de Dios"*, reconoció la autoridad temporal del Imperio sobre sus propias invenciones (la moneda), pero limitó absolutamente el reclamo de Roma sobre la vida humana, que lleva estampada la imagen de Dios. Jesús enseñó que el verdadero enemigo no era la ocupación romana, sino la esclavitud del pecado y la muerte. 
+Cuando dijo *"Dad a César lo que es de César, y a Dios lo que es de Dios"*, reconoció la autoridad temporal del Imperio sobre sus propias invenciones (la moneda), pero limitó absolutamente el reclamo de Roma sobre la vida humana, que lleva estampada la imagen de Dios. Jesús enseñó que el verdadero enemigo no era la ocupación romana, sino la esclavitud del pecado y la muerte.
 
 La estricta maquinaria del Imperio fue utilizada, paradójicamente, para cumplir el propósito divino. La cruz, el instrumento romano diseñado para humillar y aterrorizar a los rebeldes y mantener el estricto control de Judea, fue el altar elegido por Dios para la redención de la humanidad.
 
@@ -141,6 +144,6 @@ La estricta maquinaria del Imperio fue utilizada, paradójicamente, para cumplir
 
 El Imperio Romano mantuvo un férreo y estricto control sobre la región de Judea durante el siglo I. Con sus legiones, sus impuestos sofocantes, sus prefectos implacables y su constante vigilancia sobre las instituciones judías, Roma creó un ambiente de tensión sin precedentes. Era una época oscura, marcada por la opresión, el sufrimiento y un profundo anhelo de liberación.
 
-Sin embargo, para el creyente cristiano, este intrincado contexto histórico no es una simple coincidencia. El apóstol Pablo escribió a los Gálatas: *"Pero cuando vino el cumplimiento del tiempo, Dios envió a su Hijo..."* (Gálatas 4:4). El Imperio Romano, con todo su orgullo y violencia, fue un instrumento involuntario en el plan de Dios. 
+Sin embargo, para el creyente cristiano, este intrincado contexto histórico no es una simple coincidencia. El apóstol Pablo escribió a los Gálatas: *"Pero cuando vino el cumplimiento del tiempo, Dios envió a su Hijo..."* (Gálatas 4:4). El Imperio Romano, con todo su orgullo y violencia, fue un instrumento involuntario en el plan de Dios.
 
 La misma red de calzadas romanas construidas para movilizar legiones sirvió, décadas después, para que misioneros como Pablo llevaran el mensaje del Evangelio hasta los confines de la tierra. El griego común (*koiné*), impuesto como lengua franca por las conquistas grecorromanas, permitió que la Palabra de Dios cruzara fronteras culturales rápidamente. Y el clima de desesperación y opresión preparó los corazones de miles para recibir las buenas nuevas de un Rey cuyo reino no es de este mundo. Al observar el férreo control de Roma sobre Judea, no solo vemos la historia antigua; vemos el escenario perfectamente diseñado por la providencia divina para la llegada de nuestro Salvador.

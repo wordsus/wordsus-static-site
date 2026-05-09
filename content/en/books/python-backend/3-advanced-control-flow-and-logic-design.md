@@ -4,7 +4,7 @@ Control flow is the central nervous system of any backend architecture. While Py
 
 In Python, boolean evaluation extends far beyond the strict binary of `True` and `False`. The language employs a concept known as **"truthiness,"** allowing any object to be evaluated in a boolean context—such as within an `if` or `while` statement. Understanding how Python implicitly casts objects to booleans is essential for writing idiomatic, highly optimized backend logic.
 
-When you write a statement like `if user_payload:`, Python does not check if `user_payload` is strictly equal to `True` (`user_payload == True`). Instead, it evaluates the contextual truthiness of the object. 
+When you write a statement like `if user_payload:`, Python does not check if `user_payload` is strictly equal to `True` (`user_payload == True`). Instead, it evaluates the contextual truthiness of the object.
 
 ### The Boolean Evaluation Protocol
 
@@ -27,7 +27,7 @@ When Python encounters an object in a boolean context, it delegates the evaluati
 +-------------------------------------------------------------+
 ```
 
-Because of this fallback chain, custom classes are inherently truthy unless you explicitly dictate otherwise. 
+Because of this fallback chain, custom classes are inherently truthy unless you explicitly dictate otherwise.
 
 ```python
 class DefaultTruthy:
@@ -54,6 +54,7 @@ print(bool(PayloadContainer([])))     # False (Defers to __len__ returning 0)
 ```
 
 By default, the following built-in types and states evaluate to **falsy**:
+
 * Constants defined to be false: `None` and `False`.
 * Zero of any numeric type: `0`, `0.0`, `0j`, `Decimal(0)`, `Fraction(0, 1)`.
 * Empty sequences and collections: `''`, `()`, `[]`, `{}`, `set()`, `range(0)`.
@@ -99,7 +100,7 @@ total_active = sum(active_connections)  # Returns 3
 
 ### Identity vs. Equality in Logic
 
-Because `True`, `False`, and `None` are singletons (only one instance of each exists in memory per Python process), you should always use the identity operator `is` rather than the equality operator `==` when explicitly checking against them. 
+Because `True`, `False`, and `None` are singletons (only one instance of each exists in memory per Python process), you should always use the identity operator `is` rather than the equality operator `==` when explicitly checking against them.
 
 The `is` operator checks if two variables point to the exact same memory address. The `==` operator checks if their values are equivalent, which invokes the `__eq__` dunder method and can lead to unexpected behavior if overridden by a custom object.
 
@@ -119,7 +120,7 @@ Mastering contextual truthiness prevents verbose code like `if len(items) > 0:` 
 
 ## 3.2 Iteration Constructs and Loop Optimizations
 
-In Python, iteration does not function like the traditional, index-based `for (int i = 0; i < n; i++)` constructs found in C or Java. Instead, Python loops act as "for-each" constructs, operating exclusively on collections and iterables. Because Python is an interpreted language, the overhead of executing a loop block repeatedly can become a significant bottleneck in backend systems if not structured correctly. 
+In Python, iteration does not function like the traditional, index-based `for (int i = 0; i < n; i++)` constructs found in C or Java. Instead, Python loops act as "for-each" constructs, operating exclusively on collections and iterables. Because Python is an interpreted language, the overhead of executing a loop block repeatedly can become a significant bottleneck in backend systems if not structured correctly.
 
 Understanding the internal mechanics of loops and applying targeted optimizations is critical for designing low-latency applications.
 
@@ -127,11 +128,11 @@ Understanding the internal mechanics of loops and applying targeted optimization
 
 When a `for` loop is initiated, Python does not inherently know how to traverse the provided object. Instead, it relies on a well-defined C-level protocol. The interpreter calls the `iter()` function on the object, which must return an iterator. The loop then repeatedly calls the `next()` function on this iterator until a `StopIteration` exception is raised, signaling that the loop should terminate.
 
-While Chapter 9 covers the construction of custom iterators in depth, recognizing this hidden function-call overhead is the first step toward loop optimization. Every iteration involves a C-level function call and exception handling mechanism. 
+While Chapter 9 covers the construction of custom iterators in depth, recognizing this hidden function-call overhead is the first step toward loop optimization. Every iteration involves a C-level function call and exception handling mechanism.
 
 ### The `else` Clause in Iteration Constructs
 
-One of Python's most powerful, yet frequently misunderstood, iteration features is the `else` clause attached to `for` and `while` loops. 
+One of Python's most powerful, yet frequently misunderstood, iteration features is the `else` clause attached to `for` and `while` loops.
 
 In a loop, the `else` block executes **only if the loop completes its iterations naturally**—meaning it was never interrupted by a `break` statement. This eliminates the need for "flag variables" (e.g., `found = False`), streamlining search algorithms and validation loops.
 
@@ -214,7 +215,7 @@ def calculate_roots_fast():
 ```
 
 **2. Delegating to C via Built-ins**
-The golden rule of Python optimization is: *Let C do the heavy lifting.* Built-in functions like `map()`, `filter()`, `enumerate()`, and `zip()` are implemented in highly optimized C code. 
+The golden rule of Python optimization is: *Let C do the heavy lifting.* Built-in functions like `map()`, `filter()`, `enumerate()`, and `zip()` are implemented in highly optimized C code.
 
 If you find yourself manually managing index counters, you are likely writing suboptimal code.
 
@@ -338,9 +339,9 @@ required_permissions = {endpoint["permission"] for endpoint in endpoints}
 
 ### The Limits of Expressiveness: Readability vs. Complexity
 
-While comprehensions are powerful, they can quickly become an anti-pattern if abused. Python allows for nested comprehensions (multiple `for` clauses) and complex ternary operators within the output expression. 
+While comprehensions are powerful, they can quickly become an anti-pattern if abused. Python allows for nested comprehensions (multiple `for` clauses) and complex ternary operators within the output expression.
 
-When a comprehension spans more than two lines or requires deep cognitive effort to parse, the syntactic sugar has turned into technical debt. 
+When a comprehension spans more than two lines or requires deep cognitive effort to parse, the syntactic sugar has turned into technical debt.
 
 ```python
 matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
@@ -461,7 +462,7 @@ handle_webhook_event(webhook_data)
 
 ### Object Matching and Guard Clauses
 
-Pattern matching interacts natively with Python objects, particularly classes built using the `@dataclass` decorator or `namedtuple`. You can match against specific attributes of an instance. 
+Pattern matching interacts natively with Python objects, particularly classes built using the `@dataclass` decorator or `namedtuple`. You can match against specific attributes of an instance.
 
 Furthermore, you can attach **guard clauses**—an `if` statement appended directly to the `case`. The block will only execute if both the structural pattern aligns and the guard clause evaluates to True. This prevents the need to nest `if` statements inside the matched block.
 

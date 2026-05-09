@@ -2,7 +2,7 @@ En este capítulo, elevamos la persistencia de datos al estándar de la ingenier
 
 ## 15.1 Bases de datos relacionales y drivers asíncronos (`asyncpg`)
 
-Hasta ahora, hemos visto cómo el *Event Loop* de Python (Capítulo 12) nos permite manejar miles de conexiones I/O sin bloquear el hilo principal. Sin embargo, en el desarrollo backend, la operación I/O por excelencia es la comunicación con la base de datos. 
+Hasta ahora, hemos visto cómo el *Event Loop* de Python (Capítulo 12) nos permite manejar miles de conexiones I/O sin bloquear el hilo principal. Sin embargo, en el desarrollo backend, la operación I/O por excelencia es la comunicación con la base de datos.
 
 Si construyes una API ultrarrápida pero utilizas un driver de base de datos síncrono clásico (como el tradicional `psycopg2` para PostgreSQL o `sqlite3`), cada vez que ejecutes una consulta, **bloquearás el Event Loop por completo**. Mientras esperas la respuesta de la base de datos, tu servidor no podrá atender a ningún otro usuario. Para resolver este cuello de botella, necesitamos **drivers asíncronos**.
 
@@ -10,9 +10,10 @@ En esta sección nos centraremos en **`asyncpg`**, el driver asíncrono nativo p
 
 ### ¿Por qué `asyncpg`?
 
-A diferencia de otros drivers que actúan como envoltorios (wrappers) sobre bibliotecas en C (como `libpq`), `asyncpg` está escrito desde cero en Python y Cython, implementando el protocolo binario de PostgreSQL de forma directa. 
+A diferencia de otros drivers que actúan como envoltorios (wrappers) sobre bibliotecas en C (como `libpq`), `asyncpg` está escrito desde cero en Python y Cython, implementando el protocolo binario de PostgreSQL de forma directa.
 
 Esto le otorga ventajas clave:
+
 * **Velocidad extrema:** Es consistentemente evaluado como uno de los drivers más rápidos del ecosistema, superando con creces a opciones síncronas tradicionales.
 * **Soporte nativo para tipos de datos:** Mapea automáticamente tipos complejos de PostgreSQL (como JSONB, arrays o UUIDs) a estructuras de Python sin configuraciones adicionales.
 * **Caché de sentencias preparadas:** Optimiza automáticamente las consultas recurrentes para evitar sobrecarga en la red.
@@ -191,9 +192,10 @@ Aquí es donde entran los motores **NoSQL** (Not Only SQL). Un desarrollador Sen
 
 ### 1. MongoDB: El almacén de documentos (Document Store)
 
-MongoDB guarda la información en formato BSON (una representación binaria de JSON). En lugar de filas y columnas, tienes "Colecciones" y "Documentos". 
+MongoDB guarda la información en formato BSON (una representación binaria de JSON). En lugar de filas y columnas, tienes "Colecciones" y "Documentos".
 
 **¿Cuándo usarlo?**
+
 * **Esquemas dinámicos:** Cuando la estructura de los datos cambia constantemente o difiere entre registros (ej. catálogos de productos donde una "laptop" tiene atributos muy distintos a una "camiseta").
 * **Prototipado rápido:** Al no requerir migraciones de esquema previas (como vimos con Alembic), acelera el desarrollo inicial.
 * **Jerarquías anidadas:** Cuando prefieres guardar un objeto complejo y sus relaciones directas en un solo documento en lugar de hacer múltiples `JOINs` costosos.
@@ -236,6 +238,7 @@ if __name__ == '__main__':
 Redis (Remote Dictionary Server) es una base de datos que vive enteramente en la memoria RAM. Esto la hace ridículamente rápida, pero limita la cantidad de datos que puedes guardar. En una arquitectura Senior, Redis rara vez es la base de datos principal; actúa como una capa de apoyo vital.
 
 **¿Cuándo usarlo?**
+
 * **Caché (Caching):** Guardar el resultado de una consulta SQL pesada o de una llamada a una API externa durante unos minutos para aliviar la carga del servidor principal.
 * **Manejo de Sesiones y Tokens:** Ideal para almacenar tokens JWT revocados o sesiones de usuario de forma centralizada pero veloz.
 * **Rate Limiting:** Controlar cuántas peticiones por segundo puede hacer un usuario a nuestra API.
@@ -283,6 +286,7 @@ Si alguna vez has intentado hacer una búsqueda de texto en PostgreSQL usando `S
 Elasticsearch está construido sobre Apache Lucene y utiliza una estructura llamada **índice invertido** (similar al índice alfabético al final de un libro impreso).
 
 **¿Cuándo usarlo?**
+
 * **Búsquedas Full-Text:** Barras de búsqueda en e-commerce, foros o blogs que necesitan autocompletado, tolerancia a errores ortográficos y relevancia por puntuación (scoring).
 * **Observabilidad y Logs:** Es la "E" del famoso stack ELK (Elasticsearch, Logstash, Kibana). Excelente para ingerir, buscar y analizar millones de líneas de logs generados por tu backend.
 * **Geolocalización compleja:** Búsquedas eficientes del tipo "restaurantes a menos de 5km de esta coordenada que tengan la palabra 'vegan'".
@@ -348,9 +352,9 @@ La clave del rendimiento no es solo optimizar tu código Python o usar `async/aw
 
 ## 15.3 Mapeo Objeto-Relacional (ORMs): SQLAlchemy (Core y ORM) y Django ORM
 
-En la sección 15.1 aprendimos a interactuar directamente con la base de datos utilizando SQL puro y `asyncpg`. Aunque esto ofrece un rendimiento inigualable, escribir y mantener cientos de consultas SQL en formato *string* (cadenas de texto) dentro del código Python se vuelve insostenible a medida que el proyecto crece. 
+En la sección 15.1 aprendimos a interactuar directamente con la base de datos utilizando SQL puro y `asyncpg`. Aunque esto ofrece un rendimiento inigualable, escribir y mantener cientos de consultas SQL en formato *string* (cadenas de texto) dentro del código Python se vuelve insostenible a medida que el proyecto crece.
 
-Además, existe un problema fundamental en la ingeniería de software conocido como la **Impedancia Objeto-Relacional (Object-Relational Impedance Mismatch)**: las bases de datos relacionales agrupan datos en tablas y filas (basadas en matemáticas de conjuntos), mientras que Python maneja la información mediante objetos, atributos y grafos de referencias cruzadas. 
+Además, existe un problema fundamental en la ingeniería de software conocido como la **Impedancia Objeto-Relacional (Object-Relational Impedance Mismatch)**: las bases de datos relacionales agrupan datos en tablas y filas (basadas en matemáticas de conjuntos), mientras que Python maneja la información mediante objetos, atributos y grafos de referencias cruzadas.
 
 Para tender un puente entre estos dos mundos, utilizamos un **ORM (Object-Relational Mapper)**.
 
@@ -374,15 +378,18 @@ En el ecosistema de Python, dos gigantes dominan el paisaje de los ORMs, pero ca
 El ORM de Django es la definición de "baterías incluidas". Implementa el patrón *Active Record*, donde **la clase representa la tabla, y la instancia de la clase representa la fila**. En este patrón, el objeto mismo sabe cómo guardarse en la base de datos.
 
 **Ventajas:**
+
 * **Desarrollo ultrarrápido:** Su API intuitiva permite construir CRUDs (Create, Read, Update, Delete) en minutos.
 * **Ergonomía:** Oculta casi por completo el SQL subyacente.
 * **Integración:** Está profundamente acoplado al framework Django (Capítulo 16), facilitando la creación de formularios y paneles de administración de forma automática.
 
 **Desventajas:**
+
 * **Acoplamiento fuerte:** Es muy difícil extraer el ORM de Django para usarlo en un script independiente o en otro framework como FastAPI.
 * **Problemas de rendimiento ocultos:** Su facilidad de uso a menudo lleva a realizar consultas ineficientes (como el famoso problema "N+1" de consultas) si el desarrollador no conoce cómo funciona por debajo.
 
 **Ejemplo representativo (Django ORM):**
+
 ```python
 from django.db import models
 
@@ -407,9 +414,11 @@ SQLAlchemy es la herramienta de persistencia más poderosa y flexible del ecosis
 SQLAlchemy se divide en dos capas distintas que puedes usar juntas o por separado:
 
 #### A. SQLAlchemy Core (SQL Expression Language)
+
 Es una abstracción directa sobre SQL. Te permite escribir consultas SQL utilizando código Python. Es extremadamente rápido y predecible. Es la base sobre la que se construye el ORM.
 
 #### B. SQLAlchemy ORM
+
 La capa de abstracción orientada a objetos. En su versión 2.0 (la cual usaremos), SQLAlchemy abrazó fuertemente el **tipado estático** (Capítulo 11) y la **asincronía nativa** (Capítulo 12).
 
 **Ejemplo moderno (SQLAlchemy 2.0 Asíncrono):**
@@ -488,7 +497,7 @@ Cualquiera sea tu elección, una vez definidos los modelos en código, surge otr
 
 ## 15.4 Gestión de esquemas y migraciones con Alembic
 
-En la sección 15.3 aprendimos a definir nuestra base de datos utilizando modelos de SQLAlchemy. En un entorno de desarrollo temprano o en tutoriales básicos, es común ver que las tablas se crean usando un comando como `Base.metadata.create_all()`. Sin embargo, un desarrollador Senior sabe que **esto es inaceptable en producción**. 
+En la sección 15.3 aprendimos a definir nuestra base de datos utilizando modelos de SQLAlchemy. En un entorno de desarrollo temprano o en tutoriales básicos, es común ver que las tablas se crean usando un comando como `Base.metadata.create_all()`. Sin embargo, un desarrollador Senior sabe que **esto es inaceptable en producción**.
 
 Las bases de datos no son estáticas. A medida que tu aplicación evoluciona, necesitarás agregar nuevas columnas, cambiar tipos de datos o eliminar tablas. Si usas `create_all()`, SQLAlchemy no sabrá cómo alterar tablas existentes sin borrar tus datos. Aquí es donde entran las **migraciones de base de datos**.
 
@@ -627,6 +636,7 @@ Cuando trabajas solo, las migraciones son lineales. Cuando trabajas en un equipo
 Si el Desarrollador A y el Desarrollador B crean una migración en sus respectivas ramas de Git al mismo tiempo, ambas migraciones tendrán el mismo `down_revision` (el mismo punto de partida). Cuando ambas ramas se fusionan (*merge*) a la rama principal (main), Alembic lanzará un error porque hay "múltiples cabezas" (multiple heads).
 
 Para resolver esto como un profesional:
+
 1. Siempre haz `git pull` y actualiza tu rama antes de generar una migración.
 2. Si ocurre el conflicto, Alembic provee un comando para reconciliarlas: `alembic merge heads -m "merge_migraciones"`.
 3. En entornos de CI/CD (que veremos a fondo en el Capítulo 20), el pipeline debe ejecutar `alembic upgrade head` automáticamente antes de desplegar el nuevo código, garantizando que la base de datos esté siempre sincronizada con la versión del backend que está corriendo.

@@ -14,35 +14,35 @@ Imagina un servicio que procesa pagos. Si instanciamos el cliente directamente d
 package payment
 
 import (
-	"fmt"
-	"net/http"
+ "fmt"
+ "net/http"
 )
 
 type StripeGateway struct {
-	Client *http.Client
+ Client *http.Client
 }
 
 func (s *StripeGateway) Charge(amount float64) error {
-	// Lógica real de cobro contra la API de Stripe
-	return nil
+ // Lógica real de cobro contra la API de Stripe
+ return nil
 }
 
 type OrderService struct {
-	// Acoplamiento fuerte: el servicio depende de una implementación concreta
-	gateway *StripeGateway 
+ // Acoplamiento fuerte: el servicio depende de una implementación concreta
+ gateway *StripeGateway 
 }
 
 func NewOrderService() *OrderService {
-	return &OrderService{
-		gateway: &StripeGateway{Client: http.DefaultClient},
-	}
+ return &OrderService{
+  gateway: &StripeGateway{Client: http.DefaultClient},
+ }
 }
 
 func (o *OrderService) Checkout(amount float64) error {
-	if amount <= 0 {
-		return fmt.Errorf("cantidad inválida")
-	}
-	return o.gateway.Charge(amount)
+ if amount <= 0 {
+  return fmt.Errorf("cantidad inválida")
+ }
+ return o.gateway.Charge(amount)
 }
 ```
 
@@ -50,7 +50,7 @@ Escribir un test unitario para `Checkout` en este escenario es problemático. Ca
 
 ### Resolviendo el problema mediante Inyección de Dependencias
 
-Para solucionar esto, aplicamos Inyección de Dependencias. Extraemos el comportamiento requerido a una interfaz y modificamos el constructor de nuestro servicio para que reciba dicha dependencia desde el exterior. 
+Para solucionar esto, aplicamos Inyección de Dependencias. Extraemos el comportamiento requerido a una interfaz y modificamos el constructor de nuestro servicio para que reciba dicha dependencia desde el exterior.
 
 ```go
 package payment
@@ -59,26 +59,26 @@ import "fmt"
 
 // 1. Definimos el contrato (Interfaz)
 type Gateway interface {
-	Charge(amount float64) error
+ Charge(amount float64) error
 }
 
 type OrderService struct {
-	// 2. Dependemos de la abstracción, no de la implementación
-	gateway Gateway 
+ // 2. Dependemos de la abstracción, no de la implementación
+ gateway Gateway 
 }
 
 // 3. Inyectamos la dependencia a través del constructor
 func NewOrderService(g Gateway) *OrderService {
-	return &OrderService{
-		gateway: g,
-	}
+ return &OrderService{
+  gateway: g,
+ }
 }
 
 func (o *OrderService) Checkout(amount float64) error {
-	if amount <= 0 {
-		return fmt.Errorf("cantidad inválida")
-	}
-	return o.gateway.Charge(amount)
+ if amount <= 0 {
+  return fmt.Errorf("cantidad inválida")
+ }
+ return o.gateway.Charge(amount)
 }
 ```
 
@@ -92,77 +92,78 @@ Gracias a la inyección de dependencias, podemos aislar completamente `OrderServ
 package payment_test
 
 import (
-	"errors"
-	"testing"
-	"miproyecto/payment" // Asumiendo el módulo de tu proyecto
+ "errors"
+ "testing"
+ "miproyecto/payment" // Asumiendo el módulo de tu proyecto
 )
 
 // mockGateway es nuestra implementación controlada para testing
 type mockGateway struct {
-	mockCharge func(amount float64) error
+ mockCharge func(amount float64) error
 }
 
 // Satisfacemos la interfaz payment.Gateway
 func (m *mockGateway) Charge(amount float64) error {
-	return m.mockCharge(amount)
+ return m.mockCharge(amount)
 }
 
 func TestOrderService_Checkout(t *testing.T) {
-	tests := []struct {
-		name          string
-		amount        float64
-		mockBehavior  func(amount float64) error
-		expectedError bool
-	}{
-		{
-			name:   "Pago exitoso",
-			amount: 100.50,
-			mockBehavior: func(amount float64) error {
-				return nil // Simulamos que la pasarela responde OK
-			},
-			expectedError: false,
-		},
-		{
-			name:   "Fallo en la pasarela",
-			amount: 50.00,
-			mockBehavior: func(amount float64) error {
-				return errors.New("timeout de red") // Simulamos un error externo
-			},
-			expectedError: true,
-		},
-		{
-			name:   "Cantidad inválida rechazada antes del cobro",
-			amount: -10.00,
-			mockBehavior: func(amount float64) error {
-				t.Fatal("El Gateway no debió ser invocado con una cantidad negativa")
-				return nil
-			},
-			expectedError: true,
-		},
-	}
+ tests := []struct {
+  name          string
+  amount        float64
+  mockBehavior  func(amount float64) error
+  expectedError bool
+ }{
+  {
+   name:   "Pago exitoso",
+   amount: 100.50,
+   mockBehavior: func(amount float64) error {
+    return nil // Simulamos que la pasarela responde OK
+   },
+   expectedError: false,
+  },
+  {
+   name:   "Fallo en la pasarela",
+   amount: 50.00,
+   mockBehavior: func(amount float64) error {
+    return errors.New("timeout de red") // Simulamos un error externo
+   },
+   expectedError: true,
+  },
+  {
+   name:   "Cantidad inválida rechazada antes del cobro",
+   amount: -10.00,
+   mockBehavior: func(amount float64) error {
+    t.Fatal("El Gateway no debió ser invocado con una cantidad negativa")
+    return nil
+   },
+   expectedError: true,
+  },
+ }
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			// Preparamos nuestro mock con el comportamiento deseado para este caso
-			mock := &mockGateway{
-				mockCharge: tt.mockBehavior,
-			}
+ for _, tt := range tests {
+  t.Run(tt.name, func(t *testing.T) {
+   // Preparamos nuestro mock con el comportamiento deseado para este caso
+   mock := &mockGateway{
+    mockCharge: tt.mockBehavior,
+   }
 
-			// Inyectamos el mock en el servicio
-			svc := payment.NewOrderService(mock)
+   // Inyectamos el mock en el servicio
+   svc := payment.NewOrderService(mock)
 
-			// Ejecutamos la función a probar
-			err := svc.Checkout(tt.amount)
+   // Ejecutamos la función a probar
+   err := svc.Checkout(tt.amount)
 
-			if (err != nil) != tt.expectedError {
-				t.Fatalf("Error esperado: %v, se obtuvo: %v", tt.expectedError, err)
-			}
-		})
-	}
+   if (err != nil) != tt.expectedError {
+    t.Fatalf("Error esperado: %v, se obtuvo: %v", tt.expectedError, err)
+   }
+  })
+ }
 }
 ```
 
 En este ejemplo, la inyección de dependencias nos ha permitido:
+
 1. **Controlar el entorno:** Forzamos errores de red simulados sin necesidad de configurar *timeouts* o desconectar la conexión a internet.
 2. **Validar flujos internos:** Comprobamos que el servicio intercepta correctamente las cantidades negativas *antes* de intentar contactar a la pasarela externa.
 3. **Mantener la velocidad:** Las pruebas se ejecutan en milisegundos utilizando exclusivamente la memoria local.
@@ -171,7 +172,7 @@ Este enfoque de inyección manual a través de constructores (`NewX`) es la form
 
 ## 17.2. Creación manual de Mocks y Stubs utilizando Interfaces
 
-Una vez que hemos desacoplado nuestro código mediante la inyección de dependencias (como vimos en la sección anterior), el siguiente paso natural es construir los "dobles de prueba" (*Test Doubles*) que inyectaremos durante la ejecución de nuestros tests. 
+Una vez que hemos desacoplado nuestro código mediante la inyección de dependencias (como vimos en la sección anterior), el siguiente paso natural es construir los "dobles de prueba" (*Test Doubles*) que inyectaremos durante la ejecución de nuestros tests.
 
 En la comunidad de ingeniería de software, términos como *Mock*, *Stub* o *Fake* suelen usarse indistintamente, pero representan conceptos y estrategias de validación diferentes. En Go, gracias a la simplicidad de sus interfaces implícitas, crear estos dobles manualmente no solo es viable, sino que a menudo es la práctica recomendada antes de introducir herramientas externas.
 
@@ -191,28 +192,28 @@ package discount
 
 // 1. La interfaz que nuestro servicio necesita
 type UserRepository interface {
-	GetByID(id string) (*User, error)
+ GetByID(id string) (*User, error)
 }
 
 type User struct {
-	ID      string
-	IsPremium bool
+ ID      string
+ IsPremium bool
 }
 
 type DiscountService struct {
-	repo UserRepository
+ repo UserRepository
 }
 
 func (s *DiscountService) Calculate(userID string, amount float64) (float64, error) {
-	user, err := s.repo.GetByID(userID)
-	if err != nil {
-		return 0, err
-	}
-	
-	if user.IsPremium {
-		return amount * 0.80, nil // 20% de descuento
-	}
-	return amount, nil
+ user, err := s.repo.GetByID(userID)
+ if err != nil {
+  return 0, err
+ }
+ 
+ if user.IsPremium {
+  return amount * 0.80, nil // 20% de descuento
+ }
+ return amount, nil
 }
 ```
 
@@ -222,40 +223,40 @@ Para probar `DiscountService`, no necesitamos una base de datos real. Crearemos 
 package discount_test
 
 import (
-	"errors"
-	"testing"
-	"miproyecto/discount"
+ "errors"
+ "testing"
+ "miproyecto/discount"
 )
 
 // StubUserRepository es nuestro Stub manual
 type StubUserRepository struct {
-	// Campos para configurar la respuesta deseada
-	UserToReturn *discount.User
-	ErrToReturn  error
+ // Campos para configurar la respuesta deseada
+ UserToReturn *discount.User
+ ErrToReturn  error
 }
 
 // Satisfacemos la interfaz
 func (s *StubUserRepository) GetByID(id string) (*discount.User, error) {
-	return s.UserToReturn, s.ErrToReturn
+ return s.UserToReturn, s.ErrToReturn
 }
 
 func TestDiscountService_Calculate(t *testing.T) {
-	// Configuramos el Stub para simular un usuario premium
-	stubRepo := &StubUserRepository{
-		UserToReturn: &discount.User{ID: "123", IsPremium: true},
-		ErrToReturn:  nil,
-	}
+ // Configuramos el Stub para simular un usuario premium
+ stubRepo := &StubUserRepository{
+  UserToReturn: &discount.User{ID: "123", IsPremium: true},
+  ErrToReturn:  nil,
+ }
 
-	svc := discount.DiscountService{Repo: stubRepo} // Inyección
-	
-	finalAmount, err := svc.Calculate("123", 100.0)
-	
-	if err != nil {
-		t.Fatalf("No se esperaba error, se obtuvo: %v", err)
-	}
-	if finalAmount != 80.0 {
-		t.Errorf("Se esperaba 80.0, se obtuvo: %v", finalAmount)
-	}
+ svc := discount.DiscountService{Repo: stubRepo} // Inyección
+ 
+ finalAmount, err := svc.Calculate("123", 100.0)
+ 
+ if err != nil {
+  t.Fatalf("No se esperaba error, se obtuvo: %v", err)
+ }
+ if finalAmount != 80.0 {
+  t.Errorf("Se esperaba 80.0, se obtuvo: %v", finalAmount)
+ }
 }
 ```
 
@@ -269,7 +270,7 @@ Ahora supongamos que, tras aplicar el descuento, el sistema debe enviar una noti
 package discount
 
 type Notifier interface {
-	Notify(userID string, message string) error
+ Notify(userID string, message string) error
 }
 ```
 
@@ -282,35 +283,35 @@ import "testing"
 
 // MockNotifier es nuestro Mock manual
 type MockNotifier struct {
-	// Registros de interacción
-	CallsCount   int
-	LastUserID   string
-	LastMessage  string
-	
-	// Respuesta predefinida (opcional, mezclando un poco de Stub)
-	ErrToReturn  error
+ // Registros de interacción
+ CallsCount   int
+ LastUserID   string
+ LastMessage  string
+ 
+ // Respuesta predefinida (opcional, mezclando un poco de Stub)
+ ErrToReturn  error
 }
 
 // Satisfacemos la interfaz y registramos la llamada
 func (m *MockNotifier) Notify(userID string, message string) error {
-	m.CallsCount++
-	m.LastUserID = userID
-	m.LastMessage = message
-	return m.ErrToReturn
+ m.CallsCount++
+ m.LastUserID = userID
+ m.LastMessage = message
+ return m.ErrToReturn
 }
 
 func TestDiscountService_WithNotification(t *testing.T) {
-	mockNotifier := &MockNotifier{}
-	
-	// ... inyectamos el mock en el servicio y ejecutamos la acción ...
-	
-	// Fase de Verificación (Assert) del comportamiento
-	if mockNotifier.CallsCount != 1 {
-		t.Errorf("Se esperaba 1 llamada a Notify, se obtuvieron: %d", mockNotifier.CallsCount)
-	}
-	if mockNotifier.LastUserID != "123" {
-		t.Errorf("Se esperaba notificar al usuario 123, se notificó a: %s", mockNotifier.LastUserID)
-	}
+ mockNotifier := &MockNotifier{}
+ 
+ // ... inyectamos el mock en el servicio y ejecutamos la acción ...
+ 
+ // Fase de Verificación (Assert) del comportamiento
+ if mockNotifier.CallsCount != 1 {
+  t.Errorf("Se esperaba 1 llamada a Notify, se obtuvieron: %d", mockNotifier.CallsCount)
+ }
+ if mockNotifier.LastUserID != "123" {
+  t.Errorf("Se esperaba notificar al usuario 123, se notificó a: %s", mockNotifier.LastUserID)
+ }
 }
 ```
 
@@ -322,14 +323,14 @@ En lugar de almacenar contadores o variables estáticas, el doble delega la ejec
 
 ```go
 type FuncMockNotifier struct {
-	NotifyFunc func(userID string, message string) error
+ NotifyFunc func(userID string, message string) error
 }
 
 func (f *FuncMockNotifier) Notify(userID string, message string) error {
-	if f.NotifyFunc != nil {
-		return f.NotifyFunc(userID, message)
-	}
-	return nil // Comportamiento por defecto seguro
+ if f.NotifyFunc != nil {
+  return f.NotifyFunc(userID, message)
+ }
+ return nil // Comportamiento por defecto seguro
 }
 ```
 
@@ -352,6 +353,7 @@ Originalmente mantenido por el equipo oficial de Go (`golang/mock`) y ahora adop
 **Flujo de trabajo con Gomock:**
 
 Primero, generamos el mock desde la terminal (o usando `go:generate`):
+
 ```bash
 # Genera un mock para la interfaz PaymentGateway en el paquete payment
 mockgen -source=payment.go -destination=mocks/mock_payment.go -package=mocks
@@ -363,33 +365,33 @@ Luego, lo utilizamos en nuestro test apoyándonos en un `Controller` que verific
 package payment_test
 
 import (
-	"testing"
-	"go.uber.org/mock/gomock"
-	"miproyecto/payment"
-	"miproyecto/mocks" // Paquete generado por mockgen
+ "testing"
+ "go.uber.org/mock/gomock"
+ "miproyecto/payment"
+ "miproyecto/mocks" // Paquete generado por mockgen
 )
 
 func TestPaymentWithGomock(t *testing.T) {
-	// 1. Inicializamos el controlador
-	ctrl := gomock.NewController(t)
-	defer ctrl.Finish() // Verifica en Go < 1.14. En versiones modernas es automático si pasas 't'
+ // 1. Inicializamos el controlador
+ ctrl := gomock.NewController(t)
+ defer ctrl.Finish() // Verifica en Go < 1.14. En versiones modernas es automático si pasas 't'
 
-	// 2. Instanciamos el mock generado
-	mockGateway := mocks.NewMockGateway(ctrl)
+ // 2. Instanciamos el mock generado
+ mockGateway := mocks.NewMockGateway(ctrl)
 
-	// 3. Definimos las expectativas (Comportamiento estricto)
-	mockGateway.EXPECT().
-		Charge(100.0).      // Esperamos que se llame con el argumento 100.0 exacto
-		Return(nil).        // Devolvemos nil (sin error)
-		Times(1)            // Esperamos que ocurra exactamente una vez
+ // 3. Definimos las expectativas (Comportamiento estricto)
+ mockGateway.EXPECT().
+  Charge(100.0).      // Esperamos que se llame con el argumento 100.0 exacto
+  Return(nil).        // Devolvemos nil (sin error)
+  Times(1)            // Esperamos que ocurra exactamente una vez
 
-	// 4. Inyectamos y probamos
-	service := payment.NewOrderService(mockGateway)
-	err := service.Checkout(100.0)
+ // 4. Inyectamos y probamos
+ service := payment.NewOrderService(mockGateway)
+ err := service.Checkout(100.0)
 
-	if err != nil {
-		t.Errorf("No se esperaba error, se obtuvo: %v", err)
-	}
+ if err != nil {
+  t.Errorf("No se esperaba error, se obtuvo: %v", err)
+ }
 }
 ```
 
@@ -405,42 +407,42 @@ Además de los paquetes `assert` y `require` (que detiene el test inmediatamente
 package discount_test
 
 import (
-	"testing"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/mock"
+ "testing"
+ "github.com/stretchr/testify/assert"
+ "github.com/stretchr/testify/mock"
 )
 
 // Definimos el mock apoyándonos en testify/mock
 type TestifyMockNotifier struct {
-	mock.Mock
+ mock.Mock
 }
 
 func (m *TestifyMockNotifier) Notify(userID string, message string) error {
-	// Registramos la llamada a la función
-	args := m.Called(userID, message)
-	return args.Error(0) // Retornamos el primer argumento configurado como error
+ // Registramos la llamada a la función
+ args := m.Called(userID, message)
+ return args.Error(0) // Retornamos el primer argumento configurado como error
 }
 
 func TestWithTestify(t *testing.T) {
-	notifier := new(TestifyMockNotifier)
-	
-	// Configuramos el comportamiento
-	notifier.On("Notify", "123", "Descuento aplicado").Return(nil)
+ notifier := new(TestifyMockNotifier)
+ 
+ // Configuramos el comportamiento
+ notifier.On("Notify", "123", "Descuento aplicado").Return(nil)
 
-	// ... ejecución de la lógica ...
-	err := notifier.Notify("123", "Descuento aplicado")
+ // ... ejecución de la lógica ...
+ err := notifier.Notify("123", "Descuento aplicado")
 
-	// Aserciones de Testify: limpias y legibles
-	assert.NoError(t, err)
-	
-	// Verificamos que las expectativas del mock se cumplieron
-	notifier.AssertExpectations(t) 
+ // Aserciones de Testify: limpias y legibles
+ assert.NoError(t, err)
+ 
+ // Verificamos que las expectativas del mock se cumplieron
+ notifier.AssertExpectations(t) 
 }
 ```
 
 ### 3. Mockery
 
-Escribir el cascarón de los mocks para Testify (el struct con `mock.Mock` y el método `m.Called`) sigue siendo trabajo manual. Aquí entra **Mockery**. 
+Escribir el cascarón de los mocks para Testify (el struct con `mock.Mock` y el método `m.Called`) sigue siendo trabajo manual. Aquí entra **Mockery**.
 
 Mockery es un generador de código que escanea tus interfaces y crea automáticamente los Mocks compatibles con `testify/mock`. Es la pareja de baile perfecta para Testify.
 
@@ -459,7 +461,7 @@ Ambas opciones automatizan la creación de dobles y te permiten escalar tu cober
 
 ## 17.4. Behavior-Driven Development (BDD) en Go con Ginkgo
 
-Hasta ahora, hemos explorado el testing en Go desde una perspectiva puramente técnica y centrada en el desarrollador, utilizando el paquete estándar `testing`, pruebas basadas en tablas (Table-Driven Tests) y la creación de dobles (Mocks/Stubs). Sin embargo, cuando el software crece, surge un desafío de comunicación: ¿cómo aseguramos que el código hace lo que el negocio realmente necesita? 
+Hasta ahora, hemos explorado el testing en Go desde una perspectiva puramente técnica y centrada en el desarrollador, utilizando el paquete estándar `testing`, pruebas basadas en tablas (Table-Driven Tests) y la creación de dobles (Mocks/Stubs). Sin embargo, cuando el software crece, surge un desafío de comunicación: ¿cómo aseguramos que el código hace lo que el negocio realmente necesita?
 
 Aquí es donde entra el **Behavior-Driven Development (BDD)** o Desarrollo Guiado por Comportamiento. BDD es una evolución del TDD que pone el foco en definir el comportamiento esperado del sistema utilizando un lenguaje natural y ubicuo, comprensible tanto para desarrolladores como para perfiles de negocio (Product Owners, QA, etc.).
 
@@ -467,9 +469,10 @@ En Go, el estándar de facto para aplicar BDD es el framework **Ginkgo**, que ca
 
 ### El paradigma de Ginkgo: DSL basado en Closures
 
-A diferencia del estilo plano y secuencial del paquete `testing`, Ginkgo introduce un Lenguaje Específico de Dominio (DSL) fuertemente anidado, inspirado en frameworks como RSpec (Ruby) o Jasmine/Jest (JavaScript). 
+A diferencia del estilo plano y secuencial del paquete `testing`, Ginkgo introduce un Lenguaje Específico de Dominio (DSL) fuertemente anidado, inspirado en frameworks como RSpec (Ruby) o Jasmine/Jest (JavaScript).
 
 Los bloques fundamentales de Ginkgo son funciones que agrupan lógicamente el comportamiento:
+
 * `Describe`: Define el componente o sujeto que estamos probando.
 * `Context`: Describe el estado o escenario particular en el que se encuentra el sujeto.
 * `It`: Expresa la expectativa o el comportamiento concreto que debe ocurrir.
@@ -477,7 +480,7 @@ Los bloques fundamentales de Ginkgo son funciones que agrupan lógicamente el co
 
 ### Escribiendo nuestro primer test con Ginkgo y Gomega
 
-Imaginemos que tenemos un dominio de comercio electrónico con un carrito de compras. Queremos probar su comportamiento al añadir artículos. 
+Imaginemos que tenemos un dominio de comercio electrónico con un carrito de compras. Queremos probar su comportamiento al añadir artículos.
 
 Primero, la lógica de nuestro dominio:
 
@@ -487,19 +490,19 @@ package cart
 import "errors"
 
 type Cart struct {
-	Items []string
+ Items []string
 }
 
 func (c *Cart) Add(item string) error {
-	if item == "" {
-		return errors.New("el artículo no puede estar vacío")
-	}
-	c.Items = append(c.Items, item)
-	return nil
+ if item == "" {
+  return errors.New("el artículo no puede estar vacío")
+ }
+ c.Items = append(c.Items, item)
+ return nil
 }
 
 func (c *Cart) TotalItems() int {
-	return len(c.Items)
+ return len(c.Items)
 }
 ```
 
@@ -509,61 +512,61 @@ Ahora, veamos cómo se expresan las pruebas de este carrito utilizando el DSL de
 package cart_test
 
 import (
-	"testing"
-	. "github.com/onsi/ginkgo/v2"
-	. "github.com/onsi/gomega"
-	"miproyecto/cart"
+ "testing"
+ . "github.com/onsi/ginkgo/v2"
+ . "github.com/onsi/gomega"
+ "miproyecto/cart"
 )
 
 // Punto de entrada requerido para que 'go test' ejecute Ginkgo
 func TestCart(t *testing.T) {
-	RegisterFailHandler(Fail)
-	RunSpecs(t, "Cart Suite")
+ RegisterFailHandler(Fail)
+ RunSpecs(t, "Cart Suite")
 }
 
 var _ = Describe("Shopping Cart", func() {
-	var (
-		shoppingCart *cart.Cart
-		err          error
-	)
+ var (
+  shoppingCart *cart.Cart
+  err          error
+ )
 
-	// Se ejecuta antes de cada 'It', garantizando un estado limpio
-	BeforeEach(func() {
-		shoppingCart = &cart.Cart{}
-	})
+ // Se ejecuta antes de cada 'It', garantizando un estado limpio
+ BeforeEach(func() {
+  shoppingCart = &cart.Cart{}
+ })
 
-	Context("cuando se añade un artículo válido", func() {
-		BeforeEach(func() {
-			err = shoppingCart.Add("Teclado Mecánico")
-		})
+ Context("cuando se añade un artículo válido", func() {
+  BeforeEach(func() {
+   err = shoppingCart.Add("Teclado Mecánico")
+  })
 
-		It("no debe retornar error", func() {
-			Expect(err).NotTo(HaveOccurred()) // Aserción con Gomega
-		})
+  It("no debe retornar error", func() {
+   Expect(err).NotTo(HaveOccurred()) // Aserción con Gomega
+  })
 
-		It("debe incrementar el número total de artículos", func() {
-			Expect(shoppingCart.TotalItems()).To(Equal(1))
-		})
+  It("debe incrementar el número total de artículos", func() {
+   Expect(shoppingCart.TotalItems()).To(Equal(1))
+  })
 
-		It("debe contener el artículo añadido", func() {
-			Expect(shoppingCart.Items).To(ContainElement("Teclado Mecánico"))
-		})
-	})
+  It("debe contener el artículo añadido", func() {
+   Expect(shoppingCart.Items).To(ContainElement("Teclado Mecánico"))
+  })
+ })
 
-	Context("cuando se intenta añadir un artículo vacío", func() {
-		BeforeEach(func() {
-			err = shoppingCart.Add("")
-		})
+ Context("cuando se intenta añadir un artículo vacío", func() {
+  BeforeEach(func() {
+   err = shoppingCart.Add("")
+  })
 
-		It("debe retornar un error de validación", func() {
-			Expect(err).To(HaveOccurred())
-			Expect(err.Error()).To(Equal("el artículo no puede estar vacío"))
-		})
+  It("debe retornar un error de validación", func() {
+   Expect(err).To(HaveOccurred())
+   Expect(err.Error()).To(Equal("el artículo no puede estar vacío"))
+  })
 
-		It("no debe alterar el número de artículos", func() {
-			Expect(shoppingCart.TotalItems()).To(BeZero())
-		})
-	})
+  It("no debe alterar el número de artículos", func() {
+   Expect(shoppingCart.TotalItems()).To(BeZero())
+  })
+ })
 })
 ```
 
@@ -574,14 +577,16 @@ var _ = Describe("Shopping Cart", func() {
 La adopción de BDD y Ginkgo en un proyecto Go es una decisión arquitectónica importante que genera debate en la comunidad:
 
 **Ventajas:**
-1.  **Legibilidad extrema:** Los tests se leen como una especificación funcional. Al ejecutar `ginkgo -v`, la salida en terminal imprime una frase completa y descriptiva (ej. *Shopping Cart cuando se añade un artículo válido debe incrementar el número total de artículos*).
-2.  **Estructura forzada:** El anidamiento obliga a pensar exhaustivamente en los diferentes contextos (`Context`) y casos extremos antes de escribir el código.
-3.  **Gomega:** La librería de *matchers* es increíblemente rica para aserciones complejas (especialmente útil para testear concurrencia con `Eventually` y `Consistently`).
+
+1. **Legibilidad extrema:** Los tests se leen como una especificación funcional. Al ejecutar `ginkgo -v`, la salida en terminal imprime una frase completa y descriptiva (ej. *Shopping Cart cuando se añade un artículo válido debe incrementar el número total de artículos*).
+2. **Estructura forzada:** El anidamiento obliga a pensar exhaustivamente en los diferentes contextos (`Context`) y casos extremos antes de escribir el código.
+3. **Gomega:** La librería de *matchers* es increíblemente rica para aserciones complejas (especialmente útil para testear concurrencia con `Eventually` y `Consistently`).
 
 **Desventajas (Antipatrones en Go):**
-1.  **Fricción idiomática:** El ecosistema de Go valora la simplicidad y el código directo. Ginkgo introduce mucha "magia" y rompe con el estilo de las *Table-Driven Tests* que promueve el equipo creador del lenguaje.
-2.  **Estado compartido:** El uso de variables declaradas en el `Describe` y mutadas en los `BeforeEach` puede llevar a tests frágiles si no se manejan con extremo cuidado, ya que el estado se comparte entre *closures*.
-3.  **Curva de aprendizaje:** Añade una capa de complejidad y herramientas adicionales (`ginkgo cli`) sobre el comando estándar `go test`.
+
+1. **Fricción idiomática:** El ecosistema de Go valora la simplicidad y el código directo. Ginkgo introduce mucha "magia" y rompe con el estilo de las *Table-Driven Tests* que promueve el equipo creador del lenguaje.
+2. **Estado compartido:** El uso de variables declaradas en el `Describe` y mutadas en los `BeforeEach` puede llevar a tests frágiles si no se manejan con extremo cuidado, ya que el estado se comparte entre *closures*.
+3. **Curva de aprendizaje:** Añade una capa de complejidad y herramientas adicionales (`ginkgo cli`) sobre el comando estándar `go test`.
 
 **Cuándo utilizarlo:**
 Ginkgo brilla en **pruebas de aceptación**, **tests de integración pesados** (como los usados en el ecosistema Kubernetes, donde Ginkgo es estándar) o cuando el dominio de negocio es lo suficientemente complejo como para justificar una herramienta que documente el comportamiento exacto del sistema. Para pruebas unitarias rápidas y funciones de utilidad, el paquete `testing` clásico sigue siendo el rey.

@@ -2,9 +2,9 @@
 
 ---
 
-Imagina por un momento que tienes un control remoto universal. Pero no uno para cambiar de canal en la televisión, sino uno capaz de controlar el flujo del tiempo. Si apuntaras ese control hacia el cielo nocturno y presionaras el botón de "rebobinar", verías un espectáculo asombroso. Verías cómo las galaxias, que hoy se alejan unas de otras, comienzan a acercarse. Verías cómo las estrellas nacen a la inversa, cómo los planetas se deshacen en nubes de polvo y cómo el espacio mismo se comprime. 
+Imagina por un momento que tienes un control remoto universal. Pero no uno para cambiar de canal en la televisión, sino uno capaz de controlar el flujo del tiempo. Si apuntaras ese control hacia el cielo nocturno y presionaras el botón de "rebobinar", verías un espectáculo asombroso. Verías cómo las galaxias, que hoy se alejan unas de otras, comienzan a acercarse. Verías cómo las estrellas nacen a la inversa, cómo los planetas se deshacen en nubes de polvo y cómo el espacio mismo se comprime.
 
-Si mantienes el botón presionado durante unos 13.800 millones de años, todo lo que conoces, todo lo que has visto, todo lo que existe en el vasto e inabarcable cosmos, se comprimiría en un espacio más pequeño que la cabeza de un alfiler. Y luego... el inicio. 
+Si mantienes el botón presionado durante unos 13.800 millones de años, todo lo que conoces, todo lo que has visto, todo lo que existe en el vasto e inabarcable cosmos, se comprimiría en un espacio más pequeño que la cabeza de un alfiler. Y luego... el inicio.
 
 Bienvenidos a "Astronomía para Mortales". Hoy vamos a emprender el viaje más antiguo y épico posible: el viaje al origen de absolutamente todo. Vamos a desgranar el misterio del Big Bang, no con ecuaciones incomprensibles (bueno, quizás solo una o dos muy fáciles), sino con la fascinación de quien levanta la vista hacia las estrellas y se pregunta: *¿De dónde salió todo esto?*
 
@@ -12,7 +12,7 @@ Prepárate, porque vamos a presenciar cómo de la nada más absoluta y del calor
 
 ## 1. El Instante Cero: La Singularidad y la ilusión del "Antes"
 
-Cuando hablamos de una "explosión", nuestra mente terrenal imagina un petardo, dinamita o fuegos artificiales estallando en el cielo. Es decir, imaginamos cosas que explotan *dentro* de un espacio ya existente. Sin embargo, el Big Bang requiere que rompamos nuestra intuición. 
+Cuando hablamos de una "explosión", nuestra mente terrenal imagina un petardo, dinamita o fuegos artificiales estallando en el cielo. Es decir, imaginamos cosas que explotan *dentro* de un espacio ya existente. Sin embargo, el Big Bang requiere que rompamos nuestra intuición.
 
 El Big Bang no fue una explosión **en** el espacio; fue la explosión **del** espacio.
 
@@ -24,7 +24,7 @@ La respuesta de la física moderna es tan fascinante como frustrante para el cer
 
 ## 2. La Inflación Cósmica: Un crecimiento aterrador
 
-Justo después del instante cero, el reloj cósmico empezó a correr. Pero las cosas sucedieron a una velocidad que desafía cualquier comprensión humana. 
+Justo después del instante cero, el reloj cósmico empezó a correr. Pero las cosas sucedieron a una velocidad que desafía cualquier comprensión humana.
 
 Para entender esto, vamos a utilizar una escala de tiempo llamada "Tiempo de Planck". Un segundo de tu vida dura muchísimo comparado con las fracciones de las que vamos a hablar. A los $10^{-43}$ segundos (eso es un cero, un punto decimal, 42 ceros más y un uno), el universo experimentó un evento llamado **Inflación Cósmica**.
 
@@ -71,17 +71,17 @@ En esta "sopa", nadaban libres los **quarks** (los ladrillos que forman los prot
 
 ## 4. La Gran Aniquilación: Materia vs. Antimateria
 
-A medida que el universo se enfriaba y cruzábamos la marca de un segundo de edad, ocurrió una de las batallas más épicas y silenciosas de la historia cósmica. 
+A medida que el universo se enfriaba y cruzábamos la marca de un segundo de edad, ocurrió una de las batallas más épicas y silenciosas de la historia cósmica.
 
-Las leyes de la física dictan que por cada partícula de materia que se crea a partir de energía, también se debe crear una partícula de **antimateria**. La antimateria es exactamente igual a la materia, pero con carga eléctrica opuesta. (Por ejemplo, el antielectrón, llamado positrón, tiene carga positiva). 
+Las leyes de la física dictan que por cada partícula de materia que se crea a partir de energía, también se debe crear una partícula de **antimateria**. La antimateria es exactamente igual a la materia, pero con carga eléctrica opuesta. (Por ejemplo, el antielectrón, llamado positrón, tiene carga positiva).
 
-El problema es que cuando la materia y la antimateria se tocan, se aniquilan mutuamente en un estallido de energía pura. 
+El problema es que cuando la materia y la antimateria se tocan, se aniquilan mutuamente en un estallido de energía pura.
 
 En los primeros instantes, el universo estaba lleno de cantidades casi iguales de materia y antimateria. Hubo una aniquilación masiva. Una guerra a escala cósmica que destruyó casi todo lo que se había creado. Sin embargo, por alguna razón que los físicos de partículas de hoy en día todavía intentan comprender completamente (un fenómeno conocido como "violación CP"), hubo una ligerísima asimetría.
 
-Por cada mil millones de partículas de antimateria, había mil millones y *una* partículas de materia. 
+Por cada mil millones de partículas de antimateria, había mil millones y *una* partículas de materia.
 
-Los mil millones se aniquilaron con sus opuestos, llenando el universo de luz (fotones). Pero esa pequeña fracción sobrante, esa *única* partícula de materia por cada mil millones de aniquilaciones, sobrevivió. 
+Los mil millones se aniquilaron con sus opuestos, llenando el universo de luz (fotones). Pero esa pequeña fracción sobrante, esa *única* partícula de materia por cada mil millones de aniquilaciones, sobrevivió.
 
 Mira a tu alrededor. Mira tus manos, la pantalla donde lees esto, el suelo bajo tus pies, la Luna en el cielo y las galaxias lejanas. Todo eso, absolutamente todo, está hecho de esas pequeñas sobras, de los supervivientes de la gran aniquilación primordial.
 
@@ -99,7 +99,7 @@ Estructura básica en los primeros minutos:
 
 Inmediatamente después, ocurre la **Nucleosíntesis Primordial**. Los protones y neutrones comienzan a fusionarse entre sí. Un protón solo es el núcleo de un átomo de Hidrógeno. Cuando un protón se une a un neutrón, forman un isótopo de hidrógeno. Si se unen dos protones y dos neutrones, forman el núcleo de un átomo de Helio.
 
-Durante los primeros 20 minutos de existencia del universo, se forjaron los elementos más ligeros de la tabla periódica. El resultado fue que el universo se compuso aproximadamente de un 75% de núcleos de Hidrógeno, un 25% de núcleos de Helio, y trazas insignificantes de Litio. 
+Durante los primeros 20 minutos de existencia del universo, se forjaron los elementos más ligeros de la tabla periódica. El resultado fue que el universo se compuso aproximadamente de un 75% de núcleos de Hidrógeno, un 25% de núcleos de Helio, y trazas insignificantes de Litio.
 
 *Nota curiosa:* Todos los átomos de Hidrógeno que hay en una molécula de agua (H2O) que bebes hoy, nacieron en esos primeros minutos del universo. Tienen 13.800 millones de años de antigüedad.
 
@@ -109,14 +109,14 @@ Pese a que ya teníamos núcleos atómicos, todavía no teníamos átomos comple
 
 Tuvieron que pasar **380.000 años** de lenta expansión y enfriamiento para que ocurriera el siguiente gran hito cósmico.
 
-A los 380.000 años de edad, la temperatura del universo cayó a unos 3.000 grados Kelvin (unos 2.700 °C). De repente, el calor ya no era suficiente para mantener a los electrones desbocados. Como si se tratara de un imán atrayendo hierro, los núcleos de Hidrógeno y Helio atraparon a los electrones que pasaban cerca. 
+A los 380.000 años de edad, la temperatura del universo cayó a unos 3.000 grados Kelvin (unos 2.700 °C). De repente, el calor ya no era suficiente para mantener a los electrones desbocados. Como si se tratara de un imán atrayendo hierro, los núcleos de Hidrógeno y Helio atraparon a los electrones que pasaban cerca.
 
 ```text
 [Protón (+)] <------ Atracción Electromagnética ------> [Electrón (-)] 
                       = Átomo de Hidrógeno Neutro
 ```
 
-A este evento crucial se le llama la **Recombinación**. 
+A este evento crucial se le llama la **Recombinación**.
 
 Al ser capturados los electrones, el espacio quedó "limpio". La densa niebla de partículas cargadas se desvaneció. Los fotones de luz, que llevaban 380.000 años tropezando con electrones en cada milímetro de su camino, de repente se encontraron con un inmenso vacío frente a ellos.
 
@@ -132,9 +132,9 @@ Tras la Recombinación y el destello del Fondo Cósmico de Microondas, el univer
 
 Pero en la sombra, una fuerza paciente y tenaz estaba trabajando: la **gravedad**.
 
-Aunque el gas estaba esparcido de manera muy uniforme, existían pequeñísimas diferencias de densidad. Algunas zonas tenían un poquito más de gas que otras. La gravedad dictamina que la masa atrae a la masa. Las zonas un poco más densas comenzaron a atraer gravitacionalmente al gas de las zonas menos densas. 
+Aunque el gas estaba esparcido de manera muy uniforme, existían pequeñísimas diferencias de densidad. Algunas zonas tenían un poquito más de gas que otras. La gravedad dictamina que la masa atrae a la masa. Las zonas un poco más densas comenzaron a atraer gravitacionalmente al gas de las zonas menos densas.
 
-A lo largo de cientos de millones de años, estas concentraciones de gas crecieron, se volvieron más masivas y, al comprimirse bajo su propio peso, comenzaron a calentarse. 
+A lo largo de cientos de millones de años, estas concentraciones de gas crecieron, se volvieron más masivas y, al comprimirse bajo su propio peso, comenzaron a calentarse.
 
 El corazón de estas nubes colapsantes alcanzó presiones y temperaturas inimaginables. Cuando el centro de una de estas esferas de gas alcanzó unos 10 millones de grados, la fricción fue suficiente para encender la fusión nuclear. Los átomos de hidrógeno comenzaron a aplastarse unos contra otros para crear helio, liberando inmensas cantidades de energía en el proceso.
 
@@ -146,9 +146,9 @@ El universo encendió sus luces y comenzó la época de reionización. La radiac
 
 Te habrás dado cuenta de que, hasta ahora, el universo solo tiene Hidrógeno, Helio y un poco de Litio. Si miras tu cuerpo, tienes carbono, oxígeno, hierro en tu sangre, calcio en tus huesos... ¿De dónde salieron esos elementos más pesados si el Big Bang no los fabricó?
 
-Aquí es donde nuestro viaje por el origen de todo se conecta directamente contigo. 
+Aquí es donde nuestro viaje por el origen de todo se conecta directamente contigo.
 
-El Big Bang creó el hidrógeno y el helio. Las estrellas son las fábricas encargadas de cocinar el resto. Dentro de los núcleos de las estrellas masivas, el calor y la presión fusionan elementos ligeros para formar elementos cada vez más pesados: carbono, neón, oxígeno, silicio... hasta llegar al hierro. 
+El Big Bang creó el hidrógeno y el helio. Las estrellas son las fábricas encargadas de cocinar el resto. Dentro de los núcleos de las estrellas masivas, el calor y la presión fusionan elementos ligeros para formar elementos cada vez más pesados: carbono, neón, oxígeno, silicio... hasta llegar al hierro.
 
 Pero una estrella no puede fusionar el hierro para obtener energía. Cuando una estrella masiva acumula hierro en su núcleo, su motor se detiene. Ya no hay energía empujando hacia afuera, por lo que la inmensa gravedad de la estrella gana la batalla. La estrella colapsa sobre sí misma a una velocidad vertiginosa y luego rebota en una de las explosiones más violentas y destructivas de la naturaleza: una **Supernova**.
 
@@ -165,32 +165,36 @@ Llegados a este punto, la pregunta natural en "Astronomía para Mortales" es: *�
 Es una pregunta excelente. La ciencia no se basa en historias bonitas, sino en evidencia empírica que podamos medir, calcular y predecir. El Big Bang no es solo una "teoría" en el sentido coloquial (como cuando decimos "tengo la teoría de que hoy va a llover"), es una Teoría Científica robusta apoyada por múltiples pilares de evidencia incuestionable. Aquí tienes las tres pruebas principales:
 
 ### A. La Expansión del Universo (El efecto Doppler de la luz)
-En la década de 1920, el astrónomo Edwin Hubble observó las galaxias lejanas a través de su telescopio. Notó algo revolucionario: casi todas las galaxias se estaban alejando de nosotros. Pero no solo eso, descubrió que cuanto más lejos está una galaxia, más rápido se aleja. 
+
+En la década de 1920, el astrónomo Edwin Hubble observó las galaxias lejanas a través de su telescopio. Notó algo revolucionario: casi todas las galaxias se estaban alejando de nosotros. Pero no solo eso, descubrió que cuanto más lejos está una galaxia, más rápido se aleja.
 
 Hubble formuló una ley que podemos expresar mediante la siguiente ecuación en LaTeX:
 
 $$v = H_0 \cdot d$$
 
 Donde:
-*   $v$ es la velocidad a la que se aleja la galaxia (velocidad de recesión).
-*   $H_0$ es la Constante de Hubble (el ritmo actual de expansión del universo).
-*   $d$ es la distancia a la que se encuentra la galaxia.
 
-Los astrónomos saben esto estudiando el "corrimiento al rojo" de la luz. ¿Conoces el efecto Doppler? Cuando una ambulancia se acerca a ti, su sirena suena más aguda (ondas comprimidas), y cuando pasa y se aleja, suena más grave (ondas estiradas). Con la luz pasa lo mismo. Cuando una galaxia se aleja rápidamente, las ondas de luz que emite se estiran, desplazándose hacia el color rojo del espectro electromagnético. 
+* $v$ es la velocidad a la que se aleja la galaxia (velocidad de recesión).
+* $H_0$ es la Constante de Hubble (el ritmo actual de expansión del universo).
+* $d$ es la distancia a la que se encuentra la galaxia.
+
+Los astrónomos saben esto estudiando el "corrimiento al rojo" de la luz. ¿Conoces el efecto Doppler? Cuando una ambulancia se acerca a ti, su sirena suena más aguda (ondas comprimidas), y cuando pasa y se aleja, suena más grave (ondas estiradas). Con la luz pasa lo mismo. Cuando una galaxia se aleja rápidamente, las ondas de luz que emite se estiran, desplazándose hacia el color rojo del espectro electromagnético.
 
 Si vemos que todo el universo se está expandiendo y enfriando hoy (como un pan de pasas hinchándose en el horno, donde cada pasa se aleja de las demás), la lógica física dicta que si retrocedemos el tiempo, todo debió estar más junto, más denso y más caliente. Si retrocedes el tiempo lo suficiente, llegas al Big Bang.
 
 ### B. El Fondo Cósmico de Microondas
+
 Como vimos en la sección 6, si el universo temprano fue un infierno denso y caliente, debería quedar un "resplandor" residual enfriado circulando por todo el espacio. En 1964, los radioastrónomos Arno Penzias y Robert Wilson estaban probando una enorme antena de comunicaciones y encontraron un "zumbido" constante y molesto del cual no podían deshacerse. Venía de todas las direcciones del cielo, de día y de noche. No era un fallo de la antena; habían descubierto el Fondo Cósmico de Microondas, la primera luz del universo liberada tras la Recombinación. Fue la prueba del "humo del disparo" del Big Bang y les valió el Premio Nobel.
 
 ### C. La abundancia de elementos ligeros
+
 Si calculas cuántas fusiones nucleares podrían haber ocurrido en los primeros minutos ardientes del universo basándote en la física del Big Bang, las matemáticas predicen que el universo original debería haber quedado compuesto por aproximadamente tres cuartas partes de hidrógeno y una cuarta parte de helio. Al observar las estrellas y galaxias más antiguas, encontramos exactamente esa proporción. Si el universo siempre hubiera existido tal y como es, sin un origen denso y caliente, no habría explicación para por qué hay tanto helio en él. Las matemáticas del instante cero coinciden perfectamente con lo que vemos a través del telescopio.
 
 ## Conclusión: Nuestra pequeña ventana al asombro
 
-El viaje que hemos recorrido desde aquel punto microscópico e infinitamente denso, a través de la inflación, la batalla entre la materia y la antimateria, el nacimiento de la luz y el encendido de los fuegos estelares, es la historia de todos nosotros. 
+El viaje que hemos recorrido desde aquel punto microscópico e infinitamente denso, a través de la inflación, la batalla entre la materia y la antimateria, el nacimiento de la luz y el encendido de los fuegos estelares, es la historia de todos nosotros.
 
-El Big Bang no es solo un evento astronómico que ocurrió allá lejos hace mucho tiempo. Es el inicio del ecosistema en el que habitamos. Cada segundo que pasa, el universo continúa su expansión dictada por aquel impulso inicial. 
+El Big Bang no es solo un evento astronómico que ocurrió allá lejos hace mucho tiempo. Es el inicio del ecosistema en el que habitamos. Cada segundo que pasa, el universo continúa su expansión dictada por aquel impulso inicial.
 
 Cuando estudias astronomía, aprendes una lección rápida de humildad: el universo es vasto más allá de la comprensión, antiguo más allá de la memoria e indiferente a nuestros problemas terrenales. Pero también nos otorga una lección de inmensa dignidad. Nos enseña que nosotros no somos entes separados puestos dentro del universo; somos una consecuencia natural del mismo. Somos materia que, tras 13.800 millones de años de evolución cósmica, ha adquirido consciencia, ha inventado los telescopios, las matemáticas y el lenguaje, y ahora, a través de secciones en internet como esta, por fin es capaz de mirar hacia atrás e intentar comprenderse a sí misma.
 

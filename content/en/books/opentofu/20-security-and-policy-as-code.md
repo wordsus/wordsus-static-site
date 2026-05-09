@@ -2,7 +2,7 @@ As your OpenTofu adoption matures, you move from merely provisioning infrastruct
 
 ## 20.1 Core Principles for Securing Infrastructure Deployments
 
-When transitioning from manual infrastructure provisioning to Infrastructure as Code (IaC) with OpenTofu, the security paradigm undergoes a fundamental shift. The code itself becomes the perimeter. A single misconfiguration in an HCL file can instantly expose thousands of resources to the public internet, making OpenTofu pipelines a high-value target for attackers. 
+When transitioning from manual infrastructure provisioning to Infrastructure as Code (IaC) with OpenTofu, the security paradigm undergoes a fundamental shift. The code itself becomes the perimeter. A single misconfiguration in an HCL file can instantly expose thousands of resources to the public internet, making OpenTofu pipelines a high-value target for attackers.
 
 Securing your infrastructure deployments requires moving beyond traditional network perimeters and adopting a holistic, code-centric security model. The following core principles form the foundation of a secure OpenTofu deployment strategy.
 
@@ -12,7 +12,7 @@ Securing your infrastructure deployments requires moving beyond traditional netw
 
 In legacy environments, automation scripts often ran with highly privileged "God mode" credentials. In a secure OpenTofu workflow, the execution environment should only have the permissions strictly required to provision the specific resources defined in the code.
 
-As discussed in **Chapter 19**, long-lived static credentials should be avoided entirely. Instead, your OpenTofu runs should rely on ephemeral, dynamically assumed roles that are tightly scoped. 
+As discussed in **Chapter 19**, long-lived static credentials should be avoided entirely. Instead, your OpenTofu runs should rely on ephemeral, dynamically assumed roles that are tightly scoped.
 
 For example, if a specific workspace only manages a single S3 bucket and a DynamoDB table, the OpenTofu provider should assume an IAM role scoped specifically to those services and resources, rather than using a broad `AdministratorAccess` policy.
 
@@ -60,9 +60,10 @@ By separating state files chronologically (e.g., deploying IAM and Networks befo
 
 ### 3. Embrace Immutable Infrastructure
 
-OpenTofu thrives on the concept of immutable infrastructure—resources should be replaced rather than modified in place. From a security perspective, immutability is a massive advantage. 
+OpenTofu thrives on the concept of immutable infrastructure—resources should be replaced rather than modified in place. From a security perspective, immutability is a massive advantage.
 
 If servers and infrastructure components are never patched or modified manually (e.g., via SSH or cloud console), any manual change is immediately flagged as an anomaly or a potential breach. By treating infrastructure as immutable:
+
 * **Drift becomes a security trigger:** If `tofu plan` detects drift, it means someone or something altered the environment outside the approved CI/CD pipeline.
 * **Backdoors are paved over:** Malicious payloads or unauthorized user accounts added directly to servers are automatically wiped out during the next routine OpenTofu deployment.
 
@@ -71,6 +72,7 @@ If servers and infrastructure components are never patched or modified manually 
 Historically, infrastructure was provisioned first, and security teams scanned it for vulnerabilities later. This "reactive" approach is inefficient and dangerous in the cloud era.
 
 "Shifting left" means moving security checks as early in the software development lifecycle as possible. In the context of OpenTofu, security validation must occur before a single cloud API call is made. This principle dictates that:
+
 * Code should be analyzed for misconfigurations (e.g., open security groups, unencrypted storage) directly in the developer's IDE.
 * Pull requests must pass automated security gates before they can be merged.
 * Compliance is treated as code.
@@ -81,27 +83,28 @@ This principle forms the basis of **Policy as Code**, which will be explored dee
 
 While we explored the mechanics of sensitive variables and remote state encryption in **Chapters 7** and **10**, the *principle* of defense in depth must be actively maintained across your entire architecture.
 
-Securing deployments means acknowledging that your OpenTofu state file is essentially a blueprint of your entire cloud environment, complete with structural data, metadata, and potentially plaintext secrets generated during deployment (like initial database passwords). 
+Securing deployments means acknowledging that your OpenTofu state file is essentially a blueprint of your entire cloud environment, complete with structural data, metadata, and potentially plaintext secrets generated during deployment (like initial database passwords).
 
 Defense in depth dictates that:
-1.  **Code Layer:** Secrets are never hardcoded in `.tf` or `.tfvars` files.
-2.  **Transit Layer:** Secrets are fetched dynamically at runtime using secure data sources (e.g., AWS Secrets Manager, HashiCorp Vault).
-3.  **Storage Layer:** State backends are strictly access-controlled and encrypted with Customer Managed Keys (CMKs), not just default provider encryption.
-4.  **Audit Layer:** Every read and write to the state backend is logged and monitored for anomalous access patterns.
+
+1. **Code Layer:** Secrets are never hardcoded in `.tf` or `.tfvars` files.
+2. **Transit Layer:** Secrets are fetched dynamically at runtime using secure data sources (e.g., AWS Secrets Manager, HashiCorp Vault).
+3. **Storage Layer:** State backends are strictly access-controlled and encrypted with Customer Managed Keys (CMKs), not just default provider encryption.
+4. **Audit Layer:** Every read and write to the state backend is logged and monitored for anomalous access patterns.
 
 ## 20.2 Introduction to the Concept of Policy as Code
 
-In traditional IT environments, enforcing security, compliance, and operational standards is often a manual and reactive process. Security teams write static PDF documents outlining corporate standards—such as "All databases must be encrypted at rest" or "No S3 buckets can be publicly readable"—and rely on manual audits or post-deployment scanning tools to catch violations. 
+In traditional IT environments, enforcing security, compliance, and operational standards is often a manual and reactive process. Security teams write static PDF documents outlining corporate standards—such as "All databases must be encrypted at rest" or "No S3 buckets can be publicly readable"—and rely on manual audits or post-deployment scanning tools to catch violations.
 
 When infrastructure is provisioned manually, this process is merely slow. When infrastructure is provisioned via automated pipelines using OpenTofu, this manual review process becomes a critical bottleneck. If you automate your infrastructure but keep your security checks manual, you have simply automated the creation of vulnerabilities.
 
-**Policy as Code (PaC)** solves this by translating human-readable security and compliance guidelines into machine-readable, executable code. 
+**Policy as Code (PaC)** solves this by translating human-readable security and compliance guidelines into machine-readable, executable code.
 
 ### The Mechanics of Policy as Code
 
 At its core, Policy as Code operates on a simple premise: decouple the *rules* from the *application* that evaluates them. In an OpenTofu workflow, PaC acts as an automated gatekeeper that sits between `tofu plan` and `tofu apply`.
 
-Instead of a human reviewing the planned changes, a Policy Engine analyzes the execution plan against your predefined rules. 
+Instead of a human reviewing the planned changes, a Policy Engine analyzes the execution plan against your predefined rules.
 
 ```text
 +---------------------+      +------------------------+      +-------------------------+
@@ -200,9 +203,10 @@ OPA does not natively understand `.tf` files or HCL syntax. Instead, it relies o
 ```
 
 The process consists of three core steps:
-1.  **Plan:** Generate the binary execution plan using `tofu plan -out=tfplan`.
-2.  **Convert:** Translate the binary plan into JSON using `tofu show -json tfplan > plan.json`.
-3.  **Evaluate:** Run the OPA engine against the JSON output using your custom policies.
+
+1. **Plan:** Generate the binary execution plan using `tofu plan -out=tfplan`.
+2. **Convert:** Translate the binary plan into JSON using `tofu show -json tfplan > plan.json`.
+3. **Evaluate:** Run the OPA engine against the JSON output using your custom policies.
 
 ### Writing Policies in Rego
 
@@ -212,7 +216,7 @@ In Rego, a policy typically evaluates the `input` document (in our case, the `pl
 
 #### Example: Enforcing Mandatory Tags
 
-A common compliance requirement is ensuring that all provisioned resources carry specific metadata tags, such as `Environment` and `Owner`, to assist with cost allocation and auditing. 
+A common compliance requirement is ensuring that all provisioned resources carry specific metadata tags, such as `Environment` and `Owner`, to assist with cost allocation and auditing.
 
 Here is how you would write a Rego policy to enforce this rule for AWS resources:
 
@@ -250,7 +254,7 @@ deny[msg] {
 
 ### Executing the Evaluation
 
-With the `plan.json` file generated and the Rego policy saved, you can evaluate the plan using the OPA Command Line Interface (CLI). 
+With the `plan.json` file generated and the Rego policy saved, you can evaluate the plan using the OPA Command Line Interface (CLI).
 
 To execute the check in a CI/CD pipeline, you would use the following command:
 
@@ -277,7 +281,7 @@ By injecting OPA into the pipeline, these rules are enforced autonomously, mathe
 
 While Open Policy Agent (OPA) provides unparalleled flexibility for enforcing custom, organization-specific business logic, it requires you to write and maintain those rules from scratch. For many teams, the immediate priority is simply ensuring that their OpenTofu code does not contain known, dangerous misconfigurations—such as publicly accessible databases, unencrypted storage volumes, or overly permissive IAM roles.
 
-This is where purpose-built Static Application Security Testing (SAST) tools for Infrastructure as Code come into play. Tools like **Checkov** and **tfsec** are pre-loaded with hundreds of out-of-the-box policies based on industry best practices (like CIS Benchmarks) and cloud provider recommendations. 
+This is where purpose-built Static Application Security Testing (SAST) tools for Infrastructure as Code come into play. Tools like **Checkov** and **tfsec** are pre-loaded with hundreds of out-of-the-box policies based on industry best practices (like CIS Benchmarks) and cloud provider recommendations.
 
 Because OpenTofu utilizes the standard HashiCorp Configuration Language (HCL), the vast ecosystem of security scanners originally built for Terraform works flawlessly with OpenTofu right out of the box.
 
@@ -355,6 +359,7 @@ resource "aws_s3_bucket_acl" "website_acl" {
   acl    = "public-read"
 }
 ```
+
 This approach forces developers to explicitly document *why* a security exception is being made directly in the codebase, creating a transparent audit trail.
 
 ### Checkov: Graph-Based Contextual Analysis
@@ -401,7 +406,7 @@ Beyond IaC, Checkov is highly versatile. It can scan Kubernetes manifests, Helm 
 
 To achieve *continuous* security, these tools must be integrated into your automated workflows. Relying on developers to manually run scans locally is a recipe for drift and eventual failure.
 
-1.  **Pre-Commit Hooks:** The first line of defense. Tools like `pre-commit` can be configured to automatically run `tfsec` or `checkov` every time a developer types `git commit`. If the scan fails, the commit is aborted.
-2.  **Continuous Integration (CI):** The ultimate gatekeeper. In your CI/CD pipeline (GitHub Actions, GitLab CI, Jenkins), a dedicated step should run the scanner. If critical vulnerabilities are found, the pipeline exits with a non-zero status code, actively preventing the `tofu plan` or `tofu apply` phases from executing.
+1. **Pre-Commit Hooks:** The first line of defense. Tools like `pre-commit` can be configured to automatically run `tfsec` or `checkov` every time a developer types `git commit`. If the scan fails, the commit is aborted.
+2. **Continuous Integration (CI):** The ultimate gatekeeper. In your CI/CD pipeline (GitHub Actions, GitLab CI, Jenkins), a dedicated step should run the scanner. If critical vulnerabilities are found, the pipeline exits with a non-zero status code, actively preventing the `tofu plan` or `tofu apply` phases from executing.
 
 By combining the out-of-the-box baseline checks of Checkov or tfsec with the custom business logic enforcement of OPA, you create a robust, automated defense-in-depth strategy that scales effortlessly with your OpenTofu infrastructure.

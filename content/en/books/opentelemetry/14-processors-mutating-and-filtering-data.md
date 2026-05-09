@@ -14,9 +14,9 @@ Data rejection at this stage applies backpressure to the receivers. If an OTLP r
 
 #### Configuration Mechanics
 
-The memory limiter operates on two primary thresholds: a hard limit and a soft limit (defined by the spike limit). 
+The memory limiter operates on two primary thresholds: a hard limit and a soft limit (defined by the spike limit).
 
-* **Hard Limit (`limit_mib` or `limit_percentage`):** The absolute maximum amount of memory the Collector is allowed to use. 
+* **Hard Limit (`limit_mib` or `limit_percentage`):** The absolute maximum amount of memory the Collector is allowed to use.
 * **Spike Limit (`spike_limit_mib` or `spike_limit_percentage`):** The safety buffer. The soft limit is calculated as the Hard Limit minus the Spike Limit. When memory usage crosses this soft limit, the Collector enters a memory-constrained state and begins refusing new data.
 
 Here is a standard configuration using percentages, which is highly recommended for Kubernetes environments where pod resource limits might change dynamically:
@@ -46,9 +46,9 @@ processors:
 
 ### The Batch Processor
 
-While the `memory_limiter` protects the Collector's internals, the `batch` processor protects the network and the downstream observability backends. 
+While the `memory_limiter` protects the Collector's internals, the `batch` processor protects the network and the downstream observability backends.
 
-Receivers often ingest telemetry point-by-point or in small fragments. Exporting these tiny payloads individually across a network introduces immense overhead: each request requires TCP/TLS handshakes, HTTP headers, and individual disk I/O operations on the backend. 
+Receivers often ingest telemetry point-by-point or in small fragments. Exporting these tiny payloads individually across a network introduces immense overhead: each request requires TCP/TLS handshakes, HTTP headers, and individual disk I/O operations on the backend.
 
 The `batch` processor intercepts incoming telemetry, buffers it in memory, and groups it into larger payloads before passing it to the exporters. This drastically improves payload compression (especially for gRPC/Protobuf streams) and increases the ingestion throughput of your storage backends.
 
@@ -56,9 +56,9 @@ The `batch` processor intercepts incoming telemetry, buffers it in memory, and g
 
 The batch processor operates on three main triggers: time, size, and a hard cap.
 
-1.  **`timeout`:** The maximum amount of time to wait before sending a batch, regardless of its size. This ensures low-volume signals don't get stuck in memory indefinitely.
-2.  **`send_batch_size`:** The target number of spans, metric data points, or log records required to trigger a batch send.
-3.  **`send_batch_max_size`:** An absolute upper limit on the batch size. This is critical because many backends (and gRPC itself) have maximum payload size limits (e.g., 4MB). If a batch exceeds this limit, it is split into smaller batches.
+1. **`timeout`:** The maximum amount of time to wait before sending a batch, regardless of its size. This ensures low-volume signals don't get stuck in memory indefinitely.
+2. **`send_batch_size`:** The target number of spans, metric data points, or log records required to trigger a batch send.
+3. **`send_batch_max_size`:** An absolute upper limit on the batch size. This is critical because many backends (and gRPC itself) have maximum payload size limits (e.g., 4MB). If a batch exceeds this limit, it is split into smaller batches.
 
 ```yaml
 processors:
@@ -71,7 +71,7 @@ processors:
     send_batch_max_size: 10000
 ```
 
-When configuring `send_batch_size`, you must balance memory usage against network efficiency. A larger batch size compresses better and requires fewer network requests, but consumes more Collector RAM while buffering. 
+When configuring `send_batch_size`, you must balance memory usage against network efficiency. A larger batch size compresses better and requires fewer network requests, but consumes more Collector RAM while buffering.
 
 ### Pipeline Placement: The Golden Rule
 
@@ -94,8 +94,8 @@ The order in which processors are defined in the `service.pipelines` section is 
 +-------------------------------------------------------------------------+
 ```
 
-1.  **`memory_limiter` must be the FIRST processor.** It needs to inspect the incoming data volume and apply backpressure *before* the Collector spends CPU cycles parsing, modifying, or enriching the data. Placing it later defeats the purpose, as the memory will have already been allocated.
-2.  **`batch` should be the LAST processor.** Data should be filtered, redacted, and enriched (e.g., via the `attributes` or `transform` processors) while it is still streaming. Once the data is perfectly formatted, the `batch` processor packs it efficiently and hands it off to the exporter queuing mechanisms. 
+1. **`memory_limiter` must be the FIRST processor.** It needs to inspect the incoming data volume and apply backpressure *before* the Collector spends CPU cycles parsing, modifying, or enriching the data. Placing it later defeats the purpose, as the memory will have already been allocated.
+2. **`batch` should be the LAST processor.** Data should be filtered, redacted, and enriched (e.g., via the `attributes` or `transform` processors) while it is still streaming. Once the data is perfectly formatted, the `batch` processor packs it efficiently and hands it off to the exporter queuing mechanisms.
 
 Combining these two processors correctly transforms the Collector from a fragile intermediary into a highly resilient, enterprise-grade telemetry router.
 
@@ -107,7 +107,7 @@ OTTL was engineered to solve this fragmentation. It is a domain-specific languag
 
 ### The OTTL Execution Model: Contexts
 
-To use OTTL effectively, you must first understand the shape of OTLP (OpenTelemetry Protocol) data. Telemetry is not flat; it is highly nested. To optimize performance, OTTL statements do not execute against the entire payload at once. Instead, they execute within a specific **Context**. 
+To use OTTL effectively, you must first understand the shape of OTLP (OpenTelemetry Protocol) data. Telemetry is not flat; it is highly nested. To optimize performance, OTTL statements do not execute against the entire payload at once. Instead, they execute within a specific **Context**.
 
 The context dictates which fields are accessible and what operations are valid. If you write an OTTL statement for a Span, it cannot directly mutate the underlying Resource attributes unless you explicitly declare the correct context path.
 
@@ -135,7 +135,7 @@ The context dictates which fields are accessible and what operations are valid. 
 +-------------------------------------------------------------------+
 ```
 
-When configuring the `transform` processor, you group your OTTL statements by these contexts. 
+When configuring the `transform` processor, you group your OTTL statements by these contexts.
 
 ### Syntax and Structure
 
@@ -173,7 +173,7 @@ processors:
 
 #### 2. Advanced Span Attribute Manipulation
 
-Often, developers inject attributes that are too verbose, or you need to derive new attributes from existing ones to improve indexing in your backend. 
+Often, developers inject attributes that are too verbose, or you need to derive new attributes from existing ones to improve indexing in your backend.
 
 ```yaml
 processors:
@@ -230,20 +230,20 @@ processors:
 
 ### Performance Implications of OTTL
 
-While powerful, OTTL is not free. Every statement evaluated consumes CPU cycles. 
+While powerful, OTTL is not free. Every statement evaluated consumes CPU cycles.
 
-1.  **Context Optimization:** Always target the highest applicable context. If you want to drop a telemetry payload based on a `host.name`, do it in the `resource_statements` block, not the `trace_statements` block. If you drop it at the resource level, the Collector doesn't waste time evaluating the hundreds of individual spans attached to that resource.
-2.  **Short-Circuiting:** Use `where` clauses aggressively. Functions like `replace_pattern` (Regex matching) are computationally expensive. Shield them with simple boolean checks (e.g., `where attributes["http.url"] != nil and IsMatch(...)`) so the regex engine only runs when absolutely necessary.
+1. **Context Optimization:** Always target the highest applicable context. If you want to drop a telemetry payload based on a `host.name`, do it in the `resource_statements` block, not the `trace_statements` block. If you drop it at the resource level, the Collector doesn't waste time evaluating the hundreds of individual spans attached to that resource.
+2. **Short-Circuiting:** Use `where` clauses aggressively. Functions like `replace_pattern` (Regex matching) are computationally expensive. Shield them with simple boolean checks (e.g., `where attributes["http.url"] != nil and IsMatch(...)`) so the regex engine only runs when absolutely necessary.
 
 ## 14.3 Redacting Sensitive Data and Masking PII
 
-In modern distributed systems, telemetry data is incredibly rich. While this high fidelity is invaluable for debugging, it presents a massive liability regarding Personally Identifiable Information (PII), Protected Health Information (PHI), and financial data (PCI). Passwords, social security numbers, credit card details, and API tokens can easily leak into logs, span attributes, or database query traces. 
+In modern distributed systems, telemetry data is incredibly rich. While this high fidelity is invaluable for debugging, it presents a massive liability regarding Personally Identifiable Information (PII), Protected Health Information (PHI), and financial data (PCI). Passwords, social security numbers, credit card details, and API tokens can easily leak into logs, span attributes, or database query traces.
 
 Relying on thousands of individual developers to manually sanitize data before emitting telemetry is an error-prone strategy. The OpenTelemetry Collector solves this by acting as a centralized privacy gateway, applying redaction rules at the infrastructure edge before the data crosses the trust boundary to observability backends or third-party vendors.
 
 ### The Privacy Gateway Pattern
 
-The standard architectural pattern for data masking places the redaction logic immediately after data ingestion and initial enrichment, but crucially before routing and exporting. 
+The standard architectural pattern for data masking places the redaction logic immediately after data ingestion and initial enrichment, but crucially before routing and exporting.
 
 ```text
 +---------------------------------------------------------------------------------+
@@ -333,7 +333,7 @@ processors:
 
 ### Performance and Security Considerations
 
-Implementing redaction—particularly pattern-based replacement—introduces computational overhead. 
+Implementing redaction—particularly pattern-based replacement—introduces computational overhead.
 
 1. **Regex Penalty:** Regular expressions are notoriously CPU-intensive. Applying `replace_pattern` across the `body` of every single log record ingested by the Collector will dramatically increase CPU utilization.
 2. **Targeted Execution:** To mitigate performance hits, heavily utilize OTTL's `where` clauses. Instead of scanning all spans for SQL injection or PII, constrain the regex to execute only if the span is identified as a database span or from a specific service.
@@ -343,7 +343,7 @@ Implementing redaction—particularly pattern-based replacement—introduces com
           - replace_pattern(attributes["http.target"], "session_id=([^&]+)", "session_id=[MASKED]") where attributes["http.target"] != nil and IsMatch(attributes["http.target"], "session_id=")
 ```
 
-3. **Defense in Depth:** While the Collector is a powerful privacy gateway, it should not be the *only* line of defense. Applications should still attempt to avoid logging sensitive data natively. The Collector acts as the safety net for human error, ensuring that when developers inevitably make mistakes, the blast radius is contained before it reaches immutable storage.
+1. **Defense in Depth:** While the Collector is a powerful privacy gateway, it should not be the *only* line of defense. Applications should still attempt to avoid logging sensitive data natively. The Collector acts as the safety net for human error, ensuring that when developers inevitably make mistakes, the blast radius is contained before it reaches immutable storage.
 
 ## 14.4 Applying Resource and Attribute Processors Globally
 
@@ -369,8 +369,8 @@ To use these processors correctly, you must understand the OpenTelemetry data mo
 +-------------------------------------------------------------+
 ```
 
-1.  **Resource:** Represents the underlying entity producing the telemetry. If you add a key-value pair to the Resource, it automatically applies to *all* spans, metrics, and logs generated by that entity. 
-2.  **Attributes:** Represents the metadata attached to a specific, individual signal (like a single Span or Log Record).
+1. **Resource:** Represents the underlying entity producing the telemetry. If you add a key-value pair to the Resource, it automatically applies to *all* spans, metrics, and logs generated by that entity.
+2. **Attributes:** Represents the metadata attached to a specific, individual signal (like a single Span or Log Record).
 
 **The Golden Rule of Global Tagging:** Always apply global metadata at the Resource level whenever possible. It is computationally cheaper to stamp a `cloud.region` once on the Resource than to stamp it a thousand times on a thousand individual spans.
 
@@ -383,6 +383,7 @@ Common use cases include injecting geographic regions, datacenter names, cluster
 #### Configuration Actions
 
 The processor supports several actions:
+
 * `insert`: Adds the attribute only if it does not already exist.
 * `update`: Modifies the attribute only if it already exists.
 * `upsert`: Adds the attribute if it doesn't exist, or overwrites it if it does.
@@ -457,7 +458,7 @@ By stamping Resource attributes early, downstream components like the `tail_samp
 
 As your observability footprint grows, the philosophy of "collect everything and send it everywhere" quickly becomes financially and technically unsustainable. You will encounter high-volume, low-value telemetry—such as thousands of successful health check spans per minute—that inflate your vendor bills without providing actionable insights. Conversely, you will have highly critical data, such as payment processing errors, that must be routed to specialized, high-availability monitoring backends.
 
-The OpenTelemetry Collector addresses these challenges through data filtering (dropping telemetry) and conditional routing (forking the telemetry pipeline). 
+The OpenTelemetry Collector addresses these challenges through data filtering (dropping telemetry) and conditional routing (forking the telemetry pipeline).
 
 ### Data Filtering: Shedding the Noise
 
@@ -496,9 +497,10 @@ processors:
 While filtering destroys data, routing directs it. The `routing` processor intercepts the pipeline flow and forwards telemetry to specific exporters based on the data's content.
 
 This is critical for several enterprise architectures:
-1.  **Multi-Tenancy:** Routing data to different vendor accounts or storage indices based on a `tenant_id`.
-2.  **Tiered Storage:** Sending all data to a cheap, cold-storage blob bucket, but routing only `ERROR` level logs and spans to an expensive, hot-storage observability vendor.
-3.  **Data Sovereignty:** Ensuring telemetry originating from European servers is routed exclusively to EU-based observability backends to comply with GDPR.
+
+1. **Multi-Tenancy:** Routing data to different vendor accounts or storage indices based on a `tenant_id`.
+2. **Tiered Storage:** Sending all data to a cheap, cold-storage blob bucket, but routing only `ERROR` level logs and spans to an expensive, hot-storage observability vendor.
+3. **Data Sovereignty:** Ensuring telemetry originating from European servers is routed exclusively to EU-based observability backends to comply with GDPR.
 
 ```text
 +-----------------------------------------------------------------------+

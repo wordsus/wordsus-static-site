@@ -2,7 +2,7 @@ Rust no es solo un compilador; es un conjunto de herramientas diseñadas para ga
 
 ## 1.1 Instalación y gestión con `rustup`
 
-Antes de escribir una sola línea de código en Rust, necesitas preparar tu entorno. A diferencia de otros lenguajes donde descargas un compilador estático y terminas, el ecosistema de Rust utiliza una herramienta oficial llamada **`rustup`**. 
+Antes de escribir una sola línea de código en Rust, necesitas preparar tu entorno. A diferencia de otros lenguajes donde descargas un compilador estático y terminas, el ecosistema de Rust utiliza una herramienta oficial llamada **`rustup`**.
 
 `rustup` no es el compilador ni el gestor de paquetes; es un **multiplexor y gestor de cadenas de herramientas (toolchains)**. Su responsabilidad principal es instalar, actualizar y gestionar las versiones del compilador (`rustc`), la biblioteca estándar y otras herramientas satélite que utilizarás en tu día a día.
 
@@ -12,7 +12,7 @@ Para un desarrollador backend, dominar `rustup` desde el principio es crucial, y
 
 ### Instalación inicial
 
-La forma recomendada y oficial de instalar Rust en cualquier sistema es a través del script de `rustup`. 
+La forma recomendada y oficial de instalar Rust en cualquier sistema es a través del script de `rustup`.
 
 **En sistemas basados en Unix (Linux y macOS):**
 Abre tu terminal y ejecuta el siguiente comando:
@@ -41,7 +41,7 @@ El desarrollo del compilador de Rust se divide en tres canales de distribución 
 
 1. **Stable (Estable):** Es el canal por defecto y el que debes usar para cualquier proyecto backend en producción. Se actualiza exactamente cada seis semanas.
 2. **Beta:** Contiene las características que pasarán a ser estables en el próximo ciclo de seis semanas. Es útil para probar si tus dependencias se romperán en la próxima actualización.
-3. **Nightly (Nocturno):** Se compila cada noche e incluye características experimentales que aún no están listas para producción. 
+3. **Nightly (Nocturno):** Se compila cada noche e incluye características experimentales que aún no están listas para producción.
 
 Como desarrollador backend, pasarás el 99% de tu tiempo en el canal estable. Sin embargo, si alguna vez necesitas probar una característica experimental, puedes instalar el canal nocturno sin afectar tu instalación principal:
 
@@ -54,6 +54,7 @@ rustup run nightly rustc --version
 ```
 
 #### Fijar versiones por proyecto
+
 A nivel de equipo, es vital asegurar que todos compilen el proyecto con la misma versión de Rust. `rustup` soporta el uso de un archivo llamado `rust-toolchain.toml` en la raíz de tu proyecto. Cuando ejecutas cualquier comando de Rust en ese directorio, `rustup` leerá este archivo y descargará automáticamente la versión especificada si no está presente.
 
 ```toml
@@ -123,9 +124,9 @@ Con tu entorno de desarrollo preparado y gestionado correctamente a través de `
 
 ## 1.2 `cargo`: El gestor de paquetes y dependencias
 
-Si `rustup` es la herramienta que gestiona tu instalación de Rust, **`cargo`** es la herramienta que gestionará tu código de Rust. Es el sistema de construcción (build system) y el gestor de paquetes oficial del lenguaje. 
+Si `rustup` es la herramienta que gestiona tu instalación de Rust, **`cargo`** es la herramienta que gestionará tu código de Rust. Es el sistema de construcción (build system) y el gestor de paquetes oficial del lenguaje.
 
-En ecosistemas como C o C++, configurar el proceso de compilación (Makefiles, CMake) y gestionar librerías externas suele ser una tarea titánica y propensa a errores. Rust resuelve este problema de raíz: `cargo` estandariza cómo se construyen los proyectos, cómo se descargan las dependencias (llamadas **crates** en el ecosistema Rust) y cómo se ejecutan las pruebas. 
+En ecosistemas como C o C++, configurar el proceso de compilación (Makefiles, CMake) y gestionar librerías externas suele ser una tarea titánica y propensa a errores. Rust resuelve este problema de raíz: `cargo` estandariza cómo se construyen los proyectos, cómo se descargan las dependencias (llamadas **crates** en el ecosistema Rust) y cómo se ejecutan las pruebas.
 
 Para un desarrollador backend, `cargo` garantiza **construcciones reproducibles**: si tu proyecto compila en tu máquina hoy, compilará exactamente igual en el servidor de producción o en el pipeline de CI/CD mañana.
 
@@ -201,7 +202,7 @@ tokio = { version = "1.36.0", features = ["full"] }
 
 Rust sigue estrictamente el Versionamiento Semántico (SemVer). Cuando declaras una versión como `"1.0.197"`, `cargo` entiende que puede descargar actualizaciones menores o parches (como `1.0.198` o `1.1.0`) que sean compatibles con la API, pero nunca saltará a la versión `2.0.0` sin tu permiso explícito.
 
-Al compilar tu proyecto por primera vez, `cargo` genera un archivo llamado **`Cargo.lock`**. Este archivo registra las versiones *exactas* de todas las dependencias (y las dependencias de tus dependencias) que se utilizaron. 
+Al compilar tu proyecto por primera vez, `cargo` genera un archivo llamado **`Cargo.lock`**. Este archivo registra las versiones *exactas* de todas las dependencias (y las dependencias de tus dependencias) que se utilizaron.
 > **Nota de arquitectura:** Debes incluir `Cargo.lock` en tu control de versiones (git) para proyectos binarios (aplicaciones finales), garantizando así compilaciones 100% reproducibles en cualquier entorno. Sin embargo, para librerías (`--lib`), se recomienda ignorarlo para que los consumidores de la librería prueben contra las versiones más recientes posibles.
 
 ---
@@ -233,6 +234,7 @@ Con el tiempo, querrás actualizar tus dependencias a sus versiones más recient
 ```bash
 cargo update
 ```
+
 Esto modificará el archivo `Cargo.lock` con las nuevas versiones exactas sin tocar tu `Cargo.toml`.
 
 Finalmente, si el directorio `target/` ocupa demasiado espacio en tu disco (lo cual es muy común en proyectos grandes con muchas dependencias), puedes limpiar los artefactos de compilación con:
@@ -257,8 +259,8 @@ Un **Paquete (Package)** es lo que gestiona `cargo`. Es un conjunto de uno o má
 
 Un **Crate** es la unidad de compilación más pequeña que el compilador de Rust (`rustc`) considera a la vez. Existen dos tipos principales:
 
-1.  **Crates binarios:** Son programas compilados en un ejecutable (por ejemplo, tu servidor web). Deben tener una función `main`. Por convención, si tienes un archivo `src/main.rs`, Cargo asume que es la raíz de un crate binario con el mismo nombre que el paquete.
-2.  **Crates de biblioteca (Library Crates):** No tienen una función `main` y no se compilan en un ejecutable. Su propósito es definir funcionalidades compartidas. Si tienes un archivo `src/lib.rs`, Cargo asume que es la raíz de un crate de biblioteca.
+1. **Crates binarios:** Son programas compilados en un ejecutable (por ejemplo, tu servidor web). Deben tener una función `main`. Por convención, si tienes un archivo `src/main.rs`, Cargo asume que es la raíz de un crate binario con el mismo nombre que el paquete.
+2. **Crates de biblioteca (Library Crates):** No tienen una función `main` y no se compilan en un ejecutable. Su propósito es definir funcionalidades compartidas. Si tienes un archivo `src/lib.rs`, Cargo asume que es la raíz de un crate de biblioteca.
 
 Un paquete puede contener **múltiples crates binarios** (ubicados en `src/bin/`), pero **solo un crate de biblioteca**.
 
@@ -372,7 +374,7 @@ Adoptar Workspaces temprano en proyectos grandes fomenta la Arquitectura Limpia 
 
 ## 1.4 Formateo y linting (`rustfmt` y `clippy`)
 
-En muchos ecosistemas de programación, los equipos de desarrollo pierden horas valiosas debatiendo sobre si usar tabulaciones o espacios, dónde colocar las llaves o qué herramienta de análisis estático configurar (Prettier, ESLint, Flake8, etc.). 
+En muchos ecosistemas de programación, los equipos de desarrollo pierden horas valiosas debatiendo sobre si usar tabulaciones o espacios, dónde colocar las llaves o qué herramienta de análisis estático configurar (Prettier, ESLint, Flake8, etc.).
 
 Rust elimina estas discusiones triviales (conocidas como *bike-shedding*) proporcionando dos herramientas oficiales, estandarizadas y excepcionalmente potentes directamente en su cadena de herramientas: **`rustfmt`** para el formato y **`clippy`** para el *linting* (análisis estático avanzado).
 
@@ -415,6 +417,7 @@ fn procesar_usuario(id: u32, nombre: &str) -> bool {
 ```
 
 #### Configuración de `rustfmt`
+
 Aunque puedes personalizar el comportamiento de `rustfmt` creando un archivo `rustfmt.toml` en la raíz de tu proyecto, **la recomendación general (especialmente en equipos) es no hacerlo**. Adoptar el estilo por defecto de Rust hace que cualquier desarrollador que se una a tu proyecto pueda leer el código con la misma familiaridad con la que lee la biblioteca estándar u otros proyectos de código abierto.
 
 ---
@@ -458,6 +461,7 @@ warning: length comparison to zero
 Clippy te enseñará proactivamente a usar los métodos más eficientes e idiomáticos (en este caso, `.is_empty()`), actuando como un mentor constante.
 
 #### Niveles de severidad y configuración estricta
+
 Los lints de Clippy se agrupan en categorías como `correctness` (errores directos), `perf` (problemas de rendimiento) o `pedantic` (reglas muy estrictas).
 
 Puedes configurar cómo el compilador trata estas advertencias usando atributos al inicio de tus archivos (como `main.rs` o `lib.rs`). Para un servidor backend de alta fiabilidad, podrías querer que ciertas prácticas dudosas rompan la compilación directamente en lugar de solo mostrar una advertencia:
@@ -483,10 +487,13 @@ El verdadero poder de `rustfmt` y `clippy` se desata cuando los integras en tus 
 Los comandos típicos para CI son:
 
 * **Verificar formato sin modificar archivos:**
+
     ```bash
     cargo fmt -- --check
     ```
+
 * **Ejecutar Clippy tratando todas las advertencias como errores (`-D warnings`):**
+
     ```bash
     cargo clippy -- -D warnings
     ```

@@ -6,7 +6,7 @@ In Go, functions are fundamental building blocks. They are designed with a focus
 
 ### The Anatomy of a Function Declaration
 
-A function in Go is declared using the `func` keyword, followed by the function name, a parameter list, an optional return type list, and the function body enclosed in curly braces. 
+A function in Go is declared using the `func` keyword, followed by the function name, a parameter list, an optional return type list, and the function body enclosed in curly braces.
 
 Here is a plain text breakdown of a standard Go function signature:
 
@@ -106,9 +106,9 @@ func parseCoordinates(input string) (x int, y int, err error) {
 
 While named returns can serve as excellent documentation directly within the function signature, they should be used judiciously:
 
-1.  **Readability in Short Functions:** Named returns and naked returns are best suited for short functions. In lengthy or complex functions, a naked return forces the reader to scan upwards to remember which variables are implicitly being returned, hindering readability.
-2.  **Shadowing Risks:** Be cautious of variable shadowing. If you declare a new variable with the same name as a named return variable inside a block scope (like an `if` statement) using `:=`, the naked `return` will still return the outer scoped variable, which can lead to subtle bugs.
-3.  **Documentation over Execution:** Even if you use named returns to document the purpose of the output, you are not strictly required to use a naked return. It is perfectly valid, and often preferred in longer functions, to return the variables explicitly (e.g., `return x, y, err`).
+1. **Readability in Short Functions:** Named returns and naked returns are best suited for short functions. In lengthy or complex functions, a naked return forces the reader to scan upwards to remember which variables are implicitly being returned, hindering readability.
+2. **Shadowing Risks:** Be cautious of variable shadowing. If you declare a new variable with the same name as a named return variable inside a block scope (like an `if` statement) using `:=`, the naked `return` will still return the outer scoped variable, which can lead to subtle bugs.
+3. **Documentation over Execution:** Even if you use named returns to document the purpose of the output, you are not strictly required to use a naked return. It is perfectly valid, and often preferred in longer functions, to return the variables explicitly (e.g., `return x, y, err`).
 
 ## 5.2 Variadic Functions, Anonymous Functions, and Closures
 
@@ -118,7 +118,7 @@ Go’s function design extends far beyond simple inputs and outputs. Because Go 
 
 A variadic function is a function that accepts a variable number of arguments of a specific type. You have likely already encountered variadic functions without realizing it; the standard library's `fmt.Println` is a prime example.
 
-In Go, you declare a variadic parameter by prefixing the type with an ellipsis (`...`). Under the hood, Go treats this variadic parameter as a slice of that type. 
+In Go, you declare a variadic parameter by prefixing the type with an ellipsis (`...`). Under the hood, Go treats this variadic parameter as a slice of that type.
 
 **Rule of Thumb:** A function can only have one variadic parameter, and it must strictly be the final parameter in the signature.
 
@@ -264,13 +264,13 @@ Understanding how closures bind to memory addresses is essential for writing saf
 
 ## 5.3 Pointers: Syntax, Dereferencing, and Address Operators
 
-If you are coming to Go from a language like Python, Java, or JavaScript, the concept of a pointer might seem like a relic of lower-level systems programming. However, pointers are a fundamental part of Go's design. They allow you to share data efficiently and mutate state intentionally, without the hidden complexities of implicit reference types found in other languages. 
+If you are coming to Go from a language like Python, Java, or JavaScript, the concept of a pointer might seem like a relic of lower-level systems programming. However, pointers are a fundamental part of Go's design. They allow you to share data efficiently and mutate state intentionally, without the hidden complexities of implicit reference types found in other languages.
 
 Crucially, Go's implementation of pointers prioritizes safety. Unlike C or C++, Go does not allow **pointer arithmetic** by default. You cannot arbitrarily add or subtract from a memory address to traverse memory segments. In Go, a pointer is strictly a reference to a specific, typed location in memory.
 
 ### The Concept of a Pointer
 
-Every variable in your Go program is stored at a specific location in the computer's memory, known as its **memory address**. 
+Every variable in your Go program is stored at a specific location in the computer's memory, known as its **memory address**.
 
 A pointer is simply a variable whose underlying value is the memory address of another variable. Instead of holding data like an integer (`42`) or a string (`"hello"`), a pointer holds a hexadecimal location (like `0x14000122020`).
 
@@ -308,7 +308,7 @@ func main() {
 
 ### Pointer Syntax and Declarations
 
-To declare a variable that *stores* a memory address, you must define its type as a pointer to a specific base type. You do this by placing an asterisk (`*`) immediately before the base type. 
+To declare a variable that *stores* a memory address, you must define its type as a pointer to a specific base type. You do this by placing an asterisk (`*`) immediately before the base type.
 
 For example, a pointer to an `int` is of type `*int`. A pointer to a `string` is of type `*string`.
 
@@ -330,7 +330,7 @@ func main() {
 
 #### The Zero Value of Pointers
 
-Like all types in Go, pointers have a zero value. If you declare a pointer without initializing it to a valid memory address, its value is `nil`. 
+Like all types in Go, pointers have a zero value. If you declare a pointer without initializing it to a valid memory address, its value is `nil`.
 
 Attempting to interact with the underlying data of a `nil` pointer will cause a runtime panic.
 
@@ -348,8 +348,9 @@ Holding a memory address is only half the equation; the real power of pointers c
 You dereference a pointer by placing an asterisk (`*`) directly in front of the pointer variable.
 
 **Note:** The asterisk (`*`) serves two distinct purposes in Go depending on the context:
-1.  **In a type declaration** (e.g., `var p *int`), it means "pointer to an int".
-2.  **In an expression** (e.g., `fmt.Println(*p)`), it means "the value stored at the address p points to".
+
+1. **In a type declaration** (e.g., `var p *int`), it means "pointer to an int".
+2. **In an expression** (e.g., `fmt.Println(*p)`), it means "the value stored at the address p points to".
 
 ```go
 package main
@@ -374,7 +375,7 @@ func main() {
 
 ### The `new` Function
 
-In addition to using the `&` operator on existing variables, Go provides a built-in function called `new()` to create pointers. 
+In addition to using the `&` operator on existing variables, Go provides a built-in function called `new()` to create pointers.
 
 `new(T)` allocates memory for a new variable of type `T`, initializes it to the zero value for that type, and returns a pointer of type `*T` pointing to that newly allocated memory.
 
@@ -491,9 +492,9 @@ func modifySlice(s []int) {
 }
 ```
 
-It feels like pass-by-reference, but it is not. Slices, maps, and channels are internally represented as small data structures containing pointers to the actual data. 
+It feels like pass-by-reference, but it is not. Slices, maps, and channels are internally represented as small data structures containing pointers to the actual data.
 
-As covered in Chapter 4, a slice is essentially a "slice header" struct containing three fields: a pointer to the backing array, the length, and the capacity. 
+As covered in Chapter 4, a slice is essentially a "slice header" struct containing three fields: a pointer to the backing array, the length, and the capacity.
 
 When you pass a slice to a function, **the slice header is copied by value**. The function gets its own length and capacity variables, but crucially, it gets a copy of the *pointer* to the backing array. Because both the original slice and the copied slice header point to the same backing array in memory, modifying an element at an index affects both.
 
@@ -517,9 +518,9 @@ When you pass a slice to a function, **the slice header is copied by value**. Th
 
 Choosing between passing a value and passing a pointer is a fundamental Go design decision. Use these guidelines:
 
-1.  **Pass by Value (Default):** Use this for primitive types (`int`, `float`, `string`, `bool`) and small structs. It keeps data immutable, eliminates side effects, and reduces pressure on the Garbage Collector because the values stay on the stack.
-2.  **Pass by Pointer:** Use pointers when you explicitly need to mutate the input data, or when the `struct` is exceptionally large (e.g., hundreds of fields) and copying it would incur a performance penalty.
-3.  **Consistency Matters:** If some methods on a struct require a pointer receiver to mutate state, you should generally use pointer receivers for all methods on that struct to maintain a consistent API, even if a specific method only reads the data.
+1. **Pass by Value (Default):** Use this for primitive types (`int`, `float`, `string`, `bool`) and small structs. It keeps data immutable, eliminates side effects, and reduces pressure on the Garbage Collector because the values stay on the stack.
+2. **Pass by Pointer:** Use pointers when you explicitly need to mutate the input data, or when the `struct` is exceptionally large (e.g., hundreds of fields) and copying it would incur a performance penalty.
+3. **Consistency Matters:** If some methods on a struct require a pointer receiver to mutate state, you should generally use pointer receivers for all methods on that struct to maintain a consistent API, even if a specific method only reads the data.
 
 ## 5.5 Stack vs. Heap Allocation Basics
 
@@ -527,11 +528,12 @@ Every time your Go program declares a variable, the runtime must allocate memory
 
 ### The Stack: Fast and Localized
 
-The stack is a dedicated region of memory assigned to a specific execution thread (in Go's case, a goroutine). It operates on a strict Last-In, First-Out (LIFO) principle. 
+The stack is a dedicated region of memory assigned to a specific execution thread (in Go's case, a goroutine). It operates on a strict Last-In, First-Out (LIFO) principle.
 
 Whenever a function is called, Go pushes a new "frame" onto the top of the stack. This frame contains the memory for the function's parameters, return values, and local variables. When the function finishes executing and returns, its stack frame is instantly "popped" off the stack, and the memory is immediately reclaimed.
 
 **Key Characteristics of the Stack:**
+
 * **Blazing Fast:** Allocation and deallocation simply involve moving a CPU pointer up and down.
 * **Self-Cleaning:** Memory is reclaimed automatically the moment a function returns.
 * **Zero GC Overhead:** Stack memory does not require the Garbage Collector to manage it.
@@ -544,15 +546,16 @@ The heap is a large, global pool of memory used for variables whose lifetimes ca
 Because the heap is unstructured, finding free space to allocate memory takes slightly longer than pushing to the stack. More importantly, when a variable on the heap is no longer needed, the memory does not clean itself up. It relies on the **Garbage Collector (GC)** to periodically scan the heap, identify orphaned variables, and free the memory.
 
 **Key Characteristics of the Heap:**
+
 * **Slower Allocation:** Requires finding contiguous blocks of free memory.
 * **Shared:** Variables on the heap can be accessed from anywhere in your program, provided you have the pointer.
 * **GC Overhead:** Heavy reliance on the heap creates work for the Garbage Collector, which consumes CPU cycles and can introduce micro-pauses (latency) into your application.
 
 ### Escape Analysis: The Compiler's Magic
 
-In languages like C++, developers explicitly choose where memory is allocated: standard variables go to the stack, and variables created with `new` go to the heap. 
+In languages like C++, developers explicitly choose where memory is allocated: standard variables go to the stack, and variables created with `new` go to the heap.
 
-Go is different. **The `new` keyword and the address operator (`&`) do *not* guarantee a heap allocation.** Instead, the Go compiler performs a sophisticated process called **Escape Analysis**. During compilation, Go analyzes the code to determine the "lifetime" of every variable. 
+Go is different. **The `new` keyword and the address operator (`&`) do *not* guarantee a heap allocation.** Instead, the Go compiler performs a sophisticated process called **Escape Analysis**. During compilation, Go analyzes the code to determine the "lifetime" of every variable.
 
 * **Rule 1:** If a variable is declared in a function and its reference (pointer) is never shared outside of that function, it stays on the **stack**.
 * **Rule 2:** If a variable is declared in a function, but a pointer to that variable is returned to the caller or assigned to a global variable, the compiler knows the variable must outlive the function. The variable "escapes" the localized stack and is allocated on the **heap**.
@@ -574,6 +577,7 @@ Consider the following visual representation of Escape Analysis at work:
     |   (returns &User)  |         |                             |
     +--------------------+         +-----------------------------+
 ```
+
 *Because `createUser()` returned a pointer to the User struct, the struct could not be placed in `createUser()`'s stack frame (which is destroyed upon return). It escaped to the heap.*
 
 ### Code Examples: Stack vs. Heap
@@ -591,6 +595,7 @@ func calculateSquare(n int) int {
     return result 
 } // 'result' is destroyed here
 ```
+
 In this example, `result` is created, calculated, its *value* is copied back to the caller, and the original variable is instantly destroyed when the stack frame pops. It never touches the heap.
 
 #### Example 2: Escaping to the Heap
@@ -609,11 +614,12 @@ func createNewUser(name string) *User {
     return &u 
 } 
 ```
+
 Here, `u` is initialized inside `createNewUser`. If it were stored on the stack, it would be destroyed the moment the function returned, leaving the caller with a pointer to corrupted memory (a "dangling pointer"). To prevent this, Go's escape analysis detects the returned pointer and intelligently allocates `u` on the heap instead.
 
 ### Why Does This Matter?
 
-As you progress toward mastering Go, performance tuning becomes critical. While Go's Garbage Collector is incredibly efficient, it is not free. 
+As you progress toward mastering Go, performance tuning becomes critical. While Go's Garbage Collector is incredibly efficient, it is not free.
 
 A common pitfall for new Go developers is overusing pointers. Passing pointers for small structs (like a simple 2D coordinate) simply to avoid a "copy" often backfires. The overhead of the GC cleaning up the resulting heap allocation is usually far worse than the microscopic CPU cost of copying a small struct by value on the stack.
 

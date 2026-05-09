@@ -1,4 +1,4 @@
-Before diving into the deep waters of ownership, borrowing, and concurrency, you must master the fundamental building blocks of Rust. If you are coming from languages like Python, C++, or JavaScript, some of these concepts will feel familiar, while others—such as immutability by default and expression-based control flow—will require a structural shift in how you reason about your code. 
+Before diving into the deep waters of ownership, borrowing, and concurrency, you must master the fundamental building blocks of Rust. If you are coming from languages like Python, C++, or JavaScript, some of these concepts will feel familiar, while others—such as immutability by default and expression-based control flow—will require a structural shift in how you reason about your code.
 
 In this chapter, we will explore how Rust handles variables and memory types, structure logic using functions and loops, and document code effectively. By the end of this chapter, you will possess the foundational vocabulary needed to read and write idiomatic Rust programs.
 
@@ -8,7 +8,7 @@ In Rust, the way you store and manipulate data is fundamentally tied to the lang
 
 ### Variables and Immutability by Default
 
-You declare a variable in Rust using the `let` keyword. However, unlike many mainstream programming languages, Rust variables are **immutable by default**. Once a value is bound to a variable name, you cannot change that value. 
+You declare a variable in Rust using the `let` keyword. However, unlike many mainstream programming languages, Rust variables are **immutable by default**. Once a value is bound to a variable name, you cannot change that value.
 
 This design choice prevents a whole class of bugs where data is altered unexpectedly, especially in concurrent programming (which will be explored deeply in Chapter 11).
 
@@ -28,7 +28,7 @@ If you uncomment `x = 6;`, the Rust compiler (`rustc`) will stop and throw an er
 
 ### Opting into Mutability
 
-While immutability is safe, software must eventually process and change data. Rust requires you to explicitly opt into mutability by placing the `mut` keyword immediately after `let`. 
+While immutability is safe, software must eventually process and change data. Rust requires you to explicitly opt into mutability by placing the `mut` keyword immediately after `let`.
 
 Adding `mut` signals to both the compiler and future readers of your code that this variable's state will change over its lifetime.
 
@@ -46,15 +46,16 @@ By forcing you to type `mut`, Rust makes state changes intentional and easily se
 
 ### Constants
 
-Constants are similar to immutable variables, but with stricter rules. They are values that are bound to a name and are *never* allowed to change. 
+Constants are similar to immutable variables, but with stricter rules. They are values that are bound to a name and are *never* allowed to change.
 
-While variables are immutable by default, constants are immutable by definition. You declare them using the `const` keyword instead of `let`. 
+While variables are immutable by default, constants are immutable by definition. You declare them using the `const` keyword instead of `let`.
 
 Here are the critical differences between constants and variables:
-1.  **No `mut` allowed:** You cannot use `mut` with constants. 
-2.  **Explicit type annotations:** You *must* annotate the type of the value (types are covered in Section 2.2). The compiler will not infer it for you.
-3.  **Global scope capable:** Constants can be declared in any scope, including the global scope, making them useful for values that many parts of the program need to know about.
-4.  **Compile-time evaluation:** Constants may be set only to a constant expression, not the result of a value that could only be computed at runtime.
+
+1. **No `mut` allowed:** You cannot use `mut` with constants.
+2. **Explicit type annotations:** You *must* annotate the type of the value (types are covered in Section 2.2). The compiler will not infer it for you.
+3. **Global scope capable:** Constants can be declared in any scope, including the global scope, making them useful for values that many parts of the program need to know about.
+4. **Compile-time evaluation:** Constants may be set only to a constant expression, not the result of a value that could only be computed at runtime.
 
 ```rust
 const MAX_CONCURRENT_USERS: u32 = 100_000;
@@ -88,7 +89,7 @@ fn main() {
 
 #### Shadowing vs. Mutability
 
-It is crucial to understand that shadowing is not the same as marking a variable as `mut`. 
+It is crucial to understand that shadowing is not the same as marking a variable as `mut`.
 
 When you use `mut`, you are altering the value stored in the existing memory location. The type of the variable must remain the same.
 When you use `let` to shadow, you are essentially creating a brand-new variable, taking a new memory allocation, and simply reusing the name. Because it is a new variable, you can change the *data type* while reusing the same name.
@@ -137,12 +138,13 @@ An integer is a number without a fractional component. Rust provides a comprehen
 
 The `isize` and `usize` types depend on the architecture of the computer your program is running on: 64 bits if you are on a 64-bit architecture and 32 bits if you are on a 32-bit architecture. These are predominantly used when indexing collections.
 
-By default, Rust infers integers to be `i32`, as it is generally the fastest, even on 64-bit systems. 
+By default, Rust infers integers to be `i32`, as it is generally the fastest, even on 64-bit systems.
 
 **Integer Overflow:**
-In a production environment, you must be aware of how Rust handles integer overflow (e.g., trying to fit the number 256 into a `u8`, which only holds 0-255). 
+In a production environment, you must be aware of how Rust handles integer overflow (e.g., trying to fit the number 256 into a `u8`, which only holds 0-255).
+
 * In **debug** builds (compiled with `cargo build`), Rust includes checks for integer overflow that will cause your program to panic at runtime if this behavior occurs.
-* In **release** builds (compiled with `cargo build --release`), Rust does *not* include checks for integer overflow that cause panics. Instead, it performs two's complement wrapping. In short, 256 becomes 0, 257 becomes 1, and so on. Your program won't panic, but it will contain an invalid value. 
+* In **release** builds (compiled with `cargo build --release`), Rust does *not* include checks for integer overflow that cause panics. Instead, it performs two's complement wrapping. In short, 256 becomes 0, 257 becomes 1, and so on. Your program won't panic, but it will contain an invalid value.
 
 #### 2. Floating-Point Numbers
 
@@ -166,7 +168,7 @@ let has_errors: bool = false;
 
 #### 4. The Character Type
 
-Rust’s `char` type is the language’s most primitive alphabetic type. Unlike some languages where a char is inherently a single byte (like C), a Rust `char` represents a **Unicode Scalar Value**. 
+Rust’s `char` type is the language’s most primitive alphabetic type. Unlike some languages where a char is inherently a single byte (like C), a Rust `char` represents a **Unicode Scalar Value**.
 
 This means it takes up 4 bytes in memory and can represent a lot more than just ASCII. Accented letters, Chinese, Japanese, and Korean characters, emojis, and zero-width spaces are all valid `char` values. Note that `char` literals are specified with single quotes, as opposed to string literals, which use double quotes.
 
@@ -270,7 +272,7 @@ In many low-level languages, this kind of check is not done, resulting in invali
 
 Functions are prevalent in Rust code. You have already seen one of the most important functions in the language: `main`, which is the entry point of many programs. You have also seen the `fn` keyword, which allows you to declare new functions.
 
-Rust code uses *snake case* as the conventional style for function and variable names, in which all letters are lowercase and underscores separate words. 
+Rust code uses *snake case* as the conventional style for function and variable names, in which all letters are lowercase and underscores separate words.
 
 ```rust
 fn main() {
@@ -297,14 +299,14 @@ fn print_measurements(value: i32, unit_label: char) {
 
 ### Statements and Expressions
 
-Understanding the distinction between statements and expressions is arguably the most critical step in grasping Rust's syntax. Rust is primarily an **expression-based language**. 
+Understanding the distinction between statements and expressions is arguably the most critical step in grasping Rust's syntax. Rust is primarily an **expression-based language**.
 
 * **Statements** are instructions that perform some action and do *not* return a value.
 * **Expressions** evaluate to a resulting value.
 
 #### Statements
 
-Creating a variable and assigning a value to it with the `let` keyword is a statement. 
+Creating a variable and assigning a value to it with the `let` keyword is a statement.
 
 ```rust
 fn main() {
@@ -338,7 +340,7 @@ fn main() {
 }
 ```
 
-Look closely at the `x + 1` line. It does not have a semicolon at the end. **Expressions do not include ending semicolons.** If you add a semicolon to the end of an expression, you turn it into a statement, and it will then return the unit type `()` instead of the expected value. 
+Look closely at the `x + 1` line. It does not have a semicolon at the end. **Expressions do not include ending semicolons.** If you add a semicolon to the end of an expression, you turn it into a statement, and it will then return the unit type `()` instead of the expected value.
 
 ```text
 +-------------------------------------------------------------+
@@ -351,7 +353,7 @@ Look closely at the `x + 1` line. It does not have a semicolon at the end. **Exp
 
 ### Functions with Return Values
 
-Functions can return values to the code that calls them. We do not name return values, but we must declare their type after an arrow (`->`). 
+Functions can return values to the code that calls them. We do not name return values, but we must declare their type after an arrow (`->`).
 
 In Rust, the return value of the function is synonymous with the value of the final expression in the block of the body of a function. You can return early from a function by using the `return` keyword and specifying a value, but most functions return the last expression implicitly.
 
@@ -374,7 +376,7 @@ fn five() -> i32 {
 }
 ```
 
-The compiler will point out that the function signature claims it returns an `i32`, but because of the semicolon, the function actually returns `()` (the unit type). 
+The compiler will point out that the function signature claims it returns an `i32`, but because of the semicolon, the function actually returns `()` (the unit type).
 
 ### Combining Control Flow and Returns
 
@@ -432,7 +434,7 @@ fn main() {
 
 #### Using `if` in a `let` Statement
 
-Because `if` is an expression (as discussed in Section 2.3), you can use it on the right side of a `let` statement to assign the outcome to a variable. 
+Because `if` is an expression (as discussed in Section 2.3), you can use it on the right side of a `let` statement to assign the outcome to a variable.
 
 ```rust
 fn main() {
@@ -443,7 +445,7 @@ fn main() {
 }
 ```
 
-There is a critical rule here: **the types of the values in all branches of the `if` expression must be identical**. Rust must know at compile time what type the `number` variable is. 
+There is a critical rule here: **the types of the values in all branches of the `if` expression must be identical**. Rust must know at compile time what type the `number` variable is.
 
 ```text
 +-------------------------------------------------------+
@@ -550,7 +552,7 @@ fn main() {
 
 The `for` loop is by far the most commonly used loop construct in Rust. It is used to execute some code for each item in a collection, such as an array.
 
-While you *could* use a `while` loop to iterate over an array by managing an index variable, it is prone to errors. If the index length is incorrect, your program will panic. Furthermore, the compiler must add runtime bounds checks for every iteration of a `while` loop index access. 
+While you *could* use a `while` loop to iterate over an array by managing an index variable, it is prone to errors. If the index length is incorrect, your program will panic. Furthermore, the compiler must add runtime bounds checks for every iteration of a `while` loop index access.
 
 The `for` loop avoids these safety and performance pitfalls:
 
@@ -613,7 +615,7 @@ let z = 15;
 
 Rust takes documentation incredibly seriously. The language includes a tool called `rustdoc` (invoked via Cargo) that extracts special comments from your code and generates formatted HTML documentation.
 
-Documentation comments support full Markdown formatting, allowing you to include headings, bold text, lists, and code blocks. 
+Documentation comments support full Markdown formatting, allowing you to include headings, bold text, lists, and code blocks.
 
 #### Outer Doc Comments (`///`)
 

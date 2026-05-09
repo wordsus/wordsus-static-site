@@ -206,7 +206,7 @@ Hasta ahora, hemos asumido que un humano edita manualmente un archivo de texto e
 
 **DDNS** permite que un cliente (un servidor, un router o un servidor DHCP) envíe un mensaje de actualización (`UPDATE`) al servidor DNS Primario para añadir, eliminar o modificar registros de forma remota, sin necesidad de reiniciar el servicio `named`.
 
-#### Casos de uso comunes:
+#### Casos de uso comunes
 
 * **DHCP e IP Dinámica:** Cuando una estación de trabajo obtiene una IP de un servidor DHCP, este último puede enviar una actualización DDNS al servidor DNS para que el nombre de la máquina (`laptop-marketing.empresa.com`) apunte a la IP recién asignada.
 * **Service Discovery:** Microservicios que se registran a sí mismos en el DNS al arrancar en un clúster.

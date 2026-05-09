@@ -2,7 +2,7 @@ Python’s elegance stems from a powerful underlying framework: the Python Data 
 
 ## 8.1 Emulating Built-in Types with Magic Methods
 
-The elegance of Python does not stem solely from its readable syntax, but rather from the highly formalized interface that powers it: the Python Data Model. At the core of this model are "magic methods" (commonly referred to as *dunder* methods, short for double-underscore). These methods are the API through which user-defined objects interact with the Python interpreter. 
+The elegance of Python does not stem solely from its readable syntax, but rather from the highly formalized interface that powers it: the Python Data Model. At the core of this model are "magic methods" (commonly referred to as *dunder* methods, short for double-underscore). These methods are the API through which user-defined objects interact with the Python interpreter.
 
 Instead of forcing developers to rely on arbitrary method names like `obj.toString()` or `obj.get_length()`, Python uses top-level built-in functions like `str(obj)` and `len(obj)`. Under the hood, the interpreter translates these built-in operations into calls to the object's corresponding dunder methods (`obj.__str__()` and `obj.__len__()`). By implementing these methods, your custom backend models, database session wrappers, and data transfer objects (DTOs) become indistinguishable from Python's native types.
 
@@ -97,7 +97,7 @@ However, in backend domain modeling, you frequently compare objects by their val
 +-----------------------+                        +---------------+
 ```
 
-The strict contract of hashability dictates that **if two objects are equal (`a == b`), their hashes must also be equal (`hash(a) == hash(b)`)**. 
+The strict contract of hashability dictates that **if two objects are equal (`a == b`), their hashes must also be equal (`hash(a) == hash(b)`)**.
 
 ```python
 class Entity:
@@ -136,7 +136,7 @@ In Python, the phrase "object instantiation" is often conflated entirely with th
 
 ### The Instantiation Pipeline
 
-When you call a class like a function (`obj = MyClass()`), the Python interpreter orchestrates a sequence of hidden calls. 
+When you call a class like a function (`obj = MyClass()`), the Python interpreter orchestrates a sequence of hidden calls.
 
 ```text
 +-----------------------+
@@ -166,8 +166,8 @@ The `__new__` method is the true constructor of a Python object. It is a static 
 
 In standard CRUD applications, you rarely override `__new__`. However, in complex backend systems, it is essential for specific architectural patterns:
 
-1.  **Subclassing Immutable Built-ins:** Since immutable types like `tuple` or `str` cannot be modified in `__init__` (their state is fixed at creation), you must override `__new__` to alter their behavior before the object is finalized.
-2.  **The Singleton Pattern:** When managing heavy backend resources—like a database connection pool or a global application configuration—you often need to guarantee that only one instance of a class ever exists in memory.
+1. **Subclassing Immutable Built-ins:** Since immutable types like `tuple` or `str` cannot be modified in `__init__` (their state is fixed at creation), you must override `__new__` to alter their behavior before the object is finalized.
+2. **The Singleton Pattern:** When managing heavy backend resources—like a database connection pool or a global application configuration—you often need to guarantee that only one instance of a class ever exists in memory.
 
 ```python
 class DatabasePool:
@@ -205,7 +205,7 @@ print(f"Are they the exact same object? {pool_a is pool_b}")
 
 ### `__init__`: The Initializer
 
-Once `__new__` yields a valid instance, the interpreter passes it to `__init__` as the `self` parameter, along with the original arguments. 
+Once `__new__` yields a valid instance, the interpreter passes it to `__init__` as the `self` parameter, along with the original arguments.
 
 The mandate of `__init__` is strictly mutation. It attaches instance variables, sets up internal data structures, and prepares the object for use. Because the memory is already allocated, `__init__` must always return `None`. Attempting to return anything else will result in a `TypeError`.
 
@@ -357,7 +357,7 @@ print(final_price) # Output: 80.00 USD
 
 ### In-Place Operations and Mutability
 
-Python also provides hooks for augmented assignment operators like `+=` and `*=`, via methods like `__iadd__` and `__imul__`. 
+Python also provides hooks for augmented assignment operators like `+=` and `*=`, via methods like `__iadd__` and `__imul__`.
 
 If you do not implement `__iadd__`, Python will gracefully fall back to executing `a = a + b` using `__add__`. For immutable objects (like our `Money` class), this is exactly the behavior you want: a brand new instance is created and assigned to the variable.
 

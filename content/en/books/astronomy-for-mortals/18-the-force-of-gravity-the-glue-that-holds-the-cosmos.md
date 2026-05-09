@@ -2,11 +2,11 @@
 
 ---
 
-Take a moment to jump into the air. For a brief, exhilarating second, you defy the Earth. But almost instantly, an invisible, inescapable hand pulls you firmly back to the ground. You have just experienced gravity, the most familiar yet profoundly mysterious force in the universe. 
+Take a moment to jump into the air. For a brief, exhilarating second, you defy the Earth. But almost instantly, an invisible, inescapable hand pulls you firmly back to the ground. You have just experienced gravity, the most familiar yet profoundly mysterious force in the universe.
 
 We live our entire lives under its influence. It keeps our feet glued to the floor, dictates the ebb and flow of the ocean's tides, and holds the atmosphere close to our planet so we can breathe. But gravity’s reach extends far beyond our terrestrial home. It is the invisible architecture of the cosmos, the master sculptor that gathers dust into stars, binds stars into sprawling galaxies, and weaves those galaxies into a colossal cosmic web.
 
-To understand gravity is to understand the history and destiny of the universe itself. But what exactly *is* this force? Is it an invisible tether pulling things together, or something much more bizarre? In this article, we will embark on a journey through the evolution of our understanding of gravity, moving from the falling apples of the 17th century to the mind-bending, warped dimensions of modern astrophysics. 
+To understand gravity is to understand the history and destiny of the universe itself. But what exactly *is* this force? Is it an invisible tether pulling things together, or something much more bizarre? In this article, we will embark on a journey through the evolution of our understanding of gravity, moving from the falling apples of the 17th century to the mind-bending, warped dimensions of modern astrophysics.
 
 ## 1. The Invisible Tether: Sir Isaac Newton’s Universe
 
@@ -14,29 +14,30 @@ For thousands of years, humanity viewed the heavens and the Earth as two entirel
 
 That all changed in 1687 with a man named Sir Isaac Newton. As the famous—though perhaps slightly embellished—story goes, Newton watched an apple fall from a tree in his orchard. In a stroke of unparalleled genius, he asked a question that changed the world: *If the apple falls to the Earth, does the Moon also fall?*
 
-Newton realized that the very same force pulling the apple to the ground was also reaching out into the blackness of space, grabbing hold of the Moon, and keeping it tethered to the Earth. He unified the heavens and the Earth under a single, universal law. Newton proposed that every object in the universe attracts every other object with a force that depends on two things: their mass and the distance between them. 
+Newton realized that the very same force pulling the apple to the ground was also reaching out into the blackness of space, grabbing hold of the Moon, and keeping it tethered to the Earth. He unified the heavens and the Earth under a single, universal law. Newton proposed that every object in the universe attracts every other object with a force that depends on two things: their mass and the distance between them.
 
 He codified this in his Universal Law of Gravitation:
 
 $$F = G \frac{m_1 m_2}{r^2}$$
 
 In this elegant equation:
-*   **$F$** is the force of gravity.
-*   **$m_1$** and **$m_2$** are the masses of the two objects (like the Earth and the Moon).
-*   **$r$** is the distance between their centers.
-*   **$G$** is the gravitational constant, a fixed number that determines the overall strength of gravity in our universe.
+
+* **$F$** is the force of gravity.
+* **$m_1$** and **$m_2$** are the masses of the two objects (like the Earth and the Moon).
+* **$r$** is the distance between their centers.
+* **$G$** is the gravitational constant, a fixed number that determines the overall strength of gravity in our universe.
 
 Newton’s equation told us that the heavier the objects, the stronger the pull. And the further apart they are, the weaker the pull becomes. This mathematical framework was incredibly successful. It allowed astronomers to calculate the orbits of the planets with startling precision, predict the return of comets, and even discover new planets like Neptune simply by observing the gravitational tugs it exerted on Uranus.
 
-For over two centuries, Newton’s gravity ruled supreme. It was viewed as an invisible, instantaneous force acting across the vast, empty distances of space. But there was a problem—a profound mystery that even Newton himself acknowledged. He could describe *how* gravity worked, but he had absolutely no idea *what* it was. How could two objects interact across millions of miles of empty space without anything connecting them? 
+For over two centuries, Newton’s gravity ruled supreme. It was viewed as an invisible, instantaneous force acting across the vast, empty distances of space. But there was a problem—a profound mystery that even Newton himself acknowledged. He could describe *how* gravity worked, but he had absolutely no idea *what* it was. How could two objects interact across millions of miles of empty space without anything connecting them?
 
 ## 2. The Speed Limit of the Universe
 
 The cracks in Newton's theory didn't appear until the early 20th century, courtesy of a young patent clerk in Switzerland named Albert Einstein. In 1905, Einstein published his Special Theory of Relativity, which introduced a cosmic speed limit: nothing, not even information, can travel faster than the speed of light in a vacuum ($c$, approximately 300,000 kilometers per second).
 
-This created a massive contradiction with Newton’s theory of gravity. According to Newton, gravity acts instantaneously. 
+This created a massive contradiction with Newton’s theory of gravity. According to Newton, gravity acts instantaneously.
 
-To understand the conflict, imagine a cosmic catastrophe: what if the Sun suddenly vanished into thin air? 
+To understand the conflict, imagine a cosmic catastrophe: what if the Sun suddenly vanished into thin air?
 
 According to Newton's equations, the gravitational tether holding the Earth in orbit would snap instantly. Earth would immediately fly off in a straight line into the dark void of space. But Einstein knew that light from the Sun takes about 8 minutes and 20 seconds to reach Earth. If Newton was right, we would feel the gravitational effect of the Sun's disappearance *before* we saw the Sun go out. We would be plunged into a gravitational chaos while the sky was still bright!
 
@@ -44,21 +45,21 @@ Einstein realized this was impossible. The gravitational influence of the Sun co
 
 ## 3. The Fabric of the Cosmos: Enter Spacetime
 
-To solve the puzzle of gravity, Einstein had to change the way we think about the arena in which the universe exists. 
+To solve the puzzle of gravity, Einstein had to change the way we think about the arena in which the universe exists.
 
 Before Einstein, space was thought of as a rigid, empty stage where the events of the universe played out. It had three dimensions: up/down, left/right, and forward/backward. Time was seen as a separate, universally ticking clock that ticked at the exact same rate for everyone, everywhere.
 
-Einstein merged these concepts. He realized that the three dimensions of space and the one dimension of time are inextricably linked together into a single, four-dimensional fabric known as **spacetime**. You cannot move through space without also moving through time. 
+Einstein merged these concepts. He realized that the three dimensions of space and the one dimension of time are inextricably linked together into a single, four-dimensional fabric known as **spacetime**. You cannot move through space without also moving through time.
 
-Imagine spacetime as a completely flat, tightly stretched trampoline. If you roll a small marble across this empty trampoline, it will travel in a perfectly straight line. This represents how objects move in a universe completely empty of matter. 
+Imagine spacetime as a completely flat, tightly stretched trampoline. If you roll a small marble across this empty trampoline, it will travel in a perfectly straight line. This represents how objects move in a universe completely empty of matter.
 
-But the universe is not empty. It is filled with stars, planets, and galaxies. 
+But the universe is not empty. It is filled with stars, planets, and galaxies.
 
 ## 4. General Relativity: Gravity as Geometry
 
 In 1915, Einstein unveiled his masterpiece: the General Theory of Relativity. He proposed a radical new idea that eliminated the need for an invisible, pulling force entirely. **Gravity is not a pull; it is the curvature of spacetime.**
 
-Let's return to our trampoline analogy. Imagine placing a heavy bowling ball directly in the center of the trampoline. The weight of the bowling ball will cause the fabric to sag and stretch, creating a deep depression or "well." 
+Let's return to our trampoline analogy. Imagine placing a heavy bowling ball directly in the center of the trampoline. The weight of the bowling ball will cause the fabric to sag and stretch, creating a deep depression or "well."
 
 ```text
 The Spacetime Trampoline
@@ -81,11 +82,11 @@ Now, take that small marble and roll it across the trampoline again. Because the
 
 *The bowling ball hasn't reached out and grabbed the marble.* There is no invisible string. The marble is simply following the natural curves and contours of the surface it is traveling on.
 
-This is the brilliant essence of General Relativity, famously summarized by the physicist John Archibald Wheeler: 
+This is the brilliant essence of General Relativity, famously summarized by the physicist John Archibald Wheeler:
 
 > *"Spacetime tells matter how to move; matter tells spacetime how to curve."*
 
-The Sun is the bowling ball. It creates a massive depression in the four-dimensional fabric of spacetime. The Earth is the marble, rolling along the edges of that depression. We are constantly "falling" toward the Sun, but we have enough sideways momentum to keep missing it, resulting in an orbit. 
+The Sun is the bowling ball. It creates a massive depression in the four-dimensional fabric of spacetime. The Earth is the marble, rolling along the edges of that depression. We are constantly "falling" toward the Sun, but we have enough sideways momentum to keep missing it, resulting in an orbit.
 
 Einstein encapsulated this beautifully complex relationship in the Einstein Field Equations:
 
@@ -95,7 +96,7 @@ While the math is notoriously difficult, the concept is elegant. The left side o
 
 ## 5. Bending Light and Proving Einstein Right
 
-If gravity is truly the bending of space itself, then it shouldn't just affect objects with mass, like planets and moons. It should affect *everything* that travels through space—including light. 
+If gravity is truly the bending of space itself, then it shouldn't just affect objects with mass, like planets and moons. It should affect *everything* that travels through space—including light.
 
 Even though photons (particles of light) have no mass, they must travel through the spacetime fabric. If that fabric is warped by a heavy object, the light’s path should bend. This is called **gravitational lensing**.
 
@@ -142,9 +143,9 @@ Zoom out even further, and you will see that galaxies themselves are not scatter
 
 If gravity is the curving of space, what happens when you pack an unfathomable amount of mass into an infinitely small area? You puncture the spacetime fabric. You create a **black hole**.
 
-When a massive star runs out of nuclear fuel, the outward pressure of its nuclear fusion suddenly stops. The star can no longer support its own weight. In a fraction of a second, the core collapses in on itself due to its own intense gravity. 
+When a massive star runs out of nuclear fuel, the outward pressure of its nuclear fusion suddenly stops. The star can no longer support its own weight. In a fraction of a second, the core collapses in on itself due to its own intense gravity.
 
-The mass of several suns is crushed down to a single point of infinite density, known as a **singularity**. The spacetime depression created by a singularity is so incredibly steep, so infinitely deep, that the "sides" go straight down. 
+The mass of several suns is crushed down to a single point of infinite density, known as a **singularity**. The spacetime depression created by a singularity is so incredibly steep, so infinitely deep, that the "sides" go straight down.
 
 Surrounding this singularity is a boundary called the **event horizon**. This is the point of no return. If you cross the event horizon, the spacetime is curved so severely that all paths lead inward to the singularity. Not even light, the fastest thing in the universe, can escape its slope. That is why they are black.
 
@@ -158,9 +159,9 @@ In 1916, shortly after publishing his General Theory of Relativity, Einstein pre
 
 Because spacetime itself is rigid and stiff, it takes unimaginably violent events to create ripples large enough to measure. As these waves travel outward at the speed of light, they literally stretch and squeeze the space they pass through.
 
-For exactly 100 years, gravitational waves remained entirely theoretical. They were so incredibly weak by the time they reached Earth that even Einstein doubted we would ever have the technology to detect them. But in September 2015, the Laser Interferometer Gravitational-Wave Observatory (LIGO) made history. 
+For exactly 100 years, gravitational waves remained entirely theoretical. They were so incredibly weak by the time they reached Earth that even Einstein doubted we would ever have the technology to detect them. But in September 2015, the Laser Interferometer Gravitational-Wave Observatory (LIGO) made history.
 
-LIGO consists of massive L-shaped lasers several kilometers long. As a gravitational wave from a collision of two black holes 1.3 billion light-years away passed through the Earth, it stretched one arm of the laser facility while squeezing the other by a distance thousands of times smaller than the nucleus of an atom. 
+LIGO consists of massive L-shaped lasers several kilometers long. As a gravitational wave from a collision of two black holes 1.3 billion light-years away passed through the Earth, it stretched one arm of the laser facility while squeezing the other by a distance thousands of times smaller than the nucleus of an atom.
 
 We had detected the actual shaking of the cosmic fabric. It was a monumental achievement that opened up an entirely new way of observing the universe—not by looking at light, but by "listening" to the vibrations of gravity itself.
 

@@ -24,7 +24,7 @@ print("Fin del programa.")
 
 ### Añadiendo alternativas: `else` y `elif`
 
-Rara vez un programa tiene un solo camino posible. Cuando necesitas ejecutar un código alternativo si la condición inicial falla, utilizas `else` (si no). 
+Rara vez un programa tiene un solo camino posible. Cuando necesitas ejecutar un código alternativo si la condición inicial falla, utilizas `else` (si no).
 
 Si tienes más de dos caminos posibles, utilizas `elif` (una contracción de "else if"). Puedes encadenar tantos `elif` como necesites, pero solo puede haber un `else` al final, y este actuará como el caso por defecto.
 
@@ -66,9 +66,10 @@ Visualmente, podemos representar la estructura `if-elif-else` de la siguiente ma
 
 ### Truthiness: Evaluación booleana implícita
 
-Como vimos en el Capítulo 1, Python tiene el tipo primitivo `bool` (`True` o `False`). Sin embargo, el `if` en Python no exige que la expresión retorne estrictamente un booleano. Python evalúa el "valor de verdad" (truthiness) de cualquier objeto. 
+Como vimos en el Capítulo 1, Python tiene el tipo primitivo `bool` (`True` o `False`). Sin embargo, el `if` en Python no exige que la expresión retorne estrictamente un booleano. Python evalúa el "valor de verdad" (truthiness) de cualquier objeto.
 
 Por regla general, todo en Python se considera `True` **excepto**:
+
 * El valor nulo: `None`
 * El cero en cualquier tipo numérico: `0`, `0.0`
 * Secuencias y colecciones vacías: `""` (string vacío), `[]` (lista vacía), `{}` (diccionario vacío)
@@ -109,7 +110,7 @@ color_boton = "Verde" if estado_cuenta == "Activa" else "Gris"
 ```
 
 > **Perspectiva Senior: Evita la anidación profunda (Arrow Code)**
-> 
+>
 > Uno de los errores más comunes al empezar a usar condicionales es anidarlos unos dentro de otros excesivamente, creando un código con forma de flecha (`>`). A medida que avances en este libro, verás que es mejor invertir las condiciones y manejar los casos de error primero (un patrón conocido como *Return Early* o Cláusulas de Guarda). Mantener un nivel de indentación bajo es un indicador directo de código maduro y mantenible.
 
 ## 2.2 Bucles (for, while) y la cláusula else en bucles
@@ -193,14 +194,14 @@ else:
 
 ### Comparativa: ¿Cuándo usar cada uno?
 
-1.  **`for`**: Úsalo siempre que tengas una colección de datos o un rango definido. Es más seguro, más legible y generalmente más rápido en Python.
-2.  **`while`**: Úsalo cuando la condición de parada dependa de un factor externo (una respuesta de un servidor, la entrada de un usuario o un sensor) y no de una secuencia predefinida.
+1. **`for`**: Úsalo siempre que tengas una colección de datos o un rango definido. Es más seguro, más legible y generalmente más rápido en Python.
+2. **`while`**: Úsalo cuando la condición de parada dependa de un factor externo (una respuesta de un servidor, la entrada de un usuario o un sensor) y no de una secuencia predefinida.
 
 > **Nota para el futuro Senior:** Evita usar `while` para recorrer listas mediante índices (`while i < len(lista)`). Esto se considera un anti-patrón en Python. Siempre prefiere el acceso directo con `for elemento in lista` o, si necesitas el índice, utiliza la función `enumerate()`, que estudiaremos más adelante.
 
 ## 2.3 Control de iteraciones (break, continue, pass)
 
-Aunque los bucles `for` y `while` tienen un flujo natural de ejecución (terminar de recorrer la secuencia o que la condición se vuelva falsa), a menudo nos encontramos con situaciones donde necesitamos alterar este comportamiento de forma abrupta. 
+Aunque los bucles `for` y `while` tienen un flujo natural de ejecución (terminar de recorrer la secuencia o que la condición se vuelva falsa), a menudo nos encontramos con situaciones donde necesitamos alterar este comportamiento de forma abrupta.
 
 Para gestionar estas anomalías o requisitos específicos dentro de las iteraciones, Python nos proporciona tres declaraciones fundamentales: `break`, `continue` y `pass`.
 
@@ -276,7 +277,7 @@ for archivo in archivos:
 
 ### `pass`: El marcador de posición
 
-A diferencia de `break` y `continue`, la declaración `pass` **no hace absolutamente nada**. Su existencia responde a una necesidad puramente sintáctica. 
+A diferencia de `break` y `continue`, la declaración `pass` **no hace absolutamente nada**. Su existencia responde a una necesidad puramente sintáctica.
 
 Dado que Python utiliza la indentación para delimitar bloques de código, estructuras como `if`, `for`, `while`, `def` (funciones) o `class` (clases) requieren obligatoriamente tener al menos una línea de código indentada debajo de ellas. Si estás diseñando la estructura de tu programa y aún no has escrito la lógica de un bloque, dejarlo vacío causará un error de sintaxis (`IndentationError`). Aquí es donde entra `pass`.
 
@@ -295,7 +296,7 @@ print("El programa se ejecuta sin errores de sintaxis.")
 ```
 
 > **Perspectiva Senior: El uso (y abuso) del control de flujo**
-> 
+>
 > 1. **Cuidado con el código espagueti:** Un bucle con múltiples `break` y `continue` esparcidos por doquier se vuelve cognitivamente costoso de leer. Si tu bucle necesita demasiadas interrupciones, suele ser un síntoma de que la lógica dentro del bucle debería extraerse a una función independiente.
 > 2. **El peligroso `pass` en el manejo de errores:** Un error clásico de nivel Junior es usar `pass` para silenciar excepciones silenciosamente (`except Exception: pass`). Esto entierra los errores en lugar de manejarlos, convirtiendo el "debugging" (depuración) en una pesadilla. Veremos esto a fondo en el Capítulo 6, pero grábatelo desde ahora: los errores nunca deben pasar en silencio.
 
@@ -330,6 +331,7 @@ usuario = obtener_usuario_de_db() # Puede retornar un objeto Usuario o None
 if usuario is not None and usuario.is_admin():
     print("Acceso total concedido.")
 ```
+
 En el código correcto, si `usuario` es `None`, la primera evaluación es `False`. Python "hace cortocircuito", ignora el resto y evita el fatal `AttributeError` al intentar llamar a `.is_admin()` sobre un objeto nulo.
 
 ### Operadores de Identidad (`is`, `is not`)
@@ -370,7 +372,7 @@ print(x is y) # False (1000 está fuera del caché, son objetos distintos en mem
 
 ### Operadores de Pertenencia (`in`, `not in`)
 
-Estos operadores se utilizan para comprobar si un valor específico se encuentra dentro de una secuencia (como un `str`, `list`, o `tuple`) o una colección (como un `set` o `dict`). 
+Estos operadores se utilizan para comprobar si un valor específico se encuentra dentro de una secuencia (como un `str`, `list`, o `tuple`) o una colección (como un `set` o `dict`).
 
 Su legibilidad es excelente, eliminando la necesidad de usar bucles explícitos solo para buscar:
 

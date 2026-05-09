@@ -6,7 +6,7 @@ En el capítulo anterior, exploramos cómo estructurar logs y trazas para entend
 
 En el ecosistema backend moderno, Prometheus se ha establecido como el estándar de facto para la recolección de métricas. Funciona bajo un modelo *pull* (el servidor de Prometheus hace peticiones periódicas a nuestra aplicación para recolectar el estado actual) y utiliza un formato de texto plano altamente eficiente y legible.
 
-Para implementar esto en Rust, utilizaremos el patrón *Facade*, un concepto con el que ya estás familiarizado tras haber usado `log` y `tracing`. 
+Para implementar esto en Rust, utilizaremos el patrón *Facade*, un concepto con el que ya estás familiarizado tras haber usado `log` y `tracing`.
 
 ### El ecosistema `metrics`: El patrón Facade
 
@@ -76,6 +76,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 ```
 
 Al ejecutar este código, el `PrometheusBuilder` hace dos cosas críticas bajo el capó mediante el método `install()`:
+
 1. Registra su estructura interna como el global recorder estático del crate `metrics`.
 2. Lanza un servidor HTTP hiper-ligero (normalmente basado en `hyper` o `quinn` dependiendo de los *features* habilitados) que escucha en la IP y puerto proporcionados.
 
@@ -83,7 +84,7 @@ Si realizas una petición `curl http://localhost:9000/metrics` mientras el progr
 
 ### Consideraciones sobre el endpoint
 
-Aunque levantar un servidor HTTP independiente en el puerto 9000 (o 9090) es la práctica recomendada para microservicios internos, en algunas arquitecturas (como Serverless, o entornos con políticas de puertos muy restrictivas) puede que necesites exponer las métricas a través del mismo puerto de tu API principal (ej. el puerto 8080 en Axum). 
+Aunque levantar un servidor HTTP independiente en el puerto 9000 (o 9090) es la práctica recomendada para microservicios internos, en algunas arquitecturas (como Serverless, o entornos con políticas de puertos muy restrictivas) puede que necesites exponer las métricas a través del mismo puerto de tu API principal (ej. el puerto 8080 en Axum).
 
 El `metrics-exporter-prometheus` también soporta este caso de uso devolviendo un `PrometheusHandle` en lugar de instalar su propio servidor HTTP, lo que te permite extraer el texto generado y servirlo tú mismo. Exploraremos la integración nativa como endpoint dentro del framework web en la sección 38.4.
 
@@ -126,7 +127,7 @@ pub fn record_bytes_downloaded(bytes: u64) {
 
 ### 2. Gauges (Medidores o Indicadores)
 
-A diferencia de un contador, un gauge representa una "captura" del estado actual. Su valor **puede subir y bajar** de forma arbitraria. 
+A diferencia de un contador, un gauge representa una "captura" del estado actual. Su valor **puede subir y bajar** de forma arbitraria.
 
 * **Casos de uso ideales:** Conexiones concurrentes activas a la base de datos, uso de memoria RAM (en megabytes), temperatura de la CPU, o la cantidad de mensajes pendientes en una cola en un momento dado.
 * **Precaución:** No utilices gauges para contar eventos (como "errores ocurridos"). Si hay un pico rápido de errores y tu gauge sube y baja entre los "scrapes" de Prometheus, perderás esa información.
@@ -185,8 +186,8 @@ pub async fn handle_user_request() {
 }
 ```
 
-> **Nota Arquitectónica sobre la Cardinalidad:** > A lo largo de estos ejemplos, hemos añadido etiquetas (`labels`) como `"method" => "GET"`. En Prometheus, cada combinación única de nombre de métrica y etiquetas crea una nueva serie temporal en memoria. 
-> 
+> **Nota Arquitectónica sobre la Cardinalidad:** > A lo largo de estos ejemplos, hemos añadido etiquetas (`labels`) como `"method" => "GET"`. En Prometheus, cada combinación única de nombre de métrica y etiquetas crea una nueva serie temporal en memoria.
+>
 > **Regla de oro de nivel Senior:** Nunca incluyas datos sin límites (unbounded data) en las etiquetas. Por ejemplo, nunca pongas un `user_id` o una `ip_address` como valor de un label. Si tienes un millón de usuarios, generarás un millón de series temporales diferentes, colapsando la memoria de tu servidor Prometheus (lo que se conoce como *Cardinality Explosion*). Las etiquetas deben representar un conjunto finito y pequeño de categorías (estados HTTP, métodos, nombres de rutas limpias, tipos de errores).
 
 ## 38.3 Instrumentación del uso de memoria y CPU del proceso
@@ -291,7 +292,7 @@ Independientemente del método que elijas, exponer el consumo de CPU y memoria r
 
 ## 38.4 Integración de endpoints `/metrics`
 
-En la sección 38.1, delegamos la responsabilidad de servir las métricas al propio crate `metrics-exporter-prometheus`, permitiendo que levantara un servidor HTTP independiente en segundo plano. Aunque esta es una excelente práctica para garantizar la resiliencia (el endpoint sigue vivo aunque tu framework web colapse), no siempre es viable. 
+En la sección 38.1, delegamos la responsabilidad de servir las métricas al propio crate `metrics-exporter-prometheus`, permitiendo que levantara un servidor HTTP independiente en segundo plano. Aunque esta es una excelente práctica para garantizar la resiliencia (el endpoint sigue vivo aunque tu framework web colapse), no siempre es viable.
 
 En arquitecturas *Serverless* (como AWS Lambda o Google Cloud Run), contenedores con restricciones estrictas de puertos, o por simple unificación tecnológica, a menudo necesitamos que nuestro framework web principal (Axum o Actix-Web) sea el encargado de servir la ruta `/metrics`.
 
@@ -377,11 +378,10 @@ El enfoque en Actix-Web es semánticamente idéntico: extraes el `PrometheusHand
 
 ### El criterio Senior: Seguridad y Exposición
 
-Exponer `/metrics` directamente en tu API pública (el puerto 80 o 443 expuesto a Internet) es un **riesgo de seguridad significativo**. Las métricas revelan detalles íntimos sobre tu infraestructura: tasas de error de la base de datos, memoria consumida, versiones de librerías y patrones de tráfico de tus usuarios. 
+Exponer `/metrics` directamente en tu API pública (el puerto 80 o 443 expuesto a Internet) es un **riesgo de seguridad significativo**. Las métricas revelan detalles íntimos sobre tu infraestructura: tasas de error de la base de datos, memoria consumida, versiones de librerías y patrones de tráfico de tus usuarios.
 
 Si integras `/metrics` en tu Router principal, debes aplicar al menos una de estas estrategias de mitigación:
 
-1.  **Protección en la capa del Proxy Inverso / Ingress:** Configura Nginx, Traefik o tu Ingress Controller en Kubernetes para bloquear cualquier petición a `/metrics` que provenga del exterior. Solo el *scraper* interno de Prometheus debería poder acceder a esa ruta.
-2.  **Middlewares de Autorización (Basic Auth / Bearer Token):** Aplica un middleware específico a la ruta `/metrics` en Axum que valide un token secreto configurado en las variables de entorno compartidas con tu servidor de Prometheus.
-3.  **Puertos Internos (Dual Bind):** Si tu orquestador lo permite, la solución más limpia es que tu aplicación instancie **dos** servidores HTTP en Axum: uno público en el puerto 8080 con tus rutas de negocio, y otro interno en el puerto 9090 que solo exponga `/metrics` y `/health` (liveness/readiness probes, que cubriremos en el Capítulo 40).
-
+1. **Protección en la capa del Proxy Inverso / Ingress:** Configura Nginx, Traefik o tu Ingress Controller en Kubernetes para bloquear cualquier petición a `/metrics` que provenga del exterior. Solo el *scraper* interno de Prometheus debería poder acceder a esa ruta.
+2. **Middlewares de Autorización (Basic Auth / Bearer Token):** Aplica un middleware específico a la ruta `/metrics` en Axum que valide un token secreto configurado en las variables de entorno compartidas con tu servidor de Prometheus.
+3. **Puertos Internos (Dual Bind):** Si tu orquestador lo permite, la solución más limpia es que tu aplicación instancie **dos** servidores HTTP en Axum: uno público en el puerto 8080 con tus rutas de negocio, y otro interno en el puerto 9090 que solo exponga `/metrics` y `/health` (liveness/readiness probes, que cubriremos en el Capítulo 40).

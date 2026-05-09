@@ -2,7 +2,7 @@ En el desarrollo de software moderno, la velocidad no sirve de nada sin estabili
 
 ## 48.1. Integración de meta-linters (`golangci-lint`) con reglas personalizadas
 
-A medida que un proyecto en Go escala y el equipo crece, mantener la consistencia del código y prevenir antipatrones se vuelve una tarea imposible de gestionar exclusivamente mediante revisiones de código manuales. Aunque herramientas nativas como `go fmt` y `go vet` (discutidas en el Capítulo 1) establecen una línea base excelente, el ecosistema de Go ofrece decenas de linters especializados. Ejecutarlos individualmente en un pipeline de CI/CD introduce tiempos de ejecución prohibitivos y una gestión de dependencias caótica. 
+A medida que un proyecto en Go escala y el equipo crece, mantener la consistencia del código y prevenir antipatrones se vuelve una tarea imposible de gestionar exclusivamente mediante revisiones de código manuales. Aunque herramientas nativas como `go fmt` y `go vet` (discutidas en el Capítulo 1) establecen una línea base excelente, el ecosistema de Go ofrece decenas de linters especializados. Ejecutarlos individualmente en un pipeline de CI/CD introduce tiempos de ejecución prohibitivos y una gestión de dependencias caótica.
 
 Aquí es donde entra **`golangci-lint`**. Se trata de un *meta-linter* que orquesta y ejecuta múltiples linters en paralelo, compartiendo el mismo caché y el mismo árbol de sintaxis abstracta (AST) para minimizar el consumo de recursos y el tiempo de ejecución. En esta sección, nos centraremos en su configuración avanzada, la personalización de reglas paramétricas y la creación de reglas dinámicas de negocio.
 
@@ -65,15 +65,15 @@ import "github.com/quasilyte/go-ruleguard/dsl"
 
 // contextTODO prohíbe el uso de context.TODO() en favor de una inyección explícita
 func contextTODO(m dsl.Matcher) {
-	m.Match(`context.TODO()`).
-		Report(`Antipatrón: evita usar context.TODO() en producción. Utiliza un contexto inyectado o context.Background()`).
-		Suggest(`context.Background()`)
+ m.Match(`context.TODO()`).
+  Report(`Antipatrón: evita usar context.TODO() en producción. Utiliza un contexto inyectado o context.Background()`).
+  Suggest(`context.Background()`)
 }
 
 // syncMutexValue prohíbe pasar Mutexes por valor (previniendo deadlocks sutiles)
 func syncMutexValue(m dsl.Matcher) {
-	m.Match(`$f(sync.Mutex)`).
-		Report(`Peligro: pasando sync.Mutex por valor a la función $f. Usa un puntero (*sync.Mutex)`)
+ m.Match(`$f(sync.Mutex)`).
+  Report(`Peligro: pasando sync.Mutex por valor a la función $f. Usa un puntero (*sync.Mutex)`)
 }
 ```
 
@@ -143,9 +143,9 @@ A diferencia de lenguajes interpretados o basados en máquinas virtuales pesadas
 
 Independientemente de la plataforma de CI que utilices, un flujo de trabajo profesional en Go debe implementar estas tres directrices:
 
-1.  **Caché bidimensional (`GOMODCACHE` y `GOCACHE`):** Go no solo cachea las dependencias descargadas (`go.mod`), sino también los paquetes compilados y los resultados de los tests exitosos. Preservar ambos directorios entre ejecuciones de CI reduce drásticamente los tiempos de respuesta.
-2.  **Detección de Data Races obligatoria:** Las pruebas unitarias y de integración deben ejecutarse siempre con el flag `-race` (discutido en el Capítulo 10). El CI es la última línea de defensa antes de que una condición de carrera llegue a producción.
-3.  **Matriz de compilación cruzada:** Gracias a la facilidad de Go para hacer *cross-compiling*, es una buena práctica validar que el código compila para los sistemas operativos y arquitecturas objetivo (ej. `linux/amd64` y `linux/arm64`), detectando así código dependiente de la plataforma o usos incorrectos del paquete `unsafe` o llamadas al sistema (Capítulo 46).
+1. **Caché bidimensional (`GOMODCACHE` y `GOCACHE`):** Go no solo cachea las dependencias descargadas (`go.mod`), sino también los paquetes compilados y los resultados de los tests exitosos. Preservar ambos directorios entre ejecuciones de CI reduce drásticamente los tiempos de respuesta.
+2. **Detección de Data Races obligatoria:** Las pruebas unitarias y de integración deben ejecutarse siempre con el flag `-race` (discutido en el Capítulo 10). El CI es la última línea de defensa antes de que una condición de carrera llegue a producción.
+3. **Matriz de compilación cruzada:** Gracias a la facilidad de Go para hacer *cross-compiling*, es una buena práctica validar que el código compila para los sistemas operativos y arquitecturas objetivo (ej. `linux/amd64` y `linux/arm64`), detectando así código dependiente de la plataforma o usos incorrectos del paquete `unsafe` o llamadas al sistema (Capítulo 46).
 
 ---
 
@@ -254,7 +254,7 @@ compile_linux_amd64:
 
 ### Consideración sobre los Tests de Integración en CI
 
-Como vimos en el **Capítulo 18**, la herramienta ideal para los tests de integración en Go es *Testcontainers*. Para que Testcontainers funcione dentro de tu pipeline de CI (tanto en GitHub Actions como en GitLab CI), los *runners* deben tener acceso al daemon de Docker. 
+Como vimos en el **Capítulo 18**, la herramienta ideal para los tests de integración en Go es *Testcontainers*. Para que Testcontainers funcione dentro de tu pipeline de CI (tanto en GitHub Actions como en GitLab CI), los *runners* deben tener acceso al daemon de Docker.
 
 * En **GitHub Actions** (usando `ubuntu-latest`), el daemon de Docker ya está expuesto y Testcontainers funcionará *out-of-the-box* sin configuración adicional.
 * En **GitLab CI**, necesitarás utilizar servicios de Docker-in-Docker (DinD) o montar el socket `/var/run/docker.sock` en la configuración de tus *GitLab Runners* para permitir que tu código Go levante instancias efímeras de bases de datos de forma dinámica.
@@ -271,7 +271,7 @@ Para solucionar esto de manera idiomática y segura, debemos dominar el uso de `
 
 ### La directiva GOPRIVATE
 
-La variable de entorno `GOPRIVATE` es una lista separada por comas de prefijos de rutas de módulos (glob patterns) que Go debe considerar como privados. 
+La variable de entorno `GOPRIVATE` es una lista separada por comas de prefijos de rutas de módulos (glob patterns) que Go debe considerar como privados.
 
 Configurar `GOPRIVATE` hace que la cadena de herramientas (toolchain) de Go omita automáticamente el proxy público y la base de datos de sumas de comprobación para esos módulos, forzando una conexión directa al repositorio original.
 
@@ -315,14 +315,16 @@ Para organizaciones grandes, la solución arquitectónica correcta es desplegar 
 
 El flujo de trabajo con un proxy privado funciona así:
 
-1.  Se despliega el servidor Athens dentro de la red privada de la empresa (VPC).
-2.  Se le otorgan credenciales de acceso a los repositorios privados a este servidor proxy.
-3.  Los desarrolladores y el CI configuran su entorno para apuntar exclusivamente al proxy privado:
+1. Se despliega el servidor Athens dentro de la red privada de la empresa (VPC).
+2. Se le otorgan credenciales de acceso a los repositorios privados a este servidor proxy.
+3. Los desarrolladores y el CI configuran su entorno para apuntar exclusivamente al proxy privado:
+
     ```bash
     go env -w GOPROXY="https://athens.mi-empresa.internal,direct"
     go env -w GOPRIVATE="github.com/mi-empresa/*"
     ```
 
 **Beneficios de esta arquitectura:**
+
 * **Inmutabilidad interna:** Si un repositorio privado es borrado accidentalmente o se reescribe su historial de Git (force push), el código seguirá estando disponible y cacheado en el proxy privado.
 * **Velocidad:** Las descargas de dependencias internas en los pipelines de CI (discutidos en la sección 48.2) se aceleran exponencialmente al descargar archivos comprimidos `.zip` desde el proxy local en lugar de clonar repositorios Git completos.

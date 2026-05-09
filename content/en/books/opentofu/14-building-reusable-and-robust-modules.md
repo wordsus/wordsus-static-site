@@ -12,7 +12,7 @@ The most fundamental design pattern in OpenTofu is distinguishing between atomic
 
 **Atomic Modules** wrap a single logical service (e.g., an AWS S3 bucket or an Azure Storage Account) and enforce organizational best practices, such as default encryption, logging, and tagging. They do not dictate business logic.
 
-**Composite Modules** combine multiple atomic modules to create a complete, deployable architecture (e.g., a three-tier web application). 
+**Composite Modules** combine multiple atomic modules to create a complete, deployable architecture (e.g., a three-tier web application).
 
 ```text
 +-------------------------------------------------------------+
@@ -34,7 +34,7 @@ By keeping atomic modules strictly decoupled, you allow consumers to mix and mat
 
 ### The Feature Toggle Pattern (Opt-In Deployments)
 
-Highly reusable modules must adapt to varying environment requirements without requiring separate codebases. The Feature Toggle pattern uses boolean variables and conditional logic to turn specific resources on or off dynamically. 
+Highly reusable modules must adapt to varying environment requirements without requiring separate codebases. The Feature Toggle pattern uses boolean variables and conditional logic to turn specific resources on or off dynamically.
 
 Instead of duplicating a module to create a "with-monitoring" and "without-monitoring" version, expose a feature flag.
 
@@ -66,7 +66,7 @@ This pattern keeps the module interface clean while offering flexibility. Consum
 
 A common mistake in module design is hardcoding dependencies within the module itself. For example, creating a new Virtual Private Cloud (VPC) inside a database module limits that module's reusability strictly to scenarios where a new network is required.
 
-Dependency Inversion dictates that a module should request the *interfaces* of its dependencies (like IDs or ARNs) rather than provisioning them. 
+Dependency Inversion dictates that a module should request the *interfaces* of its dependencies (like IDs or ARNs) rather than provisioning them.
 
 ```hcl
 # Anti-Pattern: Creating the VPC inside the database module
@@ -160,8 +160,8 @@ Failing at the API level is slow and creates a poor developer experience. Highly
 
 You can nest one or more `validation` blocks inside a `variable` declaration. Each block requires two arguments:
 
-1.  **`condition`**: An expression that evaluates to `true` if the value is valid, and `false` if it is invalid. This expression can only reference the variable itself (using `var.<name>`) and built-in functions.
-2.  **`error_message`**: A string that is displayed to the user if the condition evaluates to `false`. OpenTofu requires this message to start with a capitalized letter and end with a period or a question mark.
+1. **`condition`**: An expression that evaluates to `true` if the value is valid, and `false` if it is invalid. This expression can only reference the variable itself (using `var.<name>`) and built-in functions.
+2. **`error_message`**: A string that is displayed to the user if the condition evaluates to `false`. OpenTofu requires this message to start with a capitalized letter and end with a period or a question mark.
 
 ### Pattern 1: Enforcing String Formats with Regular Expressions
 
@@ -263,9 +263,9 @@ variable "admin_password" {
 
 ## 14.3 Handling Submodules and Complex Nested Architectures
 
-As composite modules grow to encompass entire application stacks or organizational landing zones, placing dozens of resources in a single `main.tf` file defeats the purpose of modularity. To maintain readability, testability, and a clear separation of concerns, large modules must be decomposed into **submodules**. 
+As composite modules grow to encompass entire application stacks or organizational landing zones, placing dozens of resources in a single `main.tf` file defeats the purpose of modularity. To maintain readability, testability, and a clear separation of concerns, large modules must be decomposed into **submodules**.
 
-Submodules are simply standard OpenTofu modules that are called by another module rather than directly by the root configuration. 
+Submodules are simply standard OpenTofu modules that are called by another module rather than directly by the root configuration.
 
 ### The Nested Directory Structure
 
@@ -299,6 +299,7 @@ In this structure, the end-user only interacts with `enterprise-landing-zone`. T
 The most dangerous trap when designing nested architectures is excessive depth. If Module A calls Module B, which calls Module C, which calls Module D, you have created a "Russian Doll" architecture.
 
 **The consequences of deep nesting:**
+
 * **Variable Passthrough Hell:** Adding a single new tag to Module D requires updating the `variables.tf` and module call blocks in modules C, B, A, and the root configuration.
 * **Refactoring Paralysis:** Using the `moved` block to rename resources deeply nested in submodules is notoriously difficult and error-prone.
 * **Obscured State:** The state file addresses become incredibly long (e.g., `module.a.module.b.module.c.aws_instance.main`), making CLI operations tedious.
@@ -340,7 +341,7 @@ module "compute" {
 
 A strict rule of OpenTofu module design is that **modules and submodules must never contain `provider` blocks.** Defining providers inside a module hardcodes credentials, regions, and settings, instantly destroying the module's reusability.
 
-Submodules automatically inherit the default provider configurations from their parent module, which in turn inherits them from the root configuration. 
+Submodules automatically inherit the default provider configurations from their parent module, which in turn inherits them from the root configuration.
 
 However, if your nested architecture requires deploying resources across multiple regions or accounts (e.g., a primary database and a cross-region read replica), you must use provider aliases and pass them explicitly down the chain using the `providers` meta-argument.
 
@@ -404,7 +405,7 @@ To ensure stability across deployments, highly reusable modules must be strictly
 
 ### The Danger of Mutable References
 
-A common anti-pattern in early IaC adoption is sourcing a module directly from the default branch of a Git repository. 
+A common anti-pattern in early IaC adoption is sourcing a module directly from the default branch of a Git repository.
 
 ```hcl
 # Anti-Pattern: Sourcing from a mutable branch
@@ -417,7 +418,7 @@ If the module author adds a new required variable or alters a resource configura
 
 ### Semantic Versioning (SemVer) for Infrastructure
 
-The industry standard for module versioning is **Semantic Versioning (SemVer)**. A SemVer tag consists of three numbers: `vMAJOR.MINOR.PATCH`. 
+The industry standard for module versioning is **Semantic Versioning (SemVer)**. A SemVer tag consists of three numbers: `vMAJOR.MINOR.PATCH`.
 
 When applied to OpenTofu modules, these increments carry specific meanings:
 

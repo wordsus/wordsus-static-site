@@ -10,9 +10,9 @@ A JSON Web Token (JWT) is a compact, URL-safe means of representing claims to be
 
 A JWT consists of three Base64Url-encoded strings separated by dots (`.`):
 
-1.  **Header:** Declares the token type (`JWT`) and the signing algorithm being used (e.g., `HS256` for symmetric, `RS256` for asymmetric).
-2.  **Payload:** Contains the *claims*—statements about an entity (typically, the user) and additional data. Standard claims include `iss` (issuer), `sub` (subject/user ID), and `exp` (expiration time).
-3.  **Signature:** Created by taking the encoded header, the encoded payload, a secret (or private key), and the algorithm specified in the header.
+1. **Header:** Declares the token type (`JWT`) and the signing algorithm being used (e.g., `HS256` for symmetric, `RS256` for asymmetric).
+2. **Payload:** Contains the *claims*—statements about an entity (typically, the user) and additional data. Standard claims include `iss` (issuer), `sub` (subject/user ID), and `exp` (expiration time).
+3. **Signature:** Created by taking the encoded header, the encoded payload, a secret (or private key), and the algorithm specified in the header.
 
 Using the `PyJWT` library, we can easily issue and validate these tokens in Python:
 
@@ -78,11 +78,12 @@ In this architecture, your Python backend usually acts as the **Resource Server*
 
 ### OpenID Connect (OIDC): Adding the Identity Layer
 
-Because OAuth2 does not inherently provide information about *who* the user is (it only provides a key to access resources), OpenID Connect (OIDC) was built as an identity layer on top of the OAuth2 framework. 
+Because OAuth2 does not inherently provide information about *who* the user is (it only provides a key to access resources), OpenID Connect (OIDC) was built as an identity layer on top of the OAuth2 framework.
 
 OIDC introduces two critical components:
-1.  **The ID Token:** A JWT that contains claims specifically about the user's authentication event (e.g., when they logged in, their email address, their name).
-2.  **The `/userinfo` Endpoint:** A standardized OAuth2 protected resource that returns claims about the authenticated user.
+
+1. **The ID Token:** A JWT that contains claims specifically about the user's authentication event (e.g., when they logged in, their email address, their name).
+2. **The `/userinfo` Endpoint:** A standardized OAuth2 protected resource that returns claims about the authenticated user.
 
 When a client requests the `openid` scope during the initial OAuth2 flow, the Authorization Server will return both an Access Token (for API authorization) and an ID Token (for client-side user identification).
 
@@ -142,7 +143,7 @@ In this paradigm, the Python backend offloads the heavy lifting of user registra
 
 ## 23.2 Mitigating OWASP Top 10 Vulnerabilities in Python Backends
 
-The Open Worldwide Application Security Project (OWASP) Top 10 is the canonical awareness document representing the most critical security risks to web applications. While modern Python frameworks like Django and FastAPI provide robust default protections, developers frequently bypass these safeguards when implementing custom logic, raw database queries, or complex system integrations. 
+The Open Worldwide Application Security Project (OWASP) Top 10 is the canonical awareness document representing the most critical security risks to web applications. While modern Python frameworks like Django and FastAPI provide robust default protections, developers frequently bypass these safeguards when implementing custom logic, raw database queries, or complex system integrations.
 
 This section examines the most prominent OWASP vulnerabilities through the lens of a Python backend, detailing the mechanics of the exploits and the architectural patterns required to mitigate them.
 
@@ -151,6 +152,7 @@ This section examines the most prominent OWASP vulnerabilities through the lens 
 Injection occurs when untrusted user data is sent to an interpreter as part of a command or query. The interpreter executes the unintended commands, leading to data loss, corruption, or unauthorized access.
 
 #### SQL Injection (SQLi)
+
 While ORMs like SQLAlchemy (Chapter 18) and the Django ORM inherently protect against SQLi by using parameterized queries, developers often introduce vulnerabilities when writing raw SQL for complex reports or performance optimizations.
 
 **Vulnerable Implementation:**
@@ -183,9 +185,11 @@ def get_user_secure(username: str):
 ```
 
 #### OS Command Injection
+
 If your backend interacts with the underlying operating system, passing user input to `subprocess` or `os.system` can allow attackers to execute arbitrary shell commands.
 
 **Vulnerable Implementation:**
+
 ```python
 import subprocess
 
@@ -212,6 +216,7 @@ Broken access control is currently the most prevalent web application vulnerabil
 In an IDOR attack, an API endpoint exposes a direct reference to an internal implementation object (like a database ID) without verifying if the user requesting the object actually owns it.
 
 **Vulnerable Implementation (FastAPI):**
+
 ```python
 @app.delete("/api/v1/documents/{document_id}")
 async def delete_document(document_id: int, current_user: dict = Depends(get_current_user)):
@@ -244,9 +249,10 @@ SSRF flaws occur whenever a web application is fetching a remote resource withou
 For example, if your application has a feature to "fetch an image from a URL," an attacker might provide `http://169.254.169.254/latest/meta-data/` to extract temporary AWS IAM credentials from the cloud instance's metadata service.
 
 **Mitigation Strategies for Python:**
-1.  **Strict Allowlists:** If the application only needs to fetch data from specific partners, hardcode those domains.
-2.  **Network-Level Defenses:** Run the application in an isolated container/VPC that does not have routing access to internal metadata services or internal corporate networks.
-3.  **Library-Level Validation:** Use libraries that resolve the DNS of the provided URL and explicitly block private IP spaces (e.g., `10.0.0.0/8`, `127.0.0.0/8`) before initiating the `requests.get()` call.
+
+1. **Strict Allowlists:** If the application only needs to fetch data from specific partners, hardcode those domains.
+2. **Network-Level Defenses:** Run the application in an isolated container/VPC that does not have routing access to internal metadata services or internal corporate networks.
+3. **Library-Level Validation:** Use libraries that resolve the DNS of the provided URL and explicitly block private IP spaces (e.g., `10.0.0.0/8`, `127.0.0.0/8`) before initiating the `requests.get()` call.
 
 ### 4. Security Misconfiguration (A05:2021) and XML External Entities (XXE)
 
@@ -254,7 +260,7 @@ Security misconfiguration is the most easily preventable issue, yet it remains r
 
 * **Production Debug Modes:** Running Django with `DEBUG = True` or Flask with `app.run(debug=True)` in production is a fatal error. It exposes sensitive environment variables, internal paths, and configuration details to anyone who can trigger a 500 error.
 * **CORS Misconfiguration:** Setting `Access-Control-Allow-Origin: *` on authenticated endpoints defeats browser-based protections against Cross-Origin Resource Sharing attacks.
-* **XML Parsing (XXE):** Python's standard `xml.etree.ElementTree` and `minidom` are vulnerable to XML External Entity attacks by default. If your API parses XML, an attacker can craft a payload that forces the XML parser to read local files on the server (like `/etc/passwd`) or execute SSRF attacks. 
+* **XML Parsing (XXE):** Python's standard `xml.etree.ElementTree` and `minidom` are vulnerable to XML External Entity attacks by default. If your API parses XML, an attacker can craft a payload that forces the XML parser to read local files on the server (like `/etc/passwd`) or execute SSRF attacks.
 
 > **Best Practice for XML:** If you must parse XML in Python, entirely avoid the standard `xml` library. Instead, use the `defusedxml` package, which acts as a drop-in replacement but disables entity expansion and external resolution by default.
 
@@ -279,6 +285,7 @@ This section demystifies these concepts, detailing how to correctly handle passw
 ### Hashing vs. Encryption: The Cardinal Rule
 
 The most critical distinction in applied cryptography is between hashing and encryption:
+
 * **Encryption is two-way.** Data is transformed into ciphertext using a key, and can be transformed back into plaintext using the correct key. Use this for data you need to read later (e.g., credit card numbers, PII).
 * **Hashing is one-way.** Data is mapped to a fixed-size string of bytes. It is mathematically infeasible to reverse a hash back to its original input. Use this for data you need to verify, but never need to read (e.g., passwords).
 
@@ -288,7 +295,7 @@ Standard cryptographic hash functions like SHA-256 are designed to be extremely 
 
 To secure passwords, we must use a **Key Derivation Function (KDF)**. KDFs (like PBKDF2, bcrypt, scrypt, or Argon2) intentionally introduce computational complexity (a "work factor") to slow down the hashing process, rendering brute-force attacks economically unviable.
 
-Furthermore, we must introduce a **Salt**: a unique, randomly generated sequence of bytes added to each user's password before hashing. 
+Furthermore, we must introduce a **Salt**: a unique, randomly generated sequence of bytes added to each user's password before hashing.
 
 ```text
 +----------+       +------------------+       +-------------------+
@@ -384,7 +391,8 @@ encrypted_api_key = encrypt_sensitive_data("sk_live_123456789")
 
 ### Asymmetric Cryptography: RSA and Digital Signatures
 
-In asymmetric cryptography, there is a **Key Pair**: a Public Key and a Private Key. 
+In asymmetric cryptography, there is a **Key Pair**: a Public Key and a Private Key.
+
 * Data encrypted with the Public Key can only be decrypted by the Private Key.
 * Data signed with the Private Key can be verified by anyone holding the Public Key.
 
@@ -435,13 +443,13 @@ By leveraging established primitives and robust libraries like `cryptography`, P
 
 ## 23.4 Secrets Management, Environment Injection, and KMS Integrations
 
-A secure cryptographic implementation is entirely worthless if the underlying keys, database passwords, and third-party API tokens are mishandled. The compromise of a single hardcoded secret can lead to catastrophic data breaches, supply chain attacks, and lateral movement within your infrastructure. 
+A secure cryptographic implementation is entirely worthless if the underlying keys, database passwords, and third-party API tokens are mishandled. The compromise of a single hardcoded secret can lead to catastrophic data breaches, supply chain attacks, and lateral movement within your infrastructure.
 
 This section explores the evolution of secrets management in Python backends, transitioning from basic environment variables to type-safe configurations, and finally to enterprise-grade Key Management Systems (KMS).
 
 ### The 12-Factor App and Environment Injection
 
-The foundational principle for managing backend configuration is derived from the **12-Factor App methodology**, specifically Factor III: *Store config in the environment*. 
+The foundational principle for managing backend configuration is derived from the **12-Factor App methodology**, specifically Factor III: *Store config in the environment*.
 
 A backend application should enforce a strict separation between code and configuration. Code remains static across deployments, while configuration (including secrets) varies between environments (development, staging, production).
 
@@ -504,9 +512,10 @@ settings = AppConfig()
 ### The Limits of Environment Variables
 
 While environment variables are ideal for CI/CD pipelines and containerized deployments (Docker/Kubernetes), they suffer from critical limitations at scale:
-1.  **Stale Secrets:** Environment variables are injected at startup. If a database password is rotated, the application must be forcefully restarted to pick up the new value.
-2.  **Broad Exposure:** Anyone with `kubectl exec` or SSH access to the host machine can run `env` and dump all plaintext secrets.
-3.  **Lack of Auditing:** You cannot easily track *when* an environment variable was accessed or by *whom*.
+
+1. **Stale Secrets:** Environment variables are injected at startup. If a database password is rotated, the application must be forcefully restarted to pick up the new value.
+2. **Broad Exposure:** Anyone with `kubectl exec` or SSH access to the host machine can run `env` and dump all plaintext secrets.
+3. **Lack of Auditing:** You cannot easily track *when* an environment variable was accessed or by *whom*.
 
 ### Enterprise Key Management Systems (KMS)
 
@@ -568,6 +577,7 @@ def construct_db_url() -> str:
 ```
 
 **Advanced KMS Patterns:**
+
 * **Dynamic Secrets:** Systems like HashiCorp Vault can generate temporary, uniquely identifiable database credentials on the fly. When the Python backend requests a database password, Vault creates a new PostgreSQL user with a 1-hour Time-To-Live (TTL). When the TTL expires, Vault automatically drops the user, rendering leaked credentials useless.
 * **Envelope Encryption:** Instead of sending large payloads (like PII data) to a KMS to be encrypted, the backend asks the KMS to generate a Data Encryption Key (DEK). The backend encrypts the data locally using the DEK via symmetric cryptography (Section 23.3), and then the KMS encrypts the DEK itself. This minimizes network latency while retaining KMS-backed security.
 

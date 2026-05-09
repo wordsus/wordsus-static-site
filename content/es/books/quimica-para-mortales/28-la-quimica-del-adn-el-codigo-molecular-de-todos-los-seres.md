@@ -2,7 +2,7 @@
 
 ---
 
-Imagina por un momento el manual de instrucciones más complejo, detallado y extenso que jamás haya existido. Un manual que no solo describe cómo construir una máquina pieza por pieza, sino que también detalla cómo debe funcionar esa máquina, cómo debe repararse a sí misma cuando se daña y cómo debe reaccionar ante los cambios de su entorno. Ahora, imagina que este monumental manual, que si se imprimiera en papel llenaría miles de libros de mil páginas cada uno, está comprimido en un espacio tan increíblemente minúsculo que es invisible al ojo humano. 
+Imagina por un momento el manual de instrucciones más complejo, detallado y extenso que jamás haya existido. Un manual que no solo describe cómo construir una máquina pieza por pieza, sino que también detalla cómo debe funcionar esa máquina, cómo debe repararse a sí misma cuando se daña y cómo debe reaccionar ante los cambios de su entorno. Ahora, imagina que este monumental manual, que si se imprimiera en papel llenaría miles de libros de mil páginas cada uno, está comprimido en un espacio tan increíblemente minúsculo que es invisible al ojo humano.
 
 Bienvenidos al núcleo de nuestras células. Bienvenidos al fascinante mundo del **Ácido Desoxirribonucleico**, o como todos lo conocemos en nuestro día a día: el **ADN**.
 
@@ -29,7 +29,7 @@ Aquí tienes un diagrama simplificado de cómo se ve un nucleótido solitario:
 
 Desglosemos cada una de estas tres piezas:
 
-**A. El Grupo Fosfato:** 
+**A. El Grupo Fosfato:**
 Es una molécula inorgánica derivada del ácido fosfórico. En términos químicos, está formado por un átomo de fósforo central rodeado por cuatro átomos de oxígeno. Su fórmula en estado ionizado (como se encuentra en el cuerpo) es $PO_4^{3-}$. Lo más importante que debes saber de este grupo es que tiene una **carga negativa**. Esta carga negativa es vital, ya que hace que todo el ADN tenga una carga eléctrica neta negativa, lo cual define cómo se comporta en el agua y cómo interactúa con otras moléculas en la célula.
 
 **B. El Azúcar (La Desoxirribosa):**
@@ -39,8 +39,9 @@ Justo en el centro del nucleótido encontramos un carbohidrato simple. Es un ani
 Acoplada al azúcar se encuentra la verdadera protagonista de la información genética: la base nitrogenada. Es una estructura en forma de anillo (o doble anillo) que contiene mucho nitrógeno. Se les llama "bases" porque, químicamente hablando, el nitrógeno tiene un par de electrones libres que puede aceptar protones, comportándose como una base débil frente a un ácido.
 
 Existen cuatro tipos de bases nitrogenadas en el ADN, y ellas son las cuatro letras de nuestro código genético:
-*   **Adenina (A)** y **Guanina (G)**: Son estructuras grandes, formadas por dos anillos fusionados. Se conocen como *purinas*.
-*   **Timina (T)** y **Citosina (C)**: Son estructuras más pequeñas, de un solo anillo. Se conocen como *pirimidinas*.
+
+* **Adenina (A)** y **Guanina (G)**: Son estructuras grandes, formadas por dos anillos fusionados. Se conocen como *purinas*.
+* **Timina (T)** y **Citosina (C)**: Son estructuras más pequeñas, de un solo anillo. Se conocen como *pirimidinas*.
 
 Así que, cada vez que hablamos de la "secuencia de ADN", simplemente estamos nombrando el orden en el que estas bases (A, T, C, G) aparecen enganchadas a su esqueleto de azúcar y fosfato.
 
@@ -56,9 +57,9 @@ Esta columna vertebral de azúcar-fosfato-azúcar-fosfato es increíblemente rob
 
 ### La direccionalidad: Un camino de sentido único
 
-Un concepto fascinante en la química del ADN es que la cadena tiene "dirección". No es lo mismo leerla de izquierda a derecha que de derecha a izquierda. 
+Un concepto fascinante en la química del ADN es que la cadena tiene "dirección". No es lo mismo leerla de izquierda a derecha que de derecha a izquierda.
 
-Los químicos numeran los átomos de carbono del anillo del azúcar del 1 al 5 (usando el símbolo ' prima, así: 1', 2', 3', 4', 5'). El fosfato siempre se engancha al carbono 5' de su propio azúcar y al carbono 3' del azúcar del siguiente nucleótido. 
+Los químicos numeran los átomos de carbono del anillo del azúcar del 1 al 5 (usando el símbolo ' prima, así: 1', 2', 3', 4', 5'). El fosfato siempre se engancha al carbono 5' de su propio azúcar y al carbono 3' del azúcar del siguiente nucleótido.
 
 Por lo tanto, una cadena de ADN siempre tiene un extremo donde el carbono 5' queda "libre" (extremo 5') y otro extremo donde el carbono 3' queda libre (extremo 3'). Todo el metabolismo de las células (como copiar el ADN o leerlo) ocurre estrictamente en la dirección **5' $\rightarrow$ 3'**. La química orgánica dicta el sentido del tráfico en nuestras células.
 
@@ -72,13 +73,13 @@ En la escalera del ADN, las bases nitrogenadas (las letras A, T, C, G) sobresale
 
 Pero no se abrazan de cualquier manera. Aquí rige una estricta ley de complementariedad, basada en la geometría y la química cuántica:
 
-1.  **La regla del espacio:** Para que la escalera mantenga un ancho constante y no se deforme, una base grande (doble anillo) siempre debe emparejarse con una base pequeña (anillo simple). Purina con Pirimidina.
-2.  **La regla de los puentes de hidrógeno:** Las moléculas deben encajar sus cargas parciales como una llave en una cerradura.
+1. **La regla del espacio:** Para que la escalera mantenga un ancho constante y no se deforme, una base grande (doble anillo) siempre debe emparejarse con una base pequeña (anillo simple). Purina con Pirimidina.
+2. **La regla de los puentes de hidrógeno:** Las moléculas deben encajar sus cargas parciales como una llave en una cerradura.
 
 Debido a estas reglas de geometría y electronegatividad, solo hay dos combinaciones posibles que funcionan a la perfección:
 
-*   **La Adenina (A) solo se abraza con la Timina (T).** Ellas forman **dos** puentes de hidrógeno.
-*   **La Citosina (C) solo se abraza con la Guanina (G).** Ellas forman **tres** puentes de hidrógeno.
+* **La Adenina (A) solo se abraza con la Timina (T).** Ellas forman **dos** puentes de hidrógeno.
+* **La Citosina (C) solo se abraza con la Guanina (G).** Ellas forman **tres** puentes de hidrógeno.
 
 Podemos visualizar este emparejamiento con el siguiente diagrama en texto:
 
@@ -111,23 +112,24 @@ Frecuentemente imaginamos el ADN flotando en el vacío, pero en realidad, vive i
 
 Este fenómeno se explica a través de la hidrofobicidad.
 
-*   **El esqueleto de azúcar y fosfato es hidrofílico (ama el agua):** Gracias a la carga negativa de los fosfatos y los oxígenos del azúcar, interactúan felizmente con las moléculas de agua.
-*   **Las bases nitrogenadas son hidrofóbicas (odian el agua):** Los anillos planos de carbono y nitrógeno no tienen cargas fuertes y prefieren evitar el agua, al igual que el aceite huye de ella.
+* **El esqueleto de azúcar y fosfato es hidrofílico (ama el agua):** Gracias a la carga negativa de los fosfatos y los oxígenos del azúcar, interactúan felizmente con las moléculas de agua.
+* **Las bases nitrogenadas son hidrofóbicas (odian el agua):** Los anillos planos de carbono y nitrógeno no tienen cargas fuertes y prefieren evitar el agua, al igual que el aceite huye de ella.
 
 Si el ADN fuera simplemente una escalera recta, las bases (los peldaños) tendrían muchos espacios vacíos entre ellas por donde el agua podría filtrarse, lo cual es termodinámicamente inestable. ¿Cuál es la solución química? **Retorcerse.**
 
 Al girar sobre su propio eje formando una hélice, los peldaños planos de las bases se apilan uno encima del otro, estrechamente empaquetados, expulsando toda el agua de su interior y dejando solo el esqueleto hidrofílico expuesto al exterior. Este apilamiento de bases, junto con los puentes de hidrógeno, le da a la molécula una estabilidad exquisita.
 
 Para los amantes de los números, la estructura "tipo B" del ADN (la más común en nuestras células) tiene una geometría muy precisa, producto de estas fuerzas químicas:
-*   Hay un giro completo de la hélice cada **3.4 nanómetros** ($3.4 \times 10^{-9}$ metros).
-*   Hay aproximadamente **10.5 pares de bases** por cada giro completo.
-*   El diámetro de la hélice es increíblemente constante: **2 nanómetros**.
+
+* Hay un giro completo de la hélice cada **3.4 nanómetros** ($3.4 \times 10^{-9}$ metros).
+* Hay aproximadamente **10.5 pares de bases** por cada giro completo.
+* El diámetro de la hélice es increíblemente constante: **2 nanómetros**.
 
 ## 5. El problema del empaquetamiento: Química electrostática
 
-La cantidad de información química que posees es asombrosa. Si tomaras el ADN de una sola de tus células humanas y lo estiraras en línea recta, mediría casi **2 metros** de largo. Sin embargo, el núcleo de tu célula tiene un diámetro de aproximadamente $6 \text{ micrómetros}$ ($0.000006$ metros). 
+La cantidad de información química que posees es asombrosa. Si tomaras el ADN de una sola de tus células humanas y lo estiraras en línea recta, mediría casi **2 metros** de largo. Sin embargo, el núcleo de tu célula tiene un diámetro de aproximadamente $6 \text{ micrómetros}$ ($0.000006$ metros).
 
-Tratar de meter 2 metros de cable en una esfera microscópica es el equivalente a intentar meter un hilo de pescar de 30 kilómetros de largo dentro de una pelota de tenis sin que se enrede. 
+Tratar de meter 2 metros de cable en una esfera microscópica es el equivalente a intentar meter un hilo de pescar de 30 kilómetros de largo dentro de una pelota de tenis sin que se enrede.
 
 La química resuelve este problema logístico mediante la atracción de cargas opuestas. ¿Recuerdas que el grupo fosfato le daba al ADN una fuerte carga eléctrica negativa? Bien, la célula fabrica unas proteínas especiales llamadas **histonas**. Estas proteínas son ricas en aminoácidos (como la lisina y la arginina) que, a niveles de pH fisiológico, portan cargas eléctricas positivas.
 
@@ -146,7 +148,7 @@ La información almacenada en la secuencia de letras (A, T, C, G) es, fundamenta
 La lectura se realiza en bloques de tres letras, llamados **codones**. La matemática combinatoria química nos dice que si tenemos 4 letras posibles y las agrupamos en palabras de 3 letras, tenemos un total de combinaciones posibles calculado de la siguiente manera:
 $$ 4^3 = 4 \times 4 \times 4 = 64 \text{ codones diferentes} $$
 
-Dado que la vida en la Tierra utiliza solo 20 aminoácidos diferentes (los bloques de construcción de las proteínas), 64 codones son más que suficientes. Por ejemplo, siempre que la célula encuentra químicamente la secuencia "A-T-G" en el gen, la maquinaria celular sabe que debe comenzar a construir y colocar el aminoácido *metionina*. Si lee "G-G-A", coloca el aminoácido *glicina*. 
+Dado que la vida en la Tierra utiliza solo 20 aminoácidos diferentes (los bloques de construcción de las proteínas), 64 codones son más que suficientes. Por ejemplo, siempre que la célula encuentra químicamente la secuencia "A-T-G" en el gen, la maquinaria celular sabe que debe comenzar a construir y colocar el aminoácido *metionina*. Si lee "G-G-A", coloca el aminoácido *glicina*.
 
 Esta es la verdadera esencia del "código genético": un diccionario químico universal compartido por todos los seres vivos, desde la bacteria más simple del océano hasta el ser humano que lee este artículo.
 
@@ -156,9 +158,9 @@ La maquinaria de copia química de nuestras células es increíblemente precisa,
 
 Una **mutación** no es más que una alteración química en la secuencia del ADN. Puede suceder de varias formas:
 
-*   **Errores de copia:** A veces, una molécula de agua puede golpear a una base nitrogenada justo en el momento de la copia (un fenómeno llamado tautomerización), cambiando sutilmente la distribución de sus electrones. Esto puede hacer que una Adenina (A) empareje accidentalmente con una Citosina (C) en lugar de una Timina (T). Si el error no se corrige, la secuencia ha mutado.
-*   **Daño por radiación UV:** La luz ultravioleta del sol tiene la energía exacta necesaria para excitar los electrones en las letras de Timina. Si dos Timinas están juntas en la misma cadena, la luz UV puede obligarlas a formar un enlace covalente anormal entre ellas (un dímero de timina). Esto deforma la doble hélice y confunde a la maquinaria de copia celular.
-*   **Agentes químicos:** Moléculas presentes en el humo del tabaco o en ciertos alimentos carbonizados pueden infiltrarse en el núcleo e intercalarse físicamente entre los peldaños de la escalera del ADN, distorsionando la estructura e induciendo errores de lectura.
+* **Errores de copia:** A veces, una molécula de agua puede golpear a una base nitrogenada justo en el momento de la copia (un fenómeno llamado tautomerización), cambiando sutilmente la distribución de sus electrones. Esto puede hacer que una Adenina (A) empareje accidentalmente con una Citosina (C) en lugar de una Timina (T). Si el error no se corrige, la secuencia ha mutado.
+* **Daño por radiación UV:** La luz ultravioleta del sol tiene la energía exacta necesaria para excitar los electrones en las letras de Timina. Si dos Timinas están juntas en la misma cadena, la luz UV puede obligarlas a formar un enlace covalente anormal entre ellas (un dímero de timina). Esto deforma la doble hélice y confunde a la maquinaria de copia celular.
+* **Agentes químicos:** Moléculas presentes en el humo del tabaco o en ciertos alimentos carbonizados pueden infiltrarse en el núcleo e intercalarse físicamente entre los peldaños de la escalera del ADN, distorsionando la estructura e induciendo errores de lectura.
 
 Cuando la secuencia química cambia, el codón cambia. Y si el codón cambia, la célula podría colocar el aminoácido equivocado en la proteína. Una sola letra cambiada entre miles de millones fue lo que causó, por ejemplo, que una población ancestral humana desarrollara la capacidad de digerir la leche en la adultez, o que aparezcan enfermedades hereditarias como la anemia falciforme.
 
@@ -170,6 +172,6 @@ Sumergirse en la química del ADN es, de alguna manera, una experiencia filosóf
 
 El hecho de que tus pensamientos, el color de tus ojos, tu altura y tu sistema inmunológico dependan de si una pequeña molécula de azúcar está unida por un enlace fosfodiéster, o si un puente de hidrógeno se forma correctamente entre un átomo de oxígeno y uno de nitrógeno, es asombroso.
 
-Es ese puente de hidrógeno débil, ese sutil velcro químico que se abre y se cierra miles de veces por segundo en cada célula de tu cuerpo, lo que mantiene viva la llama de la vida. A través del ADN, la química nos demuestra que no somos entidades aisladas, sino manifestaciones temporales de un flujo ininterrumpido de información molecular que comenzó hace miles de millones de años en un charco primigenio. 
+Es ese puente de hidrógeno débil, ese sutil velcro químico que se abre y se cierra miles de veces por segundo en cada célula de tu cuerpo, lo que mantiene viva la llama de la vida. A través del ADN, la química nos demuestra que no somos entidades aisladas, sino manifestaciones temporales de un flujo ininterrumpido de información molecular que comenzó hace miles de millones de años en un charco primigenio.
 
 La próxima vez que te mires al espejo, no solo veas a una persona. Trata de ver también la obra maestra de la termodinámica, una catedral colosal construida con las letras A, T, C y G, unida incesantemente por la fuerza oculta de los puentes de hidrógeno. Eres química viva, y tu historia está escrita en tus enlaces moleculares.

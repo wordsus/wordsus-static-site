@@ -134,7 +134,7 @@ There are two ways to achieve this in Bash.
 The simplest way to redirect both streams simultaneously is using the `&>` operator.
 
 ```bash
-$ ls -l /etc/passwd /does_not_exist &> all_output.log
+ls -l /etc/passwd /does_not_exist &> all_output.log
 
 ```
 
@@ -145,7 +145,7 @@ This tells the shell: "Take both FD 1 and FD 2, and send them both into `all_out
 While `&>` is convenient, you will frequently encounter older scripts that use a more complex syntax. It is crucial to understand how to read it:
 
 ```bash
-$ ls -l /etc/passwd /does_not_exist > all_output.log 2>&1
+ls -l /etc/passwd /does_not_exist > all_output.log 2>&1
 
 ```
 
@@ -255,7 +255,7 @@ Pipes allow you to snap small, single-purpose utilities together like Lego brick
 If you try to list the contents of a massive directory like `/etc` using `ls -la /etc`, the text will fly past your screen faster than you can read it. You can use a pipe to send that output directly into `less`, a utility designed to let you scroll through text page-by-page:
 
 ```bash
-$ ls -la /etc | less
+ls -la /etc | less
 
 ```
 
@@ -370,14 +370,14 @@ If you want a command to run completely invisibly, producing neither standard ou
 Using the modern Bash shortcut:
 
 ```bash
-$ ping -c 4 google.com &> /dev/null
+ping -c 4 google.com &> /dev/null
 
 ```
 
 Using the traditional Unix syntax:
 
 ```bash
-$ ping -c 4 google.com > /dev/null 2>&1
+ping -c 4 google.com > /dev/null 2>&1
 
 ```
 

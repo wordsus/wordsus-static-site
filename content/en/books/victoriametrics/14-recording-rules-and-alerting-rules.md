@@ -8,7 +8,7 @@ Recording rules allow you to pre-compute frequently needed or computationally ex
 
 ### The Mechanics of Pre-computation
 
-Instead of calculating an aggregation on the fly, a recording rule shifts the computation burden to the background. 
+Instead of calculating an aggregation on the fly, a recording rule shifts the computation burden to the background.
 
 ```text
 [ Raw High-Cardinality Data ]
@@ -68,6 +68,7 @@ Because recording rules create entirely new metrics, adopting a strict naming co
 * **`operations`**: A list of operations applied to the metric, from newest to oldest (e.g., `rate5m`, `sum_rate5m`, `avg_over_time1h`).
 
 **Examples of good naming:**
+
 * `namespace:http_requests:rate5m` (A rate of HTTP requests, aggregated by namespace).
 * `cluster:node_memory_usage_bytes:sum` (The sum of memory usage across an entire cluster).
 
@@ -92,15 +93,15 @@ groups:
 
 ### Common Pitfalls and Best Practices
 
-1.  **Watch the Cardinality of the Output:** A recording rule's `expr` should reduce cardinality through aggregation operators (`sum`, `avg`, `max`, etc.). If your expression outputs millions of time series, your recording rule is simply duplicating raw data, which wastes storage and defeats the purpose of pre-computation.
-2.  **Align Intervals:** Ensure that the `interval` of the recording rule group aligns sensibly with the time windows inside your `expr`. For instance, running a `[5m]` rate calculation every 10 seconds is computationally wasteful; a 1-minute interval is usually sufficient.
-3.  **Handling Stale Data:** If the source metric temporarily drops out, the recording rule will evaluate to an empty result, meaning no data points are written for that interval. When querying recording rules, ensure your dashboard panels handle potential gaps gracefully, or use functions like `keep_last_value` in MetricsQL if continuous lines are required.
+1. **Watch the Cardinality of the Output:** A recording rule's `expr` should reduce cardinality through aggregation operators (`sum`, `avg`, `max`, etc.). If your expression outputs millions of time series, your recording rule is simply duplicating raw data, which wastes storage and defeats the purpose of pre-computation.
+2. **Align Intervals:** Ensure that the `interval` of the recording rule group aligns sensibly with the time windows inside your `expr`. For instance, running a `[5m]` rate calculation every 10 seconds is computationally wasteful; a 1-minute interval is usually sufficient.
+3. **Handling Stale Data:** If the source metric temporarily drops out, the recording rule will evaluate to an empty result, meaning no data points are written for that interval. When querying recording rules, ensure your dashboard panels handle potential gaps gracefully, or use functions like `keep_last_value` in MetricsQL if continuous lines are required.
 
 ## 14.2 Crafting Effective Alerting Rules
 
 While recording rules optimize your queries by running them in the background, alerting rules act as your automated sentries. In the VictoriaMetrics ecosystem, `vmalert` continuously evaluates alerting rules against your time series data. When a defined condition is met and sustained, an alert is triggered and forwarded to an external system (typically Prometheus Alertmanager) for routing, grouping, and notification.
 
-Crafting effective rules is less about writing complex MetricsQL and more about preventing alert fatigue. A poorly tuned rule will wake engineers up at 3:00 AM for transient issues that resolve themselves. 
+Crafting effective rules is less about writing complex MetricsQL and more about preventing alert fatigue. A poorly tuned rule will wake engineers up at 3:00 AM for transient issues that resolve themselves.
 
 ### The Anatomy of an Alerting Rule
 
@@ -162,7 +163,8 @@ If the expression evaluates to `false` at any point while in the `Pending` state
 To build a robust alerting pipeline, adhere to the following principles:
 
 **1. Alert on Symptoms, Not Causes**
-A user doesn't care if a specific node is running at 95% CPU; they care if their checkout process is failing or taking 10 seconds to load. 
+A user doesn't care if a specific node is running at 95% CPU; they care if their checkout process is failing or taking 10 seconds to load.
+
 * **Bad Alert:** CPU on `worker-node-04` > 90%. (The cluster might be handling this perfectly fine via auto-scaling).
 * **Good Alert:** API 99th percentile latency > 2 seconds. (Users are actively experiencing slowdowns).
 Reserve cause-based alerts for hard limits that require human intervention, such as disk space reaching 95%.
@@ -183,18 +185,20 @@ Static thresholds (e.g., `requests > 1000`) often fail as your infrastructure sc
 
 **3. Make Annotations Actionable**
 An alert that simply says "Database is down" is stressful and unhelpful. Use Go templating to inject contextual data into the `annotations` block.
+
 * **Include `$labels`**: Identify exactly which instance or cluster is failing.
 * **Include `$value`**: Show the engineer exactly what the current metric value is.
 * **Include a Runbook URL**: Every alert should have a corresponding document explaining what the alert means, how to verify it, and steps to mitigate it. If an alert doesn't have a runbook, it likely isn't understood well enough to page someone for.
 
 **4. Tune the `for` Clause to the Metric Type**
+
 * **Latency/Errors:** Use a shorter `for` duration (e.g., `2m` or `5m`). You want to know quickly if users are seeing errors.
 * **Resource Saturation:** Use a longer `for` duration (e.g., `15m` or `30m`). A CPU spiking to 100% for 3 minutes during a background job is normal; a CPU pinned at 100% for 30 minutes is a runaway process.
 * **Capacity Planning:** For disk space, use linear prediction functions like `predict_linear` combined with a long `for` clause to catch disks that will fill up in 24 hours, rather than waiting until they are 99% full.
 
 ## 14.3 Using Go Templates in Alert Annotations and Labels
 
-An alert is only as useful as the context it provides to the engineer receiving it. Receiving an alert titled "High CPU Usage" at 3:00 AM leaves the on-call responder scrambling to figure out *which* cluster, *which* node, and *how high* the usage actually is. 
+An alert is only as useful as the context it provides to the engineer receiving it. Receiving an alert titled "High CPU Usage" at 3:00 AM leaves the on-call responder scrambling to figure out *which* cluster, *which* node, and *how high* the usage actually is.
 
 To bridge the gap between a raw MetricsQL evaluation and a human-readable notification, `vmalert` heavily leverages standard Go text templating. This allows you to dynamically inject data from the firing time series directly into your alert `annotations` and `labels`.
 
@@ -243,6 +247,7 @@ Functions are applied using the Unix pipeline `|` syntax:
             "Only {{ $value | humanizePercentage }} of free space remains on {{ $labels.instance }}. 
             Current available space: {{ query "node_filesystem_avail_bytes{instance='${labels.instance}'}" | first | value | humanize1024 }}B."
 ```
+
 *Note the use of the `query` function in the example above, which allows you to execute an entirely separate MetricsQL query within the template to fetch supplementary data.*
 
 ### Conditional Logic in Templates
@@ -279,9 +284,9 @@ If you inject `$value` into a label, every time the metric value fluctuates (eve
 
 ## 14.4 Managing Complex Rule Dependencies
 
-As your observability footprint grows, your recording and alerting rules will inevitably evolve from isolated expressions into a complex Directed Acyclic Graph (DAG). A high-level business dashboard might rely on a cluster-level recording rule, which in turn aggregates data from namespace-level rules, which finally compute rates from raw container metrics. 
+As your observability footprint grows, your recording and alerting rules will inevitably evolve from isolated expressions into a complex Directed Acyclic Graph (DAG). A high-level business dashboard might rely on a cluster-level recording rule, which in turn aggregates data from namespace-level rules, which finally compute rates from raw container metrics.
 
-Managing these dependencies incorrectly leads to race conditions, missing data points on dashboards, and false-positive alerts. 
+Managing these dependencies incorrectly leads to race conditions, missing data points on dashboards, and false-positive alerts.
 
 ### Intra-Group vs. Inter-Group Execution
 
@@ -295,7 +300,7 @@ Different `groups` are evaluated concurrently by `vmalert` via a worker pool. If
 
 ### The Problem of Evaluation Delay (Read-After-Write Lag)
 
-Even if you place dependent rules in the same group, you must account for the distributed nature of VictoriaMetrics. 
+Even if you place dependent rules in the same group, you must account for the distributed nature of VictoriaMetrics.
 
 When `vmalert` evaluates a rule, it sends the resulting data points to `vminsert`. Those points must then be flushed to disk or reside in the in-memory cache of `vmstorage` before `vmselect` can retrieve them for the next query. This network and storage transit takes milliseconds, but if your subsequent rule executes instantly, it might query `vmselect` *before* the previous rule's data is fully available.
 
@@ -312,6 +317,7 @@ Group A (Executes at T=0)
 To prevent data gaps and race conditions, adopt the following architectural patterns:
 
 #### 1. Consolidate Tight Dependencies
+
 Whenever possible, keep hierarchical aggregations within the exact same rule group. This enforces sequential execution and is easier for human operators to trace.
 
 ```yaml
@@ -329,7 +335,8 @@ groups:
 ```
 
 #### 2. Utilize the `evaluation_delay` Parameter
-If rules *must* be separated into different groups (e.g., because they are managed by different teams or require different intervals), you can use the `evaluation_delay` parameter in `vmalert` (often set at the group level or globally via command-line flags). 
+
+If rules *must* be separated into different groups (e.g., because they are managed by different teams or require different intervals), you can use the `evaluation_delay` parameter in `vmalert` (often set at the group level or globally via command-line flags).
 
 This parameter tells `vmalert` to evaluate the rule as if it were slightly in the past, allowing the underlying storage pipeline time to fully ingest the dependent metrics.
 
@@ -346,6 +353,7 @@ groups:
 ```
 
 #### 3. Defensive PromQL/MetricsQL Structuring
+
 When writing an alert that depends on a potentially lagged recording rule, you can structure your query to be tolerant of slight delays. Instead of checking the absolute instantaneous value (which might be missing due to ingestion lag), use a short lookback window.
 
 * **Fragile:** `global:http_errors:sum_rate1m > 100` (Fails if the last scrape is 1 second late).

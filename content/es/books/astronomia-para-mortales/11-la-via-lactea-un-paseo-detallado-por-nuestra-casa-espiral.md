@@ -10,7 +10,7 @@ Pero, ¿cómo es realmente nuestra galaxia si pudiéramos salir de ella y verla 
 
 ## 1. ¿Qué es exactamente la Vía Láctea y cuán grande es?
 
-Para entender nuestro hogar, primero debemos situarlo en el contexto del universo. El universo observable contiene cientos de miles de millones de galaxias. Las galaxias son inmensas "ciudades" de estrellas, gas, polvo cósmico y materia oscura, todo ello mantenido unido por la fuerza implacable de la gravedad. 
+Para entender nuestro hogar, primero debemos situarlo en el contexto del universo. El universo observable contiene cientos de miles de millones de galaxias. Las galaxias son inmensas "ciudades" de estrellas, gas, polvo cósmico y materia oscura, todo ello mantenido unido por la fuerza implacable de la gravedad.
 
 Nuestra Vía Láctea es una galaxia espiral barrada, de tamaño grande a promedio. Cuando los astrónomos intentan medirla, se enfrentan a un problema fundamental: estamos dentro de ella. Imagina intentar dibujar el mapa exacto de una inmensa ciudad sin poder salir nunca de tu vecindario; tendrás que basarte en lo que puedes ver a través de los edificios y estimar el resto. Aun así, gracias a los avances en radioastronomía y a telescopios espaciales como Gaia, hemos logrado cartografiarla con una precisión asombrosa.
 
@@ -18,7 +18,7 @@ El diámetro del disco luminoso de la Vía Láctea se estima en unos 100.000 a 1
 
 $$1 \text{ año luz} \approx 9.46 \times 10^{12} \text{ kilómetros}$$
 
-Eso es casi 9,5 billones de kilómetros. Ahora, multiplica esa cifra por 100.000. El resultado es tan abrumadoramente grande que nuestros cerebros evolucionados para cazar y recolectar en la sabana terrestre simplemente no pueden procesarlo. 
+Eso es casi 9,5 billones de kilómetros. Ahora, multiplica esa cifra por 100.000. El resultado es tan abrumadoramente grande que nuestros cerebros evolucionados para cazar y recolectar en la sabana terrestre simplemente no pueden procesarlo.
 
 Para hacerlo más digerible, usemos una escala. Si redujéramos todo nuestro Sistema Solar (hasta la órbita de Neptuno) al tamaño de una pequeña moneda, la Vía Láctea tendría el tamaño aproximado de todo el continente europeo. En esa misma escala, la estrella más cercana a nuestro Sol (Próxima Centauri) estaría a un campo de fútbol de distancia de nuestra moneda. Ese inmenso océano de vacío salpicado de "monedas" es nuestra galaxia.
 
@@ -73,11 +73,11 @@ Muestra el perfil plano y el halo esférico que envuelve la galaxia.
 
 Repasemos los componentes que observamos en el diagrama:
 
-*   **El Bulbo Central:** Es la protuberancia brillante en el centro. Al contrario que el disco, que es plano, el bulbo es tridimensional, con forma de maní o de pelota de rugby, y está lleno de estrellas más antiguas.
-*   **La Barra:** Investigaciones recientes han confirmado que nuestra galaxia no es una espiral simple, sino "barrada". Esto significa que el bulbo está atravesado por una barra alargada de estrellas brillante de la cual emergen los brazos espirales. Esta barra actúa como una especie de embudo cósmico que canaliza gas hacia el centro de la galaxia.
-*   **El Disco Galáctico:** Es la parte llana, el "plato". Aquí es donde se encuentra casi todo el gas y el polvo interestelar, y es el escenario principal donde nacen nuevas estrellas en la actualidad.
-*   **Los Brazos Espirales:** Son las ondulaciones de alta densidad dentro del disco. No son estructuras rígidas, sino regiones donde la materia se acumula temporalmente.
-*   **El Halo:** Envolviendo toda esta estructura visible hay una enorme esfera invisible (o muy tenue) llamada halo. Contiene cúmulos globulares (agrupaciones muy densas de estrellas antiquísimas) y, lo más importante, la misteriosa materia oscura.
+* **El Bulbo Central:** Es la protuberancia brillante en el centro. Al contrario que el disco, que es plano, el bulbo es tridimensional, con forma de maní o de pelota de rugby, y está lleno de estrellas más antiguas.
+* **La Barra:** Investigaciones recientes han confirmado que nuestra galaxia no es una espiral simple, sino "barrada". Esto significa que el bulbo está atravesado por una barra alargada de estrellas brillante de la cual emergen los brazos espirales. Esta barra actúa como una especie de embudo cósmico que canaliza gas hacia el centro de la galaxia.
+* **El Disco Galáctico:** Es la parte llana, el "plato". Aquí es donde se encuentra casi todo el gas y el polvo interestelar, y es el escenario principal donde nacen nuevas estrellas en la actualidad.
+* **Los Brazos Espirales:** Son las ondulaciones de alta densidad dentro del disco. No son estructuras rígidas, sino regiones donde la materia se acumula temporalmente.
+* **El Halo:** Envolviendo toda esta estructura visible hay una enorme esfera invisible (o muy tenue) llamada halo. Contiene cúmulos globulares (agrupaciones muy densas de estrellas antiquísimas) y, lo más importante, la misteriosa materia oscura.
 
 ## 3. El corazón del monstruo: El bulbo central y Sagitario A*
 
@@ -85,7 +85,7 @@ Si viajamos hacia el centro geográfico de la Vía Láctea, a unos 26.000 años 
 
 Lo que hemos descubierto allí es el bulto o bulbo galáctico, una metrópolis estelar increíblemente congestionada. Mientras que en nuestro vecindario solar las estrellas están separadas por varios años luz, en el núcleo galáctico la densidad es tan alta que las estrellas están a fracciones de año luz unas de otras. Si la Tierra estuviera cerca del núcleo galáctico, el cielo nocturno sería tan brillante que no existiría la noche real; podrías leer un libro a la medianoche solo con la luz de las estrellas circundantes.
 
-Pero el verdadero rey de esta región reside en el centro exacto. Se trata de una fuente de radio muy compacta e intensa a la que los astrónomos llamaron **Sagitario A*** (pronunciado Sagitario A-estrella). Durante décadas, los científicos observaron cómo docenas de estrellas orbitaban alrededor de un punto invisible en el espacio a velocidades vertiginosas, algunas viajando a miles de kilómetros por segundo. 
+Pero el verdadero rey de esta región reside en el centro exacto. Se trata de una fuente de radio muy compacta e intensa a la que los astrónomos llamaron **Sagitario A*** (pronunciado Sagitario A-estrella). Durante décadas, los científicos observaron cómo docenas de estrellas orbitaban alrededor de un punto invisible en el espacio a velocidades vertiginosas, algunas viajando a miles de kilómetros por segundo.
 
 La única explicación física y matemática posible para que un objeto no emita luz y sin embargo ejerza una fuerza gravitatoria tan monstruosa sobre las estrellas cercanas, es que se trata de un agujero negro supermasivo. Gracias a las observaciones de las órbitas estelares (como la famosa estrella S2), los astrofísicos pudieron usar las leyes de Kepler para determinar la masa exacta de este gigante invisible:
 
@@ -101,7 +101,7 @@ Alejándonos del caótico y superpoblado centro, entramos en las afueras residen
 
 Pero, ¿qué son exactamente los brazos espirales? Un error común es imaginar que la galaxia es como un pulpo rígido rotando en el espacio y que los brazos son tentáculos sólidos de estrellas girando al unísono. Si esto fuera así, debido a que las zonas internas de la galaxia giran más rápido que las externas, los brazos se "enrollarían" sobre sí mismos rápidamente, desapareciendo en unas pocas decenas de millones de años. Dado que la galaxia tiene más de 13.000 millones de años, debe haber otra explicación.
 
-La astrofísica moderna lo explica con la **teoría de las ondas de densidad**. Piensa en los brazos espirales como si fueran un atasco o embotellamiento de tráfico en una autopista circular. Los coches (las estrellas y el gas) entran en el atasco, reducen la velocidad, se acercan unos a otros y luego aceleran al salir de él. El atasco en sí mismo se mantiene, aunque los coches individuales cambian constantemente. 
+La astrofísica moderna lo explica con la **teoría de las ondas de densidad**. Piensa en los brazos espirales como si fueran un atasco o embotellamiento de tráfico en una autopista circular. Los coches (las estrellas y el gas) entran en el atasco, reducen la velocidad, se acercan unos a otros y luego aceleran al salir de él. El atasco en sí mismo se mantiene, aunque los coches individuales cambian constantemente.
 
 De manera similar, la gravedad crea ondas de compresión (los brazos) que viajan a través del disco galáctico. Cuando el gas suelto choca con uno de estos brazos, se comprime enormemente. Esta compresión colapsa el gas y desencadena la formación de nuevas estrellas masivas y calientes. Estas nuevas estrellas brillan intensamente de color azul, iluminando el brazo espiral, y viven vidas muy cortas antes de explotar como supernovas antes de siquiera salir del "atasco". Por eso los brazos espirales brillan y destacan tanto, no es que haya más estrellas allí que en los espacios vacíos entre brazos, sino que allí están las estrellas más jóvenes, grandes y luminosas.
 
@@ -109,13 +109,14 @@ De manera similar, la gravedad crea ondas de compresión (los brazos) que viajan
 
 ## 5. El disco y el halo: De la luz visible a la materia oscura
 
-El disco en el que residen los brazos espirales se divide en dos componentes que se superponen: el "disco delgado" y el "disco grueso". 
-*   **El disco delgado** contiene la mayor parte del gas y el polvo interestelar, y casi todas las estrellas jóvenes. Tiene un grosor de aproximadamente 1.000 años luz. Nuestro Sol orbita dentro de este disco delgado.
-*   **El disco grueso** lo envuelve por arriba y por abajo, con un grosor de unos pocos miles de años luz, y contiene estrellas un poco más antiguas y menos ricas en metales pesados.
+El disco en el que residen los brazos espirales se divide en dos componentes que se superponen: el "disco delgado" y el "disco grueso".
+
+* **El disco delgado** contiene la mayor parte del gas y el polvo interestelar, y casi todas las estrellas jóvenes. Tiene un grosor de aproximadamente 1.000 años luz. Nuestro Sol orbita dentro de este disco delgado.
+* **El disco grueso** lo envuelve por arriba y por abajo, con un grosor de unos pocos miles de años luz, y contiene estrellas un poco más antiguas y menos ricas en metales pesados.
 
 Más allá del disco, llegamos a las fronteras verdaderas de la galaxia: **El Halo**. El halo estelar es una vasta distribución casi esférica de estrellas muy antiguas. Algunas de las reliquias más impresionantes de la Vía Láctea viven aquí: los *cúmulos globulares*. Estos son enjambres esféricos, increíblemente compactos y antiguos de cientos de miles de estrellas unidas por la gravedad. Son como pequeñas minigalaxias fósiles orbitando el centro galáctico, remanentes de la época de la formación misma de la galaxia.
 
-Sin embargo, la parte más masiva e importante del halo no se puede ver. Es la **Materia Oscura**. En la década de 1970, la astrónoma Vera Rubin estudió cómo rotaban las galaxias. Según las leyes de Newton, las estrellas en el borde exterior de la galaxia deberían orbitar mucho más lentamente que las del centro, al igual que los planetas exteriores de nuestro sistema solar se mueven más lento que los interiores. 
+Sin embargo, la parte más masiva e importante del halo no se puede ver. Es la **Materia Oscura**. En la década de 1970, la astrónoma Vera Rubin estudió cómo rotaban las galaxias. Según las leyes de Newton, las estrellas en el borde exterior de la galaxia deberían orbitar mucho más lentamente que las del centro, al igual que los planetas exteriores de nuestro sistema solar se mueven más lento que los interiores.
 
 Para su asombro, Rubin descubrió que las estrellas exteriores de la galaxia se movían casi a la misma velocidad vertiginosa que las interiores. Si solo contara la gravedad de la materia visible (estrellas, gas, polvo), la galaxia se despedazaría y las estrellas saldrían volando al espacio intergaláctico, como si estuvieras en un tiovivo girando demasiado rápido y no te sujetaras. La única conclusión fue postular la existencia de un halo masivo de materia invisible, la materia oscura, cuya gravedad adicional mantiene unida a la galaxia. Hoy calculamos que alrededor del 85% de la masa de la Vía Láctea es materia oscura, un fantasma cósmico del cual no sabemos su naturaleza fundamental, pero sentimos su omnipresente peso gravitacional.
 
@@ -151,7 +152,7 @@ Podemos ver esta distribución en el siguiente cuadro representativo (conocido c
 ======================================================================
 ```
 
-Como vemos, nuestra galaxia está dominada absolutamente por las enanas rojas. Aunque conforman casi cuatro quintas partes de todas las estrellas de la Vía Láctea, son tan débiles que ni una sola de ellas es visible a simple vista desde la Tierra en el cielo nocturno. Cada estrella que ves por la noche sin telescopio es, en general, un gigante raro o una estrella brillante relativamente cercana a nosotros. 
+Como vemos, nuestra galaxia está dominada absolutamente por las enanas rojas. Aunque conforman casi cuatro quintas partes de todas las estrellas de la Vía Láctea, son tan débiles que ni una sola de ellas es visible a simple vista desde la Tierra en el cielo nocturno. Cada estrella que ves por la noche sin telescopio es, en general, un gigante raro o una estrella brillante relativamente cercana a nosotros.
 
 Con todo este gas, polvo y una población estelar tan inmensa, podemos usar la matemática para aproximar la masa total de todo el sistema luminoso (sin contar la materia oscura). Si sumamos todo, llegamos a la masa estelar de la galaxia, que expresada mediante potencias astronómicas es:
 
@@ -176,23 +177,24 @@ $$T = \frac{2\pi R}{v}$$
 Al resolver esto con nuestra distancia de 26.000 años luz y nuestra velocidad, el resultado es que un año galáctico dura aproximadamente entre **225 y 250 millones de años terrestres**.
 
 Piensa en la enormidad cronológica que esto representa:
-*   Nuestro Sistema Solar tiene aproximadamente 4.600 millones de años, lo que significa que en toda la historia de nuestro Sol y nuestra Tierra, solo hemos "celebrado" unos 20 "cumpleaños galácticos". 
-*   ¿Qué estaba ocurriendo en la Tierra hace exactamente un Año Galáctico atrás? Los seres humanos, por supuesto, no existían. Los mamíferos apenas estaban empezando a desarrollarse a partir de sus antepasados terápsidos. Nos encontrábamos a principios del período Triásico, y los primeros dinosaurios pequeños apenas comenzaban a aparecer sobre la faz de un súper-continente llamado Pangea, justo después de la peor extinción masiva en la historia del planeta (la extinción del Pérmico-Triásico). 
-*   La próxima vez que el Sol complete otra vuelta y vuelva exactamente a la misma posición galáctica en la que se encuentra hoy, nosotros estaremos a cientos de millones de años en el futuro. 
+
+* Nuestro Sistema Solar tiene aproximadamente 4.600 millones de años, lo que significa que en toda la historia de nuestro Sol y nuestra Tierra, solo hemos "celebrado" unos 20 "cumpleaños galácticos".
+* ¿Qué estaba ocurriendo en la Tierra hace exactamente un Año Galáctico atrás? Los seres humanos, por supuesto, no existían. Los mamíferos apenas estaban empezando a desarrollarse a partir de sus antepasados terápsidos. Nos encontrábamos a principios del período Triásico, y los primeros dinosaurios pequeños apenas comenzaban a aparecer sobre la faz de un súper-continente llamado Pangea, justo después de la peor extinción masiva en la historia del planeta (la extinción del Pérmico-Triásico).
+* La próxima vez que el Sol complete otra vuelta y vuelva exactamente a la misma posición galáctica en la que se encuentra hoy, nosotros estaremos a cientos de millones de años en el futuro.
 
 Este viaje cósmico nos recuerda que nuestra historia humana es un mero parpadeo en las colosales escalas de tiempo del universo.
 
 ## 8. El destino final: La colisión con Andrómeda
 
-La galaxia en la que nacimos no será la galaxia en la que pereceremos a largo plazo. La Vía Láctea pertenece a un grupo de galaxias de tamaño mediano llamado el Grupo Local. Nuestro vecino mayor y más famoso en este grupo es la Galaxia de Andrómeda (M31). 
+La galaxia en la que nacimos no será la galaxia en la que pereceremos a largo plazo. La Vía Láctea pertenece a un grupo de galaxias de tamaño mediano llamado el Grupo Local. Nuestro vecino mayor y más famoso en este grupo es la Galaxia de Andrómeda (M31).
 
 Andrómeda se encuentra actualmente a unos 2,5 millones de años luz de distancia. En términos cósmicos, está literalmente a la vuelta de la esquina. Pero lo más alarmante (o fascinante) de Andrómeda no es dónde está, sino hacia dónde va. Mientras que el universo se está expandiendo y empujando a la mayoría de las galaxias lejos de nosotros, la gravedad local entre Andrómeda y la Vía Láctea es tan fuerte que ha vencido a la expansión del espacio. Las dos gigantescas galaxias espirales están atrapadas en una danza mortal, cayendo la una hacia la otra a una velocidad de aproximación de unos 110 kilómetros por segundo.
 
-Los astrofísicos han calculado que, dentro de aproximadamente 4.000 a 4.500 millones de años, Andrómeda y la Vía Láctea colisionarán. 
+Los astrofísicos han calculado que, dentro de aproximadamente 4.000 a 4.500 millones de años, Andrómeda y la Vía Láctea colisionarán.
 
-La palabra "colisión" puede evocar imágenes de cataclismos apocalípticos, como dos coches chocando de frente. Sin embargo, a escala galáctica, las cosas funcionan de manera muy diferente. Como vimos antes, el espacio entre las estrellas es tan absurdamente inmenso que, durante la fusión de estas dos galaxias, es altamente improbable que dos estrellas choquen físicamente entre sí. En cambio, ambas galaxias se atravesarán mutuamente como fantasmas. 
+La palabra "colisión" puede evocar imágenes de cataclismos apocalípticos, como dos coches chocando de frente. Sin embargo, a escala galáctica, las cosas funcionan de manera muy diferente. Como vimos antes, el espacio entre las estrellas es tan absurdamente inmenso que, durante la fusión de estas dos galaxias, es altamente improbable que dos estrellas choquen físicamente entre sí. En cambio, ambas galaxias se atravesarán mutuamente como fantasmas.
 
-Lo que sí chocará, y con gran violencia, serán las vastas nubes de gas interestelar. Esta fricción cósmica desencadenará el colapso del gas, lo que resultará en un "estallido estelar", un nacimiento masivo de millones de nuevas estrellas brillantes. Las gravedades de ambas galaxias se distorsionarán mutuamente, arrancando largos brazos de marea compuestos de estrellas hacia el espacio intergaláctico. 
+Lo que sí chocará, y con gran violencia, serán las vastas nubes de gas interestelar. Esta fricción cósmica desencadenará el colapso del gas, lo que resultará en un "estallido estelar", un nacimiento masivo de millones de nuevas estrellas brillantes. Las gravedades de ambas galaxias se distorsionarán mutuamente, arrancando largos brazos de marea compuestos de estrellas hacia el espacio intergaláctico.
 
 Tras cientos de millones de años de bailes orbitales y tirones gravitacionales, los agujeros negros supermasivos de ambas galaxias (Sagitario A* y su equivalente en Andrómeda) se encontrarán en el nuevo centro de gravedad y se fusionarán. Al final del proceso, la Vía Láctea y Andrómeda habrán perdido para siempre sus hermosas formas espirales. Se habrán combinado en una sola e inmensa galaxia elíptica, a la que los astrónomos ya le han puesto el apodo no oficial de "Lactómeda" (o Milkomeda en inglés).
 

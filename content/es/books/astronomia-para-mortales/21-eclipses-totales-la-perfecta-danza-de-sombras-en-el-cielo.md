@@ -4,7 +4,7 @@
 
 Desde los albores de la humanidad, mirar hacia el cielo ha sido una fuente inagotable de asombro, misterio y, en ocasiones, terror absoluto. Imagina por un momento que vives en una civilización antigua. Es un día despejado y brillante, el calor del sol acaricia tu piel y la naturaleza sigue su curso habitual. De repente, una mordedura invisible comienza a devorar al disco solar. La luz adquiere un tono metálico y extraño, el aire se enfría de golpe, los pájaros dejan de cantar para irse a dormir en pleno mediodía y una oscuridad antinatural envuelve el mundo. En el cielo, donde antes estaba el dador de vida, ahora hay un agujero negro rodeado de una corona fantasmal de luz blanca.
 
-Para nuestros antepasados, esto era presagio del fin del mundo, la ira de los dioses o el apetito de un dragón cósmico. Hoy, gracias a la ciencia y la observación, sabemos que este fenómeno no es un monstruo devorando al sol, sino una de las coincidencias mecánicas más hermosas y precisas de todo nuestro sistema solar. 
+Para nuestros antepasados, esto era presagio del fin del mundo, la ira de los dioses o el apetito de un dragón cósmico. Hoy, gracias a la ciencia y la observación, sabemos que este fenómeno no es un monstruo devorando al sol, sino una de las coincidencias mecánicas más hermosas y precisas de todo nuestro sistema solar.
 
 Bienvenido a la guía definitiva sobre los eclipses totales. En este extenso recorrido, vamos a desentrañar la magia óptica y la física orbital que hacen posibles estas "danzas de sombras", descubriremos por qué somos inmensamente afortunados de vivir en esta época de la historia de la Tierra para poder verlos, y te prepararemos para que, cuando llegue el momento, sepas cómo observar uno de los mayores espectáculos de la naturaleza de manera totalmente segura.
 
@@ -12,11 +12,11 @@ Bienvenido a la guía definitiva sobre los eclipses totales. En este extenso rec
 
 Para entender un eclipse, primero debemos conocer a nuestros tres actores principales: el Sol, la Tierra y la Luna. Un eclipse ocurre simplemente cuando uno de estos cuerpos celestes se interpone en el camino de la luz que ilumina al otro. Pero para que ocurra un eclipse solar *total*, se necesita una coincidencia matemática que es casi poética.
 
-El Sol es una gigantesca esfera de plasma ardiente. Su diámetro es de aproximadamente 1.4 millones de kilómetros. La Luna, por su parte, es nuestro pequeño y rocoso satélite, con un diámetro de apenas unos 3,474 kilómetros. Si ponemos estos números en perspectiva, el Sol es aproximadamente 400 veces más grande que la Luna. 
+El Sol es una gigantesca esfera de plasma ardiente. Su diámetro es de aproximadamente 1.4 millones de kilómetros. La Luna, por su parte, es nuestro pequeño y rocoso satélite, con un diámetro de apenas unos 3,474 kilómetros. Si ponemos estos números en perspectiva, el Sol es aproximadamente 400 veces más grande que la Luna.
 
 Si la Luna es tan diminuta en comparación, ¿cómo es capaz de tapar completamente a nuestra estrella?
 
-Aquí es donde entra en juego la distancia. Resulta que, por una maravillosa casualidad geométrica, el Sol también está aproximadamente 400 veces más lejos de la Tierra que la Luna. Esta asombrosa simetría en el ratio de tamaño y distancia significa que, desde nuestra perspectiva aquí en la superficie terrestre, ambos astros tienen el mismo **tamaño aparente** en la bóveda celeste. 
+Aquí es donde entra en juego la distancia. Resulta que, por una maravillosa casualidad geométrica, el Sol también está aproximadamente 400 veces más lejos de la Tierra que la Luna. Esta asombrosa simetría en el ratio de tamaño y distancia significa que, desde nuestra perspectiva aquí en la superficie terrestre, ambos astros tienen el mismo **tamaño aparente** en la bóveda celeste.
 
 En astronomía, este tamaño aparente se mide en grados, y podemos expresarlo matemáticamente mediante la fórmula del diámetro angular. Siendo $D$ el diámetro real del objeto y $d$ la distancia desde el observador, el diámetro angular $\theta$ se calcula mediante la siguiente ecuación trigonométrica:
 
@@ -47,8 +47,8 @@ Para visualizar esto, podemos observar el siguiente diagrama simplificado de la 
                                                                     Penumbra
 ```
 
-1.  **La Umbra:** Es el cono de oscuridad total. En el centro de la sombra de la Luna, todos los rayos directos del Sol están completamente bloqueados. Si te encuentras en la superficie de la Tierra dentro de la zona barrida por la umbra (un camino que suele tener solo entre 100 y 260 kilómetros de ancho), experimentarás un eclipse total. 
-2.  **La Penumbra:** Es la zona de sombra parcial más amplia que rodea a la umbra. Aquí, la Luna solo bloquea una fracción de la luz solar. Si te encuentras en la penumbra, verás un eclipse parcial, donde el Sol parece tener un "mordisco".
+1. **La Umbra:** Es el cono de oscuridad total. En el centro de la sombra de la Luna, todos los rayos directos del Sol están completamente bloqueados. Si te encuentras en la superficie de la Tierra dentro de la zona barrida por la umbra (un camino que suele tener solo entre 100 y 260 kilómetros de ancho), experimentarás un eclipse total.
+2. **La Penumbra:** Es la zona de sombra parcial más amplia que rodea a la umbra. Aquí, la Luna solo bloquea una fracción de la luz solar. Si te encuentras en la penumbra, verás un eclipse parcial, donde el Sol parece tener un "mordisco".
 
 El camino que traza la umbra a medida que se desplaza sobre la superficie terrestre, a velocidades que pueden superar los 2,000 kilómetros por hora debido a la rotación de la Tierra y la órbita de la Luna, se conoce como la **Banda de Totalidad**. Fuera de esta banda estrecha, la totalidad no existe.
 
@@ -60,14 +60,14 @@ La respuesta reside en la **inclinación orbital**.
 
 Imagina la órbita de la Tierra alrededor del Sol como un gran disco plano de cristal. A este plano se le llama la *Eclíptica*. Ahora imagina la órbita de la Luna alrededor de la Tierra como un plato de cristal más pequeño. Si ambos platos estuvieran perfectamente alineados en el mismo nivel, sí, tendríamos un eclipse solar en cada Luna Nueva y un eclipse lunar en cada Luna Llena.
 
-Pero el universo es tridimensional y dinámico. La órbita de la Luna está inclinada aproximadamente 5 grados respecto a la órbita de la Tierra (la Eclíptica). 
+Pero el universo es tridimensional y dinámico. La órbita de la Luna está inclinada aproximadamente 5 grados respecto a la órbita de la Tierra (la Eclíptica).
 
 Debido a esta inclinación, la mayor parte del tiempo, durante la Luna Nueva, nuestro satélite pasa "por encima" o "por debajo" del Sol en nuestro cielo, proyectando su sombra inofensivamente en el espacio exterior, sin tocar la Tierra.
 
-Solo hay dos puntos en la órbita lunar donde su camino cruza el plano del sistema solar (la Eclíptica). Estos puntos de intersección se llaman **nodos**. 
+Solo hay dos puntos en la órbita lunar donde su camino cruza el plano del sistema solar (la Eclíptica). Estos puntos de intersección se llaman **nodos**.
 
-*   **Nodo Ascendente:** Donde la Luna cruza el plano subiendo hacia el "norte" celestial.
-*   **Nodo Descendente:** Donde la Luna cruza el plano bajando hacia el "sur" celestial.
+* **Nodo Ascendente:** Donde la Luna cruza el plano subiendo hacia el "norte" celestial.
+* **Nodo Descendente:** Donde la Luna cruza el plano bajando hacia el "sur" celestial.
 
 Para que ocurra un eclipse, la fase de Luna Nueva debe coincidir espacial y temporalmente con el momento en que la Luna está atravesando uno de estos nodos. Cuando el Sol, la Luna en el nodo y la Tierra se alinean en las tres dimensiones, tenemos lo que los astrónomos llaman la "Temporada de Eclipses", la cual ocurre unas dos veces al año.
 
@@ -91,15 +91,15 @@ Aquí entra a jugar un fenómeno físico llamado **Dispersión de Rayleigh** (el
 
 Una de las hazañas más impresionantes de las civilizaciones antiguas fue su capacidad para predecir eclipses. Sin telescopios modernos, satélites ni computadoras, los astrónomos babilonios y caldeos hace miles de años descubrieron un patrón oculto en el aparente caos del cielo: el Ciclo de Saros.
 
-Observando registros durante siglos, notaron que las posiciones de la Tierra, la Luna y el Sol se repiten casi exactamente en la misma geometría orbital en un período de tiempo muy específico. 
+Observando registros durante siglos, notaron que las posiciones de la Tierra, la Luna y el Sol se repiten casi exactamente en la misma geometría orbital en un período de tiempo muy específico.
 
-Este ciclo tiene una duración de **18 años, 11 días y 8 horas** (o 223 meses sinódicos). 
+Este ciclo tiene una duración de **18 años, 11 días y 8 horas** (o 223 meses sinódicos).
 
-Después de este período exacto, ocurre un eclipse que es el "gemelo" del anterior: la Luna estará aproximadamente a la misma distancia de la Tierra, cruzará el mismo nodo, y sucederá en la misma época del año. 
+Después de este período exacto, ocurre un eclipse que es el "gemelo" del anterior: la Luna estará aproximadamente a la misma distancia de la Tierra, cruzará el mismo nodo, y sucederá en la misma época del año.
 
 Sin embargo, hay un pequeño "truco" en el ciclo de Saros que impidió que las predicciones antiguas fueran absolutamente perfectas para una sola ciudad. Presta atención a esas "8 horas" extra al final del ciclo de 18 años y 11 días.
 
-Dado que la Tierra tarda 24 horas en dar un giro completo sobre su propio eje, esas 8 horas adicionales significan que la Tierra habrá rotado un tercio extra de vuelta (120 grados) para cuando ocurra el eclipse "gemelo". 
+Dado que la Tierra tarda 24 horas en dar un giro completo sobre su propio eje, esas 8 horas adicionales significan que la Tierra habrá rotado un tercio extra de vuelta (120 grados) para cuando ocurra el eclipse "gemelo".
 
 El resultado práctico de esto es que, aunque el eclipse se repita, la banda de totalidad se proyectará geográficamente unos 120 grados más al oeste de donde ocurrió el anterior.
 
@@ -138,15 +138,15 @@ Si alguna vez tienes la oportunidad de viajar a la banda de totalidad, debes hac
 
 Los astrónomos dividen un eclipse solar en diferentes "contactos":
 
-*   **Primer Contacto (C1):** El instante exacto en que el borde de la Luna toca visualmente el borde del Sol. Comienza el eclipse parcial. Durante la siguiente hora u hora y media, el Sol se va reduciendo lentamente a una media luna creciente. A simple vista, el día sigue siendo claro, pero si te fijas, la calidad de la luz empieza a volverse nítida, las sombras se agudizan y los colores de la naturaleza adquieren un tono desaturado.
-*   **Segundo Contacto (C2):** El comienzo de la totalidad. Segundos antes de que el Sol desaparezca, la luz restante se filtra a través de los valles y cráteres montañosos en el borde físico de la Luna. Esto crea un collar de brillantes destellos conocidos como las **"Perlas de Baily"**. Justo después, queda un único destello deslumbrante combinado con la tenue aparición de la atmósfera del Sol, creando la famosa imagen del **"Anillo de Diamante"**. Y entonces... cae la oscuridad.
-*   **La Totalidad:** El Sol desaparece. El cielo se vuelve de un color azul crepuscular o gris oscuro. En ese momento, se revela el secreto mejor guardado de nuestra estrella: **La Corona Solar**. Es la atmósfera exterior del Sol, una estructura de plasma en constante movimiento guiada por campos magnéticos, que brilla con un color blanco nacarado o perlado y se extiende millones de kilómetros hacia el espacio. Solo durante la totalidad podemos ver esta frágil estructura a simple vista.
-    *   *La temperatura desciende abruptamente* (a veces hasta 5 o 10 grados Celsius).
-    *   *El viento suele cambiar* de dirección o detenerse repentinamente.
-    *   *Aparecen estrellas y planetas* en pleno día. Júpiter, Venus o Mercurio suelen brillar intensamente cerca del Sol eclipsado.
-    *   *La naturaleza se confunde.* Los pájaros regresan a sus nidos, los insectos nocturnos como los grillos comienzan a cantar, y los animales diurnos muestran signos de confusión antes de prepararse para dormir.
-*   **Tercer Contacto (C3):** La totalidad termina. El Anillo de Diamante y las Perlas de Baily reaparecen en el lado opuesto de la Luna. El primer rayo de sol directo golpea la atmósfera y la luz del día regresa a una velocidad vertiginosa, como si alguien hubiera encendido un interruptor cósmico.
-*   **Cuarto Contacto (C4):** La Luna abandona finalmente el disco solar. El eclipse parcial termina. El orden normal del sistema solar ha sido restaurado.
+* **Primer Contacto (C1):** El instante exacto en que el borde de la Luna toca visualmente el borde del Sol. Comienza el eclipse parcial. Durante la siguiente hora u hora y media, el Sol se va reduciendo lentamente a una media luna creciente. A simple vista, el día sigue siendo claro, pero si te fijas, la calidad de la luz empieza a volverse nítida, las sombras se agudizan y los colores de la naturaleza adquieren un tono desaturado.
+* **Segundo Contacto (C2):** El comienzo de la totalidad. Segundos antes de que el Sol desaparezca, la luz restante se filtra a través de los valles y cráteres montañosos en el borde físico de la Luna. Esto crea un collar de brillantes destellos conocidos como las **"Perlas de Baily"**. Justo después, queda un único destello deslumbrante combinado con la tenue aparición de la atmósfera del Sol, creando la famosa imagen del **"Anillo de Diamante"**. Y entonces... cae la oscuridad.
+* **La Totalidad:** El Sol desaparece. El cielo se vuelve de un color azul crepuscular o gris oscuro. En ese momento, se revela el secreto mejor guardado de nuestra estrella: **La Corona Solar**. Es la atmósfera exterior del Sol, una estructura de plasma en constante movimiento guiada por campos magnéticos, que brilla con un color blanco nacarado o perlado y se extiende millones de kilómetros hacia el espacio. Solo durante la totalidad podemos ver esta frágil estructura a simple vista.
+  * *La temperatura desciende abruptamente* (a veces hasta 5 o 10 grados Celsius).
+  * *El viento suele cambiar* de dirección o detenerse repentinamente.
+  * *Aparecen estrellas y planetas* en pleno día. Júpiter, Venus o Mercurio suelen brillar intensamente cerca del Sol eclipsado.
+  * *La naturaleza se confunde.* Los pájaros regresan a sus nidos, los insectos nocturnos como los grillos comienzan a cantar, y los animales diurnos muestran signos de confusión antes de prepararse para dormir.
+* **Tercer Contacto (C3):** La totalidad termina. El Anillo de Diamante y las Perlas de Baily reaparecen en el lado opuesto de la Luna. El primer rayo de sol directo golpea la atmósfera y la luz del día regresa a una velocidad vertiginosa, como si alguien hubiera encendido un interruptor cósmico.
+* **Cuarto Contacto (C4):** La Luna abandona finalmente el disco solar. El eclipse parcial termina. El orden normal del sistema solar ha sido restaurado.
 
 ## 7. Guía práctica: Cómo observar un eclipse de forma segura
 
@@ -157,11 +157,13 @@ Mirar el Sol durante las fases parciales, incluso cuando solo queda un 1% visibl
 Aquí te detallamos los métodos correctos y seguros para disfrutar del evento:
 
 ### Lentes para Eclipses (Filtros Solares)
-Las gafas de sol regulares, sin importar qué tan oscuras sean, su polarización o si pones varias juntas, son absolutamente inútiles e inseguras para ver el Sol. Necesitas gafas especiales para eclipses que cumplan con la norma internacional de seguridad **ISO 12312-2**. 
+
+Las gafas de sol regulares, sin importar qué tan oscuras sean, su polarización o si pones varias juntas, son absolutamente inútiles e inseguras para ver el Sol. Necesitas gafas especiales para eclipses que cumplan con la norma internacional de seguridad **ISO 12312-2**.
 
 Estos filtros bloquean no solo la intensidad cegadora de la luz visible, sino también la dañina radiación ultravioleta (UV) e infrarroja (IR). Antes de usarlas, siempre inspecciona los filtros: si tienen raspaduras, agujeros, arrugas severas o daños, tíralas a la basura.
 
 ### Proyectores Estenopeicos (Pinhole)
+
 Si no logras conseguir gafas certificadas, la forma más segura y clásica de observar las fases parciales de un eclipse es la proyección estenopeica. Es un método indirecto que puedes construir en casa con materiales básicos.
 
 El principio básico es obligar a la luz del Sol a pasar por un agujero minúsculo. Al hacerlo, la luz se cruza y proyecta una imagen invertida del Sol en una superficie plana detrás del agujero.
@@ -202,7 +204,7 @@ Otra forma de usar este mismo principio sin herramientas es mirar la sombra que 
 
 Disfruta de los eclipses totales mientras puedas, porque no estarán con nosotros para siempre. De hecho, a escala geológica y cósmica, somos increíblemente afortunados de existir en la franja de tiempo exacta para ser testigos de este equilibrio perfecto de tamaño y distancia que discutimos en la primera sección.
 
-El universo es un lugar donde nada permanece estático. Debido a un efecto físico conocido como fricción de las mareas, la interacción gravitacional entre la Tierra y sus océanos crea una especie de arrastre en la rotación de nuestro planeta, haciendo que la Tierra gire muy lentamente cada vez más despacio (los días se están alargando fracciones de milisegundo por siglo). 
+El universo es un lugar donde nada permanece estático. Debido a un efecto físico conocido como fricción de las mareas, la interacción gravitacional entre la Tierra y sus océanos crea una especie de arrastre en la rotación de nuestro planeta, haciendo que la Tierra gire muy lentamente cada vez más despacio (los días se están alargando fracciones de milisegundo por siglo).
 
 Para conservar el momento angular del sistema Tierra-Luna, a medida que la Tierra frena su rotación, la Luna se está alejando de nosotros.
 

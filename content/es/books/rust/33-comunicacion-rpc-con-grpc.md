@@ -4,13 +4,13 @@ En este capítulo, exploraremos cómo Rust, a través del crate `tonic`, se inte
 
 ## 33.1 Protocol Buffers (Protobuf) e IDL
 
-En el Capítulo 15 exploramos cómo construir APIs RESTful utilizando JSON como formato principal de intercambio de datos. Aunque JSON es el estándar de facto para la comunicación entre el frontend y el backend por su legibilidad, presenta ineficiencias críticas cuando hablamos de comunicación interna entre microservicios: es pesado, carece de un esquema estricto por defecto y su serialización/deserialización consume considerables ciclos de CPU. 
+En el Capítulo 15 exploramos cómo construir APIs RESTful utilizando JSON como formato principal de intercambio de datos. Aunque JSON es el estándar de facto para la comunicación entre el frontend y el backend por su legibilidad, presenta ineficiencias críticas cuando hablamos de comunicación interna entre microservicios: es pesado, carece de un esquema estricto por defecto y su serialización/deserialización consume considerables ciclos de CPU.
 
 Para resolver esto en arquitecturas distribuidas de alto rendimiento, utilizamos **RPC (Remote Procedure Call)** apoyado por un **IDL (Interface Definition Language)**. En el ecosistema moderno, la combinación ganadora es gRPC con **Protocol Buffers (Protobuf)**.
 
 ### ¿Qué es un IDL?
 
-Un IDL, o Lenguaje de Definición de Interfaces, es un contrato agnóstico al lenguaje de programación. Permite definir de manera estricta los servicios, los métodos disponibles y las estructuras de datos (mensajes) que un sistema expone. 
+Un IDL, o Lenguaje de Definición de Interfaces, es un contrato agnóstico al lenguaje de programación. Permite definir de manera estricta los servicios, los métodos disponibles y las estructuras de datos (mensajes) que un sistema expone.
 
 Al centralizar la definición de la API en un archivo IDL, puedes compilar este contrato para generar automáticamente el código base (estructuras, traits y clientes) en múltiples lenguajes. Esto significa que un microservicio escrito en Rust puede comunicarse de forma transparente con uno escrito en Go o Node.js, garantizando que ambos compartan exactamente la misma definición de tipos en tiempo de compilación.
 
@@ -63,6 +63,7 @@ service ServicioPagos {
 #### Reglas de Oro de las Etiquetas Numéricas (Tags)
 
 El número al final de cada campo (`= 1;`, `= 2;`, etc.) es la **etiqueta numérica**. Esta es la pieza más importante del diseño de tu IDL:
+
 * **Identifican el campo en el formato binario:** Cuando Rust serializa el mensaje, no envía el texto `"monto"`, envía el identificador `2`.
 * **Inmutabilidad estricta:** Una vez que un servicio está en producción, **jamás** debes cambiar la etiqueta numérica de un campo existente. Si lo haces, romperás la compatibilidad hacia atrás (backward compatibility).
 * **Deprecación:** Si ya no necesitas un campo, bórralo o renómbralo, pero reserva su número usando `reserved 2;` para evitar que otro desarrollador lo reutilice accidentalmente en el futuro.
@@ -162,6 +163,7 @@ impl ServicioPagos for MiServicioPagos {
 ```
 
 **Puntos clave a tener en cuenta:**
+
 * **`Request<T>` y `Response<T>`:** Tonic envuelve tus mensajes en estos tipos. Esto es vital porque te permite acceder (y mutar) a los metadatos de la petición HTTP/2 subyacente, como los *headers* (útiles para pasar tokens de autenticación).
 * **`Status`:** En gRPC, los errores no se manejan con códigos HTTP estándar (404, 500), sino con códigos de estado gRPC (como `NOT_FOUND`, `PERMISSION_DENIED`, `INTERNAL`). El tipo `Status` de Tonic maneja este mapeo por ti.
 
@@ -318,7 +320,7 @@ impl ServicioPagos for MiServicioPagos {
 
 ### 3. Streaming Bidireccional (El Máximo Poder)
 
-El streaming bidireccional combina el streaming del cliente y del servidor. Ambos extremos pueden leer y escribir mensajes de forma totalmente asíncrona e independiente utilizando la misma conexión subyacente. 
+El streaming bidireccional combina el streaming del cliente y del servidor. Ambos extremos pueden leer y escribir mensajes de forma totalmente asíncrona e independiente utilizando la misma conexión subyacente.
 
 En Rust, esto significa que recibirás un `tonic::Streaming<Request>` como entrada y retornarás un `ReceiverStream` como salida.
 

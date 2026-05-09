@@ -6,7 +6,7 @@ Migrating infrastructure from Terraform to OpenTofu is designed to be a friction
 
 ### The Fork Point and Version Parity
 
-To evaluate compatibility, you must understand the historical fork point. OpenTofu branched off from Terraform at version **1.5.x**—specifically, right before HashiCorp transitioned to the Business Source License (BSL). 
+To evaluate compatibility, you must understand the historical fork point. OpenTofu branched off from Terraform at version **1.5.x**—specifically, right before HashiCorp transitioned to the Business Source License (BSL).
 
 Because of this shared lineage, OpenTofu version 1.6.0 is fundamentally a drop-in replacement for Terraform 1.5.x. The OpenTofu core team prioritized absolute backwards compatibility for this release to ensure that existing state files, provider configurations, and module calls would function without modification.
 
@@ -37,7 +37,7 @@ The complexity of your migration is directly tied to the version of Terraform cu
 If you are running Terraform 1.5.x or an older version (such as 1.4 or 1.3), you have the most straightforward path. It is highly recommended that you first perform a standard upgrade to Terraform 1.5.7. Resolving any standard deprecation warnings within the Terraform 1.5.x ecosystem ensures a completely clean slate. Once on 1.5.7, transitioning to OpenTofu 1.6+ requires virtually zero code refactoring.
 
 **Migrating from Terraform 1.6.x or Newer**
-If your organization upgraded to Terraform 1.6 or later before deciding to migrate, your codebase requires a more careful audit. HashiCorp introduced new features and syntax changes post-fork that OpenTofu has either implemented differently or chosen not to adopt. 
+If your organization upgraded to Terraform 1.6 or later before deciding to migrate, your codebase requires a more careful audit. HashiCorp introduced new features and syntax changes post-fork that OpenTofu has either implemented differently or chosen not to adopt.
 
 For example, if you began using Terraform's native `test` framework introduced in 1.6, you must align your tests with OpenTofu's implementation of the `tofu test` command (covered in Chapter 18). Similarly, if you relied on highly specific state behaviors introduced in later proprietary versions, you will need to review the OpenTofu release notes for functional parity.
 
@@ -67,9 +67,10 @@ By expanding the constraint, you ensure that both your final Terraform runs and 
 
 #### 2. Auditing CI/CD Pipelines and Wrapper Scripts
 
-Your infrastructure code rarely exists in a vacuum. The most common point of failure during a migration is not the HCL code itself, but the surrounding automation. 
+Your infrastructure code rarely exists in a vacuum. The most common point of failure during a migration is not the HCL code itself, but the surrounding automation.
 
 You must perform a repository-wide search for the explicit string `terraform`. Pay special attention to:
+
 * **Makefiles and Task Runners:** Update commands like `make terraform-apply` to `make tofu-apply`.
 * **Bash Scripts:** Search for alias commands, grep pipelines, or custom wrapper scripts that invoke the legacy CLI.
 * **CI/CD Workflows:** GitHub Actions, GitLab CI, and Jenkins pipelines often use official HashiCorp actions or hardcoded binary downloads. These must be swapped for OpenTofu equivalents.
@@ -92,7 +93,7 @@ With your version constraints updated and your state file safely backed up, the 
 
 ### The Binary Swap: Aliases vs. Hard Replacements
 
-The most immediate change is transitioning your muscle memory and your automation scripts from `terraform` to `tofu`. 
+The most immediate change is transitioning your muscle memory and your automation scripts from `terraform` to `tofu`.
 
 During the initial testing phase of a migration, many engineers opt for a temporary alias in their shell configuration (`~/.bashrc` or `~/.zshrc`):
 
@@ -174,7 +175,7 @@ in the .terraform.lock.hcl file. Review those changes and commit them to your
 version control system if they represent changes you intended to make.
 ```
 
-This is expected behavior during a migration. You should run a `git diff .terraform.lock.hcl` to verify that OpenTofu only added new `h1:` or `zh:` hashes to the existing provider blocks, rather than altering the provider versions themselves. Once verified, commit the updated lock file to your repository. 
+This is expected behavior during a migration. You should run a `git diff .terraform.lock.hcl` to verify that OpenTofu only added new `h1:` or `zh:` hashes to the existing provider blocks, rather than altering the provider versions themselves. Once verified, commit the updated lock file to your repository.
 
 If you encounter persistent checksum errors due to strict lock file enforcement in your CI/CD pipeline, you can force OpenTofu to regenerate the locks for your target platforms using:
 
@@ -203,7 +204,7 @@ terraform {
 }
 ```
 
-Historically, the `source` attribute here is shorthand. When the CLI sees `hashicorp/aws` without a domain prefix, it implicitly assumes `registry.terraform.io/hashicorp/aws`. 
+Historically, the `source` attribute here is shorthand. When the CLI sees `hashicorp/aws` without a domain prefix, it implicitly assumes `registry.terraform.io/hashicorp/aws`.
 
 OpenTofu changes this foundational assumption at the compiler level. When the `tofu` CLI encounters a provider or module source that lacks an explicit domain, or one that explicitly requests the legacy `registry.terraform.io`, it performs a transparent redirection to `registry.opentofu.org`.
 
@@ -226,11 +227,12 @@ This interception means **you do not need to alter your `source` attributes**. T
 
 ### The OpenTofu Registry Architecture
 
-To trust the migration, it helps to understand what you are actually connecting to when `tofu init` reaches out to the internet. 
+To trust the migration, it helps to understand what you are actually connecting to when `tofu init` reaches out to the internet.
 
 The OpenTofu Registry is not a centralized, proprietary database of binaries. Instead, it acts as a highly available, transparent proxy and metadata index. When an author publishes a provider (e.g., the AWS provider) on GitHub, the OpenTofu registry tracks the release. When you run `tofu init`, the registry directs your CLI to download the exact same compiled binary from the exact same GitHub release as the legacy tool would have, but it routes the request through a vendor-neutral infrastructure.
 
 This design guarantees three things:
+
 * **Parity:** You are downloading the exact same provider code.
 * **Resiliency:** The registry is backed by standard, highly available CDN infrastructure (managed by the Linux Foundation).
 * **Transparency:** The registry's codebase and indexing logic are entirely open-source, allowing you to audit how your dependencies are resolved.
@@ -263,13 +265,13 @@ credentials "tfe.mycompany.internal" {
 
 A frequent point of confusion revolves around providers maintained directly by HashiCorp (e.g., AWS, Azure, Google Cloud, Kubernetes). Because HashiCorp changed the license of the core Terraform CLI to the BSL, many users assume the providers were also impacted.
 
-Currently, the vast majority of official providers remain licensed under the Mozilla Public License (MPL) v2.0. Because the providers are separate executables that communicate with the core CLI via an RPC (Remote Procedure Call) protocol, OpenTofu is legally and technically capable of downloading, executing, and communicating with these HashiCorp-maintained providers. 
+Currently, the vast majority of official providers remain licensed under the Mozilla Public License (MPL) v2.0. Because the providers are separate executables that communicate with the core CLI via an RPC (Remote Procedure Call) protocol, OpenTofu is legally and technically capable of downloading, executing, and communicating with these HashiCorp-maintained providers.
 
 Your organization can safely continue sourcing `hashicorp/aws` or `hashicorp/azurerm` through the OpenTofu registry without violating licensing terms or experiencing feature degradation. OpenTofu ensures the RPC protocol remains backwards compatible, allowing the core engine to orchestrate the resources exactly as intended.
 
 ## 21.4 Troubleshooting Common State and Lock File Migration Errors
 
-While the OpenTofu core team engineered the migration process to be as frictionless as possible, infrastructure environments are complex. When transitioning a codebase that has evolved over years, you may occasionally encounter friction points during the initialization or planning phases. 
+While the OpenTofu core team engineered the migration process to be as frictionless as possible, infrastructure environments are complex. When transitioning a codebase that has evolved over years, you may occasionally encounter friction points during the initialization or planning phases.
 
 When red text appears in your terminal during a migration, the most important rule is not to panic. Most migration errors are related to strict cryptographic verifications or orphaned backend locks, rather than actual infrastructure destruction. Here is how to diagnose and resolve the most common blockers.
 
@@ -282,7 +284,7 @@ When running `tofu init`, the command halts with an error stating `Failed to ins
 This is the most frequent migration error. Your `.terraform.lock.hcl` file contains cryptographic hashes (`h1:` and `zh:`) for your providers. These hashes were generated by Terraform based on the binaries it downloaded from `registry.terraform.io`. If OpenTofu attempts to download the same provider version from `registry.opentofu.org` and the signature key differs (or if a specific architecture build was repacked), the checksums will not match, and OpenTofu will strictly refuse to proceed to prevent a potential supply-chain attack.
 
 **The Solution:**
-If you trust the OpenTofu registry and are simply trying to synchronize your lock file to the new ecosystem, you need to force OpenTofu to recalculate the hashes. 
+If you trust the OpenTofu registry and are simply trying to synchronize your lock file to the new ecosystem, you need to force OpenTofu to recalculate the hashes.
 
 You can instruct OpenTofu to update the lock file for your current operating system, but it is highly recommended to fetch the hashes for all architectures your team or CI/CD pipelines use:
 
@@ -356,6 +358,7 @@ State files contain a `version` attribute mapping to the CLI's internal schema. 
 
 **The Solution:**
 You cannot natively downgrade a state file. You have two options:
+
 1. **The Safe Route:** Restore the pre-migration state file backup you created in Section 21.1, revert your code to the older Terraform version, and execute the migration carefully following the recommended version path.
 2. **The Emergency Route (Advanced):** If you have no backup, you must manually edit the `terraform.tfstate` JSON file to revert the `version` number, identify exactly which resources utilize new schema features, remove them from the state using `tofu state rm`, and re-import them under OpenTofu. This is highly risky and should only be performed as a last resort in non-production environments.
 
@@ -374,6 +377,7 @@ tofu plan -detailed-exitcode
 ```
 
 **Evaluating the Results:**
+
 * **Ideal Outcome (Exit Code 0):** You receive the message: `No changes. Your infrastructure matches the configuration.` This is the "Null Plan." It confirms that OpenTofu's state parser, HCL evaluation engine, and provider RPC communications are in perfect harmony with your pre-migration setup.
 * **Drift Detected (Exit Code 2):** If OpenTofu wants to modify or destroy resources, **stop immediately**. Do not apply. Review the plan carefully. Minor formatting changes in state outputs (e.g., how a provider formats a JSON policy string) occasionally occur, but any proposal to replace or destroy infrastructure indicates a deep compatibility issue, likely stemming from a provider version mismatch rather than OpenTofu itself.
 * **Error (Exit Code 1):** Typically indicates a failure to authenticate with the remote backend or the cloud provider, suggesting your local credentials or CI/CD environment variables need to be re-exported for the new binary.
@@ -445,6 +449,7 @@ terraform.InitAndApply(t, terraformOptions)
 
 **The Final CI/CD Dry Run**
 Before merging your migration branch into `main`, execute a full dry-run of your CI/CD pipeline in a staging or development environment. This ensures that:
+
 1. The CI runners are successfully downloading the OpenTofu binary instead of Terraform.
 2. The pipeline's IAM roles or service principals possess the correct permissions to write to the remote state via the `tofu` command.
 3. Automated plan outputs (e.g., comments on Pull Requests) format the OpenTofu plan correctly.

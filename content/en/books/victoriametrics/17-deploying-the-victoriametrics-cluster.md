@@ -35,25 +35,32 @@ Here is a typical infrastructure topology for a highly available cluster:
 ```
 
 #### 1. Provisioning Storage Nodes (`vmstorage`)
+
 The `vmstorage` nodes are the stateful heart of your cluster. They require the most capital investment and careful sizing.
+
 * **Disk:** You must provision high-IOPS block storage. **NVMe SSDs are highly recommended.** If using cloud providers (like AWS EBS or GCP Persistent Disks), provision `io2` or `gp3` (AWS) / `pd-ssd` or `pd-extreme` (GCP) to guarantee baseline IOPS. Avoid network-attached rotational drives (HDDs) entirely, as merge operations and inverted index lookups will severely bottleneck.
 * **Memory:** `vmstorage` relies heavily on the OS Page Cache to serve recently ingested data quickly. Provision instances with generous RAM.
 * **CPU:** Moderate CPU is required for background data compression and merge operations.
 
 #### 2. Provisioning Ingestion Nodes (`vminsert`)
+
 `vminsert` nodes are entirely stateless. Their primary job is accepting incoming metrics, parsing protocols, applying consistent hashing, and routing data to `vmstorage`.
+
 * **CPU:** This is a CPU-bound component. Provision compute-optimized instances (e.g., AWS `c6g` or `c6i` instances).
 * **Memory & Disk:** Minimal memory is required. A small, standard root volume is sufficient since no metric data is stored locally.
 
 #### 3. Provisioning Query Nodes (`vmselect`)
+
 `vmselect` nodes are also stateless, but their resource usage is highly bursty depending on the complexity of the incoming PromQL/MetricsQL queries.
+
 * **CPU & Memory:** Provision balanced or compute-optimized instances. Heavy aggregations across long time ranges will consume significant CPU and memory during query execution.
 * **Disk:** While stateless regarding metric data, `vmselect` can utilize local disk for query caching. If you plan to enable disk-based query caching, attach a small, fast SSD.
 
 ### Network Provisioning
 
-VictoriaMetrics components communicate aggressively over the network. 
-* **Bandwidth:** Provision instances in the same availability zone or region where possible, utilizing a network capable of at least **10 Gbps**. 
+VictoriaMetrics components communicate aggressively over the network.
+
+* **Bandwidth:** Provision instances in the same availability zone or region where possible, utilizing a network capable of at least **10 Gbps**.
 * **Latency:** Sub-millisecond latency between `vminsert`/`vmselect` and `vmstorage` is critical. High latency will degrade ingestion throughput and slow down distributed queries.
 * **Firewall/Security Groups:** At the infrastructure level, ensure your firewalls allow TCP traffic on the default ports: `8480` (vminsert), `8481` (vmselect), and `8482` (vmstorage for internal clustering), as well as `8400` and `8401` for `vmstorage` data routing. *(Note: Securing this traffic is covered in Chapter 22).*
 
@@ -62,6 +69,7 @@ VictoriaMetrics components communicate aggressively over the network.
 Once the Linux VMs or bare-metal servers are provisioned, default OS settings are rarely sufficient for a high-performance time series database. You must apply the following tuning to the infrastructure prior to installing the VictoriaMetrics binaries.
 
 #### File Descriptors
+
 `vmstorage` handles thousands of concurrent connections and manipulates many small files during the MergeTree lifecycle. The default Linux limit of 1,024 open files will cause immediate crashes under load.
 
 Update the system limits by creating a configuration file in `/etc/security/limits.d/`:
@@ -75,6 +83,7 @@ root    hard    nofile      1048576
 ```
 
 #### Disabling Swap
+
 Time series databases prefer predictability. If a `vmselect` query unexpectedly consumes too much memory, it is better for the OS Out-Of-Memory (OOM) killer to terminate the stateless `vmselect` process (which can be instantly restarted) rather than swapping to disk and causing the entire node to lock up and become unresponsive.
 
 Disable swap entirely on all cluster nodes:
@@ -88,6 +97,7 @@ sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 ```
 
 #### Filesystem Configuration
+
 For the attached data volumes on `vmstorage` nodes, format the disks using **ext4** or **xfs**. Avoid network file systems like NFS or clustered file systems like GlusterFS, as the latency jitter will cause unpredictable `vmstorage` behavior.
 
 When mounting the data volume, use the `noatime` flag to prevent the OS from writing metadata updates every time a data block is read, which wastes disk IOPS:
@@ -99,7 +109,7 @@ UUID=abc123xx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  /var/lib/victoria-metrics-data  ext4 
 
 ### Infrastructure as Code (IaC)
 
-Because you are provisioning multiple distinct node types, manual server creation is highly discouraged. Best practices dictate using Infrastructure as Code tools like Terraform to ensure reproducibility. 
+Because you are provisioning multiple distinct node types, manual server creation is highly discouraged. Best practices dictate using Infrastructure as Code tools like Terraform to ensure reproducibility.
 
 Below is an abstract Terraform snippet demonstrating the provisioning of a `vmstorage` node pool with attached IOPS-provisioned disks. Notice how it defines the specific requirements outlined above:
 
@@ -133,7 +143,7 @@ Once the physical or virtual hardware is instantiated, networked, and tuned at t
 
 ## 17.2 Configuring Component Interconnectivity
 
-Once your infrastructure is provisioned and tuned, the next step is establishing the communication mesh between the VictoriaMetrics cluster components. In this architecture, `vmstorage` acts as the authoritative backend. Both `vminsert` and `vmselect` are completely stateless and act as clients that independently connect to the storage layer. 
+Once your infrastructure is provisioned and tuned, the next step is establishing the communication mesh between the VictoriaMetrics cluster components. In this architecture, `vmstorage` acts as the authoritative backend. Both `vminsert` and `vmselect` are completely stateless and act as clients that independently connect to the storage layer.
 
 Crucially, `vminsert` and `vmselect` do not communicate with each other, nor do the `vmstorage` nodes natively cluster or replicate data among themselves (unless explicitly configured for data re-routing). The intelligence of the cluster lies entirely in how the stateless nodes route data to the stateful ones.
 
@@ -147,7 +157,7 @@ Before configuring the interconnectivity flags, you must understand the dedicate
 
 ### Wiring the Ingestion Path (`vminsert` to `vmstorage`)
 
-When starting a `vminsert` process, you must explicitly tell it where the storage nodes are located. This is achieved using the `-storageNode` command-line flag. 
+When starting a `vminsert` process, you must explicitly tell it where the storage nodes are located. This is achieved using the `-storageNode` command-line flag.
 
 If you have provisioned three storage nodes, you provide a comma-separated list of their IP addresses or DNS names, appending the `8400` port:
 
@@ -206,8 +216,8 @@ Incoming Metrics (Port 8480)                   User Queries (Port 8481)
 
 ### Best Practices for Connection Management
 
-1.  **Use DNS over Static IPs:** In highly dynamic environments, passing static IP addresses to the `-storageNode` flag is fragile. VictoriaMetrics supports DNS `A` and `SRV` record resolution. You can pass a single DNS hostname (e.g., `-storageNode=vmstorage.local:8400`), and `vminsert`/`vmselect` will automatically discover all underlying IPs and dynamically update their connection pools if the DNS record changes.
-2.  **Connection Pooling:** You do not need to deploy an internal load balancer (like HAProxy or Nginx) *between* `vminsert`/`vmselect` and `vmstorage`. The VictoriaMetrics components maintain persistent, highly optimized TCP connection pools internally. Placing a load balancer in the middle of this internal mesh will introduce unnecessary latency, break consistent hashing, and degrade performance. Load balancers should only be used at the edge of the cluster (routing external traffic into `vminsert` or `vmselect`).
+1. **Use DNS over Static IPs:** In highly dynamic environments, passing static IP addresses to the `-storageNode` flag is fragile. VictoriaMetrics supports DNS `A` and `SRV` record resolution. You can pass a single DNS hostname (e.g., `-storageNode=vmstorage.local:8400`), and `vminsert`/`vmselect` will automatically discover all underlying IPs and dynamically update their connection pools if the DNS record changes.
+2. **Connection Pooling:** You do not need to deploy an internal load balancer (like HAProxy or Nginx) *between* `vminsert`/`vmselect` and `vmstorage`. The VictoriaMetrics components maintain persistent, highly optimized TCP connection pools internally. Placing a load balancer in the middle of this internal mesh will introduce unnecessary latency, break consistent hashing, and degrade performance. Load balancers should only be used at the edge of the cluster (routing external traffic into `vminsert` or `vmselect`).
 
 ## 17.3 Scaling Up Storage Nodes Dynamically
 
@@ -217,11 +227,12 @@ Before executing a scaling operation, it is crucial to understand the architectu
 
 ### The No-Rebalancing Philosophy
 
-In many distributed database systems (like Cassandra or Elasticsearch), adding a new storage node triggers an automatic background process that moves historical data from old nodes to the new one to balance the disk usage evenly. 
+In many distributed database systems (like Cassandra or Elasticsearch), adding a new storage node triggers an automatic background process that moves historical data from old nodes to the new one to balance the disk usage evenly.
 
 **VictoriaMetrics explicitly does not do this.** Automatic data rebalancing consumes massive amounts of network bandwidth, CPU, and disk I/O, often causing severe performance degradation on production clusters exactly when they are already under load. Instead, VictoriaMetrics relies on the stateless query layer to mask the underlying storage distribution.
 
 When you add a new `vmstorage` node:
+
 1. **Historical data stays where it is.** Your older nodes will remain at their current disk capacity.
 2. **New data is distributed.** The `vminsert` nodes recalculate their consistent hashing ring. A proportional share of active time series will immediately start routing to the newly added, completely empty node.
 3. **Queries remain transparent.** Because `vmselect` fans out queries to *all* configured `vmstorage` nodes and merges the results, it seamlessly pieces together a time series where the first half lives on an old node and the second half lives on the new node.
@@ -231,6 +242,7 @@ When you add a new `vmstorage` node:
 Because `vminsert` and `vmselect` operate independently, the order in which you update them is critical to prevent temporary data invisibility. **Always update `vmselect` before `vminsert`.** If you update `vminsert` first, it will begin writing new data points to the new storage node. Until `vmselect` is also updated to query that new node, those incoming data points will be invisible to users and alerting rules.
 
 #### Step 1: Provision and Start the New Storage Node
+
 Following the infrastructure guidelines from Chapter 17.1, provision your new server (e.g., `vmstorage-04` at `10.0.1.14`). Mount the high-performance disk and start the `vmstorage` process exactly as you did for the existing nodes.
 
 ```bash
@@ -243,7 +255,8 @@ Following the infrastructure guidelines from Chapter 17.1, provision your new se
 At this stage, the node is running and listening on ports `8400` and `8401`, but it is entirely idle because the rest of the cluster does not know it exists.
 
 #### Step 2: Update the Query Nodes (`vmselect`)
-You must now instruct all `vmselect` instances to include the new node in their query fan-out. 
+
+You must now instruct all `vmselect` instances to include the new node in their query fan-out.
 
 If you are using static IP addresses in your configuration, you must perform a rolling restart of your `vmselect` tier, appending the new IP to the `-storageNode` flag. Because `vmselect` is stateless, restarting it is completely safe and instantaneous.
 
@@ -260,6 +273,7 @@ If you are using static IP addresses in your configuration, you must perform a r
 *Note: If you are using DNS-based discovery (e.g., `-storageNode=vmstorage.local:8401`), you simply update the DNS record to include the new IP address. `vmselect` will automatically resolve the new IP and open connections without requiring a restart.*
 
 #### Step 3: Update the Ingestion Nodes (`vminsert`)
+
 Finally, update the `vminsert` tier to start routing incoming metric streams to the new node. Perform a rolling restart of your `vminsert` instances, updating the `-storageNode` flag.
 
 ```bash
@@ -309,7 +323,7 @@ vmselect (Querying metric_C)
 
 ### Handling Churn During Scaling
 
-Because the routing of some existing time series changes immediately upon updating `vminsert`, the new `vmstorage` node will begin creating new inverted index entries and on-disk structures for series that previously lived elsewhere. 
+Because the routing of some existing time series changes immediately upon updating `vminsert`, the new `vmstorage` node will begin creating new inverted index entries and on-disk structures for series that previously lived elsewhere.
 
 This causes a temporary, localized spike in "active series churn." Your overall cluster memory usage may increase slightly for a few hours as both the old nodes and the new node maintain these series in their memory caches before the old nodes eventually flush the stale series to disk and drop them from RAM. Ensure your `vmstorage` nodes are provisioned with sufficient memory headroom (at least 20-30% free RAM) before initiating a scaling event to absorb this temporary metadata overlap.
 
@@ -324,6 +338,7 @@ The fundamental strategy for scaling these tiers relies on standard infrastructu
 The `vminsert` component is highly optimized but primarily CPU-bound. Its job involves decompressing incoming HTTP requests, parsing various text or binary protocols (like Prometheus remote_write or InfluxDB line protocol), applying relabeling rules, recalculating consistent hashes, and multiplexing the data streams out to `vmstorage`.
 
 **When to scale `vminsert`:**
+
 * CPU utilization consistently exceeds 80%.
 * You observe HTTP 503 errors or connection timeouts on your Prometheus instances or `vmagent` shippers.
 * Network interface limits (packets per second or bandwidth) are reached on existing ingestion nodes.
@@ -332,6 +347,7 @@ The `vminsert` component is highly optimized but primarily CPU-bound. Its job in
 Simply provision a new compute instance, configure its `-storageNode` flags to point to your existing `vmstorage` tier (as covered in Section 17.2), and attach it to your ingestion load balancer's target group. Because `vminsert` caches nothing locally, it is immediately ready to process traffic the millisecond the process starts.
 
 #### Load Balancing `vminsert` (HAProxy Example)
+
 When configuring a load balancer for `vminsert`, round-robin routing is perfectly acceptable and generally recommended. Here is a baseline configuration using HAProxy:
 
 ```haproxy
@@ -357,21 +373,23 @@ backend vminsert_backend
 Scaling `vmselect` is driven by completely different workload characteristics than ingestion. Query load is notoriously unpredictable. A user loading a Grafana dashboard spanning the last 30 days can trigger a massive, sudden spike in CPU and RAM as `vmselect` merges and calculates rates across billions of data points.
 
 **When to scale `vmselect`:**
+
 * Query latency increases during peak business hours.
 * The OS OOM (Out Of Memory) killer terminates the `vmselect` process due to overly complex aggregations.
 * Increased concurrent user load from dashboarding tools or automated alerting (`vmalert`).
 
 **How to scale:**
-Similar to ingestion, provision new nodes, point them to the `vmstorage` tier via `-storageNode`, and add them to a query-facing load balancer. 
+Similar to ingestion, provision new nodes, point them to the `vmstorage` tier via `-storageNode`, and add them to a query-facing load balancer.
 
 #### Considerations for Query Caching
+
 While `vmselect` is technically stateless regarding metric data, it maintains an internal query cache (in memory and, optionally, on disk). This cache prevents VictoriaMetrics from recalculating identical queries.
 
 If you scale from 2 to 10 `vmselect` nodes and use a simple round-robin load balancer, your cache hit rate will temporarily plummet because the same query might land on a different node each time. To optimize this, configure your query load balancer to use **IP Hash** or **Consistent Hashing based on the Request URI**. This ensures that the same Grafana dashboard panel consistently hits the same `vmselect` node, maximizing cache utilization.
 
 ### The Completed Cluster Architecture
 
-With dynamic scaling implemented across all three tiers, your final production architecture represents a highly decoupled, robust mesh. 
+With dynamic scaling implemented across all three tiers, your final production architecture represents a highly decoupled, robust mesh.
 
 ```text
                      [ External Monitoring Ecosystem ]
@@ -404,6 +422,7 @@ With dynamic scaling implemented across all three tiers, your final production a
 Because `vminsert` and `vmselect` start up in less than a second, they are prime candidates for cloud-native Auto-Scaling Groups (ASGs).
 
 To implement auto-scaling effectively:
+
 1. **Create an Image:** Bake your OS tuning (from 17.1) and the VictoriaMetrics binary into an Amazon AMI, GCP Custom Image, or equivalent template.
 2. **Define Triggers:** Set auto-scaling policies based on CPU utilization. A common practice is scaling out when average CPU exceeds 70% for 3 minutes, and scaling in when it drops below 30% for 15 minutes.
 3. **Graceful Shutdown:** When an ASG scales down, ensure it sends a `SIGINT` or `SIGTERM` signal to the `vminsert`/`vmselect` process. VictoriaMetrics components will gracefully drain active connections and flush any tiny internal buffers before shutting down, ensuring zero interrupted queries or dropped metrics during scale-in events.

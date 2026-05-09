@@ -2,13 +2,13 @@ Este capítulo disecciona las herramientas fundamentales que Go ofrece para agru
 
 ## 5.1. Arrays y sus limitaciones de memoria
 
-En Go, un array es una estructura de datos homóloga a la de muchos otros lenguajes tipados: representa una secuencia contigua y numerada de elementos de un único tipo. Sin embargo, el diseño de Go impone características semánticas particulares que diferencian drásticamente a sus arrays de los de lenguajes como C o C++. 
+En Go, un array es una estructura de datos homóloga a la de muchos otros lenguajes tipados: representa una secuencia contigua y numerada de elementos de un único tipo. Sin embargo, el diseño de Go impone características semánticas particulares que diferencian drásticamente a sus arrays de los de lenguajes como C o C++.
 
 Para dominar Go y escribir código de alto rendimiento, es crucial entender que **los arrays en Go son valores puros, no referencias ni punteros implícitos**.
 
 ### La longitud como parte de la firma del tipo
 
-La primera gran limitación (o característica de diseño rígida) de los arrays en Go es que su longitud se evalúa en tiempo de compilación y forma parte inherente de la firma de su tipo. 
+La primera gran limitación (o característica de diseño rígida) de los arrays en Go es que su longitud se evalúa en tiempo de compilación y forma parte inherente de la firma de su tipo.
 
 Un `[5]int` y un `[10]int` son tipos de datos completamente distintos e incompatibles entre sí. Esta rigidez impide escribir funciones genéricas que operen sobre arrays de tamaños arbitrarios sin recurrir a características avanzadas o a la reflexión (que penaliza el rendimiento, como se verá en el Capítulo 14).
 
@@ -74,13 +74,13 @@ Dado que la memoria de un array es un bloque estrictamente contiguo, las iteraci
 
 ### Conclusión
 
-Los arrays en Go ofrecen un diseño de memoria predecible y altamente optimizado para el hardware subyacente, pero su rigidez en el sistema de tipos y la costosa semántica de paso por valor los hacen poco prácticos para el 99% de los flujos de trabajo diarios en el desarrollo de software. 
+Los arrays en Go ofrecen un diseño de memoria predecible y altamente optimizado para el hardware subyacente, pero su rigidez en el sistema de tipos y la costosa semántica de paso por valor los hacen poco prácticos para el 99% de los flujos de trabajo diarios en el desarrollo de software.
 
 Estas limitaciones arquitectónicas no son un error de diseño, sino la base fundacional necesaria para la existencia del tipo de dato compuesto más ubicuo del lenguaje, el cual soluciona todos estos problemas encapsulando un puntero al array subyacente: los **Slices**.
 
 ## 5.2. Slices: anatomía interna (longitud, capacidad, puntero subyacente)
 
-Como vimos en la sección anterior, las estrictas limitaciones de los arrays los hacen inflexibles para la mayoría de los casos de uso. La respuesta idiomática de Go a este problema son los **Slices**. 
+Como vimos en la sección anterior, las estrictas limitaciones de los arrays los hacen inflexibles para la mayoría de los casos de uso. La respuesta idiomática de Go a este problema son los **Slices**.
 
 Un concepto erróneo muy común entre los desarrolladores que llegan a Go desde lenguajes como Python o JavaScript es pensar que un slice es un "array dinámico" mágico. A nivel de arquitectura de compilador, un slice no almacena datos por sí mismo, sino que actúa como una "ventana" o un **descriptor (Slice Header)** que expone una vista parcial o total de un array subyacente.
 
@@ -101,7 +101,7 @@ Analicemos cada uno de estos tres componentes:
 
 ### 1. El puntero subyacente (`array`)
 
-El primer campo del descriptor es un puntero a la dirección de memoria contigua donde realmente residen los datos (el array invisible). 
+El primer campo del descriptor es un puntero a la dirección de memoria contigua donde realmente residen los datos (el array invisible).
 
 Es vital destacar que **este puntero no siempre apunta al primer elemento del array original (índice 0)**. Apunta al primer elemento *al que el slice tiene acceso*. Si creamos un slice a partir del segundo elemento de un array, el puntero subyacente del slice apuntará a la dirección de memoria de ese segundo elemento. Dado que múltiples slices pueden apuntar al mismo array subyacente, modificar un valor a través de un slice afectará a todos los demás slices que compartan esa misma porción de memoria.
 
@@ -151,6 +151,7 @@ func main() {
 ```
 
 **Análisis de la anatomía de `q2`:**
+
 * **Puntero (`array`):** Apunta a `meses[3]` ("Abr"). No apunta a "Ene".
 * **Longitud (`len`):** Es 3, porque definimos el rango de los índices 3 al 5 (el límite 6 es exclusivo). Solo vemos `["Abr", "May", "Jun"]`.
 * **Capacidad (`cap`):** Es 4. Como el puntero apunta al índice 3 ("Abr"), y el array original termina en el índice 6 ("Jul"), hay 4 elementos físicos en la memoria contigua desde el puntero hasta el final del array. Esto significa que este slice podría "expandirse" un elemento más hacia la derecha sin requerir una nueva asignación de memoria.
@@ -169,8 +170,8 @@ La función `append` se utiliza para añadir uno o más elementos al final de un
 
 El comportamiento interno de `append` depende directamente de la relación entre la longitud (`len`) y la capacidad (`cap`) actuales:
 
-1.  **Con capacidad suficiente (`len < cap`):** Si el array subyacente tiene espacio físico disponible, `append` simplemente coloca el nuevo valor en la siguiente posición de memoria disponible, incrementa el valor de `len` en el nuevo descriptor y lo devuelve. El puntero subyacente no cambia. Es una operación extremadamente rápida (O(1)).
-2.  **Sin capacidad suficiente (`len == cap`):** Aquí es donde ocurre la magia (y el costo computacional). Si el array subyacente está lleno, `append` no puede simplemente invadir la memoria contigua (podría estar ocupada por otras variables). En su lugar, el *runtime* de Go entra en acción:
+1. **Con capacidad suficiente (`len < cap`):** Si el array subyacente tiene espacio físico disponible, `append` simplemente coloca el nuevo valor en la siguiente posición de memoria disponible, incrementa el valor de `len` en el nuevo descriptor y lo devuelve. El puntero subyacente no cambia. Es una operación extremadamente rápida (O(1)).
+2. **Sin capacidad suficiente (`len == cap`):** Aquí es donde ocurre la magia (y el costo computacional). Si el array subyacente está lleno, `append` no puede simplemente invadir la memoria contigua (podría estar ocupada por otras variables). En su lugar, el *runtime* de Go entra en acción:
     * Asigna un **nuevo array** más grande en el Heap.
     * Copia todos los elementos del array viejo al nuevo.
     * Añade el nuevo elemento.
@@ -199,7 +200,7 @@ Al ejecutar este código, notarás que la dirección de memoria (`puntero`) camb
 
 ### Prevención de fugas de memoria (Memory Leaks)
 
-La arquitectura de compartir el array subyacente es muy eficiente, pero introduce un vector clásico de fuga de memoria en Go. 
+La arquitectura de compartir el array subyacente es muy eficiente, pero introduce un vector clásico de fuga de memoria en Go.
 
 El Garbage Collector (GC) de Go no recolectará un array mientras exista al menos un slice (vivo) que apunte a él, sin importar cuán pequeña sea la "ventana" (longitud) de ese slice.
 
@@ -280,7 +281,7 @@ usuarios := make(map[int]string, 10000)
 
 ### Comprobación de existencia: El modismo "comma ok"
 
-En Go, acceder a una clave que no existe en el map **no genera un error ni un panic**. En su lugar, el lenguaje devuelve silenciosamente el "valor cero" (Zero Value) correspondiente al tipo de dato de los valores. 
+En Go, acceder a una clave que no existe en el map **no genera un error ni un panic**. En su lugar, el lenguaje devuelve silenciosamente el "valor cero" (Zero Value) correspondiente al tipo de dato de los valores.
 
 Si tienes un `map[string]int` y buscas una clave inexistente, obtendrás un `0`. Esto presenta un problema lógico grave: ¿Cómo distingues si la clave realmente existe y su valor es `0`, o si la clave simplemente no existe?
 
@@ -336,7 +337,6 @@ delete(sesiones, "user123") // Borrado exitoso
 delete(sesiones, "user999") // Clave inexistente, no ocurre nada
 ```
 
-**Limitación avanzada (El problema del vaciado):** Un detalle arquitectónico vital para sistemas de alto rendimiento es que la función `delete` elimina el valor, **pero no reduce el tamaño del array de *buckets* (cubos) subyacente en memoria**. Si insertas un millón de elementos en un map y luego borras 999,000, el map seguirá consumiendo la memoria equivalente a un millón de elementos. 
+**Limitación avanzada (El problema del vaciado):** Un detalle arquitectónico vital para sistemas de alto rendimiento es que la función `delete` elimina el valor, **pero no reduce el tamaño del array de *buckets* (cubos) subyacente en memoria**. Si insertas un millón de elementos en un map y luego borras 999,000, el map seguirá consumiendo la memoria equivalente a un millón de elementos.
 
 Para liberar verdaderamente esa memoria, la práctica idiomática es instanciar un map completamente nuevo, copiar las claves sobrevivientes si es necesario, y dejar que el *Garbage Collector* elimine el map original de la memoria Heap.
-

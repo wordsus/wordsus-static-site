@@ -383,7 +383,7 @@ The primary tool for tracing is the `-x` option (short for `xtrace`). When enabl
 You can enable tracing for an entire script by invoking Bash with the `-x` flag:
 
 ```bash
-$ bash -x ./deploy.sh
+bash -x ./deploy.sh
 
 ```
 

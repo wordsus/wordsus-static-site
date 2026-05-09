@@ -132,7 +132,7 @@ async fn main() {
 }
 ```
 
-Con este ensamblaje, el servidor ya es capaz de procesar una petición GraphQL entrante, parsear el AST de la consulta, validar los tipos contra nuestro código compilado en Rust, y ejecutar las funciones asíncronas correspondientes con el runtime de Tokio. 
+Con este ensamblaje, el servidor ya es capaz de procesar una petición GraphQL entrante, parsear el AST de la consulta, validar los tipos contra nuestro código compilado en Rust, y ejecutar las funciones asíncronas correspondientes con el runtime de Tokio.
 
 Sin embargo, hasta este punto, nuestras respuestas están *mockeadas*. En aplicaciones del mundo real, los *resolvers* necesitan acceder a recursos externos compartidos, como pools de bases de datos o clientes HTTP.
 
@@ -174,6 +174,7 @@ async fn main() {
 Una vez que los datos están inyectados en el esquema, podemos modificar nuestras funciones en el bloque `#[Object]` para recibirlos. Simplemente debemos añadir un argumento de tipo `&Context<'_>`. `async-graphql` es lo suficientemente inteligente como para reconocer este argumento especial y no exponerlo como un parámetro en el esquema GraphQL público.
 
 Existen dos formas principales de extraer datos del contexto:
+
 * `ctx.data::<T>()`: Devuelve un `Result`, útil si la dependencia podría faltar y quieres manejar el error gracefully.
 * `ctx.data_unchecked::<T>()`: Asume que el dato existe e ignora la seguridad en tiempo de ejecución (hace un *panic* si el tipo `T` no fue inyectado). Es preferible usar la primera opción en entornos de producción.
 
@@ -210,7 +211,7 @@ impl QueryRoot {
 
 ### 3. Manejo de Errores en Resolvers (`async_graphql::Result`)
 
-Habrás notado en el código anterior que la firma de retorno de nuestro *resolver* cambió de `Option<Task>` a `Result<Option<Task>>`. 
+Habrás notado en el código anterior que la firma de retorno de nuestro *resolver* cambió de `Option<Task>` a `Result<Option<Task>>`.
 
 En GraphQL, es perfectamente legal que una consulta devuelva datos parciales junto con un arreglo de errores. Si una consulta a la base de datos falla, no queremos que toda la petición GraphQL caiga en pánico; queremos devolver un error estructurado al cliente.
 
@@ -395,7 +396,7 @@ A nivel de red, las subscripciones en `async-graphql` se implementan típicament
 
 ### 1. El mecanismo de Broadcasting (Pub/Sub)
 
-Para que una subscripción funcione, necesitamos un mecanismo para que una parte de nuestra aplicación (por ejemplo, una Mutación que crea una tarea) avise a la otra parte (la Subscripción que está escuchando) de que algo nuevo ha ocurrido. 
+Para que una subscripción funcione, necesitamos un mecanismo para que una parte de nuestra aplicación (por ejemplo, una Mutación que crea una tarea) avise a la otra parte (la Subscripción que está escuchando) de que algo nuevo ha ocurrido.
 
 Aprovechando el ecosistema de Tokio que exploramos en el Capítulo 32, la herramienta ideal para esto es un canal de difusión: `tokio::sync::broadcast`. Este tipo de canal permite tener múltiples productores y múltiples consumidores simultáneos.
 
@@ -456,7 +457,7 @@ impl MutationRoot {
 
 ### 3. La raíz de Subscripción (`SubscriptionRoot`)
 
-Ahora definiremos la raíz para nuestras operaciones en tiempo real. A diferencia de `#[Object]`, aquí utilizamos la macro `#[Subscription]`. 
+Ahora definiremos la raíz para nuestras operaciones en tiempo real. A diferencia de `#[Object]`, aquí utilizamos la macro `#[Subscription]`.
 
 El desafío principal en este punto es convertir el receptor de Tokio (`broadcast::Receiver`) en un `Stream` compatible con `async-graphql`. Para ello, nos apoyamos en los crates `tokio-stream` y `futures-util`.
 

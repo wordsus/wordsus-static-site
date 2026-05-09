@@ -4,7 +4,7 @@ Dominar Rust para el backend exige trascender el uso superficial de `async/await
 
 Hasta este punto del libro, hemos utilizado la asincronía en Rust desde una perspectiva pragmática. Hemos levantado servidores web con Axum y Actix, y hemos consultado bases de datos con SQLx utilizando las palabras clave `async` y `await`. Sin embargo, para dominar el ecosistema backend en Rust y escribir código de alto rendimiento (o crear tus propias primitivas asíncronas), debes entender qué sucede exactamente cuando escribes `async fn`.
 
-A diferencia de lenguajes como Go (con sus goroutines) o Node.js (con su event loop integrado), **Rust no tiene un *runtime* asíncrono incluido en su Standard Library**. Lo único que provee la librería estándar son las interfaces fundamentales para que el ecosistema construya sobre ellas. 
+A diferencia de lenguajes como Go (con sus goroutines) o Node.js (con su event loop integrado), **Rust no tiene un *runtime* asíncrono incluido en su Standard Library**. Lo único que provee la librería estándar son las interfaces fundamentales para que el ecosistema construya sobre ellas.
 
 El corazón de toda esta arquitectura es el trait `Future`.
 
@@ -37,7 +37,8 @@ pub enum Poll<T> {
 }
 ```
 
-Cuando el executor llama a `poll`, el Future avanza su ejecución todo lo que puede hasta que necesita esperar por una operación de entrada/salida (I/O), como la respuesta de un socket de red. 
+Cuando el executor llama a `poll`, el Future avanza su ejecución todo lo que puede hasta que necesita esperar por una operación de entrada/salida (I/O), como la respuesta de un socket de red.
+
 * Si la operación termina, devuelve `Poll::Ready(valor)`.
 * Si la operación aún requiere tiempo, devuelve `Poll::Pending` y cede el control del hilo de vuelta al executor.
 
@@ -49,7 +50,7 @@ Aquí es donde entra el `Context` y el `Waker`.
 
 El argumento `cx: &mut Context<'_>` que recibe el método `poll` es, en la práctica actual, un contenedor para un único elemento crucial: el `Waker`.
 
-El `Waker` es un mecanismo de notificación. Cuando un Future sabe que no puede progresar (retorna `Pending`), su responsabilidad es clonar ese `Waker` y delegárselo al sistema operativo o a un reactor de eventos (como `epoll` en Linux). 
+El `Waker` es un mecanismo de notificación. Cuando un Future sabe que no puede progresar (retorna `Pending`), su responsabilidad es clonar ese `Waker` y delegárselo al sistema operativo o a un reactor de eventos (como `epoll` en Linux).
 
 Cuando el evento subyacente finalmente ocurre (por ejemplo, los datos del socket TCP ya están en memoria), el sistema invoca el método `wake()` del `Waker`. Esta invocación le envía una señal al Executor diciéndole: *"Este Future específico ya está listo para hacer progresos, ponlo de nuevo en la cola de tareas y vuelve a llamar a su método `poll`"*.
 
@@ -70,7 +71,7 @@ async fn procesar_datos() {
 }
 ```
 
-Cuando esta función se pausa en el `.await`, todas sus variables locales (`buffer` y `referencia`) deben guardarse en un `struct` (la máquina de estados) para que puedan ser recuperadas cuando el Future despierte. 
+Cuando esta función se pausa en el `.await`, todas sus variables locales (`buffer` y `referencia`) deben guardarse en un `struct` (la máquina de estados) para que puedan ser recuperadas cuando el Future despierte.
 
 El problema es que `referencia` es un puntero que apunta a la dirección de memoria de `buffer` *dentro de ese mismo struct*. Esto se conoce como un **struct auto-referencial**.
 
@@ -80,9 +81,9 @@ En Rust, es completamente normal y seguro mover structs en memoria (por ejemplo,
 
 ### `Unpin`: La excepción a la regla
 
-¿Significa esto que todo en asincronía está inmovilizado? No. Rust proporciona un *auto-trait* llamado `Unpin`. 
+¿Significa esto que todo en asincronía está inmovilizado? No. Rust proporciona un *auto-trait* llamado `Unpin`.
 
-Si un tipo implementa `Unpin`, le está diciendo al compilador: *"Yo no soy un struct auto-referencial. No me importa que me envuelvas en un `Pin`, puedes moverme en memoria todo lo que quieras con total seguridad"*. 
+Si un tipo implementa `Unpin`, le está diciendo al compilador: *"Yo no soy un struct auto-referencial. No me importa que me envuelvas en un `Pin`, puedes moverme en memoria todo lo que quieras con total seguridad"*.
 
 La mayoría de los tipos primitivos en Rust (`i32`, `String`, `Vec`, structs normales) implementan `Unpin` automáticamente. Únicamente las máquinas de estados generadas por el compilador al usar bloques `async`/`await` son explícitamente `!Unpin` (no implementan `Unpin`).
 
@@ -134,7 +135,7 @@ Para entender por qué frameworks como Axum o herramientas como SQLx son tan rá
 
 Cuando escribes un servidor tradicional síncrono, típicamente asignas un hilo del sistema operativo (OS thread) por cada conexión entrante. Este modelo no escala bien: los hilos del SO son pesados, consumen bastante memoria (su propia pila de ejecución) y el cambio de contexto (*context switch*) entre ellos es costoso para la CPU.
 
-Tokio utiliza un modelo **M:N**. Mapea **M** tareas asíncronas (Tasks) sobre **N** hilos del sistema operativo. 
+Tokio utiliza un modelo **M:N**. Mapea **M** tareas asíncronas (Tasks) sobre **N** hilos del sistema operativo.
 
 Una "Task" en Tokio (creada mediante `tokio::spawn`) es la unidad de ejecución fundamental. Es extremadamente ligera; conceptualmente, es solo la máquina de estados del `Future` alojada en el montículo (heap). Tokio puede manejar cientos de miles de estas tareas vivas simultáneamente sobre un pool de hilos muy pequeño (generalmente igual al número de núcleos lógicos de tu procesador).
 
@@ -143,9 +144,10 @@ Una "Task" en Tokio (creada mediante `tokio::spawn`) es la unidad de ejecución 
 El runtime multihilo de Tokio (el predeterminado cuando usas la macro `#[tokio::main]`) utiliza un planificador basado en el algoritmo de **Work-Stealing** (robo de trabajo).
 
 Así es como funciona bajo el capó:
-1.  **Colas Locales:** Cada hilo del SO administrado por Tokio tiene su propia cola de tareas local. Cuando un hilo está ejecutando una tarea y esta genera una nueva tarea (hace otro `tokio::spawn`), la nueva tarea se coloca en la cola local de ese mismo hilo. Las colas locales no requieren bloqueos pesados (como `Mutex`), lo que las hace increíblemente rápidas.
-2.  **La Cola Global:** Existe también una cola global donde van a parar las tareas inyectadas desde fuera del runtime o aquellas que no caben en las colas locales. Los hilos revisan esta cola periódicamente.
-3.  **El Robo (Work-Stealing):** Si un hilo termina todas las tareas de su cola local y no encuentra nada en la cola global, en lugar de quedarse inactivo (idle), **mira la cola local de otro hilo y le "roba" la mitad de sus tareas**. 
+
+1. **Colas Locales:** Cada hilo del SO administrado por Tokio tiene su propia cola de tareas local. Cuando un hilo está ejecutando una tarea y esta genera una nueva tarea (hace otro `tokio::spawn`), la nueva tarea se coloca en la cola local de ese mismo hilo. Las colas locales no requieren bloqueos pesados (como `Mutex`), lo que las hace increíblemente rápidas.
+2. **La Cola Global:** Existe también una cola global donde van a parar las tareas inyectadas desde fuera del runtime o aquellas que no caben en las colas locales. Los hilos revisan esta cola periódicamente.
+3. **El Robo (Work-Stealing):** Si un hilo termina todas las tareas de su cola local y no encuentra nada en la cola global, en lugar de quedarse inactivo (idle), **mira la cola local de otro hilo y le "roba" la mitad de sus tareas**.
 
 Este mecanismo garantiza un balanceo de carga casi perfecto entre los núcleos de la CPU, evitando cuellos de botella sin penalizar el rendimiento con bloqueos de sincronización constantes.
 
@@ -154,11 +156,12 @@ Este mecanismo garantiza un balanceo de carga casi perfecto entre los núcleos d
 ¿Qué pasa cuando una tarea hace `.await` en la lectura de un socket TCP y devuelve `Poll::Pending`? El hilo de Tokio no puede quedarse esperando, tiene otras tareas en su cola local.
 
 Aquí entra el **I/O Driver** (a menudo llamado el Reactor). Tokio se integra directamente con las APIs de multiplexación de I/O asíncrono más eficientes de cada sistema operativo:
+
 * `epoll` en Linux.
 * `kqueue` en macOS/FreeBSD.
 * `IOCP` (I/O Completion Ports) en Windows.
 
-Cuando una operación de red devuelve `Pending`, Tokio registra el descriptor de archivo (el socket) en el `epoll` del sistema operativo junto con el `Waker` asociado a esa tarea (¿recuerdas el Waker de la sección 32.1?). 
+Cuando una operación de red devuelve `Pending`, Tokio registra el descriptor de archivo (el socket) en el `epoll` del sistema operativo junto con el `Waker` asociado a esa tarea (¿recuerdas el Waker de la sección 32.1?).
 
 El hilo de Tokio descarta la tarea temporalmente y pasa a ejecutar la siguiente en su cola. En segundo plano, el hardware de red y el SO hacen su trabajo. Cuando los paquetes de datos finalmente llegan al socket, el SO notifica al Reactor de Tokio. El Reactor toma el `Waker` asociado, llama a `wake()`, y la tarea original es colocada nuevamente en una cola local para que su método `poll` sea llamado una vez más. Ahora, en lugar de `Pending`, devolverá `Ready(datos)`.
 
@@ -178,7 +181,7 @@ async fn procesar_peticion_lenta() {
 }
 ```
 
-Si llamas a `std::thread::sleep` (o ejecutas una consulta criptográfica pesada, o lees un archivo inmenso de forma síncrona) dentro de una función `async`, **el hilo del sistema operativo completo se detiene**. 
+Si llamas a `std::thread::sleep` (o ejecutas una consulta criptográfica pesada, o lees un archivo inmenso de forma síncrona) dentro de una función `async`, **el hilo del sistema operativo completo se detiene**.
 
 Recuerda que Tokio mapea miles de tareas en unos pocos hilos. Si bloqueas un hilo, todas las demás tareas asíncronas asignadas a la cola local de ese hilo se congelan. Tu servidor web, que debería manejar 10,000 peticiones por segundo, de repente dejará de responder.
 
@@ -216,7 +219,7 @@ Dominar la separación entre tareas asíncronas ligeras (I/O-bound) y tareas pes
 
 ## 32.3 Streams y asincronía basada en eventos
 
-Hasta ahora, hemos visto que un `Future` es la representación asíncrona de un único valor que estará disponible más adelante. Es el equivalente a una Promesa en JavaScript. Sin embargo, en el desarrollo backend moderno, rara vez lidiamos con un solo evento aislado. 
+Hasta ahora, hemos visto que un `Future` es la representación asíncrona de un único valor que estará disponible más adelante. Es el equivalente a una Promesa en JavaScript. Sin embargo, en el desarrollo backend moderno, rara vez lidiamos con un solo evento aislado.
 
 Pensemos en una conexión WebSocket recibiendo mensajes de chat, un consumidor de Apache Kafka procesando miles de eventos por segundo, o un endpoint de Server-Sent Events (SSE) enviando actualizaciones en tiempo real al cliente. En todos estos casos, tenemos una **secuencia de valores producidos a lo largo del tiempo de forma asíncrona**.
 
@@ -333,7 +336,7 @@ Imagina un endpoint que necesita consultar tres bases de datos distintas para co
 
 Cuando necesitas ejecutar múltiples operaciones independientes y esperar a que **todas** terminen, la tentación inicial suele ser usar `tokio::spawn` para cada una. Sin embargo, generar una nueva tarea (Task) tiene un ligero coste de asignación en el heap y delega el trabajo al planificador de Tokio.
 
-Si las operaciones son parte de la misma unidad lógica de trabajo, la forma más eficiente es usar la macro `tokio::join!`. Esta macro permite que múltiples Futures avancen concurrentemente **dentro de la misma Task del sistema operativo**. 
+Si las operaciones son parte de la misma unidad lógica de trabajo, la forma más eficiente es usar la macro `tokio::join!`. Esta macro permite que múltiples Futures avancen concurrentemente **dentro de la misma Task del sistema operativo**.
 
 ```rust
 use tokio::time::{sleep, Duration};
@@ -451,4 +454,4 @@ async fn procesar_masivamente(urls: Vec<String>) {
 
 Comprender cómo y cuándo utilizar `join!`, `select!` y `Semaphore` te proporciona las piezas necesarias para construir desde sistemas de *Graceful Shutdown* (apagado elegante) hasta orquestadores de microservicios tolerantes a fallos, aprovechando al máximo el motor de Tokio sin asfixiar la infraestructura subyacente.
 
-Con esta sección, hemos completado el **Capítulo 32: Ecosistema Asíncrono Profundo (Tokio)**, estableciendo una base sólida sobre el motor de concurrencia. 
+Con esta sección, hemos completado el **Capítulo 32: Ecosistema Asíncrono Profundo (Tokio)**, estableciendo una base sólida sobre el motor de concurrencia.

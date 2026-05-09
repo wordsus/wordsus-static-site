@@ -1,10 +1,10 @@
-OpenTelemetry’s greatest strength is its vendor-neutrality, decoupling your application instrumentation from specific backends. Yet, deploying workloads in the public cloud inevitably intersects with proprietary tools like AWS CloudWatch, Google Cloud Observability, and Azure Monitor. 
+OpenTelemetry’s greatest strength is its vendor-neutrality, decoupling your application instrumentation from specific backends. Yet, deploying workloads in the public cloud inevitably intersects with proprietary tools like AWS CloudWatch, Google Cloud Observability, and Azure Monitor.
 
 This chapter bridges that gap. We explore how to configure the OpenTelemetry Collector to seamlessly authenticate, translate, and route standard OTLP signals into these cloud-native ecosystems. We will also tackle the unique architectural challenges of tracing ephemeral serverless environments, ensuring your telemetry is never lost in the void.
 
 ## 20.1 AWS: Using the Distro for OTel (ADOT) and X-Ray
 
-When deploying OpenTelemetry within Amazon Web Services (AWS), you are interacting with an ecosystem that has established its own proprietary observability tools—namely, Amazon CloudWatch for metrics and logs, and AWS X-Ray for distributed tracing. To bridge the vendor-neutral OpenTelemetry standard with these AWS-specific backends, AWS maintains the **AWS Distro for OpenTelemetry (ADOT)**. 
+When deploying OpenTelemetry within Amazon Web Services (AWS), you are interacting with an ecosystem that has established its own proprietary observability tools—namely, Amazon CloudWatch for metrics and logs, and AWS X-Ray for distributed tracing. To bridge the vendor-neutral OpenTelemetry standard with these AWS-specific backends, AWS maintains the **AWS Distro for OpenTelemetry (ADOT)**.
 
 ADOT is a secure, AWS-supported distribution of the upstream OpenTelemetry Collector. While you could technically compile a custom collector using the `ocb` tool (as covered in Chapter 12) with the necessary AWS components, using ADOT provides out-of-the-box support, security patching, and predictable performance tuning specifically validated by AWS.
 
@@ -38,13 +38,13 @@ Here is a high-level logical flow of an ADOT implementation:
 
 ### The AWS X-Ray Trace ID Anomaly
 
-The most critical hurdle when integrating OpenTelemetry with AWS X-Ray is the structure of the Trace ID. 
+The most critical hurdle when integrating OpenTelemetry with AWS X-Ray is the structure of the Trace ID.
 
 As established in Chapter 4, the W3C Trace Context specification mandates a 128-bit randomly generated hex string for Trace IDs. However, AWS X-Ray predates this standard and enforces its own strict ID format. An X-Ray Trace ID must be a 96-bit identifier where the first 32 bits represent an epoch timestamp, formatted as: `1-[8-digit-hex-timestamp]-[24-digit-hex-random]`.
 
 If your OpenTelemetry SDK generates standard W3C Trace IDs and you forward them to X-Ray, **the trace data will be dropped or corrupted by the AWS backend.**
 
-To resolve this, you must configure your application's OpenTelemetry SDK to use the **AWS X-Ray ID Generator**. This ensures the SDK originates traces compliant with X-Ray's epoch-based requirements while maintaining OTLP compatibility. 
+To resolve this, you must configure your application's OpenTelemetry SDK to use the **AWS X-Ray ID Generator**. This ensures the SDK originates traces compliant with X-Ray's epoch-based requirements while maintaining OTLP compatibility.
 
 Here is an example of configuring the X-Ray ID Generator in the OpenTelemetry Java SDK:
 
@@ -64,8 +64,8 @@ Additionally, if your application communicates with managed AWS services that in
 
 Once the application is generating X-Ray-compliant OTLP data, the ADOT Collector takes over. The Collector relies on two primary exporters to translate OTLP into AWS-native formats:
 
-1.  **`awsxray` exporter:** Translates OTLP spans into AWS X-Ray segment documents.
-2.  **`awsemf` exporter:** Translates OTLP metrics into Amazon CloudWatch Embedded Metric Format (EMF) logs. This is AWS's preferred method for ingesting high-cardinality custom metrics, as it parses structured JSON logs to extract metric data asynchronously.
+1. **`awsxray` exporter:** Translates OTLP spans into AWS X-Ray segment documents.
+2. **`awsemf` exporter:** Translates OTLP metrics into Amazon CloudWatch Embedded Metric Format (EMF) logs. This is AWS's preferred method for ingesting high-cardinality custom metrics, as it parses structured JSON logs to extract metric data asynchronously.
 
 Because the Collector must write data to AWS, the environment hosting the Collector (e.g., an EC2 instance, an ECS Task, or an EKS Pod via IRSA) must have an IAM Role attached with the appropriate permissions, typically `AWSXrayWriteOnlyAccess` and `CloudWatchAgentServerPolicy`.
 
@@ -154,9 +154,10 @@ Integrating with Google Cloud is largely driven by a single, unified exporter: t
 
 ### Authentication via Application Default Credentials (ADC)
 
-One of the most frictionless aspects of integrating OpenTelemetry with Google Cloud is authentication. The `googlecloud` exporter inherently relies on Google's Application Default Credentials (ADC) mechanism. 
+One of the most frictionless aspects of integrating OpenTelemetry with Google Cloud is authentication. The `googlecloud` exporter inherently relies on Google's Application Default Credentials (ADC) mechanism.
 
 You do not need to configure complex signature processes or inject static API keys into your configuration files. Instead, you grant the underlying infrastructure the necessary Identity and Access Management (IAM) roles:
+
 * `roles/cloudtrace.agent` (for writing traces)
 * `roles/monitoring.metricWriter` (for writing metrics)
 * `roles/logging.logWriter` (for writing logs)
@@ -348,7 +349,7 @@ service:
 
 ### Handling Live Metrics and Profiling
 
-While the Collector-based approach is ideal for standard traces, metrics, and logs, it is important to note that certain proprietary Application Insights features, such as **Live Metrics Stream** (which provides a real-time, sub-second view of telemetry) and the **Application Insights Profiler**, historically required the proprietary Azure SDKs. 
+While the Collector-based approach is ideal for standard traces, metrics, and logs, it is important to note that certain proprietary Application Insights features, such as **Live Metrics Stream** (which provides a real-time, sub-second view of telemetry) and the **Application Insights Profiler**, historically required the proprietary Azure SDKs.
 
 To bridge this gap while remaining faithful to the standard, Microsoft provides the Azure Monitor OpenTelemetry Distro as language-specific wrapper SDKs (available for Java, .NET, Node.js, and Python). If your operational teams heavily depend on Live Metrics or native Azure continuous profiling, utilizing these Distros at the application level alongside, or instead of, a standalone Collector is the officially supported architectural compromise.
 
@@ -358,21 +359,22 @@ Serverless compute platforms like AWS Lambda and Google Cloud Functions fundamen
 
 ### The "Freeze" Problem and the Telemetry Black Hole
 
-To understand why OpenTelemetry struggles out-of-the-box in serverless architectures, we must examine how standard OTel SDKs export data. 
+To understand why OpenTelemetry struggles out-of-the-box in serverless architectures, we must examine how standard OTel SDKs export data.
 
 In a traditional microservice, the OpenTelemetry SDK utilizes a `BatchSpanProcessor` and a `BatchLogRecordProcessor`. These processors collect telemetry in memory and use asynchronous background threads to export the data to a Collector every few seconds. This prevents the application's critical path from being blocked by network I/O to the observability backend.
 
 However, serverless environments employ a "freeze/thaw" lifecycle:
-1.  An event triggers the function.
-2.  The function executes its handler.
-3.  The function returns a response to the caller.
-4.  **The cloud provider instantly freezes the execution environment's CPU.**
+
+1. An event triggers the function.
+2. The function executes its handler.
+3. The function returns a response to the caller.
+4. **The cloud provider instantly freezes the execution environment's CPU.**
 
 If the OpenTelemetry SDK was waiting for its 5-second interval to batch and export data, that background thread is frozen the moment the response is sent. The telemetry remains trapped in memory. If the function is not invoked again before the cloud provider terminates the container, that telemetry is permanently lost.
 
 ### Approach 1: Synchronous Flushing (The SDK Method)
 
-The simplest, framework-agnostic way to solve the freeze problem is to force the SDK to export data *before* the function returns a response. 
+The simplest, framework-agnostic way to solve the freeze problem is to force the SDK to export data *before* the function returns a response.
 
 This involves replacing the default `BatchSpanProcessor` with a `SimpleSpanProcessor` (which exports each span immediately) or manually invoking a `forceFlush()` method at the end of your function handler.
 
@@ -437,19 +439,20 @@ Resources:
 
 ### Google Cloud Functions and Cloud Run
 
-Google Cloud approaches serverless differently. **Cloud Functions (2nd Gen)** is built directly on top of **Cloud Run**, which is a container-as-a-service platform. 
+Google Cloud approaches serverless differently. **Cloud Functions (2nd Gen)** is built directly on top of **Cloud Run**, which is a container-as-a-service platform.
 
 Because Cloud Run executes standard Docker containers, you have more flexibility. However, the same "freeze" problem applies if CPU allocation is set to "allocated only during request processing."
 
 To handle OpenTelemetry in Google's serverless ecosystem, you have two primary options:
 
-1.  **Always-on CPU:** In Cloud Run, you can configure the service to always allocate CPU. This behaves like a standard VM, allowing the OTel `BatchSpanProcessor` to run continuously in the background. This is the easiest solution but incurs higher continuous compute costs.
-2.  **Synchronous Flushing via ADC:** If using ephemeral compute, you must fall back to Approach 1. You configure the OpenTelemetry SDK to use the `googlecloud` exporter and manually invoke the provider's `Shutdown()` or `ForceFlush()` routine immediately before your HTTP handler or Pub/Sub event subscriber returns its success status.
+1. **Always-on CPU:** In Cloud Run, you can configure the service to always allocate CPU. This behaves like a standard VM, allowing the OTel `BatchSpanProcessor` to run continuously in the background. This is the easiest solution but incurs higher continuous compute costs.
+2. **Synchronous Flushing via ADC:** If using ephemeral compute, you must fall back to Approach 1. You configure the OpenTelemetry SDK to use the `googlecloud` exporter and manually invoke the provider's `Shutdown()` or `ForceFlush()` routine immediately before your HTTP handler or Pub/Sub event subscriber returns its success status.
 
 ### Mitigating Cold Starts
 
-Regardless of the cloud provider, adding OpenTelemetry SDKs, auto-instrumentation agents, and collector extensions increases the initialization time of your serverless functions (Cold Starts). 
+Regardless of the cloud provider, adding OpenTelemetry SDKs, auto-instrumentation agents, and collector extensions increases the initialization time of your serverless functions (Cold Starts).
 
 To optimize performance:
+
 * **Avoid heavy auto-instrumentation:** Languages like Java suffer heavy penalties from bytecode manipulation during cold starts. Prefer manual instrumentation or use native GraalVM images if cold starts must be strictly sub-second.
 * **Trim the Collector:** If you use a custom Lambda extension, compile a custom Collector binary using `ocb` (as covered in Chapter 12) that contains *only* the specific receivers and exporters you need, reducing the memory footprint and startup time of the extension process.

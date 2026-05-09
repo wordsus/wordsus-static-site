@@ -2,9 +2,9 @@ While primitive types form the foundation of any Go program, real-world applicat
 
 ## 4.1 Arrays: Fixed-Size Memory Sequences
 
-In Go, an array is a numbered sequence of elements of a single, specific type. While they form the foundational building blocks for more flexible data structures (like slices, which we will explore next), arrays in Go possess strict characteristics that distinguish them from arrays in many other programming languages. 
+In Go, an array is a numbered sequence of elements of a single, specific type. While they form the foundational building blocks for more flexible data structures (like slices, which we will explore next), arrays in Go possess strict characteristics that distinguish them from arrays in many other programming languages.
 
-The most critical defining feature of a Go array is that **its length is part of its type**. 
+The most critical defining feature of a Go array is that **its length is part of its type**.
 
 This means that `[5]int` and `[10]int` are entirely distinct, incompatible types. You cannot assign a `[5]int` to a variable of type `[10]int`, nor can you write a function that accepts an array of any size. The size must be a constant expression evaluated at compile time, rendering arrays completely inflexible in length once declared.
 
@@ -36,7 +36,7 @@ sparse := [5]int{0: 10, 3: 40}
 
 ### Memory Representation
 
-Under the hood, an array is simply a contiguous block of memory. There are no hidden headers, no capacity fields, and no pointers to other memory locations. 
+Under the hood, an array is simply a contiguous block of memory. There are no hidden headers, no capacity fields, and no pointers to other memory locations.
 
 ```text
 Memory Layout of `primes := [5]int{2, 3, 5, 7, 11}`
@@ -48,13 +48,14 @@ Memory Address (Conceptual):
 +------------+------------+------------+------------+------------+
 Index: [0]        [1]          [2]          [3]          [4]
 ```
+
 *(Note: Assuming a 64-bit architecture where an `int` occupies 8 bytes).*
 
 Because the memory is contiguous, accessing an element via its index is extremely fast—an $O(1)$ operation. The runtime simply calculates the memory offset from the start of the array based on the index and the size of the element type.
 
 ### Value Semantics: Arrays are Values
 
-A fundamental departure from languages like C or C++ is that **arrays in Go are values, not pointers to the first element**. 
+A fundamental departure from languages like C or C++ is that **arrays in Go are values, not pointers to the first element**.
 
 When you assign one array to another, or when you pass an array to a function, Go creates a complete, independent copy of the entire memory block. Modifying the copy does not affect the original.
 
@@ -84,7 +85,7 @@ func main() {
 }
 ```
 
-While this value semantic provides safety by preventing unintended side effects, it introduces a performance penalty. Passing a `[1000000]int` to a function means copying 8 megabytes of memory on a 64-bit system for every function call. 
+While this value semantic provides safety by preventing unintended side effects, it introduces a performance penalty. Passing a `[1000000]int` to a function means copying 8 megabytes of memory on a 64-bit system for every function call.
 
 ### Multi-Dimensional Arrays
 
@@ -115,15 +116,15 @@ To overcome the rigid nature of arrays, Go introduces a much more dynamic and id
 
 While arrays provide a rigid foundation of contiguous memory, their fixed nature makes them impractical for most real-world data processing. To address this, Go provides **slices**. Slices are the ubiquitous, idiomatic way to handle sequences of data in Go. They offer the flexibility of dynamic sizing while maintaining the performance benefits of contiguous memory allocation.
 
-A slice does not store any data itself. Instead, it acts as a dynamic "window" or a reference into an underlying backing array. 
+A slice does not store any data itself. Instead, it acts as a dynamic "window" or a reference into an underlying backing array.
 
 ### The Anatomy of a Slice
 
 To truly master slices, you must understand how they are represented internally. A slice is fundamentally a lightweight data structure called a **slice header**. On a 64-bit architecture, this header is exactly 24 bytes long and consists of three 8-byte fields:
 
-1.  **Pointer (`Data`):** A memory address pointing to the first element of the underlying array that the slice can access (which is not necessarily the first element of the array itself).
-2.  **Length (`Len`):** The number of elements currently present in the slice.
-3.  **Capacity (`Cap`):** The maximum number of elements the slice can expand to without needing to allocate a new, larger backing array.
+1. **Pointer (`Data`):** A memory address pointing to the first element of the underlying array that the slice can access (which is not necessarily the first element of the array itself).
+2. **Length (`Len`):** The number of elements currently present in the slice.
+3. **Capacity (`Cap`):** The maximum number of elements the slice can expand to without needing to allocate a new, larger backing array.
 
 ```text
 Internal Representation of a Slice (Slice Header)
@@ -149,6 +150,7 @@ Understanding the distinction between length and capacity is crucial for writing
 There are several ways to bring a slice into existence, each serving a different purpose.
 
 #### 1. The `nil` Slice
+
 The zero value of a slice is `nil`. A `nil` slice has no backing array, a length of 0, and a capacity of 0. This is the idiomatic way to declare a slice when you don't yet know if it will hold any data.
 
 ```go
@@ -157,6 +159,7 @@ var userIDs []int
 ```
 
 #### 2. Slice Literals
+
 A slice literal looks exactly like an array literal, but you leave the brackets empty. This automatically allocates a backing array of the exact size needed to hold the provided elements.
 
 ```go
@@ -165,6 +168,7 @@ colors := []string{"red", "green", "blue", "yellow"}
 ```
 
 #### 3. Slicing an Existing Array (or Slice)
+
 You can create a slice by "slicing" an existing array or another slice using the syntax `[low:high]`. This creates a new slice header that points to the original backing array.
 
 * `low` is the starting index (inclusive).
@@ -203,7 +207,7 @@ Because slices from the same array share the same backing memory, changing an el
 
 ### The `make` Function
 
-When you need to initialize a slice dynamically, especially when you know the approximate number of elements it will eventually hold, you should use the built-in `make` function. 
+When you need to initialize a slice dynamically, especially when you know the approximate number of elements it will eventually hold, you should use the built-in `make` function.
 
 `make` allocates a zeroed backing array and returns a slice header pointing to it. It takes two or three arguments: the slice type, the length, and an optional capacity.
 
@@ -220,7 +224,7 @@ events := make([]string, 0, 100)
 
 #### Why use `make` with capacity?
 
-Specifying capacity is one of the most common performance optimizations in Go. If you iteratively add elements to a slice that has no extra capacity, the Go runtime must pause, allocate a new (larger) backing array, copy all existing elements over, and then add the new element. 
+Specifying capacity is one of the most common performance optimizations in Go. If you iteratively add elements to a slice that has no extra capacity, the Go runtime must pause, allocate a new (larger) backing array, copy all existing elements over, and then add the new element.
 
 By using `make([]T, 0, expectedCapacity)`, you pre-allocate the necessary memory upfront. This allows the slice to grow rapidly without triggering expensive memory allocations and copy operations, keeping your applications highly performant.
 
@@ -247,10 +251,10 @@ names = append(names, moreNames...)
 
 **The Mechanics of Growth**
 
-When you call `append`, Go checks if the underlying backing array has enough capacity to accommodate the new elements. 
+When you call `append`, Go checks if the underlying backing array has enough capacity to accommodate the new elements.
 
-1.  **Sufficient Capacity:** If `len < cap`, `append` simply places the new elements into the existing backing array, updates the slice header's length, and returns the updated header.
-2.  **Insufficient Capacity:** If adding elements exceeds the capacity, Go must perform a reallocation:
+1. **Sufficient Capacity:** If `len < cap`, `append` simply places the new elements into the existing backing array, updates the slice header's length, and returns the updated header.
+2. **Insufficient Capacity:** If adding elements exceeds the capacity, Go must perform a reallocation:
     * It allocates a brand-new, larger backing array in memory.
     * It copies all existing elements from the old array to the new one.
     * It adds the new elements.
@@ -315,11 +319,11 @@ window = window[0:6] // [2 3 4 5 6 7], len=6, cap=8
 window = window[2:] // [4 5 6 7], len=4, cap=6
 ```
 
-Notice that when you slice from the front (e.g., `window[2:]`), the capacity decreases because the pointer in the slice header moves forward, abandoning the elements behind it. 
+Notice that when you slice from the front (e.g., `window[2:]`), the capacity decreases because the pointer in the slice header moves forward, abandoning the elements behind it.
 
 ### The Full Slice Expression: Controlling Capacity
 
-A common pitfall in Go occurs when multiple slices share the same backing array, and one slice appends data, silently overwriting data intended for another slice. 
+A common pitfall in Go occurs when multiple slices share the same backing array, and one slice appends data, silently overwriting data intended for another slice.
 
 To prevent this, Go provides the **full slice expression** using three indices: `slice[low:high:max]`.
 
@@ -351,15 +355,16 @@ By using `s[low:high:high]`, you effectively lock the slice, forcing any future 
 
 ## 4.4 Maps: Creating and Manipulating Unordered Key-Value Stores
 
-While arrays and slices sequence data using numerical indices, there are many scenarios where you need to look up data using a specific identifier, like a string or a custom identifier. For these use cases, Go provides the **map**. 
+While arrays and slices sequence data using numerical indices, there are many scenarios where you need to look up data using a specific identifier, like a string or a custom identifier. For these use cases, Go provides the **map**.
 
 A map in Go is a highly optimized, built-in implementation of a hash table. It associates unique keys with specific values, providing an average-case time complexity of $O(1)$ for lookups, insertions, and deletions.
 
 ### Valid Key and Value Types
 
-In a Go map, values can be of absolutely any type—including other maps, slices, or structs. 
+In a Go map, values can be of absolutely any type—including other maps, slices, or structs.
 
-Keys, however, have a strict requirement: **the key type must be comparable**. The Go runtime must be able to use the `==` and `!=` operators to evaluate if two keys are identical. 
+Keys, however, have a strict requirement: **the key type must be comparable**. The Go runtime must be able to use the `==` and `!=` operators to evaluate if two keys are identical.
+
 * **Valid Keys:** Integers, floats, strings, booleans, pointers, channels, and structs/arrays (if all their internal fields are also comparable).
 * **Invalid Keys:** Slices, functions, and other maps. Attempting to use these as keys will result in a compile-time error.
 
@@ -405,7 +410,7 @@ inventory["Apples"] = 75 // Overwrites the previous value
 delete(inventory, "Bananas") // Safe even if "Bananas" doesn't exist
 ```
 
-When you retrieve a value, what happens if the key isn't there? Go does not throw an error or return `nil`; instead, it returns the **zero value** for the map's value type. 
+When you retrieve a value, what happens if the key isn't there? Go does not throw an error or return `nil`; instead, it returns the **zero value** for the map's value type.
 
 ```go
 // inventory["Oranges"] does not exist. 
@@ -424,6 +429,7 @@ if exists {
     fmt.Println("Oranges are not tracked in the inventory.")
 }
 ```
+
 The second return value (`exists` or `ok`) is a boolean that is `true` if the key is present in the map, and `false` otherwise.
 
 ### Map Iteration and Intentional Randomization
@@ -438,13 +444,13 @@ for name, score := range scores {
 }
 ```
 
-A critical architectural detail of Go is that **map iteration is deliberately unordered**. 
+A critical architectural detail of Go is that **map iteration is deliberately unordered**.
 
 If you run the loop above multiple times, the output order will change. The Go designers intentionally randomized the starting bucket for map iteration to prevent developers from accidentally relying on a specific order (which is inherently unstable in a hash table). If you need to iterate through a map in alphabetical or numerical order, you must extract the keys into a slice, sort the slice, and then use the sorted slice to access the map values.
 
 ### Internal Mechanics and Thread Safety
 
-Under the hood, a map is a pointer to an internal `hmap` struct managed by the runtime. 
+Under the hood, a map is a pointer to an internal `hmap` struct managed by the runtime.
 
 ```text
 Conceptual Map Representation (hmap)
@@ -463,7 +469,7 @@ Key: "Bob"                            | ["Bob": 82]           |
 
 Because a map is fundamentally a pointer, when you pass a map to a function, you are passing the pointer by value. Modifications made to the map inside the function *will* be visible to the caller, just like slices.
 
-> **Crucial Warning:** Maps in Go are **not thread-safe**. 
+> **Crucial Warning:** Maps in Go are **not thread-safe**.
 > If one goroutine is writing to a map while another goroutine is reading from or writing to the exact same map, the Go runtime will detect the race condition and instantly trigger a fatal panic, crashing your application. We will explore how to safely use maps in concurrent environments in Part III using `sync.Mutex` and `sync.Map`.
 
 ## 4.5 Memory Implications and Pitfalls of Composite Types
@@ -472,7 +478,7 @@ While Go's composite types—arrays, slices, and maps—are designed to be ergon
 
 ### Pitfall 1: The Slice Memory Leak (Sub-slicing)
 
-One of the most infamous memory leaks in Go occurs when slicing a large slice or array to extract a small piece of data. 
+One of the most infamous memory leaks in Go occurs when slicing a large slice or array to extract a small piece of data.
 
 Recall that a slice header contains a pointer to a backing array. As long as *any* slice holds a reference to that backing array, the garbage collector cannot reclaim the memory, even if only a tiny fraction of the array is actually accessible.
 
@@ -492,7 +498,7 @@ func extractErrorCode() {
 }
 ```
 
-Even after `extractErrorCode` returns and `entireLog` goes out of scope, the 10 MB backing array remains pinned in memory because `globalErrorCode` is still pointing to it. 
+Even after `extractErrorCode` returns and `entireLog` goes out of scope, the 10 MB backing array remains pinned in memory because `globalErrorCode` is still pointing to it.
 
 **The Solution:**
 To sever the tie to the massive backing array, you must allocate a new, independently backed slice using the `copy` function or `append`.
@@ -510,6 +516,7 @@ func extractErrorCodeSafe() {
     // globalErrorCode = append([]byte(nil), targetSlice...)
 }
 ```
+
 Now, the 10 MB array has no active references and will be swiftly swept away by the garbage collector.
 
 ### Pitfall 2: Maps Never Shrink
@@ -564,6 +571,7 @@ func processUsers(users []User) {
     }
 }
 ```
+
 Alternatively, defining your slice to hold pointers (`[]*User`) eliminates this problem entirely, as the range loop will only copy an 8-byte memory address per iteration.
 
 ### Pitfall 4: Appending to Slices in Functions

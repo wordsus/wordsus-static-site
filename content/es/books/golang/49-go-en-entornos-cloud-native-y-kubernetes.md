@@ -2,7 +2,7 @@ El ecosistema **Cloud Native** ha encontrado en Go su lenguaje de programación 
 
 ## 49.1. Implementación de apagado elegante (Graceful Shutdown) en contenedores efímeros
 
-En arquitecturas Cloud Native y plataformas de orquestación como Kubernetes, los contenedores son inherentemente efímeros. Las instancias de tu aplicación escrita en Go serán creadas y destruidas de forma rutinaria debido a despliegues continuos (Rolling Updates), políticas de escalado automático (HPA), o simplemente por el rebalanceo y mantenimiento de los nodos del clúster. 
+En arquitecturas Cloud Native y plataformas de orquestación como Kubernetes, los contenedores son inherentemente efímeros. Las instancias de tu aplicación escrita en Go serán creadas y destruidas de forma rutinaria debido a despliegues continuos (Rolling Updates), políticas de escalado automático (HPA), o simplemente por el rebalanceo y mantenimiento de los nodos del clúster.
 
 Si un contenedor se apaga abruptamente al recibir la orden de terminación, las peticiones HTTP en vuelo se interrumpirán devolviendo errores al cliente, las transacciones en curso podrían quedar huérfanas y los procesos en segundo plano se corromperán. Para evitar esto, es imperativo implementar un apagado elegante o *Graceful Shutdown*.
 
@@ -10,9 +10,9 @@ Si un contenedor se apaga abruptamente al recibir la orden de terminación, las 
 
 Cuando Kubernetes decide terminar un Pod, no lo destruye inmediatamente. En su lugar, sigue un proceso determinista:
 
-1.  **Envío de SIGTERM:** Kubernetes envía la señal `SIGTERM` al proceso principal (PID 1) del contenedor. Al mismo tiempo, el Pod se marca como *Terminating* y es removido de los Endpoints del balanceador de carga, por lo que dejará de recibir tráfico nuevo.
-2.  **Período de gracia:** El orquestador otorga un tiempo finito para que la aplicación se cierre limpiamente. Este tiempo está definido por la directiva `terminationGracePeriodSeconds` (por defecto, 30 segundos).
-3.  **Envío de SIGKILL:** Si el proceso sigue vivo una vez expirado el período de gracia, el kernel del nodo envía un `SIGKILL`, forzando la terminación inmediata del proceso sin posibilidad de interceptación.
+1. **Envío de SIGTERM:** Kubernetes envía la señal `SIGTERM` al proceso principal (PID 1) del contenedor. Al mismo tiempo, el Pod se marca como *Terminating* y es removido de los Endpoints del balanceador de carga, por lo que dejará de recibir tráfico nuevo.
+2. **Período de gracia:** El orquestador otorga un tiempo finito para que la aplicación se cierre limpiamente. Este tiempo está definido por la directiva `terminationGracePeriodSeconds` (por defecto, 30 segundos).
+3. **Envío de SIGKILL:** Si el proceso sigue vivo una vez expirado el período de gracia, el kernel del nodo envía un `SIGKILL`, forzando la terminación inmediata del proceso sin posibilidad de interceptación.
 
 El objetivo de nuestra aplicación Go es capturar esa señal `SIGTERM` (o `SIGINT` en entornos de desarrollo local) y utilizar el período de gracia para concluir su trabajo pendiente y cerrar recursos.
 
@@ -26,64 +26,64 @@ A continuación, se presenta un patrón robusto para la inicialización y el apa
 package main
 
 import (
-	"context"
-	"errors"
-	"log/slog"
-	"net/http"
-	"os"
-	"os/signal"
-	"syscall"
-	"time"
+ "context"
+ "errors"
+ "log/slog"
+ "net/http"
+ "os"
+ "os/signal"
+ "syscall"
+ "time"
 )
 
 func main() {
-	// 1. Crear un contexto que escuche las señales de interrupción del OS (SIGINT, SIGTERM)
-	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
-	defer stop()
+ // 1. Crear un contexto que escuche las señales de interrupción del OS (SIGINT, SIGTERM)
+ ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
+ defer stop()
 
-	// Configuración del servidor HTTP (obviamos la inyección de dependencias para el ejemplo)
-	mux := http.NewServeMux()
-	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		time.Sleep(2 * time.Second) // Simulamos trabajo en vuelo
-		w.Write([]byte("Petición completada con éxito"))
-	})
+ // Configuración del servidor HTTP (obviamos la inyección de dependencias para el ejemplo)
+ mux := http.NewServeMux()
+ mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+  time.Sleep(2 * time.Second) // Simulamos trabajo en vuelo
+  w.Write([]byte("Petición completada con éxito"))
+ })
 
-	srv := &http.Server{
-		Addr:    ":8080",
-		Handler: mux,
-	}
+ srv := &http.Server{
+  Addr:    ":8080",
+  Handler: mux,
+ }
 
-	// 2. Ejecutar el servidor en una Goroutine para no bloquear el hilo principal
-	go func() {
-		slog.Info("Servidor iniciado", slog.String("puerto", "8080"))
-		if err := srv.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
-			slog.Error("Error crítico en el servidor", slog.String("error", err.Error()))
-			os.Exit(1)
-		}
-	}()
+ // 2. Ejecutar el servidor en una Goroutine para no bloquear el hilo principal
+ go func() {
+  slog.Info("Servidor iniciado", slog.String("puerto", "8080"))
+  if err := srv.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
+   slog.Error("Error crítico en el servidor", slog.String("error", err.Error()))
+   os.Exit(1)
+  }
+ }()
 
-	// 3. Bloquear la ejecución principal hasta que el contexto sea cancelado (se reciba una señal)
-	<-ctx.Done()
+ // 3. Bloquear la ejecución principal hasta que el contexto sea cancelado (se reciba una señal)
+ <-ctx.Done()
 
-	slog.Info("Señal de apagado recibida. Iniciando Graceful Shutdown...")
+ slog.Info("Señal de apagado recibida. Iniciando Graceful Shutdown...")
 
-	// 4. Crear un nuevo contexto con timeout para el proceso de apagado
-	// Este timeout DEBE ser menor que el terminationGracePeriodSeconds de Kubernetes
-	shutdownCtx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	defer cancel()
+ // 4. Crear un nuevo contexto con timeout para el proceso de apagado
+ // Este timeout DEBE ser menor que el terminationGracePeriodSeconds de Kubernetes
+ shutdownCtx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+ defer cancel()
 
-	// 5. Apagar el servidor HTTP
-	// Shutdown deja de aceptar nuevas conexiones y espera a que terminen las activas
-	if err := srv.Shutdown(shutdownCtx); err != nil {
-		slog.Error("El servidor forzó el apagado debido a un timeout o error", slog.String("error", err.Error()))
-	} else {
-		slog.Info("Servidor HTTP detenido correctamente")
-	}
+ // 5. Apagar el servidor HTTP
+ // Shutdown deja de aceptar nuevas conexiones y espera a que terminen las activas
+ if err := srv.Shutdown(shutdownCtx); err != nil {
+  slog.Error("El servidor forzó el apagado debido a un timeout o error", slog.String("error", err.Error()))
+ } else {
+  slog.Info("Servidor HTTP detenido correctamente")
+ }
 
-	// NOTA: Aquí es donde se invocaría el cierre de conexiones a Bases de Datos (db.Close()),
-	// limpieza de Workers en background usando sync.WaitGroup, y desconexión de Message Brokers.
+ // NOTA: Aquí es donde se invocaría el cierre de conexiones a Bases de Datos (db.Close()),
+ // limpieza de Workers en background usando sync.WaitGroup, y desconexión de Message Brokers.
 
-	slog.Info("Apagado completo. Saliendo del proceso.")
+ slog.Info("Apagado completo. Saliendo del proceso.")
 }
 ```
 
@@ -118,43 +118,43 @@ Para interactuar con la API de Lambda, AWS proporciona el SDK `github.com/aws/aw
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"net/http"
+ "context"
+ "encoding/json"
+ "net/http"
 
-	"github.com/aws/aws-lambda-go/events"
-	"github.com/aws/aws-lambda-go/lambda"
+ "github.com/aws/aws-lambda-go/events"
+ "github.com/aws/aws-lambda-go/lambda"
 )
 
 // Respuesta define la estructura del payload JSON
 type Respuesta struct {
-	Mensaje string `json:"mensaje"`
+ Mensaje string `json:"mensaje"`
 }
 
 // HandleRequest es la función de entrada. Recibe el evento y devuelve una respuesta formateada.
 func HandleRequest(ctx context.Context, request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
-	// Procesamiento basado en la petición (ej. leer r.Body, r.QueryStringParameters)
-	nombre := request.QueryStringParameters["nombre"]
-	if nombre == "" {
-		nombre = "Mundo Serverless"
-	}
+ // Procesamiento basado en la petición (ej. leer r.Body, r.QueryStringParameters)
+ nombre := request.QueryStringParameters["nombre"]
+ if nombre == "" {
+  nombre = "Mundo Serverless"
+ }
 
-	res := Respuesta{Mensaje: "Hola, " + nombre}
-	body, _ := json.Marshal(res)
+ res := Respuesta{Mensaje: "Hola, " + nombre}
+ body, _ := json.Marshal(res)
 
-	// La respuesta debe adaptarse a la estructura que API Gateway espera
-	return events.APIGatewayProxyResponse{
-		StatusCode: http.StatusOK,
-		Headers: map[string]string{
-			"Content-Type": "application/json",
-		},
-		Body: string(body),
-	}, nil
+ // La respuesta debe adaptarse a la estructura que API Gateway espera
+ return events.APIGatewayProxyResponse{
+  StatusCode: http.StatusOK,
+  Headers: map[string]string{
+   "Content-Type": "application/json",
+  },
+  Body: string(body),
+ }, nil
 }
 
 func main() {
-	// lambda.Start bloquea la ejecución y maneja la comunicación con el Runtime de AWS
-	lambda.Start(HandleRequest)
+ // lambda.Start bloquea la ejecución y maneja la comunicación con el Runtime de AWS
+ lambda.Start(HandleRequest)
 }
 ```
 
@@ -173,28 +173,28 @@ Esto significa que gran parte del código que escribes para un monolito o micros
 package helloworld
 
 import (
-	"encoding/json"
-	"net/http"
+ "encoding/json"
+ "net/http"
 
-	"github.com/GoogleCloudPlatform/functions-framework-go/functions"
+ "github.com/GoogleCloudPlatform/functions-framework-go/functions"
 )
 
 // La función init() registra el handler HTTP en el Functions Framework
 func init() {
-	functions.HTTP("MiFuncionGo", miHandlerHTTP)
+ functions.HTTP("MiFuncionGo", miHandlerHTTP)
 }
 
 // miHandlerHTTP utiliza las firmas estándar de Go
 func miHandlerHTTP(w http.ResponseWriter, r *http.Request) {
-	nombre := r.URL.Query().Get("nombre")
-	if nombre == "" {
-		nombre = "Mundo GCF"
-	}
+ nombre := r.URL.Query().Get("nombre")
+ if nombre == "" {
+  nombre = "Mundo GCF"
+ }
 
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(map[string]string{
-		"mensaje": "Hola, " + nombre,
-	})
+ w.Header().Set("Content-Type", "application/json")
+ json.NewEncoder(w).Encode(map[string]string{
+  "mensaje": "Hola, " + nombre,
+ })
 }
 ```
 
@@ -210,9 +210,9 @@ Para exprimir al máximo el rendimiento y evitar agotar recursos (como pools de 
 package main
 
 import (
-	"database/sql"
-	"log/slog"
-	// ... otros imports
+ "database/sql"
+ "log/slog"
+ // ... otros imports
 )
 
 // Variable global que persiste entre invocaciones en un "Warm Start"
@@ -220,19 +220,19 @@ var db *sql.DB
 
 // init() se ejecuta SOLAMENTE durante el "Cold Start" (la creación del contenedor)
 func init() {
-	var err error
-	// Conectar a la base de datos (se omite la cadena de conexión por brevedad)
-	db, err = sql.Open("postgres", "postgres://user:pass@host/db")
-	if err != nil {
-		slog.Error("Fallo al inicializar DB")
-	}
+ var err error
+ // Conectar a la base de datos (se omite la cadena de conexión por brevedad)
+ db, err = sql.Open("postgres", "postgres://user:pass@host/db")
+ if err != nil {
+  slog.Error("Fallo al inicializar DB")
+ }
 }
 
 // HandleRequest se ejecuta múltiples veces
 func HandleRequest(ctx context.Context, req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
-	// Reutilizamos el pool de conexiones 'db' ya establecido
-	// ... lógica de la base de datos ...
-	return events.APIGatewayProxyResponse{StatusCode: 200}, nil
+ // Reutilizamos el pool de conexiones 'db' ya establecido
+ // ... lógica de la base de datos ...
+ return events.APIGatewayProxyResponse{StatusCode: 200}, nil
 }
 ```
 
@@ -268,21 +268,21 @@ A continuación, se ilustra la estructura típica del método `Reconcile` genera
 package controllers
 
 import (
-	"context"
-	apierrors "k8s.io/apimachinery/pkg/api/errors"
-	"k8s.io/apimachinery/pkg/runtime"
-	ctrl "sigs.k8s.io/controller-runtime"
-	"sigs.k8s.io/controller-runtime/pkg/client"
-	"sigs.k8s.io/controller-runtime/pkg/log"
+ "context"
+ apierrors "k8s.io/apimachinery/pkg/api/errors"
+ "k8s.io/apimachinery/pkg/runtime"
+ ctrl "sigs.k8s.io/controller-runtime"
+ "sigs.k8s.io/controller-runtime/pkg/client"
+ "sigs.k8s.io/controller-runtime/pkg/log"
 
-	// Importación del paquete donde se define el esquema de nuestro Custom Resource
-	midominio "github.com/miusuario/mi-operador/api/v1alpha1"
+ // Importación del paquete donde se define el esquema de nuestro Custom Resource
+ midominio "github.com/miusuario/mi-operador/api/v1alpha1"
 )
 
 // MiBaseDeDatosReconciler reconcilia un objeto MiBaseDeDatos
 type MiBaseDeDatosReconciler struct {
-	client.Client
-	Scheme *runtime.Scheme
+ client.Client
+ Scheme *runtime.Scheme
 }
 
 // +kubebuilder:rbac:groups=midominio.com,resources=mibasededatos,verbs=get;list;watch;create;update;patch;delete
@@ -291,50 +291,50 @@ type MiBaseDeDatosReconciler struct {
 // Reconcile se dispara cada vez que ocurre un evento (creación, actualización o borrado)
 // sobre el Custom Resource "MiBaseDeDatos".
 func (r *MiBaseDeDatosReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
-	logger := log.FromContext(ctx)
+ logger := log.FromContext(ctx)
 
-	// 1. Obtener la instancia del Custom Resource desde la caché local del cliente
-	var miDB midominio.MiBaseDeDatos
-	if err := r.Get(ctx, req.NamespacedName, &miDB); err != nil {
-		if apierrors.IsNotFound(err) {
-			// El recurso fue borrado, terminamos la reconciliación limpiamente
-			logger.Info("Recurso MiBaseDeDatos no encontrado. Ignorando...")
-			return ctrl.Result{}, nil
-		}
-		// Error real al consultar la API
-		return ctrl.Result{}, err
-	}
+ // 1. Obtener la instancia del Custom Resource desde la caché local del cliente
+ var miDB midominio.MiBaseDeDatos
+ if err := r.Get(ctx, req.NamespacedName, &miDB); err != nil {
+  if apierrors.IsNotFound(err) {
+   // El recurso fue borrado, terminamos la reconciliación limpiamente
+   logger.Info("Recurso MiBaseDeDatos no encontrado. Ignorando...")
+   return ctrl.Result{}, nil
+  }
+  // Error real al consultar la API
+  return ctrl.Result{}, err
+ }
 
-	// 2. Analizar el Estado Deseado (Spec)
-	// Ejemplo: miDB.Spec.Replicas, miDB.Spec.Version
+ // 2. Analizar el Estado Deseado (Spec)
+ // Ejemplo: miDB.Spec.Replicas, miDB.Spec.Version
 
-	// 3. Ejecutar la Lógica de Negocio (Idempotente)
-	// Aquí se interactuaría con otros recursos de K8s (ej. crear un StatefulSet)
-	// o con APIs externas.
-	logger.Info("Reconciliando MiBaseDeDatos", "Nombre", miDB.Name)
+ // 3. Ejecutar la Lógica de Negocio (Idempotente)
+ // Aquí se interactuaría con otros recursos de K8s (ej. crear un StatefulSet)
+ // o con APIs externas.
+ logger.Info("Reconciliando MiBaseDeDatos", "Nombre", miDB.Name)
 
-	// Simulación de una operación de sincronización exitosa
-	estadoSincronizado := true
+ // Simulación de una operación de sincronización exitosa
+ estadoSincronizado := true
 
-	// 4. Actualizar el Estado Actual (Status) para reflejar la realidad
-	if estadoSincronizado && miDB.Status.Fase != "Lista" {
-		miDB.Status.Fase = "Lista"
-		if err := r.Status().Update(ctx, &miDB); err != nil {
-			logger.Error(err, "Fallo al actualizar el estado de MiBaseDeDatos")
-			return ctrl.Result{}, err
-		}
-	}
+ // 4. Actualizar el Estado Actual (Status) para reflejar la realidad
+ if estadoSincronizado && miDB.Status.Fase != "Lista" {
+  miDB.Status.Fase = "Lista"
+  if err := r.Status().Update(ctx, &miDB); err != nil {
+   logger.Error(err, "Fallo al actualizar el estado de MiBaseDeDatos")
+   return ctrl.Result{}, err
+  }
+ }
 
-	// Si todo es correcto, devolvemos un ctrl.Result vacío. 
-	// Si quisiéramos reintentar en X segundos, usaríamos ctrl.Result{RequeueAfter: time.Second * 10}
-	return ctrl.Result{}, nil
+ // Si todo es correcto, devolvemos un ctrl.Result vacío. 
+ // Si quisiéramos reintentar en X segundos, usaríamos ctrl.Result{RequeueAfter: time.Second * 10}
+ return ctrl.Result{}, nil
 }
 
 // SetupWithManager registra el controlador en el Manager principal de la aplicación
 func (r *MiBaseDeDatosReconciler) SetupWithManager(mgr ctrl.Manager) error {
-	return ctrl.NewControllerManagedBy(mgr).
-		For(&midominio.MiBaseDeDatos{}).
-		Complete(r)
+ return ctrl.NewControllerManagedBy(mgr).
+  For(&midominio.MiBaseDeDatos{}).
+  Complete(r)
 }
 ```
 
@@ -342,6 +342,6 @@ Este modelo de reconciliación orientada a niveles (*level-based*), en contrapos
 
 ## Conclusión: El camino hacia la maestría en Go
 
-Con la exploración de Kubernetes y el ecosistema Cloud Native, cerramos este viaje técnico. Hemos transitado desde los fundamentos sintácticos y el potente modelo de concurrencia de Go, hasta el diseño de arquitecturas limpias y la optimización del runtime. 
+Con la exploración de Kubernetes y el ecosistema Cloud Native, cerramos este viaje técnico. Hemos transitado desde los fundamentos sintácticos y el potente modelo de concurrencia de Go, hasta el diseño de arquitecturas limpias y la optimización del runtime.
 
 Go no es solo un lenguaje; es una filosofía de **simplicidad, eficiencia y robustez**. La verdadera maestría no reside en conocer cada librería, sino en aplicar sus principios para resolver problemas complejos con soluciones legibles y mantenibles. Este libro es tu base; el futuro de tus sistemas escalables comienza con el código que escribas hoy. **¡Feliz codificación!**

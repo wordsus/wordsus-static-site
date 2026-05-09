@@ -1,18 +1,18 @@
-Deploying infrastructure from a local machine is fine for prototyping, but introduces critical risks in production. Manual deployments lack auditability, encourage state drift, and require developers to hold highly privileged cloud access. 
+Deploying infrastructure from a local machine is fine for prototyping, but introduces critical risks in production. Manual deployments lack auditability, encourage state drift, and require developers to hold highly privileged cloud access.
 
 To mature your operations, you must treat infrastructure code exactly like application code by adopting Continuous Integration and Continuous Delivery (CI/CD). This chapter explores how to automate your Pulumi workflows across popular platforms, enforce policy checks, surface infrastructure previews directly within Pull Requests, and establish version control as the absolute source of truth for your cloud environments.
 
 ## 18.1 Principles of Infrastructure CI/CD
 
-While Continuous Integration and Continuous Deployment (CI/CD) have been staples of application development for years, applying these practices to infrastructure introduces unique challenges. Application deployments typically involve pushing a stateless artifact to a server. Infrastructure deployments, however, are inherently stateful. A misconfigured pipeline step can accidentally delete databases, sever network routes, or expose sensitive environments to the public internet. 
+While Continuous Integration and Continuous Deployment (CI/CD) have been staples of application development for years, applying these practices to infrastructure introduces unique challenges. Application deployments typically involve pushing a stateless artifact to a server. Infrastructure deployments, however, are inherently stateful. A misconfigured pipeline step can accidentally delete databases, sever network routes, or expose sensitive environments to the public internet.
 
 When building CI/CD pipelines for Pulumi, you must adopt principles that respect the "blast radius" of infrastructure changes while maintaining the agility of automated deployments.
 
 ### 1. Version Control as the Absolute Source of Truth
 
-In an automated infrastructure paradigm, human operators should rarely, if ever, run `pulumi up` from their local machines against staging or production environments. Git (or your chosen VCS) must become the single source of truth and the sole trigger for infrastructure mutations. 
+In an automated infrastructure paradigm, human operators should rarely, if ever, run `pulumi up` from their local machines against staging or production environments. Git (or your chosen VCS) must become the single source of truth and the sole trigger for infrastructure mutations.
 
-* **Immutability of State:** If an operation is not reflected in the `main` branch, it does not exist in production. 
+* **Immutability of State:** If an operation is not reflected in the `main` branch, it does not exist in production.
 * **Auditability:** By forcing all changes through Pull Requests (PRs), every infrastructure modification is tied to a specific commit, author, and peer review.
 * **Drift Prevention:** Relying on automated pipelines ensures that the deployed infrastructure perfectly mirrors the code repository, reducing the likelihood of manual state drift (a topic we will explore further in Chapter 20).
 
@@ -45,6 +45,7 @@ Whenever a developer opens a Pull Request, the CI pipeline should automatically 
 As covered in Chapter 17, unit tests can only validate logic, not provider behavior. A robust infrastructure pipeline leverages Pulumi's ability to easily spin up and tear down stacks to create ephemeral, on-demand environments.
 
 When a feature branch introduces complex architectural changes, the CI pipeline can:
+
 1. Create a dynamic stack (e.g., `feature-branch-abc`).
 2. Run `pulumi up` to provision the isolated infrastructure.
 3. Execute integration tests against the live resources.
@@ -54,11 +55,12 @@ This principle ensures that infrastructure code is genuinely tested against the 
 
 ### 4. Least Privilege and Identity Federation (OIDC)
 
-Pipelines require credentials to authenticate with your cloud provider (AWS, Azure, GCP) and the Pulumi backend. Historically, this meant injecting long-lived, highly privileged API keys into CI/CD secrets. 
+Pipelines require credentials to authenticate with your cloud provider (AWS, Azure, GCP) and the Pulumi backend. Historically, this meant injecting long-lived, highly privileged API keys into CI/CD secrets.
 
 A modern principle of infrastructure CI/CD is moving away from static credentials toward **OpenID Connect (OIDC)**. OIDC allows your CI/CD runner (e.g., GitHub Actions, GitLab CI) to request short-lived, temporary access tokens from the cloud provider based on the repository and branch name.
 
 By combining OIDC with strict Role-Based Access Control (RBAC), you ensure that:
+
 * A pipeline running on a feature branch might only have permissions to run `pulumi preview` (Read-Only access to the cloud provider).
 * A pipeline running on the `main` branch can run `pulumi up` (Write access), but only scoped to specific resource groups or regions.
 
@@ -102,9 +104,9 @@ For organizations utilizing GitHub as their version control system, integrating 
 
 ### The Pulumi GitHub App
 
-While GitHub Actions executes the code, the Pulumi GitHub App handles the communication between the Pulumi Service and your GitHub repository. Its primary responsibility is to enrich the Pull Request experience. 
+While GitHub Actions executes the code, the Pulumi GitHub App handles the communication between the Pulumi Service and your GitHub repository. Its primary responsibility is to enrich the Pull Request experience.
 
-When a CI pipeline runs a `pulumi preview`, the Pulumi Service captures the output. The GitHub App then takes this output and posts it as a highly readable, inline comment directly within the PR. This surfaces the infrastructure diff to reviewers without requiring them to parse raw CI logs or navigate to the Pulumi Console. 
+When a CI pipeline runs a `pulumi preview`, the Pulumi Service captures the output. The GitHub App then takes this output and posts it as a highly readable, inline comment directly within the PR. This surfaces the infrastructure diff to reviewers without requiring them to parse raw CI logs or navigate to the Pulumi Console.
 
 To enable this, the App must be installed on your GitHub organization or repository, and your GitHub Actions workflow must pass a `GITHUB_TOKEN` to the Pulumi CLI.
 
@@ -131,7 +133,7 @@ Before writing the workflow code, it is crucial to understand how authentication
 
 ### Building the GitHub Actions Workflow
 
-Pulumi maintains an official GitHub Action (`pulumi/actions`) that simplifies the execution of Pulumi commands within a workflow. 
+Pulumi maintains an official GitHub Action (`pulumi/actions`) that simplifies the execution of Pulumi commands within a workflow.
 
 Below is a complete, production-ready example of a `.github/workflows/infrastructure.yml` file. This workflow assumes we are deploying to AWS using OIDC for cloud authentication and the Pulumi Service for state management.
 
@@ -295,7 +297,7 @@ deploy_infrastructure:
 
 Bitbucket Pipelines uses a slightly different execution model, relying on explicit pipeline definitions for branches and pull requests. Bitbucket also provides native "Pipes" (similar to GitHub Actions), but many teams prefer executing the Pulumi CLI directly via the official Docker image for maximum control.
 
-To enable Pull Request comments in Bitbucket, you configure the Bitbucket integration within the Pulumi Console. 
+To enable Pull Request comments in Bitbucket, you configure the Bitbucket integration within the Pulumi Console.
 
 #### OIDC in Bitbucket Pipelines
 
@@ -365,6 +367,7 @@ A common issue in containerized CI/CD environments like GitLab and Bitbucket is 
 When this happens, subsequent pipeline runs will fail with a `conflict: Another update is currently in progress` error.
 
 **Best Practices for Mitigation:**
+
 1. **Pipeline Timeouts:** Set reasonable timeouts on your CI jobs to prevent hanging deployments, but ensure they are long enough to complete heavy resource creation (like databases or Kubernetes clusters).
 2. **Handling Cancellations:** Educate your team *not* to cancel infrastructure pipelines mid-flight unless absolutely necessary.
 3. **Manual Resolution:** If a lock is orphaned, a human operator with sufficient permissions must run `pulumi cancel` to interrupt the update, followed by inspecting the state for drift, before the pipeline can be unblocked. (State recovery is covered extensively in Chapter 5).
@@ -380,6 +383,7 @@ Handling these previews effectively, however, requires more than simply running 
 When a developer opens a PR that modifies infrastructure, the resulting comment posted by the CI system must be immediately comprehensible. A raw, unformatted Pulumi log containing hundreds of lines of diagnostic information is often ignored.
 
 An effective PR preview comment should contain:
+
 1. **The Summary:** A high-level count of resources to be created, updated, deleted, or left unchanged.
 2. **The Diff:** A clear, color-coded (or symbol-coded) list of the specific resources undergoing mutation.
 3. **Policy Results:** If using CrossGuard (Policy as Code), a clear pass/fail status of the policy checks.
@@ -387,9 +391,9 @@ An effective PR preview comment should contain:
 
 ### Method 1: Utilizing the Pulumi Service Integrations
 
-As touched upon in previous sections, the most frictionless way to handle previews is leveraging the Pulumi Service's native VCS integrations (GitHub App, GitLab integration, Bitbucket App). 
+As touched upon in previous sections, the most frictionless way to handle previews is leveraging the Pulumi Service's native VCS integrations (GitHub App, GitLab integration, Bitbucket App).
 
-When these integrations are active, the Pulumi CLI detects the CI environment variables (e.g., `GITHUB_PR_NUMBER`). The Pulumi Service intercepts the preview data and automatically constructs and posts a highly formatted comment to the PR. 
+When these integrations are active, the Pulumi CLI detects the CI environment variables (e.g., `GITHUB_PR_NUMBER`). The Pulumi Service intercepts the preview data and automatically constructs and posts a highly formatted comment to the PR.
 
 **Managing Comment Spam:**
 A major advantage of native integrations is stateful comment management. If a developer pushes five sequential commits to a PR to fix a failing test, the Pulumi integration will not post five separate preview comments. Instead, it intelligently *updates* the existing comment or hides previous ones, keeping the PR timeline clean and focused on the latest state.
@@ -428,7 +432,7 @@ This approach allows platform engineering teams to build highly customized inter
 
 ### Security Posture: Scoping Permissions for Previews
 
-A critical security principle in CI/CD is the Principle of Least Privilege. A pipeline running on a feature branch (which triggered the PR) should *never* have the permissions required to modify production infrastructure. 
+A critical security principle in CI/CD is the Principle of Least Privilege. A pipeline running on a feature branch (which triggered the PR) should *never* have the permissions required to modify production infrastructure.
 
 Because `pulumi preview` only reads state and calculates a diff against the cloud provider's API, it requires significantly fewer permissions than `pulumi up`.
 
@@ -444,6 +448,7 @@ Because `pulumi preview` only reads state and calculates a diff against the clou
 ```
 
 **Implementing Read-Only Previews:**
+
 1. **Cloud Provider:** Create a dedicated IAM Role (e.g., `PulumiPreviewRole`) that only possesses `ReadOnlyAccess` or specifically scoped `List` and `Get` permissions for the resources managed by the stack. Bind your CI system's OIDC token to this role during the PR phase.
 2. **Pulumi Service:** If using Pulumi Teams or Enterprise, utilize Stack Permissions to grant the CI token `Read` access to the stack during the preview phase, ensuring it cannot accidentally execute an update or alter the state file.
 

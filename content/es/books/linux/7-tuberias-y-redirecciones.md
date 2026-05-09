@@ -83,21 +83,20 @@ Los operadores de redirección son las "tuberías físicas" que alteran el desti
 La redirección de salida es el pan de cada día en DevOps. Se utiliza para capturar el resultado exitoso de un comando (*stdout*, FD 1) y guardarlo en un archivo en lugar de imprimirlo en la pantalla.
 
 * **El operador `>` (Sobrescribir):** Crea un archivo nuevo con la salida del comando. **Cuidado:** Si el archivo ya existe, su contenido anterior será borrado y reemplazado por completo (truncado).
+
 ```bash
 # Guarda la lista de procesos actuales en un archivo nuevo
 ps aux > procesos_actuales.txt
 
 ```
 
-
 * **El operador `>>` (Añadir / Append):** Funciona igual que el anterior, pero si el archivo ya existe, añade la nueva salida al final del archivo sin borrar el contenido previo. Es fundamental para crear y mantener logs.
+
 ```bash
 # Añade una nueva línea de registro al final del log
 echo "Servicio reiniciado a las $(date)" >> /var/log/miservicio.log
 
 ```
-
-
 
 ### 2. Alimentando procesos: Redirección de Entrada (`<`)
 

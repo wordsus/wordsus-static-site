@@ -2,7 +2,7 @@
 
 ---
 
-Desde el principio de los tiempos, la humanidad ha levantado la vista hacia el firmamento con una mezcla de asombro, reverencia y curiosidad. Antes de que existieran los relojes, las brújulas o los calendarios digitales, el cielo nocturno era la pantalla gigante donde nuestros antepasados leían el paso del tiempo, predecían las estaciones y encontraban el camino de regreso a casa. Al unir las estrellas con líneas invisibles, crearon figuras fantásticas: héroes, monstruos, dioses y animales. 
+Desde el principio de los tiempos, la humanidad ha levantado la vista hacia el firmamento con una mezcla de asombro, reverencia y curiosidad. Antes de que existieran los relojes, las brújulas o los calendarios digitales, el cielo nocturno era la pantalla gigante donde nuestros antepasados leían el paso del tiempo, predecían las estaciones y encontraban el camino de regreso a casa. Al unir las estrellas con líneas invisibles, crearon figuras fantásticas: héroes, monstruos, dioses y animales.
 
 Hoy, vivimos rodeados de luces artificiales y pantallas brillantes que a menudo nos ocultan este espectáculo natural. Sin embargo, el firmamento sigue allí, inmutable y majestuoso, esperando a que volvamos a mirarlo. En este artículo, vamos a redescubrir el cielo. No necesitas un telescopio costoso ni un título en astrofísica; solo tus ojos, un lugar oscuro y un poco de imaginación. Prepárate para un viaje que conectará la ciencia moderna con la mitología antigua, devolviéndote la capacidad de leer el paisaje estrellado tal como lo hacían los antiguos marineros y exploradores.
 
@@ -15,7 +15,8 @@ Históricamente, una constelación era simplemente un dibujo imaginario formado 
 Para evitar confusiones en la astronomía moderna, la Unión Astronómica Internacional (UAI) dividió oficialmente el cielo en 1922 en **88 constelaciones**. Hoy en día, para los astrónomos, una constelación no es solo el dibujo de palitos, sino una región específica del cielo con fronteras bien definidas, como los países en un mapa terrestre. Cualquier objeto celeste (una estrella, una galaxia, un asteroide) que se encuentre dentro de esas fronteras pertenece a esa constelación.
 
 ### Asterismos vs. Constelaciones
-Es crucial entender la diferencia entre una constelación oficial y un "asterismo". Un asterismo es un patrón de estrellas muy reconocible que no es una constelación oficial en sí misma. Puede ser parte de una constelación más grande, o estar formado por estrellas de varias constelaciones diferentes. 
+
+Es crucial entender la diferencia entre una constelación oficial y un "asterismo". Un asterismo es un patrón de estrellas muy reconocible que no es una constelación oficial en sí misma. Puede ser parte de una constelación más grande, o estar formado por estrellas de varias constelaciones diferentes.
 El ejemplo más famoso es el **Gran Carro** (o la Cacerola). Mucha gente cree que es una constelación, pero en realidad es solo un asterismo: la cola y la parte trasera de la constelación oficial llamada la Osa Mayor (Ursa Major).
 
 ## 2. El movimiento del cielo: Una danza cósmica
@@ -23,10 +24,11 @@ El ejemplo más famoso es el **Gran Carro** (o la Cacerola). Mucha gente cree qu
 Para aprender a orientarnos, primero debemos entender por qué el cielo parece moverse. La respuesta, por supuesto, está bajo nuestros pies.
 
 La Tierra realiza dos movimientos principales que afectan lo que vemos:
-*   **Rotación diaria:** La Tierra gira sobre su propio eje una vez cada 24 horas. Esto hace que el Sol, la Luna y las estrellas parezcan salir por el este y ponerse por el oeste. Si observas el cielo durante un par de horas, notarás cómo las constelaciones se desplazan lentamente de este a oeste.
-*   **Traslación anual:** A medida que la Tierra orbita alrededor del Sol durante el año, nuestra perspectiva del espacio exterior cambia. Es por esto que las constelaciones que vemos en las noches de verano son diferentes a las que vemos en invierno.
 
-Debido a la rotación de la Tierra, hay puntos en el cielo que parecen no moverse. Si prolongas el eje de rotación de la Tierra hacia el espacio, chocarías con los **Polos Celestes**. Las estrellas que están muy cerca de estos polos parecen girar en círculos pequeños a su alrededor y nunca se ocultan bajo el horizonte. A estas se les llama **estrellas circumpolares**. 
+* **Rotación diaria:** La Tierra gira sobre su propio eje una vez cada 24 horas. Esto hace que el Sol, la Luna y las estrellas parezcan salir por el este y ponerse por el oeste. Si observas el cielo durante un par de horas, notarás cómo las constelaciones se desplazan lentamente de este a oeste.
+* **Traslación anual:** A medida que la Tierra orbita alrededor del Sol durante el año, nuestra perspectiva del espacio exterior cambia. Es por esto que las constelaciones que vemos en las noches de verano son diferentes a las que vemos en invierno.
+
+Debido a la rotación de la Tierra, hay puntos en el cielo que parecen no moverse. Si prolongas el eje de rotación de la Tierra hacia el espacio, chocarías con los **Polos Celestes**. Las estrellas que están muy cerca de estos polos parecen girar en círculos pequeños a su alrededor y nunca se ocultan bajo el horizonte. A estas se les llama **estrellas circumpolares**.
 
 A continuación, exploraremos las figuras más destacadas que dominan los hemisferios norte y sur, y descubriremos los relatos que las hicieron inmortales.
 
@@ -35,7 +37,8 @@ A continuación, exploraremos las figuras más destacadas que dominan los hemisf
 El hemisferio norte cuenta con un punto de anclaje perfecto: la Estrella Polar (Polaris). A lo largo de la historia de la navegación en el hemisferio norte, encontrar esta estrella significaba encontrar el camino a casa, ya que siempre indica el Norte geográfico con gran precisión.
 
 ### La Osa Mayor (Ursa Major)
-Sin duda, la constelación más útil del norte. Su asterismo principal, el Gran Carro, está formado por siete estrellas brillantes que parecen un cucharón o una carreta de mango largo. 
+
+Sin duda, la constelación más útil del norte. Su asterismo principal, el Gran Carro, está formado por siete estrellas brillantes que parecen un cucharón o una carreta de mango largo.
 **El Mito:** En la mitología griega, Calisto era una hermosa ninfa compañera de Artemisa (diosa de la caza). Zeus se enamoró de ella, provocando los celos de su esposa Hera. Como castigo, Hera transformó a Calisto en un oso. Años después, el hijo de Calisto, un cazador llamado Arcas, se encontró con el oso en el bosque. A punto de matar a su propia madre sin saberlo, Zeus intervino y los elevó a ambos a los cielos, convirtiendo a Arcas en la Osa Menor.
 
 **Cómo usarla para orientarte:**
@@ -58,7 +61,8 @@ Gráfico de orientación Norte:
 ```
 
 ### Casiopea (Cassiopeia)
-Fácilmente reconocible por su forma de "W" o "M" gigante (dependiendo de la hora de la noche), Casiopea se encuentra en el lado opuesto de la Estrella Polar con respecto a la Osa Mayor. 
+
+Fácilmente reconocible por su forma de "W" o "M" gigante (dependiendo de la hora de la noche), Casiopea se encuentra en el lado opuesto de la Estrella Polar con respecto a la Osa Mayor.
 **El Mito:** Casiopea era la arrogante y vanidosa reina de Etiopía. Cometió el grave error de alardear de que ella y su hija Andrómeda eran más hermosas que las Nereidas (las ninfas del mar). Poseidón, dios del mar, se enfureció y castigó al reino enviando a un monstruo marino (Cetus). Como castigo eterno, Casiopea fue atada a su trono en el cielo de tal manera que pasa la mitad de la noche colgando boca abajo, aferrándose para no caer.
 
 ## 4. Joyas del Sur: Las constelaciones australes
@@ -66,6 +70,7 @@ Fácilmente reconocible por su forma de "W" o "M" gigante (dependiendo de la hor
 El hemisferio sur no tiene una estrella brillante que marque exactamente el Polo Sur Celeste. Sin embargo, tiene constelaciones magníficas y ricas en estrellas, ya que al mirar hacia el sur galáctico estamos mirando hacia el densamente poblado brazo de Sagitario de nuestra Vía Láctea.
 
 ### La Cruz del Sur (Crux)
+
 Es la constelación más pequeña de las 88 reconocidas, pero también una de las más famosas y culturalmente significativas, apareciendo en las banderas de países como Australia, Nueva Zelanda y Brasil.
 **El Mito:** Aunque los navegantes europeos le dieron el nombre cristiano de la cruz en el siglo XVI, las culturas indígenas la conocían desde milenios atrás. Para los pueblos aborígenes australianos, la Cruz del Sur representa a un guerrero empalado por lanzas, o a las garras de un águila gigante. Para algunas culturas sudamericanas como la Mapuche, representa un ñandú o la huella de un choique.
 
@@ -91,7 +96,8 @@ Gráfico de orientación Sur:
 ```
 
 ### Centauro (Centaurus)
-Rodeando a la Cruz del Sur se encuentra el majestuoso Centauro, una bestia mítica mitad hombre, mitad caballo. En esta constelación se encuentra el sistema estelar de Alfa Centauri, nuestro vecino estelar más cercano (a "solo" 4.3 años luz de distancia). 
+
+Rodeando a la Cruz del Sur se encuentra el majestuoso Centauro, una bestia mítica mitad hombre, mitad caballo. En esta constelación se encuentra el sistema estelar de Alfa Centauri, nuestro vecino estelar más cercano (a "solo" 4.3 años luz de distancia).
 Las dos estrellas más brillantes del Centauro, Alfa y Beta Centauri, se utilizan junto con la Cruz del Sur para confirmar que estás mirando la constelación correcta, ya que ambas "apuntan" hacia la cruz.
 
 ## 5. El puente entre mundos: Orión el Cazador
@@ -104,9 +110,10 @@ Orión es una constelación excepcional. Debido a que está ubicada justo sobre 
 Identificar a Orión es muy fácil gracias a su asterismo principal: **El Cinturón de Orión** (popularmente conocido en los países hispanohablantes como Las Tres Marías). Son tres estrellas muy brillantes alineadas en una línea corta y recta.
 
 Alrededor del cinturón, un gran rectángulo de estrellas forma el cuerpo del cazador:
-*   **Betelgeuse:** En el hombro izquierdo del cazador (desde nuestra perspectiva, arriba a la izquierda). Es una estrella supergigante roja, inmensa y en las etapas finales de su vida. Su color naranja/rojizo es visible a simple vista. Algún día (quizás mañana, quizás en 100.000 años) explotará en una espectacular supernova que iluminará nuestras noches.
-*   **Rigel:** En el pie derecho del cazador (abajo a la derecha). Es una estrella supergigante azul, increíblemente caliente y brillante.
-*   **La Espada de Orión:** Colgando del cinturón hay tres estrellas más tenues. Si observas la estrella del medio de la espada en una noche oscura, notarás que no es un punto afilado de luz, sino una manchita borrosa. Estás viendo la **Nebulosa de Orión**, una gigantesca nube de gas y polvo a 1.300 años luz de distancia donde están naciendo estrellas nuevas en este mismo momento.
+
+* **Betelgeuse:** En el hombro izquierdo del cazador (desde nuestra perspectiva, arriba a la izquierda). Es una estrella supergigante roja, inmensa y en las etapas finales de su vida. Su color naranja/rojizo es visible a simple vista. Algún día (quizás mañana, quizás en 100.000 años) explotará en una espectacular supernova que iluminará nuestras noches.
+* **Rigel:** En el pie derecho del cazador (abajo a la derecha). Es una estrella supergigante azul, increíblemente caliente y brillante.
+* **La Espada de Orión:** Colgando del cinturón hay tres estrellas más tenues. Si observas la estrella del medio de la espada en una noche oscura, notarás que no es un punto afilado de luz, sino una manchita borrosa. Estás viendo la **Nebulosa de Orión**, una gigantesca nube de gas y polvo a 1.300 años luz de distancia donde están naciendo estrellas nuevas en este mismo momento.
 
 ## 6. El Zodíaco y el camino del Sol
 
@@ -133,11 +140,12 @@ Al empezar a orientarnos con las estrellas, nos damos cuenta de que necesitamos 
 De un horizonte al horizonte opuesto hay 180 grados. Desde el horizonte hasta el punto exactamente encima de tu cabeza (el cenit) hay 90 grados.
 
 La forma más sencilla de medir estas distancias angulares en el campo es usando tus propias manos con el brazo completamente extendido hacia el cielo:
-*   La punta de tu dedo meñique cubre aproximadamente **1 grado** del cielo.
-*   Tres dedos juntos (índice, medio y anular) cubren unos **5 grados**.
-*   Un puño cerrado cubre unos **10 grados**.
-*   Si extiendes tus dedos índice y meñique (el signo de "cuernos"), la distancia entre ellos es de unos **15 grados**.
-*   Si extiendes el pulgar y el meñique lo más que puedas (la señal de "shaka" o surfista), la distancia cubre unos **25 grados** (similar al tamaño completo de la Osa Mayor).
+
+* La punta de tu dedo meñique cubre aproximadamente **1 grado** del cielo.
+* Tres dedos juntos (índice, medio y anular) cubren unos **5 grados**.
+* Un puño cerrado cubre unos **10 grados**.
+* Si extiendes tus dedos índice y meñique (el signo de "cuernos"), la distancia entre ellos es de unos **15 grados**.
+* Si extiendes el pulgar y el meñique lo más que puedas (la señal de "shaka" o surfista), la distancia cubre unos **25 grados** (similar al tamaño completo de la Osa Mayor).
 
 Para los astrónomos, la ubicación exacta de las estrellas no se mide a puñetazos, sino mediante un preciso sistema de coordenadas celestes compuesto por la **Ascensión Recta** ($\alpha$) y la **Declinación** ($\delta$), que son los equivalentes cósmicos de la longitud y la latitud terrestres.
 
@@ -151,12 +159,12 @@ A través de ecuaciones formales como esta, el software de los telescopios moder
 
 Si este artículo ha despertado tu interés y planeas salir a explorar la noche, aquí tienes algunos consejos fundamentales para garantizar que tu experiencia sea espectacular:
 
-1.  **Huye de la contaminación lumínica:** Las farolas, los faros de los coches y la luz de las ciudades lavan el cielo, ocultando las estrellas más débiles y la belleza difusa de la Vía Láctea. Busca zonas alejadas de centros urbanos. Los parques nacionales, zonas de montaña o áreas rurales despejadas son ideales.
-2.  **La paciencia y la adaptación a la oscuridad:** Tus ojos necesitan tiempo para ajustarse a la oscuridad. Los compuestos químicos en tu retina que te permiten ver luz tenue (la rodopsina) tardan entre 20 y 30 minutos en acumularse por completo. Si miras tu teléfono móvil, arruinarás esa adaptación en un segundo.
-3.  **Usa una linterna roja:** Si necesitas consultar un mapa o ver dónde pisas, usa una luz roja. La luz roja de baja intensidad no destruye tu visión nocturna. Puedes pintar el cristal de una linterna con esmalte de uñas rojo o pegarle un celofán rojo.
-4.  **Descarga un mapa estelar:** Aunque los planisferios de cartón tradicionales tienen un encanto indudable, hoy en día las aplicaciones móviles son herramientas excepcionales para los principiantes. Usa el "modo noche" de las apps (que tiñe la pantalla de rojo) y apúntalas al cielo. Estas aplicaciones utilizan el giroscopio y el GPS de tu teléfono para decirte exactamente qué constelación, planeta o estrella estás mirando.
-5.  **Abrígate bien:** El observar las estrellas es una actividad sedentaria. Al no mover el cuerpo, el frío de la noche penetra mucho más rápido que si estuvieras caminando. Lleva ropa de abrigo adicional e incluso un termo con una bebida caliente.
-6.  **Usa la visión periférica:** Si estás intentando ver un objeto tenue (como una nebulosa o un cúmulo estelar), no lo mires directamente. Mira un poco hacia un lado del objeto. La parte central de nuestro ojo (la fóvea) es excelente para ver colores y detalles a plena luz, pero los bordes de nuestra retina tienen más células sensibles a la luz (bastones), haciéndonos mucho mejores para detectar luces tenues por el rabillo del ojo.
+1. **Huye de la contaminación lumínica:** Las farolas, los faros de los coches y la luz de las ciudades lavan el cielo, ocultando las estrellas más débiles y la belleza difusa de la Vía Láctea. Busca zonas alejadas de centros urbanos. Los parques nacionales, zonas de montaña o áreas rurales despejadas son ideales.
+2. **La paciencia y la adaptación a la oscuridad:** Tus ojos necesitan tiempo para ajustarse a la oscuridad. Los compuestos químicos en tu retina que te permiten ver luz tenue (la rodopsina) tardan entre 20 y 30 minutos en acumularse por completo. Si miras tu teléfono móvil, arruinarás esa adaptación en un segundo.
+3. **Usa una linterna roja:** Si necesitas consultar un mapa o ver dónde pisas, usa una luz roja. La luz roja de baja intensidad no destruye tu visión nocturna. Puedes pintar el cristal de una linterna con esmalte de uñas rojo o pegarle un celofán rojo.
+4. **Descarga un mapa estelar:** Aunque los planisferios de cartón tradicionales tienen un encanto indudable, hoy en día las aplicaciones móviles son herramientas excepcionales para los principiantes. Usa el "modo noche" de las apps (que tiñe la pantalla de rojo) y apúntalas al cielo. Estas aplicaciones utilizan el giroscopio y el GPS de tu teléfono para decirte exactamente qué constelación, planeta o estrella estás mirando.
+5. **Abrígate bien:** El observar las estrellas es una actividad sedentaria. Al no mover el cuerpo, el frío de la noche penetra mucho más rápido que si estuvieras caminando. Lleva ropa de abrigo adicional e incluso un termo con una bebida caliente.
+6. **Usa la visión periférica:** Si estás intentando ver un objeto tenue (como una nebulosa o un cúmulo estelar), no lo mires directamente. Mira un poco hacia un lado del objeto. La parte central de nuestro ojo (la fóvea) es excelente para ver colores y detalles a plena luz, pero los bordes de nuestra retina tienen más células sensibles a la luz (bastones), haciéndonos mucho mejores para detectar luces tenues por el rabillo del ojo.
 
 ## Conclusión: Nuestro lugar en el cosmos
 

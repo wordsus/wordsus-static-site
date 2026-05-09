@@ -326,6 +326,15 @@ pnpm run validate-markdown
 
 The script will recursively scan all markdown files inside the `content/` directory and output a list of any files that fail validation, along with their specific line errors.
 
+#### Auto-Fix Markdown Issues
+To automatically fix common formatting issues (like whitespace, indentation, and list styles) across all markdown files in the `content/` directory, run:
+
+```bash
+pnpm run fix-markdown
+```
+
+This script uses `markdownlint-cli2` with the project's configuration to apply automatic fixes where possible.
+
 ---
 
 ## ☁️ Deployment

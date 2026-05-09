@@ -4,7 +4,7 @@
 
 Cuando miramos el cielo nocturno en una noche despejada y lejos de la contaminación lumínica de las ciudades, solemos fijar nuestra atención en los puntos brillantes y parpadeantes que llamamos estrellas. Sin embargo, el espacio entre las estrellas no está completamente vacío. Si tuviéramos ojos capaces de captar la luz más tenue y colores invisibles para nosotros, veríamos que el cosmos está pintado con inmensas y majestuosas nubes de gas y polvo cósmico. Estas estructuras monumentales son las nebulosas.
 
-La palabra "nebulosa" proviene del latín y significa simplemente "nube". Pero a diferencia de las nubes de nuestra atmósfera, formadas por vapor de agua, las nebulosas cósmicas están compuestas principalmente de hidrógeno, el elemento más primordial del universo, junto con helio y pequeñas cantidades de elementos más pesados y polvo interestelar. 
+La palabra "nebulosa" proviene del latín y significa simplemente "nube". Pero a diferencia de las nubes de nuestra atmósfera, formadas por vapor de agua, las nebulosas cósmicas están compuestas principalmente de hidrógeno, el elemento más primordial del universo, junto con helio y pequeñas cantidades de elementos más pesados y polvo interestelar.
 
 Las nebulosas no son solo hermosos lienzos abstractos que decoran nuestra galaxia y el universo entero; son los lugares de trabajo más activos y fundamentales del cosmos. Son los viveros donde nacen las estrellas y, por extensión, los sistemas planetarios. Toda estrella que ves en el cielo nocturno, incluido nuestro propio Sol, dio sus primeros pasos de vida dentro del abrazo de una de estas nubes. A través de este artículo, emprenderemos un viaje hacia el interior de estas maravillosas cunas estelares para entender cómo funcionan, por qué tienen esos colores hipnóticos y cómo logramos desentrañar sus secretos desde la Tierra.
 
@@ -17,9 +17,10 @@ En el aire que respiramos en la Tierra, hay aproximadamente $3 \times 10^{19}$ (
 Sin embargo, en las nebulosas, la densidad aumenta enormemente en comparación con el medio interestelar normal. Una nebulosa densa puede contener desde cientos hasta decenas de miles de partículas por centímetro cúbico. Debido a que estas nubes abarcan distancias inimaginablemente vastas, medidas en "años luz" (la distancia que la luz viaja en un año, equivalente a unos 9.46 billones de kilómetros), esta materia tan tenue se acumula hasta sumar masas monumentales, a veces miles o millones de veces la masa de nuestro Sol.
 
 La "receta" química de una nebulosa promedio es relativamente simple y refleja la composición general del universo:
-*   **Hidrógeno (H):** Aproximadamente el 90% de los átomos.
-*   **Helio (He):** Aproximadamente el 9% de los átomos.
-*   **Elementos pesados y polvo:** El 1% restante. Este porcentaje, aunque pequeño, incluye carbono, oxígeno, nitrógeno, hierro y minúsculos granos de polvo interestelar (como silicatos o hielo), que son cruciales para formar planetas rocosos y, eventualmente, la vida misma.
+
+* **Hidrógeno (H):** Aproximadamente el 90% de los átomos.
+* **Helio (He):** Aproximadamente el 9% de los átomos.
+* **Elementos pesados y polvo:** El 1% restante. Este porcentaje, aunque pequeño, incluye carbono, oxígeno, nitrógeno, hierro y minúsculos granos de polvo interestelar (como silicatos o hielo), que son cruciales para formar planetas rocosos y, eventualmente, la vida misma.
 
 ## 2. El catálogo de las nubes cósmicas: Tipos de nebulosas
 
@@ -53,7 +54,7 @@ La creación de una estrella es la historia de un dramático conflicto físico. 
 
 $F = G \frac{m_1 m_2}{r^2}$
 
-Esta fórmula nos dice que toda la materia del universo atrae a toda la demás materia. En una nebulosa gigante, los átomos de hidrógeno intentan acercarse unos a otros debido a su mutua atracción gravitacional. 
+Esta fórmula nos dice que toda la materia del universo atrae a toda la demás materia. En una nebulosa gigante, los átomos de hidrógeno intentan acercarse unos a otros debido a su mutua atracción gravitacional.
 
 Sin embargo, el gas no se colapsa instantáneamente. Los átomos también están en movimiento constante, rebotando unos contra otros. Este movimiento crea una fuerza opuesta: la presión térmica (o presión del gas). La presión empuja hacia afuera, tratando de expandir la nube, de forma similar a como el aire caliente infla un globo aerostático.
 
@@ -157,8 +158,8 @@ Para visitar este monstruo cósmico, debemos abandonar la Vía Láctea y mirar h
 
 El estudio de las nebulosas brillantes y oscuras va mucho más allá de la mera apreciación estética. Observar estas maravillosas cunas nos permite responder a una de las preguntas más profundas que la humanidad se ha formulado: ¿De dónde venimos?
 
-Cada átomo de carbono en nuestras células, cada átomo de hierro en nuestra sangre y cada átomo de calcio en nuestros huesos no se formó en el Big Bang. Estos elementos fueron forjados en los hornos nucleares del interior de estrellas masivas que vivieron y murieron hace miles de millones de años. Al morir como supernovas, esas estrellas esparcieron sus elementos pesados nuevamente hacia el medio interestelar, sembrando antiguas nubes de hidrógeno. 
+Cada átomo de carbono en nuestras células, cada átomo de hierro en nuestra sangre y cada átomo de calcio en nuestros huesos no se formó en el Big Bang. Estos elementos fueron forjados en los hornos nucleares del interior de estrellas masivas que vivieron y murieron hace miles de millones de años. Al morir como supernovas, esas estrellas esparcieron sus elementos pesados nuevamente hacia el medio interestelar, sembrando antiguas nubes de hidrógeno.
 
-Con el tiempo, la gravedad unió esos materiales en una nueva nebulosa. Dentro de esa nebulosa, rica en elementos de generaciones estelares anteriores, se formó nuestro Sol, un disco de polvo y, eventualmente, la Tierra y todo lo que hay en ella. 
+Con el tiempo, la gravedad unió esos materiales en una nueva nebulosa. Dentro de esa nebulosa, rica en elementos de generaciones estelares anteriores, se formó nuestro Sol, un disco de polvo y, eventualmente, la Tierra y todo lo que hay en ella.
 
 Por lo tanto, al estudiar la formación de estrellas dentro de estas nubes de gas, no estamos simplemente observando un fenómeno astronómico distante y aislado. Estamos, literalmente, observando un espejo cósmico que refleja nuestro propio pasado lejano. Las nebulosas son el recordatorio eterno de que no solo vivimos en el universo, sino que, en un sentido físico profundo y hermoso, el universo vive dentro de nosotros. Somos verdaderamente, como dijo el astrofísico Carl Sagan, materia estelar contemplando las estrellas.

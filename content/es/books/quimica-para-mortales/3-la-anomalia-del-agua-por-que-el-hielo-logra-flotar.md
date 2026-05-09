@@ -2,13 +2,13 @@
 
 ---
 
-Si un grupo de científicos alienígenas aterrizara hoy en la Tierra y comenzara a catalogar los materiales de nuestro planeta, probablemente se detendrían ante un vaso de agua y se rascarían sus cabezas extraterrestres. Para nosotros, el agua es lo más común del mundo. Cubre el 71% de la superficie de nuestro planeta y compone aproximadamente el 60% de nuestros propios cuerpos. La bebemos, nos bañamos en ella, y la usamos para cultivar nuestros alimentos. Nos parece aburrida, común y predecible. 
+Si un grupo de científicos alienígenas aterrizara hoy en la Tierra y comenzara a catalogar los materiales de nuestro planeta, probablemente se detendrían ante un vaso de agua y se rascarían sus cabezas extraterrestres. Para nosotros, el agua es lo más común del mundo. Cubre el 71% de la superficie de nuestro planeta y compone aproximadamente el 60% de nuestros propios cuerpos. La bebemos, nos bañamos en ella, y la usamos para cultivar nuestros alimentos. Nos parece aburrida, común y predecible.
 
 Pero desde el punto de vista de la química, el agua es una de las sustancias más extrañas, rebeldes y maravillosamente anómalas de todo el universo conocido.
 
-Si el agua siguiera las "reglas normales" de la física y la química que gobiernan a casi todos los demás líquidos, nuestro planeta sería una roca muerta, estéril y congelada. No habría océanos rebosantes de vida, ni nubes, ni lluvia, ni, por supuesto, nosotros leyendo este artículo. De todas las rarezas que posee este líquido vital, hay una que destaca por encima de las demás, un truco de magia molecular que desafía nuestra intuición cotidiana: el agua sólida flota sobre el agua líquida. 
+Si el agua siguiera las "reglas normales" de la física y la química que gobiernan a casi todos los demás líquidos, nuestro planeta sería una roca muerta, estéril y congelada. No habría océanos rebosantes de vida, ni nubes, ni lluvia, ni, por supuesto, nosotros leyendo este artículo. De todas las rarezas que posee este líquido vital, hay una que destaca por encima de las demás, un truco de magia molecular que desafía nuestra intuición cotidiana: el agua sólida flota sobre el agua líquida.
 
-Piénsalo por un momento. Si tomas un pedazo de cera de vela sólida y lo arrojas en cera derretida, se hunde como una piedra. Si tomas plomo sólido y lo arrojas en plomo líquido, se hunde hacia el fondo. En casi todo el universo de las sustancias, el estado sólido es más pesado y denso que el estado líquido. Sin embargo, cuando echas un cubito de hielo en tu vaso de agua, este flota alegremente en la superficie. 
+Piénsalo por un momento. Si tomas un pedazo de cera de vela sólida y lo arrojas en cera derretida, se hunde como una piedra. Si tomas plomo sólido y lo arrojas en plomo líquido, se hunde hacia el fondo. En casi todo el universo de las sustancias, el estado sólido es más pesado y denso que el estado líquido. Sin embargo, cuando echas un cubito de hielo en tu vaso de agua, este flota alegremente en la superficie.
 
 Para entender por qué ocurre esta "anomalía del agua" (que es el término científico formal para este fenómeno), necesitamos ponernos unos lentes microscópicos imaginarios, encoger nuestra perspectiva un par de miles de millones de veces, y viajar al fascinante mundo de los átomos. Bienvenidos a un nuevo viaje de Química para Mortales.
 
@@ -26,11 +26,12 @@ Este ángulo, aparentemente trivial, es el primer gran pilar de la anomalía del
 
 ## 2. El juego de la soga molecular y los puentes de hidrógeno
 
-Ahora que sabemos que el agua tiene forma de "V", debemos introducir un nuevo concepto: la **electronegatividad**. 
+Ahora que sabemos que el agua tiene forma de "V", debemos introducir un nuevo concepto: la **electronegatividad**.
 
 En el mundo de la química, la electronegatividad es la capacidad que tiene un átomo para atraer hacia sí los electrones que está compartiendo con otro átomo. Imagina un juego de tirar de la soga. En un extremo tenemos al oxígeno, que es como un fisicoculturista profesional, extremadamente fuerte y "codicioso" con los electrones. En el otro extremo tenemos al pequeño hidrógeno, que hace su mejor esfuerzo pero no tiene mucha fuerza.
 
 Aunque técnicamente están "compartiendo" la soga (los electrones), el oxígeno tira de ella con tanta fuerza que los electrones pasan mucho más tiempo cerca del oxígeno que de los hidrógenos. Como los electrones tienen carga negativa, esto provoca algo fascinante en la molécula:
+
 * La zona del átomo de oxígeno adquiere una **carga parcial negativa** (representada con el símbolo griego delta minúscula: δ-).
 * Las zonas de los átomos de hidrógeno, que han sido despojados de sus electrones la mayor parte del tiempo, se quedan con sus protones expuestos, adquiriendo una **carga parcial positiva** (δ+).
 
@@ -47,9 +48,9 @@ Esquema de una molécula de agua polar:
    (δ+)   (δ+) Polos Positivos
 ```
 
-¿Qué pasa cuando juntas millones de estos "imanes" en un vaso? La física básica nos dice que los opuestos se atraen. El polo positivo (hidrógeno) de una molécula de agua sentirá una atracción irresistible hacia el polo negativo (oxígeno) de una molécula vecina. 
+¿Qué pasa cuando juntas millones de estos "imanes" en un vaso? La física básica nos dice que los opuestos se atraen. El polo positivo (hidrógeno) de una molécula de agua sentirá una atracción irresistible hacia el polo negativo (oxígeno) de una molécula vecina.
 
-Esta atracción invisible se llama **Puente de Hidrógeno** o enlace de hidrógeno. 
+Esta atracción invisible se llama **Puente de Hidrógeno** o enlace de hidrógeno.
 
 ```text
 Interacción entre moléculas (Puente de Hidrógeno):
@@ -75,7 +76,7 @@ La **densidad** es simplemente la cantidad de materia (masa) que está empaqueta
 
 En la física, la temperatura es una medida del movimiento. Cuando calientas una sustancia (como el hierro, el aceite o el aire), le estás dando energía a sus moléculas. Estas moléculas comienzan a moverse más rápido, a vibrar y a chocar entre sí con más fuerza. Al chocar, se empujan unas a otras, separándose y ocupando más espacio. Esto se llama **dilatación térmica**. Como la misma cantidad de materia ahora ocupa un espacio mayor, su densidad disminuye.
 
-Por el contrario, cuando enfrías una sustancia, le quitas energía. Las moléculas se calman, se mueven más lento y se acercan las unas a las otras. Se empaquetan fuertemente. El volumen disminuye y la densidad aumenta. 
+Por el contrario, cuando enfrías una sustancia, le quitas energía. Las moléculas se calman, se mueven más lento y se acercan las unas a las otras. Se empaquetan fuertemente. El volumen disminuye y la densidad aumenta.
 
 Por lo tanto, la regla de oro del universo es: **más frío = más denso**.
 
@@ -91,7 +92,7 @@ Al principio, el agua se comporta como una ciudadana ejemplar de la tabla perió
 
 El agua sigue contrayéndose y volviéndose más densa a medida que pasa de 10 °C a 8 °C, luego a 6 °C, luego a 5 °C. Todo parece normal.
 
-Pero entonces, algo mágico y completamente inesperado sucede al llegar exactamente a los **4 °C** (3,98 °C para ser exactos). 
+Pero entonces, algo mágico y completamente inesperado sucede al llegar exactamente a los **4 °C** (3,98 °C para ser exactos).
 
 A los 4 °C, el agua alcanza su **máxima densidad**. A partir de ese momento, la regla universal se rompe. Si sigues enfriando el agua de 4 °C a 3 °C, a 2 °C y a 1 °C, el agua en lugar de seguir encogiéndose, ¡comienza a expandirse de nuevo! Su densidad comienza a disminuir, haciéndose más ligera.
 
@@ -122,9 +123,9 @@ Para acomodar estos rígidos puentes de hidrógeno, las moléculas de agua se ve
 
 ## 5. La arquitectura del hielo: Un castillo de cristal lleno de vacío
 
-El clímax de esta historia ocurre a los **0 °C**, el punto de congelación. 
+El clímax de esta historia ocurre a los **0 °C**, el punto de congelación.
 
-A esta temperatura, las moléculas de agua pierden la última gota de energía que les permitía fluir. Los puentes de hidrógeno se vuelven permanentes y las moléculas se bloquean en una estructura sólida. 
+A esta temperatura, las moléculas de agua pierden la última gota de energía que les permitía fluir. Los puentes de hidrógeno se vuelven permanentes y las moléculas se bloquean en una estructura sólida.
 
 Pero debido a la estricta geometría de la molécula en forma de "V" (los 104,5 grados) y la necesidad de maximizar los puentes de hidrógeno (cada molécula de agua se une exactamente a otras cuatro), las moléculas no pueden colapsar en una bola apretada. En su lugar, se ven forzadas a ensamblarse en un patrón tridimensional muy específico: una **red cristalina hexagonal**.
 
@@ -150,7 +151,7 @@ Esta red cristalina hexagonal obliga a las moléculas a mantenerse a una "distan
 
 Volvamos a la analogía de la maleta. El agua líquida era una maleta llena de camisas arrugadas y apretadas. El hielo es como si sacaras esas camisas, las colgaras meticulosamente en perchas individuales y las metieras en una maleta rígida. Las camisas están más ordenadas, sí, pero debido a las perchas y los espacios entre ellas, la maleta resultante tiene que ser mucho más grande, y por ende, menos densa.
 
-Como el hielo aumenta su volumen pero mantiene la misma masa, su densidad cae drásticamente (alrededor de 0.916 g/cm³, comparado con el 1.000 g/cm³ del agua líquida a 4 °C). 
+Como el hielo aumenta su volumen pero mantiene la misma masa, su densidad cae drásticamente (alrededor de 0.916 g/cm³, comparado con el 1.000 g/cm³ del agua líquida a 4 °C).
 
 Y las matemáticas no mienten: lo que es menos denso, flota. Las moléculas organizadas en su espacioso castillo de cristal son empujadas hacia arriba por el agua líquida más densa y pesada que se encuentra debajo. ¡Habemus hielo flotante!
 
@@ -160,21 +161,21 @@ Y las matemáticas no mienten: lo que es menos denso, flota. Las moléculas orga
 
 Llegados a este punto, podrías pensar: "Muy interesante la química, pero ¿qué importa si mi hielo flota o se hunde en mi bebida?". La respuesta es que importa mucho. De hecho, es una cuestión de vida o muerte planetaria.
 
-Hagamos un ejercicio mental e imaginemos una Tierra alternativa donde el agua obedece las reglas normales y el hielo es más denso que el agua líquida. Llega el invierno a un lago en Canadá o en la Patagonia. 
+Hagamos un ejercicio mental e imaginemos una Tierra alternativa donde el agua obedece las reglas normales y el hielo es más denso que el agua líquida. Llega el invierno a un lago en Canadá o en la Patagonia.
 
-El aire frío de la atmósfera enfría la capa superficial del lago. Esta agua llega a 0 °C y se congela. Como en nuestro universo alternativo el hielo es más pesado, esa capa de hielo inmediatamente se hundiría hasta el fondo del lago. 
+El aire frío de la atmósfera enfría la capa superficial del lago. Esta agua llega a 0 °C y se congela. Como en nuestro universo alternativo el hielo es más pesado, esa capa de hielo inmediatamente se hundiría hasta el fondo del lago.
 
-Al hundirse, expondría una nueva capa de agua líquida al aire gélido. Esta nueva capa también se congelaría y se hundiría. Capa por capa, el hielo iría pavimentando el fondo del lago. Eventualmente, todo el cuerpo de agua, desde el fondo hasta la superficie, se congelaría hasta convertirse en un bloque sólido de hielo. 
+Al hundirse, expondría una nueva capa de agua líquida al aire gélido. Esta nueva capa también se congelaría y se hundiría. Capa por capa, el hielo iría pavimentando el fondo del lago. Eventualmente, todo el cuerpo de agua, desde el fondo hasta la superficie, se congelaría hasta convertirse en un bloque sólido de hielo.
 
-Cuando llegara la primavera, el sol calentaría la superficie, derritiendo quizás los primeros metros de agua. Pero el sol no podría penetrar hasta el fondo del lago, por lo que el enorme bloque de hielo subacuático permanecería allí, acumulándose año tras año, invierno tras invierno. 
+Cuando llegara la primavera, el sol calentaría la superficie, derritiendo quizás los primeros metros de agua. Pero el sol no podría penetrar hasta el fondo del lago, por lo que el enorme bloque de hielo subacuático permanecería allí, acumulándose año tras año, invierno tras invierno.
 
 Con el tiempo, todos los lagos, ríos y finalmente los océanos de nuestro planeta (especialmente en los polos) se congelarían desde el lecho marino hacia arriba. La Tierra se convertiría en un desierto de hielo sólido. Toda la vida marina, desde el plancton microscópico hasta las ballenas, sería aplastada y congelada en este proceso. Sin océanos líquidos, el ciclo del agua se detendría, no habría lluvia, las plantas terrestres morirían y nuestro planeta sería un yermo desolado.
 
-**Pero volvamos a nuestra bendita realidad.** 
+**Pero volvamos a nuestra bendita realidad.**
 
-Gracias a la anomalía del agua y a esos mágicos 4 °C, cuando llega el invierno ocurre algo maravilloso. El agua superficial se enfría hasta los 4 °C, se vuelve súper densa y se hunde, llevando oxígeno al fondo del lago (vital para los peces y bacterias). Cuando la temperatura baja aún más, acercándose a los 0 °C, el agua superficial se vuelve *menos* densa y deja de hundirse. Se queda flotando arriba. 
+Gracias a la anomalía del agua y a esos mágicos 4 °C, cuando llega el invierno ocurre algo maravilloso. El agua superficial se enfría hasta los 4 °C, se vuelve súper densa y se hunde, llevando oxígeno al fondo del lago (vital para los peces y bacterias). Cuando la temperatura baja aún más, acercándose a los 0 °C, el agua superficial se vuelve *menos* densa y deja de hundirse. Se queda flotando arriba.
 
-Cuando finalmente se congela a 0 °C, forma una capa de hielo en la superficie. Y aquí viene el golpe maestro de la naturaleza: **el hielo es un excelente aislante térmico**. 
+Cuando finalmente se congela a 0 °C, forma una capa de hielo en la superficie. Y aquí viene el golpe maestro de la naturaleza: **el hielo es un excelente aislante térmico**.
 
 Esa gruesa capa de hielo flotante actúa como una manta térmica gigante. Sella el lago, protegiendo al agua líquida que está debajo de los gélidos vientos invernales del exterior. Mientras arriba puede haber tormentas de nieve a -30 °C, debajo del hielo el agua permanece en un rango seguro de entre 0 °C y 4 °C.
 
@@ -192,6 +193,6 @@ Aunque el hielo flotante es la consecuencia más famosa de la red de puentes de 
 
 Vivimos en un mundo que a menudo nos parece ordinario porque estamos demasiado acostumbrados a él. Damos por sentado que cuando ponemos agua en la cubitera del congelador, esta se expandirá, y que cuando la pongamos en un vaso, flotará y hará un agradable tintineo contra el cristal.
 
-Pero la próxima vez que te sirvas una bebida fría, tómate un segundo para observar ese cubito de hielo flotante. Estás viendo una maravilla de la termodinámica. Estás presenciando el resultado de una danza microscópica dictada por un minúsculo ángulo de 104,5 grados entre tres átomos. 
+Pero la próxima vez que te sirvas una bebida fría, tómate un segundo para observar ese cubito de hielo flotante. Estás viendo una maravilla de la termodinámica. Estás presenciando el resultado de una danza microscópica dictada por un minúsculo ángulo de 104,5 grados entre tres átomos.
 
 Ese pequeño espacio vacío en el centro de un hexágono invisible es la diferencia entre un planeta muerto y nuestro vibrante, azul y verde hogar. La física nos enseña las reglas generales del universo, pero a veces, la química decide romperlas de la manera más hermosa y necesaria posible. Y gracias a la maravillosa y rebelde anomalía del agua, nosotros estamos aquí para contar la historia.

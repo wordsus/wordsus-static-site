@@ -1,10 +1,10 @@
-En el desarrollo de backend moderno, el modelo relacional no siempre es la solución óptima para cada caso de uso. Este capítulo explora el ecosistema NoSQL en Rust, centrándose en la alta disponibilidad, el rendimiento extremo y la escalabilidad. 
+En el desarrollo de backend moderno, el modelo relacional no siempre es la solución óptima para cada caso de uso. Este capítulo explora el ecosistema NoSQL en Rust, centrándose en la alta disponibilidad, el rendimiento extremo y la escalabilidad.
 
 Desde el almacenamiento de documentos con **MongoDB** y el manejo de flujos masivos de datos en **ScyllaDB**, hasta la aceleración de respuestas mediante **Redis** y la eficiencia de motores embebidos como **Sled** o **RocksDB**, aprenderás a elegir e integrar la herramienta adecuada. Descubrirás cómo el sistema de tipos de Rust y la asincronía de Tokio transforman la interacción con datos no estructurados en una experiencia segura y de baja latencia.
 
 ## 22.1 Integración con MongoDB (Driver asíncrono oficial)
 
-A diferencia de las bases de datos relacionales que exploramos en capítulos anteriores (donde herramientas como SQLx o Diesel son los reyes), el ecosistema NoSQL en Rust tiene un líder indiscutible para bases de datos orientadas a documentos: el driver oficial `mongodb`. 
+A diferencia de las bases de datos relacionales que exploramos en capítulos anteriores (donde herramientas como SQLx o Diesel son los reyes), el ecosistema NoSQL en Rust tiene un líder indiscutible para bases de datos orientadas a documentos: el driver oficial `mongodb`.
 
 Mantenido directamente por MongoDB Inc., este crate es asíncrono por defecto (construido sobre `tokio`), altamente optimizado y se integra de manera nativa con `serde` para evitar la manipulación manual de documentos BSON, permitiéndonos trabajar directamente con Structs fuertemente tipados.
 
@@ -22,7 +22,7 @@ futures = "0.3"
 
 ### El Cliente y el Pool de Conexiones
 
-Una de las diferencias arquitectónicas más importantes al pasar de PostgreSQL a MongoDB en Rust es la gestión del pool de conexiones. Como vimos en el Capítulo 19, herramientas como Postgres requieren un pooler explícito (`deadpool` o `bb8`). 
+Una de las diferencias arquitectónicas más importantes al pasar de PostgreSQL a MongoDB en Rust es la gestión del pool de conexiones. Como vimos en el Capítulo 19, herramientas como Postgres requieren un pooler explícito (`deadpool` o `bb8`).
 
 Con MongoDB, **el objeto `mongodb::Client` ya es un pool de conexiones gestionado internamente**. Utiliza `Arc` bajo el capó, por lo que clonar el cliente para pasarlo entre los distintos hilos de nuestro servidor web (como en Actix o Axum) es extremadamente barato y es el patrón de diseño recomendado.
 
@@ -154,7 +154,7 @@ redis = { version = "0.24", features = ["tokio-comp"] }
 
 ### Conexiones y Multiplexación
 
-En lenguajes y frameworks síncronos, es común utilizar un pool de conexiones para Redis. Sin embargo, gracias a la naturaleza de Tokio y al diseño del protocolo de Redis, la forma idiomática de trabajar en Rust asíncrono es utilizar una **conexión multiplexada** (`MultiplexedConnection`). 
+En lenguajes y frameworks síncronos, es común utilizar un pool de conexiones para Redis. Sin embargo, gracias a la naturaleza de Tokio y al diseño del protocolo de Redis, la forma idiomática de trabajar en Rust asíncrono es utilizar una **conexión multiplexada** (`MultiplexedConnection`).
 
 Esta abstracción permite enviar múltiples comandos concurrentes a través de un único socket TCP subyacente de forma segura entre hilos, lo que significa que puedes clonar la conexión y compartirla fácilmente en el estado de tu framework web (como Axum o Actix) sin la sobrecarga de un pool tradicional.
 
@@ -274,7 +274,7 @@ uuid = { version = "1.0", features = ["v4"] }
 
 ### Gestión de la Sesión (El Clúster)
 
-A diferencia de PostgreSQL (donde gestionamos un pool de conexiones) o Redis (donde multiplexamos un socket), en Cassandra/ScyllaDB interactuamos con un clúster entero de nodos. 
+A diferencia de PostgreSQL (donde gestionamos un pool de conexiones) o Redis (donde multiplexamos un socket), en Cassandra/ScyllaDB interactuamos con un clúster entero de nodos.
 
 El objeto `scylla::Session` abstrae toda la complejidad de descubrir los nodos del clúster, mantener conexiones con cada uno de ellos y balancear la carga de nuestras consultas. Al igual que con el cliente de MongoDB, `Session` se puede clonar económicamente para compartirlo en el estado de nuestra aplicación web.
 
@@ -391,6 +391,7 @@ Para casos como cachés locales ultrarrápidos, almacenamiento de estado en nodo
 [Sled](https://github.com/spacejam/sled) es un motor de base de datos embebido escrito 100% en Rust. Su principal ventaja es que compila sin dependencias externas ni cadenas de herramientas de C/C++, lo que simplifica enormemente el CI/CD y la compatibilidad multiplataforma. Utiliza una arquitectura *lock-free* y está diseñado de forma similar a un `BTreeMap` concurrente que persiste en disco.
 
 **Dependencias:**
+
 ```toml
 [dependencies]
 sled = "0.34"
@@ -456,6 +457,7 @@ Creado originalmente por Facebook como un fork de LevelDB (Google), **RocksDB** 
 Para usarlo en Rust, empleamos el crate `rust-rocksdb`, que provee bindings seguros (FFI) sobre la librería en C++. La desventaja principal es que requiere `clang` y un compilador de C++ instalado en tu sistema y en tu pipeline de CI para poder compilar tu proyecto Rust.
 
 **Dependencias:**
+
 ```toml
 [dependencies]
 rocksdb = "0.21"
@@ -505,6 +507,7 @@ Es crucial entender que tanto Sled como RocksDB son **librerías síncronas**. C
 Si estás construyendo una API altamente concurrente con Axum o Actix-Web (que corren sobre el reactor de Tokio), **operaciones síncronas pesadas pueden bloquear el hilo de ejecución (Thread Blocking)**.
 
 **La Regla de Oro:**
+
 * Para lecturas simples o escrituras pequeñas (que generalmente se resuelven en microsegundos desde la RAM), suele ser seguro llamarlas directamente en tu handler asíncrono.
 * Si necesitas iterar sobre miles de claves (ej. `db.iter()`) o realizar escrituras masivas por lotes (*Batch writes*), debes encapsular esa llamada en `tokio::task::spawn_blocking` para no asfixiar el *runtime* asíncrono de Rust.
 

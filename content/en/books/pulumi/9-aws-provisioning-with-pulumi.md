@@ -2,9 +2,9 @@ As you transition from Pulumi's core mechanics to real-world deployments, Amazon
 
 ## 9.1 Setting up the Pulumi AWS Provider
 
-To provision infrastructure on Amazon Web Services, Pulumi relies on the AWS Provider. The provider acts as the critical bridge between the Pulumi engine and the AWS Resource Manager APIs, responsible for understanding resource states, making API calls, and handling authentication. 
+To provision infrastructure on Amazon Web Services, Pulumi relies on the AWS Provider. The provider acts as the critical bridge between the Pulumi engine and the AWS Resource Manager APIs, responsible for understanding resource states, making API calls, and handling authentication.
 
-While Chapter 2 briefly touched on cloud credentials, configuring the AWS provider for production workloads requires a deeper understanding of credential resolution, region management, and provider instantiation. 
+While Chapter 2 briefly touched on cloud credentials, configuring the AWS provider for production workloads requires a deeper understanding of credential resolution, region management, and provider instantiation.
 
 ### Adding the AWS Provider Dependency
 
@@ -19,7 +19,7 @@ Once installed, the Pulumi CLI will automatically download the corresponding pro
 
 ### The AWS Credential Resolution Chain
 
-The Pulumi AWS Provider delegates authentication to the underlying AWS SDK. This means you do not need to invent new ways to authenticate; Pulumi seamlessly integrates with the tools and configurations you already use, such as the AWS CLI. 
+The Pulumi AWS Provider delegates authentication to the underlying AWS SDK. This means you do not need to invent new ways to authenticate; Pulumi seamlessly integrates with the tools and configurations you already use, such as the AWS CLI.
 
 When the AWS Provider initializes, it searches for credentials and configuration values (like the AWS region) in a specific order of precedence. Understanding this hierarchy is crucial for debugging authentication errors, especially in CI/CD pipelines.
 
@@ -150,8 +150,8 @@ Notice the use of the `tags` property. Tagging is a critical best practice in Ia
 
 A VPC spans an entire AWS Region, but subnets are tied to specific Availability Zones (AZs). To ensure high availability, you must distribute your resources across multiple subnets in different AZs. Furthermore, subnets are generally divided into two tiers based on their routing configurations:
 
-1.  **Public Subnets:** Have a route to an Internet Gateway (IGW). Resources here can be assigned public IP addresses and directly communicate with the internet.
-2.  **Private Subnets:** Do not have a direct route to an IGW. Resources here are isolated from direct inbound internet traffic and typically use a NAT Gateway for outbound access (e.g., to download patches).
+1. **Public Subnets:** Have a route to an Internet Gateway (IGW). Resources here can be assigned public IP addresses and directly communicate with the internet.
+2. **Private Subnets:** Do not have a direct route to an IGW. Resources here are isolated from direct inbound internet traffic and typically use a NAT Gateway for outbound access (e.g., to download patches).
 
 ```text
 +-----------------------------------------------------------------------+
@@ -238,7 +238,7 @@ const webSecurityGroup = new aws.ec2.SecurityGroup("web-sg", {
 
 #### Self-Referencing and Chained Security Groups
 
-A powerful feature of Security Groups is their ability to reference *other* Security Groups as the source or destination, rather than relying solely on CIDR blocks. This is vital for zero-trust architectures. 
+A powerful feature of Security Groups is their ability to reference *other* Security Groups as the source or destination, rather than relying solely on CIDR blocks. This is vital for zero-trust architectures.
 
 For example, you can configure your database Security Group to only accept traffic originating from your web server Security Group:
 
@@ -334,7 +334,7 @@ The architectural hierarchy of ECS is structured as follows:
 +-------------------------------------------------------------------+
 ```
 
-To deploy a Fargate service, you must define the Cluster, the Task Definition (which specifies the Docker image, CPU, and memory), and the Service itself. 
+To deploy a Fargate service, you must define the Cluster, the Task Definition (which specifies the Docker image, CPU, and memory), and the Service itself.
 
 ```typescript
 // 1. Create an ECS Cluster
@@ -427,7 +427,7 @@ Pulumi's `AssetArchive` is a powerful primitive. During the `pulumi up` executio
 
 ## 9.4 Data Storage (S3, RDS, DynamoDB)
 
-Compute resources are ephemeral, but data is the lifeblood of most applications. AWS offers a vast array of purpose-built databases and storage services. When provisioning stateful resources with Pulumi, the focus shifts from pure deployment mechanics to data durability, secure access patterns, and lifecycle management. 
+Compute resources are ephemeral, but data is the lifeblood of most applications. AWS offers a vast array of purpose-built databases and storage services. When provisioning stateful resources with Pulumi, the focus shifts from pure deployment mechanics to data durability, secure access patterns, and lifecycle management.
 
 In this section, we will cover the three foundational pillars of AWS data storage: Object Storage (S3), Relational Databases (RDS), and NoSQL Databases (DynamoDB).
 
@@ -460,7 +460,7 @@ Notice that RDS lives strictly within the boundaries of our VPC's private subnet
 
 ### Amazon S3: Object Storage
 
-Amazon Simple Storage Service (S3) is the industry standard for object storage, ideal for unstructured data like user uploads, application assets, and backup archives. 
+Amazon Simple Storage Service (S3) is the industry standard for object storage, ideal for unstructured data like user uploads, application assets, and backup archives.
 
 When creating an S3 bucket with Pulumi, it is crucial to handle data lifecycle and security explicitly. AWS now recommends disabling public Access Control Lists (ACLs) and relying entirely on IAM and Bucket Policies for access management.
 
@@ -489,9 +489,9 @@ const publicAccessBlock = new aws.s3.BucketPublicAccessBlock("app-data-block", {
 
 ### Amazon RDS: Managed Relational Databases
 
-Amazon Relational Database Service (RDS) automates the operational burden of running databases like PostgreSQL, MySQL, and MariaDB. 
+Amazon Relational Database Service (RDS) automates the operational burden of running databases like PostgreSQL, MySQL, and MariaDB.
 
-Provisioning RDS introduces two critical IaC challenges: network placement and secrets management. We must place the database in the private subnets created in Section 9.2 and ensure the master database password is not hardcoded in our source code. 
+Provisioning RDS introduces two critical IaC challenges: network placement and secrets management. We must place the database in the private subnets created in Section 9.2 and ensure the master database password is not hardcoded in our source code.
 
 As covered in Chapter 6, we will use Pulumi's Config system to retrieve a securely encrypted password.
 
@@ -613,7 +613,7 @@ The fundamental difference between the two lies in how they communicate with the
 ```
 
 **1. AWS Classic (`@pulumi/aws`)**
-The Classic provider is built on top of the Terraform AWS Provider using Pulumi's bridging technology. When you declare a resource using Classic, Pulumi translates that request into a format the Terraform provider understands, which then makes the underlying AWS API calls. 
+The Classic provider is built on top of the Terraform AWS Provider using Pulumi's bridging technology. When you declare a resource using Classic, Pulumi translates that request into a format the Terraform provider understands, which then makes the underlying AWS API calls.
 
 **2. AWS Native (`@pulumi/aws-native`)**
 The Native provider is built directly on top of the **AWS Cloud Control API**, a standard set of APIs introduced by AWS to provide consistent Create, Read, Update, and Delete (CRUD) operations across AWS services. It bypasses the Terraform bridge entirely.
@@ -623,12 +623,14 @@ The Native provider is built directly on top of the **AWS Cloud Control API**, a
 Each approach carries specific advantages and trade-offs regarding maturity, feature availability, and API design.
 
 #### The Case for AWS Classic
+
 * **Maturity and Stability:** It is battle-tested by thousands of enterprises. It handles complex edge cases, retries, and eventual consistency issues that have been ironed out over years of community usage.
 * **Ecosystem and Abstractions:** Higher-level libraries like `@pulumi/awsx` (AWS Crosswalk) are built exclusively on top of the Classic provider.
 * **Coverage:** It covers virtually 100% of AWS services, including legacy resources that predate modern AWS API standards.
 * **The Drawback:** Because it relies on the Terraform bridge, the API property names often reflect Terraform's naming conventions rather than official AWS documentation, which can sometimes be confusing when cross-referencing AWS manuals. Additionally, new AWS features may take a few days or weeks to be implemented.
 
 #### The Case for AWS Native
+
 * **Same-Day Support:** Because Native is auto-generated directly from AWS Cloud Control API specifications, new AWS features and services are typically available in Pulumi on the exact day AWS releases them.
 * **1:1 AWS API Mapping:** The property names and structures in your code exactly match the official AWS CloudFormation and Cloud Control documentation. There is no translation layer.
 * **Speed:** By removing the bridge translation layer, Native provider operations can be slightly faster and consume less memory during deployment.
@@ -641,6 +643,7 @@ Because Classic maps to Terraform and Native maps to the AWS API, the way you de
 Here is a comparison of creating an ECS Cluster using both providers:
 
 **Using AWS Classic:**
+
 ```typescript
 import * as aws from "@pulumi/aws";
 
@@ -655,6 +658,7 @@ const classicCluster = new aws.ecs.Cluster("classic-cluster", {
 ```
 
 **Using AWS Native:**
+
 ```typescript
 import * as awsNative from "@pulumi/aws-native";
 
@@ -670,9 +674,9 @@ const nativeCluster = new awsNative.ecs.Cluster("native-cluster", {
 
 ### Strategic Recommendation
 
-For most teams, the **AWS Classic provider remains the recommended default** due to its unparalleled stability, comprehensive coverage of edge cases, and compatibility with the `awsx` library. 
+For most teams, the **AWS Classic provider remains the recommended default** due to its unparalleled stability, comprehensive coverage of edge cases, and compatibility with the `awsx` library.
 
-However, one of Pulumi's greatest strengths is that **you do not have to choose just one**. Because they are simply Node packages (or Python/Go/C# modules), you can seamlessly mix and match them within the exact same Pulumi program. 
+However, one of Pulumi's greatest strengths is that **you do not have to choose just one**. Because they are simply Node packages (or Python/Go/C# modules), you can seamlessly mix and match them within the exact same Pulumi program.
 
 ```typescript
 import * as aws from "@pulumi/aws";

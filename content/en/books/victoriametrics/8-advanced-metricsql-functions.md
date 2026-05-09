@@ -2,7 +2,7 @@ While basic PromQL handles simple monitoring, real-world observability demands m
 
 ## 8.1 Understanding Rate, Increase, and Delta Functions
 
-When analyzing time series data, raw metric values often provide little actionable insight on their own. Knowing that a web server has handled 1,543,021 requests since it booted is less useful than knowing it is currently handling 500 requests per second. To derive these velocities and changes over time, MetricsQL provides a core set of rollup functions: `rate`, `increase`, and `delta`. 
+When analyzing time series data, raw metric values often provide little actionable insight on their own. Knowing that a web server has handled 1,543,021 requests since it booted is less useful than knowing it is currently handling 500 requests per second. To derive these velocities and changes over time, MetricsQL provides a core set of rollup functions: `rate`, `increase`, and `delta`.
 
 While these functions share identical names with their PromQL counterparts, VictoriaMetrics implements them with a highly optimized, user-friendly logic that eliminates the infamous extrapolation anomalies often encountered in vanilla Prometheus.
 
@@ -25,7 +25,7 @@ rate(http_requests_total[5m])
 When evaluating a window, `rate()` correctly handles **counter resets**. If a target restarts and its counter drops from `1000` to `0` and then climbs to `50`, `rate()` understands this as a total increase of `50` over the reset, not a negative drop.
 
 **`irate()` (Instantaneous Rate):**
-While `rate()` averages the increase over the entire `[5m]` window, `irate()` looks only at the **last two data points** within that window to calculate the per-second rate. 
+While `rate()` averages the increase over the entire `[5m]` window, `irate()` looks only at the **last two data points** within that window to calculate the per-second rate.
 
 ```metricsql
 # Calculates the per-second rate using only the two most recent samples in the 5m window
@@ -37,7 +37,7 @@ irate(http_requests_total[5m])
 
 ### The `increase()` Function
 
-The `increase()` function calculates the total absolute increase of a counter over the specified time window. 
+The `increase()` function calculates the total absolute increase of a counter over the specified time window.
 
 ```metricsql
 # Returns the total number of errors that occurred in the last hour
@@ -45,6 +45,7 @@ increase(http_errors_total[1h])
 ```
 
 #### The MetricsQL Advantage: Precise Increases
+
 In standard PromQL, `increase()` functions by calculating the rate and multiplying it by the window duration, then extrapolating the results to the edges of the time window. This often leads to a confusing scenario where the `increase()` of an integer counter returns fractional values (e.g., returning `4.3` errors instead of `4`).
 
 MetricsQL intentionally abandons this edge-extrapolation. In VictoriaMetrics, if a counter increments exactly 5 times between the first and last data point in the window, `increase()` returns exactly `5`. Furthermore, MetricsQL maintains a strict mathematical relationship: `increase(m[d])` is always exactly equal to `rate(m[d]) * d`.
@@ -53,7 +54,7 @@ MetricsQL intentionally abandons this edge-extrapolation. In VictoriaMetrics, if
 
 When working with gauges (values that fluctuate up and down), `rate` and `increase` are inappropriate because they interpret drops as counter resets. To find the difference between values over time for a gauge, use `delta()`.
 
-The `delta()` function calculates the difference between the first and last value in the specified time window. 
+The `delta()` function calculates the difference between the first and last value in the specified time window.
 
 ```metricsql
 # Calculates how much free memory has changed over the last 30 minutes
@@ -84,10 +85,10 @@ ____|___+---------+--+-------|--------+-------+-----|___ Time
 ```
 
 * **Scenario A (PromQL standard behavior):** Prometheus attempts to guess what the values were exactly at the `|` boundaries by drawing an imaginary line outward from `p0` and `p5`.
-* **Scenario B (MetricsQL behavior):** VictoriaMetrics strictly evaluates the actual data points within the boundaries. 
-    * For `increase([d])`: It sees a rise from `p0` to `p1` (10), a reset at `p2`, a rise from `p2` to `p3` (20), a reset at `p4`, and a rise to `p5` (30). Total increase = `10 + 20 + 30 = 60`.
-    * For `rate([d])`: It takes that exact increase (`60`) and divides it by the exact timestamp difference between `p5` and `p0`.
-    * For `idelta([d])` or `irate([d])`: It completely ignores `p0` through `p3` and only performs its calculation using the delta and time difference between `p4` and `p5`.
+* **Scenario B (MetricsQL behavior):** VictoriaMetrics strictly evaluates the actual data points within the boundaries.
+  * For `increase([d])`: It sees a rise from `p0` to `p1` (10), a reset at `p2`, a rise from `p2` to `p3` (20), a reset at `p4`, and a rise to `p5` (30). Total increase = `10 + 20 + 30 = 60`.
+  * For `rate([d])`: It takes that exact increase (`60`) and divides it by the exact timestamp difference between `p5` and `p0`.
+  * For `idelta([d])` or `irate([d])`: It completely ignores `p0` through `p3` and only performs its calculation using the delta and time difference between `p4` and `p5`.
 
 ## 8.2 Exclusive MetricsQL Rollup Functions
 
@@ -97,7 +98,7 @@ These exclusive functions are particularly powerful for calculating Service Leve
 
 ### SLA and Availability Rollups: `share_le` and `share_gt`
 
-One of the most common requirements in monitoring is determining the percentage of time a system spent in a "healthy" state. In standard PromQL, calculating the percentage of time a metric was below a certain threshold requires nested subqueries, `avg_over_time`, and boolean logic. 
+One of the most common requirements in monitoring is determining the percentage of time a system spent in a "healthy" state. In standard PromQL, calculating the percentage of time a metric was below a certain threshold requires nested subqueries, `avg_over_time`, and boolean logic.
 
 MetricsQL solves this elegantly with the `share_le_over_time` (share less than or equal to) and `share_gt_over_time` (share greater than) functions. These functions look at all data points within a given time window and return a floating-point value between `0.0` and `1.0` representing the ratio of samples that meet the threshold criteria.
 
@@ -158,7 +159,7 @@ distinct_over_time(node_software_version_info[7d])
 
 ### Temporal Tracking: Timing and Lifespan Functions
 
-Sometimes, the *value* of a metric is less important than *when* that value occurred or how long the metric has existed. 
+Sometimes, the *value* of a metric is less important than *when* that value occurred or how long the metric has existed.
 
 **`tmax_over_time()` and `tmin_over_time()`**
 Instead of returning the maximum or minimum *value* in a window, these functions return the exact **UNIX timestamp** of when that maximum or minimum value occurred. This is incredibly useful for root cause analysis annotations in Grafana.
@@ -188,7 +189,7 @@ By leveraging these exclusive MetricsQL functions, operators can drastically red
 
 ## 8.3 Subqueries and Historical Data Comparisons
 
-As your monitoring needs mature, you will often find that analyzing a single window of data is insufficient. You may need to answer complex questions like, "What was the 95th percentile of our daily peak CPU usage over the last month?" or "How does our current web traffic compare to this exact time last week?" 
+As your monitoring needs mature, you will often find that analyzing a single window of data is insufficient. You may need to answer complex questions like, "What was the 95th percentile of our daily peak CPU usage over the last month?" or "How does our current web traffic compare to this exact time last week?"
 
 MetricsQL handles these requirements through **subqueries** and **time-shifting modifiers**.
 
@@ -281,7 +282,7 @@ sum by (cluster, region) (rate(node_cpu_seconds_total[5m] offset 1d))
 
 ### The MetricsQL Advantage: Negative Offsets
 
-Standard Prometheus historically only allowed looking backward in time with `offset`. VictoriaMetrics natively supports **negative offsets**, which shift the evaluation window forward into the future. 
+Standard Prometheus historically only allowed looking backward in time with `offset`. VictoriaMetrics natively supports **negative offsets**, which shift the evaluation window forward into the future.
 
 ```metricsql
 # Looks forward 1 hour (evaluates data 1 hour newer than the query timestamp)
@@ -289,6 +290,7 @@ rate(http_requests_total[5m] offset -1h)
 ```
 
 While you cannot query data that hasn't been ingested yet, negative offsets are exceptionally useful in two specific scenarios:
+
 1. **Backfilling and Recalculating Data:** When using tools like `vmctl` or recording rules to process historical data over a past time range, negative offsets allow you to align leading and trailing indicators.
 2. **Predictive Alerting:** When combined with `deriv()` or `predict_linear()`, you can graph forecasted values directly alongside current values by negatively offsetting the prediction to align with the present.
 
@@ -300,7 +302,7 @@ In enterprise environments, telemetry data is rarely pristine. You will frequent
 
 One of the most significant architectural improvements MetricsQL introduces over standard PromQL is the `WITH` expression. Similar to Common Table Expressions (CTEs) in SQL, `WITH` allows you to define query-local templates, variables, and reusable subqueries.
 
-When writing complex Service Level Objective (SLO) alerts or massive Grafana dashboards, repeating the same label selectors or sub-calculations leads to errors and unreadable code. 
+When writing complex Service Level Objective (SLO) alerts or massive Grafana dashboards, repeating the same label selectors or sub-calculations leads to errors and unreadable code.
 
 ```metricsql
 # Without WITH: Hard to read, prone to typos
@@ -393,7 +395,7 @@ labels_equal(node_exporter_info, "host", "node")
 
 ### Preserving Metric Names (`keep_metric_names`)
 
-In standard Prometheus, the moment you apply an arithmetic operation or a function to a metric, the `__name__` label is permanently dropped. Prometheus assumes the mathematical alteration changes the metric's fundamental identity. 
+In standard Prometheus, the moment you apply an arithmetic operation or a function to a metric, the `__name__` label is permanently dropped. Prometheus assumes the mathematical alteration changes the metric's fundamental identity.
 
 However, when you are simply scaling a value (like converting bytes to megabytes) or applying a smoothing function, you often want to keep the original name to avoid breaking downstream Grafana dashboards or alert annotations. MetricsQL introduces the `keep_metric_names` modifier to bypass this limitation.
 

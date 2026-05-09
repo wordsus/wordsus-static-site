@@ -10,9 +10,9 @@ El motor de benchmarking de Go no ejecuta la prueba una única vez. En su lugar,
 
 Para escribir una prueba de rendimiento, debemos adherirnos a tres reglas básicas impuestas por el paquete `testing`:
 
-1.  El archivo debe seguir la convención `_test.go`.
-2.  La función debe exportarse y comenzar con el prefijo `Benchmark` (por ejemplo, `BenchmarkConcatenation`).
-3.  La función debe aceptar un único parámetro de tipo puntero a `testing.B`.
+1. El archivo debe seguir la convención `_test.go`.
+2. La función debe exportarse y comenzar con el prefijo `Benchmark` (por ejemplo, `BenchmarkConcatenation`).
+3. La función debe aceptar un único parámetro de tipo puntero a `testing.B`.
 
 El componente más crítico de un benchmark en Go es el bucle `for` que itera `b.N` veces. El valor de `b.N` es inyectado y modificado por el *runner* de pruebas de Go.
 
@@ -22,29 +22,29 @@ A continuación, analizaremos un ejemplo clásico: comparar el rendimiento de la
 package strings_test
 
 import (
-	"strings"
-	"testing"
+ "strings"
+ "testing"
 )
 
 // BenchmarkStringAdd evalúa la concatenación mediante el operador '+'
 func BenchmarkStringAdd(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		var s string
-		for j := 0; j < 100; j++ {
-			s += "go"
-		}
-	}
+ for i := 0; i < b.N; i++ {
+  var s string
+  for j := 0; j < 100; j++ {
+   s += "go"
+  }
+ }
 }
 
 // BenchmarkStringBuilder evalúa la concatenación mediante strings.Builder
 func BenchmarkStringBuilder(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		var builder strings.Builder
-		for j := 0; j < 100; j++ {
-			builder.WriteString("go")
-		}
-		_ = builder.String()
-	}
+ for i := 0; i < b.N; i++ {
+  var builder strings.Builder
+  for j := 0; j < 100; j++ {
+   builder.WriteString("go")
+  }
+  _ = builder.String()
+ }
 }
 ```
 
@@ -72,6 +72,7 @@ ok      github.com/tu-usuario/tu-proyecto/strings      2.564s
 ```
 
 **Desglosando la salida:**
+
 * **`Benchmark...-16`**: El nombre de la prueba seguido del valor de `GOMAXPROCS` utilizado durante la ejecución (en este caso, 16 hilos lógicos).
 * **`417740` y `1881514`**: Representa el valor final de `b.N`. Es el número total de iteraciones que el bucle logró ejecutar dentro del tiempo límite. Un número mayor indica que la operación es más rápida.
 * **`2893 ns/op` y `636.5 ns/op`**: El coste real en tiempo. Indica los nanosegundos (ns) promedio que tomó una sola iteración (una operación). Como es evidente, `strings.Builder` es considerablemente más rápido. *(Nota: El análisis profundo sobre por qué ocurre esto a nivel de memoria y cómo medir las asignaciones se abordará en la siguiente sección con `-benchmem`)*.
@@ -87,16 +88,16 @@ El tipo `testing.B` proporciona métodos para manipular el temporizador interno 
 
 ```go
 func BenchmarkHeavySetup(b *testing.B) {
-	// Setup costoso (ej. carga de un archivo grande en memoria)
-	data := loadHugeDataFile() 
-	
-	// Reiniciamos el reloj para ignorar el tiempo de carga
-	b.ResetTimer()
+ // Setup costoso (ej. carga de un archivo grande en memoria)
+ data := loadHugeDataFile() 
+ 
+ // Reiniciamos el reloj para ignorar el tiempo de carga
+ b.ResetTimer()
 
-	for i := 0; i < b.N; i++ {
-		// La función que realmente queremos medir
-		ProcessData(data)
-	}
+ for i := 0; i < b.N; i++ {
+  // La función que realmente queremos medir
+  ProcessData(data)
+ }
 }
 ```
 
@@ -111,15 +112,15 @@ Para evitar que el compilador descarte nuestra operación, debemos asignar el re
 var globalResult string
 
 func BenchmarkCompilerOptimization(b *testing.B) {
-	var localResult string
-	
-	for i := 0; i < b.N; i++ {
-		// localResult evita alojamientos innecesarios en el heap durante el bucle
-		localResult = strings.Repeat("Go", 100) 
-	}
-	
-	// Asignamos el resultado final a la variable global fuera del bucle
-	globalResult = localResult
+ var localResult string
+ 
+ for i := 0; i < b.N; i++ {
+  // localResult evita alojamientos innecesarios en el heap durante el bucle
+  localResult = strings.Repeat("Go", 100) 
+ }
+ 
+ // Asignamos el resultado final a la variable global fuera del bucle
+ globalResult = localResult
 }
 ```
 
@@ -127,7 +128,7 @@ Al asignar el resultado a `globalResult`, el compilador no puede predecir si otr
 
 ## 19.2. Análisis de asignaciones de memoria en tests (`-benchmem`)
 
-La velocidad de ejecución (medida en `ns/op` que vimos en la sección anterior) es solo una parte de la ecuación del rendimiento. En Go, la frecuencia y el volumen de memoria que un programa reserva en el *heap* impactan directamente en la latencia global. Cada asignación de memoria (allocation) representa trabajo futuro para el Garbage Collector (cuyos mecanismos de pausa y optimización abordaremos en detalle en el Capítulo 43). 
+La velocidad de ejecución (medida en `ns/op` que vimos en la sección anterior) es solo una parte de la ecuación del rendimiento. En Go, la frecuencia y el volumen de memoria que un programa reserva en el *heap* impactan directamente en la latencia global. Cada asignación de memoria (allocation) representa trabajo futuro para el Garbage Collector (cuyos mecanismos de pausa y optimización abordaremos en detalle en el Capítulo 43).
 
 Por lo tanto, la regla de oro de la optimización en Go suele ser: **reducir las asignaciones de memoria es el camino más directo para disminuir el tiempo de ejecución.**
 
@@ -147,24 +148,24 @@ var globalSlice []int
 
 // BenchmarkSliceSinCapacidad no define la capacidad inicial
 func BenchmarkSliceSinCapacidad(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		var data []int
-		for j := 0; j < 1000; j++ {
-			data = append(data, j)
-		}
-		globalSlice = data
-	}
+ for i := 0; i < b.N; i++ {
+  var data []int
+  for j := 0; j < 1000; j++ {
+   data = append(data, j)
+  }
+  globalSlice = data
+ }
 }
 
 // BenchmarkSliceConCapacidad reserva la memoria necesaria por adelantado
 func BenchmarkSliceConCapacidad(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		data := make([]int, 0, 1000)
-		for j := 0; j < 1000; j++ {
-			data = append(data, j)
-		}
-		globalSlice = data
-	}
+ for i := 0; i < b.N; i++ {
+  data := make([]int, 0, 1000)
+  for j := 0; j < 1000; j++ {
+   data = append(data, j)
+  }
+  globalSlice = data
+ }
 }
 ```
 
@@ -202,11 +203,11 @@ Si tienes un benchmark crítico donde el control de la memoria es un requisito e
 
 ```go
 func BenchmarkProcesamientoCritico(b *testing.B) {
-	b.ReportAllocs() // Fuerza la inclusión de B/op y allocs/op en la salida
-	
-	for i := 0; i < b.N; i++ {
-		// Lógica de la prueba
-	}
+ b.ReportAllocs() // Fuerza la inclusión de B/op y allocs/op en la salida
+ 
+ for i := 0; i < b.N; i++ {
+  // Lógica de la prueba
+ }
 }
 ```
 
@@ -225,10 +226,11 @@ A partir de su versión 1.18, Go introdujo el Fuzzing como un ciudadano de prime
 El motor nativo de Go no se limita a arrojar basura aleatoria a nuestras funciones; utiliza una técnica inteligente conocida como **Fuzzing guiado por cobertura**.
 
 El proceso funciona mediante un bucle de retroalimentación continuo:
-1.  **Ejecución inicial:** El motor de pruebas ejecuta la función con un conjunto de datos iniciales válidos proporcionados por el desarrollador.
-2.  **Análisis y Mutación:** El motor observa qué líneas de código se ejecutaron (la cobertura). Luego, aplica mutaciones a los datos iniciales (invirtiendo bits, añadiendo bytes, cambiando enteros de signo, etc.).
-3.  **Descubrimiento:** Si una entrada mutada provoca que el flujo de ejecución pase por un bloque de código que no se había visitado antes (una nueva rama de un `if`, por ejemplo), el motor considera que esa entrada es "interesante".
-4.  **Expansión:** Esta nueva entrada "interesante" se guarda y se utiliza como base para futuras mutaciones, permitiendo al motor adentrarse cada vez más en la lógica profunda del programa.
+
+1. **Ejecución inicial:** El motor de pruebas ejecuta la función con un conjunto de datos iniciales válidos proporcionados por el desarrollador.
+2. **Análisis y Mutación:** El motor observa qué líneas de código se ejecutaron (la cobertura). Luego, aplica mutaciones a los datos iniciales (invirtiendo bits, añadiendo bytes, cambiando enteros de signo, etc.).
+3. **Descubrimiento:** Si una entrada mutada provoca que el flujo de ejecución pase por un bloque de código que no se había visitado antes (una nueva rama de un `if`, por ejemplo), el motor considera que esa entrada es "interesante".
+4. **Expansión:** Esta nueva entrada "interesante" se guarda y se utiliza como base para futuras mutaciones, permitiendo al motor adentrarse cada vez más en la lógica profunda del programa.
 
 ### El ciclo de vida del Corpus
 
@@ -258,9 +260,9 @@ Habiendo establecido la teoría detrás del Fuzzing en la sección anterior, es 
 
 Para crear un Fuzz target, debemos cumplir con las siguientes reglas del paquete `testing`:
 
-1.  El archivo debe seguir la convención `_test.go`.
-2.  La función debe exportarse y comenzar con el prefijo `Fuzz` (por ejemplo, `FuzzParser`).
-3.  La función debe aceptar un único parámetro de tipo puntero a `testing.F`.
+1. El archivo debe seguir la convención `_test.go`.
+2. La función debe exportarse y comenzar con el prefijo `Fuzz` (por ejemplo, `FuzzParser`).
+3. La función debe aceptar un único parámetro de tipo puntero a `testing.F`.
 
 Dentro de la función, el flujo de trabajo siempre se divide en dos fases bien diferenciadas: la **adición del corpus semilla** y la **definición de la función de evaluación** (el *Fuzz target* real).
 
@@ -275,11 +277,11 @@ package utils
 
 // Reverse invierte una cadena de texto (Implementación con un bug oculto)
 func Reverse(s string) string {
-	b := []byte(s)
-	for i, j := 0, len(b)-1; i < len(b)/2; i, j = i+1, j-1 {
-		b[i], b[j] = b[j], b[i]
-	}
-	return string(b)
+ b := []byte(s)
+ for i, j := 0, len(b)-1; i < len(b)/2; i, j = i+1, j-1 {
+  b[i], b[j] = b[j], b[i]
+ }
+ return string(b)
 }
 ```
 
@@ -291,40 +293,41 @@ En nuestro archivo `utils_test.go`, escribimos lo siguiente:
 package utils_test
 
 import (
-	"testing"
-	"unicode/utf8"
-	"tu-proyecto/utils"
+ "testing"
+ "unicode/utf8"
+ "tu-proyecto/utils"
 )
 
 func FuzzReverse(f *testing.F) {
-	// 1. Definición del Corpus Semilla (Seed Corpus)
-	// Proporcionamos ejemplos básicos y válidos para guiar al motor
-	f.Add("gopher")
-	f.Add("hello world")
-	f.Add(" ")
+ // 1. Definición del Corpus Semilla (Seed Corpus)
+ // Proporcionamos ejemplos básicos y válidos para guiar al motor
+ f.Add("gopher")
+ f.Add("hello world")
+ f.Add(" ")
 
-	// 2. Definición del Fuzz Target
-	// La función anónima recibe un *testing.T y los tipos de datos que coinciden
-	// con lo que añadimos en f.Add() (en este caso, un string).
-	f.Fuzz(func(t *testing.T, orig string) {
-		rev := utils.Reverse(orig)
-		doubleRev := utils.Reverse(rev)
+ // 2. Definición del Fuzz Target
+ // La función anónima recibe un *testing.T y los tipos de datos que coinciden
+ // con lo que añadimos en f.Add() (en este caso, un string).
+ f.Fuzz(func(t *testing.T, orig string) {
+  rev := utils.Reverse(orig)
+  doubleRev := utils.Reverse(rev)
 
-		// Invariante 1: Revertir una cadena dos veces debe devolver la original
-		if orig != doubleRev {
-			t.Errorf("Fallo lógico: Antes: %q, Después: %q", orig, doubleRev)
-		}
+  // Invariante 1: Revertir una cadena dos veces debe devolver la original
+  if orig != doubleRev {
+   t.Errorf("Fallo lógico: Antes: %q, Después: %q", orig, doubleRev)
+  }
 
-		// Invariante 2: Si la entrada original era UTF-8 válido, 
-		// la cadena invertida también debe serlo.
-		if utf8.ValidString(orig) && !utf8.ValidString(rev) {
-			t.Errorf("Reverse produjo UTF-8 inválido para la entrada: %q", orig)
-		}
-	})
+  // Invariante 2: Si la entrada original era UTF-8 válido, 
+  // la cadena invertida también debe serlo.
+  if utf8.ValidString(orig) && !utf8.ValidString(rev) {
+   t.Errorf("Reverse produjo UTF-8 inválido para la entrada: %q", orig)
+  }
+ })
 }
 ```
 
 **Puntos clave del código:**
+
 * Utilizamos `f.Add()` para registrar datos iniciales. Podemos pasar múltiples argumentos a `f.Add()` si nuestra función requiere probar la interacción entre varias variables (por ejemplo, `f.Add("cadena", 5)`), siempre y cuando la firma de `f.Fuzz` coincida (`func(t *testing.T, s string, i int)`).
 * El motor de Fuzzing generará mutaciones aleatorias y las pasará a la variable `orig` en ejecuciones subsecuentes.
 * **Evaluación por propiedades:** Dado que no sabemos qué valor aleatorio inyectará el motor en `orig`, no podemos hacer aserciones directas como `if rev != "esperado"`. En el Fuzzing, evaluamos **invariantes lógicos** (propiedades que siempre deben cumplirse sin importar la entrada).

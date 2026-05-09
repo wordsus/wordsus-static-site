@@ -4,7 +4,7 @@
 
 Vivimos sumergidos en el fondo de un océano invisible. Cada vez que respiramos, que inflamos un neumático o que vemos un globo aerostático surcar el cielo, estamos siendo testigos de la fascinante mecánica de los gases. A diferencia de los sólidos, que tienen una forma y un volumen definidos, o de los líquidos, que se adaptan al recipiente que los contiene pero mantienen su volumen, los gases son los espíritus libres de la materia. Se expanden, se comprimen, se escapan y, sobre todo, responden de manera extremadamente predecible a su entorno.
 
-Pero, ¿cómo podemos entender algo que ni siquiera podemos ver? A lo largo de la historia, grandes mentes científicas se hicieron la misma pregunta. No tenían microscopios súper potentes para ver los átomos bailando en el aire, así que recurrieron a la observación, a la experimentación con bombas de aire, tubos de vidrio y fuego. Así nacieron las leyes de los gases. 
+Pero, ¿cómo podemos entender algo que ni siquiera podemos ver? A lo largo de la historia, grandes mentes científicas se hicieron la misma pregunta. No tenían microscopios súper potentes para ver los átomos bailando en el aire, así que recurrieron a la observación, a la experimentación con bombas de aire, tubos de vidrio y fuego. Así nacieron las leyes de los gases.
 
 En este artículo de **Química para Mortales**, vamos a despojarnos de la complejidad académica y vamos a entender la esencia de estas leyes. Vamos a descubrir por qué tus oídos se tapan cuando viajas en avión, por qué no debes arrojar un aerosol al fuego y cómo, conociendo tres simples variables, puedes predecir el comportamiento de cualquier gas.
 
@@ -13,11 +13,11 @@ En este artículo de **Química para Mortales**, vamos a despojarnos de la compl
 Antes de conocer a los científicos y sus leyes, necesitamos entender el escenario donde ocurre toda la acción. El estado de un gas está definido por tres variables macroscópicas principales. Si imaginas a un gas como una multitud de personas en una habitación, estas variables son las reglas que rigen su comportamiento:
 
 **El Volumen ($V$)**
-Es el espacio físico en el que el gas está confinado. Piensa en el volumen como el tamaño de la habitación. Si la habitación es grande, las personas tienen mucho espacio para moverse. Si es pequeña, están apretadas. En química, solemos medir el volumen en litros ($\text{L}$), mililitros ($\text{mL}$) o metros cúbicos ($\text{m}^3$). 
+Es el espacio físico en el que el gas está confinado. Piensa en el volumen como el tamaño de la habitación. Si la habitación es grande, las personas tienen mucho espacio para moverse. Si es pequeña, están apretadas. En química, solemos medir el volumen en litros ($\text{L}$), mililitros ($\text{mL}$) o metros cúbicos ($\text{m}^3$).
 
 **La Temperatura ($T$)**
-Para un químico, la temperatura no es solo "qué tanto calor o frío hace". Es una medida de la **energía cinética promedio** de las partículas. Volviendo a nuestra analogía: si la temperatura es baja, las personas en la habitación están caminando lentamente. Si la temperatura es alta, están corriendo enérgicamente por todas partes. 
-*Nota crucial para mortales:* En las leyes de los gases, NUNCA usamos grados Celsius ($^\circ\text{C}$). Usamos la escala **Kelvin** ($\text{K}$). ¿Por qué? Porque el $0 \text{ K}$ (el cero absoluto) representa la ausencia total de movimiento. Para pasar de Celsius a Kelvin, simplemente sumamos 273.15. 
+Para un químico, la temperatura no es solo "qué tanto calor o frío hace". Es una medida de la **energía cinética promedio** de las partículas. Volviendo a nuestra analogía: si la temperatura es baja, las personas en la habitación están caminando lentamente. Si la temperatura es alta, están corriendo enérgicamente por todas partes.
+*Nota crucial para mortales:* En las leyes de los gases, NUNCA usamos grados Celsius ($^\circ\text{C}$). Usamos la escala **Kelvin** ($\text{K}$). ¿Por qué? Porque el $0 \text{ K}$ (el cero absoluto) representa la ausencia total de movimiento. Para pasar de Celsius a Kelvin, simplemente sumamos 273.15.
 $$T(\text{K}) = T(^\circ\text{C}) + 273.15$$
 
 **La Presión ($P$)**
@@ -28,10 +28,11 @@ Imagina a esas personas corriendo por la habitación. Tarde o temprano, van a ch
 El título de este artículo menciona a los "gases ideales". En el universo real, las moléculas de gas tienen un tamaño físico y, a veces, se atraen o se repelen entre sí como pequeños imanes. Esto hace que las matemáticas para calcular su comportamiento sean un dolor de cabeza.
 
 Para facilitarnos la vida, los científicos inventaron el concepto de **gas ideal**. Es un modelo teórico, una simplificación que se basa en dos grandes mentiras piadosas:
-1.  **Las partículas del gas no ocupan espacio.** (Imaginamos que son puntos infinitamente pequeños).
-2.  **Las partículas no interactúan entre sí.** (No se atraen ni se repelen; si chocan, rebotan perfectamente como bolas de billar, sin perder energía).
 
-Bajo condiciones normales (la temperatura y presión en la que vivimos los humanos), casi todos los gases reales (como el oxígeno, el nitrógeno o el aire en general) se comportan de una manera tan parecida a un "gas ideal" que podemos usar estas reglas simplificadas sin problemas. 
+1. **Las partículas del gas no ocupan espacio.** (Imaginamos que son puntos infinitamente pequeños).
+2. **Las partículas no interactúan entre sí.** (No se atraen ni se repelen; si chocan, rebotan perfectamente como bolas de billar, sin perder energía).
+
+Bajo condiciones normales (la temperatura y presión en la que vivimos los humanos), casi todos los gases reales (como el oxígeno, el nitrógeno o el aire en general) se comportan de una manera tan parecida a un "gas ideal" que podemos usar estas reglas simplificadas sin problemas.
 
 Ahora sí, con el escenario listo y las reglas establecidas, viajemos en el tiempo para conocer las tres leyes fundamentales.
 
@@ -41,7 +42,7 @@ Ahora sí, con el escenario listo y las reglas establecidas, viajemos en el tiem
 
 **La regla de oro:** Mantener la **Temperatura constante**.
 
-Boyle se preguntó: ¿Qué pasa si encierro un gas en un recipiente, me aseguro de que no cambie su temperatura (que las partículas no corran ni más rápido ni más lento), y comienzo a aplastarlo? 
+Boyle se preguntó: ¿Qué pasa si encierro un gas en un recipiente, me aseguro de que no cambie su temperatura (que las partículas no corran ni más rápido ni más lento), y comienzo a aplastarlo?
 
 El experimento de Boyle demostró algo muy intuitivo: **si disminuyes el volumen de un gas, su presión aumenta, y viceversa.** Existe una relación *inversamente proporcional*.
 
@@ -67,11 +68,13 @@ Presión (P)
   |                       *
   +---------------------------------> Volumen (V)
 ```
+
 *(A medida que nos movemos hacia la derecha aumentando el volumen, la presión cae abruptamente)*
 
 **Boyle en la vida cotidiana de los mortales:**
-*   **La respiración:** Tus pulmones funcionan gracias a Boyle. Cuando el diafragma baja, el volumen de tu caja torácica aumenta. Esto hace que la presión del aire dentro de tus pulmones disminuya por debajo de la presión atmosférica del exterior. ¿Qué hace el aire? Entra rápidamente para igualar la presión. Cuando exhalas, el volumen disminuye, la presión aumenta y el aire es expulsado.
-*   **El buceo:** A medida que un buzo desciende, la presión del agua aumenta. Si el buzo tiene aire atrapado en sus oídos, el volumen de ese aire disminuye por la alta presión exterior, causando dolor. Por eso deben "ecualizar". Si un buzo aguanta la respiración y sube a la superficie rápidamente, la presión disminuye, el volumen de aire en sus pulmones se expandirá masivamente, pudiendo causar daños graves.
+
+* **La respiración:** Tus pulmones funcionan gracias a Boyle. Cuando el diafragma baja, el volumen de tu caja torácica aumenta. Esto hace que la presión del aire dentro de tus pulmones disminuya por debajo de la presión atmosférica del exterior. ¿Qué hace el aire? Entra rápidamente para igualar la presión. Cuando exhalas, el volumen disminuye, la presión aumenta y el aire es expulsado.
+* **El buceo:** A medida que un buzo desciende, la presión del agua aumenta. Si el buzo tiene aire atrapado en sus oídos, el volumen de ese aire disminuye por la alta presión exterior, causando dolor. Por eso deben "ecualizar". Si un buzo aguanta la respiración y sube a la superficie rápidamente, la presión disminuye, el volumen de aire en sus pulmones se expandirá masivamente, pudiendo causar daños graves.
 
 ## 4. La Ley de Charles: El calor que expande horizontes
 
@@ -108,8 +111,9 @@ Volumen (V)
 ```
 
 **Charles en la vida cotidiana de los mortales:**
-*   **Globos aerostáticos:** Es el ejemplo por excelencia, y la razón por la que Charles investigó esto. Al calentar el aire dentro de un globo gigantesco, el aire se expande (aumenta su volumen). Al ocupar más espacio con la misma masa, su densidad disminuye. El aire caliente es menos denso que el aire frío exterior, lo que crea una fuerza de empuje que eleva la canasta hacia el cielo.
-*   **La pelota de ping-pong abollada:** Si pisas accidentalmente una pelota de ping-pong y se abolla pero no se rompe, puedes sumergirla en agua caliente. Al subir la temperatura del gas en el interior, su volumen intenta expandirse, empujando el plástico hacia afuera y devolviéndole su forma esférica.
+
+* **Globos aerostáticos:** Es el ejemplo por excelencia, y la razón por la que Charles investigó esto. Al calentar el aire dentro de un globo gigantesco, el aire se expande (aumenta su volumen). Al ocupar más espacio con la misma masa, su densidad disminuye. El aire caliente es menos denso que el aire frío exterior, lo que crea una fuerza de empuje que eleva la canasta hacia el cielo.
+* **La pelota de ping-pong abollada:** Si pisas accidentalmente una pelota de ping-pong y se abolla pero no se rompe, puedes sumergirla en agua caliente. Al subir la temperatura del gas en el interior, su volumen intenta expandirse, empujando el plástico hacia afuera y devolviéndole su forma esférica.
 
 ## 5. La Ley de Gay-Lussac: La olla a presión de la naturaleza
 
@@ -144,9 +148,10 @@ Presión (P)
 ```
 
 **Gay-Lussac en la vida cotidiana de los mortales:**
-*   **Las latas de aerosol:** Todas las latas de desodorante o pintura tienen una advertencia clara: "No perforar ni exponer al fuego". Esto es química pura. La lata es un recipiente rígido (volumen constante). Si la arrojas al fuego, la temperatura ($T$) del gas propulsor en el interior sube drásticamente. Siguiendo la ley de Gay-Lussac, la presión ($P$) aumentará de manera proporcional hasta que el metal no resista más y la lata explote peligrosamente.
-*   **Los neumáticos en verano:** Si mides la presión de las llantas de tu automóvil en una fría mañana de invierno, será menor que si la mides después de conducir durante dos horas en el asfalto hirviendo del verano. El volumen del neumático apenas cambia, pero el aumento de temperatura por la fricción y el clima hace que la presión interna se dispare.
-*   **La olla a presión:** Aunque involucra vapores y no solo gases ideales, el principio se aplica. Al estar sellada herméticamente (volumen constante) y puesta al fuego (aumento de $T$), la presión interior aumenta enormemente, lo que a su vez eleva el punto de ebullición del agua y permite que los frijoles se cocinen en tiempo récord.
+
+* **Las latas de aerosol:** Todas las latas de desodorante o pintura tienen una advertencia clara: "No perforar ni exponer al fuego". Esto es química pura. La lata es un recipiente rígido (volumen constante). Si la arrojas al fuego, la temperatura ($T$) del gas propulsor en el interior sube drásticamente. Siguiendo la ley de Gay-Lussac, la presión ($P$) aumentará de manera proporcional hasta que el metal no resista más y la lata explote peligrosamente.
+* **Los neumáticos en verano:** Si mides la presión de las llantas de tu automóvil en una fría mañana de invierno, será menor que si la mides después de conducir durante dos horas en el asfalto hirviendo del verano. El volumen del neumático apenas cambia, pero el aumento de temperatura por la fricción y el clima hace que la presión interna se dispare.
+* **La olla a presión:** Aunque involucra vapores y no solo gases ideales, el principio se aplica. Al estar sellada herméticamente (volumen constante) y puesta al fuego (aumento de $T$), la presión interior aumenta enormemente, lo que a su vez eleva el punto de ebullición del agua y permite que los frijoles se cocinen en tiempo récord.
 
 ## 6. Uniendo las piezas: La Ley Combinada y la Ecuación de Estado
 
@@ -167,11 +172,12 @@ Al combinar los descubrimientos de Boyle, Charles, Gay-Lussac y Avogadro, se lle
 $$P \cdot V = n \cdot R \cdot T$$
 
 Donde:
-*   $P$ = Presión
-*   $V$ = Volumen
-*   $n$ = Cantidad de gas (en moles)
-*   $R$ = La constante universal de los gases ideales (un número que cuadra las unidades, usualmente $0.0821 \text{ L}\cdot\text{atm}/(\text{mol}\cdot\text{K})$).
-*   $T$ = Temperatura (¡siempre en Kelvin!)
+
+* $P$ = Presión
+* $V$ = Volumen
+* $n$ = Cantidad de gas (en moles)
+* $R$ = La constante universal de los gases ideales (un número que cuadra las unidades, usualmente $0.0821 \text{ L}\cdot\text{atm}/(\text{mol}\cdot\text{K})$).
+* $T$ = Temperatura (¡siempre en Kelvin!)
 
 Esta es la fórmula definitiva. Con ella, si conoces tres piezas de información sobre cualquier gas en una habitación, puedes calcular inmediatamente la cuarta. Es como tener un pase VIP para entender la mecánica invisible del universo.
 

@@ -4,7 +4,7 @@ Tras dominar los fundamentos de `database/sql`, el desarrollador de Go se enfren
 
 Como vimos en el capítulo anterior (específicamente en la sección 28.4), extraer datos con el paquete estándar `database/sql` requiere escanear manualmente cada columna en las variables correspondientes utilizando `rows.Scan(&var1, &var2, ...)`. En aplicaciones reales con tablas de decenas de columnas, este proceso no solo es tedioso y verboso, sino también extremadamente propenso a errores (por ejemplo, alterar el orden de las variables o añadir una columna en la consulta y olvidar actualizar el `Scan`).
 
-Aquí es donde entra en juego **`sqlx`** (`github.com/jmoiron/sqlx`). 
+Aquí es donde entra en juego **`sqlx`** (`github.com/jmoiron/sqlx`).
 
 `sqlx` no es un ORM (Mapeo Objeto-Relacional). Es, en cambio, una extensión ligera que envuelve a `database/sql`, manteniendo su misma interfaz subyacente pero añadiendo capacidades avanzadas de mapeo mediante reflexión (reflect). Te permite seguir escribiendo SQL puro, dándote control absoluto sobre el rendimiento y la sintaxis, pero elimina casi toda la fricción al mover datos entre la base de datos y tus `structs` de Go.
 
@@ -16,19 +16,19 @@ El núcleo de la magia de `sqlx` reside en el uso de la etiqueta `db` en tus est
 package main
 
 import (
-	"fmt"
-	"log"
+ "fmt"
+ "log"
 
-	"github.com/jmoiron/sqlx"
-	_ "github.com/lib/pq" // Driver de PostgreSQL
+ "github.com/jmoiron/sqlx"
+ _ "github.com/lib/pq" // Driver de PostgreSQL
 )
 
 // User representa a un usuario en la base de datos.
 type User struct {
-	ID        int    `db:"id"`
-	FirstName string `db:"first_name"`
-	LastName  string `db:"last_name"`
-	Email     string `db:"email"`
+ ID        int    `db:"id"`
+ FirstName string `db:"first_name"`
+ LastName  string `db:"last_name"`
+ Email     string `db:"email"`
 }
 ```
 
@@ -146,7 +146,7 @@ err = db.Select(&matchedUsers, query, args...)
 
 ### Resumen
 
-`sqlx` es el puente perfecto para los desarrolladores que buscan mantener la previsibilidad, seguridad y el rendimiento de las consultas SQL manuales, pero que desean la comodidad de las asignaciones automáticas a `structs` que ofrecen frameworks de mayor nivel. 
+`sqlx` es el puente perfecto para los desarrolladores que buscan mantener la previsibilidad, seguridad y el rendimiento de las consultas SQL manuales, pero que desean la comodidad de las asignaciones automáticas a `structs` que ofrecen frameworks de mayor nivel.
 
 ## 29.2. Construcción dinámica de consultas con Query Builders (Squirrel)
 
@@ -161,6 +161,7 @@ Para resolver este problema arquitectónico sin tener que recurrir a un ORM comp
 Squirrel es una librería que proporciona una interfaz fluida (*fluent interface*) para construir sentencias SQL de forma programática y segura. Su única responsabilidad es generar la cadena SQL final y el *Slice* de argumentos correspondientes. **No ejecuta la consulta ni mapea los datos** (para eso seguimos usando `database/sql` o `sqlx`).
 
 Para instalarlo en tu módulo:
+
 ```bash
 go get github.com/Masterminds/squirrel
 ```
@@ -175,7 +176,7 @@ La forma idiomática de hacer esto y evitar repetirlo en cada consulta es crear 
 package repository
 
 import (
-	sq "github.com/Masterminds/squirrel"
+ sq "github.com/Masterminds/squirrel"
 )
 
 // psql es nuestro constructor base configurado para PostgreSQL.
@@ -189,51 +190,51 @@ Veamos cómo Squirrel brilla al resolver el problema de los filtros opcionales. 
 
 ```go
 import (
-	"database/sql"
-	"fmt"
-	"log"
-	
-	sq "github.com/Masterminds/squirrel"
+ "database/sql"
+ "fmt"
+ "log"
+ 
+ sq "github.com/Masterminds/squirrel"
 )
 
 // Filtros simula los parámetros recibidos, por ejemplo, en un Query String HTTP.
 type Filtros struct {
-	Nombre     string
-	EdadMinima int
-	SoloActivos bool
+ Nombre     string
+ EdadMinima int
+ SoloActivos bool
 }
 
 func BuscarUsuarios(db *sql.DB, f Filtros) {
-	// 1. Iniciamos la consulta base
-	query := psql.Select("id", "nombre", "email").From("usuarios")
+ // 1. Iniciamos la consulta base
+ query := psql.Select("id", "nombre", "email").From("usuarios")
 
-	// 2. Añadimos condiciones de forma dinámica
-	if f.Nombre != "" {
-		// Eq es un atajo para igualdades exactas, pero aquí usamos LIKE
-		query = query.Where(sq.ILike{"nombre": fmt.Sprintf("%%%s%%", f.Nombre)})
-	}
+ // 2. Añadimos condiciones de forma dinámica
+ if f.Nombre != "" {
+  // Eq es un atajo para igualdades exactas, pero aquí usamos LIKE
+  query = query.Where(sq.ILike{"nombre": fmt.Sprintf("%%%s%%", f.Nombre)})
+ }
 
-	if f.EdadMinima > 0 {
-		query = query.Where(sq.GtOrEq{"edad": f.EdadMinima})
-	}
+ if f.EdadMinima > 0 {
+  query = query.Where(sq.GtOrEq{"edad": f.EdadMinima})
+ }
 
-	if f.SoloActivos {
-		query = query.Where(sq.Eq{"estado": "activo"})
-	}
+ if f.SoloActivos {
+  query = query.Where(sq.Eq{"estado": "activo"})
+ }
 
-	// 3. Compilamos la consulta final
-	sqlQuery, args, err := query.ToSql()
-	if err != nil {
-		log.Fatalf("Error construyendo SQL: %v", err)
-	}
+ // 3. Compilamos la consulta final
+ sqlQuery, args, err := query.ToSql()
+ if err != nil {
+  log.Fatalf("Error construyendo SQL: %v", err)
+ }
 
-	// Imprimimos para propósitos de depuración (Logging estructurado en producción)
-	fmt.Printf("SQL Generado: %s\n", sqlQuery)
-	fmt.Printf("Argumentos: %v\n", args)
+ // Imprimimos para propósitos de depuración (Logging estructurado en producción)
+ fmt.Printf("SQL Generado: %s\n", sqlQuery)
+ fmt.Printf("Argumentos: %v\n", args)
 
-	// 4. Ejecutamos usando database/sql (o sqlx)
-	rows, err := db.Query(sqlQuery, args...)
-	// ... manejo estándar de filas ...
+ // 4. Ejecutamos usando database/sql (o sqlx)
+ rows, err := db.Query(sqlQuery, args...)
+ // ... manejo estándar de filas ...
 }
 ```
 
@@ -245,30 +246,30 @@ Otro caso de uso excepcional para Squirrel son las peticiones `PATCH` en REST, d
 
 ```go
 func ActualizarPerfil(db *sql.DB, userID int, actualizaciones map[string]interface{}) error {
-	if len(actualizaciones) == 0 {
-		return nil // Nada que actualizar
-	}
+ if len(actualizaciones) == 0 {
+  return nil // Nada que actualizar
+ }
 
-	// Iniciamos el constructor de Update
-	updateBuilder := psql.Update("usuarios")
+ // Iniciamos el constructor de Update
+ updateBuilder := psql.Update("usuarios")
 
-	// Iteramos sobre el mapa y añadimos dinámicamente cada campo usando Set
-	for columna, valor := range actualizaciones {
-		// Nota de seguridad: En producción, asegúrate de validar o establecer
-		// una "lista blanca" (allowlist) de claves permitidas en el mapa.
-		updateBuilder = updateBuilder.Set(columna, valor)
-	}
+ // Iteramos sobre el mapa y añadimos dinámicamente cada campo usando Set
+ for columna, valor := range actualizaciones {
+  // Nota de seguridad: En producción, asegúrate de validar o establecer
+  // una "lista blanca" (allowlist) de claves permitidas en el mapa.
+  updateBuilder = updateBuilder.Set(columna, valor)
+ }
 
-	// Establecemos la condición y el valor de retorno (si es necesario)
-	updateBuilder = updateBuilder.Where(sq.Eq{"id": userID}).Suffix("RETURNING id")
+ // Establecemos la condición y el valor de retorno (si es necesario)
+ updateBuilder = updateBuilder.Where(sq.Eq{"id": userID}).Suffix("RETURNING id")
 
-	sqlQuery, args, err := updateBuilder.ToSql()
-	if err != nil {
-		return err
-	}
+ sqlQuery, args, err := updateBuilder.ToSql()
+ if err != nil {
+  return err
+ }
 
-	var updatedID int
-	return db.QueryRow(sqlQuery, args...).Scan(&updatedID)
+ var updatedID int
+ return db.QueryRow(sqlQuery, args...).Scan(&updatedID)
 }
 ```
 
@@ -351,6 +352,7 @@ sqlc generate
 ```
 
 `sqlc` leerá el esquema y las consultas, y generará un paquete Go (generalmente llamado `db` o `queries`) que contendrá:
+
 1. Un `struct` para cada tabla (ej. `Author`).
 2. Una interfaz y métodos con firmas fuertemente tipadas para cada consulta anotada.
 
@@ -364,43 +366,43 @@ Así es como se consume en tu lógica de aplicación:
 package main
 
 import (
-	"context"
-	"database/sql"
-	"log"
+ "context"
+ "database/sql"
+ "log"
 
-	"mi-proyecto/db/queries" // El paquete generado por sqlc
-	_ "github.com/lib/pq"
+ "mi-proyecto/db/queries" // El paquete generado por sqlc
+ _ "github.com/lib/pq"
 )
 
 func main() {
-	ctx := context.Background()
-	
-	conn, err := sql.Open("postgres", "user=postgres dbname=test sslmode=disable")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer conn.Close()
+ ctx := context.Background()
+ 
+ conn, err := sql.Open("postgres", "user=postgres dbname=test sslmode=disable")
+ if err != nil {
+  log.Fatal(err)
+ }
+ defer conn.Close()
 
-	// Inicializamos las consultas generadas envolviendo la conexión
-	q := queries.New(conn)
+ // Inicializamos las consultas generadas envolviendo la conexión
+ q := queries.New(conn)
 
-	// 1. Crear un autor (notemos que los argumentos están fuertemente tipados)
-	// CreateAuthorParams es un struct generado automáticamente por sqlc
-	newAuthor, err := q.CreateAuthor(ctx, queries.CreateAuthorParams{
-		Name: "Jorge Luis Borges",
-		Bio:  sql.NullString{String: "Escritor argentino", Valid: true},
-	})
-	if err != nil {
-		log.Fatal(err)
-	}
+ // 1. Crear un autor (notemos que los argumentos están fuertemente tipados)
+ // CreateAuthorParams es un struct generado automáticamente por sqlc
+ newAuthor, err := q.CreateAuthor(ctx, queries.CreateAuthorParams{
+  Name: "Jorge Luis Borges",
+  Bio:  sql.NullString{String: "Escritor argentino", Valid: true},
+ })
+ if err != nil {
+  log.Fatal(err)
+ }
 
-	// 2. Obtener un autor (devuelve directamente el struct Author, no hay que hacer Scan)
-	author, err := q.GetAuthor(ctx, newAuthor.ID)
-	if err != nil {
-		log.Fatal(err)
-	}
+ // 2. Obtener un autor (devuelve directamente el struct Author, no hay que hacer Scan)
+ author, err := q.GetAuthor(ctx, newAuthor.ID)
+ if err != nil {
+  log.Fatal(err)
+ }
 
-	log.Printf("Autor recuperado: %s", author.Name)
+ log.Printf("Autor recuperado: %s", author.Name)
 }
 ```
 
@@ -417,12 +419,13 @@ Es crucial entender los límites de esta herramienta. **`sqlc` es pésimo para c
 Si recuerdas el ejemplo de la sección anterior con `Squirrel` (filtros opcionales de búsqueda por nombre, edad o estado), intentar replicar eso en `sqlc` requiere escribir combinaciones exhaustivas de consultas SQL o abusar de cláusulas poco eficientes como `WHERE (name = $1 OR $1 IS NULL)`.
 
 Por esta razón, en arquitecturas avanzadas, es muy común y totalmente aceptable implementar un **enfoque híbrido**:
+
 * Usar **`sqlc`** para el 80-90% de las consultas estáticas del sistema (inserciones, lecturas por ID, borrados, listados fijos), aprovechando su rendimiento y seguridad.
 * Usar **`Squirrel` + `sqlx`** (o `database/sql` puro) exclusivamente para ese 10-20% de consultas complejas de informes o búsquedas con múltiples filtros dinámicos opcionales.
 
 ## 29.4. Mapeo Objeto-Relacional (ORMs): GORM y Ent
 
-Hasta ahora hemos explorado herramientas que se mantienen muy cerca del metal (SQL puro) o que ofrecen abstracciones ligeras (`sqlx`, `Squirrel`, `sqlc`). Sin embargo, en el ecosistema Go también existen los **ORMs (Object-Relational Mappers) completos**. 
+Hasta ahora hemos explorado herramientas que se mantienen muy cerca del metal (SQL puro) o que ofrecen abstracciones ligeras (`sqlx`, `Squirrel`, `sqlc`). Sin embargo, en el ecosistema Go también existen los **ORMs (Object-Relational Mappers) completos**.
 
 Aunque la filosofía idiomática de Go tiende a favorecer la simplicidad y el control explícito, rechazando la "magia" oculta de los grandes frameworks, la realidad de la industria es que los ORMs aceleran drásticamente el desarrollo de aplicaciones CRUD estándar. En este espacio, dos gigantes dominan el panorama, cada uno con una filosofía de diseño diametralmente opuesta: **GORM** y **Ent**.
 
@@ -444,45 +447,45 @@ GORM funciona utilizando **reflexión (reflect)** en tiempo de ejecución. Defin
 package main
 
 import (
-	"log"
+ "log"
 
-	"gorm.io/driver/postgres"
-	"gorm.io/gorm"
+ "gorm.io/driver/postgres"
+ "gorm.io/gorm"
 )
 
 // Definición del modelo con etiquetas GORM
 type User struct {
-	gorm.Model // Añade automáticamente ID, CreatedAt, UpdatedAt, DeletedAt (Soft Delete)
-	Name       string
-	Email      string `gorm:"uniqueIndex"`
-	Posts      []Post // Relación "Has Many" (Un usuario tiene muchos posts)
+ gorm.Model // Añade automáticamente ID, CreatedAt, UpdatedAt, DeletedAt (Soft Delete)
+ Name       string
+ Email      string `gorm:"uniqueIndex"`
+ Posts      []Post // Relación "Has Many" (Un usuario tiene muchos posts)
 }
 
 type Post struct {
-	gorm.Model
-	Title  string
-	UserID uint // Clave foránea
+ gorm.Model
+ Title  string
+ UserID uint // Clave foránea
 }
 
 func main() {
-	dsn := "host=localhost user=postgres password=secret dbname=test port=5432 sslmode=disable"
-	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
-	if err != nil {
-		log.Fatal("Error conectando a la base de datos")
-	}
+ dsn := "host=localhost user=postgres password=secret dbname=test port=5432 sslmode=disable"
+ db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+ if err != nil {
+  log.Fatal("Error conectando a la base de datos")
+ }
 
-	// Auto-migración (crea las tablas si no existen)
-	db.AutoMigrate(&User{}, &Post{})
+ // Auto-migración (crea las tablas si no existen)
+ db.AutoMigrate(&User{}, &Post{})
 
-	// 1. Creación e inserción
-	newUser := User{Name: "Alan Turing", Email: "alan@enigma.com"}
-	db.Create(&newUser) // Se ejecuta un INSERT y newUser.ID se puebla
+ // 1. Creación e inserción
+ newUser := User{Name: "Alan Turing", Email: "alan@enigma.com"}
+ db.Create(&newUser) // Se ejecuta un INSERT y newUser.ID se puebla
 
-	// 2. Consulta con asociaciones (Preload evita el problema N+1 internamente)
-	var user User
-	db.Preload("Posts").First(&user, "email = ?", "alan@enigma.com")
+ // 2. Consulta con asociaciones (Preload evita el problema N+1 internamente)
+ var user User
+ db.Preload("Posts").First(&user, "email = ?", "alan@enigma.com")
 
-	log.Printf("Usuario: %s, Posts: %d", user.Name, len(user.Posts))
+ log.Printf("Usuario: %s, Posts: %d", user.Name, len(user.Posts))
 }
 ```
 
@@ -506,29 +509,29 @@ En Ent, no escribes los `structs` directamente. Escribes el **esquema** utilizan
 package schema
 
 import (
-	"entgo.io/ent"
-	"entgo.io/ent/schema/edge"
-	"entgo.io/ent/schema/field"
+ "entgo.io/ent"
+ "entgo.io/ent/schema/edge"
+ "entgo.io/ent/schema/field"
 )
 
 // User define el esquema de la entidad Usuario.
 type User struct {
-	ent.Schema
+ ent.Schema
 }
 
 // Fields (Columnas) de User.
 func (User) Fields() []ent.Field {
-	return []ent.Field{
-		field.String("name").NotEmpty(),
-		field.String("email").Unique(),
-	}
+ return []ent.Field{
+  field.String("name").NotEmpty(),
+  field.String("email").Unique(),
+ }
 }
 
 // Edges (Relaciones) de User.
 func (User) Edges() []ent.Edge {
-	return []ent.Edge{
-		edge.To("posts", Post.Type),
-	}
+ return []ent.Edge{
+  edge.To("posts", Post.Type),
+ }
 }
 ```
 
@@ -540,33 +543,33 @@ Tras ejecutar `go generate ./ent`, Ent crea un cliente masivo con métodos fuert
 package main
 
 import (
-	"context"
-	"log"
+ "context"
+ "log"
 
-	"mi-proyecto/ent"
-	"mi-proyecto/ent/user" // Paquete generado específicamente para los filtros de Usuario
-	_ "github.com/lib/pq"
+ "mi-proyecto/ent"
+ "mi-proyecto/ent/user" // Paquete generado específicamente para los filtros de Usuario
+ _ "github.com/lib/pq"
 )
 
 func main() {
-	client, err := ent.Open("postgres", "host=localhost user=postgres dbname=test sslmode=disable")
-	if err != nil {
-		log.Fatalf("Fallo abriendo conexión: %v", err)
-	}
-	defer client.Close()
-	ctx := context.Background()
+ client, err := ent.Open("postgres", "host=localhost user=postgres dbname=test sslmode=disable")
+ if err != nil {
+  log.Fatalf("Fallo abriendo conexión: %v", err)
+ }
+ defer client.Close()
+ ctx := context.Background()
 
-	// 1. Creación fluida y segura
-	u, err := client.User.Create().
-		SetName("Grace Hopper").
-		SetEmail("grace@navy.mil").
-		Save(ctx)
+ // 1. Creación fluida y segura
+ u, err := client.User.Create().
+  SetName("Grace Hopper").
+  SetEmail("grace@navy.mil").
+  Save(ctx)
 
-	// 2. Consulta 100% Type-Safe (Sin strings mágicos)
-	grace, err := client.User.Query().
-		Where(user.EmailEQ("grace@navy.mil")). // Esto es código generado, no compila si te equivocas
-		WithPosts().                           // Equivalente al Preload de GORM, pero tipado
-		Only(ctx)                              // Espera exactamente 1 resultado
+ // 2. Consulta 100% Type-Safe (Sin strings mágicos)
+ grace, err := client.User.Query().
+  Where(user.EmailEQ("grace@navy.mil")). // Esto es código generado, no compila si te equivocas
+  WithPosts().                           // Equivalente al Preload de GORM, pero tipado
+  Only(ctx)                              // Espera exactamente 1 resultado
 }
 ```
 
@@ -606,6 +609,7 @@ Para visualizar las compensaciones (trade-offs) de cada enfoque, revisemos la si
 La filosofía idiomática de Go ("The Go Way") prefiere lo explícito sobre lo implícito. Por ello, la comunidad de Go tiende a rechazar la "magia" de los ORMs tradicionales en favor de herramientas más cercanas al metal.
 
 **Deberías elegir este camino si:**
+
 * **El rendimiento es crítico:** No puedes permitirte la sobrecarga de reflexión o la generación de consultas subóptimas (el clásico problema N+1 de los ORMs).
 * **Tienes un equipo "DB-centric":** Tus desarrolladores (o DBAs) son expertos en SQL y prefieren aprovechar características específicas del motor (como funciones de ventana, CTEs complejos, o extensiones como PostGIS).
 * **Mantenibilidad a largo plazo:** El código SQL puro sobrevive a las modas de los frameworks. Migrar de `sqlx` a otra herramienta ligera es infinitamente más fácil que desenredar tu lógica de negocio de un ORM pesado.
@@ -615,6 +619,7 @@ La filosofía idiomática de Go ("The Go Way") prefiere lo explícito sobre lo i
 Como mencionamos en la sección 29.2, los constructores de consultas no son un reemplazo de las herramientas anteriores, sino un complemento táctico.
 
 **Deberías integrarlo si:**
+
 * **Tienes requerimientos de búsqueda dinámicos:** Construir endpoints REST o GraphQL donde el cliente puede combinar docenas de filtros, ordenamientos y paginaciones distintas. Concatenar `strings` SQL manualmente en estos escenarios es insostenible y peligroso (riesgo de inyección SQL).
 
 ### Cuándo usar un ORM completo (`GORM`, `Ent`)
@@ -622,6 +627,7 @@ Como mencionamos en la sección 29.2, los constructores de consultas no son un r
 A pesar de la preferencia de la comunidad por lo simple, los ORMs resuelven problemas reales de productividad en las empresas.
 
 **Deberías elegir un ORM si:**
+
 * **Velocidad de entrega (Time-to-market):** Estás en una startup o fase de prototipado y necesitas levantar una API CRUD con decenas de tablas en pocos días. GORM, por ejemplo, es imbatible aquí.
 * **El modelo de dominio es altamente relacional:** Si tienes una red compleja de relaciones (Usuarios, Permisos, Roles, Organizaciones) y necesitas navegar por ellas constantemente en el código. Ent brilla en la representación de estos grafos de datos.
 * **Desacoplamiento del motor:** Aunque rara vez ocurre en la práctica, si existe un requisito real de soportar múltiples motores de bases de datos (por ejemplo, SQLite para local/testing y PostgreSQL en producción) sin reescribir consultas.
@@ -630,6 +636,6 @@ A pesar de la preferencia de la comunidad por lo simple, los ORMs resuelven prob
 
 En aplicaciones de nivel empresarial (Enterprise), rara vez se utiliza una sola herramienta. El patrón más exitoso en Go es la **arquitectura híbrida o poligota a nivel de repositorio**:
 
-1.  Usa **`sqlc`** o **`sqlx`** para el 80% de tus operaciones: inserciones rápidas, lecturas por ID, y operaciones de alto rendimiento.
-2.  Usa **`Squirrel`** para el 15% de tus operaciones: endpoints de listado complejos y dinámicos.
-3.  Reserva un **ORM** (si es estrictamente necesario) para el 5% restante: scripts administrativos complejos o migraciones de estado masivas donde el rendimiento no penaliza al usuario final.
+1. Usa **`sqlc`** o **`sqlx`** para el 80% de tus operaciones: inserciones rápidas, lecturas por ID, y operaciones de alto rendimiento.
+2. Usa **`Squirrel`** para el 15% de tus operaciones: endpoints de listado complejos y dinámicos.
+3. Reserva un **ORM** (si es estrictamente necesario) para el 5% restante: scripts administrativos complejos o migraciones de estado masivas donde el rendimiento no penaliza al usuario final.

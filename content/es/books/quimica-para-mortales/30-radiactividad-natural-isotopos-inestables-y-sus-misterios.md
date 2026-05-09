@@ -13,8 +13,9 @@ Acompáñanos en este viaje al interior del átomo para descubrir por qué ciert
 Para entender por qué algo se rompe, primero debemos entender cómo se mantiene unido. Todo lo que conoces está formado por átomos, y cada átomo tiene un núcleo en su centro. Este núcleo es increíblemente diminuto. Si un átomo fuera del tamaño de un estadio de fútbol, el núcleo sería apenas un guisante situado en el círculo central. Sin embargo, en ese guisante se concentra casi el 99.9% de la masa de todo el átomo.
 
 Dentro de este núcleo conviven dos tipos de partículas fundamentales:
-*   **Protones:** Partículas con carga eléctrica positiva.
-*   **Neutrones:** Partículas sin carga eléctrica (neutras).
+
+* **Protones:** Partículas con carga eléctrica positiva.
+* **Neutrones:** Partículas sin carga eléctrica (neutras).
 
 Aquí es donde surge el primer gran misterio para cualquier estudiante de química. Sabemos por las leyes de la física clásica (específicamente, el electromagnetismo) que las cargas opuestas se atraen, pero las cargas iguales se repelen con una fuerza tremenda. Entonces, si un núcleo está lleno de protones, todos con carga positiva, ¿por qué no salen volando en direcciones opuestas? ¿Por qué el núcleo no explota inmediatamente debido a la repulsión electromagnética?
 
@@ -52,9 +53,10 @@ La identidad de un elemento químico está definida exclusivamente por su númer
 Sin embargo, la cantidad de neutrones en el núcleo puede variar sin cambiar la "identidad" química del elemento. A estas variaciones las llamamos **isótopos**. Piensa en los isótopos como diferentes modelos de un mismo automóvil: tienen el mismo motor y la misma marca (mismo elemento), pero algunos tienen más o menos equipamiento en el baúl (los neutrones).
 
 Tomemos el Hidrógeno ($Z = 1$), el elemento más simple del universo, como ejemplo:
-1.  **Protio:** 1 protón, 0 neutrones. (Es el 99.98% del hidrógeno en el universo. Es estable).
-2.  **Deuterio:** 1 protón, 1 neutrón. (Es estable. Se usa para hacer "agua pesada").
-3.  **Tritio:** 1 protón, 2 neutrones. (Aquí empiezan los problemas. El núcleo está desequilibrado. Es inestable y radiactivo).
+
+1. **Protio:** 1 protón, 0 neutrones. (Es el 99.98% del hidrógeno en el universo. Es estable).
+2. **Deuterio:** 1 protón, 1 neutrón. (Es estable. Se usa para hacer "agua pesada").
+3. **Tritio:** 1 protón, 2 neutrones. (Aquí empiezan los problemas. El núcleo está desequilibrado. Es inestable y radiactivo).
 
 Cada elemento de la tabla periódica tiene múltiples isótopos, pero solo algunos son estables. ¿Qué define la estabilidad? La proporción matemática entre neutrones y protones.
 
@@ -97,9 +99,10 @@ Fue el mismísimo Albert Einstein quien resolvió este misterio en 1905 con una 
 $$ E = mc^2 $$
 
 Donde:
-*   $E$ es la energía.
-*   $m$ es la masa.
-*   $c$ es la velocidad de la luz en el vacío (aproximadamente $3 \times 10^8$ metros por segundo).
+
+* $E$ es la energía.
+* $m$ es la masa.
+* $c$ es la velocidad de la luz en el vacío (aproximadamente $3 \times 10^8$ metros por segundo).
 
 Dado que la velocidad de la luz al cuadrado ($c^2$) es un número colosalmente grande ($9 \times 10^{16}$), la ecuación nos dice algo asombroso: una cantidad minúscula de masa puede convertirse en una cantidad gigantesca de energía.
 
@@ -173,9 +176,9 @@ FUENTE RADIACTIVA             PAPEL      ALUMINIO      PLOMO / HORMIGÓN GRUESO
       |                         |           |                 |
 ```
 
-*   **Alfa:** Una simple hoja de papel o tu piel muerta exterior es suficiente para detenerla. Es peligrosa solo si inhalas o ingieres el material (por ejemplo, gas radón en los pulmones).
-*   **Beta:** Puede atravesar tu piel y dañar tejidos superficiales, pero unos milímetros de aluminio, madera o plástico la detienen.
-*   **Gamma:** Es la más penetrante. Necesitas muros de hormigón grueso o bloques de plomo pesados para atenuarla. Es la que requiere trajes especiales y búnkeres para protegerse.
+* **Alfa:** Una simple hoja de papel o tu piel muerta exterior es suficiente para detenerla. Es peligrosa solo si inhalas o ingieres el material (por ejemplo, gas radón en los pulmones).
+* **Beta:** Puede atravesar tu piel y dañar tejidos superficiales, pero unos milímetros de aluminio, madera o plástico la detienen.
+* **Gamma:** Es la más penetrante. Necesitas muros de hormigón grueso o bloques de plomo pesados para atenuarla. Es la que requiere trajes especiales y búnkeres para protegerse.
 
 ## 5. El reloj implacable: La vida media (Semivida)
 
@@ -188,19 +191,21 @@ A este ritmo estadístico lo llamamos **Vida Media** o **Semivida** ($t_{1/2}$).
 Se define como: *El tiempo necesario para que exactamente la mitad de los núcleos radiactivos de una muestra inicial se desintegren y se conviertan en otra cosa.*
 
 Imagina que tienes 100 gramos de un isótopo imaginario con una vida media de 1 año.
-*   Hoy tienes 100 gramos.
-*   Dentro de 1 año, tendrás 50 gramos del isótopo original (los otros 50 gramos se han transmutado en otro elemento).
-*   Dentro de 2 años (otra vida media), se reducirá a la mitad otra vez. Te quedarán 25 gramos.
-*   Dentro de 3 años, tendrás 12.5 gramos.
+
+* Hoy tienes 100 gramos.
+* Dentro de 1 año, tendrás 50 gramos del isótopo original (los otros 50 gramos se han transmutado en otro elemento).
+* Dentro de 2 años (otra vida media), se reducirá a la mitad otra vez. Te quedarán 25 gramos.
+* Dentro de 3 años, tendrás 12.5 gramos.
 
 El decaimiento radiactivo no sigue una línea recta, sigue una curva de **decaimiento exponencial**. Matemáticamente, la cantidad de núcleos restantes ($N$) en función del tiempo ($t$) se describe mediante esta elegante función exponencial:
 
 $$ N(t) = N_0 \cdot e^{-\lambda t} $$
 
 Donde:
-*   $N_0$ es la cantidad inicial de átomos.
-*   $e$ es la constante matemática (base del logaritmo natural).
-*   $\lambda$ es la constante de desintegración específica de cada isótopo.
+
+* $N_0$ es la cantidad inicial de átomos.
+* $e$ es la constante matemática (base del logaritmo natural).
+* $\lambda$ es la constante de desintegración específica de cada isótopo.
 
 Podemos graficar este comportamiento de la siguiente manera:
 
@@ -234,14 +239,17 @@ Para el **Uranio-238**, la vida media es de **4.468 millones de años**, casi la
 Al escuchar todas estas descripciones, es normal que sientas cierto respeto por la radiactividad. La cultura popular y los accidentes históricos nos han enseñado a temerle ciegamente. Sin embargo, para los químicos y físicos, la radiactividad no es un monstruo de ciencia ficción; es el telón de fondo de la vida en la Tierra. Vivimos sumergidos en un mar de radiación natural.
 
 ### La radiación cósmica y las nubes
+
 A cada segundo de tu vida, estás siendo atravesado por rayos cósmicos. Se trata de partículas de altísima energía (protones y núcleos atómicos pesados) disparadas por explosiones de supernovas y agujeros negros en los confines de la galaxia. Cuando estos proyectiles chocan con la atmósfera terrestre, crean una lluvia secundaria de partículas radiactivas, como los muones, que caen sobre nosotros.
 Si vives en una ciudad a gran altitud, o si tomas un vuelo comercial, la capa de atmósfera que te protege es más delgada, por lo que recibes una dosis ligeramente mayor de esta radiación cósmica.
 
 ### La amenaza silenciosa en el sótano: El Radón
+
 El subsuelo terrestre contiene pequeñas cantidades de uranio natural incrustado en rocas como el granito. Mientras este uranio decae silenciosamente bajo tierra a lo largo de millones de años, uno de los pasos en su cadena de transmutación produce un gas llamado **Radón-222**. Al ser un gas noble, el radón no reacciona químicamente con las rocas, por lo que se filtra a través de las grietas del suelo y puede acumularse en los sótanos o plantas bajas de las casas mal ventiladas.
 El radón emite partículas alfa. Si está fuera de tu cuerpo, el aire y tu piel te protegen. Pero si lo inhalas constantemente, el decaimiento alfa ocurre directamente contra las delicadas células de tus pulmones, lo que lo convierte en la segunda causa principal de cáncer de pulmón después del tabaquismo.
 
 ### Comer plátanos de forma radiactiva
+
 Nuestro propio cuerpo es una fuente radiactiva, al igual que los alimentos que consumimos. El elemento **Potasio (K)** es vital para el funcionamiento de nuestro sistema nervioso e impulsa nuestros latidos cardíacos. Todo el potasio en la naturaleza contiene una pequeñísima fracción (0.012%) de su isótopo inestable, el **Potasio-40**, que tiene una vida media de 1.250 millones de años.
 Puesto que los plátanos, las patatas y las legumbres son ricos en potasio, son intrínsecamente radiactivos. Cada vez que comes un plátano, estás introduciendo isótopos inestables en tu organismo que comenzarán a emitir radiación beta. De hecho, existe una unidad humorística de medida en el mundo de la física llamada "Dosis Equivalente a un Plátano" (BED, por sus siglas en inglés) para ayudar a la gente a visualizar lo pequeñas que son las dosis de radiación en la vida diaria.
 Por supuesto, tu cuerpo tiene mecanismos de homeostasis: elimina el exceso de potasio en la orina para mantener niveles estables. Además, a lo largo de miles de millones de años de evolución, la maquinaria celular (específicamente la que repara el ADN) ha aprendido a convivir y a lidiar perfectamente con este bajísimo "ruido de fondo" radiactivo. ¡Tendrías que comer decenas de millones de plátanos de una sola vez para que la radiación fuera tu principal preocupación médica!
@@ -255,8 +263,9 @@ La radiactividad, al ser invisible, inodora e insípida, es el blanco perfecto p
 
 **Mito 2: Si te expones a la radiación, tú te vuelves radiactivo.**
 **Realidad:** Esta es una confusión enorme entre dos conceptos críticos: **Irradiación** y **Contaminación**.
-*   *Irradiación:* Es como que te apunten con una linterna. La luz te da, pero en el momento en que apagan la linterna, ya no estás iluminado. Si te tomas una radiografía médica (rayos X, que son parientes de los rayos gamma), la energía atraviesa tu cuerpo, puede o no dañar algunas células en el camino, pero cuando sales del hospital, *no eres radiactivo*.
-*   *Contaminación:* Es como mancharse con barro. Si tocas polvo de estroncio radiactivo, o inhalas gas radón, o ingieres agua con cesio radiactivo, esas partículas materiales inestables se quedan adheridas a tu piel o dentro de tus órganos. Entonces *sí* te conviertes en una fuente móvil de radiación porque el material inestable viaja contigo, decayendo dentro de ti.
+
+* *Irradiación:* Es como que te apunten con una linterna. La luz te da, pero en el momento en que apagan la linterna, ya no estás iluminado. Si te tomas una radiografía médica (rayos X, que son parientes de los rayos gamma), la energía atraviesa tu cuerpo, puede o no dañar algunas células en el camino, pero cuando sales del hospital, *no eres radiactivo*.
+* *Contaminación:* Es como mancharse con barro. Si tocas polvo de estroncio radiactivo, o inhalas gas radón, o ingieres agua con cesio radiactivo, esas partículas materiales inestables se quedan adheridas a tu piel o dentro de tus órganos. Entonces *sí* te conviertes en una fuente móvil de radiación porque el material inestable viaja contigo, decayendo dentro de ti.
 
 ## 8. Un poco de historia: El descubrimiento del cielo nublado
 

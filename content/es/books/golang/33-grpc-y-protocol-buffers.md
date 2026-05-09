@@ -43,6 +43,7 @@ message User {
 ```
 
 #### Anatomía del mensaje y los números de campo
+
 A diferencia de los *Structs* en Go, donde el nombre del campo dicta cómo se mapea en JSON (vía *Struct Tags*), en Protobuf la clave de la serialización es el **número de campo** (ej. `= 1`, `= 2`).
 
 * **Identificadores binarios:** Estos números se utilizan para identificar los campos en el formato binario serializado. El nombre del campo (ej. `email`) solo existe para los desarrolladores; la máquina lee el número `3`.
@@ -51,7 +52,7 @@ A diferencia de los *Structs* en Go, donde el nombre del campo dicta cómo se ma
 
 ### El compilador `protoc` y el ecosistema Go
 
-Para transformar nuestro archivo `user.proto` en código Go utilizable, necesitamos un paso de compilación. Protobuf utiliza un compilador principal escrito en C++ llamado `protoc`. 
+Para transformar nuestro archivo `user.proto` en código Go utilizable, necesitamos un paso de compilación. Protobuf utiliza un compilador principal escrito en C++ llamado `protoc`.
 
 Dado que `protoc` es agnóstico, necesita un *plugin* específico para generar código Go. Para ello, debemos instalar el plugin oficial del equipo de Go:
 
@@ -82,41 +83,41 @@ Para serializar y deserializar los mensajes generados en la memoria, utilizamos 
 package main
 
 import (
-	"fmt"
-	"log"
+ "fmt"
+ "log"
 
-	// Importa el paquete generado a partir de tu archivo .proto
-	"github.com/tu-usuario/tu-proyecto/internal/identity/pb"
-	"google.golang.org/protobuf/proto"
+ // Importa el paquete generado a partir de tu archivo .proto
+ "github.com/tu-usuario/tu-proyecto/internal/identity/pb"
+ "google.golang.org/protobuf/proto"
 )
 
 func main() {
-	// 1. Instanciar el struct generado
-	user := &pb.User{
-		Id:       "usr_12345",
-		Username: "gopher_ninja",
-		Email:    "gopher@example.com",
-		IsActive: true,
-		Role:     pb.User_ADMIN,
-		Preferences: []string{"dark_mode", "email_notifications"},
-	}
+ // 1. Instanciar el struct generado
+ user := &pb.User{
+  Id:       "usr_12345",
+  Username: "gopher_ninja",
+  Email:    "gopher@example.com",
+  IsActive: true,
+  Role:     pb.User_ADMIN,
+  Preferences: []string{"dark_mode", "email_notifications"},
+ }
 
-	// 2. Serializar a formato binario (Marshal)
-	data, err := proto.Marshal(user)
-	if err != nil {
-		log.Fatalf("Error al serializar el mensaje Protobuf: %v", err)
-	}
-	fmt.Printf("Tamaño del payload binario: %d bytes\n", len(data))
+ // 2. Serializar a formato binario (Marshal)
+ data, err := proto.Marshal(user)
+ if err != nil {
+  log.Fatalf("Error al serializar el mensaje Protobuf: %v", err)
+ }
+ fmt.Printf("Tamaño del payload binario: %d bytes\n", len(data))
 
-	// 3. Deserializar desde formato binario (Unmarshal)
-	newUser := &pb.User{}
-	err = proto.Unmarshal(data, newUser)
-	if err != nil {
-		log.Fatalf("Error al deserializar el mensaje Protobuf: %v", err)
-	}
+ // 3. Deserializar desde formato binario (Unmarshal)
+ newUser := &pb.User{}
+ err = proto.Unmarshal(data, newUser)
+ if err != nil {
+  log.Fatalf("Error al deserializar el mensaje Protobuf: %v", err)
+ }
 
-	// Uso de getters generados automáticamente (recomendado)
-	fmt.Printf("Usuario deserializado: %s (Rol: %v)\n", newUser.GetUsername(), newUser.GetRole())
+ // Uso de getters generados automáticamente (recomendado)
+ fmt.Printf("Usuario deserializado: %s (Rol: %v)\n", newUser.GetUsername(), newUser.GetRole())
 }
 ```
 
@@ -192,7 +193,7 @@ La adición de los flags `--go-grpc_out` y `--go-grpc_opt` le indica al compilad
 
 ### Anatomía del código generado (`_grpc.pb.go`)
 
-Tras la compilación, notarás que junto al archivo `user.pb.go` (que contiene los *structs* de los mensajes), ha aparecido un nuevo archivo: `user_grpc.pb.go`. 
+Tras la compilación, notarás que junto al archivo `user.pb.go` (que contiene los *structs* de los mensajes), ha aparecido un nuevo archivo: `user_grpc.pb.go`.
 
 Este archivo es el puente entre el mundo abstracto de Protobuf y las interfaces y estructuras concurrentes de Go que estudiamos en la Parte 2 y 3. Contiene dos componentes fundamentales:
 
@@ -202,18 +203,18 @@ Go genera una interfaz lista para ser utilizada por cualquier cliente que necesi
 ```go
 // Código generado (simplificado)
 type UserServiceClient interface {
-	GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
+ GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
 }
 ```
 
 **2. La Interfaz del Servidor (`UserServiceServer`)**
-Del mismo modo, se genera la interfaz que nuestro backend deberá satisfacer. 
+Del mismo modo, se genera la interfaz que nuestro backend deberá satisfacer.
 
 ```go
 // Código generado (simplificado)
 type UserServiceServer interface {
-	GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
-	mustEmbedUnimplementedUserServiceServer()
+ GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
+ mustEmbedUnimplementedUserServiceServer()
 }
 ```
 
@@ -225,7 +226,7 @@ Si en el futuro añades un nuevo método al `.proto` (ej. `UpdateUser`) y regene
 
 ## 33.3. Implementación de servidores y clientes gRPC
 
-Con las interfaces generadas por `protoc` en la sección anterior (33.2), ya tenemos el contrato estricto de nuestro servicio. El siguiente paso natural es dar vida a ese contrato: escribir la lógica de negocio en el servidor y consumir dicho servicio desde un cliente. 
+Con las interfaces generadas por `protoc` en la sección anterior (33.2), ya tenemos el contrato estricto de nuestro servicio. El siguiente paso natural es dar vida a ese contrato: escribir la lógica de negocio en el servidor y consumir dicho servicio desde un cliente.
 
 A diferencia de un servidor HTTP tradicional basado en el paquete `net/http` (Capítulo 24), gRPC utiliza HTTP/2 por debajo, multiplexando múltiples llamadas concurrentes sobre una única conexión TCP. Afortunadamente, el paquete `google.golang.org/grpc` abstrae esta complejidad.
 
@@ -239,48 +240,48 @@ Como discutimos en la sección anterior, es obligatorio aplicar composición (Ca
 package main
 
 import (
-	"context"
-	"fmt"
-	"log"
-	"net"
+ "context"
+ "fmt"
+ "log"
+ "net"
 
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
+ "google.golang.org/grpc"
+ "google.golang.org/grpc/codes"
+ "google.golang.org/grpc/status"
 
-	"github.com/tu-usuario/tu-proyecto/internal/identity/pb"
+ "github.com/tu-usuario/tu-proyecto/internal/identity/pb"
 )
 
 // userServer es la implementación concreta de nuestro servicio
 type userServer struct {
-	pb.UnimplementedUserServiceServer
-	
-	// Aquí inyectaríamos nuestras dependencias (repositorios, loggers, etc.)
-	// db *sql.DB
+ pb.UnimplementedUserServiceServer
+ 
+ // Aquí inyectaríamos nuestras dependencias (repositorios, loggers, etc.)
+ // db *sql.DB
 }
 
 // GetUser implementa la firma requerida por la interfaz generada
 func (s *userServer) GetUser(ctx context.Context, req *pb.GetUserRequest) (*pb.GetUserResponse, error) {
-	// 1. Validación inicial
-	if req.GetUserId() == "" {
-		// Retornamos un error con un código gRPC estandarizado
-		return nil, status.Error(codes.InvalidArgument, "el user_id es obligatorio")
-	}
+ // 1. Validación inicial
+ if req.GetUserId() == "" {
+  // Retornamos un error con un código gRPC estandarizado
+  return nil, status.Error(codes.InvalidArgument, "el user_id es obligatorio")
+ }
 
-	// 2. Lógica de negocio simulada (ej. búsqueda en base de datos)
-	if req.GetUserId() != "usr_123" {
-		return nil, status.Error(codes.NotFound, "usuario no encontrado")
-	}
+ // 2. Lógica de negocio simulada (ej. búsqueda en base de datos)
+ if req.GetUserId() != "usr_123" {
+  return nil, status.Error(codes.NotFound, "usuario no encontrado")
+ }
 
-	// 3. Construcción de la respuesta
-	user := &pb.User{
-		Id:       req.GetUserId(),
-		Username: "gopher_ninja",
-		Email:    "ninja@example.com",
-		IsActive: true,
-	}
+ // 3. Construcción de la respuesta
+ user := &pb.User{
+  Id:       req.GetUserId(),
+  Username: "gopher_ninja",
+  Email:    "ninja@example.com",
+  IsActive: true,
+ }
 
-	return &pb.GetUserResponse{User: user}, nil
+ return &pb.GetUserResponse{User: user}, nil
 }
 ```
 
@@ -290,24 +291,24 @@ Una vez definida la lógica, necesitamos abrir un puerto TCP y acoplar nuestra i
 
 ```go
 func main() {
-	// 1. Crear un listener TCP (estudiado en el Capítulo 24)
-	listener, err := net.Listen("tcp", ":50051")
-	if err != nil {
-		log.Fatalf("Error al abrir el puerto: %v", err)
-	}
+ // 1. Crear un listener TCP (estudiado en el Capítulo 24)
+ listener, err := net.Listen("tcp", ":50051")
+ if err != nil {
+  log.Fatalf("Error al abrir el puerto: %v", err)
+ }
 
-	// 2. Instanciar el servidor gRPC de Go
-	grpcServer := grpc.NewServer()
+ // 2. Instanciar el servidor gRPC de Go
+ grpcServer := grpc.NewServer()
 
-	// 3. Registrar nuestra implementación en el servidor gRPC
-	pb.RegisterUserServiceServer(grpcServer, &userServer{})
+ // 3. Registrar nuestra implementación en el servidor gRPC
+ pb.RegisterUserServiceServer(grpcServer, &userServer{})
 
-	fmt.Println("Servidor gRPC escuchando en el puerto 50051...")
-	
-	// 4. Iniciar el bucle de escucha (operación bloqueante)
-	if err := grpcServer.Serve(listener); err != nil {
-		log.Fatalf("Error crítico en el servidor gRPC: %v", err)
-	}
+ fmt.Println("Servidor gRPC escuchando en el puerto 50051...")
+ 
+ // 4. Iniciar el bucle de escucha (operación bloqueante)
+ if err := grpcServer.Serve(listener); err != nil {
+  log.Fatalf("Error crítico en el servidor gRPC: %v", err)
+ }
 }
 ```
 
@@ -321,58 +322,58 @@ En versiones recientes de `grpc-go`, la función tradicional `grpc.Dial` ha sido
 package main
 
 import (
-	"context"
-	"log"
-	"time"
+ "context"
+ "log"
+ "time"
 
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
+ "google.golang.org/grpc"
+ "google.golang.org/grpc/credentials/insecure"
 
-	"github.com/tu-usuario/tu-proyecto/internal/identity/pb"
+ "github.com/tu-usuario/tu-proyecto/internal/identity/pb"
 )
 
 func main() {
-	// 1. Establecer la conexión con el servidor
-	// Nota: En producción, usaríamos credenciales TLS válidas (Capítulo 38).
-	// Aquí usamos credenciales inseguras para desarrollo local.
-	conn, err := grpc.NewClient("localhost:50051", grpc.WithTransportCredentials(insecure.NewCredentials()))
-	if err != nil {
-		log.Fatalf("No se pudo conectar al servidor: %v", err)
-	}
-	defer conn.Close()
+ // 1. Establecer la conexión con el servidor
+ // Nota: En producción, usaríamos credenciales TLS válidas (Capítulo 38).
+ // Aquí usamos credenciales inseguras para desarrollo local.
+ conn, err := grpc.NewClient("localhost:50051", grpc.WithTransportCredentials(insecure.NewCredentials()))
+ if err != nil {
+  log.Fatalf("No se pudo conectar al servidor: %v", err)
+ }
+ defer conn.Close()
 
-	// 2. Instanciar el cliente generado pasándole la conexión
-	client := pb.NewUserServiceClient(conn)
+ // 2. Instanciar el cliente generado pasándole la conexión
+ client := pb.NewUserServiceClient(conn)
 
-	// 3. Crear un Contexto con timeout (Capítulo 13)
-	// Es crucial para evitar que el cliente se quede bloqueado indefinidamente si el servidor cae.
-	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
-	defer cancel()
+ // 3. Crear un Contexto con timeout (Capítulo 13)
+ // Es crucial para evitar que el cliente se quede bloqueado indefinidamente si el servidor cae.
+ ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
+ defer cancel()
 
-	// 4. Construir el payload de petición
-	req := &pb.GetUserRequest{
-		UserId: "usr_123",
-	}
+ // 4. Construir el payload de petición
+ req := &pb.GetUserRequest{
+  UserId: "usr_123",
+ }
 
-	// 5. Realizar la llamada RPC (parece una llamada local, pero viaja por la red)
-	res, err := client.GetUser(ctx, req)
-	if err != nil {
-		log.Fatalf("Error al ejecutar GetUser RPC: %v", err)
-	}
+ // 5. Realizar la llamada RPC (parece una llamada local, pero viaja por la red)
+ res, err := client.GetUser(ctx, req)
+ if err != nil {
+  log.Fatalf("Error al ejecutar GetUser RPC: %v", err)
+ }
 
-	log.Printf("Usuario recibido: %s (Email: %s)", res.GetUser().GetUsername(), res.GetUser().GetEmail())
+ log.Printf("Usuario recibido: %s (Email: %s)", res.GetUser().GetUsername(), res.GetUser().GetEmail())
 }
 ```
 
 ### El modelo mental del manejo de errores (`status` y `codes`)
 
-Habrás notado el uso del paquete `google.golang.org/grpc/status` y `codes` en el servidor. En REST, utilizamos códigos de estado HTTP (400, 404, 500). En gRPC, dado que opera sobre HTTP/2 pero abstrae la capa web, utiliza su propio conjunto de **códigos de estado gRPC** (ej. `codes.NotFound`, `codes.InvalidArgument`, `codes.Internal`). 
+Habrás notado el uso del paquete `google.golang.org/grpc/status` y `codes` en el servidor. En REST, utilizamos códigos de estado HTTP (400, 404, 500). En gRPC, dado que opera sobre HTTP/2 pero abstrae la capa web, utiliza su propio conjunto de **códigos de estado gRPC** (ej. `codes.NotFound`, `codes.InvalidArgument`, `codes.Internal`).
 
 Cuando el servidor retorna un error usando `status.Error`, el cliente gRPC intercepta ese error. El cliente puede entonces usar `status.FromError(err)` para extraer exactamente el código y el mensaje original, permitiendo un manejo de errores robusto e idiomático entre microservicios, sin ambigüedades.
 
 ## 33.4. Patrones de comunicación: Streaming Unario, Servidor, Cliente y Bidireccional
 
-Hasta ahora hemos operado bajo el paradigma tradicional de petición-respuesta, equivalente a una llamada HTTP/1.1 clásica. Sin embargo, gRPC está construido sobre **HTTP/2**, lo que le permite explotar características avanzadas a nivel de capa de transporte, siendo la más destacada la multiplexación bidireccional sobre una única conexión TCP persistente. 
+Hasta ahora hemos operado bajo el paradigma tradicional de petición-respuesta, equivalente a una llamada HTTP/1.1 clásica. Sin embargo, gRPC está construido sobre **HTTP/2**, lo que le permite explotar características avanzadas a nivel de capa de transporte, siendo la más destacada la multiplexación bidireccional sobre una única conexión TCP persistente.
 
 gRPC expone esta capacidad a través de la palabra reservada `stream` en los archivos `.proto`. Dependiendo de dónde se coloque esta directiva, podemos definir cuatro patrones de comunicación distintos.
 
@@ -392,6 +393,7 @@ En este patrón, el cliente envía una única petición, pero el servidor respon
 Es la arquitectura ideal para notificaciones en tiempo real, colas de eventos locales o la descarga de grandes volúmenes de datos fragmentados (evitando sobrecargar la memoria RAM del servidor estudiada en el Capítulo 44).
 
 **Definición Protobuf:**
+
 ```protobuf
 // El servidor devuelve un stream
 rpc WatchUserUpdates(WatchUserRequest) returns (stream UserUpdateResponse);
@@ -402,20 +404,20 @@ El compilador genera una interfaz de stream (`UserService_WatchUserUpdatesServer
 
 ```go
 func (s *userServer) WatchUserUpdates(req *pb.WatchUserRequest, stream pb.UserService_WatchUserUpdatesServer) error {
-	// Simulamos un bucle que envía actualizaciones periódicas
-	for i := 0; i < 5; i++ {
-		update := &pb.UserUpdateResponse{
-			Status: fmt.Sprintf("Actualización %d para el usuario %s", i, req.GetUserId()),
-		}
-		
-		// Enviamos el fragmento a través de la red
-		if err := stream.Send(update); err != nil {
-			return err // El cliente se desconectó o falló la red
-		}
-		time.Sleep(1 * time.Second)
-	}
-	// Al retornar nil, gRPC cierra automáticamente el stream del lado del servidor
-	return nil
+ // Simulamos un bucle que envía actualizaciones periódicas
+ for i := 0; i < 5; i++ {
+  update := &pb.UserUpdateResponse{
+   Status: fmt.Sprintf("Actualización %d para el usuario %s", i, req.GetUserId()),
+  }
+  
+  // Enviamos el fragmento a través de la red
+  if err := stream.Send(update); err != nil {
+   return err // El cliente se desconectó o falló la red
+  }
+  time.Sleep(1 * time.Second)
+ }
+ // Al retornar nil, gRPC cierra automáticamente el stream del lado del servidor
+ return nil
 }
 ```
 
@@ -426,6 +428,7 @@ Aquí se invierte la dinámica: el cliente inicia la conexión y envía un flujo
 Este patrón brilla en escenarios como la subida de archivos pesados (chunking) o la ingesta masiva de métricas de telemetría IoT.
 
 **Definición Protobuf:**
+
 ```protobuf
 // El cliente envía un stream
 rpc UploadAvatar(stream UploadAvatarRequest) returns (UploadAvatarResponse);
@@ -438,24 +441,24 @@ El servidor utiliza la interfaz de stream generada para invocar `Recv()` repetid
 import "io"
 
 func (s *userServer) UploadAvatar(stream pb.UserService_UploadAvatarServer) error {
-	var totalBytes int32
+ var totalBytes int32
 
-	for {
-		// Recibimos un fragmento (chunk) de datos del cliente
-		chunk, err := stream.Recv()
-		if err == io.EOF {
-			// El cliente ha finalizado el envío. Respondemos y cerramos.
-			return stream.SendAndClose(&pb.UploadAvatarResponse{
-				Message: fmt.Sprintf("Subida exitosa. Total: %d bytes", totalBytes),
-			})
-		}
-		if err != nil {
-			return err
-		}
+ for {
+  // Recibimos un fragmento (chunk) de datos del cliente
+  chunk, err := stream.Recv()
+  if err == io.EOF {
+   // El cliente ha finalizado el envío. Respondemos y cerramos.
+   return stream.SendAndClose(&pb.UploadAvatarResponse{
+    Message: fmt.Sprintf("Subida exitosa. Total: %d bytes", totalBytes),
+   })
+  }
+  if err != nil {
+   return err
+  }
 
-		// Acumulamos o procesamos la porción de datos
-		totalBytes += int32(len(chunk.GetChunkData()))
-	}
+  // Acumulamos o procesamos la porción de datos
+  totalBytes += int32(len(chunk.GetChunkData()))
+ }
 }
 ```
 
@@ -466,6 +469,7 @@ El patrón más avanzado y complejo. Tanto el cliente como el servidor envían u
 Los casos de uso típicos incluyen sistemas de chat en tiempo real, emparejamiento de videojuegos multijugador o sincronización continua de estado.
 
 **Definición Protobuf:**
+
 ```protobuf
 // Ambos lados envían un stream
 rpc ChatSession(stream ChatMessage) returns (stream ChatMessage);
@@ -476,41 +480,41 @@ Para manejar la concurrencia inherente a este patrón, aplicamos directamente lo
 
 ```go
 func (s *userServer) ChatSession(stream pb.UserService_ChatSessionServer) error {
-	// Usamos un canal para orquestar posibles errores en la Goroutine de escritura
-	errChan := make(chan error)
+ // Usamos un canal para orquestar posibles errores en la Goroutine de escritura
+ errChan := make(chan error)
 
-	// Goroutine dedicada a recibir mensajes del cliente
-	go func() {
-		for {
-			in, err := stream.Recv()
-			if err == io.EOF {
-				close(errChan) // El cliente terminó su transmisión
-				return
-			}
-			if err != nil {
-				errChan <- err
-				return
-			}
+ // Goroutine dedicada a recibir mensajes del cliente
+ go func() {
+  for {
+   in, err := stream.Recv()
+   if err == io.EOF {
+    close(errChan) // El cliente terminó su transmisión
+    return
+   }
+   if err != nil {
+    errChan <- err
+    return
+   }
 
-			// Procesamos el mensaje y enviamos una respuesta inmediata (Echo)
-			out := &pb.ChatMessage{
-				User:    "Sistema",
-				Content: "Recibido: " + in.GetContent(),
-			}
-			
-			// Nota de concurrencia: stream.Send es seguro (thread-safe) 
-			// respecto a stream.Recv, pero NO se pueden hacer múltiples 
-			// llamadas a Send() simultáneamente desde distintas goroutines sin sincronización (Mutex).
-			if err := stream.Send(out); err != nil {
-				errChan <- err
-				return
-			}
-		}
-	}()
+   // Procesamos el mensaje y enviamos una respuesta inmediata (Echo)
+   out := &pb.ChatMessage{
+    User:    "Sistema",
+    Content: "Recibido: " + in.GetContent(),
+   }
+   
+   // Nota de concurrencia: stream.Send es seguro (thread-safe) 
+   // respecto a stream.Recv, pero NO se pueden hacer múltiples 
+   // llamadas a Send() simultáneamente desde distintas goroutines sin sincronización (Mutex).
+   if err := stream.Send(out); err != nil {
+    errChan <- err
+    return
+   }
+  }
+ }()
 
-	// Bloqueamos la ejecución de la función RPC hasta que ocurra un error o un EOF
-	err := <-errChan
-	return err
+ // Bloqueamos la ejecución de la función RPC hasta que ocurra un error o un EOF
+ err := <-errChan
+ return err
 }
 ```
 
@@ -532,56 +536,56 @@ Veamos un ejemplo práctico de un interceptor de *logging* estructurado y medici
 package middlewares
 
 import (
-	"context"
-	"log/slog"
-	"time"
+ "context"
+ "log/slog"
+ "time"
 
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
+ "google.golang.org/grpc"
+ "google.golang.org/grpc/codes"
+ "google.golang.org/grpc/status"
 )
 
 // LoggingInterceptor registra la duración y el estado de cada llamada RPC unaria.
 func LoggingInterceptor() grpc.UnaryServerInterceptor {
-	return func(
-		ctx context.Context, 
-		req interface{}, 
-		info *grpc.UnaryServerInfo, 
-		handler grpc.UnaryHandler,
-	) (interface{}, error) {
-		
-		start := time.Now()
+ return func(
+  ctx context.Context, 
+  req interface{}, 
+  info *grpc.UnaryServerInfo, 
+  handler grpc.UnaryHandler,
+ ) (interface{}, error) {
+  
+  start := time.Now()
 
-		// 1. Pre-procesamiento: Podemos inspeccionar el contexto o el método
-		slog.Info("Recibiendo petición gRPC", "metodo", info.FullMethod)
+  // 1. Pre-procesamiento: Podemos inspeccionar el contexto o el método
+  slog.Info("Recibiendo petición gRPC", "metodo", info.FullMethod)
 
-		// 2. Invocar al handler real (o al siguiente interceptor en la cadena)
-		// Aquí es donde la ejecución pasa a nuestro método GetUser (sección 33.3)
-		resp, err := handler(ctx, req)
+  // 2. Invocar al handler real (o al siguiente interceptor en la cadena)
+  // Aquí es donde la ejecución pasa a nuestro método GetUser (sección 33.3)
+  resp, err := handler(ctx, req)
 
-		// 3. Post-procesamiento: Evaluamos el resultado y la duración
-		duration := time.Since(start)
-		
-		if err != nil {
-			// Extraemos el código gRPC real para logs más precisos
-			st, _ := status.FromError(err)
-			slog.Error("RPC fallido", 
-				"metodo", info.FullMethod, 
-				"duracion", duration.String(), 
-				"codigo", st.Code().String(),
-				"error", err.Error(),
-			)
-		} else {
-			slog.Info("RPC exitoso", 
-				"metodo", info.FullMethod, 
-				"duracion", duration.String(), 
-				"codigo", codes.OK.String(),
-			)
-		}
+  // 3. Post-procesamiento: Evaluamos el resultado y la duración
+  duration := time.Since(start)
+  
+  if err != nil {
+   // Extraemos el código gRPC real para logs más precisos
+   st, _ := status.FromError(err)
+   slog.Error("RPC fallido", 
+    "metodo", info.FullMethod, 
+    "duracion", duration.String(), 
+    "codigo", st.Code().String(),
+    "error", err.Error(),
+   )
+  } else {
+   slog.Info("RPC exitoso", 
+    "metodo", info.FullMethod, 
+    "duracion", duration.String(), 
+    "codigo", codes.OK.String(),
+   )
+  }
 
-		// Retornamos la respuesta y el error originales al cliente
-		return resp, err
-	}
+  // Retornamos la respuesta y el error originales al cliente
+  return resp, err
+ }
 }
 ```
 
@@ -597,25 +601,25 @@ Para registrar estos interceptores al arrancar el servidor (modificando nuestro 
 
 ```go
 import (
-	// ... otras importaciones ...
-	"google.golang.org/grpc"
+ // ... otras importaciones ...
+ "google.golang.org/grpc"
 )
 
 func main() {
-	// ... configuración del listener net.Listen ...
+ // ... configuración del listener net.Listen ...
 
-	// Configuración del servidor gRPC con múltiples interceptores
-	grpcServer := grpc.NewServer(
-		grpc.ChainUnaryInterceptor(
-			// El orden importa: se ejecutan de arriba a abajo en la petición,
-			// y de abajo a arriba en la respuesta.
-			middlewares.RecoveryInterceptor(),   // Evita que un panic tire el servidor
-			middlewares.LoggingInterceptor(),    // Mide la latencia total
-			middlewares.AuthInterceptor(),       // Valida el JWT antes de ejecutar el negocio
-		),
-	)
+ // Configuración del servidor gRPC con múltiples interceptores
+ grpcServer := grpc.NewServer(
+  grpc.ChainUnaryInterceptor(
+   // El orden importa: se ejecutan de arriba a abajo en la petición,
+   // y de abajo a arriba en la respuesta.
+   middlewares.RecoveryInterceptor(),   // Evita que un panic tire el servidor
+   middlewares.LoggingInterceptor(),    // Mide la latencia total
+   middlewares.AuthInterceptor(),       // Valida el JWT antes de ejecutar el negocio
+  ),
+ )
 
-	// ... registro del servicio y grpcServer.Serve(listener) ...
+ // ... registro del servicio y grpcServer.Serve(listener) ...
 }
 ```
 
@@ -640,7 +644,7 @@ conn, err := grpc.NewClient(
 
 ### 4. Interceptores de Stream
 
-Para los patrones bidireccionales, de servidor o de cliente que vimos en la sección 33.4, los interceptores unarios no funcionarán. gRPC provee `grpc.StreamServerInterceptor` y `grpc.StreamClientInterceptor`. 
+Para los patrones bidireccionales, de servidor o de cliente que vimos en la sección 33.4, los interceptores unarios no funcionarán. gRPC provee `grpc.StreamServerInterceptor` y `grpc.StreamClientInterceptor`.
 
 Su implementación es notablemente más compleja que la de sus contrapartes unarias. Al manejar flujos asíncronos continuos, un interceptor de stream no puede simplemente rodear la llamada con un pre y post-procesamiento estático. En su lugar, el interceptor debe aplicar el patrón *Decorator* (Capítulo 23) para "envolver" la interfaz `grpc.ServerStream` subyacente, interceptando cada invocación individual a los métodos `RecvMsg` y `SendMsg` a lo largo del ciclo de vida de la conexión.
 

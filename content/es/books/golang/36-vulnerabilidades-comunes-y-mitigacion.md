@@ -1,4 +1,4 @@
-La seguridad en Go no es un añadido, sino una disciplina integrada en su diseño. Aunque el runtime ofrece protecciones nativas contra errores de memoria, la lógica de nuestras aplicaciones web sigue expuesta a riesgos críticos. Este capítulo traslada el estándar **OWASP Top 10** al ecosistema de Go, analizando cómo prevenir ataques desde la raíz. 
+La seguridad en Go no es un añadido, sino una disciplina integrada en su diseño. Aunque el runtime ofrece protecciones nativas contra errores de memoria, la lógica de nuestras aplicaciones web sigue expuesta a riesgos críticos. Este capítulo traslada el estándar **OWASP Top 10** al ecosistema de Go, analizando cómo prevenir ataques desde la raíz.
 
 Aprenderás a neutralizar el **XSS** mediante el uso correcto de `html/template`, a blindar la persistencia contra **Inyección SQL** y a mitigar ataques **CSRF**. Finalmente, cerraremos el ciclo de vida de desarrollo seguro integrando **análisis estático automatizado** con `gosec` para detectar debilidades antes de que lleguen a producción.
 
@@ -60,6 +60,7 @@ Go facilita enormemente la adición de dependencias de terceros mediante Go Modu
 En lugar de depender exclusivamente de escáneres genéricos, el equipo de Go introdujo **`govulncheck`**. Esta herramienta analiza no solo si tienes una dependencia vulnerable en tu `go.mod`, sino si tu código *realmente llama a la función vulnerable* dentro de ese paquete (gracias al análisis de código estático de Go).
 
 **Cómo mitigarlo en tu flujo de trabajo:**
+
 1. Instala la herramienta oficial: `go install golang.org/x/vuln/cmd/govulncheck@latest`
 2. Ejecútala en la raíz de tu proyecto: `govulncheck ./...`
 3. Mantén tus dependencias actualizadas de forma regular utilizando `go get -u` y `go mod tidy`.
@@ -105,7 +106,7 @@ func GetInvoiceSafeHandler(w http.ResponseWriter, r *http.Request) {
 
 ### 4. Fallos de Diseño Inseguro - [A04:2021]
 
-Esta categoría subraya que no podemos parchear una aplicación que está mal diseñada desde el principio. En el contexto de Go, esto se relaciona fuertemente con la arquitectura y el modelado de datos que vimos en la sección de DDD (Capítulo 22). 
+Esta categoría subraya que no podemos parchear una aplicación que está mal diseñada desde el principio. En el contexto de Go, esto se relaciona fuertemente con la arquitectura y el modelado de datos que vimos en la sección de DDD (Capítulo 22).
 
 Una forma idiomática de evitar fallos de diseño lógico en Go es el uso estricto de **encapsulación y validación en constructores**. Si un `struct` de dominio no puede existir en un estado inválido, eliminas de raíz múltiples vectores de ataque lógico.
 
@@ -136,7 +137,7 @@ El XSS ocurre cuando una aplicación incluye datos no confiables en una página 
 
 ### 1. La Trampa Mortal: `text/template` vs `html/template`
 
-La Standard Library de Go ofrece dos paquetes de plantillas casi idénticos en sintaxis: `text/template` y `html/template`. Un error crítico y común en desarrolladores novatos es usar `text/template` para generar HTML. 
+La Standard Library de Go ofrece dos paquetes de plantillas casi idénticos en sintaxis: `text/template` y `html/template`. Un error crítico y común en desarrolladores novatos es usar `text/template` para generar HTML.
 
 El paquete `text/template` realiza una sustitución de texto literal. Si inyectas un script malicioso, se renderizará tal cual. Por el contrario, **`html/template` implementa un escape contextual automático (Context-Aware Auto-Escaping)**.
 
@@ -146,31 +147,32 @@ Esto significa que el motor analiza la estructura del documento HTML y altera la
 package main
 
 import (
-	"html/template"
-	"os"
+ "html/template"
+ "os"
 )
 
 func main() {
-	// Un payload clásico de XSS
-	inputUsuario := `<script>alert("XSS")</script>`
+ // Un payload clásico de XSS
+ inputUsuario := `<script>alert("XSS")</script>`
 
-	// Una plantilla que inyecta la misma variable en tres contextos diferentes
-	tmpl := `
-		1. Contexto HTML: <div>{{.}}</div>
-		2. Contexto Atributo: <a href="/search?q={{.}}">Buscar</a>
-		3. Contexto JavaScript: <script>var query = "{{.}}";</script>
-	`
+ // Una plantilla que inyecta la misma variable en tres contextos diferentes
+ tmpl := `
+  1. Contexto HTML: <div>{{.}}</div>
+  2. Contexto Atributo: <a href="/search?q={{.}}">Buscar</a>
+  3. Contexto JavaScript: <script>var query = "{{.}}";</script>
+ `
 
-	t := template.Must(template.New("xss_demo").Parse(tmpl))
-	t.Execute(os.Stdout, inputUsuario)
+ t := template.Must(template.New("xss_demo").Parse(tmpl))
+ t.Execute(os.Stdout, inputUsuario)
 }
 ```
 
 **Salida generada de forma segura:**
+
 ```html
-		1. Contexto HTML: <div>&lt;script&gt;alert(&#34;XSS&#34;)&lt;/script&gt;</div>
-		2. Contexto Atributo: <a href="/search?q=%3cscript%3ealert(%22XSS%22)%3c/script%3e">Buscar</a>
-		3. Contexto JavaScript: <script>var query = "\u003cscript\u003ealert(\"XSS\")\u003c/script\u003e";</script>
+  1. Contexto HTML: <div>&lt;script&gt;alert(&#34;XSS&#34;)&lt;/script&gt;</div>
+  2. Contexto Atributo: <a href="/search?q=%3cscript%3ealert(%22XSS%22)%3c/script%3e">Buscar</a>
+  3. Contexto JavaScript: <script>var query = "\u003cscript\u003ealert(\"XSS\")\u003c/script\u003e";</script>
 ```
 
 Como puedes observar, Go es lo suficientemente inteligente como para usar entidades HTML estandar (`&lt;`), codificación URL (`%3c`) o escapes Unicode de JavaScript (`\u003c`) según corresponda, neutralizando completamente el ataque sin que el desarrollador tenga que llamar a funciones de escape manualmente.
@@ -228,6 +230,7 @@ func renderProfileSafeHandler(w http.ResponseWriter, r *http.Request) {
 Aunque `html/template` es robusto, existen zonas ciegas estructurales donde no puede protegerte de forma automática, independientemente de la entrada de datos. El motor de plantillas de Go se negará a compilar o escapará de forma ineficaz si intentas inyectar variables en lugares donde no existe una semántica segura.
 
 **Evita inyecciones en:**
+
 * **Nombres de etiquetas dinámicas:** `<{{.TagName}}>Hola</{{.TagName}}>` (Permitiría a un atacante inyectar una etiqueta `<script>`).
 * **Atributos de eventos sin comillas:** `<button onclick={{.Accion}}>` (Go intentará escaparlo, pero la falta de delimitadores hace que ciertos ataques de evasión sean posibles).
 
@@ -235,7 +238,7 @@ La regla de oro en el diseño arquitectónico de Go para el frontend es: **Pasa 
 
 ## 36.3. Protección contra Inyección SQL nativa y mitigación de CSRF
 
-En esta sección abordaremos dos vulnerabilidades clásicas que operan en capas muy distintas: la Inyección SQL (SQLi), que ataca directamente el motor de base de datos a través de la capa de persistencia, y el Cross-Site Request Forgery (CSRF), que abusa de la confianza que el navegador deposita en una sesión de usuario autenticada. 
+En esta sección abordaremos dos vulnerabilidades clásicas que operan en capas muy distintas: la Inyección SQL (SQLi), que ataca directamente el motor de base de datos a través de la capa de persistencia, y el Cross-Site Request Forgery (CSRF), que abusa de la confianza que el navegador deposita en una sesión de usuario autenticada.
 
 Afortunadamente, el ecosistema de Go proporciona herramientas nativas robustas para neutralizar ambas amenazas, siempre y cuando apliquemos los patrones arquitectónicos correctos.
 
@@ -264,7 +267,7 @@ func getUserVulnerable(db *sql.DB, username string) (*User, error) {
 
 **El Patrón Seguro (Prepared Statements Nativos):**
 
-La forma idiomática de evitar SQLi en Go es delegar la separación entre el comando y los datos al *driver* de la base de datos subyacente mediante el uso de parámetros de sustitución (placeholders). 
+La forma idiomática de evitar SQLi en Go es delegar la separación entre el comando y los datos al *driver* de la base de datos subyacente mediante el uso de parámetros de sustitución (placeholders).
 
 Cuando usas los métodos `db.Query`, `db.QueryRow` o `db.Exec` pasando los valores como argumentos variádicos, Go utiliza automáticamente *Prepared Statements* en segundo plano. Los datos son enviados a la base de datos en un paquete separado al de la consulta SQL, haciendo imposible que el motor los interprete como comandos ejecutables.
 
@@ -396,6 +399,7 @@ func generateETag(content []byte) string {
     return fmt.Sprintf("%x", hash)
 }
 ```
+
 *Nota: Es crucial especificar el identificador de la regla (ej. G401). Si usas `// #nosec` sin identificador, silenciarás todas las advertencias de seguridad en esa línea, lo cual es una mala práctica.*
 
 ### 4. Integración en Pipelines CI/CD
@@ -441,4 +445,3 @@ jobs:
 ```
 
 Al automatizar este proceso, garantizas que la base de código mantenga un estándar de seguridad basal, liberando a los revisores humanos para que se concentren en vulnerabilidades lógicas o de diseño arquitectónico que las herramientas estáticas no pueden detectar.
-

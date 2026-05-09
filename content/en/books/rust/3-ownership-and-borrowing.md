@@ -2,7 +2,7 @@ Welcome to the heart of Rust. If one feature defines Rust and separates it from 
 
 ## 3.1 Memory Management: The Stack vs. The Heap
 
-In many high-level programming languages, you rarely have to think about the stack and the heap. A garbage collector manages memory in the background, abstracting away the physical realities of your hardware. However, as a systems programming language, Rust requires you to understand where and how your data is stored. Whether a value is on the stack or the heap dictates how it behaves, how long it lives, and how fast your program runs. 
+In many high-level programming languages, you rarely have to think about the stack and the heap. A garbage collector manages memory in the background, abstracting away the physical realities of your hardware. However, as a systems programming language, Rust requires you to understand where and how your data is stored. Whether a value is on the stack or the heap dictates how it behaves, how long it lives, and how fast your program runs.
 
 Understanding these two distinct regions of memory is the fundamental prerequisite for mastering Rust’s most unique feature: Ownership.
 
@@ -10,7 +10,7 @@ Understanding these two distinct regions of memory is the fundamental prerequisi
 
 The stack stores values in the order it gets them and removes the values in the opposite order. This is referred to as **Last In, First Out (LIFO)**. Think of a stack of plates at a buffet: you add plates to the top, and when you need a plate, you take one from the top. Adding or removing plates from the middle or bottom is not allowed.
 
-In Rust, adding data to the stack is called *pushing onto the stack*, and removing data is called *popping off the stack*. 
+In Rust, adding data to the stack is called *pushing onto the stack*, and removing data is called *popping off the stack*.
 
 For the stack to operate at maximum efficiency, **all data stored on the stack must have a known, fixed size at compile time**. Primitive types such as `i32`, `f64`, `bool`, `char`, and fixed-size arrays or tuples of these types fit this description perfectly.
 
@@ -48,9 +48,10 @@ fn main() {
 ```
 
 Under the hood, a `String` is made up of three parts:
-1.  A **pointer** to the memory that holds the contents of the string.
-2.  A **length** (how much memory, in bytes, the contents are currently using).
-3.  A **capacity** (the total amount of memory, in bytes, the allocator has provided).
+
+1. A **pointer** to the memory that holds the contents of the string.
+2. A **length** (how much memory, in bytes, the contents are currently using).
+3. A **capacity** (the total amount of memory, in bytes, the allocator has provided).
 
 These three pieces of data have a fixed size and are stored together on the **stack**. The actual text data (the bytes for `h`, `e`, `y`), which can grow or shrink over time, is stored on the **heap**.
 
@@ -91,9 +92,9 @@ With a solid understanding of how the stack and the heap operate, we can now exa
 
 Everything in Rust’s ownership system boils down to three fundamental rules. Memorize them, as they will dictate how you write and structure your Rust code:
 
-1.  **Each value in Rust has a variable that’s called its *owner*.**
-2.  **There can only be one owner at a time.**
-3.  **When the owner goes out of scope, the value will be dropped.**
+1. **Each value in Rust has a variable that’s called its *owner*.**
+2. **There can only be one owner at a time.**
+3. **When the owner goes out of scope, the value will be dropped.**
 
 Let’s unpack these rules by looking at variable scope and how memory is freed.
 
@@ -110,7 +111,7 @@ A scope is the range within a program for which an item is valid. In Rust, scope
 } // this scope is now over, and s is no longer valid
 ```
 
-When a variable like `s` comes into scope, it is valid. When it goes out of scope at the closing curly brace `}`, Rust automatically cleans up the memory. Behind the scenes, Rust calls a special function named `drop`. The author of the `String` type put the code to return the memory to the allocator inside this `drop` function. 
+When a variable like `s` comes into scope, it is valid. When it goes out of scope at the closing curly brace `}`, Rust automatically cleans up the memory. Behind the scenes, Rust calls a special function named `drop`. The author of the `String` type put the code to return the memory to the allocator inside this `drop` function.
 
 This automatic deallocation at the end of a scope is the foundation of Rust's memory safety, but it introduces complexities when multiple variables interact with the same data.
 
@@ -151,7 +152,7 @@ If you have experience with other languages, you might guess that `s2` is now po
 
 But remember **Rule #2: There can only be one owner at a time.** If both `s1` and `s2` point to the same memory, what happens when they go out of scope? They would both try to free the same memory. This is known as a *double-free error* and can lead to memory corruption and security vulnerabilities.
 
-To guarantee memory safety, Rust considers `s1` as no longer valid after the assignment `let s2 = s1;`. Instead of a "shallow copy," this operation is called a **move**. The ownership of the data has *moved* from `s1` to `s2`. 
+To guarantee memory safety, Rust considers `s1` as no longer valid after the assignment `let s2 = s1;`. Instead of a "shallow copy," this operation is called a **move**. The ownership of the data has *moved* from `s1` to `s2`.
 
 If you try to use `s1` after it has been moved, the compiler will stop you:
 
@@ -183,7 +184,7 @@ By invalidating the first variable, Rust ensures that only `s2` will attempt to 
 
 ### Deep Copies with `clone`
 
-If you genuinely want to duplicate the heap data—not just the stack pointer—Rust provides a method called `clone`. 
+If you genuinely want to duplicate the heap data—not just the stack pointer—Rust provides a method called `clone`.
 
 ```rust
 let s1 = String::from("hello");
@@ -196,9 +197,9 @@ When you call `clone`, you are explicitly telling Rust to perform an expensive o
 
 ### Stack-Only Data and the `Copy` Trait
 
-Why did `let y = x;` work for our integers without moving the value? 
+Why did `let y = x;` work for our integers without moving the value?
 
-Types like integers, booleans, floating-point numbers, and characters are stored entirely on the stack. Copying them is extremely fast and cannot cause double-free errors. In Rust, types that behave this way implement a special marker called the `Copy` trait. If a type implements `Copy`, variables that use it do not move; they are trivially copied, and the older variable remains usable. 
+Types like integers, booleans, floating-point numbers, and characters are stored entirely on the stack. Copying them is extremely fast and cannot cause double-free errors. In Rust, types that behave this way implement a special marker called the `Copy` trait. If a type implements `Copy`, variables that use it do not move; they are trivially copied, and the older variable remains usable.
 
 You cannot implement `Copy` on a type that requires heap allocation or other special cleanup (like a `String` or a file handle).
 
@@ -231,13 +232,13 @@ fn makes_copy(some_integer: i32) { // some_integer comes into scope
 } // Here, some_integer goes out of scope. Nothing special happens.
 ```
 
-Returning values from functions also transfers ownership. If a function creates a `String` and returns it, the ownership of that `String` is moved out of the function and into the variable that receives the return value in the calling scope. 
+Returning values from functions also transfers ownership. If a function creates a `String` and returns it, the ownership of that `String` is moved out of the function and into the variable that receives the return value in the calling scope.
 
 Moving ownership back and forth for every function call is tedious. What if we want to let a function use a value without taking ownership of it? That is where **References and Borrowing** come in, which we will explore next.
 
 ## 3.3 References, Borrowing, and Data Races
 
-Moving ownership every time we pass a variable to a function is highly restrictive. If we want to use a `String` in a function and then use it again afterward, we are forced to return the `String` alongside any other return values. 
+Moving ownership every time we pass a variable to a function is highly restrictive. If we want to use a `String` in a function and then use it again afterward, we are forced to return the `String` alongside any other return values.
 
 Rust provides a feature to solve this exact problem: **references**. A reference is like a pointer in that it's an address we can follow to access the data stored at that address; however, unlike a raw C-pointer, a reference is guaranteed by the compiler to point to a valid value of a particular type for the life of that reference.
 
@@ -263,7 +264,7 @@ fn calculate_length(s: &String) -> usize { // s is a reference to a String
   // it refers to, it is not dropped.
 ```
 
-When `calculate_length` is called, `s` is created on the stack as a pointer that points to `s1`, which is also on the stack. `s1` then points to the heap memory containing the actual string data. 
+When `calculate_length` is called, `s` is created on the stack as a pointer that points to `s1`, which is also on the stack. `s1` then points to the heap memory containing the actual string data.
 
 Here is what the memory layout looks like during the function call:
 
@@ -281,7 +282,7 @@ Here is what the memory layout looks like during the function call:
                                                            +-------+-------+
 ```
 
-Because `s` does not own the `String` it points to, the value it points to will not be dropped when `s` stops being used. 
+Because `s` does not own the `String` it points to, the value it points to will not be dropped when `s` stops being used.
 
 However, variables are immutable by default in Rust, and references are no exception. If we try to modify something we are borrowing via an immutable reference (e.g., calling `s.push_str(", world")`), the compiler will throw an error.
 
@@ -303,14 +304,14 @@ fn change(some_string: &mut String) { // Accept a mutable reference
 }
 ```
 
-This works perfectly, but it comes with a massive, defining restriction that sets Rust apart from almost every other mainstream language. 
+This works perfectly, but it comes with a massive, defining restriction that sets Rust apart from almost every other mainstream language.
 
 ### The Rules of Borrowing
 
 Rust enforces two strict rules at compile time regarding references:
 
-1.  At any given time, you can have *either* **one mutable reference** *or* **any number of immutable references**.
-2.  References must always be valid (they cannot outlive the data they point to).
+1. At any given time, you can have *either* **one mutable reference** *or* **any number of immutable references**.
+2. References must always be valid (they cannot outlive the data they point to).
 
 Let's look at the first rule in practice. If you have a mutable reference to a value, you cannot have *any* other references to that value simultaneously.
 
@@ -337,18 +338,19 @@ println!("{}, {}", r1, r2);
 
 ### Why Prevent Multiple Mutable References? Data Races
 
-To programmers coming from languages like Python, JavaScript, or even C++, this restriction often feels draconian. Why does Rust care if two pointers point to the same data and can mutate it? 
+To programmers coming from languages like Python, JavaScript, or even C++, this restriction often feels draconian. Why does Rust care if two pointers point to the same data and can mutate it?
 
-The answer is **Data Races**. 
+The answer is **Data Races**.
 
 A data race is a specific type of race condition that occurs when these three behaviors happen simultaneously:
-1.  Two or more pointers access the same data at the same time.
-2.  At least one of the pointers is being used to write to the data.
-3.  There is no mechanism being used to synchronize access to the data.
+
+1. Two or more pointers access the same data at the same time.
+2. At least one of the pointers is being used to write to the data.
+3. There is no mechanism being used to synchronize access to the data.
 
 Data races cause undefined behavior. They can lead to silent data corruption, application crashes, and security vulnerabilities that are notoriously difficult to track down because they only happen under specific execution timings at runtime.
 
-By enforcing the borrowing rules at compile time, **Rust makes data races syntactically impossible**. 
+By enforcing the borrowing rules at compile time, **Rust makes data races syntactically impossible**.
 
 If `r1` and `r2` were both allowed to be mutable references to `s`, and this code were run in a multi-threaded context, Thread A might start writing to the heap memory of `s` while Thread B is simultaneously trying to reallocate that memory to fit a larger string. The result is catastrophic memory corruption.
 
@@ -372,13 +374,13 @@ fn main() {
      // Danger! We are returning a reference to invalid memory.
 ```
 
-The compiler stops this instantly. Because `s` is created inside the function, it is dropped at the end of the function. Returning a reference to it would mean returning a pointer to freed memory. To fix this, you must return the `String` directly and transfer ownership, moving it to the caller. 
+The compiler stops this instantly. Because `s` is created inside the function, it is dropped at the end of the function. Returning a reference to it would mean returning a pointer to freed memory. To fix this, you must return the `String` directly and transfer ownership, moving it to the caller.
 
 This leads directly into the concept of **Lifetimes**, which is how the compiler tracks exactly how long references are valid—a topic we will introduce shortly.
 
 ## 3.4 The Slice Type and Contiguous Memory
 
-In the previous section, we explored how references allow us to borrow an entire value without taking ownership of it. But what if we want to borrow only a *portion* of a collection, rather than the whole thing? Rust provides a specialized data type for exactly this purpose: the **slice**. 
+In the previous section, we explored how references allow us to borrow an entire value without taking ownership of it. But what if we want to borrow only a *portion* of a collection, rather than the whole thing? Rust provides a specialized data type for exactly this purpose: the **slice**.
 
 Slices let you reference a contiguous sequence of elements within a collection. Because slices are references, they do not have ownership of the data they point to, and they are checked by the compiler to guarantee memory safety.
 
@@ -399,7 +401,7 @@ fn first_word_index(s: &String) -> usize {
 }
 ```
 
-This code works, but it has a fundamental design flaw: the returned `usize` is completely disconnected from the state of the `String`. 
+This code works, but it has a fundamental design flaw: the returned `usize` is completely disconnected from the state of the `String`.
 
 ```rust
 let mut s = String::from("hello world");
@@ -425,6 +427,7 @@ let world = &s[6..11];
 ```
 
 Under the hood, a slice is a **fat pointer**. Unlike a standard reference (which is typically just a single memory address), a slice stores two pieces of information on the stack:
+
 1. A **pointer** to the first element of the slice.
 2. The **length** of the slice.
 
@@ -481,7 +484,7 @@ Why does `s.clear()` fail? Recall the rules of borrowing from Section 3.3: *You 
 
 ### Contiguous Memory and Cache Locality
 
-Slices are only possible because strings, arrays, and vectors store their data in **contiguous memory**. Contiguous memory means that elements are placed physically right next to each other in RAM, without any gaps. 
+Slices are only possible because strings, arrays, and vectors store their data in **contiguous memory**. Contiguous memory means that elements are placed physically right next to each other in RAM, without any gaps.
 
 Because the compiler knows the data is contiguous, it can calculate the exact memory address of any element simply by knowing the starting pointer and adding the index offset. This is not only what makes slices syntactically possible, but it is also a cornerstone of high-performance systems programming. Modern CPU caches load memory in blocks; when your program iterates over contiguous memory (like a slice), the CPU pre-fetches the upcoming elements, resulting in blazing-fast execution speeds compared to pointer-chasing structures like linked lists.
 
@@ -497,11 +500,11 @@ let slice: &[i32] = &a[1..3];      // A slice containing [2, 3]
 assert_eq!(slice, &[2, 3]);
 ```
 
-Just like string slices, this `&[i32]` stores a pointer to the second element (`2`) and a length (`2`). 
+Just like string slices, this `&[i32]` stores a pointer to the second element (`2`) and a length (`2`).
 
 ### The Golden Rule of Function Signatures
 
-A common mistake for Rust beginners is writing functions that accept `&String` or `&Vec<T>` as parameters. 
+A common mistake for Rust beginners is writing functions that accept `&String` or `&Vec<T>` as parameters.
 
 ```rust
 // Idiomatic Rust avoids this:
@@ -517,15 +520,15 @@ Instead, you should always design your functions to accept slices:
 fn print_length(s: &str) { ... }
 ```
 
-Because of a feature called *deref coercion* (which we will explore later), a `&String` can automatically be treated as a `&str`. By asking for a slice, your function becomes much more flexible: it can accept a `&String`, a `&str`, or even a slice of a `String`. 
+Because of a feature called *deref coercion* (which we will explore later), a `&String` can automatically be treated as a `&str`. By asking for a slice, your function becomes much more flexible: it can accept a `&String`, a `&str`, or even a slice of a `String`.
 
 The exact same rule applies to arrays and vectors: prefer `fn process_data(data: &[i32])` over `fn process_data(data: &Vec<i32>)`. This embraces the true power of contiguous memory abstractions in Rust.
 
 ## 3.5 Lifetimes Introduction: Ensuring Valid References
 
-In Section 3.3, we established the second rule of borrowing: *References must always be valid*. We saw that the compiler prevents us from returning a reference to a variable created inside a function because that variable's memory is freed when the function ends. 
+In Section 3.3, we established the second rule of borrowing: *References must always be valid*. We saw that the compiler prevents us from returning a reference to a variable created inside a function because that variable's memory is freed when the function ends.
 
-But how exactly does the Rust compiler track this? How does it know how long a piece of memory is valid? It does this through **lifetimes**. 
+But how exactly does the Rust compiler track this? How does it know how long a piece of memory is valid? It does this through **lifetimes**.
 
 A lifetime is the construct the compiler uses to ensure that all borrows are valid. In most cases, lifetimes are implicit and inferred, just like data types. However, when multiple references interact—especially in function signatures or structs—the compiler sometimes needs our help to understand how those references relate to one another.
 
@@ -603,9 +606,10 @@ fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
 ```
 
 Let's break down what this signature tells the compiler:
-1.  `<'a>` declares a generic lifetime parameter named `'a`.
-2.  `x: &'a str` and `y: &'a str` specify that both inputs must live *at least as long* as the generic lifetime `'a`.
-3.  `-> &'a str` specifies that the returned reference will be valid for *at least as long* as the lifetime `'a`.
+
+1. `<'a>` declares a generic lifetime parameter named `'a`.
+2. `x: &'a str` and `y: &'a str` specify that both inputs must live *at least as long* as the generic lifetime `'a`.
+3. `-> &'a str` specifies that the returned reference will be valid for *at least as long* as the lifetime `'a`.
 
 In practice, this means the lifetime of the returned reference will be equal to the **smaller** of the lifetimes of the values passed to `x` and `y`. We have now given the borrow checker the mathematical relationship it needs to verify memory safety at the call site.
 
@@ -651,11 +655,11 @@ fn main() {
 }
 ```
 
-By adding `<'a>` to the struct definition, we explicitly state that an instance of `ImportantExcerpt` cannot live longer than the reference stored in its `part` field. 
+By adding `<'a>` to the struct definition, we explicitly state that an instance of `ImportantExcerpt` cannot live longer than the reference stored in its `part` field.
 
 ### The `'static` Lifetime
 
-There is one special, reserved lifetime in Rust: `'static`. The `'static` lifetime denotes that the reference *can* live for the entire duration of the program. 
+There is one special, reserved lifetime in Rust: `'static`. The `'static` lifetime denotes that the reference *can* live for the entire duration of the program.
 
 All string literals possess the `'static` lifetime.
 
@@ -663,15 +667,16 @@ All string literals possess the `'static` lifetime.
 let s: &'static str = "I have a static lifetime.";
 ```
 
-The text of this string is stored directly inside the compiled binary of the program, which is loaded into memory when the program starts. Because the data is always available, a reference to it is always valid. 
+The text of this string is stored directly inside the compiled binary of the program, which is loaded into memory when the program starts. Because the data is always available, a reference to it is always valid.
 
 While you might see compiler error messages suggesting you use `'static` to fix a lifetime issue, be cautious. Making a reference `'static` is often a band-aid for a flawed architectural design. Usually, you need to rethink ownership: should the function return a reference, or should it transfer ownership of the data entirely by returning an owned type like a `String`?
 
 ### The Big Picture: Safety Without Garbage Collection
 
 You have now journeyed through the three pillars of Rust's memory management:
-1.  **Ownership** guarantees that heap memory is cleanly allocated and deallocated.
-2.  **Borrowing** allows data to be reused safely without moving ownership, while preventing data races.
-3.  **Lifetimes** provide the compiler with the mathematical bounds needed to guarantee that references never dangle.
+
+1. **Ownership** guarantees that heap memory is cleanly allocated and deallocated.
+2. **Borrowing** allows data to be reused safely without moving ownership, while preventing data races.
+3. **Lifetimes** provide the compiler with the mathematical bounds needed to guarantee that references never dangle.
 
 Together, these mechanisms power Rust’s defining feature: zero-cost abstractions that guarantee memory safety and thread safety at compile time, completely eliminating the need for a garbage collector in your production systems.

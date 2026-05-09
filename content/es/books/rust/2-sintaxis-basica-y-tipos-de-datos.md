@@ -22,7 +22,7 @@ fn main() {
 }
 ```
 
-Si descomentas la última línea, el compilador de Rust (tu nuevo mejor amigo, aunque al principio parezca un crítico estricto) arrojará un error claro: `cannot assign twice to immutable variable`. 
+Si descomentas la última línea, el compilador de Rust (tu nuevo mejor amigo, aunque al principio parezca un crítico estricto) arrojará un error claro: `cannot assign twice to immutable variable`.
 
 Rust te obliga a ser explícito si deseas que el valor de una variable cambie a lo largo del tiempo. Para ello, debes añadir la palabra clave `mut` (de *mutable*) justo después de `let`:
 
@@ -44,7 +44,7 @@ Al obligarte a marcar explícitamente qué partes de tu estado van a cambiar, Ru
 
 Existe una técnica en Rust que a menudo sorprende a los recién llegados, pero que se convierte en una herramienta indispensable: el **Shadowing** o sombreado.
 
-El shadowing consiste en volver a declarar una variable con el *mismo nombre* utilizando nuevamente la palabra clave `let`. Al hacer esto, la nueva variable "ensombrece" (oculta) a la anterior. 
+El shadowing consiste en volver a declarar una variable con el *mismo nombre* utilizando nuevamente la palabra clave `let`. Al hacer esto, la nueva variable "ensombrece" (oculta) a la anterior.
 
 ```rust
 fn main() {
@@ -90,7 +90,7 @@ Si hubieras intentado hacer esto usando `mut`, el compilador te habría detenido
 
 ## 2.2 Tipos escalares (enteros, flotantes, booleanos, caracteres)
 
-Rust es un lenguaje estáticamente tipado, lo que significa que el compilador debe conocer los tipos de todas las variables en tiempo de compilación. Aunque su motor de inferencia es increíblemente astuto y suele deducir el tipo a partir del valor que asignamos, habrá momentos en los que deberemos ser explícitos. 
+Rust es un lenguaje estáticamente tipado, lo que significa que el compilador debe conocer los tipos de todas las variables en tiempo de compilación. Aunque su motor de inferencia es increíblemente astuto y suele deducir el tipo a partir del valor que asignamos, habrá momentos en los que deberemos ser explícitos.
 
 Un **tipo escalar** representa un único valor. Rust tiene cuatro tipos escalares principales que son los bloques de construcción fundamentales de cualquier aplicación: enteros, números de punto flotante, booleanos y caracteres.
 
@@ -111,6 +111,7 @@ Como desarrollador backend, usar el tipo correcto es crucial para la eficiencia 
 
 **El problema del desbordamiento (Integer Overflow):**
 ¿Qué pasa si tienes un `u8` (cuyo límite es 255) y le sumas 1? En lenguajes como C, esto causa un comportamiento indefinido o da la vuelta a 0 silenciosamente. En Rust, el comportamiento depende del perfil de compilación:
+
 * En modo **Debug** (`cargo build`), Rust inserta comprobaciones y hará *panic* (detendrá el programa) si ocurre un overflow.
 * En modo **Release** (`cargo build --release`), Rust realiza un "wrap around" (255 + 1 se convierte en 0) sin hacer *panic*. Si necesitas un comportamiento de envoltura explícito, Rust provee métodos como `wrapping_add`.
 
@@ -131,6 +132,7 @@ fn main() {
 ### 2. Números de punto flotante (Floats)
 
 Para los números con decimales, Rust implementa el estándar IEEE-754 con dos tipos:
+
 * `f32`: Precisión simple (32 bits).
 * `f64`: Precisión doble (64 bits).
 
@@ -158,7 +160,7 @@ fn main() {
 
 ### 4. Caracteres (char)
 
-Aquí es donde Rust se diferencia enormemente de lenguajes como C o C++. En Rust, el tipo `char` (que se especifica con comillas simples `''`) no ocupa 1 byte, sino **4 bytes**. 
+Aquí es donde Rust se diferencia enormemente de lenguajes como C o C++. En Rust, el tipo `char` (que se especifica con comillas simples `''`) no ocupa 1 byte, sino **4 bytes**.
 
 Esto se debe a que un `char` en Rust representa un **Valor Escalar Unicode**. Puede representar desde letras ASCII tradicionales, pasando por caracteres acentuados, cirílico, hasta emojis completos.
 
@@ -175,7 +177,7 @@ fn main() {
 
 ## 2.3 Tipos compuestos (tuplas y arreglos)
 
-A diferencia de los tipos escalares que representan un único valor, los **tipos compuestos** permiten agrupar múltiples valores bajo una sola variable. Rust proporciona dos tipos compuestos primitivos: las tuplas y los arreglos. 
+A diferencia de los tipos escalares que representan un único valor, los **tipos compuestos** permiten agrupar múltiples valores bajo una sola variable. Rust proporciona dos tipos compuestos primitivos: las tuplas y los arreglos.
 
 Es importante destacar que ambos tienen una característica en común que suele sorprender a quienes vienen de lenguajes interpretados: **su longitud es fija y debe conocerse en tiempo de compilación**.
 
@@ -217,7 +219,7 @@ fn main() {
 
 ### 2. Arreglos (Arrays)
 
-A diferencia de las tuplas, los arreglos son colecciones de tamaño fijo donde **todos los elementos deben ser del mismo tipo**. 
+A diferencia de las tuplas, los arreglos son colecciones de tamaño fijo donde **todos los elementos deben ser del mismo tipo**.
 
 En Rust, los arreglos (`[T; N]`) se almacenan directamente en la pila (Stack), lo que los hace extremadamente rápidos de acceder. Se definen entre corchetes.
 
@@ -240,7 +242,7 @@ Como desarrollador backend, la inicialización rápida de arreglos (`[0u8; 1024]
 Sin embargo, si necesitas una lista que pueda crecer o encogerse dinámicamente (como una lista de usuarios consultada desde la base de datos), los arreglos no te servirán. Para eso utilizaremos los **Vectores (`Vec<T>`)**, que viven en el Heap y exploraremos a fondo en el Capítulo 6.
 
 **Seguridad de memoria: Out of Bounds**
-Uno de los vectores de ataque más comunes en C/C++ es el *Buffer Overflow* (desbordamiento de búfer), que ocurre cuando intentas leer o escribir más allá de la longitud real de un arreglo. 
+Uno de los vectores de ataque más comunes en C/C++ es el *Buffer Overflow* (desbordamiento de búfer), que ocurre cuando intentas leer o escribir más allá de la longitud real de un arreglo.
 
 Rust previene esto categóricamente. Si intentas acceder a un índice que no existe, el programa hará *panic* y se detendrá inmediatamente en lugar de permitir el acceso a memoria inválida:
 
@@ -260,7 +262,7 @@ En cualquier lenguaje, el control de flujo es lo que le da vida a la lógica de 
 
 ### 1. Ramificación condicional (`if` y `else`)
 
-La sintaxis del `if` en Rust es limpia: no requiere paréntesis alrededor de la condición, pero sí exige llaves `{}` para el bloque de código. 
+La sintaxis del `if` en Rust es limpia: no requiere paréntesis alrededor de la condición, pero sí exige llaves `{}` para el bloque de código.
 
 Un detalle crucial para los desarrolladores que vienen de Python o JavaScript: **Rust no tiene el concepto de valores "truthy" o "falsy"**. La condición de un `if` debe evaluar estrictamente a un tipo `bool`. No puedes usar un entero `1` o una cadena vacía para evaluar si algo es verdadero o falso.
 

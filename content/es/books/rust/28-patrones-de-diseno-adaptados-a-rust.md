@@ -73,13 +73,14 @@ impl ServerConfigBuilder {
 
 ### El Patrón Typestate: Estados en Compilación
 
-Aquí es donde Rust brilla. El patrón **Typestate** (Estado tipado) codifica el estado de tu aplicación o de tu Builder directamente en el sistema de tipos utilizando **Genéricos** y **Zero-Sized Types (ZSTs)** (Tipos de tamaño cero). 
+Aquí es donde Rust brilla. El patrón **Typestate** (Estado tipado) codifica el estado de tu aplicación o de tu Builder directamente en el sistema de tipos utilizando **Genéricos** y **Zero-Sized Types (ZSTs)** (Tipos de tamaño cero).
 
 En lugar de validar en el método `.build()` y devolver un `Result`, hacemos que el método `.build()` *solo exista* si el builder se encuentra en un estado válido. Si intentas compilar un estado inválido, el compilador (el *Borrow Checker* y el sistema de tipos) te detendrá.
 
 Veamos cómo reconstruir el ejemplo anterior garantizando que el `host` y el `port` sean obligatorios.
 
 #### 1. Definir los Marcadores de Estado (ZSTs)
+
 Estos structs no ocupan memoria en ejecución; solo existen para guiar al compilador.
 
 ```rust
@@ -93,6 +94,7 @@ pub struct PortSet(u16);
 ```
 
 #### 2. Definir el Builder Genérico
+
 El Builder ahora usa parámetros genéricos para rastrear el estado de cada campo crítico.
 
 ```rust
@@ -104,6 +106,7 @@ pub struct SafeServerBuilder<H, P> {
 ```
 
 #### 3. Implementar las Transiciones de Estado
+
 Usamos el bloque `impl` para definir qué métodos están disponibles en cada estado. Presta especial atención a cómo los métodos **consumen `self`** (tomando ownership) y devuelven un *nuevo* tipo, impidiendo que el estado anterior vuelva a ser utilizado.
 
 ```rust
@@ -184,14 +187,14 @@ let config = SafeServerBuilder::new()
 
 ### Cuándo usar cada enfoque
 
-Aunque el patrón Typestate parece magia, añade una carga cognitiva y verbosidad (boilerplate) a tu código. 
+Aunque el patrón Typestate parece magia, añade una carga cognitiva y verbosidad (boilerplate) a tu código.
 
 * **Usa el Builder clásico (Validación en Runtime):** Cuando la configuración tiene decenas de campos opcionales, cuando los parámetros se construyen dinámicamente a partir de un archivo JSON o de variables de entorno, o cuando el struct no es un componente crítico del core de tu dominio.
 * **Usa Typestate (Validación en Compilación):** En el diseño del *Core* de tu dominio (Domain-Driven Design), cuando construyes librerías públicas (crates) donde quieres guiar al usuario mediante el autocompletado del IDE, o para gestionar flujos finitos (ej: Un `Socket` que debe pasar de estado `Desconectado` a `Conectado` antes de poder llamar a `.send()`).
 
 ## 28.2 El patrón Newtype para seguridad de dominio
 
-En la sección anterior vimos cómo el compilador de Rust puede ayudarnos a gestionar el estado de nuestras estructuras. Ahora aplicaremos esa misma filosofía para proteger la lógica de nuestro dominio empresarial. 
+En la sección anterior vimos cómo el compilador de Rust puede ayudarnos a gestionar el estado de nuestras estructuras. Ahora aplicaremos esa misma filosofía para proteger la lógica de nuestro dominio empresarial.
 
 En el desarrollo backend, lidiamos constantemente con datos primitivos: IDs de base de datos (`String` o `i32`), identificadores de sesión, correos electrónicos o cantidades monetarias (`f64`). Confiar en tipos primitivos para representar conceptos de dominio complejos conduce a lo que se conoce como *Primitive Obsession* (Obsesión por los primitivos), un anti-patrón que facilita la introducción de bugs silenciosos.
 
@@ -254,6 +257,7 @@ Ahora, intentar pasar un `AccountId` donde se espera un `UserId` resultará en u
 Además de evitar la mezcla accidental de parámetros, el patrón Newtype nos ofrece dos superpoderes adicionales cruciales para el desarrollo backend.
 
 #### 1. Validación en el Constructor (Smart Constructors)
+
 Si mantenemos el campo interno privado (sin usar `pub`), podemos forzar a que la creación del tipo pase por una función validadora. De este modo, garantizamos que si posees una instancia del tipo, sus datos son semánticamente válidos.
 
 ```rust
@@ -280,6 +284,7 @@ impl Email {
 Si una función de tu API recibe como parámetro un `Email` en lugar de un `String`, sabes con un 100% de certeza que el correo ya ha sido validado, eliminando la necesidad de repetir comprobaciones (reduciendo el código defensivo).
 
 #### 2. Evasión de la Regla de los Huérfanos (Orphan Rule)
+
 Rust tiene una regla estricta: solo puedes implementar un Trait en un tipo si el Trait o el tipo fueron definidos en tu *crate* (paquete). No puedes, por ejemplo, implementar el trait `Display` (de la Standard Library) directamente para un `Vec<T>` (también de la Standard Library).
 
 El patrón Newtype es la solución legal a esta restricción:
@@ -329,7 +334,7 @@ impl Deref for UserId {
 
 ## 28.3 Command Pattern y Estrategias mediante Traits
 
-En el desarrollo backend, los requisitos cambian constantemente. Hoy tu aplicación procesa pagos con Stripe, pero mañana la directiva podría exigir la integración con PayPal o MercadoPago. Del mismo modo, es posible que necesites encolar tareas para ejecutarlas en segundo plano (envío de correos, generación de reportes). 
+En el desarrollo backend, los requisitos cambian constantemente. Hoy tu aplicación procesa pagos con Stripe, pero mañana la directiva podría exigir la integración con PayPal o MercadoPago. Del mismo modo, es posible que necesites encolar tareas para ejecutarlas en segundo plano (envío de correos, generación de reportes).
 
 En la programación orientada a objetos tradicional, resolveríamos esto mediante clases abstractas y herencia. En Rust, que favorece la composición sobre la herencia, resolvemos ambos escenarios —el cambio de algoritmos (Strategy) y la encapsulación de acciones (Command)— utilizando **Traits**.
 
@@ -341,11 +346,12 @@ Aunque estructuralmente se ven muy parecidos (ambos definen una interfaz común)
 
 El patrón Strategy nos permite definir una familia de algoritmos, encapsular cada uno de ellos y hacerlos intercambiables sin alterar el código del cliente que los utiliza.
 
-En Rust, definimos la "estrategia" como un `Trait` y cada algoritmo específico como un `Struct` que implementa dicho Trait. 
+En Rust, definimos la "estrategia" como un `Trait` y cada algoritmo específico como un `Struct` que implementa dicho Trait.
 
 Aquí debemos tomar una decisión arquitectónica crucial que vimos en el Capítulo 7: **¿Static Dispatch (Genéricos) o Dynamic Dispatch (`dyn Trait`)?**
 
 #### Ejemplo con Static Dispatch (Monamorfización de Genéricos)
+
 Usamos Genéricos cuando la estrategia se conoce en tiempo de compilación y no va a cambiar durante el tiempo de ejecución. Esto garantiza un rendimiento máximo (abstracción de coste cero).
 
 ```rust
@@ -488,11 +494,12 @@ A continuación, analizaremos los anti-patrones más comunes que surgen al inten
 
 ### 1. El "Mar de Referencias" (Abuso de `Rc<RefCell<T>>`)
 
-En lenguajes con Recolector de Basura (Garbage Collector), es trivial crear objetos que se apuntan entre sí. Un ejemplo clásico es un árbol bidireccional o un grafo donde un "Hijo" conoce a su "Padre" y viceversa. 
+En lenguajes con Recolector de Basura (Garbage Collector), es trivial crear objetos que se apuntan entre sí. Un ejemplo clásico es un árbol bidireccional o un grafo donde un "Hijo" conoce a su "Padre" y viceversa.
 
 Cuando intentas replicar esto en Rust, el compilador rechaza las referencias mutables múltiples. La "vía de escape" típica de un principiante es envolver todo en `Rc<RefCell<T>>` (o `Arc<Mutex<T>>` en concurrencia) para lograr **mutabilidad compartida**.
 
 **El Anti-patrón (Malo):**
+
 ```rust
 use std::cell::RefCell;
 use std::rc::Rc;
@@ -506,6 +513,7 @@ pub struct Node {
 ```
 
 **Por qué es peligroso:**
+
 1. **Fugas de memoria:** Si un Padre apunta a un Hijo, y el Hijo apunta al Padre mediante `Rc` (Reference Counting), se crea un ciclo de referencias. El contador nunca llegará a cero y la memoria nunca se liberará (a menos que uses `Weak`, lo cual añade más complejidad).
 2. **Pánicos en ejecución:** `RefCell` mueve las reglas del Borrow Checker al tiempo de ejecución. Si intentas pedir un préstamo mutable (`.borrow_mut()`) dos veces en el mismo ámbito de ejecución accidentalmente, tu servidor colapsará con un `panic!`.
 3. **Verbosidad:** Leer y escribir código lleno de `.borrow().unwrap()` es agotador y propenso a errores.
@@ -540,6 +548,7 @@ impl Tree {
 En Java, es una regla de oro hacer todos los atributos privados y exponer métodos `get_...()` y `set_...()`. Muchos desarrolladores trasladan esta práctica a Rust, creando código *boilerplate* innecesario.
 
 **El Anti-patrón:**
+
 ```rust
 pub struct User {
     name: String,
@@ -574,6 +583,7 @@ pub struct User {
 Rust **no soporta la herencia de structs**. No existe `class Perro extends Animal`. Intentar emular esto incrustando structs dentro de structs o creando complejas redes de "Supertraits" (Traits que requieren otros Traits) suele resultar en una arquitectura rígida.
 
 **El Anti-patrón (Herencia mediante composición forzada):**
+
 ```rust
 struct BaseEntity { id: i32, created_at: String }
 struct UserEntity { base: BaseEntity, username: String }

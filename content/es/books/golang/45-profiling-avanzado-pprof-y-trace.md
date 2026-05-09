@@ -10,17 +10,19 @@ El paquete `runtime/pprof` y la herramienta de línea de comandos `go tool pprof
 
 Existen tres formas principales de generar archivos de perfilado en Go, dependiendo del contexto de ejecución:
 
-1.  **A través de Benchmarks (Recomendado para algoritmos específicos):**
+1. **A través de Benchmarks (Recomendado para algoritmos específicos):**
     Como vimos en el Capítulo 19, las pruebas de rendimiento nativas de Go pueden generar perfiles automáticamente pasando los *flags* correspondientes:
+
     ```bash
     go test -bench . -cpuprofile cpu.prof -memprofile mem.prof
     ```
 
-2.  **Mediante instrumentación directa en el código (`runtime/pprof`):**
+2. **Mediante instrumentación directa en el código (`runtime/pprof`):**
     Útil para aplicaciones CLI o scripts de corta duración donde queremos medir un bloque específico de código.
 
     **Perfil de CPU:**
     El perfilado de CPU funciona mediante un muestreo (*sampling*) a 100 Hz (100 veces por segundo). Go detiene la ejecución de la goroutine temporalmente y registra el *stack trace* actual.
+
     ```go
     package main
 
@@ -50,6 +52,7 @@ Existen tres formas principales de generar archivos de perfilado en Go, dependie
 
     **Perfil de Memoria (Heap):**
     A diferencia de la CPU, el perfilado de memoria registra las asignaciones en el *Heap* (recordando el *Escape Analysis* del capítulo 44). Muestra un muestreo de las asignaciones vivas y el total histórico.
+
     ```go
     // ... lógica del programa ...
     f, err := os.Create("mem.prof")
@@ -66,7 +69,7 @@ Existen tres formas principales de generar archivos de perfilado en Go, dependie
     }
     ```
 
-3.  **A través de HTTP para servicios de larga duración (`net/http/pprof`):**
+3. **A través de HTTP para servicios de larga duración (`net/http/pprof`):**
     Esta técnica se abordará a fondo en la sección 45.4, ya que requiere precauciones especiales de seguridad en entornos de producción.
 
 ### Interpretación de Perfiles con la CLI
@@ -85,8 +88,8 @@ Entering interactive mode (type "help" for commands, "o" for options)
 Dentro de esta consola interactiva, los comandos más críticos son:
 
 * **`top`**: Muestra las funciones que consumen más recursos. Es fundamental entender las dos columnas principales:
-    * **`flat`**: Tiempo (o memoria) consumido *exclusivamente* por esa función, sin contar el tiempo de las funciones que llama internamente.
-    * **`cum` (Cumulative)**: Tiempo (o memoria) consumido por esa función *y por todas las funciones que son llamadas por ella*.
+  * **`flat`**: Tiempo (o memoria) consumido *exclusivamente* por esa función, sin contar el tiempo de las funciones que llama internamente.
+  * **`cum` (Cumulative)**: Tiempo (o memoria) consumido por esa función *y por todas las funciones que son llamadas por ella*.
 
     Si una función tiene un `flat` bajo pero un `cum` alto, significa que es una función de orquestación que delega el trabajo pesado a otras. Para ordenar por acumulado, usa `top -cum`.
 
@@ -100,10 +103,10 @@ Al analizar `mem.prof`, la herramienta `pprof` nos permite observar los datos de
 
 En la consola interactiva de `pprof`, puedes cambiar el modo de visualización con los siguientes comandos:
 
-1.  **`alloc_objects`**: Muestra cuántos objetos se han alojado en total desde que arrancó el programa (independientemente de si ya fueron recolectados por el GC).
-2.  **`alloc_space`**: Muestra la cantidad total de bytes alojados históricamente. Útil para identificar código que genera demasiada basura computacional.
-3.  **`inuse_objects`**: Muestra la cantidad de objetos que actualmente están vivos en el Heap.
-4.  **`inuse_space`**: (Modo por defecto). Muestra la cantidad de bytes que actualmente están vivos en el Heap. Útil para cazar *Memory Leaks*.
+1. **`alloc_objects`**: Muestra cuántos objetos se han alojado en total desde que arrancó el programa (independientemente de si ya fueron recolectados por el GC).
+2. **`alloc_space`**: Muestra la cantidad total de bytes alojados históricamente. Útil para identificar código que genera demasiada basura computacional.
+3. **`inuse_objects`**: Muestra la cantidad de objetos que actualmente están vivos en el Heap.
+4. **`inuse_space`**: (Modo por defecto). Muestra la cantidad de bytes que actualmente están vivos en el Heap. Útil para cazar *Memory Leaks*.
 
 El dominio de `pprof` transforma la optimización de ser un proceso de ensayo y error basado en suposiciones, a una disciplina científica guiada por datos empíricos.
 
@@ -122,7 +125,7 @@ El perfilado de bloqueos rastrea el tiempo que pasan las *goroutines* esperando 
 * Esperas en `sync.Cond`.
 * Operaciones `select` que se quedan bloqueadas.
 
-A diferencia del perfilado de CPU y memoria que a menudo se activan por defecto en los benchmarks, el perfilado de bloqueos está desactivado de fábrica debido a que introduce una ligera penalización (*overhead*) en el planificador de Go. 
+A diferencia del perfilado de CPU y memoria que a menudo se activan por defecto en los benchmarks, el perfilado de bloqueos está desactivado de fábrica debido a que introduce una ligera penalización (*overhead*) en el planificador de Go.
 
 Para habilitarlo, debemos configurar explícitamente la tasa de muestreo usando `runtime.SetBlockProfileRate`:
 
@@ -160,7 +163,7 @@ func main() {
 
 ### 2. Mutex Profiling (Perfilado de Contención)
 
-Mientras que el *Block Profile* es general, el *Mutex Profile* es una herramienta quirúrgica diseñada específicamente para analizar la contención en candados (`sync.Mutex` y `sync.RWMutex`, tratados en el Capítulo 10). 
+Mientras que el *Block Profile* es general, el *Mutex Profile* es una herramienta quirúrgica diseñada específicamente para analizar la contención en candados (`sync.Mutex` y `sync.RWMutex`, tratados en el Capítulo 10).
 
 La "contención" ocurre cuando múltiples *goroutines* intentan adquirir el mismo *Mutex* simultáneamente, forzando a la mayoría a suspenderse. Según la Ley de Amdahl, los cuellos de botella generados por la serialización de acceso (contención severa) son los mayores destructores de la escalabilidad horizontal en un programa.
 
@@ -191,13 +194,14 @@ if err := pprof.Lookup("mutex").WriteTo(f, 0); err != nil {
 
 Al analizar estos perfiles con `go tool pprof mutex.prof`, la semántica de la interfaz de línea de comandos cambia ligeramente respecto a la CPU. Aquí nos interesan dos métricas principales:
 
-1.  **`contentions` (Contenciones):** Muestra *cuántas veces* una *goroutine* tuvo que esperar. Nos ayuda a identificar qué líneas de código sufren bloqueos con mayor frecuencia, independientemente de la duración de los mismos.
-2.  **`delay` (Retraso):** Muestra el *tiempo total* que las *goroutines* pasaron bloqueadas. 
+1. **`contentions` (Contenciones):** Muestra *cuántas veces* una *goroutine* tuvo que esperar. Nos ayuda a identificar qué líneas de código sufren bloqueos con mayor frecuencia, independientemente de la duración de los mismos.
+2. **`delay` (Retraso):** Muestra el *tiempo total* que las *goroutines* pasaron bloqueadas.
 
-Al igual que en el perfil de memoria, puedes alternar entre estas vistas dentro de la consola interactiva de `pprof` escribiendo `contentions` o `delay`. 
+Al igual que en el perfil de memoria, puedes alternar entre estas vistas dentro de la consola interactiva de `pprof` escribiendo `contentions` o `delay`.
 
 **Mejores prácticas para la resolución:**
 Si el `mutex.prof` revela que tu programa pasa un porcentaje alto de tiempo en `delay` dentro de un `sync.Mutex.Lock()`, las soluciones idiomáticas en Go no suelen ser "optimizar el lock", sino repensar la arquitectura:
+
 * Reducir el tamaño de la sección crítica (hacer el trabajo pesado fuera del *lock*).
 * Cambiar a `sync.RWMutex` si las lecturas superan abrumadoramente a las escrituras.
 * Refactorizar hacia un diseño basado en canales (compartir memoria comunicándose, no comunicarse compartiendo memoria).
@@ -205,11 +209,12 @@ Si el `mutex.prof` revela que tu programa pasa un porcentaje alto de tiempo en `
 
 ## 45.3. Visualización milimétrica de Goroutines con el Execution Tracer (`go tool trace`)
 
-Si `pprof` nos proporciona una vista de águila basada en agregaciones y promedios (qué función consumió más recursos en total), el *Execution Tracer* nativo de Go (`go tool trace`) nos ofrece una vista microscópica con precisión de nanosegundos a lo largo del tiempo. 
+Si `pprof` nos proporciona una vista de águila basada en agregaciones y promedios (qué función consumió más recursos en total), el *Execution Tracer* nativo de Go (`go tool trace`) nos ofrece una vista microscópica con precisión de nanosegundos a lo largo del tiempo.
 
 Mientras que `pprof` responde a la pregunta *"¿Qué está consumiendo mis recursos?"*, el *Tracer* responde a *"¿Cuándo, cómo y por qué se están ejecutando (o pausando) mis goroutines?"*.
 
 El *Execution Tracer* es la herramienta definitiva para diagnosticar problemas complejos de concurrencia que los perfiles estadísticos no pueden capturar, tales como:
+
 * **Latencia intermitente:** Pausas abruptas en el rendimiento que no aparecen promediadas en `pprof`.
 * **Contención extrema del planificador (Scheduler):** Goroutines que pasan demasiado tiempo en estado *Runnable* (listas para ejecutarse) pero sin ser asignadas a un procesador lógico (P).
 * **Impacto real del Garbage Collector:** Visualización exacta de las pausas *Stop-The-World* (STW) y el trabajo concurrente del GC (visto teóricamente en el Capítulo 43).
@@ -229,25 +234,25 @@ Para instrumentar código específico de nuestra aplicación, utilizamos el paqu
 package main
 
 import (
-	"log"
-	"os"
-	"runtime/trace"
+ "log"
+ "os"
+ "runtime/trace"
 )
 
 func main() {
-	f, err := os.Create("trace.out")
-	if err != nil {
-		log.Fatalf("no se pudo crear el archivo de trace: %v", err)
-	}
-	defer f.Close()
+ f, err := os.Create("trace.out")
+ if err != nil {
+  log.Fatalf("no se pudo crear el archivo de trace: %v", err)
+ }
+ defer f.Close()
 
-	// Iniciar la captura de eventos de traza
-	if err := trace.Start(f); err != nil {
-		log.Fatalf("no se pudo iniciar el trace: %v", err)
-	}
-	defer trace.Stop()
+ // Iniciar la captura de eventos de traza
+ if err := trace.Start(f); err != nil {
+  log.Fatalf("no se pudo iniciar el trace: %v", err)
+ }
+ defer trace.Stop()
 
-	// ... Lógica de negocio altamente concurrente ...
+ // ... Lógica de negocio altamente concurrente ...
 }
 ```
 
@@ -278,22 +283,22 @@ En aplicaciones complejas o monolitos, ver miles de goroutines con IDs numérico
 package main
 
 import (
-	"context"
-	"runtime/trace"
+ "context"
+ "runtime/trace"
 )
 
 func ProcesarPago(ctx context.Context) {
-	// Crear una tarea anclada al contexto
-	ctx, task := trace.NewTask(ctx, "ProcesarPagoUsuario")
-	defer task.End() // Finaliza la tarea al salir de la función
+ // Crear una tarea anclada al contexto
+ ctx, task := trace.NewTask(ctx, "ProcesarPagoUsuario")
+ defer task.End() // Finaliza la tarea al salir de la función
 
-	// Instrumentar una región específica
-	trace.WithRegion(ctx, "ValidacionExterna", func() {
-		// ... Lógica que se comunica con una pasarela de pago ...
-	})
-	
-	// Añadir logs milimétricos que aparecerán directamente en el trace visual
-	trace.Log(ctx, "pasarela", "conexión establecida exitosamente")
+ // Instrumentar una región específica
+ trace.WithRegion(ctx, "ValidacionExterna", func() {
+  // ... Lógica que se comunica con una pasarela de pago ...
+ })
+ 
+ // Añadir logs milimétricos que aparecerán directamente en el trace visual
+ trace.Log(ctx, "pasarela", "conexión establecida exitosamente")
 }
 ```
 
@@ -313,12 +318,12 @@ La forma más común (y peligrosa) que muestran la mayoría de tutoriales básic
 import _ "net/http/pprof"
 ```
 
-Como vimos en el Capítulo 24 al analizar `net/http`, este *import* anónimo ejecuta la función `init()` del paquete `pprof`, la cual **registra automáticamente los endpoints de perfilado en el `http.DefaultServeMux`**. 
+Como vimos en el Capítulo 24 al analizar `net/http`, este *import* anónimo ejecuta la función `init()` del paquete `pprof`, la cual **registra automáticamente los endpoints de perfilado en el `http.DefaultServeMux`**.
 
 Si tu aplicación utiliza este enrutador por defecto para servir tráfico público, estarás exponiendo la ruta `/debug/pprof/` a todo Internet. Esto genera dos vectores de ataque críticos:
 
-1.  **Fuga de información (Information Disclosure):** Los perfiles revelan nombres de funciones, rutas de archivos en el servidor, variables de entorno y trazas de ejecución completas. Es un mapa del tesoro para un atacante que busque vulnerabilidades de día cero (visto en el Capítulo 36).
-2.  **Denegación de Servicio (DoS):** Generar un perfil de CPU o un *Trace* es una operación costosa para el *runtime*. Un atacante podría solicitar `/debug/pprof/profile?seconds=30` repetidamente, agotando los recursos del servidor e impactando a los usuarios legítimos.
+1. **Fuga de información (Information Disclosure):** Los perfiles revelan nombres de funciones, rutas de archivos en el servidor, variables de entorno y trazas de ejecución completas. Es un mapa del tesoro para un atacante que busque vulnerabilidades de día cero (visto en el Capítulo 36).
+2. **Denegación de Servicio (DoS):** Generar un perfil de CPU o un *Trace* es una operación costosa para el *runtime*. Un atacante podría solicitar `/debug/pprof/profile?seconds=30` repetidamente, agotando los recursos del servidor e impactando a los usuarios legítimos.
 
 ### Estrategias de exposición segura
 
@@ -334,33 +339,33 @@ En lugar de usar el *import* anónimo, registramos los *handlers* explícitament
 package main
 
 import (
-	"log"
-	"net/http"
-	"net/http/pprof" // Import explícito, sin el guion bajo
+ "log"
+ "net/http"
+ "net/http/pprof" // Import explícito, sin el guion bajo
 )
 
 func main() {
-	// 1. Crear un enrutador dedicado exclusivo para pprof
-	debugMux := http.NewServeMux()
-	
-	// 2. Registrar los handlers manualmente
-	debugMux.HandleFunc("/debug/pprof/", pprof.Index)
-	debugMux.HandleFunc("/debug/pprof/cmdline", pprof.Cmdline)
-	debugMux.HandleFunc("/debug/pprof/profile", pprof.Profile)
-	debugMux.HandleFunc("/debug/pprof/symbol", pprof.Symbol)
-	debugMux.HandleFunc("/debug/pprof/trace", pprof.Trace)
+ // 1. Crear un enrutador dedicado exclusivo para pprof
+ debugMux := http.NewServeMux()
+ 
+ // 2. Registrar los handlers manualmente
+ debugMux.HandleFunc("/debug/pprof/", pprof.Index)
+ debugMux.HandleFunc("/debug/pprof/cmdline", pprof.Cmdline)
+ debugMux.HandleFunc("/debug/pprof/profile", pprof.Profile)
+ debugMux.HandleFunc("/debug/pprof/symbol", pprof.Symbol)
+ debugMux.HandleFunc("/debug/pprof/trace", pprof.Trace)
 
-	// 3. Levantar el servidor de debug en una goroutine separada
-	go func() {
-		log.Println("Servidor pprof interno iniciado en 127.0.0.1:6060")
-		// Al escuchar en 127.0.0.1, el puerto no es accesible desde el exterior
-		err := http.ListenAndServe("127.0.0.1:6060", debugMux)
-		if err != nil {
-			log.Fatalf("Error en servidor pprof: %v", err)
-		}
-	}()
+ // 3. Levantar el servidor de debug en una goroutine separada
+ go func() {
+  log.Println("Servidor pprof interno iniciado en 127.0.0.1:6060")
+  // Al escuchar en 127.0.0.1, el puerto no es accesible desde el exterior
+  err := http.ListenAndServe("127.0.0.1:6060", debugMux)
+  if err != nil {
+   log.Fatalf("Error en servidor pprof: %v", err)
+  }
+ }()
 
-	// ... 4. Configuración y arranque de tu API pública principal (puerto 8080, etc.) ...
+ // ... 4. Configuración y arranque de tu API pública principal (puerto 8080, etc.) ...
 }
 ```
 

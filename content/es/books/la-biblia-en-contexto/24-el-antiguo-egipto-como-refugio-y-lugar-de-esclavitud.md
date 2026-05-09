@@ -2,11 +2,11 @@
 
 ---
 
-Cuando abrimos las páginas de la Biblia, a menudo nos encontramos con paisajes áridos, desiertos implacables y tierras montañosas que dependían enteramente de las nubes del cielo para sobrevivir. En medio de este escenario de constante vulnerabilidad, emerge en el horizonte bíblico una superpotencia ineludible, una tierra de abundancia perpetua, monumentos colosales y un río que parecía no secarse jamás: el antiguo Egipto. 
+Cuando abrimos las páginas de la Biblia, a menudo nos encontramos con paisajes áridos, desiertos implacables y tierras montañosas que dependían enteramente de las nubes del cielo para sobrevivir. En medio de este escenario de constante vulnerabilidad, emerge en el horizonte bíblico una superpotencia ineludible, una tierra de abundancia perpetua, monumentos colosales y un río que parecía no secarse jamás: el antiguo Egipto.
 
-Para el lector moderno, la palabra "Egipto" suele evocar de inmediato imágenes de pirámides, faraones, las diez plagas y la opresión del pueblo hebreo haciendo ladrillos bajo el sol ardiente. Es el arquetipo bíblico de la esclavitud, el lugar del que Dios tuvo que rescatar a su pueblo con "mano fuerte y brazo extendido". Sin embargo, si leemos las Escrituras con detenimiento, descubrimos que la relación de Israel con Egipto fue mucho más compleja, profunda y ambivalente que la de un simple opresor y un oprimido. 
+Para el lector moderno, la palabra "Egipto" suele evocar de inmediato imágenes de pirámides, faraones, las diez plagas y la opresión del pueblo hebreo haciendo ladrillos bajo el sol ardiente. Es el arquetipo bíblico de la esclavitud, el lugar del que Dios tuvo que rescatar a su pueblo con "mano fuerte y brazo extendido". Sin embargo, si leemos las Escrituras con detenimiento, descubrimos que la relación de Israel con Egipto fue mucho más compleja, profunda y ambivalente que la de un simple opresor y un oprimido.
 
-Egipto fue, a lo largo de los siglos, una constante ruta de escape. Fue el granero del mundo antiguo al que acudían los patriarcas cuando la Tierra Prometida se secaba. Fue el lugar donde la familia de Jacob se salvó de la inanición, y fue el asilo temporal que protegió al mismísimo Hijo de Dios en su infancia. ¿Cómo pudo la misma nación ser, al mismo tiempo, el horno de aflicción y el refugio providencial? 
+Egipto fue, a lo largo de los siglos, una constante ruta de escape. Fue el granero del mundo antiguo al que acudían los patriarcas cuando la Tierra Prometida se secaba. Fue el lugar donde la familia de Jacob se salvó de la inanición, y fue el asilo temporal que protegió al mismísimo Hijo de Dios en su infancia. ¿Cómo pudo la misma nación ser, al mismo tiempo, el horno de aflicción y el refugio providencial?
 
 A través de este extenso recorrido, nos sumergiremos en "La Biblia en Contexto" para entender cómo la geografía, la historia y la soberanía de Dios entrelazaron los destinos de Israel y Egipto desde el libro de Génesis hasta los Evangelios.
 
@@ -50,7 +50,7 @@ Génesis 12:10 relata de manera sobria pero impactante: *"Hubo entonces hambre e
 
 Este viaje establece un patrón que se repetirá a lo largo de las Escrituras. Abram, enfrentando una amenaza de muerte por inanición, busca refugio en Egipto. Sin embargo, este lugar de refugio físico rápidamente se convierte en un lugar de peligro moral y espiritual. Temiendo por su vida debido a la belleza de su esposa Saraí, Abram miente a medias, diciendo que es su hermana. El Faraón toma a Saraí, Dios interviene con plagas sobre la casa del Faraón (un interesante preludio de lo que pasaría siglos después en el Éxodo), y Abram es expulsado con grandes riquezas, pero con una esclava egipcia llamada Agar, quien más tarde sería el centro de otro profundo conflicto familiar.
 
-El refugio en Egipto salvó el cuerpo de Abram, pero probó su fe y trajo complicaciones a su hogar. 
+El refugio en Egipto salvó el cuerpo de Abram, pero probó su fe y trajo complicaciones a su hogar.
 
 Una generación más tarde, su hijo Isaac enfrenta una situación idéntica. Hay otra hambruna en la tierra. Isaac se prepara para seguir los pasos de su padre y descender a Egipto, pero en Génesis 26:2, Dios se le aparece con una orden directa: *"No desciendas a Egipto; habita en la tierra que yo te diré."* Dios le estaba enseñando a Isaac a depender de la providencia divina incluso en medio de la sequía, rompiendo el reflejo automático de buscar la salvación en los recursos del mundo.
 
@@ -60,7 +60,7 @@ La ambivalencia de Egipto alcanza su punto máximo narrativo en la maravillosa h
 
 Vendido por la envidia de sus propios hermanos a unos mercaderes ismaelitas, el joven José es llevado a Egipto como esclavo. De manera asombrosa, Egipto no es aquí una elección de refugio, sino un exilio forzado. José experimenta lo peor del sistema egipcio: la esclavitud en la casa de Potifar y el encarcelamiento injusto en las mazmorras reales.
 
-Sin embargo, Dios estaba con José. A través del don divino de interpretar sueños, José no solo sale de la cárcel, sino que descifra los inquietantes sueños del Faraón sobre siete vacas gordas y siete vacas flacas. Dios revela a través de José que el mundo antiguo enfrentará siete años de abundancia sin precedentes, seguidos de siete años de una hambruna global y devastadora. 
+Sin embargo, Dios estaba con José. A través del don divino de interpretar sueños, José no solo sale de la cárcel, sino que descifra los inquietantes sueños del Faraón sobre siete vacas gordas y siete vacas flacas. Dios revela a través de José que el mundo antiguo enfrentará siete años de abundancia sin precedentes, seguidos de siete años de una hambruna global y devastadora.
 
 El Faraón, reconociendo el Espíritu de Dios en José, lo eleva a la posición de Visir, el segundo hombre más poderoso de Egipto. José organiza un sistema de almacenamiento masivo. Cuando la hambruna golpea implacablemente (incluso en Canaán), Jacob y sus hijos se ven obligados a hacer lo que hizo su abuelo Abraham: mirar a Egipto en busca de pan.
 
@@ -128,13 +128,13 @@ Egipto había dejado de ser el lugar de refugio por hambruna para convertirse en
 
 ## 6. El exilio y la trágica ironía del retorno
 
-La culminación de esta desastrosa confianza en Egipto ocurrió en los días del profeta Jeremías. En el año 586 a.C., los babilonios finalmente conquistaron Jerusalén, destruyeron el templo de Salomón y llevaron a la mayoría de la población al exilio. 
+La culminación de esta desastrosa confianza en Egipto ocurrió en los días del profeta Jeremías. En el año 586 a.C., los babilonios finalmente conquistaron Jerusalén, destruyeron el templo de Salomón y llevaron a la mayoría de la población al exilio.
 
 Babilonia dejó a un pequeño remanente de personas pobres en la tierra de Judá bajo el cuidado de un gobernador. Tras el asesinato de este gobernador, el remanente entró en pánico, temiendo las represalias del rey de Babilonia.
 
 En su desesperación, buscaron a Jeremías y le pidieron que consultara a Dios, prometiendo obedecer fuera cual fuera la respuesta. Dios, a través de Jeremías, fue categórico: quédense en la tierra, confíen en mí, yo los protegeré; pero si huyen a Egipto, la espada y el hambre que temen los alcanzarán allí.
 
-Trágicamente, el pueblo rechazó la palabra de Dios. En un acto de profunda ironía histórica y desobediencia espiritual, obligaron a Jeremías a ir con ellos y descendieron a Egipto para refugiarse (Jeremías 43). 
+Trágicamente, el pueblo rechazó la palabra de Dios. En un acto de profunda ironía histórica y desobediencia espiritual, obligaron a Jeremías a ir con ellos y descendieron a Egipto para refugiarse (Jeremías 43).
 
 Centenares de años después de que Dios partiera el Mar Rojo para sacarlos de la "casa de servidumbre", este grupo de israelitas marchaba voluntariamente de regreso al lugar de su opresión. Era la reversión total del Éxodo. Creían que en Egipto encontrarían paz, comida y no verían guerra, pero allí encontraron su final. Esta triste narrativa nos enseña una lección espiritual profunda sobre la inclinación del corazón humano a regresar a aquello de lo que Dios nos ha liberado, buscando una falsa sensación de control y seguridad.
 
@@ -150,7 +150,7 @@ En ese momento de extrema crisis y peligro de muerte, un ángel del Señor se ap
 
 Es un momento sublime en la narrativa bíblica. Una vez más, la familia escogida por Dios, portadora de la semilla de la promesa (esta vez, el Mesías mismo), enfrenta la destrucción. Y una vez más, Dios utiliza a la tierra de Egipto como un santuario, un asilo divinamente preparado para proteger la vida del Salvador del mundo.
 
-Jesús recorre los mismos pasos que sus antepasados. Él, en cierto sentido, encarna a Israel. Baja a Egipto en su debilidad e infancia, encontrando refugio bajo el sol africano mientras la matanza ocurre en Canaán. 
+Jesús recorre los mismos pasos que sus antepasados. Él, en cierto sentido, encarna a Israel. Baja a Egipto en su debilidad e infancia, encontrando refugio bajo el sol africano mientras la matanza ocurre en Canaán.
 
 Y cuando Herodes muere, el ángel le avisa a José que es seguro regresar. Mateo, bajo la inspiración del Espíritu Santo, hace una conexión teológica magistral. Nos dice que la Sagrada Familia regresó a la tierra de Israel:
 

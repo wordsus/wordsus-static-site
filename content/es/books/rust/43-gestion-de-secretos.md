@@ -68,10 +68,10 @@ impl AppConfig {
 
 Al manipular variables de entorno en Rust, especialmente aquellas que contienen secretos, debes adherirte a las siguientes prácticas:
 
-1.  **Aislamiento en Control de Versiones:** El archivo `.env` debe estar estrictamente incluido en tu `.gitignore`. Crea un archivo `.env.example` con valores ficticios (e.g., `JWT_SECRET=tu_secreto_aqui`) para guiar a otros desarrolladores sin comprometer credenciales reales.
-2.  **Prevención de fugas en Pánicos:** Como revisamos en el Capítulo 37 (Logging Estructurado), un error clásico de seguridad es utilizar `.expect("Fallo al cargar DATABASE_URL: $DATABASE_URL")`. Si el valor es parcialmente incorrecto, el pánico imprimirá el secreto en los logs de la consola en texto plano. Las validaciones de entorno deben retornar errores genéricos (`"JWT_SECRET malformado"`) sin reflejar el valor introducido por el usuario.
-3.  **Tipado Estricto Inmediato:** Las variables de entorno nacen como `String`. Debes parsearlas a los tipos de dominio correctos (`u16`, enums, *Newtypes*) lo antes posible, idealmente en la misma frontera de entrada de la aplicación. Mantener configuración basada en `String` a lo largo de toda tu capa de Casos de Uso (Capítulo 29) incrementa la superficie de vulnerabilidad.
-4.  **Uso de `dotenvy_macro` (Con precaución):** `dotenvy` provee una macro `dotenv!()` que permite evaluar las variables en *tiempo de compilación*. Aunque es útil para inyectar configuraciones estáticas, **nunca debe usarse para secretos**. Compilar un binario con `dotenv!("DATABASE_URL")` incrustará tus credenciales de base de datos directamente en el código máquina de tu ejecutable.
+1. **Aislamiento en Control de Versiones:** El archivo `.env` debe estar estrictamente incluido en tu `.gitignore`. Crea un archivo `.env.example` con valores ficticios (e.g., `JWT_SECRET=tu_secreto_aqui`) para guiar a otros desarrolladores sin comprometer credenciales reales.
+2. **Prevención de fugas en Pánicos:** Como revisamos en el Capítulo 37 (Logging Estructurado), un error clásico de seguridad es utilizar `.expect("Fallo al cargar DATABASE_URL: $DATABASE_URL")`. Si el valor es parcialmente incorrecto, el pánico imprimirá el secreto en los logs de la consola en texto plano. Las validaciones de entorno deben retornar errores genéricos (`"JWT_SECRET malformado"`) sin reflejar el valor introducido por el usuario.
+3. **Tipado Estricto Inmediato:** Las variables de entorno nacen como `String`. Debes parsearlas a los tipos de dominio correctos (`u16`, enums, *Newtypes*) lo antes posible, idealmente en la misma frontera de entrada de la aplicación. Mantener configuración basada en `String` a lo largo de toda tu capa de Casos de Uso (Capítulo 29) incrementa la superficie de vulnerabilidad.
+4. **Uso de `dotenvy_macro` (Con precaución):** `dotenvy` provee una macro `dotenv!()` que permite evaluar las variables en *tiempo de compilación*. Aunque es útil para inyectar configuraciones estáticas, **nunca debe usarse para secretos**. Compilar un binario con `dotenv!("DATABASE_URL")` incrustará tus credenciales de base de datos directamente en el código máquina de tu ejecutable.
 
 Al construir la configuración de tu aplicación de esta manera, garantizas que la capa de infraestructura sea predecible, resiliente ante la falta de archivos locales, y respetuosa con los estándares de inyección de secretos de los orquestadores modernos.
 
@@ -239,7 +239,7 @@ pub async fn fetch_aws_secrets(secret_id: &str) -> Result<AppSecrets, Box<dyn st
 
 ### Ecosistema Azure: `azure_identity` y Key Vault
 
-Si operas en Azure, el patrón es idéntico pero utilizando los crates oficiales `azure_identity` y `azure_security_keyvault_secrets`. 
+Si operas en Azure, el patrón es idéntico pero utilizando los crates oficiales `azure_identity` y `azure_security_keyvault_secrets`.
 
 La clave aquí es utilizar `DefaultAzureCredential`. Esta abstracción es excepcionalmente útil para el ciclo de vida del desarrollo: si ejecutas tu binario en local, usará las credenciales de tu sesión en la CLI de Azure (`az login`). Si lo despliegas en la nube, transicionará automáticamente a usar la *Managed Identity* del recurso (por ejemplo, tu Azure App Service), sin cambiar una sola línea de código en Rust.
 
@@ -247,17 +247,17 @@ La clave aquí es utilizar `DefaultAzureCredential`. Esta abstracción es excepc
 
 Al integrar estos servicios, debes evitar a toda costa los siguientes errores:
 
-1.  **Anti-patrón: Consultar el secreto por cada *Request*:**
+1. **Anti-patrón: Consultar el secreto por cada *Request*:**
     Los servicios de nube cobran por cada llamada a la API y aplican *Rate Limiting* (Límites de peticiones). Si tu endpoint de base de datos extrae la contraseña de Secrets Manager en cada petición HTTP, agotarás tu cuota en segundos, incurrirás en facturas elevadas y añadirás ~50-200ms de latencia a cada llamada.
     * **Solución:** Los secretos deben cargarse **una sola vez** durante el arranque de la aplicación (en el bloque `main`) y almacenarse en memoria a través del Estado de la Aplicación (por ejemplo, el `AppState` en Axum o Actix-Web, protegido por `Arc`).
 
-2.  **Manejo de Rotación Automática:**
+2. **Manejo de Rotación Automática:**
     Si configuras AWS/Azure para que rote automáticamente las contraseñas de la base de datos (por ejemplo, mediante una función Lambda), tu aplicación Rust debe ser capaz de reaccionar.
     * **Estrategia:** En lugar de implementar sondeos constantes (*polling*), captura los errores de autenticación del pool de conexiones a la base de datos. Si la base de datos rechaza la conexión, tu aplicación puede desencadenar una nueva llamada a Secrets Manager para actualizar el secreto en el `AppState` y recrear el pool de conexiones en caliente.
 
 ## 43.4 Prevención de fugas de secretos en Logs y Pánicos
 
-Has asegurado tu base de datos contra inyecciones SQL, has implementado TLS y cargas tus credenciales dinámicamente desde Vault o AWS. Sin embargo, toda esa armadura es inútil si un error en tiempo de ejecución imprime la contraseña de producción en los logs de CloudWatch o Datadog. 
+Has asegurado tu base de datos contra inyecciones SQL, has implementado TLS y cargas tus credenciales dinámicamente desde Vault o AWS. Sin embargo, toda esa armadura es inútil si un error en tiempo de ejecución imprime la contraseña de producción en los logs de CloudWatch o Datadog.
 
 Las fugas de secretos (*secret leaks*) ocurren frecuentemente por dos vías en Rust: la derivación descuidada del trait `Debug` y el volcado de memoria durante un pánico del hilo. Para un desarrollador senior, la seguridad no solo implica encriptar datos, sino garantizar que la observabilidad de la aplicación sea "ciega" a la información sensible.
 

@@ -2,7 +2,7 @@ Rust’s compiler guarantees memory safety, eliminating bugs like buffer overflo
 
 ## 20.1 Authentication and Authorization Middleware Patterns
 
-Securing a backend application requires a clear architectural distinction between **authentication** (AuthN) and **authorization** (AuthZ). Authentication verifies *who* the user is, while authorization determines *what* that authenticated user is permitted to do. 
+Securing a backend application requires a clear architectural distinction between **authentication** (AuthN) and **authorization** (AuthZ). Authentication verifies *who* the user is, while authorization determines *what* that authenticated user is permitted to do.
 
 In modern Rust web frameworks like Axum, Actix-Web, and Tower-based systems, these concerns are decoupled using middleware and extractors. By pushing security checks into the framework's routing lifecycle, we ensure that business logic handlers remain pure, focused, and free of repetitive boilerplate.
 
@@ -183,7 +183,7 @@ In Rust, the standard for handling JWTs is the `jsonwebtoken` crate.
 
 #### Defining Claims and Cryptographic Keys
 
-A production-ready JWT implementation relies on strong typing for the token's payload (claims) and secure key management. 
+A production-ready JWT implementation relies on strong typing for the token's payload (claims) and secure key management.
 
 ```rust
 use jsonwebtoken::{encode, decode, Header, Validation, EncodingKey, DecodingKey, errors::Result};
@@ -361,7 +361,7 @@ In many robust systems, these patterns are combined. For instance, an applicatio
 
 ## 20.3 Cryptography Essentials: Hashing, Salting, and Encryption
 
-A fundamental responsibility of any production backend is protecting sensitive data. In the Rust ecosystem, we rely on heavily audited, community-standard crates (often from the `RustCrypto` project or `ring`) to handle these operations. 
+A fundamental responsibility of any production backend is protecting sensitive data. In the Rust ecosystem, we rely on heavily audited, community-standard crates (often from the `RustCrypto` project or `ring`) to handle these operations.
 
 To secure data effectively, we must strictly separate the concepts of **hashing** (one-way data masking, primarily for passwords) and **encryption** (two-way data obfuscation, for retrieving sensitive data later).
 
@@ -381,8 +381,9 @@ To secure data effectively, we must strictly separate the concepts of **hashing*
 A cryptographic hash function takes an input of any size and produces a fixed-size string of bytes. However, standard fast hash functions like SHA-256 are **insecure for passwords**. Attackers can use hardware accelerators to calculate billions of SHA-256 hashes per second, making brute-force or "rainbow table" attacks trivial.
 
 To securely store passwords, we require two things:
-1.  **A Salt:** A unique, random string generated for *each user* and appended to the password before hashing. This defeats pre-computed rainbow tables and ensures two users with the same password have different hashes.
-2.  **A Key Derivation Function (KDF):** An algorithm deliberately designed to be slow and memory-intensive, thwarting GPU-based brute-force attacks.
+
+1. **A Salt:** A unique, random string generated for *each user* and appended to the password before hashing. This defeats pre-computed rainbow tables and ensures two users with the same password have different hashes.
+2. **A Key Derivation Function (KDF):** An algorithm deliberately designed to be slow and memory-intensive, thwarting GPU-based brute-force attacks.
 
 The current industry standard—and the winner of the Password Hashing Competition—is **Argon2**.
 
@@ -541,7 +542,7 @@ let query = format!("SELECT * FROM users WHERE username = '{}'", username);
 
 #### The Rust Defense: Parameterized Queries and Compile-Time Verification
 
-To prevent SQLi, you must separate the query structure from the data. The standard practice in Rust is to use **Parameterized Queries** via `sqlx` or an ORM like `diesel`. 
+To prevent SQLi, you must separate the query structure from the data. The standard practice in Rust is to use **Parameterized Queries** via `sqlx` or an ORM like `diesel`.
 
 `sqlx` provides the `query!` macro, which is the gold standard for SQLi prevention in Rust. It not only uses parameterized queries natively but also verifies the SQL syntax and parameter types against a live database at compile time.
 
@@ -677,7 +678,7 @@ By layering these standard crates into your application's architecture, you ensu
 
 ## 20.5 Securely Managing Secrets and Environment Variables in Production
 
-The final pillar of backend application security is the management of the credentials that grant your application access to databases, third-party APIs, and cryptographic keys. The Twelve-Factor App methodology strictly dictates that configuration—specifically secrets—must be stored in the environment, never in the codebase. 
+The final pillar of backend application security is the management of the credentials that grant your application access to databases, third-party APIs, and cryptographic keys. The Twelve-Factor App methodology strictly dictates that configuration—specifically secrets—must be stored in the environment, never in the codebase.
 
 However, merely reading from `std::env` is insufficient for a robust, production-grade Rust application. Strings loaded from the environment can easily be accidentally logged, serialized into error responses, or exposed through panic traces.
 
@@ -781,7 +782,7 @@ For local development, you should pair this with the `dotenvy` crate (a maintain
 
 ### 3. Fetching Secrets from Cloud Providers at Runtime
 
-In highly secure production environments, injecting secrets via static environment variables is considered a risk. If the container or instance is compromised, `printenv` immediately yields all keys. 
+In highly secure production environments, injecting secrets via static environment variables is considered a risk. If the container or instance is compromised, `printenv` immediately yields all keys.
 
 The modern approach is to assign an Identity and Access Management (IAM) role to the application's compute instance (e.g., an EC2 instance or EKS pod) and have the application fetch its secrets directly from a centralized secret manager (like AWS Secrets Manager, Azure Key Vault, or HashiCorp Vault) at runtime startup.
 

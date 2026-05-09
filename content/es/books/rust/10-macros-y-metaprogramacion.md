@@ -31,12 +31,13 @@ fn main() {
 ```
 
 Cada "brazo" de la macro tiene dos partes:
-1.  **El Matcher `(...)`**: Define el patrón sintáctico que la macro espera recibir.
-2.  **El Transcriber `{...}`**: Define el código de Rust que se generará y reemplazará la llamada a la macro.
+
+1. **El Matcher `(...)`**: Define el patrón sintáctico que la macro espera recibir.
+2. **El Transcriber `{...}`**: Define el código de Rust que se generará y reemplazará la llamada a la macro.
 
 ### Especificadores de fragmentos (Designators)
 
-En el ejemplo anterior, `$nombre:expr` captura una expresión de Rust y la asigna a la metavariable `$nombre`. El sufijo `expr` se conoce como especificador de fragmento. 
+En el ejemplo anterior, `$nombre:expr` captura una expresión de Rust y la asigna a la metavariable `$nombre`. El sufijo `expr` se conoce como especificador de fragmento.
 
 Para escribir macros útiles, necesitas conocer los especificadores más comunes:
 
@@ -95,13 +96,13 @@ Al compilar, Rust expandirá `map!` reemplazándolo exactamente por el bloque `{
 
 Las macros declarativas en Rust son **parcialmente higiénicas**. Esto significa que las variables locales creadas dentro de la macro (como `temp_map` en nuestro ejemplo) no colisionarán con variables del mismo nombre en el código donde se invoca la macro.
 
-Sin embargo, hay que tener cuidado con las variables que *pasas* a la macro. Además, abusar de `macro_rules!` puede hacer que tu código sea difícil de leer y mantener. 
+Sin embargo, hay que tener cuidado con las variables que *pasas* a la macro. Además, abusar de `macro_rules!` puede hacer que tu código sea difícil de leer y mantener.
 
 > **Tip para Nivel Senior:** Si una macro declarativa crece a más de 50 líneas o requiere lógica condicional compleja de parsing, es una señal de advertencia. Ese es el momento exacto para migrar a una **Macro Procedural**, la cual te permite usar todo el poder de Rust para manipular el AST. Además, para depurar macros declarativas complejas, la herramienta externa `cargo-expand` es indispensable, ya que te permite ver el código exacto que tu macro está generando antes de la compilación.
 
 ## 10.2 Macros procedurales personalizadas
 
-Si las macros declarativas (`macro_rules!`) que vimos en la sección anterior son como usar expresiones regulares avanzadas, las **macros procedurales** son como escribir un mini-compilador dentro de tu propio código. 
+Si las macros declarativas (`macro_rules!`) que vimos en la sección anterior son como usar expresiones regulares avanzadas, las **macros procedurales** son como escribir un mini-compilador dentro de tu propio código.
 
 Mientras que las macros declarativas operan haciendo coincidir patrones de sintaxis, las macros procedurales son funciones reales de Rust que toman código fuente (un flujo de tokens o `TokenStream`), lo analizan, ejecutan lógica arbitraria en **tiempo de compilación** y devuelven un nuevo flujo de tokens que el compilador finalmente convertirá en código binario.
 
@@ -111,9 +112,9 @@ Esta es la magia detrás de herramientas que usas a diario en el backend, como e
 
 Para escribir macros procedurales en Rust, casi siempre dependerás de tres herramientas fundamentales:
 
-1.  **`proc_macro`**: Es parte de la biblioteca estándar de Rust y proporciona el tipo `TokenStream`, que representa el código fuente crudo de entrada y salida.
-2.  **`syn`**: Un crate de terceros (prácticamente un estándar de la industria) que toma el `TokenStream` y lo "parsea" (analiza) convirtiéndolo en un Árbol de Sintaxis Abstracta (AST). Te permite entender si un token es un `struct`, una función, un identificador, etc.
-3.  **`quote`**: El crate inverso a `syn`. Toma la estructura de datos que has manipulado en Rust y la vuelve a convertir en un `TokenStream` para entregárselo al compilador.
+1. **`proc_macro`**: Es parte de la biblioteca estándar de Rust y proporciona el tipo `TokenStream`, que representa el código fuente crudo de entrada y salida.
+2. **`syn`**: Un crate de terceros (prácticamente un estándar de la industria) que toma el `TokenStream` y lo "parsea" (analiza) convirtiéndolo en un Árbol de Sintaxis Abstracta (AST). Te permite entender si un token es un `struct`, una función, un identificador, etc.
+3. **`quote`**: El crate inverso a `syn`. Toma la estructura de datos que has manipulado en Rust y la vuelve a convertir en un `TokenStream` para entregárselo al compilador.
 
 ### Configuración del proyecto: Un crate separado
 
@@ -196,7 +197,7 @@ fn main() {
 
 ### El costo oculto: Tiempos de compilación
 
-Es importante tener candidez técnica aquí: las macros procedurales son increíblemente poderosas, pero **tienen un costo**. 
+Es importante tener candidez técnica aquí: las macros procedurales son increíblemente poderosas, pero **tienen un costo**.
 
 Crates como `syn` son masivos porque deben entender toda la sintaxis de Rust. Añadir macros procedurales a tu proyecto aumentará significativamente el tiempo de compilación desde cero (cold build time). Como desarrollador Senior, debes evaluar si el beneficio de la ergonomía y la seguridad en tiempo de compilación supera la penalización en la experiencia de desarrollo local de tu equipo (tiempos de espera en el CI/CD y en las compilaciones locales).
 
@@ -296,7 +297,7 @@ Dentro de la lógica de la macro usando `syn`, tendrías que iterar sobre `ast.a
 
 ## 10.4 Macros tipo atributo y función
 
-Para cerrar nuestra inmersión en la metaprogramación, abordaremos las **macros tipo atributo**, las cuales son, sin lugar a duda, las responsables de que el ecosistema backend en Rust se sienta tan moderno y ergonómico. 
+Para cerrar nuestra inmersión en la metaprogramación, abordaremos las **macros tipo atributo**, las cuales son, sin lugar a duda, las responsables de que el ecosistema backend en Rust se sienta tan moderno y ergonómico.
 
 Aunque en la sección 10.2 ya vimos cómo crear macros procedurales tipo función (las que se invocan con `mi_macro!(...)`), las macros tipo atributo llevan este concepto un paso más allá. En lugar de ser llamadas explícitamente dentro de un bloque de código, se "adjuntan" a elementos existentes (funciones, structs, módulos completos) y tienen el poder de **reescribirlos o reemplazarlos por completo**.
 
@@ -306,8 +307,8 @@ Si has usado Actix-Web, Axum o Tokio, ya has interactuado íntimamente con ellas
 
 A diferencia de las macros Derive (que solo pueden añadir código nuevo sin modificar el struct original) y las macros tipo función (que toman un solo flujo de tokens), las macros de atributo reciben **dos** flujos de tokens (`TokenStream`):
 
-1.  **Los argumentos del atributo (`attr`):** Lo que va dentro de los paréntesis del atributo. Por ejemplo, en `#[get("/api/v1/users")]`, el `attr` es `"/api/v1/users"`.
-2.  **El elemento al que se adjunta (`item`):** El código fuente completo de la función, struct o módulo que está debajo del atributo.
+1. **Los argumentos del atributo (`attr`):** Lo que va dentro de los paréntesis del atributo. Por ejemplo, en `#[get("/api/v1/users")]`, el `attr` es `"/api/v1/users"`.
+2. **El elemento al que se adjunta (`item`):** El código fuente completo de la función, struct o módulo que está debajo del atributo.
 
 Veamos cómo construir un enrutador simplificado que inyecta automáticamente logs de acceso en nuestras funciones controladoras.
 
@@ -374,7 +375,7 @@ fn main() {
 
 ### El caso de estudio definitivo: `#[tokio::main]`
 
-> **Tip para Nivel Senior:** Comprender cómo funciona `#[tokio::main]` es un rito de paso para un backend developer en Rust. 
+> **Tip para Nivel Senior:** Comprender cómo funciona `#[tokio::main]` es un rito de paso para un backend developer en Rust.
 
 Rust, por diseño en su Standard Library, no permite que la función `main` sea asíncrona (`async fn main()`). El punto de entrada de un programa compilado debe ser síncrono. Entonces, ¿cómo es que podemos escribir `async fn main()` cuando usamos Tokio?
 
@@ -406,4 +407,4 @@ fn main() {
 
 Esta es la verdadera potencia de las macros procedurales: permiten crear Abstracciones de Cero Costo (Zero-Cost Abstractions) que transforman código declarativo de alto nivel en código imperativo y optimizado (boilerplate) sin que el desarrollador tenga que escribirlo ni mantenerlo manualmente.
 
-Con esto concluimos el **Capítulo 10** y la **Parte II** del libro. Ya dominas los fundamentos, el sistema de tipos, el borrow checker y las abstracciones más poderosas de Rust. 
+Con esto concluimos el **Capítulo 10** y la **Parte II** del libro. Ya dominas los fundamentos, el sistema de tipos, el borrow checker y las abstracciones más poderosas de Rust.

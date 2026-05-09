@@ -8,7 +8,7 @@ Para un desarrollador backend, conocer la `std` a fondo marca la diferencia entr
 
 ### El `prelude`: La "magia" implícita de Rust
 
-Si has prestado atención a los capítulos anteriores, es probable que te hayas dado cuenta de un detalle curioso: hemos utilizado tipos como `String`, `Vec<T>`, `Option<T>` y `Result<T, E>` constantemente sin tener que importarlos explícitamente en la parte superior de nuestros archivos. 
+Si has prestado atención a los capítulos anteriores, es probable que te hayas dado cuenta de un detalle curioso: hemos utilizado tipos como `String`, `Vec<T>`, `Option<T>` y `Result<T, E>` constantemente sin tener que importarlos explícitamente en la parte superior de nuestros archivos.
 
 En un lenguaje que valora la explicitud como Rust, esto puede parecer magia negra. La explicación arquitectónica detrás de esto es el **`prelude`** (preludio).
 
@@ -19,6 +19,7 @@ use std::prelude::rust_2021::*; // Asumiendo que usas la edición 2021
 ```
 
 #### ¿Qué incluye exactamente el `prelude`?
+
 El equipo de Rust mantiene el `prelude` lo más pequeño posible para evitar la contaminación del espacio de nombres (namespace pollution), incluyendo solo los tipos y traits de uso universal. Algunos de los elementos más críticos que aporta son:
 
 * **Tipos de la biblioteca principal:** `String`, `Vec`.
@@ -33,6 +34,7 @@ El hecho de que el `prelude` esté versionado por "Ediciones" (2015, 2018, 2021,
 Más allá de lo que se importa automáticamente, la `std` está organizada en módulos temáticos. Como ingeniero backend, pasarás gran parte de tu tiempo interactuando con los siguientes ecosistemas de la librería estándar. Dado que profundizaremos en I/O, Redes y Concurrencia en los próximos capítulos, aquí tienes una visión arquitectónica de los módulos esenciales:
 
 #### 1. Entorno y Sistema (`std::env` y `std::process`)
+
 Para configurar microservicios, leer variables de entorno y gestionar el ciclo de vida del proceso de tu aplicación.
 
 ```rust
@@ -52,17 +54,21 @@ fn main() {
 ```
 
 #### 2. Conversiones y Comparaciones (`std::convert` y `std::cmp`)
+
 El módulo `std::convert` contiene traits fundamentales como `AsRef`, `AsMut`, `From` e `Into`. Dominar este módulo es obligatorio para diseñar APIs limpias, ya que te permite escribir funciones que acepten múltiples tipos de datos (por ejemplo, aceptar tanto `String` como `&str` usando `impl AsRef<str>`).
 
 Por su parte, `std::cmp` provee los traits `Eq`, `PartialEq`, `Ord` y `PartialOrd`, vitales para ordenar datos que provienen de una base de datos o implementar lógicas de negocio de comparación.
 
 #### 3. Estructuras de Datos (`std::collections`)
+
 Como exploramos en el Capítulo 6, aquí residen `HashMap`, `HashSet`, `BTreeMap`, entre otros. La elección de la colección correcta impacta directamente en el rendimiento de un endpoint (por ejemplo, usar un `HashMap` para búsquedas $O(1)$ en caché en memoria vs un `BTreeMap` si necesitas iterar las llaves en orden lexicográfico).
 
 #### 4. I/O, Sistema de Archivos y Redes (`std::io`, `std::fs`, `std::net`)
+
 Estos módulos son los caballos de batalla para la interacción con el mundo exterior. Proveen los traits `Read` y `Write`, manipulación de rutas (`std::path::PathBuf`) y primitivas de sockets TCP/UDP. (Los detallaremos a nivel experto en los Capítulos 12 y 13).
 
 #### 5. Concurrencia Síncrona (`std::thread`, `std::sync`)
+
 Para operaciones bloqueantes o cálculos intensivos en CPU (como hashing de contraseñas), estos módulos proveen la creación de hilos del sistema operativo y primitivas de sincronización seguras como `Mutex`, `RwLock` y canales `mpsc`. (Cubiertos en el Capítulo 14).
 
 Entender que el `prelude` es solo una ventana conveniente y que la `std` es un conjunto de módulos organizados lógicamente, te permite saber exactamente dónde buscar cuando necesitas funcionalidad de bajo nivel del sistema.
@@ -84,16 +90,19 @@ Rust construye su ecosistema base desde el nivel más agnóstico del hardware ha
 | **Nivel 3 (OS)** | `std` | Requiere un Sistema Operativo y un asignador de memoria. | Añade concurrencia, entrada/salida (I/O), redes y variables de entorno. | `std::fs::File`, `std::net::TcpStream`, `std::thread`, `Mutex`. |
 
 ### 1. `libcore`: El núcleo inquebrantable
-El crate `core` es el corazón de Rust. No sabe lo que es un hilo de ejecución, no tiene concepto de un sistema de archivos y ni siquiera sabe cómo pedir más memoria RAM de forma dinámica. Todo en `core` debe tener un tamaño conocido en tiempo de compilación (o ser referencias/slices a memoria ya existente). 
+
+El crate `core` es el corazón de Rust. No sabe lo que es un hilo de ejecución, no tiene concepto de un sistema de archivos y ni siquiera sabe cómo pedir más memoria RAM de forma dinámica. Todo en `core` debe tener un tamaño conocido en tiempo de compilación (o ser referencias/slices a memoria ya existente).
 
 Si miras el código fuente de Rust, notarás que gran parte de lo que usas en `std` (como los métodos de un slice `[T]`) en realidad está implementado en `core` y simplemente es reexportado por `std`.
 
 ### 2. `liballoc`: Abrazando el Montículo (Heap)
-Cuando necesitas que tus colecciones crezcan dinámicamente, entra en juego `alloc`. Para usar esta capa sin `std`, necesitas proporcionarle a Rust un mecanismo para pedir y liberar memoria (un *allocator*). 
+
+Cuando necesitas que tus colecciones crezcan dinámicamente, entra en juego `alloc`. Para usar esta capa sin `std`, necesitas proporcionarle a Rust un mecanismo para pedir y liberar memoria (un *allocator*).
 
 En el desarrollo de contratos inteligentes (Smart Contracts) basados en Rust o módulos de WebAssembly para Edge Computing (como Cloudflare Workers), a menudo tienes acceso a un asignador de memoria, pero no tienes un sistema operativo tradicional. Aquí es donde `alloc` brilla.
 
 ### 3. `libstd`: El mundo de los Sistemas Operativos
+
 Finalmente, `std` envuelve a `core` y `alloc`, y añade bindings directos a las APIs del sistema operativo (POSIX en Linux/macOS, Windows API en Windows). Aquí es donde residen los sockets de red, los descriptores de archivos y los hilos (Threads). Cuando escribes una API REST con Actix o Axum, estás viviendo 100% en este nivel.
 
 ---
@@ -136,7 +145,7 @@ Entender qué parte de tu código depende del sistema operativo (`std`), del mon
 
 ## 11.3 Operaciones matemáticas y primitivas avanzadas
 
-En el desarrollo backend, los cálculos matemáticos rara vez se limitan a sumar dos números. Como ingenieros, lidiamos con identificadores generados secuencialmente que pueden desbordar su capacidad, cálculos financieros donde un error de redondeo cuesta dinero real, y la serialización de datos a nivel de bytes para enviarlos a través de un socket de red. 
+En el desarrollo backend, los cálculos matemáticos rara vez se limitan a sumar dos números. Como ingenieros, lidiamos con identificadores generados secuencialmente que pueden desbordar su capacidad, cálculos financieros donde un error de redondeo cuesta dinero real, y la serialización de datos a nivel de bytes para enviarlos a través de un socket de red.
 
 Rust aborda la matemática y el manejo de primitivas con la misma filosofía que el manejo de memoria: **seguridad y explicitud por defecto**. En lugar de permitir conversiones implícitas o desbordamientos silenciosos que causan bugs difíciles de rastrear, la `std` nos obliga a ser intencionales.
 
@@ -144,9 +153,10 @@ A continuación, exploraremos las herramientas matemáticas avanzadas que ofrece
 
 ### 1. El peligro del desbordamiento (Overflow) y la aritmética segura
 
-En lenguajes como C o C++, sumar un número al valor máximo de un entero (`MAX + 1`) resulta en un comportamiento indefinido o en un desbordamiento silencioso (vuelve a cero o al valor mínimo negativo). 
+En lenguajes como C o C++, sumar un número al valor máximo de un entero (`MAX + 1`) resulta en un comportamiento indefinido o en un desbordamiento silencioso (vuelve a cero o al valor mínimo negativo).
 
 En Rust, el comportamiento es estricto:
+
 * **En modo Debug (`cargo build`):** Un desbordamiento matemático causa un `panic!`, deteniendo el hilo de ejecución para que detectes el bug inmediatamente durante el desarrollo.
 * **En modo Release (`cargo build --release`):** Rust realiza un *two's complement wrapping* (vuelve a dar la vuelta silenciosamente) por razones de rendimiento, pero esto sigue siendo un bug lógico en tu aplicación.
 
@@ -341,7 +351,7 @@ fn main() {
 
 ### 3. `Duration`: La unidad de medida estandarizada
 
-Habrás notado el uso de `Duration` en los ejemplos anteriores. Es un `Struct` que representa un lapso de tiempo estricto, almacenado internamente como una combinación de segundos (`u64`) y nanosegundos (`u32`). 
+Habrás notado el uso de `Duration` en los ejemplos anteriores. Es un `Struct` que representa un lapso de tiempo estricto, almacenado internamente como una combinación de segundos (`u64`) y nanosegundos (`u32`).
 
 Es la moneda de cambio estándar en todo el ecosistema de Rust. Ya sea que uses la librería estándar (`std::thread::sleep`), frameworks asíncronos como Tokio (`tokio::time::sleep`), o clientes HTTP como `reqwest` (para definir el timeout de una petición), siempre te pedirán un `Duration`.
 
@@ -370,5 +380,4 @@ Como ingeniero backend, pronto te darás cuenta de que `std::time` es **intencio
 
 **La solución del ecosistema:** Para lidiar con fechas "humanas" de manera profesional, el estándar de facto en la industria de Rust es usar crates externos. Los más populares y utilizados en entornos de producción son **`chrono`** (históricamente el más usado, ideal para Timezones complejas) y **`time`** (más moderno, compilación más rápida y excelente integración con formateo seguro en tiempo de compilación).
 
-Con esto concluimos el Capítulo 11 y los fundamentos más cercanos a la CPU y la memoria. Ya tienes las herramientas para hacer matemáticas precisas, medir tiempos con exactitud y decidir cuándo prescindir del sistema operativo. 
-
+Con esto concluimos el Capítulo 11 y los fundamentos más cercanos a la CPU y la memoria. Ya tienes las herramientas para hacer matemáticas precisas, medir tiempos con exactitud y decidir cuándo prescindir del sistema operativo.

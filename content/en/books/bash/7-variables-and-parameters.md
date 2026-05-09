@@ -1,4 +1,4 @@
-Up until now, our scripts have been largely static, executing the exact same commands every time they run. To build truly dynamic and reusable tools, we need a way to store, retrieve, and manipulate data on the fly. This is where variables and parameters come in. 
+Up until now, our scripts have been largely static, executing the exact same commands every time they run. To build truly dynamic and reusable tools, we need a way to store, retrieve, and manipulate data on the fly. This is where variables and parameters come in.
 
 In this chapter, we will explore how Bash handles data storage. You will learn the strict syntax rules for declaring variables, the critical differences between single and double quoting, and how to capture user input using positional parameters. Finally, we will unlock the ability to capture the output of system commands and inject them into your scripts using command substitution.
 
@@ -21,7 +21,7 @@ version= 3
 ```
 
 **Why do spaces break the assignment?**
-Bash processes lines by splitting them into tokens separated by spaces. The first token on a line is always treated as a command to execute. 
+Bash processes lines by splitting them into tokens separated by spaces. The first token on a line is always treated as a command to execute.
 
 ```text
 USER_NAME="alice"     --> Bash sees one token: a variable assignment.
@@ -37,10 +37,11 @@ Because there is rarely a command on your system named `USER_NAME`, Bash will th
 ### Naming Conventions
 
 When naming your variables, adhere to the following rules and conventions:
-*   **Allowed characters:** Variable names can only contain letters (a-z, A-Z), numbers (0-9), and underscores (`_`).
-*   **Starting characters:** A variable name *cannot* start with a number. `file1` is valid; `1file` is not.
-*   **Case sensitivity:** Bash variables are case-sensitive. `myVar`, `MyVar`, and `MYVAR` are three distinct variables.
-*   **Convention:** By convention, environment variables (which we will cover in Chapter 14) and system-wide configurations are written in `UPPER_CASE`. For your script's internal, local variables, it is best practice to use `lower_case` or `snake_case` to prevent accidental collisions with system variables.
+
+* **Allowed characters:** Variable names can only contain letters (a-z, A-Z), numbers (0-9), and underscores (`_`).
+* **Starting characters:** A variable name *cannot* start with a number. `file1` is valid; `1file` is not.
+* **Case sensitivity:** Bash variables are case-sensitive. `myVar`, `MyVar`, and `MYVAR` are three distinct variables.
+* **Convention:** By convention, environment variables (which we will cover in Chapter 14) and system-wide configurations are written in `UPPER_CASE`. For your script's internal, local variables, it is best practice to use `lower_case` or `snake_case` to prevent accidental collisions with system variables.
 
 ### Accessing Variable Values (Dereferencing)
 
@@ -87,7 +88,7 @@ PI=3.14  # bash: PI: readonly variable
 
 ### Undeclared and Empty Variables
 
-In Bash, if you attempt to access a variable that has not been declared, the shell will not throw an error or crash your script. Instead, it will silently evaluate to an empty string (null). 
+In Bash, if you attempt to access a variable that has not been declared, the shell will not throw an error or crash your script. Instead, it will silently evaluate to an empty string (null).
 
 ```bash
 # Assuming 'undefined_var' was never assigned a value
@@ -107,7 +108,7 @@ empty_string=
 
 ## 7.2 Quoting Rules: Single vs. Double Quotes
 
-In the previous section, we established the golden rule of variable assignment: no spaces around the equals sign. But what happens when the *value* you want to assign contains spaces? 
+In the previous section, we established the golden rule of variable assignment: no spaces around the equals sign. But what happens when the *value* you want to assign contains spaces?
 
 If you type `message=Hello World`, Bash sees the assignment `message=Hello` followed by a command named `World`. To tell Bash that "Hello World" is a single unit of data, you must use quotes. However, in Bash, not all quotes are created equal. Understanding the difference between single quotes (`'`) and double quotes (`"`) is one of the most crucial skills for writing robust scripts.
 
@@ -116,9 +117,10 @@ If you type `message=Hello World`, Bash sees the assignment `message=Hello` foll
 Double quotes (`"..."`) are used to group multiple words into a single string while still allowing the shell to interpret special characters. This is often called "weak quoting" or "interpolation."
 
 When you wrap text in double quotes, Bash protects spaces from word splitting, but it **still evaluates** the following special characters:
-*   `$` (Parameter/Variable Expansion)
-*   `\` (Escape Character)
-*   `\`` (Backticks for Command Substitution, though `$()` is preferred)
+
+* `$` (Parameter/Variable Expansion)
+* `\` (Escape Character)
+* `\`` (Backticks for Command Substitution, though`$()` is preferred)
 
 ```bash
 user_name="Alice"
@@ -134,7 +136,7 @@ Because double quotes allow variable expansion, they are the go-to choice when y
 
 ### Single Quotes: 'Strong' Quoting (Literal)
 
-Single quotes (`'...'`) are absolute. They represent "strong quoting." When you wrap text in single quotes, Bash treats **every single character literally**. 
+Single quotes (`'...'`) are absolute. They represent "strong quoting." When you wrap text in single quotes, Bash treats **every single character literally**.
 
 Variable expansion (`$`), command substitution, and even escape characters (`\`) are completely ignored. What you see is exactly what you get.
 
@@ -162,7 +164,7 @@ To visualize how different characters are treated under various quoting conditio
 
 ### Escaping Quotes
 
-Sometimes, you need to include a quote character *inside* a string that is already quoted. 
+Sometimes, you need to include a quote character *inside* a string that is already quoted.
 
 **Inside Double Quotes:** You can use the backslash (`\`) to escape a literal double quote or a literal dollar sign.
 
@@ -178,7 +180,7 @@ echo "$price_msg"
 # Output: The cost is $5.00
 ```
 
-**Inside Single Quotes:** You **cannot** put a single quote inside single quotes, not even if you try to escape it with a backslash. Bash will simply terminate the quote early. 
+**Inside Single Quotes:** You **cannot** put a single quote inside single quotes, not even if you try to escape it with a backslash. Bash will simply terminate the quote early.
 
 To include a single quote inside a single-quoted string, you must exit the single quote, insert an escaped literal single quote (`\'`), and re-open the single quote. Alternatively, you can mix quoting styles.
 
@@ -193,7 +195,7 @@ echo 'It'\''s a beautiful day.'
 
 ### Advanced: ANSI-C Quoting (`$'...'`)
 
-Bash offers a third, specialized quoting mechanism using a dollar sign immediately followed by single quotes (`$'...'`). This is known as ANSI-C quoting. 
+Bash offers a third, specialized quoting mechanism using a dollar sign immediately followed by single quotes (`$'...'`). This is known as ANSI-C quoting.
 
 Unlike standard single quotes, ANSI-C quoting replaces backslash-escaped characters with their actual control codes according to the ANSI C standard. This is incredibly useful for embedding real newlines (`\n`) or tabs (`\t`) directly into your variables.
 
@@ -206,11 +208,12 @@ echo "$menu"
 ```
 
 **Output:**
+
 ```text
 Select an option:
-	1) Start
-	2) Stop
-	3) Restart
+ 1) Start
+ 2) Stop
+ 3) Restart
 ```
 
 ## 7.3 Positional Parameters
@@ -267,14 +270,14 @@ echo "The tenth argument is: ${10}"
 
 ### Shifting Arguments
 
-Sometimes you don't know exactly how many arguments will be passed to your script, or you want to process them one by one without writing out `$1`, `$2`, `$3` indefinitely. 
+Sometimes you don't know exactly how many arguments will be passed to your script, or you want to process them one by one without writing out `$1`, `$2`, `$3` indefinitely.
 
-Bash provides the `shift` built-in command for this scenario. When you call `shift`, Bash discards `$1`, and shifts all the remaining positional parameters one position to the left. 
+Bash provides the `shift` built-in command for this scenario. When you call `shift`, Bash discards `$1`, and shifts all the remaining positional parameters one position to the left.
 
-*   `$2` becomes `$1`
-*   `$3` becomes `$2`
-*   ...and so on. 
-*   `$0` (the script name) remains unchanged.
+* `$2` becomes `$1`
+* `$3` becomes `$2`
+* ...and so on.
+* `$0` (the script name) remains unchanged.
 
 Here is a conceptual mapping of the `shift` operation:
 
@@ -314,14 +317,14 @@ echo "You provided $# arguments."
 
 ### All Arguments: `$@` vs. `$*`
 
-If you want to reference *all* the positional parameters at once (for example, to pass them wholesale to another command or loop through them), Bash provides two special parameters: `$@` and `$*`. 
+If you want to reference *all* the positional parameters at once (for example, to pass them wholesale to another command or loop through them), Bash provides two special parameters: `$@` and `$*`.
 
 When unquoted, `$@` and `$*` do the exact same thing: they expand to a list of all arguments separated by spaces. However, their behavior diverges drastically when you apply the double-quoting rules we learned in Section 7.2.
 
 This is one of the most common stumbling blocks in Bash scripting:
 
-*   `"$*"` **(The Single String):** Treats all arguments as a single, contiguous string. The arguments are separated by the first character of the `IFS` (Internal Field Separator) variable, which is usually a space.
-*   `"$@"` **(The Independent Strings):** Treats each argument as a separate, individually quoted string. **This is almost always what you want.**
+* `"$*"` **(The Single String):** Treats all arguments as a single, contiguous string. The arguments are separated by the first character of the `IFS` (Internal Field Separator) variable, which is usually a space.
+* `"$@"` **(The Independent Strings):** Treats each argument as a separate, individually quoted string. **This is almost always what you want.**
 
 #### Visualizing the Difference
 
@@ -346,9 +349,10 @@ How they expand inside double quotes:
 
 ### The Exit Status: `$?`
 
-Every command executed in Linux returns an invisible integer to the shell when it finishes, known as the **exit status** or return code. 
-*   An exit status of `0` means **success**.
-*   An exit status between `1` and `255` means **failure** (the specific number often indicates the type of error).
+Every command executed in Linux returns an invisible integer to the shell when it finishes, known as the **exit status** or return code.
+
+* An exit status of `0` means **success**.
+* An exit status between `1` and `255` means **failure** (the specific number often indicates the type of error).
 
 The `$?` parameter holds the exit status of the *most recently executed pipeline or command*.
 
@@ -368,10 +372,10 @@ You will rely heavily on `$?` when we reach Chapter 8 (Conditional Statements) t
 
 When your script runs, the operating system assigns it a unique Process ID (PID). Bash exposes PIDs through two special parameters, which are invaluable for process management and generating temporary files.
 
-*   `$$`: The PID of the current shell or script. 
-    *   *Use case:* Appending `$$` to a filename is a quick, old-school way to create unique temporary files (e.g., `/tmp/my_temp_data.$$`). Though, as we'll see in Chapter 20, `mktemp` is the modern, secure standard.
-*   `$!`: The PID of the last command executed in the background.
-    *   *Use case:* If you start a long-running process in the background using an ampersand (`&`), you can capture its PID using `$!` so you can check on it or kill it later.
+* `$$`: The PID of the current shell or script.
+  * *Use case:* Appending `$$` to a filename is a quick, old-school way to create unique temporary files (e.g., `/tmp/my_temp_data.$$`). Though, as we'll see in Chapter 20, `mktemp` is the modern, secure standard.
+* `$!`: The PID of the last command executed in the background.
+  * *Use case:* If you start a long-running process in the background using an ampersand (`&`), you can capture its PID using `$!` so you can check on it or kill it later.
 
 ```bash
 echo "This script is running with PID: $$"
@@ -422,7 +426,7 @@ You will frequently encounter an older syntax in legacy scripts: wrapping the co
 current_date=`date`
 ```
 
-While backticks still work perfectly fine in modern Bash, **you should always use `$()` in your own scripts.** The POSIX-compliant `$()` syntax is heavily preferred for two major reasons: readability and nestability. 
+While backticks still work perfectly fine in modern Bash, **you should always use `$()` in your own scripts.** The POSIX-compliant `$()` syntax is heavily preferred for two major reasons: readability and nestability.
 
 Look at how difficult it becomes to nest commands (running a command substitution inside another command substitution) using backticks, because the inner backticks must be escaped with backslashes:
 

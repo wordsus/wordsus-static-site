@@ -2,11 +2,11 @@
 
 ---
 
-Imagina por un momento tu comida favorita. Puede ser un plato de pasta humeante, una ensalada fresca y crujiente, o una jugosa hamburguesa. Cuando das el primer bocado, lo que para ti es el inicio de una experiencia deliciosa, para tu cuerpo es el pistoletazo de salida de una de las coreografías biológicas más complejas y fascinantes que existen en la naturaleza. 
+Imagina por un momento tu comida favorita. Puede ser un plato de pasta humeante, una ensalada fresca y crujiente, o una jugosa hamburguesa. Cuando das el primer bocado, lo que para ti es el inicio de una experiencia deliciosa, para tu cuerpo es el pistoletazo de salida de una de las coreografías biológicas más complejas y fascinantes que existen en la naturaleza.
 
 A simple vista, comer parece un acto mecánico y mundano: masticar, tragar y olvidarse del asunto hasta que volvemos a tener hambre. Sin embargo, detrás de escena, nuestro cuerpo despliega un verdadero laboratorio de ingeniería química e industrial. El objetivo es monumental: tomar estructuras complejas (un trozo de pan, un pedazo de carne) y desarmarlas pieza por pieza hasta convertirlas en moléculas lo suficientemente minúsculas como para viajar por la sangre y entrar en cada una de los billones de células que componen nuestro organismo.
 
-El sistema digestivo es, en esencia, un largo tubo continuo que comienza en la boca y termina en el ano, midiendo aproximadamente unos nueve metros en un adulto. Todo lo que está dentro de este tubo está, técnicamente, "fuera" de tu cuerpo. Solo cuando los nutrientes cruzan la barrera de este tubo y entran en tu torrente sanguíneo, se considera que realmente han ingresado a tu organismo. 
+El sistema digestivo es, en esencia, un largo tubo continuo que comienza en la boca y termina en el ano, midiendo aproximadamente unos nueve metros en un adulto. Todo lo que está dentro de este tubo está, técnicamente, "fuera" de tu cuerpo. Solo cuando los nutrientes cruzan la barrera de este tubo y entran en tu torrente sanguíneo, se considera que realmente han ingresado a tu organismo.
 
 En este artículo, vamos a encoger nuestro punto de vista y acompañar a un alimento imaginario en este viaje épico a través de la oscuridad de nuestro interior, descubriendo los secretos mecánicos y químicos que nos mantienen vivos, activos y con energía.
 
@@ -30,7 +30,7 @@ Gracias a la mezcla constante que realiza la lengua, ese pedazo de comida deja d
 
 Al tragar, cruzamos una encrucijada peligrosa: la faringe. Esta garganta compartida sirve tanto para el aire que va a los pulmones como para la comida que va al estómago. Para evitar que te ahogues con tu propio almuerzo, un pequeño cartílago en forma de hoja llamado **epiglotis** se cierra como la tapa de un cubo de basura sobre la tráquea (el conducto de aire) justo en el milisegundo en que la comida pasa.
 
-Una vez a salvo en el conducto correcto, el bolo alimenticio ingresa al **esófago**, un tubo muscular de unos 25 centímetros de longitud. Y aquí derribamos un mito común: la comida no cae al estómago por gravedad. Puedes comer de cabeza parado de manos y la comida llegará al estómago de todos modos. 
+Una vez a salvo en el conducto correcto, el bolo alimenticio ingresa al **esófago**, un tubo muscular de unos 25 centímetros de longitud. Y aquí derribamos un mito común: la comida no cae al estómago por gravedad. Puedes comer de cabeza parado de manos y la comida llegará al estómago de todos modos.
 
 Esto se debe a la **peristalsis**, una serie de contracciones musculares ondulatorias e involuntarias. Los músculos detrás del bolo se contraen para empujarlo hacia abajo, mientras que los músculos por delante se relajan para abrirle paso. Es el mismo mecanismo que utilizas cuando aprietas un tubo de pasta de dientes desde el fondo para que el contenido salga por arriba.
 
@@ -43,8 +43,9 @@ Bienvenido al ambiente más hostil de todo tu cuerpo. El estómago es una bolsa 
 Tan pronto como el bolo toca las paredes del estómago, las células de su revestimiento interno se ponen a trabajar frenéticamente. Secretan el **jugo gástrico**, un cóctel letal compuesto por moco, enzimas y ácido clorhídrico (HCl).
 
 El ambiente aquí es extremadamente ácido, con un pH que ronda entre 1.5 y 2.0 (suficiente para disolver metales ligeros). Este ácido cumple dos propósitos fundamentales:
-1.  **Esterilización:** Aniquila a la gran mayoría de bacterias y patógenos que ingerimos junto con la comida.
-2.  **Activación química:** Despliega (desnaturaliza) las estructuras tridimensionales de las proteínas que comemos y activa la **pepsina**, la enzima estrella del estómago, que comienza a tijeretear las largas cadenas de proteínas en fragmentos más pequeños llamados péptidos.
+
+1. **Esterilización:** Aniquila a la gran mayoría de bacterias y patógenos que ingerimos junto con la comida.
+2. **Activación química:** Despliega (desnaturaliza) las estructuras tridimensionales de las proteínas que comemos y activa la **pepsina**, la enzima estrella del estómago, que comienza a tijeretear las largas cadenas de proteínas en fragmentos más pequeños llamados péptidos.
 
 Si el estómago es tan destructivo, ¿por qué no se digiere a sí mismo? La respuesta está en el moco. Células especializadas recubren toda la pared estomacal con una gruesa capa de moco alcalino que neutraliza el ácido antes de que pueda tocar el tejido vivo. Cuando esta barrera falla, se producen lo que conocemos como úlceras.
 
@@ -62,14 +63,14 @@ El intestino delgado se divide en tres secciones: el duodeno, el yeyuno y el íl
 
 El duodeno es el primer segmento (apenas unos 25 centímetros) y funciona como la cámara de mezclas principal. Al recibir el quimo hiperácido del estómago, el duodeno emite señales de auxilio químico a tres órganos accesorios fundamentales: el hígado, la vesícula biliar y el páncreas.
 
-*   **El Páncreas:** Este órgano es el héroe anónimo de la digestión. Bombea jugo pancreático hacia el duodeno. Este jugo contiene bicarbonato de sodio (que neutraliza instantáneamente el ácido del estómago para no quemar el intestino) y un arsenal de enzimas súper poderosas: lipasas (para las grasas), proteasas (para las proteínas) y amilasas pancreáticas (para los carbohidratos restantes).
-*   **El Hígado y la Vesícula Biliar:** Las grasas son el mayor dolor de cabeza de la digestión porque no se mezclan con el agua de los jugos digestivos (flotan en burbujas gigantes). El hígado fabrica una sustancia verde-amarillenta llamada **bilis**, que se almacena y concentra en la vesícula biliar. Cuando comes grasas, la vesícula inyecta bilis en el duodeno. La bilis actúa exactamente igual que el detergente de los platos sobre la grasa de una sartén: emulsiona las grasas, rompiendo las burbujas gigantes en miles de microgotas, permitiendo que las enzimas lipasas puedan finalmente atacarlas.
+* **El Páncreas:** Este órgano es el héroe anónimo de la digestión. Bombea jugo pancreático hacia el duodeno. Este jugo contiene bicarbonato de sodio (que neutraliza instantáneamente el ácido del estómago para no quemar el intestino) y un arsenal de enzimas súper poderosas: lipasas (para las grasas), proteasas (para las proteínas) y amilasas pancreáticas (para los carbohidratos restantes).
+* **El Hígado y la Vesícula Biliar:** Las grasas son el mayor dolor de cabeza de la digestión porque no se mezclan con el agua de los jugos digestivos (flotan en burbujas gigantes). El hígado fabrica una sustancia verde-amarillenta llamada **bilis**, que se almacena y concentra en la vesícula biliar. Cuando comes grasas, la vesícula inyecta bilis en el duodeno. La bilis actúa exactamente igual que el detergente de los platos sobre la grasa de una sartén: emulsiona las grasas, rompiendo las burbujas gigantes en miles de microgotas, permitiendo que las enzimas lipasas puedan finalmente atacarlas.
 
-Una vez que el cóctel enzimático ha hecho su trabajo final, los alimentos han perdido su identidad por completo. 
+Una vez que el cóctel enzimático ha hecho su trabajo final, los alimentos han perdido su identidad por completo.
 
-*   Los carbohidratos complejos ahora son azúcares simples (monosacáridos, como la glucosa).
-*   Las proteínas son ahora ladrillos individuales (aminoácidos).
-*   Las grasas son ácidos grasos y glicerol.
+* Los carbohidratos complejos ahora son azúcares simples (monosacáridos, como la glucosa).
+* Las proteínas son ahora ladrillos individuales (aminoácidos).
+* Las grasas son ácidos grasos y glicerol.
 
 Podemos ilustrar el destino final de un disacárido común, como el azúcar de mesa (sacarosa), en el ribete en cepillo del intestino delgado:
 
@@ -79,7 +80,7 @@ $$ \text{Sacarosa} + H_2O \xrightarrow{\text{Sacarasa}} \text{Glucosa} + \text{F
 
 Los metros restantes del intestino delgado están dedicados a rescatar esos nutrientes microscópicos y pasarlos a la sangre. Para lograrlo, la naturaleza ideó una solución geométrica brillante para maximizar el espacio de absorción.
 
-El interior del intestino no es liso como una manguera. Está arrugado en pliegues circulares. Sobre esos pliegues hay millones de proyecciones microscópicas en forma de dedos llamadas **vellosidades**. Y cada una de las células que recubren estas vellosidades tiene a su vez miles de pelos aún más diminutos llamados **microvellosidades**. 
+El interior del intestino no es liso como una manguera. Está arrugado en pliegues circulares. Sobre esos pliegues hay millones de proyecciones microscópicas en forma de dedos llamadas **vellosidades**. Y cada una de las células que recubren estas vellosidades tiene a su vez miles de pelos aún más diminutos llamados **microvellosidades**.
 
 A continuación, un esquema simplificado para visualizar esta estructura fractal:
 
@@ -130,7 +131,7 @@ Finalmente, las heces formadas se almacenan en la bóveda del recto hasta que lo
 
 El viaje de los alimentos por el tubo digestivo ha terminado, pero el objetivo real del proceso apenas comienza. Hemos convertido una manzana y un pedazo de queso en un mar de glucosa, aminoácidos y ácidos grasos que ahora navegan por tu torrente sanguíneo.
 
-Cuando la glucosa (el azúcar simple derivado de los carbohidratos) llega a, por ejemplo, una célula muscular de tu pierna o una neurona de tu cerebro, entra en la célula y viaja hacia las mitocondrias (las "plantas de energía" celulares). 
+Cuando la glucosa (el azúcar simple derivado de los carbohidratos) llega a, por ejemplo, una célula muscular de tu pierna o una neurona de tu cerebro, entra en la célula y viaja hacia las mitocondrias (las "plantas de energía" celulares).
 
 Allí ocurre un proceso bioquímico vital llamado **respiración celular**. La célula toma la glucosa y la combina con el oxígeno que respiras desde tus pulmones para producir una molécula llamada ATP (Trifosfato de Adenosina), que es la "moneda energética" pura que el cuerpo utiliza para hacer de todo, desde parpadear hasta correr una maratón o resolver una ecuación.
 

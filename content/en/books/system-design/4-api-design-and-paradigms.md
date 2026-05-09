@@ -19,11 +19,11 @@ To be strictly considered RESTful, a system must adhere to six architectural con
    * **Identification of resources:** Resources are identified in requests using URIs.
    * **Manipulation of resources through representations:** When a client holds a representation of a resource (e.g., a JSON document), it has enough information to modify or delete the resource on the server.
    * **Self-descriptive messages:** Each message includes enough information to describe how to process it (e.g., standard HTTP methods, MIME types like `application/json`).
-   * **Hypermedia as the Engine of Application State (HATEOAS):** Clients dynamically discover available actions through hyperlinks provided by the server in the response. 
+   * **Hypermedia as the Engine of Application State (HATEOAS):** Clients dynamically discover available actions through hyperlinks provided by the server in the response.
 
 ### Resource-Oriented URI Design
 
-In REST, everything revolves around **resources**. A resource is any data entity that can be named, such as a User, an Order, or a Product. 
+In REST, everything revolves around **resources**. A resource is any data entity that can be named, such as a User, an Order, or a Product.
 
 URIs (Uniform Resource Identifiers) should be designed to represent the hierarchy and identity of these resources using **nouns, not verbs**. Actions are inferred from the HTTP method used, keeping the URI clean and predictable.
 
@@ -54,9 +54,10 @@ Scheme        Host    Resource ID Sub-Resource Query Parameter
 
 ### HTTP Methods: Operations, Safety, and Idempotency
 
-REST leverages standard HTTP methods to define the CRUD (Create, Read, Update, Delete) operations being performed on a resource. 
+REST leverages standard HTTP methods to define the CRUD (Create, Read, Update, Delete) operations being performed on a resource.
 
 When designing distributed systems, understanding the **safety** and **idempotency** of these methods is paramount.
+
 * **Safe:** A method is safe if it does not modify the resource state on the server (read-only).
 * **Idempotent:** A method is idempotent if making the identical request multiple times produces the same result on the server state as making a single request. This is crucial for designing **retry mechanisms** (Chapter 16) in distributed systems where network drops can cause duplicated requests.
 
@@ -86,6 +87,7 @@ HATEOAS is the most advanced, yet most frequently ignored, constraint of REST (o
 Instead of hardcoding endpoint URIs in the frontend application, the API provides links telling the client what state transitions are currently valid for the requested resource.
 
 **Example of a HATEOAS Response:**
+
 ```json
 {
   "account_number": "12345",
@@ -100,6 +102,7 @@ Instead of hardcoding endpoint URIs in the frontend application, the API provide
   }
 }
 ```
+
 If the account balance drops below zero, the server might omit the `withdraw` link in the next representation, inherently communicating business logic constraints to the client without requiring the client to replicate that logic locally. While powerful for decoupling clients and servers, HATEOAS introduces complexity in response parsing and payload size, leading many modern systems to adopt partial REST compliance.
 
 ## 4.2 GraphQL Fundamentals
@@ -112,8 +115,8 @@ GraphQL was explicitly designed to operate over a single endpoint (typically via
 
 In a traditional REST architecture, clients are often at the mercy of how the server structures its resource representations. This leads to two common inefficiencies in distributed systems, especially pronounced on mobile networks:
 
-*   **Over-fetching:** A client needs a user's name to display a profile header, but the `GET /users/123` endpoint returns the entire user object, including their email, address, preferences, and account history. The network bandwidth is wasted on unused data.
-*   **Under-fetching (The N+1 Problem):** A client needs a user's name and the titles of their recent posts. It first calls `GET /users/123`, then parses the response to find the user's post IDs, and subsequently makes multiple calls to `GET /posts/{id}`. A single UI render requires a waterfall of sequential network requests.
+* **Over-fetching:** A client needs a user's name to display a profile header, but the `GET /users/123` endpoint returns the entire user object, including their email, address, preferences, and account history. The network bandwidth is wasted on unused data.
+* **Under-fetching (The N+1 Problem):** A client needs a user's name and the titles of their recent posts. It first calls `GET /users/123`, then parses the response to find the user's post IDs, and subsequently makes multiple calls to `GET /posts/{id}`. A single UI render requires a waterfall of sequential network requests.
 
 GraphQL eliminates both issues by allowing the client to traverse a graph of relationships in a single request.
 
@@ -168,15 +171,16 @@ type Query {
   recentPosts(limit: Int!): [Post!]!
 }
 ```
+
 *Note: The `!` indicates that a field is non-nullable. If a client requests a `User`, the API guarantees that an `id` and `name` will be returned.*
 
 ### Core Operations: Queries, Mutations, and Subscriptions
 
 While REST relies on HTTP methods (GET, POST, PUT, DELETE) to define actions, GraphQL uses three distinct operation types within the payload itself:
 
-1.  **Queries (Read):** Used by the client to request data. Queries run in parallel on the server, optimizing read times.
-2.  **Mutations (Write):** Used to modify data on the server (create, update, delete) and return a value. Unlike queries, mutations execute serially to prevent race conditions during state changes.
-3.  **Subscriptions (Real-time):** Used to establish a persistent connection (usually via WebSockets, discussed in Chapter 3) to the server. When a specific event occurs on the server, it pushes updated data to the subscribed clients.
+1. **Queries (Read):** Used by the client to request data. Queries run in parallel on the server, optimizing read times.
+2. **Mutations (Write):** Used to modify data on the server (create, update, delete) and return a value. Unlike queries, mutations execute serially to prevent race conditions during state changes.
+3. **Subscriptions (Real-time):** Used to establish a persistent connection (usually via WebSockets, discussed in Chapter 3) to the server. When a specific event occurs on the server, it pushes updated data to the subscribed clients.
 
 ### How it Works: The Resolver Architecture
 
@@ -192,13 +196,13 @@ This makes GraphQL an excellent pattern for **API Gateways** (Chapter 4.4) or a 
 
 While powerful, GraphQL introduces new complexities into system design:
 
-*   **Caching Complexity:** Because most GraphQL requests use `POST` to a single `/graphql` endpoint, you cannot rely on out-of-the-box HTTP caching mechanisms (like CDNs or browser caches) the way you can with REST `GET` requests. Caching must be implemented at the application layer or via specialized clients (like Apollo Client) using globally unique IDs.
-*   **Performance Bottlenecks:** Giving clients the power to query arbitrary data can be dangerous. A maliciously or poorly constructed query with deep nesting (e.g., requesting a user, their friends, their friends' friends, etc.) can easily DDoS the server. System designers must implement **query depth limiting** and **query cost analysis**.
-*   **The Server-Side N+1 Problem:** While GraphQL solves the N+1 problem for the *client*, it often shifts it to the *server*. If querying a list of 50 users and their posts, naive resolvers will make 1 database query for the users, and 50 separate database queries for each user's posts. Tools like **DataLoader** are required to batch and cache these internal requests before they hit the database.
+* **Caching Complexity:** Because most GraphQL requests use `POST` to a single `/graphql` endpoint, you cannot rely on out-of-the-box HTTP caching mechanisms (like CDNs or browser caches) the way you can with REST `GET` requests. Caching must be implemented at the application layer or via specialized clients (like Apollo Client) using globally unique IDs.
+* **Performance Bottlenecks:** Giving clients the power to query arbitrary data can be dangerous. A maliciously or poorly constructed query with deep nesting (e.g., requesting a user, their friends, their friends' friends, etc.) can easily DDoS the server. System designers must implement **query depth limiting** and **query cost analysis**.
+* **The Server-Side N+1 Problem:** While GraphQL solves the N+1 problem for the *client*, it often shifts it to the *server*. If querying a list of 50 users and their posts, naive resolvers will make 1 database query for the users, and 50 separate database queries for each user's posts. Tools like **DataLoader** are required to batch and cache these internal requests before they hit the database.
 
 ## 4.3 gRPC and Protocol Buffers
 
-While REST and GraphQL are dominant in client-to-server communication, they often fall short in high-throughput, low-latency, backend-to-backend scenarios (such as internal microservices communication). To address this, Google developed and open-sourced **gRPC** (gRPC Remote Procedure Calls) in 2015. 
+While REST and GraphQL are dominant in client-to-server communication, they often fall short in high-throughput, low-latency, backend-to-backend scenarios (such as internal microservices communication). To address this, Google developed and open-sourced **gRPC** (gRPC Remote Procedure Calls) in 2015.
 
 gRPC is a modern, high-performance evolution of the traditional RPC (Remote Procedure Call) framework. It relies on two fundamental technologies to achieve its performance: **HTTP/2** as the transport layer (discussed in Chapter 3.4) and **Protocol Buffers** (Protobuf) as both the Interface Definition Language (IDL) and the underlying message interchange format.
 
@@ -206,7 +210,7 @@ gRPC is a modern, high-performance evolution of the traditional RPC (Remote Proc
 
 Unlike REST and GraphQL, which typically rely on JSON (a human-readable, text-based format), gRPC uses Protocol Buffers. Protobuf is a strongly-typed, binary serialization format.
 
-When data is serialized into JSON, it includes field names, quotes, and whitespace, resulting in a bulky payload. The parsing process at the destination involves reading characters and converting them into memory objects, which is computationally expensive. 
+When data is serialized into JSON, it includes field names, quotes, and whitespace, resulting in a bulky payload. The parsing process at the destination involves reading characters and converting them into memory objects, which is computationally expensive.
 
 Protobuf, conversely, serializes data into a highly compressed binary stream. It strips away field names and metadata, relying on a pre-defined contract to map the binary data back into objects at the destination. This results in significantly smaller payloads and dramatically faster serialization/deserialization times—often an order of magnitude faster than JSON.
 
@@ -242,7 +246,7 @@ Notice the integers (`= 1`, `= 2`) assigned to each field. These are **field num
 
 ### The Architecture: Stubs and Polyglot Environments
 
-Once the `.proto` file is defined, the gRPC compiler (`protoc`) auto-generates the client and server code in virtually any modern programming language (Java, Go, Python, Node.js, C++, etc.). 
+Once the `.proto` file is defined, the gRPC compiler (`protoc`) auto-generates the client and server code in virtually any modern programming language (Java, Go, Python, Node.js, C++, etc.).
 
 This auto-generated code includes **Stubs**. A stub provides the exact same methods as the server. To the client application, calling a remote microservice looks and feels exactly like calling a local function within its own codebase.
 
@@ -264,27 +268,28 @@ This architecture natively solves the polyglot microservices problem. A Node.js 
 
 Because gRPC is built on top of HTTP/2, it natively supports multiplexing (sending multiple requests and responses over a single TCP connection concurrently) and bidirectional streaming. gRPC exposes four distinct communication paradigms:
 
-1.  **Unary RPC:** The classic request-response model. The client sends a single request and gets a single response.
-2.  **Server Streaming RPC:** The client sends a single request, and the server returns a stream of messages (e.g., downloading a large file or subscribing to a live stock ticker).
-3.  **Client Streaming RPC:** The client sends a stream of messages to the server, and the server returns a single response once the stream is complete (e.g., uploading a large file or IoT sensor data ingestion).
-4.  **Bidirectional Streaming RPC:** Both client and server send a sequence of messages using an independent read-write stream. The streams operate entirely independently, meaning the server can respond while the client is still sending data (e.g., real-time multiplayer gaming or chat applications).
+1. **Unary RPC:** The classic request-response model. The client sends a single request and gets a single response.
+2. **Server Streaming RPC:** The client sends a single request, and the server returns a stream of messages (e.g., downloading a large file or subscribing to a live stock ticker).
+3. **Client Streaming RPC:** The client sends a stream of messages to the server, and the server returns a single response once the stream is complete (e.g., uploading a large file or IoT sensor data ingestion).
+4. **Bidirectional Streaming RPC:** Both client and server send a sequence of messages using an independent read-write stream. The streams operate entirely independently, meaning the server can respond while the client is still sending data (e.g., real-time multiplayer gaming or chat applications).
 
 ### Trade-offs and System Considerations
 
 While gRPC offers unparalleled performance for internal systems, it is not a silver bullet for all API design needs:
 
-*   **Browser Support (gRPC-Web):** Native gRPC requires direct access to HTTP/2 frames, which modern web browsers do not expose to JavaScript. To use gRPC from a web frontend to a backend, you must use a proxy layer like gRPC-Web or an API Gateway that transcodes REST/JSON to gRPC/Protobuf.
-*   **Human Readability:** Because Protobuf is binary, you cannot easily inspect the payload using standard network tools (like browser developer tools or simple `curl` commands) without an intermediary tool that knows the `.proto` schema to deserialize the data. Debugging requires specialized setups.
-*   **Load Balancing Complexity:** Because gRPC relies on persistent, long-lived HTTP/2 connections, traditional Layer 4 (Transport) load balancers are ineffective. They will route the initial connection to one server, and all subsequent multiplexed requests will hit that single server, leading to uneven loads. gRPC requires Layer 7 (Application) load balancers (discussed in Chapter 10.1) that can inspect HTTP/2 frames and balance individual RPC calls, or it requires client-side load balancing. 
+* **Browser Support (gRPC-Web):** Native gRPC requires direct access to HTTP/2 frames, which modern web browsers do not expose to JavaScript. To use gRPC from a web frontend to a backend, you must use a proxy layer like gRPC-Web or an API Gateway that transcodes REST/JSON to gRPC/Protobuf.
+* **Human Readability:** Because Protobuf is binary, you cannot easily inspect the payload using standard network tools (like browser developer tools or simple `curl` commands) without an intermediary tool that knows the `.proto` schema to deserialize the data. Debugging requires specialized setups.
+* **Load Balancing Complexity:** Because gRPC relies on persistent, long-lived HTTP/2 connections, traditional Layer 4 (Transport) load balancers are ineffective. They will route the initial connection to one server, and all subsequent multiplexed requests will hit that single server, leading to uneven loads. gRPC requires Layer 7 (Application) load balancers (discussed in Chapter 10.1) that can inspect HTTP/2 frames and balance individual RPC calls, or it requires client-side load balancing.
 
 **Summary of API Paradigms:**
-*   Use **REST** for public-facing, generic web APIs where cacheability and ecosystem compatibility are paramount.
-*   Use **GraphQL** for dynamic frontends (web and mobile) where minimizing network trips and tailoring payloads is critical.
-*   Use **gRPC** for internal microservices communication, polyglot environments, and strict performance/latency requirements.
+
+* Use **REST** for public-facing, generic web APIs where cacheability and ecosystem compatibility are paramount.
+* Use **GraphQL** for dynamic frontends (web and mobile) where minimizing network trips and tailoring payloads is critical.
+* Use **gRPC** for internal microservices communication, polyglot environments, and strict performance/latency requirements.
 
 ## 4.4 API Gateways and Rate Limiting
 
-In a monolithic architecture, clients communicate directly with a single backend server. However, in a distributed microservices environment, an application might be split across dozens or hundreds of distinct, specialized services. If clients were to communicate directly with these internal microservices, it would introduce severe coupling, numerous network round-trips, and significant security vulnerabilities. 
+In a monolithic architecture, clients communicate directly with a single backend server. However, in a distributed microservices environment, an application might be split across dozens or hundreds of distinct, specialized services. If clients were to communicate directly with these internal microservices, it would introduce severe coupling, numerous network round-trips, and significant security vulnerabilities.
 
 The **API Gateway** pattern solves this by introducing a single point of entry—a "front door"—for all incoming client requests.
 
@@ -309,17 +314,17 @@ An API Gateway sits between the clients and the backend services. It acts as a s
 
 #### Core Capabilities
 
-1.  **Request Routing:** The gateway inspects the incoming request URL and routes it to the appropriate internal microservice. For example, `[api.example.com/users](https://api.example.com/users)` maps to the internal User Service, while `[api.example.com/products](https://api.example.com/products)` maps to the Product Catalog.
-2.  **API Composition (Aggregation):** To prevent the under-fetching (N+1) problem discussed in Chapter 4.2, the gateway can fan out a single client request to multiple backend services, aggregate the responses, and return a single cohesive payload to the client. This is often referred to as the **Backend-for-Frontend (BFF)** pattern.
-3.  **Protocol Translation:** The gateway can translate between web-friendly protocols (like REST or GraphQL over HTTP/1.1) and internal high-performance protocols (like gRPC over HTTP/2 or message queues like AMQP). 
-4.  **Offloading Cross-Cutting Concerns:** Instead of replicating the same logic in every microservice, the gateway handles shared responsibilities centrally:
-    *   **Authentication & Authorization:** Validating JWTs or OAuth tokens before the request ever hits a microservice.
-    *   **SSL Termination:** Decrypting incoming HTTPS traffic so internal network communication can happen over faster, unencrypted HTTP (though zero-trust networks mandate mTLS everywhere, as covered in Chapter 17).
-    *   **Logging and Tracing:** Injecting correlation IDs into headers for distributed tracing (Chapter 12).
+1. **Request Routing:** The gateway inspects the incoming request URL and routes it to the appropriate internal microservice. For example, `[api.example.com/users](https://api.example.com/users)` maps to the internal User Service, while `[api.example.com/products](https://api.example.com/products)` maps to the Product Catalog.
+2. **API Composition (Aggregation):** To prevent the under-fetching (N+1) problem discussed in Chapter 4.2, the gateway can fan out a single client request to multiple backend services, aggregate the responses, and return a single cohesive payload to the client. This is often referred to as the **Backend-for-Frontend (BFF)** pattern.
+3. **Protocol Translation:** The gateway can translate between web-friendly protocols (like REST or GraphQL over HTTP/1.1) and internal high-performance protocols (like gRPC over HTTP/2 or message queues like AMQP).
+4. **Offloading Cross-Cutting Concerns:** Instead of replicating the same logic in every microservice, the gateway handles shared responsibilities centrally:
+    * **Authentication & Authorization:** Validating JWTs or OAuth tokens before the request ever hits a microservice.
+    * **SSL Termination:** Decrypting incoming HTTPS traffic so internal network communication can happen over faster, unencrypted HTTP (though zero-trust networks mandate mTLS everywhere, as covered in Chapter 17).
+    * **Logging and Tracing:** Injecting correlation IDs into headers for distributed tracing (Chapter 12).
 
 ### Rate Limiting: Protecting the System
 
-A critical responsibility of the API Gateway is protecting the backend from being overwhelmed, whether by malicious Distributed Denial of Service (DDoS) attacks, buggy client scripts, or sudden, legitimate spikes in traffic. **Rate Limiting** controls the rate of traffic sent or received by an endpoint. 
+A critical responsibility of the API Gateway is protecting the backend from being overwhelmed, whether by malicious Distributed Denial of Service (DDoS) attacks, buggy client scripts, or sudden, legitimate spikes in traffic. **Rate Limiting** controls the rate of traffic sent or received by an endpoint.
 
 If a client exceeds their allotted quota, the API Gateway rejects the request, typically returning an HTTP `429 Too Many Requests` status code.
 
@@ -328,40 +333,44 @@ If a client exceeds their allotted quota, the API Gateway rejects the request, t
 System designers must choose the right rate-limiting algorithm based on their specific traffic patterns and strictness requirements.
 
 **1. Token Bucket Algorithm**
-*   **How it works:** Imagine a bucket that holds a maximum number of tokens. Tokens are added to the bucket at a fixed rate (e.g., 10 tokens per second). When a request arrives, it must take a token from the bucket to proceed. If the bucket is empty, the request is dropped.
-*   **Pros:** Highly memory-efficient and allows for sudden, short bursts of traffic (up to the bucket's maximum capacity). This is the algorithm used by Amazon and Stripe.
+
+* **How it works:** Imagine a bucket that holds a maximum number of tokens. Tokens are added to the bucket at a fixed rate (e.g., 10 tokens per second). When a request arrives, it must take a token from the bucket to proceed. If the bucket is empty, the request is dropped.
+* **Pros:** Highly memory-efficient and allows for sudden, short bursts of traffic (up to the bucket's maximum capacity). This is the algorithm used by Amazon and Stripe.
 
 **2. Leaking Bucket Algorithm**
-*   **How it works:** Similar to the token bucket, but requests themselves enter the bucket (a queue). The bucket leaks requests at a strictly constant rate to the backend. If the bucket/queue is full, incoming requests are discarded.
-*   **Pros:** Smooths out bursty traffic into a predictable, steady stream, which protects legacy backends that cannot handle sudden spikes. 
+
+* **How it works:** Similar to the token bucket, but requests themselves enter the bucket (a queue). The bucket leaks requests at a strictly constant rate to the backend. If the bucket/queue is full, incoming requests are discarded.
+* **Pros:** Smooths out bursty traffic into a predictable, steady stream, which protects legacy backends that cannot handle sudden spikes.
 
 **3. Fixed Window Counter**
-*   **How it works:** Time is divided into fixed windows (e.g., 12:00:00 to 12:01:00). A counter increments for every request in that window. If the counter exceeds the limit, requests are dropped until the next window begins.
-*   **Pros:** Simple to implement.
-*   **Cons:** The "boundary problem." A massive spike in traffic at the very end of one window and the very beginning of the next can effectively double the allowed rate over a short period.
+
+* **How it works:** Time is divided into fixed windows (e.g., 12:00:00 to 12:01:00). A counter increments for every request in that window. If the counter exceeds the limit, requests are dropped until the next window begins.
+* **Pros:** Simple to implement.
+* **Cons:** The "boundary problem." A massive spike in traffic at the very end of one window and the very beginning of the next can effectively double the allowed rate over a short period.
 
 **4. Sliding Window Log / Counter**
-*   **How it works:** A hybrid approach that mitigates the fixed window's boundary problem. It tracks the exact timestamps of requests or calculates a weighted average of the previous and current fixed windows to ensure a smooth rate limit over any rolling time frame.
-*   **Pros:** Highly accurate and prevents boundary spikes. 
-*   **Cons:** Can be memory-intensive if tracking individual request timestamps (Sliding Window Log).
+
+* **How it works:** A hybrid approach that mitigates the fixed window's boundary problem. It tracks the exact timestamps of requests or calculates a weighted average of the previous and current fixed windows to ensure a smooth rate limit over any rolling time frame.
+* **Pros:** Highly accurate and prevents boundary spikes.
+* **Cons:** Can be memory-intensive if tracking individual request timestamps (Sliding Window Log).
 
 ### Distributed Rate Limiting Challenges
 
 In a highly available system, you will not have just one API Gateway; you will have a cluster of them behind a load balancer. If a user is allowed 100 requests per minute, that limit must be enforced globally across all gateway instances, not just per instance.
 
-To achieve this, the API Gateways must share state. This is almost universally handled by an extremely fast, in-memory data store like **Redis**. 
+To achieve this, the API Gateways must share state. This is almost universally handled by an extremely fast, in-memory data store like **Redis**.
 
 However, reading the current count from Redis, checking if it is below the limit, and then incrementing the count introduces a **race condition** in highly concurrent environments. If two gateways read the count simultaneously, they might both allow a request and increment the counter, resulting in an inaccurate total. This is solved by using atomic operations (like Redis's `INCR`), Lua scripts that execute transactionally on the cache server, or advanced techniques like Redis sorted sets for sliding window algorithms.
 
 ## 4.5 API Versioning and Backward Compatibility
 
-When an API is deployed to production and consumed by clients, it establishes a strict contract. In distributed systems, the client and the server are decoupled and often managed by entirely different teams or organizations. If the server team alters this contract unexpectedly, client applications (such as mobile apps that users have not updated, or third-party B2B integrations) will break. 
+When an API is deployed to production and consumed by clients, it establishes a strict contract. In distributed systems, the client and the server are decoupled and often managed by entirely different teams or organizations. If the server team alters this contract unexpectedly, client applications (such as mobile apps that users have not updated, or third-party B2B integrations) will break.
 
 **Backward compatibility** is the guarantee that a newer version of an API will not break existing clients that were built for an older version. Managing this evolution safely is a critical responsibility in system design.
 
 ### Breaking vs. Non-Breaking Changes
 
-The first step in API lifecycle management is identifying whether a proposed change is "breaking" (backward-incompatible) or "non-breaking" (backward-compatible). 
+The first step in API lifecycle management is identifying whether a proposed change is "breaking" (backward-incompatible) or "non-breaking" (backward-compatible).
 
 If a change is non-breaking, it can be deployed to the existing API version immediately. If a change is breaking, the system designer must introduce a new API version.
 
@@ -380,27 +389,30 @@ If a change is non-breaking, it can be deployed to the existing API version imme
 When a breaking change is unavoidable, you must expose the new contract without removing the old one. There are three primary strategies for versioning RESTful APIs, each with distinct trade-offs.
 
 #### 1. URI Path Versioning
+
 This is the most common and pragmatic approach. The version number is explicitly included in the URI path.
 
-*   **Example:** `[https://api.example.com/v1/users](https://api.example.com/v1/users)` -> `[https://api.example.com/v2/users](https://api.example.com/v2/users)`
-*   **Pros:** Extremely easy for clients to understand. Simple to test in a web browser. Trivial to route at the API Gateway layer.
-*   **Cons:** REST purists argue this violates the principle that a URI should represent a resource, not the schema of the resource (the resource itself hasn't changed, only its representation).
+* **Example:** `[https://api.example.com/v1/users](https://api.example.com/v1/users)` -> `[https://api.example.com/v2/users](https://api.example.com/v2/users)`
+* **Pros:** Extremely easy for clients to understand. Simple to test in a web browser. Trivial to route at the API Gateway layer.
+* **Cons:** REST purists argue this violates the principle that a URI should represent a resource, not the schema of the resource (the resource itself hasn't changed, only its representation).
 
 #### 2. Query Parameter Versioning
+
 The version is passed as a query string parameter.
 
-*   **Example:** `[https://api.example.com/users?version=2](https://api.example.com/users?version=2)`
-*   **Pros:** Keeps the base URI clean and focused on the resource. Easy to implement default routing (if no version is provided, default to v1).
-*   **Cons:** Can be cumbersome for complex requests. Routing at the infrastructure layer is slightly more complex than path-based routing.
+* **Example:** `[https://api.example.com/users?version=2](https://api.example.com/users?version=2)`
+* **Pros:** Keeps the base URI clean and focused on the resource. Easy to implement default routing (if no version is provided, default to v1).
+* **Cons:** Can be cumbersome for complex requests. Routing at the infrastructure layer is slightly more complex than path-based routing.
 
 #### 3. Content Negotiation (Header Versioning)
+
 This approach relies on HTTP headers, typically the `Accept` header, to specify the desired version.
 
-*   **Example:** 
+* **Example:**
     `GET /users`
     `Accept: application/vnd.example.v2+json`
-*   **Pros:** The most strictly RESTful approach. The URI remains unchanged, and the client simply asks for a specific "representation" of that resource. 
-*   **Cons:** Hardest for clients to use and debug. You cannot simply share a URL with a colleague or test it in a standard browser address bar without a tool like Postman or cURL to inject the headers.
+* **Pros:** The most strictly RESTful approach. The URI remains unchanged, and the client simply asks for a specific "representation" of that resource.
+* **Cons:** Hardest for clients to use and debug. You cannot simply share a URL with a colleague or test it in a standard browser address bar without a tool like Postman or cURL to inject the headers.
 
 ### System Architecture for Multiple Versions
 
@@ -408,6 +420,7 @@ Supporting multiple versions is not just an API layer problem; it is a backend a
 
 **Approach A: API Gateway Routing (Microservices)**
 The API Gateway inspects the version and routes the request to completely separate, independently deployed microservices.
+
 ```text
                           +---> [User Service v1] ---> (Maps data to v1 schema)
                           |
@@ -425,9 +438,9 @@ A single service handles all requests. The controller layer checks the version, 
 
 Maintaining old API versions indefinitely incurs significant technical debt, increases security attack surfaces, and slows down feature development. Systems must have a defined deprecation policy.
 
-1.  **Announcement:** Notify clients (via email, developer portals) that `v1` is deprecated and will be removed on a specific date.
-2.  **HTTP Headers:** Start including standard HTTP headers in `v1` responses to programmatically alert clients.
-    *   `Warning: 299 - "API v1 is deprecated and will be removed on 2026-12-31."`
-    *   `Sunset: Thu, 31 Dec 2026 23:59:59 GMT` (RFC 8594 explicitly defines this header for sunsetting APIs).
-3.  **Brownouts:** Temporarily disable the `v1` API for short, scheduled intervals (e.g., for 1 hour on a Tuesday) and return `410 Gone` or `503 Service Unavailable`. This flushes out unmonitored systems or clients who ignored the warnings, forcing them to upgrade before the permanent shutdown.
-4.  **Final Shutdown:** Permanently remove the `v1` endpoint. Return a `410 Gone` status code, which explicitly tells clients that the resource is no longer available and will not be coming back.
+1. **Announcement:** Notify clients (via email, developer portals) that `v1` is deprecated and will be removed on a specific date.
+2. **HTTP Headers:** Start including standard HTTP headers in `v1` responses to programmatically alert clients.
+    * `Warning: 299 - "API v1 is deprecated and will be removed on 2026-12-31."`
+    * `Sunset: Thu, 31 Dec 2026 23:59:59 GMT` (RFC 8594 explicitly defines this header for sunsetting APIs).
+3. **Brownouts:** Temporarily disable the `v1` API for short, scheduled intervals (e.g., for 1 hour on a Tuesday) and return `410 Gone` or `503 Service Unavailable`. This flushes out unmonitored systems or clients who ignored the warnings, forcing them to upgrade before the permanent shutdown.
+4. **Final Shutdown:** Permanently remove the `v1` endpoint. Return a `410 Gone` status code, which explicitly tells clients that the resource is no longer available and will not be coming back.

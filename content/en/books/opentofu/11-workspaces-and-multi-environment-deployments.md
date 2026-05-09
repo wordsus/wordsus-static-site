@@ -2,13 +2,13 @@ As your infrastructure scales, relying on a single state file is no longer suffi
 
 ## 11.1 Introduction to OpenTofu CLI Workspaces
 
-As you learned in previous chapters, OpenTofu relies on a state file to map your declared HCL configuration to real-world infrastructure. Up to this point, you have likely been executing `tofu apply` in a directory and managing a single, linear state. But as infrastructure scales, a common challenge arises: how do you deploy the exact same set of configuration files multiple times to create isolated environments? 
+As you learned in previous chapters, OpenTofu relies on a state file to map your declared HCL configuration to real-world infrastructure. Up to this point, you have likely been executing `tofu apply` in a directory and managing a single, linear state. But as infrastructure scales, a common challenge arises: how do you deploy the exact same set of configuration files multiple times to create isolated environments?
 
 While you could copy and paste your configuration files into new directories for each environment, this violates the DRY (Don't Repeat Yourself) principle and creates an administrative nightmare. To solve this natively, OpenTofu provides **CLI Workspaces**.
 
 ### What is a Workspace?
 
-A workspace is essentially an independent, named state file associated with a single working directory. It allows you to maintain multiple distinct states within the exact same configuration directory. 
+A workspace is essentially an independent, named state file associated with a single working directory. It allows you to maintain multiple distinct states within the exact same configuration directory.
 
 By default, every OpenTofu directory starts with a single workspace appropriately named `default`. When you create a new workspace, OpenTofu generates a fresh, empty state file. From that point on, any `tofu plan`, `tofu apply`, or `tofu destroy` commands will only read and write to the state file associated with the currently active workspace.
 
@@ -33,7 +33,7 @@ Active Workspace Contexts:
 
 ### Managing Workspaces from the CLI
 
-OpenTofu provides a dedicated `workspace` subcommand to manage these isolated states. 
+OpenTofu provides a dedicated `workspace` subcommand to manage these isolated states.
 
 **1. Finding Your Current Workspace**
 To verify which workspace is currently active, use the `show` command. If you haven't created any workspaces yet, this will return `default`.
@@ -44,7 +44,7 @@ default
 ```
 
 **2. Creating a New Workspace**
-To create a new workspace and immediately switch to it, use the `new` command. 
+To create a new workspace and immediately switch to it, use the `new` command.
 
 ```bash
 $ tofu workspace new staging
@@ -84,14 +84,14 @@ Deleted workspace "staging"!
 
 ### How Workspaces Interact with State Backends
 
-The way OpenTofu stores the separate state files depends entirely on your configured backend (as covered in Chapter 10). 
+The way OpenTofu stores the separate state files depends entirely on your configured backend (as covered in Chapter 10).
 
 * **Local Backend:** If you are storing state locally, OpenTofu automatically creates a directory named `terraform.tfstate.d` in your project root. Inside this folder, it creates a sub-folder for each workspace containing its specific state file.
 * **Remote Backends (e.g., S3, GCS):** If you are using a remote backend, OpenTofu dynamically modifies the path or key where the state is saved. For example, in an AWS S3 backend, if your standard state file is stored at `env:/state/default.tfstate`, creating a `prod` workspace will automatically instruct OpenTofu to read and write to `env:/state/prod.tfstate` (or a similar prefix depending on the specific backend implementation).
 
 ### The `terraform.workspace` Variable
 
-Workspaces would be of limited use if the configuration couldn't adapt to them. OpenTofu exposes a special, built-in variable called `terraform.workspace` that evaluates to the name of the currently active workspace. 
+Workspaces would be of limited use if the configuration couldn't adapt to them. OpenTofu exposes a special, built-in variable called `terraform.workspace` that evaluates to the name of the currently active workspace.
 
 You can use this interpolation to dynamically alter resource names, tags, or configurations based on the environment you are deploying to:
 
@@ -113,7 +113,7 @@ This built-in context awareness is the foundation for routing variables dynamica
 
 ## 11.2 Managing Development, Staging, and Production Environments
 
-With the technical mechanics of CLI workspaces understood, we can now apply them to a real-world software development lifecycle (SDLC). The most common pattern in infrastructure engineering is maintaining at least three distinct environments: **Development (Dev)**, **Staging (Stg/Stage)**, and **Production (Prod)**. 
+With the technical mechanics of CLI workspaces understood, we can now apply them to a real-world software development lifecycle (SDLC). The most common pattern in infrastructure engineering is maintaining at least three distinct environments: **Development (Dev)**, **Staging (Stg/Stage)**, and **Production (Prod)**.
 
 Using OpenTofu workspaces allows you to use a single, unified HCL codebase to deploy all three environments, guaranteeing structural consistency while accommodating necessary variations in scale and configuration.
 
@@ -209,7 +209,7 @@ When managing these environments with OpenTofu workspaces, infrastructure promot
 
 ### Security and Isolation Boundaries
 
-While OpenTofu workspaces excellently isolate state files, they do not inherently isolate cloud credentials. If you run `tofu apply` in the `prod` workspace using credentials that only have access to the `dev` AWS account, the deployment will fail. 
+While OpenTofu workspaces excellently isolate state files, they do not inherently isolate cloud credentials. If you run `tofu apply` in the `prod` workspace using credentials that only have access to the `dev` AWS account, the deployment will fail.
 
 Conversely, and more dangerously, if you are authenticated with highly privileged production credentials while tinkering in the `dev` workspace, a misconfiguration could accidentally impact production assets if resource naming overlaps.
 
@@ -230,7 +230,7 @@ By enforcing strict Role-Based Access Control (RBAC) at the cloud provider level
 
 ## 11.3 Routing Variables Dynamically Based on the Active Workspace
 
-While defining environment configurations within `locals` (as demonstrated in Section 11.2) is a valid pattern, it can become unwieldy as your infrastructure grows. Hardcoding dozens of parameters for every environment directly into your primary configuration files clutters the core logic. 
+While defining environment configurations within `locals` (as demonstrated in Section 11.2) is a valid pattern, it can become unwieldy as your infrastructure grows. Hardcoding dozens of parameters for every environment directly into your primary configuration files clutters the core logic.
 
 A cleaner, more scalable approach is to decouple your environment-specific data from your HCL logic by dynamically routing input variables. Because OpenTofu does not automatically load a specific variable file based on your workspace name, you must intentionally design your repository to route the correct values.
 
@@ -238,7 +238,7 @@ There are two primary patterns for achieving this: the **`-var-file` Injection P
 
 ### Pattern 1: Explicit `-var-file` Injection
 
-The most explicit and widely adopted method for managing multi-environment variables is to maintain separate `.tfvars` files for each workspace. 
+The most explicit and widely adopted method for managing multi-environment variables is to maintain separate `.tfvars` files for each workspace.
 
 #### Directory Layout
 
@@ -285,8 +285,8 @@ Because OpenTofu does not natively know that `prod.tfvars` belongs to the `prod`
 You must pass the file using the `-var-file` flag:
 
 ```bash
-$ tofu workspace select prod
-$ tofu apply -var-file="env-vars/prod.tfvars"
+tofu workspace select prod
+tofu apply -var-file="env-vars/prod.tfvars"
 ```
 
 To prevent human error (e.g., applying `prod.tfvars` while in the `dev` workspace), teams typically wrap OpenTofu commands in a Makefile or a shell script that enforces this relationship:
@@ -294,16 +294,16 @@ To prevent human error (e.g., applying `prod.tfvars` while in the `dev` workspac
 ```bash
 # Example Makefile snippet
 apply:
-	@WORKSPACE=$$(tofu workspace show); \
-	echo "Applying configuration for workspace: $$WORKSPACE"; \
-	tofu apply -var-file="env-vars/$$WORKSPACE.tfvars"
+ @WORKSPACE=$$(tofu workspace show); \
+ echo "Applying configuration for workspace: $$WORKSPACE"; \
+ tofu apply -var-file="env-vars/$$WORKSPACE.tfvars"
 ```
 
 ### Pattern 2: Workspace-Indexed Maps
 
 If you prefer to keep all configurations self-contained within your HCL files and avoid passing external `-var-file` arguments, you can use maps indexed by the workspace name.
 
-In this pattern, you define a single, complex variable map in your `variables.tf` (or a `default.auto.tfvars` file) that contains the configuration for *all* environments. 
+In this pattern, you define a single, complex variable map in your `variables.tf` (or a `default.auto.tfvars` file) that contains the configuration for *all* environments.
 
 ```hcl
 variable "environment_settings" {
@@ -344,6 +344,7 @@ resource "aws_db_instance" "main" {
 ```
 
 **Trade-offs of the Map Pattern:**
+
 * **Pros:** It guarantees that OpenTofu always uses the correct variables for the current workspace without relying on external scripts or `-var-file` flags. It is entirely native to OpenTofu.
 * **Cons:** The configuration file can grow massive if you have dozens of environments and parameters. It also violates the principle of least privilege, as applying in the `dev` workspace requires reading the `prod` variable definitions into memory (even if they aren't deployed).
 
@@ -368,7 +369,7 @@ This ensures that the `dev` workspace automatically reaches out to `/config/dev/
 
 ## 11.4 Directory Layouts vs. Workspaces: When to Use Which
 
-While OpenTofu workspaces provide an elegant, built-in mechanism for managing multiple environments, they are not a silver bullet. In fact, a long-standing debate within the infrastructure-as-code community revolves around whether environments should be logically separated (using workspaces) or physically separated (using distinct directories). 
+While OpenTofu workspaces provide an elegant, built-in mechanism for managing multiple environments, they are not a silver bullet. In fact, a long-standing debate within the infrastructure-as-code community revolves around whether environments should be logically separated (using workspaces) or physically separated (using distinct directories).
 
 Understanding the trade-offs between these two patterns is critical for designing an architecture that is secure, scalable, and easy for your team to maintain.
 
@@ -377,11 +378,13 @@ Understanding the trade-offs between these two patterns is critical for designin
 As explored in previous sections, the workspace pattern uses a single directory of HCL files. Different environments are deployed by switching the active workspace and routing dynamic variables.
 
 **Strengths:**
+
 * **Ultra-DRY (Don't Repeat Yourself):** You write your core infrastructure logic exactly once.
 * **Streamlined Updates:** A change to `main.tf` immediately propagates to all environments upon their next respective `tofu apply`.
 * **Ideal for Ephemeral Environments:** Spinning up temporary, short-lived environments (e.g., a dynamic environment for a specific pull request) is effortless.
 
 **Weaknesses:**
+
 * **High Blast Radius:** Because all environments share the exact same code directory, a syntax error or a catastrophic logical flaw applied accidentally can break staging and production simultaneously.
 * **Invisible State Context:** Looking at the code directory does not tell you what environment you are actively modifying. You must rely on running `tofu workspace show`.
 * **Version Locking:** You cannot easily run OpenTofu v1.6 in `dev` and v1.7 in `prod` to test an upgrade, as they share the same backend and provider lock files.
@@ -417,12 +420,14 @@ Project Directory: /global-network
 In this model, you do not use OpenTofu workspaces at all (every directory just uses the `default` workspace). You navigate to `environments/prod/` and run `tofu apply`.
 
 **Strengths:**
+
 * **Absolute Blast Radius Containment:** The environments are physically segregated. A typo in `dev/main.tf` has zero chance of impacting `prod/main.tf`.
 * **Explicit Backend and Provider Configurations:** You do not need to use dynamic role assumption. The `prod` directory can simply hardcode the production AWS account ID and production backend bucket.
 * **Visual Clarity:** You always know exactly which environment you are applying changes to based on your current working directory.
 * **Phased Upgrades:** You can pin `dev` to a newer version of a module or a newer version of the OpenTofu CLI without affecting `prod`.
 
 **Weaknesses:**
+
 * **WET (Write Everything Twice):** It requires more boilerplate code. You must write a `main.tf`, `backend.tf`, and `providers.tf` for every single environment.
 * **Drift:** Because environments are decoupled, it is easier for `dev` and `prod` to drift out of architectural parity if a team forgets to update the module version in the `prod` directory.
 
@@ -446,6 +451,7 @@ If you are managing long-lived, fundamentally distinct environments with differe
 
 **2. Use OpenTofu Workspaces for identical, parallel deployments.**
 Workspaces shine when you need to stamp out multiple copies of the exact same architecture that share the same lifecycle stage and security boundaries. Excellent use cases for workspaces include:
+
 * **Multi-Tenant SaaS Deployments:** If you need to deploy identical, isolated infrastructure stacks for "Customer A", "Customer B", and "Customer C", workspaces are the perfect tool.
 * **Ephemeral Developer Environments:** If developers need to spin up temporary, isolated copies of the staging environment to test a feature branch and tear them down an hour later, workspaces provide the necessary agility.
 * **Multi-Region Replications:** Deploying the same production application stack to `us-east-1`, `eu-west-1`, and `ap-northeast-1` can be elegantly handled by region-named workspaces.

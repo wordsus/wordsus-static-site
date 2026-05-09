@@ -186,9 +186,9 @@ Let's examine a physical schema with two relations: `Departments` and `Employees
 
 | Emp_ID (PK) | SSN (Alternate Key) | Full_Name | Email (Alternate Key) | Dept_ID (FK) |
 | --- | --- | --- | --- | --- |
-| 1001 | 999-11-2222 | Alice Smith | alice.s@company.com | D01 |
-| 1002 | 999-33-4444 | Bob Jones | bob.j@company.com | D01 |
-| 1003 | 999-55-6666 | Carol White | carol.w@company.com | D02 |
+| 1001 | 999-11-2222 | Alice Smith | <alice.s@company.com> | D01 |
+| 1002 | 999-33-4444 | Bob Jones | <bob.j@company.com> | D01 |
+| 1003 | 999-55-6666 | Carol White | <carol.w@company.com> | D02 |
 
 * **Super Keys:** `{Emp_ID}`, `{SSN}`, `{Email}`, `{Emp_ID, Full_Name}`, `{SSN, Dept_ID}`, etc.
 * **Candidate Keys:** `{Emp_ID}`, `{SSN}`, and `{Email}`.

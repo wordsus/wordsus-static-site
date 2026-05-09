@@ -2,7 +2,7 @@ Transitioning from a single local deployment to a robust, enterprise-grade cloud
 
 ## 7.1 Managing Multiple Environments (Dev, Staging, Prod)
 
-In modern infrastructure management, a single deployment target is rarely sufficient. Teams require isolated environments to safely develop, test, and release software. A standard progression typically includes Development (Dev), Staging (or Pre-Production), and Production (Prod). 
+In modern infrastructure management, a single deployment target is rarely sufficient. Teams require isolated environments to safely develop, test, and release software. A standard progression typically includes Development (Dev), Staging (or Pre-Production), and Production (Prod).
 
 In Pulumi, the relationship between your infrastructure code and your deployed environments is governed by the separation of **Projects** and **Stacks**. As established in earlier chapters, a Pulumi Project contains your program (the blueprint), while a Stack represents a distinct, independently configurable instance of that program. Therefore, the idiomatic way to manage multiple environments in Pulumi is by mapping each environment to a unique Stack.
 
@@ -28,7 +28,7 @@ In Pulumi, the relationship between your infrastructure code and your deployed e
 
 ### The Data-Driven Environment Strategy
 
-When provisioning multiple environments using the same codebase, the primary goal is to maximize code reuse while accommodating the necessary variations between environments (e.g., smaller instances in Dev to save costs, high availability configurations in Prod). 
+When provisioning multiple environments using the same codebase, the primary goal is to maximize code reuse while accommodating the necessary variations between environments (e.g., smaller instances in Dev to save costs, high availability configurations in Prod).
 
 A common anti-pattern is writing imperative conditional logic based directly on the stack's name:
 
@@ -53,6 +53,7 @@ While functional, this approach tightly couples your code to specific stack name
 First, define the parameters for your environments in their respective configuration files:
 
 **`Pulumi.dev.yaml`**
+
 ```yaml
 config:
   core-api:instanceSize: t3.micro
@@ -61,6 +62,7 @@ config:
 ```
 
 **`Pulumi.prod.yaml`**
+
 ```yaml
 config:
   core-api:instanceSize: m5.large
@@ -99,13 +101,14 @@ export const clusterName = appCluster.name;
 
 ### Isolating Environments
 
-Beyond sizing and scaling, security isolation is critical when managing multiple environments. A misconfiguration in `dev` must never have the capacity to impact `prod`. 
+Beyond sizing and scaling, security isolation is critical when managing multiple environments. A misconfiguration in `dev` must never have the capacity to impact `prod`.
 
 You can achieve strict physical isolation by deploying different stacks into completely separate cloud accounts (e.g., AWS Accounts, Azure Subscriptions, or GCP Projects). This is managed by configuring the cloud provider credentials uniquely per stack.
 
 Instead of relying on a global environment variable (like `AWS_PROFILE`), you can encode the target account directly into the stack configuration:
 
 **`Pulumi.prod.yaml`**
+
 ```yaml
 config:
   aws:profile: production-admin-role
@@ -116,11 +119,12 @@ By binding the provider configuration to the stack file, running `pulumi up --st
 
 ### Environment Parity
 
-Maintaining environment parity—ensuring that Dev, Staging, and Prod are as similar as possible—is a core tenet of Infrastructure as Code. Staging should act as a true dress rehearsal for Production. 
+Maintaining environment parity—ensuring that Dev, Staging, and Prod are as similar as possible—is a core tenet of Infrastructure as Code. Staging should act as a true dress rehearsal for Production.
 
 To maintain this parity using Pulumi:
+
 1. **Minimize Structural Differences:** Dev and Prod should run the same architectural components. If Prod uses a load balancer, Dev should ideally use one too, even if it's only routing traffic to a single container.
-2. **Abstract Complexity:** If specific resources are genuinely unnecessary in lower environments (e.g., a complex Web Application Firewall), encapsulate them within custom `ComponentResources` (covered in Chapter 13) so the main execution flow remains clean and consistent. 
+2. **Abstract Complexity:** If specific resources are genuinely unnecessary in lower environments (e.g., a complex Web Application Firewall), encapsulate them within custom `ComponentResources` (covered in Chapter 13) so the main execution flow remains clean and consistent.
 3. **Validate Pre-Flight:** Utilize `pulumi preview` heavily when migrating changes up the environment chain to catch drift or configuration mismatches before they are applied to staging or production.
 
 ## 7.2 Stack References for Cross-Stack Communication
@@ -146,6 +150,7 @@ For a stack to share information, it must explicitly `export` it. In Pulumi, exp
 Here is an example of a foundational networking stack exporting its critical identifiers:
 
 **Project: `core-infra` | Stack: `dev`**
+
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
@@ -168,13 +173,14 @@ export const publicSubnetId = publicSubnet.id;
 
 ### Consuming Values with `StackReference`
 
-To consume these exported values in a dependent stack, you instantiate a `StackReference`. You must provide the fully qualified name of the target stack, which follows the format: `<organization>/<project>/<stack>`. 
+To consume these exported values in a dependent stack, you instantiate a `StackReference`. You must provide the fully qualified name of the target stack, which follows the format: `<organization>/<project>/<stack>`.
 
 If you are using the Pulumi Service backend, your organization is your Pulumi username or your enterprise organization name. If you are using a self-managed backend (like S3), the format is simply `<project>/<stack>`.
 
 Here is how the application stack retrieves the network IDs:
 
 **Project: `web-app` | Stack: `dev`**
+
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
@@ -214,20 +220,21 @@ const webServer = new aws.ec2.Instance("web-server", {
 ### `getOutput` vs. `requireOutput`
 
 When accessing data from a `StackReference`, Pulumi provides two primary methods:
+
 * **`getOutput("key")`**: Returns an `Output<any>`. If the key does not exist in the target stack, it returns an output containing `undefined`. This is useful for optional configurations.
 * **`requireOutput("key")`**: Returns an `Output<any>`. If the key does not exist, the Pulumi program immediately throws an error and halts the deployment. This is the recommended approach for required dependencies, as it prevents resources from being provisioned with invalid configurations.
 
 ### Handling Secrets Across Stacks
 
-Pulumi's secrets management extends seamlessly to Stack References. If a base stack exports a value marked as a secret (e.g., a database password), the Pulumi engine automatically encrypts it in the state file. 
+Pulumi's secrets management extends seamlessly to Stack References. If a base stack exports a value marked as a secret (e.g., a database password), the Pulumi engine automatically encrypts it in the state file.
 
 When a dependent stack reads that secret via a `StackReference`, Pulumi keeps the value encrypted in memory and propagates its secret status to any downstream resources that use it. You do not need to write additional decryption logic; Pulumi handles the secure handoff natively.
 
 ### Best Practices for Cross-Stack Communication
 
-1.  **Loose Coupling:** Only export the absolute minimum required data. Exporting complete resource objects or massive configuration blocks tightly couples stacks together, making it harder to refactor the base stack later. Export IDs, ARNs, and connection strings.
-2.  **Avoid Circular Dependencies:** Stack A cannot depend on Stack B if Stack B also depends on Stack A. Design your stack architecture as a Directed Acyclic Graph (DAG), typically flowing from Core Infrastructure $\rightarrow$ Data Persistence $\rightarrow$ Application Services.
-3.  **Treat Exports as APIs:** Once another stack is consuming an exported value, changing the name or data type of that export is a breaking change. Manage your stack exports with the same care you would apply to a public API.
+1. **Loose Coupling:** Only export the absolute minimum required data. Exporting complete resource objects or massive configuration blocks tightly couples stacks together, making it harder to refactor the base stack later. Export IDs, ARNs, and connection strings.
+2. **Avoid Circular Dependencies:** Stack A cannot depend on Stack B if Stack B also depends on Stack A. Design your stack architecture as a Directed Acyclic Graph (DAG), typically flowing from Core Infrastructure $\rightarrow$ Data Persistence $\rightarrow$ Application Services.
+3. **Treat Exports as APIs:** Once another stack is consuming an exported value, changing the name or data type of that export is a breaking change. Manage your stack exports with the same care you would apply to a public API.
 
 ## 7.3 Stack Tags and Metadata
 
@@ -239,8 +246,8 @@ Pulumi addresses this through **Stack Tags** and **Metadata**—a system of key-
 
 Before diving into implementation, it is crucial to distinguish between the two primary types of tagging you will encounter:
 
-1.  **Stack Tags (Pulumi Metadata):** These are key-value pairs attached to the Stack object *within the Pulumi Backend* (e.g., Pulumi Cloud). They help you organize, search, and filter stacks within the Pulumi Console or via the Pulumi CLI. They do not directly affect the cloud resources.
-2.  **Resource Tags (Cloud Metadata):** These are key-value pairs applied directly to the infrastructure components within your cloud provider (e.g., AWS EC2 tags, Azure Resource Group tags). They are used for cloud cost allocation, compliance monitoring, and operational routing.
+1. **Stack Tags (Pulumi Metadata):** These are key-value pairs attached to the Stack object *within the Pulumi Backend* (e.g., Pulumi Cloud). They help you organize, search, and filter stacks within the Pulumi Console or via the Pulumi CLI. They do not directly affect the cloud resources.
+2. **Resource Tags (Cloud Metadata):** These are key-value pairs applied directly to the infrastructure components within your cloud provider (e.g., AWS EC2 tags, Azure Resource Group tags). They are used for cloud cost allocation, compliance monitoring, and operational routing.
 
 A mature Infrastructure as Code strategy bridges these two concepts: using Stack Tags to organize the deployment pipelines, and propagating that stack metadata down into Resource Tags for cloud billing.
 
@@ -298,7 +305,7 @@ This automatic metadata is invaluable for auditing. If a production stack begins
 
 The most powerful use of stack metadata is utilizing it within your Pulumi program to automatically tag your underlying cloud resources. This ensures that every resource provisioned by a stack accurately reflects its environment, project, and ownership, guaranteeing accurate cost attribution.
 
-Instead of manually adding tags to every single resource, you can define **Default Tags** at the provider level. 
+Instead of manually adding tags to every single resource, you can define **Default Tags** at the provider level.
 
 Here is how you can dynamically pull stack metadata and apply it universally to AWS resources:
 
@@ -372,7 +379,7 @@ While application code branching strategies (like GitFlow or Trunk-Based Develop
 
 ### Mapping Branches to Stacks
 
-The most common and effective pattern is to map specific Git branches to specific Pulumi stacks. 
+The most common and effective pattern is to map specific Git branches to specific Pulumi stacks.
 
 ```text
 Git Branch Lifecycle       Pulumi Stack            Target Environment
@@ -386,9 +393,10 @@ main / master       ==>    prod               ==>  Production Account
 
 #### 1. Long-Lived Branches (Static Stacks)
 
-Long-lived branches represent your stable environments. Typically, your `main` or `master` branch represents truth for your `production` stack. 
+Long-lived branches represent your stable environments. Typically, your `main` or `master` branch represents truth for your `production` stack.
 
 When adopting this mapping, standard Git protections must apply:
+
 * **Direct commits are blocked:** No one should push directly to the branch tied to production.
 * **Require passing status checks:** A Pulumi preview must succeed before a merge is allowed.
 * **Code owner reviews:** Infrastructure changes should require approval from a designated platform or DevOps team.
@@ -397,7 +405,7 @@ In this model, configuration files like `Pulumi.prod.yaml` and `Pulumi.staging.y
 
 #### 2. Feature Branches (Ephemeral Stacks)
 
-The true power of Pulumi's stack architecture is unlocked through **ephemeral stacks** tied to short-lived feature branches. 
+The true power of Pulumi's stack architecture is unlocked through **ephemeral stacks** tied to short-lived feature branches.
 
 Instead of multiple developers colliding in a shared `dev` environment, every Pull Request can automatically spin up its own isolated copy of the infrastructure. This allows developers to test database migrations, new API gateways, or lambda function configurations in a real cloud environment without impacting their peers.
 
@@ -412,7 +420,7 @@ The lifecycle of an ephemeral stack looks like this:
 
 ### Handling Stack Configurations in Branching
 
-A common challenge when managing stacks via branches is how to handle the `Pulumi.<stack-name>.yaml` configuration files. 
+A common challenge when managing stacks via branches is how to handle the `Pulumi.<stack-name>.yaml` configuration files.
 
 If you create an ephemeral stack in a feature branch, generating a new `Pulumi.feature-x.yaml` file, you **must not** commit this file to the repository. If you do, your `main` branch will quickly become cluttered with orphaned configuration files from merged feature branches.
 
@@ -445,11 +453,12 @@ pulumi up --yes
 
 ### Trunk-Based Development for Infrastructure
 
-For infrastructure management, **Trunk-Based Development** is highly recommended over complex models like GitFlow. 
+For infrastructure management, **Trunk-Based Development** is highly recommended over complex models like GitFlow.
 
 In GitFlow, long-running feature branches and release branches are common. However, long-running branches in IaC inevitably lead to severe state drift. If Team A updates the base VPC configuration in `main`, and Team B has a feature branch that has been open for three weeks, Team B's infrastructure preview is operating on outdated assumptions. When Team B finally merges, their deployment may fail catastrophically because the underlying network reality has changed.
 
-Trunk-Based Development mitigates this by enforcing small, frequent integrations directly into the main branch. 
+Trunk-Based Development mitigates this by enforcing small, frequent integrations directly into the main branch.
+
 * Changes are batched into small logical units.
 * Previews (`pulumi preview`) are run on every commit to the PR to catch drift early.
 * Ephemeral stacks are destroyed within days, not weeks.

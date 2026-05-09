@@ -97,7 +97,7 @@ Usar `Result` en los tests te ahorra tener que hacer *unwrap* (`.unwrap()`) cons
 
 ## 23.2 Asserts personalizados e igualdades estructuradas
 
-En la sección anterior vimos cómo las macros `assert!` y `assert_eq!` nos permiten validar aserciones simples. Sin embargo, en el desarrollo de un backend real rara vez nos limitamos a comparar enteros o booleanos. Lo más común es que necesitemos validar respuestas HTTP completas, *payloads* extraídos de una base de datos o entidades de dominio complejas. 
+En la sección anterior vimos cómo las macros `assert!` y `assert_eq!` nos permiten validar aserciones simples. Sin embargo, en el desarrollo de un backend real rara vez nos limitamos a comparar enteros o booleanos. Lo más común es que necesitemos validar respuestas HTTP completas, *payloads* extraídos de una base de datos o entidades de dominio complejas.
 
 Para manejar estos escenarios con la rigurosidad que exige Rust, debemos entender cómo el framework de pruebas interactúa con el sistema de tipos y cómo podemos enriquecer la información que obtenemos cuando una prueba falla.
 
@@ -105,8 +105,8 @@ Para manejar estos escenarios con la rigurosidad que exige Rust, debemos entende
 
 Cuando utilizas la macro `assert_eq!(izquierda, derecha)`, el compilador de Rust impone dos restricciones basadas en *Traits* (conceptos que exploramos a fondo en el Capítulo 7):
 
-1.  Ambos valores deben implementar el trait `PartialEq` para poder ser comparados entre sí.
-2.  Ambos valores deben implementar el trait `Debug` para que, en caso de que la aserción falle, Rust pueda imprimir por consola los valores exactos que causaron el error.
+1. Ambos valores deben implementar el trait `PartialEq` para poder ser comparados entre sí.
+2. Ambos valores deben implementar el trait `Debug` para que, en caso de que la aserción falle, Rust pueda imprimir por consola los valores exactos que causaron el error.
 
 En structs y enums definidos por el usuario, la forma más rápida y común de satisfacer estos requisitos es utilizando la macro `#[derive]`.
 
@@ -157,7 +157,7 @@ Si omites el `#[derive(PartialEq, Debug)]`, el compilador rechazará el `assert_
 
 ### Mensajes de error contextuales
 
-Cuando una prueba compleja falla, un simple `assertion failed: izquierda == derecha` puede no ser suficiente para diagnosticar el problema rápidamente, especialmente si la prueba se ejecuta en un pipeline de CI/CD. 
+Cuando una prueba compleja falla, un simple `assertion failed: izquierda == derecha` puede no ser suficiente para diagnosticar el problema rápidamente, especialmente si la prueba se ejecuta en un pipeline de CI/CD.
 
 Todas las macros de aserción en Rust (`assert!`, `assert_eq!`, `assert_ne!`) aceptan argumentos adicionales que funcionan exactamente igual que `format!` o `println!`. Esto te permite inyectar contexto crítico en el fallo.
 
@@ -323,13 +323,13 @@ Este enfoque mantiene tu conjunto de pruebas ordenado, modular y con tiempos de 
 
 ## 23.4 Setup, teardown y paralelización de pruebas
 
-En muchos frameworks de pruebas de otros lenguajes (como Jest en JavaScript, JUnit en Java o pytest en Python), es común encontrar decoradores o bloques del tipo `before_each` y `after_each` para preparar el entorno antes de cada prueba y limpiarlo al finalizar. 
+En muchos frameworks de pruebas de otros lenguajes (como Jest en JavaScript, JUnit en Java o pytest en Python), es común encontrar decoradores o bloques del tipo `before_each` y `after_each` para preparar el entorno antes de cada prueba y limpiarlo al finalizar.
 
 El framework integrado de Rust toma una filosofía mucho más explícita y minimalista: **no existen hooks globales de setup y teardown en la Standard Library**. Esto obliga al desarrollador a ser intencional con el manejo del estado, lo cual, aunque al principio puede parecer una limitación, en realidad previene la temida "magia oculta" que hace que las suites de pruebas complejas sean difíciles de depurar.
 
 ### Setup explícito y el poder del Trait `Drop` para el Teardown
 
-Para el **setup** (preparación), la práctica estándar en Rust es simplemente invocar una función de inicialización al comienzo de tu test. 
+Para el **setup** (preparación), la práctica estándar en Rust es simplemente invocar una función de inicialización al comienzo de tu test.
 
 El verdadero desafío es el **teardown** (limpieza). Si tu prueba falla y hace un `panic!`, la ejecución de esa función se interrumpe inmediatamente. Cualquier código de limpieza que hayas puesto al final de la función de prueba jamás se ejecutará, dejando archivos temporales abiertos o registros basura en tu base de datos.
 
@@ -403,13 +403,16 @@ Tienes dos caminos arquitectónicos para lidiar con el estado compartido en prue
 Puedes forzar a Cargo a ejecutar las pruebas secuencialmente (una por una). Esto garantiza que no haya colisiones de estado, a costa de aumentar el tiempo total de ejecución.
 
 Se logra pasando un flag al binario de pruebas:
+
 ```bash
 cargo test -- --test-threads=1
 ```
+
 *(Nota: El primer `--` le dice a Cargo que los argumentos siguientes son para el binario compilado de las pruebas, no para el comando `cargo` en sí).*
 
 **Opción 2: Aislamiento total (El camino Senior)**
 En lugar de limitar a Rust, diseña tus pruebas para que no compartan estado. En el contexto de bases de datos (que profundizaremos en el Capítulo 26 con Testcontainers), esto significa:
+
 * Generar nombres de esquema de base de datos únicos (usando UUIDs) para cada prueba en la fase de Setup, y eliminarlos en la fase de Teardown mediante `Drop`.
 * O bien, envolver cada prueba en una transacción SQL y hacer un `ROLLBACK` forzado al final, asegurando que los datos nunca se persistan realmente.
 

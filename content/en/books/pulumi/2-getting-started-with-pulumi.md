@@ -2,7 +2,7 @@ Transitioning from theory to practice requires setting up a robust local develop
 
 ## 2.1 Installing the Pulumi CLI
 
-The Pulumi Command Line Interface (CLI) is the primary entry point for interacting with the Pulumi ecosystem. While you will author your infrastructure definitions using general-purpose programming languages, the CLI is the orchestration mechanism that executes your code, coordinates with language hosts, and communicates with cloud provider APIs to provision your resources. 
+The Pulumi Command Line Interface (CLI) is the primary entry point for interacting with the Pulumi ecosystem. While you will author your infrastructure definitions using general-purpose programming languages, the CLI is the orchestration mechanism that executes your code, coordinates with language hosts, and communicates with cloud provider APIs to provision your resources.
 
 Because Pulumi is distributed as a standalone, statically compiled binary, it does not require a complex runtime environment to be installed on your system merely to run the CLI itself. You will only need the runtimes for the specific programming languages you choose to write your infrastructure in, which we will cover in Section 2.3.
 
@@ -10,7 +10,7 @@ The installation process varies slightly depending on your operating system, but
 
 ### Installing on macOS
 
-For macOS users, the most straightforward method is using Homebrew. Pulumi maintains its own official tap, ensuring you always receive the latest stable release. 
+For macOS users, the most straightforward method is using Homebrew. Pulumi maintains its own official tap, ensuring you always receive the latest stable release.
 
 Open your terminal and execute the following command:
 
@@ -64,7 +64,7 @@ iex ((New-Object System.Net.WebClient).DownloadString('https://get.pulumi.com/in
 
 ### Updating the System Path
 
-If you installed Pulumi using Homebrew, Winget, Chocolatey, or Scoop, the package manager typically handles adding the Pulumi binary to your system's `PATH` automatically. 
+If you installed Pulumi using Homebrew, Winget, Chocolatey, or Scoop, the package manager typically handles adding the Pulumi binary to your system's `PATH` automatically.
 
 However, if you utilized the `curl` or PowerShell scripts, the binary is installed locally to `~/.pulumi/bin` (or `%USERPROFILE%\.pulumi\bin` on Windows). The installation script will attempt to add this directory to your `PATH` profile automatically, but you may need to restart your terminal session or manually source your shell configuration file (e.g., `~/.bashrc`, `~/.zshrc`) for the changes to take effect.
 
@@ -108,7 +108,7 @@ To connect your CLI to the Pulumi Cloud, run the following command in your termi
 pulumi login
 ```
 
-This command will prompt you to press `ENTER`, which opens your default web browser to the Pulumi console. Once you log in or sign up, a secure token is generated and saved locally to your `~/.pulumi/credentials.json` file. 
+This command will prompt you to press `ENTER`, which opens your default web browser to the Pulumi console. Once you log in or sign up, a secure token is generated and saved locally to your `~/.pulumi/credentials.json` file.
 
 *(Note: If you are working in an environment without a web browser, you can generate a Personal Access Token in the Pulumi Web Console and pass it via the `PULUMI_ACCESS_TOKEN` environment variable.)*
 
@@ -144,7 +144,7 @@ For Azure, Pulumi leverages the Azure CLI for local authentication. If you are d
 az login
 ```
 
-This opens a browser window for you to authenticate with your Microsoft credentials. Once authenticated, Pulumi will seamlessly pick up your active Azure session. 
+This opens a browser window for you to authenticate with your Microsoft credentials. Once authenticated, Pulumi will seamlessly pick up your active Azure session.
 
 If your Azure account has access to multiple subscriptions, you must specify which one Pulumi should use by setting it as the default in the Azure CLI:
 
@@ -175,7 +175,7 @@ export GOOGLE_REGION="us-central1"
 
 ### The Principle of Least Privilege
 
-While it is tempting to use root credentials or highly permissive Administrator roles when getting started, it is critical to adhere to the Principle of Least Privilege. Even in local development, your cloud credentials should only have the permissions strictly necessary to create, read, update, and delete the specific resources defined in your Pulumi code. 
+While it is tempting to use root credentials or highly permissive Administrator roles when getting started, it is critical to adhere to the Principle of Least Privilege. Even in local development, your cloud credentials should only have the permissions strictly necessary to create, read, update, and delete the specific resources defined in your Pulumi code.
 
 With both the CLI installed and your cloud credentials securely configured, your local environment is fully prepared. The final preparatory step before writing code is selecting the programming language that best fits your team's expertise.
 
@@ -183,7 +183,7 @@ With both the CLI installed and your cloud credentials securely configured, your
 
 Unlike traditional Infrastructure as Code tools that force you to learn a proprietary Domain-Specific Language (DSL) or grapple with thousands of lines of YAML, Pulumi’s architecture allows you to define infrastructure using general-purpose programming languages. This means you can leverage standard control flow (loops and conditionals), package managers, testing frameworks, and IDE features like auto-completion and inline documentation.
 
-Because Pulumi supports multiple languages natively, the "best" language is rarely a technical constraint of the Pulumi engine itself; rather, it is a strategic decision based on your team's existing skill sets, the application codebases you maintain, and your organizational ecosystem. 
+Because Pulumi supports multiple languages natively, the "best" language is rarely a technical constraint of the Pulumi engine itself; rather, it is a strategic decision based on your team's existing skill sets, the application codebases you maintain, and your organizational ecosystem.
 
 Below is a breakdown of the primary languages supported by Pulumi and why you might choose each.
 
@@ -192,11 +192,13 @@ Below is a breakdown of the primary languages supported by Pulumi and why you mi
 TypeScript is arguably the most popular and widely adopted language within the Pulumi ecosystem. Because Pulumi itself is heavily invested in the Node.js ecosystem (the Pulumi CLI was originally closely tied to it), support for TypeScript is exceptional.
 
 **Why choose TypeScript?**
+
 * **The Full-Stack Advantage:** If your development teams are already writing web applications or backend services in Node.js, using TypeScript for infrastructure creates a unified language stack.
 * **Strong Typing:** TypeScript’s compiler catches structural errors and misconfigurations before the code ever reaches the `pulumi up` execution phase.
 * **Rich Ecosystem:** You have full access to the `npm` registry to utilize existing utility libraries.
 
 **Example: Creating an AWS S3 Bucket in TypeScript**
+
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
@@ -218,11 +220,13 @@ export const bucketName = bucket.id;
 Python has long been the lingua franca of system administration, automation, data science, and machine learning. Its clean, readable syntax makes it highly approachable for engineers who may not consider themselves full-time software developers.
 
 **Why choose Python?**
+
 * **Readability and Expressiveness:** Python's design philosophy prioritizes readability, which makes infrastructure code easy to review and audit.
 * **Data and ML Alignment:** If you are provisioning infrastructure to support data pipelines, Apache Airflow, or machine learning models, using Python allows the data engineers to directly manage their infrastructure.
 * **Scripting Pedigree:** It feels very natural for DevOps engineers transitioning from Bash or standard scripting into structured IaC.
 
 **Example: Creating an AWS S3 Bucket in Python**
+
 ```python
 import pulumi
 import pulumi_aws as aws
@@ -243,36 +247,38 @@ pulumi.export('bucket_name', bucket.id)
 Go is the foundational language of the modern cloud-native landscape. Tools like Kubernetes, Docker, and Terraform are all written in Go. Pulumi provides robust, idiomatic Go support.
 
 **Why choose Go?**
-* **Performance and Safety:** Go is a compiled language with a strict type system and excellent performance. 
+
+* **Performance and Safety:** Go is a compiled language with a strict type system and excellent performance.
 * **Cloud-Native Synergy:** If you are building internal developer platforms, custom Kubernetes operators, or heavy backend services, your team is likely already writing Go.
 * **Strict Tooling:** Go’s opinionated formatting (`gofmt`) and compilation rules enforce a high level of code hygiene across large teams.
 
 **Example: Creating an AWS S3 Bucket in Go**
+
 ```go
 package main
 
 import (
-	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/s3"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+ "github.com/pulumi/pulumi-aws/sdk/v6/go/aws/s3"
+ "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func main() {
-	pulumi.Run(func(ctx *pulumi.Context) error {
-		// Create an AWS resource (S3 Bucket)
-		bucket, err := s3.NewBucket(ctx, "my-bucket", &s3.BucketArgs{
-			Acl: pulumi.String("private"),
-			Tags: pulumi.StringMap{
-				"Environment": pulumi.String("Dev"),
-			},
-		})
-		if err != nil {
-			return err
-		}
+ pulumi.Run(func(ctx *pulumi.Context) error {
+  // Create an AWS resource (S3 Bucket)
+  bucket, err := s3.NewBucket(ctx, "my-bucket", &s3.BucketArgs{
+   Acl: pulumi.String("private"),
+   Tags: pulumi.StringMap{
+    "Environment": pulumi.String("Dev"),
+   },
+  })
+  if err != nil {
+   return err
+  }
 
-		// Export the name of the bucket
-		ctx.Export("bucketName", bucket.ID())
-		return nil
-	})
+  // Export the name of the bucket
+  ctx.Export("bucketName", bucket.ID())
+  return nil
+ })
 }
 ```
 
@@ -281,11 +287,13 @@ func main() {
 For enterprises heavily invested in the Microsoft ecosystem, Pulumi’s .NET support is a massive advantage. Pulumi allows you to write infrastructure code in C#, F#, or VB.NET using standard .NET Core toolchains.
 
 **Why choose C# / .NET?**
+
 * **Enterprise Integration:** If your organization relies on Azure, Active Directory, and heavily utilizes Visual Studio or JetBrains Rider, Pulumi integrates seamlessly into those workflows.
 * **Advanced Language Features:** C# offers incredibly powerful paradigms like LINQ and asynchronous programming, paired with arguably the most robust object-oriented patterns of the supported languages.
 * **NuGet Ecosystem:** Full access to the .NET package manager for sharing internal compliance and tagging logic.
 
 **Example: Creating an AWS S3 Bucket in C#**
+
 ```csharp
 using System.Collections.Generic;
 using Pulumi;
@@ -342,7 +350,7 @@ This command automatically opens your default web browser and navigates directly
 
 ### The Organizational Hierarchy
 
-To navigate the console effectively, you must understand how Pulumi structures infrastructure metadata. The console UI is built around a strict hierarchy: **Organizations**, **Projects**, and **Stacks**. 
+To navigate the console effectively, you must understand how Pulumi structures infrastructure metadata. The console UI is built around a strict hierarchy: **Organizations**, **Projects**, and **Stacks**.
 
 ```text
 [ Pulumi Cloud Console ]
@@ -372,26 +380,30 @@ To navigate the console effectively, you must understand how Pulumi structures i
 When you navigate to a specific Stack in the console, you are presented with the Stack Dashboard. This is the most critical view in the Pulumi Console, organized into several key tabs:
 
 #### 1. Activity (Timeline)
-The Activity tab acts as an audit log for your infrastructure. Every time a `pulumi up`, `pulumi destroy`, or `pulumi refresh` is executed (whether by an engineer locally or a CI/CD pipeline), an entry is recorded here. 
+
+The Activity tab acts as an audit log for your infrastructure. Every time a `pulumi up`, `pulumi destroy`, or `pulumi refresh` is executed (whether by an engineer locally or a CI/CD pipeline), an entry is recorded here.
 
 You can click into any historical update to see the exact unified diff of what was changed, who changed it, how long it took, and the console output of the CLI command. This is invaluable for answering the question: *"Who changed the database configuration last Tuesday?"*
 
 #### 2. Resources
-The Resources tab provides a live, hierarchical tree-view of every cloud resource managed by the current stack. 
+
+The Resources tab provides a live, hierarchical tree-view of every cloud resource managed by the current stack.
 
 Unlike reading a raw JSON state file, this visual graph shows dependencies. For example, you can visually see that an AWS Lambda function depends on an IAM Role and an API Gateway. Clicking on a resource reveals its Cloud Provider ID (URN), allowing you to easily cross-reference the Pulumi asset with the actual resource in the AWS, Azure, or GCP console.
 
 #### 3. Outputs
-Outputs are values exported from your Pulumi program (such as the dynamically generated URL of a load balancer or the connection string to a database). The Outputs tab lists these key-value pairs clearly. 
+
+Outputs are values exported from your Pulumi program (such as the dynamically generated URL of a load balancer or the connection string to a database). The Outputs tab lists these key-value pairs clearly.
 
 If an output is marked as a secret in your code, the Console will mask it by default. You must explicitly click a "reveal" icon to view the decrypted value, an action that is typically recorded in the organization's audit logs.
 
 #### 4. Settings and Configuration
+
 The Settings tab allows you to view and manage stack-level configuration variables. While these are usually managed via the CLI using `pulumi config set`, the console provides a centralized place to verify what configurations (and encrypted secrets) are currently applied to the environment.
 
 ### Collaboration and Search
 
-Beyond viewing individual stacks, the Pulumi Console excels at cross-organizational visibility. 
+Beyond viewing individual stacks, the Pulumi Console excels at cross-organizational visibility.
 
 * **Resource Search:** The console features a global search bar that allows you to query resources across all projects and stacks. If you need to find everywhere a specific AWS VPC ID or Azure Resource Group is used across your entire company, you can query it globally.
 * **Team Access Controls:** In the Organization settings, administrators can define Teams and assign Role-Based Access Control (RBAC). You can enforce policies such as allowing developers to execute `pulumi up` on `dev` stacks, while restricting `prod` stacks to read-only visibility for humans (forcing production deployments through CI/CD).

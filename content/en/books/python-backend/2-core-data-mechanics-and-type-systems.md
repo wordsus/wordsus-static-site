@@ -8,7 +8,7 @@ Understanding these underlying structures is crucial for backend engineering. It
 
 ### The Foundation: `PyObject`
 
-At the heart of the CPython object model is the `PyObject` struct. Every single data type in Python—whether it is an integer, a function, or a complex custom class—is an extension of this base structure. 
+At the heart of the CPython object model is the `PyObject` struct. Every single data type in Python—whether it is an integer, a function, or a complex custom class—is an extension of this base structure.
 
 In C, the `PyObject` is defined as follows:
 
@@ -21,8 +21,9 @@ typedef struct _object {
 ```
 
 This struct contains two critical pieces of metadata that accompany every Python primitive:
-1.  **`ob_refcnt`**: The reference count. This is a running tally of how many variables or structures point to this specific object in memory.
-2.  **`ob_type`**: A pointer to another object (`PyTypeObject`) that defines the object's type (e.g., `int`, `float`) and the operations it supports.
+
+1. **`ob_refcnt`**: The reference count. This is a running tally of how many variables or structures point to this specific object in memory.
+2. **`ob_type`**: A pointer to another object (`PyTypeObject`) that defines the object's type (e.g., `int`, `float`) and the operations it supports.
 
 ```text
 +----------------------------------------------------+
@@ -33,6 +34,7 @@ This struct contains two critical pieces of metadata that accompany every Python
 | [ N bytes ] ... Object-specific payload ...        |
 +----------------------------------------------------+
 ```
+
 *(Note: Byte sizes assume a standard 64-bit architecture).*
 
 Because of this header, even the smallest primitive in Python carries an overhead of at least 16 bytes before holding any actual data.
@@ -48,7 +50,7 @@ typedef struct _longobject {
 } PyLongObject;
 ```
 
-Notice the `PyObject_VAR_HEAD`. This is an extension of `PyObject` that adds an `ob_size` field, indicating the number of items in a variable-length structure. 
+Notice the `PyObject_VAR_HEAD`. This is an extension of `PyObject` that adds an `ob_size` field, indicating the number of items in a variable-length structure.
 
 CPython does not store large integers in a standard 64-bit register. Instead, it stores them as an array of "digits" (`ob_digit`). Under the hood, Python treats integers as base-2**30 (on 64-bit systems) or base-2**15 (on 32-bit systems) numbers. When you perform arithmetic on large numbers, CPython executes operations array-element by array-element, much like doing long addition by hand, which explains why math on massive integers in Python is slower than native C math.
 
@@ -79,7 +81,7 @@ Because floats wrap a native `double`, they are confined to the limits of 64-bit
 
 In Python, `bool` is not a standalone primitive concept in the way it is in heavily typed languages; it is formally a subclass of `int`. The C implementation explicitly defines `PyBool_Type` as inheriting from `PyLong_Type`.
 
-There are exactly two boolean objects instantiated by the CPython interpreter at startup: `Py_TrueStruct` and `Py_FalseStruct`. 
+There are exactly two boolean objects instantiated by the CPython interpreter at startup: `Py_TrueStruct` and `Py_FalseStruct`.
 
 * `True` acts as an integer with a value of `1`.
 * `False` acts as an integer with a value of `0`.
@@ -88,7 +90,7 @@ Because they are singletons (only one instance of `True` and one instance of `Fa
 
 ### The Null Concept: `NoneType`
 
-When a variable lacks a value, Python uses `None`. Like booleans, `None` is a singleton of the `NoneType` class. Its C implementation is `_Py_NoneStruct`. 
+When a variable lacks a value, Python uses `None`. Like booleans, `None` is a singleton of the `NoneType` class. Its C implementation is `_Py_NoneStruct`.
 
 Because `None` is a singleton, checking if a variable is `None` should always be done using the `is` operator (`if x is None:`) rather than the equality operator (`==`). The `is` operator performs a direct memory address comparison at the C level, matching the pointer of your variable against the permanent pointer of `_Py_NoneStruct`. This bypasses any rich comparison logic (dunder methods) and provides a highly efficient $O(1)$ check.
 
@@ -113,7 +115,7 @@ log_msg_1 = "Service %s has an uptime of %.1f%%" % (name, uptime)
 log_msg_2 = "Service {} has an uptime of {:.1f}%".format(name, uptime)
 ```
 
-While `.format()` provided a robust mini-language, it remained computationally heavier because the string had to be parsed as a template at runtime, matching arguments to placeholders. 
+While `.format()` provided a robust mini-language, it remained computationally heavier because the string had to be parsed as a template at runtime, matching arguments to placeholders.
 
 The introduction of **Literal String Interpolation (f-strings)** in Python 3.6 (via PEP 498) revolutionized this process. F-strings are not just syntactic sugar; they are dynamically evaluated expressions parsed at compile time.
 
@@ -160,7 +162,7 @@ print(f"Target: {primary_node!r}")        # Uses __repr__: Target: Node(ip='192.
 
 ### The String vs. Bytes Dichotomy
 
-The most disruptive (and necessary) change between Python 2 and Python 3 was the strict separation of text and binary data. 
+The most disruptive (and necessary) change between Python 2 and Python 3 was the strict separation of text and binary data.
 
 In modern Python, the `str` type represents a sequence of Unicode code points. It is purely an abstraction of text, untethered from how that text is stored in memory or transmitted over a network. To transmit text over a socket or write it to a binary file, it must be converted into a `bytes` object—a sequence of raw 8-bit values (integers from 0 to 255).
 
@@ -215,7 +217,7 @@ str_y = "hello world"
 print(str_x is str_y)  # False: Identical values, but different memory addresses
 ```
 
-For high-performance backend systems parsing massive volumes of repetitive text (such as reading XML tags, parsing JSON keys, or mapping database column names), developers can forcefully intern strings using the `sys` module. 
+For high-performance backend systems parsing massive volumes of repetitive text (such as reading XML tags, parsing JSON keys, or mapping database column names), developers can forcefully intern strings using the `sys` module.
 
 ```python
 import sys
@@ -233,13 +235,13 @@ Using `sys.intern()` reduces memory consumption and speeds up dictionary lookups
 
 Python is famously a dynamically typed language, rooted in the philosophy of "duck typing": *If it walks like a duck and quacks like a duck, it must be a duck*. Historically, this granted developers immense speed and flexibility during prototyping, but often led to catastrophic `AttributeError` or `TypeError` crashes at runtime in large-scale backend systems.
 
-To bridge the gap between rapid development and enterprise reliability, Python 3.5 introduced type hinting via PEP 484. It is critical to understand a fundamental reality about Python's type system: **Type hints are completely ignored by the CPython interpreter at runtime.** They are strictly metadata. Adding type hints does not make your Python code execute faster, nor does it enforce type safety during execution. 
+To bridge the gap between rapid development and enterprise reliability, Python 3.5 introduced type hinting via PEP 484. It is critical to understand a fundamental reality about Python's type system: **Type hints are completely ignored by the CPython interpreter at runtime.** They are strictly metadata. Adding type hints does not make your Python code execute faster, nor does it enforce type safety during execution.
 
 Instead, Python embraces **gradual typing**. You can type-hint critical business logic while leaving rapid prototyping scripts dynamically typed. Type safety is enforced not by the compiler, but by external static analysis tools.
 
 ### The Static Analysis Pipeline
 
-Because CPython ignores type hints, the responsibility of validation shifts left in the development lifecycle to static type checkers like **Mypy**, **Pyright** (the engine behind VS Code's Pylance), or **Ruff**. 
+Because CPython ignores type hints, the responsibility of validation shifts left in the development lifecycle to static type checkers like **Mypy**, **Pyright** (the engine behind VS Code's Pylance), or **Ruff**.
 
 These tools analyze the Abstract Syntax Tree (AST) of your code before it ever runs, ensuring data contracts are honored.
 
@@ -287,9 +289,9 @@ Using the `|` operator for Unions and `type | None` for Optionals drastically re
 
 Backend engineering frequently deals with complex, dynamic data structures, higher-order functions, and abstract dependencies. The `typing` module provides advanced constructs to model these accurately.
 
-* **`Any` vs. `object`**: 
+* **`Any` vs. `object`**:
     Using `Any` tells the type checker to completely disable checks for a variable, allowing any operation on it. This is a deliberate escape hatch. Using `object`, however, indicates that a variable can be any Python object, but restricts you to only calling methods inherent to all objects (like `__str__`). Always prefer `object` or generic type variables (`TypeVar`) over `Any` when writing safe interfaces.
-* **`Callable`**: 
+* **`Callable`**:
     Used to type-hint higher-order functions, callbacks, or dependency injection factories. The syntax is `Callable[[ArgType1, ArgType2], ReturnType]`.
 
 ```python
@@ -370,9 +372,9 @@ This specific behavior is what powers modern Python web frameworks like **FastAP
 
 ## 2.4 Memory Models: Mutability, Immutability, and Value vs. Reference
 
-To write bug-free backend logic, one must discard the mental models of variable assignment taught in languages like C or Java. In those languages, a variable is a bucket in memory that holds a value. If you declare `int a = 5`, the compiler allocates a bucket named `a` and places the integer `5` inside it. 
+To write bug-free backend logic, one must discard the mental models of variable assignment taught in languages like C or Java. In those languages, a variable is a bucket in memory that holds a value. If you declare `int a = 5`, the compiler allocates a bucket named `a` and places the integer `5` inside it.
 
-Python’s memory model operates entirely differently. Variables are not buckets; they are **labels** or **name tags** dynamically bound to objects living in memory (the heap). 
+Python’s memory model operates entirely differently. Variables are not buckets; they are **labels** or **name tags** dynamically bound to objects living in memory (the heap).
 
 As established in Section 2.1, every piece of data is a `PyObject`. When you execute `a = 5`, Python first creates a `PyLongObject` representing `5` in memory, and then creates a name binding (a pointer) from the label `a` to that object.
 
@@ -416,7 +418,7 @@ print(id(x))  # Output: e.g., 4345155888 (Different memory address)
 In the background, the original `PyLongObject` holding `10` is left behind. If no other labels point to it, its reference count (`ob_refcnt`) drops to zero, and the garbage collector sweeps it away.
 
 **Mutable Types (Lists, Dictionaries, Sets, User-Defined Classes)**
-Mutable objects allow in-place modification. The internal state of the `PyObject` changes, but its memory address remains exactly the same. 
+Mutable objects allow in-place modification. The internal state of the `PyObject` changes, but its memory address remains exactly the same.
 
 ```python
 my_list = [1, 2]

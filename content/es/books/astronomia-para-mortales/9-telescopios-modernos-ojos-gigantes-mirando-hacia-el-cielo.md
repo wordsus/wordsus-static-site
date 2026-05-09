@@ -2,9 +2,9 @@
 
 ---
 
-Desde que nuestros ancestros se sentaban alrededor del fuego en la prehistoria, la humanidad ha levantado la vista hacia el cielo estrellado con asombro y curiosidad. Sin embargo, nuestros cuerpos nos imponen un límite estricto: la pupila del ojo humano, en su máxima dilatación en la oscuridad total, apenas alcanza unos $7\text{ mm}$ de diámetro. Es una ventana diminuta hacia un universo inmenso y abrumadoramente oscuro. Todo lo que podíamos saber sobre el cosmos debía pasar por ese pequeño orificio. 
+Desde que nuestros ancestros se sentaban alrededor del fuego en la prehistoria, la humanidad ha levantado la vista hacia el cielo estrellado con asombro y curiosidad. Sin embargo, nuestros cuerpos nos imponen un límite estricto: la pupila del ojo humano, en su máxima dilatación en la oscuridad total, apenas alcanza unos $7\text{ mm}$ de diámetro. Es una ventana diminuta hacia un universo inmenso y abrumadoramente oscuro. Todo lo que podíamos saber sobre el cosmos debía pasar por ese pequeño orificio.
 
-Durante milenios, el cielo nocturno fue un misterio inalcanzable, un tapiz de luces fijas y astros errantes. Pero hace poco más de cuatro siglos, todo cambió. Con la invención del telescopio, el ser humano construyó, por primera vez, una extensión para sus propios sentidos. Lo que comenzó como un simple tubo con dos pedazos de vidrio pulido en sus extremos se ha transformado hoy en colosales obras de ingeniería: espejos del tamaño de canchas de tenis ubicados en las cimas de montañas áridas y observatorios flotando en el frío vacío del espacio. 
+Durante milenios, el cielo nocturno fue un misterio inalcanzable, un tapiz de luces fijas y astros errantes. Pero hace poco más de cuatro siglos, todo cambió. Con la invención del telescopio, el ser humano construyó, por primera vez, una extensión para sus propios sentidos. Lo que comenzó como un simple tubo con dos pedazos de vidrio pulido en sus extremos se ha transformado hoy en colosales obras de ingeniería: espejos del tamaño de canchas de tenis ubicados en las cimas de montañas áridas y observatorios flotando en el frío vacío del espacio.
 
 En este artículo, desentrañaremos cómo funcionan estas maravillas tecnológicas. Descubriremos que los telescopios no son simples "lupas" para acercar las cosas, sino más bien "cubetas" diseñadas para atrapar la luz. Viajaremos desde los conceptos ópticos más básicos hasta la vanguardia de la exploración espacial, entendiendo cómo estos gigantes de cristal, metal y silicio nos están permitiendo leer el mismísimo libro de los orígenes del universo.
 
@@ -46,7 +46,7 @@ Luz entrante de la estrella (Rayos paralelos)
 **El problema de los refractores:** La luz blanca está compuesta por todos los colores del arcoíris. Cuando la luz atraviesa el cristal, cada color se dobla en un ángulo ligeramente distinto (como en un prisma). Esto crea un defecto llamado **aberración cromática**, un halo de colores molestos alrededor de las estrellas brillantes. Además, fabricar lentes gigantes de cristal puro es increíblemente pesado, y como la lente solo puede sostenerse por los bordes, si es muy grande, se deforma bajo su propio peso.
 
 **B. Telescopios Reflectores (La revolución de Newton)**
-Isaac Newton resolvió el problema de los colores utilizando espejos curvos en lugar de lentes. En un reflector, la luz no atraviesa nada; rebota. 
+Isaac Newton resolvió el problema de los colores utilizando espejos curvos en lugar de lentes. En un reflector, la luz no atraviesa nada; rebota.
 
 ```text
 DIAGRAMA BÁSICO DE UN REFLECTOR (Diseño Newtoniano):
@@ -72,8 +72,8 @@ A medida que avanzó el siglo XX, los astrónomos querían espejos reflectores c
 
 Pero la ingeniería moderna encontró soluciones ingeniosas para engañar a la física de los materiales:
 
-*   **Espejos segmentados:** ¿Por qué hacer un solo espejo gigante si es muy frágil y pesado? El Observatorio Keck en Hawái (y más tarde el telescopio espacial James Webb) revolucionaron el campo usando hexágonos más pequeños que encajan perfectamente para formar un espejo gigante, como los azulejos del piso. Si un segmento se raya, simplemente se retira y se cambia, sin desechar todo el instrumento.
-*   **Vidrio en forma de panal (Honeycomb):** Para los espejos de una sola pieza, laboratorios como el del Observatorio Steward en Arizona utilizan hornos giratorios masivos. Derriten el vidrio sobre un molde hueco con forma de panal de abejas. Mientras el horno gira, la fuerza centrífuga hace que el vidrio fundido adquiera de forma natural la curvatura cóncava perfecta. Al enfriarse, se obtiene un espejo de $8.4\text{ metros}$ de diámetro pero que es en su mayor parte hueco, lo que reduce drásticamente su peso mientras mantiene una rigidez excepcional.
+* **Espejos segmentados:** ¿Por qué hacer un solo espejo gigante si es muy frágil y pesado? El Observatorio Keck en Hawái (y más tarde el telescopio espacial James Webb) revolucionaron el campo usando hexágonos más pequeños que encajan perfectamente para formar un espejo gigante, como los azulejos del piso. Si un segmento se raya, simplemente se retira y se cambia, sin desechar todo el instrumento.
+* **Vidrio en forma de panal (Honeycomb):** Para los espejos de una sola pieza, laboratorios como el del Observatorio Steward en Arizona utilizan hornos giratorios masivos. Derriten el vidrio sobre un molde hueco con forma de panal de abejas. Mientras el horno gira, la fuerza centrífuga hace que el vidrio fundido adquiera de forma natural la curvatura cóncava perfecta. Al enfriarse, se obtiene un espejo de $8.4\text{ metros}$ de diámetro pero que es en su mayor parte hueco, lo que reduce drásticamente su peso mientras mantiene una rigidez excepcional.
 
 ## 3. La batalla contra el aire: ¿Por qué parpadean las estrellas?
 
@@ -85,9 +85,9 @@ Para combatir esto, los astrónomos modernos desarrollaron la magia técnica má
 
 ### Cómo funciona la Óptica Adaptativa
 
-1.  **La estrella guía:** El telescopio dispara un potente rayo láser amarillo o verde hacia el cielo. Este láser excita una capa de átomos de sodio en la mesosfera (a unos $90\text{ km}$ de altura), creando una estrella artificial brillante y perfecta junto al objeto que los astrónomos quieren observar.
-2.  **Medición de la distorsión:** Como los astrónomos saben exactamente cómo *debería* verse ese punto de láser, pueden medir en tiempo real cómo la atmósfera terrestre está distorsionando su luz. Un sensor analiza estas deformaciones cientos de veces por segundo.
-3.  **El espejo deformable:** Esta información se envía instantáneamente a un espejo secundario especial dentro del telescopio. Este espejo no es rígido, es fino como una hoja de papel y está respaldado por cientos de pequeños actuadores magnéticos o piezoeléctricos. Estos pistones diminutos deforman físicamente la superficie del espejo a nivel microscópico, empujando y tirando a gran velocidad para crear "ondas" opuestas a las distorsiones de la atmósfera.
+1. **La estrella guía:** El telescopio dispara un potente rayo láser amarillo o verde hacia el cielo. Este láser excita una capa de átomos de sodio en la mesosfera (a unos $90\text{ km}$ de altura), creando una estrella artificial brillante y perfecta junto al objeto que los astrónomos quieren observar.
+2. **Medición de la distorsión:** Como los astrónomos saben exactamente cómo *debería* verse ese punto de láser, pueden medir en tiempo real cómo la atmósfera terrestre está distorsionando su luz. Un sensor analiza estas deformaciones cientos de veces por segundo.
+3. **El espejo deformable:** Esta información se envía instantáneamente a un espejo secundario especial dentro del telescopio. Este espejo no es rígido, es fino como una hoja de papel y está respaldado por cientos de pequeños actuadores magnéticos o piezoeléctricos. Estos pistones diminutos deforman físicamente la superficie del espejo a nivel microscópico, empujando y tirando a gran velocidad para crear "ondas" opuestas a las distorsiones de la atmósfera.
 
 > **El resultado:** Al cancelar en tiempo real la turbulencia del aire, la óptica adaptativa permite a los telescopios terrestres obtener imágenes tan nítidas, o a veces más, que las de telescopios espaciales como el Hubble, pero por una fracción del costo y con espejos mucho más grandes.
 
@@ -138,26 +138,29 @@ Pero la humanidad fue más allá. En 2017, un equipo de científicos creó el **
 
 ## 6. Escapando a las estrellas: Los observatorios espaciales
 
-Por más magia que apliquemos en la Tierra (óptica adaptativa, interferometría), nuestro planeta nos impone un límite final. La atmósfera no solo difumina la luz, sino que es completamente opaca a ciertas frecuencias del espectro. Los rayos X, la mayor parte de los rayos ultravioleta y casi todo el espectro infrarrojo no logran atravesar el aire, son absorbidos por el ozono, el dióxido de carbono y el vapor de agua. 
+Por más magia que apliquemos en la Tierra (óptica adaptativa, interferometría), nuestro planeta nos impone un límite final. La atmósfera no solo difumina la luz, sino que es completamente opaca a ciertas frecuencias del espectro. Los rayos X, la mayor parte de los rayos ultravioleta y casi todo el espectro infrarrojo no logran atravesar el aire, son absorbidos por el ozono, el dióxido de carbono y el vapor de agua.
 
 Para estudiar el universo en su totalidad, tenemos que poner nuestros ojos por encima de la atmósfera. Lanzar instrumentos al frío y vacío del espacio.
 
 ### El Telescopio Espacial Hubble (HST)
+
 Lanzado en 1990, el Hubble no es un telescopio inusualmente grande (su espejo mide $2.4\text{ metros}$ de diámetro, pequeño comparado con los monstruos terrestres). Sin embargo, al orbitar a $540\text{ km}$ sobre la Tierra, está libre de la turbulencia atmosférica. Su vista es prístina y nítida todo el tiempo, pudiendo observar en luz visible, ultravioleta e infrarrojo cercano. El Hubble nos regaló la "Imagen de Campo Profundo", dejándonos ver por primera vez que el espacio oscuro está repleto de miles de millones de galaxias primitivas.
 
 ### El Telescopio Espacial James Webb (JWST)
+
 Lanzado en diciembre de 2021, el Webb es la obra maestra de la ingeniería astronómica contemporánea. A diferencia del Hubble, que orbita cerca de la Tierra y observa luz visible, el JWST orbita el Sol en un punto distante a 1.5 millones de kilómetros de la Tierra (el Punto de Lagrange L2) y está diseñado específicamente para ver en el **infrarrojo**.
 
 ¿Por qué obsesionarnos con el infrarrojo? Por dos razones vitales para la astrofísica:
-1.  **Atravesar el polvo cósmico:** Las nubes interestelares donde nacen las estrellas y los planetas bloquean la luz visible (se ven como gruesas manchas oscuras). Pero la luz infrarroja (ondas de calor más largas) atraviesa ese polvo sin problemas, permitiéndonos ver en el interior de estas guarderías estelares.
-2.  **El desplazamiento al rojo (Redshift):** El universo se está expandiendo. A medida que la luz de las primeras galaxias viaja hacia nosotros a lo largo de 13.000 millones de años, el propio tejido del espacio se estira. Esto hace que la longitud de onda de su luz se "estire", desplazándose del visible hacia la zona infrarroja del espectro. Para ver las primeras luces de la creación, *debemos* usar lentes infrarrojos.
+
+1. **Atravesar el polvo cósmico:** Las nubes interestelares donde nacen las estrellas y los planetas bloquean la luz visible (se ven como gruesas manchas oscuras). Pero la luz infrarroja (ondas de calor más largas) atraviesa ese polvo sin problemas, permitiéndonos ver en el interior de estas guarderías estelares.
+2. **El desplazamiento al rojo (Redshift):** El universo se está expandiendo. A medida que la luz de las primeras galaxias viaja hacia nosotros a lo largo de 13.000 millones de años, el propio tejido del espacio se estira. Esto hace que la longitud de onda de su luz se "estire", desplazándose del visible hacia la zona infrarroja del espectro. Para ver las primeras luces de la creación, *debemos* usar lentes infrarrojos.
 
 **El desafío del frío:** El problema de observar luz infrarroja es que, en esencia, es luz térmica. Si el propio telescopio está caliente (incluso a la temperatura de una habitación), el calor del metal deslumbraría por completo a sus propios sensores. Para funcionar, el JWST debe estar a $-233\text{ °C}$. Para lograr esto en el espacio, el telescopio tuvo que desplegar un intrincado escudo solar del tamaño de una cancha de tenis hecho de cinco capas de Kapton, un material que bloquea el intenso calor de nuestro Sol y de la Tierra, dejando a los sensores en una sombra permanentemente congelada.
 
 ## Conclusión: Los guardianes de nuestra historia cósmica
 
-La evolución de los telescopios es mucho más que la historia de un instrumento óptico; es la crónica de la expansión de la mente humana. Somos una especie nacida en una pequeña roca húmeda, girando alrededor de una estrella ordinaria, en los suburbios de una galaxia entre billones. 
+La evolución de los telescopios es mucho más que la historia de un instrumento óptico; es la crónica de la expansión de la mente humana. Somos una especie nacida en una pequeña roca húmeda, girando alrededor de una estrella ordinaria, en los suburbios de una galaxia entre billones.
 
-A simple vista, el cielo nocturno es un techo de puntos luminosos silenciosos. Pero a través de estos ojos gigantes modernos—ya sean colosos de cristal líquido en picos montañosos, cuencas de metal de cientos de metros escuchando los susurros del hidrógeno, o sofisticadas papiroflexias de berilio flotando más allá de la Luna—el universo revela su verdadera e incansable naturaleza. 
+A simple vista, el cielo nocturno es un techo de puntos luminosos silenciosos. Pero a través de estos ojos gigantes modernos—ya sean colosos de cristal líquido en picos montañosos, cuencas de metal de cientos de metros escuchando los susurros del hidrógeno, o sofisticadas papiroflexias de berilio flotando más allá de la Luna—el universo revela su verdadera e incansable naturaleza.
 
 Nos han mostrado lugares donde la gravedad devora la luz, nebulosas que pintan guarderías estelares con colores más allá de la imaginación humana y galaxias nacidas en la infancia del tiempo mismo. En última instancia, un telescopio no es solo una máquina para ver el espacio distante, es nuestra más grande máquina del tiempo, que nos permite mirar profundamente en el pasado para, finalmente, entender nuestro lugar en el presente.

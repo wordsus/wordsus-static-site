@@ -269,7 +269,7 @@ Aquí tienes las cuatro herramientas nativas para descifrar cualquier comando.
 Casi todos los programas escritos para Linux incluyen una opción de ayuda integrada. Es la forma más rápida de obtener un recordatorio visual de la sintaxis de un comando y sus *flags* más comunes sin abrir una pantalla nueva.
 
 ```bash
-$ curl --help
+curl --help
 
 ```
 
@@ -281,7 +281,7 @@ $ curl --help
 El comando `man` (abreviatura de *manual*) es el estándar de oro de la documentación en UNIX y Linux. Abre un visor de texto interactivo (generalmente usando el programa `less`) con la documentación exhaustiva del comando, escrita por sus propios creadores.
 
 ```bash
-$ man iptables
+man iptables
 
 ```
 
@@ -314,7 +314,7 @@ parted (8)           - a partition manipulation program
 Mientras que `man` muestra una sola página larga y monolítica, `info` fue creado por el proyecto GNU para ofrecer manuales estructurados con formato de hipertexto (como una página web, pero en la terminal).
 
 ```bash
-$ info tar
+info tar
 
 ```
 

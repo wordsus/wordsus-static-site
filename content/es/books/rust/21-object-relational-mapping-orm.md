@@ -1,18 +1,18 @@
-La persistencia de datos es el núcleo de cualquier aplicación backend, pero el puente entre el mundo relacional de SQL y el sistema de tipos de Rust puede ser complejo. En este capítulo, exploramos el ecosistema de los **Object-Relational Mappers (ORM)**, herramientas diseñadas para abstraer la interacción con la base de datos mediante estructuras nativas del lenguaje. 
+La persistencia de datos es el núcleo de cualquier aplicación backend, pero el puente entre el mundo relacional de SQL y el sistema de tipos de Rust puede ser complejo. En este capítulo, exploramos el ecosistema de los **Object-Relational Mappers (ORM)**, herramientas diseñadas para abstraer la interacción con la base de datos mediante estructuras nativas del lenguaje.
 
 Analizaremos la seguridad extrema en tiempo de compilación que ofrece **Diesel**, la flexibilidad asíncrona de **SeaORM** y cómo construir consultas dinámicas sin sacrificar el rendimiento. El objetivo es dominar la gestión de relaciones complejas manteniendo un código mantenible, tipado y libre de errores en ejecución.
 
 ## 21.1 Diesel: Generación de código y seguridad de tipos (Síncrono/Asíncrono)
 
-Si en el capítulo anterior vimos cómo SQLx nos ofrece seguridad mediante la verificación de consultas contra una base de datos viva, **Diesel** toma un camino filosóficamente distinto: **representar el esquema de tu base de datos directamente en el sistema de tipos de Rust**. 
+Si en el capítulo anterior vimos cómo SQLx nos ofrece seguridad mediante la verificación de consultas contra una base de datos viva, **Diesel** toma un camino filosóficamente distinto: **representar el esquema de tu base de datos directamente en el sistema de tipos de Rust**.
 
-Diesel es el ORM (Object-Relational Mapper) más maduro del ecosistema. Su promesa principal es contundente: si tu código con Diesel compila, es virtualmente imposible que tu consulta SQL falle en tiempo de ejecución por errores de sintaxis o desajustes de tipos. 
+Diesel es el ORM (Object-Relational Mapper) más maduro del ecosistema. Su promesa principal es contundente: si tu código con Diesel compila, es virtualmente imposible que tu consulta SQL falle en tiempo de ejecución por errores de sintaxis o desajustes de tipos.
 
 Para lograr esto, Diesel se apoya fuertemente en dos pilares: una potente generación de código a través de macros y un uso exhaustivo de los *Traits* de Rust.
 
 ### Generación de código y el archivo `schema.rs`
 
-A diferencia de otros lenguajes donde el ORM inspecciona las clases para crear las tablas (Code-First), Diesel adopta un enfoque **Database-First** o basado en migraciones. 
+A diferencia de otros lenguajes donde el ORM inspecciona las clases para crear las tablas (Code-First), Diesel adopta un enfoque **Database-First** o basado en migraciones.
 
 Utilizando su herramienta de línea de comandos (`diesel-cli`), Diesel lee el esquema actual de tu base de datos y genera automáticamente un archivo llamado `schema.rs`. Este archivo utiliza la macro `table!` para declarar módulos y estructuras que el compilador de Rust puede entender.
 
@@ -77,7 +77,7 @@ Para solucionarlo, debes enviar las consultas de Diesel a un pool de hilos dedic
 **2. El enfoque Asíncrono moderno (`diesel-async`)**
 Para evitar la sobrecarga de cambiar de contexto entre hilos asíncronos y bloqueantes, la comunidad desarrolló `diesel-async`. Este crate envuelve el generador de consultas de Diesel puro pero reemplaza la capa de conexión con drivers asíncronos nativos (como `tokio-postgres`, visto en el Capítulo 19).
 
-Hoy en día, para un backend concurrente, **`diesel-async` es la ruta recomendada**. 
+Hoy en día, para un backend concurrente, **`diesel-async` es la ruta recomendada**.
 
 A continuación, un ejemplo de cómo se ve una consulta utilizando el enfoque asíncrono moderno con un pool de conexiones `bb8` (conceptos del Cap. 19):
 
@@ -107,6 +107,7 @@ pub async fn get_active_users(
 ```
 
 **Ventajas y Desventajas de Diesel:**
+
 * **Pros:** Seguridad inigualable en tiempo de compilación, excelente rendimiento, permite reutilización de fragmentos de consultas (Query Builder composable).
 * **Contras:** Tiempos de compilación más lentos debido a la pesada expansión de macros; curva de aprendizaje pronunciada frente a errores de compilación complejos originados por la falta de un *Trait Bound* específico.
 
@@ -120,9 +121,9 @@ Mientras que Diesel brilla por su verificación en tiempo de compilación extrem
 
 La arquitectura de SeaORM se aleja del monolítico `schema.rs` de Diesel y abraza un diseño más modular basado en el patrón *Data Mapper* mezclado con conceptos de *Active Record*. Cada tabla en tu base de datos se representa mediante un conjunto de componentes llamados colectivamente **Entity**:
 
-1.  **Model:** Un struct inmutable de Rust que representa una fila existente leída de la base de datos.
-2.  **ActiveModel:** Un struct mutable que rastrea qué campos han cambiado. Se utiliza exclusivamente para insertar (`INSERT`) o actualizar (`UPDATE`) registros.
-3.  **Entity:** Un struct unitario que actúa como la API principal para realizar operaciones CRUD sobre esa tabla específica.
+1. **Model:** Un struct inmutable de Rust que representa una fila existente leída de la base de datos.
+2. **ActiveModel:** Un struct mutable que rastrea qué campos han cambiado. Se utiliza exclusivamente para insertar (`INSERT`) o actualizar (`UPDATE`) registros.
+3. **Entity:** Un struct unitario que actúa como la API principal para realizar operaciones CRUD sobre esa tabla específica.
 
 Al igual que con Diesel, puedes escribir estas entidades a mano (Code-First) o generarlas a partir de una base de datos existente utilizando su CLI (`sea-orm-cli generate entity`).
 
@@ -197,7 +198,7 @@ Llegados a este punto en tu arquitectura, la elección entre Diesel y SeaORM sue
 
 ## 21.3 Construcción dinámica de queries complejas
 
-En el desarrollo de APIs en el mundo real, las consultas a la base de datos rara vez son estáticas. Piensa en un endpoint de búsqueda o en una tabla de panel de administración: el cliente puede enviar múltiples parámetros opcionales (filtros por nombre, estado, fechas, ordenamiento dinámico y paginación). 
+En el desarrollo de APIs en el mundo real, las consultas a la base de datos rara vez son estáticas. Piensa en un endpoint de búsqueda o en una tabla de panel de administración: el cliente puede enviar múltiples parámetros opcionales (filtros por nombre, estado, fechas, ordenamiento dinámico y paginación).
 
 En lenguajes dinámicos o frameworks menos estrictos, esto a menudo se resuelve concatenando fragmentos de strings SQL. En Rust, sin embargo, nos enfrentamos a un reto fascinante: **¿Cómo construimos una consulta dinámicamente si el ORM exige conocer la estructura exacta en tiempo de compilación?**
 
@@ -306,7 +307,7 @@ Puedes pasar este struct completo a tus funciones `search_users`, encapsulando t
 
 ## 21.4 Relaciones Uno-a-Uno, Uno-a-Muchos y Muchos-a-Muchos
 
-El verdadero poder de una base de datos relacional reside, como su nombre indica, en las relaciones. Sin embargo, mapear estas relaciones al estricto sistema de tipos de Rust presenta un desafío arquitectónico notable. 
+El verdadero poder de una base de datos relacional reside, como su nombre indica, en las relaciones. Sin embargo, mapear estas relaciones al estricto sistema de tipos de Rust presenta un desafío arquitectónico notable.
 
 En lenguajes como Python (Django) o Java (Hibernate), es común el concepto de *Lazy Loading* (carga perezosa), donde acceder a `user.posts` dispara una consulta a la base de datos de forma transparente. **En Rust, el Lazy Loading implícito es prácticamente un antipatrón** (y en ecosistemas asíncronos, directamente imposible sin hacks severos) debido a las reglas de *Ownership* y a que las operaciones I/O requieren un `.await` explícito.
 
@@ -438,6 +439,6 @@ let users_with_roles = User::find()
 
 ### El problema N+1 y la postura de Rust
 
-Tanto Diesel como SeaORM (e incluso si usas consultas planas con SQLx) te empujan a evitar el "Problema N+1" (hacer 1 consulta para obtener 100 usuarios, y luego 100 consultas para obtener los posts de cada uno). 
+Tanto Diesel como SeaORM (e incluso si usas consultas planas con SQLx) te empujan a evitar el "Problema N+1" (hacer 1 consulta para obtener 100 usuarios, y luego 100 consultas para obtener los posts de cada uno).
 
 Al obligarte a pensar en términos de carga anticipada (Eager Loading) mediante `.belonging_to()` en Diesel o `.find_with_related()` en SeaORM, el código en Rust compila sabiendo exactamente qué datos van a viajar a través de la red, garantizando un rendimiento backend óptimo y predecible desde el diseño.

@@ -73,9 +73,9 @@ Para visualizarlo, una tabla de `clientes` se vería conceptualmente así:
 
 | id_cliente | nombre | correo | fecha_registro |
 | --- | --- | --- | --- |
-| 1 | Ana López | ana@email.com | 2023-01-15 |
-| 2 | Carlos Ruiz | carlos@email.com | 2023-02-10 |
-| 3 | María Silva | maria@email.com | 2023-02-11 |
+| 1 | Ana López | <ana@email.com> | 2023-01-15 |
+| 2 | Carlos Ruiz | <carlos@email.com> | 2023-02-10 |
+| 3 | María Silva | <maria@email.com> | 2023-02-11 |
 
 En este ejemplo:
 

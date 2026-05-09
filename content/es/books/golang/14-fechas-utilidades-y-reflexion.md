@@ -2,7 +2,7 @@ Este capítulo explora herramientas críticas de la librería estándar para ele
 
 ## 14.1. Manejo del tiempo, duraciones y temporizadores (`time`)
 
-El manejo del tiempo en el desarrollo de software es notoriamente complejo debido a husos horarios, horarios de verano (DST), segundos intercalares y la sincronización de relojes en sistemas distribuidos. Go aborda esta complejidad a través de su paquete estándar `time`, proporcionando una API robusta y unificada. 
+El manejo del tiempo en el desarrollo de software es notoriamente complejo debido a husos horarios, horarios de verano (DST), segundos intercalares y la sincronización de relojes en sistemas distribuidos. Go aborda esta complejidad a través de su paquete estándar `time`, proporcionando una API robusta y unificada.
 
 Para dominar este paquete a un nivel avanzado, es crucial entender cómo Go abstrae el tiempo a nivel interno, cómo gestiona la memoria en procesos concurrentes y su peculiar (pero predecible) sistema de formateo.
 
@@ -10,8 +10,8 @@ Para dominar este paquete a un nivel avanzado, es crucial entender cómo Go abst
 
 Uno de los conceptos más importantes y a menudo ignorados del paquete `time` es que, desde Go 1.9, una estructura `time.Time` contiene **dos lecturas de reloj simultáneas**:
 
-1.  **Wall Clock (Reloj de Pared):** Representa la hora "real" (ej. 10:30 AM). Está sujeto a cambios externos, como la sincronización NTP o ajustes manuales del sistema operativo. Puede "viajar en el tiempo" hacia atrás.
-2.  **Monotonic Clock (Reloj Monotónico):** Mide estrictamente el tiempo transcurrido desde un punto de inicio arbitrario (usualmente el arranque del sistema). **Nunca retrocede**.
+1. **Wall Clock (Reloj de Pared):** Representa la hora "real" (ej. 10:30 AM). Está sujeto a cambios externos, como la sincronización NTP o ajustes manuales del sistema operativo. Puede "viajar en el tiempo" hacia atrás.
+2. **Monotonic Clock (Reloj Monotónico):** Mide estrictamente el tiempo transcurrido desde un punto de inicio arbitrario (usualmente el arranque del sistema). **Nunca retrocede**.
 
 Go utiliza inteligentemente el reloj monotónico para medir duraciones y el reloj de pared para mostrar la hora.
 
@@ -19,22 +19,22 @@ Go utiliza inteligentemente el reloj monotónico para medir duraciones y el relo
 package main
 
 import (
-	"fmt"
-	"time"
+ "fmt"
+ "time"
 )
 
 func main() {
-	start := time.Now()
-	
-	// Simulamos una operación
-	time.Sleep(50 * time.Millisecond)
-	
-	// time.Since utiliza internamente el reloj monotónico de 'start'
-	// para calcular la duración exacta, ignorando cualquier cambio NTP
-	// que haya ocurrido en el sistema durante el Sleep.
-	elapsed := time.Since(start) 
-	
-	fmt.Printf("Operación completada en: %v\n", elapsed)
+ start := time.Now()
+ 
+ // Simulamos una operación
+ time.Sleep(50 * time.Millisecond)
+ 
+ // time.Since utiliza internamente el reloj monotónico de 'start'
+ // para calcular la duración exacta, ignorando cualquier cambio NTP
+ // que haya ocurrido en el sistema durante el Sleep.
+ elapsed := time.Since(start) 
+ 
+ fmt.Printf("Operación completada en: %v\n", elapsed)
 }
 ```
 
@@ -97,11 +97,12 @@ if err != nil {
     // Manejo del error
 }
 ```
+
 *Nota arquitectónica:* Siempre que sea posible para la comunicación entre servicios o persistencia de datos (Capítulos 28 y 33), utiliza el estándar ISO 8601 / RFC 3339 utilizando la constante predefinida `time.RFC3339`.
 
 ### Temporizadores (Timers) y Tickers: Uso seguro y prevención de fugas
 
-Como se adelantó en los capítulos de concurrencia, el manejo descuidado de los temporizadores puede causar *Goroutine leaks* y *Memory leaks*. 
+Como se adelantó en los capítulos de concurrencia, el manejo descuidado de los temporizadores puede causar *Goroutine leaks* y *Memory leaks*.
 
 **1. `time.Timer` (Eventos únicos)**
 Un `Timer` espera una duración y luego envía la hora actual a través de su canal `C`.
@@ -153,9 +154,10 @@ Las expresiones regulares (regex) son herramientas fundamentales para la validac
 
 A diferencia de los motores de expresiones regulares basados en *backtracking* (búsqueda en retroceso), Go implementa el motor **RE2**. Esta decisión arquitectónica es crucial para el desarrollo de servidores backend seguros.
 
-Los motores tradicionales pueden sufrir de **ReDoS** (Regular Expression Denial of Service), donde una cadena de texto maliciosa puede forzar al motor a evaluar combinaciones de forma exponencial, consumiendo el 100% de la CPU y bloqueando el hilo de ejecución. 
+Los motores tradicionales pueden sufrir de **ReDoS** (Regular Expression Denial of Service), donde una cadena de texto maliciosa puede forzar al motor a evaluar combinaciones de forma exponencial, consumiendo el 100% de la CPU y bloqueando el hilo de ejecución.
 
 El motor RE2 de Go garantiza un tiempo de ejecución lineal **O(n)** respecto al tamaño de la entrada. Para lograr esta seguridad matemática, el paquete `regexp` **no soporta** ciertas características avanzadas que requieren *backtracking*, como:
+
 * *Backreferences* (referencias hacia atrás, ej. `\1`).
 * *Lookarounds* (búsquedas anticipadas o retrospectivas, ej. `(?=...)` o `(?<=...)`).
 
@@ -176,8 +178,8 @@ El error más frecuente es compilar la expresión regular dentro de una función
 package main
 
 import (
-	"fmt"
-	"regexp"
+ "fmt"
+ "regexp"
 )
 
 // Compilado una sola vez al inicio del programa.
@@ -186,13 +188,13 @@ import (
 var emailRegex = regexp.MustCompile(`^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`)
 
 func IsValidEmail(email string) bool {
-	// Reutilizamos la instancia compilada. Es seguro para la concurrencia.
-	return emailRegex.MatchString(email)
+ // Reutilizamos la instancia compilada. Es seguro para la concurrencia.
+ return emailRegex.MatchString(email)
 }
 
 func main() {
-	fmt.Println(IsValidEmail("usuario@ejemplo.com")) // true
-	fmt.Println(IsValidEmail("correo_invalido.com")) // false
+ fmt.Println(IsValidEmail("usuario@ejemplo.com")) // true
+ fmt.Println(IsValidEmail("correo_invalido.com")) // false
 }
 ```
 
@@ -206,35 +208,35 @@ Al encerrar partes de la expresión regular entre paréntesis `()`, creamos grup
 package main
 
 import (
-	"fmt"
-	"regexp"
+ "fmt"
+ "regexp"
 )
 
 // Extraemos el prefijo, la versión y el sufijo de una etiqueta de lanzamiento.
 var releaseRegex = regexp.MustCompile(`^(v)?(\d+\.\d+\.\d+)(-.*)?$`)
 
 func ParseReleaseTag(tag string) {
-	matches := releaseRegex.FindStringSubmatch(tag)
-	
-	if len(matches) == 0 {
-		fmt.Println("Etiqueta inválida")
-		return
-	}
+ matches := releaseRegex.FindStringSubmatch(tag)
+ 
+ if len(matches) == 0 {
+  fmt.Println("Etiqueta inválida")
+  return
+ }
 
-	fmt.Printf("Tag completo: %s\n", matches[0])
-	fmt.Printf("Prefijo 'v' : %s\n", matches[1])
-	fmt.Printf("Versión     : %s\n", matches[2])
-	fmt.Printf("Sufijo/RC   : %s\n", matches[3])
+ fmt.Printf("Tag completo: %s\n", matches[0])
+ fmt.Printf("Prefijo 'v' : %s\n", matches[1])
+ fmt.Printf("Versión     : %s\n", matches[2])
+ fmt.Printf("Sufijo/RC   : %s\n", matches[3])
 }
 
 func main() {
-	ParseReleaseTag("v1.18.3-rc.1")
+ ParseReleaseTag("v1.18.3-rc.1")
 }
 ```
 
 ### Regla de oro: ¿Realmente necesitas `regexp`?
 
-Dado que la compilación y ejecución de expresiones regulares tiene un coste, el uso de `regexp` debe ser la última opción cuando se trata de manipulaciones simples. 
+Dado que la compilación y ejecución de expresiones regulares tiene un coste, el uso de `regexp` debe ser la última opción cuando se trata de manipulaciones simples.
 
 Antes de importar `regexp`, pregúntate si el paquete `strings` (que abordaremos en detalle en la sección 14.4) es suficiente. Operaciones como `strings.Contains`, `strings.HasPrefix`, `strings.Split` o `strings.Index` son drásticamente más rápidas y consumen menos memoria que sus equivalentes en `regexp`.
 
@@ -255,40 +257,40 @@ El paquete `reflect` se basa en la interfaz vacía (`any` o `interface{}`). Cuan
 package main
 
 import (
-	"fmt"
-	"reflect"
+ "fmt"
+ "reflect"
 )
 
 type Usuario struct {
-	Nombre string `json:"nombre" validate:"required"`
-	Edad   int    `json:"edad"`
+ Nombre string `json:"nombre" validate:"required"`
+ Edad   int    `json:"edad"`
 }
 
 func InspeccionarEstructura(v any) {
-	tipo := reflect.TypeOf(v)
-	valor := reflect.ValueOf(v)
+ tipo := reflect.TypeOf(v)
+ valor := reflect.ValueOf(v)
 
-	// Validamos que realmente sea un struct antes de iterar
-	if tipo.Kind() != reflect.Struct {
-		fmt.Println("Se esperaba un struct")
-		return
-	}
+ // Validamos que realmente sea un struct antes de iterar
+ if tipo.Kind() != reflect.Struct {
+  fmt.Println("Se esperaba un struct")
+  return
+ }
 
-	for i := 0; i < tipo.NumField(); i++ {
-		campoTipo := tipo.Field(i)
-		campoValor := valor.Field(i)
-		
-		// Leyendo las etiquetas del Struct (Struct Tags)
-		tagJSON := campoTipo.Tag.Get("json")
-		
-		fmt.Printf("Campo: %s | Tipo: %s | Valor: %v | Tag JSON: %s\n", 
-			campoTipo.Name, campoTipo.Type, campoValor.Interface(), tagJSON)
-	}
+ for i := 0; i < tipo.NumField(); i++ {
+  campoTipo := tipo.Field(i)
+  campoValor := valor.Field(i)
+  
+  // Leyendo las etiquetas del Struct (Struct Tags)
+  tagJSON := campoTipo.Tag.Get("json")
+  
+  fmt.Printf("Campo: %s | Tipo: %s | Valor: %v | Tag JSON: %s\n", 
+   campoTipo.Name, campoTipo.Type, campoValor.Interface(), tagJSON)
+ }
 }
 
 func main() {
-	u := Usuario{Nombre: "Ana", Edad: 30}
-	InspeccionarEstructura(u)
+ u := Usuario{Nombre: "Ana", Edad: 30}
+ InspeccionarEstructura(u)
 }
 ```
 
@@ -302,24 +304,24 @@ Para alterar una variable en tiempo de ejecución a través de reflexión, **deb
 package main
 
 import (
-	"fmt"
-	"reflect"
+ "fmt"
+ "reflect"
 )
 
 func main() {
-	x := 10
+ x := 10
 
-	// Esto causaría un panic: reflect.ValueOf(x).SetInt(20)
-	
-	// Forma correcta:
-	v := reflect.ValueOf(&x)     // 1. Pasamos el puntero
-	elemento := v.Elem()         // 2. Obtenemos el valor apuntado
-	
-	if elemento.CanSet() {       // 3. Verificamos si es modificable
-		elemento.SetInt(99)
-	}
+ // Esto causaría un panic: reflect.ValueOf(x).SetInt(20)
+ 
+ // Forma correcta:
+ v := reflect.ValueOf(&x)     // 1. Pasamos el puntero
+ elemento := v.Elem()         // 2. Obtenemos el valor apuntado
+ 
+ if elemento.CanSet() {       // 3. Verificamos si es modificable
+  elemento.SetInt(99)
+ }
 
-	fmt.Println("Nuevo valor de x:", x) // Imprime: 99
+ fmt.Println("Nuevo valor de x:", x) // Imprime: 99
 }
 ```
 
@@ -327,12 +329,12 @@ func main() {
 
 La flexibilidad de `reflect` tiene un precio computacional muy alto. Utilizar la reflexión en rutas de ejecución críticas (hot paths) es un antipatrón de rendimiento en Go por las siguientes razones:
 
-1.  **Escape Analysis y el Garbage Collector:** Al pasar variables a funciones que reciben `any` (como requiere la reflexión), el compilador a menudo no puede garantizar el ciclo de vida de la variable. Esto fuerza a que la variable "escape" del Stack y se asigne en el Heap (Capítulo 44), aumentando drásticamente la presión sobre el Garbage Collector.
-2.  **Pérdida de optimizaciones en tiempo de compilación:** Operaciones como el *inlining* de funciones o la eliminación de código muerto (dead code elimination) no se pueden aplicar a código altamente dinámico.
-3.  **Llamadas dinámicas (Dynamic Dispatch):** Las lecturas y escrituras a través de `reflect.Value` implican múltiples comprobaciones de seguridad internas, saltos de punteros y conversiones de tipos que son órdenes de magnitud más lentas que una asignación de variable directa.
+1. **Escape Analysis y el Garbage Collector:** Al pasar variables a funciones que reciben `any` (como requiere la reflexión), el compilador a menudo no puede garantizar el ciclo de vida de la variable. Esto fuerza a que la variable "escape" del Stack y se asigne en el Heap (Capítulo 44), aumentando drásticamente la presión sobre el Garbage Collector.
+2. **Pérdida de optimizaciones en tiempo de compilación:** Operaciones como el *inlining* de funciones o la eliminación de código muerto (dead code elimination) no se pueden aplicar a código altamente dinámico.
+3. **Llamadas dinámicas (Dynamic Dispatch):** Las lecturas y escrituras a través de `reflect.Value` implican múltiples comprobaciones de seguridad internas, saltos de punteros y conversiones de tipos que son órdenes de magnitud más lentas que una asignación de variable directa.
 
 **Alternativas modernas a la reflexión:**
-Antes de Go 1.18, la reflexión era la única forma de escribir código genérico. Hoy en día, **los Generics** (Parámetros de Tipo) ofrecen una alternativa con seguridad de tipos en tiempo de compilación y sin penalización de rendimiento en tiempo de ejecución. 
+Antes de Go 1.18, la reflexión era la única forma de escribir código genérico. Hoy en día, **los Generics** (Parámetros de Tipo) ofrecen una alternativa con seguridad de tipos en tiempo de compilación y sin penalización de rendimiento en tiempo de ejecución.
 
 Asimismo, para tareas críticas de serialización (como JSON), ecosistemas de alto rendimiento prefieren la **generación de código** (herramientas como `easyjson` o `ffjson`) en lugar de `reflect`, generando el código estático necesario antes de compilar.
 
@@ -356,28 +358,28 @@ package main
 import "fmt"
 
 func main() {
-	texto := "Go🚀" // 'G', 'o' (1 byte cada uno) y '🚀' (4 bytes)
+ texto := "Go🚀" // 'G', 'o' (1 byte cada uno) y '🚀' (4 bytes)
 
-	// 1. Iteración por bytes (bucle clásico)
-	fmt.Println("--- Iteración por bytes ---")
-	for i := 0; i < len(texto); i++ {
-		fmt.Printf("Byte %d: %x\n", i, texto[i])
-	}
-	// Salida: 6 bytes en total (2 para "Go", 4 para el emoji)
+ // 1. Iteración por bytes (bucle clásico)
+ fmt.Println("--- Iteración por bytes ---")
+ for i := 0; i < len(texto); i++ {
+  fmt.Printf("Byte %d: %x\n", i, texto[i])
+ }
+ // Salida: 6 bytes en total (2 para "Go", 4 para el emoji)
 
-	// 2. Iteración por Runes (bucle for-range)
-	fmt.Println("\n--- Iteración por Runes ---")
-	for index, r := range texto {
-		// El for-range en Go decodifica UTF-8 automáticamente
-		fmt.Printf("Índice %d: %c (Tipo: %T)\n", index, r, r)
-	}
-	// Salida: 3 iteraciones válidas, pero el índice salta del 1 al 2 para el emoji.
+ // 2. Iteración por Runes (bucle for-range)
+ fmt.Println("\n--- Iteración por Runes ---")
+ for index, r := range texto {
+  // El for-range en Go decodifica UTF-8 automáticamente
+  fmt.Printf("Índice %d: %c (Tipo: %T)\n", index, r, r)
+ }
+ // Salida: 3 iteraciones válidas, pero el índice salta del 1 al 2 para el emoji.
 }
 ```
 
 ### El paquete `strings` y la eficiencia de `strings.Builder`
 
-Como los strings son inmutables (de solo lectura), cualquier operación que parezca modificarlos (como la concatenación con el operador `+`) en realidad **crea un string completamente nuevo en memoria**. 
+Como los strings son inmutables (de solo lectura), cualquier operación que parezca modificarlos (como la concatenación con el operador `+`) en realidad **crea un string completamente nuevo en memoria**.
 
 Hacer esto dentro de un bucle es un antipatrón grave que dispara el consumo de memoria y la presión sobre el Garbage Collector (Capítulo 43). Para solucionar esto, el paquete `strings` provee `strings.Builder`.
 
@@ -387,35 +389,36 @@ Hacer esto dentro de un bucle es un antipatrón grave que dispara el consumo de 
 package main
 
 import (
-	"fmt"
-	"strings"
+ "fmt"
+ "strings"
 )
 
 func GenerarReporte(datos []string) string {
-	var builder strings.Builder
+ var builder strings.Builder
 
-	// Opcional pero recomendado: pre-asignar capacidad si conocemos el tamaño aproximado
-	// para evitar realojamientos dinámicos del buffer interno.
-	builder.Grow(100) 
+ // Opcional pero recomendado: pre-asignar capacidad si conocemos el tamaño aproximado
+ // para evitar realojamientos dinámicos del buffer interno.
+ builder.Grow(100) 
 
-	builder.WriteString("Inicio del Reporte:\n")
-	for _, linea := range datos {
-		builder.WriteString("- ")
-		builder.WriteString(linea)
-		builder.WriteByte('\n') // Escribir un solo byte es aún más rápido
-	}
+ builder.WriteString("Inicio del Reporte:\n")
+ for _, linea := range datos {
+  builder.WriteString("- ")
+  builder.WriteString(linea)
+  builder.WriteByte('\n') // Escribir un solo byte es aún más rápido
+ }
 
-	// String() devuelve la cadena sin hacer una copia extra en memoria
-	return builder.String() 
+ // String() devuelve la cadena sin hacer una copia extra en memoria
+ return builder.String() 
 }
 
 func main() {
-	lineas := []string{"Módulo A cargado", "Módulo B falló", "Reintento exitoso"}
-	fmt.Println(GenerarReporte(lineas))
+ lineas := []string{"Módulo A cargado", "Módulo B falló", "Reintento exitoso"}
+ fmt.Println(GenerarReporte(lineas))
 }
 ```
 
 Además de la construcción eficiente, el paquete `strings` ofrece utilidades altamente optimizadas en ensamblador para operaciones comunes, las cuales siempre deben preferirse antes que recurrir a expresiones regulares (Capítulo 14.2):
+
 * `strings.Contains(s, substr)`: Búsqueda rápida de subcadenas.
 * `strings.Split(s, sep)` y `strings.Join(elems, sep)`: División y unión.
 * `strings.TrimSpace(s)`: Limpieza de espacios en blanco, tabulaciones y saltos de línea en los extremos.
@@ -431,30 +434,30 @@ Este paquete trabaja exclusivamente con `runes` y provee funciones que evalúan 
 package main
 
 import (
-	"fmt"
-	"unicode"
+ "fmt"
+ "unicode"
 )
 
 func AnalizarPassword(pwd string) bool {
-	var tieneMayuscula, tieneNumero, tieneEspecial bool
+ var tieneMayuscula, tieneNumero, tieneEspecial bool
 
-	for _, r := range pwd {
-		switch {
-		case unicode.IsUpper(r):
-			tieneMayuscula = true
-		case unicode.IsDigit(r):
-			tieneNumero = true
-		case unicode.IsPunct(r) || unicode.IsSymbol(r):
-			tieneEspecial = true
-		}
-	}
+ for _, r := range pwd {
+  switch {
+  case unicode.IsUpper(r):
+   tieneMayuscula = true
+  case unicode.IsDigit(r):
+   tieneNumero = true
+  case unicode.IsPunct(r) || unicode.IsSymbol(r):
+   tieneEspecial = true
+  }
+ }
 
-	return tieneMayuscula && tieneNumero && tieneEspecial
+ return tieneMayuscula && tieneNumero && tieneEspecial
 }
 
 func main() {
-	fmt.Println("Segura:", AnalizarPassword("S3cur3!P@ss")) // true
-	fmt.Println("Segura:", AnalizarPassword("password123")) // false
+ fmt.Println("Segura:", AnalizarPassword("S3cur3!P@ss")) // true
+ fmt.Println("Segura:", AnalizarPassword("password123")) // false
 }
 ```
 

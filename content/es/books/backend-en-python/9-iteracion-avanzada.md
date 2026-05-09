@@ -2,7 +2,7 @@ Dominar Python a nivel senior exige dejar de ver a las colecciones como simples 
 
 ## 9.1 El protocolo de iteración: `__iter__` y `__next__`
 
-En el Capítulo 2 exploramos cómo utilizar bucles `for` para recorrer estructuras de datos, y en el Capítulo 3 dominamos el uso de colecciones como listas, diccionarios y sets. Sin embargo, como desarrollador senior, no basta con saber *usar* un bucle; necesitas entender exactamente **qué ocurre a nivel de la máquina virtual de Python (CPython)** cuando iteras sobre un objeto. 
+En el Capítulo 2 exploramos cómo utilizar bucles `for` para recorrer estructuras de datos, y en el Capítulo 3 dominamos el uso de colecciones como listas, diccionarios y sets. Sin embargo, como desarrollador senior, no basta con saber *usar* un bucle; necesitas entender exactamente **qué ocurre a nivel de la máquina virtual de Python (CPython)** cuando iteras sobre un objeto.
 
 Ese mecanismo subyacente es el **Protocolo de Iteración**.
 
@@ -14,8 +14,8 @@ Para entender la diferencia, veamos las responsabilidades de cada uno y los mét
 
 * **Iterable:** Es cualquier objeto capaz de devolver un iterador. Representa una colección de elementos (como una lista o un diccionario). A nivel de código, un objeto es iterable si implementa el método `__iter__()`. Su única responsabilidad es inicializar y devolver un objeto iterador.
 * **Iterador (Iterator):** Es el objeto que realiza el trabajo pesado de mantener el estado de la iteración. Sabe cuál es el elemento actual y cómo calcular el siguiente. Un iterador debe implementar dos métodos:
-    1.  `__next__()`: Devuelve el siguiente elemento de la secuencia. Si no hay más elementos, debe lanzar la excepción `StopIteration` (vista en el Capítulo 6).
-    2.  `__iter__()`: Debe devolver el propio iterador (`return self`). Esto garantiza que todo iterador sea a su vez un iterable.
+    1. `__next__()`: Devuelve el siguiente elemento de la secuencia. Si no hay más elementos, debe lanzar la excepción `StopIteration` (vista en el Capítulo 6).
+    2. `__iter__()`: Debe devolver el propio iterador (`return self`). Esto garantiza que todo iterador sea a su vez un iterable.
 
 A continuación, un diagrama conceptual en texto plano de este flujo:
 
@@ -37,7 +37,7 @@ A continuación, un diagrama conceptual en texto plano de este flujo:
 
 ### Desarmando el Bucle `for`
 
-Cuando escribes un bucle `for` en Python, el lenguaje oculta la complejidad del protocolo. Veamos qué hace realmente el intérprete. 
+Cuando escribes un bucle `for` en Python, el lenguaje oculta la complejidad del protocolo. Veamos qué hace realmente el intérprete.
 
 Supongamos que tienes la siguiente lista:
 
@@ -112,6 +112,7 @@ for numero in progresion:
 ```
 
 **Salida:**
+
 ```text
 2
 6
@@ -184,6 +185,7 @@ for numero in generador:
 ```
 
 **Salida:**
+
 ```text
 2
 6
@@ -192,9 +194,10 @@ for numero in generador:
 ```
 
 Observa la drástica reducción de complejidad:
-1.  **Cero métodos mágicos:** No hay `__iter__` ni `__next__`.
-2.  **Estado implícito:** Las variables locales (`valor_actual`, `razon`, `limite`) mantienen su valor automáticamente entre cada iteración. No necesitamos prefijarlas con `self.`.
-3.  **Manejo automático de excepciones:** Cuando la condición del `while` deja de cumplirse, la función simplemente termina de ejecutarse. Python se encarga de interceptar este final y lanzar silenciosamente el `StopIteration` que requiere el bucle `for`.
+
+1. **Cero métodos mágicos:** No hay `__iter__` ni `__next__`.
+2. **Estado implícito:** Las variables locales (`valor_actual`, `razon`, `limite`) mantienen su valor automáticamente entre cada iteración. No necesitamos prefijarlas con `self.`.
+3. **Manejo automático de excepciones:** Cuando la condición del `while` deja de cumplirse, la función simplemente termina de ejecutarse. Python se encarga de interceptar este final y lanzar silenciosamente el `StopIteration` que requiere el bucle `for`.
 
 ### Delegación con `yield from`
 
@@ -232,7 +235,7 @@ En esta sección hemos visto cómo simplificar la creación de iteradores median
 
 ## 9.3 Expresiones generadoras y evaluación perezosa (Lazy evaluation)
 
-En el Capítulo 3 exploramos el poder de las comprensiones de listas (list comprehensions) para crear colecciones de manera concisa y elegante. En la sección anterior (9.2), descubrimos cómo las funciones generadoras con `yield` nos permiten crear iteradores eficientes que mantienen su estado. 
+En el Capítulo 3 exploramos el poder de las comprensiones de listas (list comprehensions) para crear colecciones de manera concisa y elegante. En la sección anterior (9.2), descubrimos cómo las funciones generadoras con `yield` nos permiten crear iteradores eficientes que mantienen su estado.
 
 Las **expresiones generadoras** son el punto exacto donde estos dos mundos colisionan. Nos ofrecen la sintaxis compacta de las comprensiones, pero impulsadas por el motor de eficiencia de los generadores.
 
@@ -240,7 +243,7 @@ Para entender por qué esto es crucial en el código de nivel de producción, pr
 
 ### Evaluación Ansiosa vs. Evaluación Perezosa
 
-Hasta ahora, la mayoría de las estructuras de datos que hemos utilizado operan bajo un modelo de **Evaluación Ansiosa (Eager Evaluation)**. 
+Hasta ahora, la mayoría de las estructuras de datos que hemos utilizado operan bajo un modelo de **Evaluación Ansiosa (Eager Evaluation)**.
 
 Cuando creas una lista, ya sea manualmente o mediante una comprensión, Python evalúa y calcula *cada uno de los elementos* en ese mismo instante y los almacena todos juntos en la memoria RAM. Si la lista tiene un millón de elementos, necesitas suficiente memoria física para alojar ese millón de elementos antes de que el código pase a la siguiente línea.
 
@@ -288,6 +291,7 @@ print(f"Memoria consumida por el generador: {sys.getsizeof(cuadrados_gen):,} byt
 ```
 
 **Salida aproximada (CPython de 64 bits):**
+
 ```text
 Tipo Lista: <class 'list'>
 Tipo Generador: <class 'generator'>
@@ -303,13 +307,13 @@ La lista requiere más de 8 Megabytes solo para almacenar las referencias. El ge
 Como desarrollador Senior, debes saber que no hay una "bala de plata"; la optimización siempre requiere equilibrar factores (trade-offs):
 
 * **Usa Listas/Comprensiones cuando:**
-    * Necesitas acceder a los elementos por índice (ej. `mi_lista[50]`). Los generadores no soportan indexación porque no conocen el elemento 50 hasta que no hayan calculado los 49 anteriores.
-    * Necesitas recorrer los datos varias veces. Un generador **se agota**; una vez que llegas al final (lanza `StopIteration`), no puedes volver a recorrerlo a menos que lo instancies de nuevo.
-    * La colección es pequeña y la velocidad de ejecución en bruto es la máxima prioridad (las listas son ligeramente más rápidas de iterar ya que todos los datos ya están en memoria, evitando el sobrecosto computacional de calcular bajo demanda).
+  * Necesitas acceder a los elementos por índice (ej. `mi_lista[50]`). Los generadores no soportan indexación porque no conocen el elemento 50 hasta que no hayan calculado los 49 anteriores.
+  * Necesitas recorrer los datos varias veces. Un generador **se agota**; una vez que llegas al final (lanza `StopIteration`), no puedes volver a recorrerlo a menos que lo instancies de nuevo.
+  * La colección es pequeña y la velocidad de ejecución en bruto es la máxima prioridad (las listas son ligeramente más rápidas de iterar ya que todos los datos ya están en memoria, evitando el sobrecosto computacional de calcular bajo demanda).
 * **Usa Generadores (Funciones o Expresiones) cuando:**
-    * Estás procesando flujos de datos masivos (gigabytes de logs, consultas gigantes a bases de datos).
-    * Trabajas con secuencias teóricamente infinitas (ej. lectura de sensores en tiempo real o un flujo de red).
-    * Solo necesitas recorrer los datos una vez, de principio a fin.
+  * Estás procesando flujos de datos masivos (gigabytes de logs, consultas gigantes a bases de datos).
+  * Trabajas con secuencias teóricamente infinitas (ej. lectura de sensores en tiempo real o un flujo de red).
+  * Solo necesitas recorrer los datos una vez, de principio a fin.
 
 ### Construyendo Pipelines (Cadenas de Generadores)
 
@@ -347,7 +351,7 @@ Esta técnica de enrutamiento perezoso nos permite escribir código de procesami
 
 En las secciones anteriores hemos construido las bases de la iteración: comprendimos el protocolo de bajo nivel (9.1), aprendimos a crear nuestros propios iteradores con `yield` (9.2) y dominamos el arte de procesar flujos masivos de datos sin agotar la memoria usando la evaluación perezosa (9.3).
 
-Llegados a este punto, podrías sentir la tentación de escribir funciones generadoras para cada problema de procesamiento de datos que encuentres. Sin embargo, como ingeniero, uno de tus principios rectores debe ser: **no reinventes la rueda**. 
+Llegados a este punto, podrías sentir la tentación de escribir funciones generadoras para cada problema de procesamiento de datos que encuentres. Sin embargo, como ingeniero, uno de tus principios rectores debe ser: **no reinventes la rueda**.
 
 Para la manipulación avanzada de iteradores, Python incluye en su biblioteca estándar el módulo `itertools`. Este módulo es un conjunto de herramientas escrito casi en su totalidad en **C puro**, lo que significa que su ejecución es órdenes de magnitud más rápida y eficiente en memoria que cualquier generador equivalente escrito en Python nativo.
 
@@ -375,7 +379,7 @@ print(list(tareas_numeradas))
 
 Estas son las herramientas del día a día para manipular flujos de datos y construir *pipelines* (tuberías).
 
-* **`itertools.chain(*iterables)`:** Permite "aplanar" múltiples iterables y tratarlos como uno solo continuo, **sin concatenarlos en memoria**. 
+* **`itertools.chain(*iterables)`:** Permite "aplanar" múltiples iterables y tratarlos como uno solo continuo, **sin concatenarlos en memoria**.
 
     ```text
     Concepto visual de chain():
@@ -455,8 +459,8 @@ for os, db, env in product(sistemas_operativos, bases_de_datos, entornos):
 
 ### Resumen Arquitectónico del Capítulo 9
 
-Al dominar `__iter__`, `yield`, las expresiones generadoras y el módulo `itertools`, has transicionado de simplemente "recorrer colecciones" a construir verdaderos **Pipelines de Procesamiento de Datos**. 
+Al dominar `__iter__`, `yield`, las expresiones generadoras y el módulo `itertools`, has transicionado de simplemente "recorrer colecciones" a construir verdaderos **Pipelines de Procesamiento de Datos**.
 
-En sistemas de backend robustos, esta arquitectura te permitirá procesar gigabytes de información en servidores con apenas unos cientos de megabytes de RAM, ingiriendo datos, transformándolos perezosamente en memoria y escupiéndolos a su destino final sin cuellos de botella. 
+En sistemas de backend robustos, esta arquitectura te permitirá procesar gigabytes de información en servidores con apenas unos cientos de megabytes de RAM, ingiriendo datos, transformándolos perezosamente en memoria y escupiéndolos a su destino final sin cuellos de botella.
 
 Este enfoque funcional e inmutable de la iteración prepara el terreno perfecto para el Capítulo 10, donde abstraeremos aún más el comportamiento de nuestro código a través de la Metaprogramación y los Decoradores.

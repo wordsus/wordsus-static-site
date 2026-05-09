@@ -4,7 +4,7 @@ This chapter introduces Rust's core modeling abstractions. We will explore **Str
 
 ## 4.1 Defining and Instantiating Structs
 
-Structures, or *structs*, are the primary way to create custom data types in Rust. They allow you to name and package multiple related values into a single, cohesive unit. 
+Structures, or *structs*, are the primary way to create custom data types in Rust. They allow you to name and package multiple related values into a single, cohesive unit.
 
 While you saw in Chapter 2 that tuples can also group multiple values of different types, tuples rely entirely on their ordering. If you have a tuple representing a user—`(String, String, u64)`—you have to remember which `String` is the email and which is the username. Structs solve this by giving each piece of data a clear, descriptive name.
 
@@ -34,7 +34,7 @@ let user1 = User {
 };
 ```
 
-To access a specific value from a struct, use dot notation (e.g., `user1.email`). 
+To access a specific value from a struct, use dot notation (e.g., `user1.email`).
 
 If you want to change a value, the *entire* struct instance must be mutable. Rust does not allow you to mark only specific fields as mutable; mutability is a property of the variable binding, not the struct's internal layout.
 
@@ -79,7 +79,7 @@ let user2 = User {
 
 **Warning: Ownership and the Update Syntax**
 
-It is critical to remember the ownership rules from Chapter 3 when using struct update syntax. The `..user1` syntax works like an assignment (`=`). Because `username` is a `String` (which manages heap data and does not implement the `Copy` trait), the `username` field is **moved** from `user1` to `user2`. 
+It is critical to remember the ownership rules from Chapter 3 when using struct update syntax. The `..user1` syntax works like an assignment (`=`). Because `username` is a `String` (which manages heap data and does not implement the `Copy` trait), the `username` field is **moved** from `user1` to `user2`.
 
 ```text
 [ user1: User ]
@@ -91,11 +91,11 @@ It is critical to remember the ownership rules from Chapter 3 when using struct 
                                                  └── sign_in_count: 1
 ```
 
-After creating `user2`, you can no longer use `user1` as a whole, nor can you access `user1.username`. However, you *can* still access `user1.active` and `user1.sign_in_count` because those types implement `Copy`. 
+After creating `user2`, you can no longer use `user1` as a whole, nor can you access `user1.username`. However, you *can* still access `user1.active` and `user1.sign_in_count` because those types implement `Copy`.
 
 ### Tuple Structs
 
-Rust also supports **tuple structs**, which look like a hybrid between a tuple and a struct. Tuple structs have an overarching name, but their fields do not have names—only types. 
+Rust also supports **tuple structs**, which look like a hybrid between a tuple and a struct. Tuple structs have an overarching name, but their fields do not have names—only types.
 
 Tuple structs are highly effective for the **newtype pattern**, where you want to create a distinct type to enforce compile-time safety but don't need the verbosity of named fields.
 
@@ -178,7 +178,7 @@ There are three primary ways a method can receive `self`:
 
 If you come from languages like C or C++, you might be used to using `->` for calling methods on pointers and `.` for calling methods on values directly. Rust simplifies this with a feature called **automatic referencing and dereferencing**.
 
-When you call a method like `object.something()`, Rust automatically adds `&`, `&mut`, or `*` to `object` so that it matches the method's signature. 
+When you call a method like `object.something()`, Rust automatically adds `&`, `&mut`, or `*` to `object` so that it matches the method's signature.
 
 The following two lines of code are completely equivalent in Rust:
 
@@ -194,7 +194,7 @@ Rust evaluates the type of `rect1`, looks at the signature of `area` (which requ
 
 ### Associated Functions
 
-Not all functions defined within an `impl` block need to take `self` as a parameter. Functions that *do not* take `self` are called **associated functions** because they are associated with the struct's namespace, but they do not operate on a specific instance. 
+Not all functions defined within an `impl` block need to take `self` as a parameter. Functions that *do not* take `self` are called **associated functions** because they are associated with the struct's namespace, but they do not operate on a specific instance.
 
 In other languages, these are often called *static methods*. Associated functions are frequently used as constructors to return a new instance of the struct. By convention in Rust, the most common name for a constructor is `new`.
 
@@ -224,7 +224,7 @@ let my_square = Rectangle::square(15);
 
 ### Multiple `impl` Blocks
 
-Rust allows you to spread the methods and associated functions for a single type across multiple `impl` blocks. 
+Rust allows you to spread the methods and associated functions for a single type across multiple `impl` blocks.
 
 ```rust
 impl Rectangle {
@@ -244,7 +244,7 @@ While there's no reason to separate these methods into two blocks in this simple
 
 ## 4.3 Enums and the Ubiquitous `Option<T>` Type
 
-Where structs give you a way of grouping related fields together (an "AND" relationship), **enumerations**, or *enums*, allow you to define a type by enumerating its possible variants (an "OR" relationship). 
+Where structs give you a way of grouping related fields together (an "AND" relationship), **enumerations**, or *enums*, allow you to define a type by enumerating its possible variants (an "OR" relationship).
 
 Whenever you have a value that can only be one of a specific set of possibilities, an enum is the correct tool. For example, an IP address can be either a version 4 address *or* a version 6 address, but never both at the same time.
 
@@ -266,7 +266,7 @@ Notice that the variants of the enum are namespaced under its identifier, and we
 
 ### Attaching Data to Variants
 
-In many languages, enums are essentially just named integer constants. Rust’s enums are significantly more powerful because you can attach data directly to each variant. 
+In many languages, enums are essentially just named integer constants. Rust’s enums are significantly more powerful because you can attach data directly to each variant.
 
 If we wanted to store the actual IP address data alongside its version using just structs and our basic enum, it would look like this:
 
@@ -296,7 +296,7 @@ let home = IpAddr::V4(127, 0, 0, 1);
 let loopback = IpAddr::V6(String::from("::1"));
 ```
 
-This design beautifully captures the domain logic. A V4 address fundamentally consists of four octets (`u8`), while we might want to represent a V6 address as a `String`. 
+This design beautifully captures the domain logic. A V4 address fundamentally consists of four octets (`u8`), while we might want to represent a V6 address as a `String`.
 
 To visualize the structural difference between structs and enums:
 
@@ -360,7 +360,7 @@ let absent_number: Option<i32> = None;
 
 ### Why `Option<T>` is Better Than Null
 
-The genius of `Option<T>` lies in the fact that `Option<i8>` and `i8` are **different types**. 
+The genius of `Option<T>` lies in the fact that `Option<i8>` and `i8` are **different types**.
 
 In a language like C, if you have a variable of type integer, you can never be 100% sure if it holds a valid integer or a null reference without checking it. In Rust, if you have an `i8`, the compiler guarantees it has a valid `i8` value. You can use it confidently.
 
@@ -456,6 +456,7 @@ let none = plus_one(None);
 ```
 
 When `plus_one(five)` executes:
+
 1. `x` is `Some(5)`.
 2. Does `Some(5)` match `None`? No.
 3. Does `Some(5)` match `Some(i)`? Yes. The variable `i` binds to the value `5`.
@@ -545,7 +546,7 @@ To satisfy the `match` expression's requirement for exhaustiveness, we are force
 
 ### The `if let` Syntax
 
-The `if let` syntax allows you to combine `if` and `let` into a less verbose way to handle values that match one pattern while ignoring the rest. 
+The `if let` syntax allows you to combine `if` and `let` into a less verbose way to handle values that match one pattern while ignoring the rest.
 
 Here is the exact same logic written using `if let`:
 
@@ -557,7 +558,7 @@ if let Some(max) = config_max {
 }
 ```
 
-The syntax reads as: "If the value `config_max` lets itself be destructured into the pattern `Some(max)`, execute this block." 
+The syntax reads as: "If the value `config_max` lets itself be destructured into the pattern `Some(max)`, execute this block."
 
 Behind the scenes, `if let` is exactly equivalent to a `match` with a single arm and a `_ => ()` catch-all. You lose the compile-time exhaustiveness check, but you gain brevity. It is a deliberate trade-off you make based on the specific needs of your logic.
 
@@ -620,7 +621,7 @@ loop {
 
 ### Choosing the Right Tool
 
-Understanding when to use `match` versus `if let` or `while let` is an important part of mastering idiomatic Rust. 
+Understanding when to use `match` versus `if let` or `while let` is an important part of mastering idiomatic Rust.
 
 | Feature | `match` | `if let` / `while let` |
 | :--- | :--- | :--- |

@@ -1,4 +1,4 @@
-So far, we have built safe runtime logic using functions and traits. Yet, standard abstractions sometimes leave us drowning in repetitive boilerplate. Enter metaprogramming. 
+So far, we have built safe runtime logic using functions and traits. Yet, standard abstractions sometimes leave us drowning in repetitive boilerplate. Enter metaprogramming.
 
 In this chapter, we transition from writing code that executes to writing code that *writes* code. We will demystify Rust's macro system, starting with declarative `macro_rules!` for syntax matching, before unlocking the true potential of procedural macros. By mastering custom derives, attribute macros, and the `syn` and `quote` crates, you will learn to extend the Rust compiler itself—automating tedious implementations and building bespoke, zero-cost abstractions.
 
@@ -12,7 +12,7 @@ In short, functions are code that your program executes, whereas macros are code
 
 The most critical distinction lies in *when* they are evaluated.
 
-When you define a function, the Rust compiler parses the logic, checks types, validates borrowing, and translates it into machine code. When the program runs, the CPU jumps to that specific memory address, executes the instructions, and returns a value. 
+When you define a function, the Rust compiler parses the logic, checks types, validates borrowing, and translates it into machine code. When the program runs, the CPU jumps to that specific memory address, executes the instructions, and returns a value.
 
 Macros operate much earlier in the compilation pipeline. When the compiler encounters a macro invocation, it pauses its standard semantic analysis and expands the macro. The macro takes the raw source code tokens you provided, applies its internal rules, and spits out new Rust code in its place. Only *after* this expansion is complete does the compiler proceed to type-check and borrow-check the generated code.
 
@@ -68,9 +68,10 @@ Because macros expand directly at the call site, the code they generate is injec
 
 ### When to Choose Which?
 
-As a rule of thumb, **default to functions**. Functions are easier to read, easier to test, and result in faster compile times and clearer compiler error messages. 
+As a rule of thumb, **default to functions**. Functions are easier to read, easier to test, and result in faster compile times and clearer compiler error messages.
 
 You should reach for macros only when functions fall short:
+
 * When you need a variable number of arguments (like `println!`).
 * When you need to implement a trait for dozens of different types without writing redundant code (often done via procedural macros like `#[derive(Debug)]` or `#[derive(Serialize)]`).
 * When you need to invent a domain-specific language (DSL) that doesn't fit neatly into standard Rust syntax (like the `html!` macro in the Yew framework mentioned in Chapter 25).
@@ -83,7 +84,7 @@ Declarative macros are the most common and accessible way to write macros in Rus
 
 ### The Anatomy of `macro_rules!`
 
-A declarative macro consists of a name and a set of rules. Each rule has a **matcher** (the pattern of code to look for) and a **transcriber** (the code to generate if the pattern matches). 
+A declarative macro consists of a name and a set of rules. Each rule has a **matcher** (the pattern of code to look for) and a **transcriber** (the code to generate if the pattern matches).
 
 Here is the fundamental skeleton:
 
@@ -117,9 +118,10 @@ fn main() {
 
 ### Metavariables and Fragment Specifiers
 
-In the example above, `$x:expr` is a **metavariable**. It captures a fragment of Rust syntax so it can be reused in the transcriber. 
+In the example above, `$x:expr` is a **metavariable**. It captures a fragment of Rust syntax so it can be reused in the transcriber.
+
 * The `$` indicates that `x` is a macro variable, not a standard Rust variable.
-* The `:expr` is a **fragment specifier** (often called a designator), which tells the compiler what *kind* of syntax to accept. 
+* The `:expr` is a **fragment specifier** (often called a designator), which tells the compiler what *kind* of syntax to accept.
 
 Because macros parse tokens before full semantic analysis, you must explicitly tell the macro what to look for. Here are the most commonly used fragment specifiers:
 
@@ -183,7 +185,7 @@ temp_map.insert("alice", 101);          temp_map.insert("bob", 102);
 
 ### Advanced Pattern Matching: Multiple Arms
 
-Just as a single function can only have one signature, you often find yourself needing overloaded behaviors. Declarative macros handle this elegantly through multiple arms. 
+Just as a single function can only have one signature, you often find yourself needing overloaded behaviors. Declarative macros handle this elegantly through multiple arms.
 
 Consider a macro that generates a new function. We might want the option to provide a visibility modifier (`pub`), or omit it to default to private.
 
@@ -234,9 +236,10 @@ proc-macro = true
 ```
 
 Furthermore, nearly all procedural macros rely on a trinity of crates to function effectively:
-1.  `proc_macro`: Provided by the compiler; handles the core `TokenStream` types.
-2.  `syn`: Parses a stream of tokens into a navigable Abstract Syntax Tree (AST).
-3.  `quote`: Translates the AST and your new logic back into a token stream.
+
+1. `proc_macro`: Provided by the compiler; handles the core `TokenStream` types.
+2. `syn`: Parses a stream of tokens into a navigable Abstract Syntax Tree (AST).
+3. `quote`: Translates the AST and your new logic back into a token stream.
 
 *(Note: We will explore the deep mechanics of the AST and the `syn`/`quote` ecosystem in Section 13.5. For now, we will focus on the structure of the macro itself.)*
 
@@ -271,7 +274,7 @@ pub trait Describe {
 }
 ```
 
-We want to allow users to write `#[derive(Describe)]` above any struct or enum. 
+We want to allow users to write `#[derive(Describe)]` above any struct or enum.
 
 In our dedicated procedural macro crate (e.g., `describe_macro`), we write the following function:
 
@@ -308,10 +311,10 @@ pub fn describe_derive(input: TokenStream) -> TokenStream {
 
 ### Step-by-Step Breakdown
 
-1.  **The Signature:** The function *must* take exactly one `proc_macro::TokenStream` as an argument and return a `proc_macro::TokenStream`. The `#[proc_macro_derive(TraitName)]` attribute defines the name users will put in their `derive` list.
-2.  **Parsing (`syn`):** The `parse_macro_input!` macro takes the raw tokens and constructs a `DeriveInput` struct. This struct cleanly separates the type's visibility, name, generics, and its internal data (fields or variants), saving us from manually traversing raw syntax tokens.
-3.  **Generation (`quote!`):** The `quote!` macro acts like a templating engine for Rust code. Inside the `quote! { ... }` block, you write standard Rust code. However, you can inject variables from your procedural macro's scope using the `#` symbol (e.g., `#name`). 
-4.  **Conversion:** The output of `quote!` is a `proc_macro2::TokenStream`. We convert it back to the compiler's expected `proc_macro::TokenStream` using `.into()` or `TokenStream::from()`.
+1. **The Signature:** The function *must* take exactly one `proc_macro::TokenStream` as an argument and return a `proc_macro::TokenStream`. The `#[proc_macro_derive(TraitName)]` attribute defines the name users will put in their `derive` list.
+2. **Parsing (`syn`):** The `parse_macro_input!` macro takes the raw tokens and constructs a `DeriveInput` struct. This struct cleanly separates the type's visibility, name, generics, and its internal data (fields or variants), saving us from manually traversing raw syntax tokens.
+3. **Generation (`quote!`):** The `quote!` macro acts like a templating engine for Rust code. Inside the `quote! { ... }` block, you write standard Rust code. However, you can inject variables from your procedural macro's scope using the `#` symbol (e.g., `#name`).
+4. **Conversion:** The output of `quote!` is a `proc_macro2::TokenStream`. We convert it back to the compiler's expected `proc_macro::TokenStream` using `.into()` or `TokenStream::from()`.
 
 ### Using the Custom Derive
 
@@ -343,7 +346,7 @@ This pattern is the exact mechanism powering foundational ecosystem crates like 
 
 ## 13.4 Attribute-like and Function-like Procedural Macros
 
-In Section 13.3, we explored custom `#[derive]` macros, which are indispensable for generating boilerplate trait implementations. However, `#[derive]` macros share a strict limitation: they can only *append* new code to the module. They are completely incapable of modifying or replacing the struct or enum they are attached to. 
+In Section 13.3, we explored custom `#[derive]` macros, which are indispensable for generating boilerplate trait implementations. However, `#[derive]` macros share a strict limitation: they can only *append* new code to the module. They are completely incapable of modifying or replacing the struct or enum they are attached to.
 
 When you need to mutate the original item, intercept a function definition, or create custom syntax that does not fit into standard Rust patterns, you must reach for the other two types of procedural macros: **attribute-like** and **function-like**.
 
@@ -356,8 +359,9 @@ The defining characteristic of an attribute-like macro is that it **consumes and
 #### The Mechanics
 
 Unlike a `#[derive]` macro, an attribute-like macro takes **two** `TokenStream` arguments:
-1.  **`attr`**: The tokens representing the arguments passed *inside* the attribute's parentheses.
-2.  **`item`**: The tokens representing the entire Rust item the attribute is attached to (a function, a struct, an `impl` block, etc.).
+
+1. **`attr`**: The tokens representing the arguments passed *inside* the attribute's parentheses.
+2. **`item`**: The tokens representing the entire Rust item the attribute is attached to (a function, a struct, an `impl` block, etc.).
 
 #### Real-World Example: Web Framework Routing
 
@@ -427,10 +431,11 @@ pub fn sql(input: TokenStream) -> TokenStream {
 
 #### Real-World Examples
 
-Function-like macros shine when dealing with Domain Specific Languages (DSLs) or external data constraints. 
+Function-like macros shine when dealing with Domain Specific Languages (DSLs) or external data constraints.
 
 * **Database Query Validation:** The `sqlx` crate features a `query!` macro. At compile time, this macro takes your raw SQL string, connects to your local development database, prepares the statement, and verifies that your SQL syntax is valid and that the types align with your Rust structs. If you have a typo in your SQL, your Rust code fails to compile.
 * **HTML Templating:** The `yew` framework (Chapter 25) uses an `html!` macro allowing you to write React-style JSX directly in Rust.
+
     ```rust
     let name = "Alice";
     let component = html! {
@@ -439,6 +444,7 @@ Function-like macros shine when dealing with Domain Specific Languages (DSLs) or
         </div>
     };
     ```
+
     Because `macro_rules!` cannot easily parse standard HTML tags, a procedural function-like macro is required to traverse those specific tokens and translate them into Rust DOM-building function calls.
 
 ### Summary of Procedural Macro Types
@@ -457,22 +463,23 @@ To build robust implementations of any of these three types, you cannot rely on 
 
 ## 13.5 Abstract Syntax Trees and the `syn` / `quote` Crates
 
-In the previous sections, we saw how procedural macros consume and produce a `TokenStream`. However, a raw `TokenStream` is incredibly low-level. It is merely a flat sequence of lexical tokens: identifiers, punctuation, and literals. 
+In the previous sections, we saw how procedural macros consume and produce a `TokenStream`. However, a raw `TokenStream` is incredibly low-level. It is merely a flat sequence of lexical tokens: identifiers, punctuation, and literals.
 
-If you want to verify that a user provided a struct, extract the names of its fields, and check their types, doing so by manually iterating over a flat list of tokens is a nightmare of state management and edge cases. To build robust procedural macros, we need a way to parse that flat stream into a structured, queryable format: an **Abstract Syntax Tree (AST)**. 
+If you want to verify that a user provided a struct, extract the names of its fields, and check their types, doing so by manually iterating over a flat list of tokens is a nightmare of state management and edge cases. To build robust procedural macros, we need a way to parse that flat stream into a structured, queryable format: an **Abstract Syntax Tree (AST)**.
 
 ### Understanding the Abstract Syntax Tree
 
 An AST is a tree representation of the syntactic structure of your source code. Every node in the tree denotes a construct occurring in the code.
 
 Consider a simple struct:
+
 ```rust
 struct User {
     id: u64,
 }
 ```
 
-As a raw `TokenStream`, this is just five flat tokens: `[Ident("struct"), Ident("User"), Group(Brace, [Ident("id"), Punct(":"), Ident("u64")])]`. 
+As a raw `TokenStream`, this is just five flat tokens: `[Ident("struct"), Ident("User"), Group(Brace, [Ident("id"), Punct(":"), Ident("u64")])]`.
 
 Parsed into an AST, it becomes a heavily typed, nested hierarchy:
 
@@ -497,6 +504,7 @@ This tree is strongly typed. Instead of guessing if the next token is a colon or
 To work with ASTs in Rust, the ecosystem has standardized around three crates. They are so ubiquitous that they are considered the de facto standard library for macro development.
 
 #### 1. `syn`: The Parser
+
 The `syn` crate is responsible for parsing a raw `TokenStream` into the AST we described above. It provides Rust structs and enums for every conceivable piece of Rust syntax (e.g., `ItemFn` for functions, `Expr` for expressions, `Type` for types).
 
 The most common entry point for a `#[derive]` macro is parsing the input into a `syn::DeriveInput`:
@@ -516,6 +524,7 @@ pub fn my_derive(input: TokenStream) -> TokenStream {
 ```
 
 #### 2. `quote`: The Generator
+
 Once you have inspected the AST and decided what new code to generate, you need to turn your logic back into a `TokenStream`. You could theoretically build tokens one by one, but it is extremely tedious.
 
 The `quote` crate provides the `quote!` macro, which acts as a templating engine for Rust code. It allows you to write standard Rust syntax and inject variables from your macro's execution context using the `#` symbol.
@@ -547,7 +556,8 @@ let print_statements = quote! {
 ```
 
 #### 3. `proc-macro2`: The Bridge
-You will often see `proc_macro2::TokenStream` in macro codebases. The compiler's built-in `proc_macro` crate can *only* be used inside a crate marked as a procedural macro, meaning you cannot unit test macro logic in a standard test binary. 
+
+You will often see `proc_macro2::TokenStream` in macro codebases. The compiler's built-in `proc_macro` crate can *only* be used inside a crate marked as a procedural macro, meaning you cannot unit test macro logic in a standard test binary.
 
 `proc-macro2` is a wrapper that behaves identically to `proc_macro`, but it can be used anywhere. `syn` and `quote` operate entirely on `proc-macro2` types, allowing you to write testable macro logic. You only convert back to the compiler's `proc_macro::TokenStream` at the very last step.
 

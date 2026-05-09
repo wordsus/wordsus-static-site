@@ -456,4 +456,3 @@ awk '{print $1}' /var/log/nginx/access.log | sort | uniq -c | sort -nr | head -n
 ```
 
 Con estas herramientas en tu cinturón, has pasado de simplemente "mirar" logs a analizarlos como un científico de datos desde la propia terminal, sin necesidad de exportar nada a Excel.
-

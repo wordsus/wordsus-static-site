@@ -4,7 +4,7 @@ En Rust, la seguridad de memoria no es un concepto abstracto, sino una garantía
 
 Si has llegado hasta aquí, ya conoces las reglas de *Ownership* y *Borrowing* que vimos en el Capítulo 4. Sabes que puedes tener múltiples referencias inmutables o una sola referencia mutable, pero nunca ambas al mismo tiempo. La pregunta natural llegados a este punto es: ¿cómo hace exactamente el compilador de Rust para garantizar que estas reglas se cumplan de manera implacable y sin impacto en el rendimiento de ejecución?
 
-La respuesta es el **Borrow Checker** (el comprobador de préstamos). 
+La respuesta es el **Borrow Checker** (el comprobador de préstamos).
 
 A menudo descrito por los recién llegados a Rust como un "enemigo" frustrante que rechaza compilar el código, la realidad es que el Borrow Checker es tu mejor aliado. Piensa en él como un compañero de programación en pareja, increíblemente meticuloso, cuyo único trabajo es analizar estáticamente tu código durante la compilación para evitar vulnerabilidades de memoria, data races y comportamientos indefinidos.
 
@@ -27,7 +27,7 @@ fn main() {
 }
 ```
 
-Si intentas compilar esto, el Borrow Checker emitirá un error `borrowed value does not live long enough` (el valor prestado no vive lo suficiente). 
+Si intentas compilar esto, el Borrow Checker emitirá un error `borrowed value does not live long enough` (el valor prestado no vive lo suficiente).
 
 ### Cómo "piensa" el Borrow Checker
 
@@ -46,7 +46,7 @@ fn main() {
 }                         // ---------+
 ```
 
-El Borrow Checker aplica una regla matemática estricta: **el lifetime del dato prestado (`'b`) debe ser mayor o igual al lifetime de la referencia que lo apunta (`'a`)**. 
+El Borrow Checker aplica una regla matemática estricta: **el lifetime del dato prestado (`'b`) debe ser mayor o igual al lifetime de la referencia que lo apunta (`'a`)**.
 
 En nuestro ejemplo, `'b` es más pequeño que `'a` (el bloque interior termina antes que el exterior). El Borrow Checker detecta que `r` intentará usarse cuando `x` ya no existe, y detiene la compilación. Es una comprobación puramente léxica y estática.
 
@@ -87,7 +87,7 @@ Cuando el Borrow Checker no tiene suficiente información en la firma de una fun
 
 ## 8.2 Anotación de Lifetimes en funciones y structs
 
-Como vimos en la sección anterior, el Borrow Checker es brillante analizando el flujo de control dentro de una misma función. Sin embargo, su visión se vuelve intencionadamente "miope" cuando cruzamos los límites de una función o cuando encapsulamos datos en una estructura. 
+Como vimos en la sección anterior, el Borrow Checker es brillante analizando el flujo de control dentro de una misma función. Sin embargo, su visión se vuelve intencionadamente "miope" cuando cruzamos los límites de una función o cuando encapsulamos datos en una estructura.
 
 Cuando el compilador no puede deducir de forma autónoma cuánto tiempo vivirá una referencia en relación con otra, detiene la compilación y nos exige que documentemos explícitamente esa relación. Para esto utilizamos las **anotaciones de Lifetimes**.
 
@@ -95,9 +95,9 @@ Es fundamental aclarar un concepto erróneo muy común antes de empezar: **escri
 
 ### La sintaxis de los Lifetimes
 
-Los nombres de los lifetimes deben comenzar con un apóstrofe (`'`) y suelen ser muy cortos, convencionalmente en minúsculas. El nombre más común por defecto es `'a`. 
+Los nombres de los lifetimes deben comenzar con un apóstrofe (`'`) y suelen ser muy cortos, convencionalmente en minúsculas. El nombre más común por defecto es `'a`.
 
-Se declaran de la misma forma que los tipos genéricos (entre los símbolos `< >`) porque, en esencia, **los lifetimes son un tipo de parámetro genérico**. 
+Se declaran de la misma forma que los tipos genéricos (entre los símbolos `< >`) porque, en esencia, **los lifetimes son un tipo de parámetro genérico**.
 
 * `&i32` -> Una referencia inmutable sin lifetime explícito.
 * `&'a i32` -> Una referencia inmutable con un lifetime explícito llamado `'a`.
@@ -120,7 +120,7 @@ fn string_mas_largo(x: &str, y: &str) -> &str {
 }
 ```
 
-El error será: `missing lifetime specifier` (falta un especificador de tiempo de vida). 
+El error será: `missing lifetime specifier` (falta un especificador de tiempo de vida).
 
 ¿Por qué falla? Porque el compilador no sabe si la referencia que vas a devolver (`&str`) proviene de `x` o de `y`. Y lo que es más importante: **tampoco sabe si la referencia devuelta vivirá más o menos que `x` o `y`**. Si el compilador no puede garantizar eso, no puede evitar que devuelvas una referencia colgante.
 
@@ -138,14 +138,14 @@ fn string_mas_largo<'a>(x: &'a str, y: &'a str) -> &'a str {
 ```
 
 **¿Qué significa exactamente esta firma?**
-Al declarar `<'a>` e inyectarlo en `x`, `y`, y el valor de retorno, le estamos diciendo al compilador: 
-*"El tiempo de vida de la referencia devuelta será exactamente igual al tiempo de vida más pequeño entre los argumentos `x` e `y`"*. 
+Al declarar `<'a>` e inyectarlo en `x`, `y`, y el valor de retorno, le estamos diciendo al compilador:
+*"El tiempo de vida de la referencia devuelta será exactamente igual al tiempo de vida más pequeño entre los argumentos `x` e `y`"*.
 
 De esta forma, el Borrow Checker sabe que cualquier cosa que reciba el resultado de `string_mas_largo` no puede usarse después de que el más efímero de los argumentos originales (`x` o `y`) haya sido destruido.
 
 ### Lifetimes en Structs
 
-Hasta ahora hemos evitado guardar referencias dentro de nuestras propias estructuras de datos. Siempre hemos usado tipos que poseen sus propios datos (owned types) como `String` o `Vec<T>`. 
+Hasta ahora hemos evitado guardar referencias dentro de nuestras propias estructuras de datos. Siempre hemos usado tipos que poseen sus propios datos (owned types) como `String` o `Vec<T>`.
 
 Pero en el desarrollo Backend, evitar el copiado innecesario de memoria es clave para el rendimiento. A veces *necesitamos* que un `Struct` contenga referencias a datos que viven en otro lugar (por ejemplo, al parsear un JSON sin copiar sus strings).
 
@@ -198,15 +198,15 @@ impl<'a> UsuarioRestringido<'a> {
 }
 ```
 
-Notarás que en el método `nivel_acceso`, a pesar de usar referencias (`&self`), no tuvimos que escribir código espagueti lleno de `'a`. El compilador de Rust ha evolucionado enormemente y aplica ciertas reglas heurísticas para evitar que tengas que escribir lifetimes en el 100% de los casos. 
+Notarás que en el método `nivel_acceso`, a pesar de usar referencias (`&self`), no tuvimos que escribir código espagueti lleno de `'a`. El compilador de Rust ha evolucionado enormemente y aplica ciertas reglas heurísticas para evitar que tengas que escribir lifetimes en el 100% de los casos.
 
 ## 8.3 Elisión de Lifetimes (Reglas implícitas)
 
 Si leíste la sección anterior con atención, es probable que te haya surgido una duda razonable: si el compilador es tan estricto con las referencias que entran y salen de una función, ¿por qué en los capítulos anteriores pudimos escribir métodos y funciones con referencias sin usar un solo `'a`?
 
-La respuesta es la **Elisión de Lifetimes** (Lifetime Elision). 
+La respuesta es la **Elisión de Lifetimes** (Lifetime Elision).
 
-En las primeras versiones de Rust (antes de la versión 1.0), el lenguaje exigía que escribieras los tiempos de vida explícitos para *absolutamente todas* las referencias. Rápidamente, el equipo de Rust y la comunidad notaron que los desarrolladores estaban escribiendo las mismas secuencias exactas de lifetimes una y otra vez para los patrones más comunes. 
+En las primeras versiones de Rust (antes de la versión 1.0), el lenguaje exigía que escribieras los tiempos de vida explícitos para *absolutamente todas* las referencias. Rápidamente, el equipo de Rust y la comunidad notaron que los desarrolladores estaban escribiendo las mismas secuencias exactas de lifetimes una y otra vez para los patrones más comunes.
 
 Para mantener el código limpio y legible, decidieron programar el compilador para que aplicara un conjunto de reglas automáticas. Si tu código encaja en estas reglas, el compilador infiere los lifetimes por ti y puedes omitirlos ("elidirlos"). Si no encaja, te pedirá que los anotes manualmente.
 
@@ -216,16 +216,19 @@ El Borrow Checker aplica estas tres reglas secuencialmente a las firmas de las f
 
 **Regla 1: Asignación individual a las entradas**
 El compilador asigna un parámetro de lifetime distinto a cada parámetro que sea una referencia.
+
 * Si escribes `fn foo(x: &i32)`, el compilador lo interpreta como `fn foo<'a>(x: &'a i32)`.
 * Si escribes `fn foo(x: &i32, y: &f64)`, el compilador lo lee como `fn foo<'a, 'b>(x: &'a i32, y: &'b f64)`.
 
 **Regla 2: Un solo lifetime de entrada**
 Si hay exactamente *un* parámetro de lifetime de entrada, ese mismo lifetime se asigna automáticamente a *todos* los parámetros de lifetime de salida.
-* Si escribes `fn obtener_id(token: &str) -> &str`, el compilador aplica la Regla 1 (`<'a> (token: &'a str)`) y luego la Regla 2, resultando en: `fn obtener_id<'a>(token: &'a str) -> &'a str`. 
+
+* Si escribes `fn obtener_id(token: &str) -> &str`, el compilador aplica la Regla 1 (`<'a> (token: &'a str)`) y luego la Regla 2, resultando en: `fn obtener_id<'a>(token: &'a str) -> &'a str`.
 * ¡Por esto muchas de nuestras funciones simples compilan sin anotaciones!
 
 **Regla 3: El privilegio de `&self` en métodos**
 Si hay múltiples parámetros de lifetime de entrada, pero uno de ellos es `&self` o `&mut self` (porque es un método de un Struct), el lifetime de `self` se asigna a *todos* los lifetimes de salida.
+
 * Esta regla es la que hace que la programación orientada a objetos (o su equivalente en Rust) sea ergonómica. Al devolver una referencia desde un método, el compilador asume por defecto que estás devolviendo una referencia a una parte de la propia estructura.
 
 ### Analizando casos prácticos
@@ -244,6 +247,7 @@ fn extraer_bearer(header: &str) -> &str { ... }
 // Paso 2: El compilador aplica la Regla 2 (solo hay una entrada)
 // fn extraer_bearer<'a>(header: &'a str) -> &'a str
 ```
+
 Resultado: Compila perfectamente sin que escribas lifetimes. El compilador asume correctamente que el string devuelto vive lo mismo que el string original proporcionado.
 
 **Caso B: El ejemplo de `string_mas_largo` (Fallo)**
@@ -258,6 +262,7 @@ fn string_mas_largo(x: &str, y: &str) -> &str { ... }
 // Paso 2: La Regla 2 no aplica (hay dos entradas, no una).
 // Paso 3: La Regla 3 no aplica (no es un método, no hay `self`).
 ```
+
 Resultado: El compilador se queda sin reglas matemáticas para aplicar y no sabe qué lifetime asignar al valor de retorno (`&str`). Falla y te obliga a intervenir manualmente, justo como vimos en la sección anterior.
 
 **Caso C: Parseo en un Struct (Éxito gracias a la Regla 3)**
@@ -280,6 +285,7 @@ impl PeticionHttp {
     // fn obtener_cuerpo<'a, 'b>(&'a self, max_bytes: &'b usize) -> &'a str
 }
 ```
+
 Resultado: Compila limpiamente. Rust asume la situación más lógica: la referencia devuelta proviene de `self` (la petición HTTP), no de la configuración de `max_bytes`.
 
 Entender la elisión te ahorrará horas de escribir código redundante. Como regla general: escribe tu función utilizando referencias normales. Si el compilador lanza un error de *missing lifetime specifier*, significa que tu función requiere una lógica de tiempos de vida que se escapa de estas tres reglas básicas y deberás usar la sintaxis `<'a>`.

@@ -2,7 +2,7 @@ Bienvenido al concepto que define a Rust y lo separa de cualquier otro lenguaje 
 
 ## 4.1 La pila (Stack) vs. El montículo (Heap)
 
-En muchos lenguajes populares para el desarrollo backend (como Java, Go, Python o Node.js), la gestión de la memoria es un detalle de implementación del que rara vez nos preocupamos en el día a día. Un recolector de basura (Garbage Collector o GC) se encarga de rastrear qué datos ya no se utilizan y libera la memoria periódicamente. 
+En muchos lenguajes populares para el desarrollo backend (como Java, Go, Python o Node.js), la gestión de la memoria es un detalle de implementación del que rara vez nos preocupamos en el día a día. Un recolector de basura (Garbage Collector o GC) se encarga de rastrear qué datos ya no se utilizan y libera la memoria periódicamente.
 
 Rust, sin embargo, no tiene un recolector de basura. Tampoco requiere que asignes y liberes memoria manualmente (como harías con `malloc` y `free` en C). En su lugar, Rust utiliza el sistema de **Ownership** (Propiedad). Pero para entender cómo y por qué funciona el Ownership (que veremos en la siguiente sección), primero debemos dominar cómo maneja Rust la memoria en tiempo de ejecución: **la pila (Stack)** y **el montículo (Heap)**.
 
@@ -16,7 +16,7 @@ La regla de oro del Stack es la siguiente: **todos los datos almacenados en el S
 
 Como vimos en el Capítulo 2, los tipos escalares (`i32`, `f64`, `bool`, `char`), las tuplas y los arreglos de tamaño fijo cumplen esta regla. Cuando llamas a una función, los valores que se le pasan y las variables locales de esa función se apilan (se hace un *push* al Stack). Cuando la función termina su ejecución, esos valores se desapilan (se hace un *pop*).
 
-Añadir y retirar datos del Stack es extremadamente rápido porque el sistema operativo no tiene que buscar un lugar para almacenar los nuevos datos; la ubicación siempre está en la parte superior de la pila. 
+Añadir y retirar datos del Stack es extremadamente rápido porque el sistema operativo no tiene que buscar un lugar para almacenar los nuevos datos; la ubicación siempre está en la parte superior de la pila.
 
 ### El Montículo (Heap): Dinámico y flexible
 
@@ -46,6 +46,7 @@ fn procesar_datos() {
 ```
 
 En el ejemplo anterior, la variable `b` es fascinante porque utiliza ambas regiones de memoria:
+
 1. En el **Heap**, Rust solicita espacio para almacenar el texto `"Hola Backend Developer"`.
 2. En el **Stack**, Rust guarda la estructura interna del `String` para la variable `b`. Esta estructura consta de tres elementos de tamaño fijo (3 * 8 bytes = 24 bytes en sistemas de 64 bits):
    - Un **puntero** a la dirección de memoria en el Heap donde empieza el texto.
@@ -56,12 +57,12 @@ En el ejemplo anterior, la variable `b` es fascinante porque utiliza ambas regio
 
 Para un desarrollador backend, comprender esta diferencia es vital para la optimización y el alto rendimiento:
 
-* **Velocidad de Asignación:** Asignar en el Heap es más lento que hacer *push* en el Stack porque el asignador debe buscar un espacio libre lo suficientemente grande y realizar registros contables para gestionar esa memoria. El Stack solo mueve un puntero del procesador.
-* **Velocidad de Acceso:** Acceder a datos en el Heap es más lento porque requiere seguir un puntero (una indirección). Los procesadores modernos son mucho más rápidos si operan con datos que están cerca unos de otros en la memoria (localidad de caché). El Stack agrupa los datos, el Heap los dispersa.
+- **Velocidad de Asignación:** Asignar en el Heap es más lento que hacer *push* en el Stack porque el asignador debe buscar un espacio libre lo suficientemente grande y realizar registros contables para gestionar esa memoria. El Stack solo mueve un puntero del procesador.
+- **Velocidad de Acceso:** Acceder a datos en el Heap es más lento porque requiere seguir un puntero (una indirección). Los procesadores modernos son mucho más rápidos si operan con datos que están cerca unos de otros en la memoria (localidad de caché). El Stack agrupa los datos, el Heap los dispersa.
 
 ### El problema de limpiar la mesa
 
-Cuando una variable en el Stack sale de su ámbito (scope), su memoria se libera automáticamente, de forma instantánea y a coste cero. 
+Cuando una variable en el Stack sale de su ámbito (scope), su memoria se libera automáticamente, de forma instantánea y a coste cero.
 
 El problema histórico en la programación de sistemas ha sido el Heap. Si usamos el Heap, alguien debe devolver esa memoria al sistema operativo cuando ya no la necesitamos. Si lo olvidamos, ocurre una fuga de memoria (*memory leak*). Si lo hacemos antes de tiempo, tendremos una variable apuntando a memoria inválida (*dangling pointer*). Si lo hacemos dos veces, corrompemos la memoria (*double free*).
 
@@ -69,9 +70,9 @@ Aquí es exactamente donde entra a brillar el diseño de Rust. En lugar de oblig
 
 ## 4.2 Reglas estrictas de Ownership
 
-Como analizamos en la sección anterior, la gestión de la memoria en el Heap es uno de los problemas más complejos en el desarrollo de software de bajo nivel. Rust descarta la recolección de basura (GC) y la gestión manual de memoria en favor de un paradigma radicalmente distinto: el **Ownership** (Propiedad). 
+Como analizamos en la sección anterior, la gestión de la memoria en el Heap es uno de los problemas más complejos en el desarrollo de software de bajo nivel. Rust descarta la recolección de basura (GC) y la gestión manual de memoria en favor de un paradigma radicalmente distinto: el **Ownership** (Propiedad).
 
-El sistema de Ownership no es más que un conjunto de reglas que el compilador verifica estrictamente antes de generar el binario. Si el código viola alguna de estas reglas, el programa simplemente no compilará. 
+El sistema de Ownership no es más que un conjunto de reglas que el compilador verifica estrictamente antes de generar el binario. Si el código viola alguna de estas reglas, el programa simplemente no compilará.
 
 Para dominar Rust, debes grabar a fuego las tres reglas fundamentales del Ownership:
 
@@ -156,7 +157,7 @@ fn main() {
 }
 ```
 
-Este diseño previene fugas de memoria por defecto, pero introduce un problema práctico: ¿Qué pasa si queremos usar la variable `payload` después de pasarla a la función, pero sin tener que pagar el costo de rendimiento de hacer un `.clone()`? 
+Este diseño previene fugas de memoria por defecto, pero introduce un problema práctico: ¿Qué pasa si queremos usar la variable `payload` después de pasarla a la función, pero sin tener que pagar el costo de rendimiento de hacer un `.clone()`?
 
 Devolver el ownership en cada función (retornando tuplas) sería extremadamente tedioso. La solución idiomática a este problema en Rust es utilizar **Referencias y Borrowing (Préstamos)**, el mecanismo que exploraremos a fondo en el siguiente capítulo.
 
@@ -190,7 +191,7 @@ fn main() {
 }
 ```
 
-En la arquitectura de tu backend, esto equivale a pasar un modelo de datos en modo de solo lectura a un servicio de validación o a una función de logging. 
+En la arquitectura de tu backend, esto equivale a pasar un modelo de datos en modo de solo lectura a un servicio de validación o a una función de logging.
 
 **Regla clave de las referencias inmutables:** Puedes tener **tantas referencias inmutables activas como desees** apuntando al mismo dato simultáneamente. Múltiples partes de tu código pueden leer los datos al mismo tiempo sin riesgo.
 
@@ -224,6 +225,7 @@ Es importante notar la simetría: tienes que usar `&mut` tanto al definir la fir
 Aquí es donde el compilador de Rust (el *Borrow Checker*) muestra su verdadero poder. Rust impone una restricción férrea sobre cómo se pueden combinar las referencias.
 
 En cualquier momento dado, puedes tener **una de las dos siguientes opciones, pero nunca ambas a la vez**:
+
 1. Cualquier número de referencias inmutables (`&T`).
 2. Exactamente **una** referencia mutable (`&mut T`).
 
@@ -244,6 +246,7 @@ println!("Leyes: {} y {}", r1, r2);
 **¿Por qué Rust es tan estricto con esto?** Imagina un escenario típico de backend donde múltiples hilos (*threads*) acceden a una caché en memoria. Si tienes múltiples lectores (referencias inmutables), no hay problema. Pero si un hilo decide escribir/modificar esa caché (referencia mutable) mientras otros hilos la están leyendo, obtendrás datos corruptos o estados inconsistentes. Esto se conoce como una **Condición de Carrera (Data Race)**.
 
 Una Data Race ocurre cuando se cumplen estas tres condiciones:
+
 1. Dos o más punteros acceden a los mismos datos al mismo tiempo.
 2. Al menos uno de los punteros se está utilizando para escribir en los datos.
 3. No se está utilizando ningún mecanismo para sincronizar el acceso a los datos.
@@ -267,17 +270,17 @@ Para entender completamente cómo Rust verifica que las referencias no sobreviva
 
 ## 4.4 Slices y referencias a porciones de memoria
 
-Hasta ahora hemos visto cómo tomar prestado un valor completo mediante referencias (`&String` o `&Vec<T>`). Pero, ¿qué sucede si solo necesitamos acceder a una parte de esa colección? En muchos lenguajes, la solución típica sería copiar esa porción en una nueva variable o pasar índices de inicio y fin a nuestras funciones. 
+Hasta ahora hemos visto cómo tomar prestado un valor completo mediante referencias (`&String` o `&Vec<T>`). Pero, ¿qué sucede si solo necesitamos acceder a una parte de esa colección? En muchos lenguajes, la solución típica sería copiar esa porción en una nueva variable o pasar índices de inicio y fin a nuestras funciones.
 
 Ambas aproximaciones tienen problemas: copiar datos (especialmente en un backend de alto rendimiento) consume ciclos de CPU y memoria innecesarios; por otro lado, pasar índices sueltos es propenso a errores, ya que los índices pueden desincronizarse si la colección original cambia.
 
-Rust resuelve este problema de manera elegante y segura mediante los **Slices** (porciones o rebanadas). Un slice te permite referenciar una secuencia contigua de elementos dentro de una colección, en lugar de referenciar la colección entera. 
+Rust resuelve este problema de manera elegante y segura mediante los **Slices** (porciones o rebanadas). Un slice te permite referenciar una secuencia contigua de elementos dentro de una colección, en lugar de referenciar la colección entera.
 
 Al igual que las referencias estándar, los slices no tienen Ownership (propiedad) sobre los datos. Son, por definición, préstamos.
 
 ### String Slices (`&str`)
 
-El uso más común de los slices en Rust es con cadenas de texto. El tipo de un string slice se escribe como `&str`. 
+El uso más común de los slices en Rust es con cadenas de texto. El tipo de un string slice se escribe como `&str`.
 
 Imagina que estás escribiendo un parser para un servidor web crudo y recibes la primera línea de una petición HTTP: `GET /api/v1/users HTTP/1.1`. Quieres extraer el verbo HTTP.
 
@@ -295,15 +298,16 @@ fn main() {
 }
 ```
 
-En este ejemplo, `verbo`, `ruta` y `protocolo` **no son copias** del texto original. Son simplemente vistas (views) hacia la variable `peticion`. 
+En este ejemplo, `verbo`, `ruta` y `protocolo` **no son copias** del texto original. Son simplemente vistas (views) hacia la variable `peticion`.
 
 ### Anatomía de un Slice (Fat Pointers)
 
-Para entender por qué los slices son tan eficientes (una abstracción de "coste cero"), debemos mirar debajo del capó. 
+Para entender por qué los slices son tan eficientes (una abstracción de "coste cero"), debemos mirar debajo del capó.
 
-Como vimos en la sección 4.1, una variable `String` normal en el Stack contiene tres datos: un puntero al Heap, una longitud y una capacidad. 
+Como vimos en la sección 4.1, una variable `String` normal en el Stack contiene tres datos: un puntero al Heap, una longitud y una capacidad.
 
 Un slice (como `&str`), por otro lado, es lo que en Rust se conoce como un **Fat Pointer** (puntero gordo). Solo almacena dos cosas en el Stack (16 bytes en sistemas de 64 bits):
+
 1. Un **puntero** a la dirección de memoria exacta donde comienza el slice.
 2. La **longitud** de esa porción de datos.
 
@@ -311,9 +315,9 @@ No hay atributo de capacidad porque un slice nunca puede crecer ni encogerse; es
 
 ### El poder del "Zero-copy parsing" en el Backend
 
-La distinción entre `String` (texto con ownership, asignado en el Heap) y `&str` (vista prestada, inmutable) es vital en la arquitectura de backend. 
+La distinción entre `String` (texto con ownership, asignado en el Heap) y `&str` (vista prestada, inmutable) es vital en la arquitectura de backend.
 
-Muchos lenguajes de programación instancian nuevos objetos en memoria para cada subcadena generada al procesar JSON, cabeceras HTTP o rutas de base de datos. Esto dispara el uso de memoria y obliga al Garbage Collector a trabajar a marchas forzadas. 
+Muchos lenguajes de programación instancian nuevos objetos en memoria para cada subcadena generada al procesar JSON, cabeceras HTTP o rutas de base de datos. Esto dispara el uso de memoria y obliga al Garbage Collector a trabajar a marchas forzadas.
 
 En Rust, gracias a los slices, puedes leer un payload de red de 5 MB en un solo buffer (un solo `String` o `Vec<u8>`), y luego tener miles de funciones procesando pequeños fragmentos de ese payload utilizando `&str` o `&[u8]`. No se copia ni un solo byte adicional de los datos originales. Esto se conoce como **Zero-copy parsing** y es una de las razones principales por las que los frameworks web de Rust (como Actix-Web o Axum) dominan los benchmarks mundiales de rendimiento.
 
@@ -359,6 +363,6 @@ fn main() {
 }
 ```
 
-Si el compilador permitiera el método `.clear()` (el cual requiere una referencia mutable `&mut` a la variable para vaciarla), nuestro slice `verbo` quedaría apuntando a una memoria que ya no contiene los datos esperados, convirtiéndose en una referencia colgante. 
+Si el compilador permitiera el método `.clear()` (el cual requiere una referencia mutable `&mut` a la variable para vaciarla), nuestro slice `verbo` quedaría apuntando a una memoria que ya no contiene los datos esperados, convirtiéndose en una referencia colgante.
 
 Al vincular semánticamente el tiempo de vida del slice con la inmutabilidad de la estructura de datos subyacente, Rust te permite exprimir el máximo rendimiento de la máquina sin miedo a corromper la memoria en producción. Con los conceptos de Ownership, Borrowing y Slices integrados en tu modelo mental, has conquistado la curva de aprendizaje más empinada de Rust.</T></T>

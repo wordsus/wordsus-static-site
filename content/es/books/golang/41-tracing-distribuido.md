@@ -4,7 +4,7 @@ El Tracing Distribuido es la solución. En este capítulo exploraremos cómo Go 
 
 ## 41.1. Anatomía de un Trace: Trazas y Spans
 
-A medida que las aplicaciones evolucionan de arquitecturas monolíticas a ecosistemas de microservicios (como abordamos en la Parte 9), una única petición de un usuario puede atravesar docenas de servicios, colas de mensajes y bases de datos antes de devolver una respuesta. Cuando la latencia se dispara o se produce un error, las métricas (que nos dicen *qué* está fallando) y los logs (que nos dicen *por qué* falló un componente aislado) resultan insuficientes para entender el flujo completo. 
+A medida que las aplicaciones evolucionan de arquitecturas monolíticas a ecosistemas de microservicios (como abordamos en la Parte 9), una única petición de un usuario puede atravesar docenas de servicios, colas de mensajes y bases de datos antes de devolver una respuesta. Cuando la latencia se dispara o se produce un error, las métricas (que nos dicen *qué* está fallando) y los logs (que nos dicen *por qué* falló un componente aislado) resultan insuficientes para entender el flujo completo.
 
 El **Tracing Distribuido** (Rastreo Distribuido) resuelve este problema contándonos la historia completa de una petición a medida que cruza los límites de los procesos y la red. Para entender cómo funciona, debemos diseccionar sus dos unidades fundamentales: el **Trace** (Traza) y el **Span**.
 
@@ -31,7 +31,7 @@ Para que un Span sea útil y pueda ensamblarse en un Trace, debe contener una an
 
 ### La conexión idiomática en Go: El Contexto
 
-Como vimos en el Capítulo 13, Go no posee el concepto de *Thread-Local Storage* (almacenamiento local por hilo) que lenguajes como Java o Python utilizan para propagar datos de rastreo mágicamente en segundo plano. 
+Como vimos en el Capítulo 13, Go no posee el concepto de *Thread-Local Storage* (almacenamiento local por hilo) que lenguajes como Java o Python utilizan para propagar datos de rastreo mágicamente en segundo plano.
 
 En Go, la anatomía de un Trace se propaga de forma explícita utilizando el paquete `context`. El `context.Context` actúa como el vehículo que transporta el **SpanContext** (que contiene el Trace ID y el Span ID actual) a través de las fronteras de las funciones y las Goroutines.
 
@@ -41,57 +41,57 @@ A continuación, veamos un ejemplo conceptual de cómo se materializa la anatom�
 package tracing
 
 import (
-	"context"
-	"fmt"
-	"time"
+ "context"
+ "fmt"
+ "time"
 
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/trace"
+ "go.opentelemetry.io/otel"
+ "go.opentelemetry.io/otel/attribute"
+ "go.opentelemetry.io/otel/trace"
 )
 
 // tracer es la instancia que nos permite crear nuevos Spans.
 var tracer = otel.Tracer("mi-servicio-backend")
 
 func ProcesarPedido(ctx context.Context, orderID string) error {
-	// 1. Iniciamos el Span Raíz. 
-	// Extrae el Parent Span ID del 'ctx' si existe, o crea un nuevo Trace ID.
-	ctx, span := tracer.Start(ctx, "ProcesarPedido")
-	
-	// Aseguramos que el Span se cierre al terminar la función para calcular la duración.
-	defer span.End() 
+ // 1. Iniciamos el Span Raíz. 
+ // Extrae el Parent Span ID del 'ctx' si existe, o crea un nuevo Trace ID.
+ ctx, span := tracer.Start(ctx, "ProcesarPedido")
+ 
+ // Aseguramos que el Span se cierre al terminar la función para calcular la duración.
+ defer span.End() 
 
-	// 2. Añadimos Atributos (metadata) al Span
-	span.SetAttributes(
-		attribute.String("order.id", orderID),
-		attribute.String("business.flow", "checkout"),
-	)
+ // 2. Añadimos Atributos (metadata) al Span
+ span.SetAttributes(
+  attribute.String("order.id", orderID),
+  attribute.String("business.flow", "checkout"),
+ )
 
-	// 3. Añadimos un Evento (un log anclado a este Span específico)
-	span.AddEvent("Iniciando validación de inventario")
+ // 3. Añadimos un Evento (un log anclado a este Span específico)
+ span.AddEvent("Iniciando validación de inventario")
 
-	// 4. Pasamos el CONTEXTO ACTUALIZADO a la siguiente función.
-	// Esto es crucial: 'ctx' ahora contiene el Span ID de "ProcesarPedido" como padre.
-	if err := descontarInventario(ctx, orderID); err != nil {
-		span.RecordError(err)
-		span.SetStatus(trace.Status{Code: trace.StatusCodeError, Description: err.Error()})
-		return fmt.Errorf("fallo al procesar pedido: %w", err)
-	}
+ // 4. Pasamos el CONTEXTO ACTUALIZADO a la siguiente función.
+ // Esto es crucial: 'ctx' ahora contiene el Span ID de "ProcesarPedido" como padre.
+ if err := descontarInventario(ctx, orderID); err != nil {
+  span.RecordError(err)
+  span.SetStatus(trace.Status{Code: trace.StatusCodeError, Description: err.Error()})
+  return fmt.Errorf("fallo al procesar pedido: %w", err)
+ }
 
-	return nil
+ return nil
 }
 
 func descontarInventario(ctx context.Context, orderID string) error {
-	// Este nuevo Span será "hijo" del Span "ProcesarPedido"
-	_, span := tracer.Start(ctx, "descontarInventario")
-	defer span.End()
+ // Este nuevo Span será "hijo" del Span "ProcesarPedido"
+ _, span := tracer.Start(ctx, "descontarInventario")
+ defer span.End()
 
-	// Simulamos una llamada a la base de datos
-	time.Sleep(50 * time.Millisecond)
-	
-	span.SetAttributes(attribute.String("db.system", "postgresql"))
+ // Simulamos una llamada a la base de datos
+ time.Sleep(50 * time.Millisecond)
+ 
+ span.SetAttributes(attribute.String("db.system", "postgresql"))
 
-	return nil
+ return nil
 }
 ```
 
@@ -107,14 +107,14 @@ Históricamente, la instrumentación de aplicaciones implicaba un alto acoplamie
 
 Para lograr esta neutralidad, OpenTelemetry en Go divide estrictamente su arquitectura en dos componentes fundamentales. Entender esta separación es crucial para diseñar librerías y microservicios mantenibles:
 
-1.  **La API (`go.opentelemetry.io/otel/trace`):** Es un conjunto de interfaces vacías por defecto. Se utiliza exclusivamente para **instrumentar** el código (iniciar Spans, añadir eventos, definir atributos). 
+1. **La API (`go.opentelemetry.io/otel/trace`):** Es un conjunto de interfaces vacías por defecto. Se utiliza exclusivamente para **instrumentar** el código (iniciar Spans, añadir eventos, definir atributos).
     * *Regla de oro:* El código de dominio y las librerías de terceros (como un driver de base de datos o un enrutador HTTP) **solo** deben depender de la API. Nunca deben saber cómo se procesan o a dónde van los datos.
-2.  **El SDK (`go.opentelemetry.io/otel/sdk`):** Es la implementación concreta de la API. Se encarga del muestreo (*sampling*), el procesamiento por lotes y la exportación de los datos.
+2. **El SDK (`go.opentelemetry.io/otel/sdk`):** Es la implementación concreta de la API. Se encarga del muestreo (*sampling*), el procesamiento por lotes y la exportación de los datos.
     * *Regla de oro:* El SDK **solo** debe configurarse e instanciarse en el punto de entrada de la aplicación (el `main.go`).
 
 ### El protocolo OTLP y los Exporters
 
-En lugar de que tu aplicación Go envíe datos directamente a una base de datos de observabilidad específica, OpenTelemetry fomenta el uso de **OTLP** (OpenTelemetry Protocol). 
+En lugar de que tu aplicación Go envíe datos directamente a una base de datos de observabilidad específica, OpenTelemetry fomenta el uso de **OTLP** (OpenTelemetry Protocol).
 
 Un **Exporter** es el componente del SDK responsable de traducir los Spans en memoria al formato de destino. Al configurar un exportador OTLP (generalmente a través de gRPC o HTTP/Protobuf), tu aplicación de Go envía la telemetría a un componente externo llamado **OpenTelemetry Collector**. Este recolector actúa como un *router* agnóstico que recibe OTLP y lo distribuye a cualquier backend comercial o de código abierto (Jaeger, Prometheus, Datadog, AWS X-Ray, etc.), manteniendo tu código Go completamente inalterado ante cambios de infraestructura.
 
@@ -128,54 +128,54 @@ A continuación, se muestra el patrón estándar para inicializar OpenTelemetry 
 package telemetry
 
 import (
-	"context"
-	"fmt"
-	"time"
+ "context"
+ "fmt"
+ "time"
 
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
-	"go.opentelemetry.io/otel/sdk/resource"
-	sdktrace "go.opentelemetry.io/otel/sdk/trace"
-	semconv "go.opentelemetry.io/otel/semconv/v1.21.0"
+ "go.opentelemetry.io/otel"
+ "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
+ "go.opentelemetry.io/otel/sdk/resource"
+ sdktrace "go.opentelemetry.io/otel/sdk/trace"
+ semconv "go.opentelemetry.io/otel/semconv/v1.21.0"
 )
 
 // InitTracer configura y registra el TracerProvider global.
 // Devuelve una función de limpieza (shutdown) que debe ser llamada con defer en main().
 func InitTracer(ctx context.Context, serviceName, version string) (func(context.Context) error, error) {
-	// 1. Definir el Recurso (Resource): Metadatos estáticos sobre la entidad que produce la telemetría.
-	res, err := resource.Merge(
-		resource.Default(),
-		resource.NewWithAttributes(
-			semconv.SchemaURL,
-			semconv.ServiceName(serviceName),
-			semconv.ServiceVersion(version),
-		),
-	)
-	if err != nil {
-		return nil, fmt.Errorf("fallo al crear el recurso OTel: %w", err)
-	}
+ // 1. Definir el Recurso (Resource): Metadatos estáticos sobre la entidad que produce la telemetría.
+ res, err := resource.Merge(
+  resource.Default(),
+  resource.NewWithAttributes(
+   semconv.SchemaURL,
+   semconv.ServiceName(serviceName),
+   semconv.ServiceVersion(version),
+  ),
+ )
+ if err != nil {
+  return nil, fmt.Errorf("fallo al crear el recurso OTel: %w", err)
+ }
 
-	// 2. Configurar el Exporter: A dónde y cómo se envían los datos (OTLP/gRPC por defecto a localhost:4317).
-	exporter, err := otlptracegrpc.New(ctx)
-	if err != nil {
-		return nil, fmt.Errorf("fallo al crear el exportador OTLP: %w", err)
-	}
+ // 2. Configurar el Exporter: A dónde y cómo se envían los datos (OTLP/gRPC por defecto a localhost:4317).
+ exporter, err := otlptracegrpc.New(ctx)
+ if err != nil {
+  return nil, fmt.Errorf("fallo al crear el exportador OTLP: %w", err)
+ }
 
-	// 3. Configurar el TracerProvider: Une el exportador, la estrategia de procesamiento y el recurso.
-	tp := sdktrace.NewTracerProvider(
-		// El Batcher agrupa los Spans en memoria antes de enviarlos por la red, optimizando el rendimiento.
-		sdktrace.WithBatcher(exporter, sdktrace.WithMaxExportBatchSize(512)),
-		// Muestreo: Siempre registrar trazas (útil en dev, en prod suele usarse muestreo probabilístico).
-		sdktrace.WithSampler(sdktrace.AlwaysSample()),
-		sdktrace.WithResource(res),
-	)
+ // 3. Configurar el TracerProvider: Une el exportador, la estrategia de procesamiento y el recurso.
+ tp := sdktrace.NewTracerProvider(
+  // El Batcher agrupa los Spans en memoria antes de enviarlos por la red, optimizando el rendimiento.
+  sdktrace.WithBatcher(exporter, sdktrace.WithMaxExportBatchSize(512)),
+  // Muestreo: Siempre registrar trazas (útil en dev, en prod suele usarse muestreo probabilístico).
+  sdktrace.WithSampler(sdktrace.AlwaysSample()),
+  sdktrace.WithResource(res),
+ )
 
-	// 4. Registrar el provider como la instancia global.
-	// A partir de este momento, cualquier llamada a otel.Tracer() utilizará este SDK.
-	otel.SetTracerProvider(tp)
+ // 4. Registrar el provider como la instancia global.
+ // A partir de este momento, cualquier llamada a otel.Tracer() utilizará este SDK.
+ otel.SetTracerProvider(tp)
 
-	// Devolvemos la función de apagado para asegurar un "graceful shutdown"
-	return tp.Shutdown, nil
+ // Devolvemos la función de apagado para asegurar un "graceful shutdown"
+ return tp.Shutdown, nil
 }
 ```
 
@@ -185,23 +185,23 @@ Es fundamental gestionar correctamente el ciclo de vida del `TracerProvider`. Da
 
 ```go
 func main() {
-	ctx := context.Background()
-	
-	shutdown, err := telemetry.InitTracer(ctx, "api-pagos", "v1.0.3")
-	if err != nil {
-		log.Fatalf("Error inicializando telemetría: %v", err)
-	}
-	
-	// Asegura el vaciado de los buffers de Spans al salir de la aplicación
-	defer func() {
-		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-		defer cancel()
-		if err := shutdown(ctx); err != nil {
-			log.Printf("Fallo al apagar el TracerProvider: %v", err)
-		}
-	}()
+ ctx := context.Background()
+ 
+ shutdown, err := telemetry.InitTracer(ctx, "api-pagos", "v1.0.3")
+ if err != nil {
+  log.Fatalf("Error inicializando telemetría: %v", err)
+ }
+ 
+ // Asegura el vaciado de los buffers de Spans al salir de la aplicación
+ defer func() {
+  ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+  defer cancel()
+  if err := shutdown(ctx); err != nil {
+   log.Printf("Fallo al apagar el TracerProvider: %v", err)
+  }
+ }()
 
-	// ... inicialización del servidor HTTP/gRPC ...
+ // ... inicialización del servidor HTTP/gRPC ...
 }
 ```
 
@@ -209,7 +209,7 @@ Gracias a esta abstracción, el código de los controladores y repositorios de t
 
 ## 41.3. Propagación de contexto W3C a través de HTTP y gRPC
 
-En la sección 41.1 vimos cómo el paquete `context` de Go transporta el `SpanContext` (con su Trace ID y Span ID) de forma segura entre funciones y Goroutines dentro de un mismo proceso. Sin embargo, en una arquitectura de microservicios, el viaje de una petición rara vez termina en el servidor que la recibe por primera vez. 
+En la sección 41.1 vimos cómo el paquete `context` de Go transporta el `SpanContext` (con su Trace ID y Span ID) de forma segura entre funciones y Goroutines dentro de un mismo proceso. Sin embargo, en una arquitectura de microservicios, el viaje de una petición rara vez termina en el servidor que la recibe por primera vez.
 
 Cuando el "Servicio A" realiza una llamada de red al "Servicio B", el `context.Context` de Go no se transmite por arte de magia a través del cable. Si no hacemos nada, el "Servicio B" generará un nuevo Trace ID al recibir la petición, rompiendo el grafo de la transacción y creando dos trazas aisladas (y por tanto, inútiles para el diagnóstico distribuido). Aquí es donde entra en juego la **Propagación de Contexto**.
 
@@ -219,9 +219,9 @@ Históricamente, cada proveedor de observabilidad inyectaba cabeceras HTTP propi
 
 Para estandarizar esto, el W3C definió la especificación **Trace Context**, que OpenTelemetry adopta como estándar por defecto. Esta especificación define principalmente dos cabeceras HTTP:
 
-1.  `traceparent`: Es la cabecera crítica. Contiene la versión, el Trace ID, el Parent Span ID y banderas de muestreo (Trace Flags).
+1. `traceparent`: Es la cabecera crítica. Contiene la versión, el Trace ID, el Parent Span ID y banderas de muestreo (Trace Flags).
     * *Ejemplo:* `traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01`
-2.  `tracestate`: Una cabecera opcional que transporta datos específicos del proveedor de observabilidad, permitiendo que múltiples sistemas coexistan en un mismo trace.
+2. `tracestate`: Una cabecera opcional que transporta datos específicos del proveedor de observabilidad, permitiendo que múltiples sistemas coexistan en un mismo trace.
 
 El proceso de mover el estado interno de Go (`SpanContext`) a estas cabeceras HTTP se denomina **Inyección (Injection)**, y el proceso inverso al recibir una petición se denomina **Extracción (Extraction)**. OpenTelemetry maneja esto a través de la interfaz genérica `TextMapPropagator`.
 
@@ -237,31 +237,31 @@ Antes de realizar la llamada HTTP, debemos inyectar el contexto actual en las ca
 package client
 
 import (
-	"context"
-	"net/http"
+ "context"
+ "net/http"
 
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/propagation"
+ "go.opentelemetry.io/otel"
+ "go.opentelemetry.io/otel/propagation"
 )
 
 func LlamarServicioB(ctx context.Context) error {
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, "http://servicio-b/api/data", nil)
-	if err != nil {
-		return err
-	}
+ req, err := http.NewRequestWithContext(ctx, http.MethodGet, "http://servicio-b/api/data", nil)
+ if err != nil {
+  return err
+ }
 
-	// Obtenemos el propagador configurado globalmente (usualmente W3C Trace Context)
-	propagator := otel.GetTextMapPropagator()
-	
-	// propagation.HeaderCarrier adapta http.Header a la interfaz TextMapCarrier.
-	// Inject serializa el TraceID y SpanID del 'ctx' en la cabecera 'traceparent'.
-	propagator.Inject(ctx, propagation.HeaderCarrier(req.Header))
+ // Obtenemos el propagador configurado globalmente (usualmente W3C Trace Context)
+ propagator := otel.GetTextMapPropagator()
+ 
+ // propagation.HeaderCarrier adapta http.Header a la interfaz TextMapCarrier.
+ // Inject serializa el TraceID y SpanID del 'ctx' en la cabecera 'traceparent'.
+ propagator.Inject(ctx, propagation.HeaderCarrier(req.Header))
 
-	client := &http.Client{}
-	resp, err := client.Do(req)
-	// ... manejo de la respuesta ...
-	
-	return err
+ client := &http.Client{}
+ resp, err := client.Do(req)
+ // ... manejo de la respuesta ...
+ 
+ return err
 }
 ```
 
@@ -273,31 +273,31 @@ En el servidor receptor, implementamos un Middleware (patrón que vimos en el Ca
 package server
 
 import (
-	"net/http"
+ "net/http"
 
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/propagation"
-	"go.opentelemetry.io/otel/trace"
+ "go.opentelemetry.io/otel"
+ "go.opentelemetry.io/otel/propagation"
+ "go.opentelemetry.io/otel/trace"
 )
 
 // TracingMiddleware extrae el contexto W3C y crea el Span raíz del servidor
 func TracingMiddleware(next http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		propagator := otel.GetTextMapPropagator()
-		
-		// Extract lee la cabecera 'traceparent' y devuelve un nuevo contexto
-		// que contiene el SpanContext del servicio remoto.
-		ctx := propagator.Extract(r.Context(), propagation.HeaderCarrier(r.Header))
+ return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+  propagator := otel.GetTextMapPropagator()
+  
+  // Extract lee la cabecera 'traceparent' y devuelve un nuevo contexto
+  // que contiene el SpanContext del servicio remoto.
+  ctx := propagator.Extract(r.Context(), propagation.HeaderCarrier(r.Header))
 
-		// Iniciamos un nuevo Span. Si el contexto extraído era válido, 
-		// este nuevo Span será "hijo" del Span del Cliente A automáticamente.
-		tracer := otel.Tracer("servicio-b")
-		ctx, span := tracer.Start(ctx, r.URL.Path, trace.WithSpanKind(trace.SpanKindServer))
-		defer span.End()
+  // Iniciamos un nuevo Span. Si el contexto extraído era válido, 
+  // este nuevo Span será "hijo" del Span del Cliente A automáticamente.
+  tracer := otel.Tracer("servicio-b")
+  ctx, span := tracer.Start(ctx, r.URL.Path, trace.WithSpanKind(trace.SpanKindServer))
+  defer span.End()
 
-		// Pasamos la petición con el contexto actualizado al siguiente handler
-		next.ServeHTTP(w, r.WithContext(ctx))
-	})
+  // Pasamos la petición con el contexto actualizado al siguiente handler
+  next.ServeHTTP(w, r.WithContext(ctx))
+ })
 }
 ```
 
@@ -305,7 +305,7 @@ func TracingMiddleware(next http.Handler) http.Handler {
 
 ### Propagación en gRPC a través de Metadatos
 
-En el Capítulo 33 vimos que gRPC utiliza HTTP/2 subyacente, pero expone el concepto de **Metadatos** (`metadata.MD`) en lugar de trabajar directamente con cabeceras HTTP nativas. 
+En el Capítulo 33 vimos que gRPC utiliza HTTP/2 subyacente, pero expone el concepto de **Metadatos** (`metadata.MD`) en lugar de trabajar directamente con cabeceras HTTP nativas.
 
 Afortunadamente, el ecosistema de OpenTelemetry ofrece interceptores de gRPC listos para usar (`go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc`). Estos interceptores traducen automáticamente los portadores de propagación de W3C a metadatos de gRPC bidireccionalmente.
 
@@ -315,17 +315,17 @@ Su configuración es trivial y elimina por completo la necesidad de inyectar y e
 
 ```go
 import (
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
-	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
+ "google.golang.org/grpc"
+ "google.golang.org/grpc/credentials/insecure"
+ "go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 )
 
 func NewGRPCClient() (*grpc.ClientConn, error) {
-	// Añadimos StatsHandler, que intercepta y propaga la telemetría OTel
-	return grpc.Dial("localhost:50051",
-		grpc.WithTransportCredentials(insecure.NewCredentials()),
-		grpc.WithStatsHandler(otelgrpc.NewClientHandler()), 
-	)
+ // Añadimos StatsHandler, que intercepta y propaga la telemetría OTel
+ return grpc.Dial("localhost:50051",
+  grpc.WithTransportCredentials(insecure.NewCredentials()),
+  grpc.WithStatsHandler(otelgrpc.NewClientHandler()), 
+ )
 }
 ```
 
@@ -333,16 +333,16 @@ func NewGRPCClient() (*grpc.ClientConn, error) {
 
 ```go
 import (
-	"google.golang.org/grpc"
-	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
+ "google.golang.org/grpc"
+ "go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 )
 
 func NewGRPCServer() *grpc.Server {
-	// El servidor detectará automáticamente los metadatos 'traceparent'
-	// entrantes y reanudará el Trace.
-	return grpc.NewServer(
-		grpc.StatsHandler(otelgrpc.NewServerHandler()),
-	)
+ // El servidor detectará automáticamente los metadatos 'traceparent'
+ // entrantes y reanudará el Trace.
+ return grpc.NewServer(
+  grpc.StatsHandler(otelgrpc.NewServerHandler()),
+ )
 }
 ```
 
@@ -365,6 +365,7 @@ Aquí es donde entran en juego plataformas de código abierto como **Jaeger** (i
 ### Reconstrucción y la Vista de Cascada (Waterfall View)
 
 El exportador de tu aplicación Go (o el OTel Collector intermedio) envía millones de Spans sueltos, desordenados y provenientes de docenas de microservicios diferentes. El backend de observabilidad actúa como el motor que reconstruye el rompecabezas:
+
 1. Agrupa todos los Spans que comparten el mismo `Trace ID`.
 2. Utiliza el `Parent Span ID` para ordenarlos en un árbol topológico (Grafo Dirigido Acíclico).
 3. Calcula el tiempo absoluto alineando los *timestamps* de inicio y fin.
@@ -393,28 +394,28 @@ Es una excelente práctica de diseño inyectar metadatos de negocio de alta card
 package checkout
 
 import (
-	"context"
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/attribute"
+ "context"
+ "go.opentelemetry.io/otel"
+ "go.opentelemetry.io/otel/attribute"
 )
 
 func ProcesarCarrito(ctx context.Context, userID string, isPremium bool, total float64) error {
-	tracer := otel.Tracer("servicio-checkout")
-	ctx, span := tracer.Start(ctx, "ProcesarCarrito")
-	defer span.End()
+ tracer := otel.Tracer("servicio-checkout")
+ ctx, span := tracer.Start(ctx, "ProcesarCarrito")
+ defer span.End()
 
-	// Estos atributos son oro puro para el equipo de SRE y negocio.
-	// En Jaeger o Datadog, ahora puedes ejecutar una consulta como:
-	// "Muéstrame los traces donde user.is_premium = true AND latencia > 2s"
-	span.SetAttributes(
-		attribute.String("user.id", userID),
-		attribute.Bool("user.is_premium", isPremium),
-		attribute.Float64("cart.total_value", total),
-		attribute.String("business.domain", "b2c_sales"),
-	)
+ // Estos atributos son oro puro para el equipo de SRE y negocio.
+ // En Jaeger o Datadog, ahora puedes ejecutar una consulta como:
+ // "Muéstrame los traces donde user.is_premium = true AND latencia > 2s"
+ span.SetAttributes(
+  attribute.String("user.id", userID),
+  attribute.Bool("user.is_premium", isPremium),
+  attribute.Float64("cart.total_value", total),
+  attribute.String("business.domain", "b2c_sales"),
+ )
 
-	// ... lógica concurrente de procesamiento ...
-	return nil
+ // ... lógica concurrente de procesamiento ...
+ return nil
 }
 ```
 

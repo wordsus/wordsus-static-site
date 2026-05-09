@@ -4,11 +4,11 @@ Modern applications rarely exist in isolation. Having mastered data persistence,
 
 One of Go's most celebrated features is its standard library, and the `net/http` package stands out as a prime example of its power. Unlike many other languages where the standard library's HTTP package is relegated to development or basic scripts, Go's `net/http` is a production-grade, highly concurrent HTTP implementation. It is fully capable of serving high-traffic workloads without requiring a third-party framework or a reverse proxy like Nginx just to handle raw HTTP connections safely.
 
-At the core of Go's HTTP ecosystem—both for serving and consuming—are a few elegant, heavily relied-upon interfaces and structs. 
+At the core of Go's HTTP ecosystem—both for serving and consuming—are a few elegant, heavily relied-upon interfaces and structs.
 
 ### The Core Interface: `http.Handler`
 
-Everything in Go's HTTP server architecture revolves around a single, remarkably simple interface: `http.Handler`. 
+Everything in Go's HTTP server architecture revolves around a single, remarkably simple interface: `http.Handler`.
 
 ```go
 type Handler interface {
@@ -16,7 +16,8 @@ type Handler interface {
 }
 ```
 
-Any type that implements the `ServeHTTP` method can respond to HTTP requests. 
+Any type that implements the `ServeHTTP` method can respond to HTTP requests.
+
 * **`*http.Request`**: A struct representing the incoming HTTP request (headers, body, URL, method, etc.). It is a pointer because it contains a substantial amount of data, and passing by reference avoids unnecessary memory allocations.
 * **`http.ResponseWriter`**: An interface used to construct the HTTP response. Because it's an interface, you don't pass it as a pointer. It provides methods to write HTTP headers, the response body, and the HTTP status code.
 
@@ -176,7 +177,7 @@ Notice the critical inclusion of `defer resp.Body.Close()`. When an HTTP respons
 
 ## 13.2 Routing Strategies: Standard Library vs. Third-Party (Chi, Gorilla Mux)
 
-While the `net/http` package provides the foundational `ServeMux` for handling incoming requests, building a modern RESTful API often requires more sophisticated routing capabilities. Developers need to extract variables from URLs (path parameters), restrict routes by HTTP method (GET, POST, PUT, DELETE), and seamlessly chain middleware. 
+While the `net/http` package provides the foundational `ServeMux` for handling incoming requests, building a modern RESTful API often requires more sophisticated routing capabilities. Developers need to extract variables from URLs (path parameters), restrict routes by HTTP method (GET, POST, PUT, DELETE), and seamlessly chain middleware.
 
 In the Go ecosystem, you generally have two paths for routing: leveraging the standard library (which received massive upgrades in Go 1.22) or utilizing a third-party package.
 
@@ -225,6 +226,7 @@ func main() {
 ### Third-Party Routers: Why Look Elsewhere?
 
 Even with the Go 1.22 upgrades, third-party routers remain highly relevant. They offer specialized features that the standard library omits by design, such as:
+
 * **Regex-based routing:** Matching routes based on complex string patterns.
 * **Ergonomic Middleware Chaining:** Cleanly applying cross-cutting concerns (logging, auth) to specific groups of routes.
 * **Subrouting:** Breaking massive APIs into modular, maintainable routing files.
@@ -371,7 +373,7 @@ func searchHandler(w http.ResponseWriter, r *http.Request) {
 
 ### Reading HTTP Headers
 
-Headers pass metadata between the client and server. Extracting them is straightforward using the `r.Header.Get()` method. 
+Headers pass metadata between the client and server. Extracting them is straightforward using the `r.Header.Get()` method.
 
 ```go
 func authHandler(w http.ResponseWriter, r *http.Request) {
@@ -392,7 +394,7 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 
 ### Parsing JSON Payloads
 
-In modern REST APIs, JSON is the lingua franca. The `*http.Request` contains a `Body` field, which implements the `io.ReadCloser` interface. 
+In modern REST APIs, JSON is the lingua franca. The `*http.Request` contains a `Body` field, which implements the `io.ReadCloser` interface.
 
 To convert JSON into Go structs, we use the `encoding/json` package. Because `r.Body` is an `io.Reader`, we can stream the payload directly into the JSON decoder without loading the entire raw string into memory first.
 
@@ -509,7 +511,7 @@ By streaming via `json.NewEncoder(w).Encode()`, you avoid allocating a temporary
 
 ## 13.4 Designing, Chaining, and Injecting Middleware
 
-In robust web applications, you rarely want an HTTP request to hit your core business logic immediately. You typically need to perform a series of preliminary checks or tasks: logging the incoming request, authenticating the user, enforcing rate limits, or injecting request-scoped data. 
+In robust web applications, you rarely want an HTTP request to hit your core business logic immediately. You typically need to perform a series of preliminary checks or tasks: logging the incoming request, authenticating the user, enforcing rate limits, or injecting request-scoped data.
 
 Middleware allows you to cleanly separate these cross-cutting concerns from your business logic. In Go, middleware is simply a function that wraps an `http.Handler`, executes some logic, and then optionally passes execution to the next handler in the chain.
 
@@ -555,7 +557,7 @@ func MyMiddleware(next http.Handler) http.Handler {
 
 ### Designing a Logging Middleware
 
-Let's build a practical middleware that logs the HTTP method, URL path, and the time it took to process the request. 
+Let's build a practical middleware that logs the HTTP method, URL path, and the time it took to process the request.
 
 ```go
 package main
@@ -585,7 +587,7 @@ func LoggingMiddleware(next http.Handler) http.Handler {
 
 Middleware often needs to pass data down the chain to the core handler. For example, an authentication middleware verifies a token and extracts the user's ID. The core handler needs that ID, but the `http.Handler` signature (`w http.ResponseWriter, r *http.Request`) cannot be altered.
 
-The solution is the `context` package. Every `*http.Request` carries a `Context`, which can store request-scoped data safely. 
+The solution is the `context` package. Every `*http.Request` carries a `Context`, which can store request-scoped data safely.
 
 **Best Practice:** Always use custom, unexported types for context keys. Using built-in types like `string` can lead to key collisions between different packages.
 
@@ -712,8 +714,8 @@ Once an API is consumed by external clients (mobile apps, partner services, or c
 
 There are two primary strategies for API versioning:
 
-1.  **URI Path Versioning (Recommended for simplicity):** `GET /v1/users` vs. `GET /v2/users`
-2.  **Header Versioning (Content Negotiation):** `GET /users` with a header `Accept: application/vnd.mycompany.v2+json`
+1. **URI Path Versioning (Recommended for simplicity):** `GET /v1/users` vs. `GET /v2/users`
+2. **Header Versioning (Content Negotiation):** `GET /users` with a header `Accept: application/vnd.mycompany.v2+json`
 
 In Go, URI path versioning is remarkably easy to implement using standard routing capabilities. By utilizing subrouters (or `ServeMux` prefixes), you can isolate different versions of your handlers.
 
@@ -750,7 +752,9 @@ If an endpoint returns a list of resources (e.g., `/users`), returning all 100,0
 There are two dominant pagination models:
 
 #### Offset-Based Pagination
-The client specifies how many records to skip (`offset`) and how many to take (`limit`). 
+
+The client specifies how many records to skip (`offset`) and how many to take (`limit`).
+
 * **Pros:** Easy to implement, allows skipping to a specific page (e.g., "Page 5").
 * **Cons:** Becomes extremely slow on large datasets because the database must compute and skip all preceding rows before returning the requested chunk.
 
@@ -776,7 +780,9 @@ func getUsersHandler(w http.ResponseWriter, r *http.Request) {
 ```
 
 #### Cursor-Based (Keyset) Pagination
+
 Instead of an offset, the client provides a unique, sequential identifier (the "cursor") from the last item of the previous page. The server then fetches the next set of items strictly greater than that cursor.
+
 * **Pros:** Highly performant, even for millions of records. Immune to data shifting (where inserting a new row messes up the offset count).
 * **Cons:** Cannot jump directly to "Page 10" without fetching pages 1-9 first.
 

@@ -2,7 +2,7 @@ El desarrollo de software complejo requiere un lenguaje común entre desarrollad
 
 ## 31.1 Modelado del Dominio Rico vs Anémico
 
-Cuando decidimos adoptar Domain-Driven Design (DDD) en nuestros proyectos, estamos tomando la decisión consciente de poner las reglas de negocio en el centro de nuestra arquitectura. En este contexto, la forma en que estructuramos nuestras entidades y agregados determina el éxito o fracaso de nuestro diseño. 
+Cuando decidimos adoptar Domain-Driven Design (DDD) en nuestros proyectos, estamos tomando la decisión consciente de poner las reglas de negocio en el centro de nuestra arquitectura. En este contexto, la forma en que estructuramos nuestras entidades y agregados determina el éxito o fracaso de nuestro diseño.
 
 En la industria del software, existen dos enfoques predominantes para modelar entidades: el **Modelo Anémico** (considerado un anti-patrón en DDD) y el **Modelo Rico**. Rust, gracias a su sistema de tipos, *ownership* y privacidad por defecto, es un lenguaje excepcionalmente preparado para implementar modelos ricos de forma nativa y segura.
 
@@ -10,7 +10,7 @@ En la industria del software, existen dos enfoques predominantes para modelar en
 
 Un modelo de dominio anémico es aquel en el que las entidades son simples "bolsas de datos" (estructuras de datos puras). No contienen lógica de negocio, comportamiento ni validaciones; simplemente exponen todos sus campos para ser leídos y modificados desde el exterior.
 
-En este enfoque, el comportamiento se desplaza hacia capas superiores, habitualmente a funciones o clases llamadas "Servicios". 
+En este enfoque, el comportamiento se desplaza hacia capas superiores, habitualmente a funciones o clases llamadas "Servicios".
 
 **Ejemplo de un Modelo Anémico en Rust:**
 
@@ -46,13 +46,14 @@ impl UserService {
 ```
 
 **¿Por qué es problemático en DDD?**
+
 * **Pérdida de invariantes:** Al ser los campos `pub`, cualquier parte del código puede hacer `user.is_active = true` saltándose las reglas de negocio (por ejemplo, activarlo sin validar el token).
 * **Lógica dispersa:** Las reglas sobre cómo cambia de estado un `User` terminan regadas por múltiples servicios o adaptadores.
 * **Baja cohesión:** Los datos y las operaciones que actúan sobre ellos viven en lugares separados.
 
 ### El Modelo de Dominio Rico (Rich Domain Model)
 
-Un modelo de dominio rico encapsula tanto los datos como el comportamiento. Las entidades son responsables de garantizar sus propios **invariantes** (las reglas que siempre deben cumplirse para que el estado de la entidad sea válido). 
+Un modelo de dominio rico encapsula tanto los datos como el comportamiento. Las entidades son responsables de garantizar sus propios **invariantes** (las reglas que siempre deben cumplirse para que el estado de la entidad sea válido).
 
 En Rust, esto se logra manteniendo los campos de los `structs` privados (o restringidos al módulo base) y exponiendo únicamente métodos públicos que representan acciones de negocio con significado, no simples *setters*.
 
@@ -126,10 +127,10 @@ impl User {
 
 Aplicar un modelo rico en Rust resulta excepcionalmente natural y seguro debido a características del lenguaje que ya hemos estudiado en capítulos anteriores:
 
-1.  **Privacidad por defecto:** A diferencia de otros lenguajes, en Rust los campos de un `struct` son privados a menos que se use `pub`. Esto te obliga a pensar en la encapsulación desde el minuto cero.
-2.  **Manejo de Errores con `Result`:** En lugar de lanzar excepciones impredecibles cuando se viola una regla de negocio, los métodos del modelo rico retornan un `Result<T, DomainError>`, haciendo explícito en la firma de la función qué operaciones pueden fallar según las reglas del dominio.
-3.  **Ownership y Tipos de Préstamo:** Las funciones del modelo indican claramente su impacto. Un método que toma `&self` es de solo lectura (no altera el estado), uno que toma `&mut self` es una mutación de estado válida, y uno que toma `self` por valor implica el consumo o transformación final de la entidad.
-4.  **Typestates (Repaso):** Como vimos en el Capítulo 28 sobre Patrones de Diseño, podemos ir un paso más allá del modelo rico tradicional y codificar el estado en el sistema de tipos. Podríamos tener un `UnverifiedUser` que, a través de su método `.verify()`, consuma su estado y retorne un `VerifiedUser`, haciendo imposible representar estados inválidos incluso en tiempo de compilación.
+1. **Privacidad por defecto:** A diferencia de otros lenguajes, en Rust los campos de un `struct` son privados a menos que se use `pub`. Esto te obliga a pensar en la encapsulación desde el minuto cero.
+2. **Manejo de Errores con `Result`:** En lugar de lanzar excepciones impredecibles cuando se viola una regla de negocio, los métodos del modelo rico retornan un `Result<T, DomainError>`, haciendo explícito en la firma de la función qué operaciones pueden fallar según las reglas del dominio.
+3. **Ownership y Tipos de Préstamo:** Las funciones del modelo indican claramente su impacto. Un método que toma `&self` es de solo lectura (no altera el estado), uno que toma `&mut self` es una mutación de estado válida, y uno que toma `self` por valor implica el consumo o transformación final de la entidad.
+4. **Typestates (Repaso):** Como vimos en el Capítulo 28 sobre Patrones de Diseño, podemos ir un paso más allá del modelo rico tradicional y codificar el estado en el sistema de tipos. Podríamos tener un `UnverifiedUser` que, a través de su método `.verify()`, consuma su estado y retorne un `VerifiedUser`, haciendo imposible representar estados inválidos incluso en tiempo de compilación.
 
 El objetivo del Modelo Rico no es crear abstracciones complejas porque sí, sino **confianza**. Cuando una capa superior (como un caso de uso o un controlador de Axum) interactúa con tu entidad `User`, el compilador y el diseño garantizan que es mecánicamente imposible dejar a ese usuario en un estado corrupto o ilegal para tu negocio.
 
@@ -141,9 +142,9 @@ Piensa en una coordenada geográfica: `(Latitud: 40.4168, Longitud: -3.7038)`. N
 
 Para que un Value Object sea válido en DDD, debe cumplir tres reglas fundamentales, las cuales encajan a la perfección con la filosofía y el sistema de tipos de Rust:
 
-1.  **Carecen de identidad:** Se comparan por sus propiedades estructurales.
-2.  **Son inmutables:** Una vez creados, no pueden cambiar. Si necesitas un valor diferente, creas una nueva instancia.
-3.  **Son auto-validados:** Es imposible instanciar un Value Object en un estado inválido.
+1. **Carecen de identidad:** Se comparan por sus propiedades estructurales.
+2. **Son inmutables:** Una vez creados, no pueden cambiar. Si necesitas un valor diferente, creas una nueva instancia.
+3. **Son auto-validados:** Es imposible instanciar un Value Object en un estado inválido.
 
 ### Implementando Value Objects en Rust: El Patrón Newtype
 
@@ -202,10 +203,10 @@ impl fmt::Display for Email {
 
 ### ¿Por qué este enfoque brilla en Rust?
 
-1.  **Igualdad Gratuita (`PartialEq`, `Eq`):** Al derivar estos *traits*, Rust compara automáticamente el contenido del struct. `Email::new("a@b.com").unwrap() == Email::new("a@b.com").unwrap()` devolverá `true` sin que tengas que escribir lógica de comparación manual.
-2.  **Inmutabilidad Garantizada:** En Rust, las variables son inmutables por defecto. Además, al no usar `pub` en el campo interno (`pub struct Email(pub String)` sería un error aquí), nadie puede mutar el contenido del `Email` una vez creado, forzando la inmutabilidad inherente a los Value Objects.
-3.  **Seguridad en el Sistema de Tipos:** Ahora, si una función requiere un `Email`, su firma será `fn enviar_notificacion(destino: Email)`. Es **imposible** pasar un `String` arbitrario por accidente. El compilador de Rust lo rechazará. Esta es la esencia del *Type Safety* aplicado al negocio.
-4.  **Clonación Controlada (`Clone`):** Los Value Objects suelen ser baratos de copiar o clonar. Al derivar `Clone`, permitimos que otras partes del sistema obtengan copias idénticas e independientes de este valor, respetando la regla de que si necesitamos cambiar algo, creamos una copia nueva.
+1. **Igualdad Gratuita (`PartialEq`, `Eq`):** Al derivar estos *traits*, Rust compara automáticamente el contenido del struct. `Email::new("a@b.com").unwrap() == Email::new("a@b.com").unwrap()` devolverá `true` sin que tengas que escribir lógica de comparación manual.
+2. **Inmutabilidad Garantizada:** En Rust, las variables son inmutables por defecto. Además, al no usar `pub` en el campo interno (`pub struct Email(pub String)` sería un error aquí), nadie puede mutar el contenido del `Email` una vez creado, forzando la inmutabilidad inherente a los Value Objects.
+3. **Seguridad en el Sistema de Tipos:** Ahora, si una función requiere un `Email`, su firma será `fn enviar_notificacion(destino: Email)`. Es **imposible** pasar un `String` arbitrario por accidente. El compilador de Rust lo rechazará. Esta es la esencia del *Type Safety* aplicado al negocio.
+4. **Clonación Controlada (`Clone`):** Los Value Objects suelen ser baratos de copiar o clonar. Al derivar `Clone`, permitimos que otras partes del sistema obtengan copias idénticas e independientes de este valor, respetando la regla de que si necesitamos cambiar algo, creamos una copia nueva.
 
 ### Integración con la Entidad
 
@@ -237,24 +238,25 @@ Al mover la validación del correo al Value Object `Email`, hemos aligerado la e
 
 ## 31.3 Entidades, Agregados y Raíces de Agregación
 
-A medida que nuestro modelo de dominio crece, las Entidades y los Value Objects rara vez existen de forma aislada. Un `User` puede tener múltiples `Address`es, y un `Order` (Pedido) inevitablemente contendrá múltiples `OrderItem`s (Líneas de pedido). 
+A medida que nuestro modelo de dominio crece, las Entidades y los Value Objects rara vez existen de forma aislada. Un `User` puede tener múltiples `Address`es, y un `Order` (Pedido) inevitablemente contendrá múltiples `OrderItem`s (Líneas de pedido).
 
 Si permitimos que cualquier parte de nuestro código modifique cualquier entidad individualmente, perderemos el control sobre las reglas de negocio. ¿Qué pasa si alguien elimina un `OrderItem` pero olvida actualizar el precio total del `Order`? Aquí es donde entran en juego los **Agregados** y las **Raíces de Agregación**.
 
 ### ¿Qué es un Agregado?
 
-Un **Agregado (Aggregate)** es un clúster de Entidades y Value Objects asociados que tratamos como una única unidad para el propósito de los cambios de datos. 
+Un **Agregado (Aggregate)** es un clúster de Entidades y Value Objects asociados que tratamos como una única unidad para el propósito de los cambios de datos.
 
 Su función principal es definir un **límite de consistencia transaccional**. Cualquier regla de negocio que involucre a múltiples elementos dentro del agregado debe cumplirse de manera atómica. Si la operación falla, ningún cambio debe persistir.
 
 ### La Raíz de Agregación (Aggregate Root)
 
-Dentro de cada Agregado, hay una entidad principal que actúa como el jefe o "portero": la **Raíz de Agregación (Aggregate Root)**. 
+Dentro de cada Agregado, hay una entidad principal que actúa como el jefe o "portero": la **Raíz de Agregación (Aggregate Root)**.
 
 Reglas de oro de la Raíz de Agregación:
-1.  **Acceso exclusivo:** El código externo al agregado solo puede mantener referencias a la Raíz de Agregación. No está permitido tener referencias directas a las entidades internas del agregado.
-2.  **Modificación controlada:** Para cambiar cualquier cosa dentro del agregado, debes pedírselo a la Raíz. Ella se encargará de delegar la acción a las entidades internas y asegurar que todos los invariantes se mantengan.
-3.  **Persistencia unitaria:** La base de datos carga y guarda el Agregado completo a través de su Raíz. No se guarda un `OrderItem` por separado; se guarda el `Order` entero con todos sus ítems.
+
+1. **Acceso exclusivo:** El código externo al agregado solo puede mantener referencias a la Raíz de Agregación. No está permitido tener referencias directas a las entidades internas del agregado.
+2. **Modificación controlada:** Para cambiar cualquier cosa dentro del agregado, debes pedírselo a la Raíz. Ella se encargará de delegar la acción a las entidades internas y asegurar que todos los invariantes se mantengan.
+3. **Persistencia unitaria:** La base de datos carga y guarda el Agregado completo a través de su Raíz. No se guarda un `OrderItem` por separado; se guarda el `Order` entero con todos sus ítems.
 
 ### Implementando un Agregado en Rust
 
@@ -354,7 +356,7 @@ pub mod order_aggregate {
 
 ### Regla de Diseño Crítica en Rust: Referencias por ID, no por Puntero
 
-En lenguajes con Garbage Collector (como Java o C#), es común que la entidad `Order` mantenga una referencia directa (un puntero en memoria) al objeto `Customer` al que pertenece. 
+En lenguajes con Garbage Collector (como Java o C#), es común que la entidad `Order` mantenga una referencia directa (un puntero en memoria) al objeto `Customer` al que pertenece.
 
 En Rust, intentar modelar relaciones entre distintos Agregados usando referencias (`&Customer` o `Rc<Customer>`) se convertirá rápidamente en una pesadilla con el *Borrow Checker*, problemas de ciclos de vida (lifetimes) y dificultades para la concurrencia (problemas al cruzar hilos o en entornos asíncronos con Tokio).
 
@@ -362,9 +364,10 @@ En Rust, intentar modelar relaciones entre distintos Agregados usando referencia
 
 ## 31.4 Eventos de Dominio y consistencia eventual
 
-Hasta ahora, hemos visto cómo las Entidades, los Value Objects y los Agregados nos ayudan a mantener la consistencia interna y proteger las reglas de negocio. Pero, ¿qué ocurre cuando un cambio en un Agregado requiere que ocurra un efecto secundario en otra parte del sistema? 
+Hasta ahora, hemos visto cómo las Entidades, los Value Objects y los Agregados nos ayudan a mantener la consistencia interna y proteger las reglas de negocio. Pero, ¿qué ocurre cuando un cambio en un Agregado requiere que ocurra un efecto secundario en otra parte del sistema?
 
 Por ejemplo, si un usuario finaliza una compra (el `Order` se cierra), es probable que necesitemos:
+
 1. Vaciar su carrito de compras.
 2. Descontar el stock en el inventario.
 3. Enviar un correo electrónico de confirmación.
@@ -373,7 +376,7 @@ Si inyectamos los repositorios de Inventario o el servicio de Emails directament
 
 ### ¿Qué es un Evento de Dominio?
 
-Un Evento de Dominio es un registro inmutable de algo que **ya ha ocurrido** en el negocio y que es relevante para otras partes del sistema. Se nombran en pasado (ej. `OrderClosed`, `UserVerified`, `ItemAdded`). 
+Un Evento de Dominio es un registro inmutable de algo que **ya ha ocurrido** en el negocio y que es relevante para otras partes del sistema. Se nombran en pasado (ej. `OrderClosed`, `UserVerified`, `ItemAdded`).
 
 En Rust, los enums (Algebraic Data Types) son la estructura de datos perfecta para modelar estos eventos, ya que nos permiten agrupar distintos tipos de eventos bajo un mismo tipo base, garantizando la seguridad en tiempo de compilación.
 
@@ -430,11 +433,12 @@ La capa de aplicación (tu Caso de Uso o Handler) es la responsable de invocar `
 
 ### Consistencia Eventual vs Transacciones ACID
 
-Cuando usamos Eventos de Dominio para comunicar distintos Agregados, cruzamos un límite de consistencia. 
+Cuando usamos Eventos de Dominio para comunicar distintos Agregados, cruzamos un límite de consistencia.
 
 En un modelo tradicional de base de datos monolítica, actualizaríamos el Pedido y el Inventario en la misma transacción ACID de SQL (`BEGIN ... COMMIT`). Si algo falla, se hace *rollback* de todo.
 
 En DDD y sistemas distribuidos, preferimos modificar **un solo Agregado por transacción**. El flujo sería:
+
 1. Transacción 1: Marcar el `Order` como cerrado y guardar. (Consistencia inmediata).
 2. Se publica el evento `OrderClosed`.
 3. Un *listener* del módulo de Inventario recibe el evento.

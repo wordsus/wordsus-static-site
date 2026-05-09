@@ -2,7 +2,7 @@
 
 ---
 
-Imagina la siguiente escena: es una fría mañana de julio. Te levantas de la cama, arrastras los pies en pantuflas sobre la alfombra de tu habitación para ir a la cocina y, cuando tu mano está a punto de envolver el picaporte de la puerta, un chasquido seco rompe el silencio. Sientes un pinchazo agudo en la punta del dedo. Una chispa invisible pero dolorosa acaba de saltar entre el metal y tu piel. 
+Imagina la siguiente escena: es una fría mañana de julio. Te levantas de la cama, arrastras los pies en pantuflas sobre la alfombra de tu habitación para ir a la cocina y, cuando tu mano está a punto de envolver el picaporte de la puerta, un chasquido seco rompe el silencio. Sientes un pinchazo agudo en la punta del dedo. Una chispa invisible pero dolorosa acaba de saltar entre el metal y tu piel.
 
 O quizás te ha pasado al bajarte del auto, al acariciar a tu gato, o al saludar a un amigo con un beso en la mejilla, resultando en un pequeño salto hacia atrás por parte de ambos. Todos hemos sido víctimas de estos ataques eléctricos sorpresa. Pero, ¿qué está ocurriendo realmente? ¿Por qué tu cuerpo de repente decide convertirse en un arma eléctrica de corto alcance?
 
@@ -16,9 +16,9 @@ Para entender la electrostática, primero debemos encogernos mentalmente a un ta
 
 Durante mucho tiempo se pensó que el átomo era la partícula indivisible más pequeña. Hoy sabemos que es más bien un pequeño sistema solar microscópico compuesto por tres partículas fundamentales:
 
-1.  **Protones:** Tienen carga eléctrica positiva.
-2.  **Neutrones:** No tienen carga eléctrica (son neutros).
-3.  **Electrones:** Tienen carga eléctrica negativa y son muchísimo más pequeños y ligeros que los protones y neutrones.
+1. **Protones:** Tienen carga eléctrica positiva.
+2. **Neutrones:** No tienen carga eléctrica (son neutros).
+3. **Electrones:** Tienen carga eléctrica negativa y son muchísimo más pequeños y ligeros que los protones y neutrones.
 
 Los protones y los neutrones están fuertemente unidos en el centro del átomo, formando el núcleo. Son como un núcleo denso y pesado. Sin embargo, los electrones son las verdaderas estrellas de nuestro espectáculo electrostático.
 
@@ -48,20 +48,21 @@ En su estado natural, los átomos intentan mantener un equilibrio perfecto: el m
 
 La moneda de cambio de la electrostática es la **carga eléctrica**. En el universo de las cargas, existe una regla inquebrantable, una ley social fundamental que dicta cómo interactúan estas partículas entre sí:
 
-*   **Cargas opuestas se atraen.** (Positivo ama a Negativo).
-*   **Cargas iguales se repelen.** (Positivo odia a Positivo; Negativo odia a Negativo).
+* **Cargas opuestas se atraen.** (Positivo ama a Negativo).
+* **Cargas iguales se repelen.** (Positivo odia a Positivo; Negativo odia a Negativo).
 
-Esta interacción no es una simple sugerencia, es una fuerza física real y medible descrita en el siglo XVIII por el físico francés Charles-Augustin de Coulomb. La Ley de Coulomb establece que la fuerza eléctrica entre dos cargas puntuales es directamente proporcional al producto de las magnitudes de las cargas e inversamente proporcional al cuadrado de la distancia que las separa. 
+Esta interacción no es una simple sugerencia, es una fuerza física real y medible descrita en el siglo XVIII por el físico francés Charles-Augustin de Coulomb. La Ley de Coulomb establece que la fuerza eléctrica entre dos cargas puntuales es directamente proporcional al producto de las magnitudes de las cargas e inversamente proporcional al cuadrado de la distancia que las separa.
 
 Si te gustan las matemáticas, la podemos expresar de manera elegante:
 
 $$F = k \cdot \frac{|q_1 \cdot q_2|}{r^2}$$
 
 Donde:
-*   $F$ es la fuerza eléctrica de atracción o repulsión.
-*   $k$ es la constante de Coulomb, un número que dicta la intensidad general de la fuerza en nuestro universo.
-*   $q_1$ y $q_2$ son las cantidades de carga eléctrica de nuestros dos objetos.
-*   $r$ es la distancia entre las cargas.
+
+* $F$ es la fuerza eléctrica de atracción o repulsión.
+* $k$ es la constante de Coulomb, un número que dicta la intensidad general de la fuerza en nuestro universo.
+* $q_1$ y $q_2$ son las cantidades de carga eléctrica de nuestros dos objetos.
+* $r$ es la distancia entre las cargas.
 
 Lo importante de esta fórmula matemática (sin necesidad de memorizarla) es entender lo que nos cuenta la historia de la variable $r^2$ en el denominador: **la fuerza se hace dramáticamente más fuerte a medida que las cargas se acercan**. Cuando tu dedo (cargado) se acerca a un picaporte, la distancia $r$ se hace cada vez más y más pequeña. Esto hace que la fuerza $F$ de atracción entre los electrones en exceso de tu cuerpo y las cargas positivas del picaporte se dispare hasta niveles extremos, preparando el escenario para la chispa.
 
@@ -115,15 +116,15 @@ Tus millones de electrones adicionales se distribuyen por todo tu cuerpo, repeli
 
 Para entender por qué el picaporte es el culpable habitual, debemos clasificar los materiales del mundo en dos grandes grupos según cómo permiten que la carga se mueva a través de ellos.
 
-*   **Aislantes:** Son materiales que retienen firmemente sus electrones. No permiten que la carga fluya libremente. Ejemplos: plástico, goma, madera, vidrio y el aire. Tu cuerpo acumuló carga porque tus zapatos aislantes impidieron que los electrones fluyeran hacia el suelo para descargar la tensión.
-*   **Conductores:** Son materiales en los que los electrones más externos de sus átomos están tan sueltos que forman un "mar de electrones" que fluye libremente. Los metales son excelentes conductores: cobre, aluminio, oro, hierro... y el latón o acero de tu picaporte.
+* **Aislantes:** Son materiales que retienen firmemente sus electrones. No permiten que la carga fluya libremente. Ejemplos: plástico, goma, madera, vidrio y el aire. Tu cuerpo acumuló carga porque tus zapatos aislantes impidieron que los electrones fluyeran hacia el suelo para descargar la tensión.
+* **Conductores:** Son materiales en los que los electrones más externos de sus átomos están tan sueltos que forman un "mar de electrones" que fluye libremente. Los metales son excelentes conductores: cobre, aluminio, oro, hierro... y el latón o acero de tu picaporte.
 
 Aquí está la secuencia del crimen electrostático:
 
-1.  **La acumulación:** Caminaste por la alfombra y acumulaste un exceso masivo de electrones. Eres una nube de tormenta humana ambulante.
-2.  **El acercamiento:** Extiendes tu dedo hacia el picaporte de metal, que es un excelente conductor neutro.
-3.  **La polarización:** A medida que tu dedo (cargado negativamente) se acerca al metal, los electrones libres dentro del picaporte sienten la repulsión de tus propios electrones. Huyen despavoridos hacia el interior de la puerta o hacia la pared, alejándose de tu dedo. Esto deja la superficie del picaporte, justo frente a tu dedo, desprovista de electrones, dejándola con una carga temporal **positiva**.
-4.  **La ruptura dieléctrica:** Ahora tienes tu dedo muy negativo muy cerca de un metal localmente muy positivo. Hay un espacio de aire (un aislante) entre ellos. Pero la fuerza de atracción entre los electrones de tu dedo y el metal positivo crece exponencialmente (recordemos la Ley de Coulomb).
+1. **La acumulación:** Caminaste por la alfombra y acumulaste un exceso masivo de electrones. Eres una nube de tormenta humana ambulante.
+2. **El acercamiento:** Extiendes tu dedo hacia el picaporte de metal, que es un excelente conductor neutro.
+3. **La polarización:** A medida que tu dedo (cargado negativamente) se acerca al metal, los electrones libres dentro del picaporte sienten la repulsión de tus propios electrones. Huyen despavoridos hacia el interior de la puerta o hacia la pared, alejándose de tu dedo. Esto deja la superficie del picaporte, justo frente a tu dedo, desprovista de electrones, dejándola con una carga temporal **positiva**.
+4. **La ruptura dieléctrica:** Ahora tienes tu dedo muy negativo muy cerca de un metal localmente muy positivo. Hay un espacio de aire (un aislante) entre ellos. Pero la fuerza de atracción entre los electrones de tu dedo y el metal positivo crece exponencialmente (recordemos la Ley de Coulomb).
 
 El aire normalmente es un gran aislante, pero todo tiene su límite. Cuando el campo eléctrico se vuelve lo suficientemente intenso (aproximadamente 3 millones de voltios por metro), la fuerza eléctrica literalmente arranca los electrones de las moléculas de nitrógeno y oxígeno del aire.
 
@@ -163,7 +164,7 @@ Durante el verano, el aire caliente tiene una gran capacidad para retener vapor 
 
 Cuando caminas sobre la alfombra en verano y tus zapatos intentan robar electrones, la humedad actúa como una red de diminutos cables de escape. Cualquier exceso de carga que intentes acumular es inmediatamente evacuado a través de la humedad del aire y de las superficies circundantes hacia el suelo. El agua disipa la carga estática antes de que pueda acumularse hasta niveles perceptibles.
 
-En invierno, la situación cambia drásticamente. El aire frío del exterior no puede contener mucha humedad. Cuando ese aire frío y seco entra en tu casa y es calentado por la calefacción, su humedad relativa cae en picada. El ambiente se vuelve increíblemente seco. 
+En invierno, la situación cambia drásticamente. El aire frío del exterior no puede contener mucha humedad. Cuando ese aire frío y seco entra en tu casa y es calentado por la calefacción, su humedad relativa cae en picada. El ambiente se vuelve increíblemente seco.
 
 Sin esa película microscópica de agua conductora en las superficies ni vapor de agua en el aire para "robar" lentamente tu exceso de electrones, tu cuerpo se convierte en el almacén perfecto de carga electrostática. Caminas, acumulas, y no hay válvula de escape... hasta que tocas el metal.
 
@@ -210,17 +211,17 @@ Una descarga masiva de electrones viaja a través del canal de plasma a la asomb
 
 La electrostática no solo sirve para dar miedo o asombrar con su destrucción. También explica algunos de los trucos científicos más divertidos y comunes de nuestra infancia.
 
-*   **El globo que se pega a la pared:** Frotas un globo de goma contra tu cabello o un suéter de lana. La goma arranca electrones (efecto triboeléctrico) y se carga negativamente. Al acercar el globo cargado a una pared neutra (que es aislante), el intenso campo eléctrico del globo repele los electrones de la pared hacia adentro, dejando la superficie superficial de la pintura cargada positivamente. Negativo atrae a positivo, y el globo se queda "pegado" mágicamente, desafiando a la gravedad por un tiempo, hasta que la carga se disipa en la humedad del aire.
-*   **Cabellos de punta en el tobogán:** Si un niño se desliza por un tobogán de plástico seco, la fricción arranca electrones. Si el niño adquiere carga, digamos, positiva (perdió electrones), cada uno de los cabellos de su cabeza ahora tiene carga positiva. ¿Qué hacen las cargas iguales? Se repelen brutalmente. Cada cabello trata de alejarse lo máximo posible de sus vecinos cargados positivamente, dando como resultado un divertido peinado de "puercoespín eléctrico".
-*   **La repulsión del agua:** Si frotas un peine de plástico por tu cabello seco y luego abres el grifo del lavabo dejando caer un hilito fino de agua, al acercar el peine al agua verás que el chorro se desvía, curvándose hacia el peine. Esto se debe a que la molécula de agua es un dipolo, como mencionamos antes. El campo eléctrico del peine atrae el polo opuesto de la molécula de agua, tirando literalmente de toda la corriente de agua a distancia.
+* **El globo que se pega a la pared:** Frotas un globo de goma contra tu cabello o un suéter de lana. La goma arranca electrones (efecto triboeléctrico) y se carga negativamente. Al acercar el globo cargado a una pared neutra (que es aislante), el intenso campo eléctrico del globo repele los electrones de la pared hacia adentro, dejando la superficie superficial de la pintura cargada positivamente. Negativo atrae a positivo, y el globo se queda "pegado" mágicamente, desafiando a la gravedad por un tiempo, hasta que la carga se disipa en la humedad del aire.
+* **Cabellos de punta en el tobogán:** Si un niño se desliza por un tobogán de plástico seco, la fricción arranca electrones. Si el niño adquiere carga, digamos, positiva (perdió electrones), cada uno de los cabellos de su cabeza ahora tiene carga positiva. ¿Qué hacen las cargas iguales? Se repelen brutalmente. Cada cabello trata de alejarse lo máximo posible de sus vecinos cargados positivamente, dando como resultado un divertido peinado de "puercoespín eléctrico".
+* **La repulsión del agua:** Si frotas un peine de plástico por tu cabello seco y luego abres el grifo del lavabo dejando caer un hilito fino de agua, al acercar el peine al agua verás que el chorro se desvía, curvándose hacia el peine. Esto se debe a que la molécula de agua es un dipolo, como mencionamos antes. El campo eléctrico del peine atrae el polo opuesto de la molécula de agua, tirando literalmente de toda la corriente de agua a distancia.
 
 ## 8. ¿Aplicaciones reales? La electrostática nos hace la vida más fácil
 
 Podríamos pensar que la electrostática es solo una curiosidad molesta, pero dominar este fenómeno ha dado lugar a invenciones que forman parte de nuestro día a día:
 
-1.  **La fotocopiadora e impresoras láser:** Utilizan el principio de la electrostática para funcionar. Un tambor cilíndrico en el interior de la máquina se carga de manera uniforme con electricidad estática. Un láser o una luz proyecta la imagen original sobre el tambor. La luz hace que las zonas iluminadas pierdan su carga, dejando una "imagen invisible" de estática en las zonas oscuras (las letras). Luego, un polvo plástico fino negro, llamado tóner (que está cargado con la carga opuesta), se espolvorea sobre el tambor y se adhiere mágicamente solo a las zonas cargadas. Finalmente, se calienta sobre el papel, y así obtenemos una fotocopia perfecta.
-2.  **Pintura de automóviles y electrodomésticos:** Si usas un spray convencional, mucha pintura se desperdicia al volar por el aire. En la industria, inyectan a la pintura en aerosol una carga estática enorme y conectan el automóvil a la carga opuesta (conectado a tierra). Cuando rocían la pintura, las gotas no solo se dirigen al metal, sino que son atraídas magnéticamente por él debido a las fuerzas electrostáticas. Esto envuelve la pieza, pintando incluso los bordes traseros, ahorrando pintura y creando acabados perfectos.
-3.  **Purificadores y filtros de aire:** Las grandes chimeneas industriales utilizan precipitadores electrostáticos. A medida que el humo cargado de hollín y contaminantes intenta escapar por la chimenea, pasa a través de una malla metálica fuertemente cargada. Las partículas de suciedad adquieren esta carga y luego pasan por placas con la carga opuesta a las que se quedan pegadas magnéticamente. Es una forma increíblemente eficaz de limpiar el aire de las fábricas.
+1. **La fotocopiadora e impresoras láser:** Utilizan el principio de la electrostática para funcionar. Un tambor cilíndrico en el interior de la máquina se carga de manera uniforme con electricidad estática. Un láser o una luz proyecta la imagen original sobre el tambor. La luz hace que las zonas iluminadas pierdan su carga, dejando una "imagen invisible" de estática en las zonas oscuras (las letras). Luego, un polvo plástico fino negro, llamado tóner (que está cargado con la carga opuesta), se espolvorea sobre el tambor y se adhiere mágicamente solo a las zonas cargadas. Finalmente, se calienta sobre el papel, y así obtenemos una fotocopia perfecta.
+2. **Pintura de automóviles y electrodomésticos:** Si usas un spray convencional, mucha pintura se desperdicia al volar por el aire. En la industria, inyectan a la pintura en aerosol una carga estática enorme y conectan el automóvil a la carga opuesta (conectado a tierra). Cuando rocían la pintura, las gotas no solo se dirigen al metal, sino que son atraídas magnéticamente por él debido a las fuerzas electrostáticas. Esto envuelve la pieza, pintando incluso los bordes traseros, ahorrando pintura y creando acabados perfectos.
+3. **Purificadores y filtros de aire:** Las grandes chimeneas industriales utilizan precipitadores electrostáticos. A medida que el humo cargado de hollín y contaminantes intenta escapar por la chimenea, pasa a través de una malla metálica fuertemente cargada. Las partículas de suciedad adquieren esta carga y luego pasan por placas con la carga opuesta a las que se quedan pegadas magnéticamente. Es una forma increíblemente eficaz de limpiar el aire de las fábricas.
 
 ## Conclusión: Un universo eléctrico
 

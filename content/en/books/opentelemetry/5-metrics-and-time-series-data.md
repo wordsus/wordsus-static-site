@@ -1,4 +1,4 @@
-While distributed traces reveal the intricate journey of individual requests, they are inherently microscopic. To understand the macroeconomic health of a system—its overall performance, resource utilization, and error rates over time—we need a different telemetry signal: Metrics. Metrics provide quantitative, aggregated measurements of system behavior, optimized for rapid querying, alerting, and efficient long-term storage. 
+While distributed traces reveal the intricate journey of individual requests, they are inherently microscopic. To understand the macroeconomic health of a system—its overall performance, resource utilization, and error rates over time—we need a different telemetry signal: Metrics. Metrics provide quantitative, aggregated measurements of system behavior, optimized for rapid querying, alerting, and efficient long-term storage.
 
 In this chapter, we explore the OpenTelemetry metric data model. We will examine the distinct instruments used to capture measurements, the mechanics of synchronous and asynchronous data collection, the critical concept of aggregation temporality, and how to seamlessly bridge high-level metric anomalies with low-level trace data using exemplars.
 
@@ -12,14 +12,15 @@ To capture the physical realities of different systems—from tracking the numbe
 
 Before diving into the specific instruments, it is crucial to understand the execution model of how measurements are recorded, as this dictates which instrument you should choose:
 
-1.  **Synchronous Instruments:** These are called inline with your application's business logic. Because they are recorded during the execution of a request or operation, they are inherently tied to the active OpenTelemetry `Context`. This allows synchronous measurements to automatically associate with the current Trace ID and Span ID (a concept we will expand upon in Section 5.5 with Exemplars).
-2.  **Asynchronous (Observable) Instruments:** These are invoked via a callback registered with the OpenTelemetry SDK. The SDK periodically calls this function in the background during a collection cycle. Asynchronous instruments are ideal for capturing the state of a system (e.g., garbage collection statistics, CPU load) where the measurement is completely independent of any specific user request. 
+1. **Synchronous Instruments:** These are called inline with your application's business logic. Because they are recorded during the execution of a request or operation, they are inherently tied to the active OpenTelemetry `Context`. This allows synchronous measurements to automatically associate with the current Trace ID and Span ID (a concept we will expand upon in Section 5.5 with Exemplars).
+2. **Asynchronous (Observable) Instruments:** These are invoked via a callback registered with the OpenTelemetry SDK. The SDK periodically calls this function in the background during a collection cycle. Asynchronous instruments are ideal for capturing the state of a system (e.g., garbage collection statistics, CPU load) where the measurement is completely independent of any specific user request.
 
 ### Counters: Measuring Accumulation
 
 Counters are used to measure additive values. They record discrete events or quantities that accumulate over time.
 
 #### 1. Counter (Synchronous)
+
 The standard Counter is **monotonically increasing**. This means it can only go up, never down (or record negative values). It is the most common instrument used to calculate the *rate* of events.
 
 * **Use Cases:** Number of HTTP requests processed, bytes sent over a network, number of orders completed, exceptions thrown.
@@ -44,17 +45,19 @@ def process_order(order_payload):
 ```
 
 #### 2. UpDownCounter (Synchronous)
-The `UpDownCounter` is identical to a standard Counter, but it is **non-monotonic**. It allows for negative increments, meaning the accumulated value can fluctuate up and down. 
+
+The `UpDownCounter` is identical to a standard Counter, but it is **non-monotonic**. It allows for negative increments, meaning the accumulated value can fluctuate up and down.
 
 * **Use Cases:** Number of active concurrent requests, items currently in a queue, active database connections.
 * **Behavior:** You call `.add(value)` where `value` can be positive or negative.
 
 #### 3. Observable Counters (Asynchronous)
+
 OpenTelemetry provides asynchronous equivalents: `ObservableCounter` and `ObservableUpDownCounter`. Instead of calling `.add()` inline, you provide a callback that reports the *absolute total* when polled. This is particularly useful when you are reading metrics from an external system that already maintains the cumulative count (e.g., reading network bytes transmitted directly from the Linux `/proc/net/dev` file).
 
 ### Histograms: Measuring Distributions
 
-A `Histogram` is a synchronous instrument used to record a distribution of values. Unlike a Counter that just sums up a total, a Histogram groups recorded values into buckets (or calculates percentiles) to help you understand the statistical distribution of the data. 
+A `Histogram` is a synchronous instrument used to record a distribution of values. Unlike a Counter that just sums up a total, a Histogram groups recorded values into buckets (or calculates percentiles) to help you understand the statistical distribution of the data.
 
 * **Use Cases:** Request latency, payload sizes, processing time.
 * **Behavior:** You call `.record(value)`. The OpenTelemetry SDK then aggregates these individual measurements into statistical summaries (min, max, sum, count, and bucket counts).
@@ -66,27 +69,27 @@ Histograms are critical for observability because averages (means) lie. If 99 re
 package main
 
 import (
-	"context"
-	"time"
-	"go.opentelemetry.io/otel/metric"
+ "context"
+ "time"
+ "go.opentelemetry.io/otel/metric"
 )
 
 func handleRequest(ctx context.Context, meter metric.Meter) {
-	// Create the histogram
-	latencyHistogram, _ := meter.Float64Histogram(
-		"http.server.request.duration",
-		metric.WithDescription("Duration of HTTP requests"),
-		metric.WithUnit("s"),
-	)
+ // Create the histogram
+ latencyHistogram, _ := meter.Float64Histogram(
+  "http.server.request.duration",
+  metric.WithDescription("Duration of HTTP requests"),
+  metric.WithUnit("s"),
+ )
 
-	startTime := time.Now()
-	
-	// ... simulate work ...
-	time.Sleep(50 * time.Millisecond) 
+ startTime := time.Now()
+ 
+ // ... simulate work ...
+ time.Sleep(50 * time.Millisecond) 
 
-	// Record the duration as a float in seconds
-	duration := time.Since(startTime).Seconds()
-	latencyHistogram.Record(ctx, duration)
+ // Record the duration as a float in seconds
+ duration := time.Since(startTime).Seconds()
+ latencyHistogram.Record(ctx, duration)
 }
 ```
 
@@ -95,6 +98,7 @@ func handleRequest(ctx context.Context, meter metric.Meter) {
 A Gauge represents a non-additive value for which the current state is the only thing that matters. Unlike Counters, where you want to know the *rate* of change, or Histograms, where you want a *distribution* of events, Gauges simply tell you "what is the value right now?"
 
 #### ObservableGauge (Asynchronous)
+
 The most common implementation of a gauge is the asynchronous `ObservableGauge`. Because state like CPU or memory isn't tied to a specific request, it makes sense to poll it on a scheduled interval.
 
 * **Use Cases:** CPU utilization, memory heap usage, room temperature, disk space available.
@@ -161,7 +165,7 @@ By strictly adhering to these semantic instruments, you ensure that the metrics 
 
 ## 5.2 Synchronous vs. Asynchronous Metric Collection
 
-While Chapter 5.1 introduced the logical instruments available in OpenTelemetry, understanding *how* the OpenTelemetry SDK collects and processes data from these instruments is equally important. The collection mechanism directly impacts application performance, data freshness, and the ability to correlate metrics with distributed traces. 
+While Chapter 5.1 introduced the logical instruments available in OpenTelemetry, understanding *how* the OpenTelemetry SDK collects and processes data from these instruments is equally important. The collection mechanism directly impacts application performance, data freshness, and the ability to correlate metrics with distributed traces.
 
 OpenTelemetry divides metric collection into two fundamental paradigms: **Synchronous** and **Asynchronous**.
 
@@ -191,7 +195,7 @@ Synchronous metric collection occurs inline with your application's active execu
 
 ### Asynchronous Collection: The "Pull" Model
 
-Asynchronous metric collection decouples the measurement process from the application's request lifecycle. Instead of recording data inline, you register a callback function with the SDK during the application's startup phase. 
+Asynchronous metric collection decouples the measurement process from the application's request lifecycle. Instead of recording data inline, you register a callback function with the SDK during the application's startup phase.
 
 The SDK acts as an orchestrator, periodically "pulling" data by invoking this callback on a background thread during its scheduled metric collection cycle (e.g., every 60 seconds).
 
@@ -271,13 +275,13 @@ Choosing the right collection model is just as critical as choosing the right in
 
 ### Advanced Architectural Considerations
 
-When architecting systems heavily reliant on asynchronous metrics, engineers must account for callback performance. Because the SDK invokes all registered callbacks during its collection cycle, a slow callback (e.g., one that makes a sluggish external API call or runs a complex database query) will stall the entire metric export pipeline. 
+When architecting systems heavily reliant on asynchronous metrics, engineers must account for callback performance. Because the SDK invokes all registered callbacks during its collection cycle, a slow callback (e.g., one that makes a sluggish external API call or runs a complex database query) will stall the entire metric export pipeline.
 
 To mitigate this, robust implementations often decouple the observation from the external system. Instead of the OpenTelemetry callback querying a database directly, a separate application cron job queries the database and caches the result in a local variable. The OpenTelemetry callback then simply reads that local variable in constant time, ensuring the metric collection cycle remains lightweight and uninterrupted.
 
 ## 5.3 Understanding Aggregation Temporality (Delta vs. Cumulative)
 
-When an OpenTelemetry SDK collects metric data—whether synchronously inline or asynchronously via a callback—it must decide how to package that data for export. This decision is governed by **Aggregation Temporality**, which defines the time window over which metric data is aggregated. 
+When an OpenTelemetry SDK collects metric data—whether synchronously inline or asynchronously via a callback—it must decide how to package that data for export. This decision is governed by **Aggregation Temporality**, which defines the time window over which metric data is aggregated.
 
 Put simply, temporality answers the question: *Are we reporting the total value since the application started, or only the change in value since the last time we reported?*
 
@@ -308,7 +312,7 @@ DELTA EXPORT:           5            3            0             8
 
 ### Cumulative Temporality
 
-In the Cumulative model, the SDK maintains the state of the aggregation from the moment the application process starts (or the instrument is created). Every time the SDK exports data, it sends the grand total up to that point. 
+In the Cumulative model, the SDK maintains the state of the aggregation from the moment the application process starts (or the instrument is created). Every time the SDK exports data, it sends the grand total up to that point.
 
 * **How Backends Use It:** The observability backend (like Prometheus) is responsible for calculating rates. To figure out how many orders happened between 10s and 20s, the backend subtracts the value at T1 (5) from the value at T2 (8) to get the rate of 3.
 * **Resilience to Data Loss:** Cumulative temporality is highly resilient to transient network failures. If the export at the 20-second mark fails and the packet is dropped, the data isn't lost. When the 30-second export succeeds (reporting 8), the backend can simply calculate the rate over a 20-second window instead of a 10-second window.
@@ -326,8 +330,8 @@ In the Delta model, the SDK resets its internal aggregator back to zero immediat
 
 OpenTelemetry supports both models because the broader observability ecosystem is split on the preferred approach. Your choice of temporality is almost entirely dictated by the backend system you are sending the data to.
 
-1.  **Prometheus Ecosystem:** Prometheus is fundamentally designed around **Cumulative** metrics. It expects to pull grand totals and uses functions like `rate()` to calculate the delta on the server side. Sending Delta metrics to Prometheus will result in broken graphs.
-2.  **StatsD / Commercial APMs:** Many traditional monitoring tools and commercial vendors (e.g., Datadog, Dynatrace) historically prefer **Delta** metrics for counters, as it simplifies their backend storage and aggregation logic.
+1. **Prometheus Ecosystem:** Prometheus is fundamentally designed around **Cumulative** metrics. It expects to pull grand totals and uses functions like `rate()` to calculate the delta on the server side. Sending Delta metrics to Prometheus will result in broken graphs.
+2. **StatsD / Commercial APMs:** Many traditional monitoring tools and commercial vendors (e.g., Datadog, Dynatrace) historically prefer **Delta** metrics for counters, as it simplifies their backend storage and aggregation logic.
 
 ### Configuring Temporality in the SDK
 
@@ -367,15 +371,15 @@ In a production environment, you will often decouple this decision from your app
 
 ## 5.4 Configuring Views and Metric Pipelines
 
-Up to this point, we have explored how developers create instruments to generate telemetry and how the SDK calculates temporality over time. However, a major challenge in enterprise observability is the disconnect between *what developers instrument* and *what operators actually want to store*. 
+Up to this point, we have explored how developers create instruments to generate telemetry and how the SDK calculates temporality over time. However, a major challenge in enterprise observability is the disconnect between *what developers instrument* and *what operators actually want to store*.
 
-Developers tend to over-instrument, capturing high-cardinality attributes (like user IDs or raw URLs) and logging every minor state change. If left unchecked, this raw data flows directly into the observability backend, leading to massive storage costs and degraded query performance. 
+Developers tend to over-instrument, capturing high-cardinality attributes (like user IDs or raw URLs) and logging every minor state change. If left unchecked, this raw data flows directly into the observability backend, leading to massive storage costs and degraded query performance.
 
 OpenTelemetry solves this tension through **Metric Pipelines** and the **View API**. Views provide a configuration layer that allows operators to modify, filter, or completely drop metrics before they are aggregated and exported, entirely without modifying the original application source code.
 
 ### The Anatomy of a Metric Pipeline
 
-A Metric Pipeline is the journey a measurement takes from the moment `instrument.record()` is called to the moment it leaves the process via network export. 
+A Metric Pipeline is the journey a measurement takes from the moment `instrument.record()` is called to the moment it leaves the process via network export.
 
 ```text
 +-------------------+       +-------------------+       +-------------------+
@@ -390,25 +394,28 @@ A Metric Pipeline is the journey a measurement takes from the moment `instrument
                             +-------------------+       +-------------------+
 ```
 
-1.  **The Instrument:** The logical entry point in the application code.
-2.  **The View:** The routing and mutation rules applied to incoming measurements.
-3.  **The Aggregator:** The in-memory state engine that groups data (e.g., summing a counter, binning a histogram) based on the View's instructions.
-4.  **The MetricReader:** The engine that orchestrates the collection cycle, polling the Aggregators for their current state.
-5.  **The Exporter:** The protocol-specific component (usually OTLP) that serializes the data and sends it over the network.
+1. **The Instrument:** The logical entry point in the application code.
+2. **The View:** The routing and mutation rules applied to incoming measurements.
+3. **The Aggregator:** The in-memory state engine that groups data (e.g., summing a counter, binning a histogram) based on the View's instructions.
+4. **The MetricReader:** The engine that orchestrates the collection cycle, polling the Aggregators for their current state.
+5. **The Exporter:** The protocol-specific component (usually OTLP) that serializes the data and sends it over the network.
 
 ### The Power of the View API
 
 The View API is the most powerful tool for controlling metric costs and shaping data for specific Service Level Objectives (SLOs). A View targets specific instruments (using wildcard matching on metric names, meter names, or instrument types) and applies one of three primary transformations:
 
 #### 1. Attribute Filtering (Controlling Cardinality)
-Every unique combination of attributes attached to a metric creates a new time series. If a developer attaches an `http.client_ip` attribute to a request counter, the application will generate millions of unique time series, causing an immediate cardinality explosion. 
+
+Every unique combination of attributes attached to a metric creates a new time series. If a developer attaches an `http.client_ip` attribute to a request counter, the application will generate millions of unique time series, causing an immediate cardinality explosion.
 
 A View can be configured to drop specific attributes, aggregating the data up to a safer, lower-cardinality level before it is ever stored in memory.
 
 #### 2. Modifying Aggregations (Custom Histograms)
+
 By default, OpenTelemetry SDKs use standard bucket boundaries for Histograms (e.g., `[0, 5, 10, 25, 50, 75, 100...]`). However, if your service has a strict SLO stating that 99% of requests must complete in under 12 milliseconds, the default buckets (jumping from 10 to 25) are useless. You can use a View to override the default aggregation and define explicit bucket boundaries tailored to your business requirements.
 
 #### 3. Dropping Metrics entirely
+
 If an external library introduces noisy, unhelpful metrics, or if a legacy metric is no longer needed but the application code hasn't been updated yet, a View can instruct the SDK to use a `Drop` aggregation. The SDK will completely ignore measurements for that instrument, costing zero memory and zero network bandwidth.
 
 ### Implementing Views in the SDK
@@ -472,7 +479,7 @@ OpenTelemetry solves this "needle in the haystack" problem using **Exemplars**.
 
 ### What is an Exemplar?
 
-An exemplar is a specific, representative measurement extracted from a larger aggregated metric, deeply enriched with context. Practically speaking, when the OpenTelemetry SDK aggregates a synchronous metric (like adding a latency float to a Histogram bucket), it can optionally attach the active **Trace ID** and **Span ID** to that specific data point. 
+An exemplar is a specific, representative measurement extracted from a larger aggregated metric, deeply enriched with context. Practically speaking, when the OpenTelemetry SDK aggregates a synchronous metric (like adding a latency float to a Histogram bucket), it can optionally attach the active **Trace ID** and **Span ID** to that specific data point.
 
 Instead of just knowing that *some* request took 4 seconds, the observability backend receives the metric data alongside a pointer: *"Here is the exact Trace ID of a request that took 4 seconds during this time window."*
 
@@ -505,18 +512,19 @@ Because exemplars require access to the active execution context (the Trace ID),
 
 #### The Exemplar Reservoir and Sampling
 
-Attaching a Trace ID to every single metric increment would defeat the purpose of metrics, causing severe memory overhead and massive payload sizes. To mitigate this, OpenTelemetry uses an **Exemplar Reservoir**. 
+Attaching a Trace ID to every single metric increment would defeat the purpose of metrics, causing severe memory overhead and massive payload sizes. To mitigate this, OpenTelemetry uses an **Exemplar Reservoir**.
 
 The reservoir is an algorithmic holding area in the SDK's memory that decides which specific measurements to keep as exemplars and which to discard. For Histograms, the standard behavior is to keep a reservoir *per bucket*. When the collection cycle occurs, the SDK exports the aggregated metric along with the small subset of retained exemplars.
 
 You can configure how the SDK samples exemplars using an **Exemplar Filter**. The three common filters are:
-1.  **AlwaysOn:** Samples all measurements (useful only in low-throughput dev environments).
-2.  **AlwaysOff:** Disables exemplars entirely to save memory.
-3.  **TraceBased (Default in most SDKs):** The SDK will only consider recording an exemplar if the current active trace is *sampled* (i.e., it is scheduled to be exported to the tracing backend). This prevents the SDK from exporting an exemplar pointing to a Trace ID that was dropped by your trace sampling rules, which would result in a frustrating dead link in your UI.
+
+1. **AlwaysOn:** Samples all measurements (useful only in low-throughput dev environments).
+2. **AlwaysOff:** Disables exemplars entirely to save memory.
+3. **TraceBased (Default in most SDKs):** The SDK will only consider recording an exemplar if the current active trace is *sampled* (i.e., it is scheduled to be exported to the tracing backend). This prevents the SDK from exporting an exemplar pointing to a Trace ID that was dropped by your trace sampling rules, which would result in a frustrating dead link in your UI.
 
 ### Configuring Exemplars in the SDK
 
-While many OpenTelemetry SDKs enable trace-based exemplars by default, high-performance environments often require explicit configuration of the reservoir and filter mechanisms. 
+While many OpenTelemetry SDKs enable trace-based exemplars by default, high-performance environments often require explicit configuration of the reservoir and filter mechanisms.
 
 Here is how you might configure a custom Exemplar Filter in the Java SDK to explicitly ensure only sampled traces are used as exemplars:
 

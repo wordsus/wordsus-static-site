@@ -2,13 +2,14 @@ As your infrastructure scales, the simple act of deploying changes becomes incre
 
 ## 12.1 Safely Refactoring Resource Names with `moved` Blocks
 
-Refactoring is a natural and necessary part of the software development lifecycle. As your infrastructure grows, the naming conventions and architectural choices that made sense on day one often become restrictive. You might need to rename a resource to better reflect its purpose, group standalone resources into reusable modules, or transition from `count` to `for_each`. 
+Refactoring is a natural and necessary part of the software development lifecycle. As your infrastructure grows, the naming conventions and architectural choices that made sense on day one often become restrictive. You might need to rename a resource to better reflect its purpose, group standalone resources into reusable modules, or transition from `count` to `for_each`.
 
 In standard programming languages, renaming a variable is a safe operation. In infrastructure as code, however, modifying a resource's logical identifier is inherently risky. If you simply change the name of a resource block in your OpenTofu configuration, the tool interprets this as two distinct operations during the next `tofu plan`:
+
 1. The destruction of the "missing" old resource.
 2. The creation of a "new" resource.
 
-If that resource is a production database or a core networking component, a destroy-and-recreate cycle is disastrous. 
+If that resource is a production database or a core networking component, a destroy-and-recreate cycle is disastrous.
 
 Historically, practitioners had to rely on imperative CLI commands to manipulate the state file and prevent this behavior (a technique we will cover in section 12.2). However, OpenTofu provides a native, declarative solution to this problem: the `moved` block.
 
@@ -65,6 +66,7 @@ The `moved` block is versatile and handles much more than simple resource renami
 As discussed in Part IV, you will eventually want to encapsulate repeating infrastructure patterns into modules. When you extract an existing resource into a local module, its address changes.
 
 **Old Configuration:**
+
 ```hcl
 resource "aws_s3_bucket" "assets" {
   bucket = "my-company-assets"
@@ -72,6 +74,7 @@ resource "aws_s3_bucket" "assets" {
 ```
 
 **New Configuration (Refactored):**
+
 ```hcl
 module "storage" {
   source = "./modules/s3_bucket"
@@ -112,21 +115,21 @@ Using `moved` blocks instead of CLI commands offers several significant advantag
 
 ### Lifecycle of a `moved` Block
 
-A common question is: *When can I delete a `moved` block?* Once a `moved` block has been successfully processed by `tofu apply`, the state file is permanently updated. For single-environment repositories, you can technically delete the `moved` block immediately after the successful apply. 
+A common question is: *When can I delete a `moved` block?* Once a `moved` block has been successfully processed by `tofu apply`, the state file is permanently updated. For single-environment repositories, you can technically delete the `moved` block immediately after the successful apply.
 
 However, if you manage multiple environments (e.g., Development, Staging, Production) sharing the same codebase, you must keep the `moved` block in your code until **all** environments have successfully run `tofu apply`. For modules published to a registry, it is considered a best practice to leave `moved` blocks in the codebase indefinitely. They act as a permanent translation layer for users upgrading from older versions, ensuring their infrastructure remains safe regardless of when they update.
 
 ## 12.2 Using the CLI: `tofu state rm` and `tofu state mv`
 
-While the declarative `moved` blocks covered in the previous section are the safest and most modern way to refactor within a single configuration, they are not a silver bullet. There are times when you must step outside the declarative paradigm and interact directly with the state file using imperative CLI commands. 
+While the declarative `moved` blocks covered in the previous section are the safest and most modern way to refactor within a single configuration, they are not a silver bullet. There are times when you must step outside the declarative paradigm and interact directly with the state file using imperative CLI commands.
 
 Manipulating the state file directly can feel like performing open-heart surgery on your infrastructure. It requires precision and caution, but understanding these commands is absolutely essential for advanced state migrations, disaster recovery, and untangling architectural knots.
 
 ### Surgical Extraction with `tofu state rm`
 
-The `tofu state rm` command removes a resource's tracking record from the OpenTofu state file **without destroying the physical resource in your cloud provider**. 
+The `tofu state rm` command removes a resource's tracking record from the OpenTofu state file **without destroying the physical resource in your cloud provider**.
 
-This is a critical distinction. Normally, if you delete a resource block from your `.tf` files, the next `tofu apply` will destroy the actual infrastructure. By using `state rm` first, you sever the link between OpenTofu and the cloud resource. 
+This is a critical distinction. Normally, if you delete a resource block from your `.tf` files, the next `tofu apply` will destroy the actual infrastructure. By using `state rm` first, you sever the link between OpenTofu and the cloud resource.
 
 #### Common Use Cases
 
@@ -209,21 +212,21 @@ tofu state mv \
   aws_vpc.main aws_vpc.main
 ```
 
-Once moved, you must manually cut the corresponding HCL code from the original directory and paste it into the new directory. 
+Once moved, you must manually cut the corresponding HCL code from the original directory and paste it into the new directory.
 
 ### Mandatory Safety Protocols
 
 Because these commands manipulate the source of truth directly, they bypass the safety net of `tofu plan`. Always adhere to the following protocols:
 
-1.  **Always Backup:** By default, OpenTofu creates a local backup (e.g., `terraform.tfstate.backup`) when you modify state via the CLI. However, if you are using a remote backend, ensure you pull a local copy first: `tofu state pull > backup.tfstate`.
-2.  **Dry Runs:** Use the `-dry-run` flag with `tofu state rm` or `tofu state mv` to see exactly what OpenTofu *intends* to do before it actually commits the change to the state file.
-3.  **Locking:** If working in a team environment, ensure no CI/CD pipelines or colleagues are running `tofu apply` while you are manually shifting state records.
+1. **Always Backup:** By default, OpenTofu creates a local backup (e.g., `terraform.tfstate.backup`) when you modify state via the CLI. However, if you are using a remote backend, ensure you pull a local copy first: `tofu state pull > backup.tfstate`.
+2. **Dry Runs:** Use the `-dry-run` flag with `tofu state rm` or `tofu state mv` to see exactly what OpenTofu *intends* to do before it actually commits the change to the state file.
+3. **Locking:** If working in a team environment, ensure no CI/CD pipelines or colleagues are running `tofu apply` while you are manually shifting state records.
 
 ## 12.3 Bringing Unmanaged Infrastructure under Control with `tofu import`
 
 No matter how disciplined your engineering team is, "ClickOps" happens. A developer might manually spin up an S3 bucket to test a quick hypothesis, or an emergency networking patch might be applied directly via the cloud console at 3:00 AM. In other cases, you may be tasked with migrating legacy infrastructure, previously managed by bash scripts or other tools, into your new OpenTofu ecosystem.
 
-When infrastructure exists in the real world but is missing from your OpenTofu state file, it is considered "unmanaged." To bring these rogue resources under OpenTofu's umbrella without recreating them, you use the import process. 
+When infrastructure exists in the real world but is missing from your OpenTofu state file, it is considered "unmanaged." To bring these rogue resources under OpenTofu's umbrella without recreating them, you use the import process.
 
 Historically, importing was a tedious, purely imperative process. Today, OpenTofu supports both the traditional CLI-driven approach and a modern, declarative workflow. Understanding both is critical for a complete mastery of state management.
 
@@ -249,18 +252,22 @@ Crucially, importing a resource into state is only half the battle. If OpenTofu 
 
 The legacy method relies on the `tofu import` CLI command. It requires two arguments: the logical address you want the resource to have in your code, and the provider-specific physical ID of the existing resource.
 
-1.  **Write a Placeholder Block:** First, you must define an empty resource block in your configuration files so OpenTofu knows which resource type and provider to use.
+1. **Write a Placeholder Block:** First, you must define an empty resource block in your configuration files so OpenTofu knows which resource type and provider to use.
+
     ```hcl
     # main.tf
     resource "aws_security_group" "manual_sg" {
       # Arguments will be filled in later
     }
     ```
-2.  **Execute the Import:** Run the command using the physical ID (in AWS, this is usually the resource ID, like `sg-0123456789abcdef0`).
+
+2. **Execute the Import:** Run the command using the physical ID (in AWS, this is usually the resource ID, like `sg-0123456789abcdef0`).
+
     ```bash
     tofu import aws_security_group.manual_sg sg-0123456789abcdef0
     ```
-3.  **Reverse-Engineer the Code:** The resource is now in your state file, but your `.tf` file is still empty. You must now run `tofu state show aws_security_group.manual_sg` to see the imported attributes, and manually copy those values into your HCL block until `tofu plan` reports `No changes. Infrastructure is up-to-date.`
+
+3. **Reverse-Engineer the Code:** The resource is now in your state file, but your `.tf` file is still empty. You must now run `tofu state show aws_security_group.manual_sg` to see the imported attributes, and manually copy those values into your HCL block until `tofu plan` reports `No changes. Infrastructure is up-to-date.`
 
 This method is slow, error-prone, and frustrating when dealing with dozens of resources, as you must manually guess which attributes are required and which are optional or computed.
 
@@ -286,7 +293,7 @@ The true power of the `import` block is unleashed when combined with the configu
 tofu plan -generate-config-out=generated.tf
 ```
 
-OpenTofu will automatically reach out to the cloud provider, pull the resource's current configuration, and **write the corresponding HCL code for you** into the `generated.tf` file. 
+OpenTofu will automatically reach out to the cloud provider, pull the resource's current configuration, and **write the corresponding HCL code for you** into the `generated.tf` file.
 
 The generated code might look like this:
 
@@ -319,18 +326,19 @@ resource "aws_security_group" "manual_sg" {
 #### Refinement and Cleanup
 
 Auto-generated code is functionally correct, but rarely perfectly styled. Your next steps should be:
-1.  **Review the Output:** Ensure the generated code makes sense.
-2.  **Refactor:** Move the generated code from `generated.tf` into your properly structured files (e.g., `security.tf` or `network.tf`).
-3.  **Replace Hardcoded Values:** OpenTofu generates literal strings. You should replace hardcoded references like `vpc_id = "vpc-0abcd...` with dynamic references to your other managed resources (e.g., `vpc_id = aws_vpc.main.id`).
-4.  **Apply:** Run `tofu apply`. OpenTofu will permanently record the import in the state file.
-5.  **Clean up:** Once successfully applied, you can delete the `import` block from your code, as its job is complete.
+
+1. **Review the Output:** Ensure the generated code makes sense.
+2. **Refactor:** Move the generated code from `generated.tf` into your properly structured files (e.g., `security.tf` or `network.tf`).
+3. **Replace Hardcoded Values:** OpenTofu generates literal strings. You should replace hardcoded references like `vpc_id = "vpc-0abcd...` with dynamic references to your other managed resources (e.g., `vpc_id = aws_vpc.main.id`).
+4. **Apply:** Run `tofu apply`. OpenTofu will permanently record the import in the state file.
+5. **Clean up:** Once successfully applied, you can delete the `import` block from your code, as its job is complete.
 
 ### Complex Imports and Provider Limitations
 
 While `tofu import` is a lifeline, be aware of its limitations:
 
 * **Provider Support:** The import logic is implemented by the provider authors, not the core OpenTofu tool. If a provider's author hasn't written robust import logic for a specific resource, the import may fail or capture incomplete data.
-* **Complex Identifiers:** Not all resources use a simple string ID. For example, AWS IAM Role Policy Attachments often require a composite ID combining the role name and policy ARN (e.g., `role-name/arn:aws:iam::aws:policy/ReadOnlyAccess`). Always consult the specific provider documentation (usually located at the bottom of the resource's documentation page) to find the correct `id` format for importing. 
+* **Complex Identifiers:** Not all resources use a simple string ID. For example, AWS IAM Role Policy Attachments often require a composite ID combining the role name and policy ARN (e.g., `role-name/arn:aws:iam::aws:policy/ReadOnlyAccess`). Always consult the specific provider documentation (usually located at the bottom of the resource's documentation page) to find the correct `id` format for importing.
 * **Data Sources as Alternatives:** If you do not intend to modify or manage the lifecycle of a manual resource, but only need to read its attributes (like a VPC ID managed by another team), do *not* use `tofu import`. Instead, use a Data Source (`data "aws_vpc" "existing" { ... }`). Import is strictly for assuming full ownership and lifecycle management.
 
 ## 12.4 Handling State Corruption, Drift, and Disaster Recovery
@@ -390,9 +398,9 @@ tofu force-unlock <LOCK_ID>
 
 #### Handling State File Corruption
 
-A corrupted state file means the JSON data structure tracking your resources is invalid or severely out of sync due to an interrupted write. 
+A corrupted state file means the JSON data structure tracking your resources is invalid or severely out of sync due to an interrupted write.
 
-If you are using a remote backend like Amazon S3 or Google Cloud Storage, **do not attempt to manually edit the JSON file to fix it.** Instead, rely on your backend's built-in versioning. 
+If you are using a remote backend like Amazon S3 or Google Cloud Storage, **do not attempt to manually edit the JSON file to fix it.** Instead, rely on your backend's built-in versioning.
 
 1. Navigate to your cloud provider's storage console.
 2. View the version history of your `terraform.tfstate` file.

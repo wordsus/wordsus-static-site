@@ -1,10 +1,10 @@
-While previous chapters focused on how `vmagent` collects data, raw metrics are rarely perfect. Applications often expose noisy, high-cardinality labels, redundant time series, or inconsistent naming conventions that can degrade database performance and inflate storage costs. 
+While previous chapters focused on how `vmagent` collects data, raw metrics are rarely perfect. Applications often expose noisy, high-cardinality labels, redundant time series, or inconsistent naming conventions that can degrade database performance and inflate storage costs.
 
 Relabeling is your primary defense mechanism and standardization tool. In this chapter, we will master the VictoriaMetrics relabeling pipeline. You will learn the critical differences between target and metric relabeling, how to filter unwanted endpoints before scraping, drop useless data, and dynamically mutate labels on the fly to enforce consistency.
 
 ## 6.1 Understanding the Phases of Metric Relabeling
 
-Relabeling is one of the most powerful and heavily utilized features within the VictoriaMetrics ecosystem (and the broader Prometheus ecosystem). It is a rule-based system that allows you to dynamically rewrite, filter, and enrich your monitoring data in flight. However, a common stumbling block for new administrators is understanding exactly *when* these rules are applied. 
+Relabeling is one of the most powerful and heavily utilized features within the VictoriaMetrics ecosystem (and the broader Prometheus ecosystem). It is a rule-based system that allows you to dynamically rewrite, filter, and enrich your monitoring data in flight. However, a common stumbling block for new administrators is understanding exactly *when* these rules are applied.
 
 Before diving into the syntax of specific rules (which we will cover in the upcoming sections), it is critical to understand the data lifecycle. Relabeling does not happen all at once; it occurs in two distinct, sequential phases: **Target Relabeling** and **Metric Relabeling**.
 
@@ -36,11 +36,12 @@ To conceptualize how data flows through `vmagent` or a single-node VictoriaMetri
 
 ### Phase 1: Target Relabeling (Pre-Scrape)
 
-Target relabeling occurs **before** any connection is made to your monitored applications. When `vmagent` or VictoriaMetrics uses Service Discovery (such as querying the Kubernetes API or reading a Consul registry), it receives a massive list of potential targets. 
+Target relabeling occurs **before** any connection is made to your monitored applications. When `vmagent` or VictoriaMetrics uses Service Discovery (such as querying the Kubernetes API or reading a Consul registry), it receives a massive list of potential targets.
 
-At this stage, you don't have access to the actual metrics (like CPU usage or memory consumption). Instead, you only have access to metadata about the *endpoints* themselves. 
+At this stage, you don't have access to the actual metrics (like CPU usage or memory consumption). Instead, you only have access to metadata about the *endpoints* themselves.
 
 **Key Characteristics of Target Relabeling:**
+
 * **Configuration Key:** Defined under `relabel_configs` in the scrape configuration.
 * **Primary Purpose:** To decide *if* a target should be scraped at all, and to define exactly *how* to reach it.
 * **Available Data:** Operates purely on target metadata. This includes the target's IP/port, HTTP scheme, and dynamic `__meta__` labels provided by the Service Discovery mechanism (e.g., `__meta_kubernetes_pod_label_env`).
@@ -49,11 +50,12 @@ During this phase, you are building the final connection string. For example, yo
 
 ### Phase 2: Metric Relabeling (Post-Scrape / Ingestion)
 
-Metric relabeling occurs **after** a target has been successfully scraped, but **before** the data is written to the storage engine or forwarded via `remote_write`. 
+Metric relabeling occurs **after** a target has been successfully scraped, but **before** the data is written to the storage engine or forwarded via `remote_write`.
 
 Unlike Phase 1, the relabeling engine now has access to the actual time series data returned by the application. This means you can inspect the metric names and their associated labels.
 
 **Key Characteristics of Metric Relabeling:**
+
 * **Configuration Key:** Defined under `metric_relabel_configs` in the scrape configuration.
 * **Primary Purpose:** To filter out high-cardinality data, drop useless time series, or clean up label names to enforce standardization across your organization.
 * **Available Data:** Operates on the final labels attached to a specific sample (e.g., `__name__`, `job`, `instance`, `status_code`, `path`).
@@ -68,10 +70,10 @@ If an application exposes 1,000 different metrics, but you only care about 50 of
 
 To master the relabeling phases, you must understand how the engine handles labels prefixed with a double underscore (`__`). These are internal labels, and their lifecycle is strictly tied to the relabeling phases.
 
-1.  **Creation:** During Service Discovery, the system attaches dozens of temporary labels starting with `__meta_` to a target. It also creates `__address__` (the target host:port), `__metrics_path__` (usually `/metrics`), and `__scheme__` (http/https).
-2.  **Manipulation (Phase 1):** In Target Relabeling, you can read these `__` labels to make routing or filtering decisions. If you want to keep a piece of metadata permanently (for example, keeping a Kubernetes namespace label), you *must* rename it to a label without the `__` prefix during this phase.
-3.  **Purging:** Immediately after Phase 1 finishes, the system **deletes** all labels that still start with `__` (except `__name__`). 
-4.  **Finality (Phase 2):** By the time Phase 2 (Metric Relabeling) begins, the `__meta_` labels no longer exist. If you try to write a rule in Phase 2 that looks for a `__meta_kubernetes_pod_name` label, it will silently fail because that data was stripped away after Phase 1.
+1. **Creation:** During Service Discovery, the system attaches dozens of temporary labels starting with `__meta_` to a target. It also creates `__address__` (the target host:port), `__metrics_path__` (usually `/metrics`), and `__scheme__` (http/https).
+2. **Manipulation (Phase 1):** In Target Relabeling, you can read these `__` labels to make routing or filtering decisions. If you want to keep a piece of metadata permanently (for example, keeping a Kubernetes namespace label), you *must* rename it to a label without the `__` prefix during this phase.
+3. **Purging:** Immediately after Phase 1 finishes, the system **deletes** all labels that still start with `__` (except `__name__`).
+4. **Finality (Phase 2):** By the time Phase 2 (Metric Relabeling) begins, the `__meta_` labels no longer exist. If you try to write a rule in Phase 2 that looks for a `__meta_kubernetes_pod_name` label, it will silently fail because that data was stripped away after Phase 1.
 
 Understanding this strict lifecycle—and knowing exactly which data is available during Target Relabeling versus Metric Relabeling—is the foundational key to writing effective, performant rules.
 
@@ -81,9 +83,9 @@ As established in the previous section, Target Relabeling is your first line of 
 
 These rules are defined under the `relabel_configs` key within a specific job in your `scrape_configs`. You will use target relabeling to achieve three primary goals:
 
-1.  **Filtering:** Deciding which discovered targets to keep and which to ignore.
-2.  **Metadata Persistence:** Translating temporary `__meta_*` labels into permanent, queryable labels attached to your time series.
-3.  **Connection Routing:** Modifying internal `__` labels (like `__address__` or `__scheme__`) to change how `vmagent` actually connects to the target.
+1. **Filtering:** Deciding which discovered targets to keep and which to ignore.
+2. **Metadata Persistence:** Translating temporary `__meta_*` labels into permanent, queryable labels attached to your time series.
+3. **Connection Routing:** Modifying internal `__` labels (like `__address__` or `__scheme__`) to change how `vmagent` actually connects to the target.
 
 ### Anatomy of a Relabeling Rule
 
@@ -108,7 +110,7 @@ When Service Discovery returns hundreds of endpoints, you rarely want to scrape 
 
 **Example: Only scrape pods with a specific annotation**
 
-In Kubernetes, you might only want to scrape pods explicitly annotated with `prometheus.io/scrape: "true"`. 
+In Kubernetes, you might only want to scrape pods explicitly annotated with `prometheus.io/scrape: "true"`.
 
 ```yaml
 scrape_configs:
@@ -151,6 +153,7 @@ Remember that all labels starting with `__` are deleted immediately after the Ta
         source_labels: [__meta_kubernetes_pod_name]
         target_label: pod
 ```
+
 *Note: Because `replace` is the default action, and `(.*)` is the default regex, you can omit them for basic 1:1 mapping to keep your YAML concise.*
 
 ### Use Case 3: Modifying Scrape Behavior
@@ -202,13 +205,14 @@ AWS EC2 Service Discovery exposes instance tags as `__meta_ec2_tag_<tagname>`. Y
         regex: __meta_ec2_tag_(.+)
         replacement: tag_$1
 ```
+
 If an EC2 instance has the tags `__meta_ec2_tag_team=dev` and `__meta_ec2_tag_app=frontend`, this single rule will automatically generate the permanent labels `tag_team="dev"` and `tag_app="frontend"`.
 
 ## 6.3 Metric Relabeling for Dropping and Keeping Data
 
 While Target Relabeling manages *where* `vmagent` goes to find data, Metric Relabeling dictates *what* actually gets stored. Operating entirely in Phase 2—after a scrape is successful but before the data is committed to the storage engine or sent via `remote_write`—metric relabeling is your primary tool for managing storage costs and mitigating high-cardinality explosions.
 
-At this stage, you finally have access to the time series data itself. This means you can evaluate the metric's name (accessible via the special `__name__` label) and any custom labels the application has attached to it. 
+At this stage, you finally have access to the time series data itself. This means you can evaluate the metric's name (accessible via the special `__name__` label) and any custom labels the application has attached to it.
 
 The configurations in this section are defined under the `metric_relabel_configs` key in your scrape jobs, or globally in VictoriaMetrics using stream-level relabeling flags.
 
@@ -220,7 +224,7 @@ The most fundamental use of metric relabeling is filtering entire time series. I
 
 #### Use Case 1: Dropping Noisy or High-Cardinality Metrics
 
-Applications often expose hundreds of default metrics (like Go runtime stats or JVM memory pools) that you may never look at. Furthermore, developers might accidentally introduce high-cardinality labels, such as user IDs or session tokens, which can rapidly degrade database performance. 
+Applications often expose hundreds of default metrics (like Go runtime stats or JVM memory pools) that you may never look at. Furthermore, developers might accidentally introduce high-cardinality labels, such as user IDs or session tokens, which can rapidly degrade database performance.
 
 To discard an entire metric, you use the `drop` action and target the `__name__` label.
 
@@ -238,7 +242,7 @@ scrape_configs:
         regex: go_gc_duration_seconds.*
 ```
 
-You can also drop metrics based on their specific label values. 
+You can also drop metrics based on their specific label values.
 
 **Example: Dropping successful HTTP requests to save space**
 
@@ -252,6 +256,7 @@ If you only use `http_requests_total` to calculate error rates, you might choose
         # Match metric name 'http_requests_total' AND any status starting with '2'
         regex: http_requests_total@2.*
 ```
+
 *Note the use of `separator: "@"`. The relabeling engine concatenates the `source_labels` using the separator before evaluating the regex. The resulting string tested by the regex is `http_requests_total@200`.*
 
 #### Use Case 2: The Allowlist Approach (`keep`)
@@ -320,7 +325,7 @@ By strategically combining `drop` for noisy time series and `labeldrop` for vola
 
 While dropping unwanted time series controls your database's physical footprint, dynamically modifying labels is how you ensure data cleanliness, consistency, and usability. Because different applications and teams often use conflicting naming conventions, metric relabeling acts as a universal translator, standardizing your telemetry before it ever hits the storage engine.
 
-All of these transformations utilize the `replace` action (which is the default action if none is specified) or the `labelmap` action within your `metric_relabel_configs`. 
+All of these transformations utilize the `replace` action (which is the default action if none is specified) or the `labelmap` action within your `metric_relabel_configs`.
 
 ### 1. Renaming the Metric Itself
 
@@ -386,6 +391,7 @@ Suppose an exporter provides `host="192.168.1.5"` and `port="8080"` as separate 
         replacement: $1     # Inject the captured string
         target_label: endpoint
 ```
+
 If a metric arrives with `host="db-01"` and `port="5432"`, this rule evaluates the string `db-01:5432`, matches the whole thing, and creates a new label: `endpoint="db-01:5432"`.
 
 ### 4. Standardizing Label Names with `labelmap`
@@ -431,20 +437,24 @@ Before looking at the tools, you must understand the most common reason relabeli
 
 **The Mistake:**
 You want to drop any target in the staging environment. You write:
+
 ```yaml
 - source_labels: [__meta_env]
   action: drop
   regex: staging
 ```
+
 If the actual label is `staging-eu-west`, this rule **will fail** to match. It only matches the exact string `staging`.
 
 **The Fix:**
 You must explicitly use wildcards to allow surrounding text:
+
 ```yaml
 - source_labels: [__meta_env]
   action: drop
   regex: .*staging.*
 ```
+
 Keep this behavior at the forefront of your mind whenever you are debugging a rule that "should be matching, but isn't."
 
 ---
@@ -454,11 +464,12 @@ Keep this behavior at the forefront of your mind whenever you are debugging a ru
 The most effective way to debug relabeling is using the interactive web interfaces built directly into `vmagent` (and single-node VictoriaMetrics). These interfaces provide a step-by-step visual execution trace of your rules.
 
 If `vmagent` is running locally on its default port, open your browser and navigate to:
-1.  **`http://localhost:8429/target_relabel_debug`** (For testing Phase 1)
-2.  **`http://localhost:8429/metric_relabel_debug`** (For testing Phase 2)
+
+1. **`http://localhost:8429/target_relabel_debug`** (For testing Phase 1)
+2. **`http://localhost:8429/metric_relabel_debug`** (For testing Phase 2)
 
 **How it works:**
-These pages present you with two text boxes. In the first box, you paste your raw YAML `relabel_configs` or `metric_relabel_configs`. In the second box, you provide the starting labels formatted as a standard metric (e.g., `{__address__="10.0.1.5:8080", __meta_env="prod"}`). 
+These pages present you with two text boxes. In the first box, you paste your raw YAML `relabel_configs` or `metric_relabel_configs`. In the second box, you provide the starting labels formatted as a standard metric (e.g., `{__address__="10.0.1.5:8080", __meta_env="prod"}`).
 
 When you click "Submit," the engine evaluates your rules and outputs an execution trace.
 
@@ -479,6 +490,7 @@ Result: No match. Target kept.
 Final labels (after internal __meta_ stripping):
 {__address__="10.0.1.5:8080", team="frontend"}
 ```
+
 This step-by-step output instantly reveals *which* rule in the chain failed to execute, or *why* a metric was unexpectedly dropped.
 
 ### Tool 2: Validating Syntax with `-dryRun`
@@ -507,8 +519,8 @@ This page is invaluable for verifying **Phase 1 (Target Relabeling)**. It splits
 
 To safely develop complex relabeling strategies, adopt this workflow:
 
-1.  **Extract Sample Data:** Go to your production database and query a raw metric. Copy the exact labels of a time series you want to manipulate. If working with target relabeling, go to the `/targets` page and copy the raw `__meta_` labels of a discovered node.
-2.  **Isolate the Rules:** Write your `relabel_configs` or `metric_relabel_configs` in a temporary text file.
-3.  **Trace Locally:** Paste the YAML and the sample labels into the `vmagent` web debugger (`/target_relabel_debug` or `/metric_relabel_debug`). Tweak the regex and separator logic until the final output matches your exact desired state.
-4.  **Dry Run:** Integrate the snippet into your main configuration file and run `vmagent -dryRun` to ensure YAML integrity.
-5.  **Deploy and Monitor:** Apply the configuration and monitor the `vmagent_relabel_metrics_dropped_total` metric to ensure your drop rules are executing at the expected volume.
+1. **Extract Sample Data:** Go to your production database and query a raw metric. Copy the exact labels of a time series you want to manipulate. If working with target relabeling, go to the `/targets` page and copy the raw `__meta_` labels of a discovered node.
+2. **Isolate the Rules:** Write your `relabel_configs` or `metric_relabel_configs` in a temporary text file.
+3. **Trace Locally:** Paste the YAML and the sample labels into the `vmagent` web debugger (`/target_relabel_debug` or `/metric_relabel_debug`). Tweak the regex and separator logic until the final output matches your exact desired state.
+4. **Dry Run:** Integrate the snippet into your main configuration file and run `vmagent -dryRun` to ensure YAML integrity.
+5. **Deploy and Monitor:** Apply the configuration and monitor the `vmagent_relabel_metrics_dropped_total` metric to ensure your drop rules are executing at the expected volume.

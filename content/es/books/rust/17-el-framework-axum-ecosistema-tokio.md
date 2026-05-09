@@ -10,8 +10,8 @@ Una de las diferencias arquitectónicas más notables que notarás de inmediato 
 
 En Axum, un handler (manejador) es simplemente una función asíncrona (`async fn`). Para que el compilador acepte una función como handler válido, esta debe cumplir con dos reglas fundamentales:
 
-1.  **Los argumentos:** Puede no recibir argumentos, o recibir una serie de argumentos que implementen el trait `FromRequest` o `FromRequestParts` (conocidos como Extractors, que abordaremos en la sección 17.3).
-2.  **El retorno:** Debe devolver cualquier tipo que implemente el trait `IntoResponse`. 
+1. **Los argumentos:** Puede no recibir argumentos, o recibir una serie de argumentos que implementen el trait `FromRequest` o `FromRequestParts` (conocidos como Extractors, que abordaremos en la sección 17.3).
+2. **El retorno:** Debe devolver cualquier tipo que implemente el trait `IntoResponse`.
 
 Afortunadamente, Axum ya implementa `IntoResponse` para los tipos más comunes de la Standard Library (`&str`, `String`, tuplas con códigos de estado, etc.).
 
@@ -114,7 +114,7 @@ Con este diseño arquitectónico, el endpoint para listar usuarios automáticame
 
 ### Fallbacks: Manejando el clásico 404
 
-Por defecto, si un cliente solicita una ruta que no existe, Axum devuelve una respuesta vacía con un código de estado `404 Not Found`. Sin embargo, en una API RESTful profesional, lo ideal es devolver un JSON estructurado informando del error. 
+Por defecto, si un cliente solicita una ruta que no existe, Axum devuelve una respuesta vacía con un código de estado `404 Not Found`. Sin embargo, en una API RESTful profesional, lo ideal es devolver un JSON estructurado informando del error.
 
 Podemos definir un comportamiento global para rutas no encontradas utilizando el método `.fallback()` en nuestro `Router`:
 
@@ -214,7 +214,7 @@ async fn datos_handler() -> &'static str {
 
 ### Reutilización más allá de HTTP
 
-La belleza de integrar `tower` tan profundamente es que sus utilidades no se limitan a peticiones HTTP. Si tu aplicación backend necesita comunicarse con bases de datos u otros microservicios mediante clientes genéricos, puedes aplicar las *mismas* herramientas de Tower. 
+La belleza de integrar `tower` tan profundamente es que sus utilidades no se limitan a peticiones HTTP. Si tu aplicación backend necesita comunicarse con bases de datos u otros microservicios mediante clientes genéricos, puedes aplicar las *mismas* herramientas de Tower.
 
 Por ejemplo, `tower::retry` (para reintentar peticiones fallidas) o `tower::limit` (para limitar la concurrencia máxima y proteger tus recursos) son agnósticos al protocolo. Aprender a manejar Tower significa dominar un paradigma de resiliencia de red que te servirá en todo el ecosistema asíncrono de Rust.
 
@@ -223,8 +223,9 @@ Por ejemplo, `tower::retry` (para reintentar peticiones fallidas) o `tower::limi
 En el Capítulo 16 exploramos cómo Actix-Web utiliza los *Extractors* para obtener datos de la petición HTTP. Axum abraza este mismo paradigma, pero lo lleva un paso más allá gracias a su profunda integración con el sistema de tipos de Rust y su estricta separación entre el cuerpo de la petición (Body) y sus metadatos (Parts).
 
 En Axum, un extractor es cualquier tipo que implemente uno de estos dos traits:
-1.  **`FromRequestParts`**: Para extraer datos de la URI, cabeceras (headers) o el estado compartido, sin consumir el cuerpo de la petición. Puedes tener múltiples extractores de este tipo en la firma de tu handler.
-2.  **`FromRequest`**: Para extraer y consumir el cuerpo de la petición (como un JSON o un formulario). 
+
+1. **`FromRequestParts`**: Para extraer datos de la URI, cabeceras (headers) o el estado compartido, sin consumir el cuerpo de la petición. Puedes tener múltiples extractores de este tipo en la firma de tu handler.
+2. **`FromRequest`**: Para extraer y consumir el cuerpo de la petición (como un JSON o un formulario).
 
 > **La regla de oro de Axum (El orden importa):**
 > Dado que el cuerpo de una petición HTTP es un *stream* asíncrono que solo se puede consumir una vez, **solo puedes tener un extractor que implemente `FromRequest` por handler, y este DEBE ser el último argumento** en la firma de tu función. Si intentas poner el extractor del cuerpo antes que los de las cabeceras, el código simplemente no compilará.

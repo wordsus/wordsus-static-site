@@ -22,7 +22,7 @@ Al estar tan cerca del Sol, uno podría pensar que es simplemente una roca incan
 
 ### La extraña danza del tiempo en Mercurio
 
-Mercurio tiene una relación gravitacional muy íntima con el Sol. Esta interacción frena su rotación, creando lo que los astrónomos llaman una "resonancia orbital espín-órbita". 
+Mercurio tiene una relación gravitacional muy íntima con el Sol. Esta interacción frena su rotación, creando lo que los astrónomos llaman una "resonancia orbital espín-órbita".
 
 ```text
 Relación de tiempo en Mercurio:
@@ -31,6 +31,7 @@ Relación de tiempo en Mercurio:
 1 Día Sideral    = 59 días terrestres (tiempo en girar sobre su propio eje)
 1 Día Solar      = 176 días terrestres (tiempo entre un amanecer y el siguiente)
 ```
+
 Como se observa en este sencillo esquema, la combinación de su rotación lenta y su órbita rápida hace que un "día" completo (desde que amanece hasta que vuelve a amanecer) dure el equivalente a ¡dos de sus propios años!
 
 ### Geología: El corazón de hierro
@@ -50,10 +51,11 @@ Para entender por qué Venus es tan caliente, la astronomía utiliza la física 
 $$ T_{eq} = T_{\odot} \sqrt{\frac{R_{\odot}}{2D}} (1 - A)^{1/4} $$
 
 Donde:
-*   $T_{\odot}$ es la temperatura del Sol.
-*   $R_{\odot}$ es el radio del Sol.
-*   $D$ es la distancia entre el planeta y el Sol.
-*   $A$ es el albedo (fracción de luz reflejada).
+
+* $T_{\odot}$ es la temperatura del Sol.
+* $R_{\odot}$ es el radio del Sol.
+* $D$ es la distancia entre el planeta y el Sol.
+* $A$ es el albedo (fracción de luz reflejada).
 
 Venus está cubierto por nubes de ácido sulfúrico altamente reflectantes, dándole un albedo de casi 0.75 (refleja el 75% de la luz solar). Según esta fórmula matemática pura, la temperatura de equilibrio de Venus debería ser de unos gélidos **-40°C**. ¡Debería ser más frío que la Tierra!
 
@@ -86,7 +88,7 @@ A unos 3.000 kilómetros bajo nuestros pies, se encuentra el núcleo externo de 
     >>>>           ~ -- . . -- ~
 ```
 
-Este escudo, representado en el diagrama de texto superior, es vital. El Sol expulsa constantemente un torrente letal de partículas cargadas y radiación (el viento solar). Si la Tierra no tuviera este campo magnético, el viento solar habría "barrido" nuestra atmósfera hace miles de millones de años, dejándonos expuestos a la radiación cósmica y evaporando el agua de la superficie. 
+Este escudo, representado en el diagrama de texto superior, es vital. El Sol expulsa constantemente un torrente letal de partículas cargadas y radiación (el viento solar). Si la Tierra no tuviera este campo magnético, el viento solar habría "barrido" nuestra atmósfera hace miles de millones de años, dejándonos expuestos a la radiación cósmica y evaporando el agua de la superficie.
 
 ### La tectónica de placas como termostato
 
@@ -127,7 +129,7 @@ La capacidad de un planeta para retener gases depende de si las moléculas de ga
 
 $$ v_e = \sqrt{\frac{2GM}{r}} $$
 
-Donde $G$ es la constante gravitacional, $M$ es la masa del planeta y $r$ es su radio. Al ser Marte un planeta con tan poca masa (apenas el 11% de la masa terrestre), su velocidad de escape es muy baja ($5.0 \text{ km/s}$, comparada con los $11.2 \text{ km/s}$ de la Tierra). 
+Donde $G$ es la constante gravitacional, $M$ es la masa del planeta y $r$ es su radio. Al ser Marte un planeta con tan poca masa (apenas el 11% de la masa terrestre), su velocidad de escape es muy baja ($5.0 \text{ km/s}$, comparada con los $11.2 \text{ km/s}$ de la Tierra).
 
 Hace unos 4.000 millones de años, el pequeño núcleo de Marte se enfrió rápidamente. Al solidificarse, la dínamo interna se detuvo y el campo magnético del planeta se apagó. Sin este escudo protector, el viento solar chocó directamente contra la atmósfera superior de Marte. Durante eones, este viento estelar "arrancó" sistemáticamente los gases de la atmósfera, expulsándolos al espacio (especialmente a los elementos más ligeros, como el agua vaporizada descompuesta por los rayos ultravioleta). El planeta, incapaz de retener su capa gaseosa debido a su baja gravedad, se secó y congeló para siempre.
 
@@ -147,9 +149,10 @@ Para poner en perspectiva a esta familia de rocas gigantes que habitan cerca del
 | Día (Rotación)        | 59 días  | 243 días | 24 horas | 24h 37m  |
 +-----------------------+----------+----------+----------+----------+
 ```
+
 *(Nota: "UA" significa Unidad Astronómica, que es la distancia media entre la Tierra y el Sol, aproximadamente 150 millones de kilómetros).*
 
-Al observar este cuadro, notamos curiosidades fascinantes. Por ejemplo, aunque Mercurio es más pequeño y más cercano al Sol, la gravedad en su superficie es virtualmente idéntica a la de Marte. Esto se debe a que Mercurio, con su enorme núcleo metálico, es mucho más denso que Marte, que está compuesto principalmente por rocas más ligeras. 
+Al observar este cuadro, notamos curiosidades fascinantes. Por ejemplo, aunque Mercurio es más pequeño y más cercano al Sol, la gravedad en su superficie es virtualmente idéntica a la de Marte. Esto se debe a que Mercurio, con su enorme núcleo metálico, es mucho más denso que Marte, que está compuesto principalmente por rocas más ligeras.
 
 También resalta el extraño comportamiento de rotación de Venus: sus 243 días terrestres por giro no solo indican que es el planeta que rota más lento, sino que gira en sentido retrógrado (al revés que la Tierra). Si pudieras pararte en la superficie de Venus a través de las nubes grises, verías (lentamente) salir el Sol por el oeste y ponerse por el este.
 
@@ -157,15 +160,15 @@ También resalta el extraño comportamiento de rotación de Venus: sus 243 días
 
 Un aspecto que diferencia rotundamente a estos cuatro cuerpos es su cobertura gaseosa. La historia geológica y la interacción biológica dictan la composición atmosférica actual.
 
-*   **Mercurio:** Tiene una atmósfera tan tenue que la ciencia prefiere llamarla "exosfera". Consiste en átomos atrapados temporalmente del viento solar y partículas eyectadas de la superficie por impactos de micrometeoritos. No hay clima, no hay viento, no hay presión.
-*   **Venus:** Una asfixiante manta de Dióxido de Carbono ($96.5\%$) y Nitrógeno ($3.5\%$), salpicada de trazas de dióxido de azufre. Su pesadez y composición dominan el destino del planeta.
-*   **Tierra:** Una singularidad estadística. Es la única atmósfera del Sistema Solar rica en oxígeno libre ($21\%$). El oxígeno es un gas altamente reactivo; si desapareciera la vida vegetal y las bacterias fotosintéticas de la Tierra, en pocos millones de años el oxígeno se oxidaría con los minerales de la corteza y desaparecería del aire. Nuestra atmósfera de Nitrógeno ($78\%$) y Oxígeno es una firma biológica viviente.
-*   **Marte:** Una atmósfera en miniatura, delgada y fría. Su composición es irónicamente similar a la de Venus ($95\%$ de Dióxido de Carbono, $2.7\%$ de Nitrógeno), pero su densidad es tan baja que no genera un efecto invernadero suficiente para calentar el planeta.
+* **Mercurio:** Tiene una atmósfera tan tenue que la ciencia prefiere llamarla "exosfera". Consiste en átomos atrapados temporalmente del viento solar y partículas eyectadas de la superficie por impactos de micrometeoritos. No hay clima, no hay viento, no hay presión.
+* **Venus:** Una asfixiante manta de Dióxido de Carbono ($96.5\%$) y Nitrógeno ($3.5\%$), salpicada de trazas de dióxido de azufre. Su pesadez y composición dominan el destino del planeta.
+* **Tierra:** Una singularidad estadística. Es la única atmósfera del Sistema Solar rica en oxígeno libre ($21\%$). El oxígeno es un gas altamente reactivo; si desapareciera la vida vegetal y las bacterias fotosintéticas de la Tierra, en pocos millones de años el oxígeno se oxidaría con los minerales de la corteza y desaparecería del aire. Nuestra atmósfera de Nitrógeno ($78\%$) y Oxígeno es una firma biológica viviente.
+* **Marte:** Una atmósfera en miniatura, delgada y fría. Su composición es irónicamente similar a la de Venus ($95\%$ de Dióxido de Carbono, $2.7\%$ de Nitrógeno), pero su densidad es tan baja que no genera un efecto invernadero suficiente para calentar el planeta.
 
 ## Conclusión: Nuestra isla cósmica en perspectiva
 
-Al observar la desolación silenciosa de Mercurio, el infierno hiperbárico de Venus y el desierto gélido de Marte, la verdadera lección de los planetas rocosos es una profunda apreciación por la fragilidad de nuestro propio mundo. 
+Al observar la desolación silenciosa de Mercurio, el infierno hiperbárico de Venus y el desierto gélido de Marte, la verdadera lección de los planetas rocosos es una profunda apreciación por la fragilidad de nuestro propio mundo.
 
-La Tierra no es un lugar permanentemente a salvo del caos cósmico. Es el resultado de un delicado y fortuito equilibrio: un núcleo activo que nos protege del fuego solar, una distancia exacta para mantener el agua líquida, y un sistema de reciclaje geológico que regula nuestro clima. Aprender sobre la evolución climática y geológica de nuestros vecinos rocosos no es solo un ejercicio de curiosidad enciclopédica; es una ventana para comprender el futuro de nuestro propio planeta. 
+La Tierra no es un lugar permanentemente a salvo del caos cósmico. Es el resultado de un delicado y fortuito equilibrio: un núcleo activo que nos protege del fuego solar, una distancia exacta para mantener el agua líquida, y un sistema de reciclaje geológico que regula nuestro clima. Aprender sobre la evolución climática y geológica de nuestros vecinos rocosos no es solo un ejercicio de curiosidad enciclopédica; es una ventana para comprender el futuro de nuestro propio planeta.
 
 Cada sonda que enviamos a la acidez de las nubes de Venus o cada astromóvil que perfora la roca arcillosa en el cráter Jezero de Marte nos revela un capítulo diferente del gran libro del Sistema Solar. Al descifrar cómo estos mundos hermanos se convirtieron en parajes tan inhóspitos, damos un paso más hacia la comprensión de las raras y maravillosas condiciones que hacen posible la vida. Los planetas rocosos son espejos del pasado y del futuro geológico; y la Tierra, por ahora, sigue siendo nuestra afortunada y preciosa anomalía.

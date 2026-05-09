@@ -67,11 +67,8 @@ The completeness constraint addresses whether an instance of a supertype *must* 
 * **Total Specialization:** Every instance of the supertype must belong to at least one subtype. In an EER diagram, this is typically represented by a double line connecting the supertype to the specialization circle.
 * *Example:* If an organization dictates that every `VEHICLE` in its fleet must be categorized strictly as either a `CAR` or a `TRUCK`, then `VEHICLE` has total specialization.
 
-
 * **Partial Specialization:** An instance of a supertype does not have to belong to any subtype. This is represented by a single line connecting the supertype to the specialization circle.
 * *Example:* In the `PERSON` supertype example above, if the university also keeps records of parents or external vendors who are neither `STUDENT`, `FACULTY`, nor `STAFF`, the specialization is partial.
-
-
 
 #### 2. Disjointness Constraints
 
@@ -80,11 +77,8 @@ The disjointness constraint dictates whether an instance of a supertype can simu
 * **Disjoint Rule (d):** An instance of the supertype can belong to *only one* subtype. This is denoted by placing a "d" inside the specialization circle.
 * *Example:* A medical `PATIENT` can be an `OUTPATIENT` or an `INPATIENT`, but cannot be both at the exact same time.
 
-
 * **Overlap Rule (o):** An instance of the supertype can belong to *multiple* subtypes simultaneously. This is denoted by placing an "o" inside the specialization circle.
 * *Example:* A `PERSON` in a university database could theoretically be both an `ALUMNUS` (having graduated previously) and a `STAFF` member simultaneously.
-
-
 
 ### Summary of EER Hierarchy Constraints
 

@@ -54,7 +54,7 @@ fn guardar_estado(estado: &str) -> io::Result<()> {
 
 ### Control granular con `std::fs::File` y `OpenOptions`
 
-Las funciones rápidas anteriores son convenientes, pero limitadas. En el desarrollo backend, frecuentemente necesitas añadir datos al final de un archivo (como un log manual) sin borrar el contenido anterior, o necesitas abrir un archivo en modo de solo escritura sin truncarlo. 
+Las funciones rápidas anteriores son convenientes, pero limitadas. En el desarrollo backend, frecuentemente necesitas añadir datos al final de un archivo (como un log manual) sin borrar el contenido anterior, o necesitas abrir un archivo en modo de solo escritura sin truncarlo.
 
 Para este nivel de control, instanciamos directamente la estructura `File`.
 
@@ -99,9 +99,9 @@ fn registrar_log(mensaje: &str) -> io::Result<()> {
 
 ### Consideraciones importantes para Backend
 
-1.  **Cierre automático (RAII):** En lenguajes como C, Go o Java, es común tener que recordar escribir `file.close()` (o usar `defer`/`try-with-resources`). En Rust, gracias al sistema de Ownership, el archivo se cierra de forma segura y automática a nivel del SO en el instante en que la variable `File` sale de ámbito (scope).
-2.  **Rutas:** En los ejemplos anteriores hemos usado literales de cadena (`&str`) para las rutas. Rust los acepta silenciosamente mediante un *Trait* llamado `AsRef<Path>`. Profundizaremos en el manejo idiomático y multiplataforma de rutas en la sección 12.4 con `Path` y `PathBuf`.
-3.  **Bloqueo de Hilos:** Es vital recordar que `std::fs` es **síncrono**. Cuando llamas a `fs::read`, el hilo actual del sistema operativo se suspende hasta que el disco magnético o el SSD retorne la información. En un contexto de alta concurrencia, esto se conoce como *Blocking I/O*.
+1. **Cierre automático (RAII):** En lenguajes como C, Go o Java, es común tener que recordar escribir `file.close()` (o usar `defer`/`try-with-resources`). En Rust, gracias al sistema de Ownership, el archivo se cierra de forma segura y automática a nivel del SO en el instante en que la variable `File` sale de ámbito (scope).
+2. **Rutas:** En los ejemplos anteriores hemos usado literales de cadena (`&str`) para las rutas. Rust los acepta silenciosamente mediante un *Trait* llamado `AsRef<Path>`. Profundizaremos en el manejo idiomático y multiplataforma de rutas en la sección 12.4 con `Path` y `PathBuf`.
+3. **Bloqueo de Hilos:** Es vital recordar que `std::fs` es **síncrono**. Cuando llamas a `fs::read`, el hilo actual del sistema operativo se suspende hasta que el disco magnético o el SSD retorne la información. En un contexto de alta concurrencia, esto se conoce como *Blocking I/O*.
 
 ## 12.2 Manejo eficiente con buffers (`BufReader`, `BufWriter`)
 
@@ -171,9 +171,9 @@ fn generar_reporte_masivo() -> io::Result<()> {
 
 ### Consideraciones Críticas y "Gotchas"
 
-1.  **El volcado implícito al desechar (Drop):** Cuando un `BufWriter` sale de ámbito, su implementación del trait `Drop` intentará volcar los datos restantes al disco. Sin embargo, **si ocurre un error de I/O durante este volcado automático, el error será silenciado** (ya que los métodos `drop` no pueden devolver un `Result`). Por esta razón, en código backend de producción, es una buena práctica llamar explícitamente a `.flush()` o `.into_inner()` antes de que la variable salga de ámbito para poder manejar cualquier posible error.
-2.  **No uses buffers si no los necesitas:** Si vas a leer todo el contenido de un archivo de golpe en un `String` o un `Vec<u8>` usando `fs::read_to_string` o `fs::read` (como vimos en 12.1), **no uses** `BufReader`. Esas funciones ya están altamente optimizadas por el sistema operativo para alojar la memoria necesaria y leer el archivo de la forma más rápida posible. Añadir un `BufReader` en ese caso solo agregaría una capa de copia de memoria innecesaria.
-3.  **Tamaño de buffer personalizado:** Si los 8 KB por defecto no se ajustan a tu caso de uso (por ejemplo, estás procesando bloques de datos multimedia muy grandes), puedes usar `BufReader::with_capacity(tamaño_en_bytes, archivo)` para definir el tamaño exacto del buffer en RAM.
+1. **El volcado implícito al desechar (Drop):** Cuando un `BufWriter` sale de ámbito, su implementación del trait `Drop` intentará volcar los datos restantes al disco. Sin embargo, **si ocurre un error de I/O durante este volcado automático, el error será silenciado** (ya que los métodos `drop` no pueden devolver un `Result`). Por esta razón, en código backend de producción, es una buena práctica llamar explícitamente a `.flush()` o `.into_inner()` antes de que la variable salga de ámbito para poder manejar cualquier posible error.
+2. **No uses buffers si no los necesitas:** Si vas a leer todo el contenido de un archivo de golpe en un `String` o un `Vec<u8>` usando `fs::read_to_string` o `fs::read` (como vimos en 12.1), **no uses** `BufReader`. Esas funciones ya están altamente optimizadas por el sistema operativo para alojar la memoria necesaria y leer el archivo de la forma más rápida posible. Añadir un `BufReader` en ese caso solo agregaría una capa de copia de memoria innecesaria.
+3. **Tamaño de buffer personalizado:** Si los 8 KB por defecto no se ajustan a tu caso de uso (por ejemplo, estás procesando bloques de datos multimedia muy grandes), puedes usar `BufReader::with_capacity(tamaño_en_bytes, archivo)` para definir el tamaño exacto del buffer en RAM.
 
 ## 12.3 Interacción con la entrada y salida estándar (`stdin`, `stdout`)
 
@@ -204,7 +204,7 @@ fn iniciar_servidor(puerto: u16) {
 
 ### Leyendo desde `stdin`
 
-Para aplicaciones CLI interactivas, necesitarás solicitar información al usuario. El manejador global `std::io::stdin()` nos permite leer esta entrada. 
+Para aplicaciones CLI interactivas, necesitarás solicitar información al usuario. El manejador global `std::io::stdin()` nos permite leer esta entrada.
 
 El método más común es `read_line`, el cual añade el texto introducido (incluyendo el salto de línea `\n` o `\r\n`) a un `String` existente.
 
@@ -283,6 +283,7 @@ fn exportar_datos_rapido() -> io::Result<()> {
 Hasta ahora, en los ejemplos de este capítulo hemos utilizado literales de cadena (`&str`) como `"config.json"` o `"datos.csv"` para referirnos a los archivos. Para scripts rápidos o pruebas, esto es aceptable. Sin embargo, en un entorno de backend profesional, construir rutas concatenando cadenas (`directorio + "/" + archivo`) es un anti-patrón peligroso.
 
 Los sistemas operativos manejan las rutas de manera diferente:
+
 1. **Separadores:** Unix (Linux/macOS) utiliza `/`, mientras que Windows utiliza `\`.
 2. **Codificación:** Mientras que las cadenas en Rust (`String` y `&str`) están estrictamente codificadas en UTF-8 válido, las rutas en los sistemas operativos no tienen esta garantía. Windows, por ejemplo, utiliza secuencias de 16 bits (similares a UTF-16) que pueden contener texto inválido, y Linux permite casi cualquier secuencia de bytes excepto nulos y `/`.
 
@@ -370,7 +371,7 @@ fn analizar_archivo_subido(ruta_str: &str) {
 
 ### El tipo `OsStr` y `OsString`
 
-Habrás notado en el ejemplo anterior el uso de `.to_string_lossy()`. Dado que, como mencionamos, las rutas del sistema operativo no garantizan ser UTF-8 válido, los métodos de `Path` que extraen texto (como `file_name()` o `extension()`) no devuelven `&str` ni `String`. En su lugar, devuelven `&OsStr` (o `OsString` en su versión con propiedad). 
+Habrás notado en el ejemplo anterior el uso de `.to_string_lossy()`. Dado que, como mencionamos, las rutas del sistema operativo no garantizan ser UTF-8 válido, los métodos de `Path` que extraen texto (como `file_name()` o `extension()`) no devuelven `&str` ni `String`. En su lugar, devuelven `&OsStr` (o `OsString` en su versión con propiedad).
 
 El tipo `OsStr` es la abstracción de Rust para "texto del sistema operativo". Cuando necesitas imprimirlo o usarlo en el resto de tu aplicación Rust, debes convertirlo. Usar `.to_str()` devuelve un `Option<&str>` (retornando `None` si la ruta contiene bytes no válidos para UTF-8), mientras que `.to_string_lossy()` fuerza la conversión reemplazando los caracteres inválidos con el carácter de reemplazo Unicode (``), garantizando que la aplicación no sufra un pánico (panic).
 

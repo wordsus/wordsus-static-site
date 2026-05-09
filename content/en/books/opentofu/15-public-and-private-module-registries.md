@@ -6,7 +6,7 @@ While building local modules allows you to standardize internal infrastructure (
 
 ### The Registry Source Syntax
 
-When you source a module from the public OpenTofu Registry, the `source` argument inside your `module` block must follow a specific, three-part format: 
+When you source a module from the public OpenTofu Registry, the `source` argument inside your `module` block must follow a specific, three-part format:
 
 `<NAMESPACE>/<NAME>/<PROVIDER>`
 
@@ -47,9 +47,9 @@ In the example above, `~> 5.0` is a pessimistic constraint operator. It instruct
 
 ### The Resolution and Initialization Process
 
-Adding a module block to your configuration does not immediately make the module's code available. OpenTofu must fetch the remote code and store it locally in a hidden cache directory before it can evaluate the module's resources. 
+Adding a module block to your configuration does not immediately make the module's code available. OpenTofu must fetch the remote code and store it locally in a hidden cache directory before it can evaluate the module's resources.
 
-This process is triggered by running `tofu init`. 
+This process is triggered by running `tofu init`.
 
 ```text
 +-------------------------+
@@ -89,7 +89,7 @@ This process is triggered by running `tofu init`.
 
 ### Updating Cached Modules
 
-If you change the `version` constraint in your configuration to target a newer release of a registry module, a standard `tofu apply` will fail because the required version no longer matches the cached version. 
+If you change the `version` constraint in your configuration to target a newer release of a registry module, a standard `tofu apply` will fail because the required version no longer matches the cached version.
 
 To resolve this, you must instruct OpenTofu to reach back out to the registry and download the new payload by passing the `-upgrade` flag to the initialization command:
 
@@ -110,6 +110,7 @@ When using a VCS source, OpenTofu delegates the download process to the respecti
 To instruct OpenTofu to clone a module from a Git repository, you prefix the repository URL with `git::`. OpenTofu supports both HTTPS and SSH protocols.
 
 **HTTPS Example:**
+
 ```hcl
 module "web_server" {
   source = "git::https://github.com/my-org/infrastructure-modules.git"
@@ -119,6 +120,7 @@ module "web_server" {
 ```
 
 **SSH Example (Recommended for Private Repositories):**
+
 ```hcl
 module "web_server" {
   source = "git::ssh://git@github.com/my-org/infrastructure-modules.git"
@@ -152,7 +154,7 @@ module "queue" {
 
 ### Navigating Monorepos with Subdirectories
 
-Organizations frequently group multiple related modules into a single "monorepo" rather than creating a separate repository for every infrastructure component. 
+Organizations frequently group multiple related modules into a single "monorepo" rather than creating a separate repository for every infrastructure component.
 
 To source a module located in a nested directory of a repository, OpenTofu uses a special double-slash (`//`) syntax. The double-slash instructs OpenTofu to clone the entire repository, but only evaluate the configuration found within the specified subdirectory.
 
@@ -194,7 +196,7 @@ module "network" {
 
 ### Updating VCS Modules
 
-Just like with Registry modules, OpenTofu caches the cloned repository locally. If you update a remote branch (e.g., you are tracking `?ref=main` and a new commit is pushed), running `tofu plan` will not automatically fetch the latest code. 
+Just like with Registry modules, OpenTofu caches the cloned repository locally. If you update a remote branch (e.g., you are tracking `?ref=main` and a new commit is pushed), running `tofu plan` will not automatically fetch the latest code.
 
 To force OpenTofu to re-clone the repository or pull the latest changes for your specified reference, you must re-initialize the working directory with the upgrade flag:
 
@@ -215,9 +217,11 @@ To understand how to set up a private registry, you must first understand how Op
 Any web server that correctly implements these specific REST endpoints can act as an OpenTofu registry.
 
 #### 1. Service Discovery
+
 When you reference a private registry in your module source, OpenTofu first performs "Service Discovery" by requesting a specific JSON file at the root of the domain: `https://<REGISTRY_HOST>/.well-known/terraform.json`.
 
 This file tells OpenTofu the base URL for the module API:
+
 ```json
 {
   "modules.v1": "/api/modules/v1/"
@@ -225,6 +229,7 @@ This file tells OpenTofu the base URL for the module API:
 ```
 
 #### 2. The API Flow
+
 Once OpenTofu knows the API base URL, running `tofu init` triggers a predictable sequence of HTTP GET requests to resolve the module:
 
 ```text
@@ -255,7 +260,7 @@ Organizations generally choose one of three paths to implement a private registr
 
 1. **Native VCS Integrated Registries:** Modern enterprise VCS platforms, most notably **GitLab**, have built-in support for the Module Registry Protocol. You can publish modules directly to your GitLab project's package registry, making it a seamless extension of your existing CI/CD workflow.
 2. **Dedicated Artifact Repositories:** Tools like **JFrog Artifactory** or **Sonatype Nexus** support OpenTofu module registries out of the box. If your enterprise already uses these for Docker images or npm packages, they are the logical choice for IaC modules.
-3. **Specialized IaC Automation Platforms:** Platforms like **env0**, **Spacelift**, or **Scalr** offer built-in private module registries alongside their state management and remote execution features. 
+3. **Specialized IaC Automation Platforms:** Platforms like **env0**, **Spacelift**, or **Scalr** offer built-in private module registries alongside their state management and remote execution features.
 
 ### Authenticating the OpenTofu CLI
 
@@ -280,7 +285,7 @@ credentials "gitlab.com" {
 
 ### Consuming Private Modules
 
-Once the registry is online and your CLI is authenticated, consuming a private module is nearly identical to consuming a public one. The only difference is that you must prepend the registry's hostname to the `source` string. 
+Once the registry is online and your CLI is authenticated, consuming a private module is nearly identical to consuming a public one. The only difference is that you must prepend the registry's hostname to the `source` string.
 
 If no hostname is provided, OpenTofu defaults to the public registry (`registry.opentofu.org`).
 
@@ -324,19 +329,20 @@ When you run `tofu init`, OpenTofu resolves this entire tree. It downloads the `
 
 ### The Danger of Provider Version Conflicts
 
-One of the most common pitfalls of transitive dependencies involves **Provider Versioning**. 
+One of the most common pitfalls of transitive dependencies involves **Provider Versioning**.
 
 OpenTofu allows different modules in the tree to be instantiated multiple times and even at different versions (e.g., you could technically have two different modules calling two different versions of the `firewall` module). However, **OpenTofu requires a single, unified version of any given Provider** (like the AWS or Google provider) across the *entire* state.
 
 If Module A enforces a strict constraint for the AWS provider (e.g., `version = "~> 4.0"`) and Module B enforces a conflicting constraint (e.g., `version = ">= 5.0"`), `tofu init` will immediately fail.
 
 **Best Practice:**
+
 * **Root Configurations** should dictate exact provider versions using a lock file (`.terraform.lock.hcl`).
 * **Reusable Modules** (especially those published to registries) should be extremely permissive with provider constraints (e.g., `>= 4.0, < 6.0`) to avoid locking out downstream consumers who rely on them transitively.
 
 ### Implicit vs. Explicit Provider Passing
 
-By default, OpenTofu utilizes **implicit inheritance** for providers. A nested module will automatically inherit the default (un-aliased) provider configurations defined in the root module. 
+By default, OpenTofu utilizes **implicit inheritance** for providers. A nested module will automatically inherit the default (un-aliased) provider configurations defined in the root module.
 
 However, if your transitive module requires an *aliased* provider—for example, deploying the `firewall` module to a secondary disaster-recovery region—implicit inheritance will not work. You must explicitly pass the provider configuration down through every layer of the module tree using the `providers` meta-argument.
 
@@ -396,6 +402,7 @@ Because passing providers, variables, and outputs through multiple layers of nes
 Instead of Module A calling Module B inside its own code, design your root configuration to call both modules independently, using the outputs of Module B as the inputs for Module A.
 
 **The Anti-Pattern (Deep Nesting):**
+
 ```hcl
 # Root -> calls App Module -> calls DB Module -> calls Network Module
 module "app" {
@@ -404,6 +411,7 @@ module "app" {
 ```
 
 **The Recommended Pattern (Flat Composition):**
+
 ```hcl
 # Root acts as an orchestrator, calling flat modules and linking them
 module "network" {

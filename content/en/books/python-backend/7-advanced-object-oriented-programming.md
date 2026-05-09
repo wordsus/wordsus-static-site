@@ -8,7 +8,7 @@ In Python, the transition from procedural to object-oriented programming relies 
 
 ### The Mechanics of Instantiation
 
-Instantiation is the process of creating a unique, in-memory object from a class definition. When you call a class like a function, Python orchestrates a two-step process behind the scenes: creation and initialization. 
+Instantiation is the process of creating a unique, in-memory object from a class definition. When you call a class like a function, Python orchestrates a two-step process behind the scenes: creation and initialization.
 
 While Chapter 8 will dissect the granular object lifecycle (`__new__` and `__init__`), at this stage, it is sufficient to understand that calling a class yields a distinct namespace. Every instance acts as an independent container for data, equipped with pointers back to its parent class for behavior resolution.
 
@@ -29,7 +29,7 @@ In the example above, `primary_db` and `replica_db` are discrete objects residin
 
 ### Demystifying `self` and Bound Methods
 
-Unlike languages like C++ or Java, where the instance context (`this`) is implicit, Python requires explicit declaration of the instance reference in method signatures, conventionally named `self`. 
+Unlike languages like C++ or Java, where the instance context (`this`) is implicit, Python requires explicit declaration of the instance reference in method signatures, conventionally named `self`.
 
 `self` is not a reserved keyword in Python; it is merely a strong convention. It represents the specific instance upon which a method is being invoked. When you call a method on an object, Python automatically passes the object reference as the first positional argument.
 
@@ -43,13 +43,14 @@ primary_db.connect()
 DatabaseConnection.connect(primary_db)
 ```
 
-When `primary_db.connect()` is executed, Python resolves the `connect` attribute on the `primary_db` object. Finding it attached to the class rather than the instance, Python returns a **bound method**—a wrapper that partially applies the function, locking `primary_db` into the first argument slot. 
+When `primary_db.connect()` is executed, Python resolves the `connect` attribute on the `primary_db` object. Finding it attached to the class rather than the instance, Python returns a **bound method**—a wrapper that partially applies the function, locking `primary_db` into the first argument slot.
 
 ### State Management: Instance vs. Class Attributes
 
-A persistent source of bugs in backend development—particularly in long-running processes or asynchronous event loops—is the conflation of instance state and class state. 
+A persistent source of bugs in backend development—particularly in long-running processes or asynchronous event loops—is the conflation of instance state and class state.
 
 Python objects store their state in a dedicated dictionary, accessible via the `__dict__` attribute. However, classes also possess their own `__dict__`. When you request an attribute from an instance, Python executes a specific lookup hierarchy:
+
 1. It checks the instance's `__dict__`.
 2. If the attribute is not found, it falls back to the class's `__dict__`.
 3. If still not found, it traverses the inheritance tree (discussed in 7.2).
@@ -95,7 +96,7 @@ print(node_b.active_sessions)
 # Output: ['user_99']
 ```
 
-In the example above, `node_a.add_session()` does not create a new list for `node_a`. Because `active_sessions` was not found in `node_a`'s instance dictionary, Python resolved it to the shared class attribute. The `.append()` operation then mutated the shared list in place. 
+In the example above, `node_a.add_session()` does not create a new list for `node_a`. Because `active_sessions` was not found in `node_a`'s instance dictionary, Python resolved it to the shared class attribute. The `.append()` operation then mutated the shared list in place.
 
 To prevent this state leakage across your application, mutable state that belongs to the instance must be explicitly initialized within the `__init__` method, binding it strictly to `self`:
 
@@ -235,7 +236,7 @@ In classical object-oriented languages like Java or C++, encapsulation is enforc
 
 ### The "Consenting Adults" Convention: Single Underscore
 
-When you prefix an instance variable or method with a single underscore (e.g., `self._cache` or `def _reconnect(self):`), you are signaling to other developers that this attribute is intended for internal use only. 
+When you prefix an instance variable or method with a single underscore (e.g., `self._cache` or `def _reconnect(self):`), you are signaling to other developers that this attribute is intended for internal use only.
 
 This is purely a **gentleman's agreement**. The Python interpreter does not enforce any actual access restrictions. You can still read or overwrite `_cache` from outside the class. However, accessing it violates the interface contract, and the developer doing so accepts the risk that the underlying implementation may change in future versions without warning.
 
@@ -252,7 +253,7 @@ class PaymentGateway:
 
 When you need a stronger guarantee that an attribute will not be accidentally overwritten—particularly in deep inheritance trees where a subclass might unknowingly reuse an attribute name—Python provides **name mangling** via the double underscore prefix (`__`).
 
-When the Python compiler encounters an attribute like `self.__secret`, it textually replaces the attribute name with `_ClassName__secret` before the class is fully constructed. 
+When the Python compiler encounters an attribute like `self.__secret`, it textually replaces the attribute name with `_ClassName__secret` before the class is fully constructed.
 
 ```python
 class AuthToken:
@@ -351,7 +352,7 @@ While many modern object-oriented languages strictly limit classes to single inh
 
 ### The Diamond Problem
 
-The primary challenge of multiple inheritance is the "Diamond Problem." If a subclass inherits from two different parents, and both parents define a method with the same name, which method does the subclass execute? 
+The primary challenge of multiple inheritance is the "Diamond Problem." If a subclass inherits from two different parents, and both parents define a method with the same name, which method does the subclass execute?
 
 Consider a scenario where a backend application inherits from both a `Logger` class and a `Database` class, both of which share a common `BaseService` ancestor.
 
@@ -374,6 +375,7 @@ If `BaseService`, `Logger`, and `Database` all implement an `initialize()` metho
 Python resolves the Diamond Problem using a concept called the Method Resolution Order (MRO). The MRO is the strict, predictable path Python traverses through the inheritance tree to find the correct method or attribute.
 
 Since Python 2.3, the MRO is calculated using the **C3 Linearization** algorithm. The algorithm guarantees three critical rules:
+
 1. **Subclasses precede parents:** A child class is always checked before its parent classes.
 2. **Declaration order is preserved:** If `class AppController(Logger, Database)` is declared, Python will check `Logger` before `Database` because it was listed first from left to right.
 3. **Monotonicity:** If class A precedes class B in one MRO, class A will precede class B in all future MROs.
@@ -442,6 +444,7 @@ app.initialize()
 ```
 
 **Execution Output:**
+
 ```text
 AppController starting...
 Logger initialized.
@@ -450,9 +453,10 @@ BaseService initialized.
 ```
 
 Notice the flow:
+
 1. `AppController.initialize()` calls `super().initialize()`. The MRO dictates the next class is `Logger`.
-2. `Logger.initialize()` executes and calls `super().initialize()`. 
-3. *Crucial realization:* Even though `Logger` only inherits from `BaseService`, its `super()` call delegates to `Database`, because `Database` is the next class in the *instantiated object's* MRO. 
+2. `Logger.initialize()` executes and calls `super().initialize()`.
+3. *Crucial realization:* Even though `Logger` only inherits from `BaseService`, its `super()` call delegates to `Database`, because `Database` is the next class in the *instantiated object's* MRO.
 4. `Database` delegates to `BaseService`, which finally completes the chain.
 
 ### The Mixin Pattern

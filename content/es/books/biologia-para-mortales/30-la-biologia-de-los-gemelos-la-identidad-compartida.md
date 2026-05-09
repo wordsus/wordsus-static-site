@@ -4,7 +4,7 @@
 
 Desde la antigüedad, el nacimiento de gemelos ha estado rodeado de un aura de misterio, fascinación y, a veces, incluso de mitología. Ver a dos personas con rostros idénticos caminando por la calle nos hace detenernos y preguntarnos: ¿cómo es posible que la naturaleza cree dos copias tan perfectas de un mismo individuo? O, por el contrario, ¿por qué algunos gemelos nacen al mismo tiempo pero no se parecen más que cualquier otro par de hermanos?
 
-En la sección de hoy de "Biología para Mortales", vamos a despojarnos de los mitos y a sumergirnos en el asombroso viaje microscópico que da origen a la vida múltiple. Entender a los gemelos es entender los pilares fundamentales de nuestra propia existencia: cómo una sola célula se convierte en un ser humano completo y complejo (o en este caso, en dos). 
+En la sección de hoy de "Biología para Mortales", vamos a despojarnos de los mitos y a sumergirnos en el asombroso viaje microscópico que da origen a la vida múltiple. Entender a los gemelos es entender los pilares fundamentales de nuestra propia existencia: cómo una sola célula se convierte en un ser humano completo y complejo (o en este caso, en dos).
 
 Acompáñame en este extenso recorrido por el desarrollo temprano, donde el azar, la genética y la biología celular se entrelazan para dar lugar a una de las maravillas más cotidianas y espectaculares de la naturaleza.
 
@@ -12,9 +12,9 @@ Acompáñame en este extenso recorrido por el desarrollo temprano, donde el azar
 
 Antes de poder entender cómo se forman los gemelos, necesitamos establecer unas bases claras sobre cómo se forma cualquier ser humano. Todo comienza con una receta, un código increíblemente largo y detallado que llamamos ADN (Ácido Desoxirribonucleico).
 
-Imagina que el ADN es una enorme biblioteca de manuales de instrucciones. Cada ser humano tiene su propia biblioteca única, almacenada en el núcleo de casi todas las células de su cuerpo. Estos manuales están organizados en estantes llamados **cromosomas**. Los seres humanos tenemos típicamente $46$ cromosomas en total, organizados en $23$ pares. 
+Imagina que el ADN es una enorme biblioteca de manuales de instrucciones. Cada ser humano tiene su propia biblioteca única, almacenada en el núcleo de casi todas las células de su cuerpo. Estos manuales están organizados en estantes llamados **cromosomas**. Los seres humanos tenemos típicamente $46$ cromosomas en total, organizados en $23$ pares.
 
-¿De dónde vienen estos pares? La mitad de la biblioteca proviene de la madre (a través del óvulo) y la otra mitad del padre (a través del espermatozoide). 
+¿De dónde vienen estos pares? La mitad de la biblioteca proviene de la madre (a través del óvulo) y la otra mitad del padre (a través del espermatozoide).
 
 Podemos expresar esta herencia genética básica con una fórmula sencilla que define el cigoto (la primera célula de un nuevo ser):
 
@@ -32,7 +32,7 @@ El prefijo nos da la clave de todo. En un ciclo menstrual típico, el ovario de 
 
 Si durante ese ciclo ocurren relaciones sexuales, millones de espermatozoides inician la carrera hacia las trompas de Falopio. Dado que hay dos óvulos disponibles, es completamente posible que dos espermatozoides diferentes lleguen a la meta y fecunden cada uno a un óvulo distinto.
 
-El resultado son dos cigotos completamente independientes que se implantan en el útero materno. 
+El resultado son dos cigotos completamente independientes que se implantan en el útero materno.
 
 **¿Cuánta información genética comparten?**
 
@@ -64,7 +64,7 @@ En este escenario, la historia comienza como un embarazo único ordinario. Un ó
 
 Pero entonces, ocurre un "error" maravilloso. Por razones que la ciencia médica moderna aún no comprende del todo (se considera un evento biológico aleatorio, casi un "accidente feliz" de la naturaleza), ese grupo único de células se escinde. Se divide físicamente en dos grupos separados.
 
-Dado que ambos grupos de células provienen exactamente del mismo óvulo y del mismo espermatozoide inicial, portan **exactamente la misma biblioteca genética**. 
+Dado que ambos grupos de células provienen exactamente del mismo óvulo y del mismo espermatozoide inicial, portan **exactamente la misma biblioteca genética**.
 
 Su coeficiente de parentesco es absoluto:
 
@@ -85,8 +85,9 @@ Comparten el $100\%$ de su secuencia de ADN fundamental. Por definición, los ge
 Si bien la idea de un cigoto dividiéndose en dos suena simple, *cuándo* ocurre esta división dicta de manera drástica cómo será el "alojamiento" de los bebés durante el embarazo. Este es uno de los aspectos biológicos más críticos y fascinantes del desarrollo temprano de los gemelos idénticos.
 
 En el útero, un feto necesita dos estructuras de soporte principales:
-1.  **El Corion (Placenta):** El órgano que proporciona oxígeno y nutrientes desde la madre.
-2.  **El Amnios (Saco amniótico):** La bolsa llena de líquido donde el bebé flota y se protege.
+
+1. **El Corion (Placenta):** El órgano que proporciona oxígeno y nutrientes desde la madre.
+2. **El Amnios (Saco amniótico):** La bolsa llena de líquido donde el bebé flota y se protege.
 
 Dependiendo de en qué día exacto después de la fecundación se divida el cigoto, los gemelos idénticos compartirán o no estas estructuras. Veamos la cronología:
 
@@ -130,12 +131,14 @@ Llegados a este punto, podrías pensar: "Si los gemelos monocigóticos comparten
 ¿Cómo se explica esta divergencia si la biología nos dice que son clones naturales? La respuesta reside en dos campos fascinantes: la embriología ambiental y la epigenética.
 
 ### Las huellas dactilares: El caos del útero
-Las huellas dactilares no están codificadas estrictamente en nuestro ADN. El código genético proporciona la base para las almohadillas de la piel en los dedos, pero los patrones de crestas y surcos (espirales, arcos y lazos) se forman por las presiones físicas dentro del útero entre las semanas 10 y 15 de gestación. 
+
+Las huellas dactilares no están codificadas estrictamente en nuestro ADN. El código genético proporciona la base para las almohadillas de la piel en los dedos, pero los patrones de crestas y surcos (espirales, arcos y lazos) se forman por las presiones físicas dentro del útero entre las semanas 10 y 15 de gestación.
 
 La forma en que un gemelo toca el saco amniótico, la densidad del líquido amniótico a su alrededor, y la velocidad exacta a la que crecen sus dedos crean un patrón aleatorio y único. Es física de fluidos y desarrollo tisular actuando sobre la biología genética.
 
 ### La Epigenética: El director de la orquesta genética
-El ADN es como una partitura musical. Es estática. Pero la **epigenética** es el músico que interpreta esa partitura. 
+
+El ADN es como una partitura musical. Es estática. Pero la **epigenética** es el músico que interpreta esa partitura.
 
 La epigenética se refiere a pequeñas etiquetas químicas (como los grupos metilo) que se adhieren al ADN. Estas etiquetas no cambian la secuencia de letras del ADN, pero actúan como interruptores de luz: pueden "encender" (expresar) o "apagar" (silenciar) ciertos genes.
 
@@ -161,6 +164,7 @@ Similitud Epigenética (%)
     0        20       40       60       80
                 Edad en Años
 ```
+
 *(Gráfico conceptual: Muestra cómo el epigenoma de gemelos idénticos se va diferenciando progresivamente con la edad).*
 
 ## 6. Curiosidades biológicas: Quimerismo, gemelos espejo y otros fenómenos
@@ -168,16 +172,19 @@ Similitud Epigenética (%)
 El desarrollo temprano es un entorno dinámico y a veces produce escenarios que parecen sacados de la ciencia ficción, pero que son biología pura.
 
 ### Gemelos en espejo
-Aproximadamente el $25\%$ de los gemelos idénticos presentan un fenómeno llamado "gemelos en espejo" o de imagen especular. Esto ocurre generalmente cuando el cigoto se divide tarde, entre los días 9 y 12. En este punto, los lados izquierdo y derecho del embrión ya han empezado a determinarse. 
+
+Aproximadamente el $25\%$ de los gemelos idénticos presentan un fenómeno llamado "gemelos en espejo" o de imagen especular. Esto ocurre generalmente cuando el cigoto se divide tarde, entre los días 9 y 12. En este punto, los lados izquierdo y derecho del embrión ya han empezado a determinarse.
 
 Al dividirse, un gemelo se convierte en el reflejo del otro. Si uno tiene un remolino en el cabello hacia la derecha, el otro lo tendrá hacia la izquierda. Uno será diestro y el otro zurdo. Incluso, en casos raros, uno de ellos puede presentar *situs inversus*, una condición donde los órganos internos (como el corazón y el hígado) están en el lado opuesto del cuerpo.
 
 ### El síndrome del gemelo evanescente (Vanishing Twin Syndrome)
-Gracias a la tecnología de ultrasonidos tempranos (en las primeras semanas de gestación), hoy sabemos que los embarazos múltiples son mucho más comunes en su concepción de lo que se refleja en los nacimientos. 
+
+Gracias a la tecnología de ultrasonidos tempranos (en las primeras semanas de gestación), hoy sabemos que los embarazos múltiples son mucho más comunes en su concepción de lo que se refleja en los nacimientos.
 
 Se estima que en hasta un $20\%$ a $30\%$ de los embarazos múltiples, uno de los embriones deja de desarrollarse tempranamente. El tejido de este embrión es reabsorbido por el cuerpo de la madre, por la placenta o incluso por el gemelo sobreviviente. El gemelo que nace a menudo no muestra signos de que alguna vez tuvo un compañero en el útero, a menos que un ultrasonido temprano haya documentado la existencia original de dos latidos cardíacos.
 
 ### Quimerismo humano
+
 Ligado al punto anterior, si dos cigotos fraternos (dos óvulos y dos espermatozoides) se fusionan muy tempranamente en el útero, en lugar de desarrollarse como gemelos dicigóticos separados, forman **un solo individuo**.
 
 Esta persona nace sana y normal, pero es una "quimera" biológica. Tendrá dos conjuntos de ADN diferentes en su cuerpo. Su sangre puede tener un perfil de ADN, mientras que su piel o sus órganos reproductivos tienen el ADN del "gemelo" que absorbió. Biológicamente, ¡son sus propios gemelos!
@@ -189,23 +196,24 @@ Para ir cerrando este profundo viaje celular, abordemos una de las preguntas má
 La respuesta depende exclusivamente del *tipo* de gemelo del que estemos hablando.
 
 **La genética de los gemelos fraternos:**
-Sí, la tendencia a tener gemelos fraternos **es hereditaria**, pero solo por la línea materna. Recuerda que los gemelos fraternos provienen de la liberación de dos óvulos (hiperovulación). La probabilidad de hiperovular está influenciada por factores genéticos que afectan los niveles hormonales de la mujer (específicamente la hormona foliculoestimulante, FSH). 
+Sí, la tendencia a tener gemelos fraternos **es hereditaria**, pero solo por la línea materna. Recuerda que los gemelos fraternos provienen de la liberación de dos óvulos (hiperovulación). La probabilidad de hiperovular está influenciada por factores genéticos que afectan los niveles hormonales de la mujer (específicamente la hormona foliculoestimulante, FSH).
 
-Por lo tanto, si una mujer tiene antecedentes familiares de gemelos fraternos por el lado de su madre, ella misma tiene una mayor probabilidad de hiperovular. El padre, biológicamente, no puede influir en que su pareja libere más de un óvulo en un mes. Sin embargo, un hombre puede heredar el gen de la hiperovulación de su madre y transmitírselo a sus hijas, haciéndolas propensas a concebir gemelos fraternos en la siguiente generación. 
+Por lo tanto, si una mujer tiene antecedentes familiares de gemelos fraternos por el lado de su madre, ella misma tiene una mayor probabilidad de hiperovular. El padre, biológicamente, no puede influir en que su pareja libere más de un óvulo en un mes. Sin embargo, un hombre puede heredar el gen de la hiperovulación de su madre y transmitírselo a sus hijas, haciéndolas propensas a concebir gemelos fraternos en la siguiente generación.
 
 Además de la genética, hay otros factores que aumentan la probabilidad de gemelos fraternos:
-*   **Edad materna:** Las mujeres mayores de 35 años producen más FSH, aumentando la posibilidad de liberar múltiples óvulos.
-*   **Nutrición y altura:** Las mujeres más altas y con un IMC ligeramente superior tienden a tener tasas más altas de embarazos múltiples.
-*   **Etnia:** Hay variaciones significativas; por ejemplo, ciertas poblaciones en África Occidental (como la comunidad Yoruba en Nigeria) tienen la tasa más alta de gemelos fraternos en el mundo.
+
+* **Edad materna:** Las mujeres mayores de 35 años producen más FSH, aumentando la posibilidad de liberar múltiples óvulos.
+* **Nutrición y altura:** Las mujeres más altas y con un IMC ligeramente superior tienden a tener tasas más altas de embarazos múltiples.
+* **Etnia:** Hay variaciones significativas; por ejemplo, ciertas poblaciones en África Occidental (como la comunidad Yoruba en Nigeria) tienen la tasa más alta de gemelos fraternos en el mundo.
 
 **La genética de los gemelos idénticos:**
-Por otro lado, la formación de gemelos idénticos se considera históricamente un evento aleatorio. La tasa de nacimientos de gemelos idénticos es notablemente constante en todo el mundo, en todas las etnias y a todas las edades maternas: aproximadamente $3$ a $4$ de cada $1,000$ nacimientos. 
+Por otro lado, la formación de gemelos idénticos se considera históricamente un evento aleatorio. La tasa de nacimientos de gemelos idénticos es notablemente constante en todo el mundo, en todas las etnias y a todas las edades maternas: aproximadamente $3$ a $4$ de cada $1,000$ nacimientos.
 
 Actualmente, la ciencia genómica no ha encontrado un "gen de división del cigoto". Por lo tanto, tener gemelos idénticos en tu familia no incrementa estadísticamente tus posibilidades de concebir gemelos idénticos; es, hasta donde sabemos hoy, pura suerte biológica.
 
 ## Conclusión: El delicado milagro de la biología múltiple
 
-El desarrollo temprano de los gemelos es mucho más que una curiosidad médica; es una ventana espectacular a la plasticidad y la resiliencia de la vida misma. 
+El desarrollo temprano de los gemelos es mucho más que una curiosidad médica; es una ventana espectacular a la plasticidad y la resiliencia de la vida misma.
 
 Por un lado, los gemelos fraternos nos recuerdan cómo la diversidad genética se asegura su supervivencia al permitir que dos combinaciones completamente nuevas de ADN prosperen simultáneamente en el mismo entorno. Son la máxima expresión de la frase "juntos pero no revueltos" a nivel celular.
 

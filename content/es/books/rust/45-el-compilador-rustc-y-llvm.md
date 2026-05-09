@@ -12,12 +12,12 @@ Estas fases son **AST**, **HIR** y **MIR**.
 
 ### 1. AST (Abstract Syntax Tree): La representación cruda
 
-El Árbol de Sintaxis Abstracta (AST) es la primera representación estructurada de tu programa. Es un reflejo casi exacto de lo que escribiste en tu editor de código, estructurado en forma de árbol. 
+El Árbol de Sintaxis Abstracta (AST) es la primera representación estructurada de tu programa. Es un reflejo casi exacto de lo que escribiste en tu editor de código, estructurado en forma de árbol.
 
 * **Nivel de abstracción:** Muy alto. Mantiene la estructura léxica original.
 * **Responsabilidades principales:** * Validación sintáctica básica.
-    * **Expansión de macros:** Aquí es donde las macros declarativas (`macro_rules!`) y procedurales (que vimos en el Capítulo 10) se expanden para generar más nodos en el AST.
-    * Resolución de nombres e importaciones (`use`).
+  * **Expansión de macros:** Aquí es donde las macros declarativas (`macro_rules!`) y procedurales (que vimos en el Capítulo 10) se expanden para generar más nodos en el AST.
+  * Resolución de nombres e importaciones (`use`).
 
 En esta fase, el compilador todavía no sabe nada sobre los tipos de las variables o si estás violando las reglas de *borrowing*. Solo sabe si el código está "bien escrito" gramaticalmente.
 
@@ -27,15 +27,16 @@ Una vez que el AST está completo y las macros expandidas, `rustc` lo transforma
 
 * **Nivel de abstracción:** Medio-Alto. Orientado a la semántica del lenguaje.
 * **Responsabilidades principales:**
-    * **Inferencia y comprobación de tipos:** El compilador deduce los tipos que omitiste y verifica que las operaciones sean válidas.
-    * **Resolución de Traits:** Se verifica que los Trait Bounds (Capítulo 7) se cumplan.
-    * **Desugaring:** Constructos de alto nivel se simplifican.
+  * **Inferencia y comprobación de tipos:** El compilador deduce los tipos que omitiste y verifica que las operaciones sean válidas.
+  * **Resolución de Traits:** Se verifica que los Trait Bounds (Capítulo 7) se cumplan.
+  * **Desugaring:** Constructos de alto nivel se simplifican.
 
 **Ejemplo de Desugaring en el HIR:**
 
 Si escribes un bucle `for` convencional, el AST lo registra tal cual. Pero en el HIR, el bucle `for` no existe. Se "des-azucara" utilizando el trait `IntoIterator` y un bloque `loop` con `match`.
 
 *Código original (AST conceptual):*
+
 ```rust
 let nums = vec![1, 2, 3];
 for n in nums {
@@ -44,6 +45,7 @@ for n in nums {
 ```
 
 *Traducción conceptual en el HIR:*
+
 ```rust
 let nums = vec![1, 2, 3];
 let mut iter = std::iter::IntoIterator::into_iter(nums);
@@ -57,17 +59,18 @@ loop {
 
 ### 3. MIR (Mid-level Intermediate Representation): El dominio del Borrow Checker
 
-El MIR es probablemente la innovación arquitectónica más importante en la historia de `rustc`. El código HIR se transforma en un **Grafo de Flujo de Control (CFG - Control Flow Graph)** compuesto por bloques básicos. 
+El MIR es probablemente la innovación arquitectónica más importante en la historia de `rustc`. El código HIR se transforma en un **Grafo de Flujo de Control (CFG - Control Flow Graph)** compuesto por bloques básicos.
 
 * **Nivel de abstracción:** Medio-Bajo. Muy explícito y simplificado.
 * **Responsabilidades principales:**
-    * **El Borrow Checker (NLL):** Las reglas de los tiempos de vida no léxicos (Non-Lexical Lifetimes) se calculan aquí. Como el MIR entiende perfectamente el flujo de control, sabe exactamente dónde nace y muere una referencia con precisión quirúrgica.
-    * **Optimizaciones de alto nivel:** Eliminación de código inalcanzable, constante *folding*, y optimizaciones genéricas antes de pasar a LLVM.
-    * **Comprobación de escapes:** Verificación de variables no inicializadas y *moves* de memoria.
+  * **El Borrow Checker (NLL):** Las reglas de los tiempos de vida no léxicos (Non-Lexical Lifetimes) se calculan aquí. Como el MIR entiende perfectamente el flujo de control, sabe exactamente dónde nace y muere una referencia con precisión quirúrgica.
+  * **Optimizaciones de alto nivel:** Eliminación de código inalcanzable, constante *folding*, y optimizaciones genéricas antes de pasar a LLVM.
+  * **Comprobación de escapes:** Verificación de variables no inicializadas y *moves* de memoria.
 
 En el MIR, ya no existen constructos como `match`, `loop`, `if` o `else`. Todo se reduce a **Bloques Básicos**. Cada bloque contiene una serie de declaraciones lineales (que no alteran el flujo) y termina estrictamente con un **Terminator** (que salta a otro bloque, retorna de la función, o hace un `panic`).
 
 *Traducción conceptual hacia MIR (Flujo de control):*
+
 ```rust
 // El código se divide en bloques y saltos (gotos) condicionales o incondicionales.
 bb0: {
@@ -136,7 +139,7 @@ fn main() {
 }
 ```
 
-Durante el proceso de compilación (específicamente al bajar hacia la representación MIR que vimos en la sección anterior y luego hacia LLVM), el compilador detecta que llamaste a `get_first` con dos tipos distintos: un `Vec<i32>` y un `Vec<String>`. 
+Durante el proceso de compilación (específicamente al bajar hacia la representación MIR que vimos en la sección anterior y luego hacia LLVM), el compilador detecta que llamaste a `get_first` con dos tipos distintos: un `Vec<i32>` y un `Vec<String>`.
 
 Lo que `rustc` hace internamente es **duplicar** el código y reemplazar la firma genérica por tipos concretos. El código final que se envía a compilar se parece conceptualmente a esto:
 
@@ -164,10 +167,12 @@ fn main() {
 Como arquitecto de backend, debes entender las consecuencias de esta decisión de diseño en Rust. La monomorfización es un arma de doble filo:
 
 #### Las Ventajas (Por qué Rust es tan rápido)
+
 * **Despacho Estático (Static Dispatch):** Como cada función tiene una dirección de memoria fija y específica para su tipo, no hay necesidad de buscar punteros a funciones en tiempo de ejecución (v-tables). La CPU sabe exactamente a dónde saltar.
 * **Optimizaciones Agresivas (Inlining):** LLVM ama el código monomorfizado. Al tener funciones concretas, LLVM puede hacer *inlining* (pegar el cuerpo de la función directamente donde se llama) y eliminar código muerto específicamente para ese tipo. Por ejemplo, si un tipo numérico permite una instrucción en ensamblador muy rápida (SIMD), LLVM la aplicará solo a la versión numérica de tu función.
 
 #### Las Desventajas (El precio del "Costo Cero")
+
 * **Code Bloat (Inflación del binario):** Si usas una función genérica muy grande con 20 tipos diferentes, el compilador generará 20 copias completas de esa función. Esto engorda el tamaño de tu archivo binario final (algo crítico si despliegas en entornos con memoria limitada o AWS Lambda, donde el tamaño del binario afecta el arranque en frío).
 * **Tiempos de Compilación:** Compilar, optimizar y enlazar (link) 20 funciones lleva más tiempo que hacerlo para una sola. El abuso excesivo de genéricos es una de las principales razones por las que los proyectos grandes en Rust tardan en compilar.
 
@@ -191,7 +196,7 @@ En SSA, cada variable (o registro virtual) se asigna exactamente una vez. Si en 
 
 ### El Pipeline de Optimización: Paso a Paso
 
-Cuando el código llega a LLVM, no se compila inmediatamente a código máquina. En su lugar, pasa por una serie de transformaciones llamadas **pases (passes)**. Cada pase analiza el IR, lo modifica para hacerlo más eficiente y se lo entrega al siguiente pase. 
+Cuando el código llega a LLVM, no se compila inmediatamente a código máquina. En su lugar, pasa por una serie de transformaciones llamadas **pases (passes)**. Cada pase analiza el IR, lo modifica para hacerlo más eficiente y se lo entrega al siguiente pase.
 
 Aquí están las optimizaciones clave que ocurren paso a paso y que permiten a Rust ofrecer sus famosas abstracciones de "costo cero":
 
@@ -205,6 +210,7 @@ Aquí están las optimizaciones clave que ocurren paso a paso y que permiten a R
 Veamos cómo una abstracción de alto nivel en Rust se reduce a su mínima expresión.
 
 *Código Rust original:*
+
 ```rust
 pub fn sumar_doble(x: i32) -> i32 {
     let multiplicador = 2;
@@ -213,6 +219,7 @@ pub fn sumar_doble(x: i32) -> i32 {
 ```
 
 *Representación LLVM IR conceptual (optimizada):*
+
 ```llvm
 define i32 @sumar_doble(i32 %x) {
 entry:
@@ -232,7 +239,7 @@ Comprender que LLVM está detrás de escena cambia tu forma de escribir código.
 
 ## 45.4 Perfilado de tiempos de compilación y optimización de CI
 
-Si has llegado a un nivel Senior en Rust, ya conoces al elefante en la habitación: **Rust compila lento**. Hemos visto en las secciones anteriores el porqué: la expansión de macros, la monomorfización masiva de genéricos y los agresivos pases de optimización de LLVM exigen una cantidad brutal de ciclos de CPU. 
+Si has llegado a un nivel Senior en Rust, ya conoces al elefante en la habitación: **Rust compila lento**. Hemos visto en las secciones anteriores el porqué: la expansión de macros, la monomorfización masiva de genéricos y los agresivos pases de optimización de LLVM exigen una cantidad brutal de ciclos de CPU.
 
 En el desarrollo local, esto rompe tu estado de flujo (flow). En Integración Continua (CI), significa *pipelines* bloqueados, despliegues lentos y, literalmente, más dinero gastado en la factura de tu proveedor de nube (AWS, GitHub Actions, GitLab CI).
 
@@ -240,7 +247,7 @@ Afortunadamente, no tienes que resignarte. Optimizar los tiempos de compilación
 
 ### 1. Perfilado: Encontrando al culpable con `--timings`
 
-No puedes optimizar lo que no mides. Antes de cambiar configuraciones a ciegas, necesitas saber exactamente qué crates están deteniendo el progreso de tu compilación. 
+No puedes optimizar lo que no mides. Antes de cambiar configuraciones a ciegas, necesitas saber exactamente qué crates están deteniendo el progreso de tu compilación.
 
 Desde la versión 1.60, Cargo incluye una herramienta nativa fantástica para esto. Solo necesitas ejecutar:
 
@@ -249,6 +256,7 @@ cargo build --timings
 ```
 
 Este comando genera un archivo HTML en `target/cargo-timings/` que contiene un gráfico de Gantt interactivo. Como arquitecto backend, debes buscar dos cosas en este gráfico:
+
 1. **Bloqueadores secuenciales (Bottlenecks):** Crates que tardan mucho en compilar y de los cuales dependen muchos otros crates. Hasta que este crate no termine (por ejemplo, un crate de macros pesado como `serde_derive`), el resto de tu proyecto no puede paralelizarse.
 2. **Fase de Codegen (LLVM):** El gráfico te muestra qué porcentaje del tiempo se gasta en el frontend de Rust (`rustc` evaluando AST/HIR/MIR) versus el backend (LLVM generando el binario). Si el tiempo de LLVM es altísimo, quizás tienes demasiados genéricos monomorfizados (como vimos en la sección 45.2).
 
@@ -269,6 +277,7 @@ rustflags = ["-C", "link-arg=-fuse-ld=mold"]
 # Alternativa: Usando lld (generalmente disponible si tienes clang/llvm instalados)
 # rustflags = ["-C", "link-arg=-fuse-ld=lld"]
 ```
+
 *Nota: Esta optimización brilla en builds de desarrollo y de CI, pero para el artefacto final de producción (Release), a veces es mejor dejar el linker por defecto si usas LTO (Link Time Optimization).*
 
 ### 3. Estrategias de Optimización en Pipelines de CI
@@ -276,6 +285,7 @@ rustflags = ["-C", "link-arg=-fuse-ld=mold"]
 Un pipeline de CI ingenuo simplemente ejecuta `cargo test` y luego `cargo build --release`. Eso es un desperdicio masivo de recursos. Un pipeline Senior debe estructurarse como un embudo de "Fallo Rápido" (Fail Fast):
 
 #### A. Separar la validación de la generación de código
+
 No pongas a LLVM a trabajar si te olvidaste un punto y coma. El primer paso de tu CI siempre debe ser comprobar la sintaxis, los tipos (HIR) y el borrow checker (MIR), sin generar código máquina.
 
 ```yaml
@@ -295,7 +305,8 @@ steps:
 ```
 
 #### B. Caché Inteligente (sccache)
-El caché nativo de CI a menudo solo guarda la carpeta `target/`, lo cual es propenso a invalidarse por completo si cambias una sola variable de entorno o una bandera del compilador. 
+
+El caché nativo de CI a menudo solo guarda la carpeta `target/`, lo cual es propenso a invalidarse por completo si cambias una sola variable de entorno o una bandera del compilador.
 
 Para un entorno empresarial, integra **`sccache`** (mantenido por Mozilla). Actúa como un proxy del compilador: si `rustc` intenta compilar un archivo con las mismas dependencias y el mismo código que ya compiló antes, `sccache` intercepta la llamada y devuelve el binario precompilado desde un almacenamiento (que puede ser un bucket de AWS S3 o almacenamiento local).
 
@@ -318,6 +329,7 @@ inherits = "dev"
 opt-level = 1 # Ligera optimización para que los tests corran rápido
 debug = 0 # Eliminamos símbolos de debug para que compile más rápido y ocupe menos memoria
 ```
+
 Luego en tu CI ejecutas: `cargo test --profile ci-test`.
 
 ---

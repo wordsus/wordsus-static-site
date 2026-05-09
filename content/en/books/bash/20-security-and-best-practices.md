@@ -552,7 +552,6 @@ The industry standard for Bash scripting is the **Google Shell Style Guide**. Wh
 * Use `UPPER_CASE_WITH_UNDERSCORES` for global constants and environment variables.
 * Use `lower_case_with_underscores` for local variables inside functions.
 
-
 * **Function Declarations:** Avoid the `function` keyword. Use the standard POSIX format: `my_function() { ... }`.
 * **Quoting:** Always quote variables unless you specifically require word splitting and globbing.
 

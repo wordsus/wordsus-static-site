@@ -2,9 +2,9 @@ En el ecosistema backend moderno, entender qué ocurre entre los hilos de un ser
 
 ## 39.1 Introducción a OpenTelemetry en Rust
 
-A medida que nuestras aplicaciones crecen y evolucionan de monolitos a arquitecturas distribuidas (como microservicios o sistemas orientados a eventos), la observabilidad tradicional basada únicamente en logs locales se vuelve insuficiente. Si una petición HTTP falla después de haber atravesado un API Gateway, un servicio de autenticación y dos servicios de dominio, rastrear el origen exacto del problema revisando logs aislados es como buscar una aguja en un pajar. 
+A medida que nuestras aplicaciones crecen y evolucionan de monolitos a arquitecturas distribuidas (como microservicios o sistemas orientados a eventos), la observabilidad tradicional basada únicamente en logs locales se vuelve insuficiente. Si una petición HTTP falla después de haber atravesado un API Gateway, un servicio de autenticación y dos servicios de dominio, rastrear el origen exacto del problema revisando logs aislados es como buscar una aguja en un pajar.
 
-Aquí es donde entra **OpenTelemetry (OTel)**. OpenTelemetry es un marco de observabilidad de código abierto incubado por la CNCF (Cloud Native Computing Foundation). Su objetivo es estandarizar cómo se generan, recopilan y exportan los datos de telemetría: **trazas (traces), métricas (metrics) y logs**. 
+Aquí es donde entra **OpenTelemetry (OTel)**. OpenTelemetry es un marco de observabilidad de código abierto incubado por la CNCF (Cloud Native Computing Foundation). Su objetivo es estandarizar cómo se generan, recopilan y exportan los datos de telemetría: **trazas (traces), métricas (metrics) y logs**.
 
 En lugar de instrumentar tu código con librerías propietarias atadas a un proveedor específico (como Datadog, New Relic o Dynatrace), OpenTelemetry te permite instrumentar tu aplicación una sola vez mediante un estándar agnóstico. Luego, puedes decidir a qué backend enviar esos datos simplemente cambiando la configuración del exportador.
 
@@ -21,6 +21,7 @@ El ecosistema en Rust se divide principalmente en los siguientes crates:
 ### Anatomía de una Traza Distribuida
 
 Antes de pasar al código, es vital alinear la terminología de OpenTelemetry con lo que ya conocemos:
+
 * **Trace (Traza):** Representa el viaje completo de una petición a través de todo tu sistema distribuido. Técnicamente, es un árbol (o grafo dirigido) compuesto por múltiples Spans.
 * **Span:** Representa una unidad de trabajo individual (una consulta a base de datos, el procesamiento de un endpoint, etc.). Como vimos en el capítulo de `tracing`, tienen un inicio, un fin, y metadatos (atributos).
 * **Context (Contexto):** Es el mecanismo que permite que un Span sepa quién es su "padre", incluso si ese padre vive en otro microservicio. (Profundizaremos en la propagación de contexto en la siguiente sección).
@@ -116,7 +117,7 @@ Con esta infraestructura base establecida, nuestra aplicación Rust ya es capaz 
 
 ## 39.2 Propagación del contexto en peticiones HTTP y gRPC
 
-En la sección anterior logramos que un servicio individual emitiera métricas y trazas estructuradas. Sin embargo, en una arquitectura de microservicios, una sola transacción de usuario a menudo atraviesa múltiples fronteras de red. Si el "Servicio A" llama al "Servicio B", y ambos generan trazas de forma aislada, en nuestro backend de observabilidad veremos dos operaciones desconectadas. 
+En la sección anterior logramos que un servicio individual emitiera métricas y trazas estructuradas. Sin embargo, en una arquitectura de microservicios, una sola transacción de usuario a menudo atraviesa múltiples fronteras de red. Si el "Servicio A" llama al "Servicio B", y ambos generan trazas de forma aislada, en nuestro backend de observabilidad veremos dos operaciones desconectadas.
 
 Para unir estas operaciones en una única **Traza Distribuida**, necesitamos pasar el "testigo" de un servicio a otro. A este proceso se le conoce como **Propagación del Contexto** (Context Propagation).
 
@@ -124,9 +125,9 @@ Para unir estas operaciones en una única **Traza Distribuida**, necesitamos pas
 
 Históricamente, cada herramienta de monitoreo utilizaba sus propias cabeceras HTTP para propagar el contexto (por ejemplo, `X-B3-TraceId` en Zipkin). Hoy en día, OpenTelemetry promueve y utiliza por defecto el estándar **W3C Trace Context**, que define dos cabeceras HTTP principales:
 
-1.  **`traceparent`**: Contiene la información crítica para enlazar la traza. Su formato es `version-trace_id-parent_id-trace_flags`.
+1. **`traceparent`**: Contiene la información crítica para enlazar la traza. Su formato es `version-trace_id-parent_id-trace_flags`.
     * *Ejemplo:* `00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01`
-2.  **`tracestate`**: Permite a los distintos proveedores (Datadog, New Relic) propagar metadatos específicos del vendedor sin romper el estándar.
+2. **`tracestate`**: Permite a los distintos proveedores (Datadog, New Relic) propagar metadatos específicos del vendedor sin romper el estándar.
 
 El flujo es simple: el cliente inyecta (`Inject`) su contexto actual en las cabeceras de la petición saliente. El servidor extrae (`Extract`) esas cabeceras al recibir la petición y establece ese contexto como el "padre" de su propio Span.
 
@@ -198,7 +199,7 @@ async fn get_user_handler(headers: HeaderMap) -> impl IntoResponse {
 
 Si recuerdas el Capítulo 33, gRPC funciona sobre HTTP/2. Por lo tanto, el concepto de cabeceras HTTP se traduce a **Metadata** en gRPC. El principio de inyección y extracción es exactamente el mismo, pero interactuando con `tonic::metadata::MetadataMap` en lugar de `http::HeaderMap`.
 
-Para interceptar todas las peticiones entrantes en un servidor Tonic de forma global, utilizamos **Interceptors**. 
+Para interceptar todas las peticiones entrantes en un servidor Tonic de forma global, utilizamos **Interceptors**.
 
 Dado que `MetadataMap` de Tonic no implementa de forma nativa el Trait `Extractor` de OpenTelemetry, necesitamos crear un pequeño wrapper adaptador:
 
@@ -261,7 +262,7 @@ Aquí es donde entran en juego los **Exportadores (Exporters)**.
 
 Históricamente, si querías enviar datos a Jaeger, usabas un exportador específico para Jaeger. Si cambiabas a Zipkin, debías reescribir tu código para usar el exportador de Zipkin. Si migrabas a Datadog, necesitabas otro más.
 
-Hoy en día, la industria ha convergido en **OTLP (OpenTelemetry Protocol)**. OTLP es el protocolo estándar de OpenTelemetry para la transmisión de telemetría. La recomendación actual (y la mejor práctica para un desarrollador Senior) es que tu aplicación Rust exporte **siempre** en formato OTLP (generalmente sobre gRPC o HTTP). 
+Hoy en día, la industria ha convergido en **OTLP (OpenTelemetry Protocol)**. OTLP es el protocolo estándar de OpenTelemetry para la transmisión de telemetría. La recomendación actual (y la mejor práctica para un desarrollador Senior) es que tu aplicación Rust exporte **siempre** en formato OTLP (generalmente sobre gRPC o HTTP).
 
 > **Nota de Arquitectura:** En lugar de enviar los datos directamente desde Rust hasta la nube de Datadog o New Relic, la arquitectura moderna dicta enviar los datos OTLP a un componente intermedio llamado **OpenTelemetry Collector** (o al Datadog Agent) desplegado en tu misma infraestructura. Este agente se encarga de recibir, procesar, añadir claves de API y rutear la información al proveedor final.
 
@@ -349,6 +350,7 @@ La adopción masiva de `tracing` en el ecosistema Rust significa que muchas de l
 Para habilitar esto, simplemente debes asegurarte de que tu `Cargo.toml` no desactive las features por defecto, o explícitamente habilitar características relacionadas con logs si estás usando versiones específicas. En las versiones modernas de `sqlx`, el soporte de `tracing` está fuertemente integrado.
 
 Cuando ejecutas una consulta como `sqlx::query!("SELECT * FROM users").fetch_all(&pool).await`, `sqlx` generará un evento que incluye:
+
 * La sentencia SQL exacta.
 * El tiempo de ejecución.
 * Las filas afectadas.
@@ -408,13 +410,13 @@ pub async fn get_user_by_email(pool: &PgPool, email: &str) -> Result<User, Error
 
 **Análisis de la Instrumentación:**
 
-1.  **Convenciones Semánticas (Semantic Conventions):** Fíjate en el uso de atributos como `db.system` y `db.operation`. OpenTelemetry define un estándar estricto de nombres para las bases de datos. Si usas estas claves exactas, los backends modernos (como Datadog o New Relic) reconocerán automáticamente que este Span es una operación de base de datos y lo pintarán con un icono y color especial en el mapa de dependencias, además de extraer métricas automáticas de rendimiento de base de datos.
-2.  **`skip(pool)`:** Es crucial omitir argumentos complejos que no aportan valor a la traza y que podrían ser costosos de formatear (o que no implementan `Debug`).
-3.  **El atributo `err`:** Al añadir `err` a la macro, le decimos a `tracing` que si la función retorna `Result::Err`, debe registrar el error capturado y marcar el Span de OpenTelemetry con el flag de fallo (`StatusCode::Error`). Esto pintará la traza de color rojo en tu visualizador.
+1. **Convenciones Semánticas (Semantic Conventions):** Fíjate en el uso de atributos como `db.system` y `db.operation`. OpenTelemetry define un estándar estricto de nombres para las bases de datos. Si usas estas claves exactas, los backends modernos (como Datadog o New Relic) reconocerán automáticamente que este Span es una operación de base de datos y lo pintarán con un icono y color especial en el mapa de dependencias, además de extraer métricas automáticas de rendimiento de base de datos.
+2. **`skip(pool)`:** Es crucial omitir argumentos complejos que no aportan valor a la traza y que podrían ser costosos de formatear (o que no implementan `Debug`).
+3. **El atributo `err`:** Al añadir `err` a la macro, le decimos a `tracing` que si la función retorna `Result::Err`, debe registrar el error capturado y marcar el Span de OpenTelemetry con el flag de fallo (`StatusCode::Error`). Esto pintará la traza de color rojo en tu visualizador.
 
 ### Manejo de Consultas Concurrentes (Futures desordenados)
 
-Uno de los mayores desafíos en Rust asíncrono es cuando ejecutamos múltiples consultas a la base de datos en paralelo utilizando `tokio::spawn` o `futures::future::join_all`. 
+Uno de los mayores desafíos en Rust asíncrono es cuando ejecutamos múltiples consultas a la base de datos en paralelo utilizando `tokio::spawn` o `futures::future::join_all`.
 
 Si lanzas una tarea en un nuevo hilo con `tokio::spawn`, **el contexto del Span actual se pierde**, porque el hilo de ejecución cambia. Para propagar el contexto a una tarea en segundo plano (background task) que ejecuta operaciones de base de datos, debes adjuntar el Span explícitamente usando el método `.instrument()` proporcionado por el trait `Instrument` de `tracing`.
 
@@ -450,7 +452,7 @@ pub async fn procesar_pedidos_en_paralelo(pool: PgPool, pedido_ids: Vec<i32>) {
 
 ### Prevención de Fugas de Datos (Data Leaks)
 
-Cuando instrumentes consultas a bases de datos, ten extremo cuidado con la información de identificación personal (PII) o datos sensibles como contraseñas, tokens JWT o números de tarjetas de crédito. 
+Cuando instrumentes consultas a bases de datos, ten extremo cuidado con la información de identificación personal (PII) o datos sensibles como contraseñas, tokens JWT o números de tarjetas de crédito.
 
 Aunque `sqlx` registra las sentencias SQL preparadas (con los placeholders `$1`, `$2`), si tú decides inyectar los valores de las variables en los campos del Span (usando `fields(...)` o `tracing::info!`), esos datos volarán a tu servidor de OpenTelemetry y quedarán almacenados en texto plano en tus sistemas de logs, lo cual viola normativas como GDPR o PCI-DSS. Usa siempre la directiva `skip(...)` en la macro `#[instrument]` para las variables sensibles.
 

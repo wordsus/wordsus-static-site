@@ -12,14 +12,16 @@ En este artículo, vamos a sumergirnos en las profundidades de la "Química para
 
 ## 1. El teatro atómico: Conociendo a los actores principales
 
-Para entender qué es un enlace iónico, primero debemos hacer un rápido viaje al interior del átomo. Imagina al átomo como un sistema solar en miniatura, aunque mucho más caótico. 
+Para entender qué es un enlace iónico, primero debemos hacer un rápido viaje al interior del átomo. Imagina al átomo como un sistema solar en miniatura, aunque mucho más caótico.
 
 En el centro exacto de este sistema tenemos el **núcleo**, que es diminuto pero extremadamente denso. Aquí viven dos tipos de partículas:
-*   **Los protones:** Tienen una carga eléctrica positiva. Son la "identidad" del átomo. El número de protones define de qué elemento estamos hablando (el hidrógeno tiene 1, el carbono tiene 6, el oxígeno tiene 8).
-*   **Los neutrones:** No tienen carga eléctrica (son neutros). Su trabajo principal es mantener unidos a los protones, ya que las cargas positivas se repelen entre sí.
+
+* **Los protones:** Tienen una carga eléctrica positiva. Son la "identidad" del átomo. El número de protones define de qué elemento estamos hablando (el hidrógeno tiene 1, el carbono tiene 6, el oxígeno tiene 8).
+* **Los neutrones:** No tienen carga eléctrica (son neutros). Su trabajo principal es mantener unidos a los protones, ya que las cargas positivas se repelen entre sí.
 
 Orbitando alrededor de este núcleo a velocidades vertiginosas, en zonas que llamamos "capas" o "niveles de energía", se encuentran los verdaderos protagonistas de nuestra historia:
-*   **Los electrones:** Partículas minúsculas con una carga eléctrica negativa.
+
+* **Los electrones:** Partículas minúsculas con una carga eléctrica negativa.
 
 En un átomo "normal" o neutro, el número de protones (cargas positivas) es exactamente igual al número de electrones (cargas negativas). Se cancelan mutuamente, resultando en un átomo sin carga eléctrica global. Si un átomo tiene 11 protones positivos, tendrá 11 electrones negativos. Un empate técnico perfecto.
 
@@ -50,8 +52,9 @@ Imagina un átomo de un metal, como el litio, el sodio o el potasio. Estos eleme
 Al regalar su electrón de valencia, el átomo "pela" su capa exterior, revelando la capa inferior que (¡sorpresa!) ya está completamente llena con ocho electrones. ¡Misión cumplida!
 
 Pero veamos la matemática de las cargas. Tomemos el Sodio (Na), que originalmente tiene 11 protones (+) y 11 electrones (-). Si regala 1 electrón, su nuevo inventario es:
-*   11 Protones (+)
-*   10 Electrones (-)
+
+* 11 Protones (+)
+* 10 Electrones (-)
 
 El resultado es una carga neta de +1. Este átomo cargado positivamente se llama **catión**. Una forma fácil de recordarlo es que la "t" de catión parece un signo más (+). Los metales casi siempre forman cationes.
 
@@ -60,8 +63,9 @@ El resultado es una carga neta de +1. Este átomo cargado positivamente se llama
 Ahora miremos al otro lado de la tabla periódica, donde viven los no metales como el flúor, el oxígeno o el cloro. Estos elementos tienen 5, 6 o 7 electrones en su capa externa. Están tan cerca de la meta que pueden saborearla. Su estrategia es agresiva: **robar los electrones que les faltan** de cualquier átomo incauto que se cruce en su camino.
 
 Tomemos el Cloro (Cl). Tiene 17 protones (+) y 17 electrones (-), de los cuales 7 están en su capa exterior. Le falta solo uno. Si logra robar 1 electrón de otro átomo, su inventario cambia:
-*   17 Protones (+)
-*   18 Electrones (-)
+
+* 17 Protones (+)
+* 18 Electrones (-)
 
 El resultado es una carga neta de -1. Este átomo cargado negativamente se llama **anión**. Puedes recordarlo pensando en que la palabra "anión" suena similar a "anti", evocando lo negativo. Los no metales casi siempre forman aniones.
 
@@ -85,7 +89,7 @@ Estructura simplificada antes del encuentro:
 ```
 
 **Acto 2: El intercambio**
-El Sodio y el Cloro colisionan. La fuerte necesidad del Cloro por un electrón (una propiedad que los químicos llaman *electronegatividad*) domina la situación. El Sodio, complacido, le entrega su electrón al Cloro. 
+El Sodio y el Cloro colisionan. La fuerte necesidad del Cloro por un electrón (una propiedad que los químicos llaman *electronegatividad*) domina la situación. El Sodio, complacido, le entrega su electrón al Cloro.
 
 Podemos representar este proceso químico con las siguientes ecuaciones formales:
 
@@ -111,7 +115,7 @@ Ambos han alcanzado el codiciado estado de octeto. Ambos son energéticamente es
 
 ## 5. El enlace iónico: El pegamento invisible
 
-Aquí entra en juego una de las fuerzas fundamentales del universo: la fuerza electromagnética. La ley fundamental de la electrostática nos dice algo muy sencillo pero inmensamente poderoso: **las cargas opuestas se atraen**. 
+Aquí entra en juego una de las fuerzas fundamentales del universo: la fuerza electromagnética. La ley fundamental de la electrostática nos dice algo muy sencillo pero inmensamente poderoso: **las cargas opuestas se atraen**.
 
 Nuestro nuevo ion sodio tiene una carga positiva ($Na^+$). Nuestro nuevo ion cloruro tiene una carga negativa ($Cl^-$). Inmediatamente después de que se realiza la transferencia del electrón, una fuerza de atracción electromagnética masiva e invisible surge entre ellos. Se atraen violentamente y se pegan el uno al otro.
 
@@ -150,12 +154,14 @@ En este cristal, la fuerza de unión es inmensa. Miles de millones de iones est�
 Debido a la forma en que están construidos (una enorme red unida por la fuerte atracción de cargas opuestas), los compuestos iónicos comparten una serie de propiedades fascinantes y distintivas. Si alguna vez encuentras un material misterioso y tiene estas características, es muy probable que estés frente a un compuesto iónico.
 
 ### A. Puntos de fusión y ebullición extremadamente altos
-Imagina intentar desarmar un castillo de Lego donde cada pieza está pegada con pegamento industrial. Eso es lo que significa derretir la sal. Para pasar de sólido a líquido, necesitas romper los enlaces iónicos que mantienen la red rígida, y eso requiere muchísima energía térmica. 
+
+Imagina intentar desarmar un castillo de Lego donde cada pieza está pegada con pegamento industrial. Eso es lo que significa derretir la sal. Para pasar de sólido a líquido, necesitas romper los enlaces iónicos que mantienen la red rígida, y eso requiere muchísima energía térmica.
 Mientras que el agua (un compuesto covalente) se derrite a $0^\circ C$, la sal de mesa necesita calentarse a más de $800^\circ C$ para volverse líquida. ¡Intenta derretir sal en tu estufa y verás que simplemente no puedes!
 
 ### B. Son duros pero quebradizos
+
 Los cristales iónicos son duros y resisten los rayones. Sin embargo, si los golpeas con un martillo, no se abollan ni se deforman como un metal (que es maleable), sino que se hacen añicos. ¿Por qué?
-Si golpeas la red cristalina, fuerzas a una capa de iones a desplazarse ligeramente. De repente, en lugar de tener iones opuestos enfrentados (positivo frente a negativo), terminas empujando iones con la misma carga para que queden frente a frente (positivo frente a positivo, negativo frente a negativo). 
+Si golpeas la red cristalina, fuerzas a una capa de iones a desplazarse ligeramente. De repente, en lugar de tener iones opuestos enfrentados (positivo frente a negativo), terminas empujando iones con la misma carga para que queden frente a frente (positivo frente a positivo, negativo frente a negativo).
 Como sabemos, las cargas iguales se repelen. La fuerza de repulsión masiva y repentina hace que el cristal se fracture limpiamente a lo largo de un plano. A esto se le llama **clivaje**.
 
 ```text
@@ -173,11 +179,13 @@ Durante el desplazamiento por el golpe (Repulsión):
 ```
 
 ### C. Solubilidad en agua: El gran desmantelamiento
+
 Si los enlaces iónicos son tan fuertes, ¿cómo es que podemos disolver una cucharada de sal en un vaso de agua en cuestión de segundos a temperatura ambiente?
 El secreto está en el agua misma. La molécula de agua ($H_2O$) es un dipolo, lo que significa que tiene un extremo ligeramente negativo (donde está el oxígeno) y extremos ligeramente positivos (donde están los hidrógenos).
 Cuando echas sal al agua, multitudes de moléculas de agua atacan la red cristalina. Los extremos positivos del agua "tiran" de los aniones de cloro, y los extremos negativos del agua "tiran" de los cationes de sodio. Como el agua los rodea en grandes números (formando "capas de hidratación"), logran vencer la atracción iónica y arrancan los iones del cristal, arrastrándolos a la solución.
 
 ### D. Conductividad eléctrica: La danza de los electrolitos
+
 En su forma sólida, un cristal de sal no conduce la electricidad en absoluto. Para que haya corriente eléctrica, se necesitan cargas que puedan moverse libremente. En el cristal sólido, los iones están rígidamente atrapados en su red; no pueden ir a ninguna parte.
 Sin embargo, **si derrites** la sal a $800^\circ C$, o mucho más fácil, **si la disuelves en agua**, liberas a los iones de su prisión. Ahora los cationes positivos y los aniones negativos son libres de nadar por el líquido. Si aplicas una corriente eléctrica a agua salada, los iones comenzarán a fluir, completando el circuito eléctrico. A estos compuestos iónicos disueltos que conducen la electricidad los llamamos **electrolitos**.
 
@@ -185,12 +193,12 @@ Sin embargo, **si derrites** la sal a $800^\circ C$, o mucho más fácil, **si l
 
 Aunque hemos usado el cloruro de sodio como el ejemplo estrella, el mundo de los compuestos iónicos es vasto y fundamental para tu vida diaria y tu propia supervivencia biológica.
 
-*   **Tus huesos y dientes:** Están formados principalmente por un compuesto iónico complejo llamado hidroxiapatita, que es una red cristalina que involucra calcio ($Ca^{2+}$) y fosfato ($PO_4^{3-}$). Esta estructura iónica es la que te proporciona soporte y rigidez estructural.
-*   **Tu pasta de dientes:** Seguramente has leído que contiene "flúor". En realidad, contiene iones de fluoruro ($F^-$), a menudo combinados en compuestos como el fluoruro de sodio ($NaF$). Estos iones se incorporan al esmalte de tus dientes, endureciendo la red cristalina y haciéndola mucho más resistente al ataque de los ácidos producidos por las bacterias, previniendo así las caries.
-*   **Tus nervios y músculos:** Cada vez que tu cerebro envía una señal para mover un músculo, o cada vez que tu corazón late, lo hace gracias a la electricidad generada por el flujo de iones. Tu cuerpo bombea constantemente iones de sodio ($Na^+$) y potasio ($K^+$) a través de las membranas celulares. La diferencia de concentración de estos iones crea un voltaje eléctrico microscópico, el "impulso nervioso" que te mantiene vivo. ¡Literalmente funcionas gracias a la química iónica!
-*   **Bebidas deportivas:** Cuando sudas intensamente, no solo pierdes agua, sino que también pierdes sales valiosas (electrolitos iónicos como el sodio y el potasio). Las bebidas isotónicas están diseñadas específicamente para reponer esos iones perdidos en tu torrente sanguíneo, permitiendo que tus músculos sigan contrayéndose sin sufrir calambres.
-*   **Antiácidos:** Cuando sientes acidez estomacal, tu estómago tiene un exceso de ácido clorhídrico. Tomas una pastilla antiácida, que suele ser un compuesto iónico como el carbonato de calcio ($CaCO_3$) o el hidróxido de magnesio ($Mg(OH)_2$). Estos compuestos reaccionan con el ácido para neutralizarlo, formando agua y sales inofensivas.
-*   **Las baterías de tu celular:** Tu smartphone funciona gracias a la química de iones de litio. Dentro de la batería, los cationes de litio ($Li^+$) viajan físicamente de un lado a otro (del ánodo al cátodo) a través de un electrolito líquido, almacenando y liberando la energía eléctrica que te permite leer este artículo.
+* **Tus huesos y dientes:** Están formados principalmente por un compuesto iónico complejo llamado hidroxiapatita, que es una red cristalina que involucra calcio ($Ca^{2+}$) y fosfato ($PO_4^{3-}$). Esta estructura iónica es la que te proporciona soporte y rigidez estructural.
+* **Tu pasta de dientes:** Seguramente has leído que contiene "flúor". En realidad, contiene iones de fluoruro ($F^-$), a menudo combinados en compuestos como el fluoruro de sodio ($NaF$). Estos iones se incorporan al esmalte de tus dientes, endureciendo la red cristalina y haciéndola mucho más resistente al ataque de los ácidos producidos por las bacterias, previniendo así las caries.
+* **Tus nervios y músculos:** Cada vez que tu cerebro envía una señal para mover un músculo, o cada vez que tu corazón late, lo hace gracias a la electricidad generada por el flujo de iones. Tu cuerpo bombea constantemente iones de sodio ($Na^+$) y potasio ($K^+$) a través de las membranas celulares. La diferencia de concentración de estos iones crea un voltaje eléctrico microscópico, el "impulso nervioso" que te mantiene vivo. ¡Literalmente funcionas gracias a la química iónica!
+* **Bebidas deportivas:** Cuando sudas intensamente, no solo pierdes agua, sino que también pierdes sales valiosas (electrolitos iónicos como el sodio y el potasio). Las bebidas isotónicas están diseñadas específicamente para reponer esos iones perdidos en tu torrente sanguíneo, permitiendo que tus músculos sigan contrayéndose sin sufrir calambres.
+* **Antiácidos:** Cuando sientes acidez estomacal, tu estómago tiene un exceso de ácido clorhídrico. Tomas una pastilla antiácida, que suele ser un compuesto iónico como el carbonato de calcio ($CaCO_3$) o el hidróxido de magnesio ($Mg(OH)_2$). Estos compuestos reaccionan con el ácido para neutralizarlo, formando agua y sales inofensivas.
+* **Las baterías de tu celular:** Tu smartphone funciona gracias a la química de iones de litio. Dentro de la batería, los cationes de litio ($Li^+$) viajan físicamente de un lado a otro (del ánodo al cátodo) a través de un electrolito líquido, almacenando y liberando la energía eléctrica que te permite leer este artículo.
 
 ## Conclusión: Un universo en equilibrio
 

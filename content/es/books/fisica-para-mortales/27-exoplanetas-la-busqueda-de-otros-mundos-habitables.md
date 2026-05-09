@@ -47,11 +47,11 @@ Si conocemos el tamaño de la estrella (que los astrofísicos pueden deducir a p
 
 Antes de la era de los tránsitos, la gran mayoría de los exoplanetas se descubrían usando el método de velocidad radial, también conocido como espectroscopía Doppler. Este fue el método que nos dio el primer descubrimiento de un planeta orbitando una estrella similar al Sol en 1995 (51 Pegasi b), un hallazgo que ganó el Premio Nobel de Física.
 
-Para entender este método, debemos corregir un concepto erróneo común: los planetas no giran alrededor de estrellas estáticas. La gravedad es una calle de doble sentido. Según la Tercera Ley de Newton (acción y reacción), así como la estrella tira del planeta, el planeta tira de la estrella. Por lo tanto, ambos orbitan alrededor de un centro de masa común, el **baricentro**. 
+Para entender este método, debemos corregir un concepto erróneo común: los planetas no giran alrededor de estrellas estáticas. La gravedad es una calle de doble sentido. Según la Tercera Ley de Newton (acción y reacción), así como la estrella tira del planeta, el planeta tira de la estrella. Por lo tanto, ambos orbitan alrededor de un centro de masa común, el **baricentro**.
 
 Dado que la estrella es inmensamente más masiva que el planeta, el baricentro está muy cerca del centro de la estrella, a veces incluso dentro de ella. Esto hace que la estrella no viaje en una órbita grande, sino que parezca "tambalearse" en un pequeño círculo.
 
-¿Cómo detectamos un tambaleo a años luz de distancia? Usando el **Efecto Doppler** en la luz de la estrella. 
+¿Cómo detectamos un tambaleo a años luz de distancia? Usando el **Efecto Doppler** en la luz de la estrella.
 
 Es el mismo efecto que hace que la sirena de una ambulancia suene más aguda cuando se acerca a ti (las ondas sonoras se comprimen) y más grave cuando se aleja (las ondas se estiran). Con la luz, en lugar de tono, cambia el color.
 
@@ -78,10 +78,11 @@ Este tambaleo nos permite calcular la **masa mínima** del planeta. Cuanto más 
 $$ K = \left( \frac{2\pi G}{P} \right)^{\frac{1}{3}} \frac{m_p \sin i}{(M_* + m_p)^{\frac{2}{3}}} $$
 
 Donde:
-*   $G$ es la constante de gravitación universal.
-*   $P$ es el período orbital (cuánto tarda el planeta en dar una vuelta, que medimos viendo cuánto tarda el color en ir de rojo a azul y volver a rojo).
-*   $m_p$ y $M_*$ son las masas del planeta y la estrella.
-*   $i$ es el ángulo de inclinación de la órbita con respecto a nosotros.
+
+* $G$ es la constante de gravitación universal.
+* $P$ es el período orbital (cuánto tarda el planeta en dar una vuelta, que medimos viendo cuánto tarda el color en ir de rojo a azul y volver a rojo).
+* $m_p$ y $M_*$ son las masas del planeta y la estrella.
+* $i$ es el ángulo de inclinación de la órbita con respecto a nosotros.
 
 Dado que rara vez conocemos el ángulo $i$ solo con este método, solo podemos calcular una masa mínima. Pero nos da información crucial.
 
@@ -94,14 +95,15 @@ Con el radio ($r$) y la masa ($m$), podemos calcular el volumen ($V$) y, en últ
 $$ V = \frac{4}{3}\pi r^3 $$
 $$ \rho = \frac{m}{V} $$
 
-La densidad es la huella dactilar de la composición del planeta. 
-*   Si la densidad es baja (ej. $1.3 \text{ g/cm}^3$, como Júpiter), sabemos que es un gigante gaseoso hecho principalmente de hidrógeno y helio.
-*   Si la densidad es alta (ej. $5.5 \text{ g/cm}^3$, como la Tierra), sabemos que es un mundo rocoso con un núcleo de hierro.
-*   Si está en un punto intermedio, podríamos estar ante un "Mundo Oceánico", un planeta cubierto por una capa global de agua líquida o hielo profundo.
+La densidad es la huella dactilar de la composición del planeta.
+
+* Si la densidad es baja (ej. $1.3 \text{ g/cm}^3$, como Júpiter), sabemos que es un gigante gaseoso hecho principalmente de hidrógeno y helio.
+* Si la densidad es alta (ej. $5.5 \text{ g/cm}^3$, como la Tierra), sabemos que es un mundo rocoso con un núcleo de hierro.
+* Si está en un punto intermedio, podríamos estar ante un "Mundo Oceánico", un planeta cubierto por una capa global de agua líquida o hielo profundo.
 
 ## 4. Microlente Gravitacional: Las lupas del espacio-tiempo
 
-Albert Einstein, en su Teoría de la Relatividad General de 1915, nos enseñó que la masa curva el tejido del espacio-tiempo. Esta curvatura es lo que experimentamos como gravedad. Una consecuencia fascinante de esto es que la gravedad puede desviar la trayectoria de la luz. 
+Albert Einstein, en su Teoría de la Relatividad General de 1915, nos enseñó que la masa curva el tejido del espacio-tiempo. Esta curvatura es lo que experimentamos como gravedad. Una consecuencia fascinante de esto es que la gravedad puede desviar la trayectoria de la luz.
 
 Imagina que hay una estrella de fondo, muy, muy lejana. Entre esa estrella y nosotros (la Tierra), pasa flotando una estrella más cercana. La masa de la estrella intermedia curvará el espacio a su alrededor. Cuando la luz de la estrella de fondo pase cerca de la estrella intermedia, se desviará y enfocará hacia nosotros, actuando exactamente como una lente de cristal. Durante unas semanas, veremos que la estrella de fondo aumenta su brillo dramáticamente y luego se desvanece a medida que la estrella "lente" sigue su camino.
 
@@ -167,9 +169,10 @@ Encontrar cualquier planeta es emocionante, pero el verdadero objetivo emocional
 En términos físicos, la Zona Habitable se define como la región alrededor de una estrella donde las presiones y temperaturas atmosféricas permitirían la existencia de **agua líquida** en la superficie de un planeta rocoso. ¿Por qué agua? Porque es el disolvente universal esencial para toda la bioquímica conocida que sostiene la vida.
 
 La ubicación de esta zona depende enteramente del tamaño y la temperatura de la estrella anfitriona.
-*   **Para una enana roja** (estrellas pequeñas, frías y las más comunes de la galaxia), la zona habitable está extremadamente cerca de la estrella. Un planeta allí tendría un "año" de solo unas pocas semanas terrestres.
-*   **Para una estrella tipo G** (como nuestro Sol), la zona está donde estamos nosotros, a unos 150 millones de kilómetros.
-*   **Para gigantes azules** (estrellas masivas y muy calientes), la zona habitable estaría increíblemente lejos.
+
+* **Para una enana roja** (estrellas pequeñas, frías y las más comunes de la galaxia), la zona habitable está extremadamente cerca de la estrella. Un planeta allí tendría un "año" de solo unas pocas semanas terrestres.
+* **Para una estrella tipo G** (como nuestro Sol), la zona está donde estamos nosotros, a unos 150 millones de kilómetros.
+* **Para gigantes azules** (estrellas masivas y muy calientes), la zona habitable estaría increíblemente lejos.
 
 Podemos calcular el flujo de energía estelar ($F$) que llega a un planeta usando la ley del cuadrado inverso. Si $L$ es la luminosidad absoluta de la estrella y $d$ es la distancia del planeta a la estrella:
 
@@ -179,17 +182,17 @@ Sin embargo, el clima no solo depende de la distancia. También depende del **Al
 
 ## 8. Biofirmas: Leyendo el aire alienígena
 
-Supongamos que encontramos un planeta del tamaño de la Tierra en la zona habitable de su estrella. ¿Cómo podemos saber si hay vida respirando, nadando o creciendo allí, si está a cien años luz de distancia? 
+Supongamos que encontramos un planeta del tamaño de la Tierra en la zona habitable de su estrella. ¿Cómo podemos saber si hay vida respirando, nadando o creciendo allí, si está a cien años luz de distancia?
 
-La respuesta reside en la **espectroscopía de transmisión**. 
+La respuesta reside en la **espectroscopía de transmisión**.
 
-Recuerda el método del tránsito. Cuando el planeta cruza frente a su estrella, la mayor parte de la luz estelar es bloqueada por el cuerpo sólido del planeta. Pero una pequeña fracción de esa luz pasa a *través* de la delgada atmósfera del planeta antes de llegar a la Tierra. 
+Recuerda el método del tránsito. Cuando el planeta cruza frente a su estrella, la mayor parte de la luz estelar es bloqueada por el cuerpo sólido del planeta. Pero una pequeña fracción de esa luz pasa a *través* de la delgada atmósfera del planeta antes de llegar a la Tierra.
 
-Los gases de la atmósfera no son transparentes a todos los colores. Distintos átomos y moléculas absorben longitudes de onda (colores) específicas de luz. El oxígeno absorbe ciertos colores, el metano absorbe otros, el vapor de agua otros diferentes. 
+Los gases de la atmósfera no son transparentes a todos los colores. Distintos átomos y moléculas absorben longitudes de onda (colores) específicas de luz. El oxígeno absorbe ciertos colores, el metano absorbe otros, el vapor de agua otros diferentes.
 
 Al comparar la luz de la estrella cuando el planeta *no* está transitando con la luz cuando *sí* está transitando, los astrónomos pueden ver qué "colores" faltan. Estas bandas de absorción actúan como un código de barras cuántico o una huella dactilar química del aire alienígena.
 
-Lo que los astrobiólogos buscan son **biofirmas**. Una biofirma es una combinación de gases en la atmósfera que no debería poder existir junta de manera estable y prolongada sin un proceso biológico activo que la esté reponiendo continuamente. 
+Lo que los astrobiólogos buscan son **biofirmas**. Una biofirma es una combinación de gases en la atmósfera que no debería poder existir junta de manera estable y prolongada sin un proceso biológico activo que la esté reponiendo continuamente.
 
 El ejemplo más clásico es encontrar **oxígeno (O2) u ozono (O3) junto con metano (CH4)**. En un contexto geológico e inorgánico normal, estos gases reaccionan entre sí rápidamente (geológicamente hablando) para formar agua y dióxido de carbono. Si vemos un planeta flotando por ahí con abundante oxígeno y metano al mismo tiempo, las leyes de la termodinámica química nos dicen que *algo* debe estar produciendo ambos a un ritmo masivo. En la Tierra, ese "algo" son las plantas que exhalan oxígeno y las bacterias (y las vacas) que eructan metano. En un exoplaneta, podría ser la primera indicación de una biosfera alienígena activa.
 
@@ -199,6 +202,6 @@ La búsqueda de exoplanetas representa uno de los triunfos intelectuales más gr
 
 Con la llegada de observatorios espaciales de nueva generación, como el Telescopio Espacial James Webb (JWST) y los futuros Nancy Grace Roman y Observatorio de Mundos Habitables (HWO), hemos dejado atrás la fase de simplemente contar planetas. Hemos entrado en la era de la caracterización. Ya no nos basta con saber si un planeta existe o cuánto pesa; ahora queremos estudiar su clima, mapear sus nubes y leer la composición química de sus cielos.
 
-Los métodos físicos que hemos explorado —los minúsculos eclipses del tránsito, los tirones gravitacionales de la velocidad radial, la danza relativista de la microlente y la química cuántica de la espectroscopía— son nuestras herramientas para extender la percepción humana a través del abismo interestelar. 
+Los métodos físicos que hemos explorado —los minúsculos eclipses del tránsito, los tirones gravitacionales de la velocidad radial, la danza relativista de la microlente y la química cuántica de la espectroscopía— son nuestras herramientas para extender la percepción humana a través del abismo interestelar.
 
 Puede que falten décadas para que logremos encontrar esa ansiada huella química inconfundible que confirme que un planeta lejano alberga vida. Pero por primera vez en la historia de la humanidad, ya no estamos adivinando. Estamos mirando de la manera correcta. Y cada exoplaneta que analizamos es un paso más hacia la respuesta a esa pregunta milenaria: no, probablemente no estemos solos.

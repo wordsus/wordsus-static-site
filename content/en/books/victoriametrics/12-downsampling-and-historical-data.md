@@ -2,18 +2,19 @@ As time series data ages, its value shifts from real-time troubleshooting to lon
 
 ## 12.1 The Business Need for Downsampling Metrics
 
-In modern observability environments, time series data is generated at an astonishing rate. A standard deployment might scrape thousands of targets every 10 to 15 seconds, generating millions of data points per minute. This high-fidelity data is strictly necessary for real-time alerting, immediate incident response, and granular debugging. However, the operational value of an individual data point decays rapidly over time. 
+In modern observability environments, time series data is generated at an astonishing rate. A standard deployment might scrape thousands of targets every 10 to 15 seconds, generating millions of data points per minute. This high-fidelity data is strictly necessary for real-time alerting, immediate incident response, and granular debugging. However, the operational value of an individual data point decays rapidly over time.
 
-You need a 15-second resolution to diagnose a microsecond CPU spike that caused a crash five minutes ago, but you do not need that same resolution to determine if your overall cluster utilization has increased over the last year. 
+You need a 15-second resolution to diagnose a microsecond CPU spike that caused a crash five minutes ago, but you do not need that same resolution to determine if your overall cluster utilization has increased over the last year.
 
 Storing high-resolution raw data indefinitely introduces two major business problems: prohibitive infrastructure costs and degraded query performance. Downsampling—the process of reducing the sampling rate or resolution of data over time by aggregating multiple data points into fewer, representative points—solves both of these issues.
 
 ### The Cost and Performance Crisis of Raw Data
 
-To understand the business need for downsampling, we must look at the mathematics of data retention. 
+To understand the business need for downsampling, we must look at the mathematics of data retention.
 
-Consider a single time series scraped every 15 seconds. 
-* In one hour, this generates 240 data points. 
+Consider a single time series scraped every 15 seconds.
+
+* In one hour, this generates 240 data points.
 * In one day, 5,760 data points.
 * In one year, over 2.1 million data points.
 
@@ -52,7 +53,7 @@ Primary Use Case:       - Real-time Alerting    - Monthly Uptime SLAs    - YoY G
                         - Anomaly Detection     - Performance tuning     - Hardware Provisioning
 ```
 
-Historically in the Prometheus ecosystem (as touched upon in Chapter 1), achieving this tiered model required external, bolt-on components like Thanos or Cortex, which introduced operational complexity, required object storage management, and necessitated external cron jobs for data compaction. 
+Historically in the Prometheus ecosystem (as touched upon in Chapter 1), achieving this tiered model required external, bolt-on components like Thanos or Cortex, which introduced operational complexity, required object storage management, and necessitated external cron jobs for data compaction.
 
 VictoriaMetrics views downsampling not as an afterthought, but as a core requirement of a modern TSDB. It handles the aggregation, storage tiering, and query routing natively within the storage engine itself. In the following sections, we will explore the algorithms VictoriaMetrics uses to accurately summarize this data without losing critical statistical context, and how to configure these time-based downsampling tiers effectively.
 
@@ -71,7 +72,7 @@ When VictoriaMetrics (specifically the Enterprise and Cloud versions where this 
 * **Sum:** The total addition of all values in the interval.
 * **Count:** The number of raw samples that were present in the interval.
 
-By maintaining these four pillars of data, VictoriaMetrics ensures that historical trends and extreme outliers are perfectly preserved. 
+By maintaining these four pillars of data, VictoriaMetrics ensures that historical trends and extreme outliers are perfectly preserved.
 
 #### Plain Text Diagram: Raw vs. Aggregated Data
 
@@ -101,16 +102,17 @@ Internal Aggregation Block:
 
 ### Seamless Query Execution
 
-The brilliance of storing `min`, `max`, `sum`, and `count` is that it allows the query engine (`vmselect`) to serve PromQL and MetricsQL queries seamlessly. You do not need to rewrite your Grafana dashboards or queries to accommodate downsampled data. 
+The brilliance of storing `min`, `max`, `sum`, and `count` is that it allows the query engine (`vmselect`) to serve PromQL and MetricsQL queries seamlessly. You do not need to rewrite your Grafana dashboards or queries to accommodate downsampled data.
 
 The query engine handles the translation dynamically:
+
 * If you query `max_over_time()`, the engine simply reads the pre-computed **Max** values from the downsampled blocks.
 * If you query `avg_over_time()`, the engine divides the **Sum** by the **Count**.
 * If you query `rate()` or `increase()` on a counter, the engine uses the **Sum** and **Count** to accurately reconstruct the counter's trajectory, natively handling counter resets just as it would with raw data.
 
 ### Configuring Downsampling Intervals
 
-In VictoriaMetrics, downsampling is configured using the `-downsample.period` command-line flag on the storage nodes (`vmstorage` in a cluster, or the standalone binary). 
+In VictoriaMetrics, downsampling is configured using the `-downsample.period` command-line flag on the storage nodes (`vmstorage` in a cluster, or the standalone binary).
 
 The flag accepts a comma-separated list of `retention:resolution` pairs.
 
@@ -120,8 +122,9 @@ The flag accepts a comma-separated list of `retention:resolution` pairs.
 ```
 
 **Breaking down the syntax:**
-1.  **`30d:5m`**: Once data becomes older than 30 days, VictoriaMetrics will group the raw samples into 5-minute blocks and apply the aggregation algorithms.
-2.  **`180d:1h`**: Once that same data becomes older than 180 days (roughly 6 months), VictoriaMetrics will take those 5-minute blocks and further downsample them into 1-hour blocks.
+
+1. **`30d:5m`**: Once data becomes older than 30 days, VictoriaMetrics will group the raw samples into 5-minute blocks and apply the aggregation algorithms.
+2. **`180d:1h`**: Once that same data becomes older than 180 days (roughly 6 months), VictoriaMetrics will take those 5-minute blocks and further downsample them into 1-hour blocks.
 
 This tiered approach allows you to gracefully decay the resolution of your data, matching the natural lifecycle of how observability data is queried in a production environment.
 
@@ -131,7 +134,7 @@ With a solid understanding of how VictoriaMetrics preserves statistical accuracy
 
 ### The Configuration Syntax
 
-Time-based downsampling is controlled by a single, powerful command-line flag passed to the storage component: `-downsample.period`. 
+Time-based downsampling is controlled by a single, powerful command-line flag passed to the storage component: `-downsample.period`.
 
 The syntax for this flag is a comma-separated list of `retention:resolution` pairs.
 
@@ -143,9 +146,10 @@ Both parameters accept standard VictoriaMetrics time duration suffixes, such as 
 ### A Practical Multi-Tier Example
 
 Let us construct a typical enterprise downsampling strategy. Our goals are:
-1.  Keep raw, high-fidelity data for 30 days for immediate troubleshooting and real-time alerting.
-2.  After 30 days, downsample the data to a 5-minute resolution to support medium-term SLA reporting.
-3.  After 6 months (180 days), aggressively downsample the data to a 1-hour resolution for long-term capacity planning.
+
+1. Keep raw, high-fidelity data for 30 days for immediate troubleshooting and real-time alerting.
+2. After 30 days, downsample the data to a 5-minute resolution to support medium-term SLA reporting.
+3. After 6 months (180 days), aggressively downsample the data to a 1-hour resolution for long-term capacity planning.
 
 To achieve this, the configuration string would be:
 
@@ -233,15 +237,15 @@ By strategically aligning your downsampling configurations with your business re
 
 ## 12.4 Querying and Visualizing Downsampled Data Seamlessly
 
-The true architectural elegance of VictoriaMetrics' downsampling implementation lies in its absolute transparency. In many alternative time series ecosystems, interacting with downsampled data requires querying dedicated API endpoints, adding special HTTP headers, or even rewriting PromQL queries to explicitly target "historical" data sources. 
+The true architectural elegance of VictoriaMetrics' downsampling implementation lies in its absolute transparency. In many alternative time series ecosystems, interacting with downsampled data requires querying dedicated API endpoints, adding special HTTP headers, or even rewriting PromQL queries to explicitly target "historical" data sources.
 
 VictoriaMetrics eliminates this friction. Whether a user is querying data ingested five seconds ago or five years ago, the query syntax, the Grafana data source, and the API endpoint remain completely identical. The `vmselect` component handles the complex routing and mathematical translation dynamically.
 
 ### How Transparent Querying Works
 
-When a visualization tool like Grafana sends a query to VictoriaMetrics, it includes a start time, an end time, and a `step` (the requested time interval between data points on the graph). 
+When a visualization tool like Grafana sends a query to VictoriaMetrics, it includes a start time, an end time, and a `step` (the requested time interval between data points on the graph).
 
-When `vmselect` processes this request, it evaluates the requested time range against the data available in the storage nodes. 
+When `vmselect` processes this request, it evaluates the requested time range against the data available in the storage nodes.
 
 ```text
 ======================================================================
@@ -302,7 +306,7 @@ When writing queries, never hardcode the lookback window (e.g., `[5m]`). Hardcod
 By using `$__rate_interval`, Grafana dynamically increases the lookback window as the user zooms out. When the user looks at a 6-month time range, Grafana might pass a `[12h]` interval to VictoriaMetrics. VictoriaMetrics will then effortlessly use the 1-hour downsampled data to calculate that 12-hour rate.
 
 **2. Configure "Min step" appropriately**
-In your Grafana panel settings, under "Query options", there is a setting called **Min interval** (or Min step). Set this to match your raw scrape interval (e.g., `15s`). 
+In your Grafana panel settings, under "Query options", there is a setting called **Min interval** (or Min step). Set this to match your raw scrape interval (e.g., `15s`).
 
 This ensures that when a user zooms in tightly on recent data, Grafana does not request a sub-15-second step, which would result in unnecessary query load and empty data points. As the user zooms out, Grafana automatically calculates a larger step, allowing VictoriaMetrics to seamlessly transition to serving from its downsampled tiers.
 

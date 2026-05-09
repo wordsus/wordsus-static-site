@@ -19,6 +19,7 @@ def procesar_pago(usuario, monto, descuento):
 ```
 
 Al leer esta firma, surgen preguntas inmediatas que el código no responde por sí solo:
+
 * ¿Es `usuario` un string con el ID, un diccionario con datos, o una instancia de la clase `Usuario`?
 * ¿Es `monto` un entero (centavos) o un flotante?
 * ¿Es `descuento` un porcentaje (float) o un valor booleano indicando si aplica o no?
@@ -27,9 +28,9 @@ Históricamente, la solución en Python era documentar extensamente usando *Docs
 
 ### La llegada del Tipado Gradual (PEP 484)
 
-Para solucionar esto sin perder la esencia del lenguaje, Python introdujo en su versión 3.5 (a través del PEP 484) el concepto de **Type Hints** (Sugerencias de Tipo) o **Tipado Gradual**. 
+Para solucionar esto sin perder la esencia del lenguaje, Python introdujo en su versión 3.5 (a través del PEP 484) el concepto de **Type Hints** (Sugerencias de Tipo) o **Tipado Gradual**.
 
-La evolución fue sutil pero revolucionaria: Python sigue siendo dinámico, pero ahora permite *anotar* opcionalmente qué tipos de datos se esperan. 
+La evolución fue sutil pero revolucionaria: Python sigue siendo dinámico, pero ahora permite *anotar* opcionalmente qué tipos de datos se esperan.
 
 El código anterior, modernizado con Type Hints, se transforma en código autodocumentado y predecible:
 
@@ -43,6 +44,7 @@ def procesar_pago(usuario: Usuario, monto: float, descuento: bool = False) -> bo
 ```
 
 La sintaxis es directa:
+
 * Variables y argumentos se anotan usando dos puntos: `variable: tipo`.
 * El valor de retorno de una función se anota usando una flecha: `-> tipo`.
 
@@ -123,7 +125,7 @@ def buscar_usuario(email: str) -> Optional[dict]:
 
 > **Evolución en Python 3.10+ (PEP 604):**
 > La comunidad notó que importar `Union` y `Optional` era verboso. En código moderno, puedes usar el operador *pipe* (`|`) para expresar uniones de forma nativa:
-> 
+>
 > ```python
 > # Equivalente moderno de Union e Optional
 > def buscar_usuario(user_id: int | str) -> dict | None:
@@ -180,7 +182,7 @@ respuesta = RespuestaAPI(data={"nombre": "Ana"})
 respuesta.data.append(1)  # El IDE no avisa del error (dict no tiene 'append')
 ```
 
-Para crear componentes reutilizables pero tipados de forma segura, usamos **Genéricos**. Definimos una variable de tipo con `TypeVar` y hacemos que nuestra clase herede de `Generic`. 
+Para crear componentes reutilizables pero tipados de forma segura, usamos **Genéricos**. Definimos una variable de tipo con `TypeVar` y hacemos que nuestra clase herede de `Generic`.
 
 ```python
 from typing import TypeVar, Generic
@@ -207,6 +209,7 @@ print(respuesta_dict.data.keys())
 ```
 
 **Esquema mental de un Genérico:**
+
 ```text
       [Plantilla: RespuestaAPI[T]]
               |

@@ -1,10 +1,10 @@
-El software de backend moderno no siempre vive en una burbuja aislada. A menudo, el rendimiento extremo o la necesidad de interactuar con el sistema operativo nos obligan a traspasar las fronteras del código seguro. En este capítulo, exploramos el **código unsafe**: la herramienta de Rust para manejar punteros crudos, realizar FFI (Foreign Function Interface) y optimizar estructuras de datos críticas. 
+El software de backend moderno no siempre vive en una burbuja aislada. A menudo, el rendimiento extremo o la necesidad de interactuar con el sistema operativo nos obligan a traspasar las fronteras del código seguro. En este capítulo, exploramos el **código unsafe**: la herramienta de Rust para manejar punteros crudos, realizar FFI (Foreign Function Interface) y optimizar estructuras de datos críticas.
 
 Aprenderás a usar estos "superpoderes" con responsabilidad, encapsulando operaciones peligrosas tras abstracciones robustas. Dominar este nivel no es una invitación a la imprudencia, sino la clave para que un desarrollador senior pueda integrar cualquier librería de C o C++ sin comprometer la estabilidad del sistema.
 
 ## 47.1 Los 5 superpoderes del código `unsafe`
 
-Llegar a este punto del libro significa que ya dominas las estrictas reglas del Borrow Checker, los tiempos de vida (Lifetimes) y cómo Rust garantiza la seguridad de memoria en tiempo de compilación. Sin embargo, como desarrollador backend a nivel senior, te encontrarás con situaciones donde el compilador de Rust es demasiado conservador. A veces, tú (el humano) tienes información sobre el flujo del programa que el compilador no puede deducir. 
+Llegar a este punto del libro significa que ya dominas las estrictas reglas del Borrow Checker, los tiempos de vida (Lifetimes) y cómo Rust garantiza la seguridad de memoria en tiempo de compilación. Sin embargo, como desarrollador backend a nivel senior, te encontrarás con situaciones donde el compilador de Rust es demasiado conservador. A veces, tú (el humano) tienes información sobre el flujo del programa que el compilador no puede deducir.
 
 Para estos casos existe la palabra clave `unsafe`.
 
@@ -98,7 +98,7 @@ Si te equivocas al hacer esta promesa, introducirás comportamientos indefinidos
 
 ### 5. Acceder a los campos de una `union`
 
-Las `union`s en Rust son similares a las de C: permiten que múltiples campos compartan el mismo espacio de memoria, lo que significa que la estructura completa ocupa solo el espacio de su campo más grande. 
+Las `union`s en Rust son similares a las de C: permiten que múltiples campos compartan el mismo espacio de memoria, lo que significa que la estructura completa ocupa solo el espacio de su campo más grande.
 
 Como el compilador no puede saber qué tipo de dato está almacenado actualmente en esa región de memoria, leer un campo de una `union` es una operación insegura. Podrías intentar interpretar un puntero como si fuera un número de coma flotante, provocando un fallo crítico.
 
@@ -126,7 +126,7 @@ Estos cinco superpoderes son las únicas excepciones a las reglas de seguridad d
 
 ## 47.2 Punteros crudos (Raw Pointers)
 
-En el ecosistema seguro de Rust, estamos acostumbrados a la tranquilidad que brindan las referencias estándar (`&T` y `&mut T`). El compilador garantiza que siempre apuntan a memoria válida, que nunca son nulas y que las reglas de exclusividad mutua se respetan a rajatabla. Sin embargo, cuando cruzamos la frontera hacia el código de bajo nivel o interactuamos con otros lenguajes, estas garantías son imposibles de mantener de forma automática. 
+En el ecosistema seguro de Rust, estamos acostumbrados a la tranquilidad que brindan las referencias estándar (`&T` y `&mut T`). El compilador garantiza que siempre apuntan a memoria válida, que nunca son nulas y que las reglas de exclusividad mutua se respetan a rajatabla. Sin embargo, cuando cruzamos la frontera hacia el código de bajo nivel o interactuamos con otros lenguajes, estas garantías son imposibles de mantener de forma automática.
 
 Aquí es donde entran los **punteros crudos** (o *raw pointers*).
 
@@ -189,10 +189,10 @@ unsafe {
 
 Si son tan peligrosos, ¿por qué los usaría un desarrollador backend? Principalmente por dos razones:
 
-1.  **Interactuar con código C (FFI):** C no entiende las referencias de Rust, los Borrow Checkers ni los Lifetimes. C habla el idioma de los punteros crudos. Cuando llamas a una librería del sistema operativo, a un driver de base de datos nativo o a una librería de criptografía en C (como OpenSSL), intercambiarás datos usando `*const T` y `*mut T`.
-2.  **Abstracciones seguras de alto rendimiento:** Estructuras de datos complejas, como listas doblemente enlazadas, árboles de grafos, o buffers circulares asíncronos para el runtime de Tokio, a menudo no pueden ser expresadas eficientemente (o en absoluto) usando solo referencias seguras y Lifetimes. Los desarrolladores de estas librerías usan punteros crudos internamente, prueban el código exhaustivamente, y luego exponen una API 100% segura para que tú la consumas en tus controladores REST o gRPC.
+1. **Interactuar con código C (FFI):** C no entiende las referencias de Rust, los Borrow Checkers ni los Lifetimes. C habla el idioma de los punteros crudos. Cuando llamas a una librería del sistema operativo, a un driver de base de datos nativo o a una librería de criptografía en C (como OpenSSL), intercambiarás datos usando `*const T` y `*mut T`.
+2. **Abstracciones seguras de alto rendimiento:** Estructuras de datos complejas, como listas doblemente enlazadas, árboles de grafos, o buffers circulares asíncronos para el runtime de Tokio, a menudo no pueden ser expresadas eficientemente (o en absoluto) usando solo referencias seguras y Lifetimes. Los desarrolladores de estas librerías usan punteros crudos internamente, prueban el código exhaustivamente, y luego exponen una API 100% segura para que tú la consumas en tus controladores REST o gRPC.
 
-Ahora que hemos cubierto la base de los punteros crudos, el siguiente paso lógico es ver cómo se utilizan en la práctica para comunicarnos con el mundo exterior. 
+Ahora que hemos cubierto la base de los punteros crudos, el siguiente paso lógico es ver cómo se utilizan en la práctica para comunicarnos con el mundo exterior.
 
 ## 47.3 Llamando a librerías de C desde Rust y viceversa (FFI)
 
@@ -237,6 +237,7 @@ En el ejemplo anterior usamos `i32`, que suele coincidir con un `int` de C en la
 Rust garantiza que sus `String` y `&str` son UTF-8 válidos y almacenan su longitud internamente. C, por otro lado, utiliza arrays de caracteres terminados en un byte nulo (`\0`) y no garantiza ninguna codificación.
 
 Para pasar texto entre ambos lenguajes, Rust provee dos tipos específicos en `std::ffi`:
+
 * **`CString` / `CStr`:** Versiones compatibles con C (terminadas en nulo). `CString` es el equivalente a `String` (tiene ownership), y `CStr` es el equivalente a `&str` (es una referencia prestada).
 
 ```rust
@@ -267,8 +268,9 @@ fn llamar_c_con_texto() {
 A menudo, escribirás un módulo ultra-rápido en Rust que quieres usar desde una aplicación existente en Node.js, Python (vía FFI) o C.
 
 Para que una función de Rust sea invocable desde el exterior, debes cumplir dos requisitos:
-1.  Anotarla con `extern "C"` para que use la ABI de C.
-2.  Añadir el atributo `#[no_mangle]`. Por defecto, el compilador de Rust altera los nombres de las funciones durante la compilación (name mangling) para incluir información de módulos y tipos. `#[no_mangle]` le dice al compilador: *"Deja el nombre exactamente como lo escribí para que el enlazador (linker) de C pueda encontrarlo"*.
+
+1. Anotarla con `extern "C"` para que use la ABI de C.
+2. Añadir el atributo `#[no_mangle]`. Por defecto, el compilador de Rust altera los nombres de las funciones durante la compilación (name mangling) para incluir información de módulos y tipos. `#[no_mangle]` le dice al compilador: *"Deja el nombre exactamente como lo escribí para que el enlazador (linker) de C pueda encontrarlo"*.
 
 ```rust
 use std::os::raw::c_int;
@@ -292,7 +294,7 @@ El mayor vector de errores al cruzar la frontera de la FFI son los *segmentation
 
 **Regla estricta:** Quien reserva la memoria, debe liberarla.
 
-Si tu código Rust crea un `Box` y le pasa el puntero crudo a C, **jamás** dejes que el código C llame a la función `free()` nativa sobre ese puntero. El asignador de memoria de Rust puede no ser el mismo que el de C. 
+Si tu código Rust crea un `Box` y le pasa el puntero crudo a C, **jamás** dejes que el código C llame a la función `free()` nativa sobre ese puntero. El asignador de memoria de Rust puede no ser el mismo que el de C.
 
 La solución es exponer una función adicional desde Rust específicamente para liberar esa memoria:
 
@@ -320,7 +322,7 @@ pub extern "C" fn destruir_objeto(ptr: *mut MiStruct) {
 
 Hemos explorado los superpoderes de `unsafe`, cómo manipular punteros crudos y cómo cruzar la frontera hacia otros lenguajes con FFI. Si expusiéramos estas herramientas directamente en la lógica de negocio de nuestro backend, la promesa de "seguridad de memoria sin recolector de basura" de Rust desaparecería. Nuestro código se volvería tan frágil como una aplicación en C estándar.
 
-Para evitar esto, el ecosistema de Rust adopta una filosofía de **contención**: el código `unsafe` debe estar estrictamente encapsulado detrás de interfaces (APIs) 100% seguras. 
+Para evitar esto, el ecosistema de Rust adopta una filosofía de **contención**: el código `unsafe` debe estar estrictamente encapsulado detrás de interfaces (APIs) 100% seguras.
 
 Cuando una abstracción está bien diseñada, es imposible que el consumidor de la API provoque un Comportamiento Indefinido (Undefined Behavior), sin importar qué datos de entrada proporcione. A esto se le conoce como escribir código **"Sound"** (Robusto/Sólido).
 
@@ -328,8 +330,8 @@ Cuando una abstracción está bien diseñada, es imposible que el consumidor de 
 
 En el desarrollo backend, verás este patrón constantemente. La comunidad divide la interoperabilidad con C en dos paquetes (crates) distintos:
 
-1.  **El crate `-sys` (Ej. `openssl-sys`, `libsqlite3-sys`):** Contiene únicamente las declaraciones FFI (los bloques `extern "C"` y tipos básicos). Todo su uso requiere bloques `unsafe`. Es una traducción literal de los archivos `.h` (headers) de C.
-2.  **El crate principal (Ej. `openssl`, `rusqlite`):** Importa el crate `-sys` y lo envuelve en structs idiomáticos de Rust, implementando traits como `Drop`, `Iterator`, `Send`, y utilizando `Result` en lugar de códigos de error enteros. Este es el que tú instalas en tu proyecto.
+1. **El crate `-sys` (Ej. `openssl-sys`, `libsqlite3-sys`):** Contiene únicamente las declaraciones FFI (los bloques `extern "C"` y tipos básicos). Todo su uso requiere bloques `unsafe`. Es una traducción literal de los archivos `.h` (headers) de C.
+2. **El crate principal (Ej. `openssl`, `rusqlite`):** Importa el crate `-sys` y lo envuelve en structs idiomáticos de Rust, implementando traits como `Drop`, `Iterator`, `Send`, y utilizando `Result` en lugar de códigos de error enteros. Este es el que tú instalas en tu proyecto.
 
 ### Anatomía de una Abstracción Segura
 

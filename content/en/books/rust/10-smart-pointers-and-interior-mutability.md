@@ -4,7 +4,7 @@ Rust’s standard ownership and borrowing rules ensure memory safety at compile 
 
 As established in Chapter 3, Rust defaults to allocating values on the stack. This provides exceptional performance and predictable memory management, but it requires the compiler to know the exact size of every type at compile time. When you need to force a value to be allocated on the heap instead of the stack, the most straightforward tool at your disposal is `Box<T>`.
 
-A `Box<T>` is a smart pointer. It stores a pointer on the stack that points to the actual data residing on the heap. Because the pointer itself has a fixed, known size (e.g., 8 bytes on a 64-bit architecture), `Box<T>` can be passed around efficiently regardless of how large the underlying heap data is. Furthermore, `Box<T>` strictly adheres to Rust's ownership rules: when a `Box` goes out of scope, the `Drop` trait implementation automatically deallocates both the box (the pointer on the stack) and the data it points to on the heap. 
+A `Box<T>` is a smart pointer. It stores a pointer on the stack that points to the actual data residing on the heap. Because the pointer itself has a fixed, known size (e.g., 8 bytes on a 64-bit architecture), `Box<T>` can be passed around efficiently regardless of how large the underlying heap data is. Furthermore, `Box<T>` strictly adheres to Rust's ownership rules: when a `Box` goes out of scope, the `Drop` trait implementation automatically deallocates both the box (the pointer on the stack) and the data it points to on the heap.
 
 ### Basic Heap Allocation
 
@@ -21,15 +21,15 @@ fn main() {
 
 In isolation, boxing a primitive like an `i32` is rarely necessary or beneficial, as stack allocation would be faster. However, `Box<T>` becomes essential in three primary scenarios:
 
-1.  When you have a type whose size cannot be known at compile time, and you need to use a value of that type in a context that requires an exact size.
-2.  When you have a large amount of data and you want to transfer ownership without copying the data itself.
-3.  When you want to own a value and you only care that it implements a specific trait rather than knowing its specific type (Trait Objects, which we will explore extensively in Chapter 17).
+1. When you have a type whose size cannot be known at compile time, and you need to use a value of that type in a context that requires an exact size.
+2. When you have a large amount of data and you want to transfer ownership without copying the data itself.
+3. When you want to own a value and you only care that it implements a specific trait rather than knowing its specific type (Trait Objects, which we will explore extensively in Chapter 17).
 
 The most classic demonstration of the first scenario is the recursive type.
 
 ### The Problem with Recursive Types
 
-A recursive type is a type that contains another value of the same type as part of itself. Because this nesting could theoretically continue infinitely, the Rust compiler cannot determine how much memory to allocate for the type. 
+A recursive type is a type that contains another value of the same type as part of itself. Because this nesting could theoretically continue infinitely, the Rust compiler cannot determine how much memory to allocate for the type.
 
 Consider a functional programming staple: the "Cons list." A Cons list is a singly linked list constructed from pairs. Each pair contains a value and the next pair in the list. The final item contains a value and a value representing the end of the list (typically `Nil`).
 
@@ -59,7 +59,7 @@ The compiler will reject this code with a clear message: `recursive type has inf
 
 ### Breaking the Cycle with Indirection
 
-To solve the infinite size problem, we use `Box<T>`. By placing the recursive `List` inside a `Box`, we change the memory layout entirely. Instead of storing the nested `List` directly within the `Cons` variant, we store a pointer to a `List` that will be allocated on the heap. 
+To solve the infinite size problem, we use `Box<T>`. By placing the recursive `List` inside a `Box`, we change the memory layout entirely. Instead of storing the nested `List` directly within the `Cons` variant, we store a pointer to a `List` that will be allocated on the heap.
 
 Since a pointer has a fixed size regardless of what it points to, the compiler can successfully calculate the size of the `List` enum.
 
@@ -103,7 +103,7 @@ By adding a `Box<T>`, we have traded contiguous stack memory for heap allocation
 
 ## 10.2 `Rc<T>` for Multiple Ownership in Single-Threaded Contexts
 
-The foundational rule of Rust’s memory management is strict single ownership: a value has exactly one owner at any given time. However, real-world software design frequently encounters scenarios where a single piece of data must be jointly owned by multiple parts of your program. 
+The foundational rule of Rust’s memory management is strict single ownership: a value has exactly one owner at any given time. However, real-world software design frequently encounters scenarios where a single piece of data must be jointly owned by multiple parts of your program.
 
 Consider a graph data structure where multiple edges point to the same node, or a web server where multiple components need read access to the same configuration object. If you duplicate the data, you waste memory and risk state desynchronization. If you use standard references (`&T`), you are bound by lifetime rules requiring the data to outlive all of its borrowers, which is often impossible to guarantee when constructing dynamic, heap-allocated structures.
 
@@ -111,7 +111,7 @@ To solve this, Rust provides the `Rc<T>` type, an abbreviation for **Reference C
 
 ### The Mechanics of Reference Counting
 
-When you wrap a value in `Rc<T>`, the data is allocated on the heap alongside a counter. This counter tracks how many active `Rc` pointers currently point to that specific heap allocation. 
+When you wrap a value in `Rc<T>`, the data is allocated on the heap alongside a counter. This counter tracks how many active `Rc` pointers currently point to that specific heap allocation.
 
 * When a new `Rc` pointer to the data is created, the counter increments by one.
 * When an `Rc` pointer goes out of scope, the `Drop` trait automatically decrements the counter by one.
@@ -121,7 +121,7 @@ This guarantees that the data remains valid precisely as long as at least one ow
 
 ### Implementing Multiple Ownership
 
-To illustrate `Rc<T>`, we can revisit the Cons list from the previous section. Suppose we want to create two separate lists that share the exact same tail. 
+To illustrate `Rc<T>`, we can revisit the Cons list from the previous section. Suppose we want to create two separate lists that share the exact same tail.
 
 ```text
 Memory Layout Goal:
@@ -166,7 +166,7 @@ fn main() {
 
 ### The Difference Between `Rc::clone` and Deep Copying
 
-Notice the use of `Rc::clone(&list_c)` instead of `list_c.clone()`. While both compile and technically do the same thing, calling `Rc::clone` is an established Rust idiom. 
+Notice the use of `Rc::clone(&list_c)` instead of `list_c.clone()`. While both compile and technically do the same thing, calling `Rc::clone` is an established Rust idiom.
 
 When you call `.clone()` on most Rust types (like `String` or `Vec`), it performs a "deep copy," duplicating the underlying heap data, which can be an expensive operation. `Rc::clone`, on the other hand, performs a "shallow copy." It does not copy the heap data; it merely increments the reference counter and returns a new pointer to the existing data. By explicitly using the `Rc::clone` syntax, you signal to other developers reading your code that this is a fast, inexpensive counter increment, not a heavy data duplication.
 
@@ -180,7 +180,7 @@ If you require both multiple owners and the ability to mutate the shared data, `
 
 ## 10.3 `RefCell<T>` and the Interior Mutability Pattern
 
-Rust’s borrowing rules are relentless: at any given time, you can have either one mutable reference or any number of immutable references, but never both. Furthermore, references must always be valid. The compiler enforces these rules statically at compile time. 
+Rust’s borrowing rules are relentless: at any given time, you can have either one mutable reference or any number of immutable references, but never both. Furthermore, references must always be valid. The compiler enforces these rules statically at compile time.
 
 However, there are architectural scenarios where a value is logically immutable to the outside world, but needs to modify its own internal state to function correctly. This is where the **Interior Mutability** pattern comes in. Interior mutability is a design pattern in Rust that allows you to mutate data even when there are active immutable references to that data—a direct subversion of the standard borrowing rules, made safe by shifting the enforcement of those rules from compile time to runtime.
 
@@ -188,9 +188,10 @@ The primary tool for achieving interior mutability in single-threaded contexts i
 
 ### Runtime Borrow Checking
 
-Unlike standard references (`&` and `&mut`) where the compiler statically proves memory safety, `RefCell<T>` tracks borrows dynamically as your program executes. 
+Unlike standard references (`&` and `&mut`) where the compiler statically proves memory safety, `RefCell<T>` tracks borrows dynamically as your program executes.
 
 When you use a `RefCell<T>`, you interact with its data using two specific methods:
+
 * `.borrow()`: Returns a smart pointer called `Ref<T>`, representing an immutable borrow.
 * `.borrow_mut()`: Returns a smart pointer called `RefMut<T>`, representing a mutable borrow.
 
@@ -229,9 +230,9 @@ impl<'a, T: Messenger> LimitTracker<'a, T> {
 }
 ```
 
-Now, we want to write a unit test for `LimitTracker`. We need a mock `Messenger` that records the messages it receives so we can assert against them. 
+Now, we want to write a unit test for `LimitTracker`. We need a mock `Messenger` that records the messages it receives so we can assert against them.
 
-The trait dictates that the `send` method takes an immutable reference: `&self`. But to record a message, our mock object needs to push data into an internal `Vec`, which requires mutability. 
+The trait dictates that the `send` method takes an immutable reference: `&self`. But to record a message, our mock object needs to push data into an internal `Vec`, which requires mutability.
 
 ```rust
 // This will NOT compile without RefCell
@@ -330,15 +331,16 @@ Stack Variables              Heap Allocation
 ```
 
 While immensely flexible, this pattern comes with trade-offs:
-1.  **Runtime Overhead:** Both `Rc` and `RefCell` introduce minor performance penalties for tracking their respective counters at runtime.
-2.  **Panic Risk:** The compiler can no longer save you from borrowing rule violations. If you accidentally attempt two mutable borrows simultaneously, your program will crash. If you wish to handle these cases gracefully, you can use `.try_borrow()` and `.try_borrow_mut()`, which return a `Result` instead of panicking.
-3.  **Memory Leaks:** Because `Rc<T>` allows for multiple owners, combining it with interior mutability makes it very easy to accidentally create reference cycles (e.g., node A points to node B, and node B is mutated to point back to node A). This will prevent the `Rc` count from ever reaching zero, leaking memory. We will tackle this specific danger in the next section with `Weak<T>`.
+
+1. **Runtime Overhead:** Both `Rc` and `RefCell` introduce minor performance penalties for tracking their respective counters at runtime.
+2. **Panic Risk:** The compiler can no longer save you from borrowing rule violations. If you accidentally attempt two mutable borrows simultaneously, your program will crash. If you wish to handle these cases gracefully, you can use `.try_borrow()` and `.try_borrow_mut()`, which return a `Result` instead of panicking.
+3. **Memory Leaks:** Because `Rc<T>` allows for multiple owners, combining it with interior mutability makes it very easy to accidentally create reference cycles (e.g., node A points to node B, and node B is mutated to point back to node A). This will prevent the `Rc` count from ever reaching zero, leaking memory. We will tackle this specific danger in the next section with `Weak<T>`.
 
 ## 10.4 Reference Cycles, Memory Leaks, and `Weak<T>` Pointers
 
-Rust’s ownership model and the borrow checker provide stringent guarantees against memory unsafety, such as use-after-free errors and data races. However, Rust does *not* guarantee the complete absence of memory leaks. It is entirely possible to write safe Rust code that permanently leaks memory. 
+Rust’s ownership model and the borrow checker provide stringent guarantees against memory unsafety, such as use-after-free errors and data races. However, Rust does *not* guarantee the complete absence of memory leaks. It is entirely possible to write safe Rust code that permanently leaks memory.
 
-The most common way to accidentally leak memory in Rust is by combining `Rc<T>` and `RefCell<T>` (the multiple mutable ownership pattern we explored in Section 10.3) to create a **reference cycle**. 
+The most common way to accidentally leak memory in Rust is by combining `Rc<T>` and `RefCell<T>` (the multiple mutable ownership pattern we explored in Section 10.3) to create a **reference cycle**.
 
 ### The Anatomy of a Reference Cycle
 
@@ -389,7 +391,8 @@ fn main() {
 }
 ```
 
-When `main` finishes, Rust attempts to clean up the variables in reverse order of creation. 
+When `main` finishes, Rust attempts to clean up the variables in reverse order of creation.
+
 1. It tries to drop `b`. `b`'s `strong_count` drops from 2 to 1 (because `a` still holds a reference to it). The heap memory is *not* deallocated.
 2. It tries to drop `a`. `a`'s `strong_count` drops from 2 to 1 (because `b` still holds a reference to it). The heap memory is *not* deallocated.
 
@@ -407,13 +410,14 @@ Both allocations remain on the heap forever. If this occurs inside a long-runnin
 
 ### Breaking Cycles with `Weak<T>`
 
-To prevent reference cycles, Rust provides a non-owning smart pointer called `Weak<T>`. 
+To prevent reference cycles, Rust provides a non-owning smart pointer called `Weak<T>`.
 
 When you call `Rc::clone`, you increment the `strong_count` of the allocation. The data on the heap is only dropped when the `strong_count` reaches zero. Conversely, if you call `Rc::downgrade`, you receive a `Weak<T>` pointer and increment the `weak_count`.
 
-The crucial difference is that **the `weak_count` does not prevent the underlying data from being dropped.** As long as the `strong_count` reaches zero, the inner data is deallocated, even if there are active `Weak` pointers pointing to it. 
+The crucial difference is that **the `weak_count` does not prevent the underlying data from being dropped.** As long as the `strong_count` reaches zero, the inner data is deallocated, even if there are active `Weak` pointers pointing to it.
 
 Because `Weak<T>` pointers do not guarantee the data they point to still exists, you cannot dereference them directly. Instead, you must call the `upgrade` method on a `Weak<T>` pointer, which returns an `Option<Rc<T>>`:
+
 * Returns `Some(Rc<T>)` if the data has not been dropped.
 * Returns `None` if the `strong_count` reached zero and the data was deallocated.
 

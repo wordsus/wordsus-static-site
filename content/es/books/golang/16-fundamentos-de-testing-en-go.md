@@ -8,7 +8,7 @@ El punto de entrada a este ecosistema se basa en dos pilares fundamentales: una 
 
 ### La convención del sufijo `_test.go`
 
-En Go, el *toolchain* utiliza el sistema de archivos para determinar qué código pertenece a la lógica de la aplicación y qué código pertenece a las pruebas. Cualquier archivo cuyo nombre termine exactamente con el sufijo `_test.go` es identificado automáticamente como un archivo de pruebas. 
+En Go, el *toolchain* utiliza el sistema de archivos para determinar qué código pertenece a la lógica de la aplicación y qué código pertenece a las pruebas. Cualquier archivo cuyo nombre termine exactamente con el sufijo `_test.go` es identificado automáticamente como un archivo de pruebas.
 
 Esta convención tiene una implicación crucial en la compilación: **los archivos `_test.go` son ignorados por completo cuando ejecutas `go build`, `go run` o `go install`**. Solo se compilan y ejecutan cuando invocas el comando `go test`. Esto garantiza que el código de tus pruebas, así como cualquier dependencia exclusiva de las mismas, nunca infle el tamaño del binario final ni afecte el rendimiento en producción.
 
@@ -16,8 +16,8 @@ Esta convención tiene una implicación crucial en la compilación: **los archiv
 
 Cuando creas un archivo `_test.go`, Go te permite elegir entre dos formas de declarar el paquete en la cabecera del archivo. Esta decisión arquitectónica define la visibilidad que tendrán tus tests sobre el código bajo prueba:
 
-1.  **Caja blanca (Mismo paquete):** Si tu código está en `package mathutil`, tu archivo de pruebas también declara `package mathutil`. Esto permite que tus tests accedan a identificadores no exportados (funciones, variables o *structs* que comienzan con minúscula). Es útil para probar lógica interna compleja de forma aislada.
-2.  **Caja negra (Paquete con sufijo `_test`):** Tu archivo de pruebas declara `package mathutil_test`. En este escenario, el archivo de pruebas es tratado como un paquete externo que importa tu paquete principal. Solo podrás acceder a la API pública (identificadores exportados) de `mathutil`. Esta es la práctica más recomendada e idiomática en Go, ya que te obliga a probar el comportamiento de tu API tal y como la consumiría un cliente real, evitando que los tests se acoplen a los detalles de implementación interna.
+1. **Caja blanca (Mismo paquete):** Si tu código está en `package mathutil`, tu archivo de pruebas también declara `package mathutil`. Esto permite que tus tests accedan a identificadores no exportados (funciones, variables o *structs* que comienzan con minúscula). Es útil para probar lógica interna compleja de forma aislada.
+2. **Caja negra (Paquete con sufijo `_test`):** Tu archivo de pruebas declara `package mathutil_test`. En este escenario, el archivo de pruebas es tratado como un paquete externo que importa tu paquete principal. Solo podrás acceder a la API pública (identificadores exportados) de `mathutil`. Esta es la práctica más recomendada e idiomática en Go, ya que te obliga a probar el comportamiento de tu API tal y como la consumiría un cliente real, evitando que los tests se acoplen a los detalles de implementación interna.
 
 ### El paquete `testing` y el tipo `testing.T`
 
@@ -126,7 +126,7 @@ Una tabla típicamente se construye usando un *slice* de *structs* anónimos que
 
 ### Subtests con `t.Run`
 
-Iterar sobre la tabla con un bucle `for` simple funciona, pero si un caso falla, la ejecución se detiene (si usas `t.Fatal`) o se ensucia la salida estándar, dificultando identificar qué fila exacta falló. 
+Iterar sobre la tabla con un bucle `for` simple funciona, pero si un caso falla, la ejecución se detiene (si usas `t.Fatal`) o se ensucia la salida estándar, dificultando identificar qué fila exacta falló.
 
 Para solucionar esto, Go 1.7 introdujo el método `t.Run(name string, f func(t *testing.T))`. Este método permite ejecutar cada iteración del bucle como un **subtest** aislado. Si un subtest falla con `t.Fatal`, solo se detiene esa iteración; el resto de la tabla continuará ejecutándose. Además, permite aislar la ejecución de casos específicos desde la CLI usando expresiones regulares (ej. `go test -run TestDivide/División_por_cero`).
 
@@ -138,58 +138,58 @@ Tomemos los tests de la función `Divide` del capítulo anterior y consolidémos
 package calc_test
 
 import (
-	"testing"
-	"tu-proyecto/calc"
+ "testing"
+ "tu-proyecto/calc"
 )
 
 func TestDivide(t *testing.T) {
-	// 1. Definición de la tabla de casos
-	tests := []struct {
-		name    string  // Nombre del subtest
-		a       float64 // Entrada A
-		b       float64 // Entrada B
-		want    float64 // Resultado esperado
-		wantErr error   // Error esperado (nil si debe ser exitoso)
-	}{
-		{
-			name:    "División exacta positiva",
-			a:       10.0,
-			b:       2.0,
-			want:    5.0,
-			wantErr: nil,
-		},
-		{
-			name:    "División con resultado decimal",
-			a:       5.0,
-			b:       2.0,
-			want:    2.5,
-			wantErr: nil,
-		},
-		{
-			name:    "División por cero",
-			a:       10.0,
-			b:       0.0,
-			want:    0.0, // El valor por defecto al fallar
-			wantErr: calc.ErrDivideByZero,
-		},
-	}
+ // 1. Definición de la tabla de casos
+ tests := []struct {
+  name    string  // Nombre del subtest
+  a       float64 // Entrada A
+  b       float64 // Entrada B
+  want    float64 // Resultado esperado
+  wantErr error   // Error esperado (nil si debe ser exitoso)
+ }{
+  {
+   name:    "División exacta positiva",
+   a:       10.0,
+   b:       2.0,
+   want:    5.0,
+   wantErr: nil,
+  },
+  {
+   name:    "División con resultado decimal",
+   a:       5.0,
+   b:       2.0,
+   want:    2.5,
+   wantErr: nil,
+  },
+  {
+   name:    "División por cero",
+   a:       10.0,
+   b:       0.0,
+   want:    0.0, // El valor por defecto al fallar
+   wantErr: calc.ErrDivideByZero,
+  },
+ }
 
-	// 2. Iteración y ejecución de subtests
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got, err := calc.Divide(tt.a, tt.b)
+ // 2. Iteración y ejecución de subtests
+ for _, tt := range tests {
+  t.Run(tt.name, func(t *testing.T) {
+   got, err := calc.Divide(tt.a, tt.b)
 
-			// Validación de errores
-			if err != tt.wantErr {
-				t.Fatalf("Divide() error = %v, wantErr %v", err, tt.wantErr)
-			}
+   // Validación de errores
+   if err != tt.wantErr {
+    t.Fatalf("Divide() error = %v, wantErr %v", err, tt.wantErr)
+   }
 
-			// Validación de resultados (solo si no se esperaba error)
-			if err == nil && got != tt.want {
-				t.Errorf("Divide() = %v, want %v", got, tt.want)
-			}
-		})
-	}
+   // Validación de resultados (solo si no se esperaba error)
+   if err == nil && got != tt.want {
+    t.Errorf("Divide() = %v, want %v", got, tt.want)
+   }
+  })
+ }
 }
 ```
 
@@ -215,29 +215,29 @@ Si un archivo de pruebas incluye una función llamada `TestMain(m *testing.M)`, 
 package repository_test
 
 import (
-	"fmt"
-	"os"
-	"testing"
+ "fmt"
+ "os"
+ "testing"
 )
 
 func TestMain(m *testing.M) {
-	// 1. SETUP GLOBAL: Se ejecuta una sola vez antes de todos los tests
-	fmt.Println("[Setup] Iniciando conexión a la base de datos de prueba...")
-	
-	// Simulación de configuración de recursos
-	dbConn := "postgres://user:pass@localhost:5432/testdb"
-	os.Setenv("TEST_DB_DSN", dbConn)
+ // 1. SETUP GLOBAL: Se ejecuta una sola vez antes de todos los tests
+ fmt.Println("[Setup] Iniciando conexión a la base de datos de prueba...")
+ 
+ // Simulación de configuración de recursos
+ dbConn := "postgres://user:pass@localhost:5432/testdb"
+ os.Setenv("TEST_DB_DSN", dbConn)
 
-	// 2. EJECUCIÓN: Corre todos los TestXxx del paquete
-	// m.Run() retorna el código de salida (0 si pasan, 1 si fallan)
-	exitVal := m.Run()
+ // 2. EJECUCIÓN: Corre todos los TestXxx del paquete
+ // m.Run() retorna el código de salida (0 si pasan, 1 si fallan)
+ exitVal := m.Run()
 
-	// 3. TEARDOWN GLOBAL: Se ejecuta una sola vez al finalizar
-	fmt.Println("[Teardown] Cerrando conexiones y limpiando estado...")
-	os.Unsetenv("TEST_DB_DSN")
+ // 3. TEARDOWN GLOBAL: Se ejecuta una sola vez al finalizar
+ fmt.Println("[Teardown] Cerrando conexiones y limpiando estado...")
+ os.Unsetenv("TEST_DB_DSN")
 
-	// 4. SALIDA: Es obligatorio salir con el código devuelto por m.Run()
-	os.Exit(exitVal)
+ // 4. SALIDA: Es obligatorio salir con el código devuelto por m.Run()
+ os.Exit(exitVal)
 }
 ```
 
@@ -247,7 +247,7 @@ func TestMain(m *testing.M) {
 
 Para la inmensa mayoría de los casos, el *setup* se realiza simplemente escribiendo código secuencial al inicio de tu función `TestXxx`. Sin embargo, el *teardown* ha evolucionado significativamente.
 
-Históricamente, los desarrolladores de Go utilizaban la instrucción `defer` para asegurar la limpieza de recursos. Aunque `defer` funciona (incluso si la prueba falla con `t.Fatal()`, que internamente llama a `runtime.Goexit`), presenta problemas de ergonomía cuando la lógica de inicialización se extrae a funciones auxiliares (*helpers*). 
+Históricamente, los desarrolladores de Go utilizaban la instrucción `defer` para asegurar la limpieza de recursos. Aunque `defer` funciona (incluso si la prueba falla con `t.Fatal()`, que internamente llama a `runtime.Goexit`), presenta problemas de ergonomía cuando la lógica de inicialización se extrae a funciones auxiliares (*helpers*).
 
 Para solucionar esto, Go 1.14 introdujo `t.Cleanup(func())`. Este método registra una función que se ejecutará automáticamente cuando el test (o subtest) finalice, independientemente del resultado.
 
@@ -260,50 +260,50 @@ Observemos el patrón idiomático de un *Test Helper* utilizando `t.Cleanup`:
 package fileutil_test
 
 import (
-	"os"
-	"testing"
+ "os"
+ "testing"
 )
 
 // setupTempFile es un helper que crea un archivo temporal y asegura su borrado.
 // Al recibir *testing.T, asume la responsabilidad del teardown.
 func setupTempFile(t *testing.T, content string) *os.File {
-	// t.Helper() marca esta función para que, si falla, la traza de error 
-	// apunte a la línea donde se llamó al helper, no dentro de él.
-	t.Helper() 
+ // t.Helper() marca esta función para que, si falla, la traza de error 
+ // apunte a la línea donde se llamó al helper, no dentro de él.
+ t.Helper() 
 
-	tmpFile, err := os.CreateTemp("", "testfile_*.txt")
-	if err != nil {
-		t.Fatalf("falló la creación del archivo temporal: %v", err)
-	}
+ tmpFile, err := os.CreateTemp("", "testfile_*.txt")
+ if err != nil {
+  t.Fatalf("falló la creación del archivo temporal: %v", err)
+ }
 
-	// TEARDOWN LOCAL: Se garantiza su ejecución al terminar el test que llamó a este helper
-	t.Cleanup(func() {
-		tmpFile.Close()
-		os.Remove(tmpFile.Name())
-	})
+ // TEARDOWN LOCAL: Se garantiza su ejecución al terminar el test que llamó a este helper
+ t.Cleanup(func() {
+  tmpFile.Close()
+  os.Remove(tmpFile.Name())
+ })
 
-	if _, err := tmpFile.WriteString(content); err != nil {
-		t.Fatalf("falló la escritura en el archivo temporal: %v", err)
-	}
+ if _, err := tmpFile.WriteString(content); err != nil {
+  t.Fatalf("falló la escritura en el archivo temporal: %v", err)
+ }
 
-	return tmpFile
+ return tmpFile
 }
 
 func TestProcessFile(t *testing.T) {
-	// SETUP: Llamamos al helper. No necesitamos usar 'defer'.
-	file := setupTempFile(t, "datos de configuración críticos")
+ // SETUP: Llamamos al helper. No necesitamos usar 'defer'.
+ file := setupTempFile(t, "datos de configuración críticos")
 
-	// LÓGICA DE PRUEBA
-	info, err := file.Stat()
-	if err != nil {
-		t.Fatalf("error al leer stats: %v", err)
-	}
+ // LÓGICA DE PRUEBA
+ info, err := file.Stat()
+ if err != nil {
+  t.Fatalf("error al leer stats: %v", err)
+ }
 
-	if info.Size() == 0 {
-		t.Errorf("se esperaba un archivo con contenido, tamaño obtenido: %d", info.Size())
-	}
-	
-	// Al terminar esta función, t.Cleanup entrará en acción cerrando y borrando el archivo.
+ if info.Size() == 0 {
+  t.Errorf("se esperaba un archivo con contenido, tamaño obtenido: %d", info.Size())
+ }
+ 
+ // Al terminar esta función, t.Cleanup entrará en acción cerrando y borrando el archivo.
 }
 ```
 
@@ -311,9 +311,9 @@ La combinación de `t.Helper()` y `t.Cleanup()` es una de las herramientas de di
 
 ## 16.4. Análisis de cobertura de código (Code Coverage)
 
-El análisis de cobertura de código responde a una pregunta fundamental: ¿qué porcentaje de nuestro código fuente de producción está siendo ejecutado realmente por nuestras pruebas? 
+El análisis de cobertura de código responde a una pregunta fundamental: ¿qué porcentaje de nuestro código fuente de producción está siendo ejecutado realmente por nuestras pruebas?
 
-A diferencia de otros lenguajes que dependen de herramientas de terceros complejas (como JaCoCo en Java o Istanbul en el ecosistema de JavaScript) que a menudo instrumentan el código compilado o utilizan *hooks* en la máquina virtual, Go adopta un enfoque radicalmente distinto. El *toolchain* de Go realiza la instrumentación **modificando el Árbol de Sintaxis Abstracta (AST)** del código fuente antes de compilarlo. Inserta contadores de forma transparente en cada bloque lógico (sentencias de control, funciones, ramas de condicionales) y luego compila ese código modificado. 
+A diferencia de otros lenguajes que dependen de herramientas de terceros complejas (como JaCoCo en Java o Istanbul en el ecosistema de JavaScript) que a menudo instrumentan el código compilado o utilizan *hooks* en la máquina virtual, Go adopta un enfoque radicalmente distinto. El *toolchain* de Go realiza la instrumentación **modificando el Árbol de Sintaxis Abstracta (AST)** del código fuente antes de compilarlo. Inserta contadores de forma transparente en cada bloque lógico (sentencias de control, funciones, ramas de condicionales) y luego compila ese código modificado.
 
 Este enfoque nativo hace que el análisis de cobertura en Go sea increíblemente rápido, preciso y fácil de utilizar, sin dependencias externas.
 
@@ -329,14 +329,17 @@ ok      tu-proyecto/repository  0.045s  coverage: 78.4% of statements
 
 Sin embargo, el verdadero valor de la herramienta reside en saber **qué líneas exactas** no están siendo probadas. Para ello, debemos generar un "perfil de cobertura" (*cover profile*) y luego visualizarlo.
 
-1.  **Generar el perfil:**
+1. **Generar el perfil:**
+
     ```bash
-    $ go test -coverprofile=coverage.out ./...
+    go test -coverprofile=coverage.out ./...
     ```
+
     Esto creará un archivo de texto (`coverage.out`) que contiene metadatos sobre cada bloque de código y cuántas veces fue ejecutado.
 
-2.  **Visualizar los resultados:**
+2. **Visualizar los resultados:**
     Go incluye una herramienta nativa para interpretar este archivo. Puedes ver un resumen en la terminal por cada función:
+
     ```bash
     $ go tool cover -func=coverage.out
     tu-proyecto/calc/divide.go:9:    Divide          100.0%
@@ -346,9 +349,11 @@ Sin embargo, el verdadero valor de la herramienta reside en saber **qué líneas
     ```
 
     O, mucho más útil, puedes generar una representación visual en HTML que se abrirá automáticamente en tu navegador:
+
     ```bash
-    $ go tool cover -html=coverage.out
+    go tool cover -html=coverage.out
     ```
+
     En esta vista HTML, el código fuente se colorea:
     * **Gris:** Código no ejecutable (declaraciones, firmas de funciones).
     * **Verde:** Código cubierto por al menos una prueba.
@@ -358,9 +363,9 @@ Sin embargo, el verdadero valor de la herramienta reside en saber **qué líneas
 
 El comportamiento de los contadores inyectados por Go puede ajustarse dependiendo de lo que necesites medir, utilizando la bandera `-covermode`. Existen tres modos:
 
-1.  **`set` (Por defecto):** Registra un valor booleano. ¿Se ejecutó esta sentencia, sí o no? Es el modo más rápido y el predeterminado si no estás ejecutando el detector de carreras (*race detector*).
-2.  **`count`:** Registra *cuántas veces* se ejecutó una sentencia. La vista HTML mostrará el código verde en distintas intensidades (verde más brillante para los *hot paths* o rutas de código muy transitadas). Es útil para identificar cuellos de botella probabilísticos.
-3.  **`atomic`:** Idéntico a `count`, pero utiliza operaciones atómicas del paquete `sync/atomic` para incrementar los contadores. **Es obligatorio usar este modo si estás probando código concurrente o utilizando `-race`**, ya que de lo contrario, la propia instrumentación de cobertura causaría *data races* al incrementar contadores compartidos desde múltiples Goroutines. (Si usas `-race` y `-coverprofile` juntos, Go activa `atomic` automáticamente).
+1. **`set` (Por defecto):** Registra un valor booleano. ¿Se ejecutó esta sentencia, sí o no? Es el modo más rápido y el predeterminado si no estás ejecutando el detector de carreras (*race detector*).
+2. **`count`:** Registra *cuántas veces* se ejecutó una sentencia. La vista HTML mostrará el código verde en distintas intensidades (verde más brillante para los *hot paths* o rutas de código muy transitadas). Es útil para identificar cuellos de botella probabilísticos.
+3. **`atomic`:** Idéntico a `count`, pero utiliza operaciones atómicas del paquete `sync/atomic` para incrementar los contadores. **Es obligatorio usar este modo si estás probando código concurrente o utilizando `-race`**, ya que de lo contrario, la propia instrumentación de cobertura causaría *data races* al incrementar contadores compartidos desde múltiples Goroutines. (Si usas `-race` y `-coverprofile` juntos, Go activa `atomic` automáticamente).
 
 ### Cobertura en pruebas de integración (La revolución de Go 1.20+)
 
@@ -368,17 +373,20 @@ Históricamente, la cobertura en Go estaba estrictamente limitada a las pruebas 
 
 **Go 1.20 introdujo la capacidad de compilar binarios instrumentados para cobertura.** Esta característica avanzada cambia las reglas del juego para las pruebas de integración:
 
-1.  Compilas tu aplicación de producción con la bandera de cobertura:
+1. Compilas tu aplicación de producción con la bandera de cobertura:
+
     ```bash
-    $ go build -cover -o mi-api-server main.go
+    go build -cover -o mi-api-server main.go
     ```
-2.  Ejecutas el binario definiendo la variable de entorno `GOCOVERDIR` para indicarle dónde volcar los datos al finalizar:
+
+2. Ejecutas el binario definiendo la variable de entorno `GOCOVERDIR` para indicarle dónde volcar los datos al finalizar:
+
     ```bash
-    $ GOCOVERDIR=./datos_cobertura ./mi-api-server
+    GOCOVERDIR=./datos_cobertura ./mi-api-server
     ```
-3.  Lanzas tus pruebas externas (scripts de bash, Cypress, llamadas curl).
-4.  Al apagar el servidor de forma elegante (*graceful shutdown*), el binario escribirá los perfiles en el directorio especificado. Luego puedes usar `go tool covdata` para unificarlos y generar el clásico archivo `coverage.out` legible por `go tool cover`.
+
+3. Lanzas tus pruebas externas (scripts de bash, Cypress, llamadas curl).
+4. Al apagar el servidor de forma elegante (*graceful shutdown*), el binario escribirá los perfiles en el directorio especificado. Luego puedes usar `go tool covdata` para unificarlos y generar el clásico archivo `coverage.out` legible por `go tool cover`.
 
 **Una advertencia arquitectónica final:**
 La cobertura de código es una excelente herramienta para descubrir "puntos ciegos" (código no probado), pero es una pésima métrica de calidad por sí sola. Alcanzar un 100% de cobertura suele requerir pruebas sin valor que solo buscan complacer a la herramienta (probando *getters*, *setters* o aserciones triviales). El objetivo del ingeniero avanzado no es el 100%, sino tener la certeza de que las rutas críticas de negocio y los casos límite están protegidos contra regresiones.
-

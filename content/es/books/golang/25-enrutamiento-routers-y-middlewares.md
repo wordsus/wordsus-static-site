@@ -2,7 +2,7 @@ Tras dominar las bases de `net/http`, es hora de elevar la construcción de serv
 
 ## 25.1. El enrutador avanzado de la standard library (Go 1.22+)
 
-Como vimos en el capítulo anterior, el `http.ServeMux` clásico de Go fue durante años una herramienta robusta pero extremadamente espartana. Su incapacidad nativa para distinguir métodos HTTP (GET, POST, etc.) o para extraer variables directamente de las rutas obligaba a los desarrolladores a escribir código repetitivo (boilplate) o a delegar inmediatamente estas tareas a librerías de terceros. 
+Como vimos en el capítulo anterior, el `http.ServeMux` clásico de Go fue durante años una herramienta robusta pero extremadamente espartana. Su incapacidad nativa para distinguir métodos HTTP (GET, POST, etc.) o para extraer variables directamente de las rutas obligaba a los desarrolladores a escribir código repetitivo (boilplate) o a delegar inmediatamente estas tareas a librerías de terceros.
 
 A partir de Go 1.22, la *standard library* introdujo una actualización masiva en su multiplexor, transformándolo en un enrutador moderno y semántico sin sacrificar la filosofía de simplicidad del lenguaje. Esta mejora drástica reduce significativamente la necesidad de dependencias externas para APIs RESTful estándar.
 
@@ -67,7 +67,7 @@ mux.HandleFunc("GET /config{$}", handleConfigMap)
 
 Con la introducción de los comodines, surge la posibilidad de solapar rutas. Por ejemplo, ¿qué ocurre si registras tanto `GET /users/admin` como `GET /users/{id}`?
 
-Go 1.22 abandona el antiguo sistema de precedencia basado en la longitud de la cadena e introduce un sistema de **especificidad**. La regla de oro es: *el patrón más específico gana*. 
+Go 1.22 abandona el antiguo sistema de precedencia basado en la longitud de la cadena e introduce un sistema de **especificidad**. La regla de oro es: *el patrón más específico gana*.
 
 En el caso anterior, `/users/admin` es un patrón estático y, por ende, más específico que `/users/{id}`. Si la petición es `/users/admin`, Go ejecutará el *handler* estático. Si la petición es `/users/123`, ejecutará el que contiene el comodín.
 
@@ -142,7 +142,7 @@ r.Run(":8080")
 
 ### Echo: El minimalista productivo
 
-`labstack/echo` comparte gran parte de la filosofía de Gin: alto rendimiento a través de árboles Radix, un contexto personalizado (`echo.Context`) y una extensa colección de *middlewares* integrados. 
+`labstack/echo` comparte gran parte de la filosofía de Gin: alto rendimiento a través de árboles Radix, un contexto personalizado (`echo.Context`) y una extensa colección de *middlewares* integrados.
 
 La diferencia principal radica en su API, que muchos desarrolladores consideran más limpia y expresiva que la de Gin, y su excelente sistema de *Data Binding* que permite extraer datos del *payload*, *query params* o variables de ruta directamente hacia un *struct* con una sola línea de código.
 
@@ -177,7 +177,7 @@ e.Start(":8080")
 
 ## 25.3. Diseño, implementación y encadenamiento de Middlewares
 
-En el ecosistema de Go, un *middleware* no es una construcción mágica del lenguaje ni requiere de un framework complejo; es simplemente la aplicación práctica del **Patrón Decorador** (visto en el Capítulo 23) sobre los manejadores HTTP. 
+En el ecosistema de Go, un *middleware* no es una construcción mágica del lenguaje ni requiere de un framework complejo; es simplemente la aplicación práctica del **Patrón Decorador** (visto en el Capítulo 23) sobre los manejadores HTTP.
 
 Su propósito es interceptar una petición entrante, ejecutar lógica de validación, transformación o registro (logging), y luego decidir si pasa el control al siguiente manejador de la cadena o si aborta la petición tempranamente.
 
@@ -206,7 +206,7 @@ Esta estructura de "cebolla" permite que el middleware envuelva completamente el
 
 ### Comunicación mediante el Contexto
 
-Dado que los middlewares operan antes que los controladores finales, a menudo necesitan inyectar información procesada (como el ID del usuario autenticado o un ID de rastreo) para que el *handler* la consuma. 
+Dado que los middlewares operan antes que los controladores finales, a menudo necesitan inyectar información procesada (como el ID del usuario autenticado o un ID de rastreo) para que el *handler* la consuma.
 
 Como vimos en el Capítulo 13, la forma idiomática de pasar variables de alcance de petición es a través del `context.Context` incrustado en el `*http.Request`.
 
@@ -349,7 +349,7 @@ func RecoveryMiddleware(next http.Handler) http.Handler {
 
 ### 3. CORS: Intercambio de Recursos de Origen Cruzado
 
-Si tu API será consumida por una aplicación Frontend en el navegador (React, Vue, Angular) alojada en un dominio o puerto diferente, los navegadores bloquearán las peticiones por defecto debido a la política del Mismo Origen (*Same-Origin Policy*). 
+Si tu API será consumida por una aplicación Frontend en el navegador (React, Vue, Angular) alojada en un dominio o puerto diferente, los navegadores bloquearán las peticiones por defecto debido a la política del Mismo Origen (*Same-Origin Policy*).
 
 El *middleware* CORS (*Cross-Origin Resource Sharing*) inyecta las cabeceras HTTP necesarias para autorizar estas peticiones y gestiona las solicitudes *Preflight* automáticas que los navegadores hacen usando el método `OPTIONS`.
 
@@ -379,4 +379,3 @@ func CORSMiddleware(next http.Handler) http.Handler {
 > **Nota arquitectónica:** Aunque implementar CORS manualmente es un excelente ejercicio de comprensión de HTTP, sus reglas de seguridad pueden volverse extremadamente complejas (gestión dinámica de orígenes, exposición de cabeceras personalizadas, credenciales). Para aplicaciones de nivel empresarial, se recomienda delegar esta tarea a librerías maduras, auditadas y focalizadas como `github.com/rs/cors`, y aplicar esa librería como un *middleware* en tu cadena principal.
 
 Con estos tres componentes base integrados a nuestro `ServeMux`, contamos con un servidor altamente resiliente, listo para recibir tráfico externo de forma segura.
-

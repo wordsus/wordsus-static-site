@@ -4,13 +4,13 @@ This chapter introduces a paradigm shift: the Pulumi Automation API. By embeddin
 
 ## 19.1 Moving Beyond the CLI
 
-Throughout the first eighteen chapters of this book, your interaction with Pulumi has centered almost entirely around a single, powerful tool: the Pulumi CLI. Whether you were executing `pulumi up` from your local terminal to provision an AWS VPC, or configuring a GitHub Action to run `pulumi preview` on a pull request, the CLI acted as the mandatory intermediary between your infrastructure code and the Pulumi engine. 
+Throughout the first eighteen chapters of this book, your interaction with Pulumi has centered almost entirely around a single, powerful tool: the Pulumi CLI. Whether you were executing `pulumi up` from your local terminal to provision an AWS VPC, or configuring a GitHub Action to run `pulumi preview` on a pull request, the CLI acted as the mandatory intermediary between your infrastructure code and the Pulumi engine.
 
 This CLI-driven approach is the industry standard for Infrastructure as Code (IaC). It fits perfectly into developer workflows and traditional Continuous Integration and Continuous Delivery (CI/CD) pipelines. However, as organizations scale their cloud operations, they frequently encounter scenarios where executing CLI commands becomes a bottleneck.
 
 ### The Limits of Shelling Out
 
-Consider a scenario where your platform team needs to orchestrate infrastructure dynamically based on business events, such as provisioning an entirely new, isolated tenant environment whenever a user signs up for your SaaS product. 
+Consider a scenario where your platform team needs to orchestrate infrastructure dynamically based on business events, such as provisioning an entirely new, isolated tenant environment whenever a user signs up for your SaaS product.
 
 To achieve this using a traditional IaC tool, developers are forced to write wrapper scripts—often in Bash, Python, or Node.js—that shell out to the CLI executable. A simplified version of this anti-pattern looks something like this:
 
@@ -42,7 +42,7 @@ While this script might work in a vacuum, treating the Pulumi CLI as a black-box
 
 ### The Paradigm Shift: The Automation API
 
-To solve the limitations of wrapper scripts, Pulumi introduced the **Automation API**. The Automation API allows you to embed the core Pulumi engine directly within your application code as a strongly-typed library. 
+To solve the limitations of wrapper scripts, Pulumi introduced the **Automation API**. The Automation API allows you to embed the core Pulumi engine directly within your application code as a strongly-typed library.
 
 Available in Node.js, Python, Go, and .NET, the Automation API completely removes the need to execute shell commands. Instead of writing code that *writes* code, or code that *runs* a CLI, you write software that inherently understands how to provision its own infrastructure.
 
@@ -133,7 +133,7 @@ Moving beyond the CLI unlocks entirely new patterns of automation. In the subseq
 
 ## 19.2 Building Custom Portals and Internal Developer Platforms (IDPs)
 
-As organizations scale, a fundamental tension emerges: developers want to ship application code as quickly as possible, while platform and security teams need to enforce architectural standards, compliance, and cost controls. Forcing every application developer to become a cloud infrastructure expert and write their own Pulumi code often leads to friction, duplicated effort, and configuration drift. 
+As organizations scale, a fundamental tension emerges: developers want to ship application code as quickly as possible, while platform and security teams need to enforce architectural standards, compliance, and cost controls. Forcing every application developer to become a cloud infrastructure expert and write their own Pulumi code often leads to friction, duplicated effort, and configuration drift.
 
 The industry's answer to this tension is the **Internal Developer Platform (IDP)**. An IDP provides developers with self-service capabilities—often through a web-based portal or a graphical user interface (GUI)—abstracting away the complex underlying infrastructure. Instead of writing IaC, a developer simply fills out a form requesting a "High Availability Node.js Environment" or a "Production Postgres Database," and the platform handles the rest.
 
@@ -172,7 +172,7 @@ Here is how a typical custom IDP architecture is structured:
 
 ### Implementing a Provisioning Endpoint
 
-Let's look at how you might build the backend for this self-service portal. In this example, we will create a simple Express.js API endpoint in TypeScript. 
+Let's look at how you might build the backend for this self-service portal. In this example, we will create a simple Express.js API endpoint in TypeScript.
 
 When a developer submits a form on the frontend to provision a new database, the API receives a POST request. Instead of pointing to a directory of Pulumi code (like we did in Chapter 19.1), we will use an **Inline Program**. Inline programs allow you to define your infrastructure dynamically at runtime, using the exact same Pulumi SDKs you are already familiar with.
 
@@ -254,9 +254,9 @@ This concept is known as **Application-Driven Infrastructure**. Instead of relyi
 
 ### The Shift to Embedded Provisioning
 
-Traditional infrastructure provisioning happens *before* application deployment. You provision a database, deploy your application code to a server, and configure the application to talk to the database. 
+Traditional infrastructure provisioning happens *before* application deployment. You provision a database, deploy your application code to a server, and configure the application to talk to the database.
 
-Embedded provisioning happens *during* application runtime. The infrastructure becomes a dynamic extension of the application's domain logic. 
+Embedded provisioning happens *during* application runtime. The infrastructure becomes a dynamic extension of the application's domain logic.
 
 Consider these common use cases:
 
@@ -384,7 +384,7 @@ Embedding Pulumi directly into your application code is incredibly powerful, but
 A common misconception is that the Automation API is a pure HTTP client. It is not. The Automation API acts as a programmatic wrapper around the Pulumi CLI engine. Therefore, **the host running your application (e.g., your Docker container, EC2 instance, or Kubernetes pod) must have the Pulumi CLI binary installed**, alongside the language runtime (Node.js, Python, etc.) and any necessary cloud provider plugins. Your `Dockerfile` must be updated to download and install Pulumi.
 
 **2. Synchronous vs. Asynchronous Execution**
-Infrastructure provisioning is inherently slow. Creating an S3 bucket might take five seconds, but provisioning a managed database like Amazon RDS or a Kubernetes cluster can take fifteen to thirty minutes. 
+Infrastructure provisioning is inherently slow. Creating an S3 bucket might take five seconds, but provisioning a managed database like Amazon RDS or a Kubernetes cluster can take fifteen to thirty minutes.
 You cannot block an HTTP request thread for twenty minutes waiting for `stack.up()` to complete. For long-running infrastructure tasks, you must adopt an asynchronous worker pattern. The HTTP request should enqueue a job (e.g., via Redis, RabbitMQ, or AWS SQS) and return a `202 Accepted` status, while a background worker process runs the Automation API code and updates the application database upon completion.
 
 **3. State Backend Architecture**
@@ -397,11 +397,11 @@ When a tenant deletes their account, your application must clean up after itself
 
 When you transition from running a CLI locally to executing the Automation API within a web service or background worker, you inherit the inherent complexities of distributed systems. In a production environment, your application will likely receive multiple requests to provision or modify infrastructure simultaneously. If these requests are not orchestrated carefully, they will collide, resulting in corrupted state files, locked workspaces, and partial deployments.
 
-Managing concurrency and building resilient error-handling mechanisms are critical requirements for any application leveraging the Automation API. 
+Managing concurrency and building resilient error-handling mechanisms are critical requirements for any application leveraging the Automation API.
 
 ### The State Locking Mechanism
 
-At its core, the Pulumi engine is designed to be highly conservative. To prevent two operations from mutating the same infrastructure resources simultaneously—which could lead to catastrophic inconsistencies in the cloud provider—Pulumi employs strict **State Locking**. 
+At its core, the Pulumi engine is designed to be highly conservative. To prevent two operations from mutating the same infrastructure resources simultaneously—which could lead to catastrophic inconsistencies in the cloud provider—Pulumi employs strict **State Locking**.
 
 When an operation like `stack.up()`, `stack.destroy()`, or `stack.refresh()` begins, Pulumi places a lock on the stack's state file. If a second process attempts to execute an operation on that exact same stack while the lock is active, the engine will immediately reject the request and throw a `ConcurrentUpdateError`.
 
@@ -515,9 +515,9 @@ async function markDeploymentAsFailedInDatabase(stackName: string, reason: strin
 
 ### Handling Zombie Processes and Orphaned Locks
 
-Scenario 3 in the code block above is a critical edge case in Automation API development. If the host running your background worker crashes (e.g., due to an Out-Of-Memory error or a preempted Kubernetes node) while `stack.up()` is actively running, Pulumi is forcefully terminated. 
+Scenario 3 in the code block above is a critical edge case in Automation API development. If the host running your background worker crashes (e.g., due to an Out-Of-Memory error or a preempted Kubernetes node) while `stack.up()` is actively running, Pulumi is forcefully terminated.
 
-Because Pulumi never got the chance to exit gracefully, the state lock remains active in your state backend. The next time a worker picks up a job for that stack, it will fail, stating an update is already in progress. 
+Because Pulumi never got the chance to exit gracefully, the state lock remains active in your state backend. The next time a worker picks up a job for that stack, it will fail, stating an update is already in progress.
 
 Using the Automation API, you can defensively code against this by catching the specific lock error, invoking `stack.cancel()` (the programmatic equivalent of `pulumi cancel`), and following it with `stack.refresh()` to reconcile the state file with the actual cloud environment before retrying the deployment. This self-healing capability is what elevates a Pulumi script to an enterprise-grade platform.
 
@@ -537,7 +537,7 @@ When you combine Webhooks, Serverless functions (or message queues), and the Pul
 
 ### The Event-Driven Architecture
 
-An event-driven provisioning system requires three primary components: an event emitter, an API gateway to catch the payload, and an asynchronous worker to execute the Pulumi engine. 
+An event-driven provisioning system requires three primary components: an event emitter, an API gateway to catch the payload, and an asynchronous worker to execute the Pulumi engine.
 
 ```text
 ======================================================================
@@ -567,9 +567,9 @@ An event-driven provisioning system requires three primary components: an event 
 
 ### Implementing a GitHub Webhook Handler
 
-Let's implement the classic use case: ephemeral Pull Request environments. In this scenario, GitHub sends a JSON payload to our server whenever PR activity occurs. 
+Let's implement the classic use case: ephemeral Pull Request environments. In this scenario, GitHub sends a JSON payload to our server whenever PR activity occurs.
 
-Because GitHub webhooks expect an HTTP `200 OK` response within 10 seconds—and Pulumi deployments take much longer—we must strictly separate the HTTP response from the infrastructure provisioning. 
+Because GitHub webhooks expect an HTTP `200 OK` response within 10 seconds—and Pulumi deployments take much longer—we must strictly separate the HTTP response from the infrastructure provisioning.
 
 Below is an example using Node.js and Express that receives a GitHub webhook, validates it, and spawns the Automation API logic asynchronously.
 
@@ -667,7 +667,7 @@ When moving infrastructure out of human hands and into the realm of automated we
 Webhooks are public-facing endpoints that possess the power to mutate your cloud infrastructure. You must cryptographically verify that the payload originated from a trusted source. In the example above, we use HMAC validation against `x-hub-signature-256`. Never trust the contents of a webhook payload without verifying its signature.
 
 **2. Strict Idempotency**
-Webhook providers (like GitHub or Stripe) operate on a "at-least-once" delivery guarantee. This means your endpoint might receive the exact same "PR Opened" event twice due to network retries. 
+Webhook providers (like GitHub or Stripe) operate on a "at-least-once" delivery guarantee. This means your endpoint might receive the exact same "PR Opened" event twice due to network retries.
 Fortunately, Pulumi's declarative engine naturally handles this. If you run `stack.up()` twice on the same configuration, the second run will simply report no changes. However, if your inline program contains non-deterministic logic (e.g., generating a new random password on every run), you must ensure your wrapper code is thoroughly idempotent.
 
 **3. State Backend Isolation**

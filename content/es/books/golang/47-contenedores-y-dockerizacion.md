@@ -4,13 +4,13 @@ Exploraremos desde la estructura idiomática de un `Dockerfile` hasta técnicas 
 
 ## 47.1. Mejores prácticas para escribir Dockerfiles para Go
 
-A diferencia de los lenguajes interpretados o aquellos que dependen de máquinas virtuales pesadas (como Node.js o Java), la naturaleza compilada de Go ofrece una ventaja táctica significativa al trabajar con contenedores. El resultado de compilar una aplicación Go es un binario único que, en la mayoría de los casos, contiene todas sus dependencias. 
+A diferencia de los lenguajes interpretados o aquellos que dependen de máquinas virtuales pesadas (como Node.js o Java), la naturaleza compilada de Go ofrece una ventaja táctica significativa al trabajar con contenedores. El resultado de compilar una aplicación Go es un binario único que, en la mayoría de los casos, contiene todas sus dependencias.
 
 Sin embargo, escribir un `Dockerfile` idiomático y seguro para Go requiere más que simplemente ejecutar `go build` dentro de un contenedor. A continuación, se detallan las mejores prácticas fundamentales que debes aplicar, preparando el terreno para las optimizaciones avanzadas de las siguientes secciones.
 
 ### 1. El uso estricto de `.dockerignore`
 
-El primer paso para un `Dockerfile` eficiente no ocurre dentro del archivo en sí, sino en el `.dockerignore`. Cuando ejecutas `docker build`, el demonio de Docker empaqueta todo el directorio actual (el contexto de construcción) y lo envía al motor. 
+El primer paso para un `Dockerfile` eficiente no ocurre dentro del archivo en sí, sino en el `.dockerignore`. Cuando ejecutas `docker build`, el demonio de Docker empaqueta todo el directorio actual (el contexto de construcción) y lo envía al motor.
 
 Enviar archivos innecesarios aumenta drásticamente el tiempo de construcción, consume memoria y, lo más crítico, puede exponer secretos o configuraciones locales en la imagen final.
 
@@ -110,7 +110,7 @@ EXPOSE 8080
 
 Docker construye las imágenes mediante capas apiladas y utiliza un sistema de caché. Si una capa cambia, Docker invalida la caché de esa capa y de todas las subsecuentes. Por lo tanto, debes ordenar las instrucciones de tu `Dockerfile` de las que cambian con **menor frecuencia** a las que cambian con **mayor frecuencia**.
 
-El código fuente de tu aplicación cambia constantemente, pero tus dependencias (`go.mod`) cambian con mucha menos frecuencia. Separar la copia de las dependencias de la copia del código fuente es una técnica crucial para la velocidad de iteración. 
+El código fuente de tu aplicación cambia constantemente, pero tus dependencias (`go.mod`) cambian con mucha menos frecuencia. Separar la copia de las dependencias de la copia del código fuente es una técnica crucial para la velocidad de iteración.
 
 *(La implementación técnica y optimización profunda de esta caché de módulos, `GOMODCACHE`, se abordará de manera exhaustiva en la sección 47.3).*
 
@@ -127,8 +127,9 @@ Aquí es donde brilla una de las características más potentes del ecosistema d
 Una compilación Multi-stage nos permite usar múltiples instrucciones `FROM` en un solo `Dockerfile`. Cada `FROM` inicia una nueva "etapa" de construcción. La magia radica en que podemos copiar selectivamente artefactos de una etapa anterior a la etapa final, descartando todo el entorno de compilación que ya no necesitamos.
 
 Típicamente, dividimos el proceso en dos etapas:
-1.  **El Builder (Constructor):** Utiliza una imagen pesada con el compilador de Go. Aquí descargamos dependencias, ejecutamos tests y compilamos el código fuente.
-2.  **El Runner (Ejecutor):** Utiliza una imagen base mínima (o vacía). Copiamos *únicamente* el binario compilado desde el Builder y lo ejecutamos.
+
+1. **El Builder (Constructor):** Utiliza una imagen pesada con el compilador de Go. Aquí descargamos dependencias, ejecutamos tests y compilamos el código fuente.
+2. **El Runner (Ejecutor):** Utiliza una imagen base mínima (o vacía). Copiamos *únicamente* el binario compilado desde el Builder y lo ejecutamos.
 
 ### 2. La imagen `scratch`: El vacío absoluto
 
@@ -216,12 +217,12 @@ ENTRYPOINT ["/api-server"]
 
 ### Anatomía de la optimización del binario
 
-En el comando de compilación del ejemplo anterior, hemos introducido las banderas del enlazador (linker flags): `-ldflags="-w -s"`. 
+En el comando de compilación del ejemplo anterior, hemos introducido las banderas del enlazador (linker flags): `-ldflags="-w -s"`.
 
 * `-w`: Omite la generación de información de depuración DWARF.
 * `-s`: Omite la tabla de símbolos.
 
-Al prescindir de esta información (que no es útil en un entorno de producción cerrado, ya que el trazado distribuido y el logging estructurado —Partes 11 y 12 del libro— son nuestras verdaderas herramientas de diagnóstico), podemos reducir el peso del binario final hasta en un 30%. 
+Al prescindir de esta información (que no es útil en un entorno de producción cerrado, ya que el trazado distribuido y el logging estructurado —Partes 11 y 12 del libro— son nuestras verdaderas herramientas de diagnóstico), podemos reducir el peso del binario final hasta en un 30%.
 
 El resultado de esta compilación Multi-stage es una imagen final de Docker que pesa exactamente lo mismo que el binario de tu aplicación (a menudo entre 10 MB y 25 MB). Tienes una imagen hiper-segura, sin shell interactivo, que arranca en milisegundos y está perfectamente alineada con la filosofía Cloud Native.
 
@@ -235,7 +236,7 @@ Go es rápido compilando, pero la red es el eslabón más débil. Descargar doce
 
 Como adelantamos brevemente en las secciones anteriores, la primera línea de defensa contra construcciones lentas es entender cómo Docker invalida sus capas. Docker procesa el `Dockerfile` de arriba hacia abajo. Si un archivo copiado cambia, esa capa y **todas las siguientes** se invalidan y deben reconstruirse desde cero.
 
-El código fuente de tu aplicación cambia constantemente. Tus dependencias (`go.mod` y `go.sum`) cambian con mucha menor frecuencia. 
+El código fuente de tu aplicación cambia constantemente. Tus dependencias (`go.mod` y `go.sum`) cambian con mucha menor frecuencia.
 
 **El patrón estándar (y obligatorio):**
 
@@ -256,7 +257,7 @@ En el patrón correcto, mientras no modifiques `go.mod` o `go.sum`, Docker utili
 
 ### 2. El problema del patrón estándar
 
-El enfoque anterior es bueno, pero tiene un límite estricto: ¿Qué sucede cuando agregas una sola dependencia nueva a tu proyecto? 
+El enfoque anterior es bueno, pero tiene un límite estricto: ¿Qué sucede cuando agregas una sola dependencia nueva a tu proyecto?
 
 El archivo `go.mod` cambia. Docker invalida la caché de la capa `RUN go mod download`. Como resultado, Go vuelve a descargar **absolutamente todos** los módulos desde cero, no solo el nuevo. En proyectos grandes, esto puede añadir minutos valiosos al tiempo de construcción.
 
@@ -296,12 +297,12 @@ RUN --mount=type=cache,target=/go/pkg/mod \
 
 ### ¿Cómo funciona esto por debajo?
 
-1.  **Persistencia real:** Cuando ejecutas `docker build`, la instrucción `RUN --mount=type=cache...` adjunta un volumen temporal administrado por el demonio de Docker. 
-2.  **Adición de dependencias:** Si modificas tu `go.mod` añadiendo un nuevo paquete, la capa se invalida y el comando `go mod download` se ejecuta. Sin embargo, gracias al montaje de caché, el directorio `/go/pkg/mod` **ya contiene** todos los módulos descargados en construcciones anteriores. Go solo descargará el paquete nuevo, reduciendo el tiempo de red a casi cero.
-3.  **Aceleración de compilación (`GOCACHE`):** Al montar también `/root/.cache/go-build` durante el comando `go build`, el compilador de Go reutiliza los paquetes de tu propio proyecto que no han sufrido modificaciones desde la última vez que construiste la imagen.
+1. **Persistencia real:** Cuando ejecutas `docker build`, la instrucción `RUN --mount=type=cache...` adjunta un volumen temporal administrado por el demonio de Docker.
+2. **Adición de dependencias:** Si modificas tu `go.mod` añadiendo un nuevo paquete, la capa se invalida y el comando `go mod download` se ejecuta. Sin embargo, gracias al montaje de caché, el directorio `/go/pkg/mod` **ya contiene** todos los módulos descargados en construcciones anteriores. Go solo descargará el paquete nuevo, reduciendo el tiempo de red a casi cero.
+3. **Aceleración de compilación (`GOCACHE`):** Al montar también `/root/.cache/go-build` durante el comando `go build`, el compilador de Go reutiliza los paquetes de tu propio proyecto que no han sufrido modificaciones desde la última vez que construiste la imagen.
 
 ### Consideraciones en entornos CI/CD
 
-Esta técnica es brillante para el desarrollo local, pero requiere una configuración específica cuando nos movemos a plataformas de integración continua (como GitHub Actions o GitLab CI). Dado que los "runners" de CI suelen ser efímeros (se destruyen tras cada ejecución), la caché interna de BuildKit también se perdería. 
+Esta técnica es brillante para el desarrollo local, pero requiere una configuración específica cuando nos movemos a plataformas de integración continua (como GitHub Actions o GitLab CI). Dado que los "runners" de CI suelen ser efímeros (se destruyen tras cada ejecución), la caché interna de BuildKit también se perdería.
 
 En la próxima sección de tu libro (Capítulo 48), deberás abordar cómo exportar e importar estas cachés de BuildKit utilizando el backend externo del registro de contenedores (`--cache-to` y `--cache-from`) o las acciones específicas de la plataforma, así como la configuración de la variable `GOPRIVATE` para descargar módulos desde repositorios privados durante esta fase de construcción.

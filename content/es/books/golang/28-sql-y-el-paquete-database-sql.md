@@ -22,7 +22,7 @@ import (
 
 ### La naturaleza perezosa de `sql.Open`
 
-Uno de los errores más comunes al trabajar con bases de datos en Go es malinterpretar el comportamiento de la función `sql.Open()`. 
+Uno de los errores más comunes al trabajar con bases de datos en Go es malinterpretar el comportamiento de la función `sql.Open()`.
 
 ```go
 db, err := sql.Open("postgres", "postgres://usuario:password@localhost/midb?sslmode=disable")
@@ -79,7 +79,7 @@ func NewConnection(dsn string) (*sql.DB, error) {
 
 ### Consideraciones sobre el ciclo de vida (`db.Close()`)
 
-El objeto `*sql.DB` está diseñado para ser longevo. Debes instanciarlo una única vez al iniciar tu aplicación y pasarlo (o inyectarlo, como veremos en los capítulos de Arquitectura) a los componentes que lo necesiten. 
+El objeto `*sql.DB` está diseñado para ser longevo. Debes instanciarlo una única vez al iniciar tu aplicación y pasarlo (o inyectarlo, como veremos en los capítulos de Arquitectura) a los componentes que lo necesiten.
 
 Aunque es una práctica habitual usar `defer db.Close()` inmediatamente después de una inicialización exitosa en la función `main`, en la mayoría de los demonios web o microservicios, la base de datos rara vez se cierra explícitamente hasta que la aplicación recibe una señal de apagado elegante (Graceful Shutdown). No debes abrir y cerrar conexiones por cada petición HTTP; el `*sql.DB` es seguro para uso concurrente (thread-safe) y se encarga de multiplexar las goroutines sobre su pool interno.
 
@@ -94,6 +94,7 @@ La regla de oro al interactuar con bases de datos relacionales en Go es **nunca 
 En la gran mayoría de los casos, no necesitas preparar una sentencia explícitamente. Los métodos principales del `*sql.DB` (`QueryContext`, `QueryRowContext` y `ExecContext`) manejan la preparación de forma transparente si les proporcionas argumentos adicionales.
 
 Cuando ejecutas una consulta parametrizada a través de estos métodos, Go realiza, bajo el capó, las siguientes operaciones:
+
 1. Pide al motor de la base de datos que prepare la sentencia.
 2. Ejecuta la sentencia preparada enviando los argumentos provistos.
 3. Cierra la sentencia preparada en la base de datos para liberar recursos.
@@ -173,22 +174,30 @@ Para construir servicios resilientes, es obligatorio afinar explícitamente el c
 ### Los 4 pilares de la configuración del Pool
 
 #### 1. `SetMaxOpenConns(n int)`
-Define el límite absoluto de conexiones físicas que la aplicación puede establecer con la base de datos simultáneamente (tanto en uso como inactivas). 
+
+Define el límite absoluto de conexiones físicas que la aplicación puede establecer con la base de datos simultáneamente (tanto en uso como inactivas).
+
 * **Comportamiento:** Si se alcanza este límite y una nueva *goroutine* necesita ejecutar una consulta, se quedará bloqueada esperando a que otra conexión se libere y regrese al pool (o hasta que su contexto expire, como vimos en el Capítulo 13).
 * **Recomendación:** Este valor debe calcularse en función de los límites de tu infraestructura. Si tu base de datos admite 100 conexiones y tienes 4 réplicas de tu microservicio, el valor de `MaxOpenConns` no debería superar 25 por instancia.
 
 #### 2. `SetMaxIdleConns(n int)`
+
 Establece el número máximo de conexiones que pueden mantenerse abiertas pero inactivas (esperando nuevas consultas) dentro del pool.
+
 * **Comportamiento:** Si hay más conexiones inactivas que este límite, Go cerrará el excedente. Por defecto, este valor es 2.
 * **Recomendación:** Para aplicaciones con tráfico constante, se recomienda que `MaxIdleConns` sea igual a `MaxOpenConns`. Esto evita el alto coste en latencia de establecer (TCP *handshake* y autenticación) y destruir conexiones continuamente ante variaciones rápidas (ráfagas) de tráfico.
 
 #### 3. `SetConnMaxLifetime(d time.Duration)`
+
 Indica el tiempo máximo absoluto que una conexión puede ser reutilizada antes de ser marcada para su destrucción, independientemente de si está activa o inactiva.
+
 * **Comportamiento:** Es una de las configuraciones más críticas en entornos *Cloud Native* (como veremos en el Capítulo 49). Muchos balanceadores de carga (HAProxy, AWS ALB) o firewalls de red cierran silenciosamente las conexiones TCP de larga duración (por ejemplo, después de 5 minutos). Si el pool de Go no sabe esto, intentará usar una conexión "muerta", resultando en errores de red en la aplicación.
 * **Recomendación:** Establécelo siempre en un valor ligeramente inferior al límite de *timeout* inactivo de tu infraestructura de red o base de datos.
 
 #### 4. `SetConnMaxIdleTime(d time.Duration)`
+
 Introducido en Go 1.15, define el tiempo máximo que una conexión puede permanecer inactiva en el pool antes de ser cerrada.
+
 * **Comportamiento:** A diferencia de `MaxLifetime` (que es absoluto), esto permite que el pool "se encoja" y libere recursos (memoria y descriptores de archivos) durante periodos de bajo tráfico.
 
 ### Ejemplo de implementación óptima
@@ -215,7 +224,7 @@ func ConfigurarPool(db *sql.DB) {
 
 ### Monitoreo del Pool en Producción
 
-El ajuste de estos valores rara vez es una ciencia exacta desde el día uno. Afortunadamente, Go expone el estado interno del pool a través del método `db.Stats()`, el cual devuelve una estructura `sql.DBStats`. 
+El ajuste de estos valores rara vez es una ciencia exacta desde el día uno. Afortunadamente, Go expone el estado interno del pool a través del método `db.Stats()`, el cual devuelve una estructura `sql.DBStats`.
 
 Como abordaremos en profundidad en el **Capítulo 40 (Métricas)**, es una práctica estándar de la industria inyectar esta información en sistemas como Prometheus. Monitorizar campos como `WaitCount` (cuántas consultas tuvieron que esperar por una conexión) o `WaitDuration` te indicará objetivamente si tu `MaxOpenConns` es demasiado restrictivo o si las consultas están tardando demasiado en liberar sus recursos.
 
@@ -228,6 +237,7 @@ A diferencia de lenguajes o frameworks que incluyen un ORM (Mapeo Objeto-Relacio
 Cuando ejecutamos una consulta que puede devolver múltiples registros utilizando `QueryContext`, obtenemos un puntero a `sql.Rows`. Este objeto actúa como un cursor iterador sobre el conjunto de resultados que transmite el motor de la base de datos.
 
 Para extraer los datos correctamente, debemos implementar un patrón idiomático de cinco pasos:
+
 1. Ejecutar la consulta y obtener el iterador `Rows`.
 2. Garantizar el cierre del cursor mediante `defer rows.Close()`.
 3. Iterar registro a registro llamando a `rows.Next()`.
@@ -293,6 +303,7 @@ func ObtenerUsuariosActivos(ctx context.Context, db *sql.DB) ([]Usuario, error) 
 Un obstáculo clásico al mapear SQL a tipos fuertemente tipados en Go es el manejo de los valores nulos (`NULL`). Si intentas escanear un `NULL` proveniente de la base de datos directamente en un tipo primario como `string` o `int`, la función `Scan()` devolverá un error inmediatamente, ya que los tipos primarios en Go no admiten el concepto de ausencia de valor (siempre tienen un *zero value*).
 
 Para solventar esto de forma segura, el paquete `database/sql` proporciona "tipos envoltorio" (wrapper types) especializados:
+
 * `sql.NullString`
 * `sql.NullInt64`
 * `sql.NullBool`
@@ -316,4 +327,3 @@ if telefonoDB.Valid {
 ```
 
 > **Nota avanzada:** Dependiendo del driver SQL subyacente que utilices, también es una práctica cada vez más común escanear valores opcionales directamente hacia **punteros a tipos primarios** (por ejemplo, `*string`), apoyándose en el hecho de que los punteros en Go sí pueden evaluar a `nil`. Sin embargo, los tipos `sql.Null*` siguen siendo la forma más universal y estandarizada dentro de la Standard Library.
-

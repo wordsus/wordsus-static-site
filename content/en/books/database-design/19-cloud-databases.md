@@ -38,11 +38,8 @@ In an IaaS model, the cloud provider delivers virtualized computing resources ov
 * **Maximum Control:** IaaS provides root-level access to the operating system. You can install custom database extensions, utilize specialized third-party monitoring agents, and fine-tune OS-level parameters (like kernel shared memory and TCP/IP stack settings).
 * **Legacy Compatibility:** For older applications that require specific, deprecated versions of a DBMS or rely on hard-coded file system paths, IaaS is often the only viable migration path (the "lift-and-shift" approach).
 
-
 * **Disadvantages:**
 * **Administrative Overhead:** Your team retains responsibility for all routine maintenance. This includes applying OS security patches, upgrading the database engine, configuring manual backups, and manually scripting failover clustering for High Availability (HA).
-
-
 
 ### Platform as a Service (PaaS) and Database as a Service (DBaaS)
 
@@ -54,13 +51,10 @@ While PaaS generally refers to environments tailored for application developers 
 * **Turnkey High Availability:** As discussed in Chapter 18, setting up HA clusters requires complex configuration. DBaaS platforms typically offer "Multi-AZ" (Availability Zone) deployments with a single checkbox, automatically configuring synchronous replication and automatic failover.
 * **Elasticity:** Scaling compute capacity (vertical scaling) or adding read replicas (horizontal scaling) is often reduced to a simple API call or UI toggle, executing with minimal downtime.
 
-
 * **Disadvantages:**
 * **Loss of Granular Control:** You do not have shell access to the underlying server. You cannot install arbitrary OS-level utilities or unauthorized database extensions. Physical disk tuning is heavily restricted.
 * **Enforced Maintenance Windows:** While providers handle patching, they often force updates within predefined maintenance windows. This requires applications to gracefully handle brief connection drops.
 * **Vendor Lock-in:** Utilizing proprietary DBaaS features (e.g., AWS Aurora's specialized storage engine or Azure SQL's specific automated tuning) can make migrating away from that cloud provider exceptionally difficult.
-
-
 
 ### Strategic Evaluation: Choosing the Right Model
 
@@ -236,19 +230,15 @@ When evaluating a legacy database for cloud migration, architects typically cate
 * *Best For:* Legacy systems running deprecated, unsupported database engines, or systems where the organization has lost access to the application source code and cannot update connection logic.
 * *Trade-off:* It is the fastest and lowest-risk migration, but it yields the lowest return on investment (ROI). You retain all administrative overhead (OS patching, manual backups) and fail to leverage cloud-native elasticity.
 
-
 * **Replatforming (Lift, Tinker, and Shift):**
 * *The Concept:* Moving from a self-managed database to a fully managed Database-as-a-Service (DBaaS) while keeping the same core database engine (e.g., migrating an on-premises Microsoft SQL Server to Azure SQL Managed Instance, or on-premises PostgreSQL to Amazon RDS).
 * *Best For:* Modernizing the operational model without rewriting application queries.
 * *Trade-off:* Provides immediate benefits in automated high availability and backup management, but requires rigorous testing to ensure compatibility with the cloud provider's specific configuration constraints and disabled features (e.g., restricted shell access).
 
-
 * **Refactoring / Re-architecting:**
 * *The Concept:* Fundamentally changing the database engine or data model during the migration. This often involves moving from costly commercial licenses (Oracle, Db2) to open-source cloud equivalents (PostgreSQL, MySQL), or breaking a massive relational monolith into purpose-built NoSQL databases (as discussed in Chapter 16).
 * *Best For:* Escaping vendor lock-in, optimizing licensing costs, and embracing microservices architectures.
 * *Trade-off:* Extremely high risk and high effort. It requires automated schema conversion tools, extensive rewriting of stored procedures, and comprehensive regression testing of the application layer.
-
-
 
 ### Execution Methodologies: Moving the Data
 

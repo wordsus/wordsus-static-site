@@ -4,9 +4,9 @@ Enter asynchronous programming. This chapter explores Rust's cooperative multita
 
 ## 12.1 The Concept of Async/Await and the State Machine Translation
 
-In Chapter 11, we explored preemptive multitasking using OS threads. While threads are a powerful mechanism for fearless concurrency, they come with inherent overhead: context switching is managed by the operating system, and each thread requires allocating a separate memory stack. For highly concurrent, I/O-bound applications—such as web servers handling tens of thousands of simultaneous connections—relying exclusively on OS threads quickly becomes a bottleneck. 
+In Chapter 11, we explored preemptive multitasking using OS threads. While threads are a powerful mechanism for fearless concurrency, they come with inherent overhead: context switching is managed by the operating system, and each thread requires allocating a separate memory stack. For highly concurrent, I/O-bound applications—such as web servers handling tens of thousands of simultaneous connections—relying exclusively on OS threads quickly becomes a bottleneck.
 
-Rust solves this with **cooperative multitasking** using the `async` and `await` keywords. 
+Rust solves this with **cooperative multitasking** using the `async` and `await` keywords.
 
 When you write an `async fn`, you are writing code that looks and reads like standard synchronous code. However, instead of blocking the current thread while waiting for an operation to complete (like a network request or a timer), an `async` function can *yield* control of the thread back to the underlying runtime at specific points. These yield points are marked explicitly by the `.await` keyword.
 
@@ -22,7 +22,7 @@ async fn fetch_and_process(id: u32) {
 }
 ```
 
-If you call `fetch_and_process(42)`, the function does not actually execute. Instead, it immediately returns a type that implements the `Future` trait. The code inside the function only runs when that `Future` is actively driven to completion by an executor (which we will detail in Section 12.2). 
+If you call `fetch_and_process(42)`, the function does not actually execute. Instead, it immediately returns a type that implements the `Future` trait. The code inside the function only runs when that `Future` is actively driven to completion by an executor (which we will detail in Section 12.2).
 
 The magic of Rust's asynchronous model lies in its **zero-cost abstraction** philosophy. Unlike languages with heavy garbage collectors or monolithic runtimes (like Go or C#), Rust does not spawn a lightweight thread or allocate a dynamic stack for every `async` function. Instead, it relies on a sophisticated compile-time transformation.
 
@@ -86,7 +86,7 @@ impl FetchAndProcessStateMachine {
 
 ### Visualizing the Transitions
 
-The state machine progresses forward through its variants, saving its context into the struct fields before yielding, and restoring that context when resumed. 
+The state machine progresses forward through its variants, saving its context into the struct fields before yielding, and restoring that context when resumed.
 
 ```text
 +-------------------------+
@@ -120,7 +120,7 @@ The state machine progresses forward through its variants, saving its context in
 
 ### The Challenge of Across-Await Borrows
 
-This state machine transformation is elegant, but it introduces a unique challenge: **self-referential structs**. 
+This state machine transformation is elegant, but it introduces a unique challenge: **self-referential structs**.
 
 Consider what happens if you borrow a local variable and hold that reference across an `.await` point:
 
@@ -135,7 +135,7 @@ async fn borrow_across_await() {
 }
 ```
 
-Because `ref_to_buffer` is used *after* the `.await` point, both `buffer` and `ref_to_buffer` must be stored inside the compiler-generated `enum` state. 
+Because `ref_to_buffer` is used *after* the `.await` point, both `buffer` and `ref_to_buffer` must be stored inside the compiler-generated `enum` state.
 
 This means the `enum` contains a struct holding an array, alongside a pointer pointing directly to that exact array *within the same struct*. If this state machine were to be moved in memory (e.g., pushed onto a heap allocation, or passed to another thread), the internal `ref_to_buffer` pointer would instantly become invalid, pointing to the old memory location. It would be a dangling pointer.
 
@@ -147,7 +147,7 @@ In the previous section, we saw how the Rust compiler transforms `async` functio
 
 ### The `Future` Trait
 
-At the core of Rust's asynchronous ecosystem is the `std::future::Future` trait. An instance of a `Future` represents a value that might not have finished computing yet. 
+At the core of Rust's asynchronous ecosystem is the `std::future::Future` trait. An instance of a `Future` represents a value that might not have finished computing yet.
 
 Here is the actual, slightly simplified definition of the `Future` trait from the standard library:
 
@@ -163,12 +163,13 @@ pub trait Future {
 ```
 
 Let's break down the components:
+
 * **`type Output`**: This associated type defines what the future will yield upon completion. For an `async fn fetch_data() -> String`, the `Output` is `String`.
 * **`Pin<&mut Self>`**: As discussed in Section 12.1, this ensures that the memory backing the future (the state machine) cannot be moved in memory, keeping self-referential pointers valid.
 * **`Context<'_>`**: This is a wrapper around the `Waker`, which we will explore shortly.
 * **`Poll<Self::Output>`**: This enum is the return type of `poll`. It has two variants:
-    * `Poll::Ready(Output)`: The future has completed, and here is the result.
-    * `Poll::Pending`: The future is not yet complete and cannot make progress right now.
+  * `Poll::Ready(Output)`: The future has completed, and here is the result.
+  * `Poll::Pending`: The future is not yet complete and cannot make progress right now.
 
 ### The Problem of Busy-Waiting
 
@@ -180,7 +181,7 @@ Rust needs a way for a future to say, "I am pending, and *do not poll me again* 
 
 ### The `Waker`
 
-Passed into the `poll` method inside the `Context` is a `Waker`. The `Waker` is a localized handle to the executor. 
+Passed into the `poll` method inside the `Context` is a `Waker`. The `Waker` is a localized handle to the executor.
 
 When a future returns `Poll::Pending`, it is its strict responsibility to store the `Waker` somewhere (usually passing it down to a low-level event loop or the operating system, often called a *reactor*). When the underlying operation completes (e.g., the OS signals that the network packet has arrived), the system calls `wake()` on that stored `Waker`.
 
@@ -190,7 +191,7 @@ Calling `wake()` sends a signal back to the executor. It tells the executor: "Th
 
 Rust does not include an asynchronous runtime in the standard library. Instead, it provides the interfaces (`Future`, `Waker`, `Context`), and allows the community to provide the execution engines.
 
-An **executor** is essentially an advanced queue management system. Its job is to maintain a list of top-level tasks (futures) and drive them to completion. 
+An **executor** is essentially an advanced queue management system. Its job is to maintain a list of top-level tasks (futures) and drive them to completion.
 
 The lifecycle of an asynchronous task looks like this:
 
@@ -212,12 +213,12 @@ The lifecycle of an asynchronous task looks like this:
   +------------+                           +-------------------+
 ```
 
-1.  **Poll**: The executor takes a future off its run queue and calls `poll()`.
-2.  **Pending**: The future realizes its I/O is not ready. It returns `Poll::Pending`.
-3.  **Registration**: Before returning, the future hands the `Waker` to the OS or a background reactor (like `epoll` on Linux or `kqueue` on macOS).
-4.  **Sleep**: The executor removes the future from the active run queue. If the run queue is empty, the executor itself goes to sleep, using zero CPU cycles.
-5.  **Event Trigger**: Time passes. The network interface receives data. The OS alerts the reactor.
-6.  **Wake**: The reactor invokes `.wake()` on the stored `Waker`. This immediately places the future *back* onto the executor's active run queue. The executor wakes up and polls the future again. This time, the future reads the data and returns `Poll::Ready`.
+1. **Poll**: The executor takes a future off its run queue and calls `poll()`.
+2. **Pending**: The future realizes its I/O is not ready. It returns `Poll::Pending`.
+3. **Registration**: Before returning, the future hands the `Waker` to the OS or a background reactor (like `epoll` on Linux or `kqueue` on macOS).
+4. **Sleep**: The executor removes the future from the active run queue. If the run queue is empty, the executor itself goes to sleep, using zero CPU cycles.
+5. **Event Trigger**: Time passes. The network interface receives data. The OS alerts the reactor.
+6. **Wake**: The reactor invokes `.wake()` on the stored `Waker`. This immediately places the future *back* onto the executor's active run queue. The executor wakes up and polls the future again. This time, the future reads the data and returns `Poll::Ready`.
 
 This separation of concerns—where the compiler builds the state machines, the standard library defines the `Future` trait, and an external crate provides the Executor and Reactor—is what allows Rust's async ecosystem to be used on everything from embedded microcontrollers (where no OS exists) to massive, multi-core cloud servers.
 
@@ -231,9 +232,9 @@ While several runtimes exist in the Rust ecosystem (such as `async-std` and `smo
 
 Tokio is not just a simple loop that calls `poll()`. It is a comprehensive suite of tools designed to handle highly concurrent workloads with extreme efficiency. When we refer to the "Tokio runtime," we are actually talking about three distinct, heavily optimized components working in unison:
 
-1.  **The Task Executor (Scheduler):** This is the heart of the runtime. It maintains queues of asynchronous tasks and allocates them to worker threads. Tokio uses a sophisticated **work-stealing** scheduler. If one thread finishes its queue of tasks, it will "steal" pending tasks from other busy threads, ensuring even CPU utilization across your system.
-2.  **The I/O Driver (Reactor):** When a future returns `Poll::Pending` because it is waiting on network I/O, the I/O driver takes over. It registers the underlying file descriptors with the operating system's most efficient event notification interface (`epoll` on Linux, `kqueue` on macOS, or `IOCP` on Windows). When the OS signals that data is ready, the I/O driver fires the associated `Waker`, pushing the task back to the Executor.
-3.  **The Time Driver:** Operating systems do not naturally notify user-space programs when a specific microsecond has passed. Tokio includes a highly optimized timer wheel that tracks timeouts, delays (`tokio::time::sleep`), and interval ticks, waking tasks exactly when their requested time has elapsed.
+1. **The Task Executor (Scheduler):** This is the heart of the runtime. It maintains queues of asynchronous tasks and allocates them to worker threads. Tokio uses a sophisticated **work-stealing** scheduler. If one thread finishes its queue of tasks, it will "steal" pending tasks from other busy threads, ensuring even CPU utilization across your system.
+2. **The I/O Driver (Reactor):** When a future returns `Poll::Pending` because it is waiting on network I/O, the I/O driver takes over. It registers the underlying file descriptors with the operating system's most efficient event notification interface (`epoll` on Linux, `kqueue` on macOS, or `IOCP` on Windows). When the OS signals that data is ready, the I/O driver fires the associated `Waker`, pushing the task back to the Executor.
+3. **The Time Driver:** Operating systems do not naturally notify user-space programs when a specific microsecond has passed. Tokio includes a highly optimized timer wheel that tracks timeouts, delays (`tokio::time::sleep`), and interval ticks, waking tasks exactly when their requested time has elapsed.
 
 ```text
 +-------------------------------------------------------------+
@@ -255,7 +256,7 @@ Tokio is not just a simple loop that calls `poll()`. It is a comprehensive suite
 
 ### Bootstrapping the Runtime: `#[tokio::main]`
 
-Because the entry point of a Rust program—the `main` function—is fundamentally synchronous, you cannot directly `.await` inside it. You must explicitly start the Tokio runtime and hand it your top-level future. 
+Because the entry point of a Rust program—the `main` function—is fundamentally synchronous, you cannot directly `.await` inside it. You must explicitly start the Tokio runtime and hand it your top-level future.
 
 Most developers use the `#[tokio::main]` attribute macro to achieve this. It provides a seamless developer experience, allowing you to write what looks like an asynchronous `main` function:
 
@@ -306,13 +307,13 @@ By providing the runtime as a library rather than a language feature, Rust ensur
 
 ## 12.4 Spawning, Joining, and Canceling Asynchronous Tasks
 
-Up to this point, we have run asynchronous code sequentially. If you write `foo().await; bar().await;`, the `bar` future will not begin executing until `foo` has completely finished. While this does not block the underlying OS thread, it does not achieve true concurrency *between* `foo` and `bar`. 
+Up to this point, we have run asynchronous code sequentially. If you write `foo().await; bar().await;`, the `bar` future will not begin executing until `foo` has completely finished. While this does not block the underlying OS thread, it does not achieve true concurrency *between* `foo` and `bar`.
 
 To run multiple asynchronous operations concurrently, we must submit them to the executor as independent, top-level tasks. In Tokio, this is achieved through **spawning**.
 
 ### Spawning Tasks with `tokio::spawn`
 
-Think of an asynchronous task as a green thread—a highly lightweight thread managed entirely in user space by the Tokio runtime. You create them using `tokio::spawn`. 
+Think of an asynchronous task as a green thread—a highly lightweight thread managed entirely in user space by the Tokio runtime. You create them using `tokio::spawn`.
 
 Unlike OS threads, which require a hefty stack allocation (typically megabytes), a Tokio task only requires a single allocation for the state machine we discussed in Section 12.1 (often just a few hundred bytes). This allows you to realistically spawn hundreds of thousands, or even millions, of concurrent tasks on a standard server.
 
@@ -354,7 +355,7 @@ where
     F::Output: Send + 'static,
 ```
 
-When you spawn a task, the runtime takes complete ownership of it. Because the spawned task might outlive the function that created it, the future cannot contain any borrowed data (`&T` or `&mut T`) tied to the local stack frame. It must be `'static`. 
+When you spawn a task, the runtime takes complete ownership of it. Because the spawned task might outlive the function that created it, the future cannot contain any borrowed data (`&T` or `&mut T`) tied to the local stack frame. It must be `'static`.
 
 This is why we use `async move { ... }` blocks when spawning tasks. The `move` keyword forces the async block to take ownership of the variables it captures from the surrounding environment (like the `socket` in our previous example), ensuring the state machine is completely self-contained.
 
@@ -405,6 +406,7 @@ Because a Future only makes progress when it is actively polled by the runtime, 
 There are two primary ways to cancel a task in Tokio:
 
 #### 1. Explicit Cancellation via `JoinHandle::abort()`
+
 If you hold the `JoinHandle` of a spawned task, you can call `.abort()` on it. This signals to the runtime that it should stop polling the associated future immediately.
 
 ```rust
@@ -414,6 +416,7 @@ handle.abort();
 ```
 
 #### 2. Implicit Cancellation via `tokio::select!`
+
 The `tokio::select!` macro is one of the most powerful tools in asynchronous Rust. It allows you to race multiple futures concurrently on the same task. Whichever future completes first "wins," and all other futures are immediately dropped (canceled).
 
 ```rust
@@ -466,15 +469,15 @@ Here is a visual representation of the `select!` macro execution flow:
 
 ### The Pitfall of Cancellation Safety
 
-While memory safety is guaranteed during cancellation, **logical safety** is not. If you are awaiting a future that mutates complex application state, and that future is dropped halfway through, your application might be left in an inconsistent state. 
+While memory safety is guaranteed during cancellation, **logical safety** is not. If you are awaiting a future that mutates complex application state, and that future is dropped halfway through, your application might be left in an inconsistent state.
 
-For example, if you are reading a 10-byte header from a stream and the future is canceled after reading 5 bytes, the next operation on that stream will read the remaining 5 bytes as if they were a new message, corrupting the protocol. 
+For example, if you are reading a 10-byte header from a stream and the future is canceled after reading 5 bytes, the next operation on that stream will read the remaining 5 bytes as if they were a new message, corrupting the protocol.
 
 As a general rule, standard `tokio::net` and `tokio::time` primitives are *cancellation-safe*. However, complex, multi-step asynchronous operations that mutate external state must be handled with care when used inside a `select!` block.
 
 ## 12.5 Asynchronous Streams and the `Stream` Trait
 
-In Chapter 9, we explored the `Iterator` trait, which allows us to process sequences of data efficiently. However, standard iterators are fundamentally synchronous. If an iterator needs to fetch the next item from a database or read it from a network socket, it will block the current thread until that data arrives. 
+In Chapter 9, we explored the `Iterator` trait, which allows us to process sequences of data efficiently. However, standard iterators are fundamentally synchronous. If an iterator needs to fetch the next item from a database or read it from a network socket, it will block the current thread until that data arrives.
 
 In Chapter 12 so far, we have explored the `Future` trait, which allows us to wait for a *single* value asynchronously. But what happens when we need to process a sequence of values over time, asynchronously? Examples include receiving an ongoing feed of WebSocket messages, reading rows from a large database query one by one, or consuming events from a message broker.
 
@@ -514,9 +517,10 @@ pub trait Stream {
 ```
 
 Notice the return type of `poll_next`: `Poll<Option<Self::Item>>`. This represents three distinct states of execution:
-1.  **`Poll::Ready(Some(Item))`**: The stream successfully produced the next value.
-2.  **`Poll::Pending`**: The stream is not ready to produce a value yet (e.g., waiting for the next network packet). The current task yields, and the provided `Waker` will be notified when data arrives.
-3.  **`Poll::Ready(None)`**: The stream has exhausted all its values and will not produce any more. 
+
+1. **`Poll::Ready(Some(Item))`**: The stream successfully produced the next value.
+2. **`Poll::Pending`**: The stream is not ready to produce a value yet (e.g., waiting for the next network packet). The current task yields, and the provided `Waker` will be notified when data arrives.
+3. **`Poll::Ready(None)`**: The stream has exhausted all its values and will not produce any more.
 
 ### Consuming Streams
 
@@ -554,7 +558,7 @@ async fn main() {
 
 ### Visualizing Stream Execution
 
-Unlike an iterator, which tightly packs its execution steps, a stream's execution is interspersed with yields to the runtime. 
+Unlike an iterator, which tightly packs its execution steps, a stream's execution is interspersed with yields to the runtime.
 
 ```text
 Time ----->
@@ -574,9 +578,11 @@ Stream:
 Implementing the `Stream` trait manually involves dealing with `Pin` and `Context` explicitly, which is tedious and error-prone. In synchronous Rust, we often avoid writing manual iterators by using the `yield` keyword (in languages that support it) or closures. In asynchronous Rust, there are two common patterns for creating streams:
 
 #### 1. Using Channels as Streams
+
 The most robust way to create a custom stream is to use an asynchronous channel (like `tokio::sync::mpsc`). The receiving end of a Tokio `mpsc` channel implements `Stream` (via the `tokio-stream` wrapper), allowing you to spawn a task that pushes data into the channel, while another task consumes it as a stream.
 
 #### 2. The `async-stream` Crate
+
 For pure stream generation without the overhead of channel allocations, the ecosystem heavily relies on the `async-stream` crate. It provides a `stream!` macro that allows you to use `yield` syntax inside an asynchronous block:
 
 ```rust
@@ -607,7 +613,7 @@ async fn main() {
 
 Just like `Iterator`, the `StreamExt` trait provides functional adapters: `map`, `filter`, `fold`, and more. However, streams introduce a powerful new capability: **concurrent adapters**.
 
-If you are processing a stream of URLs to download, a standard `map` followed by a `for` loop would process them sequentially. With streams, you can use `.buffer_unordered(N)`, which spawns up to `N` futures concurrently and yields their results as they finish, regardless of the original stream order. 
+If you are processing a stream of URLs to download, a standard `map` followed by a `for` loop would process them sequentially. With streams, you can use `.buffer_unordered(N)`, which spawns up to `N` futures concurrently and yields their results as they finish, regardless of the original stream order.
 
 ```rust
 // A conceptual example of high-throughput asynchronous processing

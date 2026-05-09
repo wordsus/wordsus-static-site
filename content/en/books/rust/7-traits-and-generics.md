@@ -4,9 +4,9 @@ Generics allow you to write algorithms and data structures that operate over abs
 
 ## 7.1 Generic Data Types in Structs, Enums, and Methods
 
-When building robust applications, you will inevitably encounter situations where the exact same logic applies to multiple data types. Copying and pasting code to accommodate `i32`, `f64`, or custom structs violates the DRY (Don't Repeat Yourself) principle and introduces maintenance overhead. 
+When building robust applications, you will inevitably encounter situations where the exact same logic applies to multiple data types. Copying and pasting code to accommodate `i32`, `f64`, or custom structs violates the DRY (Don't Repeat Yourself) principle and introduces maintenance overhead.
 
-Generics are the solution. They allow you to define structures and behaviors in terms of abstract, placeholder types. You write the code once, and the Rust compiler generates the type-specific implementations for you. 
+Generics are the solution. They allow you to define structures and behaviors in terms of abstract, placeholder types. You write the code once, and the Rust compiler generates the type-specific implementations for you.
 
 ### Generics in Structs
 
@@ -122,9 +122,9 @@ impl<T, U> Point<T, U> {
 
 ### The Performance Cost of Generics: Monomorphization
 
-A common question for developers coming from languages like Java or Python is: *Do generics impose a runtime performance penalty?* In Rust, the answer is an absolute **no**. 
+A common question for developers coming from languages like Java or Python is: *Do generics impose a runtime performance penalty?* In Rust, the answer is an absolute **no**.
 
-Rust implements generics using a process called **monomorphization**. During compilation, the compiler hunts down every concrete type used with your generic code and generates highly optimized, type-specific copies of that code. 
+Rust implements generics using a process called **monomorphization**. During compilation, the compiler hunts down every concrete type used with your generic code and generates highly optimized, type-specific copies of that code.
 
 ```text
 [ SOURCE CODE ]
@@ -146,13 +146,13 @@ Because the compiler replaces generic placeholders with concrete types before th
 
 ## 7.2 Defining Shared Behavior with Traits
 
-In the previous section, we explored how generics allow you to write code that operates on multiple types. However, generic types are entirely unrestricted by default; the compiler knows nothing about them other than that they exist. To build robust systems, you often need to restrict generics, demanding that they possess specific capabilities—such as the ability to be printed, hashed, or compared. 
+In the previous section, we explored how generics allow you to write code that operates on multiple types. However, generic types are entirely unrestricted by default; the compiler knows nothing about them other than that they exist. To build robust systems, you often need to restrict generics, demanding that they possess specific capabilities—such as the ability to be printed, hashed, or compared.
 
 In Rust, we define these shared capabilities using **traits**. Conceptually, traits are similar to *interfaces* in languages like Java, C#, or TypeScript. They allow you to define a standard set of methods that a type must implement, enabling polymorphic behavior and strict compiler guarantees.
 
 ### Defining a Trait
 
-A trait is defined using the `trait` keyword followed by its name. Inside the trait block, you declare the method signatures that describe the behaviors required by the trait. 
+A trait is defined using the `trait` keyword followed by its name. Inside the trait block, you declare the method signatures that describe the behaviors required by the trait.
 
 Let's design a system for a monitoring dashboard. We want various entities in our system to be capable of generating a status report. We can define a `Reportable` trait to enforce this behavior:
 
@@ -168,7 +168,7 @@ Notice that the method `generate_report` ends with a semicolon instead of a bloc
 
 ### Implementing a Trait on a Type
 
-To satisfy the contract defined by a trait, we use the `impl [TraitName] for [TypeName]` syntax. 
+To satisfy the contract defined by a trait, we use the `impl [TraitName] for [TypeName]` syntax.
 
 Let's implement the `Reportable` trait for two distinct types in our application: a `User` struct and a `ServerError` struct.
 
@@ -198,7 +198,7 @@ impl Reportable for ServerError {
 }
 ```
 
-Even though `User` and `ServerError` have entirely different internal data structures and purposes, they now share a common interface. 
+Even though `User` and `ServerError` have entirely different internal data structures and purposes, they now share a common interface.
 
 ```text
        [ Struct: User ] --------+
@@ -210,7 +210,7 @@ Because both types implement `Reportable`, the Rust compiler can confidently tre
 
 ### The Orphan Rule (Coherence)
 
-A crucial limitation exists when implementing traits, known as the **Orphan Rule** or the rule of coherence. This rule dictates *where* you are allowed to implement a trait. 
+A crucial limitation exists when implementing traits, known as the **Orphan Rule** or the rule of coherence. This rule dictates *where* you are allowed to implement a trait.
 
 You can implement a trait on a type only if **either the trait or the type** is local to your crate.
 
@@ -241,7 +241,7 @@ Generics allow us to write flexible code, and traits allow us to define shared b
 
 ### The `impl Trait` Syntax
 
-The most straightforward way to require a trait is using the `impl Trait` syntax. This is syntactic sugar designed for simple function signatures. 
+The most straightforward way to require a trait is using the `impl Trait` syntax. This is syntactic sugar designed for simple function signatures.
 
 Let's revisit the `Reportable` trait from the previous section. If we want to write a function that accepts *any* type capable of generating a report, we can define the parameter as `&impl Reportable`:
 
@@ -330,7 +330,7 @@ where
 
 ### Conditional Method Implementations
 
-Trait bounds are not limited to functions. You can use them on structs and `impl` blocks to conditionally grant methods to a generic type only if its inner types meet certain criteria. 
+Trait bounds are not limited to functions. You can use them on structs and `impl` blocks to conditionally grant methods to a generic type only if its inner types meet certain criteria.
 
 Consider a `Pair` struct that holds two values of the same type. We can implement a `new` method for *all* `Pair<T>` instances, but we only want to implement a `compare_and_print` method if `T` implements `PartialOrd` (for comparison) and `Display` (for printing).
 
@@ -439,7 +439,7 @@ In this scenario, to implement `Notifiable`, a type is *only* required to define
 
 ### Associated Types
 
-As you build more complex generic traits, you will encounter scenarios where using standard generic type parameters (`<T>`) becomes cumbersome and semantically incorrect. This is where **Associated Types** come in. 
+As you build more complex generic traits, you will encounter scenarios where using standard generic type parameters (`<T>`) becomes cumbersome and semantically incorrect. This is where **Associated Types** come in.
 
 An associated type is a placeholder type declared *inside* a trait using the `type` keyword. The type that implements the trait must specify exactly what concrete type that placeholder represents.
 
@@ -494,7 +494,7 @@ impl GenericIterator<String> for Counter { /* ... */ }
 
 If you did this, calling `counter.next()` would be ambiguous. The compiler wouldn't know if you wanted the `u32` implementation or the `String` implementation, forcing you to use verbose type annotations every time you called the method.
 
-Associated types solve this by enforcing a **one-to-one relationship**. 
+Associated types solve this by enforcing a **one-to-one relationship**.
 
 ```text
 ========================================================================
@@ -519,19 +519,19 @@ With associated types, the nodes and edges belong to the graph itself, cleaning 
 `fn traverse_graph<G>(graph: &G) where G: Graph`
 
 If you ever need to constrain a function based on an associated type, you can do so directly in the bound:
-`fn print_items<I>(iter: I) where I: Iterator<Item = String>` 
+`fn print_items<I>(iter: I) where I: Iterator<Item = String>`
 
 This specifies that `I` must be an `Iterator`, and its associated `Item` must specifically be a `String`.
 
 ## 7.5 The Blanket Implementation Pattern
 
-Throughout this chapter, we have built a powerful toolkit: generics for abstracting types, traits for defining shared behavior, and trait bounds for restricting those types. **Blanket implementations** represent the architectural culmination of these concepts. 
+Throughout this chapter, we have built a powerful toolkit: generics for abstracting types, traits for defining shared behavior, and trait bounds for restricting those types. **Blanket implementations** represent the architectural culmination of these concepts.
 
 A blanket implementation occurs when you implement a trait not for a specific concrete type (like `i32` or `User`), but for *any* generic type `T` that satisfies a specific set of trait bounds. Instead of writing dozens of individual implementations, you write one, and the compiler universally applies it.
 
 ### Defining a Blanket Implementation
 
-To create a blanket implementation, you combine the generic `impl<T>` syntax with a trait bound. 
+To create a blanket implementation, you combine the generic `impl<T>` syntax with a trait bound.
 
 Imagine you are building an auditing system. You have an `Auditable` trait, and you want to ensure that *any* type in your system capable of being serialized to JSON (using `serde::Serialize`) automatically implements `Auditable`.
 
@@ -609,7 +609,7 @@ impl From<String> for User {
 }
 ```
 
-You can now use `User::from(my_string)`. However, it is often more ergonomic to call `.into()` on the string itself: `let u: User = my_string.into();`. 
+You can now use `User::from(my_string)`. However, it is often more ergonomic to call `.into()` on the string itself: `let u: User = my_string.into();`.
 
 You did not write an `impl Into<User> for String`. Why does `.into()` work? Because the standard library contains the ultimate blanket implementation bridging these two traits:
 
@@ -630,9 +630,9 @@ This is a masterclass in generic API design. By requiring developers to implemen
 
 ### Blanket Implementations and the Orphan Rule
 
-While incredibly powerful, blanket implementations intersect dangerously with the **Orphan Rule** (coherence), which we discussed in section 7.2. 
+While incredibly powerful, blanket implementations intersect dangerously with the **Orphan Rule** (coherence), which we discussed in section 7.2.
 
-Because a blanket implementation covers an infinite number of generic types, Rust strictly prevents you from writing blanket implementations for traits you do not own. 
+Because a blanket implementation covers an infinite number of generic types, Rust strictly prevents you from writing blanket implementations for traits you do not own.
 
 For example, you cannot do this:
 

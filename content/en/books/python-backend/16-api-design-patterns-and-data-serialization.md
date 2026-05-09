@@ -6,13 +6,13 @@ While it is common to casually refer to any JSON-based HTTP API as "RESTful," Re
 
 ### The Six Architectural Constraints of REST
 
-To be considered genuinely RESTful, an architecture must implement the following constraints. 
+To be considered genuinely RESTful, an architecture must implement the following constraints.
 
 **1. Client-Server Separation**
 The client and server must be completely independent. The client is responsible for the user interface and user state, while the server handles data storage, business logic, and security. This separation of concerns allows both sides to evolve independently as long as the interface contract remains intact.
 
 **2. Statelessness**
-This is arguably the most frequently violated constraint in modern web development. In a REST architecture, no client context should be stored on the server between requests. Every request from the client must contain all the information necessary for the server to understand and process it. 
+This is arguably the most frequently violated constraint in modern web development. In a REST architecture, no client context should be stored on the server between requests. Every request from the client must contain all the information necessary for the server to understand and process it.
 
 ```text
 [Stateful vs. Stateless Architecture]
@@ -36,6 +36,7 @@ A client cannot ordinarily tell whether it is connected directly to the end serv
 
 **5. Uniform Interface**
 This constraint simplifies and decouples the architecture, heavily relying on standardized protocols. It is further broken down into four sub-constraints:
+
 * **Identification of resources:** Resources are identified in requests (e.g., via URIs).
 * **Manipulation of resources through representations:** When a client holds a representation of a resource (like a JSON payload), it has enough information to modify or delete the resource on the server.
 * **Self-descriptive messages:** Each message includes enough information to describe how to process it (e.g., `Content-Type: application/json` tells the server exactly how to parse the payload).
@@ -48,7 +49,7 @@ Servers can temporarily extend or customize the functionality of a client by tra
 
 ### Understanding Idempotency
 
-In distributed systems, networks are inherently unreliable. Requests will drop, timeout, or duplicate. **Idempotency** is a property of an operation where applying it multiple times yields the exact same state on the server as applying it just once. 
+In distributed systems, networks are inherently unreliable. Requests will drop, timeout, or duplicate. **Idempotency** is a property of an operation where applying it multiple times yields the exact same state on the server as applying it just once.
 
 If a client sends a request, but the network times out before receiving the response, the client doesn't know if the server processed the request or not. If the endpoint is idempotent, the client can safely retry the request without fear of creating duplicate records or unintended side effects.
 
@@ -138,24 +139,28 @@ There are four primary strategies for API versioning, each trading off between a
 
 **1. URI Path Versioning**
 This is the most common and pragmatic approach. The version number is explicitly injected into the routing path.
+
 * **Format:** `GET /api/v1/users`
 * **Pros:** Highly discoverable, easy to route at the infrastructure level (e.g., in an API Gateway or Nginx), and simple to test in a browser.
-* **Cons:** Strictly speaking, it violates REST principles, as the URI is supposed to represent the *resource*, not the representation format or version. 
+* **Cons:** Strictly speaking, it violates REST principles, as the URI is supposed to represent the *resource*, not the representation format or version.
 
 **2. Query Parameter Versioning**
 The version is passed as a standard query string parameter.
+
 * **Format:** `GET /api/users?version=1`
 * **Pros:** Keeps the base URI clean.
 * **Cons:** Can complicate caching strategies at the CDN layer if query parameters are not carefully configured.
 
 **3. Custom Header Versioning**
 Clients inject a custom header specifying the desired version.
+
 * **Format:** `X-API-Version: 1`
 * **Pros:** Preserves clean URIs and adheres closer to REST principles without the complexity of content negotiation.
 * **Cons:** Harder to test manually via simple browser requests without using tools like Postman or cURL.
 
 **4. Content Negotiation (Accept Header)**
 This is the "purest" RESTful approach. Clients use the standard `Accept` header to specify not just the media type, but the versioned schema they expect.
+
 * **Format:** `Accept: application/vnd.company.v1+json`
 * **Pros:** Architecturally pure; leaves the URI strictly for resource identification.
 * **Cons:** The most complex to implement and debug.
@@ -195,6 +200,7 @@ app.include_router(v2_router, prefix="/api")
 Returning millions of rows in a single HTTP response will exhaust server memory, saturate network bandwidth, and crash client applications. Pagination chunks the data into manageable payloads. The two dominant algorithms are **Offset-Based** and **Cursor-Based** (Keyset) pagination.
 
 #### 1. Offset-Based Pagination
+
 This is the traditional approach, relying on `page` and `size` (or `offset` and `limit`) parameters.
 
 * **Client Request:** `GET /api/users?offset=100&limit=50`
@@ -222,6 +228,7 @@ Result: The client saw record 'C' on Page 1 AND Page 2.
 ```
 
 #### 2. Cursor-Based Pagination (Keyset)
+
 Cursor pagination resolves the performance and drift issues of offsets. Instead of saying "skip 100 records," the client says, "give me the next 50 records *after this specific ID*."
 
 * **Client Request:** `GET /api/users?cursor=MjAyMy0xMC0wMXQxMjowMDowMA==&limit=50`
@@ -230,6 +237,7 @@ Cursor pagination resolves the performance and drift issues of offsets. Instead 
 Because the database uses an index (like a primary key or an indexed timestamp) to find the cursor's starting point, the query is executed in $O(1)$ time, regardless of how deep into the dataset the user scrolls.
 
 **Implementation Rules for Cursors:**
+
 1. The column used for the cursor **must be indexed**.
 2. The column **must be strictly sequential and unique** (e.g., UUIDs are unique but not naturally sequential; an auto-incrementing integer or a combination of `timestamp + ID` works best).
 3. Cursors are typically base64 encoded by the backend before being sent to the client. This makes the cursor opaque, preventing the client from attempting to manipulate the underlying pagination logic.
@@ -274,7 +282,7 @@ By defaulting to cursor pagination for large feeds and reserving offset paginati
 
 ## 16.3 GraphQL Implementation using Graphene or Strawberry
 
-While REST enforces strict architectural constraints and resource-based routing, it frequently suffers from two data retrieval problems: **over-fetching** (downloading more data than the client needs) and **under-fetching** (requiring multiple round trips to different endpoints to assemble a complete view). 
+While REST enforces strict architectural constraints and resource-based routing, it frequently suffers from two data retrieval problems: **over-fetching** (downloading more data than the client needs) and **under-fetching** (requiring multiple round trips to different endpoints to assemble a complete view).
 
 GraphQL, developed by Facebook in 2012, flips the REST paradigm. Instead of the server dictating the shape of the response, the server exposes a strictly typed schema, and the client sends a query specifying the exact fields it requires.
 
@@ -302,15 +310,17 @@ For years, **Graphene** was the defacto standard for implementing GraphQL in Pyt
 ### Core GraphQL Concepts
 
 To implement GraphQL, you must understand three foundational pillars:
+
 1. **Schema:** The strongly typed contract defining what data is available.
 2. **Resolvers:** The actual Python functions that fetch the data for a specific field in the schema.
 3. **Operations:** How clients interact with the schema. Operations are split into **Queries** (read-only) and **Mutations** (writes/updates).
 
 ### Building a GraphQL API with Strawberry and FastAPI
 
-Let us implement a basic blog schema where users can query posts and authors, and create new posts. 
+Let us implement a basic blog schema where users can query posts and authors, and create new posts.
 
 #### 1. Defining Types
+
 In Strawberry, types are defined using the `@strawberry.type` decorator, which operates similarly to a standard Python dataclass.
 
 ```python
@@ -338,6 +348,7 @@ class Post:
 ```
 
 #### 2. Defining Queries and Mutations
+
 Next, we define the root Query and Mutation types. Every field on these root types requires a resolver function to handle the incoming request.
 
 ```python
@@ -374,6 +385,7 @@ class Mutation:
 ```
 
 #### 3. Assembling the Schema and Mounting to FastAPI
+
 Finally, we compile the types into a `strawberry.Schema` and mount it to our web framework.
 
 ```python
@@ -407,7 +419,7 @@ query {
 
 The greatest architectural danger in GraphQL is the **N+1 query problem**. In our example, if the `posts` query returns 100 posts, and the client requests the `author` for each post, the `author` resolver will be called 100 times. If that resolver executes a database `SELECT`, you have just triggered 1 query for the posts, plus 100 queries for the authors (N+1).
 
-In REST, you would solve this with a single SQL `JOIN`. In GraphQL, because resolvers execute independently, you must use a **DataLoader**. 
+In REST, you would solve this with a single SQL `JOIN`. In GraphQL, because resolvers execute independently, you must use a **DataLoader**.
 
 A DataLoader sits between your resolvers and your database. Instead of executing queries immediately, it batches IDs requested within the same tick of the event loop. Once all resolvers have registered their required IDs, the DataLoader executes a single bulk query (e.g., `SELECT * FROM authors WHERE id IN (1, 2, 3...)`) and distributes the results back to the waiting resolvers. Mastering `DataLoader` implementation is non-negotiable for deploying production-grade GraphQL backends.
 
@@ -422,6 +434,7 @@ The modern backend paradigm demands that the code *is* the documentation. This i
 The OpenAPI Specification is a standardized, language-agnostic interface description for RESTful APIs. It allows both humans and computers to discover and understand the capabilities of a service without requiring access to source code or additional documentation.
 
 An OpenAPI document is typically represented as a massive JSON or YAML file that explicitly maps out:
+
 * Every available endpoint (e.g., `/users/{user_id}`).
 * The allowed HTTP methods for each endpoint (`GET`, `POST`, `PUT`, etc.).
 * The exact shape, data types, and validation rules of the request body and query parameters.
@@ -509,7 +522,7 @@ async def read_item(
 Generating the `openapi.json` file is powerful for machine-to-machine communication, but humans need an interactive interface. The OpenAPI ecosystem provides two dominant, open-source documentation renderers:
 
 **1. Swagger UI:**
-The most recognizable API documentation interface. It renders the schema as an interactive web page where developers can expand endpoints, view expected models, and—crucially—click a "Try it out" button to execute live HTTP requests directly from their browser against your API. 
+The most recognizable API documentation interface. It renders the schema as an interactive web page where developers can expand endpoints, view expected models, and—crucially—click a "Try it out" button to execute live HTTP requests directly from their browser against your API.
 
 **2. ReDoc:**
 A cleaner, more modern alternative to Swagger UI. ReDoc provides a three-panel layout (navigation, documentation, and code samples) that excels at displaying complex, heavily nested JSON schemas. Unlike Swagger UI, ReDoc is purely for reading and does not typically include interactive "Try it out" execution features.

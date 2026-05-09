@@ -2,7 +2,7 @@ En la era de los sistemas distribuidos, un backend de alto rendimiento en Rust n
 
 ## 40.1 Diseño de endpoints Liveness y Readiness
 
-Cuando desplegamos aplicaciones Rust en entornos orquestados como Kubernetes, Docker Swarm o Amazon ECS, el orquestador necesita saber el estado interno de nuestra aplicación para tomar decisiones automáticas: ¿Debe enviar tráfico a este contenedor? ¿Debe destruirlo y reiniciarlo? 
+Cuando desplegamos aplicaciones Rust en entornos orquestados como Kubernetes, Docker Swarm o Amazon ECS, el orquestador necesita saber el estado interno de nuestra aplicación para tomar decisiones automáticas: ¿Debe enviar tráfico a este contenedor? ¿Debe destruirlo y reiniciarlo?
 
 Para responder a estas preguntas, el estándar de la industria es exponer endpoints HTTP (usualmente bajo un prefijo como `/health`). Sin embargo, un error clásico en el diseño de backends es implementar un único endpoint `/health` que verifica todo a la vez. Para construir sistemas verdaderamente resilientes, debemos separar esta responsabilidad en dos conceptos distintos: **Liveness** (Supervivencia) y **Readiness** (Disponibilidad).
 
@@ -85,15 +85,16 @@ pub fn health_routes(pool: PgPool) -> Router {
 
 Al diseñar estos endpoints en un entorno asíncrono como Tokio, ten en cuenta las siguientes directrices:
 
-1.  **Timeouts estrictos:** Como se muestra en el ejemplo anterior, usa siempre `tokio::time::timeout` en tus comprobaciones de Readiness. Un orquestador como Kubernetes tiene sus propios timeouts (por defecto 1 segundo). Si tu aplicación tarda más en responder porque está esperando un lock de base de datos, Kubernetes considerará que ha fallado. Es mejor que tu aplicación controle explícitamente ese límite y falle elegantemente registrando el log exacto mediante `tracing`.
-2.  **Aislamiento de tareas pesadas (Thread Pool starvation):** Si tu aplicación ejecuta cálculos pesados en CPU usando `tokio::task::spawn_blocking` e inunda el thread pool, los endpoints de salud podrían no ser procesados a tiempo por falta de *workers* libres, causando reinicios falsos. Asegúrate de mantener operaciones bloqueantes estrictamente delimitadas, como vimos en el Capítulo 32.
-3.  **Caché de estados de Readiness (Sistemas de alta carga):** Si tu aplicación depende de múltiples microservicios (por ejemplo, vía gRPC) y Kubernetes realiza comprobaciones de Readiness cada 5 segundos, podrías estar generando cientos de peticiones de red inútiles por minuto solo para comprobar el estado. En arquitecturas a gran escala, es común tener una tarea de Tokio ejecutándose en *background* (`tokio::spawn`) que actualiza un `Arc<AtomicBool>` cada cierto tiempo con el estado de las dependencias. El endpoint de Readiness simplemente lee ese booleano de forma instantánea sin generar latencia de red en cada petición.
+1. **Timeouts estrictos:** Como se muestra en el ejemplo anterior, usa siempre `tokio::time::timeout` en tus comprobaciones de Readiness. Un orquestador como Kubernetes tiene sus propios timeouts (por defecto 1 segundo). Si tu aplicación tarda más en responder porque está esperando un lock de base de datos, Kubernetes considerará que ha fallado. Es mejor que tu aplicación controle explícitamente ese límite y falle elegantemente registrando el log exacto mediante `tracing`.
+2. **Aislamiento de tareas pesadas (Thread Pool starvation):** Si tu aplicación ejecuta cálculos pesados en CPU usando `tokio::task::spawn_blocking` e inunda el thread pool, los endpoints de salud podrían no ser procesados a tiempo por falta de *workers* libres, causando reinicios falsos. Asegúrate de mantener operaciones bloqueantes estrictamente delimitadas, como vimos en el Capítulo 32.
+3. **Caché de estados de Readiness (Sistemas de alta carga):** Si tu aplicación depende de múltiples microservicios (por ejemplo, vía gRPC) y Kubernetes realiza comprobaciones de Readiness cada 5 segundos, podrías estar generando cientos de peticiones de red inútiles por minuto solo para comprobar el estado. En arquitecturas a gran escala, es común tener una tarea de Tokio ejecutándose en *background* (`tokio::spawn`) que actualiza un `Arc<AtomicBool>` cada cierto tiempo con el estado de las dependencias. El endpoint de Readiness simplemente lee ese booleano de forma instantánea sin generar latencia de red en cada petición.
 
 ## 40.2 Graceful Shutdown (Apagado elegante) en Tokio
 
 En el capítulo anterior, vimos cómo Kubernetes o un balanceador de carga verifican si nuestra aplicación está viva (Liveness) o lista para recibir tráfico (Readiness). Pero, ¿qué ocurre cuando el orquestador decide que es hora de apagar nuestro contenedor? Esto puede suceder por múltiples razones: un despliegue de una nueva versión, un escalado hacia abajo (scale-down) o la reubicación de un *Pod* a otro nodo.
 
 Cuando esto ocurre, el sistema operativo envía una señal de terminación (generalmente `SIGTERM`). Si nuestro backend en Rust ignora esta señal o se apaga de golpe (Hard Shutdown), las consecuencias en producción son desastrosas:
+
 * Las peticiones HTTP que estaban a la mitad de su procesamiento se cortan abruptamente, devolviendo errores 502/504 al cliente.
 * Las transacciones de base de datos pueden quedar en estados inciertos.
 * Los mensajes leídos de una cola (como Kafka o RabbitMQ) pueden perderse si no se confirmó su procesamiento (ACK).
@@ -104,7 +105,7 @@ Un **Graceful Shutdown** (Apagado elegante) consiste en interceptar esa señal d
 
 En el ecosistema de Axum, el servidor HTTP expone el método `with_graceful_shutdown`, el cual recibe un `Future`. El servidor seguirá ejecutándose normalmente hasta que ese `Future` se resuelva.
 
-La forma más común de implementar este `Future` es escuchando las señales del sistema operativo mediante `tokio::signal`. 
+La forma más común de implementar este `Future` es escuchando las señales del sistema operativo mediante `tokio::signal`.
 
 ```rust
 use axum::{routing::get, Router};
@@ -168,11 +169,11 @@ Si el servidor HTTP se apaga y el `main` termina, Tokio destruirá el *runtime*,
 
 Para resolver esto, utilizamos **Cancellation Tokens** (del crate `tokio-util`) y un mecanismo de sincronización para esperar a que las tareas terminen (como un `mpsc::channel` o un `WaitGroup`).
 
-#### Arquitectura de apagado coordinado:
+#### Arquitectura de apagado coordinado
 
-1.  **CancellationToken:** Se clona y se pasa a cada tarea en background. Cuando se recibe la señal `SIGTERM`, disparamos el token (`token.cancel()`).
-2.  **Select Loop:** Las tareas en background deben usar `tokio::select!` para escuchar simultáneamente su trabajo normal y la cancelación del token.
-3.  **Timeout General:** Los orquestadores como Kubernetes tienen un `terminationGracePeriodSeconds` (por defecto 30 segundos). Si tu apagado elegante tarda más que eso, Kubernetes enviará un `SIGKILL` y matará el proceso sin piedad. **Siempre debes envolver la espera de tu apagado en un `tokio::time::timeout`.**
+1. **CancellationToken:** Se clona y se pasa a cada tarea en background. Cuando se recibe la señal `SIGTERM`, disparamos el token (`token.cancel()`).
+2. **Select Loop:** Las tareas en background deben usar `tokio::select!` para escuchar simultáneamente su trabajo normal y la cancelación del token.
+3. **Timeout General:** Los orquestadores como Kubernetes tienen un `terminationGracePeriodSeconds` (por defecto 30 segundos). Si tu apagado elegante tarda más que eso, Kubernetes enviará un `SIGKILL` y matará el proceso sin piedad. **Siempre debes envolver la espera de tu apagado en un `tokio::time::timeout`.**
 
 ```rust
 use std::time::Duration;
@@ -232,8 +233,9 @@ El reto principal al diseñar este manejo de señales es que Rust es un lenguaje
 ### Implementación Avanzada: El patrón de "Doble Señal"
 
 Un comportamiento muy apreciado en aplicaciones de terminal y servidores bien diseñados es el patrón de **doble interrupción**:
-1.  La primera vez que se recibe la señal, se inicia el apagado elegante (Graceful Shutdown, visto en 40.2).
-2.  Si el proceso de apagado se atasca y el usuario (o el sistema) envía una **segunda señal**, el servidor aborta el apagado elegante y se cierra forzosamente de inmediato.
+
+1. La primera vez que se recibe la señal, se inicia el apagado elegante (Graceful Shutdown, visto en 40.2).
+2. Si el proceso de apagado se atasca y el usuario (o el sistema) envía una **segunda señal**, el servidor aborta el apagado elegante y se cierra forzosamente de inmediato.
 
 Veamos cómo implementar un manejador de señales a nivel Senior que soporte ambos sistemas operativos y este patrón de doble interrupción:
 
@@ -321,7 +323,7 @@ async fn main() {
 
 ### Consideraciones sobre File Descriptors y Señales
 
-Es importante entender que en Linux, las conexiones de red abiertas, las conexiones a base de datos e incluso los archivos abiertos son descriptores de archivos (*File Descriptors*). Cuando recibimos un `SIGTERM`, nuestro objetivo final es cerrar el proceso. 
+Es importante entender que en Linux, las conexiones de red abiertas, las conexiones a base de datos e incluso los archivos abiertos son descriptores de archivos (*File Descriptors*). Cuando recibimos un `SIGTERM`, nuestro objetivo final es cerrar el proceso.
 
 Si cerramos el proceso repentinamente (`std::process::exit`) o mediante un `SIGKILL`, el Kernel de Linux eventualmente cerrará esos *File Descriptors* por nosotros y liberará la memoria. Sin embargo, **el servidor al otro lado de esa conexión (por ejemplo, Postgres o un cliente HTTP) se quedará esperando una confirmación de cierre TCP (paquetes `FIN` o `RST`)** que podría tardar en llegar debido a timeouts de red.
 
@@ -329,7 +331,7 @@ Interceptar el `SIGTERM` nos permite llamar explícitamente a los destructores (
 
 ## 40.4 Recuperación ante pánicos sin tirar el servidor
 
-En el Capítulo 5, establecimos una regla de oro en Rust: utilizamos `Result<T, E>` para errores recuperables y `panic!` para errores irrecuperables (bugs del programador, como acceder a un índice fuera de rango o hacer `.unwrap()` sobre un `None`). 
+En el Capítulo 5, establecimos una regla de oro en Rust: utilizamos `Result<T, E>` para errores recuperables y `panic!` para errores irrecuperables (bugs del programador, como acceder a un índice fuera de rango o hacer `.unwrap()` sobre un `None`).
 
 En una aplicación de consola, si ocurre un `panic!`, lo correcto es que el programa se cierre de inmediato. Sin embargo, en un servidor web de alta concurrencia, la filosofía cambia radicalmente. Si tienes 10,000 usuarios conectados y una petición maliciosa (o malformada) explota un `.unwrap()` en un *handler* específico, **no puedes permitir que el pánico de un hilo destruya el proceso completo y desconecte a los otros 9,999 usuarios.**
 

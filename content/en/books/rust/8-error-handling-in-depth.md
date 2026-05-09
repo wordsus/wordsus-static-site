@@ -45,6 +45,7 @@ Unlike languages like C or C++, which might silently read arbitrary memory (lead
 As discussed in Chapter 3, memory management relies heavily on the stack. When a `panic!` occurs, Rust's default behavior is to **unwind** the stack.
 
 **The Unwinding Process:**
+
 1. Rust walks back up the stack from the point of the panic.
 2. It calls the `drop` method for any variables it encounters in each frame, safely freeing heap memory and releasing system resources (like file handles or network sockets).
 3. The thread terminates.
@@ -82,10 +83,10 @@ This is a common optimization for production releases, embedded systems, or high
 
 When a panic happens deep within nested function calls, the standard error message might only show the location of the explicit `panic!` macro inside a library, rather than the line of *your* code that caused it.
 
-To see the full call stack, you can set the `RUST_BACKTRACE` environment variable. 
+To see the full call stack, you can set the `RUST_BACKTRACE` environment variable.
 
 ```bash
-$ RUST_BACKTRACE=1 cargo run
+RUST_BACKTRACE=1 cargo run
 ```
 
 This outputs a detailed list of every function called to reach the panic point. For the backtrace to be fully readable with file names and line numbers, your program must be compiled with debug symbols enabled (which `cargo build` or `cargo run` handles by default in the `dev` profile).
@@ -102,7 +103,7 @@ However, when an error is something the system could reasonably recover from—s
 
 ## 8.2 Recoverable Errors with the `Result<T, E>` Enum
 
-While panics are appropriate for fundamental contract violations or catastrophic failures, the vast majority of errors in software are entirely expected and recoverable. Network requests time out, users input malformed data, and files are missing. In these scenarios, terminating the application is not an acceptable outcome. 
+While panics are appropriate for fundamental contract violations or catastrophic failures, the vast majority of errors in software are entirely expected and recoverable. Network requests time out, users input malformed data, and files are missing. In these scenarios, terminating the application is not an acceptable outcome.
 
 Unlike languages like Java, C++, or Python, Rust does not use exceptions for error handling. Instead, it leans on its powerful type system to bring error handling to compile time. This is achieved through the ubiquitous `Result<T, E>` enum.
 
@@ -120,7 +121,7 @@ enum Result<T, E> {
 * **`T` (Type):** The type of the value that will be returned in the `Ok` variant if the operation succeeds.
 * **`E` (Error):** The type of the error that will be returned in the `Err` variant if the operation fails.
 
-Because `Result` is an enum, you cannot use a `Result` value as if it were the success value `T`. The Rust compiler forces you to explicitly unpack the enum, guaranteeing that you acknowledge and handle the potential error path before you can access the underlying data. 
+Because `Result` is an enum, you cannot use a `Result` value as if it were the success value `T`. The Rust compiler forces you to explicitly unpack the enum, guaranteeing that you acknowledge and handle the potential error path before you can access the underlying data.
 
 ```text
                              +--> Ok(T)  --> Extract data 'T' and proceed
@@ -269,6 +270,7 @@ fn read_username_from_file() -> Result<String, io::Error> {
 ```
 
 **How `?` Works:**
+
 * If the value is an `Ok`, the value inside the `Ok` is extracted and assigned to the variable, and the program continues to the next line.
 * If the value is an `Err`, the `?` operator immediately returns from the entire function, passing the `Err` value back to the caller.
 
@@ -355,6 +357,7 @@ Because `?` conditionally returns early from a function, it can only be used in 
 You cannot use `?` in a function that returns `()` (like a standard `main` function) if the operation evaluates to a `Result`.
 
 **Invalid Code:**
+
 ```rust
 use std::fs::File;
 
@@ -367,6 +370,7 @@ fn main() {
 To fix this, you have two choices: handle the error explicitly with `match`, `.unwrap()`, or `.expect()`, or change the return signature of `main` to accept a `Result`:
 
 **Valid Code:**
+
 ```rust
 use std::fs::File;
 use std::error::Error;
@@ -391,9 +395,9 @@ To solve this, Rust allows—and encourages—you to define your own custom erro
 
 In Rust, a custom error is almost always an `enum`. An enum allows you to represent mutually exclusive failure modes efficiently. To integrate seamlessly with the rest of the Rust ecosystem, a custom error type should implement three specific traits:
 
-1.  `std::fmt::Debug`: For programmer-facing output (usually derived).
-2.  `std::fmt::Display`: For user-facing output.
-3.  `std::error::Error`: The standard marker trait indicating this type is officially an error.
+1. `std::fmt::Debug`: For programmer-facing output (usually derived).
+2. `std::fmt::Display`: For user-facing output.
+3. `std::error::Error`: The standard marker trait indicating this type is officially an error.
 
 ```text
 +---------------------------------------------------+
@@ -506,7 +510,7 @@ fn load_server_port() -> Result<u16, ConfigError> {
 
 ### The Boilerplate Problem
 
-If you look closely at the code we just wrote, you will notice a significant amount of boilerplate. For every lower-level error we wrap, we have to define the variant, write the `Display` formatting, and implement the `From` trait. 
+If you look closely at the code we just wrote, you will notice a significant amount of boilerplate. For every lower-level error we wrap, we have to define the variant, write the `Display` formatting, and implement the `From` trait.
 
 In a large application with dozens of failure modes, maintaining these custom error types manually becomes tedious and error-prone. Fortunately, the Rust community has developed powerful procedural macros to eliminate this busywork entirely, which leads us directly into utilizing ecosystem standards in the next section.
 
@@ -514,7 +518,7 @@ In a large application with dozens of failure modes, maintaining these custom er
 
 As demonstrated in Section 8.4, manually implementing the `Debug`, `Display`, `Error`, and `From` traits for custom error enums is tedious and creates significant boilerplate. Because this is a universal pain point, the Rust community has coalesced around two third-party crates created by David Tolnay that have become the de facto standard for modern Rust error handling: `thiserror` and `anyhow`.
 
-While both crates make error handling significantly easier, they serve two entirely different architectural purposes. 
+While both crates make error handling significantly easier, they serve two entirely different architectural purposes.
 
 ### `thiserror`: Effortless Custom Errors for Libraries
 
@@ -546,7 +550,7 @@ pub enum ConfigError {
 }
 ```
 
-With less than 15 lines of code, we have accomplished the exact same robust type-safety and automatic `?` operator compatibility that previously required dozens of lines of manual trait implementation. 
+With less than 15 lines of code, we have accomplished the exact same robust type-safety and automatic `?` operator compatibility that previously required dozens of lines of manual trait implementation.
 
 Consumers of your library can still `match` on `ConfigError::Io` or `ConfigError::MissingKey` to execute specific recovery logic, making `thiserror` the perfect choice when your caller needs programmatic access to the exact failure mode.
 

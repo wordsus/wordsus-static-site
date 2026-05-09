@@ -5,8 +5,9 @@ Kubernetes is the standard for modern deployments, but its ephemeral nature crea
 While deploying the OpenTelemetry Collector using standard Kubernetes manifests (like `Deployment` or `DaemonSet`) is entirely possible, managing configuration updates, sidecar injection, and version upgrades across a large cluster quickly becomes an operational burden. The OpenTelemetry Kubernetes Operator solves this by extending the Kubernetes API using Custom Resource Definitions (CRDs). It acts as a dedicated controller that understands how to deploy and manage OpenTelemetry components natively.
 
 The Operator serves two primary functions:
-1.  **Collector Management:** It manages the lifecycle of the OpenTelemetry Collector, allowing you to define the Collector's configuration, scaling, and deployment mode (e.g., Deployment, DaemonSet, StatefulSet, or Sidecar) through a single CRD.
-2.  **Workload Auto-Instrumentation:** It utilizes mutating admission webhooks to inject auto-instrumentation libraries (Java, Python, Node.js, etc.) directly into application pods at creation time without requiring changes to the application's Docker image or deployment manifests.
+
+1. **Collector Management:** It manages the lifecycle of the OpenTelemetry Collector, allowing you to define the Collector's configuration, scaling, and deployment mode (e.g., Deployment, DaemonSet, StatefulSet, or Sidecar) through a single CRD.
+2. **Workload Auto-Instrumentation:** It utilizes mutating admission webhooks to inject auto-instrumentation libraries (Java, Python, Node.js, etc.) directly into application pods at creation time without requiring changes to the application's Docker image or deployment manifests.
 
 ### Prerequisites: Cert-Manager
 
@@ -72,6 +73,7 @@ Once deployed, the Operator continuously watches for changes to its specific Cus
 With the Operator running, you no longer write standard Kubernetes `Deployment` manifests for the Collector. Instead, you declare an `OpenTelemetryCollector` custom resource. The Operator reads this resource and automatically generates the underlying Kubernetes objects (Deployments, ConfigMaps, Services, etc.) based on the `mode` you specify.
 
 The `mode` property maps directly to the deployment models discussed in Chapter 12:
+
 * `deployment`: Creates a standard Kubernetes Deployment (stateless gateway).
 * `daemonset`: Creates a DaemonSet, ensuring one Collector runs on every node (agent model).
 * `statefulset`: Creates a StatefulSet, typically used for tail-based sampling or stateful processing.
@@ -167,7 +169,7 @@ In this configuration, we define the OTLP endpoint pointing to the Collector we 
 
 The Operator does not blindly instrument every Pod in the cluster. It operates on an opt-in basis (though namespace-level opt-in is possible). Application developers trigger the injection by adding an `instrumentation.opentelemetry.io/inject-<language>` annotation to their Pod template definition.
 
-Supported language annotations include `inject-java`, `inject-nodejs`, `inject-python`, `inject-dotnet`, and `inject-go` (via eBPF). 
+Supported language annotations include `inject-java`, `inject-nodejs`, `inject-python`, `inject-dotnet`, and `inject-go` (via eBPF).
 
 Below is an example of a standard Java Spring Boot Deployment opting into OpenTelemetry auto-instrumentation:
 
@@ -225,9 +227,9 @@ To truly master the Operator, you must understand what happens under the hood wh
 
 When you query the running Pod (`kubectl get pod payment-service-... -o yaml`), you will observe the following injected components:
 
-1.  **An `initContainer`:** The Operator injects an init container using the image specified in the `Instrumentation` CR. This container's sole purpose is to copy the instrumentation agent (e.g., `opentelemetry-javaagent.jar`) into a shared volume.
-2.  **An `emptyDir` Volume:** A temporary directory is created and mounted into both the `initContainer` and your main application container.
-3.  **Environment Variables:** The Operator injects crucial OpenTelemetry environment variables directly into your application container. 
+1. **An `initContainer`:** The Operator injects an init container using the image specified in the `Instrumentation` CR. This container's sole purpose is to copy the instrumentation agent (e.g., `opentelemetry-javaagent.jar`) into a shared volume.
+2. **An `emptyDir` Volume:** A temporary directory is created and mounted into both the `initContainer` and your main application container.
+3. **Environment Variables:** The Operator injects crucial OpenTelemetry environment variables directly into your application container.
     * It automatically configures language-specific loading mechanisms. For Java, it sets `JAVA_TOOL_OPTIONS` to load the javaagent from the shared volume. For Node.js, it sets `NODE_OPTIONS=--require`.
     * It translates the `Instrumentation` CRD settings into standard OTel environment variables like `OTEL_EXPORTER_OTLP_ENDPOINT`.
     * Crucially, it auto-detects and injects Kubernetes resource attributes (like Pod name, Node name, and ReplicaSet name) into `OTEL_RESOURCE_ATTRIBUTES`, ensuring your telemetry is deeply contextualized within your Kubernetes environment.
@@ -236,7 +238,7 @@ This architectural pattern ensures that your core application container remains 
 
 ## 19.3 Collecting Advanced Kubernetes Cluster Metrics and Events
 
-While application-level telemetry (traces and application metrics) provides visibility into the behavior of your software, it is often insufficient for diagnosing infrastructure-related outages. If a service degrades because its underlying Pod was throttled for CPU, or if an application is completely unavailable because the Kubernetes scheduler cannot find a node with adequate memory, application instrumentation alone will not surface the root cause. 
+While application-level telemetry (traces and application metrics) provides visibility into the behavior of your software, it is often insufficient for diagnosing infrastructure-related outages. If a service degrades because its underlying Pod was throttled for CPU, or if an application is completely unavailable because the Kubernetes scheduler cannot find a node with adequate memory, application instrumentation alone will not surface the root cause.
 
 To achieve comprehensive observability in Kubernetes, you must collect infrastructure telemetry directly from the control plane and the node agents. The OpenTelemetry Collector facilitates this through three specialized receivers: the `kubeletstats` receiver, the `k8s_cluster` receiver, and the `k8sevents` receiver.
 
@@ -244,8 +246,8 @@ To achieve comprehensive observability in Kubernetes, you must collect infrastru
 
 Before configuring these receivers, it is critical to understand *where* they should be deployed. Collecting cluster telemetry requires a bifurcated deployment strategy to prevent massive data duplication and excessive load on the Kubernetes API server.
 
-1.  **The Agent Pattern (DaemonSet):** Metrics specific to individual nodes and the containers running on them must be collected by a Collector running locally on that specific node. 
-2.  **The Singleton Pattern (Deployment):** Global cluster state and events must be collected by a single Collector instance (usually a Deployment with `replicas: 1` or a StatefulSet) to ensure the data is only scraped and exported once.
+1. **The Agent Pattern (DaemonSet):** Metrics specific to individual nodes and the containers running on them must be collected by a Collector running locally on that specific node.
+2. **The Singleton Pattern (Deployment):** Global cluster state and events must be collected by a single Collector instance (usually a Deployment with `replicas: 1` or a StatefulSet) to ensure the data is only scraped and exported once.
 
 ```text
 +---------------------------------------------------------------------------------+
@@ -272,7 +274,7 @@ Before configuring these receivers, it is critical to understand *where* they sh
 
 ### 1. Node and Container Metrics: The `kubeletstats` Receiver
 
-The `kubeletstats` receiver pulls metrics directly from the Kubelet's REST API (typically port 10250) running on each node. It retrieves highly granular data about node resource utilization, volume usage, and individual container metrics (leveraging cAdvisor under the hood). 
+The `kubeletstats` receiver pulls metrics directly from the Kubelet's REST API (typically port 10250) running on each node. It retrieves highly granular data about node resource utilization, volume usage, and individual container metrics (leveraging cAdvisor under the hood).
 
 Because it needs to communicate with the local Kubelet, this receiver is always configured in your **DaemonSet** Collector.
 
@@ -311,7 +313,7 @@ receivers:
 
 ### 3. Capturing the Lifecycle: The `k8sevents` Receiver
 
-Kubernetes Events are crucial for troubleshooting. They record lifecycle occurrences such as Pod evictions (`Evicted`), out-of-memory kills (`OOMKilled`), image pull failures (`ErrImagePull`), and scheduling delays. 
+Kubernetes Events are crucial for troubleshooting. They record lifecycle occurrences such as Pod evictions (`Evicted`), out-of-memory kills (`OOMKilled`), image pull failures (`ErrImagePull`), and scheduling delays.
 
 However, Kubernetes Events are ephemeral; by default, the API server purges them after one hour to save `etcd` storage. The `k8sevents` receiver solves this by watching the API server for new events and translating them into **OpenTelemetry Log records**. This allows you to export them to long-term storage (like Elasticsearch, Loki, or OpenSearch) where they can be correlated with your application logs and traces.
 
@@ -345,13 +347,13 @@ For the `kubeletstats` receiver, the DaemonSet requires permissions to access th
 
 When investigating a spike in 500 errors or a sudden drop in application throughput, application-level traces and metrics only tell half the story. To locate the root cause in a dynamic environment, you must be able to pivot from an application trace directly to the underlying infrastructure. Is the error isolated to a single Pod? Is it affecting all Pods on a specific Node experiencing network packet loss? Is it isolated to a particular Kubernetes namespace or ReplicaSet?
 
-To answer these questions, your telemetry data must be enriched with Kubernetes metadata. OpenTelemetry achieves this by appending standardized Resource Attributes (defined by the OpenTelemetry Semantic Conventions) to your telemetry signals, such as `k8s.pod.name`, `k8s.namespace.name`, `k8s.node.name`, and `k8s.deployment.name`. 
+To answer these questions, your telemetry data must be enriched with Kubernetes metadata. OpenTelemetry achieves this by appending standardized Resource Attributes (defined by the OpenTelemetry Semantic Conventions) to your telemetry signals, such as `k8s.pod.name`, `k8s.namespace.name`, `k8s.node.name`, and `k8s.deployment.name`.
 
 There are two primary mechanisms for injecting these attributes into your telemetry pipeline: at the source via the Downward API, or at the Collector via the `k8sattributes` processor.
 
 ### Method 1: Source-Level Injection (Downward API)
 
-If you are using the OpenTelemetry Kubernetes Operator for auto-instrumentation (as covered in Section 19.2), this correlation is largely handled for you. The Operator's mutating webhook configures the injected container to use the Kubernetes Downward API. 
+If you are using the OpenTelemetry Kubernetes Operator for auto-instrumentation (as covered in Section 19.2), this correlation is largely handled for you. The Operator's mutating webhook configures the injected container to use the Kubernetes Downward API.
 
 The Downward API allows Kubernetes to expose Pod and cluster information to running containers via environment variables. The Operator maps these variables into the `OTEL_RESOURCE_ATTRIBUTES` environment variable.
 
@@ -444,6 +446,6 @@ processors:
 
 Once your telemetry reaches your observability backend (e.g., Jaeger, Prometheus, or a commercial vendor), these Kubernetes attributes transform how you query and interact with your data.
 
-1.  **Topology Mapping:** Observability tools can use attributes like `k8s.deployment.name` and `k8s.namespace.name` to automatically draw architecture diagrams, showing exactly how different microservices communicate.
-2.  **Slicing and Dicing:** You can execute queries such as "Show me the 99th percentile latency for the `checkout` service, but *only* for Pods running version `v2.1.0` (via labels) on nodes in the `us-east-1a` availability zone."
-3.  **Cost Attribution:** By correlating application metrics (like requests processed) with Kubernetes namespace labels (like `team: payment-processing`), platform engineering teams can accurately allocate cloud infrastructure costs to specific business units based on actual usage.
+1. **Topology Mapping:** Observability tools can use attributes like `k8s.deployment.name` and `k8s.namespace.name` to automatically draw architecture diagrams, showing exactly how different microservices communicate.
+2. **Slicing and Dicing:** You can execute queries such as "Show me the 99th percentile latency for the `checkout` service, but *only* for Pods running version `v2.1.0` (via labels) on nodes in the `us-east-1a` availability zone."
+3. **Cost Attribution:** By correlating application metrics (like requests processed) with Kubernetes namespace labels (like `team: payment-processing`), platform engineering teams can accurately allocate cloud infrastructure costs to specific business units based on actual usage.

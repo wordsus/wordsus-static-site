@@ -35,8 +35,9 @@ fn main() {
 ```
 
 En este ejemplo, ocurren dos cosas fundamentales:
-1.  **Ejecución paralela:** El hilo principal y el hilo secundario se ejecutan al mismo tiempo. Si no forzamos al hilo principal a esperar, el programa terminaría y el hilo secundario se destruiría abruptamente, sin importar si terminó su trabajo o no.
-2.  **El método `join`:** `thread::spawn` devuelve un `JoinHandle`. Al llamar a `.join()` sobre este manejador, bloqueamos el hilo actual (en este caso, el principal) hasta que el hilo representado por el `JoinHandle` haya terminado de ejecutarse.
+
+1. **Ejecución paralela:** El hilo principal y el hilo secundario se ejecutan al mismo tiempo. Si no forzamos al hilo principal a esperar, el programa terminaría y el hilo secundario se destruiría abruptamente, sin importar si terminó su trabajo o no.
+2. **El método `join`:** `thread::spawn` devuelve un `JoinHandle`. Al llamar a `.join()` sobre este manejador, bloqueamos el hilo actual (en este caso, el principal) hasta que el hilo representado por el `JoinHandle` haya terminado de ejecutarse.
 
 ### Closures `move`, Ownership y el límite `'static`
 
@@ -163,7 +164,7 @@ fn main() {
 
 ### Compartiendo el Mutex entre hilos: `Arc<T>`
 
-Si intentas pasar un `Mutex` a múltiples hilos usando un bucle, te enfrentarás a un error de *Ownership*. No puedes mover el mismo Mutex a varios hilos. 
+Si intentas pasar un `Mutex` a múltiples hilos usando un bucle, te enfrentarás a un error de *Ownership*. No puedes mover el mismo Mutex a varios hilos.
 
 Para compartir la propiedad del Mutex, necesitamos usar un contador de referencias. Aunque conocimos `Rc<T>` para este propósito en capítulos anteriores, `Rc<T>` **no es seguro para hilos** (no implementa el trait `Send`). La solución es `Arc<T>` (*Atomic Reference Counted*).
 
@@ -207,6 +208,7 @@ fn main() {
 Un `Mutex` es estricto: bloquea a *todos* los demás hilos, sin importar si solo quieren leer los datos sin modificarlos. En escenarios backend como una caché de configuración (donde las lecturas ocurren miles de veces por segundo, pero las actualizaciones son raras), un `Mutex` crearía un cuello de botella severo (*lock contention*).
 
 Para estos casos, la biblioteca estándar ofrece `std::sync::RwLock<T>` (Read-Write Lock). Sus reglas son idénticas a las del *Borrow Checker* pero aplicadas en tiempo de ejecución:
+
 1. Puedes tener **múltiples lectores simultáneos** (`.read()`).
 2. **O** puedes tener **un único escritor** (`.write()`).
 
@@ -248,7 +250,7 @@ fn main() {
 
 ### La advertencia sobre los Deadlocks
 
-Es crucial entender que **el sistema de tipos de Rust no previene los *deadlocks* (bloqueos mutuos)**. Si el Hilo A bloquea el `Mutex X` y espera por el `Mutex Y`, y el Hilo B bloquea el `Mutex Y` y espera por el `Mutex X`, tu programa se quedará congelado para siempre. 
+Es crucial entender que **el sistema de tipos de Rust no previene los *deadlocks* (bloqueos mutuos)**. Si el Hilo A bloquea el `Mutex X` y espera por el `Mutex Y`, y el Hilo B bloquea el `Mutex Y` y espera por el `Mutex X`, tu programa se quedará congelado para siempre.
 
 En el desarrollo de APIs, para evitar deadlocks, la regla de oro es mantener el alcance (scope) del lock lo más pequeño posible. Evita realizar operaciones de entrada/salida (I/O), peticiones de red o cálculos pesados mientras sostienes un `MutexGuard`. Haz el cálculo, adquiere el lock, actualiza el estado rápidamente y libera el lock.
 
@@ -256,9 +258,9 @@ En el desarrollo de APIs, para evitar deadlocks, la regla de oro es mantener el 
 
 ## 14.3 Paso de mensajes con canales (`std::sync::mpsc`)
 
-En la sección anterior exploramos cómo compartir estado de forma segura utilizando `Mutex` y `RwLock`. Sin embargo, compartir memoria suele introducir cuellos de botella por la contención de los bloqueos (*lock contention*) y aumenta el riesgo de *deadlocks* a medida que la arquitectura crece. 
+En la sección anterior exploramos cómo compartir estado de forma segura utilizando `Mutex` y `RwLock`. Sin embargo, compartir memoria suele introducir cuellos de botella por la contención de los bloqueos (*lock contention*) y aumenta el riesgo de *deadlocks* a medida que la arquitectura crece.
 
-Existe una filosofía alternativa muy popularizada por lenguajes como Go, pero que encaja a la perfección con la semántica de Rust: *"No te comuniques compartiendo memoria; comparte memoria comunicándote"*. 
+Existe una filosofía alternativa muy popularizada por lenguajes como Go, pero que encaja a la perfección con la semántica de Rust: *"No te comuniques compartiendo memoria; comparte memoria comunicándote"*.
 
 En Rust, esta filosofía se implementa mediante **canales** (channels). Un canal es una estructura de datos unidireccional que permite a un hilo enviar mensajes a otro. La biblioteca estándar provee el módulo `std::sync::mpsc`, que significa **M**ultiple **P**roducer, **S**ingle **C**onsumer (Múltiples Productores, Único Consumidor).
 
@@ -380,7 +382,7 @@ Para estos casos de uso, Rust ofrece primitivas en el módulo `std::sync::atomic
 
 ### Primitivas Atómicas Básicas
 
-La biblioteca estándar proporciona tipos atómicos equivalentes a los tipos primitivos más comunes: `AtomicBool`, `AtomicIsize`, `AtomicUsize`, entre otros. 
+La biblioteca estándar proporciona tipos atómicos equivalentes a los tipos primitivos más comunes: `AtomicBool`, `AtomicIsize`, `AtomicUsize`, entre otros.
 
 A diferencia de un `Mutex`, una variable atómica no necesita envolver el dato (no devuelve un "guardia"); el tipo en sí mismo expone métodos para mutar el valor de forma atómica a través de referencias compartidas (`&T`), lo que lo hace perfecto para usarlo junto a `Arc`.
 

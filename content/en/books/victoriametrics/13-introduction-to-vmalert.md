@@ -10,8 +10,8 @@ In the standard Prometheus architecture, the tasks of collecting data, storing i
 
 `vmalert` is a standalone daemon designed to execute PromQL and MetricsQL expressions continuously against a VictoriaMetrics backend. It serves two primary functions:
 
-1.  **Evaluating Alerting Rules:** `vmalert` periodically runs queries defined in alert rules to check for specific conditions (e.g., high CPU usage, application errors). When a query returns a result that breaches a defined threshold for a specified duration, `vmalert` fires an alert and pushes it to an external notification system, almost exclusively Prometheus Alertmanager.
-2.  **Evaluating Recording Rules:** To optimize dashboards and heavily used queries, `vmalert` can pre-compute complex, resource-intensive expressions (such as aggregations over high-cardinality data) and write the resulting data back into VictoriaMetrics as a brand new, fully materialized time series.
+1. **Evaluating Alerting Rules:** `vmalert` periodically runs queries defined in alert rules to check for specific conditions (e.g., high CPU usage, application errors). When a query returns a result that breaches a defined threshold for a specified duration, `vmalert` fires an alert and pushes it to an external notification system, almost exclusively Prometheus Alertmanager.
+2. **Evaluating Recording Rules:** To optimize dashboards and heavily used queries, `vmalert` can pre-compute complex, resource-intensive expressions (such as aggregations over high-cardinality data) and write the resulting data back into VictoriaMetrics as a brand new, fully materialized time series.
 
 By extracting these evaluation loops from the database layer, VictoriaMetrics ensures that heavy alerting queries do not directly compete for CPU and memory resources with active data ingestion (`vminsert`) or ad-hoc user dashboard queries (`vmselect`).
 
@@ -46,15 +46,16 @@ This stateless design dictates how `vmalert` interacts with the rest of the infr
 
 #### The Data Flow
 
-1.  **The Read Path (`-datasource.url`):** `vmalert` reads its configuration from standard Prometheus-compatible YAML rule files. Based on the evaluation interval (typically 15 to 60 seconds), its internal scheduler dispatches PromQL/MetricsQL queries to the VictoriaMetrics read endpoint. In a single-node setup, this is the main VictoriaMetrics process; in a cluster, this is the `vmselect` component.
-2.  **The Write Path (`-remoteWrite.url`):** When `vmalert` evaluates a recording rule, it generates new time-series data. Furthermore, `vmalert` can be configured to write the state of alerts (e.g., `ALERTS` and `ALERTS_FOR_STATE` metrics) back to the database. It sends this generated data via the Prometheus `remote_write` protocol to the VictoriaMetrics write endpoint (single-node or `vminsert` in a cluster).
-3.  **The Notification Path (`-notifier.url`):** When an alerting rule evaluates to true and satisfies its `for` duration, `vmalert` transitions the alert to a firing state. It then formats a payload containing the alert's labels and annotations and POSTs it to the configured Alertmanager instance, which handles grouping, deduplication, routing, and sending the final notifications to Slack, PagerDuty, Email, etc.
+1. **The Read Path (`-datasource.url`):** `vmalert` reads its configuration from standard Prometheus-compatible YAML rule files. Based on the evaluation interval (typically 15 to 60 seconds), its internal scheduler dispatches PromQL/MetricsQL queries to the VictoriaMetrics read endpoint. In a single-node setup, this is the main VictoriaMetrics process; in a cluster, this is the `vmselect` component.
+2. **The Write Path (`-remoteWrite.url`):** When `vmalert` evaluates a recording rule, it generates new time-series data. Furthermore, `vmalert` can be configured to write the state of alerts (e.g., `ALERTS` and `ALERTS_FOR_STATE` metrics) back to the database. It sends this generated data via the Prometheus `remote_write` protocol to the VictoriaMetrics write endpoint (single-node or `vminsert` in a cluster).
+3. **The Notification Path (`-notifier.url`):** When an alerting rule evaluates to true and satisfies its `for` duration, `vmalert` transitions the alert to a firing state. It then formats a payload containing the alert's labels and annotations and POSTs it to the configured Alertmanager instance, which handles grouping, deduplication, routing, and sending the final notifications to Slack, PagerDuty, Email, etc.
 
 ### High Availability and Scaling
 
-Because `vmalert` is stateless, achieving High Availability (HA) is straightforward: you run multiple identical instances of `vmalert` pointing to the same rule files and the same VictoriaMetrics backend. 
+Because `vmalert` is stateless, achieving High Availability (HA) is straightforward: you run multiple identical instances of `vmalert` pointing to the same rule files and the same VictoriaMetrics backend.
 
 There is no complex gossip protocol or cluster state sharing between `vmalert` replicas. Instead, VictoriaMetrics relies on downstream systems to handle deduplication:
+
 * **Alert Deduplication:** Both `vmalert` replicas will evaluate the rules and send identical alerts to Alertmanager at roughly the same time. Alertmanager is natively designed to deduplicate incoming alerts with identical label sets.
 * **Recording Rule Deduplication:** Both replicas will write the exact same pre-computed metrics back to VictoriaMetrics. VictoriaMetrics natively handles deduplication of identical data points (assuming standard deduplication settings are configured on the storage side, which will be covered in Chapter 11).
 
@@ -62,7 +63,7 @@ This architectural simplicity ensures that your alerting pipeline remains robust
 
 ## 13.2 Connecting `vmalert` to Storage and Query Nodes
 
-Because `vmalert` is entirely stateless, its ability to function depends entirely on how it is connected to the rest of your observability stack. It needs to know where to fetch metric data to evaluate rules, where to write the results of recording rules or alert states, and where to send the actual alert notifications. 
+Because `vmalert` is entirely stateless, its ability to function depends entirely on how it is connected to the rest of your observability stack. It needs to know where to fetch metric data to evaluate rules, where to write the results of recording rules or alert states, and where to send the actual alert notifications.
 
 These connections are established using a set of highly specific command-line flags. Understanding how to configure these flags—and how they differ between VictoriaMetrics Single-Node and Cluster editions—is critical for a stable alerting pipeline.
 
@@ -70,10 +71,10 @@ These connections are established using a set of highly specific command-line fl
 
 `vmalert` relies on three primary connection pathways, with a fourth optional (but highly recommended) pathway for state restoration:
 
-1.  **`-datasource.url` (The Query Node):** This is the endpoint `vmalert` queries to evaluate your PromQL/MetricsQL expressions. 
-2.  **`-remoteWrite.url` (The Storage Node):** If you are using recording rules, or if you want `vmalert` to persist the `ALERTS` time series (which tracks the state of active alerts), it sends this data via the Prometheus remote write protocol to this endpoint.
-3.  **`-notifier.url` (The Alertmanager):** When an alert condition is met, the resulting payload is sent to this endpoint. You can specify this flag multiple times if you have a highly available Alertmanager cluster.
-4.  **`-remoteRead.url` (State Restoration):** When `vmalert` restarts, it loses its internal memory of which alerts were currently pending or firing. By pointing this flag to your query node, `vmalert` can query the `ALERTS` metric on startup to instantly restore its state, preventing alert flapping or duplicate notifications.
+1. **`-datasource.url` (The Query Node):** This is the endpoint `vmalert` queries to evaluate your PromQL/MetricsQL expressions.
+2. **`-remoteWrite.url` (The Storage Node):** If you are using recording rules, or if you want `vmalert` to persist the `ALERTS` time series (which tracks the state of active alerts), it sends this data via the Prometheus remote write protocol to this endpoint.
+3. **`-notifier.url` (The Alertmanager):** When an alert condition is met, the resulting payload is sent to this endpoint. You can specify this flag multiple times if you have a highly available Alertmanager cluster.
+4. **`-remoteRead.url` (State Restoration):** When `vmalert` restarts, it loses its internal memory of which alerts were currently pending or firing. By pointing this flag to your query node, `vmalert` can query the `ALERTS` metric on startup to instantly restore its state, preventing alert flapping or duplicate notifications.
 
 ```text
                            +-----------------------------------+
@@ -132,7 +133,8 @@ Assuming `vmselect` is on port `8481` and `vminsert` is on port `8480`:
   -notifier.url="http://alertmanager:9093"
 ```
 
-#### Breaking down the Cluster URLs:
+#### Breaking down the Cluster URLs
+
 * **Querying (`vmselect`):** The URL `http://vmselect:8481/select/0/prometheus` tells `vmalert` to hit the select component, query data for tenant `0`, and expect a Prometheus-compatible API.
 * **Writing (`vminsert`):** The URL `http://vminsert:8480/insert/0/prometheus/api/v1/write` tells `vmalert` to hit the insert component, write data to tenant `0`, using the standard Prometheus remote write path.
 
@@ -161,7 +163,7 @@ At its core, the YAML configuration is organized into a hierarchy: **Groups** co
 
 ### The Anatomy of a Rule Group
 
-Rules are never evaluated in isolation; they must belong to a `group`. The group level defines the execution context for all the rules nested within it. 
+Rules are never evaluated in isolation; they must belong to a `group`. The group level defines the execution context for all the rules nested within it.
 
 Here are the key parameters available at the group level:
 
@@ -172,7 +174,7 @@ Here are the key parameters available at the group level:
 
 ### Defining Alerting Rules
 
-An alerting rule determines whether a specific condition is met and, if so, triggers an alert. 
+An alerting rule determines whether a specific condition is met and, if so, triggers an alert.
 
 * **`alert`** *(string, required)*: The name of the alert (e.g., `HighCPUUsage`).
 * **`expr`** *(string, required)*: The PromQL or MetricsQL expression to evaluate. The alert will fire for every time series returned by this query.
@@ -236,7 +238,7 @@ groups:
 
 ### Tips for Rule Management
 
-As your observability footprint grows, managing rules in a single file becomes unwieldy. It is standard practice to organize rules logically by service, team, or domain into separate YAML files (e.g., `infra-rules.yaml`, `database-rules.yaml`). 
+As your observability footprint grows, managing rules in a single file becomes unwieldy. It is standard practice to organize rules logically by service, team, or domain into separate YAML files (e.g., `infra-rules.yaml`, `database-rules.yaml`).
 
 When launching `vmalert`, you can use wildcard globbing in the `-rule` flag to load them all dynamically:
 
@@ -252,7 +254,7 @@ Local testing ensures that your rules behave exactly as intended against specifi
 
 ### 1. Syntax Validation with Dry Run Mode
 
-The fastest way to catch YAML formatting errors, invalid PromQL/MetricsQL syntax, or duplicate rule definitions is to use `vmalert`'s built-in dry run mode. 
+The fastest way to catch YAML formatting errors, invalid PromQL/MetricsQL syntax, or duplicate rule definitions is to use `vmalert`'s built-in dry run mode.
 
 By passing the `-dryRun` flag, `vmalert` will parse the specified rule files, validate their structural integrity, and immediately exit without attempting to connect to a VictoriaMetrics backend or Alertmanager.
 
@@ -267,13 +269,14 @@ If the syntax is correct, the command exits silently with a `0` status code. If 
 
 While `-dryRun` confirms your rules are *syntactically* valid, it does not guarantee they are *logically* correct. To verify the logic, you must simulate how the rule evaluates over time.
 
-Because VictoriaMetrics maintains strict compatibility with the Prometheus rule format, the industry-standard way to unit test `vmalert` rules is by leveraging the official Prometheus CLI utility, `promtool`. 
+Because VictoriaMetrics maintains strict compatibility with the Prometheus rule format, the industry-standard way to unit test `vmalert` rules is by leveraging the official Prometheus CLI utility, `promtool`.
 
 Unit testing involves writing a separate YAML test file that defines:
-1.  The rule files to load.
-2.  Mock time-series data to simulate an environment.
-3.  The exact intervals at which to evaluate the rules.
-4.  The expected alerts that should be firing at those specific times.
+
+1. The rule files to load.
+2. Mock time-series data to simulate an environment.
+3. The exact intervals at which to evaluate the rules.
+4. The expected alerts that should be firing at those specific times.
 
 #### Anatomy of a Unit Test File
 
@@ -321,7 +324,8 @@ tests:
 
 #### Understanding the `values` Syntax
 
-The `values` string is a powerful shorthand for generating mock time-series data over the `interval` period. 
+The `values` string is a powerful shorthand for generating mock time-series data over the `interval` period.
+
 * `0+50x10` means: Start at `0`, add `50` for the next data point, and repeat this increment `10` times. (Generates: 0, 50, 100, 150...)
 * `100-10x5` means: Start at `100`, subtract `10` for the next data point, repeat `5` times. (Generates: 100, 90, 80, 70...)
 * `10 10 10 50 50` means: Hardcode the exact values for the first 5 intervals. Use `_` to denote a missing scrape (staleness).
@@ -335,19 +339,20 @@ promtool test rules test_app_rules.yaml
 ```
 
 **Expected Output:**
+
 ```text
 Unit Testing:  test_app_rules.yaml
   SUCCESS
 ```
 
-If the test fails, `promtool` will output a detailed diff showing exactly what it expected to see (e.g., an alert with specific labels) versus what the rule actually produced. 
+If the test fails, `promtool` will output a detailed diff showing exactly what it expected to see (e.g., an alert with specific labels) versus what the rule actually produced.
 
 ### CI/CD Integration Best Practices
 
 To maintain a highly reliable observability stack, manual testing should be replaced with automation. A robust GitOps workflow for VictoriaMetrics alerting should include the following automated steps upon every pull request modifying `*.yaml` rule files:
 
-1.  **Linting:** Use tools like `yamllint` to ensure standard YAML formatting.
-2.  **Validation:** Run `./vmalert -dryRun` to catch PromQL/MetricsQL syntax errors.
-3.  **Unit Testing:** Execute `promtool test rules` against all defined test files to guarantee no regressions in alert logic. 
+1. **Linting:** Use tools like `yamllint` to ensure standard YAML formatting.
+2. **Validation:** Run `./vmalert -dryRun` to catch PromQL/MetricsQL syntax errors.
+3. **Unit Testing:** Execute `promtool test rules` against all defined test files to guarantee no regressions in alert logic.
 
 Only when all three steps pass should the new rules be merged and deployed to the `vmalert` instances.

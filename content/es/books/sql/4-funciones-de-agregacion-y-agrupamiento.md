@@ -191,10 +191,11 @@ Como puedes observar, SQL identificó los valores únicos en la columna `categor
 Al empezar a escribir consultas con agrupamientos, el error más común (y que provocará que la base de datos te devuelva un error) es olvidar la relación matemática estricta que exige el `SELECT` cuando usas `GROUP BY`.
 
 > **Regla de Oro:** Si en tu consulta estás utilizando `GROUP BY`, **cualquier columna** que aparezca en el `SELECT` tiene que cumplir obligatoriamente una de estas dos condiciones:
+>
 > 1. Formar parte de la cláusula `GROUP BY` (es la columna por la que estamos agrupando).
 > 2. Estar envuelta dentro de una función de agregación (`SUM`, `MAX`, etc.).
-> 
-> 
+>
+>
 
 **Ejemplo del error común:**
 

@@ -6,7 +6,7 @@ When building data-driven applications in Rust, you are faced with a choice betw
 
 ### The Importance of Connection Pooling
 
-A database connection is a relatively expensive resource to establish. Creating a new connection for every incoming network request introduces significant latency and puts unnecessary strain on the database server. A connection pool solves this by maintaining a set of open, reusable connections. 
+A database connection is a relatively expensive resource to establish. Creating a new connection for every incoming network request introduces significant latency and puts unnecessary strain on the database server. A connection pool solves this by maintaining a set of open, reusable connections.
 
 When an asynchronous task needs to execute a query, it requests a connection from the pool. If a connection is available, it is handed over immediately. If all connections are in use, the task yields back to the async runtime (like Tokio) and waits until a connection is returned to the pool, respecting configurable timeouts and limits.
 
@@ -21,7 +21,7 @@ When an asynchronous task needs to execute a query, it requests a connection fro
 +-------------------+       +-------------------------------+       +-----------------+
 ```
 
-In SQLx, you instantiate a pool using configuration builders specific to your database backend, such as `PgPoolOptions` for PostgreSQL, `MySqlPoolOptions` for MySQL, or `SqlitePoolOptions` for SQLite. 
+In SQLx, you instantiate a pool using configuration builders specific to your database backend, such as `PgPoolOptions` for PostgreSQL, `MySqlPoolOptions` for MySQL, or `SqlitePoolOptions` for SQLite.
 
 ### Asynchronous Query Execution
 
@@ -31,6 +31,7 @@ SQLx provides two primary ways to execute queries: the standard `query` function
 2. **`sqlx::query!` / `sqlx::query_as!`**: These macros are the standout feature of SQLx. They parse your SQL at compile time, connect to a live development database, verify that the tables and columns exist, and infer the exact Rust types returned by the query. If your SQL is invalid, or if your Rust struct does not match the database schema, your code will fail to compile.
 
 SQLx offers several methods for fetching data from the executed queries, mapping perfectly to standard Rust types like `Option` and `Vec`:
+
 * `.execute()`: Runs the query and returns the number of affected rows (useful for `INSERT`, `UPDATE`, `DELETE`).
 * `.fetch_one()`: Expects exactly one row. Returns an error if the query yields zero or multiple rows.
 * `.fetch_optional()`: Returns an `Option<T>`, yielding `None` if no rows match.
@@ -39,7 +40,7 @@ SQLx offers several methods for fetching data from the executed queries, mapping
 
 ### Implementation Example
 
-The following example demonstrates setting up a PostgreSQL connection pool, inserting data, and fetching it using compile-time verified macros. 
+The following example demonstrates setting up a PostgreSQL connection pool, inserting data, and fetching it using compile-time verified macros.
 
 *Note: To use the `query!` macros, the `DATABASE_URL` environment variable must be set at compile time, and the database schema must match the queries.*
 
@@ -112,13 +113,13 @@ async fn main() -> Result<(), sqlx::Error> {
 
 ### Managing Compile-Time Checks in CI/CD
 
-Relying on a live database for compilation poses a challenge for Continuous Integration (CI) pipelines, which often build code in isolated environments. SQLx addresses this via the `sqlx-cli` tool. 
+Relying on a live database for compilation poses a challenge for Continuous Integration (CI) pipelines, which often build code in isolated environments. SQLx addresses this via the `sqlx-cli` tool.
 
 By running `cargo sqlx prepare` in your development environment, SQLx saves the query metadata into a `.sqlx` directory. You commit this directory to version control. In your CI pipeline, you set the `SQLX_OFFLINE=true` environment variable. The compiler will then bypass the live database connection and use the cached metadata in the `.sqlx` folder to verify the macros and build the application, ensuring your builds remain deterministic and fast in production environments.
 
 ## 16.2 Object-Relational Mapping (ORM) with Diesel or SeaORM
 
-While SQLx provides raw control and compile-time verification of SQL strings, Object-Relational Mappers (ORMs) abstract away the SQL entirely. They allow you to interact with your database using pure Rust structs and method chains, bridging the "impedance mismatch" between relational database tables and object-oriented or data-driven application structures. 
+While SQLx provides raw control and compile-time verification of SQL strings, Object-Relational Mappers (ORMs) abstract away the SQL entirely. They allow you to interact with your database using pure Rust structs and method chains, bridging the "impedance mismatch" between relational database tables and object-oriented or data-driven application structures.
 
 The two dominant players in the Rust ecosystem approach this problem differently: **Diesel** focuses on extreme compile-time safety and zero-cost abstractions, while **SeaORM** prioritizes an asynchronous-first, dynamic development experience built on top of SQLx.
 
@@ -189,7 +190,7 @@ pub fn create_user(conn: &mut PgConnection, new_username: &str) -> QueryResult<U
 
 SeaORM is an async-first, dynamic ORM built entirely on top of SQLx. Because it delegates the actual database communication to SQLx, it naturally inherits excellent asynchronous performance and cross-platform compatibility without blocking the runtime.
 
-SeaORM embraces a pattern closer to Active Record (though structurally implemented as a Data Mapper). It heavily relies on procedural macros to generate boilerplate code, allowing you to define entities, relationships, and behaviors in a highly structured way. 
+SeaORM embraces a pattern closer to Active Record (though structurally implemented as a Data Mapper). It heavily relies on procedural macros to generate boilerplate code, allowing you to define entities, relationships, and behaviors in a highly structured way.
 
 #### Implementing SeaORM
 
@@ -258,8 +259,9 @@ Database schemas are rarely static. As your application evolves to meet new busi
 ### The Anatomy of a Migration
 
 A well-architected migration system relies on sequential versioning. Each migration typically consists of two parts:
+
 1. **Up:** The operations required to apply the change (e.g., `CREATE TABLE`, `ALTER TABLE ADD COLUMN`).
-2. **Down:** The operations required to revert the change (e.g., `DROP TABLE`, `ALTER TABLE DROP COLUMN`). 
+2. **Down:** The operations required to revert the change (e.g., `DROP TABLE`, `ALTER TABLE DROP COLUMN`).
 
 To guarantee that migrations run in the exact same order across all environments (development, staging, production), they are prefixed with a unique identifier, usually a Unix timestamp or a sequential number.
 
@@ -286,6 +288,7 @@ Both SQLx and Diesel rely on raw SQL files for migrations. This approach gives y
 #### Managing Migrations with SQLx
 
 In SQLx, you use the `sqlx-cli` tool to generate migration files. Running `sqlx migrate add create_users` will generate two files in a `migrations` directory:
+
 * `YYYYMMDDHHMMSS_create_users.up.sql`
 * `YYYYMMDDHHMMSS_create_users.down.sql`
 
@@ -302,7 +305,7 @@ CREATE TABLE users (
 
 #### Embedding Migrations in the Rust Binary
 
-One of the most powerful features offered by the Rust ecosystem (available in both SQLx and Diesel) is the ability to embed migration files directly into your compiled binary. 
+One of the most powerful features offered by the Rust ecosystem (available in both SQLx and Diesel) is the ability to embed migration files directly into your compiled binary.
 
 In traditional web frameworks (like Ruby on Rails or Node.js), migrations are raw files that must be shipped alongside the application code. In Rust, you can use macros to read the `migrations` directory at compile time and bake the SQL strings directly into your executable.
 
@@ -336,7 +339,7 @@ This pattern simplifies containerized deployments (like Docker). You only need t
 
 While raw SQL migrations are powerful, they lack type safety and cross-database compatibility. If you migrate from PostgreSQL to MySQL, your SQL-based migrations will likely need a complete rewrite.
 
-SeaORM solves this by writing migrations directly in Rust. Using the `sea-orm-cli`, you generate a migration template. You then define your schema changes using a fluent builder API. 
+SeaORM solves this by writing migrations directly in Rust. Using the `sea-orm-cli`, you generate a migration template. You then define your schema changes using a fluent builder API.
 
 ```rust
 use sea_orm_migration::prelude::*;
@@ -389,12 +392,12 @@ Because these migrations are Rust code, the compiler verifies them. SeaORM trans
 Regardless of the tool you choose, production migrations require defensive engineering:
 
 1. **Transactional Migrations:** By default, SQLx and SeaORM attempt to run migrations within a database transaction. If the `up` migration fails halfway through, the transaction is rolled back, preventing a corrupted, half-migrated state. Note that some databases (like MySQL) do not support rolling back DDL (Data Definition Language) statements; in those cases, careful planning is required.
-2. **Backward Compatibility:** Never drop a column or table that the currently running version of your application still uses. In a zero-downtime deployment, the new schema must support both the old version of your application (which is draining connections) and the new version (which is spinning up). 
+2. **Backward Compatibility:** Never drop a column or table that the currently running version of your application still uses. In a zero-downtime deployment, the new schema must support both the old version of your application (which is draining connections) and the new version (which is spinning up).
 3. **Init Containers vs. Application Startup:** While `sqlx::migrate!()` on startup is convenient, running migrations in highly scaled environments can cause race conditions if ten new pods spin up simultaneously and try to migrate the database at once. In Kubernetes, the standard practice is to extract the migration logic into a short-lived `initContainer` or a dedicated pre-deployment Job. This ensures migrations run exactly once, sequentially, before the application replicas boot up.
 
 ## 16.4 Interacting with NoSQL Databases (Redis, MongoDB)
 
-While relational databases excel at enforcing strict data integrity and managing complex relationships, modern web architectures often require specialized data stores to handle specific workloads. NoSQL databases prioritize different constraints, offering extreme low-latency caching, flexible document schemas, or high-throughput telemetry ingestion. 
+While relational databases excel at enforcing strict data integrity and managing complex relationships, modern web architectures often require specialized data stores to handle specific workloads. NoSQL databases prioritize different constraints, offering extreme low-latency caching, flexible document schemas, or high-throughput telemetry ingestion.
 
 In a robust Rust backend, NoSQL databases rarely replace SQL databases entirely; instead, they complement them in a "polyglot persistence" architecture.
 
@@ -529,19 +532,19 @@ async fn main() -> Result<(), mongodb::error::Error> {
 
 ### Addressing the Impedance Mismatch
 
-While interacting with NoSQL databases in Rust is straightforward, developers must be mindful of how they model their data. Because Rust is a statically typed language, bridging the gap to a completely dynamic system like MongoDB requires careful consideration of the `Option<T>` type and Serde's default behaviors. 
+While interacting with NoSQL databases in Rust is straightforward, developers must be mindful of how they model their data. Because Rust is a statically typed language, bridging the gap to a completely dynamic system like MongoDB requires careful consideration of the `Option<T>` type and Serde's default behaviors.
 
 For instance, if a MongoDB document contains fields not defined in your Rust struct, Serde will silently ignore them by default. Conversely, if your Rust struct requires a field that is absent in the BSON document, deserialization will fail unless you wrap that field in an `Option` or use the `#[serde(default)]` attribute. This guarantees that your application will not crash unexpectedly due to missing dynamic data, pushing the unstructured reality of the database into the compile-time safety of the Rust type system.
 
 ## 16.5 Handling Database Transactions and Concurrency Conflicts
 
-In any production-grade application, database operations rarely happen in isolation. A business process often requires modifying multiple tables simultaneously. If a failure occurs halfway through these operations—whether due to a network partition, an application panic, or a database constraint violation—leaving the database in a partially updated state can lead to severe data corruption. 
+In any production-grade application, database operations rarely happen in isolation. A business process often requires modifying multiple tables simultaneously. If a failure occurs halfway through these operations—whether due to a network partition, an application panic, or a database constraint violation—leaving the database in a partially updated state can lead to severe data corruption.
 
 Database transactions solve this by enforcing the ACID properties (Atomicity, Consistency, Isolation, Durability). They group multiple operations into a single, indivisible unit of work that either entirely succeeds (`COMMIT`) or entirely fails (`ROLLBACK`).
 
 ### Transactions in Rust: The Power of `Drop`
 
-Rust's ownership model provides a uniquely elegant and safe approach to database transactions. In frameworks like SQLx, Diesel, and SeaORM, a transaction is represented by a specific type (e.g., `sqlx::Transaction`). 
+Rust's ownership model provides a uniquely elegant and safe approach to database transactions. In frameworks like SQLx, Diesel, and SeaORM, a transaction is represented by a specific type (e.g., `sqlx::Transaction`).
 
 Because Rust enforces deterministic memory management via the `Drop` trait, database drivers implement `Drop` for their transaction types to automatically issue a `ROLLBACK` to the database if the transaction struct goes out of scope before `.commit()` is explicitly called. This guarantees that an unexpected error (using the `?` operator) or an application panic will never leave a dangling transaction locking up your database.
 
@@ -567,7 +570,7 @@ Transaction Lifecycle with Rust's `?` Operator
 
 ### Implementing Transactions with SQLx
 
-The classic example of a necessary transaction is transferring funds between two bank accounts. If we deduct money from Account A, we *must* ensure it is added to Account B. 
+The classic example of a necessary transaction is transferring funds between two bank accounts. If we deduct money from Account A, we *must* ensure it is added to Account B.
 
 ```rust
 use sqlx::{PgPool, Postgres, Transaction};
@@ -617,9 +620,9 @@ When multiple transactions attempt to read and write the same data concurrently,
 
 #### 1. Pessimistic Locking (Row-Level Locks)
 
-Pessimistic locking assumes conflicts will happen frequently. It locks the rows being read so that no other transaction can modify (or sometimes even read) them until the current transaction completes. 
+Pessimistic locking assumes conflicts will happen frequently. It locks the rows being read so that no other transaction can modify (or sometimes even read) them until the current transaction completes.
 
-In SQL, this is typically achieved using `SELECT ... FOR UPDATE`. 
+In SQL, this is typically achieved using `SELECT ... FOR UPDATE`.
 
 If two users attempt to transfer funds from the same account at the exact same millisecond, pessimistic locking ensures the database processes the first transaction completely before allowing the second transaction to even read the account balance.
 
@@ -637,6 +640,7 @@ if sender.balance < amount {
     return Err(sqlx::Error::RowNotFound); 
 }
 ```
+
 *Note: Pessimistic locking can lead to database deadlocks if transactions lock multiple rows in different orders. Always lock rows in a consistent, predictable order (e.g., sorting by ID).*
 
 #### 2. Optimistic Locking (Version Tracking)
@@ -679,6 +683,6 @@ if result.rows_affected() == 0 {
 
 ### Choosing an Isolation Level
 
-By default, most databases operate at a `Read Committed` isolation level. This means a transaction only sees data that has been fully committed by other transactions, preventing "dirty reads." 
+By default, most databases operate at a `Read Committed` isolation level. This means a transaction only sees data that has been fully committed by other transactions, preventing "dirty reads."
 
 However, in complex financial or inventory systems, you might encounter "phantom reads" (where a concurrent transaction inserts new rows that suddenly appear in your queries). If your business logic demands absolute mathematical consistency across massive aggregations, you can instruct your Rust driver to use the strictest isolation level, `Serializable`. Be aware that serializable transactions achieve safety by routinely aborting conflicting transactions, requiring you to implement robust retry loops in your Rust application code.

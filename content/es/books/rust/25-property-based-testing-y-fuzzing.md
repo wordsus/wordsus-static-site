@@ -11,6 +11,7 @@ En el ecosistema de Rust, la herramienta estándar de facto para esto es el crat
 ### ¿Qué es una "Propiedad"?
 
 En el contexto del backend, una propiedad es una regla de negocio que nunca debe violarse. Algunos ejemplos clásicos:
+
 * **Simetría (Idempotencia):** Serializar un struct a JSON y luego deserializarlo debe dar como resultado el struct original idéntico (`deserialize(serialize(obj)) == obj`).
 * **Invariantes lógicos:** Si ordenas una lista de usuarios por edad, la edad del usuario en el índice `i` nunca debe ser mayor que la del usuario en `i + 1`.
 * **Límites matemáticos:** Una función que calcula el total de páginas para un endpoint de paginación nunca debe devolver `0` si hay elementos, independientemente de los números extravagantes que reciba en `total_items` y `page_size`.
@@ -121,7 +122,8 @@ proptest! {
 
 ### ¿Cuándo usar Property-Based Testing?
 
-Como desarrollador Senior, debes saber que PBT **no reemplaza** a las pruebas unitarias basadas en ejemplos, las complementa. 
+Como desarrollador Senior, debes saber que PBT **no reemplaza** a las pruebas unitarias basadas en ejemplos, las complementa.
+
 * Usa Example-Based Testing para TDD, reproducir bugs conocidos y documentar el comportamiento esperado con valores típicos.
 * Usa PBT para parsers, validadores de payloads, algoritmos de cálculo de finanzas/paginación, máquinas de estado e interacciones complejas de tu dominio donde los casos límite son demasiados para escribirlos a mano.
 
@@ -131,7 +133,7 @@ Con `proptest` cubriendo las invariantes lógicas de tu código dentro de rangos
 
 En la sección anterior dimos nuestros primeros pasos con `proptest` y vimos cómo la macro `prop_compose!` nos permite crear estrategias personalizadas. Sin embargo, en un backend del mundo real, rara vez evaluamos tipos primitivos aislados. Tu lógica de negocio opera sobre estructuras complejas, enumeraciones (ADTs), colecciones anidadas y tipos opcionales.
 
-La verdadera potencia del Property-Based Testing radica en tu capacidad para modelar y generar **datos arbitrarios** que representen fielmente el dominio de tu aplicación, incluyendo aquellos casos límite (edge cases) que un ser humano difícilmente imaginaría. 
+La verdadera potencia del Property-Based Testing radica en tu capacidad para modelar y generar **datos arbitrarios** que representen fielmente el dominio de tu aplicación, incluyendo aquellos casos límite (edge cases) que un ser humano difícilmente imaginaría.
 
 ### Estrategias integradas y Colecciones
 
@@ -167,7 +169,7 @@ proptest! {
 
 ### El salto a la productividad: `proptest-derive`
 
-Escribir macros `prop_compose!` para un `Struct` de base de datos que tiene 15 campos o para un `Enum` con múltiples variantes es tedioso, propenso a errores y poco escalable. 
+Escribir macros `prop_compose!` para un `Struct` de base de datos que tiene 15 campos o para un `Enum` con múltiples variantes es tedioso, propenso a errores y poco escalable.
 
 Para solucionar esto, el ecosistema nos ofrece `proptest-derive`. Esta herramienta nos permite usar la metaprogramación (que cubrimos en el Capítulo 10) para autogenerar estrategias de pruebas directamente desde nuestras definiciones de tipos.
 
@@ -251,13 +253,13 @@ fn estrategia_rango_tiempo() -> impl Strategy<Value = (u64, u64)> {
 
 ### Un consejo para el mundo real
 
-Como desarrollador Senior, debes saber que la generación de datos no es gratuita. Si abusas de `prop_filter` con condiciones extremadamente raras (por ejemplo, generar un string aleatorio y filtrar para que *solo* pasen los que digan "Rust"), `proptest` fallará por exceso de rechazos (*Too many local rejects*). 
+Como desarrollador Senior, debes saber que la generación de datos no es gratuita. Si abusas de `prop_filter` con condiciones extremadamente raras (por ejemplo, generar un string aleatorio y filtrar para que *solo* pasen los que digan "Rust"), `proptest` fallará por exceso de rechazos (*Too many local rejects*).
 
 La regla de oro es: **Construye la validez (usando constructores, rangos o `prop_map`), no la filtres.** Es mucho más eficiente generar un entero aleatorio y multiplicarlo por 2 para obtener un número par, que generar enteros aleatorios infinitamente y rechazar los impares.
 
 ## 25.3 Fuzzing continuo con `cargo-fuzz` (libFuzzer)
 
-Si `proptest` es el control de calidad riguroso dentro de tu fábrica, asegurándose de que todas las piezas encajen según las reglas matemáticas del negocio, el **Fuzzing** es soltar a un grupo de monos salvajes con martillos para ver si pueden derribar el edificio. 
+Si `proptest` es el control de calidad riguroso dentro de tu fábrica, asegurándose de que todas las piezas encajen según las reglas matemáticas del negocio, el **Fuzzing** es soltar a un grupo de monos salvajes con martillos para ver si pueden derribar el edificio.
 
 En el desarrollo Backend, especialmente cuando escribimos parsers, manejamos protocolos de red personalizados, o procesamos archivos subidos por usuarios, no podemos confiar en que los datos de entrada respetarán nuestras estructuras. Los atacantes no envían un `String` bien formateado; envían secuencias de bytes maliciosas diseñadas para provocar *Buffer Overflows*, ciclos infinitos o pánicos (Denegación de Servicio - DoS).
 
@@ -265,7 +267,7 @@ Aquí es donde entra el **Fuzzing guiado por cobertura** (Coverage-guided Fuzzin
 
 ### ¿Qué es libFuzzer y cómo funciona?
 
-A diferencia de la generación puramente aleatoria o basada en reglas de `proptest`, herramientas como `libFuzzer` (integrado en LLVM) instrumentan tu código binario durante la compilación. 
+A diferencia de la generación puramente aleatoria o basada en reglas de `proptest`, herramientas como `libFuzzer` (integrado en LLVM) instrumentan tu código binario durante la compilación.
 
 El fuzzer inyecta un flujo de bytes (`&[u8]`) en tu función. Si esa entrada hace que el programa tome una **nueva rama de ejecución** (un `if` diferente, un bloque `match` no explorado), el fuzzer guarda esa entrada, la muta (cambiando bits, concatenando, invirtiendo) y la vuelve a lanzar. Es un algoritmo evolutivo que aprende dinámicamente cómo adentrarse más y más en las entrañas de tu código hasta encontrar un `panic!`, un *out-of-memory* (OOM) o un *timeout*.
 
@@ -328,7 +330,7 @@ Para lanzar la horda mutante, ejecuta:
 cargo +nightly fuzz run fuzz_target_1
 ```
 
-Verás una salida críptica en la consola con métricas como `cov:` (cobertura de ramas) y `corp:` (tamaño del corpus de entradas interesantes guardadas). 
+Verás una salida críptica en la consola con métricas como `cov:` (cobertura de ramas) y `corp:` (tamaño del corpus de entradas interesantes guardadas).
 
 Si el fuzzer encuentra una secuencia de bytes que causa un pánico (por ejemplo, si tu parser hace un slicing en el medio de un carácter Unicode multibyte, rompiendo la regla de seguridad de `&str`), el fuzzer se detendrá inmediatamente e imprimirá el stacktrace.
 
@@ -366,17 +368,18 @@ fuzz_target!(|transaccion: Transaccion| {
 
 ### Fuzzing Continuo en CI/CD
 
-El Fuzzing no es algo que ejecutas 5 minutos antes de hacer un push. Debido a su naturaleza exploratoria, los mejores bugs suelen encontrarse tras horas o días de ejecución ininterrumpida. 
+El Fuzzing no es algo que ejecutas 5 minutos antes de hacer un push. Debido a su naturaleza exploratoria, los mejores bugs suelen encontrarse tras horas o días de ejecución ininterrumpida.
 
 En un entorno maduro, el Fuzzing Continuo se implementa de las siguientes maneras:
+
 1. **OSS-Fuzz:** Si tu proyecto es Open Source, Google ofrece este servicio gratuito que ejecuta tus fuzzers en su infraestructura 24/7 y te notifica en privado si encuentran vulnerabilidades.
 2. **Pipelines nocturnos (Nightly CI):** Configurar un flujo de trabajo en GitHub Actions o GitLab CI que compile el fuzzer y lo ejecute durante un tiempo determinado (ej. 1 hora) todas las madrugadas. Si hay un *crash*, el pipeline falla y sube el *artifact* como evidencia.
 
-El Fuzzing es la herramienta definitiva para garantizar que tu backend sea a prueba de balas frente a atacantes externos. Con los conceptos de `proptest` y `cargo-fuzz` bajo control, el siguiente paso es entender cómo catalogar, depurar y blindar tu código contra esos extraños casos límite que estas herramientas revelarán. 
+El Fuzzing es la herramienta definitiva para garantizar que tu backend sea a prueba de balas frente a atacantes externos. Con los conceptos de `proptest` y `cargo-fuzz` bajo control, el siguiente paso es entender cómo catalogar, depurar y blindar tu código contra esos extraños casos límite que estas herramientas revelarán.
 
 ## 25.4 Descubrimiento de pánicos y edge-cases ocultos
 
-Has definido tus invariantes matemáticos con `proptest` y has soltado a la horda de mutaciones a nivel de bytes con `cargo-fuzz`. Tarde o temprano, la consola se teñirá de rojo. 
+Has definido tus invariantes matemáticos con `proptest` y has soltado a la horda de mutaciones a nivel de bytes con `cargo-fuzz`. Tarde o temprano, la consola se teñirá de rojo.
 
 Es fundamental entender un principio clave de Rust: **el compilador te protege de los fallos de memoria (Data Races, Use-After-Free, punteros nulos), pero no te protege de la lógica defectuosa ni de los pánicos explícitos en tiempo de ejecución**. Cuando las herramientas de pruebas generativas rompen tu código, casi siempre revelan suposiciones falsas que hiciste sobre los datos de entrada.
 
@@ -387,6 +390,7 @@ A continuación, analizaremos los *edge-cases* más comunes en el desarrollo bac
 Cuando un fuzzer encuentra un *crash* en Rust seguro (sin bloques `unsafe`), en el 99% de los casos se debe a uno de los siguientes cuatro escenarios:
 
 #### 1. Slicing de Strings no alineados (El infierno UTF-8)
+
 En Rust, un `String` es un vector de bytes UTF-8 válidos. Si asumes que 1 byte = 1 carácter, un fuzzer inyectará un Emoji (que ocupa 4 bytes) o un carácter con tilde y provocará un pánico.
 
 ```rust
@@ -406,34 +410,39 @@ fn obtener_prefijo_seguro(texto: &str, limite: usize) -> &str {
 ```
 
 #### 2. Desbordamientos aritméticos (Integer Overflows)
+
 En modo `debug`, operaciones como `255u8 + 1` causan un pánico. En modo `release`, por defecto, hacen *wrap around* (vuelven a 0), lo cual destruye la integridad de la lógica de negocio (por ejemplo, al calcular el precio total de un carrito de compras).
 
 **Solución:** Reemplazar los operadores matemáticos estándar por métodos explícitos cuando trates con inputs externos no validados:
+
 * `a.checked_add(b)`: Devuelve `Option`, permitiéndote devolver un error HTTP 400.
 * `a.saturating_add(b)`: Se queda en el valor máximo del tipo numérico. Útil para contadores de intentos.
 
 #### 3. Accesos fuera de límites (Out-of-bounds Indexing)
+
 Acceder directamente a un índice de un slice o vector (`let usuario = usuarios[id];`) asume ciegamente que el índice existe. El fuzzer inyectará el valor `usize::MAX` y tirará tu aplicación web entera.
 
 **Solución:** Usar siempre el método `.get()` que devuelve un `Option<&T>`:
+
 ```rust
 let usuario = usuarios.get(id).ok_or(MiError::UsuarioNoEncontrado)?;
 ```
 
 #### 4. Bombas de tiempo: `.unwrap()` y `.expect()`
+
 Cada `.unwrap()` en tu código de producción es una promesa implícita que le haces al compilador: *"Juro que esto nunca será nulo o un error"*. El Property-Based Testing y el Fuzzing son los auditores que vienen a cobrar esa promesa. Si usaste `.unwrap()` para acortar camino, el fuzzer lo encontrará. Convierte siempre esos casos en flujos de error manejables devolviendo `Result`.
 
 ### El ciclo de vida de un bug descubierto
 
 Cuando `proptest` o `cargo-fuzz` encuentran un error, no basta con parchear el código rápidamente. Como desarrollador Senior, debes seguir un proceso estructurado de *triage*:
 
-1.  **Aislar la semilla (Seed / Artifact):** Ambas herramientas te proporcionan la entrada exacta que causó el fallo (el valor de reducción en `proptest` o el archivo binario en el directorio `artifacts/` de libFuzzer).
-2.  **Crear un Test de Regresión:** Antes de tocar el código de producción, toma esa entrada problemática y crea una prueba unitaria tradicional (`#[test]`) usando esos mismos valores. Verás que la prueba falla.
-3.  **Aplicar la corrección:** Modifica tu código usando tipos seguros (`Option`, `Result`, métodos `checked_*`).
-4.  **Verificar:** Ejecuta la prueba de regresión (ahora debería pasar) y vuelve a lanzar el fuzzer para asegurarte de que la mutación no ha revelado un caso límite adyacente.
+1. **Aislar la semilla (Seed / Artifact):** Ambas herramientas te proporcionan la entrada exacta que causó el fallo (el valor de reducción en `proptest` o el archivo binario en el directorio `artifacts/` de libFuzzer).
+2. **Crear un Test de Regresión:** Antes de tocar el código de producción, toma esa entrada problemática y crea una prueba unitaria tradicional (`#[test]`) usando esos mismos valores. Verás que la prueba falla.
+3. **Aplicar la corrección:** Modifica tu código usando tipos seguros (`Option`, `Result`, métodos `checked_*`).
+4. **Verificar:** Ejecuta la prueba de regresión (ahora debería pasar) y vuelve a lanzar el fuzzer para asegurarte de que la mutación no ha revelado un caso límite adyacente.
 
 ### Conclusión del Capítulo
 
 El testing estocástico (PBT y Fuzzing) cambia tu mentalidad. Dejas de programar para el "camino feliz" (Happy Path) y empiezas a programar a la defensiva, diseñando sistemas que son matemáticamente robustos. Al combinar las pruebas de integración clásicas (para verificar casos de uso específicos) con `proptest` (para invariantes de negocio) y `cargo-fuzz` (para resiliencia a nivel de bytes), estás construyendo un backend de grado empresarial.
 
-Con esto concluimos el Capítulo 25 sobre Property-Based Testing y Fuzzing. El siguiente capítulo es el **Capítulo 26: Testcontainers para Entornos Efímeros**, donde veremos cómo aislar nuestras pruebas de integración levantando bases de datos reales en Docker de forma programática. 
+Con esto concluimos el Capítulo 25 sobre Property-Based Testing y Fuzzing. El siguiente capítulo es el **Capítulo 26: Testcontainers para Entornos Efímeros**, donde veremos cómo aislar nuestras pruebas de integración levantando bases de datos reales en Docker de forma programática.

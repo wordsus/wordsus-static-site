@@ -4,7 +4,7 @@
 
 Sal en una noche despejada, lejos de las luces de la ciudad, y mira hacia arriba. Si tienes suerte, verás un tapiz deslumbrante de estrellas, tal vez la banda lechosa de nuestra propia galaxia cruzando el cielo, e incluso el tenue resplandor de algún planeta vecino. Es una vista que ha cautivado a la humanidad desde el principio de los tiempos. Al observar esta inmensidad, es natural pensar que lo que vemos es, esencialmente, lo que hay. Estrellas, polvo cósmico, planetas, lunas, cometas y gas brillante. El universo observable parece rebosar de luz y sustancia material.
 
-Sin embargo, a lo largo del último siglo, la astrofísica nos ha revelado una verdad tan fascinante como inquietante: todo lo que puedes ver, todo lo que emite luz, todo lo que compone tu cuerpo, la Tierra, el Sol y los miles de millones de galaxias en el cosmos, representa apenas una minúscula fracción de la realidad. Específicamente, alrededor del 5% del universo. 
+Sin embargo, a lo largo del último siglo, la astrofísica nos ha revelado una verdad tan fascinante como inquietante: todo lo que puedes ver, todo lo que emite luz, todo lo que compone tu cuerpo, la Tierra, el Sol y los miles de millones de galaxias en el cosmos, representa apenas una minúscula fracción de la realidad. Específicamente, alrededor del 5% del universo.
 
 Imagina que asistes a un concierto de tu banda favorita. Escuchas la música, ves a los músicos bajo los focos y sientes la vibración del sonido. Pero, por alguna razón extraña, eres completamente incapaz de ver el escenario, los cables, los altavoces, las gradas e incluso al 95% del público que te rodea. Sabes que están ahí porque la banda no flota en el aire y porque escuchas el eco de miles de voces cantando, pero tus ojos son ciegos a ellos. Así es exactamente como los astrónomos observan nuestro universo hoy en día.
 
@@ -16,20 +16,20 @@ Pero si es completamente invisible e indetectable a través de la luz, ¿cómo d
 
 Para entender cómo descubrimos algo invisible, debemos retroceder a la década de 1930. El protagonista de nuestra historia es Fritz Zwicky, un astrofísico suizo que trabajaba en el Instituto de Tecnología de California (Caltech). Zwicky era conocido por ser brillante, visionario y, según sus colegas, una persona con un carácter excepcionalmente áspero. A él le debemos conceptos revolucionarios como las "supernovas" y las estrellas de neutrones.
 
-En 1933, Zwicky estaba estudiando un grupo masivo de galaxias conocido como el Cúmulo de Coma. Un cúmulo de galaxias es exactamente lo que suena: una gigantesca agrupación de cientos o miles de galaxias que se mantienen juntas gracias a la fuerza de gravedad mutua, como un enjambre de abejas zumbando alrededor de un centro común. 
+En 1933, Zwicky estaba estudiando un grupo masivo de galaxias conocido como el Cúmulo de Coma. Un cúmulo de galaxias es exactamente lo que suena: una gigantesca agrupación de cientos o miles de galaxias que se mantienen juntas gracias a la fuerza de gravedad mutua, como un enjambre de abejas zumbando alrededor de un centro común.
 
 Zwicky se propuso una tarea aparentemente sencilla: calcular la masa total de este cúmulo. Para hacerlo, utilizó dos métodos diferentes:
 
 1. **El método de la luz:** Contó todas las galaxias visibles, estimó cuántas estrellas había en ellas por el brillo que emitían, y calculó la "masa luminosa" total.
-2. **El método de la gravedad:** Midió a qué velocidad se movían las galaxias en los bordes del cúmulo. 
+2. **El método de la gravedad:** Midió a qué velocidad se movían las galaxias en los bordes del cúmulo.
 
 Para entender este segundo método, piensa en un carrusel o una calesita que gira muy rápido. Si no estás bien agarrado, la fuerza te expulsará hacia afuera. Lo único que te mantiene en el carrusel es la fuerza de tus manos agarrando la barra. En un cúmulo de galaxias, el carrusel son las galaxias girando a velocidades vertiginosas, y la fuerza de agarre es la **gravedad**. Cuanto más rápido giran las galaxias, más gravedad (y por lo tanto, más masa) se necesita para evitar que salgan volando hacia el espacio profundo.
 
 Al comparar ambos resultados, Zwicky se encontró con un problema monumental. Las galaxias del Cúmulo de Coma se movían increíblemente rápido. Demasiado rápido. De hecho, se movían con tanta velocidad que la masa de todas las estrellas visibles en el cúmulo no era ni de lejos suficiente para generar la gravedad necesaria para retenerlas. Según las leyes de la física, el Cúmulo de Coma debería haberse desgarrado y dispersado hace miles de millones de años.
 
-La diferencia no era pequeña. Zwicky calculó que se necesitaba **alrededor de 400 veces más masa** de la que se podía ver para mantener el cúmulo unido. (Hoy sabemos que el cálculo de Zwicky era un poco exagerado debido a las limitaciones técnicas de la época, pero el principio subyacente era absolutamente correcto). 
+La diferencia no era pequeña. Zwicky calculó que se necesitaba **alrededor de 400 veces más masa** de la que se podía ver para mantener el cúmulo unido. (Hoy sabemos que el cálculo de Zwicky era un poco exagerado debido a las limitaciones técnicas de la época, pero el principio subyacente era absolutamente correcto).
 
-En su artículo científico de 1933, publicado en alemán, Zwicky concluyó que debía existir algún tipo de materia invisible proporcionando la gravedad extra. La llamó *dunkle Materie* (materia oscura). 
+En su artículo científico de 1933, publicado en alemán, Zwicky concluyó que debía existir algún tipo de materia invisible proporcionando la gravedad extra. La llamó *dunkle Materie* (materia oscura).
 
 Desafortunadamente para Zwicky, la comunidad científica de los años 30 consideró que la discrepancia probablemente se debía a errores de medición o a variables desconocidas en la dinámica de los cúmulos. La idea de una inmensa cantidad de materia invisible era demasiado radical. El misterio de la materia oscura fue guardado en un cajón durante casi cuarenta años.
 
@@ -79,7 +79,7 @@ Rotación
           (Núcleo Galáctico)                                      centro de la galaxia
 ```
 
-Para que esta "curva plana" sea posible y no rompa la fórmula que vimos anteriormente ($v = \sqrt{\frac{G \cdot M}{r}}$), si $r$ se hace más grande pero $v$ se mantiene igual, significa matemáticamente que $M$ (la masa) **también debe estar haciéndose más grande**. 
+Para que esta "curva plana" sea posible y no rompa la fórmula que vimos anteriormente ($v = \sqrt{\frac{G \cdot M}{r}}$), si $r$ se hace más grande pero $v$ se mantiene igual, significa matemáticamente que $M$ (la masa) **también debe estar haciéndose más grande**.
 
 En otras palabras, tenía que haber enormes cantidades de masa invisible extendiéndose mucho más allá del límite visible de la galaxia. Vera Rubin había descubierto que las hermosas galaxias espirales que vemos en las fotografías son, en realidad, solo el núcleo luminoso de una esfera gigantesca e invisible de materia oscura. A esta esfera invisible que rodea y envuelve a la galaxia se le llama **halo de materia oscura**.
 
@@ -89,11 +89,11 @@ Los datos de Rubin eran irrefutables. Había examinado decenas de galaxias y tod
 
 Podrías pensar: "Bueno, tal vez las leyes de la gravedad de Newton simplemente no funcionan a escalas galácticas y necesitamos modificarlas". Es una idea legítima y algunos científicos la exploraron (en una teoría llamada MOND, Dinámica Newtoniana Modificada). Sin embargo, la materia oscura tenía otra carta bajo la manga, un fenómeno tan espectacular que parece ciencia ficción: las **lentes gravitacionales**.
 
-Para entender este concepto, debemos dejar a Newton y pedir ayuda a Albert Einstein. En su Teoría de la Relatividad General de 1915, Einstein propuso que la gravedad no es una fuerza misteriosa que tira de los objetos a distancia, sino una curvatura del propio tejido del espacio-tiempo. 
+Para entender este concepto, debemos dejar a Newton y pedir ayuda a Albert Einstein. En su Teoría de la Relatividad General de 1915, Einstein propuso que la gravedad no es una fuerza misteriosa que tira de los objetos a distancia, sino una curvatura del propio tejido del espacio-tiempo.
 
 Imagina el espacio como una cama elástica gigante (un trampolín). Si colocas una bola de boliche pesada (como el Sol o un cúmulo de galaxias) en el centro, la cama elástica se hunde, creando una depresión. Si lanzas una canica más pequeña (como un planeta o incluso un rayo de luz) a través del trampolín, su trayectoria se curvará al pasar por la depresión.
 
-Einstein predijo que los objetos muy masivos curvarían tanto el espacio que actuarían como lentes de vidrio colosales, doblando y distorsionando la luz de los objetos que están detrás de ellos. 
+Einstein predijo que los objetos muy masivos curvarían tanto el espacio que actuarían como lentes de vidrio colosales, doblando y distorsionando la luz de los objetos que están detrás de ellos.
 
 ¿Qué tiene que ver esto con la materia oscura? Resulta que, en las últimas décadas, gracias a telescopios poderosos como el Hubble y el James Webb, hemos podido observar enormes cúmulos de galaxias. Detrás de estos cúmulos hay otras galaxias aún más lejanas. La luz de estas galaxias distantes viaja hacia nosotros y, al pasar por el cúmulo en primer plano, se desvía.
 
@@ -107,9 +107,9 @@ A continuación, un esquema en texto plano de cómo funciona una lente gravitaci
                                                             \-->  [Tierra] (Vemos una imagen abajo)
 ```
 
-Al llegar a la Tierra, vemos la imagen de la galaxia distante estirada, distorsionada en forma de arcos brillantes, o incluso multiplicada, apareciendo varias veces alrededor del cúmulo. 
+Al llegar a la Tierra, vemos la imagen de la galaxia distante estirada, distorsionada en forma de arcos brillantes, o incluso multiplicada, apareciendo varias veces alrededor del cúmulo.
 
-Al medir exactamente cuánto se desvía la luz, los astrofísicos pueden calcular con precisión milimétrica cuánta masa hay en la "lente" (el cúmulo intermedio). Y aquí viene el golpe de gracia para los escépticos: la masa calculada a través de este doblez de la luz es inmensamente mayor que la masa de todas las estrellas y el gas visible en el cúmulo. 
+Al medir exactamente cuánto se desvía la luz, los astrofísicos pueden calcular con precisión milimétrica cuánta masa hay en la "lente" (el cúmulo intermedio). Y aquí viene el golpe de gracia para los escépticos: la masa calculada a través de este doblez de la luz es inmensamente mayor que la masa de todas las estrellas y el gas visible en el cúmulo.
 
 Incluso podemos "mapear" dónde está la materia oscura. Al observar cómo se distorsiona la luz de fondo, las computadoras pueden reconstruir un mapa tridimensional de la masa invisible. Hemos descubierto que la materia oscura no está distribuida uniformemente, sino que forma grumos, filamentos y enormes concentraciones esféricas, exactamente donde la luz y las galaxias visibles se agrupan. La materia visible es simplemente la "espuma" luminosa sobre un inmenso océano ondulante de materia oscura.
 
@@ -152,7 +152,7 @@ Esta es la pregunta del millón de dólares. Sabemos que está ahí por su grave
 Al principio, los astrónomos pensaron que la materia oscura podría ser simplemente materia normal y corriente, pero muy oscura. Agujeros negros solitarios, enanas marrones (estrellas fallidas que no brillan), planetas errantes o gas interestelar frío. A estos objetos se los denominó MACHO (Massive Compact Halo Objects, o Objetos Masivos y Compactos del Halo). Sin embargo, tras años de búsquedas exhaustivas mediante lentes gravitacionales buscando objetos oscuros aislados, se concluyó que no hay suficientes MACHOs ni de lejos para explicar el 27% del universo. Además, los cálculos del Big Bang nos dicen exactamente cuánta materia "normal" (bariónica) se pudo crear, y el límite estricto es de alrededor de ese miserable 5%. La materia oscura tiene que ser algo diferente y exótico.
 
 **Los WIMPs (El candidato favorito):**
-Actualmente, el candidato principal en la comunidad científica son las WIMP (Weakly Interacting Massive Particles, o Partículas Masivas que Interactúan Débilmente). Las WIMPs serían un tipo de partícula subatómica que se formó en las primeras fracciones de segundo del Big Bang. 
+Actualmente, el candidato principal en la comunidad científica son las WIMP (Weakly Interacting Massive Particles, o Partículas Masivas que Interactúan Débilmente). Las WIMPs serían un tipo de partícula subatómica que se formó en las primeras fracciones de segundo del Big Bang.
 Son "masivas", lo que significa que tienen peso y generan gravedad.
 Pero "interactúan débilmente", lo que significa que ignoran el electromagnetismo. Podrían atravesar una pared de plomo de un año luz de grosor sin siquiera inmutarse. De hecho, mientras lees esto, es muy probable que miles de millones de partículas de materia oscura estén atravesando tu cuerpo y el planeta Tierra a cada segundo sin causar ningún efecto perceptible, como fantasmas subatómicos.
 
@@ -169,9 +169,9 @@ Si viajamos mentalmente de vuelta a los primeros millones de años después del 
 
 Sin embargo, la materia oscura entró al rescate. Como la materia oscura no interactúa con la luz (radiación), no sufrió la inmensa presión de calor del universo primitivo. Por lo tanto, pudo comenzar a agruparse y condensarse debido a su propia gravedad mucho antes que la materia normal.
 
-La materia oscura formó inmensas "redes" y nudos gravitacionales en el espacio temprano, un esqueleto cósmico. Estos pozos de gravedad oscuros actuaron como trampas. Cuando el universo se enfrió, el gas de hidrógeno normal fue succionado hacia estos pozos gravitacionales invisibles. 
+La materia oscura formó inmensas "redes" y nudos gravitacionales en el espacio temprano, un esqueleto cósmico. Estos pozos de gravedad oscuros actuaron como trampas. Cuando el universo se enfrió, el gas de hidrógeno normal fue succionado hacia estos pozos gravitacionales invisibles.
 
-Allí, en el centro de estos densos halos de materia oscura, el gas se comprimió tanto que se encendió, formando las primeras estrellas y, eventualmente, las primeras galaxias. La materia oscura construyó el escenario y puso los andamios; la materia normal simplemente fluyó hacia las estructuras ya preparadas, se encendió y comenzó a brillar, adornando el andamiaje invisible con galaxias y constelaciones. 
+Allí, en el centro de estos densos halos de materia oscura, el gas se comprimió tanto que se encendió, formando las primeras estrellas y, eventualmente, las primeras galaxias. La materia oscura construyó el escenario y puso los andamios; la materia normal simplemente fluyó hacia las estructuras ya preparadas, se encendió y comenzó a brillar, adornando el andamiaje invisible con galaxias y constelaciones.
 
 Nuestra Vía Láctea, nuestro Sol, nuestra Tierra y cada átomo de tu cuerpo existen hoy gracias a que, hace miles de millones de años, la gravedad fantasmal de la materia oscura creó el molde necesario para juntar la materia. Sigue siendo la fuerza silenciosa que hoy impide que nuestra galaxia vuele en pedazos hacia el abismo intergaláctico.
 

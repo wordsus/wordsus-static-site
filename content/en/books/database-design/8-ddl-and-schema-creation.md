@@ -215,8 +215,6 @@ Constraints can be defined inline (at the column level) or out-of-line (at the t
 * `CASCADE`: Automatically deletes or updates the corresponding child records.
 * `SET NULL`: Sets the child's foreign key column to `NULL`.
 
-
-
 ```sql
 CREATE TABLE orders (
     order_id INT PRIMARY KEY,

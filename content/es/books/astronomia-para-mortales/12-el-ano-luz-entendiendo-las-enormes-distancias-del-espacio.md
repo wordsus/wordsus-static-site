@@ -8,7 +8,7 @@ Cuando intentamos responder a esa segunda pregunta, nuestro cerebro terrenal se 
 
 Pero cuando dejamos la atmósfera de la Tierra y nos aventuramos en el cosmos profundo, nuestras herramientas cotidianas se rompen. El universo es tan incomprensiblemente vasto que usar kilómetros para medir el espacio es como intentar medir la distancia entre Madrid y Buenos Aires usando un grano de arroz como regla. No solo es poco práctico; es numéricamente absurdo.
 
-Para comprender nuestro vecindario cósmico y el vasto océano intergaláctico que se extiende más allá, los astrónomos tuvieron que inventar una nueva regla de medir. Tuvieron que buscar algo tan fundamental, tan constante y tan rápido que pudiera abarcar el universo. Encontraron su respuesta en la luz misma. 
+Para comprender nuestro vecindario cósmico y el vasto océano intergaláctico que se extiende más allá, los astrónomos tuvieron que inventar una nueva regla de medir. Tuvieron que buscar algo tan fundamental, tan constante y tan rápido que pudiera abarcar el universo. Encontraron su respuesta en la luz misma.
 
 Bienvenidos a uno de los conceptos más fascinantes y poéticos de la ciencia. Hoy, en *Astronomía para Mortales*, vamos a desentrañar el misterio del "año luz", descubriremos cómo funciona el límite de velocidad del universo y entenderemos por qué, cada vez que miras las estrellas, estás viajando en el tiempo.
 
@@ -24,7 +24,7 @@ Para entender por qué usamos esto, imagina que tienes un amigo que vive en otra
 
 ## 2. El límite de velocidad cósmico
 
-Para que esta regla de medir funcione, necesitamos saber a qué velocidad viaja la luz. Durante gran parte de la historia humana, los filósofos y científicos pensaban que la luz era instantánea. Si encendías una linterna, su luz llegaba a su destino en el momento exacto, sin importar la distancia. 
+Para que esta regla de medir funcione, necesitamos saber a qué velocidad viaja la luz. Durante gran parte de la historia humana, los filósofos y científicos pensaban que la luz era instantánea. Si encendías una linterna, su luz llegaba a su destino en el momento exacto, sin importar la distancia.
 
 No fue hasta el siglo XVII que un astrónomo danés llamado Ole Rømer, observando los eclipses de las lunas de Júpiter, se dio cuenta de un patrón peculiar: los eclipses parecían ocurrir más tarde cuando la Tierra estaba más lejos de Júpiter en su órbita, y más temprano cuando estaba más cerca. Rømer dedujo brillantemente que esta discrepancia se debía a que la luz tardaba un tiempo finito en viajar por el espacio. ¡La luz tenía una velocidad límite!
 
@@ -32,8 +32,8 @@ Hoy en día, gracias a la física moderna y a las mediciones láser de alta prec
 
 Para poner esa velocidad en una perspectiva que nuestra mente mortal pueda procesar:
 
-*   La circunferencia de la Tierra en el ecuador es de unos 40.000 kilómetros.
-*   Si pudieras curvar un rayo de luz y hacerlo viajar alrededor del planeta, daría **siete vueltas y media a la Tierra en un solo segundo**.
+* La circunferencia de la Tierra en el ecuador es de unos 40.000 kilómetros.
+* Si pudieras curvar un rayo de luz y hacerlo viajar alrededor del planeta, daría **siete vueltas y media a la Tierra en un solo segundo**.
 
 Mientras pronuncias la palabra "uno", la luz ya ha viajado una distancia equivalente a ir de España a Nueva Zelanda 15 veces. Es la entidad más rápida del universo conocido. De hecho, según las teorías de Albert Einstein, nada en el universo que posea masa puede viajar más rápido que la luz en el vacío. Es el límite de velocidad absoluto establecido por las leyes de la física.
 
@@ -57,15 +57,15 @@ Ahora, aplicamos la fórmula de la distancia ($d = c \cdot t$):
 $$d = 299\,792.458 \text{ km/s} \times 31\,557\,600 \text{ s}$$
 $$d \approx 9\,460\,730\,472\,580 \text{ km}$$
 
-Ahí lo tienes. **Un año luz equivale a casi 9,5 billones de kilómetros** (usando la escala larga, es decir, millones de millones). 
+Ahí lo tienes. **Un año luz equivale a casi 9,5 billones de kilómetros** (usando la escala larga, es decir, millones de millones).
 
-Si intentaras conducir esa distancia en un coche yendo por una autopista cósmica ininterrumpida a 120 km/h, sin detenerte nunca para dormir o repostar gasolina, tardarías aproximadamente 9 millones de años en recorrer un solo año luz. 
+Si intentaras conducir esa distancia en un coche yendo por una autopista cósmica ininterrumpida a 120 km/h, sin detenerte nunca para dormir o repostar gasolina, tardarías aproximadamente 9 millones de años en recorrer un solo año luz.
 
 ## 4. La regla cósmica: ¿Por qué abandonamos los kilómetros?
 
 Ahora que tenemos nuestro número (9,46 billones de kilómetros), podemos responder claramente por qué necesitamos esta unidad de medida. Se trata puramente de higiene mental y de evitar ahogarnos en ceros.
 
-Imagina que estamos midiendo la distancia a la estrella más cercana a nuestro sistema solar, una pequeña enana roja llamada Próxima Centauri. 
+Imagina que estamos midiendo la distancia a la estrella más cercana a nuestro sistema solar, una pequeña enana roja llamada Próxima Centauri.
 
 Si te digo que Próxima Centauri está a unos **40.000.000.000.000 de kilómetros**, tu cerebro no sabe qué hacer con esa información. Es solo un cuatro seguido de un montón de ceros. El número es tan grande que pierde todo su significado emocional e intuitivo. Es propenso a errores tipográficos y es un dolor de cabeza para los cálculos matemáticos.
 
@@ -105,20 +105,22 @@ Cada vez que abres los ojos, estás viendo el pasado. En tu vida cotidiana, este
 Pero cuando levantas la vista hacia el cosmos, ese retraso temporal se convierte en algo monumental.
 
 ### El Sol es un fantasma de 8 minutos
+
 Pensemos en nuestra propia estrella, el Sol. Sabemos que está a unos 150 millones de kilómetros, o unos 8,3 minutos luz de distancia. La luz y el calor que sientes en tu piel en un día soleado de verano salieron de la superficie del Sol hace más de 8 minutos. Atravesaron el vacío frío del espacio a 300.000 km/s, entraron en la atmósfera de la Tierra y finalmente aterrizaron en ti.
 
-Hagamos un experimento mental un poco catastrófico pero revelador. Imagina que, por un evento de magia cósmica, el Sol desapareciera repentinamente en este preciso segundo. Se apaga como una bombilla. ¿Qué pasaría en la Tierra? 
+Hagamos un experimento mental un poco catastrófico pero revelador. Imagina que, por un evento de magia cósmica, el Sol desapareciera repentinamente en este preciso segundo. Se apaga como una bombilla. ¿Qué pasaría en la Tierra?
 
-Durante 8 minutos y 20 segundos... **absolutamente nada**. 
+Durante 8 minutos y 20 segundos... **absolutamente nada**.
 
 Miraríamos al cielo y seguiríamos viendo al Sol brillando radiante. Seguiríamos sintiendo su calor. Los pájaros seguirían cantando. No tendríamos ni la más remota idea de que el centro de nuestro sistema solar ha dejado de existir, porque la "última tanda" de luz que el Sol emitió antes de desaparecer todavía estaría en camino hacia nosotros. Solo cuando esos últimos rayos de luz llegaran a la Tierra, 8 minutos después del evento, el cielo se volvería negro repentinamente y caeríamos en una noche eterna.
 
 ### El firmamento como un museo de historia
-Si aplicamos esta misma lógica a las estrellas nocturnas, la experiencia de observar las estrellas se convierte en una visita a un museo de historia natural cósmica. 
 
-*   **Sirio**, la estrella más brillante de nuestro cielo nocturno, está a 8,6 años luz de distancia. Cuando la admiras en invierno, estás viendo la luz que esa estrella emitió hace más de 8 años y medio. Estás viendo a Sirio como era en el pasado, no como es hoy. Si Sirio explotó ayer, no nos enteraremos hasta dentro de ocho años.
-*   La famosa constelación de **Orión** tiene estrellas a diferentes distancias. Betelgeuse, el gigante rojo en el hombro de Orión, está a unos 640 años luz. La luz que tu ojo capta hoy comenzó su viaje alrededor del año 1380, mucho antes del descubrimiento de América o la invención de la imprenta.
-*   Si logras ver la galaxia de **Andrómeda** a simple vista en una noche oscura (una mancha borrosa en el cielo del hemisferio norte), prepárate para un mareo existencial: está a 2,5 millones de años luz. Los fotones de luz que aterrizan en tu retina en ese momento comenzaron su viaje cuando el *Homo habilis* estaba dando sus primeros pasos evolutivos en el este de África. Esa luz ha estado viajando por el espacio vacío durante dos millones y medio de años, solo para terminar su viaje estrellándose contra tu ojo.
+Si aplicamos esta misma lógica a las estrellas nocturnas, la experiencia de observar las estrellas se convierte en una visita a un museo de historia natural cósmica.
+
+* **Sirio**, la estrella más brillante de nuestro cielo nocturno, está a 8,6 años luz de distancia. Cuando la admiras en invierno, estás viendo la luz que esa estrella emitió hace más de 8 años y medio. Estás viendo a Sirio como era en el pasado, no como es hoy. Si Sirio explotó ayer, no nos enteraremos hasta dentro de ocho años.
+* La famosa constelación de **Orión** tiene estrellas a diferentes distancias. Betelgeuse, el gigante rojo en el hombro de Orión, está a unos 640 años luz. La luz que tu ojo capta hoy comenzó su viaje alrededor del año 1380, mucho antes del descubrimiento de América o la invención de la imprenta.
+* Si logras ver la galaxia de **Andrómeda** a simple vista en una noche oscura (una mancha borrosa en el cielo del hemisferio norte), prepárate para un mareo existencial: está a 2,5 millones de años luz. Los fotones de luz que aterrizan en tu retina en ese momento comenzaron su viaje cuando el *Homo habilis* estaba dando sus primeros pasos evolutivos en el este de África. Esa luz ha estado viajando por el espacio vacío durante dos millones y medio de años, solo para terminar su viaje estrellándose contra tu ojo.
 
 ```text
 EL FLUJO DEL TIEMPO CÓSMICO
@@ -131,9 +133,10 @@ del Cangrejo explota                          mientras imperios en la Tierra    
 ```
 
 ### El espejo alienígena
+
 Este concepto funciona en ambas direcciones y da lugar a escenarios fascinantes. Imagina que existe una civilización alienígena avanzada en un planeta a 65 millones de años luz de la Tierra. Imagina que han construido un telescopio absurdamente poderoso, capaz de hacer un "zoom" y ver la superficie de nuestro planeta con claridad.
 
-Si esos alienígenas apuntaran su súper telescopio hacia la Tierra en este preciso momento... ¿qué verían? ¿Verían nuestras ciudades, nuestros aviones y nuestros rascacielos? 
+Si esos alienígenas apuntaran su súper telescopio hacia la Tierra en este preciso momento... ¿qué verían? ¿Verían nuestras ciudades, nuestros aviones y nuestros rascacielos?
 
 No. Verían la luz que salió de la Tierra hace 65 millones de años. Si nos miran ahora mismo, los alienígenas están viendo dinosaurios caminando por Pangea. Nosotros somos el pasado remoto para ellos, tanto como ellos lo son para nosotros.
 
@@ -153,7 +156,7 @@ Como mencionamos, nuestra vecina más cercana, Próxima Centauri, está a **4,24
 Todas las estrellas que puedes ver a simple vista en el cielo pertenecen a nuestra galaxia, la Vía Láctea. Se trata de un inmenso disco en espiral compuesto por cientos de miles de millones de estrellas. Medir la Vía Láctea en kilómetros es completamente inútil. En cambio, usamos nuestra regla cósmica: nuestra galaxia mide aproximadamente **100.000 años luz** de un extremo al otro. Un rayo de luz que nazca en un borde de la galaxia morirá de viejo antes de cruzarla entera.
 
 **Paso 4: El Universo Observable**
-Más allá de la Vía Láctea, hay miles de millones de otras galaxias. Cuanto más lejos miramos con telescopios como el Hubble o el James Webb, más nos adentramos en el pasado profundo, acercándonos a la luz del Big Bang. El límite de lo que podemos ver (el universo observable) es una esfera centrada en la Tierra. Su diámetro no es de miles, ni de millones, sino de unos increíbles **93.000 millones de años luz**. 
+Más allá de la Vía Láctea, hay miles de millones de otras galaxias. Cuanto más lejos miramos con telescopios como el Hubble o el James Webb, más nos adentramos en el pasado profundo, acercándonos a la luz del Big Bang. El límite de lo que podemos ver (el universo observable) es una esfera centrada en la Tierra. Su diámetro no es de miles, ni de millones, sino de unos increíbles **93.000 millones de años luz**.
 
 (Nota para curiosos: El universo observable es más grande que la edad del universo, unos 13.800 millones de años, porque el universo mismo se ha estado expandiendo, estirando el espacio mientras la luz viajaba hacia nosotros).
 
@@ -161,8 +164,8 @@ Más allá de la Vía Láctea, hay miles de millones de otras galaxias. Cuanto m
 
 Aunque el año luz es la unidad más famosa y poética, no es la única herramienta en la caja de un astrónomo. Dependiendo de lo que estén midiendo, pueden usar otras unidades para mayor conveniencia. Si te topas con artículos más técnicos de astronomía, probablemente verás estas dos:
 
-*   **La Unidad Astronómica (UA):** Es ideal para medir cosas dentro de un sistema solar. 1 UA se define como la distancia promedio entre la Tierra y el Sol (unos 150 millones de kilómetros o 8,3 minutos luz). Júpiter está a unas 5 UA del Sol. Es una forma fácil de comparar órbitas sin usar números gigantescos.
-*   **El Pársec (pc):** Esta es la unidad preferida por los astrónomos profesionales. Un pársec equivale a aproximadamente **3,26 años luz**. Se deriva de una técnica matemática que los astrónomos usan para medir distancias basada en la geometría y la triangulación a medida que la Tierra se mueve alrededor del Sol (paralaje). Suena menos poético que el año luz, pero es matemáticamente más elegante para el trabajo de observatorio diario. Las distancias galácticas masivas a menudo se miden en kilopársecs (kpc) o megapársecs (Mpc).
+* **La Unidad Astronómica (UA):** Es ideal para medir cosas dentro de un sistema solar. 1 UA se define como la distancia promedio entre la Tierra y el Sol (unos 150 millones de kilómetros o 8,3 minutos luz). Júpiter está a unas 5 UA del Sol. Es una forma fácil de comparar órbitas sin usar números gigantescos.
+* **El Pársec (pc):** Esta es la unidad preferida por los astrónomos profesionales. Un pársec equivale a aproximadamente **3,26 años luz**. Se deriva de una técnica matemática que los astrónomos usan para medir distancias basada en la geometría y la triangulación a medida que la Tierra se mueve alrededor del Sol (paralaje). Suena menos poético que el año luz, pero es matemáticamente más elegante para el trabajo de observatorio diario. Las distancias galácticas masivas a menudo se miden en kilopársecs (kpc) o megapársecs (Mpc).
 
 ## Conclusión: El vértigo de la perspectiva
 

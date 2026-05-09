@@ -146,7 +146,7 @@ The ternary operator evaluates a boolean condition and returns one of two possib
 
 ### Type Unification and Strictness
 
-One of the most critical concepts to master when using conditionals in OpenTofu is **type unification**. Both the `true_val` and `false_val` should ideally be of the exact same data type. 
+One of the most critical concepts to master when using conditionals in OpenTofu is **type unification**. Both the `true_val` and `false_val` should ideally be of the exact same data type.
 
 If they are not, OpenTofu will attempt to find a common type to which both results can be safely converted. If it cannot find a safe conversion, it will throw an error during the `tofu plan` phase.
 
@@ -167,6 +167,7 @@ config = var.use_list ? ["a", "b"] : "a, b"
 Conditional expressions are ubiquitous in professional OpenTofu codebases. They are most frequently used to solve three specific architectural challenges.
 
 #### 1. Toggling Resource Creation (The `count` Trick)
+
 OpenTofu does not have a native `if` block for resources. Instead, to conditionally create or skip a resource, engineers combine the ternary operator with the `count` meta-argument. If `count` evaluates to `0`, the resource is not created.
 
 ```hcl
@@ -185,6 +186,7 @@ resource "aws_cloudwatch_dashboard" "main" {
 ```
 
 #### 2. Environment-Specific Parameter Scaling
+
 Instead of defining entirely separate resource blocks for staging and production, you can use conditionals to adjust the size, capacity, or performance characteristics of a single resource block based on the target environment.
 
 ```hcl
@@ -205,6 +207,7 @@ resource "aws_db_instance" "database" {
 ```
 
 #### 3. Handling Empty or Optional Inputs
+
 Conditionals are highly effective for providing fallback logic when a variable is left empty. While variables have `default` values, sometimes a value needs to be dynamically calculated if the user explicitly passes an empty string `""` or a `null` value.
 
 ```hcl
@@ -225,7 +228,7 @@ resource "aws_lambda_function" "api_handler" {
 
 ## 8.3 Transforming Data with `for` Expressions and Filters
 
-While built-in functions handle many common data manipulation tasks, they are often not flexible enough for complex, nested data structures. OpenTofu provides `for` expressions to systematically iterate over collections (lists, sets, tuples, maps, and objects) and transform them into new collections. 
+While built-in functions handle many common data manipulation tasks, they are often not flexible enough for complex, nested data structures. OpenTofu provides `for` expressions to systematically iterate over collections (lists, sets, tuples, maps, and objects) and transform them into new collections.
 
 It is important to distinguish `for` expressions from the `for_each` meta-argument. While `for_each` is used to dynamically create multiple infrastructure *resources*, `for` expressions are used purely for transforming *data* within your configuration (such as in `locals` blocks or variable assignments).
 
@@ -233,9 +236,9 @@ It is important to distinguish `for` expressions from the `for_each` meta-argume
 
 A `for` expression consists of three main components enclosed in either square brackets `[]` (to output a tuple/list) or curly braces `{}` (to output an object/map):
 
-1.  **The Iterator:** Declares temporary variables to hold the current item's key/index and value.
-2.  **The Source:** The collection being iterated over.
-3.  **The Result Expression:** How the data should be transformed for the current iteration.
+1. **The Iterator:** Declares temporary variables to hold the current item's key/index and value.
+2. **The Source:** The collection being iterated over.
+3. **The Result Expression:** How the data should be transformed for the current iteration.
 
 ```text
   +-- Output Type (Tuple)                 +-- Source Collection
@@ -249,6 +252,7 @@ A `for` expression consists of three main components enclosed in either square b
 ```
 
 #### Transforming into Lists (Tuples)
+
 When you enclose the expression in `[]`, OpenTofu returns a tuple (which functions practically as a list).
 
 ```hcl
@@ -265,6 +269,7 @@ locals {
 ```
 
 #### Transforming into Maps (Objects)
+
 When you enclose the expression in `{}`, OpenTofu returns an object (which functions as a map). You must separate the output key and value using the `=>` symbol.
 
 This is arguably the most valuable pattern in OpenTofu when preparing data for a `for_each` resource loop, which requires a map or a set of strings.
@@ -388,7 +393,9 @@ A splat expression provides a concise, readable syntax for iterating over a list
 ```
 
 #### Modern Splat (`[*]`) vs. Legacy Splat (`.*`)
-You may encounter two different splat operators in older Terraform or OpenTofu codebases. 
+
+You may encounter two different splat operators in older Terraform or OpenTofu codebases.
+
 * **The Full Splat (`[*]`):** Introduced in HCL2, this is the modern standard. It safely handles lists, tuples, and even single items (treating a single item as a list of one).
 * **The Attribute-Only Splat (`.*`):** A legacy operator from older versions. While still supported for backward compatibility, it has limitations when dealing with complex nested data and should generally be avoided in new OpenTofu code.
 
@@ -437,6 +444,7 @@ The `flatten()` function takes a sequence of elements and expands any nested lis
 ```
 
 #### Wrassling Nested Network Configurations
+
 The most common scenario requiring `flatten()` is processing nested variable structures, such as a map of Virtual Private Clouds (VPCs), each containing a list of subnets. To provision those subnets with a single `for_each` loop, you must first project that nested data into a flat list of objects.
 
 ```hcl

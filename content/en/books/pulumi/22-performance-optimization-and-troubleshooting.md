@@ -4,7 +4,7 @@ This chapter provides the advanced techniques needed to optimize and debug your 
 
 ## 22.1 Analyzing and Reducing Deployment Times
 
-As your infrastructure footprint expands, the time it takes to execute a `pulumi up` naturally increases. What begins as a 30-second deployment in a proof-of-concept can easily bloat into a 20-minute bottleneck in a production CI/CD pipeline. Slow deployments frustrate developer velocity, delay time-to-market, and tie up CI runners. 
+As your infrastructure footprint expands, the time it takes to execute a `pulumi up` naturally increases. What begins as a 30-second deployment in a proof-of-concept can easily bloat into a 20-minute bottleneck in a production CI/CD pipeline. Slow deployments frustrate developer velocity, delay time-to-market, and tie up CI runners.
 
 Optimizing Pulumi deployment times requires a two-phased approach: systematically analyzing the deployment to identify bottlenecks, and applying architectural or configuration-level changes to eliminate them.
 
@@ -20,9 +20,10 @@ To generate a local trace, use the `--tracing` flag:
 pulumi up --tracing=file:./pulumi-trace.txt
 ```
 
-This generates a trace file detailing the exact duration of every RPC call, state lock, and API request made during the update. You can view this trace using Chrome's built-in tracing tool (navigate to `chrome://tracing` and load the file) or standard OpenTelemetry viewers. 
+This generates a trace file detailing the exact duration of every RPC call, state lock, and API request made during the update. You can view this trace using Chrome's built-in tracing tool (navigate to `chrome://tracing` and load the file) or standard OpenTelemetry viewers.
 
 Look for the following patterns in your traces:
+
 * **Long-running `Check` or `Diff` calls:** Indicates complex state comparisons or slow provider API queries.
 * **Sequential waterfalls:** Indicates resources that are deploying one after another instead of concurrently, usually pointing to overly strict dependency graphs.
 * **Repeated, elongated `Create` or `Update` spans for the same resource:** Often a symptom of the provider hitting API rate limits and silently retrying with exponential backoff.
@@ -55,6 +56,7 @@ Always prefer implicit dependencies. When you pass an `Output<T>` from one resou
 If your DAG is optimized but deployments are still slow, you can tune how the Pulumi CLI interacts with your state and the cloud providers.
 
 #### Managing Parallelism
+
 By default, Pulumi executes resource operations in parallel. If you have a massive stack, pushing hundreds of parallel requests to AWS or Azure can trigger severe API rate limiting (`HTTP 429 Too Many Requests`). The providers will automatically throttle and retry, but the exponential backoff often takes longer than simply constraining the parallelism in the first place.
 
 You can clamp the number of parallel resource operations using the `--parallel` flag:
@@ -62,9 +64,11 @@ You can clamp the number of parallel resource operations using the `--parallel` 
 ```bash
 pulumi up --parallel 10
 ```
+
 *Note: Finding the optimal parallelization number requires experimentation and depends heavily on the specific cloud provider's API quotas for your account.*
 
 #### Bypassing the Preview Phase
+
 In automated CI/CD pipelines where you are deploying to ephemeral testing environments, computing the diff (the `preview` phase) before executing the deployment is often wasted compute time. You can skip the preview entirely, instructing the engine to immediately begin creating and updating resources:
 
 ```bash
@@ -72,9 +76,10 @@ pulumi up --skip-preview --yes
 ```
 
 #### Selective State Refreshing
-As discussed in Part II, Pulumi relies on its state file. By default, `pulumi up` compares the desired state in your code against the last known state in the backend. If you frequently run `pulumi up --refresh`, Pulumi queries the cloud provider for the actual state of *every single resource* before doing anything else. For large stacks, this refresh phase can take minutes. 
 
-Unless you suspect significant configuration drift (manual changes made via the cloud console), avoid using `--refresh` in your standard deployment pipelines. 
+As discussed in Part II, Pulumi relies on its state file. By default, `pulumi up` compares the desired state in your code against the last known state in the backend. If you frequently run `pulumi up --refresh`, Pulumi queries the cloud provider for the actual state of *every single resource* before doing anything else. For large stacks, this refresh phase can take minutes.
+
+Unless you suspect significant configuration drift (manual changes made via the cloud console), avoid using `--refresh` in your standard deployment pipelines.
 
 ### Strategic Stack Splitting
 
@@ -82,15 +87,15 @@ The most impactful way to reduce deployment times in enterprise environments is 
 
 As covered in Chapter 8, monolithic stacks should be refactored into micro-stacks aligned with deployment cadences:
 
-1.  **Core Infrastructure Stack:** VPCs, Subnets, Transit Gateways. (Updated rarely, takes a long time).
-2.  **Shared Services Stack:** Kubernetes Clusters, Shared Databases. (Updated monthly).
-3.  **Application Stacks:** Microservices, Serverless Functions, API Gateways. (Updated multiple times a day).
+1. **Core Infrastructure Stack:** VPCs, Subnets, Transit Gateways. (Updated rarely, takes a long time).
+2. **Shared Services Stack:** Kubernetes Clusters, Shared Databases. (Updated monthly).
+3. **Application Stacks:** Microservices, Serverless Functions, API Gateways. (Updated multiple times a day).
 
 By splitting a monolithic stack into smaller pieces connected via `StackReference`, the daily deployment of an application bypasses the evaluation of the underlying networking and cluster infrastructure entirely, reducing deployment times from tens of minutes to mere seconds.
 
 ## 22.2 Utilizing Aliases for Zero-Downtime Refactoring
 
-Infrastructure code, like any software, requires ongoing refactoring. As a project matures, you will inevitably need to rename variables to better reflect their purpose, group disparate resources into reusable modules (`ComponentResources`), or reorganize your project structure. 
+Infrastructure code, like any software, requires ongoing refactoring. As a project matures, you will inevitably need to rename variables to better reflect their purpose, group disparate resources into reusable modules (`ComponentResources`), or reorganize your project structure.
 
 In traditional Infrastructure as Code workflows, this presents a severe risk. Most IaC engines map the logical name of a resource in your code directly to its identity in the state file. If you change a resource's name or move it into a component, the engine perceives this as two distinct actions: the deletion of the old resource and the creation of a new one. For stateful resources like databases, load balancers, or production buckets, this "replace" behavior causes catastrophic data loss and system downtime.
 
@@ -111,6 +116,7 @@ If **any** of these elements change, Pulumi generates a new URN and assumes it m
 Imagine you provisioned an S3 bucket early in your project's lifecycle with a generic name.
 
 **Original Code:**
+
 ```typescript
 import * as aws from "@pulumi/aws";
 
@@ -120,11 +126,12 @@ const dataBucket = new aws.s3.Bucket("my-bucket", {
 });
 ```
 
-Months later, you want to rename this logical resource to `telemetry-data-bucket` to align with new naming conventions. If you simply change the string, `pulumi up` will attempt to delete the physical bucket and create a new one. 
+Months later, you want to rename this logical resource to `telemetry-data-bucket` to align with new naming conventions. If you simply change the string, `pulumi up` will attempt to delete the physical bucket and create a new one.
 
 By applying an alias, you bridge the gap between the old URN and the new one:
 
 **Refactored Code:**
+
 ```typescript
 import * as aws from "@pulumi/aws";
 
@@ -158,6 +165,7 @@ The most common trigger for downtime during refactoring is moving raw resources 
 To prevent the VPC from being replaced, you must alias the `parent`. You specify `parent: pulumi.rootStackResource` to indicate that the resource used to be a top-level resource in the stack.
 
 **Refactored Component Code:**
+
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
@@ -212,9 +220,9 @@ To understand what you are debugging, it is helpful to visualize the three disti
                                        +-------------------+
 ```
 
-1.  **The Language Host:** Executes your TypeScript, Python, Go, or .NET code and computes the desired state.
-2.  **The Engine:** Coordinates the deployment, compares the desired state to the state file, determines the diff, and manages concurrency.
-3.  **The Resource Provider(s):** Plugins (usually wrapping Terraform providers or native cloud SDKs) that execute the actual API calls to the cloud.
+1. **The Language Host:** Executes your TypeScript, Python, Go, or .NET code and computes the desired state.
+2. **The Engine:** Coordinates the deployment, compares the desired state to the state file, determines the diff, and manages concurrency.
+3. **The Resource Provider(s):** Plugins (usually wrapping Terraform providers or native cloud SDKs) that execute the actual API calls to the cloud.
 
 When a generic `rpc error: code = Unavailable desc = transport is closing` occurs, it usually means one of these three processes crashed. Verbose logging exposes the gRPC traffic between these components, allowing you to pinpoint the exact failure.
 
@@ -234,26 +242,31 @@ While you can use any number from 1 to 9, the following thresholds are the most 
 
 * **`-v=3` (High-Level Engine Operations):** Useful for understanding the general flow of the engine. It logs high-level steps like loading plugins, acquiring state locks, and starting the language host.
 * **`-v=5` (Resource Lifecycle and Data Flow):** Logs the inputs and outputs of every resource as they are evaluated. If you suspect a variable is not being passed correctly between a ComponentResource and its children, level 5 will reveal the exact data structures being passed via gRPC.
-* **`-v=9` (Maximum Verbosity - Raw Network Traffic):** The "firehose." This level logs every single gRPC message between the engine, language host, and providers. More importantly, it often logs the raw HTTP requests and responses made by the provider to the cloud provider's API. 
+* **`-v=9` (Maximum Verbosity - Raw Network Traffic):** The "firehose." This level logs every single gRPC message between the engine, language host, and providers. More importantly, it often logs the raw HTTP requests and responses made by the provider to the cloud provider's API.
 
 ### Common Debugging Scenarios
 
 When staring at a massive `pulumi-debug.log` file, look for these specific patterns based on the problem you are experiencing:
 
 #### 1. The Deployment Hangs Indefinitely
-If `pulumi up` simply freezes, search the log for the last `gRPC` call made before the stall. 
+
+If `pulumi up` simply freezes, search the log for the last `gRPC` call made before the stall.
+
 * If the last call is a `Check` or `Create` sent to a Resource Provider, the provider is likely waiting on a cloud API that is rate-limiting or stuck in a retry loop.
 * If the logs show the Language Host constantly evaluating promises without yielding resources, you likely have an unresolved asynchronous cycle (e.g., a missing `await` or a circular dependency) in your code.
 
 #### 2. "Plugin Exited Unexpectedly"
+
 This indicates a fatal crash (panic) in either the language host or the resource provider plugin. Search the log for the word `panic:` or `fatal error:`. At verbosity level 9, the provider will dump its full stack trace into the log just before dying. This stack trace is crucial if you need to open an issue on the Pulumi GitHub repository.
 
 #### 3. Cryptic Cloud API Rejections
+
 Sometimes a cloud provider rejects a request, but the resource provider plugin fails to parse the error gracefully, resulting in a generic "failed to create resource" message. By searching the level 9 logs for `HTTP/1.1 400 Bad Request` or `HTTP/2 403`, you can find the raw JSON error payload returned by AWS, Azure, or GCP, which usually contains the exact reason for the failure.
 
 ### Security Warning: Sanitizing Verbose Logs
 
 **Never share a level 9 verbose log publicly without aggressively sanitizing it first.** Because `-v=9` captures the raw data flowing through the engine, it will capture:
+
 * Cloud provider access tokens and session credentials.
 * Plain-text database passwords or API keys passed as resource inputs, even if they are marked as secret in your Pulumi code. (The engine must decrypt them to pass them to the provider).
 * The raw contents of configuration files.
@@ -271,6 +284,7 @@ Below are the most common anti-patterns and pitfalls developers encounter when s
 Because Pulumi allows you to use general-purpose languages, it is highly tempting to use standard imperative programming techniques to solve infrastructure problems. The most common manifestation of this is placing side-effects—like making HTTP requests or calling cloud SDKs directly—inside an `apply()` block.
 
 **The Mistake:**
+
 ```typescript
 import * as aws from "@pulumi/aws";
 import * as axios from "axios";
@@ -309,11 +323,12 @@ const asg = new aws.autoscaling.Group("web-asg", {
 
 ### Pitfall 3: Hardcoding Physical Names
 
-By default, Pulumi utilizes "auto-naming." If you define a resource with the logical name `"my-database"`, Pulumi will append a random hexadecimal suffix to the physical name created in the cloud (e.g., `my-database-a3f8b9c`). 
+By default, Pulumi utilizes "auto-naming." If you define a resource with the logical name `"my-database"`, Pulumi will append a random hexadecimal suffix to the physical name created in the cloud (e.g., `my-database-a3f8b9c`).
 
 Many teams, accustomed to strict naming conventions, override this by hardcoding the physical `name` property.
 
 **The Mistake:**
+
 ```typescript
 const db = new aws.rds.Instance("my-database", {
     name: "production-db-01", // Forcing a physical name
@@ -331,7 +346,8 @@ To prevent concurrent modifications to your infrastructure, Pulumi locks the sta
 
 Subsequent deployments will fail with: `error: the stack is currently locked by 1 lock(s)`.
 
-**The Solution:** Do not panic and manually edit the backend storage. 
+**The Solution:** Do not panic and manually edit the backend storage.
+
 1. First, verify that no actual updates are still running in the background.
 2. Use the CLI to gracefully cancel the pending operation: `pulumi cancel`.
 3. If using a self-managed backend (like S3) and the lock is genuinely orphaned, you can forcefully remove it using: `pulumi stack export`, manually deleting the lock metadata in the JSON, and running `pulumi stack import`. (Use this as a last resort).
@@ -341,6 +357,7 @@ Subsequent deployments will fail with: `error: the stack is currently locked by 
 Pulumi has a robust secrets management system that encrypts sensitive data in the state file. However, developers often accidentally decrypt these secrets by passing them into standard string manipulation functions, resulting in plaintext credentials bleeding into the console output and the CI/CD logs.
 
 **The Mistake:**
+
 ```typescript
 const dbPassword = new random.RandomPassword("db-pass", { length: 16 });
 
@@ -348,7 +365,7 @@ const dbPassword = new random.RandomPassword("db-pass", { length: 16 });
 export const connectionString = pulumi.interpolate`Server=db.host;Password=${dbPassword.result};`;
 ```
 
-**Why it fails:** While `dbPassword.result` is a secret, standard template literals or string concatenations do not inherently know how to maintain the "secretness" of the data they consume. 
+**Why it fails:** While `dbPassword.result` is a secret, standard template literals or string concatenations do not inherently know how to maintain the "secretness" of the data they consume.
 
 **The Solution:** Always wrap constructed strings that contain sensitive data using `pulumi.secret()`.
 

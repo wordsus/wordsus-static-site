@@ -1,12 +1,12 @@
-Previously, we used classes as static blueprints to define object behavior. But what if those blueprints must adapt, validate themselves, or be generated dynamically at runtime? 
+Previously, we used classes as static blueprints to define object behavior. But what if those blueprints must adapt, validate themselves, or be generated dynamically at runtime?
 
 Welcome to metaprogramming. In this chapter, we transition from writing code that manages data to writing code that manages *code*. We will dissect dynamic class creation using the `type()` factory, intercept instantiation with custom metaclasses, and enforce strict backend interfaces via Abstract Base Classes (ABCs). Finally, we will master runtime introspection using the `inspect` module—the foundational mechanism powering modern frameworks like FastAPI and Django.
 
 ## 11.1 Dynamic Class Creation via the `type()` Function
 
-Most Python developers are introduced to the `type()` function early in their journey as a debugging utility or a rudimentary way to check an object's type. When passed a single argument, `type(obj)` inspects the object and returns the class from which it was instantiated. However, this is only half of its capability. 
+Most Python developers are introduced to the `type()` function early in their journey as a debugging utility or a rudimentary way to check an object's type. When passed a single argument, `type(obj)` inspects the object and returns the class from which it was instantiated. However, this is only half of its capability.
 
-At its core, `type` is not just a function; it is the default built-in **metaclass** in Python. When invoked with three arguments, `type()` acts as a class factory, allowing you to instantiate entirely new classes dynamically at runtime. 
+At its core, `type` is not just a function; it is the default built-in **metaclass** in Python. When invoked with three arguments, `type()` acts as a class factory, allowing you to instantiate entirely new classes dynamically at runtime.
 
 Understanding this three-argument signature is the foundational step toward mastering metaclasses and Python's dynamic execution model.
 
@@ -20,7 +20,7 @@ To create a class dynamically, `type()` requires the following signature: `type(
 
 ### Translating Static Syntax to Dynamic Execution
 
-Every time the Python interpreter encounters a standard `class` definition block, it essentially translates that block into a call to `type()`. 
+Every time the Python interpreter encounters a standard `class` definition block, it essentially translates that block into a call to `type()`.
 
 Consider a standard, statically defined class representing a database connection configuration:
 
@@ -91,9 +91,9 @@ While defining static classes via the `class` keyword remains the standard, read
 
 Common backend use cases include:
 
-1.  **Dynamic ORM Models:** As we will see when dissecting SQLAlchemy in Chapter 18, object-relational mappers often inspect database schemas at runtime and generate Python classes on the fly to represent tables that were not explicitly defined in the source code.
-2.  **API Client Generation:** If you consume an API that provides a JSON schema or OpenAPI spec (Chapter 16), you can write a factory function that parses the schema and uses `type()` to generate strictly-typed Python wrapper classes for every endpoint at runtime.
-3.  **Data-Driven Inheritance:** Generating variations of a class based on configuration files (e.g., dynamically creating specific handler classes for different event types in a Kafka stream, as discussed in Chapter 20) without writing repetitive boilerplate.
+1. **Dynamic ORM Models:** As we will see when dissecting SQLAlchemy in Chapter 18, object-relational mappers often inspect database schemas at runtime and generate Python classes on the fly to represent tables that were not explicitly defined in the source code.
+2. **API Client Generation:** If you consume an API that provides a JSON schema or OpenAPI spec (Chapter 16), you can write a factory function that parses the schema and uses `type()` to generate strictly-typed Python wrapper classes for every endpoint at runtime.
+3. **Data-Driven Inheritance:** Generating variations of a class based on configuration files (e.g., dynamically creating specific handler classes for different event types in a Kafka stream, as discussed in Chapter 20) without writing repetitive boilerplate.
 
 By understanding that classes are simply objects created by `type`, you unlock the ability to write code that writes its own architectures. This mechanism acts as the immediate stepping stone to understanding how we can intercept and modify this class creation process using custom Metaclasses.
 
@@ -139,7 +139,7 @@ Here is a visual representation of the class creation pipeline when a metaclass 
 
 ### Implementing a Metaclass
 
-Let us implement a practical backend example. Suppose we are building a custom Object-Relational Mapper (ORM) base class, similar to what we will explore in Chapter 18 with SQLAlchemy. We want to strictly enforce that any subclass representing a database table *must* declare a `__tablename__` attribute. 
+Let us implement a practical backend example. Suppose we are building a custom Object-Relational Mapper (ORM) base class, similar to what we will explore in Chapter 18 with SQLAlchemy. We want to strictly enforce that any subclass representing a database table *must* declare a `__tablename__` attribute.
 
 If a developer forgets this attribute, we want the application to crash immediately upon loading the module (import time), rather than failing silently or crashing later during a database query.
 
@@ -167,7 +167,7 @@ class BaseModel(metaclass=ModelMeta):
 
 ### Observing the Enforcement at Import Time
 
-When we define subclasses of `BaseModel`, the `ModelMeta.__new__` method is triggered immediately. 
+When we define subclasses of `BaseModel`, the `ModelMeta.__new__` method is triggered immediately.
 
 ```python
 # This works perfectly. The metaclass validates it and type() creates it.
@@ -194,7 +194,7 @@ Notice that we did not instantiate `Product()`. The `TypeError` was raised purel
 
 ### Metaclasses vs. `__init_subclass__`
 
-In modern Python (3.6+), many of the simpler validation tasks historically handled by metaclasses can now be accomplished using the `__init_subclass__` hook on standard classes. 
+In modern Python (3.6+), many of the simpler validation tasks historically handled by metaclasses can now be accomplished using the `__init_subclass__` hook on standard classes.
 
 ```python
 class BaseModel:
@@ -205,9 +205,10 @@ class BaseModel:
 ```
 
 While `__init_subclass__` is more readable and avoids metaclass conflict complexities, metaclasses remain the only viable solution when you need to:
-1.  Modify the class namespace *before* the class object is created (e.g., dynamically injecting properties based on field definitions).
-2.  Control the allocation of the class object itself.
-3.  Implement custom `__call__` behavior to completely hijack how class instantiation (e.g., `User()`) behaves, such as implementing strict Singleton patterns.
+
+1. Modify the class namespace *before* the class object is created (e.g., dynamically injecting properties based on field definitions).
+2. Control the allocation of the class object itself.
+3. Implement custom `__call__` behavior to completely hijack how class instantiation (e.g., `User()`) behaves, such as implementing strict Singleton patterns.
 
 ## 11.3 Interface Enforcement with Abstract Base Classes (ABCs)
 
@@ -336,9 +337,10 @@ As we touched upon in Chapter 2 (The Type Hinting System), modern Python (3.8+) 
 
 ## 11.4 Runtime Introspection, Reflection, and the `inspect` Module
 
-In a statically typed, compiled language, much of an application's structural metadata is stripped away during the compilation process. Python, conversely, retains this metadata at runtime. Every function, class, and module is a living object that can be queried, examined, and even modified while the program is executing. 
+In a statically typed, compiled language, much of an application's structural metadata is stripped away during the compilation process. Python, conversely, retains this metadata at runtime. Every function, class, and module is a living object that can be queried, examined, and even modified while the program is executing.
 
 This capability is broadly categorized into two concepts:
+
 * **Introspection:** The ability of a program to examine the type or properties of an object at runtime (e.g., "What methods does this class have?").
 * **Reflection:** The ability of a program to manipulate the attributes, structure, or behavior of an object at runtime (e.g., "Dynamically invoke this method if it exists").
 
@@ -346,7 +348,7 @@ While built-in functions like `dir()`, `getattr()`, `hasattr()`, and `isinstance
 
 ### Inspecting Signatures for Dependency Injection
 
-One of the most powerful features of modern Python web frameworks—such as FastAPI (Chapter 15) and Pytest (Chapter 21)—is **Dependency Injection**. When you write a route handler or a test function, you simply declare the arguments you need, and the framework magically provides them. 
+One of the most powerful features of modern Python web frameworks—such as FastAPI (Chapter 15) and Pytest (Chapter 21)—is **Dependency Injection**. When you write a route handler or a test function, you simply declare the arguments you need, and the framework magically provides them.
 
 This "magic" is entirely powered by `inspect.signature`. It allows us to programmatically dissect a callable's parameters, default values, and type hints.
 
