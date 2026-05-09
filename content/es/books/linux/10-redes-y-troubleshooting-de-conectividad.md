@@ -2,7 +2,7 @@ Dominar la red es lo que separa a un administrador de sistemas de un verdadero i
 
 ## 10.1 Interfaces de red y enrutamiento (`ip a`, `ip route`)
 
-Durante décadas, el comando `ifconfig` (del paquete `net-tools`) fue el estándar indiscutible para gestionar la red en Linux. Sin embargo, en el ecosistema DevOps actual, `ifconfig` se considera obsoleto y carece de soporte para características modernas de red. Su sucesor, la suite `**iproute2`**, utiliza el poderoso comando `ip`.
+Durante décadas, el comando `ifconfig` (del paquete `net-tools`) fue el estándar indiscutible para gestionar la red en Linux. Sin embargo, en el ecosistema DevOps actual, `ifconfig` se considera obsoleto y carece de soporte para características modernas de red. Su sucesor, la suite **`iproute2`**, utiliza el poderoso comando `ip`.
 
 Como profesional DevOps, interactuarás con `ip` constantemente: al depurar la conectividad de un pod en Kubernetes, al configurar redes virtuales en AWS (VPCs) o al entender por qué un contenedor de Docker no tiene acceso a Internet.
 
@@ -235,7 +235,7 @@ $ sudo traceroute -T -p 443 api.miservicio.com
 
 ### 3. `mtr`: La navaja suiza de la latencia (My Traceroute)
 
-Mientras que `ping` te da estadísticas estáticas y `traceroute` te da una foto instantánea del camino, `**mtr` combina ambos en una vista dinámica y en tiempo real**. Es la herramienta definitiva para diagnosticar cuellos de botella e inestabilidad en la red.
+Mientras que `ping` te da estadísticas estáticas y `traceroute` te da una foto instantánea del camino, **`mtr` combina ambos en una vista dinámica y en tiempo real**. Es la herramienta definitiva para diagnosticar cuellos de botella e inestabilidad en la red.
 
 `mtr` ejecuta un `traceroute` continuo y calcula la pérdida de paquetes y la latencia para cada salto a lo largo del tiempo.
 
@@ -537,7 +537,7 @@ Un navegador web tradicional (como Chrome o Firefox) hace demasiado trabajo por 
 
 Como DevOps, a menudo no te importa cómo se *ve* una página web; te importa qué código de estado HTTP devuelve, qué cabeceras envía, o necesitas inyectar un *payload* JSON directamente en la API de Kubernetes. Para esto, bajamos al barro con `wget` y `curl`.
 
-Aunque a menudo se confunden, tienen filosofías muy distintas: **`wget` está diseñado para descargar archivos**, mientras que `**curl` está diseñado para hablar y diagnosticar protocolos**.
+Aunque a menudo se confunden, tienen filosofías muy distintas: **`wget` está diseñado para descargar archivos**, mientras que **`curl` está diseñado para hablar y diagnosticar protocolos**.
 
 ### 1. `wget`: El descargador incansable
 
