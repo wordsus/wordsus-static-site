@@ -317,6 +317,15 @@ python scripts/fix_broken_bold_code.py content/es/books/linux
 ```
 The script identifies lines starting with `**` and ending with `` `something**` `` and moves the `**` outside the backticks: `**Title `code`**`.
 
+#### Validate Markdown Files
+To ensure that all markdown files in the project comply with the formatting rules (e.g., no bold tags in headings, no broken bold-code formatting), run the validation script:
+
+```bash
+pnpm run validate-markdown
+```
+
+The script will recursively scan all markdown files inside the `content/` directory and output a list of any files that fail validation, along with their specific line errors.
+
 ---
 
 ## ☁️ Deployment

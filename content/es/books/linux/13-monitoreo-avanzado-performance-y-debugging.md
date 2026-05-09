@@ -65,7 +65,7 @@ Escrito en Python, `glances` es la herramienta más moderna y pesada de las cuat
 
 ---
 
-## Cuadro Resumen: ¿Cuál elegir?
+### Cuadro Resumen: ¿Cuál elegir?
 
 | Herramienta | Ventaja Principal | Caso de Uso Ideal en DevOps |
 | --- | --- | --- |
@@ -588,9 +588,7 @@ PID   COMM       LADDR           LPORT RADDR           RPORT TX_KB RX_KB MS
 
 *Diagnóstico:* Un simple vistazo te permite auditar el tráfico, ver qué conexiones están consumiendo más ancho de banda y detectar micro-cortes si el tiempo (MS) es inusualmente bajo para conexiones que deberían ser persistentes.
 
----
-
-### Resumen del Capítulo
+## Resumen del Capítulo
 
 Llegar a este nivel de depuración es lo que define a un Senior en DevOps y Site Reliability Engineering (SRE). Hemos recorrido el camino completo:
 

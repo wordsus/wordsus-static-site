@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build && next-image-export-optimizer",
     "generate-chapters": "node scripts/generate-chapters.mjs",
+    "validate-markdown": "markdownlint-cli2 \"content/**/*.md\"",
     "start": "next start",
     "lint": "eslint",
     "podcasts": "pnpm --filter podcasts-cli start"
@@ -38,6 +39,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
+    "markdownlint-cli2": "^0.22.1",
     "tailwindcss": "^4",
     "typescript": "^5",
     "wrangler": "^4.84.1"
