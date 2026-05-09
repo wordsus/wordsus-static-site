@@ -2,21 +2,17 @@ import os
 import sys
 import re
 
-# The root cause in all variants is the same: the bold-closing `**` ends up
-# *inside* an inline code span, right before its closing backtick.
+# Fixes lines where:
+#   - The line starts with ** (bold opening)
+#   - The line ends with `code**` (bold closing is inside the last code span)
 #
-# Pattern (broken):  `code**`
-# Pattern (fixed):   `code`**
+# Broken:  **Title with `code**`
+# Fixed:   **Title with `code`**
 #
-# This single substitution handles every variant:
-#   1. Line starts with bold:     **text `code**`   → **text `code`**
-#   2. Mid-line:                  **text `/path**`,  → **text `/path`**,
-#   3. Multiple code spans:       **`a` and `b**`.   → **`a` and `b`**.
-#
-# The regex simply finds any inline-code span where `**` appears before
-# the closing backtick and moves it outside.
-BROKEN_PATTERN = re.compile(r'`([^`]*)\*\*`')
-REPLACEMENT = r'`\1`**'
+# Only matches when ** is at the start and the broken code span is at the end.
+# This narrow scope avoids false positives on well-formed mid-line patterns.
+BROKEN_PATTERN = re.compile(r'^\*\*(.*)`([^`]*)\*\*`\s*$')
+REPLACEMENT = r'**\1`\2`**'
 
 
 def fix_broken_bold_code(filepath):
@@ -30,13 +26,17 @@ def fix_broken_bold_code(filepath):
 
     for line in lines:
         # Track fenced code blocks — don't touch content inside them.
-        if line.strip().startswith('```'):
+        stripped = line.strip()
+        if stripped.startswith('```'):
             in_code_block = not in_code_block
             new_lines.append(line)
             continue
 
-        if not in_code_block and BROKEN_PATTERN.search(line):
-            new_line = BROKEN_PATTERN.sub(REPLACEMENT, line)
+        if not in_code_block and BROKEN_PATTERN.match(line.rstrip('\r')):
+            new_line = BROKEN_PATTERN.sub(REPLACEMENT, line.rstrip('\r'))
+            # Preserve the original line ending
+            if line.endswith('\r'):
+                new_line += '\r'
             new_lines.append(new_line)
             modified = True
         else:

@@ -98,7 +98,7 @@ LIMIT 3;
 
 ```
 
-**El superpoder de `LIMIT`: La Paginación con `OFFSET**`
+**El superpoder de `LIMIT`: La Paginación con `OFFSET`**
 Si estás creando una página web y quieres mostrar los resultados "de 10 en 10", puedes combinar `LIMIT` con `OFFSET`. El `OFFSET` le indica a la base de datos cuántas filas debe "saltarse" antes de empezar a contar el límite.
 
 ```sql

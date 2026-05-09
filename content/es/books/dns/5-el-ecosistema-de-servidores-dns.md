@@ -60,7 +60,7 @@ acl "servidores_secundarios" {
 
 ```
 
-**2. El bloque `options**`
+**2. El bloque `options`**
 Define el comportamiento global del demonio `named`. Aquí es donde aplicamos las políticas de red y seguridad.
 
 ```text
@@ -81,7 +81,7 @@ options {
 
 ```
 
-**3. El bloque `zone**`
+**3. El bloque `zone`**
 Como vimos en el Capítulo 3 y 4, las zonas requieren ser declaradas e indicarle a BIND si somos maestros (primarios) o esclavos (secundarios) de las mismas.
 
 ```text
@@ -148,7 +148,7 @@ Desarrollado por NLnet Labs (una fundación reconocida por su rigor técnico), U
 * **Prefetching (Pre-obtención):** Una de sus características estrella para reducir la latencia. Si un registro popular en caché está a punto de caducar (su TTL está en el último 10%), Unbound lo renueva de forma asíncrona en segundo plano *antes* de que expire, garantizando que el usuario final siempre obtenga una respuesta instantánea desde la caché.
 * **QNAME Minimisation:** Protege la privacidad del usuario al enviar a los servidores raíz y TLDs solo la parte del nombre de dominio estrictamente necesaria para la delegación, en lugar de enviar el FQDN completo (como veremos en detalle en el capítulo 6).
 
-**Estructura básica de `unbound.conf**`
+**Estructura básica de `unbound.conf`**
 
 La configuración de Unbound es limpia, estructurada y basada en YAML/JSON, lo que la hace muy amigable para la automatización (Ansible, Puppet, etc.).
 
@@ -192,7 +192,7 @@ Su arquitectura es radicalmente diferente a la de los servidores DNS tradicional
 
 Esto le otorga un poder de enrutamiento y filtrado sin precedentes en tiempo real, haciéndolo el favorito en entornos de telecomunicaciones y mitigación de malware.
 
-**El poder de Lua en `kresd.conf**`
+**El poder de Lua en `kresd.conf`**
 
 Al usar Lua, tu archivo de configuración es en realidad un script que se ejecuta al iniciar el demonio. Puedes escribir lógica, bucles y condiciones para tratar las consultas DNS.
 
@@ -254,7 +254,7 @@ En lugar de editar un archivo de texto, insertas un registro directamente en una
 * **Integración y API nativa:** Dado que los registros viven en una base de datos estándar, cualquier panel de control web, script de facturación o herramienta de automatización puede gestionar el DNS mediante simples consultas SQL o a través de la potente API REST integrada de PowerDNS.
 * **Escalabilidad horizontal:** Puedes tener múltiples instancias de PowerDNS "sin estado" (stateless) conectadas al mismo clúster de base de datos replicado.
 
-**Estructura básica de `pdns.conf**`
+**Estructura básica de `pdns.conf`**
 
 La configuración principal suele ser muy breve, ya que la complejidad reside en la base de datos subyacente.
 
@@ -387,7 +387,7 @@ Es un servidor ligero que combina inteligentemente dos servicios críticos en re
 * **Consumo ínfimo de recursos:** Escrito en C, puede ejecutarse en dispositivos embebidos con apenas unos megabytes de RAM.
 * **DNS Split-Brain simplificado:** Es extremadamente fácil enviar consultas de un dominio específico a un servidor DNS distinto.
 
-**Estructura de `dnsmasq.conf**`
+**Estructura de `dnsmasq.conf`**
 
 A diferencia de las llaves anidadas de BIND, la configuración de `dnsmasq` es un archivo plano, directo y pragmático.
 

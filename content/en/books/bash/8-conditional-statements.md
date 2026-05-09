@@ -209,7 +209,7 @@ The `[[ ]]` construct is a shell *keyword* rather than a standard command. Becau
 2. **Pattern Matching:** You can use wildcard characters (like `*` or `?`) on the right side of a string comparison.
 3. **Safer Logic:** It supports `&&` and `||` for logical AND/OR operations directly inside the brackets, without confusing the shell parser.
 
-**Example: Pattern Matching with `[[ ]]**`
+**Example: Pattern Matching with `[[ ]]`**
 
 ```bash
 #!/bin/bash

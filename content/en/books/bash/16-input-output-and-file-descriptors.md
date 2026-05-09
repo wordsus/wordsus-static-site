@@ -563,7 +563,7 @@ echo "First: $first, Last: $last"
 
 ```
 
-**Text Diagram: Pipes vs. Here Strings with `read**`
+**Text Diagram: Pipes vs. Here Strings with `read`**
 
 ```text
 ❌ The Pipe Pipeline (Subshell execution):

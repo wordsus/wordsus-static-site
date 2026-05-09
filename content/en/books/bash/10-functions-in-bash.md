@@ -154,7 +154,7 @@ echo "Script arg 1 is still: $1" # Outputs: apple
 
 When `inspect_args` finishes running, the original `$1` and `$2` belonging to the script are restored.
 
-**The Exception: `$0**`
+**The Exception: `$0`**
 While `$1`, `$2`, `$#`, and `$@` change to reflect the function's arguments, the `$0` parameter is the exception. `$0` always contains the name of the calling script, *not* the name of the executing function. In Bash, there is no built-in variable like `$0` that gives you the current function's name (though the array `${FUNCNAME[0]}` can be used for advanced debugging).
 
 ### Using Special Parameters in Functions
