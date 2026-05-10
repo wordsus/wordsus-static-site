@@ -1,0 +1,232 @@
+{
+  "slug": "api-design",
+  "locale": "en",
+  "title": "Mastering API Design",
+  "subtitle": "The Complete Guide to Architecture, Security, and Scale",
+  "author": "Wordsus Team",
+  "description": "Master the art of designing scalable, secure, and developer-friendly APIs. This comprehensive guide covers RESTful principles, GraphQL, gRPC, security patterns, documentation, and the full API lifecycle for modern software ecosystems.",
+  "cover": "/images/books/api-design-en-cover.jpeg",
+  "category": "software-architecture",
+  "tags": [
+    "api-design",
+    "rest",
+    "graphql",
+    "grpc",
+    "security",
+    "architecture",
+    "microservices"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-09",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "introduction-to-application-programming-interfaces",
+      "title": "Introduction to Application Programming Interfaces",
+      "order": 1,
+      "description": "Learn what APIs are, their role in modern software ecosystems, and how they drive the global API economy.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-evolution-of-web-apis",
+      "title": "The Evolution of Web APIs",
+      "order": 2,
+      "description": "Trace the history of APIs from RPC and SOAP to the RESTful revolution and the rise of modern protocols.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "core-architectural-styles",
+      "title": "Core Architectural Styles",
+      "order": 3,
+      "description": "Explore request-response vs event-driven models, statelessness, caching, and layered system architecture.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "network-fundamentals-for-api-designers",
+      "title": "Network Fundamentals for API Designers",
+      "order": 4,
+      "description": "Understand the OSI model, TCP/IP mechanics, DNS, and TLS/SSL foundations essential for API communication.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "resource-oriented-design",
+      "title": "Resource-Oriented Design",
+      "order": 5,
+      "description": "Master the principles of identifying domain resources, modeling relationships, and managing resource states.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "http-methods-and-status-codes",
+      "title": "HTTP Methods and Status Codes",
+      "order": 6,
+      "description": "Deep dive into safe and idempotent methods, state updates, and standardizing success and error status codes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "data-representation-and-formats",
+      "title": "Data Representation and Formats",
+      "order": 7,
+      "description": "Study JSON, XML, content negotiation, and the role of hypermedia (HATEOAS) in API discoverability.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "uri-structure-and-naming-conventions",
+      "title": "URI Structure and Naming Conventions",
+      "order": 8,
+      "description": "Establish best practices for endpoint naming, pluralization, and the effective use of query vs path parameters.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "exploring-graphql",
+      "title": "Exploring GraphQL",
+      "order": 9,
+      "description": "Solve over-fetching problems with GraphQL schemas, queries, mutations, and performance optimization.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "event-driven-apis-and-asynchronous-patterns",
+      "title": "Event-Driven APIs and Asynchronous Patterns",
+      "order": 10,
+      "description": "Implement webhooks, Server-Sent Events, and WebSockets for real-time and asynchronous communication.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "grpc-and-protocol-buffers",
+      "title": "gRPC and Protocol Buffers",
+      "order": 11,
+      "description": "Leverage HTTP/2 and Protocol Buffers for high-performance, strictly typed microservices communication.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "api-pagination-and-filtering",
+      "title": "API Pagination and Filtering",
+      "order": 12,
+      "description": "Design scalable pagination (offset vs cursor), complex filtering logic, and standard sorting strategies.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "error-handling-and-problem-details",
+      "title": "Error Handling and Problem Details",
+      "order": 13,
+      "description": "Build consistent error payloads using RFC 7807 and craft actionable messages for developers.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "api-documentation-and-developer-experience-dx",
+      "title": "API Documentation and Developer Experience (DX)",
+      "order": 14,
+      "description": "Maximize API adoption with OpenAPI specs, interactive consoles, and high-quality documentation.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "sdks-and-code-generation",
+      "title": "SDKs and Code Generation",
+      "order": 15,
+      "description": "Evaluate the value of SDKs and automated code generation for ensuring idiomatic support across languages.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "authentication-and-authorization-foundations",
+      "title": "Authentication and Authorization Foundations",
+      "order": 16,
+      "description": "Master OAuth 2.0, OpenID Connect, JWTs, and Role-Based Access Control (RBAC) for securing APIs.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "advanced-api-security-best-practices",
+      "title": "Advanced API Security Best Practices",
+      "order": 17,
+      "description": "Protect systems from injection, CSRF, and CORS issues through threat modeling and penetration testing.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "api-versioning-strategies",
+      "title": "API Versioning Strategies",
+      "order": 18,
+      "description": "Manage API lifecycles with URI, header, or media type versioning and clear deprecation policies.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "rate-limiting-and-quotas",
+      "title": "Rate Limiting and Quotas",
+      "order": 19,
+      "description": "Defend against abuse and DoS attacks with rate limiting algorithms and tiered usage plans.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "api-gateways-and-microservices",
+      "title": "API Gateways and Microservices",
+      "order": 20,
+      "description": "Understand the role of API Gateways, the BFF pattern, and service meshes in modern architectures.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "testing-and-mocking-apis",
+      "title": "Testing and Mocking APIs",
+      "order": 21,
+      "description": "Ensure reliability through unit testing, contract testing, and using mocks for parallel development.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "monitoring-analytics-and-monetization",
+      "title": "Monitoring, Analytics, and Monetization",
+      "order": 22,
+      "description": "Monitor API health with logging and tracing, and explore strategies for API business monetization.",
+      "audioUrl": ""
+    }
+  ],
+  "parts": [
+    {
+      "title": "Part I: Foundations of API Design",
+      "chapterSlugs": [
+        "introduction-to-application-programming-interfaces",
+        "the-evolution-of-web-apis",
+        "core-architectural-styles",
+        "network-fundamentals-for-api-designers"
+      ]
+    },
+    {
+      "title": "Part II: RESTful API Principles",
+      "chapterSlugs": [
+        "resource-oriented-design",
+        "http-methods-and-status-codes",
+        "data-representation-and-formats",
+        "uri-structure-and-naming-conventions"
+      ]
+    },
+    {
+      "title": "Part III: Advanced API Paradigms",
+      "chapterSlugs": [
+        "exploring-graphql",
+        "event-driven-apis-and-asynchronous-patterns",
+        "grpc-and-protocol-buffers"
+      ]
+    },
+    {
+      "title": "Part IV: Designing for the Consumer",
+      "chapterSlugs": [
+        "api-pagination-and-filtering",
+        "error-handling-and-problem-details",
+        "api-documentation-and-developer-experience-dx",
+        "sdks-and-code-generation"
+      ]
+    },
+    {
+      "title": "Part V: Security and Governance",
+      "chapterSlugs": [
+        "authentication-and-authorization-foundations",
+        "advanced-api-security-best-practices",
+        "api-versioning-strategies",
+        "rate-limiting-and-quotas"
+      ]
+    },
+    {
+      "title": "Part VI: Lifecycle and Architecture",
+      "chapterSlugs": [
+        "api-gateways-and-microservices",
+        "testing-and-mocking-apis",
+        "monitoring-analytics-and-monetization"
+      ]
+    }
+  ]
+}
