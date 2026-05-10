@@ -400,8 +400,6 @@ define( 'SAVEQUERIES', true );
 *¿Qué hace?* Obliga a WordPress a guardar en la memoria RAM un registro masivo de **absolutamente cada consulta SQL** ejecutada durante la petición, incluyendo la sentencia exacta, la función que la llamó y el tiempo que tardó.
 *Impacto:* Es una herramienta fantástica para hacer *Profiling* en entornos locales, pero si se deja en `true` en producción, **aumentará el uso de RAM por petición en un 200% o más** y degradará el tiempo de respuesta severamente.
 
----
-
 ## Cierre del Capítulo 1
 
 Con el dominio de la anatomía de la petición (1.1), el entendimiento de la arquitectura de eventos (1.3), la mitigación de cuellos de botella en el *autoload* (1.4) y el blindaje del `wp-config.php` (1.5), hemos cubierto los pilares a nivel de código y aplicación.

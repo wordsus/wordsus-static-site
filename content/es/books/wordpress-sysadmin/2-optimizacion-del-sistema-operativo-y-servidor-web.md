@@ -616,8 +616,6 @@ El navegador guarda ese archivo asociado a esa URL exacta. Si actualizas tu tema
 
 Para el navegador, esta es una URL completamente nueva. Por lo tanto, ignorará el caché antiguo, descargará la versión `1.0.6` y la guardará por un nuevo periodo de un año. Esta técnica, conocida como **Cache Busting**, te permite usar políticas de caché de navegador extremadamente agresivas sin sacrificar la capacidad de desplegar actualizaciones de diseño en tiempo real.
 
----
-
 ## Cierre del Capítulo 2
 
 Con esta configuración final, hemos transformado un servidor genérico en una máquina afilada. El kernel de Linux ahora resiste tormentas de tráfico manejando sus descriptores y congestión TCP BBR; NGINX exprime la CPU con su arquitectura de eventos y *buffers*; los protocolos HTTP/2 y QUIC multiplexan los envíos; Brotli microscopiza el código, y las cabeceras de caché aseguran que el tráfico recurrente tenga coste cero para el servidor.

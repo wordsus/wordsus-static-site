@@ -76,9 +76,7 @@ Cuando un usuario anónimo (no logueado) solicita una URL, el servidor web o el 
 * **Tecnologías clave:** NGINX FastCGI Cache (sección 5.4) o Varnish Cache (sección 5.5).
 * **El desafío:** La complejidad del Page Cache no radica en guardarlo, sino en saber **cuándo invalidarlo** (Purgar la caché al publicar un post) y **a quién no entregárselo** (el carrito de compras de un usuario o el panel de administración).
 
----
-
-## El flujo optimizado: Por qué necesitas todas las capas
+### El flujo optimizado: Por qué necesitas todas las capas
 
 Una arquitectura bien diseñada no elige un tipo de caché sobre otro; los apila estratégicamente.
 
