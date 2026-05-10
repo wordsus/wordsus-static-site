@@ -1,0 +1,165 @@
+{
+  "slug": "wordpress-sysadmin",
+  "locale": "es",
+  "title": "WordPress a Escala",
+  "subtitle": "Manual de Optimización para SysAdmins",
+  "author": "Wordsus Team",
+  "description": "Explora el mundo de la optimización de WordPress a nivel de infraestructura y administración de sistemas. Aprende sobre el tuning avanzado de Linux, PHP-FPM y bases de datos, arquitecturas de alta disponibilidad, cachés multicapa, Edge Computing y despliegues modernos.",
+  "cover": "/images/books/wordpress-sysadmin-es-cover.jpeg",
+  "category": "infraestructura-cloud-devops",
+  "tags": [
+    "wordpress",
+    "sysadmin",
+    "optimizacion",
+    "infraestructura",
+    "devops",
+    "rendimiento"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-10",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "fundamentos-de-la-arquitectura-de-wordpress",
+      "title": "Fundamentos de la Arquitectura de WordPress",
+      "order": 1,
+      "description": "Aprende sobre la anatomía de una petición en WordPress, la pila tradicional vs. moderna, el impacto de temas y plugins en el rendimiento, el sistema de opciones y el problema del autoload...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "optimizacion-del-sistema-operativo-y-servidor-web",
+      "title": "Optimización del Sistema Operativo y Servidor Web",
+      "order": 2,
+      "description": "Aprende sobre la afinación del Kernel de Linux para alto tráfico, diferencias entre Apache y NGINX, configuración avanzada de NGINX, protocolos modernos (HTTP/2, HTTP/3) y compresión a nivel de servidor...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "tuning-avanzado-de-php-y-php-fpm",
+      "title": "Tuning Avanzado de PHP y PHP-FPM",
+      "order": 3,
+      "description": "Aprende sobre la evolución de PHP y su rendimiento, arquitectura de PHP-FPM, cálculo y configuración para evitar fugas de memoria, implementación de Zend OPcache y límites de recursos...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "rendimiento-y-optimizacion-de-base-de-datos",
+      "title": "Rendimiento y Optimización de Base de Datos",
+      "order": 4,
+      "description": "Aprende sobre la elección del motor de base de datos, afinación de variables de InnoDB, análisis de cuellos de botella con Slow Query Log y mantenimiento a nivel de servidor...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "arquitectura-de-cache-multicapa",
+      "title": "Arquitectura de Caché Multicapa",
+      "order": 5,
+      "description": "Aprende sobre los distintos tipos de caché, Object Caching persistente con Redis y Memcached, Page Caching a nivel de servidor, proxy inverso con Varnish Cache y estrategias de invalidación...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "redes-de-entrega-de-contenido-y-edge-computing",
+      "title": "Redes de Entrega de Contenido (CDN) y Edge Computing",
+      "order": 6,
+      "description": "Aprende sobre CDN Push vs. CDN Pull, integración con redes proxy como Cloudflare, Edge Caching para HTML en el borde y el uso de Edge Workers para manipulación de cabeceras...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "escalabilidad-y-alta-disponibilidad",
+      "title": "Escalabilidad y Alta Disponibilidad",
+      "order": 7,
+      "description": "Aprende sobre el concepto de Stateless WordPress, balanceo de carga con HAProxy o AWS ALB, gestión de archivos multimedia distribuidos, escalado de la base de datos y sesiones distribuidas...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "automatizacion-despliegue-y-contenedores",
+      "title": "Automatización, Despliegue y Contenedores",
+      "order": 8,
+      "description": "Aprende sobre WP-CLI, infraestructura como código con Ansible y Terraform, Dockerización de WordPress, orquestación con Kubernetes y pipelines CI/CD para despliegues sin interrupciones...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "monitoreo-profiling-y-resolucion-de-problemas",
+      "title": "Monitoreo, Profiling y Resolución de Problemas",
+      "order": 9,
+      "description": "Aprende sobre el monitoreo con Prometheus y Grafana, Application Performance Monitoring (APM), análisis de tráfico, profiling de PHP con Xdebug y herramientas de SysAdmin para emergencias...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "seguridad-y-su-impacto-en-el-rendimiento",
+      "title": "Seguridad y su Impacto en el Rendimiento",
+      "order": 10,
+      "description": "Aprende sobre bloqueos a nivel de servidor con Fail2ban, desactivación de endpoints conflictivos, Rate Limiting, Web Application Firewall (WAF) y gestión de tareas en segundo plano...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ecosistema-litespeed-la-alternativa-de-alto-rendimiento-a-nginx",
+      "title": "Ecosistema LiteSpeed: La Alternativa de Alto Rendimiento a NGINX",
+      "order": 11,
+      "description": "Aprende sobre OpenLiteSpeed vs. LiteSpeed Enterprise, el manejador de PHP LSAPI, LiteSpeed Cache a nivel de servidor, Edge Side Includes (ESI) y seguridad en el Edge del servidor web...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "optimizacion-en-cpanel-maximizando-recursos-restringidos",
+      "title": "Optimización en cPanel: Maximizando Recursos Restringidos",
+      "order": 12,
+      "description": "Aprende sobre limitaciones del entorno compartido y CloudLinux, gestión de PHP, sobreescritura segura de límites de recursos, reemplazo del Cron Virtual y optimización de base de datos sin consola...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "optimizacion-en-plesk-gestion-avanzada-y-proxy-inverso",
+      "title": "Optimización en Plesk: Gestión Avanzada y Proxy Inverso",
+      "order": 13,
+      "description": "Aprende sobre la arquitectura web de Plesk, configuración nativa de NGINX, caché a nivel de servidor sin plugins, tuning de PHP-FPM y dominio del WordPress Toolkit de Plesk...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "optimizacion-en-hpanel-ecosistema-orientado-a-la-nube",
+      "title": "Optimización en hPanel (Hostinger): Ecosistema Orientado a la Nube",
+      "order": 14,
+      "description": "Aprende sobre la infraestructura de hPanel, gestión de caché nativa, redes de entrega integradas, control de inodos, gestión del PHP y herramientas de diagnóstico de consumo...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "modernizacion-y-optimizacion-extrema-de-apache-web-server",
+      "title": "Modernización y Optimización Extrema de Apache web server",
+      "order": 15,
+      "description": "Aprende sobre la transición a mpm_event con PHP-FPM, afinación matemática de directivas Core, el cuello de botella de .htaccess, protocolos modernos, caché a nivel de servidor web y debloating...",
+      "audioUrl": ""
+    }
+  ],
+  "parts": [
+    {
+      "title": "Parte I: Fundamentos y Arquitectura del Core",
+      "chapterSlugs": [
+        "fundamentos-de-la-arquitectura-de-wordpress",
+        "optimizacion-del-sistema-operativo-y-servidor-web",
+        "tuning-avanzado-de-php-y-php-fpm",
+        "rendimiento-y-optimizacion-de-base-de-datos"
+      ]
+    },
+    {
+      "title": "Parte II: Caché, Escalabilidad y Distribución",
+      "chapterSlugs": [
+        "arquitectura-de-cache-multicapa",
+        "redes-de-entrega-de-contenido-y-edge-computing",
+        "escalabilidad-y-alta-disponibilidad"
+      ]
+    },
+    {
+      "title": "Parte III: Operaciones, Monitoreo y Seguridad",
+      "chapterSlugs": [
+        "automatizacion-despliegue-y-contenedores",
+        "monitoreo-profiling-y-resolucion-de-problemas",
+        "seguridad-y-su-impacto-en-el-rendimiento"
+      ]
+    },
+    {
+      "title": "Parte IV: Ecosistemas Alternativos y Servidores Específicos",
+      "chapterSlugs": [
+        "ecosistema-litespeed-la-alternativa-de-alto-rendimiento-a-nginx",
+        "optimizacion-en-cpanel-maximizando-recursos-restringidos",
+        "optimizacion-en-plesk-gestion-avanzada-y-proxy-inverso",
+        "optimizacion-en-hpanel-ecosistema-orientado-a-la-nube",
+        "modernizacion-y-optimizacion-extrema-de-apache-web-server"
+      ]
+    }
+  ]
+}
