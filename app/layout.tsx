@@ -51,6 +51,12 @@ export default function RootLayout({
             `,
           }}
         />
+        {/* Google AdSense – native tag required for static export so crawlers can detect it */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5376430835440290"
+          crossOrigin="anonymous"
+        />
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         {process.env.NODE_ENV === "production" && (
@@ -73,13 +79,7 @@ export default function RootLayout({
                 `,
               }}
             />
-            <Script
-              id="google-adsense"
-              strategy="afterInteractive"
-              async
-              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5376430835440290"
-              crossOrigin="anonymous"
-            />
+
           </>
         )}
         {children}
