@@ -1,12 +1,12 @@
 Plesk se ha consolidado como una plataforma robusta para administrar WordPress, gracias a su capacidad para orquestar infraestructuras complejas bajo una interfaz intuitiva. Este capítulo desglosa el modelo híbrido que utiliza NGINX como proxy inverso para proteger a Apache, permitiendo una gestión de archivos estáticos y *microcaching* que reduce el TTFB de forma drástica. Exploramos el ajuste fino de PHP-FPM y el aprovechamiento del *WordPress Toolkit* para automatizar la seguridad y el mantenimiento mediante actualizaciones inteligentes. Finalmente, abordamos el uso de entornos de *staging* como laboratorios de pruebas de estrés, garantizando que cada mejora de rendimiento se valide antes de impactar en el tráfico real de producción.
 
-## **13.1 Arquitectura web de Plesk: Aprovechando el modelo híbrido de Apache con NGINX actuando como proxy inverso**
+## 13.1 Arquitectura web de Plesk: Aprovechando el modelo híbrido de Apache con NGINX actuando como proxy inverso
 
 A lo largo de los capítulos anteriores, hemos analizado la dicotomía clásica del alojamiento web: la robustez y flexibilidad de Apache frente a la velocidad y eficiencia en el manejo de concurrencia de NGINX. Mientras que los puristas del rendimiento suelen decantarse por una pila LEMP pura (estudiada en el Capítulo 2), la realidad operativa de muchas agencias y administradores de sistemas exige compatibilidad inmediata. Aquí es donde la arquitectura predeterminada de Plesk brilla al implementar un **modelo híbrido**.
 
 Plesk resuelve el dilema combinando lo mejor de ambos mundos: despliega **NGINX como un proxy inverso** en la primera línea de fuego, colocando a **Apache como el servidor backend** (o servidor de origen). Esta simbiosis está diseñada específicamente para maximizar el rendimiento sin romper la compatibilidad con el ecosistema de WordPress.
 
-### **La anatomía del flujo de la petición en Plesk**
+### La anatomía del flujo de la petición en Plesk
 
 Para entender por qué este modelo es tan efectivo para WordPress, debemos observar cómo Plesk enruta el tráfico a nivel de puertos y procesos. En un entorno tradicional, Apache escucharía directamente en los puertos públicos. En Plesk, la topología cambia:
 
@@ -42,7 +42,7 @@ En esta configuración:
 3. **Delegación a Apache:** Si la petición es dinámica (por ejemplo, cargar el `index.php` de WordPress, generar un carrito de WooCommerce o ejecutar la REST API), NGINX actúa como un puente transparente y reenvía la petición a Apache, el cual escucha en puertos no estándar (típicamente `7080` para HTTP y `7081` para HTTPS).
 4. **Traducción del `.htaccess`:** Apache lee el archivo `.htaccess` de WordPress, aplica las reglas de reescritura (permalinks), directivas de seguridad de plugins como Wordfence, y finalmente pasa la ejecución del código a PHP-FPM.
 
-### **Ventajas tácticas del modelo híbrido para WordPress**
+### Ventajas tácticas del modelo híbrido para WordPress
 
 Esta arquitectura de proxy inverso no es una simple redundancia; aporta beneficios críticos de optimización y estabilidad que son vitales en entornos de producción:
 
@@ -56,7 +56,7 @@ Al usar NGINX como proxy inverso, Plesk aprovecha la capacidad de **buffering** 
 **3. Multiplicador de concurrencia**
 Dado que NGINX intercepta todo el tráfico estático, el número de peticiones reales que llegan a Apache se reduce drásticamente (a menudo en un 70% u 80% en un sitio de WordPress típico). Esto significa que no necesitas configurar límites de `MaxRequestWorkers` masivos en Apache, ahorrando una cantidad significativa de memoria RAM en el servidor que ahora puede ser reasignada a tareas más críticas, como el *Buffer Pool* de InnoDB (Capítulo 4) o Redis (Capítulo 5).
 
-### **El archivo de configuración subyacente**
+### El archivo de configuración subyacente
 
 Para lograr esta magia, Plesk genera dinámicamente bloques de configuración de NGINX para cada dominio. Si inspeccionamos los archivos generados bajo `/var/www/vhosts/system/tudominio.com/conf/nginx.conf`, observaremos directivas de proxy similares a esta:
 
@@ -75,13 +75,13 @@ Es crucial notar las cabeceras `X-Forwarded-For` y `X-Real-IP`. Sin estas direct
 
 En resumen, la arquitectura híbrida de Plesk actúa como un escudo de alto rendimiento. NGINX absorbe la fuerza bruta de las conexiones y el tráfico de recursos estáticos, mientras Apache se mantiene protegido en la retaguardia, dedicando sus recursos exclusivamente a procesar el motor PHP de WordPress de forma compatible y segura. Sin embargo, para extraer el máximo rendimiento de esta topología, es necesario ajustar cómo NGINX gestiona los archivos estáticos y la caché, lo cual analizaremos en la siguiente sección.
 
-## **13.2 Configuración nativa de NGINX en Plesk: Habilitación del procesamiento de archivos estáticos directamente por NGINX para reducir la carga de Apache**
+## 13.2 Configuración nativa de NGINX en Plesk: Habilitación del procesamiento de archivos estáticos directamente por NGINX para reducir la carga de Apache
 
 En la sección anterior detallamos la elegancia del modelo híbrido de Plesk. Sin embargo, tener a NGINX como proxy inverso frente a Apache no garantiza automáticamente un rendimiento óptimo. Si NGINX se limita a actuar como un "espejo ciego" y reenvía absolutamente todas las peticiones a Apache (incluyendo imágenes, hojas de estilo y scripts), estaremos desperdiciando el potencial de la arquitectura y saturando los *workers* de Apache sin motivo.
 
 Para que la topología funcione y WordPress escale, debemos aplicar la regla de oro del SysAdmin: **"Nunca dejes que Apache sirva un archivo que NGINX pueda entregar"**. A este proceso se le conoce como *Offloading* de archivos estáticos.
 
-### **El impacto del *Offloading* en el consumo de memoria**
+### El impacto del *Offloading* en el consumo de memoria
 
 Cuando un navegador carga una página de WordPress promedio, realiza una petición dinámica (el HTML generado por PHP) y docenas de peticiones estáticas (archivos `.css`, `.js`, `.jpg`, `.webp`, `.woff2`).
 
@@ -100,7 +100,7 @@ Si Apache maneja esas docenas de peticiones, retendrá recursos en memoria por c
 
 Al habilitar el procesamiento directo, NGINX intercepta la petición, busca el archivo en el sistema de archivos (`/var/www/vhosts/tudominio.com/httpdocs/wp-content/...`) y lo entrega utilizando operaciones de I/O asíncronas de bajísimo consumo.
 
-### **Implementación en Plesk: El dilema de las dos opciones**
+### Implementación en Plesk: El dilema de las dos opciones
 
 Plesk facilita esta configuración desde su interfaz gráfica, dentro de **Sitios web y dominios > Configuración de Apache y nginx**. Al descender a la sección de configuración de NGINX, nos encontramos con dos directivas críticas que a menudo generan confusión. Entender su diferencia es vital para la estabilidad de WordPress:
 
@@ -114,7 +114,7 @@ Esta es la opción predeterminada de Plesk y la más conservadora. NGINX intenta
 Esta es la **opción recomendada para alto rendimiento**. Al activarla, defines una lista explícita de extensiones (por ejemplo: `ac3 avi bmp bz2 css csv eot gif gz ico jpeg jpg js less mp3 mp4 ogg pdf png svg ttf webp woff woff2 xml zip`).
 Si la petición coincide con esas extensiones, NGINX la procesa de forma exclusiva. Si el archivo no existe, NGINX devuelve un error 404 de inmediato, cerrando la conexión y blindando a Apache de la carga basura.
 
-### **Lo que ocurre bajo el capó (Auditoría de Configuración)**
+### Lo que ocurre bajo el capó (Auditoría de Configuración)
 
 Cuando activas la segunda opción, Plesk modifica dinámicamente el archivo de configuración del host virtual de NGINX (`/var/www/vhosts/system/tudominio.com/conf/nginx.conf`). El bloque resultante es una clase magistral de configuración estática:
 
@@ -147,7 +147,7 @@ location @fallback {
 2. **`access_log off;`**: Esta es una micro-optimización brillante. Registrar en el log del servidor cada vez que se carga un minúsculo archivo `.gif` o `.css` genera un desgaste innecesario en los discos (especialmente grave en discos SSD/NVMe) y consume ciclos de CPU. Plesk lo desactiva para estáticos, manteniendo los logs limpios y enfocados en las peticiones PHP importantes.
 3. **`try_files $uri @fallback;`**: Esta es la red de seguridad. Dependiendo de si activaste el modo estricto o el modo "inteligente", NGINX sabrá si debe arrojar un error duro o pasar la petición al bloque `@fallback` (Apache).
 
-### **Automatización vía CLI (Para despliegues masivos)**
+### Automatización vía CLI (Para despliegues masivos)
 
 Si gestionas un servidor Plesk con decenas de instalaciones de WordPress y necesitas aplicar esta optimización de manera estandarizada sin hacer clic dominio por dominio, puedes aprovechar la utilidad de línea de comandos de Plesk (`plesk bin`):
 
@@ -162,13 +162,13 @@ plesk bin domain -u tudominio.com -nginx-transparent-mode false
 
 Con estas directivas en su lugar, hemos liberado a Apache de la servidumbre de entregar imágenes y *scripts*, permitiéndole concentrarse en compilar PHP. El siguiente paso evolutivo en Plesk es aprovechar esta misma capa de NGINX, ya no solo para *assets* físicos, sino para cachear en memoria el HTML generado por WordPress, haciendo un *bypass* casi total del backend. Esto lo abordaremos en la configuración del *Microcaching* nativo.
 
-## **13.3 Caché a nivel de servidor sin plugins: Configuración de la caché de NGINX (*Microcaching*) directamente desde la pestaña de "Configuración de Apache y nginx" del dominio**
+## 13.3 Caché a nivel de servidor sin plugins: Configuración de la caché de NGINX (*Microcaching*) directamente desde la pestaña de "Configuración de Apache y nginx" del dominio
 
 Si el procesamiento de archivos estáticos (Sección 13.2) fue el primer paso para aliviar a Apache, la implementación de la **caché de NGINX** es el salto definitivo hacia el alto rendimiento. En esta sección, abordamos cómo transformar una petición dinámica de WordPress —que normalmente requeriría el encendido de la maquinaria de Apache, PHP-FPM y MySQL— en una respuesta casi instantánea servida directamente desde la memoria o el disco por NGINX.
 
 Plesk integra de forma nativa la capacidad de realizar *FastCGI Caching* (o *Proxy Caching* en su modelo híbrido), permitiendo lo que técnicamente llamamos **Microcaching**: almacenar el HTML generado por WordPress durante periodos breves (desde segundos hasta minutos) para servir a miles de usuarios simultáneos sin que una sola petición toque el backend.
 
-### **La lógica del bypass: ¿Por qué es superior a un plugin de caché?**
+### La lógica del bypass: ¿Por qué es superior a un plugin de caché?
 
 La mayoría de los usuarios de WordPress confían en plugins como WP Rocket o W3 Total Cache. Aunque efectivos, estos plugins operan a nivel de aplicación. Esto significa que la petición aún debe atravesar NGINX, Apache y llegar a PHP para que el plugin "busque" el archivo cacheado en el disco.
 
@@ -184,7 +184,7 @@ Flujo de Petición con Caché de NGINX:
 
 ```
 
-### **Configuración desde el panel de Plesk**
+### Configuración desde el panel de Plesk
 
 Para activar esta funcionalidad, navegamos a **Configuración de Apache y nginx** del dominio. En la sección "Caché de nginx", encontraremos los siguientes parámetros críticos que debemos ajustar para WordPress:
 
@@ -201,7 +201,7 @@ Para activar esta funcionalidad, navegamos a **Configuración de Apache y nginx*
 * `wordpress_logged_in_*` (usuarios identificados/administradores).
 * `comment_author_*` (usuarios que han dejado comentarios).
 
-### **Bajo el capó: Directivas de NGINX**
+### Bajo el capó: Directivas de NGINX
 
 Cuando activas esta opción, Plesk inyecta reglas complejas en el `nginx.conf`. Una de las más importantes es la gestión de las cabeceras `Cache-Control` y `Set-Cookie`. WordPress, por defecto, intenta evitar la caché enviando cabeceras que NGINX respeta. Plesk añade directivas para ignorar estas cabeceras cuando sea seguro:
 
@@ -221,7 +221,7 @@ proxy_cache_bypass $no_cache;
 
 ```
 
-### **Consideraciones de seguridad y "Cache Purge"**
+### Consideraciones de seguridad y "Cache Purge"
 
 El principal reto de esta configuración es la **invalidación**. Si editas una entrada en WordPress, NGINX no lo sabrá automáticamente hasta que expire el tiempo (TTL).
 
@@ -230,13 +230,13 @@ El principal reto de esta configuración es la **invalidación**. Si editas una 
 
 Implementar Microcaching directamente en NGINX reduce el TTFB (*Time to First Byte*) de valores comunes como 500ms-800ms a menos de **50ms**, convirtiendo tu servidor en una máquina de entrega de contenido estático incluso para las páginas más pesadas.
 
-## **13.4 Tuning de PHP-FPM en Plesk: Ajustes de rendimiento dedicados para la aplicación (FPM application served by nginx) y gestión de peticiones concurrentes**
+## 13.4 Tuning de PHP-FPM en Plesk: Ajustes de rendimiento dedicados para la aplicación (FPM application served by nginx) y gestión de peticiones concurrentes
 
 Hasta este punto del capítulo, hemos mantenido a Apache en la arquitectura como una red de seguridad para garantizar la compatibilidad con el archivo `.htaccess` (Sección 13.1). Sin embargo, cuando hablamos de optimización extrema y alta disponibilidad para WordPress, cada salto de red interno y cada proceso intermedio suma milisegundos de latencia y consume RAM.
 
 Plesk ofrece un "botón turbo" arquitectónico: cambiar el manejador de PHP a **"Aplicación FPM servida por nginx"** (*FPM application served by nginx*).
 
-### **El salto al modo LEMP puro en Plesk**
+### El salto al modo LEMP puro en Plesk
 
 Al seleccionar este manejador en la pestaña de **Configuración de PHP** del dominio, alteramos radicalmente el flujo de la petición dinámica que vimos en la sección 13.1:
 
@@ -254,7 +254,7 @@ Apache queda completamente fuera de la ecuación para este dominio. NGINX se com
 * **La ventaja:** Reducción drástica del consumo de memoria y menor latencia en el TTFB de peticiones no cacheadas (ej. WooCommerce checkout o panel de administración de WP).
 * **El peaje a pagar:** El archivo `.htaccess` deja de funcionar. Las reglas de reescritura de WordPress (los *Permalinks*) son gestionadas automáticamente por Plesk al hacer este cambio, pero si tienes reglas personalizadas de plugins (como redirecciones 301 o directivas de seguridad), deberás traducirlas al formato de NGINX e insertarlas en la sección de "Directivas adicionales de nginx".
 
-### **Configuración del Process Manager (PM) desde la interfaz**
+### Configuración del Process Manager (PM) desde la interfaz
 
 Aunque en el Capítulo 3 analizamos la teoría matemática detrás de PHP-FPM, Plesk tiene sus propias convenciones. Por defecto, Plesk suele configurar el gestor de procesos (*pm*) en modo **ondemand** para ahorrar recursos en servidores compartidos. Para un sitio de WordPress de alto tráfico, esto es un error crítico.
 
@@ -264,7 +264,7 @@ Dentro de la pestaña de **Configuración de PHP**, debes ajustar los parámetro
 2. **`pm.max_children` (Peticiones concurrentes máximas):** Como calculamos en el Capítulo 3, esto depende de tu RAM. En Plesk, no lo dejes en el valor por defecto (suele ser 5). Si tienes un servidor con 8GB de RAM y dedicas 2GB a PHP, y cada *worker* consume 50MB, debes elevar este límite a `40` o `50`.
 3. **`pm.start_servers` / `pm.min_spare_servers` / `pm.max_spare_servers`:** Si elegiste el modo `dynamic`, Plesk te mostrará estos campos. Configura `start_servers` en un valor razonable (ej. 10) para que NGINX siempre encuentre procesos de PHP "calientes" y listos para trabajar.
 
-### **Directivas avanzadas: Evitando fugas de memoria en WordPress**
+### Directivas avanzadas: Evitando fugas de memoria en WordPress
 
 Plesk simplifica la configuración visual, pero a veces omite directivas críticas para la estabilidad de WordPress. Afortunadamente, permite la inyección de código. En la parte inferior de la "Configuración de PHP", encontrarás un cuadro de texto llamado **"Directivas de configuración adicionales"** o **"Additional configuration directives"** (cuidado de no confundirlo con el de `php.ini`, debes buscar el campo específico para el pool de `php-fpm` si está disponible, o inyectarlo vía panel general).
 
@@ -279,7 +279,7 @@ request_terminate_timeout = 300s
 
 ```
 
-### **Sincronización de Timeouts: El origen del Error 504**
+### Sincronización de Timeouts: El origen del Error 504
 
 Un problema clásico al afinar PHP-FPM en Plesk bajo el modelo de NGINX directo, es la desincronización de los tiempos de espera (*timeouts*).
 Imagina que estás ejecutando una importación masiva de productos en WooCommerce o actualizando el Core de WordPress. PHP-FPM (`max_execution_time`) está configurado para permitir 300 segundos. Sin embargo, NGINX es impaciente. Si no recibe respuesta de PHP-FPM en 60 segundos (su valor por defecto), cortará la conexión de forma unilateral y devolverá al usuario un temido **504 Gateway Timeout**, mientras PHP sigue trabajando inútilmente en segundo plano.
@@ -294,13 +294,13 @@ fastcgi_read_timeout 300s;
 
 Con NGINX enviando el tráfico directamente a un pool de PHP-FPM robusto, en modo dinámico o estático, y con los *timeouts* sincronizados, el entorno de Plesk deja de ser un "panel de alojamiento compartido" para convertirse en una arquitectura de alto rendimiento capaz de sostener tráfico concurrente masivo de grado empresarial.
 
-## **13.5 Dominando el WordPress Toolkit de Plesk: Auditorías de seguridad automáticas, actualizaciones inteligentes (*Smart Updates*) con testeo visual previo y gestión de *Smart Cron***
+## 13.5 Dominando el WordPress Toolkit de Plesk: Auditorías de seguridad automáticas, actualizaciones inteligentes (*Smart Updates*) con testeo visual previo y gestión de *Smart Cron*
 
 Hasta ahora, hemos configurado Plesk a nivel de infraestructura (NGINX, Apache y PHP-FPM) para crear un entorno hostil contra la latencia y amigable con el rendimiento. Sin embargo, la optimización no es un estado estático; es un proceso continuo que puede desmoronarse rápidamente por una mala actualización de un plugin o un ataque de fuerza bruta que agote los *workers* de PHP.
 
 Para gestionar este caos a escala, Plesk incluye el **WordPress Toolkit (WPT)**. Lejos de ser un simple instalador de "un solo clic", el WPT es un panel de orquestación avanzado diseñado para administradores de sistemas y agencias. Abordaremos sus tres funciones críticas que impactan directamente en la estabilidad y el rendimiento.
 
-### **1. Auditorías de seguridad y *Hardening* (Protegiendo el I/O del servidor)**
+### 1. Auditorías de seguridad y *Hardening* (Protegiendo el I/O del servidor)
 
 En el Capítulo 10 analizamos cómo la seguridad y el rendimiento son dos caras de la misma moneda. Un ataque de diccionario contra `wp-login.php` o una avalancha de peticiones a `xmlrpc.php` no solo es un riesgo de intrusión, sino un ataque de denegación de servicio a nivel de aplicación (DDoS L7) que consumirá toda tu memoria RAM y ciclos de CPU.
 
@@ -312,7 +312,7 @@ El WPT automatiza el *hardening* (endurecimiento) del sitio sin necesidad de ins
 
 Al aplicar estas medidas desde Plesk, el bloqueo se realiza frecuentemente en la capa de NGINX o Apache, rechazando las peticiones maliciosas antes de que lleguen a invocar el motor de WordPress, ahorrando valiosos recursos de servidor.
 
-### **2. Actualizaciones Inteligentes (*Smart Updates*): Testeo de regresión visual**
+### 2. Actualizaciones Inteligentes (*Smart Updates*): Testeo de regresión visual
 
 El dilema clásico del SysAdmin de WordPress: ¿Actualizo automáticamente para evitar vulnerabilidades de seguridad y arriesgarme a romper el sitio (y la caché), o actualizo manualmente invirtiendo horas de trabajo?
 
@@ -339,7 +339,7 @@ Plesk soluciona esto con **Smart Updates**, una tecnología basada en inteligenc
 
 Esta característica es un salvavidas para entornos de alta disponibilidad. Garantiza que ninguna actualización romperá tu *Page Cache* o generará bucles de redirección que saturen los servidores web.
 
-### **3. Gestión de *Smart Cron*: Liberando el Frontend**
+### 3. Gestión de *Smart Cron*: Liberando el Frontend
 
 Como adelantamos en el Capítulo 10, el cron virtual de WordPress (`wp-cron.php`) es el enemigo público número uno del rendimiento (*Time to First Byte*). Por defecto, WordPress depende de que un visitante humano cargue una página para "despertar" y ejecutar tareas en segundo plano (limpieza de transients, publicación de posts programados, copias de seguridad).
 
@@ -373,13 +373,13 @@ Las tareas de mantenimiento pesadas ahora se ejecutan en estricto segundo plano,
 
 Con la capa web cacheada, PHP afinado, NGINX asumiendo la carga estática, y el WordPress Toolkit blindando las operaciones diarias, el entorno de producción en Plesk alcanza su máxima madurez. El siguiente paso lógico, y el que cierra este capítulo, es aprender a manipular este ecosistema sin tocar producción, mediante la gestión avanzada de entornos de *Staging*.
 
-## **13.6 Entornos de Staging y Clonación: Cómo realizar pruebas de rendimiento y estrés en entornos clonados mediante Plesk sin afectar la base de datos o el tráfico de producción**
+## 13.6 Entornos de Staging y Clonación: Cómo realizar pruebas de rendimiento y estrés en entornos clonados mediante Plesk sin afectar la base de datos o el tráfico de producción
 
 La optimización extrema de la arquitectura web siempre conlleva un nivel de riesgo. Cambiar el manejador de PHP a FPM puro, ajustar los *buffers* de NGINX, habilitar el Microcaching o modificar los índices de la base de datos (como vimos en los capítulos anteriores) son acciones que pueden disparar el rendimiento de WordPress, pero también pueden generar errores 502, romper sesiones de usuarios o causar incompatibilidades fatales con ciertos plugins.
 
 La regla de oro de la alta disponibilidad es inquebrantable: **Nunca se realizan pruebas de rendimiento ni cambios estructurales directamente en producción.** Para ello, el WordPress Toolkit (WPT) de Plesk proporciona una herramienta de clonación y *Staging* (entorno de pruebas) que permite replicar la infraestructura exacta del sitio vivo para someterla a estrés sin poner en riesgo las ventas, el SEO o la experiencia del usuario.
 
-### **La anatomía de un clon en Plesk**
+### La anatomía de un clon en Plesk
 
 A diferencia de hacer una simple copia de archivos por FTP y exportar un `.sql` manualmente, el proceso de clonación de Plesk gestiona la complejidad subyacente de WordPress.
 
@@ -408,14 +408,14 @@ Cuando decides clonar un sitio desde el WPT (hacia un subdominio como `staging.t
 
 ```
 
-### **Preparando el entorno para el estrés (Aislamiento Total)**
+### Preparando el entorno para el estrés (Aislamiento Total)
 
 Antes de lanzar ataques controlados contra el clon, es vital aislarlo para no distorsionar las métricas y no penalizar el SEO de la web principal:
 
 1. **Visibilidad en Buscadores:** El WPT marca automáticamente la opción "Disuadir a los motores de búsqueda", pero esto solo añade una etiqueta *noindex* y altera el `robots.txt`.
 2. **Protección por contraseña (Basic Auth):** Para pruebas de rendimiento rigurosas, ve a **Directorios protegidos por contraseña** en Plesk y bloquea el subdominio. Esto evita que *crawlers* o bots aleatorios consuman recursos de PHP y alteren los resultados de tus pruebas de estrés.
 
-### **Ejecución de pruebas de carga (El Test de Fuego)**
+### Ejecución de pruebas de carga (El Test de Fuego)
 
 Con el clon aislado, podemos aplicar las optimizaciones de NGINX y PHP (Secciones 13.3 y 13.4) y medir su impacto real. En lugar de adivinar si los cambios son efectivos, utilizamos herramientas de terminal (CLI) para bombardear el sitio clonado simulando tráfico masivo.
 
@@ -439,7 +439,7 @@ ab -n 2000 -c 100 -A usuario:password https://staging.tudominio.com/
 
 Durante la prueba de estrés, es altamente recomendable abrir otra ventana de terminal y usar comandos de SysAdmin (como `htop` o el monitor nativo de Plesk) para vigilar si el consumo de RAM o CPU se dispara, validando así la resiliencia de la configuración.
 
-### **El dilema de la sincronización: Despliegue sin pérdida de datos**
+### El dilema de la sincronización: Despliegue sin pérdida de datos
 
 Una vez que has validado que el entorno de *Staging* soporta la carga y que la nueva configuración o el nuevo plugin de optimización es estable, llega el momento crítico: pasar los cambios a producción.
 

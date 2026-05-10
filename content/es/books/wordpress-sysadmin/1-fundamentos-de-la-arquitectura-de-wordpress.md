@@ -1,12 +1,12 @@
 Optimizar WordPress exige ir más allá de la superficie y entender su comportamiento como sistema. Este capítulo desglosa el ciclo de vida de una petición, desde que el navegador la solicita hasta que la base de datos responde. Analizamos por qué la pila LEMP ha desplazado a la tradicional LAMP en entornos de alto rendimiento y cómo la API de *hooks* (Actions y Filters) define la velocidad de carga. Finalmente, abordamos la gestión crítica de la tabla `wp_options` y la configuración estratégica del archivo `wp-config.php`. Estos fundamentos son los cimientos necesarios para construir infraestructuras capaces de escalar de forma eficiente y sin cuellos de botella.
 
-## **1.1 Anatomía de una petición en WordPress: Desde el navegador hasta la base de datos**
+## 1.1 Anatomía de una petición en WordPress: Desde el navegador hasta la base de datos
 
 Para optimizar un sistema complejo, el primer paso ineludible es comprender cómo fluye la información a través de él. WordPress opera bajo el patrón de diseño *Front Controller* (Controlador Frontal), lo que significa que casi todas las peticiones dinámicas pasan por un único punto de entrada: el archivo `index.php`.
 
 Cuando un usuario teclea la URL de un sitio alojado en WordPress, se desencadena una carrera de relevos milimétrica que involucra red, memoria, disco y ciclos de CPU. A continuación, desglosamos la anatomía de una petición dinámica (no cacheada), paso a paso.
 
-### **El flujo de la petición: Diagrama conceptual**
+### El flujo de la petición: Diagrama conceptual
 
 ```text
 [Navegador del Usuario]
@@ -51,7 +51,7 @@ Cuando un usuario teclea la URL de un sitio alojado en WordPress, se desencadena
 
 ---
 
-### **Desglose de las Fases de Ejecución**
+### Desglose de las Fases de Ejecución
 
 **Fase 1: El perímetro y el servidor web**
 Todo comienza con una resolución DNS y un *handshake* TLS. Una vez que la petición HTTP alcanza el servidor (ej. NGINX o Apache), este evalúa la URI. Si la petición es para un archivo estático (como una imagen en `wp-content/uploads` o un archivo `.css`), el servidor web lo entrega directamente del disco o la RAM, finalizando allí el ciclo. Si la petición no coincide con un archivo físico, el servidor web aplica sus reglas de reescritura (*rewrite rules*) y delega la tarea al motor PHP (generalmente a través del protocolo FastCGI hacia PHP-FPM), pasándole el control a `index.php`.
@@ -80,7 +80,7 @@ Se inicia el *Loop* de WordPress. A medida que PHP lee el archivo de plantilla, 
 A medida que el HTML se procesa, PHP se lo va entregando (haciendo *flush*) al servidor web, que a su vez se lo envía al navegador del usuario. Una vez que la página termina de renderizarse por completo, PHP ejecuta los procesos de "apagado" (*shutdown*), cerrando la conexión con la base de datos y liberando la memoria.
 Justo antes de terminar, si las tareas programadas están habilitadas, WordPress verifica si hay algún trabajo pendiente e intenta lanzar una petición asíncrona hacia `wp-cron.php`.
 
-### **¿Por qué importa esto para el SysAdmin?**
+### ¿Por qué importa esto para el SysAdmin?
 
 Entender este flujo es vital porque **la optimización en alta disponibilidad consiste en "cortocircuitar" este viaje lo antes posible**.
 
@@ -90,7 +90,7 @@ Entender este flujo es vital porque **la optimización en alta disponibilidad co
 
 En los siguientes apartados, desarmaremos y optimizaremos cada una de estas capas para evitar que una simple petición web colapse nuestra infraestructura.
 
-## **1.2 La pila tradicional vs. moderna: LAMP (Linux, Apache, MySQL, PHP) vs. LEMP (Linux, Nginx, MySQL, PHP)**
+## 1.2 La pila tradicional vs. moderna: LAMP (Linux, Apache, MySQL, PHP) vs. LEMP (Linux, Nginx, MySQL, PHP)
 
 Para que WordPress funcione, requiere una base sobre la cual ejecutar el flujo que vimos en la sección anterior. Esta base es lo que conocemos como *stack* o pila de servidor. Durante décadas, el estándar absoluto fue el acrónimo **LAMP** (Linux, Apache, MySQL, PHP). Sin embargo, a medida que el tráfico web creció y la necesidad de concurrencia se volvió crítica, la industria migró hacia un modelo más eficiente: **LEMP**, donde la "E" representa la pronunciación fonética de NGINX (*Engine-X*).
 
@@ -98,7 +98,7 @@ Comprender la diferencia arquitectónica entre ambos enfoques es el punto de inf
 
 ---
 
-### **El modelo tradicional: LAMP y el cuello de botella de la memoria**
+### El modelo tradicional: LAMP y el cuello de botella de la memoria
 
 Apache HTTP Server es un servidor web robusto y flexible, y ha sido el mejor amigo de WordPress gracias a un archivo específico: el `.htaccess`. Este archivo permite configurar redirecciones, seguridad y los enlaces permanentes (*permalinks*) de WordPress de forma dinámica y a nivel de directorio, sin necesidad de reiniciar el servidor.
 
@@ -107,7 +107,7 @@ Sin embargo, el problema de Apache en entornos de alto tráfico radica en su arq
 * **¿Cómo funciona?** Por cada petición HTTP entrante, Apache asigna un hilo o proceso completo para atenderla. Si el servidor recibe 500 peticiones simultáneas, Apache necesita mantener 500 procesos abiertos.
 * **El problema:** Cada uno de estos procesos carga todo el motor de PHP en la memoria RAM, sin importar si el usuario está solicitando un pesado script dinámico (`index.php`) o un simple archivo estático (`logo.png`). Si cada proceso consume 50 MB de RAM, 500 procesos consumirán 25 GB. Cuando la RAM se agota, el servidor empieza a usar la memoria Swap (disco), los tiempos de respuesta se desploman y, eventualmente, el sistema operativo mata los procesos (el temido *Out of Memory* u OOM Killer).
 
-### **El modelo moderno: LEMP y la arquitectura orientada a eventos**
+### El modelo moderno: LEMP y la arquitectura orientada a eventos
 
 NGINX fue diseñado desde cero para resolver el problema C10k (el reto de manejar 10.000 conexiones concurrentes en un solo servidor). Para lograrlo, abandona el modelo de un-proceso-por-conexión y adopta una arquitectura **asíncrona y orientada a eventos**.
 
@@ -116,7 +116,7 @@ En la pila LEMP, el servidor web y el procesador de PHP se desacoplan por comple
 * **¿Cómo funciona?** NGINX lanza un número muy pequeño de procesos de trabajo (*worker processes*), generalmente uno por cada núcleo de CPU disponible. Cada *worker* gestiona miles de conexiones simultáneas en un bucle de eventos no bloqueante.
 * **La ventaja:** Si 500 usuarios solicitan imágenes o archivos CSS, NGINX los entrega directamente desde la memoria a una velocidad abismal sin tocar PHP. Solo cuando la petición exige código dinámico, NGINX abre un canal de comunicación (socket) con PHP-FPM, le entrega los datos, espera la respuesta HTML y la devuelve al usuario.
 
-### **Comparativa arquitectónica: Gestión de concurrencia**
+### Comparativa arquitectónica: Gestión de concurrencia
 
 A continuación, un diagrama conceptual de cómo ambos servidores gestionan un pico de tráfico mixto (peticiones estáticas y dinámicas):
 
@@ -143,7 +143,7 @@ Total RAM consumida (Aprox): Exclusivamente la de las peticiones dinámicas.
 
 ```
 
-### **El compromiso de NGINX: Adiós al `.htaccess**`
+### El compromiso de NGINX: Adiós al `.htaccess`
 
 El precio a pagar por el rendimiento extremo de NGINX es la pérdida de la flexibilidad del `.htaccess`. NGINX no lee archivos de configuración ocultos en los directorios, ya que la simple acción de escanear el disco en busca de esos archivos en cada petición introduciría latencia.
 
@@ -151,7 +151,7 @@ En LEMP, todas las reglas de reescritura, bloqueos de seguridad y expiración de
 
 **En resumen:** Mientras que LAMP prioriza la compatibilidad y la facilidad de uso "plug-and-play" (ideal para *shared hosting*), LEMP prioriza la eficiencia de recursos y la escalabilidad brutal. Para llevar a WordPress a un escenario de alta disponibilidad, la migración a LEMP no es opcional; es el primer mandato de la infraestructura moderna.
 
-## **1.3 El Core de WordPress, Temas y Plugins: Cómo impactan los *hooks* (Actions y Filters) en el tiempo de carga**
+## 1.3 El Core de WordPress, Temas y Plugins: Cómo impactan los *hooks* (Actions y Filters) en el tiempo de carga
 
 Hasta ahora hemos analizado el viaje de la petición desde la red (1.1) y cómo el servidor gestiona los procesos subyacentes (1.2). Ahora, debemos hacer zoom hacia el interior de la memoria RAM, justo en el momento en que PHP-FPM ejecuta el código de WordPress.
 
@@ -161,7 +161,7 @@ Entender cómo interactúan el Core, los Temas y los Plugins a través de estos 
 
 ---
 
-### **La Arquitectura Basada en Eventos: Actions y Filters**
+### La Arquitectura Basada en Eventos: Actions y Filters
 
 Cuando el Core de WordPress se inicializa, no ejecuta todo su código de una sola vez. En su lugar, avanza a través de una serie de "hitos" o puntos de control predefinidos. En cada uno de estos hitos, WordPress grita al vacío: *"Estoy a punto de hacer [X], ¿alguien quiere intervenir?"*.
 
@@ -170,7 +170,7 @@ Los Temas y Plugins "escuchan" estos gritos y se "enganchan" a ellos utilizando 
 1. **Actions (`add_action`):** Permiten ejecutar un bloque de código personalizado en un momento específico. Ejemplos: "Justo después de cargar la base de datos", "antes de imprimir el `<head>` del HTML", o "cuando se publica un post".
 2. **Filters (`add_filter`):** Permiten interceptar una variable, modificarla y devolverla antes de que WordPress la utilice. Ejemplo: "Toma el texto de este artículo, pon todo en mayúsculas, y devuélvelo para que se imprima".
 
-### **El problema del rendimiento: Sincronía y el arreglo `$wp_filter**`
+### El problema del rendimiento: Sincronía y el arreglo `$wp_filter`
 
 Bajo el capó, cada vez que un plugin o un tema registra un *hook*, WordPress almacena esa instrucción en una variable global gigante llamada `$wp_filter`.
 
@@ -192,7 +192,7 @@ Aquí tienes una representación visual en texto plano de cómo un solo *hook* p
 
 Si el "Plugin de E-commerce" ejecuta una consulta pesada a la base de datos en el *hook* `init`, **retrasará la ejecución de todo el sitio en 0.85 segundos por cada petición**, sin importar si el usuario está visitando la tienda o leyendo un simple artículo del blog. Hasta que ese plugin no termine su tarea, WordPress no puede continuar renderizando la página.
 
-### **Los 3 pecados capitales de los Hooks en el rendimiento**
+### Los 3 pecados capitales de los Hooks en el rendimiento
 
 Como SysAdmin o Arquitecto Web, no siempre puedes reescribir el código de plugins de terceros, pero debes saber identificar por qué el CPU está al 100%. Estas son las prácticas más destructivas relacionadas con los *hooks*:
 
@@ -211,13 +211,13 @@ El filtro `the_content` se aplica al texto de cada publicación justo antes de m
 
 * *Resultado:* Si la página muestra 10 artículos (como en la página del blog), el filtro de Regex se ejecuta 10 veces en caliente. Las operaciones de Regex son computacionalmente costosas y disparan el uso de CPU a nivel de servidor.
 
-### **El límite de la escalabilidad horizontal**
+### El límite de la escalabilidad horizontal
 
 Es crítico asimilar este concepto: **Ningún hardware potente o balanceador de carga soluciona un código ineficiente bloqueando el hilo principal de PHP.** Si un tema tiene un bucle ineficiente enganchado en `wp_loaded` que tarda 2 segundos en ejecutarse, agregar más servidores (escalabilidad horizontal) o más CPU (escalabilidad vertical) solo logrará que puedas servir esa página lenta a más personas simultáneamente, pero la página seguirá tardando 2 segundos en generarse.
 
 La optimización real de WordPress en Alta Disponibilidad requiere identificar estos cuellos de botella (usando herramientas de *Profiling* como veremos en el Capítulo 9) y mitigar su impacto mediante estrategias de Caché de Objetos (Capítulo 5), evitando que los *hooks* tengan que procesar o consultar datos desde cero en cada petición.
 
-## **1.4 El sistema de opciones (`wp_options`) y el problema del *autoload***
+## 1.4 El sistema de opciones (`wp_options`) y el problema del *autoload*
 
 Si la base de datos es el corazón de WordPress, la tabla `wp_options` es su sistema nervioso central. Prácticamente cualquier configuración global del sitio, del tema activo o de los plugins instalados se almacena aquí: desde la URL del sitio y el nombre del blog, hasta las licencias de software, los *transients* (cachés temporales) y las tareas programadas (Cron).
 
@@ -225,7 +225,7 @@ A nivel arquitectónico, `wp_options` es una tabla sencilla de tipo clave-valor,
 
 ---
 
-### **El mecanismo de Autoload: La consulta primordial**
+### El mecanismo de Autoload: La consulta primordial
 
 Como vimos en la anatomía de la petición (Sección 1.1), durante la fase de *bootstrap* (arranque), WordPress necesita saber cómo está configurado el sitio antes de poder hacer cualquier otra cosa. Para no tener que hacer cientos de pequeñas consultas a la base de datos solicitando cada opción individualmente, WordPress hace una única consulta masiva:
 
@@ -238,7 +238,7 @@ El resultado de esta consulta se empaqueta en un *array* gigante y **se carga di
 
 Si un desarrollador de un plugin necesita guardar una configuración, utiliza la función `add_option()`. Por defecto, esta función marca la opción con `autoload = 'yes'`.
 
-### **El origen del problema: Inflación y datos huérfanos**
+### El origen del problema: Inflación y datos huérfanos
 
 En un WordPress recién instalado, esta consulta devuelve unos pocos kilobytes de datos, lo cual es extremadamente rápido y eficiente. El problema del *autoload* comienza cuando el sitio envejece y acumula "deuda técnica".
 
@@ -248,7 +248,7 @@ Existen tres formas principales en las que el *autoload* destruye el rendimiento
 2. **Abuso estructural (Arrays gigantes):** Algunos temas o plugins almacenan configuraciones inmensas (como el código CSS compilado, tipografías o bloques enteros de diseño serializados) en una sola fila de `wp_options` con el autoload activado.
 3. **Transients sin Object Cache:** Los *transients* son el sistema nativo de WordPress para cachear consultas pesadas. Si no tienes un sistema de Caché de Objetos como Redis (que veremos en el Capítulo 5), WordPress guarda estos *transients* en `wp_options`. Si un plugin está mal programado y genera cientos de *transients* con autoload, el colapso es inminente.
 
-### **El impacto en la infraestructura (El cuello de botella de I/O y RAM)**
+### El impacto en la infraestructura (El cuello de botella de I/O y RAM)
 
 Visualicemos el impacto en un entorno de alto tráfico donde el *autoload* ha crecido hasta los **5 Megabytes** (un escenario alarmantemente común en e-commerces no optimizados):
 
@@ -267,7 +267,7 @@ RAM consumida solo por configuraciones: 500 MB (¡Inútilmente!).
 
 El síntoma más claro de un problema de *autoload* es un **TTFB (Time to First Byte) inestable o perpetuamente alto**, y un consumo desproporcionado de memoria en los procesos de PHP-FPM y MySQL, incluso cuando el sitio tiene poco tráfico.
 
-### **Auditoría y resolución a nivel de Base de Datos**
+### Auditoría y resolución a nivel de Base de Datos
 
 Como regla general en optimización, el tamaño total de los datos cargados mediante *autoload* **no debería superar los 800 KB a 1 MB**. Cualquier valor por encima de 2 MB requiere intervención inmediata.
 
@@ -300,7 +300,7 @@ Una vez identificados los culpables, la solución consiste en:
 * **Cambiar** el valor de `autoload` a `no` para aquellas opciones pesadas que solo se necesitan en momentos muy específicos (por ejemplo, opciones que solo se usan en el panel de administración, y no en el *frontend*).
 * Implementar **Redis o Memcached**. Al hacer esto, WordPress dejará de depender de la tabla `wp_options` para los *transients* y los guardará en la memoria RAM ultrarrápida del sistema de caché, reduciendo drásticamente la carga de MySQL.
 
-## **1.5 El archivo `wp-config.php`: Constantes vitales para el rendimiento y la depuración**
+## 1.5 El archivo `wp-config.php`: Constantes vitales para el rendimiento y la depuración
 
 Si la base de datos es el sistema nervioso y NGINX/PHP-FPM son el motor, el archivo `wp-config.php` es el panel de control maestro de la aeronave. Al ser uno de los primeros archivos en cargarse durante la fase de *bootstrap* (como vimos en la Sección 1.1), las directivas que aquí se declaran tienen el poder de alterar el comportamiento del Core de WordPress antes de que se ejecute una sola línea de código de los plugins, o incluso antes de que se establezca la conexión con la base de datos.
 
@@ -310,7 +310,7 @@ A continuación, desglosamos las constantes críticas que todo SysAdmin debe dom
 
 ---
 
-### **1. Constantes de Rendimiento y Prevención de Sobrecarga**
+### 1. Constantes de Rendimiento y Prevención de Sobrecarga
 
 Por defecto, WordPress es un sistema conservador diseñado para funcionar en servidores compartidos diminutos. Para escalar, debemos reescribir estas reglas de juego.
 
@@ -357,7 +357,7 @@ define( 'WP_CACHE', true );
 
 ---
 
-### **2. Micro-optimizaciones: Evitando consultas a la Base de Datos**
+### 2. Micro-optimizaciones: Evitando consultas a la Base de Datos
 
 Las URL principales del sitio se almacenan en la tabla `wp_options` bajo las claves `siteurl` y `home`. Si estas opciones no estuvieran cacheadas o hubiese un fallo en el *autoload*, WordPress realizaría consultas a la base de datos para saber cuál es su propio dominio.
 
@@ -373,7 +373,7 @@ define( 'WP_SITEURL', 'https://midominio.com' );
 
 ---
 
-### **3. Constantes de Depuración (El peligro en Producción)**
+### 3. Constantes de Depuración (El peligro en Producción)
 
 Las herramientas de depuración son vitales en desarrollo, pero pueden destruir el rendimiento y la seguridad si se dejan activadas en un entorno de producción.
 
@@ -402,7 +402,7 @@ define( 'SAVEQUERIES', true );
 
 ---
 
-## **Cierre del Capítulo 1**
+## Cierre del Capítulo 1
 
 Con el dominio de la anatomía de la petición (1.1), el entendimiento de la arquitectura de eventos (1.3), la mitigación de cuellos de botella en el *autoload* (1.4) y el blindaje del `wp-config.php` (1.5), hemos cubierto los pilares a nivel de código y aplicación.
 

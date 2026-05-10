@@ -1,6 +1,6 @@
 La eficiencia de WordPress no depende solo del código PHP, sino de la infraestructura que lo sostiene. Este capítulo aborda la transformación del servidor en una plataforma de alto rendimiento. Comenzamos en las entrañas del Kernel de Linux, ajustando el stack TCP con algoritmos como BBR para minimizar la latencia. Evolucionamos hacia NGINX, desglosando su arquitectura orientada a eventos frente al modelo de procesos de Apache. Finalmente, implementamos protocolos de vanguardia como HTTP/3 y QUIC, compresión Brotli y políticas agresivas de caché en el navegador. El objetivo es claro: reducir el TTFB y maximizar la concurrencia antes de que la primera línea de PHP sea ejecutada.
 
-## **2.1 Afinación del Kernel de Linux (Sysctl) para alto tráfico (TCP BBR, TCP Keepalive, max file descriptors)**
+## 2.1 Afinación del Kernel de Linux (Sysctl) para alto tráfico (TCP BBR, TCP Keepalive, max file descriptors)
 
 Cuando un sitio de WordPress experimenta un pico de tráfico masivo (por ejemplo, tras una campaña de marketing exitosa o al volverse viral), la tendencia natural es mirar hacia el servidor web (NGINX/Apache) o hacia la base de datos. Sin embargo, antes de que una petición HTTP alcance siquiera el servidor web, debe atravesar la capa de red del sistema operativo.
 
@@ -23,7 +23,7 @@ Para transformar un servidor genérico en una máquina capaz de despachar miles 
 
 ---
 
-### **1. Max File Descriptors (Descriptores de Archivo)**
+### 1. Max File Descriptors (Descriptores de Archivo)
 
 En Linux existe un principio fundamental: *"Todo es un archivo"*. Esto incluye archivos reales, pero también **conexiones de red (sockets)**. Si tu servidor tiene 10,000 visitantes concurrentes, NGINX necesita abrir al menos 10,000 sockets, además de los archivos físicos de caché, scripts PHP y recursos estáticos.
 
@@ -52,7 +52,7 @@ root      hard    nofile      1048576
 
 ---
 
-### **2. Algoritmo de Congestión TCP BBR**
+### 2. Algoritmo de Congestión TCP BBR
 
 Históricamente, Linux ha utilizado algoritmos de control de congestión basados en la pérdida de paquetes (como Reno o CUBIC). Esto significa que el servidor asume que hay congestión solo cuando los paquetes comienzan a perderse, momento en el cual reduce drásticamente la velocidad de transmisión. En redes modernas (como 4G/5G o conexiones inestables de dispositivos móviles), la pérdida de paquetes es común y no siempre significa congestión, lo que resulta en tiempos de carga lentos para los visitantes.
 
@@ -71,7 +71,7 @@ net.ipv4.tcp_congestion_control = bbr
 
 ---
 
-### **3. Gestión del Ciclo de Vida TCP y Prevención de Agotamiento de Puertos**
+### 3. Gestión del Ciclo de Vida TCP y Prevención de Agotamiento de Puertos
 
 Cuando un visitante abandona el sitio o se completa una petición HTTP, la conexión TCP no se destruye instantáneamente; entra en un estado llamado `TIME_WAIT`. Esto es útil para asegurar que cualquier paquete rezagado llegue a su destino. Sin embargo, bajo alto tráfico, miles de conexiones en `TIME_WAIT` pueden agotar rápidamente los puertos disponibles, impidiendo que el servidor acepte nuevos visitantes o que PHP se conecte a Redis o a la base de datos.
 
@@ -109,7 +109,7 @@ net.ipv6.conf.default.disable_ipv6 = 1
 
 ---
 
-### **Aplicación y Verificación de los Cambios**
+### Aplicación y Verificación de los Cambios
 
 Una vez que hayas agregado estas configuraciones al archivo `/etc/sysctl.conf` (o en un archivo dedicado dentro de `/etc/sysctl.d/99-wordpress.conf`), debes aplicar los cambios sin reiniciar el servidor ejecutando el siguiente comando:
 
@@ -129,7 +129,7 @@ sysctl net.ipv4.tcp_congestion_control
 
 Con una capa de red capaz de encolar, despachar y reciclar decenas de miles de conexiones por segundo sin saturar sus puertos ni asfixiar su pila TCP, el servidor ahora está preparado para entregar el tráfico al servicio web. En la siguiente sección, exploraremos por qué NGINX es la pieza que mejor se integra con esta arquitectura afinada.
 
-## **2.2 Apache vs. NGINX: Por qué NGINX es el estándar para la optimización de WordPress**
+## 2.2 Apache vs. NGINX: Por qué NGINX es el estándar para la optimización de WordPress
 
 Durante más de dos décadas, Apache HTTP Server fue el rey indiscutible de la web. De hecho, la "A" en el acrónimo LAMP (Linux, Apache, MySQL, PHP) cimentó la popularidad inicial de WordPress. Apache es increíblemente flexible, robusto y fácil de configurar para entornos compartidos. Sin embargo, cuando hablamos de optimización extrema, alta disponibilidad y escalabilidad, la realidad técnica es contundente: **la arquitectura clásica de Apache se convierte en un cuello de botella, y NGINX asume el trono.**
 
@@ -137,7 +137,7 @@ Para entender por qué los administradores de sistemas migran la pila de WordPre
 
 ---
 
-### **La Arquitectura Subyacente: Procesos vs. Eventos**
+### La Arquitectura Subyacente: Procesos vs. Eventos
 
 La diferencia de rendimiento entre ambos servidores no radica en que uno esté "mejor programado" que el otro, sino en un paradigma de diseño estructural.
 
@@ -172,7 +172,7 @@ Visualización de Arquitecturas: Carga Concurrente de 3 Peticiones
 
 ---
 
-### **El I/O de Disco y el Problema del `.htaccess**`
+### El I/O de Disco y el Problema del `.htaccess`
 
 Uno de los mayores atractivos de Apache es el archivo `.htaccess`. Permite a los usuarios de WordPress sobreescribir configuraciones del servidor, gestionar redirecciones y modificar enlaces permanentes (*permalinks*) sobre la marcha.
 
@@ -186,7 +186,7 @@ NGINX **no soporta `.htaccess` por diseño**. Toda la configuración, las reglas
 
 ---
 
-### **Entrega de Archivos Estáticos vs. Dinámicos**
+### Entrega de Archivos Estáticos vs. Dinámicos
 
 WordPress es un CMS dinámico, pero la realidad es que el 80% de las peticiones a un sitio web son recursos estáticos: imágenes, archivos CSS, JavaScript y fuentes tipográficas.
 
@@ -197,7 +197,7 @@ WordPress es un CMS dinámico, pero la realidad es que el 80% de las peticiones 
 
 ---
 
-### **Resumen: El Veredicto para WordPress**
+### Resumen: El Veredicto para WordPress
 
 Para despliegues de alto rendimiento, NGINX es el estándar de la industria por las siguientes razones ineludibles:
 
@@ -208,7 +208,7 @@ Para despliegues de alto rendimiento, NGINX es el estándar de la industria por 
 
 Comprender que NGINX delega el trabajo pesado y se enfoca solo en mover tráfico es el primer paso. Ahora que el debate entre los servidores está cerrado, en la siguiente sección entraremos en la terminal para configurar los *workers* y *buffers* de NGINX de cara a exprimir al máximo el hardware subyacente.
 
-## **2.3 Configuración avanzada de NGINX: Worker processes, worker connections y buffers**
+## 2.3 Configuración avanzada de NGINX: Worker processes, worker connections y buffers
 
 Habiendo establecido en la sección anterior que la arquitectura orientada a eventos de NGINX es el camino a seguir para un WordPress de alto rendimiento, el siguiente paso es abandonar las configuraciones por defecto. El archivo principal `nginx.conf` (usualmente ubicado en `/etc/nginx/nginx.conf`) viene preconfigurado para evitar consumir recursos en servidores pequeños (como instancias de 512 MB de RAM). En un entorno optimizado, esta precaución actúa como un freno de mano.
 
@@ -216,7 +216,7 @@ Para maximizar el rendimiento, debemos ajustar tres pilares fundamentales de la 
 
 ---
 
-### **1. Worker Processes y Afinación de CPU**
+### 1. Worker Processes y Afinación de CPU
 
 En NGINX existe un único "Proceso Maestro" (Master Process) que se ejecuta como `root`. Su única función es leer la configuración, gestionar los certificados SSL y lanzar los "Procesos de Trabajo" (*Worker Processes*), que se ejecutan bajo un usuario sin privilegios (como `www-data` o `nginx`). Estos *workers* son los que realmente procesan el tráfico.
 
@@ -240,7 +240,7 @@ worker_rlimit_nofile 1048576;
 
 ---
 
-### **2. Worker Connections y el Bucle de Eventos**
+### 2. Worker Connections y el Bucle de Eventos
 
 La directiva `worker_connections` define cuántas conexiones simultáneas puede mantener abiertas un solo *worker process*.
 
@@ -285,7 +285,7 @@ events {
 
 ---
 
-### **3. Buffers: El Cuello de Botella Oculto de WordPress**
+### 3. Buffers: El Cuello de Botella Oculto de WordPress
 
 Este es quizás el ajuste más subestimado en la optimización de servidores web. NGINX utiliza memoria RAM (buffers) para leer las peticiones de los clientes y para recibir las respuestas de PHP-FPM.
 
@@ -336,7 +336,7 @@ fastcgi_max_temp_file_size 0;
 
 Con los *workers* maximizados para aprovechar todo el hardware, las conexiones abiertas para tolerar picos de tráfico masivos y los buffers calibrados para evitar la latencia de disco, la capa de aplicación de NGINX está lista. En el siguiente paso, analizaremos cómo entregar este contenido a los visitantes a la velocidad de la luz mediante la implementación de protocolos de red de última generación.
 
-## **2.4 Protocolos modernos: Implementación y ventajas de HTTP/2, HTTP/3 y QUIC**
+## 2.4 Protocolos modernos: Implementación y ventajas de HTTP/2, HTTP/3 y QUIC
 
 Por muy optimizado que esté el kernel de Linux y por muy bien afinados que estén los *workers* de NGINX, la velocidad final a la que se renderiza un sitio de WordPress está dictada por las reglas del lenguaje que hablan el navegador y el servidor. Durante casi dos décadas, ese lenguaje fue **HTTP/1.1**, un protocolo que, aunque confiable, no fue diseñado para la web moderna.
 
@@ -344,13 +344,13 @@ Un sitio de WordPress promedio requiere cargar decenas (a veces cientos) de recu
 
 ---
 
-### **El Problema de HTTP/1.1: El Cuello de Botella (Head-of-Line Blocking)**
+### El Problema de HTTP/1.1: El Cuello de Botella (Head-of-Line Blocking)
 
 Bajo HTTP/1.1, un navegador solo puede descargar un archivo a la vez por cada conexión TCP abierta. Para acelerar esto, los navegadores modernos abren hasta 6 conexiones simultáneas por dominio. Si tu WordPress tiene 60 *assets*, los archivos deben hacer cola. Peor aún, si un archivo pesado (como un JS no optimizado) bloquea una conexión, los archivos que están detrás en esa misma cola deben esperar. Esto se conoce como **Head-of-Line (HoL) Blocking** en la capa de aplicación.
 
 ---
 
-### **HTTP/2: Multiplexación sobre TCP**
+### HTTP/2: Multiplexación sobre TCP
 
 Implementar HTTP/2 es el "triunfo rápido" (*quick win*) más grande en la optimización de servidores. Su mejora principal es la **multiplexación**. En lugar de abrir múltiples conexiones TCP, HTTP/2 abre **una única conexión TCP** entre el navegador y NGINX, y envía todos los archivos simultáneamente (en paralelo) a través de múltiples "flujos" (*streams*) dentro de esa misma conexión.
 
@@ -394,7 +394,7 @@ server {
 
 ---
 
-### **HTTP/3 y QUIC: La Revolución (Adiós, TCP)**
+### HTTP/3 y QUIC: La Revolución (Adiós, TCP)
 
 Aunque HTTP/2 resolvió el cuello de botella a nivel de aplicación (HTTP), no pudo resolver el problema a nivel de red (TCP).
 
@@ -441,13 +441,13 @@ server {
 
 ```
 
-### **El Impacto en el Mundo Real**
+### El Impacto en el Mundo Real
 
 Habilitar HTTP/2 es innegociable en cualquier entorno de WordPress contemporáneo; no hacerlo es penalizar artificialmente tu *Time to Interactive* (TTI). Habilitar HTTP/3 (QUIC) es dar el salto hacia la alta disponibilidad enfocada en el usuario móvil.
 
 En un escenario donde WordPress delega a NGINX la entrega de docenas de recursos a través de un canal multiplexado y tolerante a fallos de red, el uso de ancho de banda se vuelve mucho más eficiente. Sin embargo, transportar archivos más rápido no exime la responsabilidad de enviarlos lo más ligeros posible. En la siguiente sección, abordaremos cómo reducir drásticamente el tamaño de la carga útil del servidor transitando hacia algoritmos de compresión de última generación.
 
-## **2.5 Compresión a nivel de servidor: Transición de Gzip a Brotli**
+## 2.5 Compresión a nivel de servidor: Transición de Gzip a Brotli
 
 En la sección anterior, modernizamos la "tubería" de red habilitando protocolos de alta velocidad como HTTP/2 y QUIC para evitar cuellos de botella en la entrega. Sin embargo, por muy ancha y rápida que sea esa tubería, enviar archivos pesados siempre consumirá tiempo y ancho de banda. Aquí es donde entra la compresión a nivel de servidor: la tarea de encoger el "cargamento" antes de enviarlo.
 
@@ -455,7 +455,7 @@ Durante casi dos décadas, **Gzip** fue el estándar absoluto de la industria. E
 
 ---
 
-### **¿Por qué Brotli supera a Gzip en WordPress?**
+### ¿Por qué Brotli supera a Gzip en WordPress?
 
 Desarrollado por Google y liberado como código abierto, Brotli utiliza una combinación moderna del algoritmo LZ77, codificación Huffman y, lo más importante para nuestro caso de uso: **un diccionario estático integrado**.
 
@@ -469,7 +469,7 @@ Brotli viene pre-entrenado con un diccionario de más de 13,000 palabras y frase
 
 ---
 
-### **Implementación de Brotli en NGINX**
+### Implementación de Brotli en NGINX
 
 A diferencia de Gzip, que viene integrado en el núcleo de NGINX de forma nativa, Brotli suele requerir la instalación de un módulo dinámico (`nginx-module-brotli` en sistemas basados en Debian/Ubuntu, o compilar NGINX desde el código fuente con soporte de Google).
 
@@ -509,7 +509,7 @@ brotli_static on;
 
 ---
 
-### **Gzip como Respaldo (Fallback)**
+### Gzip como Respaldo (Fallback)
 
 Aunque el soporte de Brotli supera el 96% de los navegadores globales actuales, algunos navegadores muy antiguos o ciertos bots de indexación (crawlers) todavía solo entienden Gzip.
 
@@ -528,11 +528,11 @@ gzip_types text/plain text/css text/javascript application/javascript applicatio
 
 ```
 
-### **El Siguiente Paso**
+### El Siguiente Paso
 
 Al transitar hacia Brotli, logramos que los recursos que viajan desde el servidor hacia el cliente sean lo más microscópicos posible. Sin embargo, el recurso más rápido de cargar es aquel que no necesita descargarse en absoluto. Una vez que el navegador del usuario ha hecho el esfuerzo de descargar el logo de tu sitio o tu CSS comprimido con Brotli, debemos asegurarnos de que no vuelva a pedirlo en su próxima visita. Ese es el dominio de la memoria local del cliente, la cual dominaremos en la siguiente sección: **2.6 Configuración de cabeceras de caché del navegador y Expire Headers.**
 
-## **2.6 Configuración de cabeceras de caché del navegador (*Browser Caching*) y *Expire Headers***
+## 2.6 Configuración de cabeceras de caché del navegador (*Browser Caching*) y *Expire Headers*
 
 En la sección anterior, logramos que los recursos viajen lo más comprimidos posible gracias a Brotli. Sin embargo, en el mundo de la optimización extrema hay una regla de oro insuperable: **la petición HTTP más rápida y ligera es aquella que nunca llega al servidor.**
 
@@ -542,7 +542,7 @@ Para evitar esto, debemos instruir al navegador del visitante (mediante cabecera
 
 ---
 
-### **La Mecánica de las Cabeceras: `Expires` vs. `Cache-Control**`
+### La Mecánica de las Cabeceras: `Expires` vs. `Cache-Control`
 
 Para dictar las reglas de almacenamiento en el cliente, los servidores web utilizan principalmente dos cabeceras HTTP:
 
@@ -569,7 +569,7 @@ Navegador carga el archivo desde su disco SSD local (Memoria Caché).
 
 ---
 
-### **Implementación en NGINX para WordPress**
+### Implementación en NGINX para WordPress
 
 NGINX facilita enormemente esta tarea gracias a su directiva `expires`, la cual calcula automáticamente la fecha futura para la cabecera `Expires` y genera simultáneamente la cabecera `Cache-Control: max-age`.
 
@@ -602,7 +602,7 @@ location ~* \.(jpg|jpeg|gif|png|webp|avif|ico|css|js|woff|woff2|ttf|svg|eot)$ {
 
 ---
 
-### **El Problema de la Inmovilidad: *Cache Busting* en WordPress**
+### El Problema de la Inmovilidad: *Cache Busting* en WordPress
 
 Una preocupación común al configurar una caché de un año (`365d`) es: *"Si modifico el color de mi sitio en el archivo `style.css`, ¿cómo obligo a los visitantes recurrentes a descargar la nueva versión en lugar de ver la antigua almacenada en sus navegadores?"*
 
@@ -618,7 +618,7 @@ Para el navegador, esta es una URL completamente nueva. Por lo tanto, ignorará 
 
 ---
 
-## **Cierre del Capítulo 2**
+## Cierre del Capítulo 2
 
 Con esta configuración final, hemos transformado un servidor genérico en una máquina afilada. El kernel de Linux ahora resiste tormentas de tráfico manejando sus descriptores y congestión TCP BBR; NGINX exprime la CPU con su arquitectura de eventos y *buffers*; los protocolos HTTP/2 y QUIC multiplexan los envíos; Brotli microscopiza el código, y las cabeceras de caché aseguran que el tráfico recurrente tenga coste cero para el servidor.
 

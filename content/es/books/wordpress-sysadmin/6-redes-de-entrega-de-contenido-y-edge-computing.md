@@ -2,7 +2,7 @@ En este capítulo, escalamos la optimización más allá de los límites físico
 
 Aprenderás a diferenciar entre las estrategias **Push y Pull**, a blindar tu infraestructura mediante **proxies inversos Anycast** y a implementar **Edge Caching** para servir HTML dinámico con latencia mínima. Finalmente, descubriremos el poder de los **Edge Workers** para ejecutar lógica y seguridad en la periferia, liberando por completo la carga de tu CPU.
 
-## **6.1 CDN Push vs. CDN Pull: Descarga de *assets* estáticos (imágenes, CSS, JS)**
+## 6.1 CDN Push vs. CDN Pull: Descarga de *assets* estáticos (imágenes, CSS, JS)
 
 En los capítulos anteriores, hemos optimizado el servidor de origen (Nginx, PHP, MySQL) y establecido una robusta estrategia de caché multicapa. Sin embargo, por más rápido que sea tu servidor en Fráncfort o Nueva York, las leyes de la física dictan que un usuario en Tokio experimentará latencia. Aquí es donde entra la Red de Entrega de Contenidos (CDN).
 
@@ -12,7 +12,7 @@ Para lograr esto, las CDNs tradicionales ofrecen dos modelos fundamentales de ar
 
 ---
 
-### **El Modelo CDN Pull: El estándar de facto en WordPress**
+### El Modelo CDN Pull: El estándar de facto en WordPress
 
 Como su nombre indica ("tirar" o "extraer"), en una **CDN Pull**, la red de entrega extrae pasivamente el contenido desde tu servidor de origen (tu instalación de WordPress) solo cuando un usuario lo solicita por primera vez.
 
@@ -53,7 +53,7 @@ El flujo de trabajo es reactivo:
 
 ---
 
-### **El Modelo CDN Push: Almacenamiento activo en el Edge**
+### El Modelo CDN Push: Almacenamiento activo en el Edge
 
 En un modelo **CDN Push** ("empujar"), el flujo se invierte. El administrador del sistema o la aplicación es responsable de subir proactivamente los archivos a los servidores de almacenamiento de la CDN *antes* de que cualquier usuario los solicite.
 
@@ -88,7 +88,7 @@ Debido a esta fricción, el modelo Push tradicional casi ha desaparecido en los 
 
 ---
 
-### **¿Cómo funciona la integración Pull a nivel de código?**
+### ¿Cómo funciona la integración Pull a nivel de código?
 
 Para desmitificar lo que hacen los plugins de rendimiento bajo el capó en un modelo Pull, aquí tienes un ejemplo de cómo se interceptan y reescriben las URLs de las imágenes y adjuntos en WordPress mediante un simple filtro en `functions.php` o un MU-Plugin (Must-Use Plugin).
 
@@ -121,13 +121,13 @@ add_filter( 'wp_get_attachment_url', 'sysadmin_cdn_pull_rewrite' );
 
 *(Nota de SysAdmin: Aunque este filtro es útil para adjuntos, en un entorno de producción real se suele usar la técnica de `ob_start()` (Output Buffering) para buscar y reemplazar cadenas completas en el documento HTML final antes de enviarlo al navegador, garantizando que el CSS, JS y las imágenes de los temas también pasen por la CDN Pull).*
 
-### **Veredicto para la Alta Disponibilidad**
+### Veredicto para la Alta Disponibilidad
 
 Para el 99% de los sitios WordPress, desde blogs pequeños hasta revistas corporativas de alto tráfico, **la arquitectura CDN Pull es la opción correcta**. Su equilibrio entre facilidad de integración y delegación de recursos es insuperable.
 
 El modelo **Push** (en su forma clásica) está obsoleto para la web moderna. Si tu infraestructura requiere las ventajas del Push (aliviar el almacenamiento del disco del origen y asegurar cero latencia desde el primer byte), tu arquitectura debe apuntar hacia el *Offloading* a sistemas de almacenamiento de objetos (S3/GCS), un paradigma que abordaremos en profundidad en la sección **7.3**.
 
-## **6.2 Integración a nivel de DNS y red proxy: Cloudflare de extremo a extremo**
+## 6.2 Integración a nivel de DNS y red proxy: Cloudflare de extremo a extremo
 
 Si en la sección anterior (6.1) vimos cómo una CDN tradicional alivia a nuestro servidor delegando la entrega de imágenes y *scripts*, ahora daremos un paso más allá. En una arquitectura de alta disponibilidad, externalizar solo los archivos estáticos no es suficiente; necesitamos proteger y acelerar la totalidad de la petición desde el primer milisegundo. Aquí es donde entra en juego el concepto de **Red Proxy Inversa Anycast**, con Cloudflare como el estándar absoluto de la industria.
 
@@ -135,7 +135,7 @@ A diferencia de una CDN Pull tradicional (que opera mediante un subdominio como 
 
 ---
 
-### **1. Aceleración en la Capa DNS (Red Anycast)**
+### 1. Aceleración en la Capa DNS (Red Anycast)
 
 El tiempo de resolución DNS es el "impuesto oculto" de la web. Antes de que un navegador pueda solicitar tu HTML o tus imágenes, debe convertir `tudominio.com` en una dirección IP. Si tu servidor DNS primario está en España y el visitante en México, esa simple búsqueda puede añadir 100-200 ms al Tiempo Hasta el Primer Byte (TTFB).
 
@@ -143,7 +143,7 @@ Al delegar los *Nameservers* (NS) a Cloudflare, te beneficias de su red Anycast.
 
 * **El resultado:** Cuando el usuario en México busca tu dominio, el protocolo de enrutamiento BGP lo dirige automáticamente al nodo de Cloudflare en Ciudad de México, resolviendo el DNS en menos de 10-15 ms.
 
-### **2. La Red Proxy Inversa (El estado de la "Nube Naranja")**
+### 2. La Red Proxy Inversa (El estado de la "Nube Naranja")
 
 Una vez resuelto el DNS, Cloudflare no devuelve la IP de tu servidor de origen (tu servidor Nginx). En su lugar, devuelve la IP del nodo de Cloudflare más cercano al usuario. Tu tráfico ahora está "proxificado".
 
@@ -175,7 +175,7 @@ En este modelo, tu servidor de origen se vuelve invisible para el internet públ
 
 ---
 
-### **3. Configuración del Cifrado de Extremo a Extremo (TLS)**
+### 3. Configuración del Cifrado de Extremo a Extremo (TLS)
 
 Uno de los errores más comunes y destructivos al integrar Cloudflare con WordPress es la mala configuración del SSL, lo que suele derivar en el temido error `ERR_TOO_MANY_REDIRECTS` (Bucle de redireccionamiento).
 
@@ -198,7 +198,7 @@ if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROT
 
 ---
 
-### **4. Restauración de la IP Real del Visitante (El reto del SysAdmin)**
+### 4. Restauración de la IP Real del Visitante (El reto del SysAdmin)
 
 El mayor efecto secundario de colocar tu servidor detrás de una red proxy es que, desde la perspectiva de Nginx y WordPress, **todo el tráfico parece provenir de las IPs de Cloudflare**.
 
@@ -247,7 +247,7 @@ Una vez aplicada esta configuración y reiniciado Nginx (`systemctl reload nginx
 
 Con la red proxy establecida y configurada para comunicarse de forma segura con nuestro origen, hemos sentado la fundación de red necesaria para el siguiente gran salto en rendimiento: llevar el HTML de WordPress directamente al borde (*Edge Caching*).
 
-## **6.3 *Edge Caching*: Caché de HTML en el borde usando Cloudflare APO o Fastly**
+## 6.3 *Edge Caching*: Caché de HTML en el borde usando Cloudflare APO o Fastly
 
 Hasta este punto de nuestra arquitectura, hemos delegado la resolución DNS, externalizado los archivos estáticos e implementado un proxy inverso seguro (Sección 6.2). Sin embargo, si analizamos el ciclo de vida de una petición de un visitante anónimo, todavía existe un cuello de botella geográfico: **la generación y entrega del documento HTML**.
 
@@ -259,7 +259,7 @@ El gran desafío con WordPress es que su HTML es inherentemente dinámico (barra
 
 ---
 
-### **1. Cloudflare APO (Automatic Platform Optimization)**
+### 1. Cloudflare APO (Automatic Platform Optimization)
 
 Cloudflare APO es una solución empaquetada (basada internamente en Cloudflare Workers y KV Storage) diseñada específicamente para entender la idiosincrasia de WordPress. No es solo una regla de caché; es un motor lógico en el borde de la red.
 
@@ -296,7 +296,7 @@ El "Santo Grial" del *Edge Caching* es la purga. APO requiere instalar su plugin
 
 ---
 
-### **2. Fastly: Varnish en la Nube (El estándar Enterprise)**
+### 2. Fastly: Varnish en la Nube (El estándar Enterprise)
 
 Mientras que Cloudflare APO es un producto "llave en mano", **Fastly** es una plataforma orientada a ingenieros que necesitan control absoluto. Fastly está construido sobre **Varnish Cache** y utiliza VCL (Varnish Configuration Language) altamente modificado en sus nodos Edge.
 
@@ -332,14 +332,14 @@ add_action( 'template_redirect', function() {
 
 ---
 
-### **Veredicto Arquitectónico: ¿APO o Fastly?**
+### Veredicto Arquitectónico: ¿APO o Fastly?
 
 1. **Usa Cloudflare APO si:** Tu infraestructura se basa en la simplicidad y la rentabilidad. Para el 90% de los sitios, revistas, e-commerce estándar e instituciones, APO ofrece un rendimiento de clase mundial sin requerir conocimientos de VCL ni mantenimiento de reglas complejas de invalidación.
 2. **Usa Fastly si:** Estás diseñando un entorno *Enterprise* (alto volumen de publicaciones por minuto, muros de pago dinámicos, segmentación geográfica severa). Fastly te permite escribir lógica VCL en el borde para alterar peticiones antes de que toquen la caché, y su purga por *Surrogate Keys* en tiempo real (menos de 150 milisegundos a nivel global) es imbatible para medios de noticias masivos.
 
 El *Edge Caching* marca la frontera entre un sitio rápido y un sitio verdaderamente global. Sin embargo, ¿qué sucede si necesitamos alterar el HTML, hacer redirecciones condicionales o pruebas A/B en el borde sin ensuciar el código de WordPress? Eso nos lleva al siguiente nivel evolutivo: los **Edge Workers** (Sección 6.4).
 
-## **6.4 *Edge Workers*: Uso de Cloudflare Workers para manipulaciones de cabeceras y redirecciones sin tocar el servidor de origen**
+## 6.4 *Edge Workers*: Uso de Cloudflare Workers para manipulaciones de cabeceras y redirecciones sin tocar el servidor de origen
 
 Hemos llegado a la frontera final de la optimización perimetral. Si la caché estática (6.1) y el *Edge Caching* de HTML (6.3) consisten en almacenar contenido generado previamente, los **Edge Workers** introducen un paradigma revolucionario: **ejecutar código (lógica de programación) directamente en los nodos de la CDN**.
 
@@ -349,7 +349,7 @@ Para un ecosistema como WordPress, delegar tareas computacionales ligeras al *Ed
 
 ---
 
-### **El problema de las redirecciones en WordPress**
+### El problema de las redirecciones en WordPress
 
 En el ciclo de vida de un sitio de alto tráfico, los cambios de URL son comunes. Históricamente, en WordPress, esto se gestiona de dos formas, ambas subóptimas para la Alta Disponibilidad:
 
@@ -384,11 +384,11 @@ Al usar un Worker, la redirección ocurre en el centro de datos de la CDN más c
 
 ---
 
-### **Casos de Uso Críticos para WordPress**
+### Casos de Uso Críticos para WordPress
 
 A continuación, exploramos implementaciones prácticas mediante código JavaScript estándar (formato ES Modules) compatible con Cloudflare Workers.
 
-#### **1. Redirecciones y Enrutamiento sin tocar NGINX**
+#### 1. Redirecciones y Enrutamiento sin tocar NGINX
 
 Imagina que has fusionado dos categorías en tu blog o has migrado un artículo clave. En lugar de procesar ese 301 en tu máquina, el Worker lo intercepta.
 
@@ -418,7 +418,7 @@ export default {
 
 ```
 
-#### **2. Inyección de Cabeceras de Seguridad HTTP**
+#### 2. Inyección de Cabeceras de Seguridad HTTP
 
 Añadir cabeceras como `Strict-Transport-Security` (HSTS), `X-Content-Type-Options` o políticas de CORS (`Access-Control-Allow-Origin`) suele hacerse en NGINX. Sin embargo, si estás sirviendo *assets* cacheados en el *Edge*, la respuesta nunca toca NGINX.
 
@@ -450,7 +450,7 @@ export default {
 
 ```
 
-#### **3. Pruebas A/B y Manipulación de Cookies (Geolocalización)**
+#### 3. Pruebas A/B y Manipulación de Cookies (Geolocalización)
 
 Uno de los mayores dolores de cabeza en WordPress es lidiar con el rendimiento al tener múltiples monedas o lenguajes basados en el país del visitante (ej. WooCommerce Multi-currency). Hacer esto en PHP rompe la caché de página al 100%.
 
@@ -478,7 +478,7 @@ export default {
 
 ```
 
-### **Conclusión del Capítulo 6**
+### Conclusión del Capítulo 6
 
 La integración de una red Anycast proxy (6.2), combinada con *Edge Caching* agresivo para el HTML (6.3) y la externalización de la lógica computacional mediante *Edge Workers* (6.4), transforma completamente la arquitectura de un WordPress tradicional.
 

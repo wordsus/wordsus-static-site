@@ -1,6 +1,6 @@
 La seguridad en WordPress no es un parche externo, sino una capa crítica de la infraestructura que determina la estabilidad del servicio. Un servidor desprotegido es un servidor ineficiente: cada ataque de fuerza bruta o escaneo de bots consume *workers* de PHP y ciclos de CPU que deberían dedicarse a usuarios legítimos. En este capítulo, abordaremos la seguridad desde la perspectiva del **SysAdmin**, desplazando la mitigación de amenazas desde el interior de WordPress hacia el borde de la red y el núcleo del sistema operativo. Aprenderás a blindar *endpoints* críticos, gestionar tareas en segundo plano y configurar defensas perimetrales sin sacrificar la latencia ni la escalabilidad.
 
-## **10.1 Bloqueo a nivel de servidor: Uso de Fail2ban para evitar consumo de recursos por ataques de fuerza bruta**
+## 10.1 Bloqueo a nivel de servidor: Uso de Fail2ban para evitar consumo de recursos por ataques de fuerza bruta
 
 En los capítulos anteriores hemos construido una arquitectura capaz de soportar miles de peticiones por segundo mediante el uso intensivo de cachés. Sin embargo, los atacantes y los bots maliciosos no buscan tus páginas cacheadas; apuntan directamente a los *endpoints* dinámicos de WordPress, principalmente `wp-login.php` y `xmlrpc.php`.
 
@@ -8,7 +8,7 @@ Dado que el diseño de WordPress impide (y de hecho, no debe) cachear estos *end
 
 La solución más eficiente frente a esto no es un plugin de seguridad en WordPress, sino delegar la mitigación a la capa más baja posible del sistema operativo: el firewall de red (capa 3/4 del modelo OSI). Aquí es donde entra **Fail2ban**.
 
-### **El paradigma de la mitigación temprana**
+### El paradigma de la mitigación temprana
 
 Un plugin de seguridad procesa el bloqueo en la capa de aplicación (capa 7). Evaluar si una IP está bloqueada a través de PHP implica cargar el *Core* de WordPress, lo que consume entre 20 y 50 MB de RAM y ciclos de CPU por cada intento. Fail2ban altera este flujo inyectando reglas directamente en `iptables` o `nftables`.
 
@@ -35,7 +35,7 @@ ESCENARIO B: Bloqueo mediante Fail2ban (Capa 3) - CONSUMO CASI NULO
 
 ```
 
-### **Configuración de Fail2ban para WordPress**
+### Configuración de Fail2ban para WordPress
 
 Fail2ban funciona mediante la lectura constante de los archivos de registro (logs) de tu servidor web. Cuando un patrón de expresiones regulares (*regex*) coincide un número determinado de veces dentro de una ventana de tiempo, Fail2ban ejecuta una acción (normalmente, banear la IP).
 
@@ -75,7 +75,7 @@ maxretry = 5
 
 Con esta configuración, si una IP realiza 5 peticiones POST a `wp-login.php` en menos de 10 minutos, el subsistema del kernel de Linux descartará silenciosamente todos sus paquetes de red durante 24 horas. El servidor web ni siquiera se enterará de que el atacante sigue intentando conectarse.
 
-### **Consideraciones de Rendimiento del propio Fail2ban**
+### Consideraciones de Rendimiento del propio Fail2ban
 
 Aunque Fail2ban salva a PHP-FPM, el propio Fail2ban puede convertirse en un cuello de botella si se le obliga a procesar archivos de registro gigantescos en tiempo real mediante *polling*.
 
@@ -85,13 +85,13 @@ Para entornos de alta disponibilidad y tráfico masivo:
 2. **Rotación agresiva de logs:** Configura `logrotate` para rotar los logs de NGINX diariamente (o por tamaño), evitando que Fail2ban parsee archivos de varios gigabytes.
 3. **Sinergia con CDN:** Como profundizaremos en el Capítulo 6 y más adelante en el 10.4, si usas Cloudflare o Fastly, un bloqueo en `iptables` a nivel local será inútil (o peor, bloqueará los nodos del CDN). En esos escenarios, Fail2ban debe configurarse con acciones que utilicen la API del proveedor Edge (ej. `action = cloudflare`) para empujar la regla de bloqueo directamente a la periferia de la red, alejando la carga maliciosa a cientos de kilómetros de tu centro de datos original.
 
-## **10.2 Desactivación y protección de endpoints conflictivos: XML-RPC y la REST API de WordPress**
+## 10.2 Desactivación y protección de endpoints conflictivos: XML-RPC y la REST API de WordPress
 
 Si en la sección anterior vimos cómo Fail2ban nos protege de los ataques de fuerza bruta tradicionales, ahora debemos abordar dos *endpoints* que presentan desafíos arquitectónicos distintos. Mientras que `wp-login.php` requiere múltiples peticiones HTTP para un ataque (lo que lo hace detectable por Fail2ban), `xmlrpc.php` y la REST API (`/wp-json/`) permiten técnicas avanzadas como la amplificación de ataques y la fuga de información (Scraping), generando un consumo de recursos que puede pasar inadvertido en los *Access Logs* convencionales.
 
 El enfoque del administrador de sistemas frente a estos dos componentes debe ser diametralmente opuesto: uno debe ser erradicado sin contemplaciones en el 99% de los casos, mientras que el otro debe ser quirúrgicamente protegido.
 
-### **El legado letal de XML-RPC y el ataque de amplificación**
+### El legado letal de XML-RPC y el ataque de amplificación
 
 El archivo `xmlrpc.php` es una reliquia de los primeros días de WordPress, diseñado para permitir la publicación remota (pingbacks, trackbacks y clientes móviles antiguos). Hoy en día, su funcionalidad ha sido reemplazada casi en su totalidad por la REST API.
 
@@ -115,7 +115,7 @@ location = /xmlrpc.php {
 
 Al desactivar el registro (`access_log off`), evitamos además que los bots que escanean este archivo inunden nuestros logs y consuman operaciones de entrada/salida (I/O) en el disco.
 
-### **El dilema de la REST API: Proteger sin romper**
+### El dilema de la REST API: Proteger sin romper
 
 A diferencia de XML-RPC, **no puedes bloquear la REST API de WordPress**. Desde la llegada del editor de bloques (Gutenberg), el *Core* de WordPress, el panel de administración y gran parte del ecosistema de plugins modernos (como WooCommerce) dependen críticamente de las rutas bajo `/wp-json/` para funcionar mediante peticiones asíncronas (AJAX moderno). Un bloqueo total devolvería errores en el editor y dejaría la web inservible para los editores.
 
@@ -181,7 +181,7 @@ location ~ ^/wp-json/wp/v2/users {
 
 Al aplicar estas dos políticas —aniquilación de XML-RPC y restricción condicional de la REST API— cerramos las dos vías principales que utilizan las botnets modernas para realizar *bypassing* de las cachés e impactar directamente en el motor de base de datos.
 
-## **10.3 *Rate Limiting*: Configuración de límites de peticiones (zonas) en NGINX para mitigar ataques DDoS a nivel de capa 7**
+## 10.3 *Rate Limiting*: Configuración de límites de peticiones (zonas) en NGINX para mitigar ataques DDoS a nivel de capa 7
 
 Si Fail2ban actúa como un francotirador eliminando IPs maliciosas tras detectar un patrón, y el bloqueo de *endpoints* erradica vectores de ataque específicos, el *Rate Limiting* (límite de tasa) es nuestra red de contención frente a inundaciones masivas.
 
@@ -189,7 +189,7 @@ Los ataques de denegación de servicio distribuido (DDoS) en la capa 3 (Red) o c
 
 Para sobrevivir a esto, debemos instruir a NGINX para que regule el flujo de peticiones por segundo (RPS) que cada cliente puede realizar.
 
-### **El algoritmo del "Cubo con fugas" (Leaky Bucket)**
+### El algoritmo del "Cubo con fugas" (Leaky Bucket)
 
 NGINX implementa el *Rate Limiting* utilizando el concepto matemático del *Leaky Bucket*. Imagina un cubo con un agujero en el fondo:
 
@@ -210,7 +210,7 @@ NGINX implementa el *Rate Limiting* utilizando el concepto matemático del *Leak
 
 El agua (peticiones) puede caer al cubo en ráfagas violentas, pero el cubo solo deja salir el agua por el agujero a un ritmo constante (*Rate*). Si el agua entra más rápido de lo que sale, el cubo se llena (*Burst*). Si el cubo se desborda, NGINX descarta inmediatamente las nuevas peticiones devolviendo un código de error.
 
-### **Definición de Zonas de Memoria (Contexto `http`)**
+### Definición de Zonas de Memoria (Contexto `http`)
 
 Antes de aplicar límites, NGINX necesita reservar un espacio en la memoria RAM para rastrear los estados de conexión de las IPs. Esto se hace en el bloque `http` de tu archivo `nginx.conf`:
 
@@ -238,7 +238,7 @@ http {
 
 *Nota de infraestructura:* Al igual que en la sección 10.1, si estás detrás de un CDN o un proxy inverso, `$binary_remote_addr` será la IP de Cloudflare. Debes tener configurado el módulo `Real-IP` para que esta variable contenga la IP real del visitante, o de lo contrario limitarás globalmente a todos los usuarios que entren por ese nodo del CDN.
 
-### **Aplicación Estratégica en WordPress (Contexto `server` / `location`)**
+### Aplicación Estratégica en WordPress (Contexto `server` / `location`)
 
 Aplicar un límite global a todo el sitio es un error de novato. Cuando un usuario carga tu *homepage*, su navegador solicitará simultáneamente el HTML y decenas de *assets* (CSS, JS, imágenes). Si aplicas un límite estricto global, bloquearás la carga de tus propios archivos estáticos, rompiendo el diseño web.
 
@@ -274,14 +274,14 @@ server {
 
 ```
 
-### **La importancia crítica del parámetro `nodelay**`
+### La importancia crítica del parámetro `nodelay`
 
 Observa el uso de `burst=10 nodelay;` en la configuración anterior.
 Si solo usamos `burst=10`, NGINX encolará las peticiones que excedan la tasa de 3 r/s y las irá entregando a PHP lentamente (retardando artificialmente la respuesta). A nivel de usuario, esto se percibe como una web extremadamente lenta (latencia inducida).
 
 Al añadir `nodelay`, le decimos a NGINX: *"Si la petición cabe en el cubo de ráfaga (burst), procésala **inmediatamente** pasando la carga a PHP. Pero si el cubo se llena, corta de raíz y devuelve un 429"*. Esto garantiza que los usuarios legítimos que navegan rápido por tu web experimenten tiempos de carga instantáneos, mientras que los bots de *scraping* o de ataque que disparen ráfagas sostenidas se estrellen instantáneamente contra un muro de errores 429.
 
-## **10.4 Web Application Firewall (WAF): Implementación de ModSecurity o WAF en el Edge (Cloudflare) y su penalización (o mejora) en la latencia**
+## 10.4 Web Application Firewall (WAF): Implementación de ModSecurity o WAF en el Edge (Cloudflare) y su penalización (o mejora) en la latencia
 
 Hasta ahora hemos filtrado por IP (Fail2ban), por ruta (bloqueo de *endpoints*) y por volumen (Rate Limiting). Sin embargo, ¿qué ocurre si un atacante utiliza una IP limpia, respeta los límites de peticiones por segundo y envía su ataque directamente a un formulario legítimo o a un parámetro de búsqueda? Aquí es donde entra el **Web Application Firewall (WAF)**.
 
@@ -289,7 +289,7 @@ El objetivo de un WAF es realizar una inspección profunda de paquetes (DPI) en 
 
 En la arquitectura de WordPress, existen dos grandes enfoques para implementar un WAF, y la elección entre uno y otro tiene un impacto dramático en la latencia y la capacidad de procesamiento de tu servidor.
 
-### **El WAF Tradicional: ModSecurity en NGINX (El Coste Computacional)**
+### El WAF Tradicional: ModSecurity en NGINX (El Coste Computacional)
 
 La forma clásica de implementar un WAF es instalarlo en el propio servidor web. En el ecosistema moderno de NGINX, esto se hace compilando el módulo dinámico `libmodsecurity3` y utilizando el conjunto de reglas **OWASP Core Rule Set (CRS)**.
 
@@ -319,7 +319,7 @@ Cuando habilitas OWASP CRS, cada petición (incluso un simple comentario en el b
 * **Latencia (TTFB):** El tiempo de procesamiento (Time To First Byte) de las peticiones no cacheadas puede incrementarse entre 50 ms y 200 ms, dependiendo de la potencia de un solo hilo de tu CPU.
 * **El infierno de los Falsos Positivos:** WordPress es notorio por enviar cargas útiles complejas, especialmente al guardar configuraciones complejas de temas o usar constructores visuales (Gutenberg, Elementor). ModSecurity bloqueará rutinariamente el `wp-admin`, requiriendo horas de configuración de excepciones (*Rule Exclusions*) por parte del SysAdmin.
 
-### **El WAF en el Edge: Cloudflare (La Mejora del Rendimiento)**
+### El WAF en el Edge: Cloudflare (La Mejora del Rendimiento)
 
 La evolución natural de la infraestructura de alta disponibilidad es mover la inspección del WAF fuera de tu servidor de origen y llevarla al "borde" de la red (*Edge Computing*). Proveedores como Cloudflare, Fastly o AWS WAF interceptan la petición antes de que viaje a través de los océanos hacia tu centro de datos.
 
@@ -351,7 +351,7 @@ Podría parecer contradictorio que añadir un intermediario (Cloudflare) reduzca
 1. **Ahorro de ciclos de reloj:** Tu servidor de origen ya no gasta recursos de CPU evaluando si una petición es un ataque. Toda esa capacidad de cómputo se libera para ejecutar código PHP de WordPress y consultas a la base de datos más rápido.
 2. **Mitigación de la congestión de red:** Los ataques volumétricos de capa 7 ni siquiera ocupan el ancho de banda de tu servidor. El tráfico "basura" es descartado en los nodos del CDN, asegurando que tu enlace de red esté al 100% disponible para los clientes reales.
 
-### **Implementación de Reglas de WAF para WordPress en el Edge**
+### Implementación de Reglas de WAF para WordPress en el Edge
 
 Si utilizas Cloudflare (en un plan Pro o superior), la configuración se desplaza del terminal de Linux al panel de control del WAF, donde debes habilitar los **Managed Rulesets** específicos.
 
@@ -371,13 +371,13 @@ and not ip.src in {Tu_IP_De_Oficina}
 
 **Conclusión del SysAdmin:** Salvo que políticas estrictas de cumplimiento de datos (como normativas gubernamentales muy específicas) te obliguen a realizar la inspección en infraestructura propia y *on-premise*, **el WAF debe residir siempre en el Edge**. Utilizar ModSecurity en 2024+ para proteger un clúster de WordPress de alto tráfico es incurrir en una penalización de rendimiento innecesaria que compromete la escalabilidad de toda tu pila LEMP.
 
-## **10.5 Gestión de tareas en segundo plano: Reemplazo del `wp-cron.php` virtual por Cron Jobs reales a nivel de sistema operativo para liberar recursos en las peticiones web**
+## 10.5 Gestión de tareas en segundo plano: Reemplazo del `wp-cron.php` virtual por Cron Jobs reales a nivel de sistema operativo para liberar recursos en las peticiones web
 
 En un entorno de alta disponibilidad y fuertemente cacheado, existe una paradoja que arruina el rendimiento de muchos servidores: cuanto mejor configures tu caché (Varnish, FastCGI, Cloudflare), peor funcionarán las tareas programadas de WordPress.
 
 Por defecto, WordPress no utiliza un sistema de cron real. En su lugar, emplea un "cron virtual" o pseudo-cron basado en el tráfico de los usuarios.
 
-### **El problema arquitectónico del Cron Virtual**
+### El problema arquitectónico del Cron Virtual
 
 Cada vez que un usuario solicita una página no cacheada de tu sitio, el *Core* de WordPress comprueba en la base de datos si hay alguna tarea programada pendiente (publicación de posts, envío de correos, limpieza de transitorios, copias de seguridad). Si la hay, WordPress realiza una petición HTTP asíncrona hacia sí mismo apuntando al archivo `wp-cron.php`.
 
@@ -410,7 +410,7 @@ ESCENARIO B: Cron de Sistema con WP-CLI (Óptimo)
 
 ```
 
-### **Desactivación del Cron Virtual**
+### Desactivación del Cron Virtual
 
 El primer paso es detener completamente este comportamiento errático. Para ello, debemos añadir la siguiente constante en el archivo `wp-config.php`, idealmente justo encima de la línea */* That's all, stop editing! */*:
 
@@ -422,7 +422,7 @@ define( 'DISABLE_WP_CRON', true );
 
 A partir de este momento, WordPress dejará de lanzar peticiones HTTP automáticas a `wp-cron.php`. Las tareas se acumularán silenciosamente en la tabla `wp_options` a la espera de que un proceso externo las ejecute.
 
-### **Implementación de Cron Jobs Reales**
+### Implementación de Cron Jobs Reales
 
 Para ejecutar las tareas, debemos apoyarnos en el planificador de tareas nativo de Linux: `crontab` (o temporizadores de `systemd`). Existen dos maneras de invocar las tareas, pero solo una es digna de una infraestructura de alto rendimiento.
 
@@ -455,7 +455,7 @@ Y añade la siguiente línea para ejecutar el cron cada 5 minutos (ajusta la rut
 * `wp cron event run --due-now`: Instruye a WP-CLI a ejecutar de forma secuencial y segura todas las tareas cuyo tiempo haya vencido.
 * `--quiet`: Suprime la salida estándar para evitar que el sistema nos envíe correos electrónicos cada 5 minutos, a menos que ocurra un error grave.
 
-### **Consideraciones para Clústeres en Alta Disponibilidad (HA)**
+### Consideraciones para Clústeres en Alta Disponibilidad (HA)
 
 Si has seguido los pasos del Capítulo 7 y tienes tu web balanceada entre múltiples servidores (ej. Nodo 1, Nodo 2 y Nodo 3), **nunca debes habilitar este crontab en todos los nodos simultáneamente**.
 

@@ -1,12 +1,12 @@
 La administración moderna de WordPress exige abandonar la gestión manual para adoptar la **Cultura DevOps**. En este capítulo, transformamos la instalación tradicional en una infraestructura inmutable y escalable. Exploraremos cómo **WP-CLI** optimiza tareas masivas y cómo la **Infraestructura como Código (IaC)** con Terraform y Ansible garantiza entornos replicables. Elevaremos el stack hacia la alta disponibilidad mediante la **dockerización** con imágenes ligeras Alpine y la orquestación en **Kubernetes**. Finalmente, implementaremos **pipelines de CI/CD** para lograr despliegues *zero-downtime*, asegurando que cada actualización de código sea invisible para el usuario y segura para el servidor.
 
-## **8.1 WP-CLI (WordPress Command Line Interface): Gestión de plugins, temas, regeneración de caché y operaciones masivas desde la terminal**
+## 8.1 WP-CLI (WordPress Command Line Interface): Gestión de plugins, temas, regeneración de caché y operaciones masivas desde la terminal
 
 En entornos de alto rendimiento y alta disponibilidad, depender de la interfaz gráfica de WordPress (wp-admin) para tareas administrativas es ineficiente y, a menudo, arriesgado. La ejecución de procesos pesados a través del navegador web está sujeta a los límites de tiempo de espera y memoria impuestos por el servidor web y PHP-FPM (como vimos en los Capítulos 2 y 3 con `max_execution_time` y los buffers de NGINX).
 
 Aquí es donde **WP-CLI** se convierte en una herramienta indispensable para el SysAdmin y el ingeniero DevOps. WP-CLI permite interactuar con el *Core* de WordPress, la base de datos y la caché directamente desde la terminal, utilizando PHP en modo CLI.
 
-### **Diferencia de Ejecución: Web vs. CLI**
+### Diferencia de Ejecución: Web vs. CLI
 
 El siguiente diagrama en texto plano ilustra por qué WP-CLI es superior para tareas masivas y de mantenimiento:
 
@@ -23,7 +23,7 @@ Al operar fuera del ciclo de vida de una petición HTTP convencional, WP-CLI eli
 
 ---
 
-### **1. Gestión Ágil de Plugins y Temas**
+### 1. Gestión Ágil de Plugins y Temas
 
 Mantener los componentes actualizados es vital tanto para el rendimiento como para la seguridad. WP-CLI permite realizar estas operaciones en segundos.
 
@@ -58,7 +58,7 @@ wp plugin deactivate nombre-del-plugin-conflictivo
 
 ---
 
-### **2. Manipulación y Regeneración de Caché**
+### 2. Manipulación y Regeneración de Caché
 
 Como analizamos en el Capítulo 5, la arquitectura de caché multicapa es el corazón del rendimiento en WordPress. WP-CLI expone comandos directos para invalidar y reconstruir estos almacenes sin necesidad de interfaces gráficas.
 
@@ -88,7 +88,7 @@ for url in $(wp post list --post_type=post --field=url); do curl -s -o /dev/null
 
 ---
 
-### **3. Operaciones Masivas y de Alto Consumo**
+### 3. Operaciones Masivas y de Alto Consumo
 
 Ciertas tareas son simplemente inviables desde el panel de administración en sitios con miles de entradas o gigabytes de medios.
 
@@ -115,7 +115,7 @@ wp media regenerate --skip-delete --only-missing
 
 ---
 
-### **4. Integración con el Sistema Operativo: El Cron Real**
+### 4. Integración con el Sistema Operativo: El Cron Real
 
 En la sección 10.5 profundizaremos en el impacto negativo del WP-Cron virtual (`wp-cron.php`). El estándar en infraestructura de alto rendimiento es deshabilitar la ejecución de cron basada en el tráfico web (`DISABLE_WP_CRON`) y delegarla a un Cron Job del sistema operativo utilizando WP-CLI.
 
@@ -131,13 +131,13 @@ Esto garantiza que las tareas programadas (publicación de posts, copias de segu
 
 En resumen, WP-CLI es el puente que permite a WordPress integrarse de manera fluida en metodologías de infraestructura moderna. Transforma un CMS diseñado para ser gestionado visualmente en una aplicación completamente manipulable a través de código y terminal, abriendo la puerta a despliegues automatizados y tuberías de CI/CD sin tiempo de inactividad (*Zero-Downtime*).
 
-## **8.2 Infraestructura como Código (IaC): Provisionamiento de entornos optimizados para WP con Ansible y Terraform**
+## 8.2 Infraestructura como Código (IaC): Provisionamiento de entornos optimizados para WP con Ansible y Terraform
 
 En los capítulos anteriores hemos definido configuraciones de alta precisión: afinación del kernel, directivas avanzadas de NGINX, cálculos estrictos para PHP-FPM y arquitecturas de caché multicapa. Sin embargo, aplicar todas estas configuraciones manualmente mediante SSH en cada servidor (creando lo que en la industria se conoce como "servidores copo de nieve" o *snowflake servers*) es insostenible en entornos de Alta Disponibilidad (HA). Un error humano al teclear un valor en `php.ini` o `nginx.conf` en un solo nodo puede desestabilizar todo el clúster.
 
 La solución es la **Infraestructura como Código (IaC)**. Al codificar nuestra infraestructura, obtenemos entornos predecibles, auditables, versionables (mediante Git) y 100% reproducibles. Para lograr esto en un stack de WordPress, el estándar de la industria combina dos herramientas que, aunque a menudo se confunden, tienen propósitos complementarios: **Terraform** y **Ansible**.
 
-### **El Flujo de Trabajo: Orquestación vs. Configuración**
+### El Flujo de Trabajo: Orquestación vs. Configuración
 
 El siguiente diagrama ilustra cómo interactúan ambas herramientas para desplegar la arquitectura distribuida que diseñamos en el Capítulo 7:
 
@@ -167,7 +167,7 @@ El siguiente diagrama ilustra cómo interactúan ambas herramientas para despleg
 
 ---
 
-### **1. Terraform: El Arquitecto de la Nube**
+### 1. Terraform: El Arquitecto de la Nube
 
 Terraform es una herramienta declarativa. En lugar de decirle *cómo* hacer las cosas, le describes a Terraform *qué* infraestructura necesitas y él se encarga de hablar con la API del proveedor (AWS, Google Cloud, DigitalOcean) para construirla.
 
@@ -198,7 +198,7 @@ La ventaja de Terraform es su capacidad para gestionar el estado. Si cambias el 
 
 ---
 
-### **2. Ansible: El Administrador de Sistemas Automatizado**
+### 2. Ansible: El Administrador de Sistemas Automatizado
 
 Una vez que Terraform levanta las máquinas (que por defecto vienen solo con un sistema operativo base), entra **Ansible**. A diferencia de Terraform, Ansible suele ser imperativo/procedural y sin agentes (*agentless*); solo necesita SSH y Python en el servidor destino.
 
@@ -251,17 +251,17 @@ Ansible utiliza *Playbooks* (archivos YAML) que describen el estado deseado de l
 
 ```
 
-### **El Principio de Idempotencia**
+### El Principio de Idempotencia
 
 El concepto más crítico que aporta IaC a la administración de WordPress es la **idempotencia**. Esto significa que puedes ejecutar el Playbook de Ansible cien veces y el resultado será exactamente el mismo que si lo ejecutas una sola vez. Si Ansible detecta que `pm.max_children` ya está en 150, no hará nada.
 
 Esto nos permite aplicar auditorías de configuración de forma constante. Si un administrador junior entra por SSH y modifica a mano un archivo de configuración para "probar algo" y olvida revertirlo, la próxima ejecución programada de Ansible sobrescribirá ese cambio manual, asegurando que la infraestructura siempre sea un reflejo exacto del repositorio de código.
 
-### **Recuperación ante Desastres (Disaster Recovery)**
+### Recuperación ante Desastres (Disaster Recovery)
 
 La combinación de Terraform y Ansible transforma la recuperación ante desastres. Si un centro de datos entero cae, o si un servidor es comprometido, el SysAdmin no necesita pasar 10 horas reconfigurando el entorno. Simplemente apunta Terraform a una nueva región (por ejemplo, de `us-east-1` a `eu-west-1`), ejecuta los scripts y, en minutos, tendrá un clúster de WordPress con la arquitectura exacta, listo para recibir la importación de la base de datos y los archivos estáticos.
 
-## **8.3 Dockerización de WordPress: Creación de imágenes ligeras (Alpine) y gestión de persistencia con volúmenes**
+## 8.3 Dockerización de WordPress: Creación de imágenes ligeras (Alpine) y gestión de persistencia con volúmenes
 
 En la sección anterior automatizamos la creación de nuestra infraestructura base. Ahora damos el paso definitivo hacia la **inmutabilidad** y la portabilidad: encapsular WordPress en contenedores.
 
@@ -269,7 +269,7 @@ En un entorno tradicional, el código, el servidor web y las dependencias viven 
 
 ---
 
-### **1. El Problema de la Imagen Oficial y la Ventaja de Alpine Linux**
+### 1. El Problema de la Imagen Oficial y la Ventaja de Alpine Linux
 
 La imagen oficial de Docker para WordPress (`wordpress:latest`) suele estar basada en Debian y, por defecto, incluye Apache. Como establecimos en el Capítulo 2, nuestro estándar de alto rendimiento es **NGINX + PHP-FPM**. Usar la imagen oficial con Apache rompería nuestra arquitectura. Además, las imágenes basadas en Debian superan fácilmente los 500 MB, lo que ralentiza los tiempos de despliegue (*pull/push*) y aumenta la superficie de ataque.
 
@@ -303,7 +303,7 @@ La solución es construir nuestra propia imagen utilizando **Alpine Linux** (`ph
 
 ---
 
-### **2. Creación del `Dockerfile` Optimizado**
+### 2. Creación del `Dockerfile` Optimizado
 
 A continuación, diseñamos un `Dockerfile` que compila las extensiones necesarias (como Redis y OPcache, vistas en los Capítulos 3 y 5) y mantiene el tamaño al mínimo eliminando las dependencias de compilación en el mismo paso.
 
@@ -354,7 +354,7 @@ CMD ["php-fpm"]
 
 ---
 
-### **3. Gestión de Persistencia: El Reto de los Volúmenes**
+### 3. Gestión de Persistencia: El Reto de los Volúmenes
 
 La regla de oro de Docker es que **los contenedores son efímeros**. Si un contenedor muere, todo dato escrito en su sistema de archivos interno desaparece.
 
@@ -412,7 +412,7 @@ volumes:
 
 Al utilizar este enfoque basado en contenedores ligeros y aislar la persistencia en volúmenes específicos, hemos desacoplado la aplicación por completo de la infraestructura subyacente. Esto nos deja el camino preparado para la orquestación masiva, que es exactamente lo que abordaremos en la siguiente sección con Kubernetes.
 
-## **8.4 Orquestación con Kubernetes: Helm charts para WordPress, *Auto-scaling groups* y manejo de *Secrets***
+## 8.4 Orquestación con Kubernetes: Helm charts para WordPress, *Auto-scaling groups* y manejo de *Secrets*
 
 En la sección 8.3 logramos encapsular nuestro WordPress optimizado en contenedores Alpine inmutables. Sin embargo, en un entorno de Alta Disponibilidad (HA), tener contenedores aislados no es suficiente. ¿Qué ocurre si el servidor físico que aloja el contenedor falla? ¿Cómo distribuimos el tráfico entre 50 réplicas idénticas durante un pico masivo? ¿Cómo realizamos actualizaciones de versión sin tiempo de inactividad?
 
@@ -447,7 +447,7 @@ El siguiente diagrama ilustra la arquitectura lógica de WordPress dentro de Kub
 
 ---
 
-### **1. Helm Charts: El Gestor de Paquetes de Kubernetes**
+### 1. Helm Charts: El Gestor de Paquetes de Kubernetes
 
 Desplegar WordPress en K8s de forma manual requiere escribir y mantener docenas de archivos YAML complejos (`Deployments`, `Services`, `Ingress`, `PersistentVolumeClaims`, etc.). Para simplificar esto, utilizamos **Helm**.
 
@@ -488,7 +488,7 @@ helm upgrade --install mi-wordpress ./wp-chart -f values.yaml --namespace produc
 
 ---
 
-### **2. Escalado Automático (Auto-scaling Groups)**
+### 2. Escalado Automático (Auto-scaling Groups)
 
 La magia de Kubernetes radica en su capacidad de adaptación en tiempo real. Para un sitio de noticias que publica una exclusiva mundial, el tráfico puede pasar de 100 a 10,000 usuarios concurrentes en minutos. K8s maneja esto en dos dimensiones:
 
@@ -524,7 +524,7 @@ Si el HPA solicita crear 20 nuevos Pods de WordPress, pero los servidores físic
 
 ---
 
-### **3. Manejo Avanzado de Secrets**
+### 3. Manejo Avanzado de Secrets
 
 En el modelo de la vieja escuela, las contraseñas de la base de datos, las claves de las APIs y las *salts* de WordPress se guardaban en texto plano dentro del archivo `wp-config.php`. En un entorno nativo de la nube, esto es una vulnerabilidad crítica, especialmente si el código base está en repositorios compartidos o se inyecta en contenedores.
 
@@ -563,7 +563,7 @@ containers:
 
 **Ventaja evolutiva:** Si la contraseña de la base de datos se ve comprometida, no tienes que reconstruir las imágenes de Docker ni editar archivos PHP. Simplemente actualizas el *Secret* en Kubernetes y rotas los Pods. Esta separación estricta entre código (imagen Docker), configuración de entorno (`ConfigMaps`) y credenciales (`Secrets`) es la base metodológica de las *Twelve-Factor Apps*, un pilar para la estabilidad en clústeres de Alta Disponibilidad.
 
-## **8.5 Pipelines CI/CD: Despliegues *Zero-Downtime* de código de temas y plugins sin afectar la caché de producción**
+## 8.5 Pipelines CI/CD: Despliegues *Zero-Downtime* de código de temas y plugins sin afectar la caché de producción
 
 En los capítulos anteriores transformamos WordPress de una aplicación monolítica tradicional a una arquitectura distribuida, inmutable y orquestada por Kubernetes. Sin embargo, surge un problema operativo crítico: ¿cómo actualizamos el código de un tema personalizado o un plugin sin causar tiempo de inactividad, y sin que la experiencia del usuario se degrade por problemas de caché?
 
@@ -594,7 +594,7 @@ El siguiente diagrama en texto plano ilustra un flujo de trabajo moderno usando 
 
 ---
 
-### **1. Despliegues *Zero-Downtime* (Actualizaciones sin cortes)**
+### 1. Despliegues *Zero-Downtime* (Actualizaciones sin cortes)
 
 El objetivo de un despliegue *Zero-Downtime* es que el usuario final nunca vea una página de mantenimiento, un error 502 (Bad Gateway) o un sitio roto mientras se aplican los cambios.
 
@@ -625,7 +625,7 @@ Con esta configuración, el balanceador de carga dirige el tráfico a la versió
 
 ---
 
-### **2. El Desafío de la Caché: Evitando el "Cache Stampede"**
+### 2. El Desafío de la Caché: Evitando el "Cache Stampede"
 
 El mayor error en los despliegues de WordPress es el paso posterior al despliegue. Es una práctica común entre desarrolladores ejecutar `wp cache flush` o purgar toda la CDN para que los nuevos cambios sean visibles.
 
@@ -669,6 +669,6 @@ curl -s -o /dev/null https://midominio.com/contacto/
 
 ```
 
-### **Conclusión del Flujo**
+### Conclusión del Flujo
 
 Al combinar contenedores inmutables, el orquestador de Kubernetes con *Rolling Updates*, y una estrategia quirúrgica de invalidación de caché gestionada por pipelines CI/CD, logramos aislar por completo el código de la infraestructura. El resultado es un entorno de WordPress predecible, altamente escalable y capaz de recibir decenas de actualizaciones diarias en producción sin que un solo visitante experimente lentitud o interrupciones.

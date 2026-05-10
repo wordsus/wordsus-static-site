@@ -1,6 +1,6 @@
 A medida que un sitio WordPress crece, la arquitectura de servidor único se convierte en un riesgo y un cuello de botella. Para soportar millones de visitas y garantizar un tiempo de actividad del 100%, es necesario abandonar el modelo tradicional y adoptar una infraestructura distribuida. En este capítulo, transformaremos WordPress en una aplicación **stateless**, desacoplando el código de los datos y las sesiones. Aprenderás a implementar balanceadores de carga, externalizar el almacenamiento de medios hacia el *Object Storage* y escalar la base de datos mediante clusters de alta disponibilidad, permitiendo que tu sitio crezca horizontalmente sin límites ni interrupciones.
 
-## **7.1 Concepto de "Stateless WordPress": Separación de archivos, base de datos y sesiones**
+## 7.1 Concepto de "Stateless WordPress": Separación de archivos, base de datos y sesiones
 
 Para dar el salto definitivo de una infraestructura de servidor único (monolítica) a una arquitectura verdaderamente escalable y de Alta Disponibilidad (High Availability o HA), es imperativo cambiar nuestra forma de entender cómo opera WordPress. Por diseño, WordPress es una aplicación **con estado** (*stateful*). Esto significa que, recién instalado, asume que todo lo que necesita para funcionar —el código PHP, la base de datos, las imágenes subidas por los usuarios y las sesiones en memoria— reside de forma permanente en el disco y la memoria de un único servidor.
 
@@ -36,7 +36,7 @@ A continuación, se ilustra la diferencia arquitectónica:
 
 ```
 
-### **1. Separación de Archivos (El Código vs. El Contenido)**
+### 1. Separación de Archivos (El Código vs. El Contenido)
 
 En un entorno *stateless*, debemos trazar una línea estricta entre el código de la aplicación (el *Core*, los *Plugins* y los *Temas*) y el contenido generado por los usuarios (la carpeta `wp-content/uploads`).
 
@@ -54,13 +54,13 @@ define( 'DISALLOW_FILE_MODS', true );
 
 * **Los Medios (`wp-content/uploads`):** Esta carpeta es altamente dinámica. Para que todos los nodos sirvan las mismas imágenes, este directorio debe externalizarse. Esto se logra montando un sistema de archivos en red compartido (como NFS) en todos los nodos, o mucho mejor, interceptando la subida de archivos para enviarlos directamente a un almacenamiento de objetos (Object Storage como AWS S3 o MinIO), delegando además su entrega a una CDN (tema que abordaremos en detalle en la sección 7.3).
 
-### **2. Separación de la Base de Datos**
+### 2. Separación de la Base de Datos
 
 Aunque migrar la base de datos fuera del servidor web es una práctica estándar incluso en optimizaciones de nivel medio (como vimos en el Capítulo 4), en un entorno de Alta Disponibilidad es un requisito absoluto.
 
 El nodo web no debe tener conocimiento del almacenamiento físico de los datos. Su única responsabilidad es abrir conexiones de red hacia el *endpoint* de la base de datos. En entornos escalados, este *endpoint* rara vez es un único servidor, sino que suele ser un proxy SQL de lectura/escritura (como ProxySQL) que enruta las consultas de WordPress hacia un clúster de bases de datos replicadas. De esta manera, el estado transaccional se mantiene completamente aislado de la capa de cómputo web.
 
-### **3. Separación de Sesiones y Caché en Memoria**
+### 3. Separación de Sesiones y Caché en Memoria
 
 El último obstáculo para alcanzar el estado puro de *stateless* es el manejo de la memoria y la identidad del usuario.
 
@@ -72,7 +72,7 @@ Ambos problemas se resuelven externalizando el estado temporal hacia un servidor
 
 Al comprender e implementar esta estricta separación de responsabilidades, preparamos el terreno para escalar horizontalmente de 2 a 100 servidores de forma casi instantánea, garantizando la resiliencia y sentando las bases para el balanceo de carga que exploraremos en la siguiente sección.
 
-## **7.2 Balanceo de carga: Configuración de HAProxy o AWS ALB para distribuir tráfico entre múltiples nodos web**
+## 7.2 Balanceo de carga: Configuración de HAProxy o AWS ALB para distribuir tráfico entre múltiples nodos web
 
 Una vez que hemos transformado nuestro WordPress en una aplicación *stateless* (como vimos en la sección anterior), nuestros servidores web se convierten en "obreros" intercambiables. Sin embargo, estos nodos no pueden recibir tráfico directamente de Internet de forma coordinada. Necesitamos un director de orquesta que reciba todas las peticiones entrantes y las distribuya de manera inteligente y equitativa: el **Balanceador de Carga** (*Load Balancer*).
 
@@ -99,13 +99,13 @@ A continuación, analizaremos cómo implementar este componente utilizando dos d
 
 ```
 
-### **1. Terminación SSL (Offloading)**
+### 1. Terminación SSL (Offloading)
 
 Una de las ventajas clave de colocar un balanceador frente a tus nodos es la **Terminación SSL**. En lugar de que cada nodo web (NGINX) gaste ciclos de CPU desencriptando el tráfico HTTPS, el balanceador asume esta tarea.
 
 El tráfico viaja encriptado desde el usuario hasta el balanceador. Una vez allí, se desencripta y se reenvía a los nodos web a través de la red interna privada usando HTTP plano (puerto 80). Esto reduce la carga computacional en los nodos y centraliza la gestión de los certificados de seguridad en un solo lugar.
 
-### **2. Implementación con HAProxy (Infraestructura Autogestionada)**
+### 2. Implementación con HAProxy (Infraestructura Autogestionada)
 
 HAProxy es el estándar de la industria por su extrema eficiencia y bajo consumo de recursos. Para configurarlo frente a un clúster de WordPress, editamos el archivo principal (usualmente en `/etc/haproxy/haproxy.cfg`).
 
@@ -144,7 +144,7 @@ backend wp_cluster
 
 *Nota sobre el Health Check:* Evita hacer pruebas de estado (ping) a la raíz del sitio (`/`). Cargar el *Home* de WordPress ejecuta consultas a la base de datos y consume PHP. Es una pésima idea que tu balanceador genere esta carga cada 2 segundos. Es mejor apuntar el `httpchk` a un archivo estático ligero o crear un script PHP muy básico (`health.php`) que devuelva un código 200.
 
-### **3. Implementación con AWS ALB (Application Load Balancer)**
+### 3. Implementación con AWS ALB (Application Load Balancer)
 
 Si tu infraestructura está en AWS, el **Application Load Balancer (ALB)** es la opción administrada nativa. Se integra perfectamente con Auto Scaling Groups, permitiendo que se creen o destruyan nodos web automáticamente según el tráfico.
 
@@ -154,7 +154,7 @@ Para configurarlo correctamente para WordPress, debes prestar atención a tres e
 2. **Target Groups:** Agrupa las instancias EC2 que actúan como tus nodos web en el puerto 80.
 3. **Health Checks:** En la configuración del *Target Group*, define la ruta del Health Check hacia un archivo estático (ej. `/readme.html` o un endpoint personalizado). Configura el intervalo de comprobación en 10-15 segundos. Si un nodo no responde, el ALB dejará de enviarle tráfico automáticamente (Draining) hasta que se recupere.
 
-### **4. El problema de la "IP Real" y el Bucle de Redirecciones**
+### 4. El problema de la "IP Real" y el Bucle de Redirecciones
 
 Al implementar cualquier balanceador de capa 7, te enfrentarás invariablemente a dos problemas clásicos en WordPress:
 
@@ -182,13 +182,13 @@ if ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && $_SERVER['HTTP_X_FORWARDED_P
 
 Con el tráfico fluyendo uniformemente entre los nodos y los certificados SSL gestionados centralmente, nuestra capa de cómputo ya es altamente disponible. El siguiente reto es garantizar que los archivos subidos por los usuarios (`wp-content/uploads`) estén disponibles para todos estos nodos simultáneamente.
 
-## **7.3 Gestión de archivos multimedia (wp-content/uploads): Sistemas de archivos distribuidos vs. Offloading a Object Storage**
+## 7.3 Gestión de archivos multimedia (wp-content/uploads): Sistemas de archivos distribuidos vs. Offloading a Object Storage
 
 En una arquitectura WordPress de un solo servidor, la gestión de imágenes es trivial: se guardan en el disco local. Sin embargo, en un entorno de **Alta Disponibilidad** con múltiples nodos web, este directorio se convierte en el mayor desafío de persistencia. Si el Nodo A guarda una imagen, el Nodo B debe poder servirla inmediatamente, de lo contrario, los visitantes verán enlaces rotos dependiendo de a qué servidor los envíe el balanceador.
 
 Existen dos filosofías principales para resolver este problema: compartir el sistema de archivos entre servidores o externalizar el contenido completamente.
 
-### **1. Sistemas de Archivos Distribuidos (Shared Storage)**
+### 1. Sistemas de Archivos Distribuidos (Shared Storage)
 
 Esta aproximación busca "engañar" a WordPress haciéndole creer que sigue escribiendo en un disco local, cuando en realidad está interactuando con un volumen de red compartido.
 
@@ -216,7 +216,7 @@ Estructura de Montaje Compartido (NFS/EFS):
 
 ```
 
-### **2. Offloading a Object Storage (La opción Cloud-Native)**
+### 2. Offloading a Object Storage (La opción Cloud-Native)
 
 La tendencia moderna para el alto rendimiento no consiste en compartir archivos, sino en **moverlos fuera de la infraestructura de cómputo**. En lugar de usar el sistema de archivos del servidor, WordPress utiliza APIs para enviar los archivos a un servicio de almacenamiento de objetos como **Amazon S3**, **Google Cloud Storage** o **MinIO** (para nubes privadas).
 
@@ -226,18 +226,18 @@ La tendencia moderna para el alto rendimiento no consiste en compartir archivos,
 * **Entrega directa vía CDN:** Las imágenes se sirven desde el Object Storage + CDN, liberando a tus servidores web de procesar peticiones de archivos estáticos (ahorro masivo de CPU y ancho de banda).
 * **Stateless puro:** Los nodos web no necesitan configuraciones de red complejas para montar discos; son 100% desechables.
 
-### **Recomendación Final**
+### Recomendación Final
 
 * **Usa NFS/EFS si:** Tienes una aplicación con muchísimas escrituras de archivos pequeños por segundo (poco común en WordPress) o si no puedes usar plugins/modificar el código de una web heredada (*Legacy*).
 * **Usa Object Storage si:** Buscas la máxima escalabilidad y quieres reducir al mínimo el consumo de ancho de banda de tus servidores web. Es la opción preferida para WooCommerce y sitios de contenido con alto tráfico.
 
-## **7.4 Escalado de la base de datos: Replicación Master-Slave y clusters de alta disponibilidad**
+## 7.4 Escalado de la base de datos: Replicación Master-Slave y clusters de alta disponibilidad
 
 En las secciones anteriores hemos resuelto el escalado de la capa de cómputo (nodos web) y la capa de archivos (almacenamiento compartido). Sin embargo, la base de datos suele ser el cuello de botella final y el componente más difícil de escalar debido a la necesidad de mantener la integridad y consistencia de los datos en tiempo real.
 
 Cuando un sitio WordPress crece, el servidor de base de datos único (visto en el Capítulo 4) eventualmente agota sus recursos de CPU e I/O de disco. Para superar este límite, debemos pasar del escalado vertical (más RAM/CPU) al escalado horizontal.
 
-### **1. Replicación Master-Slave (Lectura/Escritura)**
+### 1. Replicación Master-Slave (Lectura/Escritura)
 
 Es la estrategia de escalado más común para WordPress, dado que la gran mayoría del tráfico en un CMS es de lectura (visitantes consultando posts).
 
@@ -256,7 +256,7 @@ Petición de Admin (POST /comment) ──► Nodo Web ──► [ INSERT ] ─�
 
 ```
 
-### **2. Clusters de Alta Disponibilidad: Galera Cluster**
+### 2. Clusters de Alta Disponibilidad: Galera Cluster
 
 La replicación Master-Slave tiene un punto débil: si el Maestro cae, el sitio no puede procesar nuevas publicaciones, pedidos en WooCommerce o registros. Aquí es donde entran los clusters de **Multi-Maestro**.
 
@@ -265,14 +265,14 @@ La replicación Master-Slave tiene un punto débil: si el Maestro cae, el sitio 
 * **Consistencia Sincrónica:** Si escribes en el Nodo A, los datos se garantizan en los Nodos B y C antes de confirmar la transacción.
 * **Alta Disponibilidad Real:** Si un nodo falla, el balanceador de carga (o un proxy como ProxySQL) simplemente redirige el tráfico a los nodos restantes sin tiempo de inactividad.
 
-### **3. Amazon Aurora: La Solución Cloud-Native**
+### 3. Amazon Aurora: La Solución Cloud-Native
 
 En el ecosistema AWS, **Amazon Aurora** redefine el escalado de base de datos para WordPress. En lugar de replicar datos entre discos locales de servidores, Aurora utiliza un **volumen de almacenamiento virtualizado y compartido** que se replica automáticamente en 3 zonas de disponibilidad.
 
 * **Escalado de Lectura:** Puedes añadir hasta 15 "Aurora Replicas" que comparten el mismo almacenamiento, lo que reduce el retraso de replicación (lag) a milisegundos.
 * **Endpoint de Lectura/Escritura:** Aurora proporciona un DNS único para escrituras y otro para lecturas (balanceado automáticamente), eliminando la necesidad de gestionar manualmente las IPs de los esclavos en el archivo de configuración.
 
-### **4. Implementación Técnica (Ejemplo de Configuración)**
+### 4. Implementación Técnica (Ejemplo de Configuración)
 
 Para que WordPress aproveche estas arquitecturas, el archivo de configuración de LudicrousDB (`db-config.php`) definiría los servidores de la siguiente manera:
 
@@ -298,11 +298,11 @@ $wpdb->add_database(array(
 
 ```
 
-### **Comparativa de Rendimiento y Escalabilidad**
+### Comparativa de Rendimiento y Escalabilidad
 
 Entender cuándo saltar de una arquitectura a otra depende del volumen de consultas y la tolerancia al fallo. La elección entre estas tecnologías debe basarse en el presupuesto de administración: mientras que Master-Slave es sencillo de configurar, un cluster como Galera o Aurora es indispensable cuando el costo de un minuto de inactividad supera el costo de la infraestructura compleja. En la siguiente sección, abordaremos cómo gestionar las sesiones de usuario para que la navegación sea fluida a través de todos estos componentes.
 
-## **7.5 Sesiones distribuidas: Almacenamiento de sesiones de PHP en un cluster de Redis**
+## 7.5 Sesiones distribuidas: Almacenamiento de sesiones de PHP en un cluster de Redis
 
 Para completar el rompecabezas de la Alta Disponibilidad (HA) y alcanzar el verdadero estado *stateless* que planteamos al inicio de este capítulo, debemos abordar el manejo del estado del usuario. Ya hemos distribuido el tráfico, externalizado los archivos y escalado la base de datos. Pero, ¿qué ocurre con la memoria a corto plazo de nuestra aplicación?
 
@@ -313,7 +313,7 @@ Imagina un usuario navegando por un e-commerce basado en WooCommerce. Añade un 
 
 *Nota técnica sobre el Core de WordPress:* WordPress puro gestiona la autenticación mediante *cookies* en el navegador del cliente, por lo que el *login* estándar suele sobrevivir al balanceo de carga. Sin embargo, una inmensa cantidad de plugins vitales (WooCommerce, pasarelas de pago, formularios multipaso, integraciones SAML/SSO) dependen estrictamente del almacenamiento de sesiones nativo de PHP.
 
-### **La Solución: Centralización con Redis**
+### La Solución: Centralización con Redis
 
 Para evitar el uso de *Sticky Sessions* (una mala práctica en el balanceador que obliga a enviar a un usuario siempre al mismo nodo, arruinando la distribución de carga), la solución estándar de la industria es configurar PHP para que deje de escribir archivos en disco y envíe los datos de sesión a un almacén clave-valor centralizado en memoria a través de la red.
 
@@ -335,7 +335,7 @@ Arquitectura de Sesiones Distribuidas:
 
 ```
 
-### **Configuración de PHP para usar Redis**
+### Configuración de PHP para usar Redis
 
 La implementación es sorprendentemente sencilla y se realiza a nivel del sistema operativo, sin necesidad de instalar plugins adicionales en WordPress.
 
@@ -361,7 +361,7 @@ session.save_path = "tcp://10.0.0.50:6379?auth=tu_contraseña_segura&timeout=2.5
 * **`auth`**: La contraseña de tu instancia de Redis (vital incluso en redes internas).
 * **`timeout`**: Tiempo máximo (en segundos) que PHP esperará a que Redis responda. Evita que los nodos web se cuelguen si Redis sufre una caída.
 
-### **Despliegue del Cluster de Redis en Alta Disponibilidad**
+### Despliegue del Cluster de Redis en Alta Disponibilidad
 
 Si centralizamos todas las sesiones en un único servidor Redis y este se cae, nadie podrá comprar en la tienda ni iniciar sesión, creando un nuevo Punto Único de Fallo (*SPOF*).
 

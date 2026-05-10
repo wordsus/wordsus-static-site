@@ -1,6 +1,6 @@
 La optimización técnica es inútil si no es medible ni sostenible. En este capítulo, transformamos la infraestructura de un "agujero negro" de datos a un ecosistema de alta visibilidad. Aprenderás a implementar **Prometheus y Grafana** para el control de recursos, y a utilizar herramientas de **APM** y **Profiling** para diseccionar el rendimiento de PHP y plugins línea por línea. Finalmente, exploraremos el arsenal táctico del SysAdmin —desde **GoAccess** hasta **strace**— para diagnosticar y mitigar cuellos de botella en tiempo real. Aquí es donde la intuición se convierte en ciencia, garantizando que tu WordPress no solo sea rápido, sino también resiliente y predecible bajo cualquier carga.
 
-## **9.1 Monitoreo de infraestructura: Prometheus y Grafana para visualizar consumo de CPU, RAM, I/O y métricas de NGINX/Redis**
+## 9.1 Monitoreo de infraestructura: Prometheus y Grafana para visualizar consumo de CPU, RAM, I/O y métricas de NGINX/Redis
 
 Hasta este punto, hemos optimizado cada capa de la pila del servidor, desde el Kernel de Linux hasta el sistema de caché. Sin embargo, una arquitectura de alta disponibilidad es ciega sin un sistema de monitoreo robusto. Mientras que las herramientas de línea de comandos (que veremos en la sección 9.5) son excelentes para apagar incendios en tiempo real, carecen de memoria histórica.
 
@@ -8,7 +8,7 @@ Para entender cómo se comporta nuestra infraestructura de WordPress durante un 
 
 ---
 
-### **La Arquitectura: El modelo "Pull" y los Exporters**
+### La Arquitectura: El modelo "Pull" y los Exporters
 
 A diferencia de los sistemas de monitoreo tradicionales que "empujan" (push) datos hacia un servidor central, Prometheus utiliza un modelo "Pull". Prometheus raspa (*scrapes*) periódicamente endpoints HTTP expuestos en tus servidores para recolectar métricas en un formato de series temporales.
 
@@ -33,7 +33,7 @@ Para que los servicios (Linux, NGINX, Redis) hablen el idioma de Prometheus, uti
 
 ---
 
-### **1. Node Exporter: Radiografía del Servidor Físico/Virtual**
+### 1. Node Exporter: Radiografía del Servidor Físico/Virtual
 
 El **Node Exporter** se instala a nivel de sistema operativo y expone métricas de hardware y del kernel de Linux. En un entorno de WordPress, las métricas críticas a visualizar en Grafana son:
 
@@ -41,7 +41,7 @@ El **Node Exporter** se instala a nivel de sistema operativo y expone métricas 
 * **Consumo de RAM y Swap:** WordPress es intensivo en memoria. Monitorear la memoria disponible te permite verificar si el ajuste de `pm.max_children` configurado en el capítulo 3 fue el adecuado. Si el servidor empieza a usar memoria Swap, el rendimiento I/O colapsará.
 * **Disk I/O y latencia de lectura/escritura:** Crucial si tu base de datos coexiste en el mismo servidor. Un alto valor de *I/O Wait* indica que la CPU está ociosa esperando que el disco termine de leer o escribir datos.
 
-### **2. NGINX Exporter: Monitoreando la Puerta de Enlace**
+### 2. NGINX Exporter: Monitoreando la Puerta de Enlace
 
 Para que Prometheus pueda leer datos de NGINX, primero debemos habilitar el módulo `stub_status` en la configuración de nuestro servidor web, usualmente en un bloque accesible solo localmente:
 
@@ -67,7 +67,7 @@ El **NGINX Prometheus Exporter** leerá esta ruta y la traducirá. En Grafana, d
 * *Writing:* NGINX enviando datos de vuelta al cliente.
 * *Waiting:* Conexiones *Keep-Alive* abiertas esperando nuevas peticiones. Un número muy alto aquí puede requerir un ajuste en el tiempo de *keepalive_timeout*.
 
-### **3. Redis Exporter: Salud del Object Cache**
+### 3. Redis Exporter: Salud del Object Cache
 
 Dado que en el capítulo 5 establecimos a Redis como el motor principal para el *Object Cache* de WordPress, monitorear su estado es vital para evitar caídas de rendimiento. Si Redis falla o se llena, las consultas irán directamente a MySQL, colapsando el sitio.
 
@@ -79,7 +79,7 @@ El **Redis Exporter** nos permite visualizar las siguientes métricas clave en G
 
 ---
 
-### **Configuración del Scrapeo en Prometheus**
+### Configuración del Scrapeo en Prometheus
 
 Para unir todas estas piezas, el archivo de configuración central de Prometheus (`prometheus.yml`) debe instruirse para buscar estos puertos. Un ejemplo clásico en la infraestructura de WordPress se vería así:
 
@@ -104,7 +104,7 @@ scrape_configs:
 
 ---
 
-### **Grafana: El Panel de Control Unificado**
+### Grafana: El Panel de Control Unificado
 
 Una vez que Prometheus está recolectando los datos, Grafana actúa como el lienzo. En lugar de revisar *logs* fragmentados, Grafana te permite correlacionar eventos visualmente.
 
@@ -112,7 +112,7 @@ Por ejemplo: al crear un *dashboard* puedes superponer el gráfico de "Peticione
 
 Existen cientos de *dashboards* preconfigurados en la comunidad de Grafana (buscados por ID en grafana.com) que puedes importar con un solo clic para Node Exporter (ID: 1860) o NGINX, dándote visibilidad de grado empresarial en cuestión de minutos. Con la infraestructura cubierta, el siguiente paso es entender qué está sucediendo a nivel de la aplicación y el código PHP, lo cual abordaremos en la sección de Application Performance Monitoring (APM).
 
-## **9.2 Application Performance Monitoring (APM): Integración de New Relic o Datadog para encontrar plugins lentos y transacciones pesadas**
+## 9.2 Application Performance Monitoring (APM): Integración de New Relic o Datadog para encontrar plugins lentos y transacciones pesadas
 
 Si en la sección anterior establecimos que Prometheus y Grafana actúan como el electrocardiograma de tu infraestructura física, las herramientas de **Application Performance Monitoring (APM)** son la resonancia magnética de tu código.
 
@@ -120,7 +120,7 @@ Prometheus te dirá que el proceso `php-fpm` está consumiendo el 100% de la CPU
 
 ---
 
-### **La Arquitectura de un APM en PHP**
+### La Arquitectura de un APM en PHP
 
 A diferencia del monitoreo de infraestructura que lee métricas desde afuera, un APM se inyecta directamente en el entorno de ejecución de PHP. Tanto New Relic como Datadog utilizan una arquitectura de dos piezas en el servidor:
 
@@ -143,7 +143,7 @@ Esta separación es vital: el agente de PHP solo recopila datos en bruto y los p
 
 ---
 
-### **¿Qué buscar en el APM? Los Cuellos de Botella de WordPress**
+### ¿Qué buscar en el APM? Los Cuellos de Botella de WordPress
 
 Una vez integrado, el APM te inundará de datos. Como SysAdmin o ingeniero de rendimiento, debes enfocarte en cuatro áreas críticas específicas del ecosistema WordPress:
 
@@ -164,7 +164,7 @@ El APM separará visualmente cuánto tiempo pasó PHP ejecutando código, cuánt
 
 ---
 
-### **Implementación y Precauciones: El *Overhead* del Observador**
+### Implementación y Precauciones: El *Overhead* del Observador
 
 Instalar un APM no es gratuito; observar un sistema irremediablemente altera su rendimiento. Activar la instrumentación profunda de PHP añade un *overhead* (sobrecarga) que puede oscilar entre un 2% y un 10% de consumo adicional de CPU y memoria, dependiendo de la configuración.
 
@@ -176,7 +176,7 @@ Para mitigar esto en entornos de producción de alto tráfico, debes aplicar las
 
 El APM te dará el diagnóstico exacto a nivel arquitectónico, pero a veces el problema es una sola función mal escrita dentro de un plugin a medida. Para desglosar el problema línea por línea en el código fuente, recurriremos a las herramientas de *Profiling* en la sección 9.4.
 
-## **9.3 Análisis de tráfico y *Access Logs*: Uso de GoAccess o ELK Stack (Elasticsearch, Logstash, Kibana)**
+## 9.3 Análisis de tráfico y *Access Logs*: Uso de GoAccess o ELK Stack (Elasticsearch, Logstash, Kibana)
 
 Hasta ahora hemos cubierto el estado del hardware (Prometheus/Grafana) y el rendimiento del código (APM). Sin embargo, hay una pregunta fundamental que ni el hardware ni el APM pueden responder con el nivel de detalle necesario: *¿Quién está visitando qué, con qué frecuencia, y qué respuesta exacta les está dando el servidor web?*
 
@@ -186,7 +186,7 @@ Para extraer inteligencia procesable de estos registros, tenemos dos caminos pri
 
 ---
 
-### **1. Nivel Táctico: GoAccess para análisis en tiempo real**
+### 1. Nivel Táctico: GoAccess para análisis en tiempo real
 
 **GoAccess** es un analizador de logs de código abierto ultrarrápido que se ejecuta en la terminal. Es la herramienta perfecta para el SysAdmin que necesita respuestas inmediatas durante una emergencia, como un pico súbito de tráfico o un ataque de fuerza bruta.
 
@@ -200,7 +200,7 @@ No requiere bases de datos ni configuraciones complejas. Simplemente lee el log 
 
 ---
 
-### **2. Nivel Estratégico: ELK Stack para Alta Disponibilidad**
+### 2. Nivel Estratégico: ELK Stack para Alta Disponibilidad
 
 Cuando tu infraestructura escala al modelo de Alta Disponibilidad (Capítulo 7) con múltiples nodos web (por ejemplo, tres servidores NGINX detrás de un balanceador de carga), GoAccess deja de ser suficiente. No puedes conectarte por SSH a tres servidores distintos para cruzar datos manualmente.
 
@@ -221,7 +221,7 @@ Necesitas centralizar los logs. Aquí es donde entra el **ELK Stack** (o su vari
 
 ```
 
-### **Optimizando el Log de NGINX para WordPress y ELK**
+### Optimizando el Log de NGINX para WordPress y ELK
 
 Para que ELK sea realmente útil, el formato de log por defecto de NGINX ("combined") no es suficiente. Debemos enriquecerlo. En el archivo `nginx.conf`, es crucial crear un `log_format` personalizado que incluya métricas vitales de rendimiento, especialmente el estado de la caché y el tiempo de respuesta:
 
@@ -247,7 +247,7 @@ Puedes crear visualizaciones que filtren específicamente las peticiones POST ha
 
 En resumen: mientras GoAccess es tu navaja suiza para el combate cuerpo a cuerpo en un solo servidor, ELK es tu centro de comando. Ambos te proporcionarán la visibilidad necesaria para tomar decisiones informadas sobre dónde implementar reglas de bloqueo (Fail2ban, WAF) o dónde es imperativo refactorizar el código, lo cual nos lleva a la siguiente fase: el *profiling* directo con Xdebug y Blackfire.
 
-## **9.4 *Profiling* de PHP: Uso de Xdebug y Blackfire.io para analizar cuellos de botella a nivel de código**
+## 9.4 *Profiling* de PHP: Uso de Xdebug y Blackfire.io para analizar cuellos de botella a nivel de código
 
 En la sección 9.2 vimos cómo las herramientas APM (como New Relic) actúan como un radar, señalando qué transacciones o plugins son lentos a nivel macro. Sin embargo, cuando el APM te dice que el archivo `functions.php` de tu tema o un controlador de WooCommerce está consumiendo 2 segundos de tiempo de ejecución, necesitas un nivel de granularidad mucho mayor para corregirlo.
 
@@ -257,7 +257,7 @@ Existen dos estándares en la industria PHP para esta tarea: el enfoque tradicio
 
 ---
 
-### **1. Xdebug: El estándar de desarrollo local**
+### 1. Xdebug: El estándar de desarrollo local
 
 Xdebug es una extensión de PHP esencial para cualquier desarrollador de WordPress. Aunque es famoso por permitir la depuración paso a paso (*step debugging*), su modo de perfilado es una de sus herramientas más potentes.
 
@@ -286,7 +286,7 @@ Al abrir el archivo, verás tablas ordenadas por:
 
 ---
 
-### **2. Blackfire.io: Profiling de grado de producción**
+### 2. Blackfire.io: Profiling de grado de producción
 
 Dado que Xdebug está relegado a entornos locales o de *staging*, la industria necesitaba una forma de perfilar código en producción con datos reales, sin tumbar el servidor. Aquí brilla **Blackfire.io**.
 
@@ -313,7 +313,7 @@ La mayor ventaja de Blackfire es su interfaz web y la generación automática de
 
 ---
 
-### **Casos de Uso: Cazando Cuellos de Botella en WordPress**
+### Casos de Uso: Cazando Cuellos de Botella en WordPress
 
 Ya sea que uses Xdebug o Blackfire, al perfilar WordPress buscarás patrones específicos de ineficiencia arquitectónica:
 
@@ -328,7 +328,7 @@ WordPress está basado en eventos. Un *profiling* de Blackfire te desglosará ex
 
 Una vez que has localizado y neutralizado la línea de código ofensiva, has completado el ciclo de optimización reactiva. El siguiente paso en la gestión de infraestructura de alto rendimiento no es buscar lentitud, sino prepararse para lo peor: proteger los recursos del servidor frente a tráfico malicioso y emergencias en tiempo real (Sección 9.5 y Capítulo 10).
 
-## **9.5 Herramientas de SysAdmin para emergencias: `htop`, `strace`, `tcpdump` y análisis de estados de PHP-FPM**
+## 9.5 Herramientas de SysAdmin para emergencias: `htop`, `strace`, `tcpdump` y análisis de estados de PHP-FPM
 
 Los sistemas de monitoreo (Prometheus, APM, ELK) son brillantes para analizar tendencias, configurar alertas y entender el "por qué" después de que ocurrió un incidente. Sin embargo, cuando recibes una alerta de que tu clúster de producción está caído, el Load Average está por las nubes y los usuarios ven errores 502 Bad Gateway, no tienes tiempo de armar un *dashboard* en Grafana.
 
@@ -336,7 +336,7 @@ Necesitas entrar por SSH al servidor y operar a corazón abierto. Esta sección 
 
 ---
 
-### **1. `htop`: La vista táctica del campo de batalla**
+### 1. `htop`: La vista táctica del campo de batalla
 
 Mientras que `top` viene instalado por defecto en Linux, `htop` es su evolución natural y obligatoria. Ofrece un código de colores vital y la capacidad de interactuar con los procesos.
 
@@ -350,7 +350,7 @@ Mientras que `top` viene instalado por defecto en Linux, `htop` es su evolución
 
 ---
 
-### **2. Análisis de estados de PHP-FPM: Radiografía del Pool**
+### 2. Análisis de estados de PHP-FPM: Radiografía del Pool
 
 Cuando NGINX arroja errores `502 Bad Gateway` o `504 Gateway Timeout`, el culpable casi siempre es PHP-FPM. O bien todos los *workers* están ocupados, o están bloqueados esperando algo.
 
@@ -382,7 +382,7 @@ max children reached: 12      <-- Veces que WP se quedó sin workers.
 
 ---
 
-### **3. `strace`: Rayos X a nivel de sistema operativo**
+### 3. `strace`: Rayos X a nivel de sistema operativo
 
 Supongamos que en `htop` ves un proceso `php-fpm` específico (ej. PID 14502) atascado al 100% de CPU o colgado indefinidamente. El APM no te responde porque la transacción aún no termina. ¿Qué está haciendo exactamente ese proceso en ese milisegundo?
 
@@ -405,7 +405,7 @@ Si el proceso está esperando respuesta de una API externa (ej. un plugin conect
 
 ---
 
-### **4. `tcpdump`: El analizador de red de bajo nivel**
+### 4. `tcpdump`: El analizador de red de bajo nivel
 
 A veces el servidor tiene la CPU en 5% y PHP-FPM está vacío, pero el sitio no carga o responde con suma lentitud. El problema podría ser de red: un micro-corte con la base de datos externa, un ataque de denegación de servicio (DDoS) que no genera carga de CPU pero satura el ancho de banda, o un bucle de redirecciones a nivel de proxy.
 

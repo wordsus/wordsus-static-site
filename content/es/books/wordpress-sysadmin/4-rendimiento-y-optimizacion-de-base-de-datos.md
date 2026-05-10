@@ -1,10 +1,10 @@
 La base de datos es el cimiento donde reside la inteligencia de WordPress. En entornos de alta disponibilidad, una configuración deficiente de SQL actúa como un ancla que anula cualquier optimización previa en PHP o Nginx. Este capítulo aborda la transición técnica desde una pila básica hasta una infraestructura de datos de alto rendimiento. Analizaremos la superioridad de MariaDB y MySQL 8.x, la arquitectura interna de **InnoDB** y el arte de la auditoría forense mediante el *Slow Query Log*. Aprenderás a transformar tu base de datos de un cuello de botella reactivo en un motor transaccional proactivo capaz de escalar bajo demanda.
 
-## **4.1 Elección del motor: MySQL 8.x vs. MariaDB y el uso exclusivo del motor de almacenamiento InnoDB**
+## 4.1 Elección del motor: MySQL 8.x vs. MariaDB y el uso exclusivo del motor de almacenamiento InnoDB
 
 La base de datos es el corazón palpitante de cualquier instalación de WordPress. Mientras que el servidor web (NGINX) y PHP pueden escalar horizontalmente con relativa facilidad, la base de datos relacional tiende a convertirse en el cuello de botella más crítico a medida que el tráfico aumenta. Antes de afinar variables o analizar consultas lentas, la arquitectura de alto rendimiento exige tomar dos decisiones fundamentales: qué sistema gestor de bases de datos (RDBMS) utilizar y qué motor de almacenamiento implementar.
 
-### **MySQL 8.x vs. MariaDB: La bifurcación del rendimiento**
+### MySQL 8.x vs. MariaDB: La bifurcación del rendimiento
 
 Históricamente, WordPress y MySQL han sido sinónimos. Sin embargo, tras la adquisición de MySQL por parte de Oracle, el creador original del proyecto, Ulf Michael Widenius, lanzó MariaDB como un *fork* (bifurcación) de código abierto para garantizar que siempre existiera una versión libre y optimizada por la comunidad.
 
@@ -15,7 +15,7 @@ Hoy en día, aunque ambos sistemas comparten el mismo ADN y son compatibles a ni
 
 **El veredicto para WordPress:** Si administras tu propio servidor (VPS o Bare Metal) basado en distribuciones como Debian, Ubuntu o AlmaLinux, **MariaDB** suele ser la opción recomendada por su ligereza y manejo eficiente de conexiones. Por otro lado, si despliegas tu infraestructura en servicios gestionados de la nube (como Amazon RDS o Google Cloud SQL), **MySQL 8.x** es el estándar de la industria y cuenta con integraciones de escalabilidad extraordinarias. Ambas opciones soportan arquitecturas de *High Availability* sin problemas.
 
-### **El fin de una era: Por qué MyISAM está obsoleto**
+### El fin de una era: Por qué MyISAM está obsoleto
 
 Independientemente de si eliges MySQL o MariaDB, hay una regla no negociable en la optimización de WordPress: **todas las tablas deben utilizar el motor de almacenamiento InnoDB.** En instalaciones antiguas de WordPress (previas a la versión 5.5), era común encontrar tablas creadas bajo el motor MyISAM. MyISAM era rápido para operaciones de pura lectura, pero tiene un defecto fatal arquitectónico en sitios web dinámicos: **el bloqueo a nivel de tabla (*Table-level locking*).**
 
@@ -43,14 +43,14 @@ Petición 1: UPDATE wp_options (Fila ID 45)
 
 ```
 
-### **Las ventajas absolutas de InnoDB en WordPress**
+### Las ventajas absolutas de InnoDB en WordPress
 
 Además del bloqueo por fila, InnoDB aporta características de nivel empresarial o *ACID* (Atomicidad, Consistencia, Aislamiento, Durabilidad) que son indispensables para eCommerce (WooCommerce) o sitios de membresía:
 
 1. **Protección contra caídas (Crash Recovery):** InnoDB utiliza un archivo de registro (*Redo Log*). Si el servidor se apaga abruptamente por falta de memoria (OOM Killer), InnoDB puede reconstruir las transacciones no finalizadas al reiniciar, evitando que la base de datos de WordPress se corrompa. MyISAM, por el contrario, requiere reparar las tablas manualmente tras una caída.
 2. **Integridad referencial:** Aunque el núcleo de WordPress (*Core*) no utiliza claves foráneas (*Foreign Keys*) por razones de retrocompatibilidad, muchos plugins complejos sí dependen de ellas para mantener la integridad de los datos. InnoDB soporta claves foráneas nativas.
 
-### **Auditoría y migración a InnoDB**
+### Auditoría y migración a InnoDB
 
 Como administrador de sistemas, tu primera tarea al auditar un WordPress heredado es verificar el motor de almacenamiento. Puedes ejecutar la siguiente consulta SQL para identificar cualquier tabla rezagada en MyISAM:
 
@@ -76,7 +76,7 @@ AND ENGINE = 'MyISAM';
 
 Copiar y ejecutar los resultados de esa consulta transformará la arquitectura de almacenamiento de tu WordPress, preparándolo para aprovechar al máximo las configuraciones avanzadas de memoria que abordaremos en la siguiente sección.
 
-## **4.2 Afinación de variables de InnoDB: `innodb_buffer_pool_size`, `innodb_log_file_size` y `innodb_flush_log_at_trx_commit**`
+## 4.2 Afinación de variables de InnoDB: `innodb_buffer_pool_size`, `innodb_log_file_size` y `innodb_flush_log_at_trx_commit`
 
 Una vez garantizado que toda la arquitectura de WordPress opera sobre InnoDB, el siguiente paso es dejar de tratar a la base de datos como una caja negra y comenzar a dimensionar sus recursos. MySQL y MariaDB vienen de fábrica con configuraciones conservadoras diseñadas para no colapsar un servidor con 512 MB de RAM. En un entorno de producción moderno, estas configuraciones por defecto ahogarán tu sitio.
 
@@ -110,7 +110,7 @@ Para entender cómo optimizar InnoDB, primero debemos visualizar cómo fluyen lo
 
 Existen tres variables que conforman la "Santísima Trinidad" del rendimiento de InnoDB. Ajustarlas correctamente resolverá el 90% de los problemas de latencia en la capa de base de datos.
 
-### **1. `innodb_buffer_pool_size`: El devorador de memoria**
+### 1. `innodb_buffer_pool_size`: El devorador de memoria
 
 Esta es la variable **más importante** de todo tu servidor de base de datos. El *Buffer Pool* es el área de memoria RAM donde InnoDB almacena en caché los datos y los índices de las tablas. Si una consulta de WordPress (por ejemplo, buscar un post meta) encuentra los datos aquí, el tiempo de respuesta es casi de 0 milisegundos. Si no los encuentra, debe ir a buscarlos al disco duro físico, multiplicando la latencia.
 
@@ -131,7 +131,7 @@ WHERE engine = 'InnoDB';
 
 *Si el resultado es, por ejemplo, 1500 MB, tu `innodb_buffer_pool_size` debería ser de al menos `2G` para mantener toda la base de datos en RAM.*
 
-### **2. `innodb_log_file_size`: El amortiguador de escrituras**
+### 2. `innodb_log_file_size`: El amortiguador de escrituras
 
 Cuando WordPress hace un `UPDATE` o `INSERT` (por ejemplo, al crear un nuevo pedido en WooCommerce o actualizar un *transient*), InnoDB no escribe inmediatamente esos datos en los archivos de tabla `.ibd` del disco, ya que esto requeriría costosas operaciones de escritura aleatoria. En su lugar, modifica la memoria RAM (en el *Buffer Pool*) y luego escribe secuencialmente el cambio en los archivos *Redo Log*.
 
@@ -142,7 +142,7 @@ El tamaño de estos archivos está definido por `innodb_log_file_size`.
 
 **Mejor práctica:** Se recomienda configurarlo al **25% del tamaño de tu `innodb_buffer_pool_size**`, o al menos entre `256M` y `1G` para sitios de WordPress con un tráfico transaccional moderado-alto.
 
-### **3. `innodb_flush_log_at_trx_commit`: Rendimiento vs. Seguridad ACID**
+### 3. `innodb_flush_log_at_trx_commit`: Rendimiento vs. Seguridad ACID
 
 Esta variable define con qué frecuencia InnoDB vuelca (*flushea*) los datos del *Redo Log* al disco duro. Es el ajuste más crítico para los cuellos de botella en operaciones de escritura (muy común en el *checkout* de WooCommerce o foros bbPress).
 
@@ -154,7 +154,7 @@ Acepta tres valores:
 
 **Recomendación:** Para el 99% de los sitios de WordPress y WooCommerce buscando alta disponibilidad, establecer esta variable en `2` ofrece el mejor equilibrio entre un rendimiento de escritura espectacular y una seguridad de datos razonable.
 
-### **Aplicando la configuración**
+### Aplicando la configuración
 
 Para aplicar estas directivas, debes editar tu archivo de configuración (usualmente ubicado en `/etc/mysql/my.cnf`, `/etc/my.cnf` o `/etc/mysql/mysql.conf.d/mysqld.cnf`) bajo la sección `[mysqld]`:
 
@@ -174,13 +174,13 @@ innodb_file_per_table = 1      # Un archivo .ibd por tabla (esencial para manten
 
 Tras modificar el archivo, es obligatorio reiniciar el servicio (`systemctl restart mysql` o `systemctl restart mariadb`). Con estos tres parámetros afinados, tu motor de base de datos ha dejado de ser un cuello de botella genérico. El siguiente paso, como SysAdmin, es descubrir qué plugins o temas están enviando consultas ineficientes a esta infraestructura optimizada.
 
-## **4.3 Análisis de cuellos de botella: Uso del *Slow Query Log* y la herramienta `EXPLAIN` para auditar consultas de WordPress**
+## 4.3 Análisis de cuellos de botella: Uso del *Slow Query Log* y la herramienta `EXPLAIN` para auditar consultas de WordPress
 
 En las secciones anteriores dotamos a InnoDB de la memoria necesaria para volar en RAM, pero el hardware más potente del mundo no puede compensar un código ineficiente. En el ecosistema de WordPress, donde conviven el *Core*, decenas de plugins y un tema personalizado, es matemáticamente seguro que tarde o temprano te enfrentarás a consultas SQL mal estructuradas.
 
 Una consulta ineficiente (como un `WP_Query` que busca dentro de `wp_postmeta` usando comodines) puede escanear millones de filas en memoria, consumiendo el 100% de la CPU de un núcleo y bloqueando el servidor web. Como SysAdmin, tu deber no es reescribir el código PHP del desarrollador, sino identificar exactamente **qué consulta** está causando el problema y **por qué**. Para ello, cuentas con dos herramientas de nivel forense.
 
-### **1. Atrapando a los culpables: El *Slow Query Log***
+### 1. Atrapando a los culpables: El *Slow Query Log*
 
 El *Slow Query Log* (Registro de Consultas Lentas) es el sistema de vigilancia nativo de MySQL/MariaDB. Cuando se activa, el motor registra cualquier consulta que tarde más de "X" segundos en ejecutarse.
 
@@ -220,7 +220,7 @@ Count: 450  Time=2.10s (945s)  Lock=0.00s (0s)  Rows=12.0 (5400), db_user[db_use
 
 Con esto, has pasado de tener un servidor "lento" a tener un sospechoso principal: una consulta que une `wp_posts` con `wp_postmeta` haciendo uso de un condicional `LIKE`.
 
-### **2. Autopsia de la consulta: La herramienta `EXPLAIN**`
+### 2. Autopsia de la consulta: La herramienta `EXPLAIN`
 
 Una vez que el *Slow Query Log* te da la consulta infractora, necesitas entender cómo el optimizador de MySQL intenta resolverla. Aquí es donde entra el comando `EXPLAIN`.
 
@@ -263,19 +263,19 @@ Como SysAdmin, debes centrar tu atención en tres columnas críticas para determ
 * *`Using temporary`*: **Peligro.** MySQL tuvo que crear una tabla temporal (primero en RAM, y si es muy grande, en disco) para procesar la consulta. Común en `GROUP BY` u `ORDER BY` complejos.
 * *`Using filesort`*: **Alerta Roja.** MySQL debe hacer una pasada extra sobre los datos para ordenarlos porque no pudo usar el orden del índice. A pesar del nombre, puede hacerse en RAM, pero consume muchísima CPU. Ver *`Using temporary; Using filesort`* juntos en `wp_postmeta` es la causa número uno de servidores caídos en WordPress.
 
-### **El veredicto sistémico**
+### El veredicto sistémico
 
 Cuando un `EXPLAIN` revela `type: ALL` y `Extra: Using filesort` en un sitio en producción, ninguna cantidad de RAM o caché de página (Page Cache) resolverá el problema de raíz para los usuarios autenticados que evitan la caché.
 
 La solución técnica recae en dos posibles caminos: refactorizar el código en PHP para evitar esa consulta específica (quizás moviendo los datos de `wp_postmeta` a una taxonomía personalizada, que es infinitamente más rápida), o intervenir la base de datos a nivel de servidor añadiendo índices compuestos que el *Core* de WordPress no trae por defecto.
 
-## **4.4 Mantenimiento de la base de datos a nivel de servidor: Fragmentación, optimización de tablas e índices personalizados**
+## 4.4 Mantenimiento de la base de datos a nivel de servidor: Fragmentación, optimización de tablas e índices personalizados
 
 Haber asignado memoria suficiente a InnoDB y localizado las consultas lentas es solo el principio. A medida que un sitio web en WordPress opera, la base de datos muta constantemente. Decenas de miles de registros se crean, actualizan y eliminan a diario, especialmente en tiendas WooCommerce, foros o sitios con alta rotación de metadatos y *transients*. Esta actividad constante genera degradación estructural a nivel físico y lógico.
 
 Como administrador de sistemas, tu responsabilidad es implementar rutinas de mantenimiento para evitar que esta degradación silenciosa ahogue el rendimiento del servidor.
 
-### **Entendiendo la fragmentación en InnoDB**
+### Entendiendo la fragmentación en InnoDB
 
 En InnoDB, los datos y los índices se almacenan en estructuras de árbol (B+ Trees) organizadas en "páginas" (usualmente de 16 KB). Cuando WordPress ejecuta una sentencia `DELETE` (por ejemplo, al limpiar *transients* expirados de `wp_options`) o un `UPDATE` que cambia el tamaño de una fila, InnoDB no reorganiza el archivo físico inmediatamente. Simplemente marca ese espacio como "libre" para uso futuro.
 
@@ -286,7 +286,7 @@ Con el tiempo, el archivo físico `.ibd` de la tabla se llena de "huecos" (pági
 1. **Desperdicio de RAM:** El *Buffer Pool* carga páginas completas en memoria. Si una página de 16 KB está vacía en un 50% debido a la fragmentación, estás desperdiciando el 50% de tu valiosa memoria RAM almacenando "nada".
 2. **I/O Ineficiente:** Los *Full Table Scans* (que vimos en el `EXPLAIN` de la sección anterior) tardan mucho más porque el motor debe leer físicamente un archivo mucho más grande en el disco.
 
-### **Auditoría y desfragmentación (Optimización de tablas)**
+### Auditoría y desfragmentación (Optimización de tablas)
 
 Para identificar qué tablas están sufriendo de obesidad mórbida por fragmentación, ejecuta esta consulta en tu cliente SQL:
 
@@ -311,7 +311,7 @@ La solución nativa es ejecutar el comando `OPTIMIZE TABLE nombre_de_tabla;`. En
 * **Para tablas pequeñas:** Puedes usar un Cron Job nocturno con WP-CLI: `wp db optimize`.
 * **Para tablas masivas (Gigabytes):** En entornos de Alta Disponibilidad, nunca uses `OPTIMIZE TABLE` estándar. Debes utilizar herramientas externas como **`pt-online-schema-change`** (del paquete Percona Toolkit), que crea una tabla sombra, copia los datos, sincroniza los cambios en tiempo real y hace el renombramiento sin tiempo de inactividad (*Zero-Downtime*).
 
-### **La limitación del Core: Índices personalizados**
+### La limitación del Core: Índices personalizados
 
 El esquema de base de datos que viene por defecto en WordPress fue diseñado para ser universal, no para el rendimiento extremo. El *Core* de WordPress no puede anticipar qué plugins instalarás ni cómo interactuarán con la tabla `wp_postmeta` o `wp_options`.
 
@@ -343,7 +343,7 @@ Petición: SELECT post_id FROM wp_postmeta WHERE meta_key = '_sku' AND meta_valu
 
 ```
 
-### **Implementación segura de índices personalizados**
+### Implementación segura de índices personalizados
 
 El problema de `wp_postmeta` es que la columna `meta_value` es de tipo `LONGTEXT`. No puedes indexar un campo de texto infinito por completo en MySQL, ya que el índice ocuparía más memoria que los propios datos. Para solucionarlo, debes crear un **índice compuesto con un prefijo de longitud**.
 
@@ -364,7 +364,7 @@ Como SysAdmin, debes resistir la tentación de indexar todas las columnas.
 
 Una vez que hemos exprimido hasta la última gota de rendimiento lógico y físico en nuestro servidor de base de datos local, llega el momento de escalar la arquitectura. En la sección **4.5**, abordaremos la separación de la base de datos hacia un servidor dedicado y cómo mitigar el nuevo enemigo que esto introduce: la latencia de red.
 
-## **4.5 Separación de la base de datos: Configuración de un servidor de DB dedicado y reducción de latencia de red**
+## 4.5 Separación de la base de datos: Configuración de un servidor de DB dedicado y reducción de latencia de red
 
 Llega un punto en la escalabilidad de todo sitio WordPress donde el escalado vertical (añadir más CPU y RAM a un único servidor) deja de ser rentable o técnicamente viable. En una arquitectura monolítica (Web y Base de Datos en la misma máquina), PHP-FPM y MySQL son como dos gigantes peleando por el mismo territorio: cuando un pico de tráfico requiere que PHP genere múltiples hilos de ejecución, le roba ciclos de CPU a MySQL justo en el momento en que la base de datos más los necesita para procesar consultas complejas.
 
@@ -393,7 +393,7 @@ La solución arquitectónica estándar para este cuello de botella es la **separ
 
 ```
 
-### **El nuevo enemigo: La latencia de red**
+### El nuevo enemigo: La latencia de red
 
 Al mover la base de datos a otro servidor, resuelves el problema de contención de recursos, pero introduces un nuevo desafío crítico: **la latencia de red**.
 
@@ -406,7 +406,7 @@ Si la latencia entre tu servidor web y tu servidor de base de datos es de apenas
 1. **Mismo Datacenter:** Ambos servidores deben estar físicamente en la misma región y zona de disponibilidad (ej. `us-east-1a`).
 2. **Red Privada (VPC):** Nunca conectes el servidor web a la base de datos utilizando IPs públicas. El tráfico debe enrutarse a través de la red privada interna (Switching de capa 2 o subred virtual), lo que garantiza latencias inferiores a 0.5 milisegundos y máxima seguridad.
 
-### **Configuración del Servidor de Base de Datos (Nodo DB)**
+### Configuración del Servidor de Base de Datos (Nodo DB)
 
 Por defecto, MySQL/MariaDB solo escucha peticiones provenientes de `localhost` (127.0.0.1) por razones de seguridad. Para permitir conexiones desde tu Nodo Web, debes reconfigurar el servicio.
 
@@ -425,7 +425,7 @@ skip-name-resolve = 1
 **La importancia de `skip-name-resolve`:**
 Cuando esta variable no está activa, cada vez que PHP intenta conectarse a la base de datos, MySQL hace una búsqueda inversa de DNS (Reverse DNS Lookup) para verificar el *hostname* de la IP que se conecta. En entornos de alto tráfico, si el servidor DNS está lento, esta comprobación puede añadir varios segundos a la conexión, provocando el infame error "Error establishing a database connection" en WordPress por *timeout*. Al activarlo, MySQL solo autentica basándose en direcciones IP numéricas, haciendo la conexión casi instantánea.
 
-### **Creación de usuarios con privilegios remotos**
+### Creación de usuarios con privilegios remotos
 
 Los usuarios creados previamente bajo `localhost` no servirán. Debes crear un usuario en el Nodo DB que tenga permisos explícitos para conectarse **solo** desde la IP privada del Nodo Web.
 
@@ -443,7 +443,7 @@ FLUSH PRIVILEGES;
 
 ```
 
-### **Configuración del Nodo Web y Seguridad de Red**
+### Configuración del Nodo Web y Seguridad de Red
 
 En tu servidor web, la única modificación a nivel de código reside en el archivo `wp-config.php`. Cambia el valor de `DB_HOST` de `localhost` a la IP privada del Nodo DB:
 

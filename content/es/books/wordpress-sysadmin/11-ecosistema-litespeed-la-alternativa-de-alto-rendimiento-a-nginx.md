@@ -1,12 +1,12 @@
 LiteSpeed representa la evolución definitiva para el administrador de sistemas que busca la velocidad de NGINX sin sacrificar la versatilidad de Apache. En este capítulo, desglosamos cómo su arquitectura asíncrona y el uso de **LSAPI** transforman la ejecución de PHP en WordPress. Exploraremos el potencial de **LSCache** y la tecnología **ESI** para dinamizar contenidos complejos en milisegundos, junto a estrategias proactivas como el *Cache Crawler*. Finalmente, veremos cómo su seguridad nativa en el *Edge* blinda el servidor ante ataques L7, consolidando a LiteSpeed como la pieza clave para infraestructuras de alta disponibilidad y máximo rendimiento.
 
-## **11.1 Arquitectura y versiones: OpenLiteSpeed (OLS) vs. LiteSpeed Web Server Enterprise (LSWS) y la ventaja de la compatibilidad nativa con reglas de Apache (`.htaccess`)**
+## 11.1 Arquitectura y versiones: OpenLiteSpeed (OLS) vs. LiteSpeed Web Server Enterprise (LSWS) y la ventaja de la compatibilidad nativa con reglas de Apache (`.htaccess`)
 
 En los capítulos anteriores, establecimos a NGINX como el estándar de facto para la alta disponibilidad y el rendimiento extremo debido a su arquitectura orientada a eventos (*event-driven*). Sin embargo, NGINX tiene un costo operativo para el administrador de sistemas y el desarrollador de WordPress: la pérdida de la compatibilidad con Apache, específicamente con los archivos `.htaccess` y sus directivas de reescritura.
 
 Aquí es donde entra el ecosistema **LiteSpeed**. Diseñado desde cero para ofrecer lo mejor de ambos mundos, LiteSpeed combina una arquitectura asíncrona y orientada a eventos (idéntica en filosofía a NGINX) con una compatibilidad nativa y profunda con el entorno de Apache.
 
-### **La Arquitectura Base: Asíncrona pero "Apache-Friendly"**
+### La Arquitectura Base: Asíncrona pero "Apache-Friendly"
 
 A diferencia de Apache en su modo tradicional (Prefork o Worker), que asigna un hilo o proceso por cada conexión (lo que devora memoria RAM rápidamente bajo ataques o picos de tráfico), LiteSpeed utiliza un modelo de multiplexación de I/O. Esto le permite manejar miles de conexiones concurrentes con un consumo de CPU y memoria mínimo.
 
@@ -14,7 +14,7 @@ Pero su verdadero "superpoder" en el ecosistema WordPress no es solo cómo manej
 
 ---
 
-### **La Gran División: OpenLiteSpeed (OLS) vs. LiteSpeed Enterprise (LSWS)**
+### La Gran División: OpenLiteSpeed (OLS) vs. LiteSpeed Enterprise (LSWS)
 
 LiteSpeed Technologies ofrece dos vertientes de su servidor web. Aunque comparten el mismo núcleo de rendimiento, sus diferencias operativas dictan en qué tipo de infraestructura deben desplegarse.
 
@@ -27,13 +27,13 @@ LiteSpeed Technologies ofrece dos vertientes de su servidor web. Aunque comparte
 | **Soporte ESI** | No nativo / Limitado | Completo (Vital para WooCommerce) |
 | **Compatibilidad Apache** | Parcial (Reglas de reescritura) | Total (*Drop-in replacement* 100%) |
 
-#### **1. OpenLiteSpeed (OLS)**
+#### 1. OpenLiteSpeed (OLS)
 
 Es la versión de código abierto. En términos de velocidad bruta despachando peticiones estáticas y PHP, OLS es un competidor fiero, a menudo superando a NGINX en benchmarks sintéticos. Es la opción predilecta para servidores independientes, VPS gestionados con paneles ligeros (como CyberPanel) o infraestructuras inmutables.
 
 **El talón de Aquiles de OLS para WordPress:** OLS entiende las reglas de reescritura de Apache en los archivos `.htaccess`, pero **no los lee dinámicamente**. Si un administrador, o un plugin de WordPress, modifica el archivo `.htaccess`, el servidor OpenLiteSpeed requiere un reinicio suave (*graceful restart*) para que los cambios surtan efecto.
 
-#### **2. LiteSpeed Web Server Enterprise (LSWS)**
+#### 2. LiteSpeed Web Server Enterprise (LSWS)
 
 Es la versión comercial y el motor que impulsa a gran parte de la industria moderna de hosting compartido de alto rendimiento. LSWS está diseñado para integrarse a la perfección con entornos multi-inquilino (*multi-tenant*) como cPanel o Plesk.
 
@@ -42,7 +42,7 @@ Lee y aplica las modificaciones de los archivos `.htaccess` en **tiempo real**, 
 
 ---
 
-### **La ventaja de la compatibilidad nativa con `.htaccess**`
+### La ventaja de la compatibilidad nativa con `.htaccess`
 
 Para entender por qué esto es un salvavidas en la administración de WordPress, debemos observar cómo interactúa el Core y el ecosistema de plugins con el servidor web.
 
@@ -76,7 +76,7 @@ Esto otorga tres ventajas arquitectónicas cruciales:
 
 En resumen, migrar a LiteSpeed permite a la infraestructura de WordPress retener la flexibilidad descentralizada de Apache, mientras se beneficia de la escalabilidad masiva y el bajo consumo de recursos que tradicionalmente solo se conseguía implementando arquitecturas complejas basadas en NGINX.
 
-## **11.2 El manejador de PHP de LiteSpeed (LSAPI): Diferencias arquitectónicas, gestión de procesos y consumo de memoria en comparación con PHP-FPM**
+## 11.2 El manejador de PHP de LiteSpeed (LSAPI): Diferencias arquitectónicas, gestión de procesos y consumo de memoria en comparación con PHP-FPM
 
 En el Capítulo 3, dedicamos un esfuerzo considerable a afinar PHP-FPM, calculando milimétricamente directivas como `pm.max_children` y `pm.start_servers` para evitar que WordPress colapsara bajo picos de tráfico. NGINX y PHP-FPM forman un dúo formidable, pero dependen de un protocolo intermediario: **FastCGI**.
 
@@ -86,7 +86,7 @@ Para entender por qué los benchmarks suelen coronar a LiteSpeed en la ejecució
 
 ---
 
-### **1. Diferencias Arquitectónicas: FastCGI vs. LSAPI**
+### 1. Diferencias Arquitectónicas: FastCGI vs. LSAPI
 
 El problema inherente de la pila LEMP (NGINX + PHP-FPM) no es la velocidad de PHP en sí, sino **cómo** se comunican los servicios.
 
@@ -112,7 +112,7 @@ El problema inherente de la pila LEMP (NGINX + PHP-FPM) no es la velocidad de PH
 
 ---
 
-### **2. Gestión de Procesos: Adiós a los colapsos por `pm.max_children**`
+### 2. Gestión de Procesos: Adiós a los colapsos por `pm.max_children`
 
 En PHP-FPM, si el número de peticiones concurrentes a WordPress supera el límite definido en `pm.max_children`, NGINX comienza a arrojar errores `502 Bad Gateway` o `504 Gateway Timeout`. El administrador debe intervenir, aumentar el límite y cruzar los dedos para que el servidor no se quede sin memoria RAM (OOM - *Out of Memory*).
 
@@ -125,7 +125,7 @@ LiteSpeed gestiona los procesos de PHP de manera radicalmente distinta mediante 
 
 ---
 
-### **3. Consumo de Memoria y Eficiencia Operativa**
+### 3. Consumo de Memoria y Eficiencia Operativa
 
 La reducción en la huella de memoria (RAM) es donde LSAPI brilla con mayor intensidad para los administradores de sistemas:
 
@@ -133,11 +133,11 @@ La reducción en la huella de memoria (RAM) es donde LSAPI brilla con mayor inte
 * **Afinidad con OPcache:** LSAPI está profundamente optimizado para trabajar con Zend OPcache. Como la memoria compartida entre LiteSpeed y `lsphp` es gestionada de manera más estrecha, la lectura de los *scripts* precompilados del *Core* de WordPress es marginalmente más rápida.
 * **Reciclaje Inteligente:** LiteSpeed monitorea activamente la salud de los procesos `lsphp`. Si un plugin pesado causa una pequeña fuga de memoria (*memory leak*), LSWS detecta el crecimiento anómalo y recicla el proceso hijo de manera transparente una vez que finaliza la petición, evitando la degradación lenta del servidor que a menudo obliga a reiniciar `php-fpm` en otras arquitecturas.
 
-### **Conclusión de la Sección**
+### Conclusión de la Sección
 
 Mientras que NGINX y PHP-FPM requieren una capa de traducción constante para hablar entre sí, LiteSpeed y LSAPI hablan el mismo idioma de forma nativa. Para un sitio de WordPress estático, la diferencia puede ser imperceptible debido al *Page Caching*; pero para operaciones dinámicas (*backend*, carrito de compras, foros, APIs REST), LSAPI ofrece una escalabilidad mayor por cada gigabyte de RAM disponible en el servidor, reduciendo significativamente la necesidad de micro-gestión por parte del SysAdmin.
 
-## **11.3 LiteSpeed Cache (LSCache) a nivel de servidor: Implementación y afinación del motor de caché integrado (bypass del backend) como reemplazo de Varnish o NGINX FastCGI Cache**
+## 11.3 LiteSpeed Cache (LSCache) a nivel de servidor: Implementación y afinación del motor de caché integrado (bypass del backend) como reemplazo de Varnish o NGINX FastCGI Cache
 
 En el Capítulo 5 exploramos la arquitectura de caché multicapa, apoyándonos en NGINX FastCGI Cache y Varnish. Ambas son herramientas formidables para hacer *bypass* del backend (evitar que la petición llegue a PHP y MySQL), pero introducen una complejidad arquitectónica considerable. Varnish, por ejemplo, no soporta terminación SSL/TLS de forma nativa, lo que obliga a colocar un proxy NGINX o HAProxy por delante, creando un apilamiento de servicios (Client -> NGINX -> Varnish -> Servidor Web -> PHP-FPM) con múltiples puntos de fallo.
 
@@ -145,7 +145,7 @@ LiteSpeed elimina toda esta fricción operativa con **LSCache**, un motor de cac
 
 ---
 
-### **1. El Concepto: Bypass del Backend en un solo salto**
+### 1. El Concepto: Bypass del Backend en un solo salto
 
 LSCache no es un proxy inverso independiente; es un módulo nativo del servidor web (tanto en OLS como en LSWS). Al estar integrado en el mismo proceso que maneja la red, la compresión y la seguridad, LSCache intercepta la petición entrante inmediatamente después del *handshake* SSL (HTTP/2 o HTTP/3).
 
@@ -166,7 +166,7 @@ Internet -> LiteSpeed Web Server (Puerto 443 / SSL + Caché LSCache integrada) -
 
 ---
 
-### **2. El gran mito: El plugin de WordPress NO es la caché**
+### 2. El gran mito: El plugin de WordPress NO es la caché
 
 Un error fundamental entre desarrolladores es creer que el plugin "LiteSpeed Cache" para WordPress es el que genera la caché. **Esto es falso.** El trabajo pesado de almacenar, comprimir y servir los archivos HTML lo hace el demonio del servidor a nivel de sistema operativo (`lsws` o `lsws-rc`). El plugin de WordPress actúa únicamente como un **puente de control y comunicación**. Su función es decirle al servidor web *qué* cachear, *por cuánto tiempo* y, lo más importante, *cuándo purgarlo*.
 
@@ -183,7 +183,7 @@ X-LiteSpeed-Tag: 1a2b_front, 1a2b_post_45, 1a2b_term_3
 
 ---
 
-### **3. Purgado Inteligente Basado en Etiquetas (Smart Purge)**
+### 3. Purgado Inteligente Basado en Etiquetas (Smart Purge)
 
 Aquí es donde LSCache supera operativamente a implementaciones rígidas de NGINX FastCGI Cache.
 
@@ -195,7 +195,7 @@ El motor a nivel de servidor intercepta esta orden y borra **únicamente** la en
 
 ---
 
-### **4. Implementación y Afinación del Motor a Nivel de Servidor**
+### 4. Implementación y Afinación del Motor a Nivel de Servidor
 
 Aunque el plugin de WordPress facilita la gestión, el SysAdmin debe asegurar que el motor esté correctamente afinado a nivel de infraestructura para evitar cuellos de botella en I/O.
 
@@ -221,7 +221,7 @@ Para infraestructuras de alta disponibilidad, se deben configurar los parámetro
 
 ---
 
-### **5. Ventajas Definitivas sobre Varnish y NGINX FastCGI**
+### 5. Ventajas Definitivas sobre Varnish y NGINX FastCGI
 
 Al reemplazar soluciones de terceros con LSCache, la infraestructura de WordPress obtiene:
 
@@ -230,7 +230,7 @@ Al reemplazar soluciones de terceros con LSCache, la infraestructura de WordPres
 * **Gestión de cookies de WooCommerce (Vary):** LSCache está preconfigurado para ignorar el *bypass* y cachear eficientemente en base a cookies específicas (`woocommerce_items_in_cart`), evitando que NGINX envíe peticiones repetitivas al backend por el simple hecho de tener una sesión iniciada vacía.
 * **Soporte ESI incorporado:** Como veremos en la siguiente sección, LSCache permite cachear bloques parciales de una página de forma nativa, la "bala de plata" definitiva para sitios altamente dinámicos.
 
-## **11.4 Dominando Edge Side Includes (ESI) en WordPress: Cómo cachear páginas mixtas (contenido público con fragmentos dinámicos como carritos de compra o barras de usuario logueado) sin romper el rendimiento**
+## 11.4 Dominando Edge Side Includes (ESI) en WordPress: Cómo cachear páginas mixtas (contenido público con fragmentos dinámicos como carritos de compra o barras de usuario logueado) sin romper el rendimiento
 
 Llegamos al verdadero desafío de la optimización web, el "Santo Grial" para el rendimiento en e-commerce y sitios de membresía: el contenido mixto.
 
@@ -243,7 +243,7 @@ Aquí es donde interviene **Edge Side Includes (ESI)**.
 
 ---
 
-### **1. ¿Qué es ESI y cómo funciona la "Perforación de Caché"?**
+### 1. ¿Qué es ESI y cómo funciona la "Perforación de Caché"?
 
 ESI es un lenguaje de marcas estándar (desarrollado originalmente por Akamai y Oracle) que permite al servidor web ensamblar páginas web dinámicas a partir de fragmentos individuales antes de enviarlas al navegador del cliente.
 
@@ -275,7 +275,7 @@ PETICIÓN DEL CLIENTE: GET /producto/zapatillas-nike
 
 ---
 
-### **2. Caché Pública vs. Caché Privada en ESI**
+### 2. Caché Pública vs. Caché Privada en ESI
 
 Para dominar ESI en WordPress mediante el plugin LiteSpeed Cache, es vital entender la diferencia entre los dos tipos de almacenamiento que el servidor maneja simultáneamente:
 
@@ -286,7 +286,7 @@ Al combinar ambas, el servidor ya no tiene que hacer un *bypass* completo cuando
 
 ---
 
-### **3. Implementación de ESI en WordPress con LiteSpeed**
+### 3. Implementación de ESI en WordPress con LiteSpeed
 
 *Nota arquitectónica: Mientras que LiteSpeed Enterprise (LSWS) maneja ESI de forma nativa e impecable a nivel de motor, OpenLiteSpeed (OLS) tiene soporte limitado para ESI. Para sitios WooCommerce de alto tráfico, LSWS es mandatorio para aprovechar esta función sin sobrecarga.*
 
@@ -302,14 +302,14 @@ Esto es extremadamente útil para desarrolladores que insertan calculadoras de e
 
 ---
 
-### **4. Precauciones y Afinación de Rendimiento (El Costo Oculto)**
+### 4. Precauciones y Afinación de Rendimiento (El Costo Oculto)
 
 Aunque ESI parece magia, no es gratuito computacionalmente. El SysAdmin debe auditar su uso:
 
 * **Evitar el "Queso Gruyer":** Si una página tiene demasiados agujeros ESI (ej. 15 fragmentos dinámicos en una sola URL), LiteSpeed tendrá que lanzar 15 procesos `lsphp` ligeros concurrentes para ensamblar el HTML. Esto puede colapsar la CPU más rápido que no tener caché. La regla de oro es mantener los bloques ESI al mínimo indispensable (carrito, barra de usuario, nonces).
 * **Vary Headers:** ESI depende críticamente de las cabeceras `Vary` para diferenciar sesiones. Es vital que ningún proxy intermedio (como Cloudflare en modo agresivo sin optimización de plataforma) elimine las cookies de sesión o las cabeceras `Vary`, de lo contrario, el bloque ESI privado de un usuario podría servirse accidentalmente a otro.
 
-## **11.5 Optimización de red nativa: Despliegue y configuración de los protocolos QUIC y HTTP/3, y gestión integrada de compresión Brotli/Gzip**
+## 11.5 Optimización de red nativa: Despliegue y configuración de los protocolos QUIC y HTTP/3, y gestión integrada de compresión Brotli/Gzip
 
 En el Capítulo 2 (secciones 2.4 y 2.5), exploramos la teoría detrás de HTTP/3, QUIC y la compresión Brotli, y cómo implementarlos en un entorno NGINX. Si bien NGINX es poderoso, históricamente requirió compilar el servidor desde el código fuente con parches específicos de OpenSSL o módulos experimentales (como `quiche` de Cloudflare) para habilitar estas tecnologías punteras.
 
@@ -317,7 +317,7 @@ LiteSpeed, por el contrario, fue pionero en la adopción temprana de QUIC (inclu
 
 ---
 
-### **1. El Despliegue de QUIC y HTTP/3: La Ventaja del "Zero-Config"**
+### 1. El Despliegue de QUIC y HTTP/3: La Ventaja del "Zero-Config"
 
 La arquitectura de red de LiteSpeed permite que HTTP/3 funcione prácticamente *Out of the Box* (listo para usar) una vez que el dominio tiene un certificado SSL/TLS válido (HTTP/3 exige cifrado por defecto).
 
@@ -336,7 +336,7 @@ Alt-Svc: h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, h3-Q050=":443"; ma=259
 
 *(Nota: `ma` indica el "max-age" en segundos que el navegador debe recordar que este servidor soporta HTTP/3).*
 
-### **2. El Obstáculo del SysAdmin: El Firewall UDP**
+### 2. El Obstáculo del SysAdmin: El Firewall UDP
 
 El error más común en la configuración de LiteSpeed no ocurre en el servidor web en sí, sino en el cortafuegos. Dado que el tráfico web tradicional (HTTP/1.1 y HTTP/2) opera exclusivamente sobre el protocolo TCP, muchos administradores olvidan que **QUIC y HTTP/3 operan sobre el protocolo UDP**.
 
@@ -360,7 +360,7 @@ sudo ufw reload
 
 ---
 
-### **3. Gestión Integrada de Compresión: Brotli y Gzip "Al Vuelo" y en Caché**
+### 3. Gestión Integrada de Compresión: Brotli y Gzip "Al Vuelo" y en Caché
 
 La compresión reduce el tamaño del HTML, CSS y JS antes de enviarlos por la red, ahorrando ancho de banda y bajando el *Time to Interactive* (TTI) de WordPress. NGINX y Apache suelen requerir directivas extensas para decidir qué nivel de compresión aplicar sin asfixiar la CPU del servidor.
 
@@ -390,7 +390,7 @@ En LiteSpeed, LSCache intercepta la salida de PHP y **guarda múltiples versione
 
 Al almacenar los objetos HTML dinámicos de WordPress ya comprimidos en los formatos más eficientes, LiteSpeed permite configurar el nivel de compresión Brotli al máximo (nivel 11), una configuración prohibitiva en compresión dinámica (*on the fly*) debido al inmenso consumo de CPU, pero perfecta cuando LSCache la realiza solo una vez (al momento de generar y almacenar la caché).
 
-### **Resumen de Afinación en el panel (WebAdmin Console):**
+### Resumen de Afinación en el panel (WebAdmin Console):
 
 Para garantizar el rendimiento óptimo, en la sección de *Tuning* del panel de LiteSpeed, el administrador debe verificar:
 
@@ -400,7 +400,7 @@ Para garantizar el rendimiento óptimo, en la sección de *Tuning* del panel de 
 4. **Brotli Compression Level (Dynamic):** `4` o `5` (Para *assets* no cacheados).
 5. **Brotli Compression Level (Static):** `11` (Para archivos precomprimidos generados por herramientas de minimización o guardados en LSCache).
 
-## **11.6 El Crawler de LSCache: Estrategias de precalentamiento de caché automatizado (*Cache Warmup*) desde el servidor para garantizar un *Time to First Byte* (TTFB) bajo constante tras purgas de contenido**
+## 11.6 El Crawler de LSCache: Estrategias de precalentamiento de caché automatizado (*Cache Warmup*) desde el servidor para garantizar un *Time to First Byte* (TTFB) bajo constante tras purgas de contenido
 
 El mayor problema de cualquier sistema de caché no es entregar la página rápidamente, sino qué sucede cuando la página *no* está en caché. Esto se conoce como un **Cache Miss** (Fallo de Caché).
 
@@ -410,7 +410,7 @@ Para infraestructuras de alta disponibilidad, depender del tráfico orgánico pa
 
 ---
 
-### **1. El problema de los precalentadores basados en PHP ("Auto-DDoS")**
+### 1. El problema de los precalentadores basados en PHP ("Auto-DDoS")
 
 En el ecosistema tradicional de WordPress, muchos plugins populares (como WP Rocket o W3 Total Cache) incluyen funciones de "Preload". Estos sistemas leen el sitemap XML y utilizan `wp-cron.php` o peticiones cURL en bucle enviadas desde el propio PHP para visitar las URLs del sitio.
 
@@ -418,7 +418,7 @@ En el ecosistema tradicional de WordPress, muchos plugins populares (como WP Roc
 
 ---
 
-### **2. La ventaja del Crawler de LiteSpeed: Ejecución a nivel de Motor**
+### 2. La ventaja del Crawler de LiteSpeed: Ejecución a nivel de Motor
 
 El **Crawler de LSCache** es fundamentalmente distinto. No es un script de PHP que se ejecuta dentro del entorno de WordPress; es un motor de rastreo asíncrono gestionado directamente por el demonio del servidor LiteSpeed (`lsws`).
 
@@ -444,7 +444,7 @@ El plugin de LSCache en WordPress simplemente le entrega el archivo `sitemap.xml
 
 ---
 
-### **3. Estrategias de Configuración y Afinación del Crawler**
+### 3. Estrategias de Configuración y Afinación del Crawler
 
 Para que el Crawler funcione de manera eficiente sin comprometer la estabilidad del servidor, el administrador del sistema debe configurar una serie de parámetros vitales que dictan el comportamiento y la agresividad del rastreo.
 
@@ -471,7 +471,7 @@ Si el sitio utiliza un tema de WordPress que envía HTML distinto a teléfonos m
 
 ---
 
-### **4. Consideraciones Operativas para el SysAdmin**
+### 4. Consideraciones Operativas para el SysAdmin
 
 A diferencia del almacenamiento en caché pasivo, el Crawler **suele estar desactivado por defecto** en entornos de hosting compartido (como cPanel o Plesk con LSWS). Esto se debe a que habilitarlo para cientos de cuentas en un mismo servidor podría causar una sobrecarga global masiva de I/O.
 
@@ -480,7 +480,7 @@ Para desplegarlo en un entorno de Alta Disponibilidad:
 1. **Habilitación a nivel de servidor:** El administrador debe ingresar al WebAdmin Console de LiteSpeed o modificar el archivo `httpd_config.xml` para permitir la función Crawler a nivel global o por Virtual Host.
 2. **Sitemap limpio:** El Crawler es tan bueno como el sitemap que lee. Es imperativo excluir del sitemap de WordPress parámetros de consulta inútiles (como `?orderby=price`), de lo contrario, el Crawler desperdiciará recursos de CPU intentando cachear infinitas combinaciones de URLs dinámicas que los usuarios raramente visitan (un problema conocido como *Cache Bloat* o "Envenenamiento de la cola de caché").
 
-## **11.7 Seguridad en el Edge del servidor web: Limitación de conexiones (Connection/Request Rate Limiting) orientada a WordPress, mitigación de ataques L7 y compatibilidad nativa con ModSecurity WAF**
+## 11.7 Seguridad en el Edge del servidor web: Limitación de conexiones (Connection/Request Rate Limiting) orientada a WordPress, mitigación de ataques L7 y compatibilidad nativa con ModSecurity WAF
 
 En el Capítulo 10 exploramos las bases de la seguridad perimetral, apoyándonos en herramientas como Fail2ban, *Rate Limiting* en NGINX y despliegues de WAF tradicionales. Si bien ese enfoque es robusto, requiere apilar múltiples servicios que consumen memoria y ciclos de CPU.
 
@@ -488,7 +488,7 @@ LiteSpeed simplifica enormemente la topología de seguridad al integrar estos me
 
 ---
 
-### **1. Limitación de Conexiones y Protección Nativa contra Fuerza Bruta en WordPress**
+### 1. Limitación de Conexiones y Protección Nativa contra Fuerza Bruta en WordPress
 
 A diferencia de NGINX, que requiere bloques de configuración genéricos (`limit_req_zone`) para mitigar peticiones masivas, LiteSpeed incluye heurísticas diseñadas específicamente para la anatomía de WordPress.
 
@@ -513,7 +513,7 @@ Si un *botnet* intenta un ataque de diccionario, LiteSpeed descarta las peticion
 
 ---
 
-### **2. Mitigación de Ataques de Capa 7 (DDoS) y el "Server-Level reCAPTCHA"**
+### 2. Mitigación de Ataques de Capa 7 (DDoS) y el "Server-Level reCAPTCHA"
 
 Los ataques de denegación de servicio distribuido de Capa 7 (HTTP Floods) son la pesadilla de cualquier SysAdmin de WordPress. El atacante no intenta saturar el ancho de banda, sino agotar los *workers* de PHP solicitando páginas no cacheadas (como el buscador `/?s=termino_aleatorio`).
 
@@ -547,7 +547,7 @@ Esta función salva infraestructuras completas, ya que permite mantener el sitio
 
 ---
 
-### **3. Compatibilidad Nativa con ModSecurity WAF y Optimización de Rendimiento**
+### 3. Compatibilidad Nativa con ModSecurity WAF y Optimización de Rendimiento
 
 En la sección 10.4 advertimos que implementar ModSecurity en Apache o NGINX conlleva una penalización masiva en la latencia, debido a que el servidor debe evaluar miles de expresiones regulares (RegEx) del conjunto de reglas de OWASP (Core Rule Set) en cada petición entrante.
 
@@ -557,7 +557,7 @@ LiteSpeed cambia la ecuación de rendimiento del WAF gracias a su motor interno 
 2. **Compilación JIT de Expresiones Regulares:** A diferencia de Apache, LiteSpeed no evalúa las reglas RegEx de manera lineal y secuencial en cada petición. Utiliza compilación *Just-In-Time* (JIT) para precompilar las expresiones regulares complejas, ejecutándolas en paralelo.
 3. **Bypass Estático Inteligente:** El motor de ModSecurity en LiteSpeed está programado para evadir de forma inteligente el escaneo pesado en archivos puramente estáticos (`.jpg`, `.css`, `.js` cacheados), centrando el poder de cómputo del WAF únicamente en las peticiones dinámicas de PHP y los métodos POST/PUT, que son los verdaderos vectores de ataque (Inyecciones SQL, XSS, etc.).
 
-### **Conclusión del Capítulo**
+### Conclusión del Capítulo
 
 El ecosistema LiteSpeed (LSWS + LSAPI + LSCache) no es simplemente una "alternativa rápida" a NGINX; es un reemplazo paradigmático diseñado específicamente para sortear los cuellos de botella de la arquitectura web tradicional.
 

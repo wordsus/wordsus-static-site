@@ -2,7 +2,7 @@ Administrar WordPress en entornos de hosting compartido exige un cambio de parad
 
 Este capítulo aborda las estrategias críticas para navegar estas limitaciones. Aprenderás a neutralizar el impacto del cron virtual, a dominar la gestión selectiva de extensiones de PHP y a realizar limpiezas profundas de bases de datos mediante SQL. El objetivo es transformar un entorno restringido en una arquitectura de alto rendimiento capaz de soportar picos de tráfico sin disparar errores 508.
 
-## **12.1 Limitaciones del entorno compartido y CloudLinux: Entendiendo LVE Manager y cómo evitar los límites de CPU, RAM, I/O y concurrentes (EP)**
+## 12.1 Limitaciones del entorno compartido y CloudLinux: Entendiendo LVE Manager y cómo evitar los límites de CPU, RAM, I/O y concurrentes (EP)
 
 Cuando migramos la mentalidad desde servidores dedicados o instancias VPS (donde administramos la totalidad de los recursos) hacia un entorno de alojamiento compartido gestionado por **cPanel y CloudLinux**, las reglas del juego cambian drásticamente. En este escenario, el enemigo ya no es únicamente la ineficiencia del código, sino los estrictos "techos de cristal" impuestos por el sistema operativo a nivel de kernel.
 
@@ -12,7 +12,7 @@ Para optimizar WordPress en este ecosistema, es vital comprender exactamente qu�
 
 ---
 
-### **Diagrama de Flujo LVE: Anatomía de una Petición Restringida**
+### Diagrama de Flujo LVE: Anatomía de una Petición Restringida
 
 El siguiente diagrama ilustra cómo CloudLinux intercepta y evalúa una petición HTTP dinámica (que requiere PHP) antes y durante su ejecución:
 
@@ -40,7 +40,7 @@ El siguiente diagrama ilustra cómo CloudLinux intercepta y evalúa una petició
 
 ---
 
-### **Desglosando las Métricas de LVE Manager**
+### Desglosando las Métricas de LVE Manager
 
 Cuando revisamos la interfaz de "Uso de Recursos" (Resource Usage) en cPanel, nos encontramos con cinco métricas fundamentales. Ignorarlas es la principal causa de caídas en entornos compartidos.
 
@@ -82,7 +82,7 @@ Es el límite total de procesos de la cuenta. Incluye los EP (procesos de PHP), 
 
 ---
 
-### **Estrategias Prácticas para Sobrevivir y Evitar Límites en WordPress**
+### Estrategias Prácticas para Sobrevivir y Evitar Límites en WordPress
 
 Entender la fórmula del EP ($EP = \lambda \times W$) nos da la clave para optimizar en cPanel: solo podemos evitar el Error 508 reduciendo la cantidad de peticiones que llegan a PHP ($\lambda$) o reduciendo el tiempo que PHP tarda en procesarlas ($W$).
 
@@ -97,13 +97,13 @@ Plugins de estadísticas nativos (como WP Statistics o Jetpack en ciertos módul
 5. **Externalización del Cron (Reducción de bloqueos):**
 El `wp-cron.php` nativo se ejecuta en el frontend de forma síncrona en las visitas no cacheadas. Si hay una tarea pesada encolada (ej. comprobación de actualizaciones, envíos de emails), inflará el tiempo $W$ de esa petición, disparando el EP. (Se abordará la solución técnica de esto en la sección 12.4).
 
-## **12.2 Gestión de PHP (MultiPHP Manager vs. Select PHP Version): Habilitación de extensiones críticas para el rendimiento**
+## 12.2 Gestión de PHP (MultiPHP Manager vs. Select PHP Version): Habilitación de extensiones críticas para el rendimiento
 
 Uno de los mayores puntos de confusión al optimizar WordPress en cPanel es la coexistencia de dos gestores de PHP diferentes. Dependiendo de la configuración del proveedor de alojamiento y de si el servidor utiliza CloudLinux, te encontrarás con **MultiPHP Manager** o con **Select PHP Version**.
 
 Comprender la diferencia anatómica entre ambos es el primer paso para habilitar correctamente el motor que impulsará nuestro WordPress.
 
-### **Entendiendo la Dualidad: ea-php vs. alt-php**
+### Entendiendo la Dualidad: ea-php vs. alt-php
 
 Para clarificar el panorama, debemos observar cómo cPanel compila y entrega PHP. El siguiente diagrama ilustra la jerarquía de decisión:
 
@@ -135,7 +135,7 @@ Es el gestor inyectado por CloudLinux. Las versiones llevan el prefijo `alt-php`
 
 ---
 
-### **Habilitación de Extensiones Críticas (El "Tuning" del Selector)**
+### Habilitación de Extensiones Críticas (El "Tuning" del Selector)
 
 Una vez posicionado en "Select PHP Version" (asegurándote de haber seleccionado una versión `alt-php` moderna como 8.1 u 8.2), la configuración por defecto suele ser conservadora. Para un WordPress de alto rendimiento, debes auditar y habilitar las siguientes extensiones críticas:
 
@@ -162,7 +162,7 @@ Asegúrate de no deshabilitar accidentalmente los cimientos del CMS. Deben estar
 
 ---
 
-### **Micro-Optimización: Desactivación de *Bloatware* en PHP**
+### Micro-Optimización: Desactivación de *Bloatware* en PHP
 
 Cada extensión activada en "Select PHP Version" aumenta la huella de memoria base de *cada* proceso de PHP-FPM o LSAPI que se levante en tu cuenta. En un entorno CloudLinux donde cada megabyte cuenta, la limpieza es fundamental.
 
@@ -174,7 +174,7 @@ Si tu WordPress no utiliza tecnologías específicas heredadas, **desactiva** la
 
 Al aplicar esta dieta estricta sobre las extensiones de PHP a través del panel, lograrás que la inicialización de cada *worker* sea mucho más ligera, permitiendo acomodar un mayor número de peticiones concurrentes antes de chocar contra el límite de RAM física (PMEM) del LVE Manager.
 
-## **12.3 Sobreescritura segura de límites de recursos: Modificación de `memory_limit`, `upload_max_filesize` y `max_execution_time` a través de `.htaccess`, `php.ini` local o `.user.ini**`
+## 12.3 Sobreescritura segura de límites de recursos: Modificación de `memory_limit`, `upload_max_filesize` y `max_execution_time` a través de `.htaccess`, `php.ini` local o `.user.ini`
 
 Aunque la interfaz gráfica de cPanel (como vimos en la sección anterior) facilita la gestión de PHP, los SysAdmins y optimizadores de WordPress a menudo se encuentran con escenarios donde la UI falla, los cambios no se aplican recursivamente a todos los subdirectorios, o se requiere una configuración granular (por ejemplo, asignar más memoria solo al backend).
 
@@ -182,7 +182,7 @@ Cuando la interfaz no responde, debemos descender al nivel del sistema de archiv
 
 ---
 
-### **1. Las variables críticas y la regla de la proporción**
+### 1. Las variables críticas y la regla de la proporción
 
 Antes de modificar cualquier archivo, es vital entender qué estamos tocando y cómo se relacionan estas variables entre sí. En un entorno compartido con CloudLinux (donde la RAM total está limitada por LVE), sobredimensionar estos valores es un error fatal.
 
@@ -194,7 +194,7 @@ Antes de modificar cualquier archivo, es vital entender qué estamos tocando y c
 
 ---
 
-### **2. El estándar moderno: El archivo `.user.ini` (Para PHP-FPM y FastCGI)**
+### 2. El estándar moderno: El archivo `.user.ini` (Para PHP-FPM y FastCGI)
 
 En el 90% de los hostings cPanel modernos, PHP se ejecuta a través de PHP-FPM o FastCGI. En esta arquitectura, el archivo `.htaccess` no tiene autoridad para modificar directivas de PHP. El método correcto y seguro es crear un archivo llamado `.user.ini` en la raíz de tu WordPress (`public_html`).
 
@@ -216,7 +216,7 @@ max_input_vars = 5000
 
 ---
 
-### **3. El método `.htaccess` (Para LiteSpeed o mod_php legacy)**
+### 3. El método `.htaccess` (Para LiteSpeed o mod_php legacy)
 
 Si tu servidor cPanel utiliza **LiteSpeed Web Server (LSWS)** en lugar de Apache, el archivo `.htaccess` recupera su poder. LiteSpeed es capaz de leer directivas `php_value` y aplicarlas a su manejador nativo (LSAPI) de forma instantánea.
 
@@ -239,7 +239,7 @@ Si tu servidor cPanel utiliza **LiteSpeed Web Server (LSWS)** en lugar de Apache
 
 ---
 
-### **4. El archivo `php.ini` local: Un relicario del pasado**
+### 4. El archivo `php.ini` local: Un relicario del pasado
 
 Muchos tutoriales antiguos de WordPress sugieren crear un archivo `php.ini` en la raíz del sitio. En la arquitectura actual de cPanel, esto es altamente desaconsejable por dos razones:
 
@@ -250,7 +250,7 @@ Muchos tutoriales antiguos de WordPress sugieren crear un archivo `php.ini` en l
 
 ---
 
-### **Estrategia Avanzada: Asignación asimétrica de recursos (`wp-admin` vs. Frontend)**
+### Estrategia Avanzada: Asignación asimétrica de recursos (`wp-admin` vs. Frontend)
 
 Una técnica de SysAdmin muy efectiva en entornos CloudLinux es la "asignación asimétrica". El frontend de WordPress, al estar usualmente cacheado o realizar consultas ligeras, rara vez necesita más de 128MB de RAM. Sin embargo, el backend (`wp-admin`), especialmente al ejecutar page builders, reportes de WooCommerce o actualizaciones, puede requerir 512MB.
 
@@ -275,11 +275,11 @@ max_execution_time = 300
 
 De esta forma, protegemos los recursos (EP y PMEM) del LVE Manager contra el tráfico general, pero le damos "combustible" ilimitado a las tareas administrativas pesadas.
 
-## **12.4 Reemplazo del Cron Virtual: Desactivación de `wp-cron.php` y configuración de tareas programadas nativas en la interfaz de "Cron Jobs" de cPanel**
+## 12.4 Reemplazo del Cron Virtual: Desactivación de `wp-cron.php` y configuración de tareas programadas nativas en la interfaz de "Cron Jobs" de cPanel
 
 Por defecto, WordPress no utiliza un programador de tareas real a nivel de sistema operativo. En su lugar, utiliza lo que conocemos como **"Virtual Cron"** o `wp-cron.php`. Este mecanismo es uno de los mayores "asesinos silenciosos" del rendimiento en entornos compartidos de cPanel si no se gestiona correctamente.
 
-### **El Problema del Cron Virtual**
+### El Problema del Cron Virtual
 
 El archivo `wp-cron.php` se ejecuta cada vez que un visitante carga una página. WordPress comprueba si hay tareas pendientes (publicar entradas programadas, limpiar transitorios, backups, etc.) y, si las hay, intenta ejecutarlas lanzando una petición HTTP interna.
 
@@ -290,7 +290,7 @@ Esto genera dos problemas críticos de rendimiento:
 
 ---
 
-### **Paso 1: Desactivar el Cron Virtual**
+### Paso 1: Desactivar el Cron Virtual
 
 Para tomar el control, primero debemos decirle a WordPress que deje de intentar ejecutar el cron por su cuenta.
 
@@ -308,7 +308,7 @@ Desde este momento, WordPress "enmudecerá" su programador interno. Si no config
 
 ---
 
-### **Paso 2: Configuración del Cron Real en cPanel**
+### Paso 2: Configuración del Cron Real en cPanel
 
 Ahora debemos delegar esta tarea al demonio **crond** del servidor Linux. Esto garantiza que las tareas se ejecuten exactamente cuando deben, sin importar si hay visitas o no, y de una forma mucho más eficiente para el servidor.
 
@@ -346,7 +346,7 @@ curl -sL https://tusitio.com/wp-cron.php?doing_wp_cron >/dev/null 2>&1
 
 ---
 
-### **Análisis de Impacto: Virtual vs. Real**
+### Análisis de Impacto: Virtual vs. Real
 
 Para entender por qué este cambio es vital para la optimización, observa la siguiente comparativa de cómo se comporta el consumo de recursos en el servidor:
 
@@ -359,7 +359,7 @@ Para entender por qué este cambio es vital para la optimización, observa la si
 
 Esta optimización es especialmente crítica si utilizas plugins de e-commerce o marketing automation que gestionan colas de correos electrónicos. Al mover el cron al sistema, aseguras que los correos salgan a tiempo sin penalizar la velocidad de navegación de tus clientes.
 
-## **12.5 Optimización de Base de Datos sin consola: Uso avanzado de phpMyAdmin para limpieza masiva de *transients*, revisiones y conversión manual de tablas MyISAM a InnoDB**
+## 12.5 Optimización de Base de Datos sin consola: Uso avanzado de phpMyAdmin para limpieza masiva de *transients*, revisiones y conversión manual de tablas MyISAM a InnoDB
 
 Aunque en el Capítulo 8 abordaremos la elegancia y velocidad de WP-CLI para estas tareas, la realidad del SysAdmin que administra entornos compartidos (o que hereda proyectos de clientes) es que muchas veces el acceso SSH está restringido. En estos escenarios, nuestra única ventana al corazón de WordPress es **phpMyAdmin**, la herramienta nativa de cPanel.
 
@@ -369,7 +369,7 @@ Operar una base de datos grande a través de una interfaz web tiene sus riesgos 
 
 ---
 
-### **1. Purga de *Transients* Huérfanos en `wp_options**`
+### 1. Purga de *Transients* Huérfanos en `wp_options`
 
 Como vimos en el Capítulo 1, la tabla `wp_options` se carga en memoria en casi cada petición (el temido *autoload*). Los *transients* son fragmentos de información cacheados temporalmente en la base de datos (por ejemplo, respuestas de APIs de redes sociales o recuentos de carritos de WooCommerce).
 
@@ -388,7 +388,7 @@ OR option_name LIKE '_site_transient_%';
 
 ---
 
-### **2. Limpieza Quirúrgica de Revisiones y Metadatos Asociados**
+### 2. Limpieza Quirúrgica de Revisiones y Metadatos Asociados
 
 Cada vez que guardas un borrador en WordPress, se genera una revisión. En un blog con años de antigüedad o un sitio con muchos constructores visuales (Elementor, Divi), las revisiones pueden multiplicar por diez el tamaño real de la tabla `wp_posts`.
 
@@ -409,7 +409,7 @@ Este comando no solo elimina la revisión, sino que purga cualquier relación de
 
 ---
 
-### **3. Conversión Masiva de MyISAM a InnoDB (Evitando el Table-Level Locking)**
+### 3. Conversión Masiva de MyISAM a InnoDB (Evitando el Table-Level Locking)
 
 Ya cubrimos en el Capítulo 4 por qué InnoDB es el único motor de almacenamiento aceptable para WordPress. Tablas legacy en **MyISAM** sufren de *Table-Level Locking*: si un visitante hace un pedido en WooCommerce (UPDATE), toda la tabla queda bloqueada, y los demás usuarios que intenten leerla (SELECT) quedarán en cola, disparando el uso de CPU y el límite EP de CloudLinux.
 
@@ -441,7 +441,7 @@ AND `TABLE_TYPE` = 'BASE TABLE';
 
 De esta forma habrás migrado todo el esquema a InnoDB en un solo movimiento, habilitando el *Row-Level Locking* (bloqueo a nivel de fila) y permitiendo que MySQL maneje cientos de transacciones concurrentes sin estrangular los recursos compartidos del servidor.
 
-## **12.6 Herramientas de caché del proveedor: Configuración de "Optimize Website" (compresión zlib/Gzip) y despliegue del LiteSpeed Web Cache Manager si el servidor opera bajo CloudLinux/LSWS**
+## 12.6 Herramientas de caché del proveedor: Configuración de "Optimize Website" (compresión zlib/Gzip) y despliegue del LiteSpeed Web Cache Manager si el servidor opera bajo CloudLinux/LSWS
 
 Para cerrar el círculo de la optimización en un entorno compartido, debemos aprovechar las herramientas nativas que cPanel pone a nuestra disposición. Hasta ahora hemos blindado los recursos (LVE), afinado el motor (PHP) y aligerado la base de datos (phpMyAdmin). El último paso es garantizar que los datos viajen comprimidos y cacheados desde el servidor hacia el navegador del visitante, minimizando el consumo de ancho de banda y reduciendo drásticamente el *Time to First Byte* (TTFB).
 
@@ -449,7 +449,7 @@ En cPanel, esto se gestiona a través de dos interfaces clave, dependiendo de si
 
 ---
 
-### **1. "Optimize Website" (Optimizar el sitio web): Compresión de activos estáticos y dinámicos**
+### 1. "Optimize Website" (Optimizar el sitio web): Compresión de activos estáticos y dinámicos
 
 Independientemente del servidor web subyacente, cPanel ofrece un icono llamado **Optimize Website** (Optimizar el sitio web) en la sección de Software. Esta es la forma gráfica de configurar la compresión de salida.
 
@@ -483,7 +483,7 @@ Una vez guardado, puedes verificar tu `.htaccess` para confirmar que las reglas 
 
 ---
 
-### **2. LiteSpeed Web Cache Manager: El puente entre cPanel y WordPress**
+### 2. LiteSpeed Web Cache Manager: El puente entre cPanel y WordPress
 
 Si el proveedor de alojamiento ha invertido en **LiteSpeed Web Server Enterprise (LSWS)**, encontrarás un icono llamado **LiteSpeed Web Cache Manager** en la sección Avanzada o de Software de cPanel.
 

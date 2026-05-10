@@ -2,7 +2,7 @@ PHP es el motor de WordPress, y su configuración dictaminará el techo de rendi
 
 Aprenderás a dimensionar los procesos de **PHP-FPM** mediante matemáticas aplicadas a tu RAM disponible, evitando colapsos por fugas de memoria. No se trata solo de que el código corra rápido, sino de garantizar que cada proceso sea eficiente, seguro y capaz de escalar bajo presión extrema sin comprometer la estabilidad del sistema.
 
-## **3.1 Evolución de PHP: Impacto en el rendimiento desde PHP 7.4 hasta PHP 8.x (JIT Compiler)**
+## 3.1 Evolución de PHP: Impacto en el rendimiento desde PHP 7.4 hasta PHP 8.x (JIT Compiler)
 
 Históricamente, la forma más rápida y económica de mejorar el rendimiento de un sitio en WordPress ha sido actualizar su versión de PHP. Mientras que el salto de la serie 5.x a la 7.x representó una revolución que literalmente duplicó la velocidad de ejecución y redujo drásticamente el consumo de memoria, la transición de PHP 7.4 a la familia de PHP 8.x es una evolución arquitectónica más profunda.
 
@@ -10,7 +10,7 @@ El gran protagonista de este salto evolutivo es el **JIT (Just-In-Time) Compiler
 
 ---
 
-### **La arquitectura de ejecución: Del Intérprete al JIT**
+### La arquitectura de ejecución: Del Intérprete al JIT
 
 Para entender el impacto de PHP 8.x, primero debemos visualizar cómo PHP procesa el código. A diferencia de un lenguaje compilado (donde el código fuente se traduce a lenguaje máquina antes de ejecutarse), PHP es un lenguaje interpretado.
 
@@ -62,7 +62,7 @@ El JIT Compiler no reemplaza a OPcache, sino que funciona como una extensión de
 
 ---
 
-### **El baño de realidad: JIT y WordPress**
+### El baño de realidad: JIT y WordPress
 
 Es común la creencia de que activar el JIT en PHP 8.x reducirá el tiempo de carga de WordPress a la mitad. **Esto es un concepto erróneo que debemos corregir.**
 
@@ -75,7 +75,7 @@ Para entender por qué, hay que diferenciar entre dos tipos de cuellos de botell
 
 Dado que el JIT Compiler optimiza puramente las operaciones *CPU-bound*, su impacto en la renderización estándar del frontend de WordPress es marginal. Los benchmarks muestran que un "Hello World" en PHP 8 con JIT puede ser hasta 3 veces más rápido que en PHP 7.4, pero en un entorno real de WordPress, la mejora de latencia en el frontend suele oscilar entre un modesto **2% y un 5%**.
 
-### **¿Dónde brilla realmente PHP 8.x en un entorno WordPress?**
+### ¿Dónde brilla realmente PHP 8.x en un entorno WordPress?
 
 Aunque el JIT no sea una bala de plata para el *Time to First Byte* (TTFB) de visitantes anónimos, la adopción de PHP 8.x (8.1, 8.2 y 8.3) aporta beneficios tangibles y altamente recomendables en un entorno de alta disponibilidad:
 
@@ -84,19 +84,19 @@ Aunque el JIT no sea una bala de plata para el *Time to First Byte* (TTFB) de vi
 * **Optimizaciones internas del motor (independientes del JIT):** PHP 8.x introdujo mejoras en el manejo de arrays, estructuras de datos internas más ligeras y una recolección de basura (*Garbage Collection*) optimizada. Esto significa que, incluso con el JIT desactivado, PHP 8 consume menos memoria RAM por cada proceso de *PHP-FPM* que PHP 7.4, lo que permite atender más concurrencia con los mismos recursos (vital para lo que veremos en la sección 3.3).
 * **Código más estricto:** PHP 8 es menos tolerante con el código obsoleto y los errores fatales silenciados. A largo plazo, esto fuerza a los desarrolladores de temas y plugins a escribir código más eficiente y predecible, lo que indirectamente mejora la estabilidad del servidor.
 
-### **Conclusión sobre la actualización**
+### Conclusión sobre la actualización
 
 Mantenerse en PHP 7.4 hoy en día es un riesgo de seguridad inasumible (llegó a su fin de vida útil en noviembre de 2022). La migración a PHP 8.x es obligatoria en cualquier pila orientada al rendimiento.
 
 Al configurar servidores modernos para WordPress, se recomienda activar el JIT Compiler (específicamente en su modo `tracing`, que es más inteligente a la hora de elegir qué compilar), pero teniendo claro que es una optimización marginal para el tráfico web general. El verdadero rendimiento de alta disponibilidad en el frontend provendrá de las estrategias de caché (Capítulo 5) y la optimización de la base de datos (Capítulo 4).
 
-## **3.2 Arquitectura de PHP-FPM: *Static*, *Dynamic* y *Ondemand process managers***
+## 3.2 Arquitectura de PHP-FPM: *Static*, *Dynamic* y *Ondemand process managers*
 
 Como vimos en la evolución del servidor web, NGINX no tiene la capacidad nativa de procesar código PHP. Funciona como un proxy inverso rápido y eficiente que delega esa tarea a un servicio externo. En la pila moderna (LEMP), ese servicio es **PHP-FPM** (*FastCGI Process Manager*).
 
 Entender la arquitectura interna de PHP-FPM es fundamental para cualquier SysAdmin que busque alta disponibilidad. Una mala configuración en esta capa es la causa número uno de los famosos errores `502 Bad Gateway` y `504 Gateway Timeout` en WordPress durante picos de tráfico.
 
-### **El Modelo Maestro-Trabajador (Master-Worker)**
+### El Modelo Maestro-Trabajador (Master-Worker)
 
 PHP-FPM opera bajo un modelo de procesos maestro-trabajador. Cuando inicias el servicio, se levanta un **Proceso Maestro** (ejecutado generalmente por el usuario `root`). Este proceso no ejecuta código PHP; su única función es gestionar el tráfico de red entrante, leer el archivo de configuración y administrar un "pool" (grupo) de **Procesos Trabajadores** (*Worker Processes* o *Children*), que normalmente se ejecutan bajo un usuario sin privilegios como `www-data`.
 
@@ -106,7 +106,7 @@ Existen tres arquitecturas o gestores de procesos disponibles: **Static**, **Dyn
 
 ---
 
-### **1. El gestor estático (`pm = static`)**
+### 1. El gestor estático (`pm = static`)
 
 En el modo estático, el Proceso Maestro levanta un número fijo y predeterminado de procesos trabajadores desde el momento en que se inicia PHP-FPM. Este número no cambia, independientemente de si el servidor está recibiendo mil peticiones por segundo o ninguna.
 
@@ -115,7 +115,7 @@ En el modo estático, el Proceso Maestro levanta un número fijo y predeterminad
 * **Desventajas:** Consume una cantidad fija de memoria RAM en todo momento. Si el servidor está inactivo, esa RAM está reservada y no puede ser utilizada por otros servicios (como la base de datos MySQL o Redis).
 * **Caso de uso en WordPress:** Es el **estándar de oro para servidores dedicados o VPS de alto rendimiento** donde WordPress es el único protagonista. Si tu servidor tiene RAM de sobra, sacrificar una porción fija para garantizar un tiempo de respuesta instantáneo es la mejor estrategia.
 
-### **2. El gestor dinámico (`pm = dynamic`)**
+### 2. El gestor dinámico (`pm = dynamic`)
 
 Este es el comportamiento por defecto en casi todas las instalaciones de PHP. En este modo, PHP-FPM ajusta dinámicamente el número de procesos trabajadores en función del tráfico web actual, manteniendo siempre un mínimo de procesos "de repuesto" (*spare*) listos para actuar.
 
@@ -124,7 +124,7 @@ Este es el comportamiento por defecto en casi todas las instalaciones de PHP. En
 * **Desventajas:** Tiene un *overhead* de CPU y latencia. Cuando llega un pico de tráfico repentino (por ejemplo, una campaña de email marketing), NGINX enviará las peticiones a PHP-FPM. Si no hay suficientes procesos de repuesto, NGINX tendrá que esperar a que el Proceso Maestro de FPM "dé a luz" nuevos trabajadores antes de poder atender al usuario.
 * **Caso de uso en WordPress:** Entornos de alojamiento compartido, servidores con múltiples sitios web de tráfico moderado, o instancias de VPS con recursos de RAM limitados donde MySQL o Redis compiten por la memoria.
 
-### **3. El gestor bajo demanda (`pm = ondemand`)**
+### 3. El gestor bajo demanda (`pm = ondemand`)
 
 Como su nombre indica, este gestor no mantiene ningún proceso trabajador vivo si no hay peticiones. Solo el Proceso Maestro está activo, consumiendo una cantidad minúscula de RAM.
 
@@ -135,7 +135,7 @@ Como su nombre indica, este gestor no mantiene ningún proceso trabajador vivo s
 
 ---
 
-### **Comparativa Visual de Comportamiento**
+### Comparativa Visual de Comportamiento
 
 Para ilustrar cómo reaccionan estos gestores ante un pico de tráfico, analicemos el siguiente diagrama conceptual:
 
@@ -171,13 +171,13 @@ Procesos |    __/\__                  (Sube desde 0 hasta pm.max_children)
 
 ```
 
-### **Conclusión Arquitectónica**
+### Conclusión Arquitectónica
 
 Para la optimización orientada a la **Alta Disponibilidad**, el objetivo es eliminar cualquier latencia introducida por el servidor que frene el TTFB (*Time to First Byte*). Por lo tanto, en un servidor dedicado exclusivamente a servir WordPress, la transición lógica es abandonar el predeterminado `dynamic` y forzar una arquitectura **`static`**.
 
 El desafío crítico de la arquitectura `static` (y el límite máximo de `dynamic`) es saber exactamente cuántos procesos trabajadores (`pm.max_children`) puede permitirse levantar el servidor sin agotar la memoria física y provocar un colapso del sistema operativo por uso excesivo de memoria *Swap*. Esa matemática precisa será el foco de nuestra siguiente sección.
 
-## **3.3 Cálculo y configuración de `pm.max_children`, `pm.start_servers` y `pm.max_requests` para evitar fugas de memoria**
+## 3.3 Cálculo y configuración de `pm.max_children`, `pm.start_servers` y `pm.max_requests` para evitar fugas de memoria
 
 Habiendo comprendido en la sección anterior cómo operan los gestores de procesos, nos enfrentamos al desafío más crítico en la configuración de PHP-FPM: la asignación de recursos.
 
@@ -187,7 +187,7 @@ Para evitar esto, la configuración debe basarse en matemáticas precisas.
 
 ---
 
-### **Paso 1: Determinar la memoria disponible para PHP**
+### Paso 1: Determinar la memoria disponible para PHP
 
 PHP-FPM no está solo en el servidor. Antes de asignarle memoria, debemos reservar lo que necesitan el sistema operativo y el resto de la pila (NGINX, MySQL/MariaDB, Redis, etc.).
 
@@ -202,7 +202,7 @@ Supongamos un escenario con un servidor de **4 GB de RAM (4096 MB)** dedicado a 
 
 Tenemos aproximadamente **2 GB** dedicados exclusivamente para que PHP ejecute nuestro código.
 
-### **Paso 2: Calcular el peso de un proceso PHP de WordPress**
+### Paso 2: Calcular el peso de un proceso PHP de WordPress
 
 No todos los sitios de WordPress consumen lo mismo. Un blog minimalista puede requerir 15 MB por proceso, mientras que un WooCommerce cargado con constructores visuales (como Elementor) y docenas de plugins puede dispararse a 70 MB o 100 MB por petición.
 
@@ -215,7 +215,7 @@ ps --no-headers -o "rss,cmd" -C php-fpm | awk '{ sum+=$1 } END { printf ("%d%s\n
 
 *Nota de SysAdmin:* Si no tienes tráfico real aún, asume un promedio conservador de **60 MB** para un WordPress estándar moderno, o **90 MB** para un eCommerce pesado. Para nuestro cálculo, usaremos **60 MB**.
 
-### **Paso 3: La fórmula de `pm.max_children**`
+### Paso 3: La fórmula de `pm.max_children`
 
 Con estos dos datos, el cálculo del límite máximo absoluto de procesos es simple:
 
@@ -227,7 +227,7 @@ Redondeamos siempre hacia abajo. Nuestro **`pm.max_children` seguro es 34**. Est
 
 ---
 
-### **Configuración según la Arquitectura (Static vs. Dynamic)**
+### Configuración según la Arquitectura (Static vs. Dynamic)
 
 Basándonos en nuestro límite máximo de 34 procesos, así es como lo plasmaríamos en el archivo de configuración del pool (`/etc/php/8.x/fpm/pool.d/www.conf`), dependiendo de la arquitectura elegida:
 
@@ -258,7 +258,7 @@ pm.max_spare_servers = 17
 
 ---
 
-### **El salvavidas contra las fugas de memoria: `pm.max_requests**`
+### El salvavidas contra las fugas de memoria: `pm.max_requests`
 
 Incluso con los cálculos perfectos, hay un factor impredecible: **el código de terceros**. WordPress es un ecosistema de plugins, y no todos están bien programados.
 
@@ -282,7 +282,7 @@ Este reciclaje constante garantiza que cualquier memoria "atrapada" por código 
 * **No lo pongas muy bajo (ej. 50):** Destruir y crear procesos consume ciclos de CPU. Hacerlo constantemente anulará las ventajas de rendimiento de mantener procesos vivos.
 * **No lo dejes en 0 (infinito):** A menos que estés ejecutando código propio auditado meticulosamente, el valor predeterminado `0` (que desactiva el reinicio) es un riesgo en un entorno de WordPress con múltiples plugins. Un valor de `500` ofrece el equilibrio perfecto entre estabilidad de memoria a largo plazo y rendimiento.
 
-## **3.4 Implementación y optimización de Zend OPcache: Acelerando la ejecución de scripts precompilados**
+## 3.4 Implementación y optimización de Zend OPcache: Acelerando la ejecución de scripts precompilados
 
 En la sección 3.1 exploramos cómo el compilador JIT traduce el código a lenguaje máquina. Sin embargo, antes de llegar al JIT (o si este está desactivado), existe un cuello de botella fundamental en PHP: su naturaleza de lenguaje interpretado.
 
@@ -322,7 +322,7 @@ Para lograr esto en WordPress, los valores por defecto del archivo `php.ini` (o 
 
 ---
 
-### **1. Asignación de Memoria (`opcache.memory_consumption`)**
+### 1. Asignación de Memoria (`opcache.memory_consumption`)
 
 Esta directiva define cuánta memoria RAM (en megabytes) se reserva para almacenar los Opcodes compilados. El valor por defecto suele ser **128MB**.
 
@@ -336,7 +336,7 @@ opcache.memory_consumption = 256
 
 ```
 
-### **2. Límite de Archivos (`opcache.max_accelerated_files`)**
+### 2. Límite de Archivos (`opcache.max_accelerated_files`)
 
 OPcache utiliza una tabla hash (diccionario) para mapear los archivos `.php` con sus Opcodes. Esta directiva dicta cuántos archivos individuales puede rastrear. El valor predeterminado es **10000**.
 
@@ -349,7 +349,7 @@ opcache.max_accelerated_files = 50000
 
 ```
 
-### **3. Optimización de Strings (`opcache.interned_strings_buffer`)**
+### 3. Optimización de Strings (`opcache.interned_strings_buffer`)
 
 En PHP, cuando usas la misma cadena de texto varias veces (por ejemplo, el nombre de una variable, una clave de un array o el nombre de un *hook* de WordPress), PHP almacena cada instancia en la memoria de forma separada. OPcache incluye un mecanismo de "internamiento de cadenas" que almacena estas cadenas repetidas una sola vez y las comparte entre todos los procesos de PHP-FPM, ahorrando muchísima memoria.
 
@@ -362,7 +362,7 @@ opcache.interned_strings_buffer = 32
 
 ```
 
-### **4. El Secreto del Rendimiento Máximo: Validación de Timestamps**
+### 4. El Secreto del Rendimiento Máximo: Validación de Timestamps
 
 De todas las configuraciones, esta es la que marca la diferencia entre una configuración de servidor "básica" y una de nivel de "Alta Disponibilidad".
 
@@ -389,7 +389,7 @@ opcache.validate_timestamps = 0
 
 Para solucionar esto, como veremos en el **Capítulo 8 (Pipelines CI/CD)**, cualquier despliegue o actualización de código debe ir acompañado de una recarga de los procesos de PHP-FPM (`systemctl reload php-fpm`) o de una purga mediante la función `opcache_reset()` para vaciar la memoria y forzar la recompilación del nuevo código de forma controlada.
 
-## **3.5 Límites de recursos en `php.ini`: `memory_limit`, `max_execution_time` y su relación con tareas pesadas en WP**
+## 3.5 Límites de recursos en `php.ini`: `memory_limit`, `max_execution_time` y su relación con tareas pesadas en WP
 
 Hasta ahora hemos optimizado la arquitectura de PHP-FPM a nivel de servidor y procesos (cuántos trabajadores actúan y cómo manejan la caché). Sin embargo, un servidor de Alta Disponibilidad debe tener mecanismos de defensa contra el código en sí mismo. ¿Qué ocurre cuando un único plugin entra en un bucle infinito o intenta cargar una tabla de base de datos de 2 GB en la memoria?
 
@@ -399,7 +399,7 @@ En el ecosistema de WordPress, dos directivas son las protagonistas absolutas de
 
 ---
 
-### **1. `memory_limit`: Conteniendo el apetito de RAM**
+### 1. `memory_limit`: Conteniendo el apetito de RAM
 
 Esta directiva define la cantidad máxima de memoria RAM que un **único script de PHP** tiene permitido asignar. Es una red de seguridad. Si el límite es 256 MB y un script intenta consumir 257 MB, PHP detendrá la ejecución inmediatamente y registrará un error fatal (`Fatal error: Allowed memory size of X bytes exhausted`).
 
@@ -425,7 +425,7 @@ memory_limit = 256M
 
 ---
 
-### **2. `max_execution_time`: La trampa del 504 Gateway Timeout**
+### 2. `max_execution_time`: La trampa del 504 Gateway Timeout
 
 Esta directiva establece el tiempo máximo (en segundos) que se le permite a un script ejecutarse antes de que el motor de PHP lo termine a la fuerza. Su propósito es evitar que scripts mal programados bloqueen los procesos trabajadores de PHP-FPM indefinidamente.
 
@@ -482,7 +482,7 @@ location ~ \.php$ {
 
 ---
 
-### **3. Límites complementarios: Subida de archivos y el método POST**
+### 3. Límites complementarios: Subida de archivos y el método POST
 
 Para que un sitio de WordPress funcione correctamente, especialmente al subir temas, plugins o archivos multimedia de gran tamaño, hay otras dos variables estrechamente relacionadas con la memoria y el tiempo de ejecución que deben ajustarse en bloque.
 
@@ -503,7 +503,7 @@ upload_max_filesize = 64M
 
 *(Nota: Al igual que con los tiempos de ejecución, NGINX tiene su propio límite de tamaño de subida en la directiva `client_max_body_size`, que también debe subirse a, por ejemplo, `128M` para evitar el error "413 Request Entity Too Large").*
 
-### **Conclusión: Cambiando el paradigma de las tareas pesadas**
+### Conclusión: Cambiando el paradigma de las tareas pesadas
 
 En la filosofía estricta de un SysAdmin orientado a la Alta Disponibilidad, **las tareas de larga duración no deberían ejecutarse a través de peticiones web (HTTP)**.
 
