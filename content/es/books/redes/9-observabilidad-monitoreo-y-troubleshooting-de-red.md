@@ -321,7 +321,7 @@ A menudo confundido con el "Ancho de Banda" (Bandwidth), es crucial diferenciarl
 
 El Throughput siempre será menor que el ancho de banda debido al *overhead* (cabeceras de Ethernet, IP, TCP, TLS) y se ve directamente estrangulado por la latencia y la pérdida de paquetes.
 
-**Herramienta esencial: `iperf3**`
+**Herramienta esencial: `iperf3`**
 Para medir el Throughput real entre dos nodos (por ejemplo, para saber a qué velocidad real puedes sincronizar réplicas de bases de datos), la herramienta estándar en DevOps es `iperf3`. Funciona bajo un modelo cliente-servidor.
 
 ```bash

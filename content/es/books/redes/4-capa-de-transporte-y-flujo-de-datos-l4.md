@@ -262,7 +262,7 @@ CLIENTE (Inicia el cierre)                                  SERVIDOR
 
 ```
 
-**La trampa del estado `TIME_WAIT**`
+**La trampa del estado `TIME_WAIT`**
 Nota que el cliente (el que inició el cierre) no pasa inmediatamente al estado `CLOSED`. Entra en un estado llamado `TIME_WAIT` que dura, por defecto en Linux, **60 segundos** (el doble del Tiempo Máximo de Vida del Segmento - 2MSL).
 
 El sistema retiene el socket en este estado "fantasma" por si el último ACK se perdió y el servidor retransmite el FIN, o por si hay paquetes retrasados vagando por la red que podrían corromper una *nueva* conexión si se reutilizara la misma tupla inmediatamente.
