@@ -1,0 +1,260 @@
+{
+  "slug": "microservices",
+  "locale": "en",
+  "title": "Mastering Microservices",
+  "subtitle": "From Foundation to Distributed Scale",
+  "author": "Wordsus Team",
+  "description": "A comprehensive guide to building, deploying, and scaling microservices. Learn how to design service boundaries, manage decentralized data, implement event-driven architectures, and ensure resilience and security in complex distributed systems.",
+  "cover": "/images/books/microservices-en-cover.jpeg",
+  "category": "software-architecture",
+  "tags": [
+    "microservices",
+    "architecture",
+    "distributed-systems",
+    "cloud-native",
+    "devops",
+    "backend"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-10",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "evolution-of-software-architecture",
+      "title": "The Evolution of Software Architecture",
+      "order": 1,
+      "description": "Trace the journey from monolithic systems to modern microservices, understanding the trade-offs and the role of cloud computing.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "core-concepts-and-principles",
+      "title": "Core Concepts and Principles",
+      "order": 2,
+      "description": "Master the fundamental principles of microservices: independent deployability, loose coupling, high cohesion, and decentralized governance.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "domain-driven-design-ddd-primer",
+      "title": "Domain-Driven Design (DDD) Primer",
+      "order": 3,
+      "description": "Learn the essentials of DDD, including ubiquitous language, bounded contexts, and context mapping, to model services around business domains.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "organizational-impact-and-culture",
+      "title": "Organizational Impact and Culture",
+      "order": 4,
+      "description": "Explore Conway's Law, cross-functional teams, and the DevOps culture required to successfully build and run microservices.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "defining-service-boundaries",
+      "title": "Defining Service Boundaries",
+      "order": 5,
+      "description": "Identify business capabilities, use Event Storming, and apply patterns like the Strangler Fig to define effective service boundaries.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "api-design-and-contracts",
+      "title": "API Design and Contracts",
+      "order": 6,
+      "description": "Master REST, gRPC, and GraphQL principles, and learn about consumer-driven contract testing and versioning strategies.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "data-management-in-decentralized-systems",
+      "title": "Data Management in Decentralized Systems",
+      "order": 7,
+      "description": "Handle data in microservices using the database-per-service pattern, Sagas, CQRS, and event sourcing.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "event-driven-architecture-fundamentals",
+      "title": "Event-Driven Architecture Fundamentals",
+      "order": 8,
+      "description": "Understand events, commands, pub-sub models, and how to design idempotent consumers for robust event-driven systems.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "synchronous-communication-patterns",
+      "title": "Synchronous Communication Patterns",
+      "order": 9,
+      "description": "Implement effective synchronous communication with HTTP/REST, managing timeouts, retries, and circuit breakers.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "asynchronous-messaging-and-message-brokers",
+      "title": "Asynchronous Messaging and Message Brokers",
+      "order": 10,
+      "description": "Deep dive into message brokers, delivery guarantees, dead letter queues, and competing consumer patterns.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "service-discovery-and-registry",
+      "title": "Service Discovery and Registry",
+      "order": 11,
+      "description": "Learn why dynamic service discovery is essential and how to implement client-side and server-side discovery algorithms.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "api-gateways-and-edge-services",
+      "title": "API Gateways and Edge Services",
+      "order": 12,
+      "description": "Understand the role of API Gateways, request routing, API composition, and the Backend for Frontend (BFF) pattern.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "containerization-fundamentals",
+      "title": "Containerization Fundamentals",
+      "order": 13,
+      "description": "Master Linux containers, image creation, multi-stage builds, and container security best practices.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "orchestration-and-cluster-management",
+      "title": "Orchestration and Cluster Management",
+      "order": 14,
+      "description": "Explore workload management, internal networking, and configuration decoupling in container orchestration platforms.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "continuous-integration-and-continuous-deployment-cicd",
+      "title": "Continuous Integration and Continuous Deployment (CI/CD)",
+      "order": 15,
+      "description": "Build autonomous deployment pipelines and implement strategies like Blue-Green and Canary releases.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "infrastructure-as-code-iac",
+      "title": "Infrastructure as Code (IaC)",
+      "order": 16,
+      "description": "Manage cloud resources declaratively, implement immutable infrastructure, and handle configuration drift.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "designing-for-failure-resilience-engineering",
+      "title": "Designing for Failure (Resilience Engineering)",
+      "order": 17,
+      "description": "Embrace the fallacies of distributed computing, apply Chaos Engineering, and design for graceful degradation.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "security-in-distributed-systems",
+      "title": "Security in Distributed Systems",
+      "order": 18,
+      "description": "Implement defense in depth, mTLS, zero trust concepts, and protect against common API vulnerabilities.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "identity-and-access-management-iam",
+      "title": "Identity and Access Management (IAM)",
+      "order": 19,
+      "description": "Decouple authentication and authorization using OAuth 2.0, OIDC, and JWTs across microservices.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "distributed-logging-and-tracing",
+      "title": "Distributed Logging and Tracing",
+      "order": 20,
+      "description": "Implement centralized logging, correlation IDs, and distributed tracing using standards like OpenTelemetry.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "metrics-monitoring-and-alerting",
+      "title": "Metrics, Monitoring, and Alerting",
+      "order": 21,
+      "description": "Monitor the four golden signals, handle metric cardinality, and create actionable alerting rules with SLOs and SLIs.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "testing-strategies-for-microservices",
+      "title": "Testing Strategies for Microservices",
+      "order": 22,
+      "description": "Adapt the testing pyramid for microservices, using mocks, ephemeral environments, and smart integration tests.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "service-meshes",
+      "title": "Service Meshes",
+      "order": 23,
+      "description": "Understand when to use a service mesh, its architecture, sidecar proxies, and advanced traffic management.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "migrating-from-monolith-to-microservices",
+      "title": "Migrating from Monolith to Microservices",
+      "order": 24,
+      "description": "Assess readiness and apply migration strategies like Change Data Capture and the Strangler pattern.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "microservices-anti-patterns-and-pitfalls",
+      "title": "Microservices Anti-Patterns and Pitfalls",
+      "order": 25,
+      "description": "Avoid common pitfalls like distributed monoliths, mega-services, and synchronous chains of death.",
+      "audioUrl": ""
+    }
+  ],
+  "parts": [
+    {
+      "title": "Part I: Foundations of Microservices",
+      "chapterSlugs": [
+        "evolution-of-software-architecture",
+        "core-concepts-and-principles",
+        "domain-driven-design-ddd-primer",
+        "organizational-impact-and-culture"
+      ]
+    },
+    {
+      "title": "Part II: Designing Microservices",
+      "chapterSlugs": [
+        "defining-service-boundaries",
+        "api-design-and-contracts",
+        "data-management-in-decentralized-systems",
+        "event-driven-architecture-fundamentals"
+      ]
+    },
+    {
+      "title": "Part III: Inter-Service Communication",
+      "chapterSlugs": [
+        "synchronous-communication-patterns",
+        "asynchronous-messaging-and-message-brokers",
+        "service-discovery-and-registry",
+        "api-gateways-and-edge-services"
+      ]
+    },
+    {
+      "title": "Part IV: Deployment and Infrastructure",
+      "chapterSlugs": [
+        "containerization-fundamentals",
+        "orchestration-and-cluster-management",
+        "continuous-integration-and-continuous-deployment-cicd",
+        "infrastructure-as-code-iac"
+      ]
+    },
+    {
+      "title": "Part V: Resilience and Security",
+      "chapterSlugs": [
+        "designing-for-failure-resilience-engineering",
+        "security-in-distributed-systems",
+        "identity-and-access-management-iam"
+      ]
+    },
+    {
+      "title": "Part VI: Observability and Operations",
+      "chapterSlugs": [
+        "distributed-logging-and-tracing",
+        "metrics-monitoring-and-alerting",
+        "testing-strategies-for-microservices"
+      ]
+    },
+    {
+      "title": "Part VII: Advanced Topics and Anti-Patterns",
+      "chapterSlugs": [
+        "service-meshes",
+        "migrating-from-monolith-to-microservices",
+        "microservices-anti-patterns-and-pitfalls"
+      ]
+    }
+  ]
+}
