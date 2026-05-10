@@ -199,7 +199,7 @@ log_queries_not_using_indexes = 1
 
 *Nota en caliente: Si estás en medio de una emergencia de producción y no puedes reiniciar el servicio, puedes activarlo dinámicamente desde la consola de MySQL ejecutando: `SET GLOBAL slow_query_log = 'ON';` y `SET GLOBAL long_query_time = 1;`.*
 
-**Análisis de los resultados con `mysqldumpslow**`
+**Análisis de los resultados con `mysqldumpslow`**
 
 Leer el archivo `/var/log/mysql/mysql-slow.log` directamente puede ser abrumador en sitios con mucho tráfico. La forma profesional de extraer inteligencia de este archivo es usando la utilidad de línea de comandos `mysqldumpslow`.
 

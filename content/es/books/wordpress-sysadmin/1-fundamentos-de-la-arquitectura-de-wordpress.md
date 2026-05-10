@@ -377,7 +377,7 @@ define( 'WP_SITEURL', 'https://midominio.com' );
 
 Las herramientas de depuración son vitales en desarrollo, pero pueden destruir el rendimiento y la seguridad si se dejan activadas en un entorno de producción.
 
-**El ecosistema `WP_DEBUG**`
+**El ecosistema `WP_DEBUG`**
 
 ```php
 define( 'WP_DEBUG', true );          // Habilita el modo de depuración
@@ -389,7 +389,7 @@ define( 'SCRIPT_DEBUG', false );     // Si es true, carga versiones NO minificad
 
 *Regla de oro:* En alta disponibilidad, `WP_DEBUG` debe estar en `false`. Si necesitas auditar un fallo en caliente, usa `WP_DEBUG_LOG` en `true` temporalmente, pero asegurándote de que `WP_DEBUG_DISPLAY` esté en `false` para no corromper la respuesta HTTP ni mostrar rutas absolutas del servidor a los visitantes.
 
-**El asesino silencioso del rendimiento: `SAVEQUERIES**`
+**El asesino silencioso del rendimiento: `SAVEQUERIES`**
 Esta es quizás la constante más peligrosa para el rendimiento de la base de datos.
 
 ```php

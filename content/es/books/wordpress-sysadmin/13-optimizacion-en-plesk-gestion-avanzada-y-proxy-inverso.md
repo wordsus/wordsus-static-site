@@ -347,7 +347,7 @@ Si una tarea pesada se dispara justo cuando un visitante entra a la web, ese usu
 
 El WordPress Toolkit elimina esta fricción mediante la función **"Tomar el control de wp-cron.php"** (Take over wp-cron.php). Cuando activas esta opción, el WPT realiza dos acciones quirúrgicas automáticamente:
 
-**Paso A: Modificación del `wp-config.php**`
+**Paso A: Modificación del `wp-config.php`**
 Inyecta la constante para desactivar el cron accionado por el tráfico web, garantizando que los visitantes nunca disparen procesos en segundo plano.
 
 ```php
