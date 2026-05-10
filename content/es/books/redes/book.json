@@ -1,0 +1,125 @@
+{
+  "slug": "redes",
+  "locale": "es",
+  "title": "Networking para DevOps",
+  "subtitle": "Dominando Redes y Protocolos",
+  "author": "Wordsus Team",
+  "description": "Explora a fondo los fundamentos y prácticas avanzadas de redes. Desde el modelo OSI y protocolos base hasta arquitecturas Cloud, orquestación de redes en Kubernetes y enfoques de seguridad Zero Trust.",
+  "cover": "/images/books/redes-es-cover.jpeg",
+  "category": "infraestructura-cloud-devops",
+  "tags": [
+    "networking",
+    "redes",
+    "devops",
+    "cloud",
+    "kubernetes",
+    "seguridad"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-10",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "fundamentos-de-redes-y-arquitectura-base",
+      "title": "Fundamentos de Redes y Arquitectura Base",
+      "order": 1,
+      "description": "Aprende sobre El Modelo OSI y TCP/IP, Topologías de red, Tipos de redes (LAN, WAN, etc.) y Hardware de red esencial.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "capa-de-enlace-de-datos-y-redes-locales-l2",
+      "title": "Capa de Enlace de Datos y Redes Locales (L2)",
+      "order": 2,
+      "description": "Aprende sobre Direccionamiento MAC, Tramas Ethernet, VLANs y 802.1Q, STP para prevención de bucles y el protocolo ARP.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "capa-de-red-direccionamiento-ip-y-enrutamiento-l3",
+      "title": "Capa de Red, Direccionamiento IP y Enrutamiento (L3)",
+      "order": 3,
+      "description": "Aprende sobre IPv4 e IPv6, Diseño de subredes (Subnetting, CIDR), Enrutamiento estático y dinámico (OSPF, BGP), NAT/PAT e ICMP.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "capa-de-transporte-y-flujo-de-datos-l4",
+      "title": "Capa de Transporte y Flujo de Datos (L4)",
+      "order": 4,
+      "description": "Aprende sobre Puertos lógicos y Sockets, Protocolo TCP (Confiabilidad y Handshake), Protocolo UDP y Multiplexación de conexiones.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "capa-de-aplicacion-y-protocolos-clave-l7",
+      "title": "Capa de Aplicación y Protocolos Clave (L7)",
+      "order": 5,
+      "description": "Aprende sobre DNS, HTTP/HTTPS, Criptografía en red (TLS/SSL), Protocolos de transferencia (SSH, FTP) y Servicios base (DHCP, NTP).",
+      "audioUrl": ""
+    },
+    {
+      "slug": "redes-en-la-nube-cloud-networking",
+      "title": "Redes en la Nube (Cloud Networking)",
+      "order": 6,
+      "description": "Aprende sobre Redes Virtuales Privadas (VPC/VNet), Diseño de topologías Cloud, Puertas de enlace, Interconexión, Balanceo de carga y Conectividad híbrida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "redes-de-contenedores-y-orquestacion-kubernetes",
+      "title": "Redes de Contenedores y Orquestación (Kubernetes)",
+      "order": 7,
+      "description": "Aprende sobre Redes en Docker, CNI, Modelo de red de Kubernetes, Plugins CNI, Service Mesh (Istio, Linkerd) y eBPF aplicado a redes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "seguridad-de-redes-y-arquitectura-zero-trust",
+      "title": "Seguridad de Redes y Arquitectura Zero Trust",
+      "order": 8,
+      "description": "Aprende sobre Firewalls (Stateless/Stateful), WAF, Control de acceso en la nube, IDS/IPS, Microsegmentación y Arquitectura Zero Trust.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "observabilidad-monitoreo-y-troubleshooting-de-red",
+      "title": "Observabilidad, Monitoreo y Troubleshooting de Red",
+      "order": 9,
+      "description": "Aprende sobre Herramientas de diagnóstico CLI (ping, traceroute), Análisis de paquetes (tcpdump, Wireshark), Métricas clave de rendimiento y Análisis de flujos.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "automatizacion-e-infraestructura-como-codigo-iac-para-redes",
+      "title": "Automatización e Infraestructura como Código (IaC) para Redes",
+      "order": 10,
+      "description": "Aprende sobre Definición de topologías de red con Terraform, Gestión de configuración con Ansible, GitOps aplicado al networking y Pruebas automatizadas.",
+      "audioUrl": ""
+    }
+  ],
+  "parts": [
+    {
+      "title": "Parte I: Fundamentos y Capas Base",
+      "chapterSlugs": [
+        "fundamentos-de-redes-y-arquitectura-base",
+        "capa-de-enlace-de-datos-y-redes-locales-l2",
+        "capa-de-red-direccionamiento-ip-y-enrutamiento-l3"
+      ]
+    },
+    {
+      "title": "Parte II: Protocolos Avanzados y Cloud",
+      "chapterSlugs": [
+        "capa-de-transporte-y-flujo-de-datos-l4",
+        "capa-de-aplicacion-y-protocolos-clave-l7",
+        "redes-en-la-nube-cloud-networking"
+      ]
+    },
+    {
+      "title": "Parte III: Contenedores y Seguridad",
+      "chapterSlugs": [
+        "redes-de-contenedores-y-orquestacion-kubernetes",
+        "seguridad-de-redes-y-arquitectura-zero-trust"
+      ]
+    },
+    {
+      "title": "Parte IV: Observabilidad y Automatización",
+      "chapterSlugs": [
+        "observabilidad-monitoreo-y-troubleshooting-de-red",
+        "automatizacion-e-infraestructura-como-codigo-iac-para-redes"
+      ]
+    }
+  ]
+}
