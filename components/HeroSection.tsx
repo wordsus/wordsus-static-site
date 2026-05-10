@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { BookOpen, ArrowRight } from "lucide-react";
+import { BookOpen, ArrowRight, Search } from "lucide-react";
 import type { Locale } from "@/lib/types";
 
 interface HeroSectionProps {
@@ -46,12 +46,13 @@ export default function HeroSection({ locale }: HeroSectionProps) {
             {t("startReading")}
             <ArrowRight size={16} />
           </Link>
-          <Link
-            href={`/${locale}#categories`}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] text-[hsl(var(--foreground))] font-semibold text-sm hover:bg-[hsl(var(--muted))] transition-colors"
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent("open-search"))}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] text-[hsl(var(--foreground))] font-semibold text-sm hover:bg-[hsl(var(--muted))] transition-colors cursor-pointer"
           >
-            {t("browseCategories")}
-          </Link>
+            <Search size={16} />
+            {t("searchBooks")}
+          </button>
         </div>
       </div>
     </section>

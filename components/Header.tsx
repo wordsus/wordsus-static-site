@@ -109,6 +109,13 @@ export default function Header({ locale, categories }: HeaderProps) {
     setCategoriesOpen(false);
   }, [pathname]);
 
+  // Listen for custom event to open search from other components
+  useEffect(() => {
+    const handleOpenSearch = () => setSearchOpen(true);
+    window.addEventListener("open-search", handleOpenSearch);
+    return () => window.removeEventListener("open-search", handleOpenSearch);
+  }, []);
+
   const switchLocale = (newLocale: Locale) => {
     router.push(`/${newLocale}`);
   };
