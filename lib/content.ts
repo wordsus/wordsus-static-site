@@ -66,10 +66,9 @@ export function getBookBySlug(slug: string, locale: Locale): BookMeta | null {
   return JSON.parse(raw) as BookMeta;
 }
 
-export function getFeaturedBooks(locale: Locale, limit = 6): BookMeta[] {
+export function getFeaturedBooks(locale: Locale): BookMeta[] {
   return getAllBooks(locale)
-    .filter((b) => b.featured)
-    .slice(0, limit);
+    .filter((b) => b.featured);
 }
 
 export function getBooksByCategory(category: string, locale: Locale): BookMeta[] {

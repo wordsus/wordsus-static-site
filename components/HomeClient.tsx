@@ -120,7 +120,7 @@ export default function HomeClient({
 
         <div className="space-y-14">
           {categories.map((cat) => {
-            const books = (booksByCategory[cat.slug] || []).slice(0, 6);
+            const books = booksByCategory[cat.slug] || [];
             if (books.length === 0) return null;
             return (
               <div key={cat.slug}>

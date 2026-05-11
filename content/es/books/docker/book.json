@@ -1,0 +1,145 @@
+{
+  "slug": "docker",
+  "locale": "es",
+  "title": "Docker para DevOps",
+  "subtitle": "El manual definitivo de la infraestructura inmutable",
+  "author": "Wordsus Team",
+  "description": "Domina Docker desde los fundamentos de la contenerización hasta la orquestación y seguridad avanzada. Aprende a construir imágenes optimizadas, gestionar redes y volúmenes, implementar pipelines de CI/CD, asegurar tus contenedores y prepararte para el ecosistema de Kubernetes bajo la filosofía de infraestructura inmutable.",
+  "cover": "/images/books/docker-es-cover.jpeg",
+  "category": "infraestructura-cloud-devops",
+  "tags": [
+    "docker",
+    "contenedores",
+    "devops",
+    "infraestructura",
+    "cloud"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-11",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "fundamentos-de-la-contenerizacion",
+      "title": "Fundamentos de la Contenerización",
+      "order": 1,
+      "description": "Aprende sobre Historia y evolución: De Chroot a Máquinas Virtuales y Contenedores, ¿Qué es Docker? Arquitectura básica, Diferencias estructurales entre Contenedores y Máquinas Virtuales, El motor bajo el capó: Namespaces y Control Groups, Instalación y configuración del entorno.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gestion-del-ciclo-de-vida-de-contenedores",
+      "title": "Gestión del Ciclo de Vida de Contenedores",
+      "order": 2,
+      "description": "Aprende sobre Comandos esenciales del Docker CLI, Modos de ejecución: Detached, Interactive y TTY, Asignación de puertos y variables de entorno, Inspección de contenedores, logs y stats, Políticas de reinicio para alta disponibilidad local.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "construccion-de-imagenes-y-dockerfile-avanzado",
+      "title": "Construcción de Imágenes y Dockerfile Avanzado",
+      "order": 3,
+      "description": "Aprende sobre Anatomía de una imagen de Docker y el sistema de archivos por capas, Instrucciones fundamentales del Dockerfile, Optimización del caché de construcción, Builds Multi-etapa para imágenes ligeras, Reducción de tamaño con Alpine y Scratch, Uso de BuildKit.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "persistencia-de-datos-y-almacenamiento",
+      "title": "Persistencia de Datos y Almacenamiento",
+      "order": 4,
+      "description": "Aprende sobre El problema del almacenamiento efímero, Tipos de montaje: Volumes, Bind Mounts y tmpfs, Gestión del ciclo de vida de los Volúmenes, Compartir datos entre contenedores, Estrategias de Backup y migración, Drivers de volumen de terceros.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "redes-en-docker-docker-networking",
+      "title": "Redes en Docker (Docker Networking)",
+      "order": 5,
+      "description": "Aprende sobre El modelo de red de contenedores (CNM), Drivers de red nativos: Bridge, Host, None y Overlay, Creación de redes personalizadas y resolución DNS interna, Exposición y publicación de puertos avanzada, Driver Macvlan, Troubleshooting de conectividad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "entornos-multi-contenedor-con-docker-compose",
+      "title": "Entornos Multi-Contenedor con Docker Compose",
+      "order": 6,
+      "description": "Aprende sobre Introducción a la especificación de Compose (YAML), Definición de servicios, redes y volúmenes, Gestión de dependencias y healthchecks, Uso de perfiles, Extensión de configuraciones y archivos .env.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "docker-en-el-pipeline-de-ci-cd",
+      "title": "Docker en el Pipeline de CI/CD",
+      "order": 7,
+      "description": "Aprende sobre Estrategias de versionado y etiquetado de imágenes, Docker Registry: Docker Hub, GHCR y ECR, Despliegue de Registry privado, DinD vs DooD, Caché de imágenes distribuido, Automatización de pruebas con Testcontainers.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "seguridad-a-nivel-senior-devsecops",
+      "title": "Seguridad a Nivel Senior (DevSecOps)",
+      "order": 8,
+      "description": "Aprende sobre Principio de menor privilegio y rootless Docker, Restricción de capacidades del kernel, Perfiles de seguridad AppArmor y Seccomp, Escaneo de vulnerabilidades con Trivy/Clair, Gestión segura de secretos, Firmado y verificación de imágenes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "monitoreo-logging-y-observabilidad",
+      "title": "Monitoreo, Logging y Observabilidad",
+      "order": 9,
+      "description": "Aprende sobre Arquitectura de logging en Docker, Configuración de Logging Drivers, Centralización de logs con stack ELK/EFK, Extracción de métricas con Prometheus, Visualización del rendimiento en Grafana con cAdvisor.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "optimizacion-y-mantenimiento-a-escala",
+      "title": "Optimización y Mantenimiento a Escala",
+      "order": 10,
+      "description": "Aprende sobre Limpieza agresiva de recursos y pruning automatizado, Límites estrictos de CPU, Memoria y PIDs, Prevención de OOM Kills, Auditoría de eventos de Docker para cumplimiento (Compliance).",
+      "audioUrl": ""
+    },
+    {
+      "slug": "depuracion-avanzada-troubleshooting-hardskills",
+      "title": "Depuración Avanzada (Troubleshooting Hardskills)",
+      "order": 11,
+      "description": "Aprende sobre Depuración de Crashlooping, Intervención en contenedores Distroless, Análisis de procesos con nsenter y strace, Diagnóstico de cuellos de botella de I/O en overlay2.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "arquitectura-y-transicion-al-ecosistema-k8s",
+      "title": "Arquitectura y Transición al Ecosistema K8s",
+      "order": 12,
+      "description": "Aprende sobre Aplicaciones de 12 factores, Infraestructura Inmutable como filosofía, Docker Swarm vs Kubernetes, El rol de Containerd y CRI-O, Preparación de manifiestos con Kompose.",
+      "audioUrl": ""
+    }
+  ],
+  "parts": [
+    {
+      "title": "Parte I: Fundamentos y Gestión Core",
+      "chapterSlugs": [
+        "fundamentos-de-la-contenerizacion",
+        "gestion-del-ciclo-de-vida-de-contenedores"
+      ]
+    },
+    {
+      "title": "Parte II: Construcción, Almacenamiento y Redes",
+      "chapterSlugs": [
+        "construccion-de-imagenes-y-dockerfile-avanzado",
+        "persistencia-de-datos-y-almacenamiento",
+        "redes-en-docker-docker-networking"
+      ]
+    },
+    {
+      "title": "Parte III: Orquestación Local y Automatización (CI/CD)",
+      "chapterSlugs": [
+        "entornos-multi-contenedor-con-docker-compose",
+        "docker-en-el-pipeline-de-ci-cd"
+      ]
+    },
+    {
+      "title": "Parte IV: Operaciones Avanzadas: Seguridad y Observabilidad",
+      "chapterSlugs": [
+        "seguridad-a-nivel-senior-devsecops",
+        "monitoreo-logging-y-observabilidad"
+      ]
+    },
+    {
+      "title": "Parte V: Escala, Depuración y Ecosistema Kubernetes",
+      "chapterSlugs": [
+        "optimizacion-y-mantenimiento-a-escala",
+        "depuracion-avanzada-troubleshooting-hardskills",
+        "arquitectura-y-transicion-al-ecosistema-k8s"
+      ]
+    }
+  ]
+}
