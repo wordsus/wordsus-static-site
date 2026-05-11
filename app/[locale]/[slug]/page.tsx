@@ -105,6 +105,7 @@ async function ensureStaticFiles() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
   const loc = locale as Locale;
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://wordsus.com";
 
   // Check if it's a book
   const book = getBookBySlug(slug, loc);
@@ -120,6 +121,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         type: "book",
       },
       alternates: {
+        canonical: `${siteUrl}/${locale}/${slug}`,
         languages: {
           [locale]: `/${locale}/${slug}`,
         },
@@ -136,6 +138,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       robots: {
         index: false,
         follow: true,
+      },
+      alternates: {
+        canonical: `${siteUrl}/${locale}/${slug}`,
       },
     };
   }

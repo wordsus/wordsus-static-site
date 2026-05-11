@@ -19,7 +19,7 @@ const nextConfig: NextConfig = {
     nextImageExportOptimizer_generateAndUseBlurImages: "true",
     nextImageExportOptimizer_remoteImageCacheTTL: "0",
   },
-  trailingSlash: true,
+  trailingSlash: false,
 };
 
 export default withNextIntl(nextConfig);

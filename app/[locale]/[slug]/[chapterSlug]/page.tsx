@@ -32,6 +32,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug, chapterSlug } = await params;
   const loc = locale as Locale;
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://wordsus.com";
 
   const book = getBookBySlug(slug, loc);
   if (!book) return { title: "Not Found" };
@@ -51,6 +52,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${chapter.title} - ${book.title}`,
     description,
+    alternates: {
+      canonical: `${siteUrl}/${locale}/${slug}/${chapterSlug}`,
+    },
   };
 }
 

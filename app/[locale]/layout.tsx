@@ -20,6 +20,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const isEs = locale === "es";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://wordsus.com";
   return {
     title: {
       default: isEs
@@ -30,6 +31,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: isEs
       ? "Descubre una biblioteca de libros educativos y cursos gratuitos en múltiples categorías."
       : "Discover free educational books and courses across multiple categories.",
+    alternates: {
+      canonical: `${siteUrl}/${locale}`,
+    },
   };
 }
 
