@@ -22,7 +22,9 @@ export async function runStep4(session: SessionState): Promise<void> {
   info("descriptive image-generation prompt, then generate the image externally.");
   divider();
 
-  const sortedBooks = [...books].sort((a, b) => a.order - b.order);
+  const sortedBooks = books
+    .filter((b) => b.locale === "es")
+    .sort((a, b) => a.order - b.order);
 
   for (const book of sortedBooks) {
     const target = session.targets.find((t) => t.alias === book.alias);
