@@ -1,0 +1,290 @@
+{
+  "slug": "physics",
+  "locale": "en",
+  "title": "Essential Physics",
+  "subtitle": "Principles, Applications, and Modern Perspectives",
+  "author": "Wordsus Team",
+  "description": "Master the fundamental principles of the physical world with Essential Physics. This comprehensive academic guide covers classical mechanics, thermodynamics, electromagnetism, optics, and modern physics, providing a rigorous foundation for students and science enthusiasts alike.",
+  "cover": "/images/books/physics-en-cover.jpeg",
+  "category": "science",
+  "tags": [
+    "physics",
+    "mechanics",
+    "thermodynamics",
+    "electromagnetism",
+    "optics",
+    "modern physics"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-12",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "measurement-and-vectors",
+      "title": "Measurement and Vectors",
+      "order": 1,
+      "description": "Explore The International System of Units (SI), Dimensional Analysis and Significant Figures, Properties of Vectors and Scalars, Coordinate Systems and Unit Vectors.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "kinematics-in-one-dimension",
+      "title": "Kinematics in One Dimension",
+      "order": 2,
+      "description": "Explore Position, Displacement, and Distance, Average and Instantaneous Velocity, Average and Instantaneous Acceleration, Motion with Constant Acceleration, Freely Falling Objects, Calculus Applications in Kinematics.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "kinematics-in-two-and-three-dimensions",
+      "title": "Kinematics in Two and Three Dimensions",
+      "order": 3,
+      "description": "Explore Position, Velocity, and Acceleration Vectors, Projectile Motion, Uniform Circular Motion, Relative Motion in One and Two Dimensions.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "newton-s-laws-of-motion",
+      "title": "Newton's Laws of Motion",
+      "order": 4,
+      "description": "Explore The Concepts of Force and Mass, Newton's First and Second Laws, Newton's Third Law and Action-Reaction Pairs, Applying Newton's Laws: Free-Body Diagrams, Forces of Friction and Drag.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "work-and-kinetic-energy",
+      "title": "Work and Kinetic Energy",
+      "order": 5,
+      "description": "Explore Work Done by a Constant Force, Work Done by a Variable Force, Kinetic Energy and the Work-Energy Theorem, Power, The Scalar (Dot) Product of Two Vectors.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "potential-energy-and-conservation-of-energy",
+      "title": "Potential Energy and Conservation of Energy",
+      "order": 6,
+      "description": "Explore Conservative and Non-conservative Forces, Potential Energy, Conservation of Mechanical Energy, Work Done by Non-conservative Forces, Energy Diagrams and Equilibrium.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "linear-momentum-and-collisions",
+      "title": "Linear Momentum and Collisions",
+      "order": 7,
+      "description": "Explore Linear Momentum and Impulse, Conservation of Linear Momentum, Elastic Collisions in One Dimension, Inelastic Collisions in One Dimension, Collisions in Two Dimensions, The Center of Mass.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "rotational-motion",
+      "title": "Rotational Motion",
+      "order": 8,
+      "description": "Explore Angular Position, Velocity, and Acceleration, Kinematics of Rotational Motion, Rotational Kinetic Energy and Moment of Inertia, Torque and Newton's Second Law for Rotation, Rolling Motion.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "angular-momentum-and-equilibrium",
+      "title": "Angular Momentum and Equilibrium",
+      "order": 9,
+      "description": "Explore The Vector (Cross) Product, Angular Momentum of a Particle and a System, Conservation of Angular Momentum, Conditions for Static Equilibrium, Elasticity, Stress, and Strain.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gravitation",
+      "title": "Gravitation",
+      "order": 10,
+      "description": "Explore Newton's Law of Universal Gravitation, Gravitational Potential Energy, Kepler's Laws of Planetary Motion, Orbits and Escape Velocity, The Equivalence Principle and General Relativity.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "oscillations",
+      "title": "Oscillations",
+      "order": 11,
+      "description": "Explore Simple Harmonic Motion (SHM), Energy in Simple Harmonic Motion, The Simple and Physical Pendulum, Damped Oscillations, Driven Oscillations and Resonance.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "mechanical-waves",
+      "title": "Mechanical Waves",
+      "order": 12,
+      "description": "Explore Types of Mechanical Waves, Mathematical Description of a Traveling Wave, Speed and Energy of a Wave on a String, Interference and Superposition, Standing Waves and Normal Modes.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "sound",
+      "title": "Sound",
+      "order": 13,
+      "description": "Explore Pressure and Displacement in Sound Waves, Sound Intensity and the Decibel Scale, Interference of Sound Waves and Beats, The Doppler Effect, Shock Waves and Sonic Booms.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "fluid-mechanics",
+      "title": "Fluid Mechanics",
+      "order": 14,
+      "description": "Explore Density, Pressure, and Pascal's Principle, Buoyancy and Archimedes' Principle, Fluid Dynamics and the Equation of Continuity, Bernoulli's Equation, Viscosity and Turbulence.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "temperature-and-heat",
+      "title": "Temperature and Heat",
+      "order": 15,
+      "description": "Explore Temperature and the Zeroth Law of Thermodynamics, Thermometers and Temperature Scales, Thermal Expansion of Solids and Liquids, Heat Capacity and Specific Heat, Phase Changes and Latent Heat, Mechanisms of Heat Transfer (Conduction, Convection, Radiation).",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-kinetic-theory-of-gases",
+      "title": "The Kinetic Theory of Gases",
+      "order": 16,
+      "description": "Explore The Ideal Gas Law, A Molecular Model of an Ideal Gas, Equipartition of Energy, Molar Specific Heats of Ideal Gases, The Distribution of Molecular Speeds and Mean Free Path.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-laws-of-thermodynamics",
+      "title": "The Laws of Thermodynamics",
+      "order": 17,
+      "description": "Explore Work and Heat in Thermodynamic Processes, The First Law of Thermodynamics, Heat Engines and Refrigerators, The Second Law of Thermodynamics, Entropy and Disorder.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "electric-fields",
+      "title": "Electric Fields",
+      "order": 18,
+      "description": "Explore Electric Charge and Conservation, Conductors, Insulators, and Induced Charges, Coulomb's Law, The Electric Field and Field Lines, Electric Fields of Continuous Charge Distributions, Motion of Charged Particles in a Uniform Electric Field.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gauss-s-law-and-electric-potential",
+      "title": "Gauss's Law and Electric Potential",
+      "order": 19,
+      "description": "Explore Electric Flux, Gauss's Law, Applications of Gauss's Law, Electric Potential Energy, Electric Potential and Equipotential Surfaces, Calculating the Field from the Potential.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "capacitance-and-dielectrics",
+      "title": "Capacitance and Dielectrics",
+      "order": 20,
+      "description": "Explore Definition and Calculation of Capacitance, Capacitors in Series and Parallel, Energy Stored in an Electric Field, Capacitors with Dielectrics, A Molecular Model of a Dielectric.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "current-resistance-and-circuits",
+      "title": "Current, Resistance, and Circuits",
+      "order": 21,
+      "description": "Explore Electric Current and Drift Velocity, Resistance, Resistivity, and Ohm's Law, Electrical Power, Resistors in Series and Parallel, Kirchhoff's Rules, RC Circuits.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "magnetic-fields",
+      "title": "Magnetic Fields",
+      "order": 22,
+      "description": "Explore The Magnetic Field and Magnetic Force, Motion of a Charged Particle in a Magnetic Field, Magnetic Force on a Current-Carrying Conductor, Torque on a Current Loop, The Hall Effect.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "sources-of-magnetic-fields",
+      "title": "Sources of Magnetic Fields",
+      "order": 23,
+      "description": "Explore The Biot-Savart Law, The Magnetic Force Between Two Parallel Conductors, Amp\u00e8re's Law, The Magnetic Field of a Solenoid and Toroid, Magnetism in Matter.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "electromagnetic-induction",
+      "title": "Electromagnetic Induction",
+      "order": 24,
+      "description": "Explore Faraday's Law of Induction, Motional EMF, Lenz's Law, Induced Electric Fields, Inductance and RL Circuits.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "electromagnetic-waves",
+      "title": "Electromagnetic Waves",
+      "order": 25,
+      "description": "Explore Displacement Current and Maxwell's Equations, Plane Electromagnetic Waves, Energy Carried by Electromagnetic Waves (Poynting Vector), Momentum and Radiation Pressure, The Electromagnetic Spectrum.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "geometric-optics",
+      "title": "Geometric Optics",
+      "order": 26,
+      "description": "Explore The Nature of Light and Ray Approximation, Reflection and Refraction, Total Internal Reflection and Dispersion, Image Formation by Mirrors, Image Formation by Thin Lenses.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "physical-optics",
+      "title": "Physical Optics",
+      "order": 27,
+      "description": "Explore Conditions for Interference, Young's Double-Slit Experiment, Thin-Film Interference, Single-Slit Diffraction, The Diffraction Grating and X-Ray Diffraction.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "relativity",
+      "title": "Relativity",
+      "order": 28,
+      "description": "Explore The Postulates of Special Relativity, The Relativity of Time and Time Dilation, The Relativity of Length and Length Contraction, The Lorentz Transformation Equations, Relativistic Momentum and Mass-Energy Equivalence.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "quantum-physics-fundamentals",
+      "title": "Quantum Physics Fundamentals",
+      "order": 29,
+      "description": "Explore Blackbody Radiation and Planck's Hypothesis, The Photoelectric Effect, The Compton Effect, Photons and Electromagnetic Waves, The Wave Properties of Particles (De Broglie Hypothesis), The Heisenberg Uncertainty Principle.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "atomic-and-nuclear-physics",
+      "title": "Atomic and Nuclear Physics",
+      "order": 30,
+      "description": "Explore Early Models of the Atom, The Bohr Model of the Hydrogen Atom, Quantum Mechanics of the Hydrogen Atom, Properties of Nuclei and Binding Energy, Radioactivity and Decay Processes.",
+      "audioUrl": ""
+    }
+  ],
+  "parts": [
+    {
+      "title": "Part I: Mechanics",
+      "chapterSlugs": [
+        "measurement-and-vectors",
+        "kinematics-in-one-dimension",
+        "kinematics-in-two-and-three-dimensions",
+        "newton-s-laws-of-motion",
+        "work-and-kinetic-energy",
+        "potential-energy-and-conservation-of-energy",
+        "linear-momentum-and-collisions",
+        "rotational-motion",
+        "angular-momentum-and-equilibrium",
+        "gravitation"
+      ]
+    },
+    {
+      "title": "Part II: Oscillations, Waves, and Fluids",
+      "chapterSlugs": [
+        "oscillations",
+        "mechanical-waves",
+        "sound",
+        "fluid-mechanics"
+      ]
+    },
+    {
+      "title": "Part III: Thermodynamics",
+      "chapterSlugs": [
+        "temperature-and-heat",
+        "the-kinetic-theory-of-gases",
+        "the-laws-of-thermodynamics"
+      ]
+    },
+    {
+      "title": "Part IV: Electromagnetism",
+      "chapterSlugs": [
+        "electric-fields",
+        "gauss-s-law-and-electric-potential",
+        "capacitance-and-dielectrics",
+        "current-resistance-and-circuits",
+        "magnetic-fields",
+        "sources-of-magnetic-fields",
+        "electromagnetic-induction"
+      ]
+    },
+    {
+      "title": "Part V: Light and Modern Physics",
+      "chapterSlugs": [
+        "electromagnetic-waves",
+        "geometric-optics",
+        "physical-optics",
+        "relativity",
+        "quantum-physics-fundamentals",
+        "atomic-and-nuclear-physics"
+      ]
+    }
+  ]
+}
