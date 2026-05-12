@@ -22,21 +22,40 @@ export const C = {
 // ─── Banner ──────────────────────────────────────────────────────────────────
 
 export function printBanner(): void {
-  const title = C.primary.bold("  🎙  Podcasts CLI");
-  const sub = C.muted("  wordsus.com · podcast production assistant");
+  const heading = chalk.hex("#C4B5FD").bold("Podcast Production Assistant");
+  const rule    = chalk.hex("#6D28D9")("━".repeat(32));
+  const url     = chalk.hex("#34D399")("wordsus.com");
+  const tag     = chalk.hex("#6B7280")("  ·  Professional Tools");
+
+  const content = `${heading}\n${rule}\n${url}${tag}`;
+
   console.log(
-    boxen(`${title}\n${sub}`, {
-      padding: { top: 1, bottom: 1, left: 2, right: 2 },
-      borderStyle: "round",
-      borderColor: "magenta",
+    boxen(content, {
+      padding: { top: 1, bottom: 1, left: 4, right: 4 },
+      borderStyle: "double",
+      borderColor: "#7C3AED",
+      title: chalk.hex("#A78BFA").bold(" PODCASTS ") + chalk.hex("#34D399").bold("CLI "),
+      titleAlignment: "center",
       dimBorder: false,
     })
   );
 }
 
+// ─── Screen utilities ─────────────────────────────────────────────────────────
+
+/**
+ * Clears the visible terminal area without erasing the scrollback buffer.
+ * \x1b[2J  → erase visible screen
+ * \x1b[H   → move cursor to top-left
+ */
+export function clearScreen(): void {
+  process.stdout.write("\x1b[2J\x1b[H");
+}
+
 // ─── Step header ─────────────────────────────────────────────────────────────
 
 export function printStep(num: number, label: string): void {
+  clearScreen();
   console.log("\n" + C.primary.bold(`  ── Step ${num} ──`) + C.white.bold(` ${label}`));
 }
 
@@ -107,12 +126,12 @@ export function printReadinessTable(results: ReadinessResult[]): void {
   for (const r of results) {
     const tick = (v: boolean) => (v ? C.accent("✔") : C.danger("✖"));
     const ready = r.ready ? C.accent.bold("YES") : C.danger.bold("NO");
-    
+
     // Column alignment manual handling to avoid ANSI padding issues
     const colAlias = C.white(r.alias.padEnd(14));
     const colAudio = tick(r.hasAudio) + " ".repeat(9);
     const colImage = tick(r.hasImage) + " ".repeat(9);
-    const colJson  = tick(r.hasJson) + " ".repeat(9);
+    const colJson = tick(r.hasJson) + " ".repeat(9);
 
     console.log(`  ${colAlias}${colAudio}${colImage}${colJson}${ready}`);
   }

@@ -135,8 +135,11 @@ export async function runStep6(session: SessionState): Promise<void> {
   info(`Total rendering time: ${C.accent(formatDuration(totalRenderTimeMs))}`);
   info(`Total step duration:  ${C.accent(formatDuration(finalTotalTime))}`);
 
-  // Save the episode number to last-episode.log
-  saveLastEpisode(session.defaultEpisode);
+  // Save the episode number only on a fully successful run (no errors).
+  if (errors.length === 0) {
+    saveLastEpisode(session.defaultEpisode);
+    log("INFO", `Saved episode ${session.defaultEpisode} to last-episode.log`);
+  }
 
   log("INFO", `Step 6 completed: ${doneCount} done, ${skippedCount} skipped, ${errors.length} errors.`);
 }

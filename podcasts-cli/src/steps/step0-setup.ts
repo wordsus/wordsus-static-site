@@ -6,7 +6,7 @@ import { input, confirm, select } from "@inquirer/prompts";
 import { books } from "../books.js";
 import { printStep, info, C } from "../ui.js";
 import { logStep } from "../logger.js";
-import { getLastEpisode, saveLastEpisode } from "../filesystem.js";
+import { getLastEpisode } from "../filesystem.js";
 import type { SessionState, EpisodeTarget } from "../types.js";
 
 export async function runStep0(defaultEpisodeArg?: number): Promise<SessionState> {
@@ -31,9 +31,6 @@ export async function runStep0(defaultEpisodeArg?: number): Promise<SessionState
     });
     defaultEpisode = parseInt(raw, 10);
   }
-
-  // Persist it immediately so it's remembered next time
-  saveLastEpisode(defaultEpisode);
 
   // ── Ask per book? ────────────────────────────────────────────────────────
   const askPerBook = await select({
