@@ -281,41 +281,22 @@ pnpm build
 
 This will run `next build` followed by the optimizer. The generated images will automatically be served with responsive `srcset` tags for fast load times.
 
-#### Fix Markdown Headings
-If you have markdown files with incorrect heading hierarchies (e.g., starting with `###` or `####` instead of `##`), you can use the `fix_headings.py` script to automatically correct them in a directory.
+#### Fix Markdown Formatting
+If you have markdown files with formatting issues (incorrect heading hierarchies, bold markers in headings, or broken bold-code tags), you can use the `fix_markdown.py` script to automatically correct them.
 
 ```bash
-python scripts/fix_headings.py <path_to_directory>
+python scripts/fix_markdown.py <path_to_directory>
 ```
+
 Example:
 ```bash
-python scripts/fix_headings.py content/es/books/backend-en-python
+python scripts/fix_markdown.py content/es/books/linux
 ```
-The script will analyze each markdown file, find the first heading, and if it has too many `#` characters (more than 2), it will remove the extra `#` from all headings in the file, ignoring code blocks. If the first heading is already `#` or `##`, it skips the file.
 
-#### Remove Bold from Headings
-If your markdown headers are wrapped in bold tags (e.g., `## **Title**`), you can use the `remove_bold_headings.py` script to automatically clean them.
-
-```bash
-python scripts/remove_bold_headings.py <path_to_directory>
-```
-Example:
-```bash
-python scripts/remove_bold_headings.py content/es/books/linux
-```
-The script will recursively scan the directory for `.md` files and remove all `**` occurrences within lines that start with `#`, while ignoring code blocks.
-
-#### Fix Broken Bold-Code Formatting
-If you have lines that start with bold (`**`) but the closing `**` is accidentally placed inside an inline code block at the end of the line (e.g., `**Title `code**``), use this script to fix them.
-
-```bash
-python scripts/fix_broken_bold_code.py <path_to_directory>
-```
-Example:
-```bash
-python scripts/fix_broken_bold_code.py content/es/books/linux
-```
-The script identifies lines starting with `**` and ending with `` `something**` `` and moves the `**` outside the backticks: `**Title `code`**`.
+This script applies three fixes in sequence:
+1. **Fix Broken Bold-Code**: Moves `**` outside backticks when incorrectly nested (e.g., `**Title `code**`` → `**Title `code`**`).
+2. **Normalize Headings**: Adjusts heading levels so the first heading in the file starts at `##` (removes extra `#` characters).
+3. **Remove Bold from Headings**: Strips `**` markers from any line starting with `#`.
 
 #### Validate Markdown Files
 To ensure that all markdown files in the project comply with the formatting rules (e.g., no bold tags in headings, no broken bold-code formatting), run the validation script:

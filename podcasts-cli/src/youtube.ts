@@ -7,10 +7,6 @@ const YOUTUBE_INFO_TEMPLATE = `\
 {podcast} — Episode {episode}
 ══════════════════════════════════════════════════
 
-PODCAST SHOW
-------------
-{podcast}
-
 TITLE
 -----
 {title}
@@ -21,11 +17,8 @@ DESCRIPTION
 
 SCHEDULED TIME
 --------------
-15:30 PM
+3:30 PM
 
-VIDEO FILE
-----------
-{video_file}
 ══════════════════════════════════════════════════
 `;
 
