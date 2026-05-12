@@ -498,8 +498,6 @@ Resonance is a ubiquitous phenomenon across all branches of physics and engineer
 * **Acoustic Resonance:** Musical instruments rely on resonance. The body of a violin resonates with the vibrations of the strings, amplifying the sound. A singer can shatter a wine glass by sustaining a loud note at the exact resonant frequency of the glass.
 * **Electromagnetic Resonance:** Tuning a radio to a specific station involves adjusting the capacitance or inductance in an electrical circuit so that its resonant frequency matches the frequency of the incoming broadcast radio waves, isolating that specific signal from all others.
 
----
-
 ## Chapter Summary
 
 * **Simple Harmonic Motion (SHM)** occurs when a system is subject to a restoring force proportional to its displacement, $F_x = -kx$. The motion is described by the kinematic equation $x(t) = A \cos(\omega t + \phi)$.

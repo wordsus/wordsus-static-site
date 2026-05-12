@@ -414,8 +414,6 @@ Typically, a supersonic aircraft creates a complex wave pattern, but it generall
 
 This creates an "N-wave" pressure profile. Because of this, an observer on the ground will usually hear a distinctive "double boom" separated by a fraction of a second when a large supersonic aircraft passes by.
 
----
-
 ## Chapter Summary
 
 **13.1 Pressure and Displacement in Sound Waves:** Sound is a longitudinal mechanical wave that travels through fluids via a series of compressions and rarefactions. It can be modeled as a displacement wave $s(x, t) = s_{\text{max}} \cos(kx - \omega t)$ or a pressure variation wave $\Delta P(x, t) = \Delta P_{\text{max}} \sin(kx - \omega t)$. The pressure and displacement waves are $90^{\circ}$ ($\pi / 2$) out of phase. The pressure amplitude is related to the displacement amplitude by $\Delta P_{\text{max}} = \rho v \omega s_{\text{max}}$.

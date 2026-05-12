@@ -484,9 +484,7 @@ While the exact transition point depends on the roughness of the pipe walls and 
 * **$2000 < Re < 3000$:** The flow is **unstable**, existing in a transitional state where it can switch unpredictably between laminar and turbulent.
 * **$Re > 3000$:** The flow is almost entirely **turbulent**. Inertial forces dominate, and eddies inevitably form.
 
----
-
-### Chapter Summary
+## Chapter Summary
 
 * **Density and Pressure:** Density is mass per unit volume ($\rho = m/V$). Pressure is the normal force applied per unit area ($P = F/A$). In a static fluid, pressure increases with depth according to $P = P_0 + \rho gh$.
 * **Pascal's Principle:** A change in pressure applied to an enclosed, incompressible fluid is transmitted undiminished throughout the fluid and to the walls of its container. This principle is the basis of hydraulic force multipliers.

@@ -468,8 +468,6 @@ Where:
 
 As a system becomes more disordered, the number of available microstates $W$ increases, and therefore its entropy $S$ increases. The universe continuously evolves toward states of maximum probability, which correspond to states of maximum entropy and maximum disorder.
 
----
-
 ## Chapter Summary
 
 * **Work in Thermodynamic Processes:** The work $W$ done by a gas during a volume change is $W = \int P \, dV$. Work depends on the specific path taken between initial and final states on a $PV$ diagram.

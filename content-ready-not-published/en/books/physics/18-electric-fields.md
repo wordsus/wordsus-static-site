@@ -510,8 +510,6 @@ $$y = -\frac{1}{2}\left(\frac{qE}{m}\right)\left(\frac{x}{v_0}\right)^2 = -\left
 
 Because the terms in the parentheses are all constants, this equation takes the form $y = -Cx^2$. This is the mathematical equation for a downward-opening **parabola**. Just as a mass thrown horizontally in Earth's gravity follows a parabolic trajectory, a charged particle entering a uniform electric field perpendicularly follows a parabolic trajectory.
 
----
-
 ## Chapter Summary
 
 * **Electric Charge:** Charge is a fundamental property of matter. There are two types: positive and negative. Like charges repel; opposite charges attract. Charge is quantized in units of $e \approx 1.602 \times 10^{-19} \text{ C}$ and is strictly conserved in all isolated systems.

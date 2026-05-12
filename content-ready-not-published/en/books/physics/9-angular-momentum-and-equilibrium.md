@@ -456,8 +456,6 @@ Typical Stress-Strain Curve for a Metal:
 4. **Ultimate Strength:** The absolute maximum stress the material can withstand.
 5. **Fracture Point:** The point at which the material physically breaks or snaps.
 
----
-
 ## Chapter Summary
 
 * **The Cross Product:** The vector (cross) product of two vectors $\vec{A}$ and $\vec{B}$ yields a third vector $\vec{C} = \vec{A} \times \vec{B}$ that is perpendicular to both. Its magnitude is $|\vec{C}| = AB\sin\theta$, and its direction is determined by the right-hand rule. The cross product is anti-commutative: $\vec{A} \times \vec{B} = -(\vec{B} \times \vec{A})$.

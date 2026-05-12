@@ -491,9 +491,7 @@ This equation states that the energy of a system ($E$) cannot be precisely defin
 
 This has profound consequences in modern physics. It allows for "virtual particles" to pop into existence out of the vacuum of empty space, provided they vanish back into the vacuum so quickly that the violation of the conservation of energy ($\Delta E$) is hidden by the uncertainty in time ($\Delta t$). The shorter the existence of the particle, the larger the energy it can temporarily borrow from the universe.
 
----
-
-### Chapter 29 Summary
+## Chapter 29 Summary
 
 * **Blackbody Radiation:** Classical physics failed to predict the emission spectrum of hot objects at short wavelengths, an issue known as the ultraviolet catastrophe. Max Planck resolved this by proposing that the atomic oscillators emitting the radiation possess quantized energy levels: $E_n = n h f$.
 * **The Photoelectric Effect:** Albert Einstein explained the ejection of electrons from metals by incident light by extending Planck's hypothesis. He proposed that light itself is quantized into discrete bundles called photons, each with energy $E = hf$. An electron is ejected only if a single photon's energy exceeds the metal's work function ($\Phi$): $K_{\text{max}} = hf - \Phi$.

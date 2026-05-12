@@ -425,8 +425,6 @@ $$W = \int_{\vec{r}_i}^{\vec{r}_f} \vec{F} \cdot d\vec{r}$$
 
 This formulation encompasses all previous definitions of work and forms the mathematical foundation for analyzing energy in complex, three-dimensional physical systems.
 
----
-
 ## Chapter Summary
 
 * **Work by a Constant Force:** Work ($W$) is done when a force causes a displacement. For a constant force, $W = Fd\cos\theta$, where $\theta$ is the angle between the force vector and the displacement vector. The SI unit of work is the Joule (J).

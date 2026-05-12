@@ -562,9 +562,7 @@ $$I(t) = -\frac{dQ}{dt} = \left(\frac{Q_0}{RC}\right) e^{-t/RC} = I_0 e^{-t/RC}$
 
 During discharge, both the charge on the capacitor and the current in the circuit decay exponentially, approaching zero as $t \rightarrow \infty$. In one time constant ($\tau = RC$), the charge and voltage drop to **36.8%** of their initial values.
 
----
-
-### Chapter Summary
+## Chapter Summary
 
 * **Electric Current ($I$):** The rate of flow of electric charge, $I = dQ/dt$. Its SI unit is the ampere (A). Conventional current flows in the direction of a presumed positive charge carrier, which is opposite to the physical drift velocity ($\vec{v}_d$) of electrons.
 * **Current Density ($\vec{J}$):** The current per unit cross-sectional area. It is related to drift velocity by $\vec{J} = nq\vec{v}_d$, where $n$ is the charge carrier number density.

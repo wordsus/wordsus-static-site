@@ -554,7 +554,7 @@ Imagine standing on a hillside, where your altitude represents the electric pote
 * The direction the ball rolls is the direction of the electric field $\vec{E}$.
 * The steepness of the hill at your exact location is the magnitude of the electric field.
 
-### Chapter Summary
+## Chapter Summary
 
 * **Electric Flux ($\Phi_E$):** A measure of the number of electric field lines passing through a surface. For a uniform field and flat surface, $\Phi_E = \vec{E} \cdot \vec{A} = EA\cos\theta$. For a varying field or curved surface, it is the surface integral $\Phi_E = \int \vec{E} \cdot d\vec{A}$.
 * **Gauss's Law:** States that the net electric flux through any hypothetical closed surface (Gaussian surface) is directly proportional to the net charge enclosed within it: $\oint \vec{E} \cdot d\vec{A} = \frac{q_{\text{enc}}}{\epsilon_0}$. It is most useful for calculating electric fields of highly symmetric charge distributions (planar, cylindrical, spherical).

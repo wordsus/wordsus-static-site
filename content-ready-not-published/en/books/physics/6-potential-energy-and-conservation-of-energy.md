@@ -491,9 +491,7 @@ If the $U(x)$ curve is perfectly horizontal over a region, the slope is continuo
 * *Mathematical condition:* $\frac{dU}{dx} = 0$ and $\frac{d^2U}{dx^2} = 0$
 * *Analogy:* A marble resting on a flat, horizontal table.
 
----
-
-### Chapter Summary
+## Chapter Summary
 
 * **Conservative Forces:** A force is conservative if the work it does on an object is independent of the path taken, or equivalently, if the net work done along any closed path is zero ($\oint \mathbf{F}_c \cdot d\mathbf{r} = 0$). Examples include gravity and ideal springs.
 * **Potential Energy ($U$):** Energy associated with the configuration of a system of objects interacting via a conservative force. The change in potential energy is defined as the negative of the work done by the conservative force: $\Delta U = -W_c$.

@@ -568,8 +568,6 @@ $$P_{\text{net}} = \sigma A e (T^4 - T_0^4)$$
 
 If $T > T_0$, $P_{\text{net}}$ is positive, and the object is cooling down. If $T < T_0$, $P_{\text{net}}$ is negative, and the object is gaining net energy from its surroundings.
 
----
-
 ## Chapter 15 Summary
 
 * **Temperature and the Zeroth Law:** The Zeroth Law of Thermodynamics states that if systems A and B are in thermal equilibrium with system C, they are in thermal equilibrium with each other. Temperature is the physical property that governs thermal equilibrium.

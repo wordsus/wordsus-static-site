@@ -370,8 +370,6 @@ $$ U_B = \int_{0}^{I} L I' \, dI' = \frac{1}{2} L I^2 $$
 
 This energy is recovered when the current decreases to zero, which is why an RL circuit can maintain a decaying current even after the main power source is removed.
 
----
-
 ## Chapter Summary
 
 * **Faraday's Law of Induction:** A changing magnetic flux $\Phi_B$ through a loop induces an electromotive force (EMF). The magnitude of the induced EMF is given by $\mathcal{E} = -d\Phi_B/dt$. Magnetic flux is defined as $\Phi_B = \int \mathbf{B} \cdot d\mathbf{A}$.

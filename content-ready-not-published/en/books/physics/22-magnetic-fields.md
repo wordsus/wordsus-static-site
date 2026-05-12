@@ -495,8 +495,6 @@ The Hall effect is of immense practical importance in modern physics and enginee
 2. **Semiconductor Physics:** The Hall effect is used to determine whether a semiconductor is "n-type" (electron dominant, $R_H < 0$) or "p-type" ("hole" dominant, $R_H > 0$).
 3. **Hall Effect Sensors:** If a material with a known carrier density is used, the equation can be inverted to solve for $B$. A tiny piece of semiconductor carrying a known constant current can act as a highly precise, solid-state magnetic field sensor, widely used in anti-lock braking systems, fluid flow sensors, and smartphone compasses.
 
----
-
 ## Chapter Summary
 
 * **The Magnetic Field and Force:** A magnetic field $\mathbf{B}$ exerts a magnetic force $\mathbf{F}_B$ on a moving charged particle. The force is perpendicular to both the particle's velocity $\mathbf{v}$ and the magnetic field. The fundamental equation is $\mathbf{F}_B = q\mathbf{v} \times \mathbf{B}$. Because the force is always perpendicular to velocity, a static magnetic field does no work on a charged particle and cannot change its kinetic energy.

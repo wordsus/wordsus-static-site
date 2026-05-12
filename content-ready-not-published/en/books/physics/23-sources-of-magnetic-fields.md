@@ -441,8 +441,6 @@ When an external magnetic field is applied, domains aligned with the field grow 
 * **Hysteresis:** When the external field is removed, the domains do not completely randomize. The material retains a "memory" of the applied field and becomes a permanent magnet.
 * **Curie Temperature:** If a ferromagnet is heated above a critical temperature called the Curie temperature ($T_C$), thermal agitation overwhelms the exchange coupling. The domains collapse, and the material becomes purely paramagnetic. For iron, $T_C = 1043 \text{ K}$.
 
----
-
 ## Chapter Summary
 
 * **The Biot-Savart Law:** Moving charges (currents) are the source of magnetic fields. The magnetic field $d\mathbf{B}$ created by a differential current element $I d\mathbf{s}$ is $d\mathbf{B} = \frac{\mu_0}{4\pi} \frac{I d\mathbf{s} \times \mathbf{\hat{r}}}{r^2}$. The magnetic field at the center of a circular loop of radius $R$ is $B = \frac{\mu_0 I}{2R}$.

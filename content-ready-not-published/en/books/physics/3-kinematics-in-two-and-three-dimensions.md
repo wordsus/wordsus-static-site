@@ -388,8 +388,6 @@ $$\tan\theta = \frac{v_{WE}}{v_{BW}}$$
 
 If the pilot wishes to travel exactly straight across the river to the target destination, they cannot point the boat straight across. They must point the boat upstream at an angle so that the downstream component of their heading perfectly cancels out the river's current. In that case, $\vec{v}_{BE}$ becomes the straight-across vector, and $\vec{v}_{BW}$ becomes the hypotenuse of the vector addition triangle.
 
----
-
 ## Chapter Summary
 
 * **Kinematic Vectors:** Motion in two and three dimensions is described using the position vector $\vec{r}$, displacement $\Delta\vec{r}$, velocity $\vec{v} = d\vec{r}/dt$, and acceleration $\vec{a} = d\vec{v}/dt$. The velocity vector is always tangent to the particle's path.

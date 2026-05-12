@@ -441,9 +441,7 @@ This static friction force is absolutely essential. If you attempt to accelerate
 
 Because static friction acts at a point that is momentarily at rest, it does zero work on the rolling object. This means that, unlike kinetic friction which transforms mechanical energy into thermal energy (heat), rolling without slipping **conserves mechanical energy**.
 
----
-
-### Chapter Summary
+## Chapter Summary
 
 * **Angular Kinematics:** The rotation of rigid bodies is described by angular position ($\theta$), angular velocity ($\omega = d\theta/dt$), and angular acceleration ($\alpha = d\omega/dt$). These are analogous to linear position, velocity, and acceleration.
 * **Constant Angular Acceleration:** When $\alpha$ is constant, the kinematic equations for rotation exactly mirror the 1D linear kinematic equations (e.g., $\omega_f = \omega_i + \alpha t$ and $\Delta\theta = \omega_i t + \frac{1}{2}\alpha t^2$).

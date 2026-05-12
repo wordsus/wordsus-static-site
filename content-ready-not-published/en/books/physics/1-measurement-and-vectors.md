@@ -48,16 +48,16 @@ Similarly, the unit of energy is the **joule (J)**, which is equivalent to a new
 
 Physicists study phenomena on vastly different scales, from the diameter of a proton to the width of the observable universe. To avoid writing unwieldy numbers with many zeros, the SI utilizes a standard set of prefixes that represent powers of ten. These prefixes are attached directly to the base or derived units.
 
-| Prefix | Symbol | Multiplier | \| | Prefix | Symbol | Multiplier |
+| Prefix | Symbol | Multiplier | &nbsp; | Prefix | Symbol | Multiplier |
 | --- | --- | --- | --- | --- | --- | --- |
-| yotta | Y | 10^24 | \| | deci | d | 10^-1 |
-| zetta | Z | 10^21 | \| | centi | c | 10^-2 |
-| exa | E | 10^18 | \| | milli | m | 10^-3 |
-| peta | P | 10^15 | \| | micro | μ | 10^-6 |
-| tera | T | 10^12 | \| | nano | n | 10^-9 |
-| giga | G | 10^9 | \| | pico | p | 10^-12 |
-| mega | M | 10^6 | \| | femto | f | 10^-15 |
-| kilo | k | 10^3 | \| | atto | a | 10^-18 |
+| yotta | Y | 10^24 | &nbsp; | deci | d | 10^-1 |
+| zetta | Z | 10^21 | &nbsp; | centi | c | 10^-2 |
+| exa | E | 10^18 | &nbsp; | milli | m | 10^-3 |
+| peta | P | 10^15 | &nbsp; | micro | μ | 10^-6 |
+| tera | T | 10^12 | &nbsp; | nano | n | 10^-9 |
+| giga | G | 10^9 | &nbsp; | pico | p | 10^-12 |
+| mega | M | 10^6 | &nbsp; | femto | f | 10^-15 |
+| kilo | k | 10^3 | &nbsp; | atto | a | 10^-18 |
 
 **Usage Examples:**
 
@@ -372,9 +372,7 @@ To analytically solve any vector addition problem:
 3. Sum all the $y$-components to find $R_y$.
 4. Recombine $R_x$ and $R_y$ using the Pythagorean theorem and inverse tangent to find the magnitude and direction of the final resultant vector $\vec{R}$.
 
----
-
-## Chapter 1 Summary
+## Chapter Summary
 
 * **The International System of Units (SI):** Physics relies on standardized measurements based on seven base quantities (length, mass, time, electric current, temperature, amount of substance, luminous intensity). These units are strictly defined by fundamental constants of the universe. Metric prefixes (kilo-, milli-, nano-, etc.) are used to express very large or very small numbers efficiently.
 * **Dimensional Analysis and Significant Figures:** Every physical quantity has a dimension (e.g., Length $[L]$, Mass $[M]$, Time $[T]$). Equations must be dimensionally consistent to be physically valid. Significant figures communicate the precision of a measurement; rules of arithmetic dictate that final calculations cannot be more precise than the least precise input data.

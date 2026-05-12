@@ -491,8 +491,6 @@ $$ 2d \sin \theta = m\lambda \quad \text{where } m = 1, 2, 3, \dots $$
 
 By exposing a crystal to X-rays of a known wavelength and measuring the angles $\theta$ at which strong diffraction peaks occur, scientists can calculate the spacing $d$ between various planes of atoms. This technique, known as X-ray crystallography, revolutionized modern physics and biology, allowing us to map the precise atomic structure of complex minerals, solid-state semiconductors, and biological macromolecules, most famously the double-helix structure of DNA.
 
----
-
 ## Chapter Summary
 
 **27.1 Conditions for Interference:** For stable interference patterns to be observed, light waves must be coherent (maintain a constant phase relationship), monochromatic (single wavelength), and have parallel planes of polarization. Ordinary light sources are incoherent; therefore, interference is typically observed by splitting a single coherent source (like a laser or a primary wave front) into multiple paths.

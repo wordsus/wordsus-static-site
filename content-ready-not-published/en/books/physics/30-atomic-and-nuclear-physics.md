@@ -531,8 +531,6 @@ $$ T_{1/2} = \frac{\ln 2}{\lambda} \approx \frac{0.693}{\lambda} $$
 
 Half-lives vary enormously depending on the isotope. For example, Uranium-238 has a half-life of 4.5 billion years (roughly the age of the Earth), Carbon-14 has a half-life of 5,730 years, and Francium-223 has a half-life of just 22 minutes.
 
----
-
 ## Chapter Summary
 
 **Chapter 30: Atomic and Nuclear Physics**

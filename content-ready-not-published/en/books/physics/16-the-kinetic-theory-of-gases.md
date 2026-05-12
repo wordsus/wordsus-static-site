@@ -449,8 +449,6 @@ $$f_{\text{coll}} = \frac{v_{avg}}{\lambda} = \sqrt{2} \pi d^2 v_{avg} \left(\fr
 
 At standard atmospheric pressure and room temperature, the mean free path of a typical air molecule is incredibly small—on the order of $10^{-7} \text{ m}$—and it undergoes billions of collisions every second.
 
----
-
 ## Chapter Summary
 
 * **The Ideal Gas Law:** The macroscopic state of an ideal gas is described by the equation $PV = nRT$, or $PV = N k_B T$, where $R$ is the universal gas constant and $k_B$ is the Boltzmann constant.

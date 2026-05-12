@@ -489,8 +489,6 @@ $$\sigma_{ind} = \sigma \left( 1 - \frac{1}{\kappa} \right)$$
 
 This equation confirms that the induced bound charge $\sigma_{ind}$ is always less than the free charge $\sigma$. If the dielectric were replaced by a vacuum ($\kappa = 1$), the equation yields $\sigma_{ind} = 0$, as expected. If the material were replaced by a perfect conductor (where the internal field must be zero, implying $\kappa \to \infty$), the equation yields $\sigma_{ind} = \sigma$, meaning the induced charges would completely cancel the external field.
 
----
-
 ## Chapter Summary
 
 * **Capacitance ($C$)** is defined as the ratio of the magnitude of the charge on either conductor to the magnitude of the potential difference between them: $C = \frac{Q}{V}$. The SI unit is the farad (F), where $1 \text{ F} = 1 \text{ C/V}$.

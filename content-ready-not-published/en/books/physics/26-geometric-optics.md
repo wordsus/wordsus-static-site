@@ -435,8 +435,6 @@ While the equations are identical to those used for mirrors, the **sign conventi
 
 By carefully applying these sign conventions, the thin lens equation becomes a powerful tool for designing multi-lens systems, such as microscopes, telescopes, and corrective eyewear.
 
----
-
 ## Chapter Summary
 
 In Chapter 26, we explored **Geometric Optics**, a model that treats light as rays traveling in straight lines. This approximation is highly accurate whenever the wavelength of light ($\lambda$) is significantly smaller than the physical dimensions of the obstacles or openings ($d$) it encounters.

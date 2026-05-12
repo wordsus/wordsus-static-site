@@ -547,8 +547,6 @@ $$x(t) = \int_{0}^{t} \left(\frac{1}{2}ct^2\right) dt = \left[\frac{1}{6}ct^3\ri
 
 In this scenario, the position depends on the *cube* of time, a relationship that cannot be modeled by our standard kinematic equations. Whenever a problem presents acceleration or velocity as a time-dependent function rather than a fixed number, calculus is the required tool for solving the motion.
 
----
-
 ## Chapter Summary
 
 * **Position, Displacement, and Distance:** Position is an object's location relative to a reference point. Displacement ($\Delta x$) is a vector representing the change in position ($\Delta x = x_f - x_i$). Distance is a scalar representing the total length of the path traveled.

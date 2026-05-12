@@ -557,8 +557,6 @@ This single equation explains how stringed instruments work:
 
 When a guitar string is plucked, it rarely vibrates in just one mode. Instead, its motion is a complex superposition of the fundamental frequency and many higher harmonics simultaneously. It is the specific mixture of these harmonics—determined by where and how the string is plucked—that gives each instrument its unique tone quality, or timbre.
 
----
-
 ## Chapter Summary
 
 * **Mechanical Waves:** A mechanical wave is a disturbance propagating through a medium, transferring energy and momentum without transporting the medium's matter. Waves can be classified as **transverse** (particle motion perpendicular to wave propagation) or **longitudinal** (particle motion parallel to wave propagation).

@@ -509,9 +509,7 @@ This equation is the profound justification for everything we have done in mecha
 
 If an artillery shell is fired in a parabolic trajectory and explodes mid-air into a thousand fragments, the internal forces of the explosion are immense. However, because those forces are internal, they do not affect the center of mass. Neglecting air resistance, the center of mass of the expanding cloud of shrapnel will continue to trace the exact same perfect parabola that the unbroken shell would have followed.
 
----
-
-### Chapter Summary
+## Chapter Summary
 
 * **Linear Momentum:** The linear momentum of a particle is a vector quantity defined as $\vec{p} = m\vec{v}$. Newton's second law can be expressed more generally as $\sum \vec{F} = \frac{d\vec{p}}{dt}$.
 * **Impulse:** Impulse ($\vec{J}$) is the time integral of the net force over a time interval. The impulse-momentum theorem states that the impulse applied to an object equals its change in momentum: $\vec{J} = \int \vec{F} dt = \Delta \vec{p}$.

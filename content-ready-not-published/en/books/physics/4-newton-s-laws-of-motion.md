@@ -458,8 +458,6 @@ $$ v_T = \sqrt{\frac{2mg}{C \rho A}} $$
 
 ```
 
----
-
 ## Chapter Summary
 
 * **Dynamics and Force:** Dynamics is the study of the causes of motion. A force is a vector quantity (measured in newtons, N) representing a push or pull. Mass is a scalar quantity measuring an object's inertia (resistance to changes in motion).

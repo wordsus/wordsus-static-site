@@ -431,8 +431,6 @@ Decreasing Wavelength (λ) -------------------------------------------->
 * **Production:** Emitted by the nuclei of radioactive atoms during nuclear decay, and in violent astrophysical events like supernovas and black hole accretion.
 * **Characteristics & Applications:** Gamma rays are the most energetic, highest-frequency waves in the electromagnetic spectrum. They are immensely penetrating and destructive to biological tissue. Paradoxically, this same destructive property allows them to be used in targeted radiation therapy to destroy cancer cells.
 
----
-
 ## Chapter Summary
 
 **Displacement Current and Maxwell's Equations:**

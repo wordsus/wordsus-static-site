@@ -450,9 +450,7 @@ As the physicist John Archibald Wheeler elegantly summarized: *"Spacetime grips 
 
 General Relativity replaces Newton's laws in extreme environments—such as near black holes or the expanding universe—but for everyday engineering and orbital mechanics, Newton's laws remain an incredibly accurate and mathematically simpler approximation of spacetime curvature.
 
----
-
-### Chapter Summary
+## Chapter Summary
 
 * **Newton's Law of Universal Gravitation:** Every particle attracts every other particle with a force proportional to the product of their masses and inversely proportional to the square of their distance: $F_g = G(m_1 m_2)/r^2$. The Shell Theorem allows us to treat uniform spherical bodies as point masses located at their centers.
 * **Gravitational Potential Energy:** Over large distances where $g$ is not constant, the potential energy of a two-mass system is $U = -G(Mm)/r$. The zero-point of potential energy is defined at an infinite distance. Total mechanical energy is conserved in orbital systems.

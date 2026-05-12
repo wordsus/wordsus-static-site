@@ -524,9 +524,7 @@ $$E^2 = (pc)^2 \implies E = pc$$
 
 This proves that massless particles can, and indeed must, possess momentum. As we will see in Chapter 29, light itself consists of massless particles called photons. A photon has no rest mass, but because it travels at $c$, it possesses both energy and momentum, exerting radiation pressure on anything it strikes (as previewed in Chapter 25).
 
----
-
-### Chapter 28 Summary
+## Chapter 28 Summary
 
 * **The Postulates of Special Relativity:**
 
