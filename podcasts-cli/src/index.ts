@@ -39,11 +39,13 @@ async function main() {
     const session = await runStep0(defaultEpisodeArg);
     
     let exitRequested = false;
+    let lastChoice: number = 1;
 
     while (!exitRequested) {
       console.log();
       const choice = await select({
         message: C.primary.bold("Main Menu: Choose the next step to execute"),
+        default: lastChoice,
         choices: [
           { name: "1. Create JSON Metadata files", value: 1 },
           { name: "2. Copy Article URLs (NotebookLM)", value: 2 },
@@ -55,6 +57,10 @@ async function main() {
           { name: C.danger("0. Exit program"), value: 0 },
         ],
       });
+
+      if (choice !== 0) {
+        lastChoice = choice;
+      }
 
       try {
         switch (choice) {

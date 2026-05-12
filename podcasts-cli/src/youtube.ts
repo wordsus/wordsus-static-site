@@ -19,6 +19,10 @@ DESCRIPTION
 -----------
 {description}
 
+SCHEDULED TIME
+--------------
+15:30 PM
+
 VIDEO FILE
 ----------
 {video_file}

@@ -7,7 +7,7 @@ import fs from "fs";
 import path from "path";
 import { confirm } from "@inquirer/prompts";
 import { config } from "../config.js";
-import { printStep, ok, err, info, C, divider } from "../ui.js";
+import { printStep, ok, err, info, C, divider, formatDuration } from "../ui.js";
 import { logStep, log } from "../logger.js";
 import type { SessionState } from "../types.js";
 import { discoverEpisodes, outputsDir, findAudioFile, findImageFile, findVideoFile, saveLastEpisode } from "../filesystem.js";
@@ -39,6 +39,8 @@ export async function runStep6(session: SessionState): Promise<void> {
 
   logStep(6, `Starting generation of ${episodes.length} videos...`);
 
+  const stepStartTime = Date.now();
+  let totalRenderTimeMs = 0;
   let doneCount = 0;
   let skippedCount = 0;
   const errors: { alias: string; error: any }[] = [];
@@ -75,6 +77,8 @@ export async function runStep6(session: SessionState): Promise<void> {
       // Read metadata for YouTube info
       const metadata = JSON.parse(fs.readFileSync(jsonPath, "utf-8"));
 
+      const renderStartTime = Date.now();
+
       // Run FFmpeg
       await runFFmpeg({
         audioFile,
@@ -93,6 +97,10 @@ export async function runStep6(session: SessionState): Promise<void> {
       });
       process.stdout.write("\n");
 
+      const renderEndTime = Date.now();
+      const renderDuration = renderEndTime - renderStartTime;
+      totalRenderTimeMs += renderDuration;
+
       // Generate YouTube info
       generateYoutubeInfo({
         infoPath: outputInfo,
@@ -107,7 +115,8 @@ export async function runStep6(session: SessionState): Promise<void> {
         info(`Thumbnail copied: ${path.basename(destThumbnail)}`);
       }
 
-      ok(`Done — ${alias}`);
+      const elapsedSoFar = Date.now() - stepStartTime;
+      ok(`Done — ${alias} in ${C.accent(formatDuration(renderDuration))} (Total elapsed: ${C.muted(formatDuration(elapsedSoFar))})`);
       doneCount++;
     } catch (e) {
       err(`Failed to process ${alias}: ${e}`);
@@ -116,11 +125,15 @@ export async function runStep6(session: SessionState): Promise<void> {
     }
   }
 
+  const finalTotalTime = Date.now() - stepStartTime;
+
   divider();
   if (errors.length > 0) {
     err(`${errors.length} episode(s) failed to process.`);
   }
   ok(`All episodes processed — ${doneCount} rendered, ${skippedCount} skipped.`);
+  info(`Total rendering time: ${C.accent(formatDuration(totalRenderTimeMs))}`);
+  info(`Total step duration:  ${C.accent(formatDuration(finalTotalTime))}`);
 
   // Save the episode number to last-episode.log
   saveLastEpisode(session.defaultEpisode);
