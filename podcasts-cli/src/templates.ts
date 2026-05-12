@@ -2,8 +2,8 @@
  * Template engine — resolves and renders prompt templates.
  *
  * Resolution priority:
- *   1. podcasts-cli/templates/<alias>/<template-name>.md  (book-specific override)
- *   2. podcasts-cli/templates/<template-name>.md           (general)
+ *   1. podcasts-cli/templates/<alias>/<template-name>.txt  (book-specific override)
+ *   2. podcasts-cli/templates/<template-name>.txt           (general)
  *
  * Supported variables (replaced with {{VARIABLE_NAME}} syntax):
  *   {{PODCAST_NAME}}      → book.podcast
@@ -29,12 +29,12 @@ export type TemplateName = "audio-prompt" | "image-prompt";
  * Resolves the path to a template, checking book-specific overrides first.
  */
 export function resolveTemplatePath(book: BookConfig, name: TemplateName): string {
-  const overridePath = path.join(templatesDir, book.alias, `${name}.md`);
+  const overridePath = path.join(templatesDir, book.alias, `${name}.txt`);
   if (fs.existsSync(overridePath)) return overridePath;
-  const generalPath = path.join(templatesDir, `${name}.md`);
+  const generalPath = path.join(templatesDir, `${name}.txt`);
   if (!fs.existsSync(generalPath)) {
     throw new Error(
-      `Template "${name}.md" not found. Create it at:\n  ${generalPath}`
+      `Template "${name}.txt" not found. Create it at:\n  ${generalPath}`
     );
   }
   return generalPath;

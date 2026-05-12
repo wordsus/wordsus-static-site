@@ -42,7 +42,7 @@ export async function runStep3(session: SessionState): Promise<void> {
     await clipboard.write(prompt);
     clipboardNotice(`${book.alias} — audio prompt`, `[${book.podcast}] Ep. ${target.episodeNumber}: ${chapter.title}`);
 
-    info(`  ${C.muted("Template:")} ${book.alias}/audio-prompt.md (or general)`);
+    info(`  ${C.muted("Template:")} ${book.alias}/audio-prompt.txt (or general)`);
 
     await confirm({
       message: C.white(`Paste this prompt into the ${book.alias} NotebookLM, then press Enter`),
