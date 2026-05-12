@@ -47,8 +47,8 @@ export async function runStep6(session: SessionState): Promise<void> {
 
   for (const ep of episodes) {
     const { alias, jsonPath } = ep;
-    const outputVideo = path.join(outputsDir(), `${alias}.mp4`);
-    const outputInfo = path.join(outputsDir(), `${alias}_upload_info.txt`);
+    const outputVideo = path.join(outputsDir(), `${alias}-1.mp4`);
+    const outputInfo = path.join(outputsDir(), `${alias}-3_upload_info.txt`);
 
     divider();
     info(`Processing: ${C.primary.bold(alias)}`);
@@ -110,7 +110,7 @@ export async function runStep6(session: SessionState): Promise<void> {
 
       // Copy thumbnail if it's an image
       if (bgImage) {
-        const destThumbnail = path.join(outputsDir(), `${alias}${path.extname(bgImage)}`);
+        const destThumbnail = path.join(outputsDir(), `${alias}-2${path.extname(bgImage)}`);
         fs.copyFileSync(bgImage, destThumbnail);
         info(`Thumbnail copied: ${path.basename(destThumbnail)}`);
       }
