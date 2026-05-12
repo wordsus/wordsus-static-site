@@ -205,3 +205,15 @@ export function saveLastEpisode(episode: number): void {
   fs.writeFileSync(logFile, episode.toString(), "utf-8");
   log("INFO", `Saved last episode (${episode}) to ${logFile}`);
 }
+
+export function getLastEpisode(): number | null {
+  const logFile = path.join(logsDir(), "last-episode.log");
+  if (!fs.existsSync(logFile)) return null;
+  try {
+    const content = fs.readFileSync(logFile, "utf-8").trim();
+    const num = parseInt(content, 10);
+    return isNaN(num) ? null : num;
+  } catch (e) {
+    return null;
+  }
+}

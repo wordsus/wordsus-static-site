@@ -1,0 +1,158 @@
+{
+  "slug": "kubernetes",
+  "locale": "es",
+  "title": "Kubernetes para DevOps",
+  "subtitle": "Domina el ecosistema de orquestación paso a paso",
+  "author": "Wordsus Team",
+  "description": "Explora Kubernetes desde sus fundamentos arquitectónicos hasta la administración avanzada y el ecosistema Cloud Native. Aprende a gestionar cargas de trabajo, redes, almacenamiento, seguridad, observabilidad y despliegues mediante prácticas de GitOps y automatización.",
+  "cover": "/images/books/kubernetes-es-cover.jpeg",
+  "category": "infraestructura-cloud-devops",
+  "tags": [
+    "kubernetes",
+    "k8s",
+    "devops",
+    "orquestacion",
+    "cloud-native"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-11",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "fundamentos-y-arquitectura-base",
+      "title": "Fundamentos y Arquitectura Base",
+      "order": 1,
+      "description": "Aprende sobre Evolución de la infraestructura, Container Runtimes, Anatomía de un Clúster de Kubernetes, El Plano de Control, Los Nodos de Trabajo y Conceptos de Alta Disponibilidad.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "interaccion-y-objetos-primitivos",
+      "title": "Interacción y Objetos Primitivos",
+      "order": 2,
+      "description": "Aprende sobre Configuración de kubectl y kubeconfig, El paradigma declarativo con manifiestos YAML y JSON, Pods, Namespaces y Ciclo de vida de un Pod.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gestion-de-cargas-de-trabajo-workloads",
+      "title": "Gestión de Cargas de Trabajo (Workloads)",
+      "order": 3,
+      "description": "Aprende sobre ReplicaSets, Deployments y estrategias de Rollout, StatefulSets, DaemonSets, y la ejecución de tareas con Jobs y CronJobs.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "redes-y-descubrimiento-de-servicios-networking",
+      "title": "Redes y Descubrimiento de Servicios (Networking)",
+      "order": 4,
+      "description": "Aprende sobre El modelo de red de Kubernetes y CNI, DNS interno, Services (ClusterIP, NodePort, LoadBalancer), Ingress, Gateway API y Network Policies.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "almacenamiento-persistente-storage",
+      "title": "Almacenamiento Persistente (Storage)",
+      "order": 5,
+      "description": "Aprende sobre Volúmenes efímeros, Persistent Volumes (PV) y Persistent Volume Claims (PVC), Storage Classes, Container Storage Interface (CSI) y Estrategias de retención.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "configuracion-y-gestion-de-secretos",
+      "title": "Configuración y Gestión de Secretos",
+      "order": 6,
+      "description": "Aprende sobre ConfigMaps, Secrets, Encriptación de secretos en reposo y la integración con bóvedas externas como HashiCorp Vault.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "planificacion-y-asignacion-avanzada-scheduling",
+      "title": "Planificación y Asignación Avanzada (Scheduling)",
+      "order": 7,
+      "description": "Aprende sobre Labels, Selectors, Annotations, Requests y Limits (QoS), Node Selectors, Affinity y Anti-Affinity, Taints y Tolerations, y Resource Quotas.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "seguridad-y-gobernanza",
+      "title": "Seguridad y Gobernanza",
+      "order": 8,
+      "description": "Aprende sobre Autenticación y Autorización, Control de Acceso Basado en Roles (RBAC), Service Accounts, Security Contexts, Admission Controllers y Políticas como Código.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "observabilidad-resiliencia-y-monitoreo",
+      "title": "Observabilidad, Resiliencia y Monitoreo",
+      "order": 9,
+      "description": "Aprende sobre Probes de Salud (Liveness, Readiness, Startup), Arquitectura de Monitoreo con Prometheus y Grafana, Centralización de Logs y Trazabilidad Distribuida.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "autoscalado-y-optimizacion-de-capacidad",
+      "title": "Autoscalado y Optimización de Capacidad",
+      "order": 10,
+      "description": "Aprende sobre Horizontal Pod Autoscaler (HPA), Vertical Pod Autoscaler (VPA), Cluster Autoscaler, Aprovisionamiento con Karpenter y KEDA.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "empaquetado-ci-cd-y-gitops",
+      "title": "Empaquetado, CI/CD y GitOps",
+      "order": 11,
+      "description": "Aprende sobre Helm, Kustomize, Integración Continua enfocada en contenedores, y la implementación de la filosofía GitOps con herramientas como ArgoCD o FluxCD.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "administracion-operaciones-dia-2-y-troubleshooting",
+      "title": "Administración, Operaciones \"Día 2\" y Troubleshooting",
+      "order": 12,
+      "description": "Aprende sobre Estrategias de Bootstrapping, Upgrades de clúster, Estrategias de Backup con Velero, Depuración avanzada de eventos y contenedores, y Troubleshooting de red.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ecosistema-avanzado-y-extensiones-nivel-senior-arquitecto",
+      "title": "Ecosistema Avanzado y Extensiones (Nivel Senior/Arquitecto)",
+      "order": 13,
+      "description": "Aprende sobre la extensión de la API mediante CRDs, El Patrón Operador, Service Meshes (Istio, Linkerd), Arquitecturas Multi-clúster, Serverless (Knative) y Kubernetes Edge.",
+      "audioUrl": ""
+    }
+  ],
+  "parts": [
+    {
+      "title": "Parte I: Fundamentos, Arquitectura y Primitivas",
+      "chapterSlugs": [
+        "fundamentos-y-arquitectura-base",
+        "interaccion-y-objetos-primitivos"
+      ]
+    },
+    {
+      "title": "Parte II: Workloads, Redes y Almacenamiento",
+      "chapterSlugs": [
+        "gestion-de-cargas-de-trabajo-workloads",
+        "redes-y-descubrimiento-de-servicios-networking",
+        "almacenamiento-persistente-storage"
+      ]
+    },
+    {
+      "title": "Parte III: Configuración, Planificación y Seguridad",
+      "chapterSlugs": [
+        "configuracion-y-gestion-de-secretos",
+        "planificacion-y-asignacion-avanzada-scheduling",
+        "seguridad-y-gobernanza"
+      ]
+    },
+    {
+      "title": "Parte IV: Operaciones de Escala: Monitoreo y Autoscalado",
+      "chapterSlugs": [
+        "observabilidad-resiliencia-y-monitoreo",
+        "autoscalado-y-optimizacion-de-capacidad"
+      ]
+    },
+    {
+      "title": "Parte V: Despliegues y Operaciones de Día 2",
+      "chapterSlugs": [
+        "empaquetado-ci-cd-y-gitops",
+        "administracion-operaciones-dia-2-y-troubleshooting"
+      ]
+    },
+    {
+      "title": "Parte VI: Arquitectura Avanzada y Ecosistema",
+      "chapterSlugs": [
+        "ecosistema-avanzado-y-extensiones-nivel-senior-arquitecto"
+      ]
+    }
+  ]
+}
