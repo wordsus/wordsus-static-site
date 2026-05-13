@@ -1,0 +1,116 @@
+{
+  "slug": "bash",
+  "locale": "es",
+  "title": "Bash para DevOps",
+  "subtitle": "Ingeniería de automatización escalable y segura",
+  "author": "Wordsus Team",
+  "description": "Domina el scripting en Bash desde los fundamentos arquitectónicos hasta patrones de diseño DevOps. Una guía práctica para construir automatizaciones seguras, resilientes y eficientes en entornos Linux.",
+  "cover": "/images/books/bash-es-cover.jpeg",
+  "category": "programacion",
+  "tags": [
+    "bash",
+    "devops",
+    "scripting",
+    "linux",
+    "automatizacion"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-13",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "arquitectura-y-entorno-de-ejecucion",
+      "title": "Arquitectura y Entorno de Ejecución",
+      "order": 1,
+      "description": "Aprende sobre Anatomía del entorno, El \"Strict Mode\" no oficial de Bash, Opciones avanzadas del shell, Contextos de ejecución...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "manipulacion-avanzada-de-datos-y-variables",
+      "title": "Manipulación Avanzada de Datos y Variables",
+      "order": 2,
+      "description": "Aprende sobre Expansión de parámetros a nivel experto, Expansión indirecta, Arreglos indexados y asociativos, Referencias a nombres...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "control-de-flujo-a-nivel-experto",
+      "title": "Control de Flujo a Nivel Experto",
+      "order": 3,
+      "description": "Aprende sobre Pruebas condicionales extendidas, Evaluación de Expresiones Regulares, Estructuras case avanzadas, Interfaces CLI...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "funciones-scope-y-modularidad",
+      "title": "Funciones, Scope y Modularidad",
+      "order": 4,
+      "description": "Aprende sobre Control estricto del alcance, Estrategias avanzadas para retornar datos, Desempaquetado seguro, Arquitectura modular...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "descriptores-de-archivos-y-manejo-de-io-complejo",
+      "title": "Descriptores de Archivos y Manejo de I/O Complejo",
+      "order": 5,
+      "description": "Aprende sobre Manipulación de descriptores de archivos, Redirección persistente, Sustitución de procesos, Here-Documents, Coprocesos...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "concurrencia-senales-y-gestion-de-procesos",
+      "title": "Concurrencia, Señales y Gestión de Procesos",
+      "order": 6,
+      "description": "Aprende sobre Control nativo de Jobs, Técnicas de paralelización, Manejo avanzado de señales POSIX, Sincronización y bloqueos...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "debugging-testing-y-calidad-de-codigo",
+      "title": "Debugging, Testing y Calidad de Código",
+      "order": 7,
+      "description": "Aprende sobre Técnicas de rastreo de ejecución, Trazabilidad de errores, Análisis estático con ShellCheck, TDD con BATS...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "seguridad-y-resiliencia-para-infraestructura",
+      "title": "Seguridad y Resiliencia para Infraestructura",
+      "order": 8,
+      "description": "Aprende sobre Manejo seguro de archivos temporales, Gestión de secretos en memoria, Prevención de Inyección de Comandos, Arquitectura de scripts idempotentes...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "patrones-de-diseno-y-estructuras-devops",
+      "title": "Patrones de Diseño y Estructuras DevOps",
+      "order": 9,
+      "description": "Aprende sobre Parsers de argumentos robustos, Desarrollo de Wrappers arquitectónicos, Consumo de APIs REST, Patrones de despliegue...",
+      "audioUrl": ""
+    }
+  ],
+  "parts": [
+    {
+      "title": "Parte I: Fundamentos y Lógica Avanzada",
+      "chapterSlugs": [
+        "arquitectura-y-entorno-de-ejecucion",
+        "manipulacion-avanzada-de-datos-y-variables",
+        "control-de-flujo-a-nivel-experto"
+      ]
+    },
+    {
+      "title": "Parte II: Modularidad e I/O",
+      "chapterSlugs": [
+        "funciones-scope-y-modularidad",
+        "descriptores-de-archivos-y-manejo-de-io-complejo"
+      ]
+    },
+    {
+      "title": "Parte III: Concurrencia y Calidad de Código",
+      "chapterSlugs": [
+        "concurrencia-senales-y-gestion-de-procesos",
+        "debugging-testing-y-calidad-de-codigo"
+      ]
+    },
+    {
+      "title": "Parte IV: Prácticas DevOps y Seguridad",
+      "chapterSlugs": [
+        "seguridad-y-resiliencia-para-infraestructura",
+        "patrones-de-diseno-y-estructuras-devops"
+      ]
+    }
+  ]
+}
