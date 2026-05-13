@@ -30,6 +30,26 @@ export const config = {
   siteBaseUrl: "https://wordsus.com",
 
   /**
+   * Scheduling settings for YouTube uploads.
+   * baseDate is the anchor point: episode 1 is scheduled on this date.
+   * Each subsequent episode adds 1 day.
+   * Derived from: episode 16 → May 15, 2026 → baseDate = April 30, 2026.
+   */
+  schedule: {
+    /**
+     * Anchor date for episode scheduling (YYYY-MM-DD).
+     * Episode 1 is scheduled on this date; each subsequent episode adds 1 day.
+     * Derived from: episode 16 → May 15, 2026 → baseDate = April 30, 2026.
+     */
+    baseDate: "2026-04-30",
+    /**
+     * Fixed upload time shown in the YouTube info file.
+     * Format: 12-hour clock with AM/PM, e.g. "3:30 PM".
+     */
+    scheduledTime: "3:30 PM",
+  },
+
+  /**
    * Video generation settings.
    */
   video: {

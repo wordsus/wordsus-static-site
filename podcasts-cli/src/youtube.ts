@@ -1,6 +1,21 @@
 import fs from "fs";
 import path from "path";
+import { config } from "./config.js";
 import { log } from "./logger.js";
+
+/**
+ * Calculates the scheduled date for a given episode number.
+ * The date is derived from config.schedule.baseDate + (episode - 1) days.
+ */
+function getScheduledDate(episodeNumber: number): string {
+  const base = new Date(`${config.schedule.baseDate}T00:00:00`);
+  base.setDate(base.getDate() + (episodeNumber - 1));
+  return base.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+}
 
 const YOUTUBE_INFO_TEMPLATE = `\
 ══════════════════════════════════════════════════
@@ -17,7 +32,8 @@ DESCRIPTION
 
 SCHEDULED TIME
 --------------
-3:30 PM
+{date}
+{time}
 
 ══════════════════════════════════════════════════
 `;
@@ -47,6 +63,8 @@ export function generateYoutubeInfo(params: {
     .replaceAll("{episode}", metadata.episode || "N/A")
     .replaceAll("{title}", metadata.title || "N/A")
     .replaceAll("{description}", fullDescription)
+    .replaceAll("{date}", getScheduledDate(Number(metadata.episode) || 1))
+    .replaceAll("{time}", config.schedule.scheduledTime)
     .replaceAll("{video_file}", path.basename(videoFile));
 
   fs.writeFileSync(infoPath, content, "utf-8");

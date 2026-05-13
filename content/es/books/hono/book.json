@@ -1,0 +1,116 @@
+{
+  "slug": "hono",
+  "locale": "es",
+  "title": "Hono",
+  "subtitle": "Arquitectura de Software en el Edge",
+  "author": "Wordsus Team",
+  "description": "Domina Hono, el framework web más rápido y agnóstico al runtime. Aprende a construir aplicaciones escalables y ultra-rápidas aprovechando las Web Standard APIs y la potencia del Edge computing.",
+  "cover": "/images/books/hono-es-cover.jpeg",
+  "category": "programacion",
+  "tags": [
+    "hono",
+    "edge-computing",
+    "typescript",
+    "cloudflare-workers",
+    "backend"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-13",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "fundamentos-core-y-arquitectura-de-hono",
+      "title": "Fundamentos Core y Arquitectura de Hono",
+      "order": 1,
+      "description": "Aprende sobre La filosofía Web Standard APIs, El núcleo agnóstico, El ciclo de vida de una petición, Configuración de TypeScript estricto...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "enrutamiento-avanzado-y-estructuras-de-datos",
+      "title": "Enrutamiento Avanzado y Estructuras de Datos",
+      "order": 2,
+      "description": "Aprende sobre Anatomía de la instancia principal, Disección de los Enrutadores, Modularización extrema, Manejo avanzado de rutas dinámicas...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "dominio-total-del-objeto-context",
+      "title": "Dominio Total del Objeto Context (c)",
+      "order": 3,
+      "description": "Aprende sobre Tipado genérico avanzado del Contexto, Interacción directa con Request y Response, Mutación de estado seguro, APIs de conveniencia vs. Control manual...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "middleware-interceptores-y-arquitectura-onion",
+      "title": "Middleware, Interceptores y Arquitectura Onion",
+      "order": 4,
+      "description": "Aprende sobre El modelo Onion, Middlewares nativos esenciales, Creación de middlewares personalizados, Manejo de Autenticación en el Edge...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "validacion-type-safety-y-rpc",
+      "title": "Validación, Type Safety End-to-End y RPC",
+      "order": 5,
+      "description": "Aprende sobre Validación de esquemas con zod-validator, Validación granular, Hono RPC (Client), Inferencia de tipos de respuestas complejas...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "integracion-profunda-con-cloudflare-workers",
+      "title": "Integración Profunda con Cloudflare Workers",
+      "order": 6,
+      "description": "Aprende sobre Inyección estricta de Bindings, Hono y Durable Objects, Manejo de WebSockets, Procesamiento en background...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "hono-jsx-y-ssr",
+      "title": "Hono JSX y SSR (Server-Side Rendering)",
+      "order": 7,
+      "description": "Aprende sobre El motor Hono JSX, Componentes asíncronos y SSR, Uso de <Suspense>, Hono + HTMX...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "testing-arquitectura-limpia-y-monorepos",
+      "title": "Testing, Arquitectura Limpia y Monorepos",
+      "order": 8,
+      "description": "Aprende sobre Patrones de Arquitectura Limpia, Hono en entornos de Monorepo, Testing Unitario y de Integración, Setup avanzado de Vitest y Miniflare...",
+      "audioUrl": ""
+    },
+    {
+      "slug": "internals-performance-y-casos-especiales",
+      "title": "Internals, Performance y Casos Especiales",
+      "order": 9,
+      "description": "Aprende sobre Perfilado de memoria, Contexto de ejecución en entornos serverless, Escribiendo adaptadores personalizados, Contribución al core...",
+      "audioUrl": ""
+    }
+  ],
+  "parts": [
+    {
+      "title": "Parte I: Fundamentos y Núcleo de Hono",
+      "chapterSlugs": [
+        "fundamentos-core-y-arquitectura-de-hono",
+        "enrutamiento-avanzado-y-estructuras-de-datos",
+        "dominio-total-del-objeto-context"
+      ]
+    },
+    {
+      "title": "Parte II: Middleware y Seguridad",
+      "chapterSlugs": [
+        "middleware-interceptores-y-arquitectura-onion",
+        "validacion-type-safety-y-rpc"
+      ]
+    },
+    {
+      "title": "Parte III: Ecosistema y Renderizado",
+      "chapterSlugs": [
+        "integracion-profunda-con-cloudflare-workers",
+        "hono-jsx-y-ssr"
+      ]
+    },
+    {
+      "title": "Parte IV: Ingeniería y Performance",
+      "chapterSlugs": [
+        "testing-arquitectura-limpia-y-monorepos",
+        "internals-performance-y-casos-especiales"
+      ]
+    }
+  ]
+}
