@@ -138,15 +138,15 @@ export async function getChapterContent(
     .use(rehypeStringify, { allowDangerousHtml: true })
     .process(raw);
 
-  // Add IDs to headings in HTML
+  // Add IDs to headings in HTML using the pre-computed TOC ids so they
+  // always match what was stored in toc[].id (raw-markdown-based slugs).
+  // Re-deriving IDs from rendered HTML fails for LaTeX headings because
+  // KaTeX converts e.g. \Delta → Unicode Δ which the slug regex then strips.
   let html = result.toString();
-  html = html.replace(/<(h[1-3])>(.*?)<\/h[1-3]>/g, (_, tag, content) => {
-    const id = content
-      .replace(/<[^>]+>/g, "") // Strip HTML tags like <code>
-      .toLowerCase()
-      .replace(/[^a-z0-9\s-]/g, "")
-      .trim()
-      .replace(/\s+/g, "-");
+  let headingIndex = 0;
+  html = html.replace(/<(h[1-3])>([\s\S]*?)<\/h[1-3]>/g, (_, tag, content) => {
+    const id = toc[headingIndex]?.id ?? "";
+    headingIndex++;
     return `<${tag} id="${id}">${content}</${tag}>`;
   });
 

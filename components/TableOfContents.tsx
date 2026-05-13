@@ -5,6 +5,7 @@ import Link from "next/link";
 import { clsx } from "clsx";
 import type { TocItem } from "@/lib/types";
 import { useTranslations } from "next-intl";
+import katex from "katex";
 
 interface TableOfContentsProps {
   toc: TocItem[];
@@ -43,8 +44,42 @@ export default function TableOfContents({ toc, onClick }: TableOfContentsProps) 
           .filter((item) => item.level >= 2 && item.level <= 3)
           .map((item) => {
             const renderText = (text: string) => {
-              const parts = text.split(/(`[^`]+`)/g);
+              // Split on display math ($$...$$), inline math ($...$), and inline code (`...`)
+              const parts = text.split(/(``?[^`]+``?|\$\$[\s\S]+?\$\$|\$[^$]+\$)/g);
               return parts.map((part, i) => {
+                // Display math $$...$$
+                if (part.startsWith("$$") && part.endsWith("$$")) {
+                  const math = part.slice(2, -2);
+                  try {
+                    return (
+                      <span
+                        key={i}
+                        dangerouslySetInnerHTML={{
+                          __html: katex.renderToString(math, { displayMode: true, throwOnError: false }),
+                        }}
+                      />
+                    );
+                  } catch {
+                    return <span key={i}>{part}</span>;
+                  }
+                }
+                // Inline math $...$
+                if (part.startsWith("$") && part.endsWith("$")) {
+                  const math = part.slice(1, -1);
+                  try {
+                    return (
+                      <span
+                        key={i}
+                        dangerouslySetInnerHTML={{
+                          __html: katex.renderToString(math, { displayMode: false, throwOnError: false }),
+                        }}
+                      />
+                    );
+                  } catch {
+                    return <span key={i}>{part}</span>;
+                  }
+                }
+                // Inline code `...`
                 if (part.startsWith("`") && part.endsWith("`")) {
                   return (
                     <code key={i} className="bg-[hsl(var(--muted))] px-1 rounded font-mono text-[0.95em] text-[hsl(var(--primary))]">

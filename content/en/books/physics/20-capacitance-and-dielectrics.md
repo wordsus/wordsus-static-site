@@ -26,8 +26,6 @@ $$1 \text{ F} = 1 \text{ C/V}$$
 
 Because the coulomb is an exceptionally large unit of charge, the farad is consequently a very large unit of capacitance. In practical circuits, you will frequently encounter microfarads ($\mu\text{F}$, $10^{-6}\text{ F}$), nanofarads ($\text{nF}$, $10^{-9}\text{ F}$), and picofarads ($\text{pF}$, $10^{-12}\text{ F}$).
 
----
-
 ### A General Strategy for Calculating Capacitance
 
 To calculate the capacitance of a specific geometric arrangement of two conductors, you can follow a straightforward, four-step process:
@@ -42,8 +40,6 @@ $$V = \int_{-}^{+} \vec{E} \cdot d\vec{s}$$
 4. **Calculate $C$:** Substitute the expression for $V$ into the definition $C = \frac{Q}{V}$. The variable $Q$ will cancel out, leaving an expression dependent only on geometry and fundamental constants.
 
 Let us apply this strategy to three classic capacitor geometries: parallel plates, coaxial cylinders, and concentric spheres.
-
----
 
 ### 1. The Parallel-Plate Capacitor
 
@@ -78,8 +74,6 @@ $$C = \frac{Q}{V} = \frac{Q}{\left(\frac{Qd}{\epsilon_0 A}\right)} = \frac{\epsi
 
 This elegant result confirms that capacitance depends only on geometry. To increase the capacitance of a parallel-plate capacitor, you must either increase the plate area $A$ or decrease the separation distance $d$.
 
----
-
 ### 2. The Cylindrical Capacitor
 
 Consider a solid cylindrical conductor of radius $a$ surrounded by a coaxial cylindrical conducting shell of inner radius $b$. Let the length of both cylinders be $L$, where $L \gg b$ so we can neglect end effects. This is the basic geometry of a coaxial cable used in telecommunications.
@@ -99,8 +93,6 @@ $$V = \int_{a}^{b} E \, dr = \int_{a}^{b} \frac{Q}{2\pi\epsilon_0 L r} \, dr = \
 $$C = \frac{Q}{V} = \frac{Q}{\left[ \frac{Q}{2\pi\epsilon_0 L} \ln\left(\frac{b}{a}\right) \right]} = \frac{2\pi\epsilon_0 L}{\ln(b/a)}$$
 
 Here, capacitance scales linearly with the length $L$ of the cylinder and is heavily dependent on the ratio of the outer to inner radii.
-
----
 
 ### 3. The Spherical Capacitor
 
@@ -179,8 +171,6 @@ This logic easily extends to any number of capacitors, $n$, connected in paralle
 $$C_{eq} = C_1 + C_2 + C_3 + \dots + C_n = \sum_{i=1}^{n} C_i \quad \text{(Parallel Combination)}$$
 
 **Key Insight:** Connecting capacitors in parallel always results in an equivalent capacitance that is *greater* than any of the individual capacitances in the group. Physically, connecting capacitors in parallel is equivalent to increasing the total surface area of the capacitor plates, which proportionally increases the capacity to store charge.
-
----
 
 ### Capacitors in Series
 

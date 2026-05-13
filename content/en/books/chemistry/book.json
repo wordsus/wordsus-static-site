@@ -1,0 +1,236 @@
+{
+  "slug": "chemistry",
+  "locale": "en",
+  "title": "Fundamentals of Chemistry",
+  "subtitle": "A Comprehensive Study of Matter and Reactivity",
+  "author": "Wordsus Team",
+  "description": "Unlock the mysteries of matter and its transformations with Fundamentals of Chemistry. This comprehensive guide provides a deep dive into atomic structure, chemical bonding, thermodynamics, and the various disciplines of chemistry, making it an essential resource for students and science enthusiasts.",
+  "cover": "/images/books/chemistry-en-cover.jpeg",
+  "category": "science",
+  "tags": [
+    "chemistry",
+    "atomic structure",
+    "stoichiometry",
+    "thermodynamics",
+    "organic chemistry",
+    "electrochemistry"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-13",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "the-study-of-chemistry-and-measurement",
+      "title": "The Study of Chemistry and Measurement",
+      "order": 1,
+      "description": "Explore The Scope and Disciplines of Chemistry, The Particulate Nature of Matter, Physical and Chemical Properties, Units of Measurement and the Metric System, Uncertainty, Accuracy, and Precision, Dimensional Analysis and Problem Solving",
+      "audioUrl": ""
+    },
+    {
+      "slug": "atoms-molecules-and-ions",
+      "title": "Atoms, Molecules, and Ions",
+      "order": 2,
+      "description": "Explore The Evolution of Atomic Theory, The Discovery of Subatomic Particles, The Modern View of Atomic Structure and Isotopes, Atomic Masses and the Mass Spectrometer, Introduction to the Periodic Table, Molecular Compounds and Empirical Formulas, Formation of Ions and Ionic Compounds, Nomenclature of Inorganic Compounds",
+      "audioUrl": ""
+    },
+    {
+      "slug": "stoichiometry-chemical-formulas-and-equations",
+      "title": "Stoichiometry: Chemical Formulas and Equations",
+      "order": 3,
+      "description": "Explore Balancing Chemical Equations, Simple Patterns of Chemical Reactivity, Formula Weights and Molecular Weights, Avogadro's Number and the Mole Concept, Determining Empirical and Molecular Formulas, Quantitative Information from Balanced Equations, Limiting Reactants and Theoretical Yield",
+      "audioUrl": ""
+    },
+    {
+      "slug": "aqueous-reactions-and-solution-stoichiometry",
+      "title": "Aqueous Reactions and Solution Stoichiometry",
+      "order": 4,
+      "description": "Explore General Properties of Aqueous Solutions, Precipitation Reactions and Solubility Rules, Acids, Bases, and Neutralization Reactions, Oxidation-Reduction (Redox) Reactions, Molarity and Concentration of Solutions, Solution Stoichiometry and Chemical Titrations",
+      "audioUrl": ""
+    },
+    {
+      "slug": "electronic-structure-of-atoms",
+      "title": "Electronic Structure of Atoms",
+      "order": 5,
+      "description": "Explore The Wave Nature of Light and Electromagnetic Radiation, Quantized Energy and Photons, Atomic Emission Spectra and the Bohr Model, The Dual Nature of Matter and De Broglie's Hypothesis, Quantum Mechanics and Quantum Numbers, Shapes and Representations of Atomic Orbitals, Electron Spin and the Pauli Exclusion Principle, Electron Configurations and Orbital Diagrams",
+      "audioUrl": ""
+    },
+    {
+      "slug": "periodic-properties-of-the-elements",
+      "title": "Periodic Properties of the Elements",
+      "order": 6,
+      "description": "Explore Historical Development of the Periodic Table, Shielding and Effective Nuclear Charge, Trends in Atomic and Ionic Radii, Trends in Ionization Energy, Trends in Electron Affinity, Chemical Properties of Metals, Nonmetals, and Metalloids",
+      "audioUrl": ""
+    },
+    {
+      "slug": "basic-concepts-of-chemical-bonding",
+      "title": "Basic Concepts of Chemical Bonding",
+      "order": 7,
+      "description": "Explore Lewis Symbols and the Octet Rule, The Energetics of Ionic Bonding, Covalent Bonding and Bond Lengths, Bond Polarity and Electronegativity, Drawing Lewis Structures for Molecules and Polyatomic Ions, Resonance Structures and Formal Charge, Exceptions to the Octet Rule, Bond Enthalpies and the Strengths of Covalent Bonds",
+      "audioUrl": ""
+    },
+    {
+      "slug": "molecular-geometry-and-bonding-theories",
+      "title": "Molecular Geometry and Bonding Theories",
+      "order": 8,
+      "description": "Explore Predicting Molecular Shapes Using the VSEPR Model, Molecular Shape and Overall Dipole Moments, Valence Bond Theory and Orbital Overlap, Hybridization of Atomic Orbitals ($sp$, $sp^2$, $sp^3$), Multiple Bonds: Sigma and Pi Bonding, Introduction to Molecular Orbital Theory, Molecular Orbitals of Diatomic Molecules",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-properties-and-behavior-of-gases",
+      "title": "The Properties and Behavior of Gases",
+      "order": 9,
+      "description": "Explore Characteristics of Gases and Gas Pressure, The Empirical Gas Laws (Boyle, Charles, Avogadro), The Ideal-Gas Equation, Applications of the Ideal-Gas Equation: Density and Molar Mass, Gas Mixtures, Partial Pressures, and Mole Fractions, The Kinetic-Molecular Theory of Gases, Molecular Effusion and Diffusion, Real Gases and Deviations from Ideal Behavior",
+      "audioUrl": ""
+    },
+    {
+      "slug": "liquids-and-intermolecular-forces",
+      "title": "Liquids and Intermolecular Forces",
+      "order": 10,
+      "description": "Explore A Molecular Comparison of Gases, Liquids, and Solids, Types of Intermolecular Forces (Dispersion, Dipole-Dipole, Hydrogen Bonding), Viscosity and Surface Tension, Phase Changes and Heating Curves, Vapor Pressure and Boiling Point, Interpreting Phase Diagrams",
+      "audioUrl": ""
+    },
+    {
+      "slug": "solids-and-modern-materials",
+      "title": "Solids and Modern Materials",
+      "order": 11,
+      "description": "Explore Amorphous and Crystalline Solids, Unit Cells and Crystal Lattices, Metallic Solids and Metallic Bonding, Ionic Solids and Lattice Energy, Molecular Solids, Covalent-Network Solids (Carbon and Silicon), Polymeric Materials, Nanomaterials",
+      "audioUrl": ""
+    },
+    {
+      "slug": "thermochemistry",
+      "title": "Thermochemistry",
+      "order": 12,
+      "description": "Explore The Nature of Chemical Energy and Work, The First Law of Thermodynamics, Enthalpy and State Functions, Enthalpies of Reaction ($\\Delta H$), Principles of Calorimetry, Hess's Law, Standard Enthalpies of Formation",
+      "audioUrl": ""
+    },
+    {
+      "slug": "chemical-kinetics",
+      "title": "Chemical Kinetics",
+      "order": 13,
+      "description": "Explore Factors that Affect Reaction Rates, Expressing and Measuring Reaction Rates, Concentration and Rate Laws, Integrated Rate Laws and Half-Life, Temperature and Rate: The Arrhenius Equation, Elementary Reactions and Reaction Mechanisms, The Role of Catalysts",
+      "audioUrl": ""
+    },
+    {
+      "slug": "chemical-equilibrium",
+      "title": "Chemical Equilibrium",
+      "order": 14,
+      "description": "Explore The Concept of Dynamic Equilibrium, The Equilibrium Constant Expression ($K_c$ and $K_p$), Interpreting and Working with Equilibrium Constants, Heterogeneous Equilibria, Calculating Equilibrium Concentrations (ICE Tables), Predicting the Direction of Reaction (Reaction Quotient), Le Ch\u00e2telier's Principle",
+      "audioUrl": ""
+    },
+    {
+      "slug": "chemical-thermodynamics",
+      "title": "Chemical Thermodynamics",
+      "order": 15,
+      "description": "Explore Spontaneous Processes and Reversibility, Entropy and the Second Law of Thermodynamics, The Molecular Interpretation of Entropy (Microstates), Calculating Standard Entropy Changes, Gibbs Free Energy, Free Energy and Temperature Dependence, Relating Free Energy to the Equilibrium Constant",
+      "audioUrl": ""
+    },
+    {
+      "slug": "acid-base-equilibria",
+      "title": "Acid-Base Equilibria",
+      "order": 16,
+      "description": "Explore Arrhenius and Br\u00f8nsted-Lowry Concepts of Acids and Bases, The Autoionization of Water and $K_w$, The pH and pOH Scales, Strong Acids and Strong Bases, Weak Acids and Acid-Dissociation Constants ($K_a$), Weak Bases and Base-Dissociation Constants ($K_b$), The Relationship Between $K_a$ and $K_b$, Acid-Base Properties of Salt Solutions, Lewis Acids and Bases",
+      "audioUrl": ""
+    },
+    {
+      "slug": "additional-aspects-of-aqueous-equilibria",
+      "title": "Additional Aspects of Aqueous Equilibria",
+      "order": 17,
+      "description": "Explore The Common-Ion Effect, Buffer Solutions and Capacity, The Henderson-Hasselbalch Equation, Acid-Base Titration Curves, Solubility Equilibria and the Solubility-Product Constant ($K_{sp}$), Factors That Affect Solubility (pH and Complex Ions), Precipitation and Separation of Ions",
+      "audioUrl": ""
+    },
+    {
+      "slug": "electrochemistry",
+      "title": "Electrochemistry",
+      "order": 18,
+      "description": "Explore Assigning Oxidation States, Balancing Redox Equations via the Half-Reaction Method, Voltaic (Galvanic) Cells and Cell Potentials, Standard Reduction Potentials, Thermodynamics of Redox Reactions, The Nernst Equation and Concentration Cells, Primary and Secondary Batteries, Corrosion and Prevention, Electrolytic Cells and Electrolysis",
+      "audioUrl": ""
+    },
+    {
+      "slug": "nuclear-chemistry",
+      "title": "Nuclear Chemistry",
+      "order": 19,
+      "description": "Explore Radioactivity and Nuclear Equations, Patterns of Nuclear Stability, Nuclear Transmutations and Particle Accelerators, Rates of Radioactive Decay and Radiometric Dating, Detection and Measurement of Radioactivity, Energy Changes in Nuclear Reactions ($E=mc^2$), Nuclear Fission and Nuclear Reactors, Nuclear Fusion, Biological Effects of Radiation",
+      "audioUrl": ""
+    },
+    {
+      "slug": "chemistry-of-the-nonmetals",
+      "title": "Chemistry of the Nonmetals",
+      "order": 20,
+      "description": "Explore General Concepts: Periodic Trends of Nonmetals, The Chemistry of Hydrogen, The Noble Gases (Group 8A), The Halogens (Group 7A), Oxygen and Its Compounds, Sulfur, Selenium, and Tellurium, Nitrogen and Phosphorus",
+      "audioUrl": ""
+    },
+    {
+      "slug": "transition-metals-and-coordination-chemistry",
+      "title": "Transition Metals and Coordination Chemistry",
+      "order": 21,
+      "description": "Explore Properties of the Transition Metals, Electron Configurations and Oxidation States of Transition Metals, Coordination Compounds and Complex Ions, Common Ligands and Coordination Numbers, Isomerism in Coordination Compounds, Color and Magnetism in Coordination Chemistry, Crystal-Field Theory",
+      "audioUrl": ""
+    },
+    {
+      "slug": "introduction-to-organic-chemistry-and-biochemistry",
+      "title": "Introduction to Organic Chemistry and Biochemistry",
+      "order": 22,
+      "description": "Explore General Characteristics of Organic Molecules, Saturated Hydrocarbons: Alkanes and Cycloalkanes, Unsaturated Hydrocarbons: Alkenes and Alkynes, Aromatic Hydrocarbons, Functional Groups with Oxygen (Alcohols, Ethers, Carbonyls), Functional Groups with Nitrogen (Amines and Amides), Introduction to Proteins and Carbohydrates",
+      "audioUrl": ""
+    }
+  ],
+  "parts": [
+    {
+      "title": "Part I: Foundations of Matter and Measurement",
+      "chapterSlugs": [
+        "the-study-of-chemistry-and-measurement",
+        "atoms-molecules-and-ions",
+        "stoichiometry-chemical-formulas-and-equations",
+        "aqueous-reactions-and-solution-stoichiometry"
+      ]
+    },
+    {
+      "title": "Part II: Atomic Structure and Periodicity",
+      "chapterSlugs": [
+        "electronic-structure-of-atoms",
+        "periodic-properties-of-the-elements"
+      ]
+    },
+    {
+      "title": "Part III: Chemical Bonding and Molecular Geometry",
+      "chapterSlugs": [
+        "basic-concepts-of-chemical-bonding",
+        "molecular-geometry-and-bonding-theories"
+      ]
+    },
+    {
+      "title": "Part IV: States of Matter",
+      "chapterSlugs": [
+        "the-properties-and-behavior-of-gases",
+        "liquids-and-intermolecular-forces",
+        "solids-and-modern-materials"
+      ]
+    },
+    {
+      "title": "Part V: Physical Chemistry and Thermodynamics",
+      "chapterSlugs": [
+        "thermochemistry",
+        "chemical-kinetics",
+        "chemical-equilibrium",
+        "chemical-thermodynamics"
+      ]
+    },
+    {
+      "title": "Part VI: Advanced Equilibrium and Electrochemistry",
+      "chapterSlugs": [
+        "acid-base-equilibria",
+        "additional-aspects-of-aqueous-equilibria",
+        "electrochemistry"
+      ]
+    },
+    {
+      "title": "Part VII: Specialized Topics in Chemistry",
+      "chapterSlugs": [
+        "nuclear-chemistry",
+        "chemistry-of-the-nonmetals",
+        "transition-metals-and-coordination-chemistry",
+        "introduction-to-organic-chemistry-and-biochemistry"
+      ]
+    }
+  ]
+}
