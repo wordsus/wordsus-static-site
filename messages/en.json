@@ -67,7 +67,9 @@
     "published": "Published",
     "chapters_count": "{count} chapters",
     "introCover": "Cover",
-    "introInformation": "Information"
+    "introInformation": "Information",
+    "hasVideo": "This chapter has a video",
+    "hasAudio": "This chapter has audio"
   },
   "category": {
     "books": "books",

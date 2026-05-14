@@ -21,2345 +21,2680 @@
       "title": "Avogadro's number and the concept of mole in chemistry",
       "order": 31,
       "description": "Discover how chemists count atoms and molecules using the concept of the mole, a vital tool that connects visible mass to particles.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "noble-gases-the-loneliest-elements-in-the-table",
       "title": "Noble gases: the loneliest elements in the table",
       "order": 32,
       "description": "We explore helium, neon and argon. Learn why these elements are so stable, their zero reactivity and how they are used in modern lighting.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-chemistry-of-soap-how-we-clean-dirt",
       "title": "The chemistry of soap: how we clean dirt",
       "order": 33,
       "description": "We analyze the molecular structure of soaps and detergents, discovering how their molecules manage to trap fat and dissolve it easily in water.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "isomers-molecules-with-the-same-formulas-and-dual-forms",
       "title": "Isomers: molecules with the same formulas and dual forms",
       "order": 34,
       "description": "Learn why compounds with exactly the same atoms can have completely different physical and chemical properties depending on their spatial shape.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "alkali-metals-extreme-reactivity-when-touching-water",
       "title": "Alkali metals: extreme reactivity when touching water",
       "order": 35,
       "description": "We focus on sodium and potassium, metals so reactive that they must be stored in oil. Discover why they release so much energy upon aqueous contact.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "crystallography-the-perfect-geometry-hidden-in-salt",
       "title": "Crystallography: the perfect geometry hidden in salt",
       "order": 36,
       "description": "We study how atoms arrange themselves into perfect three-dimensional networks, forming beautiful solid crystals with surprising optical properties.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "fermentation-the-chemical-miracle-behind-yeast",
       "title": "Fermentation: the chemical miracle behind yeast",
       "order": 37,
       "description": "We break down the anaerobic metabolic process where sugars are transformed into alcohol and carbon dioxide, essential in baking and beverages.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "halogens-very-reactive-salt-forming-elements",
       "title": "Halogens: very reactive salt-forming elements",
       "order": 38,
       "description": "From fluorine to iodine, we analyze this group of non-metals that are highly toxic in their pure state, but essential for life by forming compounds.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "enzymes-the-biological-catalysts-of-our-body",
       "title": "Enzymes: the biological catalysts of our body",
       "order": 39,
       "description": "Discover how these specialized proteins manage to dramatically speed up vital chemical reactions, allowing life to flow without delays.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "distillation-separating-liquids-using-temperature",
       "title": "Distillation: separating liquids using temperature",
       "order": 40,
       "description": "We explore this ancient laboratory and industrial technique that takes advantage of different boiling points to purify complex liquid mixtures.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-chemistry-of-chocolate-the-delicious-cocoa-molecule",
       "title": "The chemistry of chocolate: the delicious cocoa molecule",
       "order": 41,
       "description": "We analyze theobromine and other complex substances present in chocolate, responsible for its unique flavor and pleasant stimulating effects.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "molecular-geometry-the-three-dimensional-shape-of-matter",
       "title": "Molecular geometry: the three-dimensional shape of matter",
       "order": 42,
       "description": "We explain the theory of electron pair repulsion, which determines why molecules adopt unique linear, angular, or tetrahedral shapes.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "alcohols-in-chemistry-much-more-than-just-common-drinks",
       "title": "Alcohols in chemistry: much more than just common drinks",
       "order": 43,
       "description": "We study the hydroxyl group and properties of alcohols, from dangerous methanol to ethanol and its key use as an industrial solvent.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "batteries-and-cells-electrochemical-cells-for-daily-use",
       "title": "Batteries and cells: electrochemical cells for daily use",
       "order": 44,
       "description": "Discover how we store chemical energy to convert it into portable electricity by analyzing the inner workings of lithium-ion cells.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "transition-metals-the-central-block-of-the-table",
       "title": "Transition metals: the central block of the table",
       "order": 45,
       "description": "We delve into metals such as copper, iron and titanium. Understand their multiple oxidation states and why they form such colorful compounds.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "buffer-solutions-keeping-the-ph-stabilized",
       "title": "Buffer solutions: keeping the pH stabilized",
       "order": 46,
       "description": "Learn about the vital functioning of buffer systems, specialized chemical mixtures that resist drastic changes in acidity in the blood and industry.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-chemistry-of-perfumes-esters-and-synthetic-aromas",
       "title": "The chemistry of perfumes: esters and synthetic aromas",
       "order": 47,
       "description": "We discover how organic chemistry creates delicious synthetic fruity and floral fragrances using esters, imitating the smells of nature.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "le-chateliers-principle-balance-under-real-pressure",
       "title": "Le Chatelier's principle: balance under real pressure",
       "order": 48,
       "description": "We analyze how chemical systems react and adjust automatically to counteract any change in temperature, pressure or volume.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "carbohydrates-the-sweet-fuel-of-human-beings",
       "title": "Carbohydrates: the sweet fuel of human beings",
       "order": 49,
       "description": "We explore the chemical structure of sugars and starches, understanding how they store solar energy and act as our body's main source.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "spectroscopy-studying-matter-through-light-and-color",
       "title": "Spectroscopy: studying matter through light and color",
       "order": 50,
       "description": "Learn how modern chemists use different wavelengths of light to identify unknown compounds and reveal their internal structure.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "fireworks-the-colorful-chemistry-of-pyrotechnics",
       "title": "Fireworks: The Colorful Chemistry of Pyrotechnics",
       "order": 51,
       "description": "We break down the composition of holiday explosives and how salts of different metals generate bright colors when burning at high temperatures.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "chemical-titration-the-art-of-measuring-concentrations-today",
       "title": "Chemical titration: the art of measuring concentrations today",
       "order": 52,
       "description": "We explore the classic volumetric technique used in laboratories to determine the exact amount of a dissolved substance using a standard reagent.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "lipids-and-fats-long-term-energy-storage",
       "title": "Lipids and fats: long-term energy storage",
       "order": 53,
       "description": "We analyze the structure of fatty acids, differentiating between saturated and unsaturated fats, and their vital role in the cellular protection of beings.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "surface-tension-why-insects-walk-in-water",
       "title": "Surface tension: why insects walk in water",
       "order": 54,
       "description": "We delve into the cohesion of water molecules on the surface, creating an invisible but strong membrane that defies concepts of gravity.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "amino-acids-the-building-blocks-of-proteins",
       "title": "Amino acids: the building blocks of proteins",
       "order": 55,
       "description": "Learn about the small organic molecules that link together to form complex protein chains, essential for all the biological processes of our being.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "metal-corrosion-the-great-enemy-of-infrastructure",
       "title": "Metal corrosion: the great enemy of infrastructure",
       "order": 56,
       "description": "We study the oxidation process that deteriorates ships and bridges, analyzing effective chemical methods to prevent the formation of the dreaded rust.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "glass-an-amorphous-solid-with-exceptional-properties",
       "title": "Glass: an amorphous solid with exceptional properties",
       "order": 57,
       "description": "We discovered the fascinating structure of glass, a fused silica material that cools so quickly that its molecules fail to form a crystal.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "chromatography-separating-colors-and-complex-mixtures",
       "title": "Chromatography: separating colors and complex mixtures",
       "order": 58,
       "description": "Learn how this fundamental analytical technique allows you to separate the individual components of a mixture by making them travel at different phase velocities.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-chemistry-of-poison-basic-toxicology-and-its-antidotes",
       "title": "The chemistry of poison: basic toxicology and its antidotes",
       "order": 59,
       "description": "We analyze how certain molecules can interrupt vital biochemical processes in minimal doses, and how modern science seeks to successfully neutralize them.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "orbital-hybridization-how-atoms-prepare-their-bonds",
       "title": "Orbital hybridization: how atoms prepare their bonds",
       "order": 60,
       "description": "We explain the complex model that justifies why carbon can form four identical bonds, rearranging its electrons into hybrid orbitals.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "fluorescence-the-magical-chemistry-that-glows-at-night",
       "title": "Fluorescence: the magical chemistry that glows at night",
       "order": 61,
       "description": "Discover the fascinating compounds that absorb invisible light and slowly emit it, creating that greenish glow in the dark without generating heat.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "metal-alloys-steel-bronze-and-new-mixtures",
       "title": "Metal alloys: steel, bronze and new mixtures",
       "order": 62,
       "description": "We explore how strategic mixing of different metals improves the strength, hardness and durability of the materials that sustain our world.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-chemistry-of-spicy-food-the-capsaicin-molecule-and-its-heat",
       "title": "The chemistry of spicy food: the capsaicin molecule and its heat",
       "order": 63,
       "description": "We analyze why chili peppers give us that intense sensation of heat and pain, breaking down the chemical structure that tricks our brain.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-nitrogen-cycle-the-vital-nutrient-of-plants",
       "title": "The nitrogen cycle: the vital nutrient of plants",
       "order": 64,
       "description": "Learn about the complex chemical journey of nitrogen from the atmosphere to the soil, and how the synthesis of ammonia revolutionized world agriculture.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "acetylsalicylic-acid-the-science-behind-aspirin",
       "title": "Acetylsalicylic acid: the science behind aspirin",
       "order": 65,
       "description": "We unravel the history and molecular structure of the most famous painkiller in the world, discovering how it interacts to soothe our pain.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "rare-earths-the-secret-elements-of-technology",
       "title": "Rare earths: the secret elements of technology",
       "order": 66,
       "description": "We study lanthanides, that group of little-known but absolutely essential metals for making powerful magnets and smartphones.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "chemical-cosmetics-the-formulation-of-creams-and-lipsticks",
       "title": "Chemical cosmetics: the formulation of creams and lipsticks",
       "order": 67,
       "description": "Delve into the chemistry of beauty products, analyzing how emulsions, pigments and waxes combine to care for our skin.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "ozone-destruction-the-dreaded-chlorofluorocarbons",
       "title": "Ozone destruction: the dreaded chlorofluorocarbons",
       "order": 68,
       "description": "We analyze the chemical reaction in the upper atmosphere that seriously endangered our solar shield, and how science managed to stop the imminent damage.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "reverse-osmosis-the-great-solution-to-purify-water",
       "title": "Reverse osmosis: the great solution to purify water",
       "order": 69,
       "description": "We understand the chemistry of semipermeable membranes and how pressure forces water molecules to abandon their solutes to purify themselves.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "forensic-chemistry-discovering-blood-with-luminol",
       "title": "Forensic chemistry: discovering blood with luminol",
       "order": 70,
       "description": "We explore the fascinating world of investigation focusing on the chemiluminescent reaction that allows forensics to reveal currently hidden evidence.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "heavy-metals-the-hidden-toxicity-of-lead-and-mercury",
       "title": "Heavy metals: the hidden toxicity of lead and mercury",
       "order": 71,
       "description": "Discover why these dense elements of the periodic table are so dangerous for humans and how they alter our neurological system.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "artificial-sweeteners-tricking-the-sense-of-taste",
       "title": "Artificial sweeteners: tricking the sense of taste",
       "order": 72,
       "description": "We analyze the sweet chemistry of saccharin and aspartame, molecules that our receptors perceive as sugar but that do not provide calories today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "teflon-and-polymers-the-science-of-non-stick-pots",
       "title": "Teflon and polymers: the science of non-stick pots",
       "order": 73,
       "description": "Explore the strong bonds between carbon and fluorine that create a material so slippery and heat-resistant that nothing ever sticks.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "antioxidants-fighting-the-terrible-free-radicals",
       "title": "Antioxidants: fighting the terrible free radicals",
       "order": 74,
       "description": "We understand cellular damage caused by unstable molecular species and how vitamin C or other antioxidants donate electrons to heal us.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "dry-ice-the-amazing-sublimation-of-solid-dioxide",
       "title": "Dry ice: the amazing sublimation of solid dioxide",
       "order": 75,
       "description": "Delve into the physical and chemical process where this icy compound goes directly from solid to gas without leaving a trace of liquid at all.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "metalloids-silicon-and-modern-semiconductors",
       "title": "Metalloids: silicon and modern semiconductors",
       "order": 76,
       "description": "We study the boundary elements that share properties between metals and non-metals, the fundamental basis for creating all modern electronics.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "hard-water-why-it-is-so-difficult-to-generate-foam-when-washing",
       "title": "Hard water: why it is so difficult to generate foam when washing",
       "order": 77,
       "description": "We analyze the calcium and magnesium salts dissolved in tap water that interfere with the action of soaps and damage pipes with scale.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "adhesives-and-glues-the-chemistry-that-unites-our-world",
       "title": "Adhesives and glues: the chemistry that unites our world",
       "order": 78,
       "description": "We discover how polymers interact to create mechanical and chemical forces of attraction so strong that they bind impossible materials together.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "bioluminescence-chemical-reactions-in-fireflies",
       "title": "Bioluminescence: chemical reactions in fireflies",
       "order": 79,
       "description": "We explore the enzyme luciferase and how nature harnesses oxidation to create warning and attraction lights without generating any heat.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "catalytic-converters-cleaning-exhaust-gases",
       "title": "Catalytic converters: cleaning exhaust gases",
       "order": 80,
       "description": "Learn about the incredible rare metals that transform highly toxic vehicle gases into harmless compounds before you go out into the environment today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "lactic-acid-the-intense-chemical-pain-in-the-muscles",
       "title": "Lactic acid: the intense chemical pain in the muscles",
       "order": 81,
       "description": "We break down your body's anaerobic metabolic pathway when it requires quick energy, generating a byproduct that produces pain when exercising.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "chlorine-and-bleach-the-intense-oxidizing-power-to-clean",
       "title": "Chlorine and bleach: the intense oxidizing power to clean",
       "order": 82,
       "description": "We will study the chemistry behind this bleaching and disinfecting compound, analyzing how it destroys bacteria and alters color molecules.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "synthetic-fibers-the-chemistry-of-nylon-and-polyester",
       "title": "Synthetic fibers: the chemistry of nylon and polyester",
       "order": 83,
       "description": "We enter the enormous world of laboratory-created textiles, analyzing the strong polymer chains that clothe the modern world today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "photosynthesis-the-reaction-that-traps-light-from-the-universe",
       "title": "Photosynthesis: the reaction that traps light from the universe",
       "order": 84,
       "description": "We explain the cascade of chemical reactions within plants, transforming carbon dioxide and vital water into sugars and pure oxygen.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "vitamins-essential-molecules-for-our-survival",
       "title": "Vitamins: essential molecules for our survival",
       "order": 85,
       "description": "Learn about the complex chemical structure of these organic substances that our body cannot manufacture, but are vital to catalyze reactions.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "kevlar-and-para-aramids-the-chemistry-behind-armor",
       "title": "Kevlar and para-aramids: the chemistry behind armor",
       "order": 86,
       "description": "We discovered how the powerful chemical bonds of this fiber manage to stop the direct impact of a bullet, being an extremely light material today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "radioactive-decay-half-life-and-carbon-fourteen",
       "title": "Radioactive decay: half-life and carbon fourteen",
       "order": 87,
       "description": "We analyze how nuclear chemistry helps archeology determine with extreme precision the age of ancient fossils and relics of humanity.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-chemistry-of-paper-from-hard-wood-to-soft-sheets",
       "title": "The chemistry of paper: from hard wood to soft sheets",
       "order": 88,
       "description": "Explore how harsh industrial processes separate cellulose from lignin, bleaching chemical fibers to create the books you read.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "alloy-with-memory-the-amazing-metal-called-nitinol",
       "title": "Alloy with memory: the amazing metal called nitinol",
       "order": 89,
       "description": "We study the intelligent combination of nickel and titanium, capable of recovering its original shape after being deformed just by applying some heat.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "patina-and-green-rust-protecting-the-statue-of-liberty",
       "title": "Patina and green rust: protecting the Statue of Liberty",
       "order": 90,
       "description": "We understand the slow atmospheric reactions of copper in the open air, forming a strong green carbonate layer that prevents total corrosion.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "photographic-chemistry-developing-images-with-silver",
       "title": "Photographic chemistry: developing images with silver",
       "order": 91,
       "description": "Explore how silver halides react to light to capture moments and the delicate developing process that transformed our view of the world.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "pheromones-in-action-animal-chemical-communication",
       "title": "Pheromones in action: animal chemical communication",
       "order": 92,
       "description": "We analyze the volatile molecules that many animals and insects release into the environment to send powerful sexual and vital alert messages.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "silicones-and-polysiloxanes-very-versatile-polymers",
       "title": "Silicones and polysiloxanes: very versatile polymers",
       "order": 93,
       "description": "Discover the unique structure of these materials based on silicon and oxygen bonds, essential for manufacturing modern implants and sealants.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "natural-zeolites-molecular-rock-sponges",
       "title": "Natural zeolites: molecular rock sponges",
       "order": 94,
       "description": "We study these fascinating porous minerals capable of trapping ions and specific molecules, being vital to purifying the water we consume.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "baking-soda-the-chemical-leavening-of-bread",
       "title": "Baking soda: the chemical leavening of bread",
       "order": 95,
       "description": "We understand the acid-base reaction that occurs inside your oven, releasing the vital carbon dioxide that puffs up delicious cakes and biscuits.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "hydrogen-peroxide-a-very-effective-oxidizing-agent",
       "title": "Hydrogen peroxide: a very effective oxidizing agent",
       "order": 96,
       "description": "We delve into hydrogen peroxide, an unstable molecule that releases free radicals to disinfect wounds, whiten fabrics and even dye hair.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "petrichor-and-geosmina-the-unmistakable-aroma-of-rain",
       "title": "Petrichor and geosmina: the unmistakable aroma of rain",
       "order": 97,
       "description": "We break down the curious molecule produced by bacteria in dry soil, responsible for generating that pleasant and nostalgic smell after a storm.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "vulcanization-sulfur-hardening-rubber-today",
       "title": "Vulcanization: sulfur hardening rubber today",
       "order": 98,
       "description": "Learn how heating natural latex together with sulfur creates strong cross bridges, obtaining extremely hard and durable tires.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "cholesterol-and-steroids-vital-carbon-rings",
       "title": "Cholesterol and steroids: vital carbon rings",
       "order": 99,
       "description": "We delve into the complex structure of these special lipids, which form cell membranes and synthesize hormones essential for life.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "graphene-the-miraculous-hexagonal-network-of-pure-carbon",
       "title": "Graphene: the miraculous hexagonal network of pure carbon",
       "order": 100,
       "description": "We discovered the exceptional properties of this two-dimensional atomic layer, an extremely strong and conductive material that leads the technological future.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "supercritical-fluids-when-a-gas-appears-liquid",
       "title": "Supercritical fluids: when a gas appears liquid",
       "order": 101,
       "description": "We analyze the state of matter where substances exceed their critical point, being perfect solvents to decaffeinate coffee without using toxins.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "antifreeze-how-to-prevent-water-from-freezing",
       "title": "Antifreeze: how to prevent water from freezing",
       "order": 102,
       "description": "Explore how molecules such as ethylene glycol manage to interrupt the hydrogen bonds in water, drastically lowering its solidification point.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "sunscreens-molecules-against-sunlight",
       "title": "Sunscreens: molecules against sunlight",
       "order": 103,
       "description": "Understand how the chemicals in your sunscreen absorb and scatter UV radiation, saving your skin from serious structural damage.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-chemistry-of-cyanide-a-suffocating-and-lethal-poison",
       "title": "The chemistry of cyanide: a suffocating and lethal poison",
       "order": 104,
       "description": "We unravel the dark mechanism of action of this small toxic molecule, which fiercely blocks cellular respiration in all living beings.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "mass-spectrometry-weighing-individual-atoms",
       "title": "Mass spectrometry: weighing individual atoms",
       "order": 105,
       "description": "Learn about this sophisticated modern analytical technique that ionizes molecules and magnetically deflects them to calculate their weight and determine their purity.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "chemistry-of-toothpaste-fluoride-and-our-enamel",
       "title": "Chemistry of toothpaste: fluoride and our enamel",
       "order": 106,
       "description": "We analyze how fluoride ions are incorporated directly into tooth structure, forming fluorapatite to resist acids and harsh cavities.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "asphalt-and-bitumen-the-heaviest-hydrocarbons-today",
       "title": "Asphalt and bitumen: the heaviest hydrocarbons today",
       "order": 107,
       "description": "Discover the densest residue from oil refining, a viscous and black mixture of long carbon chains that today pave our streets.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "fuel-cells-the-great-energy-of-hydrogen",
       "title": "Fuel cells: the great energy of hydrogen",
       "order": 108,
       "description": "We study the controlled reaction between hydrogen and oxygen that produces clean and efficient electricity, leaving simple and pure water as the only residue.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-chemistry-of-inks-colors-resins-and-media",
       "title": "The chemistry of inks: colors, resins and media",
       "order": 109,
       "description": "Explore the complex mix of coloring pigments, organic solvents and thickeners that allow humanity to write and fix ideas on paper.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "chemical-preservatives-avoiding-natural-deterioration",
       "title": "Chemical preservatives: avoiding natural deterioration",
       "order": 110,
       "description": "We focus on molecules such as benzoates and sorbates, analyzing how they alter the cellular pH of fungi and bacteria to preserve food.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "lithium-chemistry-mining-white-gold-today",
       "title": "Lithium Chemistry: Mining White Gold Today",
       "order": 111,
       "description": "Discover how this light alkaline metal is purified and concentrated from enormous natural brines, being key to all our batteries.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "red-and-white-phosphorus-the-chemistry-behind-matches",
       "title": "Red and white phosphorus: the chemistry behind matches",
       "order": 112,
       "description": "We analyze the historical evolution of matches and how friction manages to transform unstable phosphorus to initiate controlled combustion today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "food-coloring-we-dye-what-we-consume",
       "title": "Food coloring: we dye what we consume",
       "order": 113,
       "description": "Understand the structure of brilliant azo compounds like tartrazine, created in chemical laboratories to make our foods desirable.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "natural-alkaloids-the-defenses-of-vegetation",
       "title": "Natural alkaloids: the defenses of vegetation",
       "order": 114,
       "description": "We study these plant nitrogen compounds, from morphine to quinine, that nature created as toxic and we use as medicine.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "heavy-water-and-deuterium-a-very-useful-isotope",
       "title": "Heavy water and deuterium: a very useful isotope",
       "order": 115,
       "description": "We explore the properties of deuterium oxide, a liquid ten percent denser than ordinary water, used to stop neutrons in reactors.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "epoxy-resins-high-resistance-polymerization",
       "title": "Epoxy resins: high resistance polymerization",
       "order": 116,
       "description": "Delve into the chemistry of these two-component adhesives. Learn how resin and its hardener react by crossing bonds to create plastics.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "melatonin-and-tryptophan-the-chemistry-of-good-sleep",
       "title": "Melatonin and tryptophan: the chemistry of good sleep",
       "order": 117,
       "description": "We analyze the biochemical synthesis of the sleep hormone in our brain and how it regulates the circadian rhythm in the absence of natural light.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "polyurethane-foams-chemistry-for-maximum-comfort",
       "title": "Polyurethane foams: chemistry for maximum comfort",
       "order": 118,
       "description": "We discovered the chemical expansion that generates small bubbles trapped in a strong plastic matrix, creating soft mattresses and thermal insulators.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "tear-gas-control-irritant-molecules",
       "title": "Tear gas: control irritant molecules",
       "order": 119,
       "description": "Learn about these aggressive chemical agents that attack the nerve receptors in the mucous membranes of the face, causing intense tearing and strong burning.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-haber-bosch-process-taking-bread-out-of-the-air",
       "title": "The Haber-Bosch process: taking bread out of the air",
       "order": 120,
       "description": "We analyze the union of atmospheric nitrogen and hydrogen gas under great pressure and heat, generating fertilizers that nourish humanity.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-chemistry-of-danger-mixing-ammonia-and-chlorine",
       "title": "The chemistry of danger: mixing ammonia and chlorine",
       "order": 121,
       "description": "Discover the chemical reactions that occur when combining common cleaners, releasing toxic chloramine vapors that affect the respiratory system.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "desalination-how-we-remove-salt-from-seawater",
       "title": "Desalination: how we remove salt from seawater",
       "order": 122,
       "description": "We explore the physical-chemical processes and energy required to purify salt water using membranes, alleviating drinking water shortages.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "why-do-we-cry-when-cutting-an-onion-in-the-kitchen",
       "title": "Why do we cry when cutting an onion in the kitchen?",
       "order": 123,
       "description": "We analyze the irritating sulfur-based gas that onions release as a natural defense when cut and how it transforms into acid in the eyes.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-power-of-acetone-dissolving-the-indissoluble",
       "title": "The power of acetone: dissolving the indissoluble",
       "order": 124,
       "description": "Delve into the properties of this polar and non-polar organic solvent, capable of dissolving enamels, plastics and resins without leaving any residue today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "acid-rain-when-gases-damage-the-ecology",
       "title": "Acid rain: when gases damage the ecology",
       "order": 125,
       "description": "We understand how nitrogen and sulfur oxides mix with atmospheric humidity, generating acid precipitation that corrodes the entire environment.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "endorphins-the-natural-molecules-of-pleasure",
       "title": "Endorphins: the natural molecules of pleasure",
       "order": 126,
       "description": "Learn about the opiate peptides produced by your own brain to relieve physical pain, generate great well-being and maintain our mood.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "boron-and-borax-an-element-with-multiple-uses",
       "title": "Boron and borax: an element with multiple uses",
       "order": 127,
       "description": "We study this exceptional metalloid and how its compounds are used daily to create heat-resistant crystals and cleaning products.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "caramelization-the-oxidation-of-sugar-by-heat",
       "title": "Caramelization: the oxidation of sugar by heat",
       "order": 128,
       "description": "We break down the complex series of chemical reactions where pure sugar breaks down at high temperatures to create beautiful colors and rich flavors.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-chemistry-of-cement-hardening-step-by-step",
       "title": "The chemistry of cement: hardening step by step",
       "order": 129,
       "description": "We explore the fascinating hydration reaction, where calcium silicate powder forms strong bonds with water to build great cities.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "tannins-astringency-in-infusions-and-wines",
       "title": "Tannins: astringency in infusions and wines",
       "order": 130,
       "description": "We analyze these enormous antioxidant plant molecules that cause that feeling of dryness in your mouth when drinking a delicious glass of red wine or tea.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "absorbent-polymers-hidden-chemistry-in-diapers",
       "title": "Absorbent polymers: hidden chemistry in diapers",
       "order": 131,
       "description": "We discovered how sodium polyacrylate manages to trap water molecules through hydrogen bonds, absorbing hundreds of times its own weight.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "silver-sulfide-why-our-jewelry-darkens",
       "title": "Silver sulfide: why our jewelry darkens",
       "order": 132,
       "description": "Understand the slow reactions between your precious silver objects and traces of environmental sulfur, forming an opaque black layer that is difficult to clean.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "citric-acid-the-natural-acidity-of-all-lemons",
       "title": "Citric acid: the natural acidity of all lemons",
       "order": 133,
       "description": "We study the organic acid responsible for the sour taste in citrus fruits, its vital role in cellular metabolism and its uses as an effective preservative.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "iodine-and-the-thyroid-gland-the-chemistry-of-life",
       "title": "Iodine and the thyroid gland: the chemistry of life",
       "order": 134,
       "description": "Delve into this halogen essential for the synthesis of hormones, understanding why its deficiency causes serious problems in the human body.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "water-chlorination-the-treatment-that-saves-populations",
       "title": "Water chlorination: the treatment that saves populations",
       "order": 135,
       "description": "Learn how chlorine interacts with harmful microorganisms, destroying their cell membranes to ensure that tap water is drinkable and safe.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "ozone-and-oxygen-allotropy-that-protects-the-planet",
       "title": "Ozone and oxygen: allotropy that protects the planet",
       "order": 136,
       "description": "We compare the oxygen we breathe with stratospheric ozone, two forms of the same chemical element with radically different functions on Earth.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-chemistry-of-cheese-coagulating-milk-step-by-step",
       "title": "The chemistry of cheese: coagulating milk step by step",
       "order": 137,
       "description": "We discovered how rennet enzymes break down casein micelles, altering milk proteins to form very delicious cheeses.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "galvanized-zinc-sacrificed-to-protect-metals",
       "title": "Galvanized: zinc sacrificed to protect metals",
       "order": 138,
       "description": "We study the electrolytic process where an outer layer of zinc is first deliberately oxidized to save and protect the underlying iron.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "stomach-antacids-neutralizing-the-inner-fire",
       "title": "Stomach antacids: neutralizing the inner fire",
       "order": 139,
       "description": "Learn how simple bases like baking soda or magnesium hydroxide react with the hydrochloric acid in your stomach to give you quick relief.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "monosodium-glutamate-the-fifth-flavor-of-our-food",
       "title": "Monosodium glutamate: the fifth flavor of our food",
       "order": 140,
       "description": "We discovered the molecule responsible for umami, that deep and tasty flavor, analyzing its natural origin and why its synthesis revolutionized cooking.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "dry-cleaning-clean-your-delicate-clothes-without-using-water",
       "title": "Dry cleaning: clean your delicate clothes without using water",
       "order": 141,
       "description": "We explore organic solvents such as perchloroethylene, substances capable of dissolving grease stains without shrinking or causing damage to your delicate fabrics.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "emulsifiers-in-action-mixing-water-with-oil",
       "title": "Emulsifiers in action: mixing water with oil",
       "order": 142,
       "description": "Delve into biphasic molecules like egg lecithin, which stabilize microscopic droplets of fat in water to make a rich mayonnaise.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "aluminum-extraction-from-bauxite-to-pure-metal",
       "title": "Aluminum extraction: from bauxite to pure metal",
       "order": 143,
       "description": "We analyze the intensive Hall-Héroult process that uses large electrical currents to isolate this light metal from hard rock oxides.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "phosphorescence-materials-glowing-in-the-dark",
       "title": "Phosphorescence: materials glowing in the dark",
       "order": 144,
       "description": "Understand the chemical difference with fluorescence, analyzing electrons that are trapped and release their accumulated light very slowly at night.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "antiperspirants-aluminum-against-the-sweat-of-your-body",
       "title": "Antiperspirants: aluminum against the sweat of your body",
       "order": 145,
       "description": "We explore how aluminum salts dissolve with moisture to form a temporary gel that blocks pores, stopping your body sweat.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "penicillin-the-molecule-that-destroys-cell-walls",
       "title": "Penicillin: the molecule that destroys cell walls",
       "order": 146,
       "description": "Learn about the beta-lactam ring of this vital antibiotic, which prevents harmful bacteria from synthesizing their strong cell walls, healing us.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "hair-dyes-the-chemistry-of-color-changes",
       "title": "Hair dyes: the chemistry of color changes",
       "order": 147,
       "description": "Delve into the permanent reaction where ammonia opens the hair cuticle, allowing new oxidized pigments to replace melanin today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "hemoglobin-chemical-transport-within-the-blood",
       "title": "Hemoglobin: chemical transport within the blood",
       "order": 148,
       "description": "We study the huge iron-rich protein that reversibly binds oxygen in the lungs to distribute it to all the cells in the body.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "litmus-paper-molecules-changing-color-depending-on-ph",
       "title": "Litmus paper: molecules changing color depending on pH",
       "order": 149,
       "description": "We discover how certain complex organic substances rapidly gain or lose protons, altering their molecular structure and revealing vivid colors.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "carbon-monoxide-the-terrible-invisible-chemical-killer",
       "title": "Carbon monoxide: the terrible invisible chemical killer",
       "order": 150,
       "description": "We analyze how incomplete combustion generates this fearsome odorless gas, which adheres to the blood much more strongly than the oxygen you breathe.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "ethylene-the-invisible-gas-that-ripens-our-fruits",
       "title": "Ethylene: the invisible gas that ripens our fruits",
       "order": 151,
       "description": "We discovered the volatile phytohormone that unleashes a cascade of cellular enzymes, breaking down pectins to achieve the sweetness of ripening fruit.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "menthol-the-molecule-that-deceives-with-false-freshness",
       "title": "Menthol: the molecule that deceives with false freshness",
       "order": 152,
       "description": "We analyze how this organic compound activates the cold receptors in our mouth and skin, generating a thermal illusion without lowering the temperature.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "serotonin-the-neurotransmitter-that-regulates-your-mood",
       "title": "Serotonin: the neurotransmitter that regulates your mood",
       "order": 153,
       "description": "Delve into the fascinating chemical structure of the feel-good hormone, understanding how it modulates our mood, appetite, and daily digestion.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "oxytocin-the-powerful-chemistry-of-love-and-attachments",
       "title": "Oxytocin: the powerful chemistry of love and attachments",
       "order": 154,
       "description": "Explore the critical neuropeptide that fosters social and maternal bonding, analyzing its biochemical release during hugs and genuine affection.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "formaldehyde-the-preservation-of-dead-tissues",
       "title": "Formaldehyde: the preservation of dead tissues",
       "order": 155,
       "description": "Learn about the lethal and reactive gas that dissolves in water forming formalin, historically used to stop cell decomposition by crossing proteins.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "propane-and-butane-hydrocarbons-in-home-cooking",
       "title": "Propane and butane: hydrocarbons in home cooking",
       "order": 156,
       "description": "We study the refining of short chain alkanes that liquefy at low pressure, providing great clean caloric energy in stoves and heaters.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "anodized-aluminum-oxidize-metals-to-beautify-them",
       "title": "Anodized aluminum: oxidize metals to beautify them",
       "order": 157,
       "description": "We delve into the electrolytic process that thickens the natural oxide layer of aluminum, creating porous surfaces that accept colors and resist.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "degraded-lignin-the-pleasant-smell-of-old-books",
       "title": "Degraded lignin: the pleasant smell of old books",
       "order": 158,
       "description": "We break down how the acid in paper slowly breaks down the wood's polymers, releasing aromatics like benzaldehyde and sweet vanillin today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "paracetamol-the-chemical-inhibition-of-body-pain",
       "title": "Paracetamol: the chemical inhibition of body pain",
       "order": 159,
       "description": "We analyze the analgesic mechanism of this popular synthetic drug, blocking the synthesis of prostaglandins in the brain to reduce pain and fever.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "cyanoacrylate-the-polymer-behind-quick-glue",
       "title": "Cyanoacrylate: the polymer behind quick glue",
       "order": 160,
       "description": "Discover how a simple drop of water activates the rapid chain reaction of this acrylic resin, creating strong plastic bonds in an almost magical way.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "histamines-the-exaggerated-allergic-chemical-reaction-today",
       "title": "Histamines: the exaggerated allergic chemical reaction today",
       "order": 161,
       "description": "We understand the nitrogenous molecules that your immune system releases when detecting pollen, causing inflammation, itching and fluids to expel threats.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "trinitrotoluene-the-energy-released-by-explosives",
       "title": "Trinitrotoluene: the energy released by explosives",
       "order": 162,
       "description": "We explore the unstable TNT molecule, understanding how the rapid breaking of its nitrogen bonds releases enormous volumes of gas at high pressure.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "uric-acid-painful-crystals-in-the-joints",
       "title": "Uric acid: painful crystals in the joints",
       "order": 163,
       "description": "We analyze the metabolic byproduct of purines that, when accumulated in the blood due to poor filtration, precipitate forming sharp and painful crystals.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "steviosides-the-sweet-molecules-of-plant-origin",
       "title": "Steviosides: the sweet molecules of plant origin",
       "order": 164,
       "description": "Delve into the glycosides extracted from the stevia leaf, extremely powerful natural sweeteners that are not metabolized and provide zero calories.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "nitrous-oxide-the-laughing-gas-in-dentistry-today",
       "title": "Nitrous oxide: the laughing gas in dentistry today",
       "order": 165,
       "description": "We study the colorless chemical compound that slows down neurological responses, effectively reducing pain and generating great euphoria in patients.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "cortisol-the-chemical-hormones-that-unleash-your-stress",
       "title": "Cortisol: the chemical hormones that unleash your stress",
       "order": 166,
       "description": "Learn about the steroid released by the adrenal glands in the face of danger, altering our cellular metabolism to give us immediate escape energy.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "melanin-the-pigments-that-color-our-skin-today",
       "title": "Melanin: the pigments that color our skin today",
       "order": 167,
       "description": "We discover complex macromolecules derived from tyrosine, responsible for absorbing solar radiation to defend your cells from serious damage.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "arsenic-the-famous-undetectable-poison-of-the-middle-ages",
       "title": "Arsenic: the famous undetectable poison of the Middle Ages",
       "order": 168,
       "description": "We delved into the toxic metalloid that simulated the symptoms of cholera, blocking cellular enzymes vital for the body's energy production.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "terpenes-the-aromatic-compounds-of-pure-oils",
       "title": "Terpenes: the aromatic compounds of pure oils",
       "order": 169,
       "description": "We explore the organic hydrocarbons present in floral resins, responsible for providing pine, lemon and lavender with characteristic aromas today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "celluloid-and-rayon-the-first-semi-synthetic-plastics",
       "title": "Celluloid and rayon: the first semi-synthetic plastics",
       "order": 170,
       "description": "We look at the chemical manipulation of plant cellulose using aggressive acids to create soft, high-gloss photographic films and textiles.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "barium-sulfate-heavy-metals-in-x-rays-today",
       "title": "Barium sulfate: heavy metals in x-rays today",
       "order": 171,
       "description": "We study this dense insoluble salt that patients ingest without risk of toxicity, allowing doctors to block X-rays and observe the esophagus.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "ibuprofen-fighting-inflammation-from-its-roots",
       "title": "Ibuprofen: fighting inflammation from its roots",
       "order": 172,
       "description": "Learn about the structure and powerful mechanism of action of this propionic acid, essential for blocking cellular enzymes that generate inflammation.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "nitrites-in-meats-preservatives-in-cured-sausages",
       "title": "Nitrites in meats: preservatives in cured sausages",
       "order": 173,
       "description": "We break down the salts in sausages, which prevent the deadly botulinum toxin but can form harmful nitrosamines when heated to high temperatures.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "polystyrene-the-inflated-plastic-for-single-daily-use",
       "title": "Polystyrene: the inflated plastic for single daily use",
       "order": 174,
       "description": "Delve into this polymer thermally expanded with gases until you achieve an insulating material that unfortunately takes hundreds of years to degrade today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "chlorophyll-the-vital-magnesium-ring-that-paints-the-world",
       "title": "Chlorophyll: the vital magnesium ring that paints the world",
       "order": 175,
       "description": "Explore the complex green photoreceptor molecule, analyzing its metallic core that captures solar photons to initiate the synthesis of new sugars.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "dihydroxyacetone-achieve-tans-without-direct-sunlight",
       "title": "Dihydroxyacetone: achieve tans without direct sunlight",
       "order": 176,
       "description": "We discovered the simple carbohydrate that reacts with dead amino acids in the epidermis, creating harmless brown pigments without ultraviolet damage.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "ninhydrin-revealing-invisible-fingerprints",
       "title": "Ninhydrin: revealing invisible fingerprints",
       "order": 177,
       "description": "We analyze the forensic chemical reagent that reacts specifically with the amino acids in human sweat, generating an intense, clear purple color.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "hyaluronic-acid-retaining-water-in-our-skin",
       "title": "Hyaluronic acid: retaining water in our skin",
       "order": 178,
       "description": "We study this great structural polysaccharide, capable of retaining a thousand times its molecular weight in pure water to keep all of our skin hydrated.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "keratin-the-hard-protein-in-our-nails-and-hair",
       "title": "Keratin: the hard protein in our nails and hair",
       "order": 179,
       "description": "We understand the helical structure rich in the element cellular sulfur, whose strong disulfide bridges give incredible resistance to the hair.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "lactic-fermentation-the-acidic-creation-of-yogurts",
       "title": "Lactic fermentation: the acidic creation of yogurts",
       "order": 180,
       "description": "We explore the anaerobic process where bacteria convert pure lactose into lactic acid, altering proteins to achieve a creamy dessert.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "vegetable-pectin-the-structure-behind-jams",
       "title": "Vegetable pectin: the structure behind jams",
       "order": 181,
       "description": "Discover the natural polysaccharide present in fruits that, when combined with sugar and acid, forms a three-dimensional network that thickens all your jellies.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "human-pheromones-the-myths-of-chemical-attraction",
       "title": "Human pheromones: the myths of chemical attraction",
       "order": 182,
       "description": "We analyze the complex search for human volatile molecules, debunking trade myths and exploring the true chemical communication between us.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "titanium-dioxide-the-most-used-white-pigment-today",
       "title": "Titanium dioxide: the most used white pigment today",
       "order": 183,
       "description": "We study the metallic oxide that provides great opacity and a brilliant white to paints, plastics and even cosmetic products such as sunscreens.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "saltpeter-and-gunpowder-the-chemistry-of-ancient-empires",
       "title": "Saltpeter and gunpowder: the chemistry of ancient empires",
       "order": 184,
       "description": "We explore how potassium nitrate reacts violently with carbon and sulfur, creating the first explosive mixture that changed all of history.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "biological-dopamine-the-circuits-of-pleasure-and-desire",
       "title": "Biological dopamine: the circuits of pleasure and desire",
       "order": 185,
       "description": "Learn about the key neurotransmitter that drives our reward system, motivating our brain through complex and vital biochemical reactions.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "ascorbic-acid-protecting-cells-from-old-age",
       "title": "Ascorbic acid: protecting cells from old age",
       "order": 186,
       "description": "We delve into vitamin C, a powerful reducing molecule that gives up its electrons to neutralize the serious damage caused by free radicals today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "neodymium-and-magnetism-strong-permanent-magnets",
       "title": "Neodymium and magnetism: strong permanent magnets",
       "order": 187,
       "description": "We discovered the alloy of this rare earth metal with iron and boron, managing to align its electrons to create extremely powerful magnetic fields.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "pure-adrenaline-fight-or-flight-chemistry-today",
       "title": "Pure Adrenaline: Fight or Flight Chemistry Today",
       "order": 188,
       "description": "We analyze the rapid synthesis of this hormone in extreme situations, accelerating your heart rate and sending great chemical energy directly to the muscles.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "crystalline-silica-the-abundant-sand-that-makes-glass",
       "title": "Crystalline silica: the abundant sand that makes glass",
       "order": 189,
       "description": "We study the strong spatial network of silicon and oxygen, the most abundant compound in the Earth's crust and the main basis of all our technology.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "cold-vulcanization-repairing-your-punctured-tires",
       "title": "Cold vulcanization: repairing your punctured tires",
       "order": 190,
       "description": "We break down the chemical process where the patches react with the rubber using a special accelerator, forming cross-links without needing heat today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "beeswax-the-perfect-hive-chemistry",
       "title": "Beeswax: the perfect hive chemistry",
       "order": 191,
       "description": "Explore the complex mix of esters, fatty acids and alcohols that bees naturally synthesize to build their tough, precise honeycombs.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "natural-saponins-the-ecological-soap-of-plants",
       "title": "Natural saponins: the ecological soap of plants",
       "order": 192,
       "description": "Get to know these fascinating plant glycosides that reduce the surface tension of natural water, generating a great toxic-free cleansing foam.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "folic-acid-and-pregnancy-vital-cellular-creation-today",
       "title": "Folic acid and pregnancy: vital cellular creation today",
       "order": 193,
       "description": "We analyze vitamin B9 and its irreplaceable role in the synthesis of new DNA, thus preventing serious genetic defects in early fetal development.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "golden-shower-and-lead-precipitation-reactions-today",
       "title": "Golden shower and lead: precipitation reactions today",
       "order": 194,
       "description": "Discover one of the most beautiful visual reactions in chemistry, where iodide and lead ions join together forming brilliant gold-colored solid crystals.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "botulinum-toxin-the-lethal-poison-that-paralyzes-faces",
       "title": "Botulinum toxin: the lethal poison that paralyzes faces",
       "order": 195,
       "description": "We study the world's most potent neurotoxin, analyzing how it dramatically disrupts the release of cellular acetylcholine to relax muscles.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "dental-amalgams-the-ancient-chemistry-of-metals",
       "title": "Dental amalgams: the ancient chemistry of metals",
       "order": 196,
       "description": "Delve into the controversial mixture of liquid and solid metals that for centuries filled our dental cavities thanks to their strong crystallization.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "phenol-and-antisepsis-disinfecting-operating-rooms-today",
       "title": "Phenol and antisepsis: disinfecting operating rooms today",
       "order": 197,
       "description": "Learn about the historic aromatic molecule that revolutionized modern medicine, destroying the membranes of bacteria to achieve very safe surgeries today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "ocean-salinity-why-the-sea-is-full-of-chlorine",
       "title": "Ocean salinity: why the sea is full of chlorine",
       "order": 198,
       "description": "We break down the long geological and chemical process where rain dissolved Earth's ions over entire eons, slowly washing them out to sea.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "medical-isotopes-radiation-to-cure-diseases",
       "title": "Medical isotopes: radiation to cure diseases",
       "order": 199,
       "description": "We explore how nuclear chemistry synthesizes unstable nuclei such as iodine-131, used clinically to target damaged cells with great precision.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "glyphosate-and-herbicides-chemistry-in-agriculture",
       "title": "Glyphosate and herbicides: chemistry in agriculture",
       "order": 200,
       "description": "We analyze the controversial compound that inhibits an exclusive plant enzyme, managing to eradicate undesirable weeds and ensuring maximum performance.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "neon-lights-electrons-jumping-in-glass-tubes",
       "title": "Neon lights: electrons jumping in glass tubes",
       "order": 201,
       "description": "We discovered how high voltage excites electrons in pure noble gas, emitting bright red and orange photons as they return to their ground state.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-chemistry-of-crying-basal-and-emotional-tears",
       "title": "The chemistry of crying: basal and emotional tears",
       "order": 202,
       "description": "We compared the chemical composition of our biological tears, discovering how those caused by emotions contain high levels of hormones today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "bee-propolis-the-great-antimicrobial-resin-today",
       "title": "Bee propolis: the great antimicrobial resin today",
       "order": 203,
       "description": "We study this complex mixture of botanical resins rich in flavonoids, used by bees in the hive to seal and defend their fragile home.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "sulfuric-acid-the-powerful-king-of-the-entire-industry",
       "title": "Sulfuric acid: the powerful king of the entire industry",
       "order": 204,
       "description": "Delve into the enormous production and immense use of this corrosive strong acid, vital for making fertilizers, cleaning metals and creating batteries.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "purified-vaseline-petrochemicals-on-your-skin",
       "title": "Purified Vaseline: petrochemicals on your skin",
       "order": 205,
       "description": "We analyze the chemical refining of this dense mixture of saturated hydrocarbons, creating a large impermeable barrier that prevents the loss of vital water.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "digestive-enzymes-breaking-down-the-food-we-eat",
       "title": "Digestive enzymes: breaking down the food we eat",
       "order": 206,
       "description": "Learn about the precise proteins such as pepsin or amylase, which slowly break down complex macromolecules into useful nutrients for our blood.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "liquid-nitrogen-large-scale-chemical-freezing",
       "title": "Liquid Nitrogen: Large Scale Chemical Freezing",
       "order": 207,
       "description": "Explore the fractional distillation of air that produces this extremely cold fluid, completely stopping all cellular chemical reactions.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "carbon-fibers-maximum-resistance-without-great-weight",
       "title": "Carbon fibers: maximum resistance without great weight",
       "order": 208,
       "description": "Discover the extreme thermal process that removes almost everything except pure carbon, forming super-strong sheets for use in modern airplanes and cars.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "hops-and-beer-the-bitter-acids-in-your-drink-today",
       "title": "Hops and beer: the bitter acids in your drink today",
       "order": 209,
       "description": "We break down the complex organic resins of hops, analyzing how the boiling process chemically transforms alpha acids and contributes bitterness.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "molecular-superabsorbency-retaining-all-the-water",
       "title": "Molecular superabsorbency: retaining all the water",
       "order": 210,
       "description": "We delve into the mechanism of polyacrylate, an incredible cross-polymer capable of absorbing large sums of water for slow use in agriculture.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-smell-of-garlic-allicin-and-its-powerful-defenses",
       "title": "The smell of garlic: allicin and its powerful defenses",
       "order": 211,
       "description": "We analyze how the cells of crushed garlic release an enzyme that quickly creates allicin, a strong organic natural defense compound today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "chemiluminescence-light-bars-that-dont-burn",
       "title": "Chemiluminescence: light bars that don't burn",
       "order": 212,
       "description": "We discovered the incredible reaction between hydrogen peroxide and an ester that excites fluorescent molecules to emit a lot of light without giving off heat today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "airgel-the-amazing-chemistry-of-frozen-smoke",
       "title": "Airgel: the amazing chemistry of frozen smoke",
       "order": 213,
       "description": "We studied the lightest solid material that exists, a gel from which all the liquid was extracted, leaving a strong and almost magical thermal insulator today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-chemistry-of-gluten-proteins-bound-together-in-dough",
       "title": "The chemistry of gluten: proteins bound together in dough",
       "order": 214,
       "description": "We break down how the proteins glutenin and gliadin are hydrated when kneading flour, creating an elastic network that traps carbon dioxide from raw bread.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "hydroxyapatite-the-resistant-crystal-of-your-bones",
       "title": "Hydroxyapatite: the resistant crystal of your bones",
       "order": 215,
       "description": "Learn about the amazing structure of the calcium phosphate mineral that gives enormous hardness to all the bones and strong teeth of living beings today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "thermite-reaction-metal-powder-melting-iron",
       "title": "Thermite reaction: metal powder melting iron",
       "order": 216,
       "description": "Delve into this intense oxidation-reduction reaction where aluminum reduces iron oxide with so much heat that it manages to melt the solid metal today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "acetylcholine-the-messenger-of-vital-impulses",
       "title": "Acetylcholine: the messenger of vital impulses",
       "order": 217,
       "description": "We analyze the essential neurotransmitter that allows our muscles to contract and regulates memory thanks to rapid biochemical reactions.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "biological-insulin-the-chemical-key-to-sugar-today",
       "title": "Biological insulin: the chemical key to sugar today",
       "order": 218,
       "description": "We explore the large protein secreted by the pancreas that allows our cells to absorb all the glucose from the bloodstream to give us energy.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "spherification-alginate-in-molecular-cuisine",
       "title": "Spherification: alginate in molecular cuisine",
       "order": 219,
       "description": "We discovered how sodium alginate reacts quickly with calcium salts to form perfect gel capsules, revolutionizing today's haute cuisine.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "flocculation-trapping-dirt-with-aluminum-salts",
       "title": "Flocculation: trapping dirt with aluminum salts",
       "order": 220,
       "description": "We study how certain chemical coagulants neutralize the electrical charges of small particles suspended in pure water, allowing them to be filtered today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "microwaves-and-water-high-polarity-friction-today",
       "title": "Microwaves and water: high polarity friction today",
       "order": 221,
       "description": "Understand how electromagnetic radiation makes polar water molecules rotate rapidly, generating intense friction and great heat throughout your food.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "bht-preservatives-avoiding-fat-oxidation-today",
       "title": "BHT preservatives: avoiding fat oxidation today",
       "order": 222,
       "description": "We unravel the functioning of synthetic phenols that trap free radicals, preventing your lipid foods from becoming very rancid.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "expanded-teflon-the-big-chemistry-of-dry-clothes-today",
       "title": "Expanded Teflon: The Big Chemistry of Dry Clothes Today",
       "order": 223,
       "description": "Explore the microporous cellular material that perfectly blocks water from the outside but allows all the vapor from your sweat to escape very freely.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "retinol-and-skin-the-chemistry-of-cell-regeneration",
       "title": "Retinol and skin: the chemistry of cell regeneration",
       "order": 224,
       "description": "Learn how this powerful derivative of vitamin A stimulates the rapid production of new collagen, greatly improving the tissue of your epidermis.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "air-pockets-the-rapid-explosion-of-nitrogen",
       "title": "Air pockets: the rapid explosion of nitrogen",
       "order": 225,
       "description": "We analyze how a crash triggers the rapid decomposition of sodium azide, filling huge lifesaving bags with nitrogen gas in milliseconds today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "photochemical-smog-dense-urban-pollution-today",
       "title": "Photochemical smog: dense urban pollution today",
       "order": 226,
       "description": "Discover how nitrogen oxides react with the strong rays of the sun to form a very toxic level of ozone that suffocates large cities.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "glue-fumes-revealing-latent-prints",
       "title": "Glue fumes: revealing latent prints",
       "order": 227,
       "description": "Delve into the precise forensic process that uses cyanoacrylate vapors to crystallize amino acids from sweat, targeting hidden clues.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "pet-plastic-the-immense-empire-of-bottles-today",
       "title": "PET plastic: the immense empire of bottles today",
       "order": 228,
       "description": "We study polyethylene terephthalate, a very resistant and key transparent plastic, detailing how it is synthesized and its complex recycling processes.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-fresh-green-aroma-when-the-lawn-is-stressed",
       "title": "The fresh green aroma: when the lawn is stressed",
       "order": 229,
       "description": "We analyze the chemical warning signals of leaves and grasses that, when sharply cut, emit volatile compounds to warn their entire environment.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "indigo-blue-the-rich-molecule-that-dyes-your-pants",
       "title": "Indigo blue: the rich molecule that dyes your pants",
       "order": 230,
       "description": "Explore the deep chemistry of the most famous insoluble dye that requires a strong temporary chemical reduction in order to adhere to dense cotton.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "stainless-steel-chromium-that-prevents-rust",
       "title": "Stainless steel: chromium that prevents rust",
       "order": 231,
       "description": "Learn how chromium added to iron forms a microscopic passivating layer, magically repairing itself and blocking strong corrosion today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "aqua-regia-the-acidic-mixture-that-dissolves-pure-gold",
       "title": "Aqua regia: the acidic mixture that dissolves pure gold",
       "order": 232,
       "description": "We break down the extremely corrosive alliance between nitric and hydrochloric acids, the only mixture capable of dissolving the unalterable noble metals.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "propylene-glycol-the-useful-and-dense-wetting-solvent",
       "title": "Propylene glycol: the useful and dense wetting solvent",
       "order": 233,
       "description": "We analyzed this safe chemical compound capable of dissolving rich aromas in vaporizers and also helps retain moisture in packaged foods.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "pure-vanillin-the-sweet-molecular-aroma-of-dessert",
       "title": "Pure vanillin: the sweet molecular aroma of dessert",
       "order": 234,
       "description": "We discovered the phenolic molecule behind that delicious smell and why it can be synthesized economically using cellulose instead of delicate pure orchids.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "radon-gas-the-radioactive-element-hidden-in-floors",
       "title": "Radon gas: the radioactive element hidden in floors",
       "order": 235,
       "description": "We study how the slow and natural disintegration of uranium in the subsurface releases this dense inert gas, accumulating a lot of radiation in areas closed today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "liquid-crystals-chemistry-on-your-digital-screen",
       "title": "Liquid crystals: chemistry on your digital screen",
       "order": 236,
       "description": "Enter the intermediate state of matter that flows calmly like a liquid, but has its large molecules oriented like pure solids.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "lead-batteries-the-harsh-energy-of-automobiles",
       "title": "Lead batteries: the harsh energy of automobiles",
       "order": 237,
       "description": "We understand the powerful reversible reactions between dense plates of lead and concentrated sulfuric acid, allowing easy starting of engines.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "gold-cyanidation-extraction-in-large-mining",
       "title": "Gold cyanidation: extraction in large mining",
       "order": 238,
       "description": "Explore how modern miners use cyanide solutions to dissolve, oxidize and extract the smallest, most valuable traces of gold from crushed rock today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "enriching-uranium-isolating-the-most-fissile-isotope",
       "title": "Enriching uranium: isolating the most fissile isotope",
       "order": 239,
       "description": "We analyze the extremely complex chemical process that manages to slightly separate the scarce 235 uranium with large centrifuges.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "quaternary-ammonium-the-powerful-disinfectant-agent",
       "title": "Quaternary ammonium: the powerful disinfectant agent",
       "order": 240,
       "description": "Learn about the cationic surface salts that break down and dismantle the cellular lipid membranes of all viruses and bacteria without bleaching clothes.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "mercaptans-the-hidden-smell-of-natural-gas-today",
       "title": "Mercaptans: the hidden smell of natural gas today",
       "order": 241,
       "description": "Discover the highly odorous sulfur compounds added to odorless gas to alert us of dangerous leaks and thus avoid serious explosions in the home.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "acetic-acid-the-useful-chemistry-of-vinegars",
       "title": "Acetic acid: the useful chemistry of vinegars",
       "order": 242,
       "description": "We explore the bacterial oxidation of ethanol that produces this weak acid, essential for dressing salads, preserving food, and cleaning your home today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "anthocyanins-autumn-color-in-leaves",
       "title": "Anthocyanins: autumn color in leaves",
       "order": 243,
       "description": "Learn about pigments that change color depending on pH, revealing bright red and purple hues when plants' chlorophyll degrades in the cold.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "dynamite-and-alfred-nobel-taming-nitroglycerin",
       "title": "Dynamite and Alfred Nobel: taming nitroglycerin",
       "order": 244,
       "description": "We studied how the absorption of this highly explosive liquid in diatomaceous earth allowed us to create safe charges that revolutionized mining and construction.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "lead-in-gasoline-a-big-environmental-mistake",
       "title": "Lead in gasoline: a big environmental mistake",
       "order": 245,
       "description": "We analyze the historical use of tetraethyl lead to improve the octane rating of engines, unleashing a severe global health crisis due to its great toxicity.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "bakelite-resin-the-first-synthetic-plastic",
       "title": "Bakelite resin: the first synthetic plastic",
       "order": 246,
       "description": "Delve into the reaction between phenol and formaldehyde that created the first artificial polymer, revolutionizing industrial design and communications today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "tritium-luminescence-watches-that-shine-today",
       "title": "Tritium luminescence: watches that shine today",
       "order": 247,
       "description": "We discovered how this radioactive isotope of hydrogen emits continuous electrons that excite the phosphorus, illuminating watch faces without requiring energy.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "cellular-collagen-protein-that-supports-your-skin",
       "title": "Cellular collagen: protein that supports your skin",
       "order": 248,
       "description": "Explore the complex triple helix of amino acids that acts as the main scaffolding of our body, giving firmness and great elasticity to tissues.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "bilirubin-the-yellow-pigment-in-our-bile",
       "title": "Bilirubin: the yellow pigment in our bile",
       "order": 249,
       "description": "We break down the chemical cycle of decomposition of old red blood cells, generating this compound responsible for the color of bruises and jaundice.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "sulfites-in-wine-chemistry-against-oxidation",
       "title": "Sulfites in wine: chemistry against oxidation",
       "order": 250,
       "description": "We look at how these sulfur salts prevent the growth of unwanted bacteria and yeast, ensuring your delicious drink maintains its good taste.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "fullerenes-carbon-spheres-playing-soccer",
       "title": "Fullerenes: carbon spheres playing soccer",
       "order": 251,
       "description": "We study these fascinating ball-shaped macromolecules of sixty carbon atoms, which promise great advances in medicine and nanotechnology today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "mustard-gas-the-fearsome-chemistry-of-the-trenches",
       "title": "Mustard gas: the fearsome chemistry of the trenches",
       "order": 252,
       "description": "Learn about the vesicant agent used during the world wars, a molecule that slowly destroys cell membranes and DNA, causing great pain.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "clinical-cisplatin-metals-fighting-tumors",
       "title": "Clinical cisplatin: metals fighting tumors",
       "order": 253,
       "description": "Delve into this historic platinum-based drug, capable of binding strongly to the DNA of cancer cells to stop their rapid reproduction.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "borosilicate-glasses-that-resist-great-heat",
       "title": "Borosilicate: glasses that resist great heat",
       "order": 254,
       "description": "We discovered how the addition of boron oxide drastically alters the structure of glasses, preventing them from expanding and breaking when subjected to high heat.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "piperine-and-sneezing-the-chemistry-of-pepper",
       "title": "Piperine and sneezing: the chemistry of pepper",
       "order": 255,
       "description": "We analyze the alkaloid responsible for the itching that irritates the nerve endings in the nose, causing strong reflexes and sneezing instantly.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "ethyl-ether-the-chemistry-of-anesthesia-today",
       "title": "Ethyl ether: the chemistry of anesthesia today",
       "order": 256,
       "description": "We explore the properties of this highly volatile and flammable liquid that revolutionized all medical surgeries by blocking pain in patients today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "engine-octane-the-resistance-of-gasoline",
       "title": "Engine octane: the resistance of gasoline",
       "order": 257,
       "description": "We study how chemistry qualifies fuels using isooctane, preventing premature detonations that destroy automobile cylinders today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "tartaric-acid-the-broken-glass-in-your-bottle",
       "title": "Tartaric acid: the broken glass in your bottle",
       "order": 258,
       "description": "We unravel the origin of those small harmless crystals that appear in the corks of mature wines when their acids are precipitated by the intense cold.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "fluidized-sand-solids-that-act-like-liquids",
       "title": "Fluidized sand: solids that act like liquids",
       "order": 259,
       "description": "Delve into the physical and chemical process where a gas at constant pressure separates sand particles, making them behave like bubbling water today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "pure-fluorine-gas-the-most-aggressive-element-of-all",
       "title": "Pure fluorine gas: the most aggressive element of all",
       "order": 260,
       "description": "Meet the extremely reactive and dangerous halogen that is capable of igniting metals, water and even strong glass into flames without the need for heat.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "activation-energy-the-push-to-react",
       "title": "Activation energy: the push to react",
       "order": 261,
       "description": "We analyze the immense invisible thermodynamic barrier that the reactants must overcome to break all their initial bonds and form the desired products.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "polyester-resin-toughening-the-world-today",
       "title": "Polyester resin: toughening the world today",
       "order": 262,
       "description": "We explore thermoset polymers that are combined with glass fibers to build everything from small kayaks to our home swimming pools.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "agricultural-nitrates-industrial-explosions-today",
       "title": "Agricultural nitrates: industrial explosions today",
       "order": 263,
       "description": "Discover how large accumulations of useful ammonium nitrate can become deadly unstable under high heat, causing enormous damage and tragedy.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "refrigerant-gases-lowering-the-heat-with-freons",
       "title": "Refrigerant gases: lowering the heat with freons",
       "order": 264,
       "description": "We study how halogenated compounds repeatedly compress and expand, absorbing large amounts of heat to keep our food cold.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "salicylic-acid-cleaning-our-pores",
       "title": "Salicylic acid: cleaning our pores",
       "order": 265,
       "description": "Learn about this beta hydroxy acid compound that slowly dissolves excess sebum embedded in our cellular epidermis, preventing the formation of severe acne.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "oscillating-reactions-the-iodine-chemical-clock-today",
       "title": "Oscillating Reactions: The Iodine Chemical Clock Today",
       "order": 266,
       "description": "Delve into spectacular chemical systems that visually change colors in hypnotic loops until they reach their expected final phase equilibrium.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "electrolysis-of-water-breaking-down-the-vital-liquid",
       "title": "Electrolysis of water: breaking down the vital liquid",
       "order": 267,
       "description": "We analyze the application of direct current through water to very effectively separate and isolate the valuable bubbles of oxygen and pure hydrogen.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "xanthan-gum-the-thickeners-in-our-food-today",
       "title": "Xanthan gum: the thickeners in our food today",
       "order": 268,
       "description": "Explore the curious polysaccharide that fermenting bacteria manage to produce in the laboratory, giving great texture and viscosity to sauces and creamy ice creams.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "body-chemistry-why-our-sweat-smells-bad",
       "title": "Body chemistry: why our sweat smells bad",
       "order": 269,
       "description": "We discovered how our odorless sweat is quickly decomposed by bacteria that inhabit your skin, generating volatile acids with a very unpleasant aroma.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "non-newtonian-fluids-cornstarch-chemistry-today",
       "title": "Non-Newtonian Fluids: Cornstarch Chemistry Today",
       "order": 270,
       "description": "Delve into thick mixtures whose cellular viscosity increases rapidly when receiving strong blows, instantly acting as a very hard and resistant solid.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "structural-lignin-the-chemical-rigidity-of-wood",
       "title": "Structural lignin: the chemical rigidity of wood",
       "order": 271,
       "description": "We study this complex organic polymer that gives enormous resistance to land plants, allowing the growth of immense trees today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "phosphoric-acid-how-we-remove-rust-from-metals",
       "title": "Phosphoric acid: how we remove rust from metals",
       "order": 272,
       "description": "We analyze the chemical reaction where this acid converts oxidized iron into dark iron phosphate, a strong protective layer that is very easy to remove.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "platinum-a-precious-metal-and-industrial-catalyst",
       "title": "Platinum: a precious metal and industrial catalyst",
       "order": 273,
       "description": "Learn how this dense noble element drastically accelerates complex reactions without being consumed, being absolutely vital for oil refining.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-chemistry-of-kombucha-the-active-symbiotic-culture",
       "title": "The Chemistry of Kombucha: The Active Symbiotic Culture",
       "order": 274,
       "description": "We break down the complex biological community of bacteria and yeasts that ferment sweet tea, creating acidic organics that benefit your digestive health.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "isoamyl-acetate-the-chemical-that-tastes-like-ripe-banana",
       "title": "Isoamyl acetate: the chemical that tastes like ripe banana",
       "order": 275,
       "description": "Delve into the fascinating world of synthetic esters, understanding how laboratories replicate the sweet fruity smell using alcohols and an acid.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "dichlorodiphenyltrichloroethane-the-fall-of-the-famous-ddt",
       "title": "Dichlorodiphenyltrichloroethane: the fall of the famous DDT",
       "order": 276,
       "description": "We explore the history of the powerful synthetic insecticide that saved many, but whose slow chemical degradation caused serious damage to the environment.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "surfactants-in-your-shampoo-cleaning-the-scalp",
       "title": "Surfactants in your shampoo: cleaning the scalp",
       "order": 277,
       "description": "We study how the amphiphilic molecules in your hygiene products manage to trap hair oil, forming useful micelles that the water then carries away.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "silver-iodide-cloud-seeding-to-attract-rain",
       "title": "Silver iodide: cloud seeding to attract rain",
       "order": 278,
       "description": "We analyze how the particles of this inorganic salt act as excellent condensation nuclei, forcing vital precipitation in very dry areas.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "medical-titanium-perfect-integration-with-your-bones",
       "title": "Medical titanium: perfect integration with your bones",
       "order": 279,
       "description": "Discover how the protective layer of titanium dioxide allows this metal to be completely biocompatible, fusing naturally with the tissue.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "lidocaine-temporary-blockage-of-localized-pain",
       "title": "Lidocaine: temporary blockage of localized pain",
       "order": 280,
       "description": "We break down the chemical structure of this useful anesthetic that prevents the flow of sodium ions in your nerves, stopping the strong messages of your pain.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "malic-acid-the-intense-acidity-of-green-apples",
       "title": "Malic acid: the intense acidity of green apples",
       "order": 281,
       "description": "Learn about the organic compound responsible for the sour taste in unripe fruits, extremely vital for the cellular energy production cycle in your body.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "tungsten-the-metal-of-classic-filament-lights",
       "title": "Tungsten: the metal of classic filament lights",
       "order": 282,
       "description": "We explore the fascinating element with the highest melting point in the entire periodic table, capable of resisting intense extreme heat to light up your nights.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "synthetic-cortisone-the-brake-on-major-inflammation",
       "title": "Synthetic cortisone: the brake on major inflammation",
       "order": 283,
       "description": "We study how this powerful steroid manages to inhibit the responses of your immune system, providing great relief from terrible autoimmune diseases.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "dioxins-the-feared-and-very-poisonous-byproducts",
       "title": "Dioxins: the feared and very poisonous byproducts",
       "order": 284,
       "description": "We analyze these highly toxic organic molecules created unintentionally during chemical combustion, which dangerously accumulate in fat.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "beta-carotene-the-orange-pigment-in-your-carrots",
       "title": "Beta carotene: the orange pigment in your carrots",
       "order": 285,
       "description": "Delve into the strong hydrocarbons responsible for the vibrant colors in various vegetables, which your liver manages to break down to produce great vitamin A.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "van-der-waals-forces-how-geckos-manage-to-climb",
       "title": "Van der Waals forces: how geckos manage to climb",
       "order": 286,
       "description": "We discovered the weak temporal intermolecular attractions that, when added up in the millions, allow these small reptiles to walk across smooth ceilings.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "elastomeric-polyurethane-the-great-chemistry-of-elastane",
       "title": "Elastomeric polyurethane: the great chemistry of elastane",
       "order": 287,
       "description": "Explore the creation of the long chains of synthetic polymers that allow your sports garments to stretch enormously and always recover their shape.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "adenosine-triphosphate-the-great-energy-currency-today",
       "title": "Adenosine triphosphate: the great energy currency today",
       "order": 288,
       "description": "We analyze the fundamental nucleotide responsible for storing and transporting all the chemical energy necessary for absolutely each function of your cells.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-ostwald-process-the-synthesis-of-large-nitric-acid",
       "title": "The Ostwald process: the synthesis of large nitric acid",
       "order": 289,
       "description": "We study the vital catalytic oxidation of ammonia at high temperatures to manufacture the acid essential for the enormous production of fertilizers.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "silica-gel-trapping-moisture-in-dry-sachets",
       "title": "Silica gel: trapping moisture in dry sachets",
       "order": 290,
       "description": "Learn how this strong, highly porous silicon dioxide uses capillary adsorption to retain water from the air and protect your appliances today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "asbestos-the-resistant-and-very-lethal-fibrous-silicate",
       "title": "Asbestos: the resistant and very lethal fibrous silicate",
       "order": 291,
       "description": "We break down the crystalline structure of this non-combustible insulation, understanding how its microscopic fibers manage to cause very serious lung damage.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "vegetable-ricin-the-toxic-protein-in-seeds",
       "title": "Vegetable ricin: the toxic protein in seeds",
       "order": 292,
       "description": "Delve into the powerful mechanism of this lethal castor toxin, capable of inactivating your ribosomes and completely stopping vital cellular synthesis today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "sourdough-lactic-acid-bacteria-making-your-bread",
       "title": "Sourdough: lactic acid bacteria making your bread",
       "order": 293,
       "description": "We discovered the ancient chemical symbiosis between wild yeasts and lactobacilli that degrade complex starches, providing textures and enormous flavor.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "natural-agar-the-chemical-gelatin-extracted-from-the-sea",
       "title": "Natural agar: the chemical gelatin extracted from the sea",
       "order": 294,
       "description": "We explore the composition of these strong polysaccharides from red algae that create great thermo-reversible gels for science and food.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "radioactive-radium-the-sad-story-in-watches",
       "title": "Radioactive radium: the sad story in watches",
       "order": 295,
       "description": "We analyze how this dangerous alkaline earth element was mistakenly used to paint shiny spheres, changing strict labor laws.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "potassium-and-argon-dating-the-age-of-volcanoes",
       "title": "Potassium and argon dating: the age of volcanoes",
       "order": 296,
       "description": "We study how the slow decomposition of unstable potassium locked in rocks allows scientists to accurately calculate the age of the planet.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "alkaline-batteries-great-long-acting-portable-energy",
       "title": "Alkaline batteries: great, long-acting portable energy",
       "order": 297,
       "description": "Learn about the strong oxidation-reduction reaction between zinc and manganese within a very basic medium, providing constant energy to all your devices.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "transparent-cellophane-regenerated-vegetable-cellulose",
       "title": "Transparent cellophane: regenerated vegetable cellulose",
       "order": 298,
       "description": "We unravel the acid bath that transforms dull wood fibers into a shiny, thin waterproof film that revolutionized all packaging.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "pure-polycarbonate-the-crystals-that-stop-bullets",
       "title": "Pure polycarbonate: the crystals that stop bullets",
       "order": 299,
       "description": "Delve into the strong bonds of this thermoplastic polymer highly resistant to direct impacts, used to make screens and shields today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "monoammonium-phosphate-quenching-chemical-fire-at-close-range",
       "title": "Monoammonium phosphate: quenching chemical fire at close range",
       "order": 300,
       "description": "We analyze the fine dry chemical powder of common fire extinguishers, which melts with the enormous heat, isolating oxygen to put out fires quickly.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "spider-silk-todays-strong-natural-polymer",
       "title": "Spider silk: today's strong natural polymer",
       "order": 301,
       "description": "We discovered the incredible and complex structure of the strong proteins secreted by arachnids, which manage to overcome the tenacity of steel.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "chloramines-long-term-water-disinfection",
       "title": "Chloramines: long-term water disinfection",
       "order": 302,
       "description": "We analyze how the controlled mixture of chlorine and ammonia creates a very stable residual compound, keeping our drinking water clean for days.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "methyl-salicylate-the-strong-aroma-of-relief",
       "title": "Methyl salicylate: the strong aroma of relief",
       "order": 303,
       "description": "We studied the powerful organic ester produced naturally by several winter plants, frequently used to soothe muscle pain.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "forensic-phenolphthalein-the-chemical-blood-test",
       "title": "Forensic phenolphthalein: the chemical blood test",
       "order": 304,
       "description": "Learn how the classic acidity indicator reacts quickly with peroxide and hemoglobin to reveal blood traces in the scenes.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "methylene-blue-the-reaction-that-breathes-and-changes",
       "title": "Methylene blue: the reaction that breathes and changes",
       "order": 305,
       "description": "Delve into the amazing blue bottle experiment, where shaking the liquid dissolves atmospheric oxygen and oxidizes the dye instantly.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "aldehydes-molecules-with-very-penetrating-odors",
       "title": "Aldehydes: molecules with very penetrating odors",
       "order": 306,
       "description": "We explore the reactive chemical family of carbon and oxygen that gives us the delicious fragrance of cinnamon, almonds and the iconic Chanel N°5.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "micellar-water-the-small-spheres-of-cleansing",
       "title": "Micellar water: the small spheres of cleansing",
       "order": 307,
       "description": "We break down the gentle surface chemistry of modern makeup removers, where tiny micelles efficiently trap oils without damaging the skin.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "minoxidil-the-great-hair-stimulating-compound",
       "title": "Minoxidil: the great hair stimulating compound",
       "order": 308,
       "description": "We analyze how this famous vasodilator drug chemically alters resting hair follicles, surprisingly boosting cell flow.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "sensitive-adhesives-the-chemistry-of-paper-notes",
       "title": "Sensitive adhesives: the chemistry of paper notes",
       "order": 309,
       "description": "Discover the failed acrylate glue that forms invisible microspheres, allowing you to easily attach and remove your reminders without leaving a mark.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "l-theanine-the-relaxing-amino-acid-in-green-tea",
       "title": "L-theanine: the relaxing amino acid in green tea",
       "order": 310,
       "description": "We study the amazing natural molecule present in tea leaves that manages to cross the brain barrier, inducing deep calm without causing sleep.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "chemical-bluing-the-black-oxide-that-protects-weapons",
       "title": "Chemical bluing: the black oxide that protects weapons",
       "order": 311,
       "description": "Learn about the controlled alkaline process that transforms the surface of iron into pure magnetite, thus preventing the dreaded red oxidative corrosion.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "festive-sparklers-the-shower-of-sparks-of-light",
       "title": "Festive sparklers: the shower of sparks of light",
       "order": 312,
       "description": "Delve into the combustible mixture of iron or aluminum powder along with strong oxidizers and binders that burn slowly releasing great shine.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "tollens-reagent-brilliant-mirror-chemistry",
       "title": "Tollens reagent: brilliant mirror chemistry",
       "order": 313,
       "description": "We explore the fascinating reduction of silver ions on transparent glass, creating a perfect reflective layer used by science.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "polyvinyl-chloride-the-strong-rigid-plastic",
       "title": "Polyvinyl chloride: the strong rigid plastic",
       "order": 314,
       "description": "We analyze the enormous versatility of industrial PVC, a cheap polymer that requires useful chemical plasticizers to be very flexible today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "homemade-descalers-acids-cleaning-your-home",
       "title": "Homemade descalers: acids cleaning your home",
       "order": 315,
       "description": "We break down the acid-base reaction where vinegar slowly dissolves the strong calcium carbonate mineral deposits in your pipes.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "allyl-isothiocyanate-the-strong-fire-in-your-mustard",
       "title": "Allyl isothiocyanate: the strong fire in your mustard",
       "order": 316,
       "description": "Discover the volatile and spicy molecule released by wasabi or horseradish, which vaporizes quickly, attacking the receptors in your nose.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "stinky-thiols-pure-skunk-defense",
       "title": "Stinky Thiols: Pure Skunk Defense",
       "order": 317,
       "description": "We study the volatile sulfur-based compounds that generate the overpowering defensive aroma, and how peroxide can oxidize them to clean them.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "mercury-fulminate-chemical-detonators",
       "title": "Mercury fulminate: chemical detonators",
       "order": 318,
       "description": "Learn about the dangerous salt, highly sensitive to friction and minimal impact, which was used for centuries to initiate strong, larger explosions.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "teeth-whitening-peroxide-oxidizing-stains",
       "title": "Teeth whitening: peroxide oxidizing stains",
       "order": 319,
       "description": "Delve into the aesthetic treatment where free oxygen radicals penetrate the strong porous enamel, breaking down complex pigmented molecules.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "enzymes-and-avocados-why-food-darkens",
       "title": "Enzymes and avocados: why food darkens",
       "order": 320,
       "description": "We explore the rapid phenolic oxidation that the pulp undergoes when exposed to pure air, and how lemon juice quickly inhibits this enzyme.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "ion-exchange-the-strong-glasses-of-your-mobile",
       "title": "Ion exchange: the strong glasses of your mobile",
       "order": 321,
       "description": "We analyze the chemical bath of boiling salts where large potassium ions replace the sodium in the glass, creating large, very resistant compression.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "calcium-sulfate-chemistry-of-gypsum-in-medicine",
       "title": "Calcium sulfate: chemistry of gypsum in medicine",
       "order": 322,
       "description": "We break down the rapid exothermic process of hydration, where this white powder absorbs its lost water, hardening to heal serious fractures.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "synthetic-elements-extending-the-entire-table",
       "title": "Synthetic elements: extending the entire table",
       "order": 323,
       "description": "Discover how scientists manage to collide heavy atomic nuclei at high speeds to synthesize ephemeral and highly radioactive elements.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "hydrophobic-sand-dust-that-rejects-water",
       "title": "Hydrophobic sand: dust that rejects water",
       "order": 324,
       "description": "We study the surface chemical modification with trimethylsilanol vapors, creating curious waterproof grains that can never get wet today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "ambergris-luxurious-fragrance-fixatives",
       "title": "Ambergris: luxurious fragrance fixatives",
       "order": 325,
       "description": "Learn about the extremely strange and expensive intestinal byproduct of the sperm whale, essential for slowing down the rapid evaporation of perfumes on your skin.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "sodium-acetate-a-solid-that-provides-great-heat",
       "title": "Sodium acetate: a solid that provides great heat",
       "order": 326,
       "description": "Delve into the instantaneous crystallization of supersaturated solutions, an exothermic physical and chemical process used in hand warmers.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "potassium-iodide-the-shield-against-radiation",
       "title": "Potassium iodide: the shield against radiation",
       "order": 327,
       "description": "We explore how fully saturating your tiny thyroid gland with this stable isotope safely blocks the dreaded radioactive iodine.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "vegetable-fructose-the-intense-sweetness-of-fruit",
       "title": "Vegetable fructose: the intense sweetness of fruit",
       "order": 328,
       "description": "We look at the simple carbohydrate that your liver processes differently than glucose, discussing its complex real-world impact on human metabolism.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "elastic-putty-silicone-polymers-today",
       "title": "Elastic putty: silicone polymers today",
       "order": 329,
       "description": "We break down the amazing dynamic cross bonds with boric acid that allow this material to stretch or bounce depending on all the force applied.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "antihistamines-the-blockages-of-the-great-allergy",
       "title": "Antihistamines: the blockages of the great allergy",
       "order": 330,
       "description": "Discover the precise molecular design of these effective drugs that occupy cell receptors to stop the annoying symptoms of large pollen.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-chemistry-of-gelatin-collagen-in-desserts",
       "title": "The chemistry of gelatin: collagen in desserts",
       "order": 331,
       "description": "We discovered how collagen is denatured by extreme heat, unraveling its protein fibers to form a gelatinous network upon cooling today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "baking-powder-the-acid-reaction-of-cakes",
       "title": "Baking powder: the acid reaction of cakes",
       "order": 332,
       "description": "We analyze the exact mixture of baking soda and dry acids that only react when hydrated, releasing the gas necessary to fluff desserts.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "mouthwashes-chemistry-against-dental-plaque",
       "title": "Mouthwashes: chemistry against dental plaque",
       "order": 333,
       "description": "We explore the action of antiseptics such as chlorhexidine, molecules that manage to adhere to oral tissues to destroy harmful bacteria.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "lactose-and-lactase-the-chemistry-in-your-digestion-today",
       "title": "Lactose and lactase: the chemistry in your digestion today",
       "order": 334,
       "description": "We study how the enzyme lactase breaks down milk sugar into simpler sugars, and what happens chemically when our bodies don't produce it.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "nicotine-chemistry-a-great-addictive-alkaloid",
       "title": "Nicotine Chemistry: A Great Addictive Alkaloid",
       "order": 335,
       "description": "We analyze how this molecule manages to imitate natural neurotransmitters in the human brain, causing an immense rapid release of dopamine.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "coriander-aldehydes-why-it-tastes-like-pure-soap",
       "title": "Coriander aldehydes: why it tastes like pure soap",
       "order": 336,
       "description": "We discovered the fascinating genetics and chemistry behind this strong aversion, where specific olfactory receptors detect very similar compounds.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "copper-sulfate-the-beautiful-blue-crystals",
       "title": "Copper sulfate: the beautiful blue crystals",
       "order": 337,
       "description": "Meet the strong inorganic salt widely used as an agricultural fungicide, standing out for its amazing and bright blue color in the laboratory.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-ant-trail-molecular-communication",
       "title": "The Ant Trail: Molecular Communication",
       "order": 338,
       "description": "We explore the precise trail of volatile pheromones that these insects deposit, marking a clear chemical path that their companions manage to follow.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "snail-mucins-biological-resins",
       "title": "Snail mucins: biological resins",
       "order": 339,
       "description": "Enter the amazing world of natural glycoproteins that provide enormous lubrication and regenerative capacity to the skin of mollusks.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "table-salt-vs-sea-salt-differences-today",
       "title": "Table Salt vs Sea Salt: Differences Today",
       "order": 340,
       "description": "We break down the actual composition of these basic condiments, revealing that they are both sodium chloride with minuscule variations in their minerals.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "activated-charcoal-poison-sponges",
       "title": "Activated charcoal: poison sponges",
       "order": 341,
       "description": "We analyze the immense porous network of heat-treated carbon, capable of trapping dangerous toxic molecules in modern purifying filters.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "lead-crystal-the-dense-chemistry-of-glasses",
       "title": "Lead crystal: the dense chemistry of glasses",
       "order": 342,
       "description": "We study how adding lead oxide to the molten mixture increases the refractive index, creating a heavy material that shines beautifully.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "synthetic-neoprene-the-rubber-of-divers-today",
       "title": "Synthetic neoprene: the rubber of divers today",
       "order": 343,
       "description": "We discovered the polymerization of chloroprene, generating a resistant thermal insulating material with closed microbubbles to withstand the cold sea.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "cyanobacteria-toxins-the-danger-in-lakes",
       "title": "Cyanobacteria toxins: the danger in lakes",
       "order": 344,
       "description": "Learn about the fearsome hepatotoxic compounds generated by excessive algae blooms, fueled by agricultural fertilizer spills.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "metallic-magnesium-the-brightest-white-light",
       "title": "Metallic magnesium: the brightest white light",
       "order": 345,
       "description": "We explore the immense exothermic reaction of this pure alkaline earth element that generates an intense white flame that is blinding and impossible to extinguish.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "helium-in-the-voice-chemistry-of-a-very-light-gas",
       "title": "Helium in the voice: chemistry of a very light gas",
       "order": 346,
       "description": "Delve into the physics and chemistry of noble gases. Understand why breathing this inert substance drastically alters the tone of your words.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "pure-chloroform-an-ancient-sleeping-agent",
       "title": "Pure chloroform: an ancient sleeping agent",
       "order": 347,
       "description": "We analyze the heavy halogenated compound used by the pioneers of anesthesia and how its liver toxicity forced us to look for new alternatives.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "peracetic-acid-dangerous-mixtures-in-the-home",
       "title": "Peracetic acid: dangerous mixtures in the home",
       "order": 348,
       "description": "We break down the intense and corrosive reaction that occurs when mixing white vinegar with pure hydrogen peroxide, producing serious respiratory damage today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "physical-nucleation-sodas-and-mint-candies",
       "title": "Physical nucleation: sodas and mint candies",
       "order": 349,
       "description": "We study the violent and rapid physical degassing of trapped carbon dioxide upon contact with the rough surfaces of a candy.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "trans-fats-the-hydrogenation-of-oils",
       "title": "Trans fats: the hydrogenation of oils",
       "order": 350,
       "description": "We discovered the industrial method that injects hydrogen gas into liquid lipids to harden them, creating bonds that the body cannot assimilate well.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-chemical-olestra-the-false-lipid-without-calories",
       "title": "The chemical olestra: the false lipid without calories",
       "order": 351,
       "description": "We analyze the enormous sucrose molecule surrounded by fatty acids that digestive enzymes cannot cut, passing intact through the human intestine.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "natural-cellulose-the-vital-indigestible-fiber-today",
       "title": "Natural cellulose: the vital indigestible fiber today",
       "order": 352,
       "description": "Learn about the enormous structural wall of all vegetables, a glucose polymer that humans cannot digest but that cleanses the digestive tract.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "phytic-acid-and-the-antinutrients-in-seeds",
       "title": "Phytic acid and the antinutrients in seeds",
       "order": 353,
       "description": "We explore the immense molecule capable of chelating important metals in our digestive system, blocking the correct absorption of iron and zinc.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "controlled-heat-chemistry-of-sous-vide-cooking",
       "title": "Controlled heat: chemistry of sous vide cooking",
       "order": 354,
       "description": "Delve into the precise breakdown of tough protein bonds in meats using precise low temperatures to achieve great tenderness and flavor.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "pressure-cookers-gay-lussacs-law-at-home",
       "title": "Pressure cookers: Gay-Lussac's law at home",
       "order": 355,
       "description": "We study how the increase in atmospheric pressure raises the boiling point of the liquid, rapidly accelerating the thermal reactions of the stew.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "thawing-the-ice-chlorides-on-the-streets",
       "title": "Thawing the ice: chlorides on the streets",
       "order": 356,
       "description": "We discovered the fascinating freezing point depression of adding salt, disrupting strong hydrogen bonds to melt thick snow.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "cold-compresses-instant-endothermic-chemistry",
       "title": "Cold Compresses: Instant Endothermic Chemistry",
       "order": 357,
       "description": "We analyze the dissolution of ammonium nitrate in natural water, a rapid reaction that intensely absorbs the surrounding heat to achieve great cold.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "firefighting-foam-drowning-a-big-fire-today",
       "title": "Firefighting foam: drowning a big fire today",
       "order": 358,
       "description": "Learn about the dense aqueous fluorosurfactants that form an immense impenetrable layer on liquid fuels, completely blocking oxidation.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "smoke-bombs-slow-combustion-and-refined-sugar",
       "title": "Smoke bombs: slow combustion and refined sugar",
       "order": 359,
       "description": "We explore the incessant mixture of potassium nitrate with sucrose that gently oxidizes, generating immense and dense columns of opaque gas today.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "optical-brighteners-deceiving-our-vision",
       "title": "Optical brighteners: deceiving our vision",
       "order": 360,
       "description": "Get into the large fluorescent molecules in your detergent that absorb ultraviolet light and emit bluish light, making clothes appear white.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "enzymes-in-washing-the-destruction-of-stains",
       "title": "Enzymes in washing: the destruction of stains",
       "order": 361,
       "description": "We study the strong synthetic lipases and proteases in detergents, painstakingly cutting fats and annoying proteins at low network temperatures.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "laundry-softeners-coating-fibers-with-lipids",
       "title": "Laundry softeners: coating fibers with lipids",
       "order": 362,
       "description": "We discovered how cationic compounds neutralize all the negative charge of the clean fabric, covering it with soft fats that are very pleasant to the touch.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "perfume-notes-the-chemistry-of-evaporation",
       "title": "Perfume notes: the chemistry of evaporation",
       "order": 363,
       "description": "We analyzed the marked differences in chemical volatility between light citrus essential oils and large resinous molecules with a dense background.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "invisible-ink-revealing-very-hidden-messages",
       "title": "Invisible ink: revealing very hidden messages",
       "order": 364,
       "description": "We explore household acidic substances like lemon that weaken the thin paper locally, carbonizing more quickly when a lot of heat is applied to it.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-molecular-future-a-year-discovering-chemistry",
       "title": "The molecular future: a year discovering chemistry",
       "order": 365,
       "description": "We close our great annual cycle by summarizing the immense invisible pillars of matter and glimpsing the astonishing promises of nanotechnology.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     }
   ]
 }

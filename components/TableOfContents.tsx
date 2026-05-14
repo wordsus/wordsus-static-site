@@ -97,7 +97,7 @@ export default function TableOfContents({ toc, onClick }: TableOfContentsProps) 
                 href={`#${item.id}`}
                 onClick={onClick}
                 className={clsx(
-                  "group flex items-start py-1.5 transition-all duration-200 border-l-2",
+                  "group flex items-start py-1.5 transition-all duration-200 border-l-2 cursor-pointer",
                   item.level === 2 
                     ? "pl-4 text-[13px] font-semibold mt-4 first:mt-0" 
                     : "pl-8 text-[12px] font-normal text-[hsl(var(--muted-foreground))]",

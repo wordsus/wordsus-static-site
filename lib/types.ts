@@ -8,6 +8,7 @@ export interface ChapterMeta {
   order: number;
   description?: string;
   audioUrl?: string;
+  videoUrl?: string;
 }
 
 export interface BookPart {

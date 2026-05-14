@@ -22,210 +22,240 @@
       "title": "The atom: the fundamental unit of all matter",
       "order": 1,
       "description": "Discover what atoms are, how they are formed inside and why understanding their structure is essential to understanding all the chemistry that surrounds us.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "states-of-matter-solids-liquids-and-gases",
       "title": "States of matter: solids, liquids and gases",
       "order": 2,
       "description": "Learn the characteristics that differentiate solids, liquids and gases, and how changes in temperature affect molecular behavior.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-water-anomaly-why-ice-manages-to-float",
       "title": "The water anomaly: why ice manages to float",
       "order": 3,
       "description": "Water has unique and essential properties for life. We analyze its curious molecular structure and the reason why ice is less dense.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "introduction-to-the-periodic-table-of-the-elements",
       "title": "Introduction to the periodic table of the elements",
       "order": 4,
       "description": "We explore how the chemical elements are arranged in the periodic table, their fascinating history, and what information we can glean from each little box.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "metals-vs-non-metals-basic-differences",
       "title": "Metals vs. Non-Metals: Basic Differences",
       "order": 5,
       "description": "Discover the marked chemical differences between metals and non-metals, their varied physical properties, and how they interact with each other in nature.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "covalent-bonds-successfully-sharing-electrons",
       "title": "Covalent Bonds: Successfully Sharing Electrons",
       "order": 6,
       "description": "Understand how atoms join together by sharing their electrons to form stable molecules and why this type of bond is key for living beings.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-chemistry-of-fire-discovering-real-combustion",
       "title": "The chemistry of fire: discovering real combustion",
       "order": 7,
       "description": "We take apart the fascinating process of combustion. Learn what elements are required to generate a flame, how the fire is maintained and how to extinguish it.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "ions-and-ionic-bonds-the-attraction-of-opposites",
       "title": "Ions and ionic bonds: the attraction of opposites",
       "order": 8,
       "description": "We analyze what happens when atoms lose or gain electrons, creating charged ions that attract strongly to form crystals like common salt.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "acids-and-bases-understanding-the-important-concept-of-ph",
       "title": "Acids and bases: understanding the important concept of pH",
       "order": 9,
       "description": "We delve into the nature of acidic and basic compounds, the precise meaning of the pH scale and its great importance in our daily lives.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "chemical-reactions-the-art-of-transforming-matter",
       "title": "Chemical reactions: the art of transforming matter",
       "order": 10,
       "description": "Observe in detail how different substances interact to create completely new compounds, breaking bonds and releasing or absorbing energy.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-chemistry-of-coffee-the-molecule-that-keeps-us-alert",
       "title": "The chemistry of coffee: the molecule that keeps us alert",
       "order": 11,
       "description": "We explore the structure of caffeine, the most consumed alkaloid in the world, its direct effects on the nervous system and its extraction process.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "balancing-equations-the-perfect-order-in-chemistry",
       "title": "Balancing Equations: The Perfect Order in Chemistry",
       "order": 12,
       "description": "Learn why matter is neither created nor destroyed, and how chemists use mathematical balancing to accurately represent exact reactions.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "solutions-and-mixtures-the-homogeneous-versus-the-heterogeneous",
       "title": "Solutions and mixtures: the homogeneous versus the heterogeneous",
       "order": 13,
       "description": "We clearly differentiate chemical solutions from simple mixtures, analyzing solutes, solvents and how concentration affects final properties.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "oxidation-and-reduction-why-metals-corrode",
       "title": "Oxidation and reduction: why metals corrode",
       "order": 14,
       "description": "Learn about the famous redox reactions, a constant exchange of electrons that causes the corrosion of iron but also allows the use of batteries.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "intermolecular-forces-the-hidden-glue-of-the-world",
       "title": "Intermolecular forces: the hidden glue of the world",
       "order": 15,
       "description": "Discover how molecules attract each other through hydrogen bonds and Van der Waals forces, determining physical states and boiling points.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "organic-compounds-the-chemistry-of-carbon-in-life",
       "title": "Organic Compounds: The Chemistry of Carbon in Life",
       "order": 16,
       "description": "We delve into organic chemistry to understand why the carbon atom is so versatile and makes up the basic structure of all living beings.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "alkanes-alkenes-and-alkynes-hydrocarbon-chains",
       "title": "Alkanes, alkenes and alkynes: hydrocarbon chains",
       "order": 17,
       "description": "We explore the simplest hydrocarbons, analyzing the differences in reactivity between single, double and triple bonds that support this industry.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-inalterability-of-gold-a-very-resistant-noble-metal",
       "title": "The inalterability of gold: a very resistant noble metal",
       "order": 18,
       "description": "We study why gold does not lose its shine or corrode over the centuries. Know its electronic configuration and its low chemical reactivity.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "stoichiometry-the-mathematics-behind-reactions",
       "title": "Stoichiometry: the mathematics behind reactions",
       "order": 19,
       "description": "Learn how to calculate the exact quantities of reactants and products. This fundamental tool prevents the waste of substances at an industrial level.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "reaction-speed-accelerating-chemical-processes",
       "title": "Reaction speed: accelerating chemical processes",
       "order": 20,
       "description": "We analyze chemical kinetics and how factors such as temperature, pressure, concentration and catalysts can accelerate transformations.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "diamond-and-graphite-the-many-faces-of-carbon",
       "title": "Diamond and graphite: the many faces of carbon",
       "order": 21,
       "description": "Discover the concept of allotropy by comparing two minerals formed only by carbon, but with diametrically opposite properties due to their geometry.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "ideal-gases-the-laws-of-boyle-charles-and-gay-lussac",
       "title": "Ideal gases: the laws of Boyle, Charles and Gay-Lussac",
       "order": 22,
       "description": "We explore how gases respond to changes in pressure, volume and temperature, deducing the historical formulas that explain their vital behavior.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "thermochemistry-in-action-the-reactions-that-give-us-heat",
       "title": "Thermochemistry in action: the reactions that give us heat",
       "order": 23,
       "description": "We analyze the flow of heat during chemical processes, differentiating exothermic reactions that warm us from endothermic reactions that absorb heat.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "chemistry-in-the-kitchen-maillard-reactions-and-flavors",
       "title": "Chemistry in the kitchen: Maillard reactions and flavors",
       "order": 24,
       "description": "We transform your kitchen into a laboratory. Discover the fantastic series of reactions that provide aromas, colors and toasted flavors to all your foods.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "synthetic-polymers-the-wide-universe-of-plastics",
       "title": "Synthetic polymers: the wide universe of plastics",
       "order": 25,
       "description": "From packaging to textile fibers, we study how small molecules come together to form enormous chains that revolutionized modern life forever.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "chemical-balance-reactions-that-never-stop",
       "title": "Chemical balance: reactions that never stop",
       "order": 26,
       "description": "We understand why many chemical reactions do not complete completely, but rather reach a dynamic state where reactants and products coexist in peace.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "electrolytes-in-solution-the-conduction-of-electricity",
       "title": "Electrolytes in solution: the conduction of electricity",
       "order": 27,
       "description": "We investigate what happens when certain salts dissolve in pure water, separating into mobile ions that allow the free passage of electric current.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-chemistry-of-dna-the-molecular-code-of-all-beings",
       "title": "The chemistry of DNA: the molecular code of all beings",
       "order": 28,
       "description": "We explore the nucleotides and hydrogen bonds that form the famous double helix of DNA, storing humanity's vast genetic information.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "colloids-and-suspensions-the-boundaries-of-solutions",
       "title": "Colloids and suspensions: the boundaries of solutions",
       "order": 29,
       "description": "We analyze those special mixtures that seem homogeneous but are not. From fog to milk, discover the fascinating properties of colloids.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "natural-radioactivity-unstable-isotopes-and-their-mysteries",
       "title": "Natural radioactivity: unstable isotopes and their mysteries",
       "order": 30,
       "description": "We analyze why some atomic nuclei break spontaneously, releasing large doses of energy and invisible radiation.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     }
   ]
 }

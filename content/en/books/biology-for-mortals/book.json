@@ -24,210 +24,240 @@
       "title": "What is life? Definition and key characteristics",
       "order": 1,
       "description": "Discover the fundamental biological concepts that separate living beings from inert matter and how science defines the beginning of life.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "dna-revealed-the-great-molecule-of-heredity",
       "title": "DNA revealed: The great molecule of heredity",
       "order": 2,
       "description": "We explore the structure of deoxyribonucleic acid, its famous double helix design, and how it stores our most essential genetic information.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-eukaryotic-cell-its-structure-and-functions",
       "title": "The eukaryotic cell: Its structure and functions",
       "order": 3,
       "description": "We travel inside our own cells to learn about their organelles, their vital functions and how they cooperate to keep us alive every day.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "biological-evolution-the-mechanism-of-adaptation",
       "title": "Biological evolution: The mechanism of adaptation",
       "order": 4,
       "description": "We analyze the foundations of natural selection proposed by Darwin and how organisms slowly change over geological eras.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-kingdom-of-bacteria-ubiquitous-microorganisms",
       "title": "The Kingdom of Bacteria: Ubiquitous Microorganisms",
       "order": 5,
       "description": "Learn about the fascinating world of bacteria, the most abundant living beings on the planet, and understand their vital importance for all ecosystems.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "are-viruses-live-your-particular-biological-cycle",
       "title": "Are viruses live? Your particular biological cycle",
       "order": 6,
       "description": "We discuss the true biological nature of viruses, their methods of invading host cells, and how they manage to multiply so effectively.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "fungi-the-fascinating-kingdom-of-fungi-and-yeasts",
       "title": "Fungi: The fascinating kingdom of fungi and yeasts",
       "order": 7,
       "description": "We discover the biology of fungi, from single-celled yeasts to the complex networks of mycelium that connect large natural forests.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-genetics-of-eye-color-in-humans",
       "title": "The genetics of eye color in humans",
       "order": 8,
       "description": "We break down how our inherited genes interact to determine the amount of melanin in the iris and generate the different colors of our eyes.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "photosynthesis-how-plants-make-their-food",
       "title": "Photosynthesis: How plants make their food",
       "order": 9,
       "description": "We study the biochemical process by which plants capture sunlight and carbon dioxide to produce their own energy and oxygen.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "animal-migration-biology-of-great-journeys",
       "title": "Animal migration: Biology of great journeys",
       "order": 10,
       "description": "We explore the incredible biological and physiological mechanisms that allow diverse species to navigate and survive journeys of thousands of kilometers.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "human-blood-groups-and-their-hereditary-basis",
       "title": "Human blood groups and their hereditary basis",
       "order": 11,
       "description": "Understand the genetic difference between ABO system blood groups and the Rh factor, and why this compatibility is crucial in today's medicine.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-immune-system-the-bodys-defenses",
       "title": "The immune system: The body's defenses",
       "order": 12,
       "description": "We analyze the cells and processes that make up our immune system, which protects us from pathogens and diseases in a constant and silent way.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-biology-of-sleep-why-we-sleep-and-its-phases",
       "title": "The biology of sleep: Why we sleep and its phases",
       "order": 13,
       "description": "We review neural processes, circadian rhythms, and the great biological importance of sleeping well to maintain optimal physical and mental health.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-process-of-digestion-and-absorption-of-nutrients",
       "title": "The process of digestion and absorption of nutrients",
       "order": 14,
       "description": "We accompany food on its journey through the human digestive system to understand how we extract and assimilate the energy necessary to live.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "crispr-cas9-the-revolution-in-gene-editing",
       "title": "CRISPR-Cas9: The revolution in gene editing",
       "order": 15,
       "description": "Learn about the genetic editing tool inspired by the bacterial immune system that allows scientists to modify DNA sequences with precision.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "metamorphosis-extreme-biological-transformations",
       "title": "Metamorphosis: Extreme biological transformations",
       "order": 16,
       "description": "Discover the impressive morphological and physiological changes that insects and amphibians go through during their deep development until the adult phase.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-biology-of-human-aging-at-the-cellular-level",
       "title": "The biology of human aging at the cellular level",
       "order": 17,
       "description": "We analyze telomere shortening and oxidative stress to understand the cellular and genetic factors that cause our aging.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-biological-bases-of-memory-and-learning",
       "title": "The biological bases of memory and learning",
       "order": 18,
       "description": "We explore how our neurons create new synaptic connections in the brain to process, store and retrieve the information we learn.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "symbiosis-cooperation-between-different-species",
       "title": "Symbiosis: Cooperation between different species",
       "order": 19,
       "description": "We study the fascinating symbiotic relationships, where different organisms evolve together to benefit each other and survive.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "extremophiles-life-in-the-most-hostile-environments",
       "title": "Extremophiles: Life in the most hostile environments",
       "order": 20,
       "description": "Meet the amazing microorganisms genetically and biologically adapted to thrive in conditions of extreme heat, high acidity or radiation.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "hominid-evolution-our-human-lineage",
       "title": "Hominid Evolution: Our Human Lineage",
       "order": 21,
       "description": "We trace the long evolutionary journey from our oldest primate ancestors to the consolidation of modern Homo sapiens on planet Earth.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "feathered-dinosaurs-and-the-origin-of-birds",
       "title": "Feathered dinosaurs and the origin of birds",
       "order": 22,
       "description": "We examine the compelling biological and paleontological evidence showing how modern birds descended directly from theropod dinosaurs.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "epigenetics-how-the-environment-influences-genes",
       "title": "Epigenetics: How the environment influences genes",
       "order": 23,
       "description": "Discover how certain external and environmental factors manage to activate or deactivate our genes without altering the fundamental sequence of our human DNA.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-human-microbiome-we-are-a-walking-ecosystem",
       "title": "The human microbiome: We are a walking ecosystem",
       "order": 24,
       "description": "We analyze the billions of microorganisms that live on our skin and inside the intestine, and their crucial biological impact on our general health.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "human-stem-cells-potential-and-development",
       "title": "Human stem cells: Potential and development",
       "order": 25,
       "description": "We explain what exactly stem cells are, their incredible ability to specialize in different tissues and their enormous potential in current medicine.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "bioluminescence-animals-that-produce-their-own-light",
       "title": "Bioluminescence: Animals that produce their own light",
       "order": 26,
       "description": "We study the chemical processes that allow certain jellyfish, insects and abyssal fish to generate their own light to hunt, communicate or defend themselves.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "biology-of-allergies-the-active-immune-system",
       "title": "Biology of allergies: The active immune system",
       "order": 27,
       "description": "Understand what happens biologically in our body when the immune system overreacts and unnecessarily to harmless substances.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "adenosine-triphosphate-the-currency-of-energy",
       "title": "Adenosine triphosphate: The currency of energy",
       "order": 28,
       "description": "We delve into cellular biochemistry to understand the function of the ATP molecule, responsible for storing and transferring vital energy in living beings.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "genetic-mutations-errors-that-bring-change",
       "title": "Genetic mutations: Errors that bring change",
       "order": 29,
       "description": "We clarify how spontaneous changes occur in our genetic sequence, causing hereditary diseases or driving natural evolutionary diversity.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     },
     {
       "slug": "the-biology-of-twins-shared-identity",
       "title": "The Biology of Twins: Shared Identity",
       "order": 30,
       "description": "We differentiate biological formation between identical and fraternal twins, exploring how they share genetic information in early development.",
-      "audioUrl": ""
+      "audioUrl": "",
+      "videoUrl": ""
     }
   ]
 }

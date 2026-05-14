@@ -76,7 +76,7 @@ export default function IntroToc({ book }: IntroTocProps) {
             key={entry.id}
             onClick={() => scrollTo(entry.id)}
             className={clsx(
-              "group flex items-start py-1.5 text-left transition-all duration-200 border-l-2 w-full",
+              "group flex items-start py-1.5 text-left transition-all duration-200 border-l-2 w-full cursor-pointer",
               entry.level === 1
                 ? "pl-4 text-[13px] font-semibold mt-3 first:mt-0"
                 : "pl-8 text-[12px] font-normal text-[hsl(var(--muted-foreground))]",

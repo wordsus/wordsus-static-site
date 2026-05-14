@@ -374,7 +374,7 @@ export default function BookClient({
       >
         {/* Book header */}
         <div
-          className="border-b border-[hsl(var(--border))] bg-[hsl(var(--background))] overflow-hidden group/header"
+          className="border-b border-[hsl(var(--border))] bg-[hsl(var(--background))] overflow-hidden group/header cursor-pointer"
           onClick={() => {
             if (window.innerWidth < 1024) {
               setIsHeaderExpanded(!isHeaderExpanded);
@@ -411,7 +411,7 @@ export default function BookClient({
               >
                 <Link
                   href={`/${locale}/${book.category}`}
-                  className="p-1.5 rounded-full bg-black/20 backdrop-blur-md text-white hover:bg-white/20 transition-all border border-white/10"
+                  className="p-1.5 rounded-full bg-black/20 backdrop-blur-md text-white hover:bg-white/20 transition-all border border-white/10 cursor-pointer"
                   title={t("backToCategory")}
                 >
                   <ChevronLeft size={16} />
@@ -421,7 +421,7 @@ export default function BookClient({
                   id="book-favorite-btn"
                   onClick={toggleFavorite}
                   className={clsx(
-                    "p-1.5 rounded-full backdrop-blur-md transition-all border border-white/10",
+                    "p-1.5 rounded-full backdrop-blur-md transition-all border border-white/10 cursor-pointer",
                     isFav
                       ? "bg-red-500 text-white border-red-400"
                       : "bg-black/20 text-white hover:bg-white/20"
@@ -486,7 +486,7 @@ export default function BookClient({
                   <button
                     onClick={() => setProgressMenuOpen((v) => !v)}
                     aria-label="Progress options"
-                    className="p-0.5 rounded hover:bg-[hsl(var(--muted))] text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors"
+                    className="p-0.5 rounded hover:bg-[hsl(var(--muted))] text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors cursor-pointer"
                   >
                     <MoreVertical size={13} />
                   </button>
@@ -494,7 +494,7 @@ export default function BookClient({
                     <div className="absolute right-0 top-full mt-1 z-50 w-52 rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] shadow-lg shadow-black/10 overflow-hidden">
                       <button
                         onClick={markAllAsRead}
-                        className="flex items-center gap-2.5 w-full px-3 py-2.5 text-xs text-[hsl(var(--foreground))] hover:bg-[hsl(var(--accent))] transition-colors text-left"
+                        className="flex items-center gap-2.5 w-full px-3 py-2.5 text-xs text-[hsl(var(--foreground))] hover:bg-[hsl(var(--accent))] transition-colors text-left cursor-pointer"
                       >
                         <CheckCheck size={13} className="text-[hsl(var(--primary))] shrink-0" />
                         {t("markAllAsRead")}
@@ -502,7 +502,7 @@ export default function BookClient({
                       <div className="h-px bg-[hsl(var(--border))]" />
                       <button
                         onClick={resetProgress}
-                        className="flex items-center gap-2.5 w-full px-3 py-2.5 text-xs text-[hsl(var(--foreground))] hover:bg-[hsl(var(--accent))] transition-colors text-left"
+                        className="flex items-center gap-2.5 w-full px-3 py-2.5 text-xs text-[hsl(var(--foreground))] hover:bg-[hsl(var(--accent))] transition-colors text-left cursor-pointer"
                       >
                         <RotateCcw size={13} className="text-red-400 shrink-0" />
                         {t("resetProgress")}
@@ -531,7 +531,7 @@ export default function BookClient({
           <button
             onClick={() => { loadIntro(); setSidebarOpen(false); }}
             className={clsx(
-              "w-full text-left px-3 py-2.5 rounded-lg text-xs transition-colors leading-snug flex items-center gap-2 mb-1",
+              "w-full text-left px-3 py-2.5 rounded-lg text-xs transition-colors leading-snug flex items-center gap-2 mb-1 cursor-pointer",
               activeView === "intro"
                 ? "bg-[hsl(var(--accent))] text-[hsl(var(--accent-foreground))] font-medium"
                 : "text-[hsl(var(--muted-foreground))] hover:bg-[hsl(var(--muted))] hover:text-[hsl(var(--foreground))]"
@@ -562,7 +562,7 @@ export default function BookClient({
                         setSidebarOpen(false);
                       }}
                       className={clsx(
-                        "w-full text-left px-3 py-2.5 rounded-lg text-xs transition-colors leading-snug",
+                        "w-full text-left px-3 py-2.5 rounded-lg text-xs transition-colors leading-snug cursor-pointer",
                         activeView === "chapter" && activeChapter === ch.slug
                           ? "bg-[hsl(var(--accent))] text-[hsl(var(--accent-foreground))] font-medium"
                           : "text-[hsl(var(--muted-foreground))] hover:bg-[hsl(var(--muted))] hover:text-[hsl(var(--foreground))]"
@@ -586,7 +586,7 @@ export default function BookClient({
                   setSidebarOpen(false);
                 }}
                 className={clsx(
-                  "w-full text-left px-3 py-2.5 rounded-lg text-xs transition-colors leading-snug",
+                  "w-full text-left px-3 py-2.5 rounded-lg text-xs transition-colors leading-snug cursor-pointer",
                   activeView === "chapter" && activeChapter === ch.slug
                     ? "bg-[hsl(var(--accent))] text-[hsl(var(--accent-foreground))] font-medium"
                     : "text-[hsl(var(--muted-foreground))] hover:bg-[hsl(var(--muted))] hover:text-[hsl(var(--foreground))]"
@@ -609,7 +609,7 @@ export default function BookClient({
           <div className="flex items-center gap-2 min-w-0">
             <button
               onClick={() => setSidebarOpen(true)}
-              className="p-2 rounded-md hover:bg-[hsl(var(--muted))] text-[hsl(var(--muted-foreground))] lg:hidden"
+              className="p-2 rounded-md hover:bg-[hsl(var(--muted))] text-[hsl(var(--muted-foreground))] lg:hidden cursor-pointer"
             >
               <Menu size={18} />
             </button>
@@ -620,7 +620,7 @@ export default function BookClient({
           {activeView !== "intro" && (
           <button
             onClick={() => setTocOpen(true)}
-            className="p-2 rounded-md hover:bg-[hsl(var(--muted))] text-[hsl(var(--muted-foreground))]"
+            className="p-2 rounded-md hover:bg-[hsl(var(--muted))] text-[hsl(var(--muted-foreground))] cursor-pointer"
             aria-label="Table of Contents"
           >
             <List size={18} />
@@ -644,6 +644,33 @@ export default function BookClient({
               <h1 className="text-4xl font-extrabold mb-10 text-[hsl(var(--foreground))] tracking-tight">
                 {currentChapterMeta?.title}
               </h1>
+
+              {currentChapterMeta?.videoUrl && (() => {
+                const url = currentChapterMeta.videoUrl;
+                let videoId = "";
+                if (url.includes("youtu.be/")) {
+                  videoId = url.split("youtu.be/")[1]?.split("?")[0];
+                } else if (url.includes("youtube.com/watch")) {
+                  const urlParams = new URLSearchParams(url.split("?")[1] || "");
+                  videoId = urlParams.get("v") || "";
+                }
+                
+                if (!videoId) return null;
+                
+                return (
+                  <div className="relative w-full max-w-2xl mx-auto aspect-video mb-10 rounded-xl overflow-hidden shadow-sm border border-[hsl(var(--border))]">
+                    <iframe
+                      className="absolute top-0 left-0 w-full h-full bg-black"
+                      src={`https://www.youtube.com/embed/${videoId}`}
+                      title={currentChapterMeta?.title || "YouTube video"}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                );
+              })()}
+
               <div
                 className="prose-wordsus"
                 dangerouslySetInnerHTML={{ __html: chapterHtml }}
@@ -657,7 +684,7 @@ export default function BookClient({
             {prevChapter ? (
               <button
                 onClick={() => loadChapter(prevChapter.slug)}
-                className="flex items-center gap-2 text-sm text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors group"
+                className="flex items-center gap-2 text-sm text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors group cursor-pointer"
               >
                 <ChevronLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
                 <span className="line-clamp-1 max-w-[200px]">
@@ -671,7 +698,7 @@ export default function BookClient({
             {nextChapter ? (
               <button
                 onClick={() => loadChapter(nextChapter.slug)}
-                className="flex items-center gap-2 text-sm text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors group text-right"
+                className="flex items-center gap-2 text-sm text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors group text-right cursor-pointer"
               >
                 <span className="line-clamp-1 max-w-[200px]">
                   <span className="font-mono text-[hsl(var(--primary)/0.7)] mr-1">{nextChapter.order}.</span>
@@ -721,7 +748,7 @@ export default function BookClient({
         <div className="p-8 pt-16 xl:pt-8 relative">
           <button
             onClick={() => setTocOpen(false)}
-            className="xl:hidden absolute top-4 right-4 p-2 text-[hsl(var(--muted-foreground))] hover:bg-[hsl(var(--muted))] rounded-md"
+            className="xl:hidden absolute top-4 right-4 p-2 text-[hsl(var(--muted-foreground))] hover:bg-[hsl(var(--muted))] rounded-md cursor-pointer"
           >
             <X size={18} />
           </button>

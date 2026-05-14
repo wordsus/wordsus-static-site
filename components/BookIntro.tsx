@@ -3,8 +3,55 @@
 import { useState, useEffect } from "react";
 import Image from "next-image-export-optimizer";
 import { useTranslations } from "next-intl";
-import { BookOpen, Tag, Globe, Calendar, ChevronRight } from "lucide-react";
+import { BookOpen, Tag, Globe, Calendar, ChevronRight, Video, Music2 } from "lucide-react";
 import type { BookMeta } from "@/lib/types";
+
+// ── Media badges shown in the intro index ────────────────────────────────────
+function ChapterMediaBadges({ videoUrl, audioUrl, t }: {
+  videoUrl?: string;
+  audioUrl?: string;
+  t: (key: string) => string;
+}) {
+  if (!videoUrl && !audioUrl) return null;
+  return (
+    <span className="flex items-center gap-1.5 mt-2" onClick={(e) => e.stopPropagation()}>
+      {videoUrl && (
+        <span
+          className="group/tip relative inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold
+            bg-[hsl(var(--primary)/0.12)] text-[hsl(var(--primary))] border border-[hsl(var(--primary)/0.25)]
+            hover:bg-[hsl(var(--primary)/0.2)] transition-colors cursor-default select-none"
+        >
+          <Video size={11} />
+          Video
+          {/* Tooltip */}
+          <span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap
+            rounded-md bg-[hsl(var(--foreground))] text-[hsl(var(--background))] text-[10px] px-2 py-1
+            opacity-0 group-hover/tip:opacity-100 transition-opacity duration-150 shadow-lg z-50">
+            {t("hasVideo")}
+            <span className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[hsl(var(--foreground))]" />
+          </span>
+        </span>
+      )}
+      {audioUrl && (
+        <span
+          className="group/tip relative inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold
+            bg-[hsl(var(--primary)/0.12)] text-[hsl(var(--primary))] border border-[hsl(var(--primary)/0.25)]
+            hover:bg-[hsl(var(--primary)/0.2)] transition-colors cursor-default select-none"
+        >
+          <Music2 size={11} />
+          Audio
+          {/* Tooltip */}
+          <span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap
+            rounded-md bg-[hsl(var(--foreground))] text-[hsl(var(--background))] text-[10px] px-2 py-1
+            opacity-0 group-hover/tip:opacity-100 transition-opacity duration-150 shadow-lg z-50">
+            {t("hasAudio")}
+            <span className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[hsl(var(--foreground))]" />
+          </span>
+        </span>
+      )}
+    </span>
+  );
+}
 
 interface BookIntroProps {
   book: BookMeta;
@@ -157,7 +204,7 @@ export default function BookIntro({ book, onChapterSelect }: BookIntroProps) {
               const first = orderedChapters[0];
               if (first) onChapterSelect(first!.slug);
             }}
-            className="inline-flex items-center gap-2 bg-[hsl(var(--primary))] hover:bg-[hsl(var(--primary)/0.85)] text-white font-bold px-8 py-3.5 rounded-full text-sm transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 bg-[hsl(var(--primary))] hover:bg-[hsl(var(--primary)/0.85)] text-white font-bold px-8 py-3.5 rounded-full text-sm transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5 cursor-pointer"
           >
             <BookOpen size={16} />
             {t("startReading")}
@@ -209,7 +256,7 @@ export default function BookIntro({ book, onChapterSelect }: BookIntroProps) {
                         <button
                           key={ch!.slug}
                           onClick={() => onChapterSelect(ch!.slug)}
-                          className="w-full text-left group flex items-start gap-3 px-3 py-3 rounded-lg hover:bg-[hsl(var(--accent))] transition-colors duration-150"
+                          className="w-full text-left group flex items-start gap-3 px-3 py-3 rounded-lg hover:bg-[hsl(var(--accent))] transition-colors duration-150 cursor-pointer"
                         >
                           <span className="font-mono text-[10px] text-[hsl(var(--primary)/0.6)] mt-0.5 shrink-0 w-6 pt-px">
                             {String(ch!.order).padStart(2, "0")}
@@ -223,6 +270,7 @@ export default function BookIntro({ book, onChapterSelect }: BookIntroProps) {
                                 {ch!.description}
                               </span>
                             )}
+                            <ChapterMediaBadges videoUrl={ch!.videoUrl} audioUrl={ch!.audioUrl} t={t} />
                           </span>
                           <ChevronRight
                             size={14}
@@ -241,7 +289,7 @@ export default function BookIntro({ book, onChapterSelect }: BookIntroProps) {
                 <button
                   key={ch!.slug}
                   onClick={() => onChapterSelect(ch!.slug)}
-                  className="w-full text-left group flex items-start gap-3 px-3 py-3 rounded-lg hover:bg-[hsl(var(--accent))] transition-colors duration-150"
+                  className="w-full text-left group flex items-start gap-3 px-3 py-3 rounded-lg hover:bg-[hsl(var(--accent))] transition-colors duration-150 cursor-pointer"
                 >
                   <span className="font-mono text-[10px] text-[hsl(var(--primary)/0.6)] mt-0.5 shrink-0 w-6 pt-px">
                     {String(ch!.order).padStart(2, "0")}
@@ -255,6 +303,7 @@ export default function BookIntro({ book, onChapterSelect }: BookIntroProps) {
                         {ch!.description}
                       </span>
                     )}
+                    <ChapterMediaBadges videoUrl={ch!.videoUrl} audioUrl={ch!.audioUrl} t={t} />
                   </span>
                   <ChevronRight
                     size={14}

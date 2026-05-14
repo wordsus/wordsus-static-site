@@ -67,7 +67,9 @@
     "published": "Publicado",
     "chapters_count": "{count} capítulos",
     "introCover": "Portada",
-    "introInformation": "Información"
+    "introInformation": "Información",
+    "hasVideo": "Este capítulo tiene video",
+    "hasAudio": "Este capítulo tiene audio"
   },
   "category": {
     "books": "libros",
