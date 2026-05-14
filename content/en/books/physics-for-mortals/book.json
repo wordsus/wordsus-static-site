@@ -24,7 +24,7 @@
       "order": 1,
       "description": "We explore Newton's first law of motion. Discover why an object stays in motion until an external force stops it.",
       "audioUrl": "",
-      "videoUrl": ""
+      "videoUrl": "https://youtu.be/AaEaLDqYz_0"
     },
     {
       "slug": "heat-and-energy-fundamentals-of-thermodynamics",
@@ -32,7 +32,7 @@
       "order": 2,
       "description": "We analyze the basic principles of heat and temperature. You will learn how thermal energy flows and affects all the materials in our environment.",
       "audioUrl": "",
-      "videoUrl": ""
+      "videoUrl": "https://youtu.be/dmxtAu5tDwY"
     },
     {
       "slug": "electromagnetism-the-invisible-force-that-moves-the-world",
@@ -40,7 +40,7 @@
       "order": 3,
       "description": "Discover how electricity and magnetism come together. We explore this fundamental force that lights up our cities and makes technology work today.",
       "audioUrl": "",
-      "videoUrl": ""
+      "videoUrl": "https://youtu.be/kfuob1XOuAo"
     },
     {
       "slug": "the-nature-of-light-how-photons-behave",
@@ -48,7 +48,7 @@
       "order": 4,
       "description": "Is light a wave or a particle? We unravel the dual behavior of light and how photons interact with matter in the visible universe.",
       "audioUrl": "",
-      "videoUrl": ""
+      "videoUrl": "https://youtu.be/wpdj6-JSf5E"
     },
     {
       "slug": "the-mystery-of-black-holes-in-our-galaxy",
@@ -56,7 +56,7 @@
       "order": 5,
       "description": "Enter the fascinating world of black holes. We analyze what they are, how they form in space and what happens if matter crosses their horizon.",
       "audioUrl": "",
-      "videoUrl": ""
+      "videoUrl": "https://youtu.be/jLnQuVMUt5s"
     },
     {
       "slug": "quantum-entanglement-particle-physics",
@@ -64,7 +64,7 @@
       "order": 6,
       "description": "We explore one of the strangest phenomena in the cosmos. Learn how two particles can be instantly connected regardless of distances.",
       "audioUrl": "",
-      "videoUrl": ""
+      "videoUrl": "https://youtu.be/UwL3_O0SdOw"
     },
     {
       "slug": "the-physics-of-fluids-why-airplanes-can-fly",
@@ -72,7 +72,7 @@
       "order": 7,
       "description": "We apply science to everyday life by analyzing fluids. Discover the aerodynamic principles and pressure laws that allow an airplane to rise.",
       "audioUrl": "",
-      "videoUrl": ""
+      "videoUrl": "https://youtu.be/BSUd5bcTG1s"
     },
     {
       "slug": "newtons-second-law-mass-force-and-acceleration",
@@ -80,7 +80,7 @@
       "order": 8,
       "description": "We continue with the laws of motion to understand how the mass of an object and the force applied to it directly determine its final acceleration.",
       "audioUrl": "",
-      "videoUrl": ""
+      "videoUrl": "https://youtu.be/cC8poUpEy9Q"
     },
     {
       "slug": "entropy-explained-the-natural-disorder-of-the-universe",
@@ -88,7 +88,7 @@
       "order": 9,
       "description": "We delve into thermodynamics to explain entropy. Understand why the universe tends toward disorder and how this defines the arrow of time today.",
       "audioUrl": "",
-      "videoUrl": ""
+      "videoUrl": "https://youtu.be/EePr925wUxs"
     },
     {
       "slug": "earths-magnetic-fields-our-vital-shield",
@@ -96,7 +96,7 @@
       "order": 10,
       "description": "We investigate the immense magnetic field that surrounds the Earth. You will learn how it is generated in the core of the planet and why it is vital for our existence.",
       "audioUrl": "",
-      "videoUrl": ""
+      "videoUrl": "https://youtu.be/FIBmHucYX9Q"
     },
     {
       "slug": "the-refraction-of-light-mirages-and-lenses-in-detail",
@@ -104,7 +104,7 @@
       "order": 11,
       "description": "We study how light changes direction when passing through different media. An analysis of how lenses, prisms and optical mirages work.",
       "audioUrl": "",
-      "videoUrl": ""
+      "videoUrl": "https://youtu.be/b9rgo3uEs0M"
     },
     {
       "slug": "special-relativity-time-is-not-the-same-for-everyone",
@@ -112,7 +112,7 @@
       "order": 12,
       "description": "We immerse ourselves in the ideas of Albert Einstein. Discover how the speed of light alters our perception of time and space in today's universe.",
       "audioUrl": "",
-      "videoUrl": ""
+      "videoUrl": "https://youtu.be/gPLdiSMh5Ac"
     },
     {
       "slug": "the-origin-of-the-universe-evidence-about-the-big-bang",
@@ -120,7 +120,7 @@
       "order": 13,
       "description": "We travel to the beginning of everything we know. We review the scientific evidence that supports the Big Bang theory and the constant expansion of the universe.",
       "audioUrl": "",
-      "videoUrl": ""
+      "videoUrl": "https://youtu.be/4kH4FIhVa0E"
     },
     {
       "slug": "basic-acoustics-the-science-behind-sound-and-music",
@@ -128,7 +128,7 @@
       "order": 14,
       "description": "We explore how sound waves propagate in air. Understand the physics that makes everything possible from a simple conversation to the best piece of music.",
       "audioUrl": "",
-      "videoUrl": ""
+      "videoUrl": "https://youtu.be/iSYgOXU68uQ"
     },
     {
       "slug": "newtons-third-law-the-principle-of-action-and-reaction",
