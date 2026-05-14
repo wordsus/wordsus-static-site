@@ -1,0 +1,219 @@
+{
+  "slug": "astronomy",
+  "locale": "en",
+  "title": "Modern Astronomy",
+  "subtitle": "A Comprehensive Guide to the Cosmos",
+  "author": "Wordsus Team",
+  "description": "Embark on a journey through space and time with Modern Astronomy. This comprehensive guide covers everything from celestial mechanics and the physics of light to the formation of planetary systems, stellar evolution, and the mysteries of dark energy and the Big Bang. Perfect for students and enthusiasts alike who seek to understand our place in the universe.",
+  "cover": "/images/books/astronomy-en-cover.jpeg",
+  "category": "science",
+  "tags": [
+    "astronomy",
+    "astrophysics",
+    "cosmology",
+    "solar system",
+    "stars",
+    "galaxies",
+    "space exploration"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-14",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "the-scale-and-scope-of-the-universe",
+      "title": "The Scale and Scope of the Universe",
+      "order": 1,
+      "description": "Explore The Scientific Method in Astronomy, Cosmic Distances and Scales, A Brief History of Classical Astronomy, The Copernican Revolution, Modern Astronomical Paradigms",
+      "audioUrl": ""
+    },
+    {
+      "slug": "celestial-spheres-and-coordinate-systems",
+      "title": "Celestial Spheres and Coordinate Systems",
+      "order": 2,
+      "description": "Explore The Celestial Sphere and Constellations, Equatorial, Ecliptic, and Galactic Coordinates, The Seasons and Earth's Axial Tilt, Timekeeping and Calendars",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gravity-and-orbital-dynamics",
+      "title": "Gravity and Orbital Dynamics",
+      "order": 3,
+      "description": "Explore Kepler's Laws of Planetary Motion, Newton's Universal Law of Gravitation, Orbital Mechanics and Conservation Laws, Tides and Tidal Forces, Introduction to General Relativity in Astrodynamics",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-earth-moon-system",
+      "title": "The Earth-Moon System",
+      "order": 4,
+      "description": "Explore Earth as a Terrestrial Planet, The Origin and Interior Structure of the Moon, Lunar Phases and Eclipses, Atmospheric and Magnetospheric Interactions",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-nature-of-light-and-matter",
+      "title": "The Nature of Light and Matter",
+      "order": 5,
+      "description": "Explore The Electromagnetic Spectrum, Blackbody Radiation and Wien's Law, Atomic Structure and Quantum Basics, Emission and Absorption Lines, The Doppler Effect, Radiative Transfer",
+      "audioUrl": ""
+    },
+    {
+      "slug": "telescopes-and-observational-optics",
+      "title": "Telescopes and Observational Optics",
+      "order": 6,
+      "description": "Explore Refracting and Reflecting Telescopes, Resolution, Diffraction, and Seeing, Adaptive Optics and Interferometry, Space-Based Observatories, Non-Optical Observatories (Radio, X-ray, Gamma-ray)",
+      "audioUrl": ""
+    },
+    {
+      "slug": "detectors-and-data-processing",
+      "title": "Detectors and Data Processing",
+      "order": 7,
+      "description": "Explore From Photographic Plates to Charge-Coupled Devices (CCDs), Photometry and Magnitude Systems, Signal-to-Noise Ratio and Calibration, Astronomical Archives and Big Data",
+      "audioUrl": ""
+    },
+    {
+      "slug": "astronomical-spectroscopy",
+      "title": "Astronomical Spectroscopy",
+      "order": 8,
+      "description": "Explore Principles of Spectrometers and Gratings, Spectral Classification of Stars, Measuring Radial Velocities, Chemical Composition Analysis",
+      "audioUrl": ""
+    },
+    {
+      "slug": "formation-of-planetary-systems",
+      "title": "Formation of Planetary Systems",
+      "order": 9,
+      "description": "Explore Interstellar Clouds and Gravitational Collapse, Protoplanetary Disks, Accretion and Planetesimal Formation, Migration and Clearing the Disk",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-terrestrial-planets",
+      "title": "The Terrestrial Planets",
+      "order": 10,
+      "description": "Explore Mercury: Structure and Surface Evolution, Venus: Atmospheric Dynamics and the Greenhouse Effect, Mars: Geological History and the Search for Water, Comparative Planetology of the Inner Solar System, Future Exploration of Terrestrial Worlds",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-giant-planets-and-their-moons",
+      "title": "The Giant Planets and Their Moons",
+      "order": 11,
+      "description": "Explore Jupiter and Saturn: Gas Giants, Uranus and Neptune: Ice Giants, Ring Systems and Shepherd Moons, The Galilean Satellites and Titan, Cryovolcanism in the Outer Solar System",
+      "audioUrl": ""
+    },
+    {
+      "slug": "minor-bodies-and-exoplanets",
+      "title": "Minor Bodies and Exoplanets",
+      "order": 12,
+      "description": "Explore Asteroids and the Main Asteroid Belt, Comets, the Kuiper Belt, and the Oort Cloud, Meteoroids, Meteors, and Meteorites, Exoplanet Detection Methods (Transit and Radial Velocity), Characterizing Exoplanetary Atmospheres, Redefining the Habitable Zone",
+      "audioUrl": ""
+    },
+    {
+      "slug": "properties-of-stars",
+      "title": "Properties of Stars",
+      "order": 13,
+      "description": "Explore Stellar Distances and Parallax, Luminosity, Flux, and Absolute Magnitude, Stellar Masses and Binary Star Systems, Stellar Radii and Temperature, The Hertzsprung-Russell (H-R) Diagram",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-sun-our-nearest-star",
+      "title": "The Sun: Our Nearest Star",
+      "order": 14,
+      "description": "Explore Interior Structure and Hydrostatic Equilibrium, Nuclear Fusion: The Proton-Proton Chain, Solar Neutrinos and the Standard Solar Model, The Solar Atmosphere: Photosphere, Chromosphere, Corona, Solar Activity, Sunspots, and Space Weather",
+      "audioUrl": ""
+    },
+    {
+      "slug": "stellar-evolution",
+      "title": "Stellar Evolution",
+      "order": 15,
+      "description": "Explore Star Formation and the Interstellar Medium, Pre-Main Sequence Evolution, Life on the Main Sequence, Post-Main Sequence Evolution of Low-Mass Stars, Post-Main Sequence Evolution of High-Mass Stars, Supernovae and Nucleosynthesis",
+      "audioUrl": ""
+    },
+    {
+      "slug": "stellar-remnants",
+      "title": "Stellar Remnants",
+      "order": 16,
+      "description": "Explore Electron Degeneracy Pressure and White Dwarfs, Novae and Type Ia Supernovae, Neutron Degeneracy and Neutron Stars, Pulsars and Magnetars, Black Holes and Event Horizons",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-milky-way-galaxy",
+      "title": "The Milky Way Galaxy",
+      "order": 17,
+      "description": "Explore Morphology and Structure of the Milky Way, The Galactic Halo and Globular Clusters, Stellar Kinematics and the Rotation Curve, The Spiral Arms and Density Wave Theory, Sagittarius A*: The Supermassive Black Hole at the Galactic Center",
+      "audioUrl": ""
+    },
+    {
+      "slug": "galaxies-and-active-galactic-nuclei",
+      "title": "Galaxies and Active Galactic Nuclei",
+      "order": 18,
+      "description": "Explore The Hubble Sequence and Galaxy Classification, Measuring Galactic Distances using Standard Candles, Galaxy Interactions, Starbursts, and Mergers, Quasars, Blazars, and Active Galactic Nuclei (AGN)",
+      "audioUrl": ""
+    },
+    {
+      "slug": "large-scale-structure-and-dark-matter",
+      "title": "Large-Scale Structure and Dark Matter",
+      "order": 19,
+      "description": "Explore Galaxy Clusters and Superclusters, The Cosmic Web and Cosmic Voids, Gravitational Lensing, Observational Evidence and Candidates for Dark Matter",
+      "audioUrl": ""
+    },
+    {
+      "slug": "big-bang-cosmology-and-dark-energy",
+      "title": "Big Bang Cosmology and Dark Energy",
+      "order": 20,
+      "description": "Explore The Expansion of the Universe and Hubble's Law, The Cosmic Microwave Background (CMB), Big Bang Nucleosynthesis, Cosmic Inflation and the Flatness Problem, Dark Energy and the Accelerating Universe",
+      "audioUrl": ""
+    },
+    {
+      "slug": "astrobiology-and-the-future-of-astronomy",
+      "title": "Astrobiology and the Future of Astronomy",
+      "order": 21,
+      "description": "Explore The Definition and Chemical Requirements for Life, Extremophiles on Earth as Analogues, The Drake Equation and the Search for Extraterrestrial Intelligence (SETI), Next-Generation Observatories and Missions",
+      "audioUrl": ""
+    }
+  ],
+  "parts": [
+    {
+      "title": "Part I: Introduction to the Cosmos and Celestial Mechanics",
+      "chapterSlugs": [
+        "the-scale-and-scope-of-the-universe",
+        "celestial-spheres-and-coordinate-systems",
+        "gravity-and-orbital-dynamics",
+        "the-earth-moon-system"
+      ]
+    },
+    {
+      "title": "Part II: Radiation, Instruments, and Observational Techniques",
+      "chapterSlugs": [
+        "the-nature-of-light-and-matter",
+        "telescopes-and-observational-optics",
+        "detectors-and-data-processing",
+        "astronomical-spectroscopy"
+      ]
+    },
+    {
+      "title": "Part III: The Solar System and Exoplanetary Systems",
+      "chapterSlugs": [
+        "formation-of-planetary-systems",
+        "the-terrestrial-planets",
+        "the-giant-planets-and-their-moons",
+        "minor-bodies-and-exoplanets"
+      ]
+    },
+    {
+      "title": "Part IV: Stellar Astrophysics: Structure, Evolution, and Remnants",
+      "chapterSlugs": [
+        "properties-of-stars",
+        "the-sun-our-nearest-star",
+        "stellar-evolution",
+        "stellar-remnants"
+      ]
+    },
+    {
+      "title": "Part V: Galaxies, Cosmology, and the High-Energy Universe",
+      "chapterSlugs": [
+        "the-milky-way-galaxy",
+        "galaxies-and-active-galactic-nuclei",
+        "large-scale-structure-and-dark-matter",
+        "big-bang-cosmology-and-dark-energy",
+        "astrobiology-and-the-future-of-astronomy"
+      ]
+    }
+  ]
+}
