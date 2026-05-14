@@ -57,7 +57,17 @@
     "readingProgress": "Reading Progress",
     "read": "read",
     "markAllAsRead": "Mark all as read",
-    "resetProgress": "Reset reading progress"
+    "resetProgress": "Reset reading progress",
+    "introduction": "Introduction",
+    "startReading": "Start Reading",
+    "tableOfContentsIntro": "Table of Contents",
+    "aboutBook": "About this book",
+    "tags": "Topics",
+    "language": "Language",
+    "published": "Published",
+    "chapters_count": "{count} chapters",
+    "introCover": "Cover",
+    "introInformation": "Information"
   },
   "category": {
     "books": "books",

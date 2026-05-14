@@ -4,11 +4,13 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import { clsx } from "clsx";
 import { useTranslations } from "next-intl";
-import { ChevronLeft, ChevronRight, Heart, Menu, List, X, MoreVertical, CheckCheck, RotateCcw } from "lucide-react";
+import { ChevronLeft, ChevronRight, Heart, Menu, List, X, MoreVertical, CheckCheck, RotateCcw, BookOpen } from "lucide-react";
 import type { BookMeta, TocItem, Locale } from "@/lib/types";
 import TableOfContents from "@/components/TableOfContents";
 import AudioPlayer from "@/components/AudioPlayer";
 import Image from "next-image-export-optimizer";
+import BookIntro from "@/components/BookIntro";
+import IntroToc from "@/components/IntroToc";
 import {
   saveChapter,
   getSavedChapter,
@@ -41,6 +43,7 @@ export default function BookClient({
   // Initialise from localStorage immediately (before first render) so the
   // correct chapter is known without waiting for a useEffect.
   const [activeChapter, setActiveChapter] = useState<string>(initialChapterSlug);
+  const [activeView, setActiveView] = useState<"intro" | "chapter">(initialChapterSlug === "__intro__" ? "intro" : "chapter");
   const [isMounted, setIsMounted] = useState(false);
 
   const [chapterHtml, setChapterHtml] = useState(initialChapterHtml);
@@ -53,7 +56,7 @@ export default function BookClient({
   const [progressMenuOpen, setProgressMenuOpen] = useState(false);
   const progressMenuRef = useRef<HTMLDivElement>(null);
   // When true, the next activeChapter change will NOT be persisted (used after a reset)
-  const skipNextSave = useRef(false);
+  const skipNextSave = useRef(true); // skip the first save on mount to avoid overwriting persisted progress
 
   // Refs for the two sidebars (used to save/restore their scroll offsets)
   const leftSidebarRef = useRef<HTMLElement>(null);
@@ -100,12 +103,28 @@ export default function BookClient({
     saveChapter(locale, book.slug, activeChapter);
   }, [activeChapter, book.slug, locale]);
 
+  // Switch to intro view
+  const loadIntro = useCallback((isAutoLoad = false) => {
+    setActiveView("intro");
+    setActiveChapter("__intro__");  // clear chapter selection to avoid double-highlight
+    const newUrl = `/${locale}/${book.slug}`;
+    if (window.location.pathname.replace(/\/$/, "") !== newUrl) {
+      if (isAutoLoad) {
+        window.history.replaceState(null, "", newUrl);
+      } else {
+        window.history.pushState(null, "", newUrl);
+      }
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [locale, book.slug]);
+
   // Fetch chapter content
   const loadChapter = useCallback(
     async (slug: string, isAutoLoad = false) => {
-      if (slug === activeChapter && chapterHtml !== initialChapterHtml) return;
+      if (slug === activeChapter && activeView === "chapter" && chapterHtml !== initialChapterHtml) return;
 
       setLoading(true);
+      setActiveView("chapter");
       try {
         const res = await fetch(`/chapter-content/${locale}/${book.slug}/${slug}.json`);
         const data = await res.json();
@@ -134,43 +153,42 @@ export default function BookClient({
         }
       }
     },
-    [activeChapter, chapterHtml, initialChapterHtml, locale, book.slug]
+    [activeChapter, activeView, chapterHtml, initialChapterHtml, locale, book.slug]
   );
 
   useEffect(() => {
     setIsMounted(true);
-    let savedChapter = initialChapterSlug;
+    // When the page is served at the root book URL (__intro__), check if there's a
+    // saved chapter to resume; if so, load it. Otherwise stay on the intro view.
     const saved = getSavedChapter(locale, book.slug);
-    if (saved && saved !== initialChapterSlug && allChapers.some((ch) => ch.slug === saved)) {
-      savedChapter = saved;
-    }
-
-    const restoreScroll = () => {
-      const pos = getScrollPositions(locale, book.slug);
-      if (!pos) return;
-      // Use rAF to let React flush the new DOM before scrolling
-      requestAnimationFrame(() => {
-        window.scrollTo({ top: pos.content, behavior: "instant" });
-        if (leftSidebarRef.current) leftSidebarRef.current.scrollTop = pos.leftSidebar;
-        if (rightSidebarRef.current) rightSidebarRef.current.scrollTop = pos.rightSidebar;
-        isRestoringScroll.current = false;
-      });
-    };
-
-    if (savedChapter !== initialChapterSlug) {
-      setActiveChapter(savedChapter);
+    if (saved && allChapers.some((ch) => ch.slug === saved)) {
+      setActiveChapter(saved);
       isRestoringScroll.current = true;
-      loadChapter(savedChapter, true).then(restoreScroll);
+      loadChapter(saved, true).then(() => {
+        const pos = getScrollPositions(locale, book.slug);
+        if (!pos) return;
+        requestAnimationFrame(() => {
+          window.scrollTo({ top: pos.content, behavior: "instant" });
+          if (leftSidebarRef.current) leftSidebarRef.current.scrollTop = pos.leftSidebar;
+          if (rightSidebarRef.current) rightSidebarRef.current.scrollTop = pos.rightSidebar;
+          isRestoringScroll.current = false;
+        });
+      });
     } else {
-      const newUrl = `/${locale}/${book.slug}/${initialChapterSlug}`;
-      if (window.location.pathname.replace(/\/$/, "") !== newUrl) {
-        window.history.replaceState(null, "", newUrl);
+      // Stay on intro view — make sure URL is the book root
+      const rootUrl = `/${locale}/${book.slug}`;
+      if (window.location.pathname.replace(/\/$/, "") !== rootUrl) {
+        window.history.replaceState(null, "", rootUrl);
       }
-      // Still restore scroll positions for the initial chapter
-      restoreScroll();
+      const pos = getScrollPositions(locale, book.slug);
+      if (pos) {
+        requestAnimationFrame(() => {
+          window.scrollTo({ top: pos.content, behavior: "instant" });
+        });
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [book.slug, locale, initialChapterSlug]);
+  }, [book.slug, locale]);
 
   const toggleFavorite = () => {
     try {
@@ -200,12 +218,8 @@ export default function BookClient({
     } catch { }
     clearScrollPositions(locale, book.slug);
     setProgressMenuOpen(false);
-    // Navigate back to the first chapter without persisting it
-    const firstChapter = allChapers[0];
-    if (firstChapter) {
-      setActiveChapter(firstChapter.slug);
-      loadChapter(firstChapter.slug);
-    }
+    // Navigate back to the intro view without persisting a chapter
+    loadIntro();
   };
 
   // Close progress menu on outside click
@@ -513,7 +527,21 @@ export default function BookClient({
 
         {/* Chapter list */}
         <div className="p-2">
-          <p className="px-2 py-1.5 text-xs font-semibold text-[hsl(var(--muted-foreground))] uppercase tracking-wider mb-2">
+          {/* Introduction / Chapter 0 */}
+          <button
+            onClick={() => { loadIntro(); setSidebarOpen(false); }}
+            className={clsx(
+              "w-full text-left px-3 py-2.5 rounded-lg text-xs transition-colors leading-snug flex items-center gap-2 mb-1",
+              activeView === "intro"
+                ? "bg-[hsl(var(--accent))] text-[hsl(var(--accent-foreground))] font-medium"
+                : "text-[hsl(var(--muted-foreground))] hover:bg-[hsl(var(--muted))] hover:text-[hsl(var(--foreground))]"
+            )}
+          >
+            <BookOpen size={12} className="shrink-0 text-[hsl(var(--primary)/0.7)]" />
+            {t("introduction")}
+          </button>
+
+          <p className="px-2 py-1.5 text-xs font-semibold text-[hsl(var(--muted-foreground))] uppercase tracking-wider mb-2 mt-2">
             {t("chapters")}
           </p>
 
@@ -535,7 +563,7 @@ export default function BookClient({
                       }}
                       className={clsx(
                         "w-full text-left px-3 py-2.5 rounded-lg text-xs transition-colors leading-snug",
-                        activeChapter === ch.slug
+                        activeView === "chapter" && activeChapter === ch.slug
                           ? "bg-[hsl(var(--accent))] text-[hsl(var(--accent-foreground))] font-medium"
                           : "text-[hsl(var(--muted-foreground))] hover:bg-[hsl(var(--muted))] hover:text-[hsl(var(--foreground))]"
                       )}
@@ -559,7 +587,7 @@ export default function BookClient({
                 }}
                 className={clsx(
                   "w-full text-left px-3 py-2.5 rounded-lg text-xs transition-colors leading-snug",
-                  activeChapter === ch.slug
+                  activeView === "chapter" && activeChapter === ch.slug
                     ? "bg-[hsl(var(--accent))] text-[hsl(var(--accent-foreground))] font-medium"
                     : "text-[hsl(var(--muted-foreground))] hover:bg-[hsl(var(--muted))] hover:text-[hsl(var(--foreground))]"
                 )}
@@ -586,9 +614,10 @@ export default function BookClient({
               <Menu size={18} />
             </button>
             <span className="text-sm font-medium text-[hsl(var(--foreground))] truncate">
-              {currentChapterMeta?.title}
+              {activeView === "intro" ? t("introduction") : currentChapterMeta?.title}
             </span>
           </div>
+          {activeView !== "intro" && (
           <button
             onClick={() => setTocOpen(true)}
             className="p-2 rounded-md hover:bg-[hsl(var(--muted))] text-[hsl(var(--muted-foreground))]"
@@ -596,11 +625,14 @@ export default function BookClient({
           >
             <List size={18} />
           </button>
+          )}
         </div>
 
         {/* Chapter content */}
-        <article className="max-w-3xl mx-auto px-6 py-10">
-          {loading ? (
+        <article className={activeView === "intro" ? "" : "max-w-3xl mx-auto px-6 py-10"}>
+          {activeView === "intro" ? (
+            <BookIntro book={book} onChapterSelect={(slug) => { loadChapter(slug); setSidebarOpen(false); }} />
+          ) : loading ? (
             <div className="space-y-4 animate-pulse">
               <div className="h-8 bg-[hsl(var(--muted))] rounded w-2/3" />
               <div className="h-4 bg-[hsl(var(--muted))] rounded w-full" />
@@ -620,6 +652,7 @@ export default function BookClient({
           )}
 
           {/* Chapter navigation */}
+          {activeView === "intro" ? null : (<>
           <div className="flex items-center justify-between mt-12 pt-6 border-t border-[hsl(var(--border))]">
             {prevChapter ? (
               <button
@@ -650,6 +683,7 @@ export default function BookClient({
               <div />
             )}
           </div>
+          </>)}
         </article>
 
         {/* Audio player */}
@@ -678,7 +712,10 @@ export default function BookClient({
           "fixed xl:sticky top-16 right-0 z-40 xl:z-auto h-[calc(100vh-4rem)] overflow-y-auto",
           "w-80 bg-[hsl(var(--background))] border-l border-[hsl(var(--border))]",
           "transition-transform duration-300 shrink-0",
-          tocOpen ? "translate-x-0" : "translate-x-full xl:translate-x-0"
+          // Intro view: always visible on xl; chapter view: only visible when tocOpen or xl
+          activeView === "intro"
+            ? "translate-x-full xl:translate-x-0"
+            : tocOpen ? "translate-x-0" : "translate-x-full xl:translate-x-0"
         )}
       >
         <div className="p-8 pt-16 xl:pt-8 relative">
@@ -688,7 +725,11 @@ export default function BookClient({
           >
             <X size={18} />
           </button>
-          <TableOfContents toc={toc} onClick={() => setTocOpen(false)} />
+          {activeView === "intro" ? (
+            <IntroToc book={book} />
+          ) : (
+            <TableOfContents toc={toc} onClick={() => setTocOpen(false)} />
+          )}
         </div>
       </aside>
     </div>

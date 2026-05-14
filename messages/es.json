@@ -57,7 +57,17 @@
     "readingProgress": "Progreso de Lectura",
     "read": "leído",
     "markAllAsRead": "Marcar todo como leído",
-    "resetProgress": "Reiniciar progreso de lectura"
+    "resetProgress": "Reiniciar progreso de lectura",
+    "introduction": "Presentación",
+    "startReading": "Comenzar a Leer",
+    "tableOfContentsIntro": "Índice de Contenidos",
+    "aboutBook": "Sobre este libro",
+    "tags": "Temas",
+    "language": "Idioma",
+    "published": "Publicado",
+    "chapters_count": "{count} capítulos",
+    "introCover": "Portada",
+    "introInformation": "Información"
   },
   "category": {
     "books": "libros",

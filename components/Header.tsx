@@ -137,7 +137,7 @@ export default function Header({ locale, categories }: HeaderProps) {
     <>
       <header
         className={clsx(
-          "sticky top-0 z-40 w-full border-b transition-all duration-200",
+          "sticky top-0 z-[60] w-full border-b transition-all duration-200",
           scrolled
             ? "border-[hsl(var(--border))] bg-[hsl(var(--background)/0.85)] backdrop-blur-md"
             : "border-transparent bg-[hsl(var(--background))]"

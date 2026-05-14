@@ -189,9 +189,9 @@ export default async function SlugPage({ params }: Props) {
         <BookClient
           book={book}
           locale={loc}
-          initialChapterSlug={firstChapter.slug}
-          initialChapterHtml={html}
-          initialToc={toc}
+          initialChapterSlug="__intro__"
+          initialChapterHtml=""
+          initialToc={[]}
           allChapers={book.chapters}
         />
       </>

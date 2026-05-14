@@ -28,7 +28,7 @@ export default function RecentBookCard({
 
   const [progress, setProgress] = useState<number | null>(null);
   const [savedChapterTitle, setSavedChapterTitle] = useState<string | null>(null);
-  const [href, setHref] = useState(`/${bookLocale}/${book.slug}`);
+  const [href] = useState(`/${bookLocale}/${book.slug}`);
 
   useEffect(() => {
     const savedSlug = getSavedChapter(bookLocale, book.slug);
@@ -37,7 +37,6 @@ export default function RecentBookCard({
       if (savedChapter) {
         setProgress(calcProgress(savedChapter.order, book.chapters.length));
         setSavedChapterTitle(savedChapter.title);
-        setHref(`/${bookLocale}/${book.slug}/${savedSlug}`);
       }
     }
   }, [book.slug, book.chapters, bookLocale]);

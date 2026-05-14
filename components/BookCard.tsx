@@ -26,7 +26,7 @@ export default function BookCard({
   const [isFav, setIsFav] = useState(false);
   const [progress, setProgress] = useState<number | null>(null);
   const [savedChapterTitle, setSavedChapterTitle] = useState<string | null>(null);
-  const [bookHref, setBookHref] = useState(`/${locale}/${book.slug}`);
+  const [bookHref] = useState(`/${locale}/${book.slug}`);
   // Mobile overlay state — toggled by tap on touch devices
   const [showOverlay, setShowOverlay] = useState(false);
   const isTouchDevice = useRef(false);
@@ -57,7 +57,6 @@ export default function BookCard({
         const pct = calcProgress(savedChapter.order, book.chapters.length);
         setProgress(pct);
         setSavedChapterTitle(savedChapter.title);
-        setBookHref(`/${locale}/${book.slug}/${savedSlug}`);
       }
     }
   }, [book.slug, book.chapters, locale]);
@@ -100,7 +99,6 @@ export default function BookCard({
     const pct = calcProgress(lastChapter.order, book.chapters.length);
     setProgress(pct);
     setSavedChapterTitle(lastChapter.title);
-    setBookHref(`/${locale}/${book.slug}/${lastChapter.slug}`);
     setProgressMenuOpen(false);
   };
 
@@ -113,7 +111,6 @@ export default function BookCard({
     } catch { /* ignore */ }
     setProgress(null);
     setSavedChapterTitle(null);
-    setBookHref(`/${locale}/${book.slug}`);
     setProgressMenuOpen(false);
   };
 
