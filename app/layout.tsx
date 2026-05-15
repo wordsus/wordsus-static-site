@@ -83,6 +83,16 @@ export default function RootLayout({
           </>
         )}
         {children}
+        {process.env.NEXT_PUBLIC_ENABLE_ADS === "true" && (
+          <Script
+            src={
+              process.env.NODE_ENV === "development"
+                ? "http://localhost:8787/ads.js"
+                : "https://static-ads.xeost.com/ads.js"
+            }
+            strategy="afterInteractive"
+          />
+        )}
       </body>
     </html>
   );
