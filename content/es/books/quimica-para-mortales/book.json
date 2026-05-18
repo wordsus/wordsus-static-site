@@ -256,6 +256,46 @@
       "description": "Analizamos por qué algunos núcleos atómicos se rompen de manera espontánea, liberando grandes dosis de energía y radiación invisible.",
       "audioUrl": "",
       "videoUrl": ""
+    },
+    {
+      "slug": "el-numero-de-avogadro-y-el-concepto-de-mol-en-quimica",
+      "title": "El número de Avogadro y el concepto de mol en química",
+      "order": 31,
+      "description": "Descubre cómo los químicos cuentan átomos y moléculas usando el concepto de mol, una herramienta vital que conecta la masa visible con las partículas.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "gases-nobles-los-elementos-mas-solitarios-de-la-tabla",
+      "title": "Gases nobles: los elementos más solitarios de la tabla",
+      "order": 32,
+      "description": "Exploramos el helio, neón y argón. Conoce por qué estos elementos son tan estables, su nula reactividad y cómo se emplean en la iluminación moderna.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "la-quimica-del-jabon-como-logramos-limpiar-la-suciedad",
+      "title": "La química del jabón: cómo logramos limpiar la suciedad",
+      "order": 33,
+      "description": "Analizamos la estructura molecular de los jabones y detergentes, descubriendo cómo sus moléculas logran atrapar la grasa y disolverla fácilmente en agua.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "isomeros-moleculas-con-formulas-iguales-y-formas-duales",
+      "title": "Isómeros: moléculas con fórmulas iguales y formas duales",
+      "order": 34,
+      "description": "Conoce por qué compuestos con exactamente los mismos átomos pueden tener propiedades físicas y químicas completamente diferentes según su forma espacial.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "metales-alcalinos-reactividad-extrema-al-tocar-el-agua",
+      "title": "Metales alcalinos: reactividad extrema al tocar el agua",
+      "order": 35,
+      "description": "Nos enfocamos en el sodio y el potasio, metales tan reactivos que deben guardarse en aceite. Descubre por qué liberan tanta energía al contacto acuoso.",
+      "audioUrl": "",
+      "videoUrl": ""
     }
   ]
 }

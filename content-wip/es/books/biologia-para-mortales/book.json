@@ -19,46 +19,6 @@
   "language": "es",
   "chapters": [
     {
-      "slug": "biologia-de-la-polinizacion-y-reproduccion-vegetal",
-      "title": "Biología de la polinización y reproducción vegetal",
-      "order": 31,
-      "description": "Analizamos cómo las plantas con flor logran reproducirse gracias a la intervención crucial de los insectos polinizadores y otros factores ambientales clave.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
-      "slug": "el-adn-neandertal-en-los-humanos-modernos-actuales",
-      "title": "El ADN neandertal en los humanos modernos actuales",
-      "order": 32,
-      "description": "Descubre la fascinante evidencia genética que demuestra cómo nuestros antepasados se cruzaron con los neandertales y qué genes hemos heredado de ellos.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
-      "slug": "fisiologia-del-sistema-cardiovascular-de-los-humanos",
-      "title": "Fisiología del sistema cardiovascular de los humanos",
-      "order": 33,
-      "description": "Analizamos la impresionante biología del corazón y los vasos sanguíneos, entendiendo cómo logran bombear la sangre para nutrir todas y cada una de las células.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
-      "slug": "apoptosis-la-muerte-celular-programada-y-su-funcion",
-      "title": "Apoptosis: La muerte celular programada y su función",
-      "order": 34,
-      "description": "Comprendemos el mecanismo biológico esencial por el cual nuestras células deciden autodestruirse ordenadamente para proteger la salud de todo el organismo.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
-      "slug": "la-biologia-de-la-dopamina-y-el-sistema-de-recompensa",
-      "title": "La biología de la dopamina y el sistema de recompensa",
-      "order": 35,
-      "description": "Exploramos la neurobiología detrás del placer y la motivación, desentrañando el papel fundamental de los neurotransmisores en nuestras conductas diarias.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
       "slug": "redes-troficas-el-flujo-de-la-energia-en-la-ecologia",
       "title": "Redes tróficas: El flujo de la energía en la ecología",
       "order": 36,

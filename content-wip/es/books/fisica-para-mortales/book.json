@@ -18,46 +18,6 @@
   "language": "es",
   "chapters": [
     {
-      "slug": "friccion-estatica-y-dinamica-el-roce-de-las-cosas",
-      "title": "Fricción estática y dinámica: el roce de las cosas",
-      "order": 31,
-      "description": "Analizamos por qué los objetos rozan y resisten el movimiento. Entiende la física de la fricción, clave para caminar, frenar o encender un fósforo.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
-      "slug": "resonancia-acustica-puentes-que-vibran-al-viento",
-      "title": "Resonancia acústica: puentes que vibran al viento",
-      "order": 32,
-      "description": "Descubre cómo frecuencias naturales pueden amplificar enormes vibraciones. Exploramos el impacto de la resonancia en instrumentos musicales y puentes.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
-      "slug": "la-antimateria-explicada-el-espejo-de-lo-visible",
-      "title": "La antimateria explicada: el espejo de lo visible",
-      "order": 33,
-      "description": "Indagamos en la misteriosa antimateria. Aprende qué son los positrones y antiprotones, y por qué se aniquilan al entrar en contacto con la materia.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
-      "slug": "ley-de-faraday-generar-electricidad-con-imanes-hoy",
-      "title": "Ley de Faraday: generar electricidad con imanes hoy",
-      "order": 34,
-      "description": "Comprendemos el principio de inducción electromagnética. Descubre cómo el movimiento de un imán dentro de una bobina produce la luz de tu habitación.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
-      "slug": "agujeros-de-gusano-atajos-por-el-tejido-espacial",
-      "title": "Agujeros de gusano: atajos por el tejido espacial",
-      "order": 35,
-      "description": "Exploramos la teoría de los puentes de Einstein-Rosen. Analizamos si realmente es posible cruzar el universo entero usando estos portales hipotéticos.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
       "slug": "espejos-y-reflexion-la-fisica-de-nuestra-imagen",
       "title": "Espejos y reflexión: la física de nuestra imagen",
       "order": 36,

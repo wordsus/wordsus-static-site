@@ -256,6 +256,46 @@
       "description": "Un predicador apasionado con un mensaje directo de fuerte arrepentimiento social. Estudiamos su extraña dieta, vestimenta austera y el bautismo purificador.",
       "audioUrl": "",
       "videoUrl": ""
+    },
+    {
+      "slug": "salomon-y-la-edad-de-oro-del-reino-unido-de-israel",
+      "title": "Salomón y la edad de oro del reino unido de Israel",
+      "order": 31,
+      "description": "Exploramos la inmensa prosperidad económica, las grandes alianzas comerciales y la sabiduría administrativa que caracterizaron su prestigioso reinado pacífico.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-proceso-de-produccion-de-aceite-en-prensas-de-oliva",
+      "title": "El proceso de producción de aceite en prensas de oliva",
+      "order": 32,
+      "description": "El aceite de oliva era vital para la alimentación, medicina e iluminación. Analizamos su laboriosa extracción y el simbolismo del huerto de Getsemaní en Judea.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "origen-e-importancia-de-la-sinagoga-en-la-vida-judia",
+      "title": "Origen e importancia de la sinagoga en la vida judía",
+      "order": 33,
+      "description": "Sin el Templo, se formaron centros locales de estudio sagrado. Exploramos la función educativa y social de estas reuniones comunitarias en las aldeas judías.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "los-publicanos-y-la-compleja-red-de-impuestos-romanos",
+      "title": "Los publicanos y la compleja red de impuestos romanos",
+      "order": 34,
+      "description": "Recaudar tributos para Roma te convertía en un marginado y gran traidor. Analizamos el enorme repudio popular hacia esta lucrativa labor en la sociedad judía.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "josue-frente-al-enorme-desafio-de-la-conquista-militar",
+      "title": "Josué frente al enorme desafío de la conquista militar",
+      "order": 35,
+      "description": "Al morir Moisés, este líder debió organizar al pueblo para la batalla. Estudiamos sus tácticas de guerra y la geografía de la tan anhelada tierra prometida.",
+      "audioUrl": "",
+      "videoUrl": ""
     }
   ]
 }

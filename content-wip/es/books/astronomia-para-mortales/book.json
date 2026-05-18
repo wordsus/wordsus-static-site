@@ -17,46 +17,6 @@
   "language": "es",
   "chapters": [
     {
-      "slug": "el-cinturon-de-asteroides-la-frontera-rocosa-interior",
-      "title": "El Cinturón de Asteroides: La frontera rocosa interior",
-      "order": 31,
-      "description": "Exploramos la región que separa los planetas rocosos de los gaseosos. Descubre por qué este anillo de escombros nunca logró formar un planeta completo.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
-      "slug": "telescopio-james-webb-una-nueva-era-de-descubrimientos",
-      "title": "Telescopio James Webb: Una nueva era de descubrimientos",
-      "order": 32,
-      "description": "Analizamos la maravilla tecnológica que está reescribiendo la astronomía. Conoce cómo sus sensores infrarrojos revelan las primeras galaxias del cosmos.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
-      "slug": "auroras-boreales-el-majestuoso-baile-solar-en-la-tierra",
-      "title": "Auroras boreales: El majestuoso baile solar en la Tierra",
-      "order": 33,
-      "description": "Entiende la ciencia detrás de las luces danzantes del norte. Explicamos cómo el viento solar interactúa con el campo magnético de nuestro planeta azul.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
-      "slug": "ceres-el-planeta-enano-mas-cercano-a-nuestro-hogar-azul",
-      "title": "Ceres: El planeta enano más cercano a nuestro hogar azul",
-      "order": 34,
-      "description": "Viajamos al corazón del cinturón de asteroides para conocer a su rey. Descubre los misterios de Ceres, sus puntos brillantes y su posible agua oculta.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
-      "slug": "la-nube-de-oort-el-inmenso-y-gelido-limite-del-sistema",
-      "title": "La Nube de Oort: El inmenso y gélido límite del sistema",
-      "order": 35,
-      "description": "Adéntrate en la frontera teórica y final del sistema solar. Conoce la inmensa burbuja de hielo y cometas inactivos que envuelve a nuestra estrella madre.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
       "slug": "cuasares-luminosos-los-faros-mas-brillantes-del-cosmos",
       "title": "Cuásares luminosos: Los faros más brillantes del cosmos",
       "order": 36,
