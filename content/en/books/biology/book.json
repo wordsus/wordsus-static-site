@@ -1,0 +1,255 @@
+{
+  "slug": "biology",
+  "locale": "en",
+  "title": "Essential Biology",
+  "subtitle": "Exploring Life's Core Concepts",
+  "author": "Wordsus Team",
+  "description": "Build a solid foundation in the life sciences with Essential Biology. This academic guide spans the chemical basis of life, metabolism, genetics, evolution, organismal biology, and ecology, connecting core concepts for students and curious readers alike.",
+  "cover": "/images/books/biology-en-cover.jpeg",
+  "category": "science",
+  "tags": [
+    "biology",
+    "cell biology",
+    "genetics",
+    "evolution",
+    "ecology",
+    "metabolism"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-19",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "introduction-to-biological-concepts-and-research",
+      "title": "Introduction to Biological Concepts and Research",
+      "order": 1,
+      "description": "Explore The Unifying Themes of Biology, The Process of Scientific Inquiry, The Core Concept of Evolution, Experimental Design and Data Analysis.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-chemical-context-of-life",
+      "title": "The Chemical Context of Life",
+      "order": 2,
+      "description": "Explore Elements, Atoms, and Subatomic Particles, Chemical Bonds and Intermolecular Forces, The Unique Properties of Water, Carbon and the Molecular Diversity of Life, Chemical Reactions and Biological Equilibrium.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "biological-macromolecules",
+      "title": "Biological Macromolecules",
+      "order": 3,
+      "description": "Explore Carbohydrates: Structure, Function, and Energy Storage, Lipids: Hydrophobic Molecules and Cellular Membranes, Proteins: Amino Acids and Diversity of Function, Nucleic Acids: Storing and Transmitting Genetic Information.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cell-structure-and-function",
+      "title": "Cell Structure and Function",
+      "order": 4,
+      "description": "Explore Microscopy and the Evolution of Cell Theory, Comparing Prokaryotic and Eukaryotic Cells, The Nucleus and Ribosomes: Information Central, The Endomembrane System: Manufacturing and Distributing, The Cytoskeleton and Extracellular Matrix.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "membrane-structure-and-cellular-transport",
+      "title": "Membrane Structure and Cellular Transport",
+      "order": 5,
+      "description": "Explore The Fluid Mosaic Model of Membrane Structure, Passive Transport: Diffusion and Osmosis, Active Transport: Pumps and Gradients, Bulk Transport: Endocytosis and Exocytosis.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "an-introduction-to-metabolism",
+      "title": "An Introduction to Metabolism",
+      "order": 6,
+      "description": "Explore Energy, Matter, and the Laws of Thermodynamics, Free Energy and Spontaneous Biochemical Reactions, ATP Structure and Cellular Work, Enzymes and the Lowering of Activation Energy, Allosteric Regulation and Feedback Inhibition.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "cellular-respiration-and-fermentation",
+      "title": "Cellular Respiration and Fermentation",
+      "order": 7,
+      "description": "Explore Redox Reactions and Electron Carriers, Glycolysis: Harvesting Chemical Energy, Pyruvate Oxidation and the Citric Acid Cycle, Oxidative Phosphorylation: Electron Transport and Chemiosmosis, Anaerobic Respiration and Fermentation Pathways.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "photosynthesis",
+      "title": "Photosynthesis",
+      "order": 8,
+      "description": "Explore The Chloroplast Structure and Photosynthetic Pigments, The Nature of Light and Excitation of Chlorophyll, The Light Reactions: Converting Solar Energy to Chemical Energy, The Calvin Cycle: Building Sugars from Carbon Dioxide, Alternative Mechanisms of Carbon Fixation (C4 and CAM Plants).",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-cell-cycle-and-cellular-reproduction",
+      "title": "The Cell Cycle and Cellular Reproduction",
+      "order": 9,
+      "description": "Explore Chromosome Structure and Genomic Organization, The Phases of the Eukaryotic Cell Cycle, Mitosis and Cytokinesis, Molecular Regulation of the Cell Cycle, Cancer: Out-of-Control Cell Division.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "meiosis-and-sexual-life-cycles",
+      "title": "Meiosis and Sexual Life Cycles",
+      "order": 10,
+      "description": "Explore Comparing Asexual and Sexual Reproduction, The Stages of Meiosis I and Meiosis II, Mechanisms of Genetic Variation in Meiosis, The Evolutionary Significance of Genetic Diversity.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "mendelian-genetics",
+      "title": "Mendelian Genetics",
+      "order": 11,
+      "description": "Explore Mendel's Laws of Segregation and Independent Assortment, The Rules of Probability in Mendelian Inheritance, Complex Inheritance Patterns (Codominance, Incomplete Dominance), Polygenic Inheritance and Environmental Influences, Pedigree Analysis and Human Genetic Disorders.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-chromosomal-basis-of-inheritance",
+      "title": "The Chromosomal Basis of Inheritance",
+      "order": 12,
+      "description": "Explore Morgan's Experimental Evidence and Sex-Linked Genes, X Inactivation in Female Mammals, Linked Genes, Recombination, and Genetic Maps, Alterations of Chromosome Number (Aneuploidy and Polyploidy), Alterations of Chromosome Structure (Deletions, Duplications, Translocations).",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-molecular-basis-of-inheritance",
+      "title": "The Molecular Basis of Inheritance",
+      "order": 13,
+      "description": "Explore Historical Evidence for DNA as the Genetic Material, The Double Helix: Structure and Base Pairing, The Mechanisms of DNA Replication, DNA Proofreading and Repair Mechanisms.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "gene-expression-from-gene-to-protein",
+      "title": "Gene Expression: From Gene to Protein",
+      "order": 14,
+      "description": "Explore The Central Dogma and the Genetic Code, Transcription: Synthesizing RNA from DNA, RNA Processing and Splicing in Eukaryotes, Translation: Assembling Polypeptides at the Ribosome, Point Mutations and Their Functional Consequences.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "regulation-of-gene-expression",
+      "title": "Regulation of Gene Expression",
+      "order": 15,
+      "description": "Explore Operons: Coordinate Regulation in Prokaryotes, Chromatin Modification and Epigenetics in Eukaryotes, Transcriptional and Post-Transcriptional Regulation, Non-Coding RNAs in Gene Regulation, Genetic Programs in Embryonic Development.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "mechanisms-of-evolution",
+      "title": "Mechanisms of Evolution",
+      "order": 16,
+      "description": "Explore Darwin, Wallace, and the Theory of Natural Selection, Anatomical, Molecular, and Fossil Evidence for Evolution, Microevolution and Population Genetics, The Hardy-Weinberg Principle and Null Models, Evolutionary Forces: Genetic Drift, Gene Flow, and Mutation.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "speciation-and-phylogeny",
+      "title": "Speciation and Phylogeny",
+      "order": 17,
+      "description": "Explore The Biological Species Concept and Reproductive Isolation, Mechanisms of Speciation: Allopatric vs. Sympatric, Hybrid Zones and the Tempo of Speciation, Reading, Interpreting, and Constructing Phylogenetic Trees, Systematics, Cladistics, and the Tree of Life.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-history-of-life-on-earth",
+      "title": "The History of Life on Earth",
+      "order": 18,
+      "description": "Explore Synthesis of Organic Compounds on Early Earth, The Fossil Record and the Geologic Time Scale, Major Transitions: Prokaryotes, Eukaryotes, and Multicellularity, Mass Extinctions and Subsequent Adaptive Radiations, Continental Drift and Global Biogeography.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "plant-structure-growth-and-development",
+      "title": "Plant Structure, Growth, and Development",
+      "order": 19,
+      "description": "Explore Plant Tissue Systems: Dermal, Vascular, and Ground, The Structure and Function of Roots, Stems, and Leaves, Primary Growth: Lengthening of the Plant Body, Secondary Growth: Increasing the Girth of Woody Plants.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "animal-principles-of-form-and-function",
+      "title": "Animal Principles of Form and Function",
+      "order": 20,
+      "description": "Explore Hierarchical Organization of Animal Bodies, Animal Tissue Types: Epithelial, Connective, Muscle, and Nervous, Homeostasis and Negative vs. Positive Feedback Loops, Thermoregulation Strategies Across Taxa.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "the-animal-immune-system",
+      "title": "The Animal Immune System",
+      "order": 21,
+      "description": "Explore Innate Immunity: Barrier Defenses and Internal Defenses, Antigen Recognition by B Cells and Antibodies, Antigen Recognition by T Cells and Cell-Mediated Immunity, Immunological Memory, Vaccination, and Passive Immunity, Disruptions in Immune System Function (Allergies and Autoimmunity).",
+      "audioUrl": ""
+    },
+    {
+      "slug": "nervous-and-endocrine-systems",
+      "title": "Nervous and Endocrine Systems",
+      "order": 22,
+      "description": "Explore Neuron Structure, Glial Cells, and the Resting Potential, Action Potentials and Conduction Along the Axon, Synaptic Transmission and Neurotransmitters, Organization of the Vertebrate Central and Peripheral Nervous Systems, Principles of Endocrine Signaling and Hormone Action.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "population-ecology",
+      "title": "Population Ecology",
+      "order": 23,
+      "description": "Explore Population Density, Dispersion Patterns, and Demographics, Exponential and Logistic Models of Population Growth, Density-Dependent and Density-Independent Population Regulation, Life History Traits and Reproductive Strategies (r- and K-selection), Human Population Dynamics and Global Footprint.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "community-ecology",
+      "title": "Community Ecology",
+      "order": 24,
+      "description": "Explore Interspecific Interactions: Competition, Predation, and Herbivory, Symbiotic Relationships: Parasitism, Mutualism, and Commensalism, Species Diversity, Dominance, and Trophic Structure, Keystone Species and Ecosystem Engineers.",
+      "audioUrl": ""
+    },
+    {
+      "slug": "ecosystems-and-conservation-biology",
+      "title": "Ecosystems and Conservation Biology",
+      "order": 25,
+      "description": "Explore Energy Flow and Trophic Efficiency in Ecosystems, Biogeochemical Cycles: Water, Carbon, Nitrogen, and Phosphorus, Primary and Secondary Production in Terrestrial and Aquatic Biomes, Major Threats to Global Biodiversity, Conservation Strategies, Restoration Ecology, and Sustainable Development.",
+      "audioUrl": ""
+    }
+  ],
+  "parts": [
+    {
+      "title": "Part I: The Chemical and Cellular Basis of Life",
+      "chapterSlugs": [
+        "introduction-to-biological-concepts-and-research",
+        "the-chemical-context-of-life",
+        "biological-macromolecules",
+        "cell-structure-and-function",
+        "membrane-structure-and-cellular-transport"
+      ]
+    },
+    {
+      "title": "Part II: Bioenergetics and Metabolism",
+      "chapterSlugs": [
+        "an-introduction-to-metabolism",
+        "cellular-respiration-and-fermentation",
+        "photosynthesis"
+      ]
+    },
+    {
+      "title": "Part III: Genetics and Molecular Biology",
+      "chapterSlugs": [
+        "the-cell-cycle-and-cellular-reproduction",
+        "meiosis-and-sexual-life-cycles",
+        "mendelian-genetics",
+        "the-chromosomal-basis-of-inheritance",
+        "the-molecular-basis-of-inheritance",
+        "gene-expression-from-gene-to-protein",
+        "regulation-of-gene-expression"
+      ]
+    },
+    {
+      "title": "Part IV: Evolution and the History of Life",
+      "chapterSlugs": [
+        "mechanisms-of-evolution",
+        "speciation-and-phylogeny",
+        "the-history-of-life-on-earth"
+      ]
+    },
+    {
+      "title": "Part V: Organismal Form and Function",
+      "chapterSlugs": [
+        "plant-structure-growth-and-development",
+        "animal-principles-of-form-and-function",
+        "the-animal-immune-system",
+        "nervous-and-endocrine-systems"
+      ]
+    },
+    {
+      "title": "Part VI: Ecology and the Biosphere",
+      "chapterSlugs": [
+        "population-ecology",
+        "community-ecology",
+        "ecosystems-and-conservation-biology"
+      ]
+    }
+  ]
+}
