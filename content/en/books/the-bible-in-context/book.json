@@ -256,6 +256,46 @@
       "description": "A passionate preacher with a direct message of strong social repentance. We study their strange diet, austere clothing, and purifying baptism.",
       "audioUrl": "",
       "videoUrl": ""
+    },
+    {
+      "slug": "solomon-and-the-golden-age-of-the-united-kingdom-of-israel",
+      "title": "Solomon and the golden age of the united kingdom of Israel",
+      "order": 31,
+      "description": "We explore the immense economic prosperity, great trade alliances, and administrative wisdom that characterized his prestigious peaceful reign.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "the-oil-production-process-in-olive-presses",
+      "title": "The oil production process in olive presses",
+      "order": 32,
+      "description": "Olive oil was vital for food, medicine and lighting. We analyze its laborious extraction and the symbolism of the Garden of Gethsemane in Judea.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "origin-and-importance-of-the-synagogue-in-jewish-life",
+      "title": "Origin and importance of the synagogue in Jewish life",
+      "order": 33,
+      "description": "Without the Temple, local centers of sacred study were formed. We explore the educational and social function of these community gatherings in Jewish villages.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "publicans-and-the-complex-roman-tax-network",
+      "title": "Publicans and the complex Roman tax network",
+      "order": 34,
+      "description": "Collecting tribute for Rome made you an outcast and a great traitor. We analyze the enormous popular rejection of this lucrative work in Jewish society.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "joshua-facing-the-enormous-challenge-of-military-conquest",
+      "title": "Joshua facing the enormous challenge of military conquest",
+      "order": 35,
+      "description": "When Moses died, this leader had to organize the people for battle. We study their war tactics and the geography of the long-awaited promised land.",
+      "audioUrl": "",
+      "videoUrl": ""
     }
   ]
 }

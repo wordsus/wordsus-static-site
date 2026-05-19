@@ -258,6 +258,46 @@
       "description": "We differentiate biological formation between identical and fraternal twins, exploring how they share genetic information in early development.",
       "audioUrl": "",
       "videoUrl": ""
+    },
+    {
+      "slug": "biology-of-pollination-and-plant-reproduction",
+      "title": "Biology of pollination and plant reproduction",
+      "order": 31,
+      "description": "We analyze how flowering plants manage to reproduce thanks to the crucial intervention of pollinating insects and other key environmental factors.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "neanderthal-dna-in-modern-humans-today",
+      "title": "Neanderthal DNA in modern humans today",
+      "order": 32,
+      "description": "Discover the fascinating genetic evidence that shows how our ancestors interbred with Neanderthals and what genes we inherited from them.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "physiology-of-the-cardiovascular-system-of-humans",
+      "title": "Physiology of the cardiovascular system of humans",
+      "order": 33,
+      "description": "We analyze the impressive biology of the heart and blood vessels, understanding how they pump blood to nourish each and every cell.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "apoptosis-programmed-cell-death-and-its-function",
+      "title": "Apoptosis: Programmed cell death and its function",
+      "order": 34,
+      "description": "We understand the essential biological mechanism by which our cells decide to self-destruct in an orderly manner to protect the health of the entire organism.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "the-biology-of-dopamine-and-the-reward-system",
+      "title": "The biology of dopamine and the reward system",
+      "order": 35,
+      "description": "We explore the neurobiology behind pleasure and motivation, unraveling the fundamental role of neurotransmitters in our daily behaviors.",
+      "audioUrl": "",
+      "videoUrl": ""
     }
   ]
 }

@@ -17,46 +17,6 @@
   "language": "en",
   "chapters": [
     {
-      "slug": "avogadros-number-and-the-concept-of-mole-in-chemistry",
-      "title": "Avogadro's number and the concept of mole in chemistry",
-      "order": 31,
-      "description": "Discover how chemists count atoms and molecules using the concept of the mole, a vital tool that connects visible mass to particles.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
-      "slug": "noble-gases-the-loneliest-elements-in-the-table",
-      "title": "Noble gases: the loneliest elements in the table",
-      "order": 32,
-      "description": "We explore helium, neon and argon. Learn why these elements are so stable, their zero reactivity and how they are used in modern lighting.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
-      "slug": "the-chemistry-of-soap-how-we-clean-dirt",
-      "title": "The chemistry of soap: how we clean dirt",
-      "order": 33,
-      "description": "We analyze the molecular structure of soaps and detergents, discovering how their molecules manage to trap fat and dissolve it easily in water.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
-      "slug": "isomers-molecules-with-the-same-formulas-and-dual-forms",
-      "title": "Isomers: molecules with the same formulas and dual forms",
-      "order": 34,
-      "description": "Learn why compounds with exactly the same atoms can have completely different physical and chemical properties depending on their spatial shape.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
-      "slug": "alkali-metals-extreme-reactivity-when-touching-water",
-      "title": "Alkali metals: extreme reactivity when touching water",
-      "order": 35,
-      "description": "We focus on sodium and potassium, metals so reactive that they must be stored in oil. Discover why they release so much energy upon aqueous contact.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
       "slug": "crystallography-the-perfect-geometry-hidden-in-salt",
       "title": "Crystallography: the perfect geometry hidden in salt",
       "order": 36,

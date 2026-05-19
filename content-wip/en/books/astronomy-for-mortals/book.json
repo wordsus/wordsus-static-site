@@ -17,46 +17,6 @@
   "language": "en",
   "chapters": [
     {
-      "slug": "the-asteroid-belt-the-inner-rocky-frontier",
-      "title": "The Asteroid Belt: The inner rocky frontier",
-      "order": 31,
-      "description": "We explore the region that separates the rocky planets from the gaseous ones. Find out why this ring of debris never formed a complete planet.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
-      "slug": "james-webb-telescope-a-new-era-of-discovery",
-      "title": "James Webb Telescope: A new era of discovery",
-      "order": 32,
-      "description": "We analyze the technological marvel that is rewriting astronomy. Learn how its infrared sensors reveal the first galaxies in the cosmos.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
-      "slug": "northern-lights-the-majestic-solar-dance-on-earth",
-      "title": "Northern Lights: The majestic solar dance on Earth",
-      "order": 33,
-      "description": "Understand the science behind the dancing northern lights. We explain how the solar wind interacts with the magnetic field of our blue planet.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
-      "slug": "ceres-the-closest-dwarf-planet-to-our-blue-home",
-      "title": "Ceres: The closest dwarf planet to our blue home",
-      "order": 34,
-      "description": "We travel to the heart of the asteroid belt to meet its king. Discover the mysteries of Ceres, its bright spots and its possible hidden water.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
-      "slug": "the-oort-cloud-the-immense-and-icy-limit-of-the-system",
-      "title": "The Oort Cloud: The immense and icy limit of the system",
-      "order": 35,
-      "description": "Enter the theoretical and final frontier of the solar system. Get to know the immense bubble of ice and inactive comets that surrounds our mother star.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
       "slug": "luminous-quasars-the-brightest-beacons-in-the-cosmos",
       "title": "Luminous quasars: The brightest beacons in the cosmos",
       "order": 36,

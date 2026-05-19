@@ -18,46 +18,6 @@
   "language": "en",
   "chapters": [
     {
-      "slug": "static-and-dynamic-friction-the-rubbing-of-things",
-      "title": "Static and dynamic friction: the rubbing of things",
-      "order": 31,
-      "description": "We analyze why objects rub and resist movement. Understand the physics of friction, key to walking, braking or lighting a match.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
-      "slug": "acoustic-resonance-bridges-that-vibrate-in-the-wind",
-      "title": "Acoustic resonance: bridges that vibrate in the wind",
-      "order": 32,
-      "description": "Discover how natural frequencies can amplify enormous vibrations. We explore the impact of resonance on musical instruments and bridges.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
-      "slug": "antimatter-explained-the-mirror-of-the-visible",
-      "title": "Antimatter explained: the mirror of the visible",
-      "order": 33,
-      "description": "We investigate the mysterious antimatter. Learn what positrons and antiprotons are, and why they annihilate upon contact with matter.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
-      "slug": "faradays-law-generate-electricity-with-magnets-today",
-      "title": "Faraday's Law: Generate Electricity with Magnets Today",
-      "order": 34,
-      "description": "We understand the principle of electromagnetic induction. Discover how the movement of a magnet inside a coil produces the light in your room.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
-      "slug": "wormholes-shortcuts-through-the-space-fabric",
-      "title": "Wormholes: shortcuts through the space fabric",
-      "order": 35,
-      "description": "We explore the theory of Einstein-Rosen bridges. We analyze whether it is really possible to cross the entire universe using these hypothetical portals.",
-      "audioUrl": "",
-      "videoUrl": ""
-    },
-    {
       "slug": "mirrors-and-reflection-the-physics-of-our-image",
       "title": "Mirrors and reflection: the physics of our image",
       "order": 36,
