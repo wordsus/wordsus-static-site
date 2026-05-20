@@ -16,7 +16,11 @@ export function readBookJson(book: BookConfig): BookJson {
     "book.json"
   );
   const raw = fs.readFileSync(jsonPath, "utf-8");
-  return JSON.parse(raw) as BookJson;
+  const parsed = JSON.parse(raw) as BookJson;
+  if (parsed && parsed.chapters) {
+    parsed.chapters = parsed.chapters.filter((ch) => ch.draft !== true);
+  }
+  return parsed;
 }
 
 export function getChapter(book: BookConfig, episodeNumber: number): Chapter | undefined {

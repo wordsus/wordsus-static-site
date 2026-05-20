@@ -99,6 +99,9 @@ async function generateAll() {
       if (!fs.existsSync(bookJsonPath)) continue;
 
       const book = JSON.parse(fs.readFileSync(bookJsonPath, 'utf-8'));
+      if (book && book.chapters) {
+        book.chapters = book.chapters.filter(ch => ch.draft !== true);
+      }
       const outputDir = path.join(publicDir, locale, bookSlug);
       fs.mkdirSync(outputDir, { recursive: true });
 

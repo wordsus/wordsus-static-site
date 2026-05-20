@@ -40,6 +40,24 @@ const contentDir = path.join(process.cwd(), "content");
 
 // ─── Books ───────────────────────────────────────────────────────────────────
 
+function processBookMeta(book: BookMeta | null): BookMeta | null {
+  if (!book) return null;
+  if (book.chapters) {
+    book.chapters = book.chapters.filter((ch) => ch.draft !== true);
+  }
+  if (book.parts) {
+    book.parts = book.parts
+      .map((part) => {
+        const chapterSlugs = part.chapterSlugs.filter((slug) =>
+          book.chapters.some((ch) => ch.slug === slug)
+        );
+        return { ...part, chapterSlugs };
+      })
+      .filter((part) => part.chapterSlugs.length > 0);
+  }
+  return book;
+}
+
 export function getAllBooks(locale: Locale): BookMeta[] {
   const booksDir = path.join(contentDir, locale, "books");
   if (!fs.existsSync(booksDir)) return [];
@@ -54,7 +72,8 @@ export function getAllBooks(locale: Locale): BookMeta[] {
       const bookJsonPath = path.join(booksDir, dir, "book.json");
       if (!fs.existsSync(bookJsonPath)) return null;
       const raw = fs.readFileSync(bookJsonPath, "utf-8");
-      return JSON.parse(raw) as BookMeta;
+      const book = JSON.parse(raw) as BookMeta;
+      return processBookMeta(book);
     })
     .filter(Boolean) as BookMeta[];
 }
@@ -63,7 +82,8 @@ export function getBookBySlug(slug: string, locale: Locale): BookMeta | null {
   const bookJsonPath = path.join(contentDir, locale, "books", slug, "book.json");
   if (!fs.existsSync(bookJsonPath)) return null;
   const raw = fs.readFileSync(bookJsonPath, "utf-8");
-  return JSON.parse(raw) as BookMeta;
+  const book = JSON.parse(raw) as BookMeta;
+  return processBookMeta(book);
 }
 
 export function getFeaturedBooks(locale: Locale): BookMeta[] {

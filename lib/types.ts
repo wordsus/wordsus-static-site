@@ -9,6 +9,7 @@ export interface ChapterMeta {
   description?: string;
   audioUrl?: string;
   videoUrl?: string;
+  draft?: boolean;
 }
 
 export interface BookPart {

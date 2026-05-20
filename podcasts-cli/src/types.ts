@@ -6,6 +6,7 @@ export interface Chapter {
   order: number;
   description?: string;
   audioUrl?: string;
+  draft?: boolean;
 }
 
 export interface BookJson {
