@@ -55,7 +55,7 @@
       "description": "Learn about quantum tunneling, a phenomenon where subatomic particles manage to pass through impenetrable physical barriers like simple ghosts.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Passing Walls"
     },
     {
@@ -65,7 +65,7 @@
       "description": "We analyze Heisenberg's uncertainty principle to understand why it is completely impossible to measure our universe with absolute precision.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Limits of the Cosmos"
     },
     {
@@ -75,7 +75,7 @@
       "description": "Learn about quantum teleportation, a real method that transfers exact information between distant particles without physically moving matter.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Real Teleportation"
     },
     {

@@ -54,7 +54,7 @@
       "description": "Meet capsaicin, the deceptive molecule in chili peppers that activates your tongue's pain receptors and makes you feel like you are burning.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Fake Fire!"
     },
     {
@@ -64,7 +64,7 @@
       "description": "We analyze syn-propanethial-S-oxide, the onion gas that reacts with the moisture in your eyes to form sulfuric acid and make you shed tears.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Crying Onions!"
     },
     {
@@ -74,7 +74,7 @@
       "description": "We reveal the secret of the old book smell: the slow chemical degradation of paper lignin that emits beautiful scents of vanilla and dried flowers.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Old Book Smell!"
     },
     {

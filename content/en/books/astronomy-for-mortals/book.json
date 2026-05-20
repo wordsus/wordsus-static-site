@@ -54,7 +54,7 @@
       "description": "We travel to Olympus Mons on Mars, the most colossal volcano in our entire Solar System, whose immense height easily triples that of Mount Everest.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "The largest volcano"
     },
     {
@@ -64,7 +64,7 @@
       "description": "Let's dive into the underground oceans of icy moons like Europa and Enceladus, distant worlds hiding vast liquid seas beneath thick, freezing crusts.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Seas under the ice"
     },
     {
@@ -74,7 +74,7 @@
       "description": "We travel to the Oort Cloud, the distant and mysterious outer sphere that surrounds our system and serves as the original home of long-period comets.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "The cradle of comets"
     },
     {

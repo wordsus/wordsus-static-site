@@ -56,7 +56,7 @@
       "description": "We explore the fascinating evolutionary history and why the vast majority of modern humans retain Neanderthal DNA that affects our health.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Are You Neanderthal?"
     },
     {
@@ -66,7 +66,7 @@
       "description": "Delve into the mystery of telomeres, the chromosomal structures that act as a biological clock and dictate exactly how our cells age.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "The Cellular Clock"
     },
     {
@@ -76,7 +76,7 @@
       "description": "Discover the amazing phenomenon of human genetic chimerism, where the exact same person possesses two different sets of DNA very naturally.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Genetic Fusion!"
     },
     {
