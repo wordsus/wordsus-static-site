@@ -55,7 +55,7 @@
       "order": 4,
       "description": "Exploramos la fascinante historia evolutiva y por qué la gran mayoría de los humanos modernos conserva ADN neandertal que afecta nuestra salud.",
       "thumbnailTitle": "¿Eres Neandertal?",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -65,7 +65,7 @@
       "order": 5,
       "description": "Adéntrate en el misterio de los telómeros, las estructuras cromosómicas que actúan como reloj biológico y dictan cómo envejecen nuestras células.",
       "thumbnailTitle": "El Reloj Celular",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -75,7 +75,7 @@
       "order": 6,
       "description": "Descubre el asombroso fenómeno del quimerismo genético humano, donde una misma persona posee dos conjuntos distintos de ADN de forma muy natural.",
       "thumbnailTitle": "¡Fusión Genética!",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },

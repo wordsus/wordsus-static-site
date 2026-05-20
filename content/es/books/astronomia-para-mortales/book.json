@@ -53,7 +53,7 @@
       "order": 4,
       "description": "Viajamos al Monte Olimpo en Marte, el volcán más colosal de nuestro Sistema Solar, cuya inmensa altura logra triplicar fácilmente la del Monte Everest.",
       "thumbnailTitle": "El volcán más grande",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -63,7 +63,7 @@
       "order": 5,
       "description": "Sumerjámonos en los océanos subterráneos de lunas heladas como Europa y Encélado, mundos que esconden vastos mares líquidos bajo gruesas costras de hielo.",
       "thumbnailTitle": "Mares bajo el hielo",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -73,7 +73,7 @@
       "order": 6,
       "description": "Viajamos a la Nube de Oort, la lejana y misteriosa esfera que envuelve nuestro sistema y sirve como el hogar original de los cometas de larguísimo periodo.",
       "thumbnailTitle": "La cuna de cometas",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },

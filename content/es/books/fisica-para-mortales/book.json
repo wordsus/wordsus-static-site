@@ -54,7 +54,7 @@
       "order": 4,
       "description": "Conoce el efecto túnel, un fenómeno donde las partículas subatómicas logran atravesar barreras físicas impenetrables como si fueran simples fantasmas.",
       "thumbnailTitle": "Traspasando Muros",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -64,7 +64,7 @@
       "order": 5,
       "description": "Analizamos el principio de incertidumbre de Heisenberg para entender por qué resulta totalmente imposible medir con precisión absoluta nuestro universo.",
       "thumbnailTitle": "Límites del Cosmos",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -74,7 +74,7 @@
       "order": 6,
       "description": "Aprende sobre la teletransportación cuántica, un método real que transfiere información exacta entre partículas distantes sin mover materia físicamente.",
       "thumbnailTitle": "Teletransporte Real",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },

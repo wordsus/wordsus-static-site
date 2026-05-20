@@ -53,7 +53,7 @@
       "order": 4,
       "description": "Analizamos el ciclo de la agricultura bíblica. Las lluvias tempranas y tardías nos enseñan valiosas lecciones sobre la fe y el juicio de Dios hoy.",
       "thumbnailTitle": "Lluvias de Bendición",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -63,7 +63,7 @@
       "order": 5,
       "description": "Conoce las antiguas costumbres de luto en Israel. El rol de las plañideras y los sepulcros blanqueados aclaran difíciles e intensos pasajes bíblicos.",
       "thumbnailTitle": "Luto en la Biblia",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -73,7 +73,7 @@
       "order": 6,
       "description": "Descubre cómo la arquitectura y el diseño de la antigua vivienda israelita explican el asombroso milagro del paralítico bajado por aquel techo plano.",
       "thumbnailTitle": "Casas del Siglo I",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },

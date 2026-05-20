@@ -53,7 +53,7 @@
       "order": 4,
       "description": "Conoce a la capsaicina, la engañosa molécula de los chiles que activa los receptores de dolor de tu lengua y te hace sentir que te quemas.",
       "thumbnailTitle": "¡Fuego Falso!",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -63,7 +63,7 @@
       "order": 5,
       "description": "Analizamos el ácido sin-propanotial-S-óxido, el gas de las cebollas que reacciona con la humedad ocular formando ácido sulfúrico y lágrimas.",
       "thumbnailTitle": "¡Cebollas Lloronas!",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -73,7 +73,7 @@
       "order": 6,
       "description": "Revelamos el secreto del olor a libro viejo: la lenta degradación química de la lignina del papel que emite olores a vainilla y flores secas.",
       "thumbnailTitle": "¡El Olor a Libro!",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
