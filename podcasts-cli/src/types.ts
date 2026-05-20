@@ -7,6 +7,7 @@ export interface Chapter {
   description?: string;
   audioUrl?: string;
   draft?: boolean;
+  thumbnailTitle?: string;
 }
 
 export interface BookJson {

@@ -61,16 +61,22 @@ Templates are located in the `templates/` folder:
 - `audio-prompt.md`: General prompt for NotebookLM.
 - `image-prompt.md`: General prompt for Gemini.
 
-If a specific book requires a different prompt, create a folder with the book's `alias` inside `templates/` and place the file there (e.g., `templates/fisica/audio-prompt.md`).
+If a specific book requires a different prompt, create a folder with the book's `alias` inside `templates/` and place the file there (e.g., `templates/fisica/audio-prompt.txt`).
+
+You can also create locale-specific overrides by appending the locale code to the filename (e.g., `image-prompt-en.txt`). The resolution order for any template is:
+1. `templates/<alias>/<name>-<locale>.txt` (book + locale specific)
+2. `templates/<alias>/<name>.txt` (book specific)
+3. `templates/<name>-<locale>.txt` (locale specific)
+4. `templates/<name>.txt` (general fallback)
 
 ### 5. Template Variables
-You can use the following placeholders in any `.md` template:
+You can use the following placeholders in any `.txt` template:
 - `{{PODCAST_NAME}}`: The podcast show name defined as `podcast` in `src/books.ts`.
 - `{{EPISODE_TITLE}}`: The full title of the current chapter (`chapter.title`) from `book.json`.
 - `{{EPISODE_NUMBER}}`: The order number of the chapter (`chapter.order`) from `book.json`.
+- `{{EPISODE_DESCRIPTION}}`: The description of the current chapter (`chapter.description`) from `book.json`. Empty string if not set.
+- `{{THUMBNAIL_TITLE}}`: The value of `chapter.thumbnailTitle` from `book.json`. Falls back to `{{EPISODE_TITLE}}` if not set.
 - `{{ARTICLE_URL}}`: The public URL of the article on the website (automatically generated).
-- `{{IMAGE_TITLE}}`: The first part of the title (extracted from the title before any `:` or `—`).
-- `{{IMAGE_SUBTITLE}}`: The second part of the title (extracted from the title after any `:` or `—`).
 
 ## Usage
 

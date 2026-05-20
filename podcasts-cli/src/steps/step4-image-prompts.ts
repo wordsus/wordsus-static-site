@@ -23,7 +23,6 @@ export async function runStep4(session: SessionState): Promise<void> {
   divider();
 
   const sortedBooks = books
-    .filter((b) => b.locale === "es")
     .sort((a, b) => a.order - b.order);
 
   for (const book of sortedBooks) {
@@ -51,19 +50,23 @@ export async function runStep4(session: SessionState): Promise<void> {
     await clipboard.write(prompt);
     clipboardNotice(`${book.alias} — image prompt`, chapter.title);
 
-    // ── Open Gemini chat ─────────────────────────────────────────────────
-    const chatUrl = getChatUrl(book, target.episodeNumber);
-    if (chatUrl) {
-      info(`  ${C.muted("Chat URL:")} ${chatUrl}`);
-      await open(chatUrl);
-      ok(`Opened Gemini chat for ${book.alias} in browser.`);
-      log("INFO", `[${book.alias}] Opened chat: ${chatUrl}`);
+    // ── Open Gemini chat (Spanish books only) ────────────────────────────
+    if (book.locale === "es") {
+      const chatUrl = getChatUrl(book, target.episodeNumber);
+      if (chatUrl) {
+        info(`  ${C.muted("Chat URL:")} ${chatUrl}`);
+        await open(chatUrl);
+        ok(`Opened Gemini chat for ${book.alias} in browser.`);
+        log("INFO", `[${book.alias}] Opened chat: ${chatUrl}`);
+      } else {
+        warn(
+          `[${book.alias}] No chat URL found in chats.txt for episode ${target.episodeNumber}. ` +
+          `Add the Gemini chat URL at line ${target.episodeNumber} of:\n` +
+          `  content/${book.locale}/books/${book.slug}/chats.txt`
+        );
+      }
     } else {
-      warn(
-        `[${book.alias}] No chat URL found in chats.txt for episode ${target.episodeNumber}. ` +
-        `Add the Gemini chat URL at line ${target.episodeNumber} of:\n` +
-        `  content/${book.locale}/books/${book.slug}/chats.txt`
-      );
+      info(`  ${C.muted("(English book — chat not opened automatically)")}`);
     }
 
     await confirm({

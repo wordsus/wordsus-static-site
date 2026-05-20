@@ -1,6 +1,15 @@
-Title: {{IMAGE_TITLE}}
-Subtitle: {{IMAGE_SUBTITLE}}
+# Prompt to Generate Another Prompt
 
-Using the data detailed above, generate and show me a prompt to create an image to use as a thumbnail for a YouTube video that discusses and explains this article. Add the title, subtitle, and a small podcast icon at the bottom. Make it clear that the generated image should not enclose the text in quotation marks. Do not generate the image; the output should only be the prompt.
+## Context
 
-Now the same image but with the texts in English.
+I need to create a thumbnail image for a YouTube video.
+
+This is the video title: {{EPISODE_TITLE}}
+This is the video description: {{EPISODE_DESCRIPTION}}
+
+## Prompt
+
+Generate a prompt to create this thumbnail image. DO NOT generate the image; just show me the prompt without any introduction, such as "Here's the prompt...". DO NOT include the video title and description; these were only mentioned for context. You must use the following custom title for the thumbnail image: {{THUMBNAIL_TITLE}}
+The prompt must specify that a small podcast icon be added at the bottom.
+
+It must be an impressive design that optimizes the CTR of the thumbnail image.
