@@ -5,11 +5,11 @@ import { log } from "./logger.js";
 
 /**
  * Calculates the scheduled date for a given episode number.
- * The date is derived from config.schedule.baseDate + (episode - 1) days.
+ * The date is derived from config.schedule.baseDate + (episode - 1) * config.schedule.daysPerEpisode.
  */
 function getScheduledDate(episodeNumber: number): string {
   const base = new Date(`${config.schedule.baseDate}T00:00:00`);
-  base.setDate(base.getDate() + (episodeNumber - 1));
+  base.setDate(base.getDate() + (episodeNumber - 1) * config.schedule.daysPerEpisode);
   return base.toLocaleDateString("en-US", {
     month: "long",
     day: "numeric",
