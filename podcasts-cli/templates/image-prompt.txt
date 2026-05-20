@@ -2,14 +2,20 @@
 
 ## Context
 
-I need to create a thumbnail image for a YouTube video.
+I need to create a thumbnail image for the YouTube video for the next episode of my podcast.
 
-This is the video title: {{EPISODE_TITLE}}
-This is the video description: {{EPISODE_DESCRIPTION}}
+This is the podcast show name:
+{{PODCAST_NAME}}
+
+This is the video title:
+{{EPISODE_TITLE}}
+
+This is the video description:
+{{EPISODE_DESCRIPTION}}
 
 ## Prompt
 
-Generate a prompt to create this thumbnail image. DO NOT generate the image; just show me the prompt without any introduction, such as "Here's the prompt...". DO NOT include the video title and description; these were only mentioned for context. You must use the following custom title for the thumbnail image: {{THUMBNAIL_TITLE}}
+Generate a prompt to create this thumbnail image. DO NOT generate the image; just show me the prompt without any introduction, such as "Here's the prompt...". DO NOT include the video title, description and podcast show name; these were only mentioned for context. You must use the following custom title for the thumbnail image: {{THUMBNAIL_TITLE}}
 The prompt must specify that a small podcast icon be added at the bottom.
 
 It must be an impressive design that optimizes the CTR of the thumbnail image.
