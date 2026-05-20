@@ -33,7 +33,7 @@
       "order": 2,
       "description": "Exploramos el fascinante proceso de la saponificación, donde las moléculas de jabón logran la hazaña de mezclar agua y aceite para limpiar.",
       "thumbnailTitle": "¡Agua y Aceite Juntos!",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -43,7 +43,7 @@
       "order": 3,
       "description": "Sumérgete en el aroma a lluvia provocado por la geosmina y el petricor, compuestos químicos detectables por el humano en niveles diminutos.",
       "thumbnailTitle": "¡Olor a Lluvia!",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },

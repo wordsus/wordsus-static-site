@@ -33,7 +33,7 @@
       "order": 2,
       "description": "Exploramos la hospitalidad en el Medio Oriente antiguo. Conoce por qué lavar los pies y recibir extraños era una cuestión de sagrado honor bíblico.",
       "thumbnailTitle": "Honor y Hospitalidad",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -43,7 +43,7 @@
       "order": 3,
       "description": "Sumérgete en la vida del pastoreo antiguo y descubre cómo el cuidado literal de las ovejas ilumina profundamente el Salmo veintitrés y Juan diez.",
       "thumbnailTitle": "El Buen Pastor",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },

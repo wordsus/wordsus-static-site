@@ -35,7 +35,7 @@
       "order": 2,
       "description": "Analizamos la epigenética, el asombroso campo que explica cómo tu estilo de vida y entorno activan o desactivan tus genes sin alterar tu ADN.",
       "thumbnailTitle": "Tus Genes Cambian",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -45,7 +45,7 @@
       "order": 3,
       "description": "Conoce los proyectos científicos de desextinción que buscan traer de vuelta a la vida al mamut lanudo, al dodo y a otros animales ya extintos.",
       "thumbnailTitle": "¡Vuelven a la Vida!",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },

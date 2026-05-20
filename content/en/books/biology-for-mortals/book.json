@@ -36,7 +36,7 @@
       "description": "We analyze epigenetics, the amazing field that explains how your lifestyle and environment turn genes on or off without altering your DNA.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Your Genes Change"
     },
     {
@@ -46,7 +46,7 @@
       "description": "Learn about de-extinction scientific projects that seek to bring back to life the woolly mammoth, the dodo, and other extinct animals.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "They Come Back!"
     },
     {

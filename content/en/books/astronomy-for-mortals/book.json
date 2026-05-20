@@ -34,7 +34,7 @@
       "description": "Discover why the famous gas giant is slowly losing its majestic ring system due to the relentless force of gravity pulling them down into the planet.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Saturn without rings!"
     },
     {
@@ -44,7 +44,7 @@
       "description": "We delve into Jupiter's Great Red Spot, a monstrous anticyclonic storm the exact size of Earth that has been active for centuries without ever stopping.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "The infinite storm"
     },
     {

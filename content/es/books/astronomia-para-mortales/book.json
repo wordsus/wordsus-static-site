@@ -33,7 +33,7 @@
       "order": 2,
       "description": "Descubre por qué el gigante gaseoso está perdiendo lentamente su majestuoso sistema de anillos debido a la implacable fuerza de la gravedad en el espacio.",
       "thumbnailTitle": "¡Saturno sin anillos!",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -43,7 +43,7 @@
       "order": 3,
       "description": "Nos adentramos en la Gran Mancha Roja de Júpiter, una monstruosa tormenta anticiclónica del tamaño de la Tierra que lleva siglos activa sin detenerse nunca.",
       "thumbnailTitle": "La tormenta infinita",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },

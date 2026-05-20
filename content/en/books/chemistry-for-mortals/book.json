@@ -34,7 +34,7 @@
       "description": "We explore the fascinating process of saponification, where soap molecules achieve the amazing feat of mixing water and oil together to clean.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Water & Oil Together!"
     },
     {
@@ -44,7 +44,7 @@
       "description": "Immerse yourself in the scent of rain caused by geosmin and petrichor, chemical compounds detectable by humans in incredibly tiny amounts.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Smell of Rain!"
     },
     {

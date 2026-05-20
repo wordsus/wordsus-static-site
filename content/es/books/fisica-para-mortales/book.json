@@ -34,7 +34,7 @@
       "order": 2,
       "description": "Sumérgete en el extraño entrelazamiento cuántico, donde dos partículas se conectan instantáneamente a distancia desafiando nuestras leyes del universo.",
       "thumbnailTitle": "Conexión Mágica",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -44,7 +44,7 @@
       "order": 3,
       "description": "Descubre la extraña dualidad onda-partícula con el experimento de la doble rendija y cómo la simple observación altera el comportamiento de la materia.",
       "thumbnailTitle": "¿Onda o Partícula?",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },

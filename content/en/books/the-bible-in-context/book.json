@@ -34,7 +34,7 @@
       "description": "We explore hospitality in the ancient Middle East. Discover why washing feet and receiving strangers was a matter of sacred and true biblical honor.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Honor & Hospitality"
     },
     {
@@ -44,7 +44,7 @@
       "description": "Dive deep into the life of ancient shepherding and discover how the literal care of the sheep profoundly illuminates Psalm twenty-three and John ten.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "The Good Shepherd"
     },
     {

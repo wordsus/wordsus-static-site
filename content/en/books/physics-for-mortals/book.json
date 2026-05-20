@@ -35,7 +35,7 @@
       "description": "Dive into bizarre quantum entanglement, where two particles connect instantly across distances, defying our established laws of the universe.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Magic Connection"
     },
     {
@@ -45,7 +45,7 @@
       "description": "Discover the strange wave-particle duality through the double-slit experiment and how mere observation alters the behavior of matter itself.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Wave or Particle?"
     },
     {
