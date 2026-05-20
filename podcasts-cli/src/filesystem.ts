@@ -186,12 +186,31 @@ export async function backupAndClean(): Promise<void> {
 export function purgeOldBackups(): void {
   const backups = backupsDir();
   if (!fs.existsSync(backups)) return;
-  const retentionMs = config.backupRetentionDays * 24 * 60 * 60 * 1000;
-  const now = Date.now();
-  for (const file of fs.readdirSync(backups)) {
-    const filePath = path.join(backups, file);
-    const stat = fs.statSync(filePath);
-    if (now - stat.mtimeMs > retentionMs) {
+
+  const files = fs.readdirSync(backups);
+
+  // Extract the date portion (YYYY-MM-DD) from backup filenames.
+  // Expected format: sources_YYYY-MM-DD_HH-mm.zip or outputs_YYYY-MM-DD_HH-mm.zip
+  const dateRegex = /^(?:sources|outputs)_(\d{4}-\d{2}-\d{2})_\d{2}-\d{2}\.zip$/;
+
+  // Collect all distinct generation dates across all backup files.
+  const distinctDates = new Set<string>();
+  for (const file of files) {
+    const match = dateRegex.exec(file);
+    if (match) {
+      distinctDates.add(match[1]);
+    }
+  }
+
+  // Sort dates descending (most recent first) and keep only the N most recent.
+  const sortedDates = Array.from(distinctDates).sort((a, b) => b.localeCompare(a));
+  const retainedDates = new Set(sortedDates.slice(0, config.backupRetentionSessions));
+
+  // Delete any backup file whose date is not in the retained set.
+  for (const file of files) {
+    const match = dateRegex.exec(file);
+    if (match && !retainedDates.has(match[1])) {
+      const filePath = path.join(backups, file);
       fs.rmSync(filePath, { force: true });
       log("INFO", `Purged old backup: ${file}`);
     }

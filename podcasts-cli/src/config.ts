@@ -15,9 +15,11 @@ export const config = {
   contentDir: process.env.PODCASTS_CONTENT_DIR ?? "/Users/fabian/Documents/CodeProjects/github.com/wordsus/wordsus-static-site/content",
 
   /**
-   * Number of days to keep backup zip files before permanent deletion.
+   * Number of episode-generation sessions to keep backup zip files.
+   * Each distinct calendar date on which an episode was generated counts as one session.
+   * For example, with a weekly schedule, a value of 3 retains backups from the last 3 weeks.
    */
-  backupRetentionDays: 3,
+  backupRetentionSessions: 3,
 
   /**
    * Number of days to keep log files before permanent deletion.
@@ -41,7 +43,7 @@ export const config = {
      * Episode 1 is scheduled on this date; each subsequent episode adds daysPerEpisode days.
      * Derived from: episode 16 → May 15, 2026 → baseDate = April 30, 2026.
      */
-    baseDate: "2026-05-13",
+    baseDate: "2026-05-20",
     /**
      * Number of days to add for each subsequent episode starting from baseDate.
      * For example: 7 equals one episode per week.
