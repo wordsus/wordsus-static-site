@@ -1,0 +1,541 @@
+{
+  "slug": "chemistry-for-mortals",
+  "locale": "en",
+  "title": "Chemistry for Mortals",
+  "subtitle": "An atomic look around you",
+  "author": "Wordsus Team",
+  "description": "A fascinating 365-day journey through the world of chemistry. From the structure of the atom to the most modern applications of nanotechnology, explained in a simple and entertaining way.",
+  "cover": "/images/books/chemistry-for-mortals-en-cover.jpeg",
+  "category": "popular-science",
+  "tags": [
+    "chemistry",
+    "science",
+    "divulgation",
+    "subject"
+  ],
+  "featured": true,
+  "publishedAt": "2026-04-29",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "the-taste-of-fire-the-maillard-reaction-to-the-rescue",
+      "title": "The Taste of Fire: The Maillard Reaction to the Rescue",
+      "order": 1,
+      "description": "Discover how the Maillard reaction transforms amino acids and sugars when heat is applied, creating that irresistible color and flavor in food.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": false,
+      "thumbnailTitle": "Flavor Magic!"
+    },
+    {
+      "slug": "water-and-oil-the-chemical-secret-of-saponification",
+      "title": "Water and Oil: The Chemical Secret of Saponification",
+      "order": 2,
+      "description": "We explore the fascinating process of saponification, where soap molecules achieve the amazing feat of mixing water and oil together to clean.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Water & Oil Together!"
+    },
+    {
+      "slug": "the-smell-of-rain-the-fascinating-chemistry-of-petrichor",
+      "title": "The Smell of Rain: The Fascinating Chemistry of Petrichor",
+      "order": 3,
+      "description": "Immerse yourself in the scent of rain caused by geosmin and petrichor, chemical compounds detectable by humans in incredibly tiny amounts.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Smell of Rain!"
+    },
+    {
+      "slug": "fire-on-the-tongue-the-thermal-deception-of-capsaicin",
+      "title": "Fire on the Tongue: The Thermal Deception of Capsaicin",
+      "order": 4,
+      "description": "Meet capsaicin, the deceptive molecule in chili peppers that activates your tongue's pain receptors and makes you feel like you are burning.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Fake Fire!"
+    },
+    {
+      "slug": "tears-in-the-kitchen-the-hidden-gas-inside-onions",
+      "title": "Tears in the Kitchen: The Hidden Gas Inside Onions",
+      "order": 5,
+      "description": "We analyze syn-propanethial-S-oxide, the onion gas that reacts with the moisture in your eyes to form sulfuric acid and make you shed tears.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Crying Onions!"
+    },
+    {
+      "slug": "the-scent-of-the-past-why-we-love-old-book-smells",
+      "title": "The Scent of the Past: Why We Love Old Book Smells",
+      "order": 6,
+      "description": "We reveal the secret of the old book smell: the slow chemical degradation of paper lignin that emits beautiful scents of vanilla and dried flowers.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Old Book Smell!"
+    },
+    {
+      "slug": "candy-geyser-the-hidden-physics-behind-nucleation",
+      "title": "Candy Geyser: The Hidden Physics Behind Nucleation",
+      "order": 7,
+      "description": "Understand the amazing physical-chemical nucleation that causes the famous geyser when you drop Mentos candies into diet cola soft drinks.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Cola Volcano!"
+    },
+    {
+      "slug": "magic-in-the-oven-baking-soda-vs-baking-powder",
+      "title": "Magic in the Oven: Baking Soda vs. Baking Powder",
+      "order": 8,
+      "description": "Learn the chemistry behind baking soda and baking powder, acid-base reactions that release carbon dioxide to make your delicious cakes fluffy.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Oven Secrets!"
+    },
+    {
+      "slug": "the-incredible-diaper-superabsorbent-polymer-networks",
+      "title": "The Incredible Diaper: Superabsorbent Polymer Networks",
+      "order": 9,
+      "description": "Be amazed by superabsorbent polymers in diapers, sodium polyacrylate networks that trap massive amounts of water through hydrogen bonding.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Magic Diapers!"
+    },
+    {
+      "slug": "guilt-free-coffee-the-supercritical-extraction-mystery",
+      "title": "Guilt-Free Coffee: The Supercritical Extraction Mystery",
+      "order": 10,
+      "description": "Discover how carbon dioxide is used in supercritical extraction to successfully remove caffeine from coffee without altering its great taste.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Caffeine-Free!"
+    },
+    {
+      "slug": "the-miracle-layer-graphene-and-the-future-of-materials",
+      "title": "The Miracle Layer: Graphene and the Future of Materials",
+      "order": 11,
+      "description": "We explore the benefits of graphene, an incredibly thin layer of carbon that claims to be the strongest material and a fantastic conductor.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Future Material!"
+    },
+    {
+      "slug": "frozen-smoke-the-incredible-world-of-magical-aerogels",
+      "title": "Frozen Smoke: The Incredible World of Magical Aerogels",
+      "order": 12,
+      "description": "Be fascinated by aerogels, where liquid is replaced by gas to create a silicon dioxide structure with incredible thermal insulating power.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Frozen Smoke!"
+    },
+    {
+      "slug": "metal-with-memory-the-thermal-journey-of-nitinol",
+      "title": "Metal with Memory: The Thermal Journey of Nitinol",
+      "order": 13,
+      "description": "Meet nitinol, a revolutionary nickel and titanium alloy with shape memory that, when heat is applied, fully recovers its initial structure.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Magic Metal!"
+    },
+    {
+      "slug": "the-infinite-void-vantablack-and-the-absence-of-light",
+      "title": "The Infinite Void: Vantablack and the Absence of Light",
+      "order": 14,
+      "description": "Marvel at Vantablack, a dense coating of aligned carbon nanotubes that absorbs visible light, making 3D objects look completely flat and 2D.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Real Black Holes!"
+    },
+    {
+      "slug": "stopping-bullets-the-amazing-bonds-seen-in-kevlar",
+      "title": "Stopping Bullets: The Amazing Bonds Seen in Kevlar",
+      "order": 15,
+      "description": "Discover the intricate network of hydrogen bonds between polymer chains that give Kevlar the incredible resistance needed to stop speeding bullets.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Stopping Bullets!"
+    },
+    {
+      "slug": "liquid-or-solid-walking-on-non-newtonian-fluids",
+      "title": "Liquid or Solid: Walking on Non-Newtonian Fluids",
+      "order": 16,
+      "description": "Experiment with non-Newtonian fluids like oobleck, where starch chains act as a solid under pressure and freely flow as a liquid when at rest.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Walking on Water!"
+    },
+    {
+      "slug": "the-non-stick-king-the-strong-bonds-inside-teflon",
+      "title": "The Non-Stick King: The Strong Bonds Inside Teflon",
+      "order": 17,
+      "description": "Learn why the carbon-fluorine bonds in Teflon make this molecule so incredibly inert that it refuses to react or stick to absolutely anything.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Nothing Sticks!"
+    },
+    {
+      "slug": "extreme-glue-the-polymerization-of-cyanoacrylates",
+      "title": "Extreme Glue: The Polymerization of Cyanoacrylates",
+      "order": 18,
+      "description": "We explore how cyanoacrylates act in superglue, instantly polymerizing with the moisture in the air instead of just drying out on their own.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Instant Glue!"
+    },
+    {
+      "slug": "synthetic-ice-ultra-high-molecular-weight-polyethylene",
+      "title": "Synthetic Ice: Ultra-High Molecular Weight Polyethylene",
+      "order": 19,
+      "description": "Be surprised by ultra-high molecular weight polyethylene, a plastic with huge chains that make it incredibly resistant to wear and friction.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Indestructible Plastic!"
+    },
+    {
+      "slug": "the-melting-metal-gallium-right-in-the-palm-of-your-hand",
+      "title": "The Melting Metal: Gallium Right in the Palm of Your Hand",
+      "order": 20,
+      "description": "Play mentally with gallium, a harmless metal whose uniquely low melting point causes it to turn into liquid just by holding it in your warm hands.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Melting Metal!"
+    },
+    {
+      "slug": "alien-crystals-the-iridescent-beauty-of-bismuth",
+      "title": "Alien Crystals: The Iridescent Beauty of Bismuth",
+      "order": 21,
+      "description": "Admire the fantastic, iridescent, and alien-looking crystals of bismuth, formed through a highly complex cooling and surface oxidation process.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Alien Crystals!"
+    },
+    {
+      "slug": "the-liquid-metal-mercury-and-the-world-of-amalgams",
+      "title": "The Liquid Metal: Mercury and the World of Amalgams",
+      "order": 22,
+      "description": "Dive into the properties of mercury, the only metal that remains a liquid at room temperature, and its fascinating ability to form amalgams.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Liquid Silver!"
+    },
+    {
+      "slug": "fleeting-and-radioactive-the-hunt-for-elusive-francium",
+      "title": "Fleeting and Radioactive: The Hunt for Elusive Francium",
+      "order": 23,
+      "description": "Chase the rarity of francium, an alkali metal so unstable and highly radioactive that only a few grams exist in the entire Earth's crust.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Ghost Metal!"
+    },
+    {
+      "slug": "aquatic-explosion-the-dramatic-behavior-of-sodium",
+      "title": "Aquatic Explosion: The Dramatic Behavior of Sodium",
+      "order": 24,
+      "description": "Study the explosive nature of pure sodium, an alkali metal eager to give up its electron that reacts violently when coming into contact with water.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Water Explosion!"
+    },
+    {
+      "slug": "diamond-and-graphite-the-two-faces-of-allotropic-carbon",
+      "title": "Diamond and Graphite: The Two Faces of Allotropic Carbon",
+      "order": 25,
+      "description": "Understand carbon allotropy and how the valuable diamond and soft graphite are chemically identical but have completely different atomic bonds.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Coal vs Diamond!"
+    },
+    {
+      "slug": "spontaneous-fire-the-hidden-danger-in-white-phosphorus",
+      "title": "Spontaneous Fire: The Hidden Danger in White Phosphorus",
+      "order": 26,
+      "description": "Travel back in time to the alchemist who discovered reactive white phosphorus by boiling urine, an element that naturally burns in the air.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Fire from Nothing!"
+    },
+    {
+      "slug": "ephemeral-plastic-the-strange-case-of-polymeric-sulfur",
+      "title": "Ephemeral Plastic: The Strange Case of Polymeric Sulfur",
+      "order": 27,
+      "description": "Discover the thermal transformation of polymeric sulfur, obtaining an elastic and plastic mass by rapidly cooling completely melted yellow sulfur.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Rubber Sulfur!"
+    },
+    {
+      "slug": "recyclable-pills-the-strange-history-of-antimony",
+      "title": "Recyclable Pills: The Strange History of Antimony",
+      "order": 28,
+      "description": "Be amazed by the ancient perpetual pills of antimony, a toxic metalloid used as a medieval purge that was actually recycled for generations.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Eternal Pills!"
+    },
+    {
+      "slug": "the-magic-clock-time-delays-with-chemical-iodine",
+      "title": "The Magic Clock: Time Delays with Chemical Iodine",
+      "order": 29,
+      "description": "Watch the magical iodine clock, an amazing clear solution that abruptly changes to a dark blue color after a fully predetermined amount of time.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Color Magic!"
+    },
+    {
+      "slug": "giant-foam-the-famous-elephant-toothpaste-experiment",
+      "title": "Giant Foam: The Famous Elephant Toothpaste Experiment",
+      "order": 30,
+      "description": "Discover the catalytic decomposition of hydrogen peroxide that causes the explosive and intensely hot foam in the elephant toothpaste experiment.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Extreme Foam!"
+    },
+    {
+      "slug": "pulsating-colors-the-amazing-oscillating-chemical-clock",
+      "title": "Pulsating Colors: The Amazing Oscillating Chemical Clock",
+      "order": 31,
+      "description": "Be fascinated by the Belousov-Zhabotinsky chemical clock, one of the few oscillating reactions that rhythmically changes color without stopping.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Living Liquid!"
+    },
+    {
+      "slug": "inextinguishable-fire-the-destructive-power-of-thermite",
+      "title": "Inextinguishable Fire: The Destructive Power of Thermite",
+      "order": 32,
+      "description": "Feel the red-hot heat of thermite, a highly dangerous mixture of aluminum powder and iron oxide that instantly burns at extreme temperatures.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Unstoppable Fire!"
+    },
+    {
+      "slug": "light-without-heat-the-mystery-of-chemiluminescence",
+      "title": "Light without Heat: The Mystery of Chemiluminescence",
+      "order": 33,
+      "description": "Light up the dark by understanding chemiluminescence, where hydrogen peroxide and an ester release bright light without producing any heat.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Chemical Light!"
+    },
+    {
+      "slug": "fake-ice-the-thermal-deception-of-sodium-acetate",
+      "title": "Fake Ice: The Thermal Deception of Sodium Acetate",
+      "order": 34,
+      "description": "Trick your senses with the hot ice of sodium acetate, a supersaturated solution that crystallizes upon touch, releasing plenty of thermal energy.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Burning Ice!"
+    },
+    {
+      "slug": "ghostly-footprints-the-revealing-glow-of-luminol",
+      "title": "Ghostly Footprints: The Revealing Glow of Luminol",
+      "order": 35,
+      "description": "Investigate how forensic experts act using luminol, a molecule that reacts to the iron inside blood hemoglobin to emit a ghostly blue glow.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Glowing Blood!"
+    },
+    {
+      "slug": "painted-sky-the-metals-behind-fireworks",
+      "title": "Painted Sky: The Metals Behind Fireworks",
+      "order": 36,
+      "description": "Look up at the sky to understand emission spectra and how heating different metal salts generates those brilliant colors in amazing fireworks.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Explosive Colors!"
+    },
+    {
+      "slug": "mysterious-fog-the-cold-sublimation-of-dry-ice",
+      "title": "Mysterious Fog: The Cold Sublimation of Dry Ice",
+      "order": 37,
+      "description": "Walk through the dense fog caused by the sublimation of dry ice, a process where solid carbon dioxide completely bypasses the liquid state.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Instant Fog!"
+    },
+    {
+      "slug": "silent-killer-the-lethal-embrace-of-carbon-monoxide",
+      "title": "Silent Killer: The Lethal Embrace of Carbon Monoxide",
+      "order": 38,
+      "description": "Avoid the silent killer by understanding carbon monoxide and its potent, yet completely lethal affinity with hemoglobin that suffocates the body.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Invisible Danger!"
+    },
+    {
+      "slug": "cellular-arrest-how-cyanide-suffocates-our-body",
+      "title": "Cellular Arrest: How Cyanide Suffocates Our Body",
+      "order": 39,
+      "description": "Discover how the cyanide ion acts at a molecular level by fully blocking the cytochrome c oxidase enzyme and paralyzing energy in our cells.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Sudden Poison!"
+    },
+    {
+      "slug": "furious-nitrogen-the-destructive-chemistry-behind-tnt",
+      "title": "Furious Nitrogen: The Destructive Chemistry behind TNT",
+      "order": 40,
+      "description": "Explore the terrifying chemistry behind TNT and nitroglycerin, where nitrogen atoms desperately seek to bond, releasing massive destructive energy.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Pure Dynamite!"
+    },
+    {
+      "slug": "seed-poison-ricin-as-a-molecular-saboteur",
+      "title": "Seed Poison: Ricin as a Molecular Saboteur",
+      "order": 41,
+      "description": "Understand the immense danger of ricin, a master plant toxin entirely capable of sabotaging and inactivating thousands of cellular ribosomes per minute.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Deadly Seed!"
+    },
+    {
+      "slug": "aesthetic-terror-the-lethality-of-botulinum-toxin",
+      "title": "Aesthetic Terror: The Lethality of Botulinum Toxin",
+      "order": 42,
+      "description": "Analyze the paralyzing power of the lethal botulinum toxin, a protein that fully blocks the nerve impulses that order your muscles to contract.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Lethal Beauty!"
+    },
+    {
+      "slug": "absolute-corrosion-the-danger-of-fluoroantimonic-acid",
+      "title": "Absolute Corrosion: The Danger of Fluoroantimonic Acid",
+      "order": 43,
+      "description": "Discover the fearsome fluoroantimonic acid, a dangerous superacid capable of dissolving even glass that can uniquely be stored inside Teflon.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Worst Acid!"
+    },
+    {
+      "slug": "fire-in-the-ashes-the-power-of-chlorine-trifluoride",
+      "title": "Fire in the Ashes: The Power of Chlorine Trifluoride",
+      "order": 44,
+      "description": "Be terrified by the highly oxidizing capacity of chlorine trifluoride, which can easily set fire to asbestos, glass, or even already burnt ashes.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Burns the Unburnable!"
+    },
+    {
+      "slug": "sweet-and-poisonous-the-roman-fall-by-lead-acetate",
+      "title": "Sweet and Poisonous: The Roman Fall by Lead Acetate",
+      "order": 45,
+      "description": "Review the tragic Roman fall linked to lead acetate, an artificial sweetener that silently intoxicated many unsuspecting people with heavy metals.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Sweet Poison!"
+    },
+    {
+      "slug": "the-worlds-bread-salvation-by-the-haber-bosch-process",
+      "title": "The World's Bread: Salvation by the Haber-Bosch Process",
+      "order": 46,
+      "description": "Appreciate the Haber-Bosch process, which converts inert nitrogen into ammonia for fertilizers, being the key chemical reaction sustaining humanity.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Creating Food!"
+    },
+    {
+      "slug": "purple-for-everyone-the-casual-synthesis-of-mauveine",
+      "title": "Purple for Everyone: The Casual Synthesis of Mauveine",
+      "order": 47,
+      "description": "Relive the fortuitous discovery of mauveine, where a young chemist's attempt to cure malaria resulted in the world's first synthetic purple dye.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Royal Color!"
+    },
+    {
+      "slug": "indestructible-rubber-the-vulcanization-accident",
+      "title": "Indestructible Rubber: The Vulcanization Accident",
+      "order": 48,
+      "description": "Be thankful for the chance of vulcanization, where adding sulfur and heat to natural rubber produced cross-links that revolutionized all tires.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Eternal Wheels!"
+    },
+    {
+      "slug": "the-king-analgesic-the-hidden-history-of-aspirin",
+      "title": "The King Analgesic: The Hidden History of Aspirin",
+      "order": 49,
+      "description": "Discover the origin of the most popular drug after the chemical modification of willow extract into acetylsalicylic acid, also known as aspirin.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Magic Pill!"
+    },
+    {
+      "slug": "capturing-light-the-ancient-halide-photography",
+      "title": "Capturing Light: The Ancient Halide Photography",
+      "order": 50,
+      "description": "Focus your senses on ancient silver halide photography, where light photons hit a film, reducing ions into solid metal to capture classic photos.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Photo Magic!"
+    },
+    {
+      "slug": "dividing-the-crude-magic-in-fractional-distillation",
+      "title": "Dividing the Crude: Magic in Fractional Distillation",
+      "order": 51,
+      "description": "Learn the usefulness of fractional distillation to separate hydrocarbons from petroleum, obtaining derivatives from sticky asphalt to gasoline.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Black Gold!"
+    },
+    {
+      "slug": "infinite-batteries-the-impact-of-lithium-ion",
+      "title": "Infinite Batteries: The Impact of Lithium-Ion",
+      "order": 52,
+      "description": "Celebrate the energy revolution of lithium-ion batteries and their reversible reaction that allows you to charge and use your mobile devices.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Portable Energy!"
+    }
+  ]
+}

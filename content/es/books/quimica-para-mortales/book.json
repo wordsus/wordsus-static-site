@@ -1,0 +1,541 @@
+{
+  "slug": "quimica-para-mortales",
+  "locale": "es",
+  "title": "Química para Mortales",
+  "subtitle": "Una mirada atómica a tu alrededor",
+  "author": "Wordsus Team",
+  "description": "Un viaje fascinante de 365 días por el mundo de la química. Desde la estructura del átomo hasta las aplicaciones más modernas de la nanotecnología, explicado de forma sencilla y amena.",
+  "cover": "/images/books/quimica-para-mortales-es-cover.jpeg",
+  "category": "divulgacion-cientifica",
+  "tags": [
+    "quimica",
+    "ciencia",
+    "divulgacion",
+    "materia"
+  ],
+  "featured": true,
+  "publishedAt": "2026-04-29",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "el-sabor-del-fuego-la-reaccion-de-maillard-al-rescate",
+      "title": "El Sabor del Fuego: La Reacción de Maillard al Rescate",
+      "order": 1,
+      "description": "Descubre cómo la reacción de Maillard transforma aminoácidos y azúcares al aplicar calor, creando ese color y sabor irresistible en tu comida.",
+      "thumbnailTitle": "¡La Magia del Sabor!",
+      "draft": false,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "agua-y-aceite-el-secreto-quimico-de-la-saponificacion",
+      "title": "Agua y Aceite: El Secreto Químico de la Saponificación",
+      "order": 2,
+      "description": "Exploramos el fascinante proceso de la saponificación, donde las moléculas de jabón logran la hazaña de mezclar agua y aceite para limpiar.",
+      "thumbnailTitle": "¡Agua y Aceite Juntos!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-aroma-de-la-lluvia-la-fascinante-quimica-del-petricor",
+      "title": "El Aroma de la Lluvia: La Fascinante Química del Petricor",
+      "order": 3,
+      "description": "Sumérgete en el aroma a lluvia provocado por la geosmina y el petricor, compuestos químicos detectables por el humano en niveles diminutos.",
+      "thumbnailTitle": "¡Olor a Lluvia!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "fuego-en-la-lengua-el-engano-termico-de-la-capsaicina",
+      "title": "Fuego en la Lengua: El Engaño Térmico de la Capsaicina",
+      "order": 4,
+      "description": "Conoce a la capsaicina, la engañosa molécula de los chiles que activa los receptores de dolor de tu lengua y te hace sentir que te quemas.",
+      "thumbnailTitle": "¡Fuego Falso!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "lagrimas-en-la-cocina-el-gas-oculto-de-las-cebollas",
+      "title": "Lágrimas en la Cocina: El Gas Oculto de las Cebollas",
+      "order": 5,
+      "description": "Analizamos el ácido sin-propanotial-S-óxido, el gas de las cebollas que reacciona con la humedad ocular formando ácido sulfúrico y lágrimas.",
+      "thumbnailTitle": "¡Cebollas Lloronas!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-olor-del-pasado-por-que-nos-gustan-los-libros-viejos",
+      "title": "El Olor del Pasado: Por Qué Nos Gustan los Libros Viejos",
+      "order": 6,
+      "description": "Revelamos el secreto del olor a libro viejo: la lenta degradación química de la lignina del papel que emite olores a vainilla y flores secas.",
+      "thumbnailTitle": "¡El Olor a Libro!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "geiser-de-caramelo-la-fisica-oculta-en-la-nucleacion",
+      "title": "Geiser de Caramelo: La Física Oculta en la Nucleación",
+      "order": 7,
+      "description": "Entiende la asombrosa nucleación físico-química que provoca el famoso géiser cuando introduces caramelos Mentos dentro de refrescos de cola.",
+      "thumbnailTitle": "¡Volcán de Cola!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "magia-en-el-horno-bicarbonato-contra-polvo-de-hornear",
+      "title": "Magia en el Horno: Bicarbonato contra Polvo de Hornear",
+      "order": 8,
+      "description": "Aprende la química detrás del bicarbonato y el polvo de hornear, reacciones ácido-base que liberan dióxido de carbono para esponjar pasteles.",
+      "thumbnailTitle": "¡Secretos de Horno!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-panal-increible-redes-de-polimeros-superabsorbentes",
+      "title": "El Pañal Increíble: Redes de Polímeros Superabsorbentes",
+      "order": 9,
+      "description": "Sorpréndete con los polímeros superabsorbentes en pañales, redes de poliacrilato de sodio que atrapan muchísima agua mediante puentes de hidrógeno.",
+      "thumbnailTitle": "¡Pañales Mágicos!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "cafe-sin-culpa-el-misterio-de-la-extraccion-supercritica",
+      "title": "Café sin Culpa: El Misterio de la Extracción Supercrítica",
+      "order": 10,
+      "description": "Descubre cómo se usa el dióxido de carbono en extracción supercrítica para quitar la cafeína del café sin alterar en absoluto su gran sabor.",
+      "thumbnailTitle": "¡Café sin Cafeína!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "la-capa-milagrosa-grafeno-y-el-futuro-de-los-materiales",
+      "title": "La Capa Milagrosa: Grafeno y el Futuro de los Materiales",
+      "order": 11,
+      "description": "Exploramos las bondades del grafeno, una capa de carbono increíblemente delgada que ostenta ser el material más fuerte y un gran conductor.",
+      "thumbnailTitle": "¡El Material del Futuro!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "humo-congelado-el-increible-mundo-de-los-aerogeles",
+      "title": "Humo Congelado: El Increíble Mundo de los Aerogeles",
+      "order": 12,
+      "description": "Fascinate con los aerogeles, donde el líquido es sustituido por gas para crear una estructura de dióxido de silicio con gran poder aislante.",
+      "thumbnailTitle": "¡Humo Helado!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "metal-con-memoria-el-increible-viaje-termico-del-nitinol",
+      "title": "Metal con Memoria: El Increíble Viaje Térmico del Nitinol",
+      "order": 13,
+      "description": "Conoce al nitinol, una revolucionaria aleación de níquel y titanio con memoria de forma que, al aplicar calor, recupera su estructura inicial.",
+      "thumbnailTitle": "¡Metal Mágico!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-vacio-infinito-vantablack-y-la-ausencia-de-luz",
+      "title": "El Vacío Infinito: Vantablack y la Ausencia de Luz",
+      "order": 14,
+      "description": "Maravíllate con el vantablack, un recubrimiento denso de nanotubos de carbono que absorbe la luz visible haciendo lucir a los objetos en 2D.",
+      "thumbnailTitle": "¡Agujeros Negros Reales!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "frenando-balas-los-asombrosos-enlaces-vistos-en-el-kevlar",
+      "title": "Frenando Balas: Los Asombrosos Enlaces Vistos en el Kevlar",
+      "order": 15,
+      "description": "Descubre la red de enlaces de hidrógeno entre cadenas de polímeros que otorgan al kevlar la resistencia necesaria para poder detener balas.",
+      "thumbnailTitle": "¡Deteniendo Balas!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "liquido-o-solido-caminando-sobre-fluidos-no-newtonianos",
+      "title": "Líquido o Sólido: Caminando sobre Fluidos no Newtonianos",
+      "order": 16,
+      "description": "Experimenta con los fluidos no newtonianos tipo oobleck, donde cadenas de almidón actúan como sólido bajo presión y como líquido en reposo.",
+      "thumbnailTitle": "¡Caminando en Agua!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-rey-antiadherente-los-fuertes-enlaces-en-el-teflon",
+      "title": "El Rey Antiadherente: Los Fuertes Enlaces en el Teflón",
+      "order": 17,
+      "description": "Aprende por qué los enlaces de carbono-flúor en el teflón hacen que esta molécula sea tan inerte que se niegue a reaccionar o pegarse a nada.",
+      "thumbnailTitle": "¡Nada se Pega!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "pegamento-extremo-la-polimerizacion-de-cianoacrilatos",
+      "title": "Pegamento Extremo: La Polimerización de Cianoacrilatos",
+      "order": 18,
+      "description": "Exploramos cómo actúan los cianoacrilatos en el superpegamento, polimerizando al instante con la humedad del aire en lugar de secarse solos.",
+      "thumbnailTitle": "¡Pegamento Instantáneo!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "hielo-sintetico-polietileno-de-ultra-alto-peso-molecular",
+      "title": "Hielo Sintético: Polietileno de Ultra Alto Peso Molecular",
+      "order": 19,
+      "description": "Sorpréndete con el polietileno de ultra alto peso molecular, un plástico con cadenas enormes que lo hacen resistente al desgaste y fricción.",
+      "thumbnailTitle": "¡Plástico Indestructible!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-metal-que-se-funde-galio-en-la-palma-de-tu-mano",
+      "title": "El Metal que se Funde: Galio en la Palma de tu Mano",
+      "order": 20,
+      "description": "Juega mentalmente con el galio, un metal inofensivo cuyo bajo punto de fusión hace que se vuelva líquido solo con sostenerlo entre tus manos.",
+      "thumbnailTitle": "¡Metal Derretido!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "cristales-alienigenas-la-belleza-iridiscente-del-bismuto",
+      "title": "Cristales Alienígenas: La Belleza Iridiscente del Bismuto",
+      "order": 21,
+      "description": "Admira los fantásticos cristales alienígenas e iridiscentes del bismuto, formados mediante un complejo proceso de enfriamiento y oxidación.",
+      "thumbnailTitle": "¡Cristales de Otro Mundo!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-metal-liquido-mercurio-y-el-mundo-de-las-amalgamas",
+      "title": "El Metal Líquido: Mercurio y el Mundo de las Amalgamas",
+      "order": 22,
+      "description": "Sumérgete en las propiedades del mercurio, el único metal que permanece líquido a temperatura ambiente, y su capacidad de formar amalgamas.",
+      "thumbnailTitle": "¡Plata Líquida!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "fugaz-y-radiactivo-la-caceria-del-inalcanzable-francio",
+      "title": "Fugaz y Radiactivo: La Cacería del Inalcanzable Francio",
+      "order": 23,
+      "description": "Persigue la rareza del francio, un metal alcalino tan inestable y radiactivo que existen escasos gramos en la corteza de la Tierra entera.",
+      "thumbnailTitle": "¡El Metal Fantasma!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "explosion-acuatica-el-dramatico-comportamiento-del-sodio",
+      "title": "Explosión Acuática: El Dramático Comportamiento del Sodio",
+      "order": 24,
+      "description": "Estudia la naturaleza explosiva del sodio puro, un metal alcalino que busca ceder su electrón y reacciona de forma violenta al tocar el agua.",
+      "thumbnailTitle": "¡Explosión de Agua!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "diamante-y-grafito-las-dos-caras-del-carbono-alotropico",
+      "title": "Diamante y Grafito: Las Dos Caras del Carbono Alotrópico",
+      "order": 25,
+      "description": "Comprende la alotropía del carbono y cómo el valioso diamante y el suave grafito son químicamente iguales pero con distintos enlaces atómicos.",
+      "thumbnailTitle": "¡Carbón vs Diamante!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "fuego-espontaneo-el-peligro-oculto-en-el-fosforo-blanco",
+      "title": "Fuego Espontáneo: El Peligro Oculto en el Fósforo Blanco",
+      "order": 26,
+      "description": "Retrocede en el tiempo hasta el alquimista que descubrió el reactivo fósforo blanco al hervir orina, un elemento que arde de forma natural.",
+      "thumbnailTitle": "¡Fuego de la Nada!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "plastico-efimero-el-extrano-caso-del-azufre-polimerico",
+      "title": "Plástico Efímero: El Extraño Caso del Azufre Polimérico",
+      "order": 27,
+      "description": "Conoce la transformación térmica del azufre polimérico, obteniendo una masa elástica y plástica al enfriar rápidamente el azufre fundido.",
+      "thumbnailTitle": "¡Azufre de Goma!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "pildoras-reciclables-la-extrana-historia-del-antimonio",
+      "title": "Píldoras Reciclables: La Extraña Historia del Antimonio",
+      "order": 28,
+      "description": "Asómbate con las antiguas píldoras perpetuas de antimonio, un metaloide tóxico usado como purga medieval que se reciclaba por generaciones.",
+      "thumbnailTitle": "¡Píldoras Eternas!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-reloj-magico-retrasos-temporales-con-yodo-quimico",
+      "title": "El Reloj Mágico: Retrasos Temporales con Yodo Químico",
+      "order": 29,
+      "description": "Observa el mágico reloj de yodo, una asombrosa solución que cambia abruptamente a un color azul oscuro después de un tiempo predeterminado.",
+      "thumbnailTitle": "¡Magia de Colores!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "espuma-gigante-la-famosa-pasta-de-dientes-para-elefantes",
+      "title": "Espuma Gigante: La Famosa Pasta de Dientes para Elefantes",
+      "order": 30,
+      "description": "Descubre la descomposición catalítica del peróxido de hidrógeno que origina la explosiva y caliente espuma en la pasta de dientes para elefantes.",
+      "thumbnailTitle": "¡Espuma Extrema!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "colores-palpitantes-el-asombroso-reloj-quimico-oscilante",
+      "title": "Colores Palpitantes: El Asombroso Reloj Químico Oscilante",
+      "order": 31,
+      "description": "Fascínate con el reloj químico de Belousov-Zhabotinsky, una de las pocas reacciones oscilantes que cambia de color rítmicamente sin detenerse.",
+      "thumbnailTitle": "¡Líquido Vivo!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "fuego-inextinguible-el-poder-destructivo-de-la-termita",
+      "title": "Fuego Inextinguible: El Poder Destructivo de la Termita",
+      "order": 32,
+      "description": "Siéntete al rojo vivo con la termita, una peligrosa mezcla de polvo de aluminio y óxido de hierro que arde a temperaturas extremas al instante.",
+      "thumbnailTitle": "¡Fuego Imparable!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "luz-sin-calor-el-misterio-de-la-quimioluminiscencia",
+      "title": "Luz sin Calor: El Misterio de la Quimioluminiscencia",
+      "order": 33,
+      "description": "Ilumina la oscuridad entendiendo la quimioluminiscencia, donde el peróxido de hidrógeno y un éster liberan luz sin producir calor en lo absoluto.",
+      "thumbnailTitle": "¡Luz Química!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "falso-hielo-el-engano-termico-del-acetato-de-sodio",
+      "title": "Falso Hielo: El Engaño Térmico del Acetato de Sodio",
+      "order": 34,
+      "description": "Engaña a tus sentidos con el hielo caliente de acetato de sodio, una solución que cristaliza al tacto liberando bastante energía térmica.",
+      "thumbnailTitle": "¡Hielo que Quema!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "huellas-fantasmales-el-brillo-revelador-del-luminol",
+      "title": "Huellas Fantasmales: El Brillo Revelador del Luminol",
+      "order": 35,
+      "description": "Investiga como actúan los peritos forenses usando luminol, molécula que reacciona al hierro en la hemoglobina para emitir un resplandor azul.",
+      "thumbnailTitle": "¡Sangre Brillante!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "cielo-pintado-metales-detras-de-los-fuegos-artificiales",
+      "title": "Cielo Pintado: Metales Detrás de los Fuegos Artificiales",
+      "order": 36,
+      "description": "Mira hacia el cielo para entender los espectros de emisión y cómo diferentes sales metálicas generan los brillantes colores en los fuegos artificiales.",
+      "thumbnailTitle": "¡Colores Explosivos!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "niebla-misteriosa-la-sublimacion-fria-del-hielo-seco",
+      "title": "Niebla Misteriosa: La Sublimación Fría del Hielo Seco",
+      "order": 37,
+      "description": "Atraviesa la densa niebla causada por la sublimación del hielo seco, proceso donde el dióxido de carbono pasa de sólido a gas directamente.",
+      "thumbnailTitle": "¡Niebla Instantánea!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "asesino-silencioso-el-letal-abrazo-del-monoxido-de-carbono",
+      "title": "Asesino Silencioso: El Letal Abrazo del Monóxido de Carbono",
+      "order": 38,
+      "description": "Evita al asesino silencioso entendiendo al monóxido de carbono y su potente, pero letal afinidad con la hemoglobina que asfixia el cuerpo.",
+      "thumbnailTitle": "¡Peligro Invisible!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-paro-celular-como-el-cianuro-asfixia-nuestro-cuerpo",
+      "title": "El Paro Celular: Cómo el Cianuro Asfixia Nuestro Cuerpo",
+      "order": 39,
+      "description": "Descubre cómo el ión de cianuro actúa a nivel molecular bloqueando la enzima citocromo c oxidasa y paralizando la energía en nuestras células.",
+      "thumbnailTitle": "¡Veneno Fulminante!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "nitrogeno-furioso-la-destructiva-quimica-tras-el-tnt",
+      "title": "Nitrógeno Furioso: La Destructiva Química tras el TNT",
+      "order": 40,
+      "description": "Explora la aterradora química detrás del TNT y la nitroglicerina, donde átomos de nitrógeno buscan unirse liberando una energía destructiva.",
+      "thumbnailTitle": "¡Dinamita Pura!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "veneno-de-semilla-la-ricina-como-saboteador-molecular",
+      "title": "Veneno de Semilla: La Ricina como Saboteador Molecular",
+      "order": 41,
+      "description": "Comprende el inmenso peligro de la ricina, una toxina vegetal maestra capaz de sabotear e inactivar miles de ribosomas celulares por minuto.",
+      "thumbnailTitle": "¡Semilla Mortal!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-terror-estetico-la-letalidad-de-la-toxina-botulinica",
+      "title": "El Terror Estético: La Letalidad de la Toxina Botulínica",
+      "order": 42,
+      "description": "Analiza el poder paralizante de la letal toxina botulínica, una proteína que bloquea los impulsos nerviosos que ordenan contraer los músculos.",
+      "thumbnailTitle": "¡Belleza Letal!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "corrosion-absoluta-el-peligro-del-acido-fluoroantimonico",
+      "title": "Corrosión Absoluta: El Peligro del Ácido Fluoroantimónico",
+      "order": 43,
+      "description": "Descubre el temible ácido fluoroantimónico, un peligroso superácido capaz de disolver hasta el vidrio y que solo puede guardarse en teflón.",
+      "thumbnailTitle": "¡El Peor Ácido!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "fuego-en-las-cenizas-el-poder-del-trifluoruro-de-cloro",
+      "title": "Fuego en las Cenizas: El Poder del Trifluoruro de Cloro",
+      "order": 44,
+      "description": "Asústate con la capacidad altamente oxidante del trifluoruro de cloro, que puede prenderle fuego al asbesto, el vidrio o incluso las cenizas.",
+      "thumbnailTitle": "¡Quema lo Inquemable!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "dulce-y-venenoso-la-caida-romana-por-acetato-de-plomo",
+      "title": "Dulce y Venenoso: La Caída Romana por Acetato de Plomo",
+      "order": 45,
+      "description": "Repasa la trágica caída romana vinculada al acetato de plomo, un endulzante artificial que intoxicó a muchas personas con metales pesados.",
+      "thumbnailTitle": "¡Dulce Veneno!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-pan-del-mundo-salvacion-por-el-proceso-haber-bosch",
+      "title": "El Pan del Mundo: Salvación por el Proceso Haber-Bosch",
+      "order": 46,
+      "description": "Valora el proceso Haber-Bosch, que convierte nitrógeno inerte en amoníaco para fertilizantes, siendo la reacción que sostiene a la humanidad.",
+      "thumbnailTitle": "¡Creando Comida!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "morado-para-todos-la-casual-sintesis-de-la-mauveina",
+      "title": "Morado Para Todos: La Casual Síntesis de la Mauveína",
+      "order": 47,
+      "description": "Revive el hallazgo fortuito de la mauveína, donde el intento de un químico por curar la malaria resultó en el primer tinte sintético púrpura.",
+      "thumbnailTitle": "¡El Color Real!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "caucho-indestructible-el-accidente-de-la-vulcanizacion",
+      "title": "Caucho Indestructible: El Accidente de la Vulcanización",
+      "order": 48,
+      "description": "Agradece la casualidad de la vulcanización, donde añadir azufre y calor al caucho natural produjo enlaces que revolucionaron los neumáticos.",
+      "thumbnailTitle": "¡Ruedas Eternas!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-analgesico-rey-la-historia-oculta-de-la-aspirina",
+      "title": "El Analgésico Rey: La Historia Oculta de la Aspirina",
+      "order": 49,
+      "description": "Descubre el origen del medicamento más popular tras la modificación química del extracto de sauce en ácido acetilsalicílico, o bien, la aspirina.",
+      "thumbnailTitle": "¡La Píldora Mágica!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "capturando-la-luz-la-antigua-fotografia-de-haluros",
+      "title": "Capturando la Luz: La Antigua Fotografía de Haluros",
+      "order": 50,
+      "description": "Enfoca tus sentidos en la antigua fotografía de haluro de plata, donde fotones de luz golpean una película reduciendo iones para capturar fotos.",
+      "thumbnailTitle": "¡Magia Fotográfica!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "dividiendo-el-crudo-magia-en-la-destilacion-fraccionada",
+      "title": "Dividiendo el Crudo: Magia en la Destilación Fraccionada",
+      "order": 51,
+      "description": "Aprende la utilidad de la destilación fraccionada para separar hidrocarburos del petróleo, logrando derivados desde asfalto hasta gasolina.",
+      "thumbnailTitle": "¡El Oro Negro!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "baterias-infinitas-el-impacto-de-los-iones-de-litio",
+      "title": "Baterías Infinitas: El Impacto de los Iones de Litio",
+      "order": 52,
+      "description": "Celebra la revolución energética de las baterías de iones de litio y su reacción reversible que permite cargar y usar tus dispositivos móviles.",
+      "thumbnailTitle": "¡Energía Portátil!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    }
+  ]
+}

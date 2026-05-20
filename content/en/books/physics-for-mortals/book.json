@@ -1,0 +1,542 @@
+{
+  "slug": "physics-for-mortals",
+  "locale": "en",
+  "title": "Physics for Mortals",
+  "subtitle": "We unravel the mysteries of the universe",
+  "author": "Wordsus Team",
+  "description": "Discover the secrets of the universe in this complete guide to 365 physics lessons. From Newton's laws to quantum mechanics and the multiverse, explained in a simple way for everyone.",
+  "cover": "/images/books/physics-for-mortals-en-cover.jpeg",
+  "category": "popular-science",
+  "tags": [
+    "physics",
+    "science",
+    "divulgation",
+    "universe",
+    "education"
+  ],
+  "featured": true,
+  "publishedAt": "2026-04-29",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "the-quantum-cat-alive-and-dead-at-the-same-time",
+      "title": "The Quantum Cat: Alive and dead at the same time",
+      "order": 1,
+      "description": "Explore Schrödinger's famous thought experiment and discover how bizarre quantum superposition works in physics at the microscopic level.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": false,
+      "thumbnailTitle": "The Quantum Cat"
+    },
+    {
+      "slug": "spooky-action-the-mystery-of-entanglement",
+      "title": "Spooky Action: The mystery of entanglement",
+      "order": 2,
+      "description": "Dive into bizarre quantum entanglement, where two particles connect instantly across distances, defying our established laws of the universe.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Magic Connection"
+    },
+    {
+      "slug": "double-slit-between-the-world-of-waves-and-particles",
+      "title": "Double Slit: Between the world of waves and particles",
+      "order": 3,
+      "description": "Discover the strange wave-particle duality through the double-slit experiment and how mere observation alters the behavior of matter itself.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Wave or Particle?"
+    },
+    {
+      "slug": "quantum-tunneling-passing-through-great-invisible-walls",
+      "title": "Quantum Tunneling: Passing through great invisible walls",
+      "order": 4,
+      "description": "Learn about quantum tunneling, a phenomenon where subatomic particles manage to pass through impenetrable physical barriers like simple ghosts.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Passing Walls"
+    },
+    {
+      "slug": "uncertainty-the-universe-and-its-absolute-limits",
+      "title": "Uncertainty: The universe and its absolute limits",
+      "order": 5,
+      "description": "We analyze Heisenberg's uncertainty principle to understand why it is completely impossible to measure our universe with absolute precision.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Limits of the Cosmos"
+    },
+    {
+      "slug": "teleportation-quantum-travel-without-moving-at-all",
+      "title": "Teleportation: Quantum travel without moving at all",
+      "order": 6,
+      "description": "Learn about quantum teleportation, a real method that transfers exact information between distant particles without physically moving matter.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Real Teleportation"
+    },
+    {
+      "slug": "quantum-computing-the-great-future-of-processing-power",
+      "title": "Quantum Computing: The great future of processing power",
+      "order": 7,
+      "description": "Delve into quantum computing and discover how qubits solve problems in seconds that would take traditional computer systems absolute millennia.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "PCs of the Future"
+    },
+    {
+      "slug": "vacuum-fluctuation-nothingness-originating-the-cosmos",
+      "title": "Vacuum Fluctuation: Nothingness originating the cosmos",
+      "order": 8,
+      "description": "Absolute vacuum does not exist. We explore vacuum fluctuations and how pairs of particles and antiparticles constantly appear and disappear.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Nothingness is a Lie"
+    },
+    {
+      "slug": "zeno-effect-freezing-time-just-by-looking-closely",
+      "title": "Zeno Effect: Freezing time just by looking closely",
+      "order": 9,
+      "description": "Decipher the amazing quantum Zeno effect, which demonstrates how a quantum system can completely halt its decay simply by being closely observed.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Freezing Stare"
+    },
+    {
+      "slug": "quantum-foam-the-turbulent-fabric-of-the-universe",
+      "title": "Quantum Foam: The turbulent fabric of the universe",
+      "order": 10,
+      "description": "We travel to the tiny Planck scale to understand quantum foam, where space and time transform into a highly turbulent and chaotic endless tide.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Fabric of Space"
+    },
+    {
+      "slug": "time-dilation-why-time-is-not-completely-fixed",
+      "title": "Time Dilation: Why time is not completely fixed",
+      "order": 11,
+      "description": "We explore the time dilation of relativity, where moving faster causes clocks to tick much slower from the perspective of a stationary observer.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Time is Relative"
+    },
+    {
+      "slug": "twin-paradox-aging-at-completely-different-rates",
+      "title": "Twin Paradox: Aging at completely different rates",
+      "order": 12,
+      "description": "We analyze the famous twin paradox, showing how traveling at speeds close to that of light generates huge biological differences in human age.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Unequal Twins"
+    },
+    {
+      "slug": "spatial-contraction-the-universe-shrinking-itself",
+      "title": "Spatial Contraction: The universe shrinking itself",
+      "order": 13,
+      "description": "Discover the fascinating length contraction, where fast-moving objects physically compress from the point of view of an external observer.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Shrinking Space"
+    },
+    {
+      "slug": "simultaneity-the-present-moment-is-just-a-myth",
+      "title": "Simultaneity: The present moment is just a myth",
+      "order": 14,
+      "description": "We understand the illusion of temporal simultaneity: how two events that occur at the exact same time for one person happen at different times for another.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Fake Present"
+    },
+    {
+      "slug": "einsteins-formula-the-hidden-energy-inside-mass",
+      "title": "Einstein's Formula: The hidden energy inside mass",
+      "order": 15,
+      "description": "We break down the famous mass-energy equivalence equation, revealing that a tiny fraction of matter contains a massively gigantic hidden power.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Power of Matter"
+    },
+    {
+      "slug": "spacetime-fabric-immense-gravity-as-a-trampoline",
+      "title": "Spacetime Fabric: Immense gravity as a trampoline",
+      "order": 16,
+      "description": "Delve into Einstein's concept of the spacetime fabric, where gravity is merely a geometric curvature generated by extremely massive objects.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Cosmic Canvas"
+    },
+    {
+      "slug": "cosmic-limit-the-unbreakable-barrier-of-light",
+      "title": "Cosmic Limit: The unbreakable barrier of light",
+      "order": 17,
+      "description": "Discover why the speed of light in a vacuum is the absolute cosmic limit and why attempting to surpass it would require infinite energy.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Barrier of Light"
+    },
+    {
+      "slug": "time-curves-theoretical-journeys-into-the-past",
+      "title": "Time Curves: Theoretical journeys into the past",
+      "order": 18,
+      "description": "Explore the theory of closed timelike curves, a mathematical solution of general relativity that would allow time travel by creating closed loops.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Time Travel"
+    },
+    {
+      "slug": "tachyonic-particles-racing-against-the-speed-of-light",
+      "title": "Tachyonic Particles: Racing against the speed of light",
+      "order": 19,
+      "description": "Meet tachyons, those hypothetical particles that travel exceeding the speed of light and that, in theory, would move backward through time.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Particles of the Past"
+    },
+    {
+      "slug": "hidden-dimensions-the-mysterious-extra-strange-worlds",
+      "title": "Hidden Dimensions: The mysterious extra strange worlds",
+      "order": 20,
+      "description": "We talk about the additional spatial dimensions predicted by various physics theories, which would be microscopically rolled up all around us.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Hidden Dimensions"
+    },
+    {
+      "slug": "the-higgs-boson-the-mysterious-particle-of-mass",
+      "title": "The Higgs Boson: The mysterious particle of mass",
+      "order": 21,
+      "description": "Discover the mystery behind the Higgs boson and its associated field, fundamental elements responsible for granting mass to all other particles.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The God Particle"
+    },
+    {
+      "slug": "antimatter-the-explosive-twin-of-normal-matter",
+      "title": "Antimatter: The explosive twin of normal matter",
+      "order": 22,
+      "description": "Learn the secrets of antimatter, the opposite equivalent of normal matter that generates an annihilation of pure energy if both ever touch.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Evil Twin"
+    },
+    {
+      "slug": "ghost-neutrinos-particles-that-just-pass-right-by",
+      "title": "Ghost Neutrinos: Particles that just pass right by",
+      "order": 23,
+      "description": "We analyze elusive neutrinos, almost massless particles that constantly pass through your body and the entire planet without interacting with anything.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Ghost Particles"
+    },
+    {
+      "slug": "confinement-the-prisoners-of-the-subatomic-world",
+      "title": "Confinement: The prisoners of the subatomic world",
+      "order": 24,
+      "description": "We explore quark confinement and why it is totally impossible to separate them in isolation within a proton without generating particles from nowhere.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Quantum Prisoners"
+    },
+    {
+      "slug": "standard-model-the-universal-recipe-of-ingredients",
+      "title": "Standard Model: The universal recipe of ingredients",
+      "order": 25,
+      "description": "Decipher with us the standard model, the most successful theory in physics that perfectly describes all particles and three fundamental forces.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Recipe of the Universe"
+    },
+    {
+      "slug": "muon-anomaly-a-huge-mystery-for-modern-science",
+      "title": "Muon Anomaly: A huge mystery for modern science",
+      "order": 26,
+      "description": "We investigate the anomalous magnetic moment of the muon, a recent experimental result that directly challenges our current rules of physics.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Physics in Danger"
+    },
+    {
+      "slug": "string-theory-vibration-shapes-the-entire-reality",
+      "title": "String Theory: Vibration shapes the entire reality",
+      "order": 27,
+      "description": "Delve into the complex string theory, the mathematical attempt to unify all physics by suggesting that particles are small vibrating cosmic threads.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Cosmic Symphony"
+    },
+    {
+      "slug": "quantum-gravity-the-great-holy-grail-of-physics",
+      "title": "Quantum Gravity: The great holy grail of physics",
+      "order": 28,
+      "description": "We tackle the greatest existing theoretical challenge: quantum gravity, the attempt to make relativity and quantum mechanics work perfectly together.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Holy Grail"
+    },
+    {
+      "slug": "arrow-of-time-the-impossibility-of-going-back",
+      "title": "Arrow of Time: The impossibility of going back",
+      "order": 29,
+      "description": "Discover why the arrow of time exists and how the laws of thermodynamics prevent us from remembering the future, giving the cosmos one direction.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Direction of Time"
+    },
+    {
+      "slug": "laws-of-entropy-the-inevitable-chaos-of-the-universe",
+      "title": "Laws of Entropy: The inevitable chaos of the universe",
+      "order": 30,
+      "description": "Learn about entropy and the universe's fundamental tendency to move from order to disorder, guaranteeing that broken objects never fix themselves.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Towards Total Chaos"
+    },
+    {
+      "slug": "maxwells-demon-mocking-the-laws-of-thermodynamics",
+      "title": "Maxwell's Demon: Mocking the laws of thermodynamics",
+      "order": 31,
+      "description": "We explore the brilliant thought experiment known as Maxwell's demon, an imaginary being that could defy the strict rules of thermodynamics.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Heat Demon"
+    },
+    {
+      "slug": "absolute-zero-extreme-cold-halts-the-entire-cosmos",
+      "title": "Absolute Zero: Extreme cold halts the entire cosmos",
+      "order": 32,
+      "description": "We travel to absolute zero temperature to understand what happens when the thermal motion of atoms almost completely stops inside a material.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Limit of Cold"
+    },
+    {
+      "slug": "negative-temperatures-hotter-than-absolute-infinity",
+      "title": "Negative Temperatures: Hotter than absolute infinity",
+      "order": 33,
+      "description": "Discover the strange realm of negative absolute temperatures in quantum systems, which technically turn out to be hotter than any positive one.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Impossible Heat"
+    },
+    {
+      "slug": "chaos-theory-the-hurricane-unleashed-by-a-butterfly",
+      "title": "Chaos Theory: The hurricane unleashed by a butterfly",
+      "order": 34,
+      "description": "We analyze the butterfly effect within chaos theory, where the slightest initial change in a system colossally alters the whole future result.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Butterfly Effect"
+    },
+    {
+      "slug": "laplaces-demon-is-the-future-already-fully-written",
+      "title": "Laplace's Demon: Is the future already fully written?",
+      "order": 35,
+      "description": "We debate determinism and Laplace's demon: if a mind calculated every atom, would it manage to predict the entire cosmic future with absolute accuracy?",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Written Future"
+    },
+    {
+      "slug": "perpetual-motion-the-great-lie-of-free-clean-energy",
+      "title": "Perpetual Motion: The great lie of free clean energy",
+      "order": 36,
+      "description": "Discover why basic physics makes it impossible to create perpetual motion machines that work without external sources, always conserving energy.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Infinite Energy"
+    },
+    {
+      "slug": "superconductors-electrical-current-lasting-forever",
+      "title": "Superconductors: Electrical current lasting forever",
+      "order": 37,
+      "description": "We talk about superconductivity, an amazing state where cooled materials lose all their electrical resistance, flowing without losing any power.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Eternal Current"
+    },
+    {
+      "slug": "quantum-levitation-floating-with-the-meissner-effect",
+      "title": "Quantum Levitation: Floating with the Meissner effect",
+      "order": 38,
+      "description": "We experience quantum magnetic levitation, where superconductors expel fields to float motionlessly over powerful magnets without any friction.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Magnetic Magic"
+    },
+    {
+      "slug": "total-superfluidity-liquids-climbing-up-steep-walls",
+      "title": "Total Superfluidity: Liquids climbing up steep walls",
+      "order": 39,
+      "description": "Delve into the mysteries of superfluidity, where extremely cold fluids lose all their viscosity and manage to flow freely, defying standard physics.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Climbing Liquids"
+    },
+    {
+      "slug": "bose-condensate-the-superatom-of-the-laboratories",
+      "title": "Bose Condensate: The superatom of the laboratories",
+      "order": 40,
+      "description": "We explore Bose-Einstein condensates, that fifth state of matter where thousands of atoms fuse, behaving entirely like a single giant entity.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Fifth State"
+    },
+    {
+      "slug": "time-crystals-their-structure-in-constant-change",
+      "title": "Time Crystals: Their structure in constant change",
+      "order": 41,
+      "description": "Be amazed by time crystals, a new and exotic state of matter that repeats its complex structural patterns perpetually forever through time itself.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Time Crystals"
+    },
+    {
+      "slug": "light-solid-smoke-the-most-ultralight-aerogels-made",
+      "title": "Light Solid Smoke: The most ultralight aerogels made",
+      "order": 42,
+      "description": "Discover the incredible applications of artificial aerogels, known as solid smoke for being among the absolute lightest thermal insulators in the world.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Solid Smoke"
+    },
+    {
+      "slug": "metamaterials-creating-true-invisibility-cloaks",
+      "title": "Metamaterials: Creating true invisibility cloaks",
+      "order": 43,
+      "description": "We analyze the science behind metamaterials, complex microscopic designs that manage to bend electromagnetic light, opening the path to invisibility.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Invisibility Cloak"
+    },
+    {
+      "slug": "superionic-ice-extremely-hot-water-and-high-pressure",
+      "title": "Superionic Ice: Extremely hot water and high pressure",
+      "order": 44,
+      "description": "We investigate superionic ice, a strange extreme state of water capable of flowing like liquid metal while remaining surprisingly hot at all times.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Hot Ice"
+    },
+    {
+      "slug": "casimir-effect-when-the-outer-vacuum-pushes-you",
+      "title": "Casimir Effect: When the outer vacuum pushes you",
+      "order": 45,
+      "description": "Learn about the mysterious Casimir effect, where metal plates placed extremely close together in a vacuum attract each other, driven by virtual particles.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Vacuum Pushes"
+    },
+    {
+      "slug": "sonoluminescence-bright-light-created-by-sound-waves",
+      "title": "Sonoluminescence: Bright light created by sound waves",
+      "order": 46,
+      "description": "We observe incredible sonoluminescence, a rare phenomenon where acoustic vibrations collapse bubbles to generate intensely bright flashes of light.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Light from Sound"
+    },
+    {
+      "slug": "acoustic-levitation-holding-objects-using-just-sound",
+      "title": "Acoustic Levitation: Holding objects using just sound",
+      "order": 47,
+      "description": "Discover how acoustic levitation uses powerful sound waves to suspend small objects in the air, simulating a total and real absence of gravity.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Floating with Sound"
+    },
+    {
+      "slug": "cymatic-magic-the-hidden-geometry-behind-music",
+      "title": "Cymatic Magic: The hidden geometry behind music",
+      "order": 48,
+      "description": "We study the amazing patterns of cymatics and learn how powerful acoustic waves manage to structure sand, creating spectacular geometric designs.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Seeing Sound"
+    },
+    {
+      "slug": "physical-holography-capturing-real-space-on-flat-planes",
+      "title": "Physical Holography: Capturing real space on flat planes",
+      "order": 49,
+      "description": "Understand how physical holography really works, using laser interference to store real three-dimensional information on incredibly flat surfaces.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Real Holograms"
+    },
+    {
+      "slug": "coriolis-effect-why-massive-hurricanes-spin-so-hard",
+      "title": "Coriolis Effect: Why massive hurricanes spin so hard",
+      "order": 50,
+      "description": "We clarify the great myths of the Coriolis effect and how the Earth's inertial rotation affects the direction in which storms spin on a planetary level.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Spin of the Planet"
+    },
+    {
+      "slug": "triboelectricity-great-secrets-of-daily-static-shock",
+      "title": "Triboelectricity: Great secrets of daily static shock",
+      "order": 51,
+      "description": "We look into the well-known triboelectric effect of static electricity and its deep subatomic mysteries that remain unexplained by simple friction.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Static Mystery"
+    },
+    {
+      "slug": "slow-pitch-drops-a-huge-ongoing-mechanical-experiment",
+      "title": "Slow Pitch Drops: A huge ongoing mechanical experiment",
+      "order": 52,
+      "description": "We analyze the curious mechanical pitch drop experiment, demonstrating empirically that certain seemingly solid materials actually flow very slowly.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Rocks that Flow"
+    }
+  ]
+}

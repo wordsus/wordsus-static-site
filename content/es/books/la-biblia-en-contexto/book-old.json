@@ -1,0 +1,301 @@
+{
+  "slug": "la-biblia-en-contexto",
+  "locale": "es",
+  "title": "La Biblia en Contexto",
+  "subtitle": "El mundo real detrás del texto sagrado",
+  "author": "Wordsus Team",
+  "description": "Un viaje fascinante por el mundo antiguo para comprender el contexto histórico, cultural y geográfico de las Escrituras. Descubre cómo vivían, pensaban y sentían los personajes bíblicos para transformar tu lectura de la Biblia.",
+  "cover": "/images/books/la-biblia-en-contexto-es-cover.jpeg",
+  "category": "estudios-biblicos",
+  "tags": [
+    "biblia",
+    "contexto-historico",
+    "estudios-biblicos",
+    "cultura-antigua"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-01",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "el-viaje-de-abraham-y-la-cultura-del-medio-oriente",
+      "title": "El viaje de Abraham y la cultura del Medio Oriente",
+      "order": 1,
+      "description": "Explora la vida de Abraham y cómo su entorno nómada definió sus grandes decisiones. Entender este contexto transforma nuestra lectura del libro de Génesis.",
+      "audioUrl": "",
+      "videoUrl": "https://youtu.be/9trFnUAVJhw"
+    },
+    {
+      "slug": "el-significado-geografico-y-espiritual-del-desierto",
+      "title": "El significado geográfico y espiritual del desierto",
+      "order": 2,
+      "description": "El desierto no es solo arena, es una región implacable que transforma líderes. Analizamos por qué los grandes procesos de prueba ocurren en estas tierras.",
+      "audioUrl": "",
+      "videoUrl": "https://youtu.be/XUG3FfwRiA8"
+    },
+    {
+      "slug": "origen-e-identidad-de-los-fariseos-en-la-antiguedad",
+      "title": "Origen e identidad de los fariseos en la antigüedad",
+      "order": 3,
+      "description": "Más allá de ser antagonistas, los fariseos eran líderes populares muy respetados. Descubre cómo surgieron y por qué su teología chocaba tanto con el Señor.",
+      "audioUrl": "",
+      "videoUrl": "https://youtu.be/g84EumNUNNk"
+    },
+    {
+      "slug": "la-sagrada-ley-de-la-hospitalidad-en-el-mundo-antiguo",
+      "title": "La sagrada ley de la hospitalidad en el mundo antiguo",
+      "order": 4,
+      "description": "Negar asilo a un forastero era un delito cultural gravísimo en aquella región. Aprende cómo funcionaba esta norma y por qué explica relatos sorprendentes.",
+      "audioUrl": "",
+      "videoUrl": "https://youtu.be/11pXpPB116M"
+    },
+    {
+      "slug": "economia-biblica-y-el-valor-real-del-denario-antiguo",
+      "title": "Economía bíblica y el valor real del denario antiguo",
+      "order": 5,
+      "description": "Entender el dinero en la antigüedad cambia las parábolas profundamente. Descubre el poder adquisitivo de un denario y el abismal valor que tenía un talento.",
+      "audioUrl": "",
+      "videoUrl": "https://youtu.be/xWVrWhzxDb4"
+    },
+    {
+      "slug": "moises-ante-el-imperio-egipcio-y-su-formacion-formal",
+      "title": "Moisés ante el imperio egipcio y su formación formal",
+      "order": 6,
+      "description": "La educación en Egipto preparó a Moisés para guiar a una nación entera hacia Canaán. Analizamos el choque entre el lujo del faraón y la dura esclavitud.",
+      "audioUrl": "",
+      "videoUrl": "https://youtu.be/YpzVgpChM0E"
+    },
+    {
+      "slug": "el-mar-de-galilea-y-su-influencia-en-la-vida-de-jesus",
+      "title": "El Mar de Galilea y su influencia en la vida de Jesús",
+      "order": 7,
+      "description": "Este icónico lago fue el escenario principal de múltiples milagros. Exploramos su geografía, violentas tormentas repentinas y la cultura de sus costas.",
+      "audioUrl": "",
+      "videoUrl": "https://youtu.be/uqQO2cCompk"
+    },
+    {
+      "slug": "el-imperio-babilonico-y-el-impacto-del-gran-exilio",
+      "title": "El Imperio Babilónico y el impacto del gran exilio",
+      "order": 8,
+      "description": "La dolorosa deportación a Babilonia fue el mayor trauma histórico de Israel. Conoce cómo esta potencia transformó la identidad religiosa y la escritura.",
+      "audioUrl": "",
+      "videoUrl": "https://youtu.be/JosRv8Xh778"
+    },
+    {
+      "slug": "estructura-y-proposito-del-tabernaculo-en-el-desierto",
+      "title": "Estructura y propósito del tabernáculo en el desierto",
+      "order": 9,
+      "description": "Esta tienda sagrada organizaba la vida nómada de los israelitas en su travesía. Detallamos sus zonas, los materiales y el simbolismo de los sacrificios.",
+      "audioUrl": "",
+      "videoUrl": "https://youtu.be/lUGAB1Iu1ac"
+    },
+    {
+      "slug": "david-y-la-transicion-geopolitica-del-reino-de-israel",
+      "title": "David y la transición geopolítica del reino de Israel",
+      "order": 10,
+      "description": "De pastor marginado a rey unificador, David cambió la historia militar de su nación. Analizamos la conquista de Jerusalén y las alianzas estratégicas.",
+      "audioUrl": "",
+      "videoUrl": "https://youtu.be/8elNwO1NnJk"
+    },
+    {
+      "slug": "el-duro-oficio-de-ser-pastor-de-ovejas-en-la-judea",
+      "title": "El duro oficio de ser pastor de ovejas en la Judea",
+      "order": 11,
+      "description": "Olvida la imagen romántica tradicional. El pastoreo era un trabajo rudo, solitario y peligroso. Comprenderlo da un nuevo peso y significado al Salmo veintitrés.",
+      "audioUrl": "",
+      "videoUrl": "https://youtu.be/uRnrytZLECA"
+    },
+    {
+      "slug": "la-industria-pesquera-durante-el-primer-siglo-en-judea",
+      "title": "La industria pesquera durante el primer siglo en Judea",
+      "order": 12,
+      "description": "Los pescadores no eran campesinos muy pobres, manejaban empresas rentables bajo fuertes impuestos. Exploramos su rutina diaria y posición en la sociedad.",
+      "audioUrl": "",
+      "videoUrl": "https://youtu.be/JdUBhlBFQy4"
+    },
+    {
+      "slug": "geografia-sagrada-y-la-defensa-natural-de-jerusalen",
+      "title": "Geografía sagrada y la defensa natural de Jerusalén",
+      "order": 13,
+      "description": "Ubicada sobre diversos montes y rodeada de valles profundos, la ciudad era una fortaleza natural. Descubre por qué todos los peregrinos debían subir a ella.",
+      "audioUrl": "",
+      "videoUrl": "https://youtu.be/BGZMsMeIypY"
+    },
+    {
+      "slug": "el-contexto-politico-y-social-durante-la-vida-de-jesus",
+      "title": "El contexto político y social durante la vida de Jesús",
+      "order": 14,
+      "description": "Jesús nació en un verdadero polvorín político dominado por Roma de forma estricta. Analizamos tensiones sociales, impuestos y expectativas de liberación.",
+      "audioUrl": "",
+      "videoUrl": "https://youtu.be/6WkBh_-1hos"
+    },
+    {
+      "slug": "el-imperio-romano-y-su-estricto-control-sobre-judea",
+      "title": "El Imperio Romano y su estricto control sobre Judea",
+      "order": 15,
+      "description": "La gran maquinaria militar de Roma dictaba cada aspecto de la vida cotidiana. Conoce a los prefectos, las legiones y el equilibrio de poder con el Sanedrín.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "pedro-de-galilea-y-su-rol-en-el-inicio-del-movimiento",
+      "title": "Pedro de Galilea y su rol en el inicio del movimiento",
+      "order": 16,
+      "description": "Un hombre impulsivo y pescador de oficio que se convirtió en un gran líder. Estudiamos su evolución personal al enfrentar a la fuerte cultura grecorromana.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "los-contratos-matrimoniales-y-esponsales-en-la-epoca",
+      "title": "Los contratos matrimoniales y esponsales en la época",
+      "order": 17,
+      "description": "El compromiso judío era legalmente vinculante, muchísimo más estricto que un noviazgo actual. Entender esta costumbre aclara el riesgo que asumió María.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "la-celebracion-de-la-pascua-y-el-sacrificio-del-cordero",
+      "title": "La celebración de la Pascua y el sacrificio del cordero",
+      "order": 18,
+      "description": "La mayor fiesta del calendario convocaba a miles de peregrinos sin excepción. Detallamos la cena ritual, el ambiente festivo y la vigilancia de las tropas.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "elias-frente-a-la-influencia-politica-del-culto-a-baal",
+      "title": "Elías frente a la influencia política del culto a Baal",
+      "order": 19,
+      "description": "La extensa sequía no fue un simple desastre ecológico, fue una guerra contra el dios cananeo de la lluvia. Entiende el desafío en el gran Monte Carmelo.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "la-pureza-ritual-y-el-estigma-social-de-la-lepra-antigua",
+      "title": "La pureza ritual y el estigma social de la lepra antigua",
+      "order": 20,
+      "description": "Ser declarado inmundo implicaba la expulsión total de la sociedad civil y religiosa. Analizamos estrictas leyes de salubridad y la labor del sacerdote.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-mar-muerto-y-la-preservacion-de-los-textos-sagrados",
+      "title": "El Mar Muerto y la preservación de los textos sagrados",
+      "order": 21,
+      "description": "El lugar más bajo de la Tierra alberga un ecosistema único y de condiciones extremas. Su clima árido permitió que los famosos rollos antiguos sobrevivieran.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "pablo-de-tarso-y-su-estrategica-ciudadania-del-imperio",
+      "title": "Pablo de Tarso y su estratégica ciudadanía del imperio",
+      "order": 22,
+      "description": "Como educado y devoto ciudadano romano, Pablo tenía inmensas ventajas legales únicas. Exploramos cómo utilizó su estatus para expandir su gran ministerio.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "ciclos-agricolas-y-las-estaciones-en-la-antigua-judea",
+      "title": "Ciclos agrícolas y las estaciones en la antigua Judea",
+      "order": 23,
+      "description": "Las lluvias tempranas y tardías marcaban la estricta supervivencia de las aldeas locales. La economía agrícola inspiró grandes metáforas de las Escrituras.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-antiguo-egipto-como-refugio-y-lugar-de-esclavitud",
+      "title": "El antiguo Egipto como refugio y lugar de esclavitud",
+      "order": 24,
+      "description": "Desde Abraham hasta el Nuevo Testamento, Egipto fue constante ruta de escape en las hambrunas. Analizamos la ambivalente relación de Israel con esta nación.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "jose-y-el-funcionamiento-interno-de-la-corte-del-faraon",
+      "title": "José y el funcionamiento interno de la corte del faraón",
+      "order": 25,
+      "description": "Vendido como esclavo en su juventud, José logró ascender al poder administrativo. Descubre cómo operaban los visires y los silos de grano durante las crisis.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "la-arquitectura-y-el-proposito-del-gran-templo-de-herodes",
+      "title": "La arquitectura y el propósito del gran Templo de Herodes",
+      "order": 26,
+      "description": "Una de las mayores maravillas arquitectónicas del mundo antiguo en su máximo esplendor. Exploramos sus enormes atrios y la exclusividad del gran santuario.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "los-saduceos-y-el-control-aristocratico-sobre-el-templo",
+      "title": "Los saduceos y el control aristocrático sobre el Templo",
+      "order": 27,
+      "description": "Representaban activamente a la aristocracia rica y sacerdotal de la gran ciudad de Jerusalén. Aprende por qué rechazaban las creencias en la resurrección.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "jacob-y-la-importancia-de-los-derechos-de-primogenitura",
+      "title": "Jacob y la importancia de los derechos de primogenitura",
+      "order": 28,
+      "description": "En el mundo antiguo, la primogenitura aseguraba el liderazgo familiar y la mejor herencia económica. Entiende las tensiones familiares que formaron la nación.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "la-crueldad-militar-del-imperio-asirio-en-la-antiguedad",
+      "title": "La crueldad militar del Imperio Asirio en la antigüedad",
+      "order": 29,
+      "description": "Conocidos mundialmente por su implacable brutalidad bélica, aterrorizaban a sus vecinos. Analizamos cómo esta violenta invasión destruyó el reino del norte.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "juan-el-bautista-y-su-radical-vida-en-el-arido-desierto",
+      "title": "Juan el Bautista y su radical vida en el árido desierto",
+      "order": 30,
+      "description": "Un predicador apasionado con un mensaje directo de fuerte arrepentimiento social. Estudiamos su extraña dieta, vestimenta austera y el bautismo purificador.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "salomon-y-la-edad-de-oro-del-reino-unido-de-israel",
+      "title": "Salomón y la edad de oro del reino unido de Israel",
+      "order": 31,
+      "description": "Exploramos la inmensa prosperidad económica, las grandes alianzas comerciales y la sabiduría administrativa que caracterizaron su prestigioso reinado pacífico.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-proceso-de-produccion-de-aceite-en-prensas-de-oliva",
+      "title": "El proceso de producción de aceite en prensas de oliva",
+      "order": 32,
+      "description": "El aceite de oliva era vital para la alimentación, medicina e iluminación. Analizamos su laboriosa extracción y el simbolismo del huerto de Getsemaní en Judea.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "origen-e-importancia-de-la-sinagoga-en-la-vida-judia",
+      "title": "Origen e importancia de la sinagoga en la vida judía",
+      "order": 33,
+      "description": "Sin el Templo, se formaron centros locales de estudio sagrado. Exploramos la función educativa y social de estas reuniones comunitarias en las aldeas judías.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "los-publicanos-y-la-compleja-red-de-impuestos-romanos",
+      "title": "Los publicanos y la compleja red de impuestos romanos",
+      "order": 34,
+      "description": "Recaudar tributos para Roma te convertía en un marginado y gran traidor. Analizamos el enorme repudio popular hacia esta lucrativa labor en la sociedad judía.",
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "josue-frente-al-enorme-desafio-de-la-conquista-militar",
+      "title": "Josué frente al enorme desafío de la conquista militar",
+      "order": 35,
+      "description": "Al morir Moisés, este líder debió organizar al pueblo para la batalla. Estudiamos sus tácticas de guerra y la geografía de la tan anhelada tierra prometida.",
+      "audioUrl": "",
+      "videoUrl": ""
+    }
+  ]
+}

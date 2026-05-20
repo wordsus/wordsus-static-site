@@ -1,0 +1,541 @@
+{
+  "slug": "the-bible-in-context",
+  "locale": "en",
+  "title": "The Bible in Context",
+  "subtitle": "The real world behind the sacred text",
+  "author": "Wordsus Team",
+  "description": "A fascinating journey through the ancient world to understand the historical, cultural and geographical context of the Scriptures. Discover how biblical characters lived, thought and felt to transform your reading of the Bible.",
+  "cover": "/images/books/the-bible-in-context-en-cover.jpeg",
+  "category": "biblical-studies",
+  "tags": [
+    "bible",
+    "historical-context",
+    "biblical-studies",
+    "ancient-culture"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-01",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "first-century-weddings-awaiting-the-promised-bridegroom",
+      "title": "First Century Weddings: Awaiting the Promised Bridegroom",
+      "order": 1,
+      "description": "Discover the ancient stages of Jewish betrothal and marriage. This highly fascinating cultural context reveals the deep secrets of the ten virgins.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": false,
+      "thumbnailTitle": "The Groom is Coming!"
+    },
+    {
+      "slug": "welcoming-the-stranger-the-sacred-duty-of-hospitality",
+      "title": "Welcoming the Stranger: The Sacred Duty of Hospitality",
+      "order": 2,
+      "description": "We explore hospitality in the ancient Middle East. Discover why washing feet and receiving strangers was a matter of sacred and true biblical honor.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Honor & Hospitality"
+    },
+    {
+      "slug": "the-shepherd-and-his-flock-caring-for-the-ancient-sheep",
+      "title": "The Shepherd and His Flock: Caring for the Ancient Sheep",
+      "order": 3,
+      "description": "Dive deep into the life of ancient shepherding and discover how the literal care of the sheep profoundly illuminates Psalm twenty-three and John ten.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Good Shepherd"
+    },
+    {
+      "slug": "harvest-times-the-seasons-and-ancient-biblical-farming",
+      "title": "Harvest Times: The Seasons and Ancient Biblical Farming",
+      "order": 4,
+      "description": "We analyze the ancient biblical agricultural cycle. The early and latter rains teach us highly valuable lessons about faith and God's judgment today.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Showers of Blessing"
+    },
+    {
+      "slug": "tears-and-tombs-the-ancient-funeral-rites-of-the-bible",
+      "title": "Tears and Tombs: The Ancient Funeral Rites of the Bible",
+      "order": 5,
+      "description": "Learn about ancient mourning customs in Israel. The unique role of professional mourners and whitewashed tombs clarify difficult and intense texts.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Mourning in the Bible"
+    },
+    {
+      "slug": "roofs-and-stairs-the-architecture-of-the-israelite-home",
+      "title": "Roofs and Stairs: The Architecture of the Israelite Home",
+      "order": 6,
+      "description": "Discover how the unique architecture and design of ancient Israelite homes explain the amazing miracle of the paralytic lowered through the flat roof.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "First Century Homes"
+    },
+    {
+      "slug": "the-bread-and-the-oil-daily-food-and-diet-in-the-bible",
+      "title": "The Bread and the Oil: Daily Food and Diet in the Bible",
+      "order": 7,
+      "description": "Explore everyday biblical meals and the profoundly deep spiritual meaning of sharing bread, drinking wine, and sitting together at the master's table.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Sitting at the Table"
+    },
+    {
+      "slug": "tunics-and-cloaks-the-meaning-behind-biblical-clothing",
+      "title": "Tunics and Cloaks: The Meaning Behind Biblical Clothing",
+      "order": 8,
+      "description": "We analyze biblical clothing, fringes, and phylacteries. You will fully understand the powerful meaning of touching the sacred hem of Jesus' garment.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Hem of His Garment"
+    },
+    {
+      "slug": "at-the-masters-feet-the-jewish-educational-system-then",
+      "title": "At the Master's Feet: The Jewish Educational System Then",
+      "order": 9,
+      "description": "Delve into the Jewish educational system of the first century and the intense calling of disciples to literally imitate their beloved rabbi teacher.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Ideal Disciple"
+    },
+    {
+      "slug": "courageous-women-their-true-role-in-ancient-bible-times",
+      "title": "Courageous Women: Their True Role in Ancient Bible Times",
+      "order": 10,
+      "description": "Understand the complex role of women in Jewish antiquity and how Jesus' compassionate and loving treatment radically broke ancient social paradigms.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Jesus and the Women"
+    },
+    {
+      "slug": "touching-the-untouchable-illness-and-ritual-purification",
+      "title": "Touching the Untouchable: Illness and Ritual Purification",
+      "order": 11,
+      "description": "Discover the intense religious stigma of leprosy in antiquity. This harsh historical context reveals what it meant when Jesus touched the untouchable.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Healing Touch"
+    },
+    {
+      "slug": "the-kinsman-redeemer-ruth-boaz-and-ancient-israel-law",
+      "title": "The Kinsman Redeemer: Ruth, Boaz, and Ancient Israel Law",
+      "order": 12,
+      "description": "We explain the ancient levirate law and the kinsman redeemer. The beautiful story of Ruth and Boaz masterfully foreshadows Christ's great redemption.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Biblical Redeemer"
+    },
+    {
+      "slug": "denarii-and-talents-the-first-century-economic-system-now",
+      "title": "Denarii and Talents: The First Century Economic System Now",
+      "order": 13,
+      "description": "Analyze ancient coins and Israel's economy. Knowing the real value of biblical talents will perfectly help you measure the huge debts in parables.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Coins of the Bible"
+    },
+    {
+      "slug": "troubled-waters-the-sea-of-galilee-and-its-fierce-storms",
+      "title": "Troubled Waters: The Sea of Galilee and Its Fierce Storms",
+      "order": 14,
+      "description": "We explore the Sea of Galilee's geography. Its strange topography clearly explains why those sudden and incredibly violent storms occurred so often.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Storm on the Galilee"
+    },
+    {
+      "slug": "broken-borders-the-ancient-enmity-between-judea-samaria",
+      "title": "Broken Borders: The Ancient Enmity Between Judea, Samaria",
+      "order": 15,
+      "description": "Discover the true historical reasons why ancient Jews completely avoided Samaria, making the famous story of the Good Samaritan truly revolutionary.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Judea vs. Samaria"
+    },
+    {
+      "slug": "the-meeting-place-the-desert-as-a-trial-and-purification",
+      "title": "The Meeting Place: The Desert as a Trial and Purification",
+      "order": 16,
+      "description": "We dive deep into the desert concept. More than a dry wasteland, it was a divine stage for testing, purification, and an intimate encounter with God.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Desert Trials"
+    },
+    {
+      "slug": "valleys-of-judgment-jerusalem-kidron-and-hinnom-valley",
+      "title": "Valleys of Judgment: Jerusalem, Kidron, and Hinnom Valley",
+      "order": 17,
+      "description": "We tour the historic valleys of Jerusalem. Learn exactly how the dark Hinnom Valley was vividly used as a literal and earthly illustration of hell.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Biblical Valleys"
+    },
+    {
+      "slug": "a-sacred-mountain-the-incredible-story-of-mount-moriah",
+      "title": "A Sacred Mountain: The Incredible Story of Mount Moriah",
+      "order": 18,
+      "description": "Relive the extensive history of the Temple Mount. From the epic sacrifice of Isaac to the glorious construction of Solomon's and Herod's great temple.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Temple Mount"
+    },
+    {
+      "slug": "the-dew-of-hermon-climate-rains-and-heavenly-reliance",
+      "title": "The Dew of Hermon: Climate, Rains, and Heavenly Reliance",
+      "order": 19,
+      "description": "Discover how Israel's climate and seasonal rains functioned as a clear spiritual thermometer of their intimate relationship and total obedience to God.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Dew of Hermon"
+    },
+    {
+      "slug": "treasures-in-qumran-the-dead-sea-scrolls-great-discovery",
+      "title": "Treasures in Qumran: The Dead Sea Scrolls Great Discovery",
+      "order": 20,
+      "description": "We analyze the major archaeological discovery in Qumran. These highly valuable scrolls definitively proved the perfect transmission of the biblical text.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Ancient Scrolls"
+    },
+    {
+      "slug": "healing-waters-the-ancient-pools-of-siloam-and-bethesda",
+      "title": "Healing Waters: The Ancient Pools of Siloam and Bethesda",
+      "order": 21,
+      "description": "We explore modern discoveries of Siloam and Bethesda. Surprising current archaeology has wonderfully confirmed the precise accounts of John's gospel.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Pool of Siloam"
+    },
+    {
+      "slug": "fire-on-the-heights-elijah-and-the-epic-carmel-mountain",
+      "title": "Fire on the Heights: Elijah and the Epic Carmel Mountain",
+      "order": 22,
+      "description": "Learn the fascinating geography of Mount Carmel. This crucial context highlights the truly epic confrontation between prophet Elijah and false prophets.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Fire on Carmel"
+    },
+    {
+      "slug": "asylum-in-antiquity-the-purpose-of-the-six-refuge-cities",
+      "title": "Asylum in Antiquity: The Purpose of the Six Refuge Cities",
+      "order": 23,
+      "description": "We carefully study the ancient cities of refuge in Israel. Discover exactly how this particular legal system of asylum operated for an involuntary killer.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Cities of Refuge"
+    },
+    {
+      "slug": "operations-center-capernaum-and-the-ministry-of-jesus",
+      "title": "Operations Center: Capernaum and the Ministry of Jesus",
+      "order": 24,
+      "description": "Tour the bustling fishing town of Capernaum. This highly important center housed numerous synagogues and served as the great headquarters of Jesus.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Biblical Capernaum"
+    },
+    {
+      "slug": "paths-of-stone-the-roman-roads-and-the-gospel-expansion",
+      "title": "Paths of Stone: The Roman Roads and the Gospel Expansion",
+      "order": 25,
+      "description": "We analyze the extensive and solid network of Roman roads. You will learn how this great engineering facilitated the fast gospel expansion in Acts.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Roman Roads"
+    },
+    {
+      "slug": "routes-of-danger-the-perilous-paths-to-jericho-and-emmaus",
+      "title": "Routes of Danger: The Perilous Paths to Jericho and Emmaus",
+      "order": 26,
+      "description": "Explore the challenging geography of the road to Emmaus and Jericho. These dangerous and remote mountain routes were sadly famous for armed robbers.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Road to Emmaus"
+    },
+    {
+      "slug": "the-great-silence-the-four-hundred-intertestamental-years",
+      "title": "The Great Silence: The Four Hundred Intertestamental Years",
+      "order": 27,
+      "description": "We dive into the Intertestamental period. During these highly important years of apparent prophetic silence, the entire biblical world scenery changed.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "400 Years of Silence"
+    },
+    {
+      "slug": "rebellion-and-miracles-the-maccabees-and-hanukkah-origin",
+      "title": "Rebellion and Miracles: The Maccabees and Hanukkah Origin",
+      "order": 28,
+      "description": "Learn about the bloody historical rebellion of the Maccabees. This key event explains Hanukkah's origin and the deep Jewish yearning for military freedom.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Maccabean Rebellion"
+    },
+    {
+      "slug": "the-iron-empire-the-pax-romana-and-the-fulfilled-times",
+      "title": "The Iron Empire: The Pax Romana and the Fulfilled Times",
+      "order": 29,
+      "description": "Study the vast influence of the Roman Empire. The great imposed peace, common language, and highly safe roads perfectly set the stage for Jesus Christ.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Pax Romana"
+    },
+    {
+      "slug": "builder-and-tyrant-the-dark-paranoia-of-herod-the-great",
+      "title": "Builder and Tyrant: The Dark Paranoia of Herod the Great",
+      "order": 30,
+      "description": "Understand the deeply complex historical duality of Herod the Great. His immense architectural genius sadly contrasts with his most ruthless crimes.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Herod the Great"
+    },
+    {
+      "slug": "tradition-vs-power-the-pharisees-against-the-sadducees",
+      "title": "Tradition vs. Power: The Pharisees Against the Sadducees",
+      "order": 31,
+      "description": "Compare the notable theological differences between Pharisees and Sadducees. Understand their ancient intense disputes to control the sacred temple.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Pharisees & Sadducees"
+    },
+    {
+      "slug": "swords-and-mysticism-the-zealots-and-the-essene-sect-now",
+      "title": "Swords and Mysticism: The Zealots and the Essene Sect Now",
+      "order": 32,
+      "description": "We analyze the fringe movements of ancient Israel. Learn exactly who the armed zealots and the isolated, enigmatic mystics in the desert really were.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Zealots and Essenes"
+    },
+    {
+      "slug": "the-supreme-court-the-great-sanhedrin-and-trial-of-jesus",
+      "title": "The Supreme Court: The Great Sanhedrin and Trial of Jesus",
+      "order": 33,
+      "description": "Explore the detailed functioning of the ancient Jewish Sanhedrin. Meet this council of seventy-one elders and all the strict laws they broke with Jesus.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Great Sanhedrin"
+    },
+    {
+      "slug": "blood-on-the-altar-the-ancient-levitical-sacrifice-system",
+      "title": "Blood on the Altar: The Ancient Levitical Sacrifice System",
+      "order": 34,
+      "description": "Discover the different sacrifices in the Levitical system. Peace offerings, burnt offerings, and atonement illustrate how Christ perfectly fulfilled them.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Sacrifices of Blood"
+    },
+    {
+      "slug": "heavenly-shadows-the-amazing-design-of-the-tabernacle",
+      "title": "Heavenly Shadows: The Amazing Design of the Tabernacle",
+      "order": 35,
+      "description": "Delve into the wonderful, rich symbolism of the ancient Tabernacle. Its sacred enclosures and holy furniture point directly to the glorious work of Christ.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Tabernacle"
+    },
+    {
+      "slug": "prophetic-calendar-the-seven-feasts-of-the-lord-in-israel",
+      "title": "Prophetic Calendar: The Seven Feasts of the Lord in Israel",
+      "order": 36,
+      "description": "Study the detailed prophetic calendar of ancient Israel. These seven solemn annual feasts beautifully reveal the precise and immense redemptive plan of God.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Jewish Feasts"
+    },
+    {
+      "slug": "fire-and-destruction-the-fall-of-jerusalem-in-year-seventy",
+      "title": "Fire and Destruction: The Fall of Jerusalem in Year Seventy",
+      "order": 37,
+      "description": "We analyze the prophesied and deeply tragic destruction of Jerusalem. This painful event in the year seventy drastically transformed the religious world.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Fall of the Temple"
+    },
+    {
+      "slug": "money-and-betrayal-the-corrupt-roman-tax-collectors-then",
+      "title": "Money and Betrayal: The Corrupt Roman Tax Collectors Then",
+      "order": 38,
+      "description": "Understand the intense social hatred directed toward the despised publicans. Learn why collecting ancient Roman taxes made them national traitors.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Tax Collectors"
+    },
+    {
+      "slug": "beasts-and-metals-the-empires-within-the-visions-of-daniel",
+      "title": "Beasts and Metals: The Empires Within the Visions of Daniel",
+      "order": 39,
+      "description": "Discover the prophetic sequence of mighty empires in Daniel. Understanding Babylon, Persia, Greece, and Rome profoundly shapes our view of eschatology.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Empires of Daniel"
+    },
+    {
+      "slug": "ancient-words-the-original-languages-of-the-holy-scripture",
+      "title": "Ancient Words: The Original Languages of the Holy Scripture",
+      "order": 40,
+      "description": "We deeply explore the ancient original biblical languages. Discover the beautiful nuances of Hebrew, Aramaic portions, and the massive accuracy of Koine Greek.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Biblical Languages"
+    },
+    {
+      "slug": "rhymes-of-thought-hebrew-poetry-and-its-many-parallelisms",
+      "title": "Rhymes of Thought: Hebrew Poetry and Its Many Parallelisms",
+      "order": 41,
+      "description": "Learn to read truly beautiful Hebrew poetry. Discover how wise biblical authors brilliantly rhymed amazing ideas instead of sounds to worship the Creator.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Hebrew Poetry"
+    },
+    {
+      "slug": "the-divine-seal-the-historical-process-of-canonization",
+      "title": "The Divine Seal: The Historical Process of Canonization",
+      "order": 42,
+      "description": "We carefully study the long historical process of the biblical canon. Learn exactly how the early church recognized which sacred books held divine authority.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Biblical Canon"
+    },
+    {
+      "slug": "treaties-of-vassals-the-ancient-middle-eastern-covenants",
+      "title": "Treaties of Vassals: The Ancient Middle Eastern Covenants",
+      "order": 43,
+      "description": "We analyze the highly important format of ancient Eastern treaties. The specific structure of these sovereign pacts is clearly reflected in the Sinai law.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Covenants of Blood"
+    },
+    {
+      "slug": "deceptive-idols-the-false-canaanite-gods-and-their-danger",
+      "title": "Deceptive Idols: The False Canaanite Gods and Their Danger",
+      "order": 44,
+      "description": "Discover exactly who the terrible and dark gods of Canaan were. Learn why the fertility cult of Baal and Asherah was a constant, dangerous temptation.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Canaanite Idols"
+    },
+    {
+      "slug": "the-price-of-life-the-concept-of-blood-inside-the-bible",
+      "title": "The Price of Life: The Concept of Blood Inside the Bible",
+      "order": 45,
+      "description": "We delve deep into the vital and spiritual meaning of blood. Learn why the ancient remission of terrible sins always required this immensely huge sacrifice.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Value of Blood"
+    },
+    {
+      "slug": "identity-and-promise-the-deep-meaning-of-biblical-names",
+      "title": "Identity and Promise: The Deep Meaning of Biblical Names",
+      "order": 46,
+      "description": "We explore the vital importance of ancient Hebrew names. In that biblical culture, a given name completely defined a person's character and true identity.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Biblical Names"
+    },
+    {
+      "slug": "ancient-greek-texts-the-history-of-the-septuagint-bible",
+      "title": "Ancient Greek Texts: The History of the Septuagint Bible",
+      "order": 47,
+      "description": "Learn the fascinating history of the highly sacred Septuagint. This early Greek translation was the exact biblical version our Lord Jesus Christ used to cite.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Septuagint"
+    },
+    {
+      "slug": "sacred-codes-the-amazing-use-of-ancient-bible-numerology",
+      "title": "Sacred Codes: The Amazing Use of Ancient Bible Numerology",
+      "order": 48,
+      "description": "We analyze profound and sacred biblical numerology. Discover the real meaning of numbers, like the perfect seven and the number twelve for divine government.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Numbers of God"
+    },
+    {
+      "slug": "light-against-dark-angels-and-demons-in-the-first-century",
+      "title": "Light Against Dark: Angels and Demons in the First Century",
+      "order": 49,
+      "description": "Delve into the intense spiritual worldview of the first century. This vital historical context beautifully clarifies the constant exorcisms in the gospels.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Angels and Demons"
+    },
+    {
+      "slug": "the-suffering-king-expectations-about-the-promised-messiah",
+      "title": "The Suffering King: Expectations About the Promised Messiah",
+      "order": 50,
+      "description": "We explore the historical concept of the longed-for Jewish Messiah. Understand Israel's deep frustration upon receiving a glorious king willing to suffer.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The King Messiah"
+    },
+    {
+      "slug": "reading-rules-how-to-interpret-the-different-bible-genres",
+      "title": "Reading Rules: How to Interpret the Different Bible Genres",
+      "order": 51,
+      "description": "Learn deeply about the beautiful and diverse biblical literary genres. Discover how to correctly interpret great prophecy, deep poetry, and historical facts.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Biblical Genres"
+    },
+    {
+      "slug": "surprising-tales-the-wit-of-ancient-rabbinical-parables",
+      "title": "Surprising Tales: The Wit of Ancient Rabbinical Parables",
+      "order": 52,
+      "description": "We study the powerful use of ancient rabbinical parables. Understand why Jesus masterfully took this common method of Jewish teaching toward total perfection.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Parables"
+    }
+  ]
+}

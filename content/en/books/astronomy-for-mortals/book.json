@@ -1,0 +1,541 @@
+{
+  "slug": "astronomy-for-mortals",
+  "locale": "en",
+  "title": "Astronomy for Mortals",
+  "subtitle": "Where infinity becomes understandable",
+  "author": "Wordsus Team",
+  "description": "A fascinating journey through the cosmos in 365 daily lessons. From the solar system to the far reaches of the observable universe, discover how space-time works, the stars and the great mysteries of astronomy explained in a simple way.",
+  "cover": "/images/books/astronomy-for-mortals-en-cover.jpeg",
+  "category": "popular-science",
+  "tags": [
+    "astronomy",
+    "science",
+    "cosmos",
+    "space"
+  ],
+  "featured": true,
+  "publishedAt": "2026-04-29",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "the-phantom-of-space-the-hunt-for-the-hidden-planet-nine",
+      "title": "The Phantom of Space: The Hunt for the Hidden Planet Nine",
+      "order": 1,
+      "description": "We explore the fascinating mystery of Planet Nine, a hypothetical ice giant that might be hiding in the dark, outer reaches of our own Solar System.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": false,
+      "thumbnailTitle": "Is Planet 9 Real?"
+    },
+    {
+      "slug": "vanishing-beauty-the-inevitable-end-of-saturns-rings",
+      "title": "Vanishing Beauty: The Inevitable End of Saturn's Rings",
+      "order": 2,
+      "description": "Discover why the famous gas giant is slowly losing its majestic ring system due to the relentless force of gravity pulling them down into the planet.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Saturn without rings!"
+    },
+    {
+      "slug": "the-eternal-storm-exploring-the-furious-eye-of-jupiter",
+      "title": "The Eternal Storm: Exploring the Furious Eye of Jupiter",
+      "order": 3,
+      "description": "We delve into Jupiter's Great Red Spot, a monstrous anticyclonic storm the exact size of Earth that has been active for centuries without ever stopping.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The infinite storm"
+    },
+    {
+      "slug": "the-solar-systems-roof-climbing-the-martian-volcano",
+      "title": "The Solar System's Roof: Climbing the Martian Volcano",
+      "order": 4,
+      "description": "We travel to Olympus Mons on Mars, the most colossal volcano in our entire Solar System, whose immense height easily triples that of Mount Everest.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The largest volcano"
+    },
+    {
+      "slug": "hidden-seas-icy-worlds-and-liquid-water-in-deep-space",
+      "title": "Hidden Seas: Icy Worlds and Liquid Water in Deep Space",
+      "order": 5,
+      "description": "Let's dive into the underground oceans of icy moons like Europa and Enceladus, distant worlds hiding vast liquid seas beneath thick, freezing crusts.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Seas under the ice"
+    },
+    {
+      "slug": "the-systems-shell-exploring-the-mysterious-oort-cloud",
+      "title": "The System's Shell: Exploring the Mysterious Oort Cloud",
+      "order": 6,
+      "description": "We travel to the Oort Cloud, the distant and mysterious outer sphere that surrounds our system and serves as the original home of long-period comets.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The cradle of comets"
+    },
+    {
+      "slug": "cosmic-shadows-the-perfect-mechanics-of-eclipses",
+      "title": "Cosmic Shadows: The Perfect Mechanics of Eclipses",
+      "order": 7,
+      "description": "We clearly explain the fascinating mechanics of eclipses, detailing how the perfect alignment between the Earth, the Moon, and the Sun creates them.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The magic of eclipses"
+    },
+    {
+      "slug": "debris-from-the-past-inside-the-great-asteroid-belt",
+      "title": "Debris from the Past: Inside the Great Asteroid Belt",
+      "order": 8,
+      "description": "We navigate through the Asteroid Belt, a massive ring of rocky debris located between Mars and Jupiter that never managed to group into a new planet.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Rocks in space"
+    },
+    {
+      "slug": "the-sky-on-fire-the-spectacular-cosmic-meteor-showers",
+      "title": "The Sky on Fire: The Spectacular Cosmic Meteor Showers",
+      "order": 9,
+      "description": "We observe meteor showers, dazzling astronomical phenomena produced when our planet swiftly crosses the trails of cosmic dust left by passing comets.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Meteor shower"
+    },
+    {
+      "slug": "the-small-worlds-pluto-and-the-family-of-dwarf-planets",
+      "title": "The Small Worlds: Pluto and the Family of Dwarf Planets",
+      "order": 10,
+      "description": "We explore Pluto and the family of dwarf planets in the Kuiper Belt, small icy worlds that completely redefined our understanding of the Solar System.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Pluto is not alone"
+    },
+    {
+      "slug": "stellar-nurseries-the-cosmic-cradles-of-newborn-stars",
+      "title": "Stellar Nurseries: The Cosmic Cradles of Newborn Stars",
+      "order": 11,
+      "description": "We admire nebulae, immense clouds of space dust and gas, like the Pillars of Creation, which function as literal factories where new stars are born.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Where suns are born"
+    },
+    {
+      "slug": "the-final-outburst-the-fury-of-the-giant-supernovae",
+      "title": "The Final Outburst: The Fury of the Giant Supernovae",
+      "order": 12,
+      "description": "We witness the raw power of supernovae, colossal explosions marking the death of massive stars that can briefly outshine an entire galaxy combined.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Stellar explosion"
+    },
+    {
+      "slug": "dense-hearts-unraveling-the-enigma-of-neutron-stars",
+      "title": "Dense Hearts: Unraveling the Enigma of Neutron Stars",
+      "order": 13,
+      "description": "We analyze neutron stars, extremely dense stellar remnants where a single teaspoon of their unique matter would weigh millions of tons here on Earth.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The densest matter"
+    },
+    {
+      "slug": "cosmic-lighthouses-the-dizzying-spin-of-pulsars",
+      "title": "Cosmic Lighthouses: The Dizzying Spin of Pulsars",
+      "order": 14,
+      "description": "We decipher pulsars, incredible neutron stars that spin at lightning speeds, emitting powerful beams of bright light just like lighthouses in space.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Lighthouses in space"
+    },
+    {
+      "slug": "modest-destinies-the-white-dwarfs-and-the-red-dwarfs",
+      "title": "Modest Destinies: The White Dwarfs and the Red Dwarfs",
+      "order": 15,
+      "description": "We compare the white dwarf future awaiting our Sun and the vital life cycle of red dwarfs, the most incredibly abundant stars in the entire universe.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Fading suns"
+    },
+    {
+      "slug": "suns-in-pairs-the-cosmic-dance-of-multiple-star-systems",
+      "title": "Suns in Pairs: The Cosmic Dance of Multiple Star Systems",
+      "order": 16,
+      "description": "We contemplate fascinating multiple star systems, distant worlds with double or triple suns that intertwine in an infinite, beautiful orbital dance.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Planets with two suns"
+    },
+    {
+      "slug": "celestial-monsters-the-terror-of-the-hypergiant-stars",
+      "title": "Celestial Monsters: The Terror of the Hypergiant Stars",
+      "order": 17,
+      "description": "We measure hypergiant stars like UY Scuti, astronomical bodies so colossal they would easily engulf Jupiter's entire orbit if placed in our system.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Monster stars"
+    },
+    {
+      "slug": "the-end-of-our-days-exploring-the-final-fate-of-the-sun",
+      "title": "The End of Our Days: Exploring the Final Fate of the Sun",
+      "order": 18,
+      "description": "We project the ultimate destiny of our Sun and how, after becoming a fearsome red giant, it will end its long days shrinking into a white dwarf star.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The death of the Sun"
+    },
+    {
+      "slug": "spheres-of-antiquity-the-mystery-of-star-globular-clusters",
+      "title": "Spheres of Antiquity: The Mystery of Star Globular Clusters",
+      "order": 19,
+      "description": "We navigate through dense globular clusters, gravity-packed spheres grouping hundreds of thousands of the oldest stars found anywhere in the universe.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Star fossils"
+    },
+    {
+      "slug": "solitary-suns-the-dark-journey-of-the-wandering-stars",
+      "title": "Solitary Suns: The Dark Journey of the Wandering Stars",
+      "order": 20,
+      "description": "We follow wandering stars, solitary suns that have been violently expelled from their native galaxies and now roam lost through deep intergalactic space.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Homeless stars"
+    },
+    {
+      "slug": "absolute-darkness-an-x-ray-vision-of-a-dark-black-hole",
+      "title": "Absolute Darkness: An X-Ray Vision of a Dark Black Hole",
+      "order": 21,
+      "description": "We unravel the terrifying anatomy of a black hole, from its glowing accretion disk to the pitch-black event horizon that traps absolutely all light.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Inside the abyss"
+    },
+    {
+      "slug": "galactic-hearts-exploring-supermassive-black-holes",
+      "title": "Galactic Hearts: Exploring Supermassive Black Holes",
+      "order": 22,
+      "description": "We explore supermassive black holes, immense cosmic colossi like Sagittarius A* that govern hidden deep within the heart of almost every known galaxy.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The central monster"
+    },
+    {
+      "slug": "shredded-by-gravity-the-dark-spaghettification-effect",
+      "title": "Shredded by Gravity: The Dark Spaghettification Effect",
+      "order": 23,
+      "description": "We analyze spaghettification, the real astrophysical effect where the extreme gravity of a black hole violently stretches objects into long, thin shapes.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Noodles in space"
+    },
+    {
+      "slug": "the-clash-of-titans-enormous-black-hole-collisions",
+      "title": "The Clash of Titans: Enormous Black Hole Collisions",
+      "order": 24,
+      "description": "We recount the violent collisions of massive black holes, catastrophic cosmic events so immense they manage to generate powerful gravitational waves.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Clashes in the abyss"
+    },
+    {
+      "slug": "beacons-of-the-past-the-bright-glow-of-the-great-quasars",
+      "title": "Beacons of the Past: The Bright Glow of the Great Quasars",
+      "order": 25,
+      "description": "We dazzle our eyes with quasars, the most luminous objects in the universe driven by feeding black holes that relentlessly devour surrounding matter.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The brightest light"
+    },
+    {
+      "slug": "cosmic-gunshots-deadly-blazars-and-their-energy-beams",
+      "title": "Cosmic Gunshots: Deadly Blazars and Their Energy Beams",
+      "order": 26,
+      "description": "We study blazars, an extreme type of quasar whose dizzyingly fast jet of matter and incredibly bright light travels pointing directly toward the Earth.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The death ray"
+    },
+    {
+      "slug": "the-monsters-feast-spectacular-tidal-disruption-events",
+      "title": "The Monster's Feast: Spectacular Tidal Disruption Events",
+      "order": 27,
+      "description": "We observe tidal disruption events, the brilliantly bright flash of light that occurs when a black hole mercilessly shreds and swallows a nearby star.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Devoured stars"
+    },
+    {
+      "slug": "fountains-of-light-the-fascinating-myth-of-white-holes",
+      "title": "Fountains of Light: The Fascinating Myth of White Holes",
+      "order": 28,
+      "description": "We speculate on the astonishing theory of white holes, the mysterious and exact opposites of black holes that would supposedly expel matter endlessly.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The tunnel's exit?"
+    },
+    {
+      "slug": "extreme-magnets-the-immense-destructive-power-of-magnetars",
+      "title": "Extreme Magnets: The Immense Destructive Power of Magnetars",
+      "order": 29,
+      "description": "We feel the force of magnetars, a peculiar type of neutron star that possesses the most incredibly powerful and destructive magnetic field in the cosmos.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The great cosmic magnet"
+    },
+    {
+      "slug": "flashes-of-the-end-the-cosmic-gamma-ray-burst-eruptions",
+      "title": "Flashes of the End: The Cosmic Gamma-Ray Burst Eruptions",
+      "order": 30,
+      "description": "We investigate deadly gamma-ray bursts, the most highly energetic flashes of astronomical light capable of outshining entire galaxies for a few seconds.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Ray explosions"
+    },
+    {
+      "slug": "our-spiral-home-a-grand-journey-through-the-milky-way",
+      "title": "Our Spiral Home: A Grand Journey Through the Milky Way",
+      "order": 31,
+      "description": "We visually map a route through the Milky Way, analyzing the beautiful spiral structure of our galaxy and the quiet location of our very own stellar arm.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Our great galaxy"
+    },
+    {
+      "slug": "imminent-clash-andromeda-and-our-ultimate-galactic-end",
+      "title": "Imminent Clash: Andromeda and Our Ultimate Galactic End",
+      "order": 32,
+      "description": "We anticipate the epic collision between Andromeda and the Milky Way, a galactic impact that will inevitably change our observable night sky forever.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Galaxy crash!"
+    },
+    {
+      "slug": "the-space-zoo-discovering-the-different-galaxy-types",
+      "title": "The Space Zoo: Discovering the Different Galaxy Types",
+      "order": 33,
+      "description": "We classify the enormous diversity of galaxies in the cosmos, from the most majestic and beautiful spirals to immense ellipticals and irregular shapes.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The stellar zoo"
+    },
+    {
+      "slug": "close-neighborhood-exploring-the-borders-of-the-local-group",
+      "title": "Close Neighborhood: Exploring the Borders of the Local Group",
+      "order": 34,
+      "description": "We get to know the Local Group, our astronomical neighborhood bound by gravity that we directly share with Andromeda and the Triangulum Galaxy today.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Our neighbors"
+    },
+    {
+      "slug": "colossal-structures-exploring-the-galaxy-superclusters",
+      "title": "Colossal Structures: Exploring the Galaxy Superclusters",
+      "order": 35,
+      "description": "We measure the scale of galactic superclusters like Laniakea, immense cosmic structures that group hundreds of thousands of galaxies moving together.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Total immensity"
+    },
+    {
+      "slug": "the-web-of-everything-navigating-the-giant-cosmic-web",
+      "title": "The Web of Everything: Navigating the Giant Cosmic Web",
+      "order": 36,
+      "description": "We contemplate the incredible cosmic web, the colossal overarching structure of the universe where galaxy-filled filaments connect like a giant spiderweb.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The grand cosmic web"
+    },
+    {
+      "slug": "absolute-nothingness-the-deep-mystery-of-cosmic-voids",
+      "title": "Absolute Nothingness: The Deep Mystery of Cosmic Voids",
+      "order": 37,
+      "description": "We dive into the freezing cosmic voids, immense dark regions of deep space like the Boötes Void that present an unusually rare shortage of galaxies.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Dark empty zones"
+    },
+    {
+      "slug": "the-growing-cosmos-the-great-expansion-of-the-universe",
+      "title": "The Growing Cosmos: The Great Expansion of the Universe",
+      "order": 38,
+      "description": "We explain the ceaseless expansion of the universe, reviewing Edwin Hubble's fundamental observation that proved that galaxies are moving further apart.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The universe grows"
+    },
+    {
+      "slug": "southern-lights-the-magellanic-clouds-and-their-mystery",
+      "title": "Southern Lights: The Magellanic Clouds and Their Mystery",
+      "order": 39,
+      "description": "We admire the Magellanic Clouds, two fascinating dwarf galaxies that orbit the Milky Way and are perfectly visible to the naked eye from planet Earth.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Southern galaxies"
+    },
+    {
+      "slug": "sun-factories-the-galaxies-with-intense-starbursts",
+      "title": "Sun Factories: The Galaxies with Intense Starbursts",
+      "order": 40,
+      "description": "We witness the activity of Starburst galaxies, astronomical formations that are currently experiencing an exaggeratedly high rate of new star creation.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Star factories"
+    },
+    {
+      "slug": "promising-worlds-planets-hidden-in-the-habitable-zone",
+      "title": "Promising Worlds: Planets Hidden in the Habitable Zone",
+      "order": 41,
+      "description": "We search for exoplanets in the habitable zone, worlds orbiting at the perfect distance from their host star to allow for liquid water on their surface.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The new Earth?"
+    },
+    {
+      "slug": "gaseous-hells-exploring-the-reign-of-the-hot-jupiters",
+      "title": "Gaseous Hells: Exploring the Reign of the Hot Jupiters",
+      "order": 42,
+      "description": "We explore Hot Jupiters, gigantic gas planets that orbit so incredibly close to their mother star that one full year there passes in just a few days.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Planets of fire"
+    },
+    {
+      "slug": "void-wanderers-the-dark-drama-of-lonely-rogue-planets",
+      "title": "Void Wanderers: The Dark Drama of Lonely Rogue Planets",
+      "order": 43,
+      "description": "We follow the dark path of rogue planets, solitary worlds that float freely through the vast interstellar emptiness without ever orbiting a parent star.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Lonely planets"
+    },
+    {
+      "slug": "the-eye-of-humanity-the-amazing-james-webb-telescope",
+      "title": "The Eye of Humanity: The Amazing James Webb Telescope",
+      "order": 44,
+      "description": "We celebrate the astronomical wonders of the James Webb Space Telescope, reviewing its infrared discoveries that reveal the most primitive old galaxies.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The power of Webb"
+    },
+    {
+      "slug": "a-glimpse-into-the-abyss-the-hubble-deep-field-images",
+      "title": "A Glimpse into the Abyss: The Hubble Deep Field Images",
+      "order": 45,
+      "description": "We remember the invaluable legacy of Hubble's Deep Fields, where aiming at apparent emptiness revealed thousands of galaxies hidden in absolute darkness.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Deep space"
+    },
+    {
+      "slug": "distant-satellites-the-difficult-search-for-exomoons",
+      "title": "Distant Satellites: The Difficult Search for Exomoons",
+      "order": 46,
+      "description": "We share the highly complicated astronomical challenge of discovering exomoons, those tiny and elusive satellites orbiting distant exoplanets far away.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Alien moons"
+    },
+    {
+      "slug": "the-great-celestial-map-the-extraordinary-gaia-mission",
+      "title": "The Great Celestial Map: The Extraordinary Gaia Mission",
+      "order": 47,
+      "description": "We detail the goals of the amazing Gaia mission, a colossal scientific effort aimed at creating a three-dimensional map of a billion local stars today.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Mapping the galaxy"
+    },
+    {
+      "slug": "the-galactic-magnet-the-mystery-of-the-great-attractor",
+      "title": "The Galactic Magnet: The Mystery of the Great Attractor",
+      "order": 48,
+      "description": "We try to comprehend the enigmatic Great Attractor, the immense and hidden gravitational anomaly that inexorably pulls the Milky Way at high velocities.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The great magnet"
+    },
+    {
+      "slug": "polluted-orbit-the-growing-problem-of-space-debris",
+      "title": "Polluted Orbit: The Growing Problem of Space Debris",
+      "order": 49,
+      "description": "We address the ever-growing astronomical problem of space debris, a dangerous cloud formed by the scattered remains of inactive satellites orbiting Earth.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Trash in orbit"
+    },
+    {
+      "slug": "revealing-shadows-understanding-the-transit-method",
+      "title": "Revealing Shadows: Understanding the Transit Method",
+      "order": 50,
+      "description": "We explain step by step the ingenious transit method, a key technique widely used in astronomy to find new worlds by observing their minuscule eclipses.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Planet hunters"
+    },
+    {
+      "slug": "magnifiers-of-the-universe-using-gravitational-lenses",
+      "title": "Magnifiers of the Universe: Using Gravitational Lenses",
+      "order": 51,
+      "description": "We decipher the great phenomenon of gravitational lenses, colossal masses that manage to bend light, allowing us to observe distant galaxies behind them.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Galactic magnifiers"
+    },
+    {
+      "slug": "fleeting-visitors-the-interstellar-asteroid-oumuamua",
+      "title": "Fleeting Visitors: The Interstellar Asteroid Oumuamua",
+      "order": 52,
+      "description": "We analyze the trajectory of interstellar asteroids, mysterious traveling rocks originating from completely different solar systems crossing our cosmic area.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Foreign rocks"
+    }
+  ]
+}

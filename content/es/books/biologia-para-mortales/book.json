@@ -1,0 +1,543 @@
+{
+  "slug": "biologia-para-mortales",
+  "locale": "es",
+  "title": "Biología para Mortales",
+  "subtitle": "Explorando el código oculto de la naturaleza",
+  "author": "Wordsus Team",
+  "description": "Explora los misterios de la vida a través de 365 lecciones fascinantes. Desde el ADN y la genética hasta la evolución y la ecología profunda, explicado de forma sencilla para todos.",
+  "cover": "/images/books/biologia-para-mortales-es-cover.jpeg",
+  "category": "divulgacion-cientifica",
+  "tags": [
+    "biologia",
+    "ciencia",
+    "divulgacion",
+    "vida",
+    "genetica",
+    "evolucion"
+  ],
+  "featured": true,
+  "publishedAt": "2026-04-30",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "tijeras-de-adn-reescribiendo-el-manual-de-la-vida",
+      "title": "Tijeras de ADN: Reescribiendo el Manual de la Vida",
+      "order": 1,
+      "description": "Descubre cómo la tecnología CRISPR nos permite editar el código genético. Exploramos las promesas y riesgos de esta herramienta biológica actual.",
+      "thumbnailTitle": "¡Hackeando ADN!",
+      "draft": false,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "mas-alla-del-gen-como-el-entorno-moldea-tu-destino",
+      "title": "Más Allá del Gen: Cómo el Entorno Moldea tu Destino",
+      "order": 2,
+      "description": "Analizamos la epigenética, el asombroso campo que explica cómo tu estilo de vida y entorno activan o desactivan tus genes sin alterar tu ADN.",
+      "thumbnailTitle": "Tus Genes Cambian",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "regreso-del-mas-alla-resucitando-especies-perdidas",
+      "title": "Regreso del Más Allá: Resucitando Especies Perdidas",
+      "order": 3,
+      "description": "Conoce los proyectos científicos de desextinción que buscan traer de vuelta a la vida al mamut lanudo, al dodo y a otros animales ya extintos.",
+      "thumbnailTitle": "¡Vuelven a la Vida!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "herencia-antigua-el-neandertal-que-llevamos-dentro",
+      "title": "Herencia Antigua: El Neandertal que Llevamos Dentro",
+      "order": 4,
+      "description": "Exploramos la fascinante historia evolutiva y por qué la gran mayoría de los humanos modernos conserva ADN neandertal que afecta nuestra salud.",
+      "thumbnailTitle": "¿Eres Neandertal?",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-reloj-interno-los-telomeros-y-el-envejecimiento",
+      "title": "El Reloj Interno: Los Telómeros y el Envejecimiento",
+      "order": 5,
+      "description": "Adéntrate en el misterio de los telómeros, las estructuras cromosómicas que actúan como reloj biológico y dictan cómo envejecen nuestras células.",
+      "thumbnailTitle": "El Reloj Celular",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "dos-en-uno-solo-el-extrano-caso-del-quimerismo-humano",
+      "title": "Dos en Uno Solo: El Extraño Caso del Quimerismo Humano",
+      "order": 6,
+      "description": "Descubre el asombroso fenómeno del quimerismo genético humano, donde una misma persona posee dos conjuntos distintos de ADN de forma muy natural.",
+      "thumbnailTitle": "¡Fusión Genética!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "robo-de-identidad-genes-prestados-entre-las-especies",
+      "title": "Robo de Identidad: Genes Prestados Entre las Especies",
+      "order": 7,
+      "description": "Conoce la transferencia horizontal de genes, el increíble proceso mediante el cual ciertos organismos roban ADN de otras especies para sobrevivir.",
+      "thumbnailTitle": "Ladrones de ADN",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "superpoderes-reales-mutaciones-geneticas-increibles",
+      "title": "Superpoderes Reales: Mutaciones Genéticas Increíbles",
+      "order": 8,
+      "description": "Exploramos las variaciones biológicas humanas excepcionales, desde huesos casi irrompibles hasta la inmunidad natural contra virus y enfermedades.",
+      "thumbnailTitle": "¡Mutantes Reales!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-ancestro-comun-buscando-el-origen-de-toda-la-vida",
+      "title": "El Ancestro Común: Buscando el Origen de Toda la Vida",
+      "order": 9,
+      "description": "Viaja miles de millones de años en el pasado para descubrir a LUCA, el microorganismo primordial del que desciende absolutamente toda la vida actual.",
+      "thumbnailTitle": "El Primer Ser Vivo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "dolly-y-sus-amigos-la-ciencia-detras-de-la-clonacion",
+      "title": "Dolly y Sus Amigos: La Ciencia Detrás de la Clonación",
+      "order": 10,
+      "description": "Analizamos los avances en la tecnología de clonación biológica, desde la oveja Dolly hasta la polémica industria de replicar mascotas fallecidas.",
+      "thumbnailTitle": "¡Mascotas Clonadas!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "un-universo-oculto-los-inquilinos-de-tu-propio-cuerpo",
+      "title": "Un Universo Oculto: Los Inquilinos de Tu Propio Cuerpo",
+      "order": 11,
+      "description": "Descubre el microbioma humano y cómo los billones de bacterias, hongos y virus en tu organismo controlan tu digestión, salud e incluso emociones.",
+      "thumbnailTitle": "No Estás Solo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "cazadores-microscopicos-los-fagos-contra-las-bacterias",
+      "title": "Cazadores Microscópicos: Los Fagos Contra las Bacterias",
+      "order": 12,
+      "description": "Conoce a los bacteriófagos, asombrosos virus biológicos que destruyen infecciones bacterianas mortales y podrían salvar a la humanidad del futuro.",
+      "thumbnailTitle": "Virus Curativos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "pequenos-titanes-los-indestructibles-osos-de-agua-hoy",
+      "title": "Pequeños Titanes: Los Indestructibles Osos de Agua Hoy",
+      "order": 13,
+      "description": "Exploramos la increíble biología de los tardígrados, microanimales asombrosos capaces de sobrevivir a la radiación, deshidratación y el espacio.",
+      "thumbnailTitle": "¡Indestructibles!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "vida-en-los-limites-seres-donde-no-deberia-haber-nada",
+      "title": "Vida en los Límites: Seres Donde No Debería Haber Nada",
+      "order": 14,
+      "description": "Adéntrate en el mundo de los extremófilos, aquellos misteriosos organismos biológicos que prosperan en el hielo antártico y en ácido hirviente.",
+      "thumbnailTitle": "Amantes del Peligro",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "celulas-inmortales-el-legado-medico-de-henrietta-lacks",
+      "title": "Células Inmortales: El Legado Médico de Henrietta Lacks",
+      "order": 15,
+      "description": "La fascinante y trágica historia de las células HeLa, un linaje biológico inmortal que revolucionó la medicina moderna y los estudios celulares.",
+      "thumbnailTitle": "Vida Eterna Celular",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "luz-en-la-oscuridad-la-fascinante-bioluminiscencia-hoy",
+      "title": "Luz en la Oscuridad: La Fascinante Bioluminiscencia Hoy",
+      "order": 16,
+      "description": "Analizamos la increíble química biológica natural que permite a luciérnagas, hongos y extrañas criaturas abisales crear su propia luz brillante.",
+      "thumbnailTitle": "¡Animales de Luz!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "lienzos-en-blanco-el-gran-potencial-de-las-celulas-madre",
+      "title": "Lienzos en Blanco: El Gran Potencial de las Células Madre",
+      "order": 17,
+      "description": "Descubre el poder regenerativo de las células madre, estructuras biológicas que pueden convertirse en cualquier tejido para reparar nuestro cuerpo.",
+      "thumbnailTitle": "Regeneración Total",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-sacrificio-final-como-la-apoptosis-salva-tu-cuerpo",
+      "title": "El Sacrificio Final: Cómo la Apoptosis Salva Tu Cuerpo",
+      "order": 18,
+      "description": "Exploramos la apoptosis, el elegante mecanismo de eliminación celular programada que purga células defectuosas y evita graves enfermedades médicas.",
+      "thumbnailTitle": "Células al Límite",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "guerreros-internos-las-batallas-de-tu-sistema-inmune",
+      "title": "Guerreros Internos: Las Batallas de Tu Sistema Inmune",
+      "order": 19,
+      "description": "Viaja al interior del cuerpo humano para conocer cómo los glóbulos blancos cazan, memorizan y destruyen patógenos en guerras microscópicas reales.",
+      "thumbnailTitle": "Guerra en tu Sangre",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "evolucion-imparable-el-peligro-de-las-superbacterias",
+      "title": "Evolución Imparable: El Peligro de las Superbacterias",
+      "order": 20,
+      "description": "Analizamos cómo el mal uso de antibióticos ha provocado la rápida evolución biológica de bacterias resistentes que amenazan la medicina moderna.",
+      "thumbnailTitle": "Bacterias Invencibles",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "recableando-tu-mente-la-asombrosa-neuroplasticidad-hoy",
+      "title": "Recableando Tu Mente: La Asombrosa Neuroplasticidad Hoy",
+      "order": 21,
+      "description": "Descubre la sorprendente neurobiología detrás de la capacidad del cerebro humano para curarse, adaptarse y modificar sus propias redes neuronales.",
+      "thumbnailTitle": "¡Moldea tu Cerebro!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-segundo-cerebro-como-el-intestino-guia-tus-emociones",
+      "title": "El Segundo Cerebro: Cómo el Intestino Guía tus Emociones",
+      "order": 22,
+      "description": "Exploramos la extraña conexión biológica directa entre las bacterias de tu sistema digestivo y la salud mental mediante el misterioso nervio vago.",
+      "thumbnailTitle": "Tu Estómago Piensa",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "saborear-los-colores-el-extrano-mundo-de-la-sinestesia",
+      "title": "Saborear los Colores: El Extraño Mundo de la Sinestesia",
+      "order": 23,
+      "description": "Adéntrate en las redes neuronales de la sinestesia, una condición biológica fascinante donde los sentidos se mezclan de maneras muy extraordinarias.",
+      "thumbnailTitle": "Olfateando Colores",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-gran-enigma-las-raices-biologicas-de-la-conciencia",
+      "title": "El Gran Enigma: Las Raíces Biológicas de la Conciencia",
+      "order": 24,
+      "description": "Investigamos el misterio neurobiológico más profundo de todos: cómo una masa de tejido celular blando es capaz de generar nuestra mente consciente.",
+      "thumbnailTitle": "El Misterio de Ser",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-poder-de-creer-la-verdadera-biologia-tras-el-placebo",
+      "title": "El Poder de Creer: La Verdadera Biología tras el Placebo",
+      "order": 25,
+      "description": "Analizamos cómo la expectativa de cura del cerebro logra desencadenar cambios físicos, químicos y curativos completamente reales en el organismo.",
+      "thumbnailTitle": "La Mente que Cura",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "rebelion-neuronal-que-pasa-en-el-cerebro-adolescente",
+      "title": "Rebelión Neuronal: Qué Pasa en el Cerebro Adolescente",
+      "order": 26,
+      "description": "Entiende los cambios biológicos drásticos, la poda sináptica y el desarrollo frontal tardío que explican por qué la pubertad es tan turbulenta.",
+      "thumbnailTitle": "Caos en la Pubertad",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "formula-de-alegria-la-biologia-de-nuestras-emociones",
+      "title": "Fórmula de Alegría: La Biología de Nuestras Emociones",
+      "order": 27,
+      "description": "Descubre cómo la dopamina, la serotonina y otras moléculas biológicas interactúan mecánicamente en el cerebro para regular nuestro bienestar mental.",
+      "thumbnailTitle": "Química Feliz",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "realidades-alternas-la-importancia-biologica-de-sonar",
+      "title": "Realidades Alternas: La Importancia Biológica de Soñar",
+      "order": 28,
+      "description": "Explora por qué el cerebro nos paraliza temporalmente y genera mundos ilusorios cada noche durante el sueño REM para consolidar toda nuestra memoria.",
+      "thumbnailTitle": "El Poder del Sueño",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "nuevas-neuronas-el-mito-derribado-sobre-nuestro-cerebro",
+      "title": "Nuevas Neuronas: El Mito Derribado Sobre Nuestro Cerebro",
+      "order": 29,
+      "description": "Derribamos dogmas científicos para entender la neurogénesis, el increíble proceso biológico donde el cerebro adulto genera células completamente nuevas.",
+      "thumbnailTitle": "Creando Neuronas",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "lavado-cerebral-limpieza-nocturna-de-nuestra-mente-hoy",
+      "title": "Lavado Cerebral: Limpieza Nocturna de Nuestra Mente Hoy",
+      "order": 30,
+      "description": "Conoce el asombroso sistema glinfático de la neurobiología, un mecanismo que literalmente lava tu cerebro de desechos metabólicos al estar durmiendo.",
+      "thumbnailTitle": "Cerebro en la Ducha",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "mentes-de-ocho-brazos-la-inteligencia-de-los-cefalopodos",
+      "title": "Mentes de Ocho Brazos: La Inteligencia de los Cefalópodos",
+      "order": 31,
+      "description": "Sumérgete en la asombrosa biología del pulpo, un genio marino con neuronas distribuidas en cada tentáculo que le permiten pensar descentralizadamente.",
+      "thumbnailTitle": "Pulpos Genios",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "enganando-a-la-muerte-la-increible-medusa-inmortal-hoy",
+      "title": "Engañando a la Muerte: La Increíble Medusa Inmortal Hoy",
+      "order": 32,
+      "description": "Analizamos el fascinante ciclo de vida biológico de la Turritopsis dohrnii, una diminuta medusa marina que rejuvenece continuamente para subsistir.",
+      "thumbnailTitle": "¡Juventud Eterna!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "maestros-de-la-reparacion-la-regeneracion-del-ajolote",
+      "title": "Maestros de la Reparación: La Regeneración del Ajolote",
+      "order": 33,
+      "description": "Exploramos la asombrosa capacidad regenerativa biológica del ajolote, un asombroso anfibio capaz de reconstruir por completo sus órganos perdidos.",
+      "thumbnailTitle": "Reparación Extrema",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "vision-por-sonido-la-ciencia-tras-la-ecolocalizacion",
+      "title": "Visión por Sonido: La Ciencia Tras la Ecolocalización",
+      "order": 34,
+      "description": "Descubre el brillante mecanismo biológico que emplean murciélagos y delfines para mapear el mundo físico que los rodea usando frecuencias sonoras.",
+      "thumbnailTitle": "Viendo con Ecos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "inteligencia-en-enjambre-el-superorganismo-en-accion",
+      "title": "Inteligencia en Enjambre: El Superorganismo en Acción",
+      "order": 35,
+      "description": "Analizamos la compleja dinámica biológica y social de hormigas y abejas, donde miles de mentes diminutas se sincronizan para actuar como un solo ser.",
+      "thumbnailTitle": "Mente Colectiva",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "corazones-congelados-el-arte-biologico-de-la-hibernacion",
+      "title": "Corazones Congelados: El Arte Biológico de la Hibernación",
+      "order": 36,
+      "description": "Explora cómo las ranas de bosque sobreviven literalmente congeladas durante el duro invierno usando criogenia natural, y despiertan en la primavera.",
+      "thumbnailTitle": "Congelados Vivos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "maestros-del-engano-el-camuflaje-de-los-cefalopodos-hoy",
+      "title": "Maestros del Engaño: El Camuflaje de los Cefalópodos Hoy",
+      "order": 37,
+      "description": "Conoce los asombrosos trucos biológicos de pulpos y sepias para cambiar radicalmente el color, el patrón y la textura de su piel en milisegundos.",
+      "thumbnailTitle": "Maestros del Disfraz",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "viajeros-generacionales-la-gran-ruta-de-las-mariposas",
+      "title": "Viajeros Generacionales: La Gran Ruta de las Mariposas",
+      "order": 38,
+      "description": "Sorpréndete con las mariposas monarca y su épica migración, donde múltiples generaciones nacen y mueren guiadas por una infalible brújula genética.",
+      "thumbnailTitle": "Viaje Sin Retorno",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "un-bosque-en-movimiento-la-extrana-simbiosis-del-perezoso",
+      "title": "Un Bosque en Movimiento: La Extraña Simbiosis del Perezoso",
+      "order": 39,
+      "description": "Descubre el asombroso ecosistema biológico oculto en el pelaje de los perezosos, hogar de polillas y algas que cooperan para su mutua supervivencia.",
+      "thumbnailTitle": "Ecosistema Andante",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "lenguajes-ocultos-asi-se-comunican-los-grandes-animales",
+      "title": "Lenguajes Ocultos: Así se Comunican los Grandes Animales",
+      "order": 40,
+      "description": "Investigamos las complejas habilidades comunicativas de la biología animal, desde los clics de cachalotes hasta las danzas matemáticas de abejas.",
+      "thumbnailTitle": "Hablan Entre Ellos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-internet-del-bosque-como-se-comunican-los-arboles",
+      "title": "El Internet del Bosque: Cómo se Comunican los Árboles",
+      "order": 41,
+      "description": "Adéntrate en el subsuelo forestal para descubrir las extensas redes micorrícicas que los árboles utilizan biológicamente para compartir nutrientes.",
+      "thumbnailTitle": "El Bosque Habla",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "vegetales-cazadores-la-evolucion-de-la-planta-carnivora",
+      "title": "Vegetales Cazadores: La Evolución de la Planta Carnívora",
+      "order": 42,
+      "description": "Analizamos las adaptaciones extremas de la botánica, donde suelos pobres forzaron a ciertas plantas a desarrollar letales trampas para atrapar presas.",
+      "thumbnailTitle": "¡Plantas que Comen!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "efecto-domino-el-impacto-de-una-sola-especie-en-la-vida",
+      "title": "Efecto Dominó: El Impacto de una Sola Especie en la Vida",
+      "order": 43,
+      "description": "Entiende las cascadas tróficas ecológicas y observa cómo la reintroducción de grandes depredadores es vital para sanar la biología de un ecosistema.",
+      "thumbnailTitle": "Lobos Sanadores",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "botanica-sensible-las-fascinantes-plantas-que-sienten",
+      "title": "Botánica Sensible: Las Fascinantes Plantas Que Sienten",
+      "order": 44,
+      "description": "Descubre el fenómeno de la tigmonastia, un asombroso reflejo biológico que permite a algunas plantas moverse y cerrar sus hojas al sentir el contacto.",
+      "thumbnailTitle": "Plantas Sensibles",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "maestras-de-la-ilusion-orquideas-que-enganan-a-insectos",
+      "title": "Maestras de la Ilusión: Orquídeas Que Engañan a Insectos",
+      "order": 45,
+      "description": "Conoce los increíbles trucos evolutivos de las orquídeas que imitan visual y químicamente a hembras de insectos para garantizar su polinización.",
+      "thumbnailTitle": "Plantas Mentirosas",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "resistencia-extrema-sobrevivir-en-el-desierto-ardiente",
+      "title": "Resistencia Extrema: Sobrevivir en el Desierto Ardiente",
+      "order": 46,
+      "description": "Exploramos la adaptación biológica fotosintética que emplean los cactus, respirando exclusivamente de noche para evitar evaporarse bajo el sol intenso.",
+      "thumbnailTitle": "Sobrevivir al Desierto",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-regreso-de-la-vida-renacer-tras-el-desastre-natural",
+      "title": "El Regreso de la Vida: Renacer Tras el Desastre Natural",
+      "order": 47,
+      "description": "Acompaña a la naturaleza en su proceso metódico y biológico para reconstruir comunidades de plantas y animales completos después de grandes desastres.",
+      "thumbnailTitle": "La Vida Siempre Vuelve",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "guerra-quimica-vegetal-la-batalla-silenciosa-del-bosque",
+      "title": "Guerra Química Vegetal: La Batalla Silenciosa del Bosque",
+      "order": 48,
+      "description": "Descubre la alelopatía biológica, la despiadada estrategia donde algunas plantas secretan compuestos tóxicos para impedir que otras germinen muy cerca.",
+      "thumbnailTitle": "Guerra de Plantas",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "reciclaje-interno-cuando-las-celulas-se-limpian-a-si-mismas",
+      "title": "Reciclaje Interno: Cuando las Células Se Limpian a Sí Mismas",
+      "order": 49,
+      "description": "Investigamos la autofagia, el proceso biológico desatado durante el ayuno donde el cuerpo recicla estructuras celulares viejas para su rejuvenecimiento.",
+      "thumbnailTitle": "Células Recicladas",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-reloj-del-sol-entendiendo-tus-ritmos-circadianos-hoy",
+      "title": "El Reloj del Sol: Entendiendo tus Ritmos Circadianos Hoy",
+      "order": 50,
+      "description": "Analizamos el funcionamiento fisiológico de nuestro reloj biológico maestro y cómo la luz natural coordina el trabajo de cada órgano del cuerpo humano.",
+      "thumbnailTitle": "Tu Reloj Interno",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "archivos-de-la-sangre-la-memoria-de-tu-sistema-inmune",
+      "title": "Archivos de la Sangre: La Memoria de tu Sistema Inmune",
+      "order": 51,
+      "description": "Sorpréndete con la increíble capacidad fisiológica de los linfocitos, células que pueden recordar patógenos específicos décadas después de enfrentarlos.",
+      "thumbnailTitle": "Sangre con Memoria",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "humanos-de-las-alturas-fisiologia-de-la-supervivencia",
+      "title": "Humanos de las Alturas: Fisiología de la Supervivencia",
+      "order": 52,
+      "description": "Descubre cómo ciertas poblaciones humanas han adaptado su biología celular y su fisiología respiratoria para prosperar sanamente en las cimas del mundo.",
+      "thumbnailTitle": "Sobrevivir en la Cima",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    }
+  ]
+}

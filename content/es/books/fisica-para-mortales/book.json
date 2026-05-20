@@ -1,0 +1,542 @@
+{
+  "slug": "fisica-para-mortales",
+  "locale": "es",
+  "title": "Física para Mortales",
+  "subtitle": "Desentrañamos los misterios del universo",
+  "author": "Wordsus Team",
+  "description": "Descubre los secretos del universo en esta guía completa de 365 lecciones de física. Desde las leyes de Newton hasta la mecánica cuántica y el multiverso, explicado de forma sencilla para todos.",
+  "cover": "/images/books/fisica-para-mortales-es-cover.jpeg",
+  "category": "divulgacion-cientifica",
+  "tags": [
+    "fisica",
+    "ciencia",
+    "divulgacion",
+    "universo",
+    "educacion"
+  ],
+  "featured": true,
+  "publishedAt": "2026-04-29",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "el-gato-cuantico-vivo-y-muerto-al-mismo-tiempo",
+      "title": "El Gato Cuántico: Vivo y muerto al mismo tiempo",
+      "order": 1,
+      "description": "Explora el famoso experimento mental del gato de Schrödinger y descubre cómo funciona la extraña superposición cuántica en la física a nivel microscópico.",
+      "thumbnailTitle": "El Gato Cuántico",
+      "draft": false,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "accion-fantasmal-el-misterio-del-entrelazamiento",
+      "title": "Acción Fantasmal: El misterio del entrelazamiento",
+      "order": 2,
+      "description": "Sumérgete en el extraño entrelazamiento cuántico, donde dos partículas se conectan instantáneamente a distancia desafiando nuestras leyes del universo.",
+      "thumbnailTitle": "Conexión Mágica",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "doble-rendija-entre-el-mundo-de-ondas-y-particulas",
+      "title": "Doble Rendija: Entre el mundo de ondas y partículas",
+      "order": 3,
+      "description": "Descubre la extraña dualidad onda-partícula con el experimento de la doble rendija y cómo la simple observación altera el comportamiento de la materia.",
+      "thumbnailTitle": "¿Onda o Partícula?",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "efecto-tunel-atravesando-grandes-muros-invisibles",
+      "title": "Efecto Túnel: Atravesando grandes muros invisibles",
+      "order": 4,
+      "description": "Conoce el efecto túnel, un fenómeno donde las partículas subatómicas logran atravesar barreras físicas impenetrables como si fueran simples fantasmas.",
+      "thumbnailTitle": "Traspasando Muros",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "incertidumbre-el-universo-y-sus-limites-absolutos",
+      "title": "Incertidumbre: El universo y sus límites absolutos",
+      "order": 5,
+      "description": "Analizamos el principio de incertidumbre de Heisenberg para entender por qué resulta totalmente imposible medir con precisión absoluta nuestro universo.",
+      "thumbnailTitle": "Límites del Cosmos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "teletransportacion-viajes-cuanticos-sin-moverse",
+      "title": "Teletransportación: Viajes cuánticos sin moverse",
+      "order": 6,
+      "description": "Aprende sobre la teletransportación cuántica, un método real que transfiere información exacta entre partículas distantes sin mover materia físicamente.",
+      "thumbnailTitle": "Teletransporte Real",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "computo-cuantico-el-gran-futuro-del-poder-de-calculo",
+      "title": "Cómputo Cuántico: El gran futuro del poder de cálculo",
+      "order": 7,
+      "description": "Adéntrate en la computación cuántica y descubre cómo los qubits permiten resolver en segundos problemas que tomarían milenios a sistemas tradicionales.",
+      "thumbnailTitle": "PCs del Futuro",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "fluctuacion-del-vacio-la-nada-originando-cosmos",
+      "title": "Fluctuación del Vacío: La nada originando cosmos",
+      "order": 8,
+      "description": "El vacío absoluto no existe. Exploramos las fluctuaciones del vacío y cómo pares de partículas y antipartículas aparecen y desaparecen constantemente.",
+      "thumbnailTitle": "La Nada no Existe",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "efecto-zenon-congelando-el-tiempo-con-solo-mirar",
+      "title": "Efecto Zenón: Congelando el tiempo con solo mirar",
+      "order": 9,
+      "description": "Descifra el asombroso efecto Zenón cuántico, que demuestra cómo un sistema cuántico puede detener su decaimiento simplemente al ser observado de cerca.",
+      "thumbnailTitle": "Mirada Congelante",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "espuma-cuantica-el-turbulento-tejido-del-universo",
+      "title": "Espuma Cuántica: El turbulento tejido del universo",
+      "order": 10,
+      "description": "Viajamos a la diminuta escala de Planck para entender la espuma cuántica, donde el espacio y el tiempo se transforman en una marea turbulenta y caótica.",
+      "thumbnailTitle": "El Tejido del Espacio",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "dilatacion-temporal-por-que-el-tiempo-no-es-fijo",
+      "title": "Dilatación Temporal: Por qué el tiempo no es fijo",
+      "order": 11,
+      "description": "Exploramos la dilatación del tiempo de la relatividad, donde moverse más rápido provoca que los relojes avancen mucho más lento para un observador local.",
+      "thumbnailTitle": "El Tiempo es Relativo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "paradoja-de-gemelos-envejeciendo-a-distintos-ritmos",
+      "title": "Paradoja de Gemelos: Envejeciendo a distintos ritmos",
+      "order": 12,
+      "description": "Analizamos la famosa paradoja de los gemelos, mostrando cómo viajar a velocidades cercanas a la de la luz genera grandes diferencias biológicas de edad.",
+      "thumbnailTitle": "Gemelos Desiguales",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "contraccion-espacial-el-universo-encogiendose",
+      "title": "Contracción Espacial: El universo encogiéndose",
+      "order": 13,
+      "description": "Descubre la fascinante contracción de la longitud, donde los objetos veloces se comprimen físicamente desde el punto de vista del observador externo.",
+      "thumbnailTitle": "Espacio Encogido",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "simultaneidad-el-momento-presente-es-solo-un-mito",
+      "title": "Simultaneidad: El momento presente es solo un mito",
+      "order": 14,
+      "description": "Comprendemos la ilusión de la simultaneidad temporal: cómo dos eventos que ocurren al mismo tiempo para alguien, suceden en momentos distintos para otro.",
+      "thumbnailTitle": "El Presente Falso",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "formula-de-einstein-la-energia-oculta-de-la-masa",
+      "title": "Fórmula de Einstein: La energía oculta de la masa",
+      "order": 15,
+      "description": "Desglosamos la famosa ecuación de equivalencia masa-energía, revelando que una pequeñísima fracción de materia contiene un poder sumamente gigantesco.",
+      "thumbnailTitle": "Poder de la Materia",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "tejido-espaciotiempo-la-inmensa-gravedad-como-lona",
+      "title": "Tejido Espaciotiempo: La inmensa gravedad como lona",
+      "order": 16,
+      "description": "Adéntrate en el concepto del tejido del espaciotiempo de Einstein, donde la gravedad es solo una curvatura geométrica generada por objetos muy masivos.",
+      "thumbnailTitle": "La Lona Cósmica",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "limite-cosmico-la-barrera-de-luz-inquebrantable",
+      "title": "Límite Cósmico: La barrera de luz inquebrantable",
+      "order": 17,
+      "description": "Descubre por qué la velocidad de la luz en el vacío es el límite cósmico absoluto y por qué intentar superarla exigiría una cantidad de energía infinita.",
+      "thumbnailTitle": "Barrera de la Luz",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "curvas-del-tiempo-viajes-teoricos-hacia-el-pasado",
+      "title": "Curvas del Tiempo: Viajes teóricos hacia el pasado",
+      "order": 18,
+      "description": "Explora la teoría de las curvas cerradas de tipo tiempo, una solución matemática de la relatividad general que permitiría viajar al pasado creando bucles.",
+      "thumbnailTitle": "Viaje al Pasado",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "particulas-taquionicas-corriendo-contra-la-luz",
+      "title": "Partículas Taquiónicas: Corriendo contra la luz",
+      "order": 19,
+      "description": "Conoce a los taquiones, aquellas hipotéticas partículas que viajan superando la velocidad de la luz y que, en teoría, avanzarían hacia atrás en el tiempo.",
+      "thumbnailTitle": "Partículas del Pasado",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "dimensiones-ocultas-los-misteriosos-mundos-extra",
+      "title": "Dimensiones Ocultas: Los misteriosos mundos extra",
+      "order": 20,
+      "description": "Hablamos sobre las dimensiones espaciales adicionales predichas por diversas teorías físicas, que estarían enrolladas microscópicamente a nuestro alrededor.",
+      "thumbnailTitle": "Dimensiones Ocultas",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-boson-de-higgs-la-misteriosa-particula-de-la-masa",
+      "title": "El Bosón de Higgs: La misteriosa partícula de la masa",
+      "order": 21,
+      "description": "Descubre el misterio tras el bosón de Higgs y su campo asociado, elementos fundamentales responsables de otorgar masa a las demás partículas del universo.",
+      "thumbnailTitle": "La Partícula de Dios",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "la-antimateria-el-gemelo-explosivo-de-la-materia",
+      "title": "La Antimateria: El gemelo explosivo de la materia",
+      "order": 22,
+      "description": "Conoce los secretos de la antimateria, el equivalente opuesto de la materia normal que genera una aniquilación pura de energía si ambas llegan a tocarse.",
+      "thumbnailTitle": "El Gemelo Malvado",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "neutrinos-fantasmas-particulas-que-pasan-de-largo",
+      "title": "Neutrinos Fantasmas: Partículas que pasan de largo",
+      "order": 23,
+      "description": "Analizamos a los esquivos neutrinos, unas partículas casi sin masa que atraviesan constantemente tu cuerpo y el planeta entero sin interactuar con nada.",
+      "thumbnailTitle": "Partículas Fantasma",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "confinamiento-los-prisioneros-del-mundo-subatomico",
+      "title": "Confinamiento: Los prisioneros del mundo subatómico",
+      "order": 24,
+      "description": "Exploramos el confinamiento de los quarks y por qué es totalmente imposible separarlos aisladamente dentro de un protón sin generar partículas de la nada.",
+      "thumbnailTitle": "Prisioneros Cuánticos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "modelo-estandar-la-receta-universal-de-ingredientes",
+      "title": "Modelo Estándar: La receta universal de ingredientes",
+      "order": 25,
+      "description": "Descifra con nosotros el modelo estándar, la teoría más exitosa de la física que describe perfectamente todas las partículas y tres fuerzas fundamentales.",
+      "thumbnailTitle": "Receta del Universo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "anomalia-del-muon-un-misterio-enorme-para-la-ciencia",
+      "title": "Anomalía del Muón: Un misterio enorme para la ciencia",
+      "order": 26,
+      "description": "Investigamos la anomalía del momento magnético del muón, un resultado experimental reciente que desafía directamente nuestras reglas de la física actual.",
+      "thumbnailTitle": "Física en Peligro",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "teoria-de-cuerdas-la-vibracion-forma-la-realidad",
+      "title": "Teoría de Cuerdas: La vibración forma la realidad",
+      "order": 27,
+      "description": "Adéntrate en la compleja teoría de cuerdas, el intento matemático de unificar toda la física sugiriendo que las partículas son pequeños hilos vibratorios.",
+      "thumbnailTitle": "Sinfonía Cósmica",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "gravedad-cuantica-el-gran-santo-grial-de-la-fisica",
+      "title": "Gravedad Cuántica: El gran santo grial de la física",
+      "order": 28,
+      "description": "Abordamos el mayor desafío teórico existente: la gravedad cuántica, el intento por lograr que la relatividad y la mecánica cuántica funcionen en conjunto.",
+      "thumbnailTitle": "El Santo Grial",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "flecha-del-tiempo-la-imposibilidad-de-ir-al-pasado",
+      "title": "Flecha del Tiempo: La imposibilidad de ir al pasado",
+      "order": 29,
+      "description": "Descubre por qué existe la flecha del tiempo y cómo las leyes de la termodinámica nos impiden recordar el futuro, dándole una única dirección al cosmos.",
+      "thumbnailTitle": "Dirección del Tiempo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "leyes-de-entropia-el-inevitable-caos-del-universo",
+      "title": "Leyes de Entropía: El inevitable caos del universo",
+      "order": 30,
+      "description": "Aprende sobre la entropía y la tendencia fundamental del universo a pasar del orden al desorden, garantizando que los objetos rotos jamás se reparen solos.",
+      "thumbnailTitle": "Hacia el Caos Total",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "demonio-de-maxwell-burlandose-de-la-termodinamica",
+      "title": "Demonio de Maxwell: Burlándose de la termodinámica",
+      "order": 31,
+      "description": "Exploramos el brillante experimento mental conocido como el demonio de Maxwell, un ser imaginario que podría desafiar las estrictas reglas de termodinámica.",
+      "thumbnailTitle": "El Demonio del Calor",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-cero-absoluto-el-frio-extremo-detiene-el-cosmos",
+      "title": "El Cero Absoluto: El frío extremo detiene el cosmos",
+      "order": 32,
+      "description": "Viajamos al cero absoluto de temperatura para entender qué ocurre cuando el movimiento térmico de los átomos se detiene casi por completo en un material.",
+      "thumbnailTitle": "El Límite del Frío",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "temperaturas-negativas-mas-caliente-que-infinito",
+      "title": "Temperaturas Negativas: Más caliente que infinito",
+      "order": 33,
+      "description": "Descubre el extraño reino de las temperaturas absolutas negativas en sistemas cuánticos, que técnicamente resultan estar más calientes que cualquier otra.",
+      "thumbnailTitle": "Calor Imposible",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "teoria-del-caos-el-huracan-que-desata-la-mariposa",
+      "title": "Teoría del Caos: El huracán que desata la mariposa",
+      "order": 34,
+      "description": "Analizamos el efecto mariposa dentro de la teoría del caos, donde el más mínimo cambio inicial en un sistema altera de forma colosal el resultado futuro.",
+      "thumbnailTitle": "Efecto Mariposa",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "demonio-de-laplace-el-futuro-ya-se-encuentra-escrito",
+      "title": "Demonio de Laplace: ¿El futuro ya se encuentra escrito?",
+      "order": 35,
+      "description": "Debatimos el determinismo y el demonio de Laplace: ¿si una mente calculara cada átomo, lograría predecir con exactitud absoluta todo el futuro cósmico?",
+      "thumbnailTitle": "El Futuro Escrito",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "movimiento-perpetuo-la-gran-mentira-de-energia-libre",
+      "title": "Movimiento Perpetuo: La gran mentira de energía libre",
+      "order": 36,
+      "description": "Descubre por qué la física básica hace imposible crear máquinas de movimiento perpetuo que funcionen sin fuentes externas, conservando siempre la energía.",
+      "thumbnailTitle": "Energía Infinita",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "superconductores-corriente-electrica-para-siempre",
+      "title": "Superconductores: Corriente eléctrica para siempre",
+      "order": 37,
+      "description": "Hablamos de la superconductividad, un asombroso estado donde los materiales enfriados pierden toda su resistencia eléctrica fluyendo sin perder su poder.",
+      "thumbnailTitle": "Corriente Eterna",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "levitacion-cuantica-flotando-con-el-efecto-meissner",
+      "title": "Levitación Cuántica: Flotando con el efecto Meissner",
+      "order": 38,
+      "description": "Experimentamos la levitación magnética cuántica, donde los superconductores expulsan campos para flotar inamovibles sobre potentes imanes y sin fricción.",
+      "thumbnailTitle": "Magia Magnética",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "superfluidez-total-liquidos-trepando-por-las-paredes",
+      "title": "Superfluidez Total: Líquidos trepando por las paredes",
+      "order": 39,
+      "description": "Adéntrate en los misterios de la superfluidez, donde fluidos extremadamente fríos pierden su viscosidad y logran fluir libremente desafiando a la física.",
+      "thumbnailTitle": "Líquidos Trepadores",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "condensado-de-bose-el-superatomo-de-los-laboratorios",
+      "title": "Condensado de Bose: El superátomo de los laboratorios",
+      "order": 40,
+      "description": "Exploramos los condensados de Bose-Einstein, aquel quinto estado de la materia donde miles de átomos se fusionan comportándose como una entidad gigante.",
+      "thumbnailTitle": "El Quinto Estado",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "cristales-temporales-su-estructura-en-pleno-cambio",
+      "title": "Cristales Temporales: Su estructura en pleno cambio",
+      "order": 41,
+      "description": "Sorpréndete con los cristales de tiempo, un nuevo y exótico estado de la materia que repite sus complejos patrones estructurales de manera perpetua siempre.",
+      "thumbnailTitle": "Cristales Temporales",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "humo-solido-ligero-los-aerogeles-mas-ultralivianos",
+      "title": "Humo Sólido Ligero: Los aerogeles más ultralivianos",
+      "order": 42,
+      "description": "Descubre las increíbles aplicaciones de los aerogeles artificiales, conocidos como humo sólido por ser unos de los aislantes térmicos más ligeros del mundo.",
+      "thumbnailTitle": "Humo Sólido",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "metamateriales-creando-las-capas-de-invisibilidad",
+      "title": "Metamateriales: Creando las capas de invisibilidad",
+      "order": 43,
+      "description": "Analizamos la ciencia detrás de los metamateriales, complejos diseños microscópicos que logran doblar la luz electromagnética abriendo paso a la invisibilidad.",
+      "thumbnailTitle": "Capa de Invisibilidad",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "hielo-superionico-agua-muy-caliente-y-alta-presion",
+      "title": "Hielo Superiónico: Agua muy caliente y alta presión",
+      "order": 44,
+      "description": "Investigamos el hielo súper iónico, un extraño estado extremo del agua capaz de fluir como metal líquido manteniéndose sorprendentemente muy caliente siempre.",
+      "thumbnailTitle": "El Hielo Caliente",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "efecto-casimir-cuando-el-vacio-exterior-te-empuja",
+      "title": "Efecto Casimir: Cuando el vacío exterior te empuja",
+      "order": 45,
+      "description": "Conoce el misterioso efecto Casimir, donde placas metálicas extremadamente juntas en el vacío se atraen impulsadas por sutiles ondas de partículas virtuales.",
+      "thumbnailTitle": "El Vacío Empuja",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "sonoluminiscencia-luz-fuerte-creada-por-ondas-sonoras",
+      "title": "Sonoluminiscencia: Luz fuerte creada por ondas sonoras",
+      "order": 46,
+      "description": "Observamos la increíble sonoluminiscencia, un raro fenómeno donde las vibraciones acústicas colapsan burbujas para generar intensos destellos de luz brillantes.",
+      "thumbnailTitle": "Luz desde el Sonido",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "levitacion-acustica-sosteniendo-objetos-con-sonido",
+      "title": "Levitación Acústica: Sosteniendo objetos con sonido",
+      "order": 47,
+      "description": "Descubre cómo la levitación acústica emplea poderosas ondas sonoras para suspender pequeños objetos en el aire simulando una total y real ausencia de gravedad.",
+      "thumbnailTitle": "Flotar con Sonido",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "magia-de-cimatica-la-geometria-oculta-tras-la-musica",
+      "title": "Magia de Cimática: La geometría oculta tras la música",
+      "order": 48,
+      "description": "Estudiamos los asombrosos patrones de la cimática y aprendemos cómo las potentes ondas acústicas logran estructurar la arena creando espectaculares diseños.",
+      "thumbnailTitle": "Ver el Sonido",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "holografia-fisica-capturando-el-espacio-en-los-planos",
+      "title": "Holografía Física: Capturando el espacio en los planos",
+      "order": 49,
+      "description": "Entiende cómo funciona realmente la holografía física, empleando la interferencia láser para almacenar información tridimensional real en superficies muy planas.",
+      "thumbnailTitle": "Hologramas Reales",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "efecto-de-coriolis-por-que-giran-fuerte-los-huracanes",
+      "title": "Efecto de Coriolis: Por qué giran fuerte los huracanes",
+      "order": 50,
+      "description": "Aclaramos los grandes mitos del efecto Coriolis y cómo la rotación inercial de la Tierra afecta la dirección en que giran las tormentas a nivel planetario.",
+      "thumbnailTitle": "Giro del Planeta",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "triboelectricidad-grandes-secretos-de-estatica-diaria",
+      "title": "Triboelectricidad: Grandes secretos de estática diaria",
+      "order": 51,
+      "description": "Indagamos en el conocido efecto triboeléctrico de la electricidad estática y sus profundos misterios subatómicos que aún siguen sin explicarse por la fricción.",
+      "thumbnailTitle": "Misterio Estático",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "gotas-de-brea-lentas-un-enorme-experimento-mecanico",
+      "title": "Gotas de Brea Lentas: Un enorme experimento mecánico",
+      "order": 52,
+      "description": "Analizamos el curioso experimento mecánico de la gota de brea, demostrando empíricamente que ciertos materiales aparentemente sólidos fluyen con gran lentitud.",
+      "thumbnailTitle": "Rocas que Fluyen",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    }
+  ]
+}

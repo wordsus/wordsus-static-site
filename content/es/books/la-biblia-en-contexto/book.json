@@ -1,0 +1,541 @@
+{
+  "slug": "la-biblia-en-contexto",
+  "locale": "es",
+  "title": "La Biblia en Contexto",
+  "subtitle": "El mundo real detrás del texto sagrado",
+  "author": "Wordsus Team",
+  "description": "Un viaje fascinante por el mundo antiguo para comprender el contexto histórico, cultural y geográfico de las Escrituras. Descubre cómo vivían, pensaban y sentían los personajes bíblicos para transformar tu lectura de la Biblia.",
+  "cover": "/images/books/la-biblia-en-contexto-es-cover.jpeg",
+  "category": "estudios-biblicos",
+  "tags": [
+    "biblia",
+    "contexto-historico",
+    "estudios-biblicos",
+    "cultura-antigua"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-01",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "bodas-del-primer-siglo-la-espera-del-esposo-prometido",
+      "title": "Bodas del Primer Siglo: La Espera del Esposo Prometido",
+      "order": 1,
+      "description": "Descubre las antiguas etapas del compromiso y la boda judía. Este fascinante contexto cultural revela los profundos secretos de las diez vírgenes.",
+      "thumbnailTitle": "¡El Esposo Viene!",
+      "draft": false,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "recibir-al-forastero-el-sagrado-deber-de-la-hospitalidad",
+      "title": "Recibir al Forastero: El Sagrado Deber de la Hospitalidad",
+      "order": 2,
+      "description": "Exploramos la hospitalidad en el Medio Oriente antiguo. Conoce por qué lavar los pies y recibir extraños era una cuestión de sagrado honor bíblico.",
+      "thumbnailTitle": "Honor y Hospitalidad",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-pastor-y-su-rebano-el-cuidado-de-las-ovejas-antiguas",
+      "title": "El Pastor y su Rebaño: El Cuidado de las Ovejas Antiguas",
+      "order": 3,
+      "description": "Sumérgete en la vida del pastoreo antiguo y descubre cómo el cuidado literal de las ovejas ilumina profundamente el Salmo veintitrés y Juan diez.",
+      "thumbnailTitle": "El Buen Pastor",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "tiempos-de-cosecha-las-estaciones-y-la-agricultura-biblica",
+      "title": "Tiempos de Cosecha: Las Estaciones y la Agricultura Bíblica",
+      "order": 4,
+      "description": "Analizamos el ciclo de la agricultura bíblica. Las lluvias tempranas y tardías nos enseñan valiosas lecciones sobre la fe y el juicio de Dios hoy.",
+      "thumbnailTitle": "Lluvias de Bendición",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "lagrimas-y-sepulcros-los-ritos-funerarios-de-la-antiguedad",
+      "title": "Lágrimas y Sepulcros: Los Ritos Funerarios de la Antigüedad",
+      "order": 5,
+      "description": "Conoce las antiguas costumbres de luto en Israel. El rol de las plañideras y los sepulcros blanqueados aclaran difíciles e intensos pasajes bíblicos.",
+      "thumbnailTitle": "Luto en la Biblia",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "techos-y-escaleras-la-arquitectura-de-la-casa-israelita",
+      "title": "Techos y Escaleras: La Arquitectura de la Casa Israelita",
+      "order": 6,
+      "description": "Descubre cómo la arquitectura y el diseño de la antigua vivienda israelita explican el asombroso milagro del paralítico bajado por aquel techo plano.",
+      "thumbnailTitle": "Casas del Siglo I",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-pan-y-el-aceite-la-alimentacion-cotidiana-en-la-biblia",
+      "title": "El Pan y el Aceite: La Alimentación Cotidiana en la Biblia",
+      "order": 7,
+      "description": "Explora la alimentación bíblica cotidiana y el profundo significado espiritual de compartir el pan, el vino y estar todos juntos sentados a la mesa.",
+      "thumbnailTitle": "Sentados a la Mesa",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "tunicas-y-mantos-el-significado-de-la-vestimenta-biblica",
+      "title": "Túnicas y Mantos: El Significado de la Vestimenta Bíblica",
+      "order": 8,
+      "description": "Analizamos la vestimenta bíblica, los flecos y filacterias. Comprenderás el poderoso significado que tuvo tocar el sagrado borde del manto de Jesús.",
+      "thumbnailTitle": "El Borde del Manto",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "a-los-pies-del-maestro-el-sistema-educativo-de-los-judios",
+      "title": "A los Pies del Maestro: El Sistema Educativo de los Judíos",
+      "order": 9,
+      "description": "Adéntrate en el sistema educativo judío del primer siglo y el intenso llamado de los discípulos para lograr imitar literalmente a su maestro rabino.",
+      "thumbnailTitle": "El Discípulo Ideal",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "mujeres-valientes-su-verdadero-rol-en-los-tiempos-biblicos",
+      "title": "Mujeres Valientes: Su Verdadero Rol en los Tiempos Bíblicos",
+      "order": 10,
+      "description": "Comprende el rol de la mujer en la antigüedad judía y cómo el compasivo trato de Jesús hacia ellas rompió radicalmente con los paradigmas sociales.",
+      "thumbnailTitle": "Jesús y las Mujeres",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "tocando-al-intocable-las-enfermedades-y-la-purificacion",
+      "title": "Tocando al Intocable: Las Enfermedades y la Purificación",
+      "order": 11,
+      "description": "Descubre el estigma religioso de la lepra en la antigüedad. Este crudo contexto histórico revela qué significaba cuando Jesús tocaba a un intocable.",
+      "thumbnailTitle": "El Toque Sanador",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-pariente-redentor-rut-booz-y-la-ley-del-antiguo-israel",
+      "title": "El Pariente Redentor: Rut, Booz y la Ley del Antiguo Israel",
+      "order": 12,
+      "description": "Explicamos la antigua ley del levirato y el pariente redentor. El hermoso relato de Rut y Booz prefigura magistralmente la gran redención de Cristo.",
+      "thumbnailTitle": "El Redentor Bíblico",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "denarios-y-talentos-el-sistema-economico-del-primer-siglo",
+      "title": "Denarios y Talentos: El Sistema Económico del Primer Siglo",
+      "order": 13,
+      "description": "Analiza las monedas y la economía antigua de Israel. Conocer el valor real de los talentos te ayudará a dimensionar las grandes deudas en parábolas.",
+      "thumbnailTitle": "Monedas de la Biblia",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "aguas-agitadas-el-mar-de-galilea-y-sus-violentas-tormentas",
+      "title": "Aguas Agitadas: El Mar de Galilea y sus Violentas Tormentas",
+      "order": 14,
+      "description": "Exploramos la geografía del Mar de Galilea. Su extraña topografía explica por qué ocurrían aquellas repentinas y violentas tormentas en los relatos.",
+      "thumbnailTitle": "Tormenta en Galilea",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "fronteras-rotas-la-antigua-enemistad-entre-judea-y-samaria",
+      "title": "Fronteras Rotas: La Antigua Enemistad entre Judea y Samaria",
+      "order": 15,
+      "description": "Descubre las verdaderas razones históricas por las que los judíos evitaban Samaria, lo que hace revolucionaria a la historia del Buen Samaritano hoy.",
+      "thumbnailTitle": "Judea vs. Samaria",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "lugar-de-encuentro-el-desierto-como-prueba-y-purificacion",
+      "title": "Lugar de Encuentro: El Desierto como Prueba y Purificación",
+      "order": 16,
+      "description": "Profundizamos en el concepto del desierto. Más que un lugar seco, era un divino escenario de prueba, purificación y un encuentro íntimo con el Señor.",
+      "thumbnailTitle": "Pruebas del Desierto",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "valles-de-juicio-jerusalen-el-cedron-y-el-valle-de-hinom",
+      "title": "Valles de Juicio: Jerusalén, el Cedrón y el Valle de Hinom",
+      "order": 17,
+      "description": "Recorremos los históricos valles de Jerusalén. Conoce cómo el oscuro Valle de Hinom fue utilizado como una ilustración literal y terrenal del infierno.",
+      "thumbnailTitle": "Los Valles Bíblicos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "una-montana-sagrada-la-increible-historia-del-monte-moriah",
+      "title": "Una Montaña Sagrada: La Increíble Historia del Monte Moriah",
+      "order": 18,
+      "description": "Revive la extensa historia del Monte del Templo. Desde el épico sacrificio de Isaac hasta la gloriosa construcción del templo de Salomón y de Herodes.",
+      "thumbnailTitle": "El Monte del Templo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-rocio-de-hermon-clima-lluvias-y-dependencia-del-cielo",
+      "title": "El Rocío de Hermón: Clima, Lluvias y Dependencia del Cielo",
+      "order": 19,
+      "description": "Descubre cómo el clima y las lluvias de Israel funcionaban como un claro termómetro espiritual de la íntima relación y total obediencia hacia el Señor.",
+      "thumbnailTitle": "El Rocío de Hermón",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "tesoros-en-qumran-el-hallazgo-de-los-rollos-del-mar-muerto",
+      "title": "Tesoros en Qumrán: El Hallazgo de los Rollos del Mar Muerto",
+      "order": 20,
+      "description": "Analizamos el gran descubrimiento arqueológico de Qumrán. Estos valiosos rollos demostraron la perfecta precisión en la transmisión del texto bíblico.",
+      "thumbnailTitle": "Los Manuscritos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "aguas-de-sanidad-los-estanques-de-siloe-y-tambien-betesda",
+      "title": "Aguas de Sanidad: Los Estanques de Siloé y también Betesda",
+      "order": 21,
+      "description": "Exploramos los descubrimientos modernos de Siloé y Betesda. La sorprendente arqueología actual ha confirmado los relatos precisos del evangelio de Juan.",
+      "thumbnailTitle": "El Estanque de Siloé",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "fuego-en-las-alturas-elias-y-la-batalla-en-el-monte-carmelo",
+      "title": "Fuego en las Alturas: Elías y la Batalla en el Monte Carmelo",
+      "order": 22,
+      "description": "Conoce la fascinante geografía del Monte Carmelo. Este importante contexto resalta la confrontación épica entre el profeta Elías y los falsos profetas.",
+      "thumbnailTitle": "Fuego en el Carmelo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "asilo-en-la-antiguedad-el-proposito-de-las-seis-ciudades",
+      "title": "Asilo en la Antigüedad: El Propósito de las Seis Ciudades",
+      "order": 23,
+      "description": "Estudiamos las antiguas ciudades de refugio de Israel. Descubre cómo operaba este particular sistema legal de asilo para un homicida involuntario.",
+      "thumbnailTitle": "Ciudades de Refugio",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "centro-de-operaciones-capernaum-y-el-ministerio-de-jesus",
+      "title": "Centro de Operaciones: Capernaum y el Ministerio de Jesús",
+      "order": 24,
+      "description": "Recorre la bulliciosa ciudad pesquera de Capernaum. Este importante centro albergó numerosas sinagogas y sirvió como el gran cuartel general de Jesús.",
+      "thumbnailTitle": "Capernaum Bíblica",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "caminos-de-piedra-las-calzadas-romanas-y-el-evangelio",
+      "title": "Caminos de Piedra: Las Calzadas Romanas y el Evangelio",
+      "order": 25,
+      "description": "Analizamos la extensa y sólida red de caminos romanos. Conocerás cómo esta gran ingeniería facilitó la veloz expansión del evangelio en los Hechos.",
+      "thumbnailTitle": "Los Caminos Romanos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "rutas-de-peligro-los-senderos-hacia-jerico-y-tambien-emaus",
+      "title": "Rutas de Peligro: Los Senderos hacia Jericó y también Emaús",
+      "order": 26,
+      "description": "Explora la desafiante geografía del camino a Emaús y Jericó. Estas peligrosas y remotas rutas montañosas eran tristemente famosas por sus asaltantes.",
+      "thumbnailTitle": "El Camino a Emaús",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-gran-silencio-los-cuatrocientos-anos-intertestamentarios",
+      "title": "El Gran Silencio: Los Cuatrocientos Años Intertestamentarios",
+      "order": 27,
+      "description": "Profundizamos en el período Intertestamentario. Durante estos grandes años de aparente silencio profético, todo el escenario del mundo bíblico cambió.",
+      "thumbnailTitle": "400 Años de Silencio",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "rebelion-y-milagros-los-macabeos-y-el-origen-de-hanukkah",
+      "title": "Rebelión y Milagros: Los Macabeos y el Origen de Hanukkah",
+      "order": 28,
+      "description": "Conoce la histórica y sangrienta rebelión de los Macabeos. Este evento explica el origen de Hanukkah y el profundo anhelo de libertad militar judía.",
+      "thumbnailTitle": "Rebelión Macabea",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-imperio-de-hierro-la-paz-romana-y-el-tiempo-cumplido",
+      "title": "El Imperio de Hierro: La Paz Romana y el Tiempo Cumplido",
+      "order": 29,
+      "description": "Estudia la influencia del inmenso Imperio Romano. La gran paz impuesta, el lenguaje y las seguras carreteras prepararon el escenario para Jesucristo.",
+      "thumbnailTitle": "La Paz Romana",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "constructor-y-tirano-la-paranoia-de-herodes-el-grande",
+      "title": "Constructor y Tirano: La Paranoia de Herodes el Grande",
+      "order": 30,
+      "description": "Comprende la compleja dualidad histórica de Herodes el Grande. Su inmenso genio arquitectónico contrasta tristemente con sus crímenes más despiadados.",
+      "thumbnailTitle": "Herodes el Grande",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "tradicion-contra-poder-los-fariseos-frente-a-los-saduceos",
+      "title": "Tradición contra Poder: Los Fariseos frente a los Saduceos",
+      "order": 31,
+      "description": "Compara las notables diferencias teológicas entre fariseos y saduceos. Entiende sus antiguas disputas por el control del sagrado templo de Jerusalén.",
+      "thumbnailTitle": "Fariseos y Saduceos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "espadas-y-misticismo-los-zelotes-y-la-secta-de-los-esenios",
+      "title": "Espadas y Misticismo: Los Zelotes y la Secta de los Esenios",
+      "order": 32,
+      "description": "Analiza los movimientos marginales de Israel. Aprende quiénes eran los celosos zelotes armados y los aislados y enigmáticos místicos en el desierto.",
+      "thumbnailTitle": "Zelotes y Esenios",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-tribunal-supremo-el-sanedrin-y-el-juicio-de-jesucristo",
+      "title": "El Tribunal Supremo: El Sanedrín y el Juicio de Jesucristo",
+      "order": 33,
+      "description": "Explora el funcionamiento del antiguo Sanedrín judío. Conoce este consejo de setenta y un ancianos y todas las estrictas leyes que rompieron con Jesús.",
+      "thumbnailTitle": "El Gran Sanedrín",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "sangre-en-el-altar-el-sistema-de-sacrificios-leviticos",
+      "title": "Sangre en el Altar: El Sistema de Sacrificios Levíticos",
+      "order": 34,
+      "description": "Descubre los distintos sacrificios del sistema levítico. Las ofrendas de paz, el holocausto y la expiación ilustran cómo nuestro Cristo los cumplió todos.",
+      "thumbnailTitle": "Sacrificios de Sangre",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "sombras-celestiales-el-asombroso-diseno-del-tabernaculo",
+      "title": "Sombras Celestiales: El Asombroso Diseño del Tabernáculo",
+      "order": 35,
+      "description": "Adéntrate en el maravilloso simbolismo del antiguo Tabernáculo. Sus recintos sagrados y su mobiliario apuntan directamente hacia la obra de nuestro Cristo.",
+      "thumbnailTitle": "El Tabernáculo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "calendario-profetico-las-siete-fiestas-del-senor-en-israel",
+      "title": "Calendario Profético: Las Siete Fiestas del Señor en Israel",
+      "order": 36,
+      "description": "Estudia el detallado calendario profético de Israel. Estas siete solemnes fiestas anuales revelan el preciso e inmenso plan redentor de nuestro gran Dios.",
+      "thumbnailTitle": "Las Fiestas Judías",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "fuego-y-destruccion-la-caida-de-jerusalen-en-el-ano-setenta",
+      "title": "Fuego y Destrucción: La Caída de Jerusalén en el Año Setenta",
+      "order": 37,
+      "description": "Analiza la profetizada y trágica destrucción de Jerusalén. Este doloroso evento en el año setenta transformó drásticamente el rumbo del mundo religioso.",
+      "thumbnailTitle": "La Caída del Templo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "dinero-y-traicion-los-recaudadores-de-impuestos-romanos",
+      "title": "Dinero y Traición: Los Recaudadores de Impuestos Romanos",
+      "order": 38,
+      "description": "Comprende el intenso odio social hacia los odiados publicanos. Conoce por qué recaudar antiguos impuestos romanos los convertía en traidores nacionales.",
+      "thumbnailTitle": "Los Publicanos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "bestias-y-metales-los-imperios-en-las-visiones-de-daniel",
+      "title": "Bestias y Metales: Los Imperios en las Visiones de Daniel",
+      "order": 39,
+      "description": "Descubre la secuencia profética de imperios en Daniel. Comprender a Babilonia, Persia, Grecia y Roma moldea nuestra actual visión de la escatología.",
+      "thumbnailTitle": "Imperios de Daniel",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "palabras-antiguas-los-idiomas-originales-de-las-escrituras",
+      "title": "Palabras Antiguas: Los Idiomas Originales de las Escrituras",
+      "order": 40,
+      "description": "Explora las antiguas lenguas bíblicas originales. Descubre los bellos matices del hebreo, las porciones en arameo y la enorme exactitud del griego koiné.",
+      "thumbnailTitle": "Idiomas Bíblicos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "rimas-de-pensamiento-la-poesia-hebrea-y-sus-paralelismos",
+      "title": "Rimas de Pensamiento: La Poesía Hebrea y sus Paralelismos",
+      "order": 41,
+      "description": "Aprende a leer la hermosa poesía hebrea. Descubre cómo los sabios autores bíblicos rimaban brillantes ideas en lugar de sonidos para adorar al Creador.",
+      "thumbnailTitle": "La Poesía Hebrea",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-sello-divino-el-proceso-historico-de-la-canonizacion",
+      "title": "El Sello Divino: El Proceso Histórico de la Canonización",
+      "order": 42,
+      "description": "Estudiamos el cuidadoso y largo proceso del canon bíblico. Conoce cómo la iglesia primitiva logró reconocer qué libros sagrados tenían autoridad divina.",
+      "thumbnailTitle": "El Canon Bíblico",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "tratados-de-vasallos-los-antiguos-pactos-del-medio-oriente",
+      "title": "Tratados de Vasallos: Los Antiguos Pactos del Medio Oriente",
+      "order": 43,
+      "description": "Analiza el importante formato de los tratados antiguos orientales. La estructura de estos pactos soberanos se refleja claramente en la gran ley del Sinaí.",
+      "thumbnailTitle": "Pactos de Sangre",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "idolos-enganosos-los-falsos-dioses-cananeos-y-su-peligro",
+      "title": "Ídolos Engañosos: Los Falsos Dioses Cananeos y su Peligro",
+      "order": 44,
+      "description": "Descubre quiénes eran los terribles dioses de Canaán. Conoce por qué el oscuro culto de fertilidad de Baal y Asera fue una constante tentación en Israel.",
+      "thumbnailTitle": "Ídolos Cananeos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-precio-de-la-vida-el-concepto-de-la-sangre-en-la-biblia",
+      "title": "El Precio de la Vida: El Concepto de la Sangre en la Biblia",
+      "order": 45,
+      "description": "Profundizamos en el significado espiritual y vital de la sangre. Aprende por qué la antigua remisión de pecados siempre requería este inmenso sacrificio.",
+      "thumbnailTitle": "El Valor de la Sangre",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "identidad-y-promesa-el-profundo-significado-de-los-nombres",
+      "title": "Identidad y Promesa: El Profundo Significado de los Nombres",
+      "order": 46,
+      "description": "Explora la importancia vital de los nombres hebreos. En aquella cultura bíblica, el nombre definía por completo el carácter y la identidad de una persona.",
+      "thumbnailTitle": "Nombres Bíblicos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "textos-griegos-la-historia-de-la-biblia-septuaginta-antigua",
+      "title": "Textos Griegos: La Historia de la Biblia Septuaginta Antigua",
+      "order": 47,
+      "description": "Conoce la fascinante historia de la sagrada Septuaginta. Esta traducción griega fue la misma versión bíblica que nuestro Señor Jesucristo solía citar.",
+      "thumbnailTitle": "La Septuaginta",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "codigos-sagrados-el-asombroso-uso-de-la-numerologia-biblica",
+      "title": "Códigos Sagrados: El Asombroso Uso de la Numerología Bíblica",
+      "order": 48,
+      "description": "Analizamos la profunda numerología bíblica sagrada. Descubre el significado real de los números, como el siete de perfección y el doce para el gobierno.",
+      "thumbnailTitle": "Números de Dios",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "luz-contra-oscuridad-angeles-y-demonios-en-el-primer-siglo",
+      "title": "Luz contra Oscuridad: Ángeles y Demonios en el Primer Siglo",
+      "order": 49,
+      "description": "Adéntrate en la intensa cosmovisión espiritual del primer siglo. Este vital contexto histórico aclara los constantes y poderosos exorcismos de los evangelios.",
+      "thumbnailTitle": "Ángeles y Demonios",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-rey-sufrido-las-expectativas-sobre-el-mesias-prometido",
+      "title": "El Rey Sufrido: Las Expectativas sobre el Mesías Prometido",
+      "order": 50,
+      "description": "Exploramos el concepto histórico del anhelado Mesías judío. Comprende la frustración de Israel al recibir a un glorioso rey dispuesto a sufrir por ellos.",
+      "thumbnailTitle": "El Rey Mesías",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "reglas-de-lectura-como-interpretar-los-diferentes-generos",
+      "title": "Reglas de Lectura: Cómo Interpretar los Diferentes Géneros",
+      "order": 51,
+      "description": "Aprende sobre los hermosos y diversos géneros literarios bíblicos. Descubre cómo interpretar correctamente la gran profecía, la poesía y también la historia.",
+      "thumbnailTitle": "Géneros Bíblicos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "cuentos-sorpresivos-el-ingenio-de-las-parabolas-rabinicas",
+      "title": "Cuentos Sorpresivos: El Ingenio de las Parábolas Rabínicas",
+      "order": 52,
+      "description": "Estudiamos el poderoso uso de las parábolas rabínicas antiguas. Entiende por qué Jesús llevó este común método de enseñanza judía hacia la total perfección.",
+      "thumbnailTitle": "Las Parábolas",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    }
+  ]
+}

@@ -1,0 +1,543 @@
+{
+  "slug": "biology-for-mortals",
+  "locale": "en",
+  "title": "Biology for Mortals",
+  "subtitle": "Exploring Nature's Hidden Code",
+  "author": "Wordsus Team",
+  "description": "Explore the mysteries of life through 365 fascinating lessons. From DNA and genetics to evolution and deep ecology, explained simply for everyone.",
+  "cover": "/images/books/biology-for-mortals-en-cover.jpeg",
+  "category": "popular-science",
+  "tags": [
+    "biology",
+    "science",
+    "divulgation",
+    "life",
+    "genetics",
+    "evolution"
+  ],
+  "featured": true,
+  "publishedAt": "2026-04-30",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "dna-scissors-rewriting-the-manual-of-life",
+      "title": "DNA Scissors: Rewriting the Manual of Life",
+      "order": 1,
+      "description": "Discover how CRISPR technology allows us to edit the genetic code. We explore the promises and risks of this fascinating biological tool.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": false,
+      "thumbnailTitle": "Hacking DNA!"
+    },
+    {
+      "slug": "beyond-the-gene-how-the-environment-shapes-your-destiny",
+      "title": "Beyond the Gene: How the Environment Shapes Your Destiny",
+      "order": 2,
+      "description": "We analyze epigenetics, the amazing field that explains how your lifestyle and environment turn genes on or off without altering your DNA.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Your Genes Change"
+    },
+    {
+      "slug": "return-from-beyond-resurrecting-lost-species",
+      "title": "Return from Beyond: Resurrecting Lost Species",
+      "order": 3,
+      "description": "Learn about de-extinction scientific projects that seek to bring back to life the woolly mammoth, the dodo, and other extinct animals.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "They Come Back!"
+    },
+    {
+      "slug": "ancient-heritage-the-neanderthal-within-us",
+      "title": "Ancient Heritage: The Neanderthal Within Us",
+      "order": 4,
+      "description": "We explore the fascinating evolutionary history and why the vast majority of modern humans retain Neanderthal DNA that affects our health.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Are You Neanderthal?"
+    },
+    {
+      "slug": "the-internal-clock-telomeres-and-aging",
+      "title": "The Internal Clock: Telomeres and Aging",
+      "order": 5,
+      "description": "Delve into the mystery of telomeres, the chromosomal structures that act as a biological clock and dictate exactly how our cells age.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Cellular Clock"
+    },
+    {
+      "slug": "two-in-one-the-strange-case-of-human-chimerism",
+      "title": "Two in One: The Strange Case of Human Chimerism",
+      "order": 6,
+      "description": "Discover the amazing phenomenon of human genetic chimerism, where the exact same person possesses two different sets of DNA very naturally.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Genetic Fusion!"
+    },
+    {
+      "slug": "identity-theft-borrowed-genes-between-species",
+      "title": "Identity Theft: Borrowed Genes Between Species",
+      "order": 7,
+      "description": "Learn about horizontal gene transfer, the incredible process by which certain organisms steal DNA from other species in order to survive.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "DNA Thieves"
+    },
+    {
+      "slug": "real-superpowers-incredible-genetic-mutations",
+      "title": "Real Superpowers: Incredible Genetic Mutations",
+      "order": 8,
+      "description": "We explore exceptional human biological variations, from almost unbreakable bones to natural immunity against various viruses and diseases.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Real Mutants!"
+    },
+    {
+      "slug": "the-common-ancestor-searching-for-the-origin-of-all-life",
+      "title": "The Common Ancestor: Searching for the Origin of All Life",
+      "order": 9,
+      "description": "Travel billions of years into the past to discover LUCA, the primordial microorganism from which absolutely all current life descends.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The First Living Being"
+    },
+    {
+      "slug": "dolly-and-her-friends-the-science-behind-cloning",
+      "title": "Dolly and Her Friends: The Science Behind Cloning",
+      "order": 10,
+      "description": "We analyze advances in biological cloning technology, from Dolly the sheep to the controversial industry of replicating deceased pets.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Cloned Pets!"
+    },
+    {
+      "slug": "a-hidden-universe-the-inhabitants-of-your-own-body",
+      "title": "A Hidden Universe: The Inhabitants of Your Own Body",
+      "order": 11,
+      "description": "Discover the human microbiome and how the trillions of bacteria, fungi, and viruses in your body control your digestion, health, and emotions.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "You Are Not Alone"
+    },
+    {
+      "slug": "microscopic-hunters-phages-against-bacteria",
+      "title": "Microscopic Hunters: Phages Against Bacteria",
+      "order": 12,
+      "description": "Meet the bacteriophages, amazing biological viruses that destroy deadly bacterial infections and could save humanity in the near future.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Healing Viruses"
+    },
+    {
+      "slug": "little-titans-the-indestructible-water-bears-today",
+      "title": "Little Titans: The Indestructible Water Bears Today",
+      "order": 13,
+      "description": "We explore the incredible biology of tardigrades, amazing micro-animals capable of surviving radiation, dehydration, and outer space.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Indestructible!"
+    },
+    {
+      "slug": "life-on-the-edge-beings-where-there-should-be-nothing",
+      "title": "Life on the Edge: Beings Where There Should Be Nothing",
+      "order": 14,
+      "description": "Delve into the world of extremophiles, those mysterious biological organisms that thrive in the Antarctic ice and in boiling acid waters.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Danger Lovers"
+    },
+    {
+      "slug": "immortal-cells-the-medical-legacy-of-henrietta-lacks",
+      "title": "Immortal Cells: The Medical Legacy of Henrietta Lacks",
+      "order": 15,
+      "description": "The fascinating and tragic story of HeLa cells, an immortal biological lineage that completely revolutionized modern medicine and cellular studies.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Eternal Cell Life"
+    },
+    {
+      "slug": "light-in-the-dark-fascinating-bioluminescence-today",
+      "title": "Light in the Dark: Fascinating Bioluminescence Today",
+      "order": 16,
+      "description": "We analyze the incredible natural biological chemistry that allows fireflies, fungi, and strange abyssal creatures to create their own bright light.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Animals of Light!"
+    },
+    {
+      "slug": "blank-canvases-the-great-potential-of-stem-cells",
+      "title": "Blank Canvases: The Great Potential of Stem Cells",
+      "order": 17,
+      "description": "Discover the regenerative power of stem cells, biological structures that can transform into any tissue to repair our entire body.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Total Regeneration"
+    },
+    {
+      "slug": "the-final-sacrifice-how-apoptosis-saves-your-body",
+      "title": "The Final Sacrifice: How Apoptosis Saves Your Body",
+      "order": 18,
+      "description": "We explore apoptosis, the elegant mechanism of programmed cell elimination that purges defective cells and prevents serious medical diseases.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Cells at the Limit"
+    },
+    {
+      "slug": "internal-warriors-the-battles-of-your-immune-system",
+      "title": "Internal Warriors: The Battles of Your Immune System",
+      "order": 19,
+      "description": "Travel inside the human body to learn how white blood cells hunt, memorize, and destroy pathogens in real microscopic inner wars.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "War in Your Blood"
+    },
+    {
+      "slug": "unstoppable-evolution-the-danger-of-superbugs",
+      "title": "Unstoppable Evolution: The Danger of Superbugs",
+      "order": 20,
+      "description": "We analyze how the misuse of antibiotics has caused the rapid biological evolution of resistant bacteria that threaten modern medicine.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Invincible Bacteria"
+    },
+    {
+      "slug": "rewiring-your-mind-amazing-neuroplasticity-today",
+      "title": "Rewiring Your Mind: Amazing Neuroplasticity Today",
+      "order": 21,
+      "description": "Discover the surprising neurobiology behind the human brain's ability to heal, adapt, and radically modify its own neural networks.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Mold Your Brain!"
+    },
+    {
+      "slug": "the-second-brain-how-the-gut-guides-your-emotions",
+      "title": "The Second Brain: How the Gut Guides Your Emotions",
+      "order": 22,
+      "description": "We explore the strange direct biological connection between the bacteria in your digestive system and mental health via the mysterious vagus nerve.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Your Stomach Thinks"
+    },
+    {
+      "slug": "tasting-colors-the-strange-world-of-synesthesia",
+      "title": "Tasting Colors: The Strange World of Synesthesia",
+      "order": 23,
+      "description": "Delve into the neural networks of synesthesia, a fascinating biological condition where senses mix in very extraordinary and unique ways.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Sniffing Colors"
+    },
+    {
+      "slug": "the-great-enigma-the-biological-roots-of-consciousness",
+      "title": "The Great Enigma: The Biological Roots of Consciousness",
+      "order": 24,
+      "description": "We investigate the deepest neurobiological mystery of all: how a mass of soft cellular tissue is able to generate our conscious human mind.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Mystery of Being"
+    },
+    {
+      "slug": "the-power-of-belief-the-true-biology-behind-the-placebo",
+      "title": "The Power of Belief: The True Biology Behind the Placebo",
+      "order": 25,
+      "description": "We analyze how the brain's expectation of a cure manages to trigger completely real physical, chemical, and healing changes in the organism.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Healing Mind"
+    },
+    {
+      "slug": "neural-rebellion-what-happens-in-the-teen-brain",
+      "title": "Neural Rebellion: What Happens in the Teen Brain",
+      "order": 26,
+      "description": "Understand the drastic biological changes, synaptic pruning, and delayed frontal development that explain why puberty is so very turbulent.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Puberty Chaos"
+    },
+    {
+      "slug": "formula-for-joy-the-biology-of-our-emotions",
+      "title": "Formula for Joy: The Biology of Our Emotions",
+      "order": 27,
+      "description": "Discover how dopamine, serotonin, and other biological molecules mechanically interact in the brain to effectively regulate our mental well-being.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Happy Chemistry"
+    },
+    {
+      "slug": "alternate-realities-the-biological-importance-of-dreaming",
+      "title": "Alternate Realities: The Biological Importance of Dreaming",
+      "order": 28,
+      "description": "Explore why the brain temporarily paralyzes us and generates illusory worlds every night during REM sleep to consolidate all our memory.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Power of Sleep"
+    },
+    {
+      "slug": "new-neurons-the-myth-busted-about-our-brain",
+      "title": "New Neurons: The Myth Busted About Our Brain",
+      "order": 29,
+      "description": "We tear down scientific dogmas to understand neurogenesis, the incredible biological process where the adult brain generates brand new cells.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Creating Neurons"
+    },
+    {
+      "slug": "brain-wash-nightly-cleansing-of-our-mind-today",
+      "title": "Brain Wash: Nightly Cleansing of Our Mind Today",
+      "order": 30,
+      "description": "Learn about the amazing glymphatic system of neurobiology, a mechanism that literally washes your brain of metabolic waste while you are sleeping.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Brain in the Shower"
+    },
+    {
+      "slug": "eight-armed-minds-the-intelligence-of-cephalopods",
+      "title": "Eight-Armed Minds: The Intelligence of Cephalopods",
+      "order": 31,
+      "description": "Dive into the amazing biology of the octopus, a marine genius with neurons distributed in each tentacle that allow it to think decentralized.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Genius Octopuses"
+    },
+    {
+      "slug": "cheating-death-the-incredible-immortal-jellyfish-today",
+      "title": "Cheating Death: The Incredible Immortal Jellyfish Today",
+      "order": 32,
+      "description": "We analyze the fascinating biological life cycle of Turritopsis dohrnii, a tiny marine jellyfish that continuously rejuvenates to survive.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Eternal Youth!"
+    },
+    {
+      "slug": "masters-of-repair-the-regeneration-of-the-axolotl",
+      "title": "Masters of Repair: The Regeneration of the Axolotl",
+      "order": 33,
+      "description": "We explore the amazing biological regenerative capacity of the axolotl, an amazing amphibian capable of completely rebuilding its lost organs.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Extreme Repair"
+    },
+    {
+      "slug": "vision-by-sound-the-science-behind-echolocation",
+      "title": "Vision by Sound: The Science Behind Echolocation",
+      "order": 34,
+      "description": "Discover the brilliant biological mechanism used by bats and dolphins to map the physical world around them using bouncing sound frequencies.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Seeing with Echoes"
+    },
+    {
+      "slug": "swarm-intelligence-the-superorganism-in-action",
+      "title": "Swarm Intelligence: The Superorganism in Action",
+      "order": 35,
+      "description": "We analyze the complex biological and social dynamics of ants and bees, where thousands of tiny minds synchronize to act as a single being.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Hive Mind"
+    },
+    {
+      "slug": "frozen-hearts-the-biological-art-of-hibernation",
+      "title": "Frozen Hearts: The Biological Art of Hibernation",
+      "order": 36,
+      "description": "Explore how wood frogs survive being literally frozen solid during the harsh winter using natural cryogenics, and wake up right in the spring.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Frozen Alive"
+    },
+    {
+      "slug": "masters-of-deception-cephalopod-camouflage-today",
+      "title": "Masters of Deception: Cephalopod Camouflage Today",
+      "order": 37,
+      "description": "Learn the amazing biological tricks of octopuses and cuttlefish to radically change the color, pattern, and texture of their skin in milliseconds.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Masters of Disguise"
+    },
+    {
+      "slug": "generational-travelers-the-great-route-of-the-butterflies",
+      "title": "Generational Travelers: The Great Route of the Butterflies",
+      "order": 38,
+      "description": "Be amazed by the monarch butterflies and their epic migration, where multiple generations are born and die guided by an infallible genetic compass.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Journey of No Return"
+    },
+    {
+      "slug": "a-moving-forest-the-strange-symbiosis-of-the-sloth",
+      "title": "A Moving Forest: The Strange Symbiosis of the Sloth",
+      "order": 39,
+      "description": "Discover the amazing biological ecosystem hidden in the fur of sloths, home to moths and algae that fully cooperate for their mutual survival.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Walking Ecosystem"
+    },
+    {
+      "slug": "hidden-languages-how-great-animals-communicate",
+      "title": "Hidden Languages: How Great Animals Communicate",
+      "order": 40,
+      "description": "We investigate the complex communicative skills of animal biology, from the clicks of sperm whales to the highly mathematical dances of bees.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "They Speak to Each Other"
+    },
+    {
+      "slug": "the-forest-internet-how-trees-communicate",
+      "title": "The Forest Internet: How Trees Communicate",
+      "order": 41,
+      "description": "Delve into the forest underground to discover the extensive mycorrhizal networks that trees biologically use to share essential nutrients.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Forest Speaks"
+    },
+    {
+      "slug": "hunting-plants-the-evolution-of-carnivorous-flora",
+      "title": "Hunting Plants: The Evolution of Carnivorous Flora",
+      "order": 42,
+      "description": "We analyze extreme botanical adaptations, where poor soils forced certain plants to develop lethal and precise traps to catch animal prey.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Plants That Eat!"
+    },
+    {
+      "slug": "domino-effect-the-impact-of-a-single-species-on-life",
+      "title": "Domino Effect: The Impact of a Single Species on Life",
+      "order": 43,
+      "description": "Understand ecological trophic cascades and observe how the reintroduction of large predators is vital to heal the biology of an entire ecosystem.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Healing Wolves"
+    },
+    {
+      "slug": "sensitive-botany-the-fascinating-plants-that-feel",
+      "title": "Sensitive Botany: The Fascinating Plants That Feel",
+      "order": 44,
+      "description": "Discover the phenomenon of thigmonasty, an amazing biological reflex that allows some plants to move and close their leaves upon feeling contact.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Sensitive Plants"
+    },
+    {
+      "slug": "masters-of-illusion-orchids-that-deceive-insects",
+      "title": "Masters of Illusion: Orchids That Deceive Insects",
+      "order": 45,
+      "description": "Learn about the incredible evolutionary tricks of orchids that visually and chemically mimic female insects to safely guarantee their pollination.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Lying Plants"
+    },
+    {
+      "slug": "extreme-resistance-surviving-in-the-burning-desert",
+      "title": "Extreme Resistance: Surviving in the Burning Desert",
+      "order": 46,
+      "description": "We explore the photosynthetic biological adaptation used by cacti, breathing exclusively at night to successfully avoid evaporating under the intense sun.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Surviving the Desert"
+    },
+    {
+      "slug": "the-return-of-life-rebirth-after-the-natural-disaster",
+      "title": "The Return of Life: Rebirth After the Natural Disaster",
+      "order": 47,
+      "description": "Accompany nature in its methodical and biological process to rebuild entire plant and animal communities after highly devastating disasters.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Life Always Returns"
+    },
+    {
+      "slug": "plant-chemical-warfare-the-silent-battle-of-the-forest",
+      "title": "Plant Chemical Warfare: The Silent Battle of the Forest",
+      "order": 48,
+      "description": "Discover biological allelopathy, the ruthless strategy where some plants secrete toxic compounds to effectively prevent others from germinating nearby.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Plant Warfare"
+    },
+    {
+      "slug": "internal-recycling-when-cells-clean-themselves",
+      "title": "Internal Recycling: When Cells Clean Themselves",
+      "order": 49,
+      "description": "We investigate autophagy, the biological process triggered during fasting where the body recycles old cellular structures for rejuvenation.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Recycled Cells"
+    },
+    {
+      "slug": "the-sun-clock-understanding-your-circadian-rhythms-today",
+      "title": "The Sun Clock: Understanding Your Circadian Rhythms Today",
+      "order": 50,
+      "description": "We analyze the physiological functioning of our master biological clock and how natural light coordinates the work of every organ of the human body.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Your Internal Clock"
+    },
+    {
+      "slug": "archives-of-the-blood-the-memory-of-your-immune-system",
+      "title": "Archives of the Blood: The Memory of Your Immune System",
+      "order": 51,
+      "description": "Be amazed by the incredible physiological capacity of lymphocytes, cells that can perfectly remember specific pathogens decades after facing them.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Blood with Memory"
+    },
+    {
+      "slug": "humans-of-the-heights-physiology-of-extreme-survival",
+      "title": "Humans of the Heights: Physiology of Extreme Survival",
+      "order": 52,
+      "description": "Discover how certain human populations have adapted their cellular biology and respiratory physiology to thrive healthily on the peaks of the world.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Surviving at the Peak"
+    }
+  ]
+}
