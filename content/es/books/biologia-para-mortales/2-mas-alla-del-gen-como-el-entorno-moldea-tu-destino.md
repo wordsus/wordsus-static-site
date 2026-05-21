@@ -29,11 +29,9 @@ El código base seguía siendo el mismo, pero las "etiquetas" que decían qué g
 
 La ecuación clásica de la biología solía ser:
 
-
 $$ \text{Fenotipo (rasgos observables)} = \text{Genotipo (ADN)} + \text{Ambiente} $$
 
 Pero la epigenética nos obligó a reescribirla:
-
 
 $$ \text{Fenotipo} = \text{Genotipo} + \text{Ambiente} + \text{Interacciones Epigenéticas} $$
 

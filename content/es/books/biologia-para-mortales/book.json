@@ -85,7 +85,7 @@
       "order": 7,
       "description": "Conoce la transferencia horizontal de genes, el increíble proceso mediante el cual ciertos organismos roban ADN de otras especies para sobrevivir.",
       "thumbnailTitle": "Ladrones de ADN",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -95,7 +95,7 @@
       "order": 8,
       "description": "Exploramos las variaciones biológicas humanas excepcionales, desde huesos casi irrompibles hasta la inmunidad natural contra virus y enfermedades.",
       "thumbnailTitle": "¡Mutantes Reales!",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -105,7 +105,7 @@
       "order": 9,
       "description": "Viaja miles de millones de años en el pasado para descubrir a LUCA, el microorganismo primordial del que desciende absolutamente toda la vida actual.",
       "thumbnailTitle": "El Primer Ser Vivo",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -115,7 +115,7 @@
       "order": 10,
       "description": "Analizamos los avances en la tecnología de clonación biológica, desde la oveja Dolly hasta la polémica industria de replicar mascotas fallecidas.",
       "thumbnailTitle": "¡Mascotas Clonadas!",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },

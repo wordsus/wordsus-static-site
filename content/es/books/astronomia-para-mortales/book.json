@@ -83,7 +83,7 @@
       "order": 7,
       "description": "Explicamos la fascinante mecánica de los eclipses, detallando cómo la perfecta alineación entre la Tierra, la Luna y el Sol crea estos eventos increíbles.",
       "thumbnailTitle": "La magia del eclipse",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -93,7 +93,7 @@
       "order": 8,
       "description": "Navegamos por el Cinturón de Asteroides, un anillo de restos rocosos ubicado entre Marte y Júpiter que nunca logró agruparse para formar un nuevo planeta.",
       "thumbnailTitle": "Rocas en el espacio",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -103,7 +103,7 @@
       "order": 9,
       "description": "Observamos las lluvias de meteoros, fenómenos deslumbrantes producidos cuando nuestro planeta cruza ágilmente el polvo que dejan los cometas a su paso.",
       "thumbnailTitle": "Lluvia de estrellas",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -113,7 +113,7 @@
       "order": 10,
       "description": "Exploramos a Plutón y la familia de planetas enanos del Cinturón de Kuiper, pequeños mundos helados que redefinieron nuestra comprensión del Sistema Solar.",
       "thumbnailTitle": "Plutón no está solo",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },

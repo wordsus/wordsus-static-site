@@ -135,7 +135,6 @@ El funcionamiento de la telomerasa es una maravilla de la bioingeniería. Es un 
 
 La ecuación química conceptual de su función es elegante:
 
-
 $$ \text{Telómero acortado} + \text{Telomerasa} \xrightarrow{\text{Plantilla ARN}} \text{Telómero restaurado} $$
 
 La plantilla de ARN de la telomerasa contiene la secuencia complementaria exacta a nuestro telómero:

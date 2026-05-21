@@ -83,7 +83,7 @@
       "order": 7,
       "description": "Entiende la asombrosa nucleación físico-química que provoca el famoso géiser cuando introduces caramelos Mentos dentro de refrescos de cola.",
       "thumbnailTitle": "¡Volcán de Cola!",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -93,7 +93,7 @@
       "order": 8,
       "description": "Aprende la química detrás del bicarbonato y el polvo de hornear, reacciones ácido-base que liberan dióxido de carbono para esponjar pasteles.",
       "thumbnailTitle": "¡Secretos de Horno!",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -103,7 +103,7 @@
       "order": 9,
       "description": "Sorpréndete con los polímeros superabsorbentes en pañales, redes de poliacrilato de sodio que atrapan muchísima agua mediante puentes de hidrógeno.",
       "thumbnailTitle": "¡Pañales Mágicos!",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -113,7 +113,7 @@
       "order": 10,
       "description": "Descubre cómo se usa el dióxido de carbono en extracción supercrítica para quitar la cafeína del café sin alterar en absoluto su gran sabor.",
       "thumbnailTitle": "¡Café sin Cafeína!",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },

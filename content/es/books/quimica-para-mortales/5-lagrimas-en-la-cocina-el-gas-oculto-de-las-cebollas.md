@@ -191,7 +191,7 @@ Es simple física de contención. Si el gas no puede tocar la humedad de tu cór
 **El veredicto científico:** **Altamente efectivo.**
 Dado que el problema es una nube invisible de gas volátil, crear una corriente de aire cruzada simplemente dispersa las moléculas $C_3H_6OS$ lejos de tu rostro antes de que puedan alcanzar tus ojos.
 
-### Tácticas que son Mitos Puros:
+### Tácticas que son Mitos Puros
 
 * **Masticar chicle o tener un fósforo apagado en la boca:** No hay ninguna conexión anatómica o química entre masticar y la producción de gas. Quienes afirman que funciona probablemente solo están respirando más por la boca (inhalando menos gas por la nariz) o creando un efecto placebo.
 * **Sostener pan en la boca:** A menos que el pan sea del tamaño de un paraguas y te cubra los ojos, no puede absorber el gas que viaja por el aire hacia tu córnea.

@@ -93,9 +93,7 @@ Si los gemelos acordaron una historia falsa de antemano (como los guantes de Ein
 
 Matemáticamente, una Desigualdad de Bell se ve así (de forma muy simplificada):
 
-
 $$ |P(a,b) - P(a,c)| \le 1 + P(b,c) $$
-
 
 *Esto significa que la correlación entre las respuestas no puede superar un cierto límite si la realidad es clásica y predefinida.*
 

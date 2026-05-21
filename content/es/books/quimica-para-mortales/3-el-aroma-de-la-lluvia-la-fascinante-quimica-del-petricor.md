@@ -139,11 +139,9 @@ La química detrás de este proceso de preludio de lluvia se puede resumir media
 
 Energía eléctrica rompiendo la molécula diatómica:
 
-
 $$ O_2 \xrightarrow{\text{rayo}} O + O $$
 
 Luego, estos átomos libres y altamente reactivos se fusionan rápidamente con otras moléculas de oxígeno inalteradas cercanas:
-
 
 $$ O + O_2 \rightarrow O_3 $$
 

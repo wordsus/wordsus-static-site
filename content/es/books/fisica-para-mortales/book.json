@@ -84,7 +84,7 @@
       "order": 7,
       "description": "Adéntrate en la computación cuántica y descubre cómo los qubits permiten resolver en segundos problemas que tomarían milenios a sistemas tradicionales.",
       "thumbnailTitle": "PCs del Futuro",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -94,7 +94,7 @@
       "order": 8,
       "description": "El vacío absoluto no existe. Exploramos las fluctuaciones del vacío y cómo pares de partículas y antipartículas aparecen y desaparecen constantemente.",
       "thumbnailTitle": "La Nada no Existe",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -104,7 +104,7 @@
       "order": 9,
       "description": "Descifra el asombroso efecto Zenón cuántico, que demuestra cómo un sistema cuántico puede detener su decaimiento simplemente al ser observado de cerca.",
       "thumbnailTitle": "Mirada Congelante",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -114,7 +114,7 @@
       "order": 10,
       "description": "Viajamos a la diminuta escala de Planck para entender la espuma cuántica, donde el espacio y el tiempo se transforman en una marea turbulenta y caótica.",
       "thumbnailTitle": "El Tejido del Espacio",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },

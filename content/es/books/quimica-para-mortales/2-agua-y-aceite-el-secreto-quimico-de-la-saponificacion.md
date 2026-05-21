@@ -127,7 +127,7 @@ Ahora volvamos a tu fregadero y al plato lleno de grasa. Tienes agua corriendo, 
 
 En el centro de esta micela, la grasa está atrapada. Las colas del jabón están felices porque están en contacto con la grasa y lejos del agua. Las cabezas del jabón están en el exterior de la esfera, felices porque están en contacto directo con el agua, y además actúan como un escudo, impidiendo que el agua toque la grasa.
 
-3. **El escape:** Como todo el exterior de la micela está cubierto por las cabezas que aman el agua y que tienen una carga eléctrica, la gota entera de grasa se ha vuelto, a los ojos del agua, una entidad soluble. El agua fluye y arrastra consigo a la micela, llevándose la grasa por el desagüe. ¡El plato queda limpio!
+1. **El escape:** Como todo el exterior de la micela está cubierto por las cabezas que aman el agua y que tienen una carga eléctrica, la gota entera de grasa se ha vuelto, a los ojos del agua, una entidad soluble. El agua fluye y arrastra consigo a la micela, llevándose la grasa por el desagüe. ¡El plato queda limpio!
 
 Esto no solo funciona con el aceite de tu cena, sino también con el sebo natural de tu piel, los virus (el jabón destruye la capa de grasa que rodea a muchos virus, como el coronavirus) y las bacterias. La mecánica es exactamente la misma.
 

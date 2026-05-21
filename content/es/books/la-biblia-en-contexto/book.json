@@ -83,7 +83,7 @@
       "order": 7,
       "description": "Explora la alimentación bíblica cotidiana y el profundo significado espiritual de compartir el pan, el vino y estar todos juntos sentados a la mesa.",
       "thumbnailTitle": "Sentados a la Mesa",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -93,7 +93,7 @@
       "order": 8,
       "description": "Analizamos la vestimenta bíblica, los flecos y filacterias. Comprenderás el poderoso significado que tuvo tocar el sagrado borde del manto de Jesús.",
       "thumbnailTitle": "El Borde del Manto",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -103,7 +103,7 @@
       "order": 9,
       "description": "Adéntrate en el sistema educativo judío del primer siglo y el intenso llamado de los discípulos para lograr imitar literalmente a su maestro rabino.",
       "thumbnailTitle": "El Discípulo Ideal",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -113,7 +113,7 @@
       "order": 10,
       "description": "Comprende el rol de la mujer en la antigüedad judía y cómo el compasivo trato de Jesús hacia ellas rompió radicalmente con los paradigmas sociales.",
       "thumbnailTitle": "Jesús y las Mujeres",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
