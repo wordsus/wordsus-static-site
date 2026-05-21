@@ -4,7 +4,7 @@
   "title": "Astronomy for Mortals",
   "subtitle": "Where infinity becomes understandable",
   "author": "Wordsus Team",
-  "description": "A fascinating journey through the cosmos in 365 daily lessons. From the solar system to the far reaches of the observable universe, discover how space-time works, the stars and the great mysteries of astronomy explained in a simple way.",
+  "description": "A fascinating journey through the cosmos in 52 weekly lessons. From the solar system to the far reaches of the observable universe, discover how space-time works, the stars and the great mysteries of astronomy explained in a simple way.",
   "cover": "/images/books/astronomy-for-mortals-en-cover.jpeg",
   "category": "popular-science",
   "tags": [
@@ -84,7 +84,7 @@
       "description": "We clearly explain the fascinating mechanics of eclipses, detailing how the perfect alignment between the Earth, the Moon, and the Sun creates them.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "The magic of eclipses"
     },
     {
@@ -94,7 +94,7 @@
       "description": "We navigate through the Asteroid Belt, a massive ring of rocky debris located between Mars and Jupiter that never managed to group into a new planet.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Rocks in space"
     },
     {
@@ -104,7 +104,7 @@
       "description": "We observe meteor showers, dazzling astronomical phenomena produced when our planet swiftly crosses the trails of cosmic dust left by passing comets.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Meteor shower"
     },
     {
@@ -114,7 +114,7 @@
       "description": "We explore Pluto and the family of dwarf planets in the Kuiper Belt, small icy worlds that completely redefined our understanding of the Solar System.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Pluto is not alone"
     },
     {

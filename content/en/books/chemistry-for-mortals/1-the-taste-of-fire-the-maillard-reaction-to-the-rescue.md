@@ -96,7 +96,6 @@ When they crash into each other under high heat, they fuse together, releasing a
 
 In LaTeX, the highly simplified core of this initial reaction looks like this:
 
-
 $$\text{Reducing Sugar} + \text{Amino Acid} \xrightarrow{\text{Heat}} \text{Glycosylamine} + H_2O$$
 
 At this stage, your food hasn't changed color, and it doesn't smell any different. The glycosylamine is unstable, colorless, and flavorless. But the fuse has been lit.

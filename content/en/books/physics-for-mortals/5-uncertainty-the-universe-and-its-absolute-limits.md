@@ -162,7 +162,6 @@ Planck's constant is an incredibly, astonishingly small number. In standard unit
 
 $$0.0000000000000000000000000000000006626 \text{ Joules} \cdot \text{seconds}$$
 
-
 *(Or $6.626 \times 10^{-34}$)*
 
 Because the limit of uncertainty is set by this incredibly tiny number, the "blur" is only noticeable when you are dealing with things that are also incredibly tiny, like electrons, quarks, and photons.

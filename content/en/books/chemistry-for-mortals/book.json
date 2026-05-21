@@ -4,7 +4,7 @@
   "title": "Chemistry for Mortals",
   "subtitle": "An atomic look around you",
   "author": "Wordsus Team",
-  "description": "A fascinating 365-day journey through the world of chemistry. From the structure of the atom to the most modern applications of nanotechnology, explained in a simple and entertaining way.",
+  "description": "A fascinating 52-week journey through the world of chemistry. From the structure of the atom to the most modern applications of nanotechnology, explained in a simple and entertaining way.",
   "cover": "/images/books/chemistry-for-mortals-en-cover.jpeg",
   "category": "popular-science",
   "tags": [
@@ -84,7 +84,7 @@
       "description": "Understand the amazing physical-chemical nucleation that causes the famous geyser when you drop Mentos candies into diet cola soft drinks.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Cola Volcano!"
     },
     {
@@ -94,7 +94,7 @@
       "description": "Learn the chemistry behind baking soda and baking powder, acid-base reactions that release carbon dioxide to make your delicious cakes fluffy.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Oven Secrets!"
     },
     {
@@ -104,7 +104,7 @@
       "description": "Be amazed by superabsorbent polymers in diapers, sodium polyacrylate networks that trap massive amounts of water through hydrogen bonding.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Magic Diapers!"
     },
     {
@@ -114,7 +114,7 @@
       "description": "Discover how carbon dioxide is used in supercritical extraction to successfully remove caffeine from coffee without altering its great taste.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Caffeine-Free!"
     },
     {

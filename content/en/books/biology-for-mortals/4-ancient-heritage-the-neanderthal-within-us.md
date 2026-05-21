@@ -112,16 +112,13 @@ To understand how we went from 50% down to the 1% to 2% we see today, we can use
 
 In the first generation (F1 hybrid), the genetic makeup is:
 
-
 $$P(F1) = 0.5N + 0.5H$$
 
 Because the migrating modern human populations eventually grew to outnumber Neanderthals, these hybrid children were statistically most likely to mate with a modern human. In the second generation (backcrossing with *Homo sapiens*), the Neanderthal DNA is halved:
 
-
 $$P(F2) = 0.25N + 0.75H$$
 
 If we assume continuous mating with only modern humans over $k$ generations, the percentage of Neanderthal DNA should approach zero, following the formula:
-
 
 $$N_{percent} = \left( \frac{1}{2} \right)^k \times 100$$
 

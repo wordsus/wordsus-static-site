@@ -4,7 +4,7 @@
   "title": "Physics for Mortals",
   "subtitle": "We unravel the mysteries of the universe",
   "author": "Wordsus Team",
-  "description": "Discover the secrets of the universe in this complete guide to 365 physics lessons. From Newton's laws to quantum mechanics and the multiverse, explained in a simple way for everyone.",
+  "description": "Discover the secrets of the universe in this complete guide to 52 weekly physics lessons. From Newton's laws to quantum mechanics and the multiverse, explained in a simple way for everyone.",
   "cover": "/images/books/physics-for-mortals-en-cover.jpeg",
   "category": "popular-science",
   "tags": [
@@ -85,7 +85,7 @@
       "description": "Delve into quantum computing and discover how qubits solve problems in seconds that would take traditional computer systems absolute millennia.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "PCs of the Future"
     },
     {
@@ -95,7 +95,7 @@
       "description": "Absolute vacuum does not exist. We explore vacuum fluctuations and how pairs of particles and antiparticles constantly appear and disappear.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Nothingness is a Lie"
     },
     {
@@ -105,7 +105,7 @@
       "description": "Decipher the amazing quantum Zeno effect, which demonstrates how a quantum system can completely halt its decay simply by being closely observed.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Freezing Stare"
     },
     {
@@ -115,7 +115,7 @@
       "description": "We travel to the tiny Planck scale to understand quantum foam, where space and time transform into a highly turbulent and chaotic endless tide.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Fabric of Space"
     },
     {

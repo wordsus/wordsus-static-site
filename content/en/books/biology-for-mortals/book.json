@@ -4,7 +4,7 @@
   "title": "Biology for Mortals",
   "subtitle": "Exploring Nature's Hidden Code",
   "author": "Wordsus Team",
-  "description": "Explore the mysteries of life through 365 fascinating lessons. From DNA and genetics to evolution and deep ecology, explained simply for everyone.",
+  "description": "Explore the mysteries of life through 52 weekly lessons. From DNA and genetics to evolution and deep ecology, explained simply for everyone.",
   "cover": "/images/books/biology-for-mortals-en-cover.jpeg",
   "category": "popular-science",
   "tags": [
@@ -86,7 +86,7 @@
       "description": "Learn about horizontal gene transfer, the incredible process by which certain organisms steal DNA from other species in order to survive.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "DNA Thieves"
     },
     {
@@ -96,7 +96,7 @@
       "description": "We explore exceptional human biological variations, from almost unbreakable bones to natural immunity against various viruses and diseases.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Real Mutants!"
     },
     {
@@ -106,7 +106,7 @@
       "description": "Travel billions of years into the past to discover LUCA, the primordial microorganism from which absolutely all current life descends.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "The First Living Being"
     },
     {
@@ -116,7 +116,7 @@
       "description": "We analyze advances in biological cloning technology, from Dolly the sheep to the controversial industry of replicating deceased pets.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Cloned Pets!"
     },
     {
