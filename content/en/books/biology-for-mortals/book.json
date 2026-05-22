@@ -126,7 +126,7 @@
       "description": "Discover the human microbiome and how the trillions of bacteria, fungi, and viruses in your body control your digestion, health, and emotions.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "You Are Not Alone"
     },
     {
@@ -136,7 +136,7 @@
       "description": "Meet the bacteriophages, amazing biological viruses that destroy deadly bacterial infections and could save humanity in the near future.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Healing Viruses"
     },
     {
@@ -146,7 +146,7 @@
       "description": "We explore the incredible biology of tardigrades, amazing micro-animals capable of surviving radiation, dehydration, and outer space.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Indestructible!"
     },
     {
@@ -156,7 +156,7 @@
       "description": "Delve into the world of extremophiles, those mysterious biological organisms that thrive in the Antarctic ice and in boiling acid waters.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Danger Lovers"
     },
     {
@@ -166,7 +166,7 @@
       "description": "The fascinating and tragic story of HeLa cells, an immortal biological lineage that completely revolutionized modern medicine and cellular studies.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Eternal Cell Life"
     },
     {

@@ -125,7 +125,7 @@
       "order": 11,
       "description": "Descubre el microbioma humano y cómo los billones de bacterias, hongos y virus en tu organismo controlan tu digestión, salud e incluso emociones.",
       "thumbnailTitle": "No Estás Solo",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -135,7 +135,7 @@
       "order": 12,
       "description": "Conoce a los bacteriófagos, asombrosos virus biológicos que destruyen infecciones bacterianas mortales y podrían salvar a la humanidad del futuro.",
       "thumbnailTitle": "Virus Curativos",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -145,7 +145,7 @@
       "order": 13,
       "description": "Exploramos la increíble biología de los tardígrados, microanimales asombrosos capaces de sobrevivir a la radiación, deshidratación y el espacio.",
       "thumbnailTitle": "¡Indestructibles!",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -155,7 +155,7 @@
       "order": 14,
       "description": "Adéntrate en el mundo de los extremófilos, aquellos misteriosos organismos biológicos que prosperan en el hielo antártico y en ácido hirviente.",
       "thumbnailTitle": "Amantes del Peligro",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -165,7 +165,7 @@
       "order": 15,
       "description": "La fascinante y trágica historia de las células HeLa, un linaje biológico inmortal que revolucionó la medicina moderna y los estudios celulares.",
       "thumbnailTitle": "Vida Eterna Celular",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },

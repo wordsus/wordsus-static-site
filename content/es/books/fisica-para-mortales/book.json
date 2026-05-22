@@ -124,7 +124,7 @@
       "order": 11,
       "description": "Exploramos la dilatación del tiempo de la relatividad, donde moverse más rápido provoca que los relojes avancen mucho más lento para un observador local.",
       "thumbnailTitle": "El Tiempo es Relativo",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -134,7 +134,7 @@
       "order": 12,
       "description": "Analizamos la famosa paradoja de los gemelos, mostrando cómo viajar a velocidades cercanas a la de la luz genera grandes diferencias biológicas de edad.",
       "thumbnailTitle": "Gemelos Desiguales",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -144,7 +144,7 @@
       "order": 13,
       "description": "Descubre la fascinante contracción de la longitud, donde los objetos veloces se comprimen físicamente desde el punto de vista del observador externo.",
       "thumbnailTitle": "Espacio Encogido",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -154,7 +154,7 @@
       "order": 14,
       "description": "Comprendemos la ilusión de la simultaneidad temporal: cómo dos eventos que ocurren al mismo tiempo para alguien, suceden en momentos distintos para otro.",
       "thumbnailTitle": "El Presente Falso",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -164,7 +164,7 @@
       "order": 15,
       "description": "Desglosamos la famosa ecuación de equivalencia masa-energía, revelando que una pequeñísima fracción de materia contiene un poder sumamente gigantesco.",
       "thumbnailTitle": "Poder de la Materia",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },

@@ -124,7 +124,7 @@
       "description": "We admire nebulae, immense clouds of space dust and gas, like the Pillars of Creation, which function as literal factories where new stars are born.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Where suns are born"
     },
     {
@@ -134,7 +134,7 @@
       "description": "We witness the raw power of supernovae, colossal explosions marking the death of massive stars that can briefly outshine an entire galaxy combined.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Stellar explosion"
     },
     {
@@ -144,7 +144,7 @@
       "description": "We analyze neutron stars, extremely dense stellar remnants where a single teaspoon of their unique matter would weigh millions of tons here on Earth.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "The densest matter"
     },
     {
@@ -154,7 +154,7 @@
       "description": "We decipher pulsars, incredible neutron stars that spin at lightning speeds, emitting powerful beams of bright light just like lighthouses in space.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Lighthouses in space"
     },
     {
@@ -164,7 +164,7 @@
       "description": "We compare the white dwarf future awaiting our Sun and the vital life cycle of red dwarfs, the most incredibly abundant stars in the entire universe.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Fading suns"
     },
     {

@@ -125,7 +125,7 @@
       "description": "We explore the time dilation of relativity, where moving faster causes clocks to tick much slower from the perspective of a stationary observer.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Time is Relative"
     },
     {
@@ -135,7 +135,7 @@
       "description": "We analyze the famous twin paradox, showing how traveling at speeds close to that of light generates huge biological differences in human age.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Unequal Twins"
     },
     {
@@ -145,7 +145,7 @@
       "description": "Discover the fascinating length contraction, where fast-moving objects physically compress from the point of view of an external observer.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Shrinking Space"
     },
     {
@@ -155,7 +155,7 @@
       "description": "We understand the illusion of temporal simultaneity: how two events that occur at the exact same time for one person happen at different times for another.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "The Fake Present"
     },
     {
@@ -165,7 +165,7 @@
       "description": "We break down the famous mass-energy equivalence equation, revealing that a tiny fraction of matter contains a massively gigantic hidden power.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Power of Matter"
     },
     {

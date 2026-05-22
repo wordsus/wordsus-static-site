@@ -124,7 +124,7 @@
       "description": "We explore the benefits of graphene, an incredibly thin layer of carbon that claims to be the strongest material and a fantastic conductor.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Future Material!"
     },
     {
@@ -134,7 +134,7 @@
       "description": "Be fascinated by aerogels, where liquid is replaced by gas to create a silicon dioxide structure with incredible thermal insulating power.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Frozen Smoke!"
     },
     {
@@ -144,7 +144,7 @@
       "description": "Meet nitinol, a revolutionary nickel and titanium alloy with shape memory that, when heat is applied, fully recovers its initial structure.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Magic Metal!"
     },
     {
@@ -154,7 +154,7 @@
       "description": "Marvel at Vantablack, a dense coating of aligned carbon nanotubes that absorbs visible light, making 3D objects look completely flat and 2D.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Real Black Holes!"
     },
     {
@@ -164,7 +164,7 @@
       "description": "Discover the intricate network of hydrogen bonds between polymer chains that give Kevlar the incredible resistance needed to stop speeding bullets.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Stopping Bullets!"
     },
     {

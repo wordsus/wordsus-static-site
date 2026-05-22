@@ -123,7 +123,7 @@
       "order": 11,
       "description": "Admiramos las nebulosas, inmensas nubes de polvo y gas espacial, como los Pilares de la Creación, que funcionan como fábricas donde nacen las estrellas.",
       "thumbnailTitle": "Donde nacen los soles",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -133,7 +133,7 @@
       "order": 12,
       "description": "Presenciamos el poder de las supernovas, colosales explosiones que marcan la muerte de estrellas masivas y logran brillar mucho más que una galaxia entera.",
       "thumbnailTitle": "Explosión estelar",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -143,7 +143,7 @@
       "order": 13,
       "description": "Analizamos las estrellas de neutrones, restos estelares extremadamente densos donde una simple cucharadita de su materia pesaría millones de toneladas hoy.",
       "thumbnailTitle": "La materia más densa",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -153,7 +153,7 @@
       "order": 14,
       "description": "Desciframos los púlsares, increíbles estrellas de neutrones que giran a gran velocidad emitiendo potentes haces de luz como si fuesen faros en el espacio.",
       "thumbnailTitle": "Los faros del cosmos",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -163,7 +163,7 @@
       "order": 15,
       "description": "Comparamos el futuro como enana blanca que le espera a nuestro Sol y el ciclo vital de las enanas rojas, las estrellas más abundantes de todo el universo.",
       "thumbnailTitle": "Soles que se apagan",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
