@@ -7,6 +7,9 @@
  *   3. podcasts-cli/templates/<name>-<locale>.txt          (general locale override)
  *   4. podcasts-cli/templates/<name>.txt                   (general fallback)
  *
+ * Extra content (appended after the base prompt):
+ *   templates/<alias>/<name>-extra.txt                     (book-specific extra content)
+ *
  * Supported variables (replaced with {{VARIABLE_NAME}} syntax):
  *   {{PODCAST_NAME}}        → book.podcast
  *   {{EPISODE_TITLE}}       → chapter.title
@@ -63,18 +66,27 @@ export function resolveTemplatePath(book: BookConfig, name: TemplateName): strin
 }
 
 /**
- * Renders a template for a specific book chapter, replacing all variables.
+ * Resolves the path to an optional extra file for the given book.
+ * Extra files are always book-specific and live at:
+ *   templates/<alias>/<name>-extra.txt
+ *
+ * Returns null if the file does not exist.
  */
-export function renderTemplate(
+export function resolveExtraTemplatePath(book: BookConfig, name: TemplateName): string | null {
+  const extraPath = path.join(templatesDir, book.alias, `${name}-extra.txt`);
+  return fs.existsSync(extraPath) ? extraPath : null;
+}
+
+/**
+ * Applies variable substitutions to a raw template string.
+ */
+function applyVariables(
+  raw: string,
   book: BookConfig,
   chapter: Chapter,
-  name: TemplateName
+  articleUrl: string,
+  thumbnailTitle: string
 ): string {
-  const templatePath = resolveTemplatePath(book, name);
-  const raw = fs.readFileSync(templatePath, "utf-8");
-  const articleUrl = buildArticleUrl(book, chapter);
-  const thumbnailTitle = chapter.thumbnailTitle || chapter.title;
-
   return raw
     .replaceAll("{{PODCAST_NAME}}", book.podcast)
     .replaceAll("{{EPISODE_TITLE}}", chapter.title)
@@ -82,4 +94,32 @@ export function renderTemplate(
     .replaceAll("{{EPISODE_DESCRIPTION}}", chapter.description ?? "")
     .replaceAll("{{THUMBNAIL_TITLE}}", thumbnailTitle)
     .replaceAll("{{ARTICLE_URL}}", articleUrl);
+}
+
+/**
+ * Renders a template for a specific book chapter, replacing all variables.
+ * If an extra file exists at templates/<alias>/<name>-extra.txt, its rendered
+ * content is appended to the base prompt after a newline separator.
+ */
+export function renderTemplate(
+  book: BookConfig,
+  chapter: Chapter,
+  name: TemplateName
+): string {
+  const articleUrl = buildArticleUrl(book, chapter);
+  const thumbnailTitle = chapter.thumbnailTitle || chapter.title;
+
+  const templatePath = resolveTemplatePath(book, name);
+  const baseRaw = fs.readFileSync(templatePath, "utf-8");
+  let result = applyVariables(baseRaw, book, chapter, articleUrl, thumbnailTitle);
+
+  const extraPath = resolveExtraTemplatePath(book, name);
+  if (extraPath !== null) {
+    const extraRaw = fs.readFileSync(extraPath, "utf-8").trim();
+    if (extraRaw.length > 0) {
+      result = result.trimEnd() + "\n\n" + applyVariables(extraRaw, book, chapter, articleUrl, thumbnailTitle);
+    }
+  }
+
+  return result;
 }

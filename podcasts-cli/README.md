@@ -21,6 +21,7 @@ This tool requires the following system dependencies to be installed and availab
 - **ffprobe**: (Part of the FFmpeg suite) Used to detect media durations.
 
 You can install them via Homebrew (macOS):
+
 ```bash
 brew install ffmpeg
 ```
@@ -28,11 +29,14 @@ brew install ffmpeg
 ## Configuration
 
 ### 1. Environment Variables / Directories
+
 Review `src/config.ts` or set the following environment variables:
+
 - `PODCASTS_WORKING_DIR`: Directory where working folders will be created (e.g., `~/Downloads/podcasts`).
 - `PODCASTS_CONTENT_DIR`: Path to the website's `content` folder.
 
 ### 2. Registering Books
+
 Edit `src/books.ts` to define which books from the website are relevant to this process.
 
 ```typescript
@@ -48,6 +52,7 @@ export const books: BookConfig[] = [
 ```
 
 ### 3. Video Generation Settings
+
 You can customize the video output and visualizer behavior in `src/config.ts`:
 
 - **Visualizer Style:** `bars`, `wave`, `circle`, or `spectrum`.
@@ -57,26 +62,86 @@ You can customize the video output and visualizer behavior in `src/config.ts`:
 - **Crossfade Duration:** Seamless loop duration for video backgrounds (default `1.0s`).
 
 ### 4. Prompt Templates
-Templates are located in the `templates/` folder:
-- `audio-prompt.md`: General prompt for NotebookLM.
-- `image-prompt.md`: General prompt for Gemini.
 
-If a specific book requires a different prompt, create a folder with the book's `alias` inside `templates/` and place the file there (e.g., `templates/fisica/audio-prompt.txt`).
+The template engine resolves prompts using a priority cascade and optionally appends book-specific extra content. All template files are plain `.txt` files located inside the `templates/` folder.
 
-You can also create locale-specific overrides by appending the locale code to the filename (e.g., `image-prompt-en.txt`). The resolution order for any template is:
-1. `templates/<alias>/<name>-<locale>.txt` (book + locale specific)
-2. `templates/<alias>/<name>.txt` (book specific)
-3. `templates/<name>-<locale>.txt` (locale specific)
-4. `templates/<name>.txt` (general fallback)
+#### Base templates (general fallback)
+
+```text
+templates/
+  audio-prompt.txt     ← General prompt for NotebookLM
+  image-prompt.txt     ← General prompt for Gemini / image generation
+```
+
+#### Book-specific overrides
+
+Create a subdirectory named after the book's `alias` to override the base template for a specific book. The override completely replaces the base template.
+
+```text
+templates/
+  <alias>/
+    audio-prompt.txt   ← Overrides the general audio-prompt for this book
+    image-prompt.txt   ← Overrides the general image-prompt for this book
+```
+
+#### Locale-specific overrides
+
+Append the locale code (e.g., `-en`, `-es`) to the filename to target a specific language. Locale variants follow the same priority structure as general overrides.
+
+```text
+templates/
+  <alias>/
+    image-prompt-en.txt   ← Book + locale override (highest priority)
+  image-prompt-en.txt     ← General locale override
+```
+
+#### Resolution order (first existing file wins)
+
+| Priority | Path | Description |
+| -------- | ---- | ----------- |
+| 1 | `templates/<alias>/<name>-<locale>.txt` | Book-specific + locale-specific |
+| 2 | `templates/<alias>/<name>.txt` | Book-specific (any locale) |
+| 3 | `templates/<name>-<locale>.txt` | General locale override |
+| 4 | `templates/<name>.txt` | General fallback (required) |
+
+#### Extra files (additive customization)
+
+In addition to the override mechanism above, you can **append** extra content to the resolved base prompt without replacing it. Place an `*-extra.txt` file inside the book's alias directory:
+
+```text
+templates/
+  <alias>/
+    audio-prompt-extra.txt   ← Appended to the audio prompt for this book
+    image-prompt-extra.txt   ← Appended to the image prompt for this book
+```
+
+**Behavior:**
+
+- The extra file does **not** replace the base template; its content is added at the end of the final prompt, separated by a blank line.
+- The extra file is only applied when it exists inside the book's `<alias>/` directory — there is no general (non-alias) extra file.
+- If the extra file exists but is empty (or whitespace-only), it is silently ignored.
+- All [template variables](#5-template-variables) are also available in extra files.
+
+**Example result** when `templates/2qui/image-prompt-extra.txt` contains `Use a dark blue color palette.`:
+
+```text
+<...rendered base image-prompt content...>
+
+Use a dark blue color palette.
+```
 
 ### 5. Template Variables
-You can use the following placeholders in any `.txt` template:
-- `{{PODCAST_NAME}}`: The podcast show name defined as `podcast` in `src/books.ts`.
-- `{{EPISODE_TITLE}}`: The full title of the current chapter (`chapter.title`) from `book.json`.
-- `{{EPISODE_NUMBER}}`: The order number of the chapter (`chapter.order`) from `book.json`.
-- `{{EPISODE_DESCRIPTION}}`: The description of the current chapter (`chapter.description`) from `book.json`. Empty string if not set.
-- `{{THUMBNAIL_TITLE}}`: The value of `chapter.thumbnailTitle` from `book.json`. Falls back to `{{EPISODE_TITLE}}` if not set.
-- `{{ARTICLE_URL}}`: The public URL of the article on the website (automatically generated).
+
+All `.txt` template files (base overrides and extra files) support the following placeholders, which are replaced at render time:
+
+| Variable | Source | Description |
+| -------- | ------ | ----------- |
+| `{{PODCAST_NAME}}` | `book.podcast` in `src/books.ts` | The podcast show name. |
+| `{{EPISODE_TITLE}}` | `chapter.title` in `book.json` | Full title of the current chapter. |
+| `{{EPISODE_NUMBER}}` | `chapter.order` in `book.json` | Order number of the chapter. |
+| `{{EPISODE_DESCRIPTION}}` | `chapter.description` in `book.json` | Chapter description. Empty string if not set. |
+| `{{THUMBNAIL_TITLE}}` | `chapter.thumbnailTitle` in `book.json` | Custom thumbnail title. Falls back to `{{EPISODE_TITLE}}` if not set. |
+| `{{ARTICLE_URL}}` | Auto-generated | Public URL of the article on the website. |
 
 ## Usage
 

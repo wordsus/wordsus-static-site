@@ -15,7 +15,7 @@ This is the video description:
 
 ## Prompt
 
-Generate a prompt to create this thumbnail image. DO NOT generate the image; just show me the prompt without any introduction, such as "Here's the prompt...". DO NOT include the video title, description and podcast show name; these were only mentioned for context. You must use the following custom title for the thumbnail image: {{THUMBNAIL_TITLE}}
+Generate a prompt to create this thumbnail image. DO NOT generate the image; just show me the prompt without any introduction, such as "Here's the prompt...". DO NOT include the video title, description and podcast show name; these were only mentioned for context. You must use the following custom title, in upper case, for the thumbnail image: {{THUMBNAIL_TITLE}}
 The prompt must specify that a small podcast icon be added at the bottom.
 
 It must be an impressive design that optimizes the CTR of the thumbnail image.
