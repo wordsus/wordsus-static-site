@@ -1,0 +1,543 @@
+{
+  "slug": "nutrition-for-mortals",
+  "locale": "en",
+  "title": "Nutrition for Mortals",
+  "subtitle": "Health, science, and common sense on your plate",
+  "author": "Wordsus Team",
+  "description": "Explore the secrets of health and nutrition through 52 weekly lessons. Debunk common myths, understand your body, and learn to eat with science and common sense.",
+  "cover": "/images/books/nutrition-for-mortals-en-cover.jpeg",
+  "category": "popular-science",
+  "tags": [
+    "nutrition",
+    "health",
+    "science",
+    "divulgation",
+    "well-being",
+    "diet"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-23",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "the-five-meals-myth-boosting-your-metabolism",
+      "title": "The Five Meals Myth: Boosting Your Metabolism?",
+      "order": 1,
+      "description": "We analyze the myth of eating five times a day to speed up metabolism. Discover what real science says about meal frequency and your health.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Eating 5 times?"
+    },
+    {
+      "slug": "eggs-and-cholesterol-hero-or-villain-on-your-plate",
+      "title": "Eggs and Cholesterol: Hero or Villain on Your Plate?",
+      "order": 2,
+      "description": "We debunk the old belief that eating eggs daily raises bad cholesterol, evaluating its real impact on people's health and daily nutrition.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The truth about eggs"
+    },
+    {
+      "slug": "sweet-deception-tested-the-truth-about-sweeteners",
+      "title": "Sweet Deception Tested: The Truth About Sweeteners",
+      "order": 3,
+      "description": "We explore the science behind stevia, aspartame, and sucralose. Are artificial sweeteners a safe alternative to classic refined sugar?",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Are sweeteners healthy?"
+    },
+    {
+      "slug": "juice-vs-whole-fruit-the-behavior-of-sugar",
+      "title": "Juice vs. Whole Fruit: The Behavior of Sugar",
+      "order": 4,
+      "description": "We explain why drinking fruit juice is not the same as eating the whole fruit, and how the lack of fiber radically alters sugar's impact.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Juice vs. Fruit"
+    },
+    {
+      "slug": "nighttime-carbs-myth-or-fat-storing-factory",
+      "title": "Nighttime Carbs: Myth or Fat-Storing Factory?",
+      "order": 5,
+      "description": "We review the belief that eating carbs at night makes you gain more weight. Learn how your body manages energy and the real impact of dinner time.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Carbs for dinner?"
+    },
+    {
+      "slug": "detox-diets-examined-commercial-magic-or-physiology",
+      "title": "Detox Diets Examined: Commercial Magic or Physiology?",
+      "order": 6,
+      "description": "We analyze famous detox diets to discover if they are just a marketing strategy or if they truly help your liver and kidneys purify your body.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Detox Hoax"
+    },
+    {
+      "slug": "dairy-in-adults-biological-need-or-cultural-habit",
+      "title": "Dairy in Adults: Biological Need or Cultural Habit?",
+      "order": 7,
+      "description": "We address the great controversy over cow's milk consumption in adults. Are we designed to drink dairy or should we avoid it altogether?",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Quitting dairy?"
+    },
+    {
+      "slug": "vitamins-in-pills-true-allies-or-wasted-money",
+      "title": "Vitamins in Pills: True Allies or Wasted Money?",
+      "order": 8,
+      "description": "Discover if you really need to take vitamin supplements if you already eat a healthy diet, or if you are just creating rather expensive urine.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Should you take vitamins?"
+    },
+    {
+      "slug": "the-gut-brain-axis-your-stomach-in-mental-control",
+      "title": "The Gut-Brain Axis: Your Stomach in Mental Control",
+      "order": 9,
+      "description": "Dive into the gut-brain axis to understand how your digestive health dictates your mood, your emotions, and your daily psychological well-being.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Your second brain"
+    },
+    {
+      "slug": "sugar-and-the-brain-the-sweet-impact-on-neurochemistry",
+      "title": "Sugar and the Brain: The Sweet Impact on Neurochemistry",
+      "order": 10,
+      "description": "We explore the impact of sugar consumption on brain chemistry, evaluating how it affects our emotions, learning, and natural reward systems.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Sugar in your mind"
+    },
+    {
+      "slug": "foods-for-memory-shielding-your-mental-health",
+      "title": "Foods for Memory: Shielding Your Mental Health",
+      "order": 11,
+      "description": "Learn about key foods that improve concentration, boost long-term memory, and actively help prevent natural age-related cognitive decline.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Food for thought"
+    },
+    {
+      "slug": "nutrition-against-anxiety-food-to-calm-your-nerves",
+      "title": "Nutrition Against Anxiety: Food to Calm Your Nerves",
+      "order": 12,
+      "description": "We review the relationship between your diet and anxiety. Discover which specific nutrients can help regulate and calm your nervous system safely.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Eating without anxiety"
+    },
+    {
+      "slug": "eating-for-better-sleep-tryptophan-and-deep-rest",
+      "title": "Eating for Better Sleep: Tryptophan and Deep Rest",
+      "order": 13,
+      "description": "We analyze the science behind tryptophan and melatonin, revealing how your food choices at dinner can guarantee you a deeply restorative rest.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The sleep diet"
+    },
+    {
+      "slug": "ultra-processed-addiction-a-chemical-hijacking",
+      "title": "Ultra-Processed Addiction: A Chemical Hijacking?",
+      "order": 14,
+      "description": "We debate whether a physiological addiction to food truly exists, focusing on how ultra-processed products manipulate our brain's self-control.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Food addiction"
+    },
+    {
+      "slug": "coffee-under-the-loupe-benefits-and-nervous-limits",
+      "title": "Coffee Under the Loupe: Benefits and Nervous Limits",
+      "order": 15,
+      "description": "We break down the pros and cons of coffee and caffeine consumption, analyzing its health benefits and setting limits to avoid altering sleep.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "How much coffee?"
+    },
+    {
+      "slug": "the-gut-microbiome-the-universe-in-your-digestion",
+      "title": "The Gut Microbiome: The Universe in Your Digestion",
+      "order": 16,
+      "description": "A complete introduction to the gut microbiome. Learn why these trillions of bacteria are called our second brain and how to care for them today.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Healing bacteria"
+    },
+    {
+      "slug": "probiotics-and-prebiotics-the-colons-perfect-match",
+      "title": "Probiotics and Prebiotics: The Colon's Perfect Match",
+      "order": 17,
+      "description": "We explain the fundamental difference between probiotics and prebiotics, and how to combine them strategically in your meals for great digestion.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Strong gut flora"
+    },
+    {
+      "slug": "the-power-of-fermented-foods-kefir-kimchi-and-kombucha",
+      "title": "The Power of Fermented Foods: Kefir, Kimchi and Kombucha",
+      "order": 18,
+      "description": "We explore the revival of fermented foods in our modern diet and how to easily integrate them to drastically boost your overall health.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Healing fermented foods"
+    },
+    {
+      "slug": "leaky-gut-syndrome-repairing-your-internal-barriers",
+      "title": "Leaky Gut Syndrome: Repairing Your Internal Barriers",
+      "order": 19,
+      "description": "Discover what leaky gut syndrome is, how it is currently diagnosed, and what specific nutritional strategies help seal the intestinal barrier.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Damaged gut"
+    },
+    {
+      "slug": "the-superpower-of-fiber-much-more-than-going-to-the-bathroom",
+      "title": "The Superpower of Fiber: Much More Than Going to the Bathroom",
+      "order": 20,
+      "description": "We analyze why fiber is an indispensable super-nutrient that does much more than regulate transit, protecting your heart and metabolism at its root.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Fiber magic"
+    },
+    {
+      "slug": "antibiotics-and-gut-flora-how-to-rebuild-your-defenses",
+      "title": "Antibiotics and Gut Flora: How to Rebuild Your Defenses",
+      "order": 21,
+      "description": "We show you how antibiotic treatments can wipe out your gut flora and what the exact steps are to successfully rebuild it from scratch.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Repair your flora"
+    },
+    {
+      "slug": "microbiome-and-weight-loss-the-most-hidden-connection",
+      "title": "Microbiome and Weight Loss: The Most Hidden Connection",
+      "order": 22,
+      "description": "Discover the fascinating relationship between the specific composition of your gut bacteria and the ease, or great difficulty, of losing weight.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Bacteria that make you fat"
+    },
+    {
+      "slug": "secrets-of-the-blue-zones-nutrition-of-centenarians",
+      "title": "Secrets of the Blue Zones: Nutrition of Centenarians",
+      "order": 23,
+      "description": "We travel to the world's Blue Zones to analyze the surprising nutritional secrets of those populations that manage to live past one hundred years.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Eat to live 100"
+    },
+    {
+      "slug": "autophagy-in-action-the-bodys-cellular-recycling",
+      "title": "Autophagy in Action: The Body's Cellular Recycling",
+      "order": 24,
+      "description": "We explain what autophagy is, how the body manages to recycle its own damaged cells, and how nutrition can activate this great biological benefit.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Rejuvenate from scratch"
+    },
+    {
+      "slug": "antioxidants-on-the-attack-fighting-cellular-wear",
+      "title": "Antioxidants on the Attack: Fighting Cellular Wear",
+      "order": 25,
+      "description": "We analyze the constant cellular battle between antioxidants and free radicals, and how a correct diet significantly delays premature aging.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Stop aging"
+    },
+    {
+      "slug": "oral-collagen-tested-does-it-work-or-does-acid-kill-it",
+      "title": "Oral Collagen Tested: Does It Work or Does Acid Kill It?",
+      "order": 26,
+      "description": "We solve the mystery of collagen in powder or pills. Does the stomach really destroy it before it acts, or is it an effective skin supplement?",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The truth about collagen"
+    },
+    {
+      "slug": "daily-nutricosmetics-foods-for-better-skin-and-hair",
+      "title": "Daily Nutricosmetics: Foods for Better Skin and Hair",
+      "order": 27,
+      "description": "Discover which foods directly and visibly impact the comprehensive health of your skin, hair, and nails, improving your aesthetics from within.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Perfect skin and hair"
+    },
+    {
+      "slug": "caloric-restriction-the-limit-to-living-more-years",
+      "title": "Caloric Restriction: The Limit to Living More Years",
+      "order": 28,
+      "description": "We evaluate current scientific evidence on how moderate caloric restriction has a real and proven impact on extending human life expectancy.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Eat less, live longer"
+    },
+    {
+      "slug": "chronic-inflammation-fighting-the-silent-enemy",
+      "title": "Chronic Inflammation: Fighting the Silent Enemy",
+      "order": 29,
+      "description": "We explore low-grade inflammation, what causes it in our day-to-day lives, and how to structure an anti-inflammatory diet to prevent diseases.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Put out the inflammation"
+    },
+    {
+      "slug": "the-ketogenic-diet-keto-using-fats-as-fuel",
+      "title": "The Ketogenic Diet Keto: Using Fats as Fuel",
+      "order": 30,
+      "description": "We explain in detail the science of the keto diet, its metabolic adaptation effects, and why the body begins to use fat as its main energy.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "All about the Keto diet"
+    },
+    {
+      "slug": "intermittent-fasting-protocols-and-common-mistakes",
+      "title": "Intermittent Fasting: Protocols and Common Mistakes",
+      "order": 31,
+      "description": "We analyze the real benefits of intermittent fasting, review its schedule protocols, and teach you how to avoid the most common beginner mistakes.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Fasting Guide"
+    },
+    {
+      "slug": "plant-based-diet-the-differences-with-strict-veganism",
+      "title": "Plant-Based Diet: The Differences with Strict Veganism",
+      "order": 32,
+      "description": "We clarify what it means to follow a plant-based diet, how it differs from strict veganism, and how it greatly benefits your comprehensive health.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Plant-based vs Vegan"
+    },
+    {
+      "slug": "the-mediterranean-diet-the-eternal-king-of-nutrition",
+      "title": "The Mediterranean Diet: The Eternal King of Nutrition",
+      "order": 33,
+      "description": "We analyze why the scientific community continues to crown the Mediterranean diet as the healthiest and most balanced eating style long-term.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The best diet in the world"
+    },
+    {
+      "slug": "the-carnivore-diet-analysis-of-a-very-extreme-trend",
+      "title": "The Carnivore Diet: Analysis of a Very Extreme Trend",
+      "order": 34,
+      "description": "We thoroughly analyze the recent carnivore diet trend. We evaluate its supposed anecdotal benefits against its obvious clinical nutritional risks.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Only eating meat?"
+    },
+    {
+      "slug": "intuitive-eating-making-peace-with-your-daily-food",
+      "title": "Intuitive Eating: Making Peace with Your Daily Food",
+      "order": 35,
+      "description": "An introduction to the intuitive eating movement, teaching you to listen to your body's signals to finally abandon the eternal diet mentality.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Eat without guilt"
+    },
+    {
+      "slug": "the-fodmap-diet-a-great-relief-for-irritable-bowel",
+      "title": "The FODMAP Diet: A Great Relief for Irritable Bowel",
+      "order": 36,
+      "description": "We explain how the low FODMAP diet works, the most effective clinical and structured solution to treat chronic irritable bowel syndrome.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Stop gas and pain"
+    },
+    {
+      "slug": "the-dreaded-rebound-effect-why-strict-diets-fail",
+      "title": "The Dreaded Rebound Effect: Why Strict Diets Fail",
+      "order": 37,
+      "description": "Understand the physiology behind extreme restrictive diets and why they almost always trigger a fierce rebound effect that ruins your metabolism.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Goodbye rebound effect"
+    },
+    {
+      "slug": "glycemic-index-the-real-impact-of-insulin-spikes",
+      "title": "Glycemic Index: The Real Impact of Insulin Spikes",
+      "order": 38,
+      "description": "We explain what the glycemic index is in an easy way and how controlling insulin spikes is the true key to not constantly storing body fat.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Control your insulin"
+    },
+    {
+      "slug": "food-thermogenesis-calories-that-burn-other-calories",
+      "title": "Food Thermogenesis: Calories That Burn Other Calories",
+      "order": 39,
+      "description": "We explore diet-induced thermogenesis and discover which foods require your body to spend more energy to be properly processed and digested.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Fat burning foods"
+    },
+    {
+      "slug": "anabolic-window-the-great-muscle-building-myth",
+      "title": "Anabolic Window: The Great Muscle Building Myth",
+      "order": 40,
+      "description": "We dismantle the myth of the urgent post-workout protein shake, clarifying how much protein you really need to maximize your muscle gain.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Post-workout shakes?"
+    },
+    {
+      "slug": "brown-fat-and-white-fat-two-sides-of-the-same-coin",
+      "title": "Brown Fat and White Fat: Two Sides of the Same Coin",
+      "order": 41,
+      "description": "We differentiate white fat from brown fat, explaining how your body is capable of utilizing one type of adipose tissue to burn off the other.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Good vs bad fat"
+    },
+    {
+      "slug": "quality-or-quantity-the-dilemma-of-counting-calories",
+      "title": "Quality or Quantity: The Dilemma of Counting Calories",
+      "order": 42,
+      "description": "We analyze the classic nutritional debate to discover if food quality truly matters more or if it's just about mathematical caloric balance.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Does counting calories work?"
+    },
+    {
+      "slug": "insulin-resistance-how-to-reverse-it-by-eating-right",
+      "title": "Insulin Resistance: How to Reverse It by Eating Right",
+      "order": 43,
+      "description": "We explain exactly what insulin resistance is, how it is diagnosed, and what specific dietary changes manage to successfully reverse it.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Reverse resistance"
+    },
+    {
+      "slug": "the-ultra-processed-deception-supermarket-chemistry",
+      "title": "The Ultra-Processed Deception: Supermarket Chemistry",
+      "order": 44,
+      "description": "We reveal exactly what ultra-processed products are, why they are hyper-palatable, and how the industry designs them to be highly addictive.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Supermarket danger"
+    },
+    {
+      "slug": "nutritional-labels-learn-to-read-what-you-buy",
+      "title": "Nutritional Labels: Learn to Read What You Buy",
+      "order": 45,
+      "description": "We teach you a simple and practical guide to read and decipher supermarket nutritional labels without needing to be a scientist or dietitian.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Read labels right"
+    },
+    {
+      "slug": "cooking-methods-the-thermal-impact-on-your-food",
+      "title": "Cooking Methods: The Thermal Impact on Your Food",
+      "order": 46,
+      "description": "Discover how different preparation methods, such as boiling, frying, or baking, strongly alter the amount of nutrients that reach your plate.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "How to cook better"
+    },
+    {
+      "slug": "endocrine-disruptors-the-hidden-risk-of-using-plastics",
+      "title": "Endocrine Disruptors: The Hidden Risk of Using Plastics",
+      "order": 47,
+      "description": "We warn about the hidden danger of endocrine disruptors present in plastic containers and packaging that come into contact with our daily food.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Plastics and hormones"
+    },
+    {
+      "slug": "smart-chrononutrition-the-importance-of-meal-schedules",
+      "title": "Smart Chrononutrition: The Importance of Meal Schedules",
+      "order": 48,
+      "description": "We analyze the field of chrononutrition to show you why the time you consume your food impacts your body just as much as the nutrients themselves.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "What time to eat"
+    },
+    {
+      "slug": "the-water-myth-the-rule-of-two-liters-every-day",
+      "title": "The Water Myth: The Rule of Two Liters Every Day",
+      "order": 49,
+      "description": "We question the rigid recommendation of drinking two liters of water daily, explaining how proper hydration truly works and should be measured.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "How much water to drink?"
+    },
+    {
+      "slug": "superfoods-in-doubt-true-treasures-or-advertising-scam",
+      "title": "Superfoods in Doubt: True Treasures or Advertising Scam",
+      "order": 50,
+      "description": "We put famous superfoods like chia, maca, and spirulina under the microscope. Are they a nutritional marvel or the result of brilliant marketing?",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Superfood lie"
+    },
+    {
+      "slug": "natural-antinutrients-fear-of-legumes-and-grains",
+      "title": "Natural Antinutrients: Fear of Legumes and Grains?",
+      "order": 51,
+      "description": "We explain what antinutrients like phytates and lectins are, and why the fear of eating grains or legumes is unjustified with good preparation.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Don't fear lentils"
+    },
+    {
+      "slug": "stress-and-digestion-the-blockade-of-your-nutrients",
+      "title": "Stress and Digestion: The Blockade of Your Nutrients",
+      "order": 52,
+      "description": "We analyze how living under chronic stress alters the digestive system, causing severe discomfort and preventing the real absorption of nutrients.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Stress doesn't nourish"
+    }
+  ]
+}

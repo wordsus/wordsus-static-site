@@ -1,0 +1,543 @@
+{
+  "slug": "economia-austriaca-para-mortales",
+  "locale": "es",
+  "title": "Economía Austríaca para Mortales",
+  "subtitle": "El sentido común detrás de cómo funciona el mundo",
+  "author": "Wordsus Team",
+  "description": "Descubre el sentido común detrás de cómo funciona el mundo a través de 52 lecciones semanales de economía austríaca. Aprende sobre el valor subjetivo, la praxeología, el libre mercado y las crisis financieras de forma sencilla para todos.",
+  "cover": "/images/books/economia-austriaca-para-mortales-es-cover.jpeg",
+  "category": "divulgacion-cientifica",
+  "tags": [
+    "economia",
+    "economia-austriaca",
+    "ciencia",
+    "divulgacion",
+    "libertad",
+    "mercado"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-23",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "accion-humana-el-motor-secreto-de-toda-la-economia",
+      "title": "Acción Humana: El motor secreto de toda la economía",
+      "order": 1,
+      "description": "Exploramos la praxeología, el pilar de la Escuela Austríaca. Entiende cómo la economía real se deduce únicamente de que el ser humano actúa.",
+      "thumbnailTitle": "El Motor Oculto",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-poder-del-individuo-la-sociedad-no-toma-decisiones",
+      "title": "El Poder del Individuo: La sociedad no toma decisiones",
+      "order": 2,
+      "description": "Analizamos el individualismo metodológico. Descubre por qué solo las personas eligen y actúan, desmintiendo que el Estado sea una mente propia.",
+      "thumbnailTitle": "La Sociedad No Existe",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-valor-subjetivo-por-que-las-cosas-cuestan-lo-que-cuestan",
+      "title": "El Valor Subjetivo: Por qué las cosas cuestan lo que cuestan",
+      "order": 3,
+      "description": "Adéntrate en el subjetivismo radical. Aprende que el valor no viene del trabajo invertido, sino de cuánto aprecia una persona algo en su vida.",
+      "thumbnailTitle": "El Mito del Precio",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "sabiduria-dispersa-el-gran-limite-de-los-planificadores",
+      "title": "Sabiduría Dispersa: El gran límite de los planificadores",
+      "order": 4,
+      "description": "Estudiamos el conocimiento disperso de Hayek. Por qué la información está fragmentada en miles de mentes y ningún gobierno puede centralizarla.",
+      "thumbnailTitle": "Nadie lo Sabe Todo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "humanos-no-robots-por-que-todos-cometemos-errores",
+      "title": "Humanos, no Robots: Por qué todos cometemos errores",
+      "order": 5,
+      "description": "Cuestionamos al Homo Economicus. Los austríacos saben que no somos calculadoras perfectas, sino personas buscando mejorar y cometiendo fallos.",
+      "thumbnailTitle": "No Eres Un Robot",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "logica-pura-el-metodo-infalible-para-entender-economia",
+      "title": "Lógica Pura: El método infalible para entender economía",
+      "order": 6,
+      "description": "Comparamos la deducción lógica frente al empirismo. Descubre por qué las leyes económicas se descubren razonando y no solo mirando estadísticas.",
+      "thumbnailTitle": "Economía Sin Números",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-costo-invisible-lo-que-pierdes-al-tomar-decisiones",
+      "title": "El Costo Invisible: Lo que pierdes al tomar decisiones",
+      "order": 7,
+      "description": "Profundizamos en el costo de oportunidad subjetivo. El verdadero precio de algo es aquel enorme valor psicológico de lo que debes sacrificar.",
+      "thumbnailTitle": "Tu Verdadero Costo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "la-ultima-unidad-el-secreto-para-resolver-los-precios",
+      "title": "La Última Unidad: El secreto para resolver los precios",
+      "order": 8,
+      "description": "Revivimos la revolución marginalista de Carl Menger. Entiende cómo la última unidad de un bien determina su precio en el mercado diariamente.",
+      "thumbnailTitle": "El Margen Importa",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "agua-vs-diamantes-resolviendo-la-gran-paradoja-mundial",
+      "title": "Agua vs Diamantes: Resolviendo la gran paradoja mundial",
+      "order": 9,
+      "description": "Desentrañamos la paradoja del agua y los diamantes. Conoce cómo la utilidad marginal explica que un bien vital sea barato y un lujo sea caro.",
+      "thumbnailTitle": "Agua o Diamantes",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "consumir-hoy-o-manana-la-urgencia-del-tiempo-humano",
+      "title": "Consumir Hoy o Mañana: La urgencia del tiempo humano",
+      "order": 10,
+      "description": "Exploramos la preferencia temporal. Una mirada a la naturaleza humana y nuestra tendencia intrínseca a preferir disfrutar hoy en vez de mañana.",
+      "thumbnailTitle": "El Valor del Tiempo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-idioma-del-mercado-los-precios-hablan-sin-palabras",
+      "title": "El Idioma del Mercado: Los precios hablan sin palabras",
+      "order": 11,
+      "description": "Analizamos el sistema de precios como un lenguaje propio. Aprende cómo transmiten información crucial sobre escasez y demanda a nivel mundial.",
+      "thumbnailTitle": "Los Precios Hablan",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-quinto-vaso-de-agua-por-que-nos-aburrimos-de-todo",
+      "title": "El Quinto Vaso de Agua: Por qué nos aburrimos de todo",
+      "order": 12,
+      "description": "Explicamos la utilidad marginal decreciente. Entiende por qué el primer vaso de agua en el desierto vale oro, pero el quinto vaso ya no tanto.",
+      "thumbnailTitle": "La Ley del Hartazgo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "nacimiento-del-dinero-el-gran-invento-que-no-fue-real",
+      "title": "Nacimiento del Dinero: El gran invento que no fue real",
+      "order": 13,
+      "description": "Descubre el origen espontáneo del dinero. Te explicamos cómo no fue inventado por ningún gobierno, sino que surgió naturalmente desde el trueque.",
+      "thumbnailTitle": "El Dinero Natural",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-efecto-cantillon-por-que-la-emision-enriquece-a-unos",
+      "title": "El Efecto Cantillon: Por qué la emisión enriquece a unos",
+      "order": 14,
+      "description": "Analizamos el Efecto Cantillon. Conoce cómo imprimir dinero nuevo siempre enriquece a los primeros en recibirlo, castigando a los más pobres.",
+      "thumbnailTitle": "La Trampa del Billete",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "inflacion-verdadera-el-gran-mito-de-los-precios-altos",
+      "title": "Inflación Verdadera: El gran mito de los precios altos",
+      "order": 15,
+      "description": "Abordamos la inflación como fenómeno netamente monetario. Destruimos el mito de que los empresarios codiciosos son los culpables de las subas.",
+      "thumbnailTitle": "El Culpable Real",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-impuesto-silencioso-como-el-gobierno-roba-tus-ahorros",
+      "title": "El Impuesto Silencioso: Cómo el gobierno roba tus ahorros",
+      "order": 16,
+      "description": "Exponemos el temible impuesto inflacionario. Aprende cómo la inflación funciona como un tributo oculto que transfiere tu riqueza hacia el Estado.",
+      "thumbnailTitle": "Robo Silencioso",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "ilusion-bancaria-el-dinero-que-prestan-no-esta-ahi",
+      "title": "Ilusión Bancaria: El dinero que prestan no está ahí",
+      "order": 17,
+      "description": "Criticamos la banca de reserva fraccionaria. Exponemos el debate sobre cómo los bancos prestan dinero que prometen guardar a sus depositantes.",
+      "thumbnailTitle": "El Truco del Banco",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-dinero-seguro-por-que-exigir-reservas-al-cien-por-cien",
+      "title": "El Dinero Seguro: Por qué exigir reservas al cien por cien",
+      "order": 18,
+      "description": "Planteamos el coeficiente de caja del cien por ciento. Descubre la propuesta austríaca para evitar que los bancos creen crédito desde la nada.",
+      "thumbnailTitle": "Reservas Intocables",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "regreso-al-oro-la-busqueda-urgente-de-un-dinero-sano",
+      "title": "Regreso al Oro: La búsqueda urgente de un dinero sano",
+      "order": 19,
+      "description": "Exploramos el patrón oro y el dinero sano. Por qué respaldar la moneda en un bien físico logra limitar el poder político para imprimir billetes.",
+      "thumbnailTitle": "El Dinero Real",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "monedas-privadas-el-brillante-plan-que-inspiro-al-bitcoin",
+      "title": "Monedas Privadas: El brillante plan que inspiró al Bitcoin",
+      "order": 20,
+      "description": "Analizamos la desnacionalización del dinero. La propuesta de Hayek sobre monedas privadas que sentó aquellas bases filosóficas de las criptos.",
+      "thumbnailTitle": "Adiós Banco Central",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "las-crisis-explicadas-por-que-el-mundo-colapsa-siempre",
+      "title": "Las Crisis Explicadas: Por qué el mundo colapsa siempre",
+      "order": 21,
+      "description": "Introducimos la Teoría Austríaca del Ciclo Económico. Aprende que las crisis no son fallos capitalistas, sino la manipulación de los bancos.",
+      "thumbnailTitle": "La Anatomía del Crash",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-precio-del-tiempo-lo-que-el-interes-cuenta-de-ti",
+      "title": "El Precio del Tiempo: Lo que el interés cuenta de ti",
+      "order": 22,
+      "description": "Revelamos la tasa de interés como el precio del tiempo. Descubre que no es un simple invento financiero, sino un reflejo puro de tu impaciencia.",
+      "thumbnailTitle": "El Costo del Futuro",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "senales-falsas-el-gran-dano-de-bajar-tasas-a-la-fuerza",
+      "title": "Señales Falsas: El gran daño de bajar tasas a la fuerza",
+      "order": 23,
+      "description": "Explicamos la manipulación de la tasa de interés. Observa los grandes desastres que ocurren cuando un Banco Central envía señales falsas hoy.",
+      "thumbnailTitle": "La Trampa de la Tasa",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-espejismo-inversor-construyendo-castillos-en-el-aire",
+      "title": "El Espejismo Inversor: Construyendo castillos en el aire",
+      "order": 24,
+      "description": "Estudiamos la mala inversión. Conoce cómo el crédito barato lleva a empresarios a invertir recursos en proyectos que la sociedad nunca demandó.",
+      "thumbnailTitle": "Castillos de Arena",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "la-fiesta-artificial-por-que-los-auges-son-un-engano",
+      "title": "La Fiesta Artificial: Por qué los auges son un engaño",
+      "order": 25,
+      "description": "Exploramos la peligrosa fase de auge. Analizamos la euforia inicial y totalmente engañosa que es generada por el crédito barato de los bancos.",
+      "thumbnailTitle": "La Falsa Prosperidad",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "la-resaca-financiera-el-inevitable-estallido-de-la-crisis",
+      "title": "La Resaca Financiera: El inevitable estallido de la crisis",
+      "order": 26,
+      "description": "Enfrentamos la fase de caída. Ese duro momento ineludible donde la realidad pura se impone, la burbuja estalla y todo el mercado debe ajustarse.",
+      "thumbnailTitle": "El Dolor del Ajuste",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "la-red-del-capital-triangulos-magicos-de-la-economia",
+      "title": "La Red del Capital: Triángulos mágicos de la economía",
+      "order": 27,
+      "description": "Desenredamos la estructura del capital y los triángulos de Hayek. El capital no es un bloque homogéneo, sino etapas conectadas a través del tiempo.",
+      "thumbnailTitle": "Los Bloques Ocultos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-motor-oculto-por-que-ahorrar-te-hace-mas-rico-a-ti",
+      "title": "El Motor Oculto: Por qué ahorrar te hace más rico a ti",
+      "order": 28,
+      "description": "Destacamos el ahorro como el gran motor del crecimiento. Rompe el mito del consumo y entiende que solo el ahorro fomenta la nueva tecnología.",
+      "thumbnailTitle": "El Poder del Ahorro",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "dejarlos-caer-por-que-rescatar-empresas-arruina-a-todos",
+      "title": "Dejarlos Caer: Por qué rescatar empresas arruina a todos",
+      "order": 29,
+      "description": "Cuestionamos los rescates estatales a grandes empresas. Entiende por qué evitar que las corporaciones quiebren solo prolonga una terrible agonía.",
+      "thumbnailTitle": "No Más Rescates",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-mercado-en-movimiento-una-pelicula-y-no-una-simple-foto",
+      "title": "El Mercado en Movimiento: Una película y no una simple foto",
+      "order": 30,
+      "description": "Observamos el mercado como proceso de descubrimiento. Atrévete a ver la economía como una dinámica evolución constante y nunca como una imagen fija.",
+      "thumbnailTitle": "La Economía Viva",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "la-mirada-alerta-el-verdadero-rol-del-heroe-emprendedor",
+      "title": "La Mirada Alerta: El verdadero rol del héroe emprendedor",
+      "order": 31,
+      "description": "Resaltamos el rol crucial del emprendedor. Descubre cómo su capacidad para estar alerta a nuevas oportunidades impulsa el avance de la sociedad.",
+      "thumbnailTitle": "El Motor Emprendedor",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-premio-del-mercado-por-que-ganar-dinero-es-algo-etico",
+      "title": "El Premio del Mercado: Por qué ganar dinero es algo ético",
+      "order": 32,
+      "description": "Defendemos la enorme función social del beneficio. Ganar dinero sin engaños es el premio que te otorga la sociedad por ayudar a otras personas.",
+      "thumbnailTitle": "La Ética del Dinero",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-poder-del-fracaso-por-que-las-perdidas-son-muy-sanas",
+      "title": "El Poder del Fracaso: Por qué las pérdidas son muy sanas",
+      "order": 33,
+      "description": "Explicamos las pérdidas como un gran sistema de limpieza. Son la señal que usamos los consumidores para frenar negocios que desperdician recursos.",
+      "thumbnailTitle": "Fracasar es Útil",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-monopolio-real-el-peligro-del-proteccionismo-estatal",
+      "title": "El Monopolio Real: El peligro del proteccionismo estatal",
+      "order": 34,
+      "description": "Comparamos los monopolios legales frente a los naturales. Aprende por qué el único monopolio peligroso es el protegido mediante privilegios legales.",
+      "thumbnailTitle": "El Verdadero Peligro",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "creando-al-destruir-la-paradoja-del-progreso-tecnologico",
+      "title": "Creando al Destruir: La paradoja del progreso tecnológico",
+      "order": 35,
+      "description": "Adéntrate en la destrucción creativa. Observa cómo la innovación elimina trabajos antiguos pero genera empleos nuevos y productivos a largo plazo.",
+      "thumbnailTitle": "El Precio de Innovar",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-verdadero-jefe-tu-poder-supremo-a-la-hora-de-comprar",
+      "title": "El Verdadero Jefe: Tu poder supremo a la hora de comprar",
+      "order": 36,
+      "description": "Consagramos la absoluta soberanía del consumidor. Descubre cómo cada una de tus compras es un voto que decide qué empresa vive y cuál debe cerrar.",
+      "thumbnailTitle": "Tú Tienes el Poder",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-caos-socialista-por-que-la-planificacion-siempre-falla",
+      "title": "El Caos Socialista: Por qué la planificación siempre falla",
+      "order": 37,
+      "description": "Explicamos el debate del cálculo económico en el socialismo. Sin la propiedad privada no existen precios reales y toda economía compleja colapsa.",
+      "thumbnailTitle": "Matemática Imposible",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "la-arrogancia-fatal-el-grave-error-de-los-politicos",
+      "title": "La Arrogancia Fatal: El grave error de los políticos",
+      "order": 38,
+      "description": "Advertimos sobre la arrogancia fatal de los gobernantes. La falsa ilusión de creer que unos pocos pueden planificar mejor que millones de personas.",
+      "thumbnailTitle": "El Pecado del Político",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "precios-maximos-la-receta-infalible-para-generar-escasez",
+      "title": "Precios Máximos: La receta infalible para generar escasez",
+      "order": 39,
+      "description": "Destrozamos los peligrosos controles de precios. Analizamos cómo obligar a cobrar menos crea desabastecimiento, y obligar a cobrar más crea paro.",
+      "thumbnailTitle": "La Fábrica de Pobreza",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "la-bola-de-nieve-como-una-ley-mala-genera-otra-ley-peor",
+      "title": "La Bola de Nieve: Cómo una ley mala genera otra ley peor",
+      "order": 40,
+      "description": "Describimos la dinámica del intervencionismo. Descubre cómo una regulación estatal siempre causa otro problema que luego intentan tapar con otra ley.",
+      "thumbnailTitle": "La Espiral Estatal",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "la-ventana-rota-lo-que-no-vemos-al-gastar-dinero-publico",
+      "title": "La Ventana Rota: Lo que no vemos al gastar dinero público",
+      "order": 41,
+      "description": "Ilustramos la famosa falacia de la ventana rota. La necesidad de fijarnos en ese crecimiento que jamás ocurrió por haber desviado tus recursos.",
+      "thumbnailTitle": "Lo Que No Se Ve",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "la-trampa-del-bienestar-como-los-subsidios-atan-a-la-gente",
+      "title": "La Trampa del Bienestar: Cómo los subsidios atan a la gente",
+      "order": 42,
+      "description": "Criticamos duramente el estado de bienestar moderno. Conoce cómo mantener los subsidios prolongados fomenta la dependencia y anula el esfuerzo.",
+      "thumbnailTitle": "La Jaula de Oro",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "destruccion-legal-por-que-los-impuestos-te-empobrecen-mas",
+      "title": "Destrucción Legal: Por qué los impuestos te empobrecen más",
+      "order": 43,
+      "description": "Señalamos a los impuestos como una destrucción del capital. Comprende que quitar dinero a la sociedad impide acumular riqueza y subir los salarios.",
+      "thumbnailTitle": "El Freno al Crecimiento",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-mito-del-gasto-quien-debe-hacer-las-calles-y-parques",
+      "title": "El Mito del Gasto: Quién debe hacer las calles y parques",
+      "order": 44,
+      "description": "Cuestionamos la existencia de bienes públicos esenciales. Muchos servicios brindados por el Estado pueden ser ofrecidos mejor por agentes privados.",
+      "thumbnailTitle": "Privatizando lo Público",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "la-gran-batalla-el-duelo-epico-entre-hayek-y-john-keynes",
+      "title": "La Gran Batalla: El duelo épico entre Hayek y John Keynes",
+      "order": 45,
+      "description": "Revivimos el inolvidable debate entre Hayek y Keynes. Comparamos las visiones de intervencionismo estatal contra el libre mercado en pleno siglo.",
+      "thumbnailTitle": "El Combate del Siglo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "ceguera-agregada-lo-que-el-pbi-esconde-sobre-tu-realidad",
+      "title": "Ceguera Agregada: Lo que el PBI esconde sobre tu realidad",
+      "order": 46,
+      "description": "Exponemos la dura crítica a la macroeconomía tradicional. Los conceptos como el PBI ocultan lo que realmente pasa entre personas todos los días.",
+      "thumbnailTitle": "La Trampa del PBI",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "matematicas-inutiles-por-que-la-economia-no-es-algebra",
+      "title": "Matemáticas Inútiles: Por qué la economía no es álgebra",
+      "order": 47,
+      "description": "Fundamentamos el rechazo de los modelos matemáticos puros. Traducir humanos en simples variables siempre elimina el factor clave de la creatividad.",
+      "thumbnailTitle": "La Falsa Precisión",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "chicago-vs-viena-diferencias-entre-dos-gigantes-liberales",
+      "title": "Chicago vs Viena: Diferencias entre dos gigantes liberales",
+      "order": 48,
+      "description": "Diferenciamos a los austríacos de la Escuela de Chicago. Criticamos el uso excesivo de matemáticas y el fuerte apoyo a la figura del Banco Central.",
+      "thumbnailTitle": "Amigos y Rivales",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-dinero-inactivo-refutando-la-gran-trampa-de-liquidez",
+      "title": "El Dinero Inactivo: Refutando la gran trampa de liquidez",
+      "order": 49,
+      "description": "Desarmamos el falso concepto de la trampa de la liquidez. Refutamos esa teoría keynesiana de que la gente guarda dinero en el colchón por nada.",
+      "thumbnailTitle": "El Mito del Colchón",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-gran-fundador-carl-menger-y-el-inicio-de-la-revolucion",
+      "title": "El Gran Fundador: Carl Menger y el inicio de la revolución",
+      "order": 50,
+      "description": "Homenajeamos al gran Carl Menger. Conoce cómo inició esta maravillosa escuela en 1871 desafiando a los economistas clásicos y a los marxistas.",
+      "thumbnailTitle": "El Padre Fundador",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-intransigente-la-vida-de-mises-luchando-contra-todos",
+      "title": "El Intransigente: La vida de Mises luchando contra todos",
+      "order": 51,
+      "description": "Recordamos al brillante Ludwig von Mises. Repasamos la asombrosa historia del hombre que reconstruyó la Escuela Austríaca tras huir de los nazis.",
+      "thumbnailTitle": "El Héroe Austríaco",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-orden-espontaneo-como-la-sociedad-se-organiza-sin-jefe",
+      "title": "El Orden Espontáneo: Cómo la sociedad se organiza sin jefe",
+      "order": 52,
+      "description": "Analizamos la teoría del orden espontáneo de Hayek. Exploramos cómo las instituciones sociales nacen de la acción humana sin diseño intencionado.",
+      "thumbnailTitle": "Orden Sin Diseñador",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    }
+  ]
+}

@@ -1,0 +1,543 @@
+{
+  "slug": "nutricion-para-mortales",
+  "locale": "es",
+  "title": "Nutrición para Mortales",
+  "subtitle": "Salud, ciencia y sentido común en tu plato",
+  "author": "Wordsus Team",
+  "description": "Explora los secretos de la salud y la alimentación a través de 52 lecciones semanales de nutrición. Desmitifica creencias, comprende tu cuerpo y aprende a comer con ciencia y sentido común.",
+  "cover": "/images/books/nutricion-para-mortales-es-cover.jpeg",
+  "category": "divulgacion-cientifica",
+  "tags": [
+    "nutricion",
+    "salud",
+    "ciencia",
+    "divulgacion",
+    "bienestar",
+    "alimentacion"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-23",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "mito-de-las-cinco-comidas-acelerando-el-metabolismo",
+      "title": "Mito de las Cinco Comidas: ¿Acelerando el metabolismo?",
+      "order": 1,
+      "description": "Analizamos el mito de comer cinco veces al día para acelerar el metabolismo. Descubre qué dice la ciencia real sobre la frecuencia de comidas para la salud.",
+      "thumbnailTitle": "¿Comer 5 veces?",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-huevo-y-el-colesterol-heroe-o-villano-del-plato",
+      "title": "El Huevo y el Colesterol: ¿Héroe o villano del plato?",
+      "order": 2,
+      "description": "Desmitificamos la vieja creencia de que consumir huevos diariamente eleva el colesterol malo, evaluando su impacto real en la salud y nutrición de la gente.",
+      "thumbnailTitle": "La verdad del huevo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "dulce-engano-a-prueba-la-verdad-de-los-edulcorantes",
+      "title": "Dulce Engaño a Prueba: La verdad de los edulcorantes",
+      "order": 3,
+      "description": "Exploramos la ciencia detrás de la estevia, el aspartamo y la sucralosa. ¿Son los edulcorantes artificiales una alternativa segura frente al azúcar clásico?",
+      "thumbnailTitle": "¿Edulcorantes sanos?",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "jugos-vs-fruta-entera-el-comportamiento-del-azucar",
+      "title": "Jugos vs. Fruta Entera: El comportamiento del azúcar",
+      "order": 4,
+      "description": "Te explicamos por qué beber un jugo de frutas no es lo mismo que comer la fruta entera, y cómo la falta de fibra altera radicalmente el impacto del azúcar.",
+      "thumbnailTitle": "Jugo vs. Fruta",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "carbohidratos-nocturnos-mito-o-fabrica-de-reservas",
+      "title": "Carbohidratos Nocturnos: ¿Mito o fábrica de reservas?",
+      "order": 5,
+      "description": "Revisamos la creencia de que comer carbohidratos por la noche engorda más. Aprende cómo maneja tu cuerpo la energía y el impacto real del horario de cenas.",
+      "thumbnailTitle": "¿Cenar carbohidratos?",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "dietas-detox-a-examen-magia-comercial-o-fisiologia",
+      "title": "Dietas Detox a Examen: ¿Magia comercial o fisiología?",
+      "order": 6,
+      "description": "Analizamos las famosas dietas detox para descubrir si son una estrategia de marketing o si realmente ayudan a tu hígado y riñones a purificar el organismo.",
+      "thumbnailTitle": "La farsa Detox",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "lacteos-en-el-adulto-necesidad-o-costumbre-cultural",
+      "title": "Lácteos en el Adulto: ¿Necesidad o costumbre cultural?",
+      "order": 7,
+      "description": "Abordamos la gran controversia sobre el consumo de leche de vaca en adultos. ¿Estamos diseñados para tomar lácteos o deberíamos evitarlos definitivamente?",
+      "thumbnailTitle": "¿Dejar los lácteos?",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "vitaminas-en-pastillas-aliados-o-dinero-a-la-basura",
+      "title": "Vitaminas en Pastillas: ¿Aliados o dinero a la basura?",
+      "order": 8,
+      "description": "Descubre si realmente necesitas tomar suplementos vitamínicos si ya llevas una alimentación saludable, o si solo estás creando una orina bastante más cara.",
+      "thumbnailTitle": "¿Tomar vitaminas?",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-eje-intestino-cerebro-tu-estomago-al-mando-mental",
+      "title": "El Eje Intestino Cerebro: Tu estómago al mando mental",
+      "order": 9,
+      "description": "Sumérgete en el eje intestino-cerebro para entender cómo tu salud digestiva dicta tu estado de ánimo, tus emociones y tu bienestar psicológico diariamente.",
+      "thumbnailTitle": "Tu segundo cerebro",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "azucar-y-cerebro-el-dulce-impacto-en-tu-neuroquimica",
+      "title": "Azúcar y Cerebro: El dulce impacto en tu neuroquímica",
+      "order": 10,
+      "description": "Exploramos el impacto del consumo de azúcar en la química cerebral, evaluando cómo afecta nuestras emociones, el aprendizaje y los sistemas de recompensa.",
+      "thumbnailTitle": "Azúcar en tu mente",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "alimentos-para-la-memoria-blindando-tu-salud-mental",
+      "title": "Alimentos para la Memoria: Blindando tu salud mental",
+      "order": 11,
+      "description": "Conoce los alimentos clave que mejoran la concentración, potencian la memoria a largo plazo y ayudan activamente a prevenir el deterioro cognitivo natural.",
+      "thumbnailTitle": "Comida para pensar",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "nutricion-contra-ansiedad-comida-para-calmar-nervios",
+      "title": "Nutrición Contra Ansiedad: Comida para calmar nervios",
+      "order": 12,
+      "description": "Revisamos la relación entre tu dieta y la ansiedad. Descubre qué nutrientes específicos pueden ayudar a regular y calmar tu sistema nervioso de forma sana.",
+      "thumbnailTitle": "Comer sin ansiedad",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "comer-para-dormir-mejor-triptofano-y-sueno-profundo",
+      "title": "Comer para Dormir Mejor: Triptófano y sueño profundo",
+      "order": 13,
+      "description": "Analizamos la ciencia detrás del triptófano y la melatonina, revelando cómo tu elección de alimentos en la cena puede garantizarte un descanso reparador.",
+      "thumbnailTitle": "La dieta del sueño",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "adiccion-a-los-ultraprocesados-un-secuestro-quimico",
+      "title": "Adicción a los Ultraprocesados: ¿Un secuestro químico?",
+      "order": 14,
+      "description": "Debatimos si existe verdaderamente una adicción fisiológica a la comida, enfocándonos en cómo los productos ultraprocesados manipulan nuestro autocontrol.",
+      "thumbnailTitle": "Adicción a la comida",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-cafe-bajo-la-lupa-beneficios-y-limites-nerviosos",
+      "title": "El Café Bajo la Lupa: Beneficios y límites nerviosos",
+      "order": 15,
+      "description": "Desglosamos los pros y los contras del consumo de café y cafeína, analizando sus beneficios para la salud y estableciendo límites para no alterar el sueño.",
+      "thumbnailTitle": "¿Cuánto café tomar?",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "la-microbiota-intestinal-el-universo-en-tu-digestion",
+      "title": "La Microbiota Intestinal: El universo en tu digestión",
+      "order": 16,
+      "description": "Introducción completa a la microbiota intestinal. Aprende por qué a estos billones de bacterias se les llama nuestro segundo cerebro y cómo cuidarlas hoy.",
+      "thumbnailTitle": "Bacterias que sanan",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "probioticos-y-prebioticos-la-pareja-ideal-del-colon",
+      "title": "Probióticos y Prebióticos: La pareja ideal del colon",
+      "order": 17,
+      "description": "Te explicamos la diferencia fundamental entre probióticos y prebióticos, y cómo combinarlos estratégicamente en tus comidas para una digestión envidiable.",
+      "thumbnailTitle": "Flora intestinal fuerte",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-poder-de-los-fermentados-kefir-kimchi-y-kombucha",
+      "title": "El Poder de los Fermentados: Kéfir, kimchi y kombucha",
+      "order": 18,
+      "description": "Exploramos el renacimiento de los alimentos fermentados en nuestra dieta moderna y cómo integrarlos fácilmente para potenciar drásticamente tu salud total.",
+      "thumbnailTitle": "Fermentados sanadores",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "sindrome-del-intestino-permeable-reparando-barreras",
+      "title": "Síndrome del Intestino Permeable: Reparando barreras",
+      "order": 19,
+      "description": "Descubre en qué consiste el síndrome del intestino permeable, cómo se diagnostica actualmente y qué estrategias nutricionales ayudan a sellar la barrera.",
+      "thumbnailTitle": "Intestino dañado",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-superpoder-de-la-fibra-mucho-mas-que-ir-al-bano",
+      "title": "El Superpoder de la Fibra: Mucho más que ir al baño",
+      "order": 20,
+      "description": "Analizamos por qué la fibra es un supernutriente indispensable que hace mucho más que regular el tránsito, protegiendo tu corazón y metabolismo de raíz.",
+      "thumbnailTitle": "Magia de la fibra",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "antibioticos-y-la-flora-como-reconstruir-tus-defensas",
+      "title": "Antibióticos y la Flora: Cómo reconstruir tus defensas",
+      "order": 21,
+      "description": "Te mostramos cómo los tratamientos con antibióticos pueden arrasar con tu flora intestinal y cuáles son los pasos exactos para reconstruirla exitosamente.",
+      "thumbnailTitle": "Reparar la flora",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "microbiota-y-perdida-de-peso-la-conexion-mas-oculta",
+      "title": "Microbiota y Pérdida de Peso: La conexión más oculta",
+      "order": 22,
+      "description": "Descubre la fascinante relación entre la composición específica de tus bacterias intestinales y la facilidad, o gran dificultad, que tienes para perder peso.",
+      "thumbnailTitle": "Bacterias que engordan",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "los-secretos-de-zonas-azules-nutricion-de-centenarios",
+      "title": "Los Secretos de Zonas Azules: Nutrición de centenarios",
+      "order": 23,
+      "description": "Viajamos a las Zonas Azules del mundo para analizar los sorprendentes secretos nutricionales de aquellas poblaciones que logran vivir más de cien años.",
+      "thumbnailTitle": "Comer para vivir 100",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "autofagia-en-accion-el-reciclaje-celular-del-cuerpo",
+      "title": "Autofagia en Acción: El reciclaje celular del cuerpo",
+      "order": 24,
+      "description": "Explicamos qué es la autofagia, cómo el cuerpo logra reciclar sus propias células dañadas y de qué manera la nutrición puede activar este gran beneficio.",
+      "thumbnailTitle": "Rejuvenecer desde cero",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "antioxidantes-al-ataque-luchando-contra-el-desgaste",
+      "title": "Antioxidantes al Ataque: Luchando contra el desgaste",
+      "order": 25,
+      "description": "Analizamos la constante batalla celular entre antioxidantes y radicales libres, y cómo una dieta correcta retrasa significativamente el envejecimiento.",
+      "thumbnailTitle": "Frenar el envejecimiento",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "colageno-oral-a-prueba-funciona-o-el-acido-lo-mata",
+      "title": "Colágeno Oral a Prueba: ¿Funciona o el ácido lo mata?",
+      "order": 26,
+      "description": "Resolvemos el misterio del colágeno en polvo o pastillas. ¿El estómago realmente lo destruye antes de que actúe o es un suplemento eficaz para la piel?",
+      "thumbnailTitle": "La verdad del colágeno",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "nutricosmetica-diaria-alimentos-para-piel-y-cabello",
+      "title": "Nutricosmética Diaria: Alimentos para piel y cabello",
+      "order": 27,
+      "description": "Descubre cuáles son los alimentos que impactan directa y visiblemente en la salud integral de tu piel, cabello y uñas, mejorando tu estética desde dentro.",
+      "thumbnailTitle": "Piel y pelo perfectos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "restriccion-calorica-el-limite-para-vivir-mas-anos",
+      "title": "Restricción Calórica: El límite para vivir más años",
+      "order": 28,
+      "description": "Evaluamos la evidencia científica actual sobre cómo la restricción calórica moderada tiene un impacto real y comprobado en la esperanza de vida en humanos.",
+      "thumbnailTitle": "Comer menos, vivir más",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "inflamacion-cronica-combatiendo-al-enemigo-silencioso",
+      "title": "Inflamación Crónica: Combatiendo al enemigo silencioso",
+      "order": 29,
+      "description": "Exploramos la inflamación de bajo grado, qué la causa en nuestro día a día y cómo estructurar una dieta antiinflamatoria para prevenir muchas enfermedades.",
+      "thumbnailTitle": "Apaga la inflamación",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "la-dieta-cetogenica-keto-usando-grasas-de-combustible",
+      "title": "La Dieta Cetogénica Keto: Usando grasas de combustible",
+      "order": 30,
+      "description": "Explicamos detalladamente la ciencia de la dieta keto, sus efectos metabólicos de adaptación y por qué el cuerpo comienza a utilizar grasa como energía.",
+      "thumbnailTitle": "Todo sobre la dieta Keto",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "ayuno-intermitente-protocolos-y-sus-errores-comunes",
+      "title": "Ayuno Intermitente: Protocolos y sus errores comunes",
+      "order": 31,
+      "description": "Analizamos los beneficios reales del ayuno intermitente, repasamos sus protocolos de horarios y te enseñamos cómo evitar los errores más comunes al iniciar.",
+      "thumbnailTitle": "Guía de Ayuno",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "dieta-basada-en-plantas-diferencias-con-el-veganismo",
+      "title": "Dieta Basada en Plantas: Diferencias con el veganismo",
+      "order": 32,
+      "description": "Aclaramos qué significa llevar una alimentación plant-based, en qué se diferencia de un veganismo estricto y cómo beneficia enormemente tu salud integral.",
+      "thumbnailTitle": "Plant-based vs Vegan",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "la-dieta-mediterranea-el-eterno-rey-de-la-nutricion",
+      "title": "La Dieta Mediterránea: El eterno rey de la nutrición",
+      "order": 33,
+      "description": "Analizamos por qué la comunidad científica sigue coronando a la dieta mediterránea como el estilo de alimentación más saludable y equilibrado a largo plazo.",
+      "thumbnailTitle": "La mejor dieta del mundo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "la-dieta-carnivora-analisis-de-una-moda-muy-extrema",
+      "title": "La Dieta Carnívora: Análisis de una moda muy extrema",
+      "order": 34,
+      "description": "Analizamos a fondo la reciente moda de la dieta carnívora. Evaluamos sus supuestos beneficios anecdóticos frente a sus obvios riesgos nutricionales clínicos.",
+      "thumbnailTitle": "¿Solo comer carne?",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "alimentacion-intuitiva-haciendo-las-paces-con-comer",
+      "title": "Alimentación Intuitiva: Haciendo las paces con comer",
+      "order": 35,
+      "description": "Introducción al movimiento de alimentación intuitiva, enseñándote a escuchar las señales de tu cuerpo para lograr abandonar la mentalidad de dieta eterna.",
+      "thumbnailTitle": "Come sin culpa",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "la-dieta-fodmap-un-gran-alivio-del-colon-irritable",
+      "title": "La Dieta FODMAP: Un gran alivio del colon irritable",
+      "order": 36,
+      "description": "Te explicamos cómo funciona la dieta baja en FODMAP, la solución clínica y estructurada más efectiva para tratar el síndrome de intestino irritable crónico.",
+      "thumbnailTitle": "Frenar gases y dolor",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-temido-efecto-rebote-por-que-fracasan-las-dietas",
+      "title": "El Temido Efecto Rebote: Por qué fracasan las dietas",
+      "order": 37,
+      "description": "Entiende la fisiología detrás de las dietas restrictivas extremas y por qué casi siempre desencadenan un feroz efecto rebote que arruina el metabolismo.",
+      "thumbnailTitle": "Adiós efecto rebote",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "indice-glucemico-el-impacto-de-los-picos-de-insulina",
+      "title": "Índice Glucémico: El impacto de los picos de insulina",
+      "order": 38,
+      "description": "Explicamos qué es el índice glucémico de forma fácil y cómo controlar los picos de insulina es la verdadera clave para no acumular grasa constantemente.",
+      "thumbnailTitle": "Controla tu insulina",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "termogenesis-de-alimentos-calorias-que-queman-otras",
+      "title": "Termogénesis de Alimentos: Calorías que queman otras",
+      "order": 39,
+      "description": "Exploramos la termogénesis inducida por la dieta y descubrimos qué alimentos requieren gastar más energía para ser procesados y digeridos por el cuerpo.",
+      "thumbnailTitle": "Alimentos quema grasa",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "ventana-anabolica-el-gran-mito-de-ganar-masa-muscular",
+      "title": "Ventana Anabólica: El gran mito de ganar masa muscular",
+      "order": 40,
+      "description": "Desmontamos el mito de la urgencia por la proteína post-entrenamiento, aclarando cuánta proteína necesitas realmente para maximizar tu ganancia muscular.",
+      "thumbnailTitle": "¿Batidos post-entreno?",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "grasa-parda-y-grasa-blanca-dos-caras-de-la-misma-moneda",
+      "title": "Grasa Parda y Grasa Blanca: Dos caras de la misma moneda",
+      "order": 41,
+      "description": "Diferenciamos la grasa blanca de la grasa parda o marrón, explicando cómo tu cuerpo es capaz de utilizar un tipo de tejido adiposo para quemar el otro.",
+      "thumbnailTitle": "Grasa buena vs mala",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "calidad-o-cantidad-el-dilema-de-contar-las-calorias",
+      "title": "Calidad o Cantidad: El dilema de contar las calorías",
+      "order": 42,
+      "description": "Analizamos el clásico debate nutricional para descubrir si verdaderamente importa más la calidad de los alimentos o el simple equilibrio calórico matemático.",
+      "thumbnailTitle": "¿Contar calorías sirve?",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "resistencia-a-la-insulina-como-revertirla-comiendo",
+      "title": "Resistencia a la Insulina: Cómo revertirla comiendo",
+      "order": 43,
+      "description": "Te explicamos qué es exactamente la resistencia a la insulina, cómo se diagnostica y qué cambios dietéticos concretos logran revertirla de manera exitosa.",
+      "thumbnailTitle": "Revertir la resistencia",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-engano-ultraprocesado-quimica-en-el-supermercado",
+      "title": "El Engaño Ultraprocesado: Química en el supermercado",
+      "order": 44,
+      "description": "Revelamos qué son exactamente los productos ultraprocesados, por qué resultan ser hiper-palatables y cómo la industria los diseña para ser muy adictivos.",
+      "thumbnailTitle": "Peligro en el súper",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "etiquetas-nutricionales-aprende-a-leer-tus-compras",
+      "title": "Etiquetas Nutricionales: Aprende a leer tus compras",
+      "order": 45,
+      "description": "Te enseñamos una guía simple y práctica para leer y descifrar las etiquetas nutricionales del supermercado sin necesidad de ser un científico o dietista.",
+      "thumbnailTitle": "Lee bien las etiquetas",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "metodos-de-coccion-el-impacto-termico-en-tu-comida",
+      "title": "Métodos de Cocción: El impacto térmico en tu comida",
+      "order": 46,
+      "description": "Descubre cómo diferentes métodos de preparación, como hervir, freír o usar el horno, alteran fuertemente la cantidad de nutrientes que llegan a tu plato.",
+      "thumbnailTitle": "Cómo cocinar mejor",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "disruptores-endocrinos-el-riesgo-de-usar-plasticos",
+      "title": "Disruptores Endocrinos: El riesgo de usar plásticos",
+      "order": 47,
+      "description": "Alertamos sobre el peligro oculto de los disruptores endocrinos presentes en los envases plásticos y recipientes que entran en contacto con nuestra comida.",
+      "thumbnailTitle": "Plásticos y hormonas",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "crononutricion-inteligente-importancia-de-los-horarios",
+      "title": "Crononutrición Inteligente: Importancia de los horarios",
+      "order": 48,
+      "description": "Analizamos el campo de la crononutrición para demostrarte por qué el horario en el que consumes tus alimentos impacta tanto como los nutrientes en sí.",
+      "thumbnailTitle": "A qué hora debes comer",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-mito-del-agua-la-regla-de-los-dos-litros-diarios",
+      "title": "El Mito del Agua: La regla de los dos litros diarios",
+      "order": 49,
+      "description": "Cuestionamos la rígida recomendación de tomar dos litros de agua diarios, explicando cómo funciona y se debe medir realmente una correcta hidratación.",
+      "thumbnailTitle": "¿Cuánta agua beber?",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "superalimentos-en-duda-tesoros-o-engano-publicitario",
+      "title": "Superalimentos en Duda: Tesoros o engaño publicitario",
+      "order": 50,
+      "description": "Ponemos bajo la lupa a famosos superalimentos como la chía, maca y espirulina. ¿Son una maravilla nutricional o el resultado de un brillante marketing?",
+      "thumbnailTitle": "Mentira superalimento",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "antinutrientes-naturales-miedo-a-legumbres-y-granos",
+      "title": "Antinutrientes Naturales: ¿Miedo a legumbres y granos?",
+      "order": 51,
+      "description": "Explicamos qué son los antinutrientes como fitatos y lectinas, y por qué el miedo a comer cereales o legumbres es injustificado con una buena preparación.",
+      "thumbnailTitle": "No temas a las lentejas",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-estres-y-la-digestion-bloqueo-de-tus-nutrientes",
+      "title": "El Estrés y la Digestión: Bloqueo de tus nutrientes",
+      "order": 52,
+      "description": "Analizamos cómo vivir bajo estrés crónico altera el sistema digestivo, causando molestias graves e impidiendo la absorción real de muchos micronutrientes.",
+      "thumbnailTitle": "El estrés no te nutre",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    }
+  ]
+}

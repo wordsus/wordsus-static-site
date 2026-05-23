@@ -1,0 +1,543 @@
+{
+  "slug": "austrian-economics-for-mortals",
+  "locale": "en",
+  "title": "Austrian Economics for Mortals",
+  "subtitle": "The common sense behind how the world works",
+  "author": "Wordsus Team",
+  "description": "Discover the common sense behind how the world works through 52 weekly lessons on Austrian economics. Learn about subjective value, praxeology, free markets, and financial crises explained simply for everyone.",
+  "cover": "/images/books/austrian-economics-for-mortals-en-cover.jpeg",
+  "category": "popular-science",
+  "tags": [
+    "economics",
+    "austrian-economics",
+    "science",
+    "divulgation",
+    "liberty",
+    "market"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-23",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "human-action-the-secret-engine-of-all-economics",
+      "title": "Human Action: The secret engine of all economics",
+      "order": 1,
+      "description": "We explore praxeology, the core pillar of the Austrian School. Understand how real economics is deduced solely from the simple fact that human beings act.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Hidden Engine"
+    },
+    {
+      "slug": "individual-power-society-doesnt-make-decisions",
+      "title": "Individual Power: Society doesn't make decisions",
+      "order": 2,
+      "description": "We analyze methodological individualism. Discover why only individuals can choose and act, completely debunking the myth of the State as an independent mind.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Society Doesn't Exist"
+    },
+    {
+      "slug": "subjective-value-why-things-cost-what-they-cost",
+      "title": "Subjective Value: Why things cost what they cost",
+      "order": 3,
+      "description": "Dive into radical subjectivism. Learn that value does not come from invested labor, but rather from how much a person appreciates something in their life.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Price Myth"
+    },
+    {
+      "slug": "dispersed-wisdom-the-great-limit-of-central-planners",
+      "title": "Dispersed Wisdom: The great limit of central planners",
+      "order": 4,
+      "description": "We study Hayek's dispersed knowledge. Discover why information is fragmented across thousands of minds and no single government can ever centralize it all.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "No One Knows Everything"
+    },
+    {
+      "slug": "humans-not-robots-why-we-all-make-mistakes",
+      "title": "Humans, Not Robots: Why we all make mistakes",
+      "order": 5,
+      "description": "We question Homo Economicus. Austrians know we are not perfect calculators, but rather human beings constantly seeking improvement and making mistakes.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "You Are Not A Robot"
+    },
+    {
+      "slug": "pure-logic-the-foolproof-method-to-understand-economics",
+      "title": "Pure Logic: The foolproof method to understand economics",
+      "order": 6,
+      "description": "We compare logical deduction against empiricism. Discover why economic laws are discovered through pure reasoning and not merely by looking at statistics.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Economics Without Numbers"
+    },
+    {
+      "slug": "invisible-cost-what-you-lose-when-making-decisions",
+      "title": "Invisible Cost: What you lose when making decisions",
+      "order": 7,
+      "description": "We delve into subjective opportunity cost. The true price of anything is the enormous psychological value of the alternative you must sacrifice for it.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Your True Cost"
+    },
+    {
+      "slug": "the-last-unit-the-secret-to-solving-market-prices",
+      "title": "The Last Unit: The secret to solving market prices",
+      "order": 8,
+      "description": "We revive Carl Menger's marginalist revolution. Understand how the final unit of a specific good effectively determines its daily price in the free market.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Margin Matters"
+    },
+    {
+      "slug": "water-vs-diamonds-solving-the-great-global-paradox",
+      "title": "Water vs Diamonds: Solving the great global paradox",
+      "order": 9,
+      "description": "We unravel the paradox of water and diamonds. Learn how marginal utility perfectly explains why a vital good is cheap while a useless luxury is expensive.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Water or Diamonds"
+    },
+    {
+      "slug": "consume-today-or-tomorrow-the-urgency-of-human-time",
+      "title": "Consume Today or Tomorrow: The urgency of human time",
+      "order": 10,
+      "description": "We explore time preference. A deep look into human nature and our intrinsic, natural tendency to prefer enjoying things today rather than waiting for tomorrow.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Value of Time"
+    },
+    {
+      "slug": "the-language-of-markets-prices-speak-without-words",
+      "title": "The Language of Markets: Prices speak without words",
+      "order": 11,
+      "description": "We analyze the price system as a unique language. Learn how prices instantly transmit crucial global information about scarcity and demand without speaking.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Prices Speak"
+    },
+    {
+      "slug": "the-fifth-glass-of-water-why-we-get-bored-of-everything",
+      "title": "The Fifth Glass of Water: Why we get bored of everything",
+      "order": 12,
+      "description": "We explain diminishing marginal utility. Understand why your first glass of water in the desert is pure gold, but the fifth glass loses all of its appeal.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Law of Satiety"
+    },
+    {
+      "slug": "birth-of-money-the-great-invention-that-wasnt-real",
+      "title": "Birth of Money: The great invention that wasn't real",
+      "order": 13,
+      "description": "Discover the spontaneous origin of money. We explain how it was never invented by any government, but naturally emerged from barter to facilitate trade.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Natural Money"
+    },
+    {
+      "slug": "the-cantillon-effect-why-printing-enriches-the-few",
+      "title": "The Cantillon Effect: Why printing enriches the few",
+      "order": 14,
+      "description": "We analyze the Cantillon Effect. Learn how printing new money always enriches the very first to receive it, severely punishing the poorest in society.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Money Trap"
+    },
+    {
+      "slug": "true-inflation-the-great-myth-of-high-market-prices",
+      "title": "True Inflation: The great myth of high market prices",
+      "order": 15,
+      "description": "We tackle inflation as a purely monetary phenomenon. We destroy the popular myth that greedy businessmen are somehow responsible for the rising price tags.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Real Culprit"
+    },
+    {
+      "slug": "the-silent-tax-how-the-government-steals-your-savings",
+      "title": "The Silent Tax: How the government steals your savings",
+      "order": 16,
+      "description": "We expose the terrifying inflation tax. Learn how inflation operates as a completely hidden tribute that secretly transfers your hard-earned wealth to the State.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Silent Robbery"
+    },
+    {
+      "slug": "banking-illusion-the-money-they-lend-isnt-actually-there",
+      "title": "Banking Illusion: The money they lend isn't actually there",
+      "order": 17,
+      "description": "We criticize fractional reserve banking. We expose the fierce debate about how modern banks lend out the money they explicitly promise to keep safe for you.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Bank Trick"
+    },
+    {
+      "slug": "safe-money-why-we-must-demand-one-hundred-percent-reserves",
+      "title": "Safe Money: Why we must demand one hundred percent reserves",
+      "order": 18,
+      "description": "We outline the hundred percent reserve ratio. Discover the Austrian proposal to prevent modern commercial banks from creating artificial credit out of nowhere.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Untouchable Reserves"
+    },
+    {
+      "slug": "return-to-gold-the-urgent-search-for-truly-sound-money",
+      "title": "Return to Gold: The urgent search for truly sound money",
+      "order": 19,
+      "description": "We explore the gold standard and sound money. Why backing the currency with a physical asset successfully limits political power to print endless banknotes.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Real Money"
+    },
+    {
+      "slug": "private-currencies-the-brilliant-plan-that-inspired-bitcoin",
+      "title": "Private Currencies: The brilliant plan that inspired Bitcoin",
+      "order": 20,
+      "description": "We analyze the denationalization of money. Hayek's groundbreaking proposal on private competing currencies that laid the philosophical foundations for crypto.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Goodbye Central Bank"
+    },
+    {
+      "slug": "crises-explained-why-the-world-economy-always-collapses",
+      "title": "Crises Explained: Why the world economy always collapses",
+      "order": 21,
+      "description": "We introduce the Austrian Business Cycle Theory. Learn that major crises are not capitalist failures, but stem from the blatant manipulation of central banks.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Anatomy of a Crash"
+    },
+    {
+      "slug": "the-price-of-time-what-the-interest-rate-says-about-you",
+      "title": "The Price of Time: What the interest rate says about you",
+      "order": 22,
+      "description": "We reveal the interest rate as the price of time. Discover that it is not a simple financial invention, but a pure reflection of your natural human impatience.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Cost of the Future"
+    },
+    {
+      "slug": "false-signals-the-massive-harm-of-forcing-rates-down",
+      "title": "False Signals: The massive harm of forcing rates down",
+      "order": 23,
+      "description": "We explain the manipulation of interest rates. Observe the enormous disasters that unfold when a Central Bank artificially sends false economic signals today.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Rate Trap"
+    },
+    {
+      "slug": "the-investment-mirage-building-grand-castles-in-the-air",
+      "title": "The Investment Mirage: Building grand castles in the air",
+      "order": 24,
+      "description": "We study malinvestment. Discover how cheap credit misleads entrepreneurs into investing massive resources into long-term projects society never really demanded.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Castles in the Sand"
+    },
+    {
+      "slug": "the-artificial-party-why-economic-booms-are-an-illusion",
+      "title": "The Artificial Party: Why economic booms are an illusion",
+      "order": 25,
+      "description": "We explore the dangerous boom phase. We analyze the totally misleading initial euphoria that is artificially generated by the cheap credit from central banks.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "False Prosperity"
+    },
+    {
+      "slug": "the-financial-hangover-the-inevitable-burst-of-the-crisis",
+      "title": "The Financial Hangover: The inevitable burst of the crisis",
+      "order": 26,
+      "description": "We face the dreaded bust phase. That harsh, unavoidable moment where pure reality imposes itself, the bubble violently bursts, and the market must adjust.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Pain of Adjustment"
+    },
+    {
+      "slug": "the-capital-web-magic-triangles-of-the-global-economy",
+      "title": "The Capital Web: Magic triangles of the global economy",
+      "order": 27,
+      "description": "We unravel the capital structure and Hayekian triangles. Capital is not a homogeneous block, but complex stages deeply connected throughout the passage of time.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Hidden Blocks"
+    },
+    {
+      "slug": "the-hidden-engine-why-saving-money-makes-you-much-richer",
+      "title": "The Hidden Engine: Why saving money makes you much richer",
+      "order": 28,
+      "description": "We highlight saving as the great engine of growth. Break the consumption myth and understand that only prior savings can truly foster new, advanced technology.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Power of Saving"
+    },
+    {
+      "slug": "letting-them-fall-why-rescuing-companies-ruins-everyone",
+      "title": "Letting Them Fall: Why rescuing companies ruins everyone",
+      "order": 29,
+      "description": "We question state bailouts for massive corporations. Understand why preventing huge companies from going bankrupt only prolongs a terrible economic agony.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "No More Bailouts"
+    },
+    {
+      "slug": "the-market-in-motion-a-dynamic-movie-not-a-simple-photo",
+      "title": "The Market in Motion: A dynamic movie, not a simple photo",
+      "order": 30,
+      "description": "We observe the market as a discovery process. Dare to view the economy as a constantly evolving, dynamic entity rather than a fixed, static textbook picture.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Living Economy"
+    },
+    {
+      "slug": "the-alert-gaze-the-true-role-of-the-heroic-entrepreneur",
+      "title": "The Alert Gaze: The true role of the heroic entrepreneur",
+      "order": 31,
+      "description": "We highlight the crucial role of the entrepreneur. Discover how their unique capacity to stay alert to new opportunities drives the advancement of all society.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Entrepreneurial Engine"
+    },
+    {
+      "slug": "the-markets-prize-why-making-money-is-deeply-ethical",
+      "title": "The Market's Prize: Why making money is deeply ethical",
+      "order": 32,
+      "description": "We defend the enormous social function of profit. Earning money without deceit is the ultimate prize society awards you for effectively helping other people.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Ethics of Money"
+    },
+    {
+      "slug": "the-power-of-failure-why-market-losses-are-very-healthy",
+      "title": "The Power of Failure: Why market losses are very healthy",
+      "order": 33,
+      "description": "We explain financial losses as a great cleaning system. They are the strict signals we consumers use to stop bad businesses that carelessly waste resources.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Failing is Useful"
+    },
+    {
+      "slug": "the-real-monopoly-the-danger-of-state-protectionism",
+      "title": "The Real Monopoly: The danger of state protectionism",
+      "order": 34,
+      "description": "We compare legal monopolies against natural ones. Learn why the only truly dangerous monopoly is the one strictly protected through exclusive legal privileges.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The True Danger"
+    },
+    {
+      "slug": "creating-by-destroying-the-paradox-of-tech-progress",
+      "title": "Creating by Destroying: The paradox of tech progress",
+      "order": 35,
+      "description": "Delve into creative destruction. Observe how innovation eliminates old jobs but effectively generates new, highly productive employment in the long run.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Price of Innovation"
+    },
+    {
+      "slug": "the-true-boss-your-supreme-power-when-you-buy-anything",
+      "title": "The True Boss: Your supreme power when you buy anything",
+      "order": 36,
+      "description": "We consecrate the absolute sovereignty of the consumer. Discover how each of your everyday purchases is a direct vote deciding which company lives or dies.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "You Have the Power"
+    },
+    {
+      "slug": "socialist-chaos-why-central-planning-always-completely-fails",
+      "title": "Socialist Chaos: Why central planning always completely fails",
+      "order": 37,
+      "description": "We explain the economic calculation debate in socialism. Without private property, real prices don't exist, and any complex economy inevitably collapses.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Impossible Math"
+    },
+    {
+      "slug": "the-fatal-conceit-the-catastrophic-error-of-politicians",
+      "title": "The Fatal Conceit: The catastrophic error of politicians",
+      "order": 38,
+      "description": "We warn against the fatal conceit of modern rulers. It is a false illusion to believe that a select few can plan society better than millions of free people.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Politician's Sin"
+    },
+    {
+      "slug": "price-ceilings-the-foolproof-recipe-to-create-shortages",
+      "title": "Price Ceilings: The foolproof recipe to create shortages",
+      "order": 39,
+      "description": "We destroy the dangerous concept of price controls. We analyze how forcing lower prices creates severe shortages, and forcing higher prices creates unemployment.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Poverty Factory"
+    },
+    {
+      "slug": "the-snowball-how-one-bad-law-quickly-generates-a-worse-one",
+      "title": "The Snowball: How one bad law quickly generates a worse one",
+      "order": 40,
+      "description": "We describe the fierce dynamics of interventionism. Discover how one state regulation always causes another problem that they then try to cover with another law.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The State Spiral"
+    },
+    {
+      "slug": "the-broken-window-what-we-dont-see-when-spending-public-money",
+      "title": "The Broken Window: What we don't see when spending public money",
+      "order": 41,
+      "description": "We illustrate the famous broken window fallacy. The need to focus on that economic growth that never occurred because your resources were forcefully diverted.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "What Is Not Seen"
+    },
+    {
+      "slug": "the-welfare-trap-how-endless-subsidies-tie-people-down",
+      "title": "The Welfare Trap: How endless subsidies tie people down",
+      "order": 42,
+      "description": "We harshly criticize the modern welfare state. Learn how maintaining prolonged government subsidies heavily fosters dependence and completely nullifies effort.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Golden Cage"
+    },
+    {
+      "slug": "legal-destruction-why-taxes-make-you-significantly-poorer",
+      "title": "Legal Destruction: Why taxes make you significantly poorer",
+      "order": 43,
+      "description": "We point to heavy taxes as the outright destruction of capital. Understand that taking money from society prevents wealth accumulation and halts wage growth.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Brake on Growth"
+    },
+    {
+      "slug": "the-spending-myth-who-should-build-our-streets-and-parks",
+      "title": "The Spending Myth: Who should build our streets and parks",
+      "order": 44,
+      "description": "We question the very existence of essential public goods. Many vital services currently provided by the State can be offered much better by private agents.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Privatizing the Public"
+    },
+    {
+      "slug": "the-great-battle-the-epic-duel-between-hayek-and-john-keynes",
+      "title": "The Great Battle: The epic duel between Hayek and John Keynes",
+      "order": 45,
+      "description": "We revive the unforgettable debate between Hayek and Keynes. We compare the visions of state interventionism versus the free market during the 20th century.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Match of the Century"
+    },
+    {
+      "slug": "aggregate-blindness-what-the-gdp-hides-about-your-reality",
+      "title": "Aggregate Blindness: What the GDP hides about your reality",
+      "order": 46,
+      "description": "We expose the harsh critique of traditional macroeconomics. Concepts like the GDP actively hide what is really happening between real people every single day.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The GDP Trap"
+    },
+    {
+      "slug": "useless-math-why-real-economics-is-not-just-simple-algebra",
+      "title": "Useless Math: Why real economics is not just simple algebra",
+      "order": 47,
+      "description": "We base the rejection of pure mathematical models. Translating human beings into simple algebraic variables always eliminates the key factor of human creativity.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "False Precision"
+    },
+    {
+      "slug": "chicago-vs-vienna-differences-between-two-liberal-giants",
+      "title": "Chicago vs Vienna: Differences between two liberal giants",
+      "order": 48,
+      "description": "We differentiate Austrians from the famous Chicago School. We fiercely criticize the excessive use of math and their strong support for the Central Bank figure.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Friends and Rivals"
+    },
+    {
+      "slug": "idle-money-fully-refuting-the-great-liquidity-trap-myth",
+      "title": "Idle Money: Fully refuting the great liquidity trap myth",
+      "order": 49,
+      "description": "We dismantle the false concept of the liquidity trap. We definitively refute the Keynesian theory claiming people hoard money under the mattress for no reason.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Mattress Myth"
+    },
+    {
+      "slug": "the-great-founder-carl-menger-and-the-start-of-the-revolution",
+      "title": "The Great Founder: Carl Menger and the start of the revolution",
+      "order": 50,
+      "description": "We pay tribute to the great Carl Menger. Learn exactly how this wonderful school began in 1871 by bravely challenging both classical economists and Marxists.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Founding Father"
+    },
+    {
+      "slug": "the-intransigent-the-life-of-mises-fighting-against-everyone",
+      "title": "The Intransigent: The life of Mises fighting against everyone",
+      "order": 51,
+      "description": "We remember the brilliant Ludwig von Mises. We review the amazing history of the brave man who rebuilt the Austrian School after fleeing the Nazis in Europe.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Austrian Hero"
+    },
+    {
+      "slug": "spontaneous-order-how-society-organizes-without-a-boss",
+      "title": "Spontaneous Order: How society organizes without a boss",
+      "order": 52,
+      "description": "We analyze Hayek's theory of spontaneous order. We explore how complex social institutions naturally arise from human action without any intentional grand design.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Order Without a Designer"
+    }
+  ]
+}

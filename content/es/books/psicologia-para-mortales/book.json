@@ -1,0 +1,543 @@
+{
+  "slug": "psicologia-para-mortales",
+  "locale": "es",
+  "title": "Psicología para Mortales",
+  "subtitle": "Respuestas simples para mentes complejas",
+  "author": "Wordsus Team",
+  "description": "Explora los misterios de la mente y el comportamiento humano a través de 52 lecciones semanales de psicología. Respuestas sencillas para comprender tus emociones, sesgos y relaciones.",
+  "cover": "/images/books/psicologia-para-mortales-es-cover.jpeg",
+  "category": "divulgacion-cientifica",
+  "tags": [
+    "psicologia",
+    "mente",
+    "ciencia",
+    "divulgacion",
+    "comportamiento",
+    "bienestar"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-23",
+  "language": "es",
+  "chapters": [
+    {
+      "slug": "exceso-de-confianza-el-gran-engano-de-nuestra-mente",
+      "title": "Exceso de Confianza: El gran engaño de nuestra mente",
+      "order": 1,
+      "description": "Hoy exploramos el famoso Efecto Dunning-Kruger. Explicaremos por qué los incompetentes sobreestiman sus habilidades y los expertos siempre suelen dudar.",
+      "thumbnailTitle": "¡Crees que sabes más!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "trampas-del-cerebro-cuando-las-acciones-te-mienten",
+      "title": "Trampas del Cerebro: Cuando las acciones te mienten",
+      "order": 2,
+      "description": "Analizamos la disonancia cognitiva, esa tensión mental que experimentamos cuando nuestras creencias profundas y acciones diarias se contradicen sin remedio.",
+      "thumbnailTitle": "Tu cerebro te miente",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "recuerdos-falsos-ese-pasado-que-jamas-ha-existido",
+      "title": "Recuerdos Falsos: Ese pasado que jamás ha existido",
+      "order": 3,
+      "description": "Sumérgete en el intrigante Efecto Mandela. Descubre cómo grandes grupos de personas logran compartir recuerdos detallados de eventos que jamás ocurrieron.",
+      "thumbnailTitle": "Tus recuerdos son falsos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "rostros-ocultos-buscando-un-sentido-en-la-neblina",
+      "title": "Rostros Ocultos: Buscando un sentido en la neblina",
+      "order": 4,
+      "description": "Exploramos la pareidolia, esa tendencia de la mente humana que nos lleva a encontrar caras, formas y patrones significativos en simples objetos inanimados.",
+      "thumbnailTitle": "¿Ves caras en todos lados?",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "camaras-de-eco-escuchando-solo-lo-que-nos-encanta",
+      "title": "Cámaras de Eco: Escuchando solo lo que nos encanta",
+      "order": 5,
+      "description": "Desentrañamos el sesgo de confirmación para entender por qué solo validamos la información que respalda lo que creemos, ignorando las pruebas en contra.",
+      "thumbnailTitle": "Por qué ignoras la verdad",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "misterios-del-tiempo-ese-momento-que-ya-vivimos-hoy",
+      "title": "Misterios del Tiempo: Ese momento que ya vivimos hoy",
+      "order": 6,
+      "description": "Explicamos las diversas teorías neurológicas detrás del fenómeno del Déjà Vu y por qué sentimos con tanta certeza que ya hemos vivido un momento inédito.",
+      "thumbnailTitle": "¿Ya viviste esto antes?",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "despiertos-al-sonar-controlando-tu-mundo-de-irreal",
+      "title": "Despiertos al Soñar: Controlando tu mundo de irreal",
+      "order": 7,
+      "description": "Adéntrate en el fascinante universo de los sueños lúcidos. Analizamos cómo es posible ser consciente de estar soñando y lograr tomar control del entorno.",
+      "thumbnailTitle": "Controla tus sueños hoy",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-pasado-borrado-por-que-olvidamos-tu-tierna-ninez",
+      "title": "El Pasado Borrado: Por qué olvidamos tu tierna niñez",
+      "order": 8,
+      "description": "Investigamos la misteriosa amnesia infantil. Conoce por qué los humanos somos incapaces de recordar casi ninguna experiencia de nuestros primeros años.",
+      "thumbnailTitle": "¿Dónde está tu infancia?",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "tareas-incompletas-la-mente-que-no-logra-olvidar",
+      "title": "Tareas Incompletas: La mente que no logra olvidar",
+      "order": 9,
+      "description": "Abordamos el Efecto Zeigarnik para comprender por qué nuestra memoria recuerda mucho mejor las tareas interrumpidas frente a las que ya hemos finalizado.",
+      "thumbnailTitle": "Tu cerebro no te deja en paz",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-gorila-invisible-lo-que-vemos-y-no-registramos",
+      "title": "El Gorila Invisible: Lo que vemos y no registramos",
+      "order": 10,
+      "description": "Discutimos la ceguera por inatención. Usando el experimento del gorila, veremos cómo ignoramos detalles obvios si la mente está enfocada en otras cosas.",
+      "thumbnailTitle": "¡Estás ciego y no lo sabes!",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "multitudes-pasivas-el-grave-riesgo-de-estar-rodeados",
+      "title": "Multitudes Pasivas: El grave riesgo de estar rodeados",
+      "order": 11,
+      "description": "Hoy analizamos el Efecto Espectador. Entenderemos la triste paradoja de que, ante una urgencia, más testigos significan menos ayuda para quien la necesita.",
+      "thumbnailTitle": "Nadie te va a salvar",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "la-obediencia-ciega-la-delgada-linea-hacia-el-mal",
+      "title": "La Obediencia Ciega: La delgada línea hacia el mal",
+      "order": 12,
+      "description": "Repasamos el aterrador Experimento de Milgram. Veremos hasta qué punto una persona común puede causar dolor a otra solo por seguir las órdenes superiores.",
+      "thumbnailTitle": "¿Harías daño por orden?",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "prisiones-mentales-cuando-el-poder-siempre-corrompe",
+      "title": "Prisiones Mentales: Cuando el poder siempre corrompe",
+      "order": 13,
+      "description": "Estudiamos el Experimento de la Prisión de Stanford para ver cómo los simples roles sociales asignados pueden destruir la moralidad de individuos normales.",
+      "thumbnailTitle": "El poder te hace malo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "belleza-enganosa-lo-lindo-jamas-siempre-es-lo-bueno",
+      "title": "Belleza Engañosa: Lo lindo jamás siempre es lo bueno",
+      "order": 14,
+      "description": "Desenmascaramos el Efecto Halo, un sesgo que nos hace asumir automáticamente que una persona hermosa físicamente debe ser también inteligente y muy exitosa.",
+      "thumbnailTitle": "El engaño de la belleza",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "manipulacion-sutil-el-arte-mas-oscuro-de-convencerte",
+      "title": "Manipulación Sutil: El arte más oscuro de convencerte",
+      "order": 15,
+      "description": "Analizamos la psicología de la persuasión. Identificaremos las poderosas técnicas ocultas que utilizan los vendedores y líderes para controlar tus compras.",
+      "thumbnailTitle": "Cómo te manipulan hoy",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "presion-de-un-grupo-por-que-negamos-nuestra-verdad",
+      "title": "Presión de un Grupo: Por qué negamos nuestra verdad",
+      "order": 16,
+      "description": "Exploramos la conformidad social mediante el experimento de Asch, demostrando que somos capaces de negar la cruda realidad solo para encajar con los demás.",
+      "thumbnailTitle": "Mientes para encajar",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "vinculos-rotos-el-peso-mas-oculto-de-nuestra-ninez",
+      "title": "Vínculos Rotos: El peso más oculto de nuestra niñez",
+      "order": 17,
+      "description": "Nos adentramos en la Teoría del Apego en adultos para entender de qué manera nuestra crianza afecta nuestras dinámicas y seguridad en el amor de pareja.",
+      "thumbnailTitle": "¿Por qué amas así?",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "profecias-cumplidas-todo-el-poder-de-las-expectativas",
+      "title": "Profecías Cumplidas: Todo el poder de las expectativas",
+      "order": 18,
+      "description": "Estudiamos el asombroso Efecto Pigmalión. Explicaremos cómo las simples expectativas de los otros pueden alterar dramáticamente nuestro propio rendimiento.",
+      "thumbnailTitle": "El poder de creer en ti",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "espejos-romanticos-el-inmenso-mito-de-los-opuestos",
+      "title": "Espejos Románticos: El inmenso mito de los opuestos",
+      "order": 19,
+      "description": "Desmentimos la popular creencia de que los opuestos se atraen. La ciencia de la atracción interpersonal demuestra que en realidad buscamos pura similitud.",
+      "thumbnailTitle": "Tu pareja ideal eres tú",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "armonia-peligrosa-el-fracaso-brutal-del-pensar-grupal",
+      "title": "Armonía Peligrosa: El fracaso brutal del pensar grupal",
+      "order": 20,
+      "description": "Analizamos el fenómeno del Pensamiento de Grupo, detallando cómo personas brillantes toman las peores decisiones conjuntas por evitar el conflicto interno.",
+      "thumbnailTitle": "El grupo te hace tonto",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "mapa-de-todo-tu-ser-los-cinco-pilares-de-tu-propia-alma",
+      "title": "Mapa de Todo tu Ser: Los cinco pilares de tu propia alma",
+      "order": 21,
+      "description": "Explicamos los 5 Grandes Rasgos de Personalidad. Aprende cómo la ciencia clasifica el carácter humano según la apertura, responsabilidad y extraversión.",
+      "thumbnailTitle": "¿Cómo es tu personalidad?",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "corazon-razonable-el-gran-triunfo-sobre-el-intelecto",
+      "title": "Corazón Razonable: El gran triunfo sobre el intelecto",
+      "order": 22,
+      "description": "Abordamos el concepto de Inteligencia Emocional y por qué dominar nuestras emociones suele ser un mejor predictor de éxito en la vida que tener un alto CI.",
+      "thumbnailTitle": "El CI ya no importa nada",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "sombras-funcionales-las-tres-caras-de-la-gran-maldad",
+      "title": "Sombras Funcionales: Las tres caras de la gran maldad",
+      "order": 23,
+      "description": "Exploramos los inquietantes perfiles de la Tríada Oscura de la Personalidad, analizando el funcionamiento del narcisismo, maquiavelismo y la psicopatía.",
+      "thumbnailTitle": "Conoce a los psicópatas",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "falsos-fraudes-ese-miedo-atroz-a-no-merecer-tus-logros",
+      "title": "Falsos Fraudes: Ese miedo atroz a no merecer tus logros",
+      "order": 24,
+      "description": "Discutimos el agobiante Síndrome del Impostor, esa constante sensación de ser un fraude y la incapacidad absoluta de aceptar el éxito propio como genuino.",
+      "thumbnailTitle": "¿Sientes que eres fraude?",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "inmersion-profunda-perdiendo-la-nocion-de-todo-tu-ser",
+      "title": "Inmersión Profunda: Perdiendo la noción de todo tu ser",
+      "order": 25,
+      "description": "Detallamos cómo alcanzar el maravilloso Estado de Flujo, esa inmersión mental absoluta en una tarea donde el tiempo, el ego y las distracciones desaparecen.",
+      "thumbnailTitle": "Hackea tu concentración",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "evasion-emocional-todo-el-mito-de-gestionar-tu-tiempo",
+      "title": "Evasión Emocional: Todo el mito de gestionar tu tiempo",
+      "order": 26,
+      "description": "Entenderemos por qué la procrastinación como problema emocional nos lleva a posponer deberes para escapar temporalmente de los sentimientos desagradables.",
+      "thumbnailTitle": "Por qué lo dejas todo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "silencio-y-el-miedo-separando-la-timidez-de-una-fobia",
+      "title": "Silencio y el Miedo: Separando la timidez de una fobia",
+      "order": 27,
+      "description": "Aclaramos la enorme confusión entre introversión vs. ansiedad social. No es lo mismo agotar tu batería social que sentir un profundo pánico al juicio ajeno.",
+      "thumbnailTitle": "¿Eres tímido o ansioso?",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "felicidad-efimera-el-triste-regreso-a-la-eterna-rutina",
+      "title": "Felicidad Efímera: El triste regreso a la eterna rutina",
+      "order": 28,
+      "description": "Explicamos la brutal Adaptación Hedónica, el mecanismo por el cual ni ganar la lotería ni una tragedia lograrán alterar tu felicidad base a largo plazo.",
+      "thumbnailTitle": "Por qué no eres más feliz",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "sentir-o-entender-dos-grandes-caminos-a-la-compasion",
+      "title": "Sentir o Entender: Dos grandes caminos a la compasión",
+      "order": 29,
+      "description": "Analizamos el choque entre empatía vs. simpatía, distinguiendo la capacidad de comprender mentalmente la pena ajena frente a sentir su profundo sufrimiento.",
+      "thumbnailTitle": "¿Realmente sientes pena?",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "rostros-delatores-todo-el-lenguaje-de-la-gran-mentira",
+      "title": "Rostros Delatores: Todo el lenguaje de la gran mentira",
+      "order": 30,
+      "description": "Exploramos las famosas microexpresiones faciales. Descubre cómo pequeños e incontrolables gestos universales nos delatan cuando intentamos decir mentiras.",
+      "thumbnailTitle": "Atrapa a un mentiroso",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "nacer-o-bien-hacerse-los-origenes-de-la-crueldad-humana",
+      "title": "Nacer o Bien Hacerse: Los orígenes de la crueldad humana",
+      "order": 31,
+      "description": "Marcamos los límites entre la psicopatía vs. sociopatía, evaluando las diferencias entre nacer sin empatía alguna y desarrollarla de una manera defectuosa.",
+      "thumbnailTitle": "Psicópata o Sociópata",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "mentes-fracturadas-todo-el-peso-de-ser-varios-a-la-vez",
+      "title": "Mentes Fracturadas: Todo el peso de ser varios a la vez",
+      "order": 32,
+      "description": "Investigamos a fondo el Trastorno de Identidad Disociativo. Separaremos la ficción clínica de la dura realidad vinculada directamente con traumas infantiles.",
+      "thumbnailTitle": "Las múltiples mentes",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "felicidad-de-carton-la-tristeza-atroz-que-nadie-percibe",
+      "title": "Felicidad de Cartón: La tristeza atroz que nadie percibe",
+      "order": 33,
+      "description": "Analizamos la desgarradora depresión sonriente. Hablaremos de quienes sufren internamente de forma profunda mientras exhiben una fachada social intachable.",
+      "thumbnailTitle": "El dolor que no se ve",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "prisiones-de-ritual-el-verdadero-rostro-de-la-gran-duda",
+      "title": "Prisiones de Ritual: El verdadero rostro de la gran duda",
+      "order": 34,
+      "description": "Derribamos mitos alrededor del Trastorno Obsesivo-Compulsivo (TOC), explicando por qué esta enfermedad va muchísimo más allá de un simple afán de limpieza.",
+      "thumbnailTitle": "El TOC no es limpieza",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "realidades-alternas-cuando-la-mente-crea-un-mundo-nuevo",
+      "title": "Realidades Alternas: Cuando la mente crea un mundo nuevo",
+      "order": 35,
+      "description": "Abordamos las complejas vivencias de la esquizofrenia y alucinaciones. Observaremos cómo el cerebro construye percepciones indistinguibles de la realidad.",
+      "thumbnailTitle": "Las voces de tu cabeza",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "terrores-ilogicos-desde-las-aranas-hasta-los-agujeros",
+      "title": "Terrores Ilógicos: Desde las arañas hasta los agujeros",
+      "order": 36,
+      "description": "Exploramos los orígenes evolutivos de las fobias específicas y extrañas. Comprenderemos por qué la mente entra en pánico ante los pequeños patrones juntos.",
+      "thumbnailTitle": "Tus miedos más raros",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "creencias-toxicas-cuando-todo-tu-cerebro-busca-danar",
+      "title": "Creencias Tóxicas: Cuando todo tu cerebro busca dañar",
+      "order": 37,
+      "description": "Conoce el misterioso Efecto Nocebo. Analizaremos cómo el simple hecho de esperar un daño o efecto secundario de algo inofensivo provoca un síntoma físico.",
+      "thumbnailTitle": "Tu mente te enferma",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "tormentas-de-panico-todo-el-sistema-nervioso-en-alerta",
+      "title": "Tormentas de Pánico: Todo el sistema nervioso en alerta",
+      "order": 38,
+      "description": "Desglosamos punto por punto la anatomía de un ataque de pánico para entender el error del sistema nervioso que detona un terror puro sin una amenaza real.",
+      "thumbnailTitle": "Anatomía de un pánico",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "emociones-al-limite-todo-el-miedo-atroz-al-cruel-abandono",
+      "title": "Emociones al Límite: Todo el miedo atroz al cruel abandono",
+      "order": 39,
+      "description": "Discutimos la dura experiencia del Trastorno Límite de la Personalidad (TLP). Explicaremos las desregulaciones crónicas y las tormentosas crisis de apego.",
+      "thumbnailTitle": "No me abandones nunca",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "carceles-digitales-todo-el-placer-que-nos-roba-el-control",
+      "title": "Cárceles Digitales: Todo el placer que nos roba el control",
+      "order": 40,
+      "description": "Detallamos los mecanismos detrás de las adicciones conductuales. Las redes, celulares y juegos alteran el sistema de recompensa del cerebro como una droga.",
+      "thumbnailTitle": "Tu celular es tu droga",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "cerebros-flexibles-el-increible-poder-inmenso-para-sanar",
+      "title": "Cerebros Flexibles: El increíble poder inmenso para sanar",
+      "order": 41,
+      "description": "Exploraremos la extraordinaria neuroplasticidad humana, la capacidad de tu masa cerebral para generar nuevas conexiones y regenerarse después de un trauma.",
+      "thumbnailTitle": "Moldea tu propio cerebro",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "sentidos-cruzados-saboreando-lindos-colores-y-palabras",
+      "title": "Sentidos Cruzados: Saboreando lindos colores y palabras",
+      "order": 42,
+      "description": "Te presentamos el mundo de la sinestesia. Descubrirás la fascinante realidad neurológica donde algunas personas pueden ver el sonido o tocar un sabor dulce.",
+      "thumbnailTitle": "¿A qué sabe ese color?",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "reflejos-del-alma-la-real-ciencia-detras-de-los-bostezos",
+      "title": "Reflejos del Alma: La real ciencia detrás de los bostezos",
+      "order": 43,
+      "description": "Analizamos las fascinantes neuronas espejo, esenciales para el desarrollo humano, responsables de nuestra empatía y de que bostezar sea tan hipercontagioso.",
+      "thumbnailTitle": "Por qué imitas al resto",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "mentes-divididas-el-inmenso-mito-de-los-dos-hemisferios",
+      "title": "Mentes Divididas: El inmenso mito de los dos hemisferios",
+      "order": 44,
+      "description": "Rompemos la falsa creencia sobre el cerebro izquierdo vs. cerebro derecho y explicamos por qué asignar la lógica o la creatividad a un solo lado es irreal.",
+      "thumbnailTitle": "El mito del hemisferio",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "defensas-viscerales-todo-el-sistema-inmune-y-conductual",
+      "title": "Defensas Viscerales: Todo el sistema inmune y conductual",
+      "order": 45,
+      "description": "Explicamos la curiosa psicología evolutiva del asco. Conoce de qué forma la profunda repulsión se desarrolló para mantenernos a salvo de diversas amenazas.",
+      "thumbnailTitle": "El asco salva tu vida",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "rebeldia-neuronal-todo-el-misterio-de-esa-juventud-rota",
+      "title": "Rebeldía Neuronal: Todo el misterio de esa juventud rota",
+      "order": 46,
+      "description": "Analizamos el particular comportamiento del cerebro adolescente, justificando el descontrol e impulsividad mediante el tardío desarrollo del área prefrontal.",
+      "thumbnailTitle": "¿Adolescentes locos?",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "moleculas-del-amor-la-quimica-secreta-detras-de-tu-apego",
+      "title": "Moléculas del Amor: La química secreta detrás de tu apego",
+      "order": 47,
+      "description": "Nos sumergimos en las funciones de la oxitocina y vasopresina para entender la mecánica química oculta detrás del enamoramiento brutal y la lealtad eterna.",
+      "thumbnailTitle": "La química del amor",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "tonos-persuasivos-todo-el-poder-secreto-de-esos-colores",
+      "title": "Tonos Persuasivos: Todo el poder secreto de esos colores",
+      "order": 48,
+      "description": "Aplicamos en la vida diaria la psicología del color, revelando cómo ciertos tonos influyen subconscientemente en los estados de ánimo y todas tus compras.",
+      "thumbnailTitle": "El color te manipula",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "compras-inconscientes-esas-trampas-de-un-consumo-muy-vil",
+      "title": "Compras Inconscientes: Esas trampas de un consumo muy vil",
+      "order": 49,
+      "description": "Revelamos las potentes herramientas del neuromarketing, evaluando cómo la música o la distribución del pasillo obligan a que tu billetera gaste mucho más.",
+      "thumbnailTitle": "No compres sin ver esto",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "decisiones-ilogicas-todo-tu-gran-miedo-a-perder-el-dinero",
+      "title": "Decisiones Ilógicas: Todo tu gran miedo a perder el dinero",
+      "order": 50,
+      "description": "Introducimos los conceptos de la economía conductual. Veremos por qué los humanos tomamos decisiones financieras irracionales motivados por el mero temor.",
+      "thumbnailTitle": "Por qué pierdes dinero",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "pensamientos-sanos-reescribiendo-todo-tu-propio-drama",
+      "title": "Pensamientos Sanos: Reescribiendo todo tu propio drama",
+      "order": 51,
+      "description": "Detallamos los pilares de la Terapia Cognitivo-Conductual (TCC), demostrando que nuestro sufrimiento nace de interpretar los hechos y no del evento mismo.",
+      "thumbnailTitle": "Controla tu pensamiento",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "vidas-de-videojuego-jugando-siempre-a-ser-mucho-mejores",
+      "title": "Vidas de Videojuego: Jugando siempre a ser mucho mejores",
+      "order": 52,
+      "description": "Exploramos la útil herramienta de la gamificación. Aplicaremos elementos lúdicos como las recompensas diarias para mejorar radicalmente nuestra vida normal.",
+      "thumbnailTitle": "Hackea tu propia rutina",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    }
+  ]
+}

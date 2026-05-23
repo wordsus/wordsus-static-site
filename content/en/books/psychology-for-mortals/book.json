@@ -1,0 +1,543 @@
+{
+  "slug": "psychology-for-mortals",
+  "locale": "en",
+  "title": "Psychology for Mortals",
+  "subtitle": "Simple answers for complex minds",
+  "author": "Wordsus Team",
+  "description": "Explore the mysteries of the mind and human behavior through 52 weekly lessons. Simple answers to understand your emotions, biases, and relationships.",
+  "cover": "/images/books/psychology-for-mortals-en-cover.jpeg",
+  "category": "popular-science",
+  "tags": [
+    "psychology",
+    "mind",
+    "science",
+    "divulgation",
+    "behavior",
+    "well-being"
+  ],
+  "featured": true,
+  "publishedAt": "2026-05-23",
+  "language": "en",
+  "chapters": [
+    {
+      "slug": "overconfidence-the-great-deception-of-our-human-mind",
+      "title": "Overconfidence: The Great Deception of Our Human Mind",
+      "order": 1,
+      "description": "Today we explore the famous Dunning-Kruger Effect. We explain why incompetent people overestimate their skills while experts always tend to doubt themselves.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "You Think You Know!"
+    },
+    {
+      "slug": "brain-traps-when-your-own-actions-lie-to-you-every-day",
+      "title": "Brain Traps: When Your Own Actions Lie to You Every Day",
+      "order": 2,
+      "description": "We analyze cognitive dissonance, that mental tension we experience when our deepest beliefs and our daily actions contradict each other without any remedy.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Your Brain Lies to You"
+    },
+    {
+      "slug": "false-memories-that-distant-past-that-has-never-existed",
+      "title": "False Memories: That Distant Past That Has Never Existed",
+      "order": 3,
+      "description": "Dive into the intriguing Mandela Effect. Discover how large groups of people manage to share detailed memories of events that never actually occurred at all.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Your Memories Are Fake"
+    },
+    {
+      "slug": "hidden-faces-searching-for-meaning-in-the-thick-fog",
+      "title": "Hidden Faces: Searching for Meaning in the Thick Fog",
+      "order": 4,
+      "description": "We explore pareidolia, that innate tendency of the human mind that leads us to find faces, distinct shapes, and meaningful patterns in simple plain objects.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "See Faces Everywhere?"
+    },
+    {
+      "slug": "echo-chambers-listening-only-to-what-we-love-to-hear",
+      "title": "Echo Chambers: Listening Only to What We Love to Hear",
+      "order": 5,
+      "description": "We unravel the confirmation bias to understand exactly why we only validate the information that supports what we believe, ignoring all the evidence against it.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Why You Ignore Truth"
+    },
+    {
+      "slug": "time-mysteries-that-strange-moment-we-have-lived-today",
+      "title": "Time Mysteries: That Strange Moment We Have Lived Today",
+      "order": 6,
+      "description": "We explain the various neurological theories behind the Déjà Vu phenomenon and exactly why we feel with such deep certainty that we lived a brand new moment.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Have You Lived This?"
+    },
+    {
+      "slug": "awake-while-dreaming-controlling-your-unreal-world-now",
+      "title": "Awake While Dreaming: Controlling Your Unreal World Now",
+      "order": 7,
+      "description": "Delve into the fascinating universe of lucid dreaming. We analyze how it is totally possible to be aware of dreaming and manage to take control of the scene.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Control Your Dreams Now"
+    },
+    {
+      "slug": "the-erased-past-exactly-why-we-forget-your-early-years",
+      "title": "The Erased Past: Exactly Why We Forget Your Early Years",
+      "order": 8,
+      "description": "We investigate mysterious childhood amnesia. Learn exactly why we humans are completely unable to remember almost any experience from our very first few years.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Where Is Your Childhood?"
+    },
+    {
+      "slug": "incomplete-tasks-the-busy-mind-that-fails-to-forget-it",
+      "title": "Incomplete Tasks: The Busy Mind That Fails to Forget It",
+      "order": 9,
+      "description": "We address the Zeigarnik Effect to understand why our memory remembers interrupted tasks much better compared to those that we have already finished completely.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Your Brain Won't Let Go"
+    },
+    {
+      "slug": "the-invisible-gorilla-what-we-see-and-do-not-register",
+      "title": "The Invisible Gorilla: What We See and Do Not Register",
+      "order": 10,
+      "description": "We discuss inattentional blindness. Using the gorilla experiment, we will see how we ignore very obvious details if the mind is focused on other silly things.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "You Are Blind Unaware!"
+    },
+    {
+      "slug": "passive-crowds-the-serious-risk-of-being-surrounded-now",
+      "title": "Passive Crowds: The Serious Risk of Being Surrounded Now",
+      "order": 11,
+      "description": "Today we analyze the Bystander Effect. We will understand the sad paradox that, in an emergency, more witnesses mean less help for those who truly need it.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "No One Will Save You"
+    },
+    {
+      "slug": "blind-obedience-the-very-thin-line-towards-complete-evil",
+      "title": "Blind Obedience: The Very Thin Line Towards Complete Evil",
+      "order": 12,
+      "description": "We review the terrifying Milgram Experiment. We will see to what extent an ordinary person can cause deep pain to another just by following superior orders.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Would You Hurt on Command?"
+    },
+    {
+      "slug": "mental-prisons-exactly-when-absolute-power-corrupts-all",
+      "title": "Mental Prisons: Exactly When Absolute Power Corrupts All",
+      "order": 13,
+      "description": "We study the Stanford Prison Experiment to see how simple socially assigned roles can completely destroy the inherent morality of otherwise normal individuals.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Power Makes You Evil"
+    },
+    {
+      "slug": "deceptive-beauty-the-pretty-is-never-always-the-best",
+      "title": "Deceptive Beauty: The Pretty Is Never Always The Best",
+      "order": 14,
+      "description": "We unmask the Halo Effect, a cognitive bias that makes us automatically assume that a physically beautiful person must also be highly smart and successful too.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Deception of Beauty"
+    },
+    {
+      "slug": "subtle-manipulation-the-darkest-art-of-convincing-you",
+      "title": "Subtle Manipulation: The Darkest Art of Convincing You",
+      "order": 15,
+      "description": "We analyze the complex psychology of persuasion. We will identify the powerful hidden techniques that sellers and leaders use to control your daily purchases.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "How They Manipulate You"
+    },
+    {
+      "slug": "pressure-of-a-group-why-we-deny-our-very-own-truth",
+      "title": "Pressure of a Group: Why We Deny Our Very Own Truth",
+      "order": 16,
+      "description": "We explore social conformity through the Asch experiment, demonstrating that we are capable of denying the harsh reality just to fit in perfectly with others.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "You Lie Just to Fit In"
+    },
+    {
+      "slug": "broken-bonds-the-most-hidden-weight-of-our-childhood",
+      "title": "Broken Bonds: The Most Hidden Weight of Our Childhood",
+      "order": 17,
+      "description": "We delve into Attachment Theory in adults to understand exactly how our upbringing severely affects our relationship dynamics and our security in romantic love.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Why Do You Love Like That?"
+    },
+    {
+      "slug": "fulfilled-prophecies-all-the-power-of-high-expectations",
+      "title": "Fulfilled Prophecies: All The Power of High Expectations",
+      "order": 18,
+      "description": "We study the amazing Pygmalion Effect. We will explain how the simple expectations of other people can dramatically alter our very own personal performance.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Power of Believing"
+    },
+    {
+      "slug": "romantic-mirrors-the-immense-myth-of-opposites-attract",
+      "title": "Romantic Mirrors: The Immense Myth of Opposites Attract",
+      "order": 19,
+      "description": "We debunk the popular belief that opposites attract. The real science of interpersonal attraction proves that in reality we seek pure similarity in a partner.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Your Ideal Partner is You"
+    },
+    {
+      "slug": "dangerous-harmony-the-brutal-failure-of-group-thinking",
+      "title": "Dangerous Harmony: The Brutal Failure of Group Thinking",
+      "order": 20,
+      "description": "We analyze the Groupthink phenomenon, detailing how incredibly brilliant people make the worst joint decisions just to avoid internal conflicts in the group.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Group Makes You Dumb"
+    },
+    {
+      "slug": "map-of-your-whole-being-the-five-pillars-of-your-soul",
+      "title": "Map of Your Whole Being: The Five Pillars of Your Soul",
+      "order": 21,
+      "description": "We explain the Big Five Personality Traits. Learn how modern science classifies human character according to openness, conscientiousness, and pure extraversion.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "How Is Your Personality?"
+    },
+    {
+      "slug": "reasonable-heart-the-great-triumph-over-the-intellect",
+      "title": "Reasonable Heart: The Great Triumph Over The Intellect",
+      "order": 22,
+      "description": "We address the concept of Emotional Intelligence and why mastering our emotions is usually a better predictor of life success than having a very high IQ score.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "IQ Doesn't Matter Anymore"
+    },
+    {
+      "slug": "functional-shadows-the-three-faces-of-great-wickedness",
+      "title": "Functional Shadows: The Three Faces of Great Wickedness",
+      "order": 23,
+      "description": "We explore the disturbing profiles of the Dark Triad of Personality, closely analyzing the inner workings of narcissism, Machiavellianism, and psychopathy.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Meet the Psychopaths"
+    },
+    {
+      "slug": "fake-frauds-that-atrocious-fear-of-undeserved-success",
+      "title": "Fake Frauds: That Atrocious Fear of Undeserved Success",
+      "order": 24,
+      "description": "We discuss the overwhelming Impostor Syndrome, that constant feeling of being a total fraud and the absolute inability to accept one's own success as genuine.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Do You Feel Like a Fraud?"
+    },
+    {
+      "slug": "deep-immersion-losing-the-true-notion-of-your-whole-being",
+      "title": "Deep Immersion: Losing The True Notion of Your Whole Being",
+      "order": 25,
+      "description": "We detail how to reach the wonderful Flow State, that absolute mental immersion in a task where time, the ego, and all pesky distractions completely disappear.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Hack Your Concentration"
+    },
+    {
+      "slug": "emotional-evasion-the-whole-myth-of-managing-your-time",
+      "title": "Emotional Evasion: The Whole Myth of Managing Your Time",
+      "order": 26,
+      "description": "We will understand why procrastination as an emotional issue leads us to postpone duties to temporarily escape from highly unpleasant and anxious feelings today.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Why You Leave Everything"
+    },
+    {
+      "slug": "silence-and-fear-separating-pure-shyness-from-a-phobia",
+      "title": "Silence and Fear: Separating Pure Shyness From a Phobia",
+      "order": 27,
+      "description": "We clarify the huge confusion between introversion vs. social anxiety. Draining your social battery is not the same as feeling deep panic of outside judgment.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Are You Shy or Anxious?"
+    },
+    {
+      "slug": "ephemeral-happiness-the-sad-return-to-eternal-routine",
+      "title": "Ephemeral Happiness: The Sad Return to Eternal Routine",
+      "order": 28,
+      "description": "We explain the brutal Hedonic Adaptation, the mechanism by which neither winning the lottery nor a tragedy will manage to alter your base happiness long term.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Why Aren't You Happier?"
+    },
+    {
+      "slug": "feeling-or-understanding-two-great-paths-to-compassion",
+      "title": "Feeling or Understanding: Two Great Paths to Compassion",
+      "order": 29,
+      "description": "We analyze the clash between empathy vs. sympathy, distinguishing the mental ability to understand someone's pain from truly feeling their suffering inside.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Do You Really Feel Pity?"
+    },
+    {
+      "slug": "revealing-faces-the-complete-language-of-the-great-lie",
+      "title": "Revealing Faces: The Complete Language of The Great Lie",
+      "order": 30,
+      "description": "We deeply explore the famous facial microexpressions. Discover how small and uncontrollable universal gestures give us away when we attempt to tell huge lies.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Catch a Dirty Liar"
+    },
+    {
+      "slug": "born-or-made-the-real-origins-of-human-cruelty-exposed",
+      "title": "Born or Made: The Real Origins of Human Cruelty Exposed",
+      "order": 31,
+      "description": "We mark the exact limits between psychopathy vs. sociopathy, evaluating the key differences between being born without empathy and developing it defectively.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Psychopath or Sociopath"
+    },
+    {
+      "slug": "fractured-minds-the-heavy-weight-of-being-many-at-once",
+      "title": "Fractured Minds: The Heavy Weight of Being Many at Once",
+      "order": 32,
+      "description": "We thoroughly investigate Dissociative Identity Disorder. We will separate clinical fiction from the harsh reality directly linked to severe childhood trauma.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Multiple Minds"
+    },
+    {
+      "slug": "cardboard-happiness-the-atrocious-sadness-nobody-sees",
+      "title": "Cardboard Happiness: The Atrocious Sadness Nobody Sees",
+      "order": 33,
+      "description": "We analyze heartbreaking smiling depression. We will talk about those who suffer deeply internally while exhibiting an absolutely flawless social public facade.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Pain That Is Unseen"
+    },
+    {
+      "slug": "ritual-prisons-the-very-true-face-of-the-greatest-doubt",
+      "title": "Ritual Prisons: The Very True Face of The Greatest Doubt",
+      "order": 34,
+      "description": "We completely debunk myths around Obsessive-Compulsive Disorder (OCD), explaining exactly why this illness goes far beyond a simple desire for extreme cleanliness.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "OCD Is Not Cleanliness"
+    },
+    {
+      "slug": "alternate-realities-when-the-mind-creates-a-new-world",
+      "title": "Alternate Realities: When The Mind Creates a New World",
+      "order": 35,
+      "description": "We address the complex experiences of schizophrenia and hallucinations. We will observe how the human brain builds perceptions indistinguishable from reality.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Voices in Your Head"
+    },
+    {
+      "slug": "illogical-terrors-from-tiny-spiders-to-little-holes",
+      "title": "Illogical Terrors: From Tiny Spiders to Little Holes",
+      "order": 36,
+      "description": "We explore the true evolutionary origins of specific and strange phobias. We'll understand why the human mind panics when facing patterns close together.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Your Weirdest Fears"
+    },
+    {
+      "slug": "toxic-beliefs-when-your-whole-brain-seeks-to-harm-you",
+      "title": "Toxic Beliefs: When Your Whole Brain Seeks to Harm You",
+      "order": 37,
+      "description": "Meet the mysterious Nocebo Effect. We will analyze how the simple fact of expecting a harm or side effect from something harmless causes a real physical sign.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Your Mind Makes You Sick"
+    },
+    {
+      "slug": "panic-storms-the-entire-nervous-system-on-high-alert",
+      "title": "Panic Storms: The Entire Nervous System on High Alert",
+      "order": 38,
+      "description": "We break down the anatomy of a panic attack point by point to deeply understand the nervous system error that triggers pure terror without any actual threat.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Anatomy of a Panic"
+    },
+    {
+      "slug": "emotions-on-the-edge-the-atrocious-fear-of-abandonment",
+      "title": "Emotions on The Edge: The Atrocious Fear of Abandonment",
+      "order": 39,
+      "description": "We discuss the harsh experience of Borderline Personality Disorder (BPD). We will explain the chronic dysregulations and the stormy, severe attachment crises.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Please Never Abandon Me"
+    },
+    {
+      "slug": "digital-jails-all-the-pleasure-that-steals-our-control",
+      "title": "Digital Jails: All The Pleasure That Steals Our Control",
+      "order": 40,
+      "description": "We detail the hidden mechanisms behind behavioral addictions. Social networks, cell phones, and games alter the brain's reward system just like a street drug.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Your Phone Is Your Drug"
+    },
+    {
+      "slug": "flexible-brains-the-incredible-immense-power-to-heal",
+      "title": "Flexible Brains: The Incredible Immense Power to Heal",
+      "order": 41,
+      "description": "We will carefully explore extraordinary human neuroplasticity, the capacity of your brain mass to generate new connections and regenerate after severe trauma.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Mold Your Own Brain"
+    },
+    {
+      "slug": "crossed-senses-tasting-beautiful-colors-and-sweet-words",
+      "title": "Crossed Senses: Tasting Beautiful Colors and Sweet Words",
+      "order": 42,
+      "description": "We present the amazing world of synesthesia to you. You will discover the fascinating neurological reality where some people can see sound or touch a flavor.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Taste That Color?"
+    },
+    {
+      "slug": "soul-reflections-the-real-true-science-behind-yawning",
+      "title": "Soul Reflections: The Real True Science Behind Yawning",
+      "order": 43,
+      "description": "We analyze the fascinating mirror neurons, which are essential for human development, responsible for our deep empathy, and make yawning incredibly contagious.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Why You Imitate Others"
+    },
+    {
+      "slug": "divided-minds-the-immense-myth-of-the-two-hemispheres",
+      "title": "Divided Minds: The Immense Myth of The Two Hemispheres",
+      "order": 44,
+      "description": "We break the false belief about the left brain vs. right brain and clearly explain why assigning pure logic or creativity to just a single side is totally unreal.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Hemisphere Myth"
+    },
+    {
+      "slug": "visceral-defenses-the-entire-immune-behavioral-system",
+      "title": "Visceral Defenses: The Entire Immune Behavioral System",
+      "order": 45,
+      "description": "We explain the highly curious evolutionary psychology of disgust. Learn how deep repulsion developed to keep us completely safe from a variety of dire threats.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Disgust Saves Your Life"
+    },
+    {
+      "slug": "neuronal-rebellion-the-whole-mystery-of-broken-youth",
+      "title": "Neuronal Rebellion: The Whole Mystery of Broken Youth",
+      "order": 46,
+      "description": "We carefully analyze the particular behavior of the adolescent brain, justifying lack of control and impulsivity through the late growth of the prefrontal lobe.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Crazy Teenagers?"
+    },
+    {
+      "slug": "molecules-of-love-the-secret-chemistry-behind-your-bond",
+      "title": "Molecules of Love: The Secret Chemistry Behind Your Bond",
+      "order": 47,
+      "description": "We completely immerse ourselves in the functions of oxytocin and vasopressin to understand the hidden chemical mechanics behind wild love and eternal loyalty.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "The Chemistry of Love"
+    },
+    {
+      "slug": "persuasive-tones-all-the-secret-power-of-those-colors",
+      "title": "Persuasive Tones: All The Secret Power of Those Colors",
+      "order": 48,
+      "description": "We apply the psychology of color in daily life, revealing exactly how certain tones subconsciously influence our daily moods and all your shopping decisions.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Color Manipulates You"
+    },
+    {
+      "slug": "unconscious-purchases-those-traps-of-very-vile-buying",
+      "title": "Unconscious Purchases: Those Traps of Very Vile Buying",
+      "order": 49,
+      "description": "We reveal the very powerful tools of neuromarketing, evaluating how background music or aisle layout force your poor wallet to spend a lot more money today.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Don't Buy Without Seeing This"
+    },
+    {
+      "slug": "illogical-decisions-your-great-fear-of-losing-big-money",
+      "title": "Illogical Decisions: Your Great Fear of Losing Big Money",
+      "order": 50,
+      "description": "We introduce the core concepts of behavioral economics. We will see why we humans make highly irrational financial decisions motivated by mere, simple fear.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Why You Lose Money"
+    },
+    {
+      "slug": "healthy-thoughts-completely-rewriting-your-own-drama",
+      "title": "Healthy Thoughts: Completely Rewriting Your Own Drama",
+      "order": 51,
+      "description": "We detail the core pillars of Cognitive-Behavioral Therapy (CBT), demonstrating that our suffering is born from interpreting facts and not the event itself.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Control Your Thoughts"
+    },
+    {
+      "slug": "video-game-lives-always-playing-to-be-much-better-today",
+      "title": "Video Game Lives: Always Playing to Be Much Better Today",
+      "order": 52,
+      "description": "We explore the highly useful tool of gamification. We will firmly apply playful elements like daily rewards to radically improve our very normal, daily life.",
+      "audioUrl": "",
+      "videoUrl": "",
+      "draft": true,
+      "thumbnailTitle": "Hack Your Own Routine"
+    }
+  ]
+}
