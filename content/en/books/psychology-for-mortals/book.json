@@ -46,7 +46,7 @@
       "description": "Dive into the intriguing Mandela Effect. Discover how large groups of people manage to share detailed memories of events that never actually occurred at all.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Your Memories Are Fake"
     },
     {
@@ -56,7 +56,7 @@
       "description": "We explore pareidolia, that innate tendency of the human mind that leads us to find faces, distinct shapes, and meaningful patterns in simple plain objects.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "See Faces Everywhere?"
     },
     {
@@ -66,7 +66,7 @@
       "description": "We unravel the confirmation bias to understand exactly why we only validate the information that supports what we believe, ignoring all the evidence against it.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Why You Ignore Truth"
     },
     {

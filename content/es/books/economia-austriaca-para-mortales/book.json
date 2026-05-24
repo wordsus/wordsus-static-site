@@ -45,7 +45,7 @@
       "order": 3,
       "description": "Adéntrate en el subjetivismo radical. Aprende que el valor no viene del trabajo invertido, sino de cuánto aprecia una persona algo en su vida.",
       "thumbnailTitle": "El Mito del Precio",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -55,7 +55,7 @@
       "order": 4,
       "description": "Estudiamos el conocimiento disperso de Hayek. Por qué la información está fragmentada en miles de mentes y ningún gobierno puede centralizarla.",
       "thumbnailTitle": "Nadie lo Sabe Todo",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -65,7 +65,7 @@
       "order": 5,
       "description": "Cuestionamos al Homo Economicus. Los austríacos saben que no somos calculadoras perfectas, sino personas buscando mejorar y cometiendo fallos.",
       "thumbnailTitle": "No Eres Un Robot",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },

@@ -46,7 +46,7 @@
       "description": "Dive into radical subjectivism. Learn that value does not come from invested labor, but rather from how much a person appreciates something in their life.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "The Price Myth"
     },
     {
@@ -56,7 +56,7 @@
       "description": "We study Hayek's dispersed knowledge. Discover why information is fragmented across thousands of minds and no single government can ever centralize it all.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "No One Knows Everything"
     },
     {
@@ -66,7 +66,7 @@
       "description": "We question Homo Economicus. Austrians know we are not perfect calculators, but rather human beings constantly seeking improvement and making mistakes.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "You Are Not A Robot"
     },
     {

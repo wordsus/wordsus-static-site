@@ -46,7 +46,7 @@
       "description": "We explore the science behind stevia, aspartame, and sucralose. Are artificial sweeteners a safe alternative to classic refined sugar?",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Are sweeteners healthy?"
     },
     {
@@ -56,7 +56,7 @@
       "description": "We explain why drinking fruit juice is not the same as eating the whole fruit, and how the lack of fiber radically alters sugar's impact.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Juice vs. Fruit"
     },
     {
@@ -66,7 +66,7 @@
       "description": "We review the belief that eating carbs at night makes you gain more weight. Learn how your body manages energy and the real impact of dinner time.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Carbs for dinner?"
     },
     {

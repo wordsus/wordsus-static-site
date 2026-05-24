@@ -45,7 +45,7 @@
       "order": 3,
       "description": "Sumérgete en el intrigante Efecto Mandela. Descubre cómo grandes grupos de personas logran compartir recuerdos detallados de eventos que jamás ocurrieron.",
       "thumbnailTitle": "Tus recuerdos son falsos",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -55,7 +55,7 @@
       "order": 4,
       "description": "Exploramos la pareidolia, esa tendencia de la mente humana que nos lleva a encontrar caras, formas y patrones significativos en simples objetos inanimados.",
       "thumbnailTitle": "¿Ves caras en todos lados?",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -65,7 +65,7 @@
       "order": 5,
       "description": "Desentrañamos el sesgo de confirmación para entender por qué solo validamos la información que respalda lo que creemos, ignorando las pruebas en contra.",
       "thumbnailTitle": "Por qué ignoras la verdad",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },

@@ -45,7 +45,7 @@
       "order": 3,
       "description": "Exploramos la ciencia detrás de la estevia, el aspartamo y la sucralosa. ¿Son los edulcorantes artificiales una alternativa segura frente al azúcar clásico?",
       "thumbnailTitle": "¿Edulcorantes sanos?",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -55,7 +55,7 @@
       "order": 4,
       "description": "Te explicamos por qué beber un jugo de frutas no es lo mismo que comer la fruta entera, y cómo la falta de fibra altera radicalmente el impacto del azúcar.",
       "thumbnailTitle": "Jugo vs. Fruta",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -65,7 +65,7 @@
       "order": 5,
       "description": "Revisamos la creencia de que comer carbohidratos por la noche engorda más. Aprende cómo maneja tu cuerpo la energía y el impacto real del horario de cenas.",
       "thumbnailTitle": "¿Cenar carbohidratos?",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
