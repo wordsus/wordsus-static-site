@@ -26,7 +26,7 @@
       "description": "Today we explore the famous Dunning-Kruger Effect. We explain why incompetent people overestimate their skills while experts always tend to doubt themselves.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "You Think You Know!"
     },
     {
@@ -36,7 +36,7 @@
       "description": "We analyze cognitive dissonance, that mental tension we experience when our deepest beliefs and our daily actions contradict each other without any remedy.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Your Brain Lies to You"
     },
     {

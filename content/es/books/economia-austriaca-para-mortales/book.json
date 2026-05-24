@@ -25,7 +25,7 @@
       "order": 1,
       "description": "Exploramos la praxeología, el pilar de la Escuela Austríaca. Entiende cómo la economía real se deduce únicamente de que el ser humano actúa.",
       "thumbnailTitle": "El Motor Oculto",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -35,7 +35,7 @@
       "order": 2,
       "description": "Analizamos el individualismo metodológico. Descubre por qué solo las personas eligen y actúan, desmintiendo que el Estado sea una mente propia.",
       "thumbnailTitle": "La Sociedad No Existe",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },

@@ -26,7 +26,7 @@
       "description": "We analyze the myth of eating five times a day to speed up metabolism. Discover what real science says about meal frequency and your health.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Eating 5 times?"
     },
     {
@@ -36,7 +36,7 @@
       "description": "We debunk the old belief that eating eggs daily raises bad cholesterol, evaluating its real impact on people's health and daily nutrition.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "The truth about eggs"
     },
     {

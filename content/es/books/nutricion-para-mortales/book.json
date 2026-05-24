@@ -25,7 +25,7 @@
       "order": 1,
       "description": "Analizamos el mito de comer cinco veces al día para acelerar el metabolismo. Descubre qué dice la ciencia real sobre la frecuencia de comidas para la salud.",
       "thumbnailTitle": "¿Comer 5 veces?",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -35,7 +35,7 @@
       "order": 2,
       "description": "Desmitificamos la vieja creencia de que consumir huevos diariamente eleva el colesterol malo, evaluando su impacto real en la salud y nutrición de la gente.",
       "thumbnailTitle": "La verdad del huevo",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },

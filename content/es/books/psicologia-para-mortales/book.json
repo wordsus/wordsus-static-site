@@ -25,7 +25,7 @@
       "order": 1,
       "description": "Hoy exploramos el famoso Efecto Dunning-Kruger. Explicaremos por qué los incompetentes sobreestiman sus habilidades y los expertos siempre suelen dudar.",
       "thumbnailTitle": "¡Crees que sabes más!",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -35,7 +35,7 @@
       "order": 2,
       "description": "Analizamos la disonancia cognitiva, esa tensión mental que experimentamos cuando nuestras creencias profundas y acciones diarias se contradicen sin remedio.",
       "thumbnailTitle": "Tu cerebro te miente",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
