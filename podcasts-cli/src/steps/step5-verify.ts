@@ -8,12 +8,20 @@ import { books } from "../books.js";
 import { checkReadiness } from "../filesystem.js";
 import { printStep, printReadinessTable, ok, warn, C } from "../ui.js";
 import { logStep, log } from "../logger.js";
+import { findJsonFile } from "../filesystem.js";
 import type { SessionState } from "../types.js";
 
 export async function runStep5(session: SessionState): Promise<void> {
   printStep(5, "Verify Source Files");
   
-  const targetAliases = session.targets.map((t) => t.alias);
+  const targetAliases = session.targets
+    .map((t) => t.alias)
+    .filter((alias) => findJsonFile(alias) !== null);
+
+  if (targetAliases.length === 0) {
+    warn("No valid targets with JSON metadata found. Skipping verification.");
+    return;
+  }
 
   while (true) {
     const results = checkReadiness(targetAliases);

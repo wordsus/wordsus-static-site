@@ -167,3 +167,11 @@ pnpm podcasts --episode 3
 - **Step 5 - Verification:** Waits for you to place the downloaded audio and images (`[alias].wav`, `[alias].png`) into `sources_today/`.
 - **Step 6 - Generation:** Uses **FFmpeg** to create the `.mp4` and `.txt` files in `outputs_today/`. It renders an audio-reactive visualizer and manages background loops.
 - **Step 7 - Cleanup:** After uploading everything to YouTube, it packages today's files into a ZIP file in the `backups/` folder and cleans the environment for the next day.
+
+### Filtering / Selecting Episodes
+
+You can selectively process only a subset of books/episodes for the day:
+
+1. Run **Step 1** to generate all metadata `[alias].json` files inside `sources_today/`.
+2. Manually delete the `[alias].json` files of the episodes you **do not** wish to process.
+3. Continue with **Steps 2 to 7**. The CLI will automatically skip any episode that does not have its corresponding metadata `.json` file inside `sources_today/`.

@@ -9,6 +9,7 @@ import { books } from "../books.js";
 import { getChapter, buildArticleUrl } from "../content.js";
 import { printStep, ok, warn, info, clipboardNotice, divider, C } from "../ui.js";
 import { logStep, log } from "../logger.js";
+import { findJsonFile } from "../filesystem.js";
 import type { SessionState } from "../types.js";
 
 const NOTEBOOKLM_URL = "https://notebooklm.google.com";
@@ -24,6 +25,8 @@ export async function runStep2(session: SessionState): Promise<void> {
   for (const book of sortedBooks) {
     const target = session.targets.find((t) => t.alias === book.alias);
     if (!target) continue;
+    
+    if (!findJsonFile(book.alias)) continue;
 
     const chapter = getChapter(book, target.episodeNumber);
     if (!chapter) {

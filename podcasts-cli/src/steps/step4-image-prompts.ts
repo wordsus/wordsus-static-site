@@ -13,6 +13,7 @@ import { getChapter, getChatUrl } from "../content.js";
 import { renderTemplate } from "../templates.js";
 import { printStep, ok, warn, info, clipboardNotice, divider, C } from "../ui.js";
 import { logStep, log } from "../logger.js";
+import { findJsonFile } from "../filesystem.js";
 import type { SessionState } from "../types.js";
 
 export async function runStep4(session: SessionState): Promise<void> {
@@ -28,6 +29,8 @@ export async function runStep4(session: SessionState): Promise<void> {
   for (const book of sortedBooks) {
     const target = session.targets.find((t) => t.alias === book.alias);
     if (!target) continue;
+
+    if (!findJsonFile(book.alias)) continue;
 
     const chapter = getChapter(book, target.episodeNumber);
     if (!chapter) {
@@ -80,7 +83,7 @@ export async function runStep4(session: SessionState): Promise<void> {
 
   logStep(4, "All image prompts copied and chats opened.");
   ok("While the audio generates, create all background images and save them as:");
-  for (const book of sortedBooks.filter((b) => session.targets.find((t) => t.alias === b.alias))) {
+  for (const book of sortedBooks.filter((b) => session.targets.find((t) => t.alias === b.alias) && findJsonFile(b.alias))) {
     info(`  ${C.primary(book.alias + ".png")}  →  Drop into sources_today/`);
   }
 }

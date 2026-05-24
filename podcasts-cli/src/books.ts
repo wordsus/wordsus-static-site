@@ -72,7 +72,7 @@ export const books: BookConfig[] = [
     alias: "8eco",
     slug: "economia-austriaca-para-mortales",
     locale: "es",
-    order: 5,
+    order: 8,
     podcast: "Economía Austríaca Podcast",
   },
   {
