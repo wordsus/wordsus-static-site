@@ -40,15 +40,17 @@ export const config = {
   schedule: {
     /**
      * Anchor date for episode scheduling (YYYY-MM-DD).
-     * Episode 1 is scheduled on this date; each subsequent episode adds daysPerEpisode days.
+     * Episode 1 is scheduled on the first available publish day on or after this date.
+     * Each subsequent episode is scheduled on the next available publish day.
      * Derived from: episode 16 → May 15, 2026 → baseDate = April 30, 2026.
      */
     baseDate: "2026-05-20",
     /**
-     * Number of days to add for each subsequent episode starting from baseDate.
-     * For example: 7 equals one episode per week.
+     * Weekdays on which to publish episodes.
+     * Can be an array of English weekday strings (e.g. ["Tuesday", "Friday"]).
+     * Case-insensitive, supports short/long names, and falls back to all days if empty.
      */
-    daysPerEpisode: 7,
+    publishDays: ["Tuesday", "Friday"],
     /**
      * Fixed upload time shown in the YouTube info file.
      * Format: 12-hour clock with AM/PM, e.g. "3:30 PM".

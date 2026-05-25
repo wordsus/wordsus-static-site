@@ -61,7 +61,20 @@ You can customize the video output and visualizer behavior in `src/config.ts`:
 - **FPS:** Target frames per second (default `30`).
 - **Crossfade Duration:** Seamless loop duration for video backgrounds (default `1.0s`).
 
-### 4. Prompt Templates
+### 4. YouTube Scheduling Settings
+
+You can configure how the YouTube scheduled release date is calculated in `src/config.ts`:
+
+- **baseDate**: The anchor date for episode scheduling (format: `YYYY-MM-DD`). Episode 1 will be scheduled on the first available publish day on or after this date.
+- **publishDays**: An array of English weekday strings (e.g. `["Tuesday", "Friday"]`) representing the days of the week on which episodes should be scheduled. (Case-insensitive, supports long and short names, and falls back to all days if empty).
+- **scheduledTime**: The fixed upload time shown in the YouTube info file (e.g., `3:30 PM`).
+
+#### How it works
+
+- Episode 1 maps to the first weekday from `publishDays` that is on or after `baseDate`.
+- Each subsequent episode (Episode 2, 3, etc.) is scheduled on the next available weekday from the `publishDays` list.
+
+### 5. Prompt Templates
 
 The template engine resolves prompts using a priority cascade and optionally appends book-specific extra content. All template files are plain `.txt` files located inside the `templates/` folder.
 
@@ -120,7 +133,7 @@ templates/
 - The extra file does **not** replace the base template; its content is added at the end of the final prompt, separated by a blank line.
 - The extra file is only applied when it exists inside the book's `<alias>/` directory — there is no general (non-alias) extra file.
 - If the extra file exists but is empty (or whitespace-only), it is silently ignored.
-- All [template variables](#5-template-variables) are also available in extra files.
+- All [template variables](#6-template-variables) are also available in extra files.
 
 **Example result** when `templates/2qui/image-prompt-extra.txt` contains `Use a dark blue color palette.`:
 
@@ -130,7 +143,7 @@ templates/
 Use a dark blue color palette.
 ```
 
-### 5. Template Variables
+### 6. Template Variables
 
 All `.txt` template files (base overrides and extra files) support the following placeholders, which are replaced at render time:
 
