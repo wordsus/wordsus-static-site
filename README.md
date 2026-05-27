@@ -161,7 +161,7 @@ content/en/books/<your-book-slug>/
 
 1. **Create chapter Markdown files** following the naming convention `<order>-<slug>.md` using the fields from `book.json`:
 
-```
+```text
 content/en/books/my-awesome-book/1-chapter-1-introduction.md
 ```
 
