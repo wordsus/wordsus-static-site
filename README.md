@@ -116,7 +116,7 @@ wordsus-static-site/
 content/en/books/<your-book-slug>/
 ```
 
-2. **Create `book.json`** with the book's metadata:
+1. **Create `book.json`** with the book's metadata:
 
 ```json
 {
@@ -159,7 +159,7 @@ content/en/books/<your-book-slug>/
 | `chapters` | ChapterMeta[] | ✅ | Ordered list of chapters |
 | `chapters[].audioUrl` | string | ❌ | S3 URL for chapter audio (optional) |
 
-3. **Create chapter Markdown files** following the naming convention `<order>-<slug>.md` using the fields from `book.json`:
+1. **Create chapter Markdown files** following the naming convention `<order>-<slug>.md` using the fields from `book.json`:
 
 ```
 content/en/books/my-awesome-book/1-chapter-1-introduction.md
@@ -184,9 +184,9 @@ print("Hello!")
 | Cell 1   | Cell 2   |
 ````
 
-4. **Add a cover image** to `public/images/books/`.
+1. **Add a cover image** to `public/images/books/`.
 
-5. **Run the dev server** — the book will appear automatically.
+2. **Run the dev server** — the book will appear automatically.
 
 ---
 
@@ -217,11 +217,11 @@ export const routing = defineRouting({
 });
 ```
 
-2. **Create a translation file** at `messages/fr.json` (copy from `en.json` and translate).
+1. **Create a translation file** at `messages/fr.json` (copy from `en.json` and translate).
 
-3. **Create content** under `content/fr/`.
+2. **Create content** under `content/fr/`.
 
-4. **Update middleware** matcher if needed.
+3. **Update middleware** matcher if needed.
 
 ---
 
@@ -247,6 +247,7 @@ pnpm dev
 Open [http://localhost:3000](http://localhost:3000). The site will redirect to `/en` automatically.
 
 The dev server supports:
+
 - Hot reload for components, pages, and translations
 - Automatic Markdown processing
 - All local storage features (favorites, recent books, theme)
@@ -262,6 +263,7 @@ pnpm build
 ```
 
 This generates a fully static site in the `/out` directory, including:
+
 - Pre-rendered HTML for all locales, books, and categories
 - `/public/search-index/en.json` and `/public/search-index/es.json` (client-side search)
 - `/public/chapter-content/<locale>/<book>/<chapter>.json` (for client-side chapter navigation)
@@ -271,6 +273,7 @@ This generates a fully static site in the `/out` directory, including:
 ### Useful Scripts
 
 #### Automatic Image Optimization
+
 This project uses `next-image-export-optimizer` to automatically resize and optimize images during the build process. Images are optimized and exported to `out/nextImageExportOptimizer` without modifying the original source images in `public/`.
 
 You don't need to run any manual scripts. Just run:
@@ -282,6 +285,7 @@ pnpm build
 This will run `next build` followed by the optimizer. The generated images will automatically be served with responsive `srcset` tags for fast load times.
 
 #### Fix Markdown Formatting
+
 If you have markdown files with formatting issues (incorrect heading hierarchies, bold markers in headings, or broken bold-code tags), you can use the `fix_markdown.py` script to automatically correct them.
 
 ```bash
@@ -289,16 +293,19 @@ python scripts/fix_markdown.py <path_to_directory>
 ```
 
 Example:
+
 ```bash
 python scripts/fix_markdown.py content/es/books/linux
 ```
 
 This script applies three fixes in sequence:
-1. **Fix Broken Bold-Code**: Moves `**` outside backticks when incorrectly nested (e.g., `**Title `code**`` → `**Title `code`**`).
+
+1. **Fix Broken Bold-Code**: Moves `**` outside backticks when incorrectly nested (e.g., `**Title`code**`` → `**Title`code`**`).
 2. **Normalize Headings**: Adjusts heading levels so the first heading in the file starts at `##` (removes extra `#` characters).
 3. **Remove Bold from Headings**: Strips `**` markers from any line starting with `#`.
 
 #### Validate Markdown Files
+
 To ensure that all markdown files in the project comply with the formatting rules (e.g., no bold tags in headings, no broken bold-code formatting), run the validation script:
 
 ```bash
@@ -308,6 +315,7 @@ pnpm run validate-markdown
 The script will recursively scan all markdown files inside the `content/` directory and output a list of any files that fail validation, along with their specific line errors.
 
 #### Auto-Fix Markdown Issues
+
 To automatically fix common formatting issues (like whitespace, indentation, and list styles) across all markdown files in the `content/` directory, run:
 
 ```bash
@@ -330,19 +338,21 @@ The site is a 100% static export compatible with Cloudflare Workers:
 pnpm build
 ```
 
-2. **Deploy the `/out` directory** to Cloudflare Pages via the dashboard or Wrangler CLI:
+1. **Deploy the `/out` directory** to Cloudflare Pages via the dashboard or Wrangler CLI:
 
 ```bash
 npx wrangler pages deploy out
 ```
 
 Or use Cloudflare Pages Git integration — connect your repository and set:
+
 - **Build command**: `pnpm build`
 - **Output directory**: `out`
 
 ### Other Platforms
 
 The `/out` folder is a standard static site and can be served by:
+
 - **Vercel** (with zero config)
 - **Netlify**
 - **GitHub Pages**
