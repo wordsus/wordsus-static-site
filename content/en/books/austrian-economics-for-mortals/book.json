@@ -76,7 +76,7 @@
       "description": "We compare logical deduction against empiricism. Discover why economic laws are discovered through pure reasoning and not merely by looking at statistics.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Economics Without Numbers"
     },
     {
@@ -86,7 +86,7 @@
       "description": "We delve into subjective opportunity cost. The true price of anything is the enormous psychological value of the alternative you must sacrifice for it.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Your True Cost"
     },
     {
@@ -96,7 +96,7 @@
       "description": "We revive Carl Menger's marginalist revolution. Understand how the final unit of a specific good effectively determines its daily price in the free market.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "The Margin Matters"
     },
     {

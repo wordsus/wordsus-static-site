@@ -6,7 +6,7 @@ export const config = {
   /**
    * Path to the working directory.
    */
-  workingDir: process.env.PODCASTS_WORKING_DIR ?? "/Users/fabian/Downloads/podcasts",
+  workingDir: process.env.PODCASTS_WORKING_DIR ?? "/Users/fabian/Documents/podcasts",
 
   /**
    * Path to the wordsus-static-site content directory.

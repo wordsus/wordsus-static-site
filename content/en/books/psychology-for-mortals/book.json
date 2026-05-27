@@ -76,7 +76,7 @@
       "description": "We explain the various neurological theories behind the Déjà Vu phenomenon and exactly why we feel with such deep certainty that we lived a brand new moment.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Have You Lived This?"
     },
     {
@@ -86,7 +86,7 @@
       "description": "Delve into the fascinating universe of lucid dreaming. We analyze how it is totally possible to be aware of dreaming and manage to take control of the scene.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Control Your Dreams Now"
     },
     {
@@ -96,7 +96,7 @@
       "description": "We investigate mysterious childhood amnesia. Learn exactly why we humans are completely unable to remember almost any experience from our very first few years.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Where Is Your Childhood?"
     },
     {

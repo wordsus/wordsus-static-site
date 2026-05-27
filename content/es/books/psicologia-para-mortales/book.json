@@ -75,7 +75,7 @@
       "order": 6,
       "description": "Explicamos las diversas teorías neurológicas detrás del fenómeno del Déjà Vu y por qué sentimos con tanta certeza que ya hemos vivido un momento inédito.",
       "thumbnailTitle": "¿Ya viviste esto antes?",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -85,7 +85,7 @@
       "order": 7,
       "description": "Adéntrate en el fascinante universo de los sueños lúcidos. Analizamos cómo es posible ser consciente de estar soñando y lograr tomar control del entorno.",
       "thumbnailTitle": "Controla tus sueños hoy",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -95,7 +95,7 @@
       "order": 8,
       "description": "Investigamos la misteriosa amnesia infantil. Conoce por qué los humanos somos incapaces de recordar casi ninguna experiencia de nuestros primeros años.",
       "thumbnailTitle": "¿Dónde está tu infancia?",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },

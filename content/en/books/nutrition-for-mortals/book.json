@@ -76,7 +76,7 @@
       "description": "We analyze famous detox diets to discover if they are just a marketing strategy or if they truly help your liver and kidneys purify your body.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "The Detox Hoax"
     },
     {
@@ -86,7 +86,7 @@
       "description": "We address the great controversy over cow's milk consumption in adults. Are we designed to drink dairy or should we avoid it altogether?",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Quitting dairy?"
     },
     {
@@ -96,7 +96,7 @@
       "description": "Discover if you really need to take vitamin supplements if you already eat a healthy diet, or if you are just creating rather expensive urine.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Should you take vitamins?"
     },
     {

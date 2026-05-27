@@ -75,7 +75,7 @@
       "order": 6,
       "description": "Comparamos la deducción lógica frente al empirismo. Descubre por qué las leyes económicas se descubren razonando y no solo mirando estadísticas.",
       "thumbnailTitle": "Economía Sin Números",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -85,7 +85,7 @@
       "order": 7,
       "description": "Profundizamos en el costo de oportunidad subjetivo. El verdadero precio de algo es aquel enorme valor psicológico de lo que debes sacrificar.",
       "thumbnailTitle": "Tu Verdadero Costo",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -95,7 +95,7 @@
       "order": 8,
       "description": "Revivimos la revolución marginalista de Carl Menger. Entiende cómo la última unidad de un bien determina su precio en el mercado diariamente.",
       "thumbnailTitle": "El Margen Importa",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },

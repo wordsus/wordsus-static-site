@@ -75,7 +75,7 @@
       "order": 6,
       "description": "Analizamos las famosas dietas detox para descubrir si son una estrategia de marketing o si realmente ayudan a tu hígado y riñones a purificar el organismo.",
       "thumbnailTitle": "La farsa Detox",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -85,7 +85,7 @@
       "order": 7,
       "description": "Abordamos la gran controversia sobre el consumo de leche de vaca en adultos. ¿Estamos diseñados para tomar lácteos o deberíamos evitarlos definitivamente?",
       "thumbnailTitle": "¿Dejar los lácteos?",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -95,7 +95,7 @@
       "order": 8,
       "description": "Descubre si realmente necesitas tomar suplementos vitamínicos si ya llevas una alimentación saludable, o si solo estás creando una orina bastante más cara.",
       "thumbnailTitle": "¿Tomar vitaminas?",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
