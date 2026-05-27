@@ -112,7 +112,7 @@ wordsus-static-site/
 
 1. **Create the book directory** under the appropriate locale:
 
-```
+```text
 content/en/books/<your-book-slug>/
 ```
 
