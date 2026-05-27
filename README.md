@@ -145,7 +145,7 @@ content/en/books/<your-book-slug>/
 **Fields explained:**
 
 | Field | Type | Required | Description |
-|-------|------|----------|-------------|
+| ------- |------|----------|-------------|
 | `slug` | string | ✅ | URL-friendly identifier (must match directory name) |
 | `locale` | `"en"` \| `"es"` | ✅ | Language of this book version |
 | `title` | string | ✅ | Book title |
