@@ -135,7 +135,7 @@
       "order": 12,
       "description": "Explicamos la utilidad marginal decreciente. Entiende por qué el primer vaso de agua en el desierto vale oro, pero el quinto vaso ya no tanto.",
       "thumbnailTitle": "La Ley del Hartazgo",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -145,7 +145,7 @@
       "order": 13,
       "description": "Descubre el origen espontáneo del dinero. Te explicamos cómo no fue inventado por ningún gobierno, sino que surgió naturalmente desde el trueque.",
       "thumbnailTitle": "El Dinero Natural",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -155,7 +155,7 @@
       "order": 14,
       "description": "Analizamos el Efecto Cantillon. Conoce cómo imprimir dinero nuevo siempre enriquece a los primeros en recibirlo, castigando a los más pobres.",
       "thumbnailTitle": "La Trampa del Billete",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },

@@ -135,7 +135,7 @@
       "order": 12,
       "description": "Revisamos la relación entre tu dieta y la ansiedad. Descubre qué nutrientes específicos pueden ayudar a regular y calmar tu sistema nervioso de forma sana.",
       "thumbnailTitle": "Comer sin ansiedad",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -145,7 +145,7 @@
       "order": 13,
       "description": "Analizamos la ciencia detrás del triptófano y la melatonina, revelando cómo tu elección de alimentos en la cena puede garantizarte un descanso reparador.",
       "thumbnailTitle": "La dieta del sueño",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -155,7 +155,7 @@
       "order": 14,
       "description": "Debatimos si existe verdaderamente una adicción fisiológica a la comida, enfocándonos en cómo los productos ultraprocesados manipulan nuestro autocontrol.",
       "thumbnailTitle": "Adicción a la comida",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },

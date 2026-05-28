@@ -136,7 +136,7 @@
       "description": "We review the relationship between your diet and anxiety. Discover which specific nutrients can help regulate and calm your nervous system safely.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Eating without anxiety"
     },
     {
@@ -146,7 +146,7 @@
       "description": "We analyze the science behind tryptophan and melatonin, revealing how your food choices at dinner can guarantee you a deeply restorative rest.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "The sleep diet"
     },
     {
@@ -156,7 +156,7 @@
       "description": "We debate whether a physiological addiction to food truly exists, focusing on how ultra-processed products manipulate our brain's self-control.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Food addiction"
     },
     {

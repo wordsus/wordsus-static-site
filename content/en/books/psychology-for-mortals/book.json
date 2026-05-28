@@ -136,7 +136,7 @@
       "description": "We review the terrifying Milgram Experiment. We will see to what extent an ordinary person can cause deep pain to another just by following superior orders.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Would You Hurt on Command?"
     },
     {
@@ -146,7 +146,7 @@
       "description": "We study the Stanford Prison Experiment to see how simple socially assigned roles can completely destroy the inherent morality of otherwise normal individuals.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Power Makes You Evil"
     },
     {
@@ -156,7 +156,7 @@
       "description": "We unmask the Halo Effect, a cognitive bias that makes us automatically assume that a physically beautiful person must also be highly smart and successful too.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "The Deception of Beauty"
     },
     {

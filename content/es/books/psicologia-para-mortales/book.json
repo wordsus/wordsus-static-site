@@ -135,7 +135,7 @@
       "order": 12,
       "description": "Repasamos el aterrador Experimento de Milgram. Veremos hasta qué punto una persona común puede causar dolor a otra solo por seguir las órdenes superiores.",
       "thumbnailTitle": "¿Harías daño por orden?",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -145,7 +145,7 @@
       "order": 13,
       "description": "Estudiamos el Experimento de la Prisión de Stanford para ver cómo los simples roles sociales asignados pueden destruir la moralidad de individuos normales.",
       "thumbnailTitle": "El poder te hace malo",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -155,7 +155,7 @@
       "order": 14,
       "description": "Desenmascaramos el Efecto Halo, un sesgo que nos hace asumir automáticamente que una persona hermosa físicamente debe ser también inteligente y muy exitosa.",
       "thumbnailTitle": "El engaño de la belleza",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },

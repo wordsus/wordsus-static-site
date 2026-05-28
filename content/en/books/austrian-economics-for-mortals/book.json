@@ -136,7 +136,7 @@
       "description": "We explain diminishing marginal utility. Understand why your first glass of water in the desert is pure gold, but the fifth glass loses all of its appeal.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "The Law of Satiety"
     },
     {
@@ -146,7 +146,7 @@
       "description": "Discover the spontaneous origin of money. We explain how it was never invented by any government, but naturally emerged from barter to facilitate trade.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Natural Money"
     },
     {
@@ -156,7 +156,7 @@
       "description": "We analyze the Cantillon Effect. Learn how printing new money always enriches the very first to receive it, severely punishing the poorest in society.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "The Money Trap"
     },
     {
