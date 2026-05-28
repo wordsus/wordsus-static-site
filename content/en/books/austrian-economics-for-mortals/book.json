@@ -106,7 +106,7 @@
       "description": "We unravel the paradox of water and diamonds. Learn how marginal utility perfectly explains why a vital good is cheap while a useless luxury is expensive.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Water or Diamonds"
     },
     {
@@ -116,7 +116,7 @@
       "description": "We explore time preference. A deep look into human nature and our intrinsic, natural tendency to prefer enjoying things today rather than waiting for tomorrow.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "The Value of Time"
     },
     {
@@ -126,7 +126,7 @@
       "description": "We analyze the price system as a unique language. Learn how prices instantly transmit crucial global information about scarcity and demand without speaking.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Prices Speak"
     },
     {

@@ -106,7 +106,7 @@
       "description": "We address the Zeigarnik Effect to understand why our memory remembers interrupted tasks much better compared to those that we have already finished completely.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Your Brain Won't Let Go"
     },
     {
@@ -116,7 +116,7 @@
       "description": "We discuss inattentional blindness. Using the gorilla experiment, we will see how we ignore very obvious details if the mind is focused on other silly things.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "You Are Blind Unaware!"
     },
     {
@@ -126,7 +126,7 @@
       "description": "Today we analyze the Bystander Effect. We will understand the sad paradox that, in an emergency, more witnesses mean less help for those who truly need it.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "No One Will Save You"
     },
     {

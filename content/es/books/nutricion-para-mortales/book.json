@@ -105,7 +105,7 @@
       "order": 9,
       "description": "Sumérgete en el eje intestino-cerebro para entender cómo tu salud digestiva dicta tu estado de ánimo, tus emociones y tu bienestar psicológico diariamente.",
       "thumbnailTitle": "Tu segundo cerebro",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -115,7 +115,7 @@
       "order": 10,
       "description": "Exploramos el impacto del consumo de azúcar en la química cerebral, evaluando cómo afecta nuestras emociones, el aprendizaje y los sistemas de recompensa.",
       "thumbnailTitle": "Azúcar en tu mente",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -125,7 +125,7 @@
       "order": 11,
       "description": "Conoce los alimentos clave que mejoran la concentración, potencian la memoria a largo plazo y ayudan activamente a prevenir el deterioro cognitivo natural.",
       "thumbnailTitle": "Comida para pensar",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },

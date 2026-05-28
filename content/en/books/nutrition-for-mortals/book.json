@@ -106,7 +106,7 @@
       "description": "Dive into the gut-brain axis to understand how your digestive health dictates your mood, your emotions, and your daily psychological well-being.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Your second brain"
     },
     {
@@ -116,7 +116,7 @@
       "description": "We explore the impact of sugar consumption on brain chemistry, evaluating how it affects our emotions, learning, and natural reward systems.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Sugar in your mind"
     },
     {
@@ -126,7 +126,7 @@
       "description": "Learn about key foods that improve concentration, boost long-term memory, and actively help prevent natural age-related cognitive decline.",
       "audioUrl": "",
       "videoUrl": "",
-      "draft": true,
+      "draft": false,
       "thumbnailTitle": "Food for thought"
     },
     {

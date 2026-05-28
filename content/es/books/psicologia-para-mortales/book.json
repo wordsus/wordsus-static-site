@@ -105,7 +105,7 @@
       "order": 9,
       "description": "Abordamos el Efecto Zeigarnik para comprender por qué nuestra memoria recuerda mucho mejor las tareas interrumpidas frente a las que ya hemos finalizado.",
       "thumbnailTitle": "Tu cerebro no te deja en paz",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -115,7 +115,7 @@
       "order": 10,
       "description": "Discutimos la ceguera por inatención. Usando el experimento del gorila, veremos cómo ignoramos detalles obvios si la mente está enfocada en otras cosas.",
       "thumbnailTitle": "¡Estás ciego y no lo sabes!",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -125,7 +125,7 @@
       "order": 11,
       "description": "Hoy analizamos el Efecto Espectador. Entenderemos la triste paradoja de que, ante una urgencia, más testigos significan menos ayuda para quien la necesita.",
       "thumbnailTitle": "Nadie te va a salvar",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },

@@ -105,7 +105,7 @@
       "order": 9,
       "description": "Desentrañamos la paradoja del agua y los diamantes. Conoce cómo la utilidad marginal explica que un bien vital sea barato y un lujo sea caro.",
       "thumbnailTitle": "Agua o Diamantes",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -115,7 +115,7 @@
       "order": 10,
       "description": "Exploramos la preferencia temporal. Una mirada a la naturaleza humana y nuestra tendencia intrínseca a preferir disfrutar hoy en vez de mañana.",
       "thumbnailTitle": "El Valor del Tiempo",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -125,7 +125,7 @@
       "order": 11,
       "description": "Analizamos el sistema de precios como un lenguaje propio. Aprende cómo transmiten información crucial sobre escasez y demanda a nivel mundial.",
       "thumbnailTitle": "Los Precios Hablan",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
