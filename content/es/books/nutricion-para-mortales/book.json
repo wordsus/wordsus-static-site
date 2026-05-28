@@ -165,7 +165,7 @@
       "order": 15,
       "description": "Desglosamos los pros y los contras del consumo de café y cafeína, analizando sus beneficios para la salud y estableciendo límites para no alterar el sueño.",
       "thumbnailTitle": "¿Cuánto café tomar?",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
