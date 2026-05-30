@@ -24,7 +24,7 @@
       "order": 1,
       "description": "Explore Schrödinger's famous thought experiment and discover how bizarre quantum superposition works in physics at the microscopic level.",
       "audioUrl": "",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=3jgibdqKHw0",
       "draft": false,
       "thumbnailTitle": "The Quantum Cat"
     },
@@ -34,7 +34,7 @@
       "order": 2,
       "description": "Dive into bizarre quantum entanglement, where two particles connect instantly across distances, defying our established laws of the universe.",
       "audioUrl": "",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=-yxQ-gVwsok",
       "draft": false,
       "thumbnailTitle": "Magic Connection"
     },
@@ -44,7 +44,7 @@
       "order": 3,
       "description": "Discover the strange wave-particle duality through the double-slit experiment and how mere observation alters the behavior of matter itself.",
       "audioUrl": "",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=yhVWXxRpeOo",
       "draft": false,
       "thumbnailTitle": "Wave or Particle?"
     },
