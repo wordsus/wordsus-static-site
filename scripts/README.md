@@ -4,7 +4,9 @@ This directory contains utility scripts to automate content management tasks for
 
 ## Sync YouTube Videos to Chapters (`fetch_youtube_videos.py`)
 
-This script fetches recent videos from configured YouTube channels and populates the `videoUrl` field in the corresponding book chapter metadata inside `book.json`.
+This script fetches recent videos from configured YouTube channels and:
+1. Populates the `videoUrl` field in the corresponding book chapter metadata inside `book.json`.
+2. Exports custom JSON files and video thumbnail images to external directories for selected books.
 
 ### How it works
 
@@ -13,8 +15,11 @@ This script fetches recent videos from configured YouTube channels and populates
 3. **Filtering**: It filters out videos published before a configurable `START_DATE` (default is `"2026-05-20"`).
 4. **Matching**:
    - **By Title**: It normalizes both the video title and the chapter title (lowercasing, stripping accents, stripping punctuation, collapsing whitespace) and looks for an exact match.
-   - **By Description URL**: If a video's title was manually modified on YouTube and does not match the chapter title, the script scans the video description for a URL starting with `https://wordsus.com`. It extracts the chapter slug from the end of the URL and matches it against the book's chapters.
+   - **By Description URL**: If a video's title was manually modified on YouTube and does not match the chapter title, the script scans the video description for a URL starting with `https://wordsus.com`. It extracts the chapter slug from the end of the URL path and maps it against the book's chapters.
 5. **Updating book.json**: If a match is found and the chapter's `videoUrl` is empty or different, it updates it to the YouTube video URL (`https://www.youtube.com/watch?v=VIDEO_ID`) and writes the changes back to `book.json` preserving original formatting and non-ASCII character encoding.
+6. **External Export**:
+   - For books specified in `EXPORT_SELECTED_BOOKS`, the script exports a `{book_slug}.json` containing the book name, slug, language, description, and list of matched videos (including titles, book descriptions, URLs, and image filenames).
+   - The script downloads the YouTube thumbnail images for each matched video and saves them to `IMAGE_EXPORT_DIR/{book_slug}/{chapter_slug}.jpg`. It skips downloading if the thumbnail already exists locally to save network requests and prevent rate-limiting.
 
 ### Running the script
 
@@ -28,6 +33,9 @@ python3 fetch_youtube_videos.py
 
 You can customize the following configuration options directly at the top of `fetch_youtube_videos.py`:
 
-- `START_DATE`: Filter out videos published before this date (format: `YYYY-MM-DD`).
-- `REQUEST_DELAY`: The delay (in seconds) between requests to YouTube. This prevents YouTube from throttling or blocking your IP address (default: `3.0` seconds).
-- `BOOKS_CONFIG`: The list of mapping objects linking book directory paths to YouTube channels.
+* `START_DATE`: Filter out videos published before this date (format: `YYYY-MM-DD`).
+* `REQUEST_DELAY`: The delay (in seconds) between requests to YouTube. This prevents YouTube from throttling or blocking your IP address (default: `3.0` seconds).
+* `BOOKS_CONFIG`: The list of mapping objects linking book directory paths to YouTube channels.
+* `EXPORT_SELECTED_BOOKS`: List of book slugs (e.g., `["la-biblia-en-contexto", "the-bible-in-context"]`) whose data and thumbnails should be exported.
+* `JSON_EXPORT_DIR`: The path to the external folder where exported book JSON metadata files will be saved (default: `../../../xeost/veobible-app/src/data`).
+* `IMAGE_EXPORT_DIR`: The path to the external folder where exported thumbnail images will be saved (default: `../../../xeost/veobible-app/public/images`).

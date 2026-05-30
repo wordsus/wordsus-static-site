@@ -12,7 +12,12 @@ import unicodedata
 # Configuration
 # ==============================================================================
 START_DATE = "2026-05-20"  # Only consider videos published on or after this date (YYYY-MM-DD)
-REQUEST_DELAY = 3.0       # Delay in seconds between requests to YouTube to prevent IP block
+REQUEST_DELAY = 1.0       # Delay in seconds between requests to YouTube to prevent IP block
+
+# Export configuration for external veobible-app
+EXPORT_SELECTED_BOOKS = ["la-biblia-en-contexto", "the-bible-in-context"]
+JSON_EXPORT_DIR = "../../../xeost/veobible-app/src/data"
+IMAGE_EXPORT_DIR = "../../../xeost/veobible-app/public/images"
 
 # Mapping of book content directories to their YouTube channel URLs
 BOOKS_CONFIG = [
@@ -217,6 +222,48 @@ def extract_slug_from_description(description):
             return path_segments[-1]
     return None
 
+def get_video_id_from_url(url):
+    """Extract YouTube video ID from various video URL formats."""
+    if not url:
+        return None
+    parsed = urllib.parse.urlparse(url)
+    if parsed.hostname in ('youtube.com', 'www.youtube.com', 'm.youtube.com'):
+        query = urllib.parse.parse_qs(parsed.query)
+        if 'v' in query:
+            return query['v'][0]
+    if parsed.hostname == 'youtu.be':
+        return parsed.path.strip('/')
+    if parsed.hostname in ('youtube.com', 'www.youtube.com') and parsed.path.startswith('/embed/'):
+        parts = parsed.path.split('/')
+        if len(parts) > 2:
+            return parts[2]
+    return None
+
+def download_image(video_id, output_path):
+    """Download the highest resolution thumbnail available for the video (maxresdefault, sddefault, or hqdefault)."""
+    import urllib.error
+    resolutions = ["maxresdefault", "sddefault", "hqdefault"]
+    for res in resolutions:
+        url = f"https://img.youtube.com/vi/{video_id}/{res}.jpg"
+        try:
+            req = urllib.request.Request(url, headers={'User-Agent': USER_AGENT})
+            with urllib.request.urlopen(req) as response:
+                with open(output_path, 'wb') as f:
+                    f.write(response.read())
+            print(f"    -> Downloaded {res} thumbnail to: {output_path}")
+            time.sleep(REQUEST_DELAY)
+            return True
+        except urllib.error.HTTPError as e:
+            if e.code == 404:
+                # 404 means the resolution isn't available, try the next lower resolution
+                continue
+            else:
+                print(f"    [Error] HTTP error {e.code} while downloading {res} from {url}")
+        except Exception as e:
+            print(f"    [Error] Failed to download thumbnail {res} from {url}: {e}")
+            
+    return False
+
 # ==============================================================================
 # Main Execution Flow
 # ==============================================================================
@@ -335,6 +382,62 @@ def main():
                 print(f"[Error] Failed to write to {book_json_path}: {e}")
         else:
             print(f"No changes made to book.json.")
+
+        # Check if this book needs to be exported
+        book_slug = book_data.get("slug")
+        if book_slug in EXPORT_SELECTED_BOOKS:
+            print(f"Exporting data and thumbnails for selected book: {book_slug}...")
+            
+            # Resolve target export directories
+            resolved_json_export_dir = os.path.normpath(os.path.join(SCRIPT_DIR, JSON_EXPORT_DIR))
+            resolved_image_export_dir = os.path.normpath(os.path.join(SCRIPT_DIR, IMAGE_EXPORT_DIR))
+            
+            # Ensure directories exist
+            os.makedirs(resolved_json_export_dir, exist_ok=True)
+            book_image_dir = os.path.join(resolved_image_export_dir, book_slug)
+            os.makedirs(book_image_dir, exist_ok=True)
+            
+            videos_list = []
+            for ch in chapters:
+                ch_video_url = ch.get("videoUrl")
+                if ch_video_url:
+                    video_id = get_video_id_from_url(ch_video_url)
+                    if video_id:
+                        ch_slug = ch.get("slug")
+                        image_filename = f"{ch_slug}.jpg"
+                        target_image_path = os.path.join(book_image_dir, image_filename)
+                        
+                        # Download thumbnail if not already present
+                        if not os.path.exists(target_image_path):
+                            download_image(video_id, target_image_path)
+                        else:
+                            print(f"    -> Thumbnail already exists: {image_filename}")
+                            
+                        videos_list.append({
+                            "title": ch.get("title", ""),
+                            "description": ch.get("description", ""),
+                            "videoUrl": ch_video_url,
+                            "imageFilename": image_filename
+                        })
+            
+            # Export JSON file
+            export_data = {
+                "language": book_data.get("language") or book_data.get("locale") or "",
+                "name": book_data.get("title") or "",
+                "slug": book_slug,
+                "description": book_data.get("description") or "",
+                "youtubeUrl": youtube_url,
+                "videos": videos_list
+            }
+            
+            json_export_path = os.path.join(resolved_json_export_dir, f"{book_slug}.json")
+            try:
+                with open(json_export_path, "w", encoding="utf-8") as f:
+                    json.dump(export_data, f, indent=2, ensure_ascii=False)
+                    f.write("\n")
+                print(f"[Exported] Saved JSON metadata to: {json_export_path}")
+            except Exception as e:
+                print(f"[Error] Failed to write export JSON to {json_export_path}: {e}")
             
     print("\n==============================================================================")
     print("Sync complete!")
