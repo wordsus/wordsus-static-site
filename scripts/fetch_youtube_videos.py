@@ -120,11 +120,37 @@ def get_channel_handle(url):
         return path
     return None
 
+def fetch_url_with_retry(url, retries=3, backoff_factor=2.0):
+    """Fetch content from a URL with retry logic for handling transient HTTP and network errors."""
+    import urllib.error
+    
+    delay = REQUEST_DELAY
+    for attempt in range(retries + 1):
+        try:
+            req = urllib.request.Request(url, headers={'User-Agent': USER_AGENT})
+            with urllib.request.urlopen(req) as response:
+                return response.read()
+        except urllib.error.HTTPError as e:
+            # Retry on transient/intermittent errors (404, 429, 500, 502, 503, 504)
+            if e.code in [404, 429, 500, 502, 503, 504]:
+                if attempt < retries:
+                    print(f"    [Warning] HTTP Error {e.code} for {url}. Retrying in {delay:.1f}s (attempt {attempt + 1}/{retries})...")
+                    time.sleep(delay)
+                    delay *= backoff_factor
+                    continue
+            raise e
+        except (urllib.error.URLError, ConnectionError) as e:
+            if attempt < retries:
+                print(f"    [Warning] Connection Error: {e} for {url}. Retrying in {delay:.1f}s (attempt {attempt + 1}/{retries})...")
+                time.sleep(delay)
+                delay *= backoff_factor
+                continue
+            raise e
+
 def fetch_html(url):
     """Fetch HTML content from a URL with custom User-Agent."""
-    req = urllib.request.Request(url, headers={'User-Agent': USER_AGENT})
-    with urllib.request.urlopen(req) as response:
-        return response.read().decode('utf-8')
+    data = fetch_url_with_retry(url)
+    return data.decode('utf-8')
 
 def get_channel_id(handle):
     """Resolve channel ID from handle by scraping the channel page."""
@@ -163,18 +189,85 @@ def get_channel_id(handle):
         print(f"Error resolving channel ID for {handle}: {e}")
         return None
 
-def fetch_rss_feed(channel_id):
-    """Fetch and parse YouTube RSS feed for a channel ID."""
+def scrape_videos_from_channel(handle):
+    """Scrape recent videos directly from the YouTube channel's /videos page as a fallback."""
+    url = f"https://www.youtube.com/{handle}/videos"
+    print(f"Falling back to scraping channel page: {url}...")
+    try:
+        html_content = fetch_html(url)
+        match = re.search(r'var ytInitialData = (\{.*?\});</script>', html_content)
+        if not match:
+            print(f"    [Error] Could not find ytInitialData in channel HTML for {handle}")
+            return []
+            
+        data = json.loads(match.group(1))
+        
+        def find_lockups(obj):
+            lockups = []
+            if isinstance(obj, dict):
+                for k, v in obj.items():
+                    if k == 'lockupViewModel':
+                        lockups.append(v)
+                    else:
+                        lockups.extend(find_lockups(v))
+            elif isinstance(obj, list):
+                for item in obj:
+                    lockups.extend(find_lockups(item))
+            return lockups
+            
+        lockups = find_lockups(data)
+        videos = []
+        for l in lockups:
+            video_id = l.get('contentId')
+            meta = l.get('metadata', {}).get('lockupMetadataViewModel', {})
+            title = meta.get('title', {}).get('content')
+            if video_id and title:
+                # Limit to the most recent 10 videos to prevent excessive scraping
+                if len(videos) >= 10:
+                    break
+                    
+                video_url = f"https://www.youtube.com/watch?v={video_id}"
+                print(f"    Fetching details for video {video_id} ('{title}')...")
+                try:
+                    video_html = fetch_html(video_url)
+                    
+                    desc_match = re.search(r'<meta name=\"description\" content=\"([^\"]*)\"', video_html)
+                    date_match = re.search(r'<meta itemprop=\"datePublished\" content=\"([^\"]*)\"', video_html)
+                    
+                    import html
+                    description = html.unescape(desc_match.group(1)) if desc_match else ""
+                    published = date_match.group(1) if date_match else "1970-01-01"
+                    
+                    # Optimization: Since /videos list is in reverse chronological order,
+                    # if a video is older than START_DATE, all subsequent ones are too.
+                    if published[:10] < START_DATE:
+                        print(f"    -> Video published on {published[:10]} is older than START_DATE ({START_DATE}). Stopping scrape.")
+                        break
+                        
+                    videos.append({
+                        'id': video_id,
+                        'title': title,
+                        'published': published,
+                        'description': description
+                    })
+                    time.sleep(REQUEST_DELAY)
+                except Exception as ve:
+                    print(f"    [Error] Failed to fetch details for video {video_id}: {ve}")
+                    
+        return videos
+    except Exception as e:
+        print(f"Error scraping videos for {handle}: {e}")
+        return []
+
+def fetch_rss_feed(channel_id, handle=None):
+    """Fetch and parse YouTube RSS feed for a channel ID, falling back to page scraping if it fails."""
     if channel_id in rss_feed_cache:
         return rss_feed_cache[channel_id]
         
     url = f"https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}"
     print(f"Fetching RSS feed for channel ID {channel_id}...")
     try:
-        req = urllib.request.Request(url, headers={'User-Agent': USER_AGENT})
-        with urllib.request.urlopen(req) as response:
-            xml_data = response.read()
-            
+        xml_data = fetch_url_with_retry(url)
         root = ET.fromstring(xml_data)
         namespaces = {
             'atom': 'http://www.w3.org/2005/Atom',
@@ -207,6 +300,8 @@ def fetch_rss_feed(channel_id):
         return videos
     except Exception as e:
         print(f"Error fetching/parsing RSS feed for {channel_id}: {e}")
+        if handle:
+            return scrape_videos_from_channel(handle)
         return []
 
 def extract_slug_from_description(description):
@@ -312,7 +407,7 @@ def main():
             continue
             
         # Fetch RSS Feed
-        videos = fetch_rss_feed(channel_id)
+        videos = fetch_rss_feed(channel_id, handle)
         if not videos:
             print(f"No videos retrieved from feed. Skipping.")
             continue

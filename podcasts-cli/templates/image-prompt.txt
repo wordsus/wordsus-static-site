@@ -1,23 +1,21 @@
-# Prompt to Generate Another Prompt
+# Prompt to Generate a Thumbnail Image Prompt
 
 ## Context
+I need to create a highly clickable thumbnail image for the next episode of my science podcast on YouTube. 
 
-I need to create a thumbnail image for the YouTube video for the next episode of my podcast.
+Podcast show name: {{PODCAST_NAME}}
+Video title: {{EPISODE_TITLE}}
+Video description: {{EPISODE_DESCRIPTION}}
 
-This is the podcast show name:
-{{PODCAST_NAME}}
+## Task
+Generate a highly detailed image generation prompt for an AI image generator. DO NOT generate the image yourself; only output the final text prompt. Do not include introductory or concluding remarks (e.g., "Here is the prompt").
 
-This is the video title:
-{{EPISODE_TITLE}}
+## Requirements for the Generated Prompt:
 
-This is the video description:
-{{EPISODE_DESCRIPTION}}
-
-## Prompt
-
-Generate a prompt to create a thumbnail image that doesn't look AI-created, that could have been made by a talented but traditional designer. DO NOT generate the image; just show me the prompt without any introduction, such as "Here's the prompt...". DO NOT include the video title, description and podcast show name; these were only mentioned for context. You must use the following custom title, in upper case, for the thumbnail image, and don't add other texts: {{THUMBNAIL_TITLE}}
-The prompt must specify that a small podcast icon be added at the bottom.
-
-It must be an impressive design that optimizes the CTR of the thumbnail image.
-
-The prompt must have a minimum of 1000 characters.
+1. **Vibe & Tone (Crucial)**: The prompt MUST explicitly describe an optimistic, awe-inspiring, and bright scene. Frame the scientific topic around wonder, discovery, breakthroughs, and human curiosity. Strictly forbid any dystopian, sad, gloomy, terrifying, or pessimistic visual elements.
+2. **CTR Optimization**: Describe high-contrast cinematic lighting, vibrant and saturated color palettes (e.g., vivid blues, glowing warm tones, neon accents), and a clear, large focal point that grabs attention even when scaled down to mobile screen sizes.
+3. **Aesthetic Style**: Request a high-end, polished style that feels like the work of a talented traditional digital artist or matte painter. Avoid generic, overly-smooth "AI-looking" aesthetics. Add textures and dynamic camera angles.
+4. **Text Elements**: The prompt must explicitly command the image generator to include this exact text, in uppercase, and NO OTHER TEXT: "{{THUMBNAIL_TITLE}}".
+5. **Branding**: Specify that a small, sleek podcast icon must be placed at the bottom corner of the image.
+6. **Exclusions**: Do not instruct the image generator to include the podcast name, episode title, or episode description. These were provided for your contextual understanding only.
+7. **Length & Detail**: Provide a highly descriptive and rich prompt, detailing the lighting, camera angle, color palette, and subject matter. The output prompt must have a minimum of 1000 characters to ensure the image generator has maximum creative direction.
