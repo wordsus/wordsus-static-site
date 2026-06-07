@@ -1,0 +1,1 @@
+This image, but replace the title text with this English text, in upper case: {{THUMBNAIL_TITLE}}

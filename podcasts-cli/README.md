@@ -151,6 +151,10 @@ All `.txt` template files (base overrides and extra files) support the following
 | -------- | ------ | ----------- |
 | `{{PODCAST_NAME}}` | `book.podcast` in `src/books.ts` | The podcast show name. |
 | `{{EPISODE_TITLE}}` | `chapter.title` in `book.json` | Full title of the current chapter. |
+| `{{EPISODE_HEADING}}` | Derived from `chapter.title` | Text before the first `:` in the title, trimmed. |
+| `{{EPISODE_SUBHEADING}}` | Derived from `chapter.title` | Text after the first `:` in the title, trimmed. |
+| `{{EPISODE_HEADING_UPPER}}` | Derived from `chapter.title` | Same as `{{EPISODE_HEADING}}`, in uppercase. |
+| `{{EPISODE_SUBHEADING_UPPER}}` | Derived from `chapter.title` | Same as `{{EPISODE_SUBHEADING}}`, in uppercase. |
 | `{{EPISODE_NUMBER}}` | `chapter.order` in `book.json` | Order number of the chapter. |
 | `{{EPISODE_DESCRIPTION}}` | `chapter.description` in `book.json` | Chapter description. Empty string if not set. |
 | `{{THUMBNAIL_TITLE}}` | `chapter.thumbnailTitle` in `book.json` | Custom thumbnail title. Falls back to `{{EPISODE_TITLE}}` if not set. |
@@ -176,7 +180,7 @@ pnpm podcasts --episode 3
 - **Step 1 - JSON:** Automatically generates the `metadata.json` (`[alias].json`) files inside `sources_today/`.
 - **Step 2 - URLs:** Copies article URLs one by one. Use them to add sources in NotebookLM.
 - **Step 3 - Audio Prompts:** Copies prompts one by one to customize the "Audio Overview" in NotebookLM.
-- **Step 4 - Image Prompts:** Copies prompts and automatically opens the corresponding Gemini chat (defined in `chats.txt`) to generate image descriptions.
+- **Step 4 - Image Prompts:** Copies prompts to the clipboard so you can paste them into Gemini and generate image descriptions.
 - **Step 5 - Verification:** Waits for you to place the downloaded audio and images (`[alias].wav`, `[alias].png`) into `sources_today/`.
 - **Step 6 - Generation:** Uses **FFmpeg** to create the `.mp4` and `.txt` files in `outputs_today/`. It renders an audio-reactive visualizer and manages background loops.
 - **Step 7 - Cleanup:** After uploading everything to YouTube, it packages today's files into a ZIP file in the `backups/` folder and cleans the environment for the next day.

@@ -16,7 +16,6 @@
     "boxen": "^8.0.1",
     "chalk": "^5.4.1",
     "clipboardy": "^4.0.0",
-    "open": "^10.1.0",
     "ora": "^8.2.0"
   },
   "devDependencies": {

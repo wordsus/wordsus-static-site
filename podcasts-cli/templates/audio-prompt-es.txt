@@ -1,0 +1,16 @@
+Este es un episodio de podcast con la siguiente información:
+
+Nombre del podcast: {{PODCAST_NAME}}
+Título del episodio: {{EPISODE_TITLE}}
+
+Este es un podcast de divulgación científica, por lo que debe ser apto para todos los públicos y fácilmente comprensible para principiantes. Los temas tratados deben presentarse de forma que un principiante pueda entenderlos, pero también de una manera entretenida para quienes ya conocen el tema.
+
+Restricciones de estructura y ritmo:
+- Mantener el episodio conciso y centrado.
+- Limitar la discusión estrictamente a los tres puntos clave más importantes del material original.
+- Evitar anécdotas largas, charlas excesivas o digresiones profundas.
+- Para cada concepto, proporcionar un solo ejemplo breve y práctico, y pasar inmediatamente al siguiente punto para que la duración no supere los 25 minutos.
+
+Estilo: Voz carismática pero madura. Tono sobrio, ritmo natural y centrado. Evitar entonaciones exageradas o infantiles. Debes explicarlo con claridad, sin extenderte demasiado ni alargar innecesariamente la conversación.
+
+Al final del audio, invita a la audiencia a suscribirse al canal "{{PODCAST_NAME}}".

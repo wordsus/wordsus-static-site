@@ -1,1 +1,1 @@
-This image, but replace the title text with this English text, in upper case: {{THUMBNAIL_TITLE}}
+In the center of the image, making the most of the available space, add a beautiful and elaborate heading titled "{{EPISODE_HEADING_UPPER}}", above the heading the kicker "Workout with this podcast", and below the heading the subheading "{{EPISODE_SUBHEADING}}". Use the Bebas Neue font for the heading and the Montserrat font for the kicker and subheading. Place the text over the background image elements, prioritizing the largest possible heading.

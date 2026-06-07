@@ -13,6 +13,10 @@
  * Supported variables (replaced with {{VARIABLE_NAME}} syntax):
  *   {{PODCAST_NAME}}        → book.podcast
  *   {{EPISODE_TITLE}}       → chapter.title
+ *   {{EPISODE_HEADING}}     → text before the first ":" in chapter.title (trimmed)
+ *   {{EPISODE_SUBHEADING}}  → text after the first ":" in chapter.title (trimmed)
+ *   {{EPISODE_HEADING_UPPER}}    → EPISODE_HEADING in uppercase
+ *   {{EPISODE_SUBHEADING_UPPER}} → EPISODE_SUBHEADING in uppercase
  *   {{EPISODE_NUMBER}}      → chapter.order
  *   {{EPISODE_DESCRIPTION}} → chapter.description (empty string if not set)
  *   {{THUMBNAIL_TITLE}}     → chapter.thumbnailTitle (falls back to EPISODE_TITLE if not set)
@@ -77,6 +81,17 @@ export function resolveExtraTemplatePath(book: BookConfig, name: TemplateName): 
   return fs.existsSync(extraPath) ? extraPath : null;
 }
 
+function splitEpisodeTitle(title: string): { heading: string; subheading: string } {
+  const colonIndex = title.indexOf(":");
+  if (colonIndex === -1) {
+    return { heading: title.trim(), subheading: "" };
+  }
+  return {
+    heading: title.slice(0, colonIndex).trim(),
+    subheading: title.slice(colonIndex + 1).trim(),
+  };
+}
+
 /**
  * Applies variable substitutions to a raw template string.
  */
@@ -87,9 +102,15 @@ function applyVariables(
   articleUrl: string,
   thumbnailTitle: string
 ): string {
+  const { heading, subheading } = splitEpisodeTitle(chapter.title);
+
   return raw
     .replaceAll("{{PODCAST_NAME}}", book.podcast)
     .replaceAll("{{EPISODE_TITLE}}", chapter.title)
+    .replaceAll("{{EPISODE_HEADING}}", heading)
+    .replaceAll("{{EPISODE_SUBHEADING}}", subheading)
+    .replaceAll("{{EPISODE_HEADING_UPPER}}", heading.toUpperCase())
+    .replaceAll("{{EPISODE_SUBHEADING_UPPER}}", subheading.toUpperCase())
     .replaceAll("{{EPISODE_NUMBER}}", String(chapter.order))
     .replaceAll("{{EPISODE_DESCRIPTION}}", chapter.description ?? "")
     .replaceAll("{{THUMBNAIL_TITLE}}", thumbnailTitle)

@@ -1,16 +1,16 @@
-This is a podcast episode with the following information.
+Este es un episodio de podcast con la siguiente información:
 
-Podcast Name: {{PODCAST_NAME}}
-Episode Title: {{EPISODE_TITLE}}
+Nombre del podcast: {{PODCAST_NAME}}
+Título del episodio: {{EPISODE_TITLE}}
 
-This is a popular podcast, therefore it should be suitable for all audiences and easily understandable by beginners. The topics covered should be presented in a way that a beginner can understand, but also in a way that is entertaining for listeners familiar with the subject. This podcast is intended for a Christian listener; respect for Christian beliefs must be maintained at all times.
+Este es un podcast popular, por lo que es apto para todos los públicos y fácil de entender para principiantes. Los temas tratados se presentan de forma comprensible para quienes se inician en el tema, pero también de manera entretenida para quienes ya lo conocen. Este podcast está dirigido a oyentes cristianos; se debe respetar la fe cristiana en todo momento.
 
-Structure & Pacing Constraints:
-- Keep the episode highly focused and concise. 
-- Limit the discussion strictly to the 3 most important key takeaways from the source material. 
-- Avoid long anecdotes, excessive back-and-forth banter, or deep tangents. 
-- For each concept, provide just one brief, practical example, then immediately move on to the next point to ensure the runtime stays under 25 minutes.
+Restricciones de estructura y ritmo:
+- El episodio debe ser conciso y estar bien enfocado.
+- La discusión debe limitarse estrictamente a los tres puntos clave más importantes del material original.
+- Se deben evitar anécdotas largas, conversaciones excesivas o digresiones profundas.
+- Para cada concepto, se debe proporcionar un ejemplo breve y práctico, y luego pasar inmediatamente al siguiente punto para que la duración no supere los 25 minutos.
 
-Style: Charismatic yet mature voice. Sober tone, natural and focused rhythm. Avoid exaggerated or childish intonation. You must explain clearly without over-explaining or padding the conversation.
+Estilo: Voz carismática pero madura. Tono sobrio, ritmo natural y concentrado. Evita la entonación exagerada o infantil. Explica con claridad, sin extenderte demasiado ni alargar innecesariamente la conversación.
 
-At the end of the audio, you should invite the audience to subscribe to the "{{PODCAST_NAME}}" channel.
+Al final del audio, invita a la audiencia a suscribirse al canal "{{PODCAST_NAME}}".
