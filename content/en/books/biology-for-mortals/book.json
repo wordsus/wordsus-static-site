@@ -25,7 +25,7 @@
       "order": 1,
       "description": "Discover how CRISPR technology allows us to edit the genetic code. We explore the promises and risks of this fascinating biological tool.",
       "audioUrl": "",
-      "videoUrl": "https://www.youtube.com/watch?v=Spt_LxYfbvE",
+      "videoUrl": "",
       "draft": false,
       "thumbnailTitle": "Hacking DNA!"
     },
@@ -35,7 +35,7 @@
       "order": 2,
       "description": "We analyze epigenetics, the amazing field that explains how your lifestyle and environment turn genes on or off without altering your DNA.",
       "audioUrl": "",
-      "videoUrl": "https://www.youtube.com/watch?v=VljkezpFV0s",
+      "videoUrl": "",
       "draft": false,
       "thumbnailTitle": "Your Genes Change"
     },
@@ -45,7 +45,7 @@
       "order": 3,
       "description": "Learn about de-extinction scientific projects that seek to bring back to life the woolly mammoth, the dodo, and other extinct animals.",
       "audioUrl": "",
-      "videoUrl": "https://www.youtube.com/watch?v=02NPFmOzT7I",
+      "videoUrl": "",
       "draft": false,
       "thumbnailTitle": "They Come Back!"
     },
@@ -55,7 +55,7 @@
       "order": 4,
       "description": "We explore the fascinating evolutionary history and why the vast majority of modern humans retain Neanderthal DNA that affects our health.",
       "audioUrl": "",
-      "videoUrl": "https://www.youtube.com/watch?v=HsPRTnGjFMs",
+      "videoUrl": "",
       "draft": false,
       "thumbnailTitle": "Are You Neanderthal?"
     },

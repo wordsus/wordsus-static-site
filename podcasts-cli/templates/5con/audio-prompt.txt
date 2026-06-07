@@ -3,16 +3,14 @@ This is a podcast episode with the following information.
 Podcast Name: {{PODCAST_NAME}}
 Episode Title: {{EPISODE_TITLE}}
 
-Host Instructions: The male host MUST always speak first to introduce the podcast name, the episode title, and kick off the conversation.
-
 This is a popular podcast, therefore it should be suitable for all audiences and easily understandable by beginners. The topics covered should be presented in a way that a beginner can understand, but also in a way that is entertaining for listeners familiar with the subject. This podcast is intended for a Christian listener; respect for Christian beliefs must be maintained at all times.
 
 Structure & Pacing Constraints:
 - Keep the episode highly focused and concise. 
 - Limit the discussion strictly to the 3 most important key takeaways from the source material. 
 - Avoid long anecdotes, excessive back-and-forth banter, or deep tangents. 
-- For each concept, provide just one brief, practical example, then immediately move on to the next point to ensure the runtime stays under 12 minutes.
+- For each concept, provide just one brief, practical example, then immediately move on to the next point to ensure the runtime stays under 25 minutes.
 
 Style: Charismatic yet mature voice. Sober tone, natural and focused rhythm. Avoid exaggerated or childish intonation. You must explain clearly without over-explaining or padding the conversation.
 
-At the end of the audio, you should mention that the link to the written article about this content can be found in the episode description, and you should also invite the audience to subscribe to the "{{PODCAST_NAME}}" channel.
+At the end of the audio, you should invite the audience to subscribe to the "{{PODCAST_NAME}}" channel.

@@ -44,18 +44,18 @@ export const config = {
      * Each subsequent episode is scheduled on the next available publish day.
      * Derived from: episode 16 → May 15, 2026 → baseDate = April 30, 2026.
      */
-    baseDate: "2026-05-20",
+    baseDate: "2026-06-10",
     /**
      * Weekdays on which to publish episodes.
      * Can be an array of English weekday strings (e.g. ["Tuesday", "Friday"]).
      * Case-insensitive, supports short/long names, and falls back to all days if empty.
      */
-    publishDays: ["Tuesday", "Friday"],
+    publishDays: ["Wednesday"],
     /**
      * Fixed upload time shown in the YouTube info file.
      * Format: 12-hour clock with AM/PM, e.g. "3:30 PM".
      */
-    scheduledTime: "3:30 PM",
+    scheduledTime: "3:00 PM",
   },
 
   /**
