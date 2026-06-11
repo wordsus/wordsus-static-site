@@ -1,5 +1,5 @@
 /**
- * Filesystem helpers — manages sources_today, outputs_today, backups directories.
+ * Filesystem helpers — manages sources-today, outputs-today, backups directories.
  */
 import fs from "fs";
 import path from "path";
@@ -9,8 +9,9 @@ import { log } from "./logger.js";
 
 // ─── Directory paths ─────────────────────────────────────────────────────────
 
-export const sourcesDir = () => path.join(config.workingDir, "sources_today");
-export const outputsDir = () => path.join(config.workingDir, "outputs_today");
+export const sourcesDir = () => path.join(config.workingDir, "sources-today");
+export const defaultSourcesDir = () => path.join(config.workingDir, "default-sources");
+export const outputsDir = () => path.join(config.workingDir, "outputs-today");
 export const backupsDir = () => path.join(config.workingDir, "backups");
 export const logsDir = () => path.join(config.workingDir, "logs");
 
@@ -52,6 +53,32 @@ export function findVideoFile(alias: string): string | null {
   return fs.existsSync(candidate) ? candidate : null;
 }
 
+export function findBgFile(alias: string): string | null {
+  const sourcesBg = findBgFileInDir(sourcesDir(), alias);
+  if (sourcesBg) return sourcesBg;
+
+  const defaultBg = findBgFileInDir(defaultSourcesDir(), alias);
+  if (defaultBg) return defaultBg;
+
+  return null;
+}
+
+function findBgFileInDir(dir: string, alias: string): string | null {
+  if (!fs.existsSync(dir)) return null;
+
+  // Check video first
+  const videoCandidate = path.join(dir, `${alias}-bg.mp4`);
+  if (fs.existsSync(videoCandidate)) return videoCandidate;
+
+  // Check images
+  for (const ext of ["png", "jpg", "jpeg", "webp"]) {
+    const candidate = path.join(dir, `${alias}-bg.${ext}`);
+    if (fs.existsSync(candidate)) return candidate;
+  }
+
+  return null;
+}
+
 export function findJsonFile(alias: string): string | null {
   const candidate = getJsonSourcePath(alias);
   return fs.existsSync(candidate) ? candidate : null;
@@ -76,13 +103,12 @@ export function discoverEpisodes(): EpisodeDiscoveryInfo[] {
     if (file.endsWith(".json")) {
       const alias = path.basename(file, ".json");
       const jsonPath = path.join(dir, file);
-      
+
       // Basic processable check
       const hasAudio = findAudioFile(alias) !== null;
       const hasImage = findImageFile(alias) !== null;
-      const hasVideo = findVideoFile(alias) !== null;
-      
-      if (hasAudio && (hasImage || hasVideo)) {
+
+      if (hasAudio && hasImage) {
         try {
           const content = fs.readFileSync(jsonPath, "utf-8");
           const data = JSON.parse(content);
@@ -160,16 +186,16 @@ export async function backupAndClean(): Promise<void> {
   const sourcesZip = path.join(backups, `sources_${timestamp}.zip`);
   const outputsZip = path.join(backups, `outputs_${timestamp}.zip`);
 
-  // Zip sources_today
+  // Zip sources-today
   if (fs.existsSync(sourcesDir()) && fs.readdirSync(sourcesDir()).length > 0) {
     await zipDirectory(sourcesDir(), sourcesZip);
-    log("INFO", `Backed up sources_today → ${sourcesZip}`);
+    log("INFO", `Backed up sources-today → ${sourcesZip}`);
   }
 
-  // Zip outputs_today
+  // Zip outputs-today
   if (fs.existsSync(outputsDir()) && fs.readdirSync(outputsDir()).length > 0) {
     await zipDirectory(outputsDir(), outputsZip);
-    log("INFO", `Backed up outputs_today → ${outputsZip}`);
+    log("INFO", `Backed up outputs-today → ${outputsZip}`);
   }
 
   // Clean directories
@@ -177,7 +203,7 @@ export async function backupAndClean(): Promise<void> {
   fs.rmSync(outputsDir(), { recursive: true, force: true });
   fs.mkdirSync(sourcesDir(), { recursive: true });
   fs.mkdirSync(outputsDir(), { recursive: true });
-  log("INFO", "Cleaned sources_today and outputs_today");
+  log("INFO", "Cleaned sources-today and outputs-today");
 
   // Purge old backups
   purgeOldBackups();

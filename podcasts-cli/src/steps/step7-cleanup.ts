@@ -1,6 +1,6 @@
 /**
  * Step 7 — Backup and cleanup.
- * Zips the sources_today and outputs_today directories into backups/,
+ * Zips the sources-today and outputs-today directories into backups/,
  * then empties them for the next day.
  */
 import { confirm } from "@inquirer/prompts";
@@ -12,8 +12,8 @@ export async function runStep7(): Promise<void> {
   printStep(7, "Backup and Cleanup");
 
   info("Please ensure you have uploaded all videos to YouTube and copied");
-  info("the descriptions from the txt files in outputs_today/.");
-  
+  info("the descriptions from the txt files in outputs-today/.");
+
   const proceed = await confirm({
     message: C.white("Have you finished uploading everything? Ready to clean up?"),
     default: true,

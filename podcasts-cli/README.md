@@ -7,7 +7,7 @@ This tool acts as an interactive orchestrator, providing a menu to explicitly ex
 ## Key Features
 
 1. **Interactive Management:** Elegant command-line interface that guides you through the entire process.
-2. **Structured Directories:** Automatically organizes daily files into `sources_today/` and `outputs_today/`.
+2. **Structured Directories:** Automatically organizes daily files into `sources-today/` and `outputs-today/`.
 3. **Clipboard Handling:** Automatically copies URLs and customized prompts, saving time and preventing errors.
 4. **Template System:** Base prompts and book-specific overrides for both audio and image generation.
 5. **Validation:** Verifies that all resources (audio, image, json) are present before executing the video rendering.
@@ -177,18 +177,18 @@ pnpm podcasts --episode 3
 ### Workflow (Steps)
 
 - **Step 0 - Setup:** Choose the episode number for the session.
-- **Step 1 - JSON:** Automatically generates the `metadata.json` (`[alias].json`) files inside `sources_today/`.
+- **Step 1 - JSON:** Automatically generates the `metadata.json` (`[alias].json`) files inside `sources-today/`.
 - **Step 2 - URLs:** Copies article URLs one by one. Use them to add sources in NotebookLM.
 - **Step 3 - Audio Prompts:** Copies prompts one by one to customize the "Audio Overview" in NotebookLM.
 - **Step 4 - Image Prompts:** Copies prompts to the clipboard so you can paste them into Gemini and generate image descriptions.
-- **Step 5 - Verification:** Waits for you to place the downloaded audio and images (`[alias].wav`, `[alias].png`) into `sources_today/`.
-- **Step 6 - Generation:** Uses **FFmpeg** to create the `.mp4` and `.txt` files in `outputs_today/`. It renders an audio-reactive visualizer and manages background loops.
+- **Step 5 - Verification:** Waits for you to place the downloaded audio and images (`[alias].wav`, `[alias].png`) into `sources-today/`.
+- **Step 6 - Generation:** Uses **FFmpeg** to create the `.mp4` and `.txt` files in `outputs-today/`. It renders an audio-reactive visualizer and manages background loops.
 - **Step 7 - Cleanup:** After uploading everything to YouTube, it packages today's files into a ZIP file in the `backups/` folder and cleans the environment for the next day.
 
 ### Filtering / Selecting Episodes
 
 You can selectively process only a subset of books/episodes for the day:
 
-1. Run **Step 1** to generate all metadata `[alias].json` files inside `sources_today/`.
+1. Run **Step 1** to generate all metadata `[alias].json` files inside `sources-today/`.
 2. Manually delete the `[alias].json` files of the episodes you **do not** wish to process.
-3. Continue with **Steps 2 to 7**. The CLI will automatically skip any episode that does not have its corresponding metadata `.json` file inside `sources_today/`.
+3. Continue with **Steps 2 to 7**. The CLI will automatically skip any episode that does not have its corresponding metadata `.json` file inside `sources-today/`.

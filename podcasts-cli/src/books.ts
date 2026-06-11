@@ -3,7 +3,7 @@
  * Only books listed here will be processed by the CLI.
  *
  * Fields:
- *  - alias:   Short identifier used as filename prefix in sources_today/outputs_today.
+ *  - alias:   Short identifier used as filename prefix in sources-today/outputs-today.
  *             Must be unique and filesystem-safe (no spaces, lowercase, hyphens ok).
  *  - slug:    The book directory name inside content/<locale>/books/
  *  - locale:  Language code ("es" | "en")

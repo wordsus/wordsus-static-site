@@ -1,7 +1,7 @@
 /**
  * Step 6 — Generate Videos.
  * Port of the Python script to TypeScript.
- * Processes the sources_today/ directory and writes final mp4 and txt files to outputs_today/.
+ * Processes the sources-today/ directory and writes final mp4 and txt files to outputs-today/.
  */
 import fs from "fs";
 import path from "path";
@@ -10,7 +10,7 @@ import { config } from "../config.js";
 import { printStep, ok, err, info, C, divider, formatDuration } from "../ui.js";
 import { logStep, log } from "../logger.js";
 import type { SessionState } from "../types.js";
-import { discoverEpisodes, outputsDir, findAudioFile, findImageFile, findVideoFile, saveLastEpisode } from "../filesystem.js";
+import { discoverEpisodes, outputsDir, findAudioFile, findImageFile, findBgFile, saveLastEpisode } from "../filesystem.js";
 import { runFFmpeg } from "../ffmpeg.js";
 import { generateYoutubeInfo } from "../youtube.js";
 
@@ -20,13 +20,13 @@ export async function runStep6(session: SessionState): Promise<void> {
   const episodes = discoverEpisodes();
 
   if (episodes.length === 0) {
-    warn("No processable episodes found in sources_today/.");
+    warn("No processable episodes found in sources-today/.");
     info("Each episode needs a .json metadata file, an audio file, and a background image/video.");
     return;
   }
 
   info(`Found ${C.accent(episodes.length.toString())} episode(s) to process.`);
-  
+
   const proceed = await confirm({
     message: C.white("Start video generation?"),
     default: true,
@@ -68,11 +68,11 @@ export async function runStep6(session: SessionState): Promise<void> {
 
     try {
       const audioFile = findAudioFile(alias)!;
-      const bgVideo = findVideoFile(alias);
-      const bgImage = findImageFile(alias);
-      
-      const backgroundFile = bgVideo || bgImage!;
-      const isStaticImage = !bgVideo;
+      const thumbnailFile = findImageFile(alias)!;
+
+      const bgFile = findBgFile(alias);
+      const backgroundFile = bgFile || thumbnailFile;
+      const isStaticImage = !backgroundFile.endsWith(".mp4");
 
       // Read metadata for YouTube info
       const metadata = JSON.parse(fs.readFileSync(jsonPath, "utf-8"));
@@ -91,7 +91,7 @@ export async function runStep6(session: SessionState): Promise<void> {
           const barWidth = 30;
           const filledWidth = Math.floor(ratio * barWidth);
           const bar = C.accent("━".repeat(filledWidth)) + C.muted("━".repeat(barWidth - filledWidth));
-          
+
           process.stdout.write(`\r  🎬 Rendering: ${C.white("[")}${bar}${C.white("]")} ${C.accent(percent + "%")} [${p.seconds.toFixed(0)}s/${p.totalSeconds.toFixed(0)}s]   `);
         }
       });
@@ -108,10 +108,10 @@ export async function runStep6(session: SessionState): Promise<void> {
         videoFile: outputVideo
       });
 
-      // Copy thumbnail if it's an image
-      if (bgImage) {
-        const destThumbnail = path.join(outputsDir(), `${alias}-2${path.extname(bgImage)}`);
-        fs.copyFileSync(bgImage, destThumbnail);
+      // Copy thumbnail (using the alias file from sources-today)
+      if (thumbnailFile) {
+        const destThumbnail = path.join(outputsDir(), `${alias}-2${path.extname(thumbnailFile)}`);
+        fs.copyFileSync(thumbnailFile, destThumbnail);
         info(`Thumbnail copied: ${path.basename(destThumbnail)}`);
       }
 

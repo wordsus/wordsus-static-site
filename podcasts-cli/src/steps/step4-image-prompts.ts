@@ -92,6 +92,6 @@ export async function runStep4(session: SessionState): Promise<void> {
   logStep(4, "All image prompts copied.");
   ok("While the audio generates, create all background images and save them as:");
   for (const book of sortedBooks.filter((b) => session.targets.find((t) => t.alias === b.alias) && findJsonFile(b.alias))) {
-    info(`  ${C.primary(book.alias + ".png")}  →  Drop into sources_today/`);
+    info(`  ${C.primary(book.alias + ".png")}  →  Drop into sources-today/`);
   }
 }

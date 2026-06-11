@@ -1,5 +1,5 @@
 /**
- * Step 1 — Create metadata JSON files in sources_today/.
+ * Step 1 — Create metadata JSON files in sources-today/.
  * Writes <alias>.json for every configured book, derived from book.json chapters.
  */
 import fs from "fs";

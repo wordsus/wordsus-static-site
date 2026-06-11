@@ -25,7 +25,7 @@ export interface BookJson {
   chapters: Chapter[];
 }
 
-// ─── Podcast episode metadata (written to sources_today/<alias>.json) ─────────
+// ─── Podcast episode metadata (written to sources-today/<alias>.json) ─────────
 
 export interface EpisodeMetadata {
   episode: string;
