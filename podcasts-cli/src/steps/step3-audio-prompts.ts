@@ -5,7 +5,7 @@
  * the Audio Overview generation.
  */
 import clipboard from "clipboardy";
-import { confirm } from "@inquirer/prompts";
+import { expand } from "@inquirer/prompts";
 import { books } from "../books.js";
 import { getChapter } from "../content.js";
 import { renderTemplate } from "../templates.js";
@@ -22,15 +22,24 @@ export async function runStep3(session: SessionState): Promise<void> {
 
   const sortedBooks = [...books].sort((a, b) => a.order - b.order);
 
-  for (const book of sortedBooks) {
+  let i = 0;
+  while (i < sortedBooks.length) {
+    const book = sortedBooks[i];
     const target = session.targets.find((t) => t.alias === book.alias);
-    if (!target) continue;
+    if (!target) {
+      i++;
+      continue;
+    }
 
-    if (!findJsonFile(book.alias)) continue;
+    if (!findJsonFile(book.alias)) {
+      i++;
+      continue;
+    }
 
     const chapter = getChapter(book, target.episodeNumber);
     if (!chapter) {
       warn(`[${book.alias}] Chapter ${target.episodeNumber} not found — skipping.`);
+      i++;
       continue;
     }
 
@@ -39,6 +48,7 @@ export async function runStep3(session: SessionState): Promise<void> {
       prompt = renderTemplate(book, chapter, "audio-prompt");
     } catch (e) {
       warn(`[${book.alias}] ${(e as Error).message}`);
+      i++;
       continue;
     }
 
@@ -47,13 +57,32 @@ export async function runStep3(session: SessionState): Promise<void> {
 
     info(`  ${C.muted("Template:")} ${book.alias}/audio-prompt.txt (or general)`);
 
-    await confirm({
-      message: C.white(`Paste this prompt into the ${book.alias} NotebookLM, then press Enter`),
-      default: true,
+    const action = await expand({
+      message: C.white(`Paste this prompt into the ${book.alias} NotebookLM`),
+      default: "y",
+      expanded: true,
+      choices: [
+        { key: "y", name: "yes (next item)", value: "y" as const },
+        { key: "n", name: "no (cancel & return to menu)", value: "n" as const },
+        { key: "a", name: "again (repeat current item)", value: "a" as const },
+      ],
     });
+
+    if (action === "n") {
+      log("INFO", `[${book.alias}] Audio prompt copy loop cancelled by user.`);
+      info("Cancelled. Returning to main menu...");
+      return;
+    }
+
+    if (action === "a") {
+      log("INFO", `[${book.alias}] Repeating audio prompt copy for episode ${target.episodeNumber}`);
+      divider();
+      continue;
+    }
 
     log("INFO", `[${book.alias}] Audio prompt copied for episode ${target.episodeNumber}`);
     divider();
+    i++;
   }
 
   logStep(3, "All audio prompts copied.");
