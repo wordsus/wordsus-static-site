@@ -10,6 +10,7 @@ Structure & Pacing Constraints:
 - Limit the discussion strictly to the 3 most important key takeaways from the source material. 
 - Avoid long anecdotes, excessive back-and-forth banter, or deep tangents. 
 - For each concept, provide just one brief, practical example, then immediately move on to the next point to ensure the runtime stays under 25 minutes.
+- Do not explicitly mention any of the guidelines or limits from this prompt (such as the number of points to cover or the target runtime). These are internal structural instructions and are not of interest to the listener.
 
 Style: Charismatic yet mature voice. Sober tone, natural and focused rhythm. Avoid exaggerated or childish intonation. You must explain clearly without over-explaining or padding the conversation.
 

@@ -10,6 +10,7 @@ Restricciones de estructura y ritmo:
 - La discusión debe limitarse estrictamente a los tres puntos clave más importantes del material original.
 - Se deben evitar anécdotas largas, conversaciones excesivas o digresiones profundas.
 - Para cada concepto, se debe proporcionar un ejemplo breve y práctico, y luego pasar inmediatamente al siguiente punto para que la duración no supere los 25 minutos.
+- No mencionar explícitamente ninguno de los lineamientos o límites de este prompt (como el número de puntos a tratar o la duración). Estos son lineamientos internos para la estructuración del episodio y no son de interés para el oyente.
 
 Estilo: Voz carismática pero madura. Tono sobrio, ritmo natural y concentrado. Evita la entonación exagerada o infantil. Explica con claridad, sin extenderte demasiado ni alargar innecesariamente la conversación.
 
