@@ -99,15 +99,23 @@ export const authMiddleware = createMiddleware(async (c, next) => {
 
 ## 5. Database Schema (D1)
 
+The schema is managed via **Wrangler D1 migrations** — sequential, numbered SQL files that are applied in order. See [§5.2 Migrations](#52-migrations) for the workflow.
+
+### 5.1 Tables
+
+#### `users`
+
 ```sql
--- Users table (minimal — auth is in Supabase)
 CREATE TABLE users (
   id TEXT PRIMARY KEY,           -- Supabase Auth user ID (UUID)
   createdAt TEXT NOT NULL DEFAULT (datetime('now')),
   updatedAt TEXT NOT NULL DEFAULT (datetime('now'))
 );
+```
 
--- Reading Progress (one per user per locale+book)
+#### `reading_progress`
+
+```sql
 CREATE TABLE reading_progress (
   id TEXT PRIMARY KEY,           -- UUID v4 (generated client-side)
   userId TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
@@ -124,8 +132,11 @@ CREATE TABLE reading_progress (
 );
 
 CREATE INDEX idx_reading_user_updated ON reading_progress(userId, updatedAt);
+```
 
--- Favorites
+#### `favorites`
+
+```sql
 CREATE TABLE favorites (
   id TEXT PRIMARY KEY,           -- UUID v4 (generated client-side)
   userId TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
@@ -138,8 +149,11 @@ CREATE TABLE favorites (
 );
 
 CREATE INDEX idx_favorites_user_updated ON favorites(userId, updatedAt);
+```
 
--- Recent Books (ordered reading history)
+#### `recent_books`
+
+```sql
 CREATE TABLE recent_books (
   id TEXT PRIMARY KEY,           -- UUID v4 (generated client-side)
   userId TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
@@ -154,8 +168,11 @@ CREATE TABLE recent_books (
 
 CREATE INDEX idx_recent_user_updated ON recent_books(userId, updatedAt);
 CREATE INDEX idx_recent_user_order ON recent_books(userId, "order");
+```
 
--- User Preferences (key-value per user)
+#### `user_preferences`
+
+```sql
 CREATE TABLE user_preferences (
   userId TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   key TEXT NOT NULL,
@@ -166,6 +183,37 @@ CREATE TABLE user_preferences (
 
 CREATE INDEX idx_preferences_user_updated ON user_preferences(userId, updatedAt);
 ```
+
+### 5.2 Migrations
+
+Schema changes are managed with **Wrangler D1 migrations** (`wrangler d1 migrations`). Each migration is a sequential `.sql` file stored in `migrations/`.
+
+#### Creating a migration
+
+```bash
+wrangler d1 migrations create wordsus-prod <description>
+# e.g. wrangler d1 migrations create wordsus-prod initial-schema
+# → creates migrations/0001_initial-schema.sql
+```
+
+#### Migration file layout
+
+```
+migrations/
+├── 0001_initial-schema.sql      # users, reading_progress, favorites,
+│                                 # recent_books, user_preferences
+├── 0002_add-foo-column.sql      # Future schema changes
+└── ...
+```
+
+Wrangler tracks which migrations have been applied via an internal `d1_migrations` table. Migrations are applied **in order** and are **idempotent** — re-running the apply command skips already-applied files.
+
+#### Applying migrations
+
+| Environment | Method |
+|-------------|--------|
+| **Local development** | Run manually: `wrangler d1 migrations apply wordsus-prod --local` |
+| **Production** | Runs automatically via the deploy command configured in the **Cloudflare Workers GitHub integration** (applied before the Worker is deployed) |
 
 ---
 
@@ -364,13 +412,15 @@ backend/
 │   │   ├── preferences.ts    # /preferences
 │   │   └── sync.ts           # /sync pull & push
 │   ├── db/
-│   │   ├── schema.sql        # D1 table definitions
 │   │   └── queries.ts        # Typed query helpers
 │   ├── types/
 │   │   └── index.ts          # Shared types (mirrors frontend models)
 │   └── utils/
 │       ├── validation.ts     # Request body validation
 │       └── timestamps.ts     # ISO 8601 helpers
+├── migrations/                   # Wrangler D1 migrations
+│   ├── 0001_initial-schema.sql   # Initial tables + indexes
+│   └── ...                       # Future schema changes
 ├── wrangler.toml             # Workers config (D1 binding, env vars)
 ├── package.json
 └── tsconfig.json
@@ -392,6 +442,7 @@ ENVIRONMENT = "production"
 binding = "DB"
 database_name = "wordsus-prod"
 database_id = "<d1-database-id>"
+migrations_dir = "migrations"
 
 # Secrets (set via `wrangler secret put`):
 # - SUPABASE_JWT_SECRET
@@ -402,11 +453,43 @@ database_id = "<d1-database-id>"
 
 ## 13. Deployment
 
+### 13.1 Local Development
+
+```bash
+# Apply pending migrations to the local D1 database
+wrangler d1 migrations apply wordsus-prod --local
+
+# Start dev server (uses local D1 automatically)
+wrangler dev
+```
+
+Migrations must be applied manually before (or after) starting the dev server whenever new migration files are added.
+
+### 13.2 Production
+
+Production deployment is handled by the **Cloudflare Workers native GitHub integration**:
+
+1. Developer pushes to the `main` branch (or merges a PR)
+2. The GitHub integration triggers a build
+3. The configured **deploy command** runs migrations and deploys the Worker:
+   ```bash
+   wrangler d1 migrations apply wordsus-prod --remote && wrangler deploy
+   ```
+4. Migrations are applied to the remote D1 database first; the Worker is deployed only if migrations succeed
+
+> **Note:** The deploy command is configured once in the Cloudflare dashboard under Workers & Pages → Settings → Builds & Deployments.
+
+### 13.3 Command Reference
+
 | Command | Action |
 |---------|--------|
-| `wrangler dev` | Local development with D1 |
-| `wrangler d1 execute wordsus-prod --file=src/db/schema.sql` | Apply schema |
-| `wrangler deploy` | Deploy to Cloudflare Workers |
+| `wrangler d1 migrations create wordsus-prod <name>` | Scaffold a new migration file |
+| `wrangler d1 migrations apply wordsus-prod --local` | Apply pending migrations locally |
+| `wrangler d1 migrations apply wordsus-prod --remote` | Apply pending migrations to production |
+| `wrangler d1 migrations list wordsus-prod --local` | List migration status (local) |
+| `wrangler d1 migrations list wordsus-prod --remote` | List migration status (production) |
+| `wrangler dev` | Local dev server with local D1 |
+| `wrangler deploy` | Deploy Worker to Cloudflare |
 
 ---
 
