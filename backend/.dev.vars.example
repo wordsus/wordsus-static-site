@@ -1,0 +1,13 @@
+# Copy this file to .dev.vars for local development
+# .dev.vars is gitignored — never commit real secrets
+
+# Your Supabase project URL (e.g. https://xyzabc.supabase.co)
+SUPABASE_URL=https://<project-ref>.supabase.co
+
+# Used when Supabase signs JWTs with HS256 (older projects)
+# Found in Supabase dashboard → Settings → API → JWT Secret
+SUPABASE_JWT_SECRET=<your-supabase-jwt-secret>
+
+# Used when Supabase signs JWTs with ES256 (newer projects, recommended)
+# The JWKS endpoint is always: https://<project-ref>.supabase.co/auth/v1/.well-known/jwks.json
+SUPABASE_JWKS_URL=https://<project-ref>.supabase.co/auth/v1/.well-known/jwks.json

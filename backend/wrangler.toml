@@ -1,0 +1,18 @@
+name = "wordsus-api"
+main = "src/index.ts"
+compatibility_date = "2025-06-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+ENVIRONMENT = "production"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "wordsus-prod"
+database_id = "<d1-database-id>"
+migrations_dir = "migrations"
+
+# Secrets — set via `wrangler secret put`:
+#   wrangler secret put SUPABASE_JWT_SECRET
+#   wrangler secret put SUPABASE_URL
+#   wrangler secret put SUPABASE_JWKS_URL

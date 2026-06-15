@@ -1,0 +1,8 @@
+node_modules/
+dist/
+
+# Wrangler local state and D1 databases
+.wrangler/
+
+# Local secrets — never commit real credentials
+.dev.vars

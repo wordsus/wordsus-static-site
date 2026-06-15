@@ -1,0 +1,21 @@
+{
+  "name": "wordsus-api",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler d1 migrations apply wordsus-prod --remote && wrangler deploy",
+    "migrate:local": "wrangler d1 migrations apply wordsus-prod --local",
+    "migrate:remote": "wrangler d1 migrations apply wordsus-prod --remote",
+    "migration:create": "wrangler d1 migrations create wordsus-prod",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "hono": "^4.6.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241127.0",
+    "typescript": "^5.6.0",
+    "wrangler": "^4.100.0"
+  }
+}
