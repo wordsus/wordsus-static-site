@@ -4,6 +4,7 @@
     "books/astronomia-para-mortales-es-cover.jpeg": "+jnckzVP5nEsnri6O-SlOPNUHu-+mG0Is0Uuoqxkq+g=",
     "books/astronomy-en-cover.jpeg": "vF33UJdAQr3-yWk9iU2R6AmvRxWF7ESFtgEoZM2Gh4M=",
     "books/astronomy-for-mortals-en-cover.jpeg": "VFzHQyrFxzmxt2JfefSDaWd1EmWBTSiWtC7zeqJmf9s=",
+    "books/austrian-economics-for-mortals-en-cover.jpeg": "mobdT3W9Du0ogCu4lUZpdx07vKU1uJgEexu4EbVpurk=",
     "books/backend-en-python-es-cover.jpeg": "uh+Q8bOkFZCll2FD0aL9Z2HaF3TAX+9FjkBwOWCtztk=",
     "books/bash-en-cover.jpeg": "rVi8-nOToxmFBeWOZ3PDJqvTCE4zaLGNMkkunpkCFvI=",
     "books/bash-es-cover.jpeg": "zZHESnjVpuq5HHTJG0UfIhNDYtLUou5RkzTHc2n67ns=",
@@ -19,6 +20,7 @@
     "books/dns-en-cover.jpeg": "hAwpX6OPTwYDbBwnpoAzjFrDLML21N7M2SxO-I3sKIQ=",
     "books/dns-es-cover.jpeg": "TcOAx6sgSyxK0pjn8+O1tiDRzLg3tF+gKf2tV9tWuv4=",
     "books/docker-es-cover.jpeg": "yfiC5yx2VMoT9DFeZ+nA3Mdene0d+YEag-8hHZiLBbw=",
+    "books/economia-austriaca-para-mortales-es-cover.jpeg": "55XjRlu190uWPvjvCk-VG8uY-y7Xt3ue5ifHPbr6R8A=",
     "books/fastly-en-cover.jpeg": "LWquBEiSNHx-WARUp5FrGJuUdRL3wqDeHtdvSkGDX28=",
     "books/fisica-para-mortales-es-cover.jpeg": "yV5JklrwpDxALTTfA1B0m-IN58RB26VJ5h1LAtQpBHc=",
     "books/golang-en-cover.jpeg": "8evfi5IUp1u3gEYaqITvmAAM1cpi8CFHIGcxpvR+GIQ=",
@@ -29,10 +31,14 @@
     "books/la-biblia-en-contexto-es-cover.jpeg": "-nV-7vkgN7XdNmyiAqb0wh6lSDXcovUETMkYTnw9uqQ=",
     "books/linux-es-cover.jpeg": "6f3-WKZxqmGWD69+COypfCdm+1jPEOXFl63CBgu+xGY=",
     "books/microservices-en-cover.jpeg": "86CmcT8mcZalbfszZIyJkcWiqTCaBq0WlRD5H36JGoM=",
+    "books/nutricion-para-mortales-es-cover.jpeg": "fuOHSTt338AemcfizVqMsW+8FZP4PMitEy6x7IqFAiA=",
+    "books/nutrition-for-mortals-en-cover.jpeg": "-S8btg6P7SKXIsIvy-+8cJ0PRRV-Xc4y57wb59v7Ssc=",
     "books/opentelemetry-en-cover.jpeg": "OaAVZzc81iTYX-Ue0fzzx-B+FENBsPS28Z12qagItzY=",
     "books/opentofu-en-cover.jpeg": "vrmzxr-FIhPbM2zpmdqR7Pri1ZRIS7to10sUquiO-bk=",
     "books/physics-en-cover.jpeg": "WKVKk0QfVrVD1GHQ1P-R--PTi8rk6sAIaDm+vNzAGYw=",
     "books/physics-for-mortals-en-cover.jpeg": "FB59g1SHv4LFTiSh4fxHTgHzrLQYuXbG1U5zM4m-bQs=",
+    "books/psicologia-para-mortales-es-cover.jpeg": "-zIjwBp7BhOjGOPfs-txTv4a4IYiLNi5TOjWgRegFN4=",
+    "books/psychology-for-mortals-en-cover.jpeg": "jG-4D5STgu9CCuvAid8u3poAnEKMVfn1o6RWoSGN2ig=",
     "books/pulumi-en-cover.jpeg": "q1MlcXOyx918sEYh4K+zQvjjZ866sHoYq1OMO9YIPUE=",
     "books/python-backend-en-cover.jpeg": "2SR-DT+BegdMFP2JclY8HUWjBECkWHiHhmrDIJSs4oo=",
     "books/quimica-para-mortales-es-cover.jpeg": "IzTiEf3bJxUHCr+PIeIqvtWi70siER5XBkcjXldejc0=",
@@ -46,5 +52,6 @@
     "books/victoriametrics-en-cover.jpeg": "9sgqOybee086odEehUN6JUJQhjY88pR8-Cn9Wt-k700=",
     "books/vps-es-cover.jpeg": "TYxZu8enYEM+zgJjH0SLsbNc-46o51nS5BYLlmJEHGE=",
     "books/wordpress-sysadmin-es-cover.jpeg": "6vugPEprMGGC1ANS7xYlaQCLIcfneunkkvY-zNrTY+g=",
-    "/wordsus-logo.png": "3kA8ts9-FLzlgaYe24Zmx2DwBIYM6nJ5FqZ7GSwb+HA="
+    "/wordsus-logo.png": "3kA8ts9-FLzlgaYe24Zmx2DwBIYM6nJ5FqZ7GSwb+HA=",
+    "/wordsus-mockup.png": "kO806l8W-piwoWZgLDJPTI88qToTgp8M-lGes6TWJlc="
 }

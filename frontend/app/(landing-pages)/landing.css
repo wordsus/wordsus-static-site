@@ -1,0 +1,233 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-outfit), var(--font-sans);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+@layer base {
+  :root {
+    --background: hsl(0 0% 100%);
+    --foreground: hsl(224 71.4% 4.1%);
+    --card: hsl(0 0% 100%);
+    --card-foreground: hsl(224 71.4% 4.1%);
+    --popover: hsl(0 0% 100%);
+    --popover-foreground: hsl(224 71.4% 4.1%);
+    --primary: hsl(220.9 39.3% 11%);
+    --primary-foreground: hsl(210 20% 98%);
+    --secondary: hsl(220 14.3% 95.9%);
+    --secondary-foreground: hsl(220.9 39.3% 11%);
+    --muted: hsl(220 14.3% 95.9%);
+    --muted-foreground: hsl(220 8.9% 46.1%);
+    --accent: hsl(220 14.3% 95.9%);
+    --accent-foreground: hsl(220.9 39.3% 11%);
+    --destructive: hsl(0 84.2% 60.2%);
+    --destructive-foreground: hsl(210 20% 98%);
+    --border: hsl(220 13% 91%);
+    --input: hsl(220 13% 91%);
+    --ring: hsl(224 71.4% 4.1%);
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: hsl(224 71.4% 4.1%);
+    --foreground: hsl(210 20% 98%);
+    --card: hsl(224 71.4% 4.1%);
+    --card-foreground: hsl(210 20% 98%);
+    --popover: hsl(224 71.4% 4.1%);
+    --popover-foreground: hsl(210 20% 98%);
+    --primary: hsl(210 20% 98%);
+    --primary-foreground: hsl(220.9 39.3% 11%);
+    --secondary: hsl(215 27.9% 16.9%);
+    --secondary-foreground: hsl(210 20% 98%);
+    --muted: hsl(215 27.9% 16.9%);
+    --muted-foreground: hsl(217.9 10.6% 64.9%);
+    --accent: hsl(215 27.9% 16.9%);
+    --accent-foreground: hsl(210 20% 98%);
+    --destructive: hsl(0 62.8% 30.6%);
+    --destructive-foreground: hsl(210 20% 98%);
+    --border: hsl(215 27.9% 16.9%);
+    --input: hsl(215 27.9% 16.9%);
+    --ring: hsl(216 12.2% 83.9%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-semibold tracking-tight;
+  }
+}
+
+.glass {
+  @apply bg-background/80 backdrop-blur-md border-border;
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60;
+}
+
+.prose-custom {
+  @apply text-muted-foreground leading-relaxed xl:leading-[1.8] text-[1.05rem] md:text-[1.1rem];
+}
+
+.prose-custom h1, .prose-custom h2, .prose-custom h3 {
+  @apply text-foreground font-display font-bold tracking-tight;
+}
+
+.prose-custom h1 {
+  @apply text-4xl mt-16 mb-8;
+}
+
+.prose-custom h2 {
+  @apply text-2xl mt-16 mb-6 pb-2 border-b scroll-mt-24;
+}
+
+.prose-custom h3 {
+  @apply text-xl mt-12 mb-4 scroll-mt-24;
+}
+
+.prose-custom p {
+  @apply mb-6 leading-relaxed xl:leading-[1.8];
+}
+
+.prose-custom a {
+  @apply text-primary font-medium underline underline-offset-4 decoration-primary/30 hover:decoration-primary transition-all;
+}
+
+.prose-custom ul {
+  @apply list-disc pl-6 mb-6 space-y-3 xl:space-y-4;
+}
+
+.prose-custom ol {
+  @apply list-decimal pl-6 mb-6 space-y-3 xl:space-y-4;
+}
+
+.prose-custom li {
+  @apply leading-relaxed xl:leading-[1.8] mb-2;
+}
+
+.prose-custom li > p {
+  @apply inline m-0;
+}
+
+.prose-custom blockquote {
+  @apply border-l-4 border-primary/20 pl-6 pr-4 py-4 italic my-8 bg-muted/30 rounded-r-lg;
+}
+
+.prose-custom img {
+  @apply rounded-xl border shadow-sm my-10;
+}
+
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-primary/20 rounded-full transition-all duration-300;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+  }
+
+  .custom-scrollbar:hover::-webkit-scrollbar-thumb {
+    @apply bg-primary/40;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/60;
+  }
+
+  .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-primary/10;
+  }
+
+  .dark .custom-scrollbar:hover::-webkit-scrollbar-thumb {
+    @apply bg-primary/30;
+  }
+}
+
+/* Evita que los tokens de sintaxis tengan fondos que parezcan texto seleccionado */
+.prose-custom pre span {
+  background-color: transparent !important;
+}
+
+/* Evita que el tag code dentro de pre herede fondos de código inline (como bg-muted) o de temas de Prism */
+.prose-custom pre,
+.prose-custom pre code {
+  background-color: transparent !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+/* Personaliza la selección de texto en los bloques de código para que sea sumamente sutil y elegante */
+.prose-custom pre ::selection,
+.prose-custom pre *::selection,
+.prose-custom code ::selection,
+.prose-custom code *::selection {
+  background-color: rgba(14, 165, 233, 0.15) !important;
+  color: inherit !important;
+}
