@@ -537,6 +537,3136 @@
       "draft": true,
       "audioUrl": "",
       "videoUrl": ""
+    },
+    {
+      "slug": "agujeros-negros-donde-la-gravedad-lo-devora-todo",
+      "title": "Agujeros Negros: Donde la gravedad lo devora todo",
+      "order": 53,
+      "description": "Exploramos la física extrema de los agujeros negros, regiones donde la gravedad es tan intensa que ni siquiera la luz puede escapar de su abrazo cósmico.",
+      "thumbnailTitle": "Devoradores Cósmicos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "radiacion-de-hawking-los-agujeros-negros-se-evaporan",
+      "title": "Radiación de Hawking: Los agujeros negros se evaporan",
+      "order": 54,
+      "description": "Descubre la revolucionaria predicción de Stephen Hawking que demostró que los agujeros negros emiten radiación lentamente hasta desaparecer por completo.",
+      "thumbnailTitle": "Evaporación Cósmica",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "horizonte-de-eventos-el-punto-sin-posible-retorno",
+      "title": "Horizonte de Eventos: El punto sin posible retorno",
+      "order": 55,
+      "description": "Analizamos el horizonte de eventos, esa frontera invisible alrededor de un agujero negro desde la cual absolutamente nada puede regresar jamás al exterior.",
+      "thumbnailTitle": "Sin Retorno Posible",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "singularidad-central-donde-las-leyes-fisicas-colapsan",
+      "title": "Singularidad Central: Donde las leyes físicas colapsan",
+      "order": 56,
+      "description": "Investigamos la misteriosa singularidad en el centro de un agujero negro, un punto de densidad infinita donde toda la física conocida deja de funcionar.",
+      "thumbnailTitle": "Infinito Comprimido",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "espaguetificacion-el-estiramiento-fatal-gravitatorio",
+      "title": "Espaguetificación: El estiramiento fatal gravitatorio",
+      "order": 57,
+      "description": "Descubre la espaguetificación, el proceso donde las fuerzas de marea de un agujero negro estiran cualquier objeto hasta convertirlo en un hilo interminable.",
+      "thumbnailTitle": "Estiramiento Mortal",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "lentes-gravitacionales-la-gravedad-doblando-la-luz",
+      "title": "Lentes Gravitacionales: La gravedad doblando la luz",
+      "order": 58,
+      "description": "Observamos cómo objetos masivos curvan la trayectoria de la luz creando lentes gravitacionales, permitiéndonos ver galaxias ocultas detrás de otras galaxias.",
+      "thumbnailTitle": "Lupas del Cosmos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "ondas-gravitacionales-temblores-del-tejido-cosmico",
+      "title": "Ondas Gravitacionales: Temblores del tejido cósmico",
+      "order": 59,
+      "description": "Exploramos las ondas gravitacionales detectadas por LIGO, ondulaciones del espaciotiempo generadas por colisiones de agujeros negros a miles de millones de años luz.",
+      "thumbnailTitle": "Vibraciones del Cosmos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "estrellas-de-neutrones-cadaveres-estelares-ultra-densos",
+      "title": "Estrellas de Neutrones: Cadáveres estelares ultra densos",
+      "order": 60,
+      "description": "Conoce las estrellas de neutrones, restos compactos de supernovas donde una cucharada de materia pesa tanto como una montaña entera de nuestro planeta.",
+      "thumbnailTitle": "Densidad Extrema",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "pulsares-los-faros-giratorios-del-universo-profundo",
+      "title": "Púlsares: Los faros giratorios del universo profundo",
+      "order": 61,
+      "description": "Descubrimos los púlsares, estrellas de neutrones que giran a velocidades increíbles emitiendo pulsos de radiación con una precisión superior a los relojes atómicos.",
+      "thumbnailTitle": "Faros Estelares",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "magnetares-los-imanes-mas-poderosos-del-cosmos",
+      "title": "Magnetares: Los imanes más poderosos del cosmos",
+      "order": 62,
+      "description": "Investigamos los magnetares, estrellas de neutrones con campos magnéticos tan extremos que podrían borrar una tarjeta de crédito desde la mitad de la Luna.",
+      "thumbnailTitle": "Imanes Cósmicos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "supernovas-explosiones-que-crean-los-elementos-pesados",
+      "title": "Supernovas: Explosiones que crean los elementos pesados",
+      "order": 63,
+      "description": "Presenciamos las supernovas, explosiones estelares tan poderosas que forjan todos los elementos pesados del universo, desde el hierro hasta el oro y el uranio.",
+      "thumbnailTitle": "Forjas del Universo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "fusion-nuclear-el-motor-que-enciende-las-estrellas",
+      "title": "Fusión Nuclear: El motor que enciende las estrellas",
+      "order": 64,
+      "description": "Entendemos la fusión nuclear, el proceso donde los átomos de hidrógeno se unen para formar helio liberando cantidades colosales de energía dentro del Sol.",
+      "thumbnailTitle": "Motor de las Estrellas",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "fision-nuclear-rompiendo-atomos-para-generar-energia",
+      "title": "Fisión Nuclear: Rompiendo átomos para generar energía",
+      "order": 65,
+      "description": "Aprendemos sobre la fisión nuclear, el proceso de romper átomos pesados que impulsa centrales nucleares y que revolucionó nuestra comprensión de la energía.",
+      "thumbnailTitle": "Rompiendo Átomos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "enanas-blancas-las-brasas-finales-de-estrellas-moribundas",
+      "title": "Enanas Blancas: Las brasas finales de estrellas moribundas",
+      "order": 66,
+      "description": "Conocemos las enanas blancas, los restos brillantes y compactos de estrellas como nuestro Sol que se enfrían lentamente durante miles de millones de años.",
+      "thumbnailTitle": "Brasas Estelares",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "gigantes-rojas-cuando-el-sol-devore-nuestro-planeta",
+      "title": "Gigantes Rojas: Cuando el Sol devore nuestro planeta",
+      "order": 67,
+      "description": "Exploramos la fase de gigante roja que le espera a nuestro Sol, cuando se expanda enormemente engullendo a Mercurio, Venus y posiblemente a la propia Tierra.",
+      "thumbnailTitle": "El Sol Gigante",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "nebulosas-las-cunas-estelares-donde-nacen-soles",
+      "title": "Nebulosas: Las cunas estelares donde nacen soles",
+      "order": 68,
+      "description": "Viajamos a las nebulosas, inmensas nubes de gas y polvo cósmico donde la gravedad colapsa la materia para dar nacimiento a nuevas estrellas y sistemas solares.",
+      "thumbnailTitle": "Cunas de Estrellas",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "materia-oscura-el-pegamento-invisible-de-las-galaxias",
+      "title": "Materia Oscura: El pegamento invisible de las galaxias",
+      "order": 69,
+      "description": "Investigamos la materia oscura, esa sustancia misteriosa que compone el 27% del universo y que mantiene unidas las galaxias sin emitir luz alguna detectable.",
+      "thumbnailTitle": "La Masa Invisible",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "energia-oscura-la-fuerza-que-acelera-la-expansion-cosmica",
+      "title": "Energía Oscura: La fuerza que acelera la expansión cósmica",
+      "order": 70,
+      "description": "Descubrimos la energía oscura, la enigmática fuerza que representa el 68% del universo y empuja a las galaxias a separarse cada vez más rápidamente.",
+      "thumbnailTitle": "La Expansión Invisible",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "big-bang-el-primer-instante-del-cosmos-entero",
+      "title": "Big Bang: El primer instante del cosmos entero",
+      "order": 71,
+      "description": "Retrocedemos 13.800 millones de años hasta el Big Bang para entender cómo todo el universo nació de un estado extremadamente caliente, denso y diminuto.",
+      "thumbnailTitle": "El Gran Estallido",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "inflacion-cosmica-la-expansion-mas-rapida-de-la-historia",
+      "title": "Inflación Cósmica: La expansión más rápida de la historia",
+      "order": 72,
+      "description": "Estudiamos la inflación cósmica, esa fracción de segundo tras el Big Bang donde el universo se expandió más rápido que la luz multiplicando su tamaño billones de veces.",
+      "thumbnailTitle": "Expansión Relámpago",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "radiacion-cosmica-de-fondo-la-primera-foto-del-universo",
+      "title": "Radiación Cósmica de Fondo: La primera foto del universo",
+      "order": 73,
+      "description": "Analizamos la radiación cósmica de fondo, ese resplandor de microondas que llena todo el cielo y representa la imagen más antigua del universo recién nacido.",
+      "thumbnailTitle": "Eco del Big Bang",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "muerte-termica-el-destino-final-del-universo-completo",
+      "title": "Muerte Térmica: El destino final del universo completo",
+      "order": 74,
+      "description": "Contemplamos la muerte térmica del universo, un futuro lejano donde toda la energía se disipa uniformemente y ya no queda nada capaz de generar trabajo útil.",
+      "thumbnailTitle": "Final del Cosmos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "big-crunch-el-universo-colapsando-sobre-si-mismo",
+      "title": "Big Crunch: El universo colapsando sobre sí mismo",
+      "order": 75,
+      "description": "Evaluamos la hipótesis del Big Crunch, donde la gravedad frenaría la expansión cósmica y todo el universo se contraería hasta un punto singular final catastrófico.",
+      "thumbnailTitle": "El Gran Colapso",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "big-rip-cuando-la-expansion-desgarra-hasta-los-atomos",
+      "title": "Big Rip: Cuando la expansión desgarra hasta los átomos",
+      "order": 76,
+      "description": "Exploramos el escenario del Big Rip, un final del universo donde la energía oscura crece sin control desgarrando galaxias, planetas, átomos y el propio espacio.",
+      "thumbnailTitle": "Desgarro Total",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "multiverso-infinitos-universos-paralelos-coexistiendo",
+      "title": "Multiverso: Infinitos universos paralelos coexistiendo",
+      "order": 77,
+      "description": "Debatimos la teoría del multiverso, la idea de que nuestro universo es solo uno entre infinitos, cada uno con leyes físicas y constantes potencialmente distintas.",
+      "thumbnailTitle": "Infinitos Mundos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "principio-antropico-el-universo-calibrado-para-la-vida",
+      "title": "Principio Antrópico: El universo calibrado para la vida",
+      "order": 78,
+      "description": "Reflexionamos sobre el principio antrópico y la inquietante coincidencia de que las constantes fundamentales parecen perfectamente ajustadas para permitir la vida.",
+      "thumbnailTitle": "Ajuste Cósmico",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "paradoja-de-fermi-donde-estan-todos-los-extraterrestres",
+      "title": "Paradoja de Fermi: ¿Dónde están todos los extraterrestres?",
+      "order": 79,
+      "description": "Abordamos la paradoja de Fermi que cuestiona por qué, en un universo tan vasto con miles de millones de estrellas, no hemos encontrado vida inteligente aún.",
+      "thumbnailTitle": "El Gran Silencio",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "ecuacion-de-drake-calculando-civilizaciones-alienigenas",
+      "title": "Ecuación de Drake: Calculando civilizaciones alienígenas",
+      "order": 80,
+      "description": "Descomponemos la famosa ecuación de Drake, la fórmula que estima cuántas civilizaciones inteligentes podrían existir en nuestra galaxia la Vía Láctea actualmente.",
+      "thumbnailTitle": "Vida en las Estrellas",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "exoplanetas-mundos-lejanos-fuera-del-sistema-solar",
+      "title": "Exoplanetas: Mundos lejanos fuera del sistema solar",
+      "order": 81,
+      "description": "Descubrimos cómo los astrónomos detectan exoplanetas orbitando estrellas lejanas y cuáles de estos mundos distantes podrían albergar condiciones para la vida.",
+      "thumbnailTitle": "Nuevos Mundos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "zona-habitable-el-rincon-perfecto-para-la-vida",
+      "title": "Zona Habitable: El rincón perfecto para la vida",
+      "order": 82,
+      "description": "Definimos la zona habitable estelar, esa franja orbital donde las temperaturas permiten agua líquida en la superficie y las condiciones para que surja la vida.",
+      "thumbnailTitle": "Zona Dorada",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "efecto-doppler-cuando-el-movimiento-cambia-los-colores",
+      "title": "Efecto Doppler: Cuando el movimiento cambia los colores",
+      "order": 83,
+      "description": "Explicamos el efecto Doppler, el fenómeno que cambia la frecuencia de ondas según el movimiento relativo y que revela si las galaxias se acercan o se alejan.",
+      "thumbnailTitle": "Colores en Movimiento",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "espectroscopia-leyendo-la-huella-dactilar-de-las-estrellas",
+      "title": "Espectroscopía: Leyendo la huella dactilar de las estrellas",
+      "order": 84,
+      "description": "Aprendemos cómo la espectroscopía descompone la luz de las estrellas para revelar su composición química, temperatura, velocidad y distancia desde la Tierra.",
+      "thumbnailTitle": "ADN de las Estrellas",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "corrimiento-al-rojo-la-prueba-de-que-el-universo-crece",
+      "title": "Corrimiento al Rojo: La prueba de que el universo crece",
+      "order": 85,
+      "description": "Desciframos el corrimiento al rojo cosmológico, la evidencia observacional más directa de que el universo se expande y las galaxias se separan entre sí.",
+      "thumbnailTitle": "Universo en Expansión",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "rayos-cosmicos-particulas-viajeras-de-altisima-energia",
+      "title": "Rayos Cósmicos: Partículas viajeras de altísima energía",
+      "order": 86,
+      "description": "Rastreamos los rayos cósmicos, partículas subatómicas que bombardean la Tierra desde el espacio profundo con energías miles de veces mayores que cualquier acelerador.",
+      "thumbnailTitle": "Balas del Espacio",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "radiacion-cherenkov-viajando-mas-rapido-que-la-luz-local",
+      "title": "Radiación Cherenkov: Viajando más rápido que la luz local",
+      "order": 87,
+      "description": "Observamos el resplandor azul de la radiación Cherenkov, producida cuando una partícula supera la velocidad de la luz dentro de un medio como el agua nuclear.",
+      "thumbnailTitle": "Brillo Atómico Azul",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "electromagnetismo-la-fuerza-que-une-toda-la-quimica",
+      "title": "Electromagnetismo: La fuerza que une toda la química",
+      "order": 88,
+      "description": "Exploramos la fuerza electromagnética, responsable de toda la química, la luz, la electricidad y prácticamente toda interacción que experimentamos a diario.",
+      "thumbnailTitle": "La Fuerza Cotidiana",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "fuerza-nuclear-fuerte-el-lazo-mas-potente-del-atomo",
+      "title": "Fuerza Nuclear Fuerte: El lazo más potente del átomo",
+      "order": 89,
+      "description": "Conocemos la fuerza nuclear fuerte, cien veces más intensa que el electromagnetismo, que mantiene unidos a los quarks y estabiliza los núcleos de los átomos.",
+      "thumbnailTitle": "El Pegamento Nuclear",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "fuerza-nuclear-debil-la-transformista-de-particulas",
+      "title": "Fuerza Nuclear Débil: La transformista de partículas",
+      "order": 90,
+      "description": "Desvelamos la fuerza nuclear débil, responsable de la desintegración radiactiva y capaz de transformar un tipo de partícula en otra completamente diferente.",
+      "thumbnailTitle": "El Gran Transformador",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "gravedad-la-mas-debil-y-misteriosa-de-todas-las-fuerzas",
+      "title": "Gravedad: La más débil y misteriosa de todas las fuerzas",
+      "order": 91,
+      "description": "Repensamos la gravedad como la fuerza más débil del universo y el mayor misterio sin resolver en la búsqueda de una teoría unificada de la física completa.",
+      "thumbnailTitle": "La Fuerza Más Débil",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "gravitones-los-mensajeros-hipoteticos-de-la-gravedad",
+      "title": "Gravitones: Los mensajeros hipotéticos de la gravedad",
+      "order": 92,
+      "description": "Buscamos al gravitón, la partícula teórica que transmitiría la fuerza gravitatoria si la gravedad puede describirse como las demás fuerzas fundamentales.",
+      "thumbnailTitle": "Partícula Fantasma",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "simetria-y-conservacion-las-leyes-eternas-de-noether",
+      "title": "Simetría y Conservación: Las leyes eternas de Noether",
+      "order": 93,
+      "description": "Celebramos el teorema de Emmy Noether que demostró que cada simetría de la naturaleza produce automáticamente una ley de conservación en la física fundamental.",
+      "thumbnailTitle": "Simetría Perfecta",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "violacion-de-paridad-la-naturaleza-prefiere-un-lado",
+      "title": "Violación de Paridad: La naturaleza prefiere un lado",
+      "order": 94,
+      "description": "Descubrimos que la naturaleza no es simétrica ante el espejo, ya que la fuerza nuclear débil distingue entre izquierda y derecha rompiendo la simetría de paridad.",
+      "thumbnailTitle": "Espejo Roto",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "asimetria-materia-antimateria-por-que-existimos",
+      "title": "Asimetría Materia-Antimateria: ¿Por qué existimos?",
+      "order": 95,
+      "description": "Enfrentamos uno de los mayores enigmas de la física: por qué sobrevivió más materia que antimateria tras el Big Bang, permitiendo la existencia de todo lo conocido.",
+      "thumbnailTitle": "El Desequilibrio Vital",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "la-constante-de-planck-el-grano-mas-fino-de-la-realidad",
+      "title": "La Constante de Planck: El grano más fino de la realidad",
+      "order": 96,
+      "description": "Desciframos la constante de Planck, el número diminuto que establece el tamaño mínimo de los paquetes de energía y marca el límite cuántico de toda la realidad.",
+      "thumbnailTitle": "El Grano Cuántico",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "longitud-de-planck-la-escala-mas-pequena-del-espacio",
+      "title": "Longitud de Planck: La escala más pequeña del espacio",
+      "order": 97,
+      "description": "Viajamos a la longitud de Planck, una distancia tan increíblemente diminuta que por debajo de ella el concepto mismo de espacio pierde todo sentido conocido.",
+      "thumbnailTitle": "Lo Más Pequeño",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "leyes-de-newton-los-tres-pilares-del-movimiento",
+      "title": "Leyes de Newton: Los tres pilares del movimiento",
+      "order": 98,
+      "description": "Revisamos las tres leyes del movimiento de Newton, los cimientos de la mecánica clásica que explican desde la caída de una manzana hasta la órbita de planetas.",
+      "thumbnailTitle": "Pilares del Movimiento",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "gravitacion-universal-la-manzana-que-movio-el-mundo",
+      "title": "Gravitación Universal: La manzana que movió el mundo",
+      "order": 99,
+      "description": "Recorremos la ley de gravitación universal de Newton, que unificó la caída de objetos terrestres con el movimiento orbital de planetas en una sola ecuación elegante.",
+      "thumbnailTitle": "La Manzana Cósmica",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "momento-angular-el-giro-que-nunca-se-pierde",
+      "title": "Momento Angular: El giro que nunca se pierde",
+      "order": 100,
+      "description": "Entendemos la conservación del momento angular, el principio que explica por qué los patinadores giran más rápido al recoger los brazos y los planetas orbitan.",
+      "thumbnailTitle": "El Giro Eterno",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "efecto-giroscopico-por-que-las-bicicletas-no-se-caen",
+      "title": "Efecto Giroscópico: Por qué las bicicletas no se caen",
+      "order": 101,
+      "description": "Analizamos el efecto giroscópico que permite a los objetos giratorios resistir cambios en su orientación, desde una bicicleta en movimiento hasta satélites espaciales.",
+      "thumbnailTitle": "Equilibrio Giratorio",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "precesion-el-bamboleo-secreto-del-eje-de-la-tierra",
+      "title": "Precesión: El bamboleo secreto del eje de la Tierra",
+      "order": 102,
+      "description": "Descubrimos la precesión terrestre, ese lento bamboleo del eje de rotación de nuestro planeta que cambia la estrella polar cada varios miles de años cíclicamente.",
+      "thumbnailTitle": "Bamboleo Terrestre",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "principio-de-arquimedes-por-que-flotan-los-barcos",
+      "title": "Principio de Arquímedes: Por qué flotan los barcos",
+      "order": 103,
+      "description": "Explicamos el principio de Arquímedes y cómo la fuerza de empuje del fluido permite que enormes barcos de acero floten mientras una pequeña piedra se hunde.",
+      "thumbnailTitle": "El Secreto de Flotar",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "presion-atmosferica-toneladas-invisibles-sobre-tu-cuerpo",
+      "title": "Presión Atmosférica: Toneladas invisibles sobre tu cuerpo",
+      "order": 104,
+      "description": "Revelamos que la atmósfera ejerce una presión equivalente a toneladas sobre nuestro cuerpo y exploramos los experimentos históricos que lo demostraron espectacularmente.",
+      "thumbnailTitle": "Peso Invisible",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "ecuacion-de-bernoulli-como-vuelan-realmente-los-aviones",
+      "title": "Ecuación de Bernoulli: Cómo vuelan realmente los aviones",
+      "order": 105,
+      "description": "Desciframos la ecuación de Bernoulli y aclaramos cómo la diferencia de presión entre superficies del ala genera sustentación permitiendo volar a los aviones.",
+      "thumbnailTitle": "Ciencia del Vuelo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "viscosidad-por-que-la-miel-fluye-distinto-que-el-agua",
+      "title": "Viscosidad: Por qué la miel fluye distinto que el agua",
+      "order": 106,
+      "description": "Estudiamos la viscosidad, esa propiedad física que determina la resistencia interna de un fluido al movimiento y que distingue el agua rápida de la miel espesa.",
+      "thumbnailTitle": "Espesos y Fluidos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "tension-superficial-insectos-caminando-sobre-el-agua",
+      "title": "Tensión Superficial: Insectos caminando sobre el agua",
+      "order": 107,
+      "description": "Exploramos la tensión superficial, la fuerza cohesiva que crea una película elástica en la superficie del agua permitiendo a pequeños insectos caminar sin hundirse.",
+      "thumbnailTitle": "La Piel del Agua",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "capilaridad-el-agua-que-sube-desafiando-la-gravedad",
+      "title": "Capilaridad: El agua que sube desafiando la gravedad",
+      "order": 108,
+      "description": "Descubrimos la capilaridad, el fenómeno por el cual los líquidos ascienden por tubos estrechos y fibras contra la gravedad impulsados por fuerzas moleculares.",
+      "thumbnailTitle": "Agua que Sube",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "turbulencia-el-problema-sin-resolver-de-la-fisica",
+      "title": "Turbulencia: El problema sin resolver de la física",
+      "order": 109,
+      "description": "Nos enfrentamos a la turbulencia, uno de los grandes problemas no resueltos de la física clásica, donde los fluidos se vuelven caóticos e impredecibles.",
+      "thumbnailTitle": "Caos en el Flujo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "efecto-venturi-la-magia-del-estrechamiento-de-fluidos",
+      "title": "Efecto Venturi: La magia del estrechamiento de fluidos",
+      "order": 110,
+      "description": "Analizamos el efecto Venturi, donde un fluido que pasa por un estrechamiento aumenta su velocidad y reduce su presión, principio usado en atomizadores y carburadores.",
+      "thumbnailTitle": "Flujo Acelerado",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "ondas-electromagneticas-la-familia-completa-de-la-luz",
+      "title": "Ondas Electromagnéticas: La familia completa de la luz",
+      "order": 111,
+      "description": "Recorremos todo el espectro electromagnético desde las ondas de radio hasta los rayos gamma, descubriendo que la luz visible es solo una diminuta fracción del total.",
+      "thumbnailTitle": "El Arcoíris Invisible",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "rayos-x-viendo-a-traves-de-la-materia-solida",
+      "title": "Rayos X: Viendo a través de la materia sólida",
+      "order": 112,
+      "description": "Conocemos la historia y física de los rayos X, radiación de alta energía capaz de penetrar tejidos blandos y revelar estructuras óseas y cristalinas internas.",
+      "thumbnailTitle": "Visión Interior",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "rayos-gamma-la-radiacion-mas-energetica-del-cosmos",
+      "title": "Rayos Gamma: La radiación más energética del cosmos",
+      "order": 113,
+      "description": "Exploramos los rayos gamma, la radiación electromagnética más energética del universo, producida en eventos catastróficos como explosiones nucleares y supernovas.",
+      "thumbnailTitle": "Energía Extrema",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "ondas-de-radio-las-mensajeras-invisibles-del-planeta",
+      "title": "Ondas de Radio: Las mensajeras invisibles del planeta",
+      "order": 114,
+      "description": "Descubrimos cómo funcionan las ondas de radio, desde su generación hasta su recepción, y cómo revolucionaron las comunicaciones terrestres y la exploración espacial.",
+      "thumbnailTitle": "Mensajeras Invisibles",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "luz-infrarroja-el-calor-que-puedes-ver-con-tecnologia",
+      "title": "Luz Infrarroja: El calor que puedes ver con tecnología",
+      "order": 115,
+      "description": "Investigamos la radiación infrarroja, esa luz invisible que todo cuerpo caliente emite y que las cámaras térmicas transforman en imágenes de temperatura visible.",
+      "thumbnailTitle": "Ver el Calor",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "luz-ultravioleta-la-invisible-quemadura-del-sol",
+      "title": "Luz Ultravioleta: La invisible quemadura del Sol",
+      "order": 116,
+      "description": "Estudiamos la radiación ultravioleta, la porción invisible del espectro solar que broncea la piel, causa quemaduras y tiene aplicaciones en esterilización médica.",
+      "thumbnailTitle": "Quemadura Invisible",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "microondas-la-frecuencia-que-calienta-tu-comida",
+      "title": "Microondas: La frecuencia que calienta tu comida",
+      "order": 117,
+      "description": "Explicamos cómo las microondas excitan las moléculas de agua en los alimentos generando calor por fricción, y cómo este descubrimiento accidental cambió la cocina.",
+      "thumbnailTitle": "Cocina Electromagnética",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "efecto-fotoelectrico-la-luz-como-lluvia-de-particulas",
+      "title": "Efecto Fotoeléctrico: La luz como lluvia de partículas",
+      "order": 118,
+      "description": "Revisamos el efecto fotoeléctrico explicado por Einstein, donde la luz arranca electrones de metales demostrando que viene en paquetes discretos llamados fotones.",
+      "thumbnailTitle": "Lluvia de Fotones",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "laser-luz-coherente-que-corta-mide-y-comunica",
+      "title": "Láser: Luz coherente que corta, mide y comunica",
+      "order": 119,
+      "description": "Entendemos cómo funciona el láser, un haz de luz coherente y amplificada que revolucionó la cirugía, las telecomunicaciones, la industria y la ciencia moderna.",
+      "thumbnailTitle": "El Rayo Preciso",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "fibra-optica-internet-viajando-a-la-velocidad-de-la-luz",
+      "title": "Fibra Óptica: Internet viajando a la velocidad de la luz",
+      "order": 120,
+      "description": "Descubrimos cómo la fibra óptica transmite información como pulsos de luz a través de hilos de vidrio ultradelgados, conectando el mundo a velocidades asombrosas.",
+      "thumbnailTitle": "Autopista de Luz",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "refraccion-por-que-una-pajita-se-dobla-en-el-agua",
+      "title": "Refracción: Por qué una pajita se dobla en el agua",
+      "order": 121,
+      "description": "Explicamos la refracción de la luz, el fenómeno que hace que los objetos sumergidos parezcan doblados y que permite el funcionamiento de lentes y prismas ópticos.",
+      "thumbnailTitle": "La Luz se Dobla",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "difraccion-la-luz-rodeando-los-obstaculos-del-camino",
+      "title": "Difracción: La luz rodeando los obstáculos del camino",
+      "order": 122,
+      "description": "Observamos la difracción, el comportamiento ondulatorio donde la luz se curva alrededor de obstáculos y bordes, creando patrones de interferencia fascinantes.",
+      "thumbnailTitle": "Luz que se Curva",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "polarizacion-filtrando-la-vibracion-de-la-luz",
+      "title": "Polarización: Filtrando la vibración de la luz",
+      "order": 123,
+      "description": "Entendemos la polarización de la luz, el proceso de filtrar las direcciones de vibración de las ondas luminosas usado en gafas de sol y pantallas LCD modernas.",
+      "thumbnailTitle": "Luz Filtrada",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "fluorescencia-materiales-que-brillan-con-luz-propia",
+      "title": "Fluorescencia: Materiales que brillan con luz propia",
+      "order": 124,
+      "description": "Descubrimos la fluorescencia, el fenómeno donde ciertos materiales absorben luz de una frecuencia y la reemiten instantáneamente en colores brillantes y visibles.",
+      "thumbnailTitle": "Brillo Propio",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "fosforescencia-el-brillo-persistente-en-la-oscuridad",
+      "title": "Fosforescencia: El brillo persistente en la oscuridad",
+      "order": 125,
+      "description": "Diferenciamos la fosforescencia de la fluorescencia, explorando materiales que almacenan energía luminosa y la liberan lentamente brillando durante horas en la oscuridad.",
+      "thumbnailTitle": "Luz Almacenada",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "bioluminiscencia-criaturas-que-fabrican-su-propia-luz",
+      "title": "Bioluminiscencia: Criaturas que fabrican su propia luz",
+      "order": 126,
+      "description": "Exploramos la bioluminiscencia, la capacidad de organismos vivos como luciérnagas y medusas de producir luz propia mediante reacciones químicas internas asombrosas.",
+      "thumbnailTitle": "Vida que Brilla",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "color-estructural-colores-sin-pigmento-en-la-naturaleza",
+      "title": "Color Estructural: Colores sin pigmento en la naturaleza",
+      "order": 127,
+      "description": "Descubrimos cómo las alas de mariposa y las plumas de pavo real obtienen sus colores brillantes sin pigmentos, usando nanoestructuras que interfieren con la luz.",
+      "thumbnailTitle": "Colores Imposibles",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "el-arcoiris-la-optica-perfecta-de-un-fenomeno-cotidiano",
+      "title": "El Arcoíris: La óptica perfecta de un fenómeno cotidiano",
+      "order": 128,
+      "description": "Descomponemos la física detrás del arcoíris, desde la refracción en cada gota de lluvia hasta la explicación de por qué los colores aparecen siempre en ese orden.",
+      "thumbnailTitle": "Ciencia del Arcoíris",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "espejismos-cuando-la-atmosfera-engana-a-tus-ojos",
+      "title": "Espejismos: Cuando la atmósfera engaña a tus ojos",
+      "order": 129,
+      "description": "Explicamos la física de los espejismos, ilusiones ópticas causadas por la refracción de la luz en capas de aire con diferentes temperaturas sobre superficies calientes.",
+      "thumbnailTitle": "Oasis Falsos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "auroras-boreales-el-espectaculo-del-campo-magnetico",
+      "title": "Auroras Boreales: El espectáculo del campo magnético",
+      "order": 130,
+      "description": "Contemplamos las auroras boreales y australes, los deslumbrantes shows de luz generados cuando el viento solar interactúa con el campo magnético de la Tierra.",
+      "thumbnailTitle": "Luces del Norte",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "campo-magnetico-terrestre-el-escudo-invisible-del-planeta",
+      "title": "Campo Magnético Terrestre: El escudo invisible del planeta",
+      "order": 131,
+      "description": "Investigamos la magnetosfera terrestre, ese escudo magnético invisible generado por el núcleo de hierro fundido que protege la vida de la radiación solar letal.",
+      "thumbnailTitle": "Escudo Planetario",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "inversion-de-polos-cuando-el-norte-se-vuelve-sur",
+      "title": "Inversión de Polos: Cuando el norte se vuelve sur",
+      "order": 132,
+      "description": "Descubrimos que los polos magnéticos de la Tierra se invierten periódicamente cada cientos de miles de años, un proceso registrado en las rocas del fondo marino.",
+      "thumbnailTitle": "Polos Invertidos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "viento-solar-la-tormenta-constante-de-nuestra-estrella",
+      "title": "Viento Solar: La tormenta constante de nuestra estrella",
+      "order": 133,
+      "description": "Exploramos el viento solar, ese flujo constante de partículas cargadas que el Sol lanza al espacio y que modela las colas de los cometas y amenaza satélites.",
+      "thumbnailTitle": "Huracán Estelar",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "tormentas-geomagneticas-cuando-el-sol-ataca-la-tecnologia",
+      "title": "Tormentas Geomagnéticas: Cuando el Sol ataca la tecnología",
+      "order": 134,
+      "description": "Analizamos las tormentas geomagnéticas causadas por eyecciones de masa coronal del Sol que pueden destruir satélites, redes eléctricas y sistemas de comunicación.",
+      "thumbnailTitle": "Sol contra Tecnología",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "manchas-solares-los-ciclos-oscuros-de-nuestra-estrella",
+      "title": "Manchas Solares: Los ciclos oscuros de nuestra estrella",
+      "order": 135,
+      "description": "Estudiamos las manchas solares, regiones más frías y oscuras en la superficie del Sol que siguen ciclos de once años e influyen en el clima espacial terrestre.",
+      "thumbnailTitle": "Manchas del Sol",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "corona-solar-el-misterio-de-su-enorme-temperatura",
+      "title": "Corona Solar: El misterio de su enorme temperatura",
+      "order": 136,
+      "description": "Desentrañamos el enigma de la corona solar, la atmósfera exterior del Sol que inexplicablemente alcanza millones de grados mientras su superficie solo tiene miles.",
+      "thumbnailTitle": "Corona Ardiente",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "mareas-la-danza-gravitatoria-entre-luna-y-oceanos",
+      "title": "Mareas: La danza gravitatoria entre Luna y océanos",
+      "order": 137,
+      "description": "Explicamos cómo la gravedad de la Luna y el Sol generan las mareas oceánicas, creando dos elevaciones diarias del nivel del mar en lados opuestos del planeta.",
+      "thumbnailTitle": "Danza Lunar",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "resonancia-orbital-la-coreografia-de-los-planetas",
+      "title": "Resonancia Orbital: La coreografía de los planetas",
+      "order": 138,
+      "description": "Descubrimos las resonancias orbitales, relaciones matemáticas entre períodos de cuerpos celestes que crean patrones estables y coreografías gravitacionales perfectas.",
+      "thumbnailTitle": "Baile Planetario",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "puntos-de-lagrange-estacionarse-en-el-equilibrio-cosmico",
+      "title": "Puntos de Lagrange: Estacionarse en el equilibrio cósmico",
+      "order": 139,
+      "description": "Conocemos los cinco puntos de Lagrange, posiciones especiales en el espacio donde las fuerzas gravitacionales se equilibran permitiendo aparcar telescopios espaciales.",
+      "thumbnailTitle": "Equilibrio Orbital",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "asistencia-gravitatoria-robando-velocidad-a-los-planetas",
+      "title": "Asistencia Gravitatoria: Robando velocidad a los planetas",
+      "order": 140,
+      "description": "Aprendemos la maniobra de asistencia gravitatoria, una técnica donde las sondas espaciales usan la gravedad de planetas para acelerar sin gastar combustible.",
+      "thumbnailTitle": "Honda Planetaria",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "velocidad-de-escape-la-fuerza-para-abandonar-un-planeta",
+      "title": "Velocidad de Escape: La fuerza para abandonar un planeta",
+      "order": 141,
+      "description": "Calculamos la velocidad de escape, la velocidad mínima necesaria para que un objeto supere la atracción gravitacional de un cuerpo celeste y se libere al espacio.",
+      "thumbnailTitle": "Escapar del Planeta",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "cinturones-de-van-allen-trampas-de-radiacion-terrestre",
+      "title": "Cinturones de Van Allen: Trampas de radiación terrestre",
+      "order": 142,
+      "description": "Mapeamos los cinturones de Van Allen, zonas de partículas cargadas atrapadas por el campo magnético terrestre que representan un peligro real para los astronautas.",
+      "thumbnailTitle": "Trampas de Radiación",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "efecto-oberth-por-que-quemar-rapido-es-mas-eficiente",
+      "title": "Efecto Oberth: Por qué quemar rápido es más eficiente",
+      "order": 143,
+      "description": "Entendemos el efecto Oberth, el principio contraintuitivo por el cual un cohete obtiene más energía útil encendiendo sus motores cuando ya viaja a alta velocidad.",
+      "thumbnailTitle": "Propulsión Inteligente",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "ecuacion-del-cohete-el-dilema-del-combustible-espacial",
+      "title": "Ecuación del Cohete: El dilema del combustible espacial",
+      "order": 144,
+      "description": "Desciframos la ecuación de Tsiolkovski que explica por qué los cohetes necesitan cantidades desproporcionadas de combustible y por qué viajar al espacio es tan difícil.",
+      "thumbnailTitle": "Tiranía del Cohete",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "propulsion-ionica-motores-lentos-pero-imparables",
+      "title": "Propulsión Iónica: Motores lentos pero imparables",
+      "order": 145,
+      "description": "Exploramos la propulsión iónica, motores que aceleran iones a altísimas velocidades generando un empuje minúsculo pero constante capaz de alcanzar velocidades enormes.",
+      "thumbnailTitle": "Empuje Imparable",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "velas-solares-navegando-el-espacio-con-luz-del-sol",
+      "title": "Velas Solares: Navegando el espacio con luz del Sol",
+      "order": 146,
+      "description": "Descubrimos las velas solares, enormes estructuras ultraligeras que usan la presión de la luz solar como empuje para navegar el espacio sin necesitar combustible.",
+      "thumbnailTitle": "Navegación Estelar",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "agujeros-de-gusano-atajos-teoricos-por-el-espaciotiempo",
+      "title": "Agujeros de Gusano: Atajos teóricos por el espaciotiempo",
+      "order": 147,
+      "description": "Imaginamos los agujeros de gusano, túneles hipotéticos a través del espaciotiempo que conectarían regiones distantes del universo como atajos cósmicos instantáneos.",
+      "thumbnailTitle": "Atajos Cósmicos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "motor-de-alcubierre-deformando-el-espacio-para-viajar",
+      "title": "Motor de Alcubierre: Deformando el espacio para viajar",
+      "order": 148,
+      "description": "Analizamos la métrica de Alcubierre, una solución teórica que propone contraer el espacio delante de una nave y expandirlo detrás para viajar más rápido que la luz.",
+      "thumbnailTitle": "Warp Drive Real",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "efecto-fotovoltatico-del-sol-directo-a-la-electricidad",
+      "title": "Efecto Fotovoltaico: Del sol directo a la electricidad",
+      "order": 149,
+      "description": "Explicamos el efecto fotovoltaico, donde ciertos materiales semiconductores convierten la luz solar directamente en corriente eléctrica aprovechable y renovable.",
+      "thumbnailTitle": "Sol en Electricidad",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "semiconductores-el-corazon-secreto-de-toda-la-electronica",
+      "title": "Semiconductores: El corazón secreto de toda la electrónica",
+      "order": 150,
+      "description": "Descubrimos los semiconductores, materiales que no son conductores ni aislantes y que forman la base de todos los chips, transistores y dispositivos electrónicos modernos.",
+      "thumbnailTitle": "Corazón Electrónico",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "transistores-los-interruptores-microscopicos-del-siglo",
+      "title": "Transistores: Los interruptores microscópicos del siglo",
+      "order": 151,
+      "description": "Conocemos el transistor, el diminuto interruptor electrónico que revolucionó la tecnología y del cual existen miles de millones en cada chip de computadora moderno.",
+      "thumbnailTitle": "Revolución Diminuta",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "ley-de-moore-la-aceleracion-exponencial-de-los-chips",
+      "title": "Ley de Moore: La aceleración exponencial de los chips",
+      "order": 152,
+      "description": "Evaluamos la ley de Moore, la observación de que la cantidad de transistores en un chip se duplica cada dos años y sus posibles límites físicos fundamentales.",
+      "thumbnailTitle": "Chips Duplicados",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "superconductores-a-temperatura-ambiente-el-gran-sueno",
+      "title": "Superconductores a Temperatura Ambiente: El gran sueño",
+      "order": 153,
+      "description": "Perseguimos el sueño de la superconductividad a temperatura ambiente, un avance que revolucionaría la transmisión eléctrica, el transporte y la computación mundial.",
+      "thumbnailTitle": "El Sueño Eléctrico",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "grafeno-la-lamina-de-un-atomo-que-lo-cambia-todo",
+      "title": "Grafeno: La lámina de un átomo que lo cambia todo",
+      "order": 154,
+      "description": "Exploramos el grafeno, una capa de carbono de un solo átomo de espesor que es más fuerte que el acero, más conductor que el cobre y más flexible que el caucho.",
+      "thumbnailTitle": "Maravilla Atómica",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "nanotubos-de-carbono-los-cables-mas-fuertes-del-mundo",
+      "title": "Nanotubos de Carbono: Los cables más fuertes del mundo",
+      "order": 155,
+      "description": "Investigamos los nanotubos de carbono, cilindros moleculares con una resistencia tensil extraordinaria que podrían hacer realidad el ascensor espacial futurista.",
+      "thumbnailTitle": "Cables Invencibles",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "piezoelectricidad-electricidad-que-nace-de-la-presion",
+      "title": "Piezoelectricidad: Electricidad que nace de la presión",
+      "order": 156,
+      "description": "Descubrimos la piezoelectricidad, la propiedad de ciertos cristales de generar voltaje al ser comprimidos, usada en encendedores, sensores y relojes de cuarzo.",
+      "thumbnailTitle": "Presión Eléctrica",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "termoelectricidad-convirtiendo-calor-directo-en-corriente",
+      "title": "Termoelectricidad: Convirtiendo calor directo en corriente",
+      "order": 157,
+      "description": "Exploramos los efectos termoeléctricos de Seebeck y Peltier, que permiten convertir diferencias de temperatura directamente en electricidad y viceversa sin partes móviles.",
+      "thumbnailTitle": "Calor en Corriente",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "electrolisis-rompiendo-el-agua-con-electricidad",
+      "title": "Electrólisis: Rompiendo el agua con electricidad",
+      "order": 158,
+      "description": "Aprendemos cómo la electrólisis usa corriente eléctrica para separar el agua en hidrógeno y oxígeno, una tecnología clave para la economía del hidrógeno verde.",
+      "thumbnailTitle": "Agua Descompuesta",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "plasma-el-cuarto-estado-que-domina-el-universo",
+      "title": "Plasma: El cuarto estado que domina el universo",
+      "order": 159,
+      "description": "Conocemos el plasma, el cuarto estado de la materia compuesto por gas ionizado que constituye el 99% de la materia visible del universo incluyendo las estrellas.",
+      "thumbnailTitle": "Fuego Cósmico",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "relampagos-la-fisica-extrema-de-las-descargas-electricas",
+      "title": "Relámpagos: La física extrema de las descargas eléctricas",
+      "order": 160,
+      "description": "Descomponemos la física de los relámpagos, descargas eléctricas de hasta mil millones de voltios que calientan el aire a temperaturas cinco veces mayores que el Sol.",
+      "thumbnailTitle": "Descarga Extrema",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "electrones-libres-el-mar-que-hace-brillar-los-metales",
+      "title": "Electrones Libres: El mar que hace brillar los metales",
+      "order": 161,
+      "description": "Entendemos el modelo del mar de electrones en los metales, explicando por qué conducen electricidad, reflejan la luz y transmiten calor de manera tan eficiente.",
+      "thumbnailTitle": "Mar Metálico",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "fotovoltaica-organica-paneles-solares-flexibles-y-baratos",
+      "title": "Fotovoltaica Orgánica: Paneles solares flexibles y baratos",
+      "order": 162,
+      "description": "Exploramos las células solares orgánicas, una nueva generación de paneles flexibles basados en polímeros que podrían imprimirse como periódicos sobre cualquier superficie.",
+      "thumbnailTitle": "Solar Flexible",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "radiactividad-natural-la-desintegracion-espontanea-atomica",
+      "title": "Radiactividad Natural: La desintegración espontánea atómica",
+      "order": 163,
+      "description": "Estudiamos la radiactividad natural, el proceso por el cual núcleos atómicos inestables se desintegran emitiendo partículas alfa, beta y radiación gamma espontáneamente.",
+      "thumbnailTitle": "Átomos Inestables",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "vida-media-el-reloj-imparable-de-los-atomos-radiactivos",
+      "title": "Vida Media: El reloj imparable de los átomos radiactivos",
+      "order": 164,
+      "description": "Entendemos la vida media radiactiva, el tiempo que tarda la mitad de una muestra en desintegrarse, un reloj atómico natural usado para datar fósiles y rocas antiguas.",
+      "thumbnailTitle": "Reloj Atómico Natural",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "datacion-por-carbono-14-leyendo-la-edad-de-lo-antiguo",
+      "title": "Datación por Carbono 14: Leyendo la edad de lo antiguo",
+      "order": 165,
+      "description": "Aprendemos cómo el método de datación por carbono 14 permite calcular la edad de restos orgánicos hasta 50.000 años usando la desintegración radiactiva natural.",
+      "thumbnailTitle": "Edad de lo Antiguo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "transmutacion-nuclear-convertir-plomo-en-oro-es-posible",
+      "title": "Transmutación Nuclear: Convertir plomo en oro es posible",
+      "order": 166,
+      "description": "Revelamos que la transmutación nuclear, el sueño de los alquimistas de convertir plomo en oro, es técnicamente posible en aceleradores aunque absurdamente costoso.",
+      "thumbnailTitle": "Alquimia Nuclear",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "aceleradores-de-particulas-colisiones-a-la-velocidad-de-la-luz",
+      "title": "Aceleradores de Partículas: Colisiones a la velocidad de la luz",
+      "order": 167,
+      "description": "Recorremos los aceleradores de partículas como el LHC del CERN, máquinas colosales que estrellan partículas casi a la velocidad de la luz para descubrir los secretos del átomo.",
+      "thumbnailTitle": "Choques Subatómicos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "reacciones-en-cadena-el-domino-nuclear-del-poder",
+      "title": "Reacciones en Cadena: El dominó nuclear del poder",
+      "order": 168,
+      "description": "Entendemos las reacciones nucleares en cadena, donde cada fisión libera neutrones que provocan más fisiones creando un efecto dominó de energía controlable o explosivo.",
+      "thumbnailTitle": "Dominó Atómico",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "tokamak-atrapando-un-sol-en-una-jaula-magnetica",
+      "title": "Tokamak: Atrapando un sol en una jaula magnética",
+      "order": 169,
+      "description": "Visitamos los tokamak, reactores experimentales que intentan confinar plasma a cien millones de grados con campos magnéticos para lograr la fusión nuclear controlada.",
+      "thumbnailTitle": "Sol en una Jaula",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "isotopos-gemelos-atomicos-con-diferente-peso",
+      "title": "Isótopos: Gemelos atómicos con diferente peso",
+      "order": 170,
+      "description": "Diferenciamos los isótopos, átomos del mismo elemento con diferente número de neutrones, algunos estables y otros radiactivos con aplicaciones médicas e industriales.",
+      "thumbnailTitle": "Variantes Atómicas",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "positron-el-primer-antiparticula-descubierta",
+      "title": "Positrón: La primera antipartícula descubierta",
+      "order": 171,
+      "description": "Conocemos el positrón, la antipartícula del electrón predicha por Dirac y descubierta en rayos cósmicos, usada hoy en medicina mediante las tomografías PET.",
+      "thumbnailTitle": "Electrón Invertido",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "kaones-y-violacion-cp-los-mensajeros-de-la-asimetria",
+      "title": "Kaones y Violación CP: Los mensajeros de la asimetría",
+      "order": 172,
+      "description": "Investigamos los kaones, partículas exóticas cuyo comportamiento reveló la violación de la simetría CP, una pista fundamental sobre por qué el universo no es simétrico.",
+      "thumbnailTitle": "Asimetría Revelada",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "oscilacion-de-neutrinos-particulas-que-cambian-de-sabor",
+      "title": "Oscilación de Neutrinos: Partículas que cambian de sabor",
+      "order": 173,
+      "description": "Descubrimos que los neutrinos oscilan entre tres sabores diferentes mientras viajan, una prueba de que tienen masa y un misterio que desafía el modelo estándar.",
+      "thumbnailTitle": "Cambio de Sabor",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "quarks-los-ladrillos-fundamentales-de-la-materia",
+      "title": "Quarks: Los ladrillos fundamentales de la materia",
+      "order": 174,
+      "description": "Profundizamos en los seis sabores de quarks que componen protones y neutrones, las partículas más elementales que jamás podremos aislar individualmente en un laboratorio.",
+      "thumbnailTitle": "Ladrillos del Átomo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "gluones-los-portadores-del-pegamento-nuclear",
+      "title": "Gluones: Los portadores del pegamento nuclear",
+      "order": 175,
+      "description": "Conocemos los gluones, las partículas mediadoras de la fuerza fuerte que mantienen a los quarks unidos con una peculiaridad: ellos mismos interactúan entre sí creando complejidad.",
+      "thumbnailTitle": "Cola Subatómica",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "bosones-w-y-z-los-mensajeros-de-la-debilidad",
+      "title": "Bosones W y Z: Los mensajeros de la debilidad",
+      "order": 176,
+      "description": "Investigamos los bosones W y Z, las pesadas partículas portadoras de la fuerza nuclear débil cuyo descubrimiento confirmó la unificación electrodébil de Weinberg-Salam.",
+      "thumbnailTitle": "Mensajeros Pesados",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "leptones-las-particulas-que-ignoran-la-fuerza-fuerte",
+      "title": "Leptones: Las partículas que ignoran la fuerza fuerte",
+      "order": 177,
+      "description": "Clasificamos los leptones, la familia de partículas elementales que incluye al electrón y los neutrinos, caracterizadas por no sentir la fuerza nuclear fuerte.",
+      "thumbnailTitle": "Familia Ligera",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "fermiones-y-bosones-las-dos-castas-de-las-particulas",
+      "title": "Fermiones y Bosones: Las dos castas de las partículas",
+      "order": 178,
+      "description": "Diferenciamos fermiones y bosones, las dos categorías fundamentales de partículas que obedecen reglas estadísticas opuestas y construyen la estructura de la materia.",
+      "thumbnailTitle": "Dos Mundos de Partículas",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "principio-de-exclusion-de-pauli-por-que-la-materia-es-solida",
+      "title": "Principio de Exclusión de Pauli: Por qué la materia es sólida",
+      "order": 179,
+      "description": "Entendemos el principio de exclusión de Pauli que prohíbe a dos fermiones idénticos ocupar el mismo estado cuántico, explicando por qué la materia no colapsa sobre sí misma.",
+      "thumbnailTitle": "Prohibido Coincidir",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "spin-el-giro-imposible-de-las-particulas-cuanticas",
+      "title": "Spin: El giro imposible de las partículas cuánticas",
+      "order": 180,
+      "description": "Desciframos el spin cuántico, una propiedad intrínseca de las partículas que se comporta como rotación pero que no corresponde a ningún giro físico real conocido.",
+      "thumbnailTitle": "Rotación Fantasma",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "decoherencia-cuantica-como-lo-cuantico-se-vuelve-clasico",
+      "title": "Decoherencia Cuántica: Cómo lo cuántico se vuelve clásico",
+      "order": 181,
+      "description": "Explicamos la decoherencia cuántica, el proceso por el cual los sistemas cuánticos pierden sus propiedades extrañas al interactuar con el entorno, dando paso al mundo clásico.",
+      "thumbnailTitle": "De Cuántico a Normal",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "interpretacion-de-muchos-mundos-cada-decision-crea-universos",
+      "title": "Interpretación de Muchos Mundos: Cada decisión crea universos",
+      "order": 182,
+      "description": "Exploramos la interpretación de muchos mundos de Everett, donde cada medición cuántica divide la realidad en ramas paralelas que coexisten sin jamás comunicarse.",
+      "thumbnailTitle": "Realidades Divididas",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "interpretacion-de-copenhague-observar-define-la-realidad",
+      "title": "Interpretación de Copenhague: Observar define la realidad",
+      "order": 183,
+      "description": "Analizamos la interpretación de Copenhague de la mecánica cuántica, la visión dominante donde la observación colapsa la función de onda definiendo la realidad física.",
+      "thumbnailTitle": "Observar es Crear",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "variables-ocultas-einstein-contra-la-mecanica-cuantica",
+      "title": "Variables Ocultas: Einstein contra la mecánica cuántica",
+      "order": 184,
+      "description": "Revisamos la propuesta de variables ocultas de Einstein, Podolsky y Rosen que intentó demostrar que la mecánica cuántica estaba incompleta y los experimentos que lo refutaron.",
+      "thumbnailTitle": "Einstein vs Cuántica",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "desigualdades-de-bell-la-prueba-definitiva-de-lo-cuantico",
+      "title": "Desigualdades de Bell: La prueba definitiva de lo cuántico",
+      "order": 185,
+      "description": "Celebramos las desigualdades de Bell y los experimentos que las violaron, confirmando que el entrelazamiento cuántico es real y no resultado de variables ocultas locales.",
+      "thumbnailTitle": "Victoria Cuántica",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "criptografia-cuantica-mensajes-imposibles-de-espiar",
+      "title": "Criptografía Cuántica: Mensajes imposibles de espiar",
+      "order": 186,
+      "description": "Descubrimos la criptografía cuántica, un método de comunicación donde las leyes de la física garantizan que cualquier intento de espionaje es inmediatamente detectado.",
+      "thumbnailTitle": "Secretos Cuánticos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "supremacia-cuantica-superando-a-todas-las-computadoras",
+      "title": "Supremacía Cuántica: Superando a todas las computadoras",
+      "order": 187,
+      "description": "Evaluamos el concepto de supremacía cuántica, el hito donde un computador cuántico resuelve un problema específico que ninguna supercomputadora clásica podría resolver.",
+      "thumbnailTitle": "Ventaja Cuántica",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "simulacion-cuantica-modelando-moleculas-imposibles",
+      "title": "Simulación Cuántica: Modelando moléculas imposibles",
+      "order": 188,
+      "description": "Exploramos la simulación cuántica, donde computadores cuánticos modelan sistemas moleculares complejos imposibles de simular para revolucionar la medicina y la química.",
+      "thumbnailTitle": "Moléculas Virtuales",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "efecto-hall-cuantico-electricidad-en-dos-dimensiones",
+      "title": "Efecto Hall Cuántico: Electricidad en dos dimensiones",
+      "order": 189,
+      "description": "Investigamos el efecto Hall cuántico, un fenómeno donde la conductividad eléctrica se cuantiza en valores exactos en materiales bidimensionales bajo campos magnéticos intensos.",
+      "thumbnailTitle": "Electricidad 2D",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "aislantes-topologicos-materiales-conductores-por-fuera",
+      "title": "Aislantes Topológicos: Materiales conductores por fuera",
+      "order": 190,
+      "description": "Descubrimos los aislantes topológicos, materiales exóticos que son aislantes en su interior pero conducen electricidad perfectamente en su superficie sin pérdida alguna.",
+      "thumbnailTitle": "Aislantes Conductores",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "anyones-particulas-que-no-son-ni-fermiones-ni-bosones",
+      "title": "Anyones: Partículas que no son ni fermiones ni bosones",
+      "order": 191,
+      "description": "Conocemos los anyones, partículas exóticas que existen solo en sistemas bidimensionales y que obedecen estadísticas cuánticas completamente distintas a fermiones y bosones.",
+      "thumbnailTitle": "Ni Uno Ni Otro",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "materia-topologica-nudos-cuanticos-indestructibles",
+      "title": "Materia Topológica: Nudos cuánticos indestructibles",
+      "order": 192,
+      "description": "Exploramos la materia topológica, estados de la materia cuyas propiedades dependen de su forma global y son extraordinariamente robustos frente a perturbaciones locales.",
+      "thumbnailTitle": "Nudos Eternos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "principio-holografico-el-universo-como-un-holograma",
+      "title": "Principio Holográfico: El universo como un holograma",
+      "order": 193,
+      "description": "Debatimos el principio holográfico que sugiere que toda la información de un volumen de espacio puede estar codificada en su superficie bidimensional como un holograma.",
+      "thumbnailTitle": "Universo Proyectado",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "correspondencia-ads-cft-conectando-gravedad-y-cuantica",
+      "title": "Correspondencia AdS/CFT: Conectando gravedad y cuántica",
+      "order": 194,
+      "description": "Analizamos la conjetura AdS/CFT de Maldacena, una herramienta teórica que conecta la gravedad en un espacio con una teoría cuántica en su frontera de forma equivalente.",
+      "thumbnailTitle": "Dualidad Profunda",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "paradoja-de-la-informacion-del-agujero-negro",
+      "title": "Paradoja de la Información: ¿Se destruye en el agujero negro?",
+      "order": 195,
+      "description": "Enfrentamos la paradoja de la información del agujero negro, donde la física cuántica dice que la información no puede destruirse pero un agujero negro parece hacerlo.",
+      "thumbnailTitle": "Información Perdida",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "gravedad-cuantica-de-lazos-el-espacio-como-tejido",
+      "title": "Gravedad Cuántica de Lazos: El espacio como tejido",
+      "order": 196,
+      "description": "Exploramos la gravedad cuántica de lazos, una teoría alternativa a las cuerdas que propone que el espacio está hecho de diminutos lazos entrelazados formando un tejido discreto.",
+      "thumbnailTitle": "Espacio Tejido",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "supersimetria-la-pareja-hipotetica-de-cada-particula",
+      "title": "Supersimetría: La pareja hipotética de cada partícula",
+      "order": 197,
+      "description": "Investigamos la supersimetría, la teoría que predice que cada partícula conocida tiene una compañera supersimétrica aún no descubierta duplicando el zoológico cuántico.",
+      "thumbnailTitle": "Parejas Secretas",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "gran-unificacion-fusionando-tres-fuerzas-en-una",
+      "title": "Gran Unificación: Fusionando tres fuerzas en una",
+      "order": 198,
+      "description": "Perseguimos la gran teoría unificada que propone que a energías extremadamente altas las tres fuerzas no gravitacionales se fusionan en una sola fuerza primordial.",
+      "thumbnailTitle": "Una Sola Fuerza",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "teoria-del-todo-el-sueno-final-de-la-fisica-completa",
+      "title": "Teoría del Todo: El sueño final de la física completa",
+      "order": 199,
+      "description": "Soñamos con la teoría del todo, una ecuación única que describiría las cuatro fuerzas fundamentales y todas las partículas en un marco matemático perfectamente unificado.",
+      "thumbnailTitle": "Una Ecuación Total",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "constante-cosmologica-el-mayor-error-de-einstein",
+      "title": "Constante Cosmológica: El mayor error de Einstein",
+      "order": 200,
+      "description": "Revisamos la constante cosmológica, que Einstein introdujo y luego descartó como su mayor error, pero que hoy podría explicar la aceleración de la expansión del universo.",
+      "thumbnailTitle": "Error Genial",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "problema-de-la-constante-cosmologica-la-peor-prediccion",
+      "title": "Problema de la Constante Cosmológica: La peor predicción",
+      "order": 201,
+      "description": "Confrontamos el problema de la constante cosmológica, donde la predicción teórica de la energía del vacío supera la observada en 120 órdenes de magnitud, la peor predicción jamás hecha.",
+      "thumbnailTitle": "La Peor Predicción",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "efecto-unruh-aceleracion-crea-particulas-de-la-nada",
+      "title": "Efecto Unruh: Aceleración crea partículas de la nada",
+      "order": 202,
+      "description": "Descubrimos el efecto Unruh, donde un observador acelerado percibe partículas donde uno estático ve vacío, conectando profundamente aceleración con temperatura cuántica.",
+      "thumbnailTitle": "Calor de Acelerar",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "efecto-aharonov-bohm-campos-que-actuan-sin-estar-presentes",
+      "title": "Efecto Aharonov-Bohm: Campos que actúan sin estar presentes",
+      "order": 203,
+      "description": "Revelamos el efecto Aharonov-Bohm, donde un campo electromagnético afecta a partículas cargadas incluso en regiones donde el campo es exactamente cero, desafiando toda intuición.",
+      "thumbnailTitle": "Influencia Invisible",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "transicion-de-fase-cuantica-cambios-a-cero-grados-absolutos",
+      "title": "Transición de Fase Cuántica: Cambios a cero grados absolutos",
+      "order": 204,
+      "description": "Exploramos las transiciones de fase cuánticas, cambios radicales en el estado de la materia que ocurren a cero absoluto impulsados por fluctuaciones cuánticas puras.",
+      "thumbnailTitle": "Cambio Sin Calor",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "efecto-josephson-corriente-que-fluye-sin-voltaje",
+      "title": "Efecto Josephson: Corriente que fluye sin voltaje",
+      "order": 205,
+      "description": "Investigamos el efecto Josephson, donde una corriente superconductora fluye a través de una barrera aislante sin voltaje aplicado gracias al efecto túnel cuántico.",
+      "thumbnailTitle": "Corriente Fantasma",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "magnetorresistencia-gigante-la-fisica-del-disco-duro",
+      "title": "Magnetorresistencia Gigante: La física del disco duro",
+      "order": 206,
+      "description": "Descubrimos la magnetorresistencia gigante, un efecto cuántico que permitió multiplicar la capacidad de los discos duros y que ganó el Nobel de Física en 2007.",
+      "thumbnailTitle": "Bits Magnéticos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "espintronica-usando-el-giro-del-electron-como-informacion",
+      "title": "Espintrónica: Usando el giro del electrón como información",
+      "order": 207,
+      "description": "Exploramos la espintrónica, una tecnología que usa el spin del electrón además de su carga para procesar información, prometiendo dispositivos más rápidos y eficientes.",
+      "thumbnailTitle": "Spin como Dato",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "resonancia-magnetica-nuclear-viendo-dentro-del-cuerpo",
+      "title": "Resonancia Magnética Nuclear: Viendo dentro del cuerpo",
+      "order": 208,
+      "description": "Entendemos la resonancia magnética nuclear, la técnica que alinea los spins de los átomos de hidrógeno del cuerpo para crear imágenes médicas detalladas sin radiación.",
+      "thumbnailTitle": "Dentro del Cuerpo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "tomografia-pet-detectando-antimateria-en-tu-cerebro",
+      "title": "Tomografía PET: Detectando antimateria en tu cerebro",
+      "order": 209,
+      "description": "Descubrimos cómo la tomografía por emisión de positrones usa la aniquilación de antimateria dentro del cuerpo para crear mapas de actividad cerebral y detectar tumores.",
+      "thumbnailTitle": "Antimateria Médica",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "radioterapia-usando-particulas-contra-el-cancer",
+      "title": "Radioterapia: Usando partículas contra el cáncer",
+      "order": 210,
+      "description": "Analizamos cómo la física de partículas se aplica en radioterapia, usando fotones de alta energía y protones para destruir células cancerosas con precisión milimétrica.",
+      "thumbnailTitle": "Física contra el Cáncer",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "relojes-atomicos-la-medida-mas-precisa-del-tiempo",
+      "title": "Relojes Atómicos: La medida más precisa del tiempo",
+      "order": 211,
+      "description": "Conocemos los relojes atómicos, dispositivos que miden el tiempo con una precisión de un segundo en miles de millones de años usando transiciones electrónicas del cesio.",
+      "thumbnailTitle": "Precisión Absoluta",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "gps-y-relatividad-por-que-tu-ubicacion-necesita-a-einstein",
+      "title": "GPS y Relatividad: Por qué tu ubicación necesita a Einstein",
+      "order": 212,
+      "description": "Revelamos que el sistema GPS necesita correcciones de la relatividad general y especial para funcionar con precisión, o acumularía errores de kilómetros cada día.",
+      "thumbnailTitle": "Einstein en tu Bolsillo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "pendulo-de-foucault-demostrando-que-la-tierra-gira",
+      "title": "Péndulo de Foucault: Demostrando que la Tierra gira",
+      "order": 213,
+      "description": "Revivimos el experimento del péndulo de Foucault, la primera demostración visual directa de que la Tierra rota sobre su eje sin necesidad de mirar las estrellas.",
+      "thumbnailTitle": "Prueba de Rotación",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "interferometria-midiendo-distancias-con-ondas-de-luz",
+      "title": "Interferometría: Midiendo distancias con ondas de luz",
+      "order": 214,
+      "description": "Aprendemos cómo la interferometría usa la interferencia de ondas de luz para medir distancias con una precisión de fracciones de longitud de onda atómica increíbles.",
+      "thumbnailTitle": "Precisión Luminosa",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "microscopio-electronico-viendo-los-atomos-individuales",
+      "title": "Microscopio Electrónico: Viendo los átomos individuales",
+      "order": 215,
+      "description": "Exploramos los microscopios electrónicos, instrumentos que disparan electrones en lugar de luz para resolver estructuras a escala atómica individual con detalle asombroso.",
+      "thumbnailTitle": "Ojos para Átomos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "microscopio-de-efecto-tunel-tocando-atomos-uno-a-uno",
+      "title": "Microscopio de Efecto Túnel: Tocando átomos uno a uno",
+      "order": 216,
+      "description": "Descubrimos el microscopio de efecto túnel, un instrumento que usa el efecto túnel cuántico para escanear y manipular átomos individuales en una superficie material.",
+      "thumbnailTitle": "Tocando Átomos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "pinzas-opticas-atrapando-celulas-con-rayos-de-luz",
+      "title": "Pinzas Ópticas: Atrapando células con rayos de luz",
+      "order": 217,
+      "description": "Conocemos las pinzas ópticas, haces de luz láser enfocados que pueden atrapar y mover células individuales, bacterias y nanopartículas con increíble delicadeza.",
+      "thumbnailTitle": "Trampa de Luz",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "enfriamiento-laser-deteniendo-atomos-con-fotones",
+      "title": "Enfriamiento Láser: Deteniendo átomos con fotones",
+      "order": 218,
+      "description": "Entendemos el enfriamiento láser, la técnica que usa la presión de radiación de fotones para frenar átomos hasta casi el cero absoluto con una precisión extraordinaria.",
+      "thumbnailTitle": "Frío con Luz",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "trampa-de-iones-capturando-atomos-cargados-en-el-aire",
+      "title": "Trampa de Iones: Capturando átomos cargados en el aire",
+      "order": 219,
+      "description": "Exploramos las trampas de iones, dispositivos que usan campos eléctricos oscilantes para suspender átomos individuales en el vacío, herramienta clave para computación cuántica.",
+      "thumbnailTitle": "Átomos Atrapados",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "ondas-estacionarias-la-vibracion-que-parece-congelada",
+      "title": "Ondas Estacionarias: La vibración que parece congelada",
+      "order": 220,
+      "description": "Analizamos las ondas estacionarias, patrones de vibración que parecen inmóviles cuando dos ondas idénticas viajan en direcciones opuestas creando nodos y antinodos fijos.",
+      "thumbnailTitle": "Vibración Congelada",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "resonancia-mecanica-el-puente-que-colapso-por-vibrar",
+      "title": "Resonancia Mecánica: El puente que colapsó por vibrar",
+      "order": 221,
+      "description": "Estudiamos la resonancia mecánica, el fenómeno donde una frecuencia externa coincide con la natural de un objeto amplificando sus vibraciones hasta provocar colapsos estructurales.",
+      "thumbnailTitle": "Vibración Destructora",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "armonicos-la-matematica-secreta-de-la-musica",
+      "title": "Armónicos: La matemática secreta de la música",
+      "order": 222,
+      "description": "Revelamos la relación entre los armónicos musicales y la física de las ondas, explicando por qué ciertos acordes suenan agradables y otros generan disonancia al oído.",
+      "thumbnailTitle": "Física de la Música",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "efecto-doppler-acustico-la-sirena-que-cambia-de-tono",
+      "title": "Efecto Doppler Acústico: La sirena que cambia de tono",
+      "order": 223,
+      "description": "Explicamos por qué la sirena de una ambulancia cambia de tono al acercarse y alejarse, una manifestación cotidiana del efecto Doppler en ondas sonoras.",
+      "thumbnailTitle": "Sirena Cambiante",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "boom-sonico-rompiendo-la-barrera-del-sonido",
+      "title": "Boom Sónico: Rompiendo la barrera del sonido",
+      "order": 224,
+      "description": "Desciframos el boom sónico, la onda de choque creada cuando un objeto supera la velocidad del sonido comprimiendo las ondas acústicas en un cono expansivo violento.",
+      "thumbnailTitle": "Estallido Supersónico",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "velocidad-del-sonido-por-que-cambia-segun-el-medio",
+      "title": "Velocidad del Sonido: Por qué cambia según el medio",
+      "order": 225,
+      "description": "Investigamos por qué el sonido viaja a diferentes velocidades en aire, agua y acero, dependiendo de la densidad y elasticidad del medio de propagación molecular.",
+      "thumbnailTitle": "Sonido Variable",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "infrasonido-vibraciones-que-no-puedes-oir-pero-sientes",
+      "title": "Infrasonido: Vibraciones que no puedes oír pero sientes",
+      "order": 226,
+      "description": "Exploramos el infrasonido, frecuencias por debajo del rango audible humano que generan sensaciones físicas y que se vinculan con fenómenos naturales como terremotos y volcanes.",
+      "thumbnailTitle": "Sonido Invisible",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "ultrasonido-frecuencias-que-ven-dentro-de-tu-cuerpo",
+      "title": "Ultrasonido: Frecuencias que ven dentro de tu cuerpo",
+      "order": 227,
+      "description": "Conocemos el ultrasonido, ondas de alta frecuencia inaudibles usadas en medicina para visualizar fetos, detectar tumores y guiar procedimientos quirúrgicos sin dolor.",
+      "thumbnailTitle": "Eco Interior",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "acustica-arquitectonica-la-fisica-de-las-salas-de-concierto",
+      "title": "Acústica Arquitectónica: La física de las salas de concierto",
+      "order": 228,
+      "description": "Diseñamos salas de concierto con la física acústica, entendiendo cómo la forma, los materiales y las dimensiones determinan la calidad del sonido que percibe el público.",
+      "thumbnailTitle": "Sonido Perfecto",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "sismologia-escuchando-los-latidos-internos-de-la-tierra",
+      "title": "Sismología: Escuchando los latidos internos de la Tierra",
+      "order": 229,
+      "description": "Estudiamos cómo los sismólogos usan ondas sísmicas para radiografiar el interior de la Tierra, revelando su estructura de capas desde la corteza hasta el núcleo de hierro.",
+      "thumbnailTitle": "Latidos Terrestres",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "tectonica-de-placas-continentes-surfeando-sobre-magma",
+      "title": "Tectónica de Placas: Continentes surfeando sobre magma",
+      "order": 230,
+      "description": "Recorremos la tectónica de placas, la teoría que explica cómo los continentes flotan y se mueven sobre el manto terrestre causando terremotos, volcanes y cordilleras.",
+      "thumbnailTitle": "Continentes Móviles",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "ondas-sismicas-p-y-s-radiografiando-el-nucleo-terrestre",
+      "title": "Ondas Sísmicas P y S: Radiografiando el núcleo terrestre",
+      "order": 231,
+      "description": "Diferenciamos las ondas P y S de los terremotos y cómo su comportamiento al cruzar el interior de la Tierra reveló que nuestro planeta tiene un núcleo externo líquido.",
+      "thumbnailTitle": "Escáner Planetario",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "geodinamo-como-el-nucleo-genera-el-campo-magnetico",
+      "title": "Geodínamo: Cómo el núcleo genera el campo magnético",
+      "order": 232,
+      "description": "Desvelamos el geodínamo terrestre, el mecanismo por el cual las corrientes de hierro líquido en el núcleo externo generan el campo magnético protector de nuestro planeta.",
+      "thumbnailTitle": "Motor Magnético",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "calor-geotermico-la-planta-nuclear-bajo-nuestros-pies",
+      "title": "Calor Geotérmico: La planta nuclear bajo nuestros pies",
+      "order": 233,
+      "description": "Investigamos el calor geotérmico de la Tierra, alimentado por la desintegración de elementos radiactivos en el manto, y su potencial como fuente de energía renovable limpia.",
+      "thumbnailTitle": "Calor Subterráneo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "isostasia-montanas-flotando-sobre-roca-fundida",
+      "title": "Isostasia: Montañas flotando sobre roca fundida",
+      "order": 234,
+      "description": "Entendemos la isostasia, el equilibrio gravitatorio por el cual los continentes y montañas flotan sobre el manto terrestre como icebergs sobre el agua marina profunda.",
+      "thumbnailTitle": "Montañas Flotantes",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "efecto-invernadero-la-fisica-del-calentamiento-global",
+      "title": "Efecto Invernadero: La física del calentamiento global",
+      "order": 235,
+      "description": "Explicamos la física del efecto invernadero, donde ciertos gases de la atmósfera atrapan la radiación infrarroja de la superficie calentando el planeta progresivamente.",
+      "thumbnailTitle": "Trampa de Calor",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "albedo-la-reflectividad-que-regula-la-temperatura-terrestre",
+      "title": "Albedo: La reflectividad que regula la temperatura terrestre",
+      "order": 236,
+      "description": "Medimos el albedo terrestre, la fracción de luz solar que la Tierra refleja al espacio, y cómo los cambios en hielo, nubes y vegetación alteran el balance térmico global.",
+      "thumbnailTitle": "Espejo del Planeta",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "ciclos-de-milankovitch-los-ritmos-orbitales-de-las-glaciaciones",
+      "title": "Ciclos de Milankovitch: Los ritmos orbitales de las glaciaciones",
+      "order": 237,
+      "description": "Desciframos los ciclos de Milankovitch, variaciones periódicas en la órbita terrestre que alteran la distribución de calor solar causando las grandes eras glaciales históricas.",
+      "thumbnailTitle": "Ritmos del Hielo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "cuerpo-negro-la-radiacion-perfecta-de-los-objetos-calientes",
+      "title": "Cuerpo Negro: La radiación perfecta de los objetos calientes",
+      "order": 238,
+      "description": "Estudiamos la radiación de cuerpo negro, el espectro de luz que emite cualquier objeto caliente, cuya explicación por Planck dio origen a toda la mecánica cuántica.",
+      "thumbnailTitle": "Brillo del Calor",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "ley-de-stefan-boltzmann-cuanto-calor-irradia-una-estrella",
+      "title": "Ley de Stefan-Boltzmann: Cuánto calor irradia una estrella",
+      "order": 239,
+      "description": "Aplicamos la ley de Stefan-Boltzmann que relaciona la energía total radiada por un cuerpo con la cuarta potencia de su temperatura, clave para entender la luminosidad estelar.",
+      "thumbnailTitle": "Brillo Estelar",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "conduccion-conveccion-radiacion-las-tres-vias-del-calor",
+      "title": "Conducción, Convección, Radiación: Las tres vías del calor",
+      "order": 240,
+      "description": "Diferenciamos los tres mecanismos de transferencia de calor: conducción entre sólidos, convección en fluidos y radiación a través del vacío electromagnético.",
+      "thumbnailTitle": "Tres Caminos del Calor",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "punto-triple-donde-hielo-agua-y-vapor-coexisten",
+      "title": "Punto Triple: Donde hielo, agua y vapor coexisten",
+      "order": 241,
+      "description": "Descubrimos el punto triple del agua, la combinación precisa de presión y temperatura donde las tres fases coexisten simultáneamente en perfecto equilibrio termodinámico.",
+      "thumbnailTitle": "Triple Equilibrio",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "punto-critico-cuando-liquido-y-gas-se-vuelven-uno",
+      "title": "Punto Crítico: Cuando líquido y gas se vuelven uno",
+      "order": 242,
+      "description": "Exploramos el punto crítico, la condición extrema de presión y temperatura donde la distinción entre líquido y gas desaparece completamente en un fluido supercrítico.",
+      "thumbnailTitle": "Fusión de Fases",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "sublimacion-de-solido-a-gas-sin-pasar-por-liquido",
+      "title": "Sublimación: De sólido a gas sin pasar por líquido",
+      "order": 243,
+      "description": "Observamos la sublimación, la transición directa de sólido a gas sin fase líquida intermedia, como el hielo seco que se evapora misteriosamente ante nuestros ojos.",
+      "thumbnailTitle": "Salto de Estado",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "calor-latente-la-energia-oculta-en-los-cambios-de-fase",
+      "title": "Calor Latente: La energía oculta en los cambios de fase",
+      "order": 244,
+      "description": "Revelamos el calor latente, la energía que un material absorbe o libera durante un cambio de fase sin cambiar de temperatura, como el hielo que se derrite a cero grados.",
+      "thumbnailTitle": "Energía Escondida",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "ley-de-los-gases-ideales-la-ecuacion-que-une-presion-y-calor",
+      "title": "Ley de los Gases Ideales: La ecuación que une presión y calor",
+      "order": 245,
+      "description": "Descomponemos la ley de los gases ideales PV=nRT, una relación elegante entre presión, volumen y temperatura que describe el comportamiento de gases en condiciones normales.",
+      "thumbnailTitle": "Gases Perfectos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "movimiento-browniano-atomos-empujando-granos-de-polen",
+      "title": "Movimiento Browniano: Átomos empujando granos de polen",
+      "order": 246,
+      "description": "Observamos el movimiento browniano, el zigzagueo errático de partículas diminutas en un fluido que Einstein usó para demostrar definitivamente la existencia de los átomos.",
+      "thumbnailTitle": "Danza de Átomos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "mecanica-estadistica-prediciendo-el-caos-con-probabilidad",
+      "title": "Mecánica Estadística: Prediciendo el caos con probabilidad",
+      "order": 247,
+      "description": "Entendemos cómo la mecánica estadística usa la probabilidad para predecir el comportamiento de billones de partículas sin rastrear cada una individualmente.",
+      "thumbnailTitle": "Orden del Caos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "distribucion-de-boltzmann-la-loteria-energetica-de-las-moleculas",
+      "title": "Distribución de Boltzmann: La lotería energética de las moléculas",
+      "order": 248,
+      "description": "Desciframos la distribución de Boltzmann que describe cómo la energía se reparte probabilísticamente entre las moléculas de un sistema a cualquier temperatura dada.",
+      "thumbnailTitle": "Lotería Molecular",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "principio-de-equiparticion-energia-repartida-por-igual",
+      "title": "Principio de Equipartición: Energía repartida por igual",
+      "order": 249,
+      "description": "Aplicamos el teorema de equipartición de la energía que establece cómo la energía térmica se distribuye equitativamente entre los grados de libertad de un sistema físico.",
+      "thumbnailTitle": "Reparto Justo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "maquinas-termicas-convirtiendo-calor-en-movimiento-util",
+      "title": "Máquinas Térmicas: Convirtiendo calor en movimiento útil",
+      "order": 250,
+      "description": "Exploramos las máquinas térmicas, desde motores de combustión hasta turbinas, entendiendo cómo convierten diferencias de temperatura en trabajo mecánico con eficiencia limitada.",
+      "thumbnailTitle": "Calor en Movimiento",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "ciclo-de-carnot-el-limite-maximo-de-eficiencia-termica",
+      "title": "Ciclo de Carnot: El límite máximo de eficiencia térmica",
+      "order": 251,
+      "description": "Analizamos el ciclo de Carnot, el motor térmico ideal que establece el techo teórico de eficiencia que ninguna máquina real puede superar por leyes fundamentales de la física.",
+      "thumbnailTitle": "Eficiencia Máxima",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "bombas-de-calor-calentando-casas-con-frio-exterior",
+      "title": "Bombas de Calor: Calentando casas con frío exterior",
+      "order": 252,
+      "description": "Descubrimos las bombas de calor, dispositivos termodinámicos que extraen calor del aire frío exterior para calentar interiores con eficiencias superiores al 300 por ciento.",
+      "thumbnailTitle": "Calor del Frío",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "tercer-principio-la-imposibilidad-de-alcanzar-el-cero",
+      "title": "Tercer Principio: La imposibilidad de alcanzar el cero",
+      "order": 253,
+      "description": "Exploramos el tercer principio de la termodinámica que demuestra la imposibilidad de alcanzar el cero absoluto en un número finito de pasos termodinámicos operacionales.",
+      "thumbnailTitle": "Cero Inalcanzable",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "entropia-de-la-informacion-la-fisica-detras-de-los-datos",
+      "title": "Entropía de la Información: La física detrás de los datos",
+      "order": 254,
+      "description": "Conectamos la entropía termodinámica con la teoría de la información de Shannon, revelando la profunda relación entre la física del calor y la ciencia de la comunicación.",
+      "thumbnailTitle": "Calor como Datos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "principio-de-landauer-borrar-informacion-genera-calor",
+      "title": "Principio de Landauer: Borrar información genera calor",
+      "order": 255,
+      "description": "Descubrimos el principio de Landauer que establece un mínimo de energía disipada al borrar un bit de información, conectando la computación con la termodinámica fundamental.",
+      "thumbnailTitle": "Precio de Borrar",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "computacion-reversible-calculando-sin-desperdiciar-energia",
+      "title": "Computación Reversible: Calculando sin desperdiciar energía",
+      "order": 256,
+      "description": "Imaginamos la computación reversible, un paradigma teórico donde los cálculos pueden deshacerse sin perder información, evitando el calor residual del principio de Landauer.",
+      "thumbnailTitle": "Cómputo Sin Calor",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "fotonica-reemplazando-electrones-por-fotones-en-los-chips",
+      "title": "Fotónica: Reemplazando electrones por fotones en los chips",
+      "order": 257,
+      "description": "Exploramos la fotónica, la tecnología que reemplaza electrones por fotones en circuitos integrados para lograr procesamiento de datos más rápido y con menor consumo energético.",
+      "thumbnailTitle": "Chips de Luz",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "metamateriales-acusticos-silenciando-el-mundo-con-fisica",
+      "title": "Metamateriales Acústicos: Silenciando el mundo con física",
+      "order": 258,
+      "description": "Investigamos los metamateriales acústicos, estructuras diseñadas para manipular ondas sonoras de formas imposibles en la naturaleza, desde silenciar habitaciones hasta desviar sonido.",
+      "thumbnailTitle": "Silencio Diseñado",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "nanomaquinas-robots-del-tamano-de-una-molecula",
+      "title": "Nanomáquinas: Robots del tamaño de una molécula",
+      "order": 259,
+      "description": "Descubrimos las nanomáquinas moleculares, dispositivos mecánicos construidos átomo a átomo que podrían revolucionar la medicina entregando fármacos directamente a células enfermas.",
+      "thumbnailTitle": "Robots Moleculares",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "autoensambaje-molecular-cuando-la-materia-se-organiza-sola",
+      "title": "Autoensamblaje Molecular: Cuando la materia se organiza sola",
+      "order": 260,
+      "description": "Observamos el autoensamblaje molecular, el proceso espontáneo donde las moléculas se organizan en estructuras complejas sin intervención externa guiadas por fuerzas naturales.",
+      "thumbnailTitle": "Orden Espontáneo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "puntos-cuanticos-nanocristales-que-brillan-en-colores",
+      "title": "Puntos Cuánticos: Nanocristales que brillan en colores",
+      "order": 261,
+      "description": "Exploramos los puntos cuánticos, nanocristales semiconductores cuyo color de emisión depende de su tamaño, revolucionando las pantallas de televisión y la biomedicina.",
+      "thumbnailTitle": "Colores Nanoscópicos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "efecto-lotus-superficies-que-el-agua-nunca-puede-mojar",
+      "title": "Efecto Lotus: Superficies que el agua nunca puede mojar",
+      "order": 262,
+      "description": "Investigamos el efecto loto, la superhidrofobicidad de ciertas superficies naturales con nanoestructuras que repelen completamente el agua manteniéndose siempre limpias.",
+      "thumbnailTitle": "Agua que Resbala",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "biomecanica-la-fisica-escondida-en-el-cuerpo-humano",
+      "title": "Biomecánica: La física escondida en el cuerpo humano",
+      "order": 263,
+      "description": "Analizamos la biomecánica del cuerpo humano, desde las palancas óseas y los músculos como motores hasta la hidrodinámica de la sangre fluyendo por las arterias.",
+      "thumbnailTitle": "Física Corporal",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "biofisica-de-la-vision-como-el-ojo-captura-fotones",
+      "title": "Biofísica de la Visión: Cómo el ojo captura fotones",
+      "order": 264,
+      "description": "Exploramos la física de la visión humana, donde las proteínas de la retina detectan fotones individuales desencadenando señales eléctricas que el cerebro interpreta como imágenes.",
+      "thumbnailTitle": "Fotones en el Ojo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "ecolocation-natural-el-sonar-biologico-de-los-murcielagos",
+      "title": "Ecolocación Natural: El sonar biológico de los murciélagos",
+      "order": 265,
+      "description": "Estudiamos la ecolocación de murciélagos y delfines, un sistema de sonar biológico que usa ondas sonoras para construir mapas tridimensionales de su entorno en completa oscuridad.",
+      "thumbnailTitle": "Sonar Viviente",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "bioelectricidad-las-senales-electricas-del-sistema-nervioso",
+      "title": "Bioelectricidad: Las señales eléctricas del sistema nervioso",
+      "order": 266,
+      "description": "Rastreamos la bioelectricidad del sistema nervioso, impulsos eléctricos que viajan por las neuronas a velocidades de hasta 120 metros por segundo transmitiendo información.",
+      "thumbnailTitle": "Cables Vivientes",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "fotosintesis-cuantica-las-plantas-usan-mecanica-cuantica",
+      "title": "Fotosíntesis Cuántica: Las plantas usan mecánica cuántica",
+      "order": 267,
+      "description": "Revelamos evidencia de que la fotosíntesis usa coherencia cuántica para transferir energía con eficiencia casi perfecta, un ejemplo de biología cuántica en acción.",
+      "thumbnailTitle": "Plantas Cuánticas",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "navegacion-magnetica-animales-que-sienten-el-campo-terrestre",
+      "title": "Navegación Magnética: Animales que sienten el campo terrestre",
+      "order": 268,
+      "description": "Investigamos la magnetorrecepción en aves migratorias y tortugas marinas, criaturas que posiblemente detectan el campo magnético terrestre mediante mecanismos cuánticos.",
+      "thumbnailTitle": "Brújula Biológica",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "mutaciones-por-radiacion-la-fisica-que-cambia-el-adn",
+      "title": "Mutaciones por Radiación: La física que cambia el ADN",
+      "order": 269,
+      "description": "Explicamos cómo la radiación ionizante rompe enlaces del ADN causando mutaciones genéticas, un proceso que puede generar cáncer pero también impulsa la evolución natural.",
+      "thumbnailTitle": "Rayos y Genes",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "difusion-como-los-olores-viajan-por-el-aire",
+      "title": "Difusión: Cómo los olores viajan por el aire",
+      "order": 270,
+      "description": "Entendemos la difusión molecular, el proceso físico por el cual las moléculas se dispersan desde zonas de alta concentración hacia las de baja explicando cómo se propagan los olores.",
+      "thumbnailTitle": "Moléculas Viajeras",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "osmosis-el-paso-selectivo-del-agua-a-traves-de-membranas",
+      "title": "Ósmosis: El paso selectivo del agua a través de membranas",
+      "order": 271,
+      "description": "Exploramos la ósmosis, el flujo espontáneo de agua a través de membranas semipermeables impulsado por diferencias de concentración, vital para la biología celular.",
+      "thumbnailTitle": "Flujo Vital",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "elasticidad-y-plasticidad-cuando-los-materiales-se-rinden",
+      "title": "Elasticidad y Plasticidad: Cuando los materiales se rinden",
+      "order": 272,
+      "description": "Distinguimos entre deformación elástica y plástica de los materiales, entendiendo por qué un resorte vuelve a su forma original pero un clip doblado no lo hace.",
+      "thumbnailTitle": "Límite de Flexión",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "fatiga-de-materiales-el-desgaste-invisible-del-metal",
+      "title": "Fatiga de Materiales: El desgaste invisible del metal",
+      "order": 273,
+      "description": "Investigamos la fatiga de materiales, el proceso donde cargas repetitivas crean microgrietas invisibles que eventualmente provocan fracturas catastróficas en estructuras metálicas.",
+      "thumbnailTitle": "Grietas Ocultas",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "cristalografia-el-orden-atomico-perfecto-de-los-solidos",
+      "title": "Cristalografía: El orden atómico perfecto de los sólidos",
+      "order": 274,
+      "description": "Descubrimos la cristalografía, la ciencia que estudia la disposición periódica de los átomos en los cristales y cómo la difracción de rayos X revela su estructura interna.",
+      "thumbnailTitle": "Átomos Ordenados",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "cuasicristales-orden-sin-repeticion-en-la-materia",
+      "title": "Cuasicristales: Orden sin repetición en la materia",
+      "order": 275,
+      "description": "Conocemos los cuasicristales, materiales con orden atómico pero sin repetición periódica, un descubrimiento que desafió la cristalografía clásica y ganó el Nobel de Química.",
+      "thumbnailTitle": "Orden Aperiódico",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "vidrios-liquidos-disfrazados-de-solidos",
+      "title": "Vidrios: Líquidos disfrazados de sólidos",
+      "order": 276,
+      "description": "Revelamos que los vidrios son técnicamente líquidos extremadamente viscosos cuyos átomos están desordenados como un líquido pero congelados en su lugar sin estructura cristalina.",
+      "thumbnailTitle": "Sólidos Falsos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "aleaciones-con-memoria-metales-que-recuerdan-su-forma",
+      "title": "Aleaciones con Memoria: Metales que recuerdan su forma",
+      "order": 277,
+      "description": "Exploramos las aleaciones con memoria de forma como el nitinol, metales que pueden deformarse y luego regresar exactamente a su forma original al calentarlos.",
+      "thumbnailTitle": "Metal Memorioso",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "fluidos-no-newtonianos-liquidos-que-se-vuelven-solidos",
+      "title": "Fluidos No Newtonianos: Líquidos que se vuelven sólidos",
+      "order": 278,
+      "description": "Experimentamos con fluidos no newtonianos como la oobleck, mezclas que fluyen como líquido al tocarlas suavemente pero se endurecen como roca al golpearlas con fuerza.",
+      "thumbnailTitle": "Líquido Sólido",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "ferrofluidos-liquidos-magneticos-que-forman-esculturas",
+      "title": "Ferrofluidos: Líquidos magnéticos que forman esculturas",
+      "order": 279,
+      "description": "Observamos los ferrofluidos, líquidos que contienen nanopartículas magnéticas y que forman espectaculares esculturas espinosas cuando se exponen a campos magnéticos externos.",
+      "thumbnailTitle": "Escultura Magnética",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "diamagnetismo-haciendo-levitar-ranas-con-imanes",
+      "title": "Diamagnetismo: Haciendo levitar ranas con imanes",
+      "order": 280,
+      "description": "Descubrimos el diamagnetismo, una propiedad universal de la materia que permite hacer levitar objetos como ranas vivas usando campos magnéticos extraordinariamente potentes.",
+      "thumbnailTitle": "Ranas Flotantes",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "ferromagnetismo-por-que-solo-algunos-metales-son-imanes",
+      "title": "Ferromagnetismo: Por qué solo algunos metales son imanes",
+      "order": 281,
+      "description": "Explicamos el ferromagnetismo, la propiedad cuántica por la cual solo ciertos materiales como el hierro, cobalto y níquel pueden convertirse en imanes permanentes.",
+      "thumbnailTitle": "Imanes Naturales",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "dominios-magneticos-la-estructura-secreta-de-los-imanes",
+      "title": "Dominios Magnéticos: La estructura secreta de los imanes",
+      "order": 282,
+      "description": "Revelamos los dominios magnéticos, regiones microscópicas dentro de un imán donde millones de átomos alinean sus spins en la misma dirección creando el magnetismo macroscópico.",
+      "thumbnailTitle": "Interior del Imán",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "induccion-electromagnetica-movimiento-que-genera-corriente",
+      "title": "Inducción Electromagnética: Movimiento que genera corriente",
+      "order": 283,
+      "description": "Entendemos la inducción electromagnética de Faraday, el principio que convierte movimiento mecánico en corriente eléctrica y que hace funcionar todas las centrales de energía.",
+      "thumbnailTitle": "Movimiento Eléctrico",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "corrientes-de-foucault-el-freno-invisible-del-metal",
+      "title": "Corrientes de Foucault: El freno invisible del metal",
+      "order": 284,
+      "description": "Investigamos las corrientes de Foucault, corrientes eléctricas inducidas en metales conductores por campos magnéticos variables que actúan como frenos invisibles sin contacto.",
+      "thumbnailTitle": "Freno Sin Contacto",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "ecuaciones-de-maxwell-las-cuatro-leyes-que-rigen-la-luz",
+      "title": "Ecuaciones de Maxwell: Las cuatro leyes que rigen la luz",
+      "order": 285,
+      "description": "Celebramos las ecuaciones de Maxwell, cuatro ecuaciones elegantes que unifican la electricidad, el magnetismo y la luz en una sola teoría electromagnética completa.",
+      "thumbnailTitle": "Cuatro Ecuaciones Perfectas",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "ley-de-coulomb-la-atraccion-y-repulsion-de-las-cargas",
+      "title": "Ley de Coulomb: La atracción y repulsión de las cargas",
+      "order": 286,
+      "description": "Descomponemos la ley de Coulomb, que describe cómo las cargas eléctricas se atraen o repelen con una fuerza inversamente proporcional al cuadrado de su distancia mutua.",
+      "thumbnailTitle": "Cargas que Danzan",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "ley-de-ohm-la-relacion-entre-voltaje-corriente-y-resistencia",
+      "title": "Ley de Ohm: La relación entre voltaje, corriente y resistencia",
+      "order": 287,
+      "description": "Aplicamos la ley de Ohm, la relación fundamental que conecta el voltaje, la corriente y la resistencia eléctrica en circuitos, base de toda la ingeniería eléctrica.",
+      "thumbnailTitle": "Triángulo Eléctrico",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "circuitos-electricos-el-camino-que-sigue-la-corriente",
+      "title": "Circuitos Eléctricos: El camino que sigue la corriente",
+      "order": 288,
+      "description": "Recorremos los fundamentos de los circuitos eléctricos, desde serie y paralelo hasta leyes de Kirchhoff, entendiendo cómo fluye la energía eléctrica en dispositivos cotidianos.",
+      "thumbnailTitle": "Caminos de Corriente",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "corriente-alterna-vs-continua-la-guerra-de-las-corrientes",
+      "title": "Corriente Alterna vs Continua: La guerra de las corrientes",
+      "order": 289,
+      "description": "Revivimos la guerra de las corrientes entre Tesla y Edison, explicando por qué la corriente alterna venció y domina la transmisión eléctrica mundial hasta hoy.",
+      "thumbnailTitle": "Tesla vs Edison",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "transformadores-cambiando-voltaje-con-campos-magneticos",
+      "title": "Transformadores: Cambiando voltaje con campos magnéticos",
+      "order": 290,
+      "description": "Entendemos los transformadores eléctricos, dispositivos que usan inducción magnética para subir o bajar el voltaje permitiendo transmitir electricidad a grandes distancias.",
+      "thumbnailTitle": "Voltaje Cambiante",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "capacitores-almacenando-energia-en-campos-electricos",
+      "title": "Capacitores: Almacenando energía en campos eléctricos",
+      "order": 291,
+      "description": "Exploramos los capacitores, componentes que almacenan energía eléctrica en campos entre placas conductoras y la liberan rápidamente cuando el circuito lo necesita.",
+      "thumbnailTitle": "Baterías Instantáneas",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "supercapacitores-la-proxima-generacion-de-baterias",
+      "title": "Supercapacitores: La próxima generación de baterías",
+      "order": 292,
+      "description": "Investigamos los supercapacitores, dispositivos que combinan alta densidad de energía con carga ultrarápida y que podrían reemplazar las baterías en vehículos eléctricos.",
+      "thumbnailTitle": "Carga Ultrarrápida",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "baterias-de-litio-la-quimica-que-mueve-al-mundo-moderno",
+      "title": "Baterías de Litio: La química que mueve al mundo moderno",
+      "order": 293,
+      "description": "Descomponemos la física y química de las baterías de iones de litio, la tecnología de almacenamiento de energía que impulsa teléfonos, laptops y vehículos eléctricos.",
+      "thumbnailTitle": "Energía Portátil",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "baterias-de-estado-solido-el-futuro-sin-liquidos-inflamables",
+      "title": "Baterías de Estado Sólido: El futuro sin líquidos inflamables",
+      "order": 294,
+      "description": "Exploramos las baterías de estado sólido, la próxima generación que reemplaza el electrolito líquido por uno sólido eliminando riesgos de incendio y aumentando la densidad energética.",
+      "thumbnailTitle": "Baterías Seguras",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "celdas-de-combustible-electricidad-directa-del-hidrogeno",
+      "title": "Celdas de Combustible: Electricidad directa del hidrógeno",
+      "order": 295,
+      "description": "Entendemos las celdas de combustible de hidrógeno, dispositivos que combinan hidrógeno y oxígeno para generar electricidad limpia con agua como único subproducto residual.",
+      "thumbnailTitle": "Energía de Hidrógeno",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "energia-de-las-olas-cosechando-el-movimiento-del-oceano",
+      "title": "Energía de las Olas: Cosechando el movimiento del océano",
+      "order": 296,
+      "description": "Exploramos la energía undimotriz, tecnologías que capturan la energía cinética de las olas del océano para convertirla en electricidad limpia y renovable constantemente.",
+      "thumbnailTitle": "Poder del Océano",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "energia-eolica-la-fisica-de-las-turbinas-de-viento",
+      "title": "Energía Eólica: La física de las turbinas de viento",
+      "order": 297,
+      "description": "Analizamos la física detrás de las turbinas eólicas, desde la ley de Betz que limita su eficiencia máxima hasta la aerodinámica de las aspas que capturan el viento.",
+      "thumbnailTitle": "Poder del Viento",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "efecto-mpemba-el-agua-caliente-se-congela-antes",
+      "title": "Efecto Mpemba: El agua caliente se congela antes",
+      "order": 298,
+      "description": "Investigamos el paradójico efecto Mpemba, donde bajo ciertas condiciones el agua caliente se congela más rápido que el agua fría, un enigma aún no resuelto completamente.",
+      "thumbnailTitle": "Paradoja del Hielo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "efecto-leidenfrost-gotas-que-danzan-sobre-superficies-ardientes",
+      "title": "Efecto Leidenfrost: Gotas que danzan sobre superficies ardientes",
+      "order": 299,
+      "description": "Observamos el efecto Leidenfrost, donde gotas de agua levitan sobre superficies extremadamente calientes protegidas por su propia capa de vapor aislante creando una danza.",
+      "thumbnailTitle": "Gotas Bailarinas",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "cavitacion-burbujas-que-destruyen-helices-de-acero",
+      "title": "Cavitación: Burbujas que destruyen hélices de acero",
+      "order": 300,
+      "description": "Estudiamos la cavitación, la formación y colapso violento de burbujas de vapor en fluidos a alta velocidad que genera ondas de choque capaces de erosionar acero sólido.",
+      "thumbnailTitle": "Burbujas Destructoras",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "camarón-mantis-golpe-de-cavitacion-animal",
+      "title": "Camarón Mantis: Golpe de cavitación animal",
+      "order": 301,
+      "description": "Descubrimos al camarón mantis, cuyo puñetazo es tan veloz que crea burbujas de cavitación y un destello de luz, generando temperaturas comparables a la superficie del Sol.",
+      "thumbnailTitle": "Puñetazo Cósmico",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "fisica-de-los-terremotos-ondas-que-sacuden-civilizaciones",
+      "title": "Física de los Terremotos: Ondas que sacuden civilizaciones",
+      "order": 302,
+      "description": "Descomponemos la física de los terremotos, desde la acumulación de tensión elástica en las fallas hasta la liberación violenta de energía sísmica que sacude la superficie.",
+      "thumbnailTitle": "Tierra que Tiembla",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "tsunamis-la-fisica-de-las-olas-mas-devastadoras",
+      "title": "Tsunamis: La física de las olas más devastadoras",
+      "order": 303,
+      "description": "Analizamos la física de los tsunamis, olas que viajan a la velocidad de un avión comercial por el océano profundo y crecen monstruosamente al llegar a aguas poco profundas.",
+      "thumbnailTitle": "Olas Gigantes",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "volcanes-la-termodinamica-del-interior-de-la-tierra",
+      "title": "Volcanes: La termodinámica del interior de la Tierra",
+      "order": 304,
+      "description": "Exploramos la física volcánica, desde la convección del magma bajo presión hasta la dinámica explosiva de las erupciones que moldean la geología de nuestro planeta.",
+      "thumbnailTitle": "Fuego Interior",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "impactos-de-asteroides-la-fisica-de-la-extincion-masiva",
+      "title": "Impactos de Asteroides: La física de la extinción masiva",
+      "order": 305,
+      "description": "Calculamos la energía liberada por impactos de asteroides, eventos capaces de generar tsunamis globales, inviernos nucleares y extinguir la mayoría de especies del planeta.",
+      "thumbnailTitle": "Roca del Apocalipsis",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "orbitas-elipticas-kepler-y-las-leyes-del-movimiento-planetario",
+      "title": "Órbitas Elípticas: Kepler y las leyes del movimiento planetario",
+      "order": 306,
+      "description": "Recorremos las tres leyes de Kepler que describen las órbitas elípticas de los planetas, estableciendo la base matemática que Newton luego explicaría con la gravedad.",
+      "thumbnailTitle": "Danza de Planetas",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "relatividad-del-movimiento-no-existe-el-reposo-absoluto",
+      "title": "Relatividad del Movimiento: No existe el reposo absoluto",
+      "order": 307,
+      "description": "Demostramos que no existe un estado de reposo absoluto en el universo, ya que todo movimiento es relativo a un marco de referencia elegido arbitrariamente por el observador.",
+      "thumbnailTitle": "Todo se Mueve",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "marcos-de-referencia-inerciales-la-perspectiva-lo-cambia-todo",
+      "title": "Marcos de Referencia Inerciales: La perspectiva lo cambia todo",
+      "order": 308,
+      "description": "Entendemos los marcos de referencia inerciales, sistemas donde las leyes de Newton se cumplen perfectamente, y cómo la física se complica en marcos acelerados no inerciales.",
+      "thumbnailTitle": "Perspectiva Física",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "fuerzas-ficticias-centrifuga-y-coriolis-en-marcos-giratorios",
+      "title": "Fuerzas Ficticias: Centrífuga y Coriolis en marcos giratorios",
+      "order": 309,
+      "description": "Desvelamos las fuerzas ficticias como la centrífuga y Coriolis, que aparecen solo en marcos de referencia rotatorios y no tienen origen en interacciones físicas reales.",
+      "thumbnailTitle": "Fuerzas Imaginarias",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "principio-de-equivalencia-gravedad-y-aceleracion-son-iguales",
+      "title": "Principio de Equivalencia: Gravedad y aceleración son iguales",
+      "order": 310,
+      "description": "Profundizamos en el principio de equivalencia de Einstein, la revelación de que es imposible distinguir entre estar en un campo gravitatorio y estar en un cohete acelerado.",
+      "thumbnailTitle": "Gravedad Falsa",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "principio-de-minima-accion-la-naturaleza-elige-el-atajo",
+      "title": "Principio de Mínima Acción: La naturaleza elige el atajo",
+      "order": 311,
+      "description": "Descubrimos el principio de mínima acción, una formulación elegante de la mecánica donde la naturaleza siempre elige la trayectoria que minimiza una cantidad llamada acción.",
+      "thumbnailTitle": "Camino Óptimo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "mecanica-lagrangiana-reescribiendo-la-fisica-sin-fuerzas",
+      "title": "Mecánica Lagrangiana: Reescribiendo la física sin fuerzas",
+      "order": 312,
+      "description": "Exploramos la formulación lagrangiana de la mecánica clásica, un enfoque elegante que reescribe toda la física del movimiento usando energías en lugar de fuerzas y vectores.",
+      "thumbnailTitle": "Física sin Fuerzas",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "mecanica-hamiltoniana-la-fisica-como-flujo-en-el-espacio-de-fases",
+      "title": "Mecánica Hamiltoniana: La física como flujo en el espacio de fases",
+      "order": 313,
+      "description": "Entendemos la formulación hamiltoniana, donde la evolución de un sistema físico se visualiza como un flujo elegante en un espacio abstracto de posiciones y momentos.",
+      "thumbnailTitle": "Flujo Abstracto",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "problema-de-los-tres-cuerpos-el-caos-gravitatorio-sin-solucion",
+      "title": "Problema de los Tres Cuerpos: El caos gravitatorio sin solución",
+      "order": 314,
+      "description": "Enfrentamos el problema de los tres cuerpos, un sistema de tres objetos gravitatorios que resulta imposible de resolver exactamente y genera un caos orbital impredecible.",
+      "thumbnailTitle": "Triple Caos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "fractales-la-geometria-infinita-de-la-naturaleza",
+      "title": "Fractales: La geometría infinita de la naturaleza",
+      "order": 315,
+      "description": "Contemplamos los fractales, figuras geométricas que se repiten infinitamente a cualquier escala de observación y que modelan costas, árboles, vasos sanguíneos y galaxias.",
+      "thumbnailTitle": "Infinito Repetido",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "atractores-extranos-el-orden-oculto-dentro-del-caos",
+      "title": "Atractores Extraños: El orden oculto dentro del caos",
+      "order": 316,
+      "description": "Descubrimos los atractores extraños, estructuras geométricas fractales en el espacio de fases que revelan patrones ordenados escondidos dentro de sistemas aparentemente caóticos.",
+      "thumbnailTitle": "Orden en el Caos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "complejidad-emergente-cuando-lo-simple-crea-lo-asombroso",
+      "title": "Complejidad Emergente: Cuando lo simple crea lo asombroso",
+      "order": 317,
+      "description": "Exploramos la emergencia, el fenómeno donde reglas simples a nivel individual generan comportamientos complejos colectivos como bandadas de pájaros, hormigueros y consciencia.",
+      "thumbnailTitle": "Simple a Complejo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "automatas-celulares-universos-artificiales-en-una-cuadricula",
+      "title": "Autómatas Celulares: Universos artificiales en una cuadrícula",
+      "order": 318,
+      "description": "Jugamos con autómatas celulares como el Juego de la Vida de Conway, sistemas simples con reglas básicas que generan comportamientos tan complejos como computadoras universales.",
+      "thumbnailTitle": "Vida Artificial",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "percolacion-como-el-cafe-filtra-y-los-incendios-se-propagan",
+      "title": "Percolación: Cómo el café filtra y los incendios se propagan",
+      "order": 319,
+      "description": "Estudiamos la teoría de percolación, el modelo físico que describe cómo fluidos pasan a través de medios porosos y predice transiciones abruptas en la conectividad de redes.",
+      "thumbnailTitle": "Flujo y Conexión",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "criticalidad-autoorganizada-terremotos-y-avalanchas-inevitables",
+      "title": "Criticalidad Autoorganizada: Terremotos y avalanchas inevitables",
+      "order": 320,
+      "description": "Descubrimos la criticalidad autoorganizada, la tendencia de ciertos sistemas a evolucionar naturalmente hacia un estado crítico donde eventos catastróficos son inevitables.",
+      "thumbnailTitle": "Al Borde Siempre",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "redes-de-mundo-pequeno-seis-grados-de-separacion",
+      "title": "Redes de Mundo Pequeño: Seis grados de separación",
+      "order": 321,
+      "description": "Analizamos las redes de mundo pequeño, donde cualquier persona está conectada a otra por apenas seis intermediarios, un fenómeno con profundas raíces en la física de redes.",
+      "thumbnailTitle": "Todos Conectados",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "leyes-de-escala-por-que-un-elefante-no-puede-ser-hormiga",
+      "title": "Leyes de Escala: Por qué un elefante no puede ser hormiga",
+      "order": 322,
+      "description": "Aplicamos las leyes de escala para entender por qué los animales gigantes no son versiones amplificadas de los pequeños y cómo la física limita los diseños de la naturaleza.",
+      "thumbnailTitle": "Tamaño y Física",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "paradoja-de-olbers-por-que-el-cielo-nocturno-es-oscuro",
+      "title": "Paradoja de Olbers: ¿Por qué el cielo nocturno es oscuro?",
+      "order": 323,
+      "description": "Resolvemos la paradoja de Olbers que pregunta por qué el cielo nocturno es oscuro si hay infinitas estrellas, cuya respuesta involucra la expansión del universo y su edad finita.",
+      "thumbnailTitle": "Cielo Oscuro",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "nucleosintesis-primordial-cocinando-elementos-tras-el-big-bang",
+      "title": "Nucleosíntesis Primordial: Cocinando elementos tras el Big Bang",
+      "order": 324,
+      "description": "Recorremos los primeros minutos del universo cuando la nucleosíntesis primordial forjó los elementos más ligeros como hidrógeno, helio y litio a partir del plasma caliente.",
+      "thumbnailTitle": "Primeros Átomos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "nucleosintesis-estelar-las-estrellas-como-hornos-atomicos",
+      "title": "Nucleosíntesis Estelar: Las estrellas como hornos atómicos",
+      "order": 325,
+      "description": "Exploramos la nucleosíntesis estelar, el proceso por el cual las estrellas fusionan elementos progresivamente más pesados en sus núcleos hasta llegar al hierro en las más masivas.",
+      "thumbnailTitle": "Hornos de Elementos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "proceso-r-creando-oro-en-colisiones-de-estrellas-de-neutrones",
+      "title": "Proceso R: Creando oro en colisiones de estrellas de neutrones",
+      "order": 326,
+      "description": "Revelamos el proceso r de captura rápida de neutrones, donde colisiones de estrellas de neutrones generan los elementos más pesados del universo incluyendo oro y platino.",
+      "thumbnailTitle": "Oro del Cosmos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "diagrama-hertzsprung-russell-el-mapa-de-vida-de-las-estrellas",
+      "title": "Diagrama Hertzsprung-Russell: El mapa de vida de las estrellas",
+      "order": 327,
+      "description": "Leemos el diagrama HR, el mapa estelar que clasifica estrellas por luminosidad y temperatura revelando sus etapas de vida, desde la secuencia principal hasta su muerte final.",
+      "thumbnailTitle": "Mapa Estelar",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "estrellas-variables-cefeidas-las-reglas-cosmicas-de-distancia",
+      "title": "Estrellas Variables Cefeidas: Las reglas cósmicas de distancia",
+      "order": 328,
+      "description": "Conocemos las cefeidas, estrellas que pulsan con periodos regulares proporcionales a su luminosidad, permitiendo medir distancias cósmicas como velas estándar del universo.",
+      "thumbnailTitle": "Candelas del Cosmos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "supernovas-tipo-ia-midiendo-la-expansion-del-universo",
+      "title": "Supernovas Tipo Ia: Midiendo la expansión del universo",
+      "order": 329,
+      "description": "Utilizamos las supernovas de tipo Ia como velas estándar cósmicas cuya luminosidad conocida permitió descubrir que la expansión del universo se está acelerando misteriosamente.",
+      "thumbnailTitle": "Velas del Universo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "ley-de-hubble-el-universo-se-expande-en-todas-direcciones",
+      "title": "Ley de Hubble: El universo se expande en todas direcciones",
+      "order": 330,
+      "description": "Verificamos la ley de Hubble que establece que las galaxias se alejan proporcionalmente a su distancia, la evidencia fundamental de que el universo se expande uniformemente.",
+      "thumbnailTitle": "Expansión Uniforme",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "constante-de-hubble-la-velocidad-de-expansion-en-disputa",
+      "title": "Constante de Hubble: La velocidad de expansión en disputa",
+      "order": 331,
+      "description": "Investigamos la tensión de Hubble, el desacuerdo entre mediciones de la velocidad de expansión del universo que podría señalar nueva física desconocida acechando en el cosmos.",
+      "thumbnailTitle": "Crisis Cosmológica",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "universo-observable-el-limite-de-lo-que-podemos-ver",
+      "title": "Universo Observable: El límite de lo que podemos ver",
+      "order": 332,
+      "description": "Definimos el universo observable, una esfera de 93 mil millones de años luz cuyo borde marca el horizonte cósmico más allá del cual la luz no ha tenido tiempo de llegarnos.",
+      "thumbnailTitle": "Horizonte Visible",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "epoca-de-reionizacion-cuando-las-primeras-estrellas-encendieron",
+      "title": "Época de Reionización: Cuando las primeras estrellas encendieron",
+      "order": 333,
+      "description": "Viajamos a la época de reionización, cuando las primeras estrellas y galaxias encendieron su luz reionizando el hidrógeno neutro del universo primordial oscuro y frío.",
+      "thumbnailTitle": "Primer Amanecer",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "agujero-negro-supermasivo-los-monstruos-del-centro-galactico",
+      "title": "Agujero Negro Supermasivo: Los monstruos del centro galáctico",
+      "order": 334,
+      "description": "Exploramos los agujeros negros supermasivos que habitan en el centro de las galaxias, con masas de millones a miles de millones de soles influyendo en la evolución galáctica.",
+      "thumbnailTitle": "Monstruos Galácticos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "cuasares-los-faros-mas-brillantes-del-universo-lejano",
+      "title": "Cuásares: Los faros más brillantes del universo lejano",
+      "order": 335,
+      "description": "Descubrimos los cuásares, núcleos galácticos activos tan luminosos que superan a galaxias enteras, alimentados por agujeros negros supermasivos devorando materia cercana.",
+      "thumbnailTitle": "Brillos Extremos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "chorros-relativistas-jets-de-plasma-a-la-velocidad-de-la-luz",
+      "title": "Chorros Relativistas: Jets de plasma a la velocidad de la luz",
+      "order": 336,
+      "description": "Observamos los chorros relativistas, columnas de plasma expulsadas a velocidades cercanas a la luz desde los polos de agujeros negros extendiéndose miles de años luz.",
+      "thumbnailTitle": "Lanzallamas Cósmico",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "discos-de-acrecion-remolinos-de-materia-incandescente",
+      "title": "Discos de Acreción: Remolinos de materia incandescente",
+      "order": 337,
+      "description": "Estudiamos los discos de acreción, espirales de materia ultracaliente que giran a velocidades extremas alrededor de agujeros negros y estrellas de neutrones antes de ser tragados.",
+      "thumbnailTitle": "Remolino Ardiente",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "brotes-de-rayos-gamma-las-explosiones-mas-violentas",
+      "title": "Brotes de Rayos Gamma: Las explosiones más violentas",
+      "order": 338,
+      "description": "Presenciamos los brotes de rayos gamma, los eventos más energéticos del universo que en segundos liberan más energía que el Sol en toda su vida de miles de millones de años.",
+      "thumbnailTitle": "Explosión Suprema",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "materia-extraña-la-sustancia-hipotetica-mas-estable",
+      "title": "Materia Extraña: La sustancia hipotética más estable",
+      "order": 339,
+      "description": "Especulamos sobre la materia extraña, una forma hipotética de materia compuesta por quarks strange que podría ser la sustancia más estable del universo según algunas teorías.",
+      "thumbnailTitle": "Materia Suprema",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "estrellas-de-quarks-mas-densas-que-neutrones",
+      "title": "Estrellas de Quarks: Más densas que neutrones",
+      "order": 340,
+      "description": "Imaginamos las hipotéticas estrellas de quarks, objetos aún más densos que las estrellas de neutrones donde la materia se descompone en quarks libres bajo presión extrema.",
+      "thumbnailTitle": "Densidad Suprema",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "agujeros-negros-primordiales-reliquias-del-big-bang",
+      "title": "Agujeros Negros Primordiales: Reliquias del Big Bang",
+      "order": 341,
+      "description": "Buscamos agujeros negros primordiales, diminutos agujeros negros que podrían haberse formado en las fluctuaciones del universo temprano y ser candidatos a materia oscura.",
+      "thumbnailTitle": "Reliquias Primordiales",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "cosmologia-de-branas-nuestro-universo-como-una-membrana",
+      "title": "Cosmología de Branas: Nuestro universo como una membrana",
+      "order": 342,
+      "description": "Investigamos la cosmología de branas, la idea de que nuestro universo es una membrana tridimensional flotando en un espacio de dimensiones superiores donde otros universos existen.",
+      "thumbnailTitle": "Membrana Cósmica",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "universo-ciclico-un-cosmos-que-muere-y-renace-eternamente",
+      "title": "Universo Cíclico: Un cosmos que muere y renace eternamente",
+      "order": 343,
+      "description": "Contemplamos los modelos de universo cíclico donde el cosmos pasa por infinitos ciclos de Big Bang y colapso, sin principio ni fin en un eterno retorno cósmico.",
+      "thumbnailTitle": "Eterno Retorno",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "cosmologia-inflacionaria-eterna-universos-brotando-sin-fin",
+      "title": "Cosmología Inflacionaria Eterna: Universos brotando sin fin",
+      "order": 344,
+      "description": "Exploramos la inflación eterna, la idea de que la inflación cósmica nunca se detiene globalmente sino que continuamente genera nuevos universos burbuja en un multiverso infinito.",
+      "thumbnailTitle": "Burbujas Infinitas",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "boltzmann-brains-cerebros-nacidos-del-vacio",
+      "title": "Boltzmann Brains: Cerebros nacidos del vacío",
+      "order": 345,
+      "description": "Debatimos la paradoja de los cerebros de Boltzmann, la inquietante posibilidad de que fluctuaciones del vacío podrían crear observadores conscientes más fácilmente que universos enteros.",
+      "thumbnailTitle": "Mentes del Vacío",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "hipotesis-de-simulacion-vivimos-en-una-computadora",
+      "title": "Hipótesis de Simulación: ¿Vivimos en una computadora?",
+      "order": 346,
+      "description": "Evaluamos la hipótesis de simulación que argumenta que podríamos estar viviendo dentro de una simulación computarizada creada por una civilización tecnológicamente avanzada.",
+      "thumbnailTitle": "Realidad Virtual",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "informacion-cuantica-los-bits-que-desafian-la-realidad",
+      "title": "Información Cuántica: Los bits que desafían la realidad",
+      "order": 347,
+      "description": "Exploramos la teoría de la información cuántica, donde los bits se reemplazan por qubits que pueden existir en superposición ofreciendo capacidades de procesamiento radicalmente nuevas.",
+      "thumbnailTitle": "Bits Imposibles",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "teletransportacion-cuantica-de-estados-moviendo-informacion-pura",
+      "title": "Teletransportación Cuántica de Estados: Moviendo información pura",
+      "order": 348,
+      "description": "Profundizamos en protocolos de teletransportación cuántica que transfieren estados cuánticos completos entre ubicaciones distantes usando entrelazamiento y comunicación clásica.",
+      "thumbnailTitle": "Transferencia de Estado",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "error-cuantico-corrigiendo-fallos-en-el-mundo-subatomico",
+      "title": "Error Cuántico: Corrigiendo fallos en el mundo subatómico",
+      "order": 349,
+      "description": "Desciframos los códigos de corrección de errores cuánticos, técnicas sofisticadas para proteger la frágil información cuántica del ruido ambiental sin destruirla al medirla.",
+      "thumbnailTitle": "Reparar lo Cuántico",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "metrologia-cuantica-mediciones-mas-alla-del-limite-clasico",
+      "title": "Metrología Cuántica: Mediciones más allá del límite clásico",
+      "order": 350,
+      "description": "Descubrimos la metrología cuántica, donde el entrelazamiento y la superposición permiten realizar mediciones con precisiones que superan los límites fundamentales de la física clásica.",
+      "thumbnailTitle": "Medir lo Imposible",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "redes-cuanticas-el-internet-irrompible-del-futuro",
+      "title": "Redes Cuánticas: El internet irrompible del futuro",
+      "order": 351,
+      "description": "Imaginamos el internet cuántico, una red de comunicación basada en entrelazamiento cuántico que permitiría transmisiones absolutamente seguras e imposibles de interceptar.",
+      "thumbnailTitle": "Internet Cuántico",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "gravedad-artificial-por-rotacion-estaciones-espaciales-giratorias",
+      "title": "Gravedad Artificial por Rotación: Estaciones espaciales giratorias",
+      "order": 352,
+      "description": "Diseñamos estaciones espaciales giratorias que simulan gravedad artificial mediante fuerza centrífuga, una solución de ingeniería para los problemas de salud de la microgravedad.",
+      "thumbnailTitle": "Gravedad Giratoria",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "ascensor-espacial-un-cable-de-la-tierra-al-espacio",
+      "title": "Ascensor Espacial: Un cable de la Tierra al espacio",
+      "order": 353,
+      "description": "Evaluamos la viabilidad del ascensor espacial, un cable de 36.000 kilómetros anclado a la Tierra que permitiría transportar cargas al espacio sin cohetes a una fracción del costo.",
+      "thumbnailTitle": "Escalera al Cielo",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "efecto-de-marea-gravitatoria-oceanos-en-lunas-lejanas",
+      "title": "Efecto de Marea Gravitatoria: Océanos en lunas lejanas",
+      "order": 354,
+      "description": "Investigamos cómo las fuerzas de marea de planetas gigantes calientan el interior de sus lunas, generando posibles océanos líquidos subterráneos como los de Europa y Encélado.",
+      "thumbnailTitle": "Océanos Ocultos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "terraformacion-transformando-planetas-para-la-vida-humana",
+      "title": "Terraformación: Transformando planetas para la vida humana",
+      "order": 355,
+      "description": "Soñamos con la terraformación, los desafíos físicos e ingenieriles de modificar la atmósfera, temperatura y magnetosfera de Marte para hacerlo habitable para los humanos.",
+      "thumbnailTitle": "Marte Habitable",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "esfera-de-dyson-cosechando-toda-la-energia-de-una-estrella",
+      "title": "Esfera de Dyson: Cosechando toda la energía de una estrella",
+      "order": 356,
+      "description": "Evaluamos la esfera de Dyson, una megaestructura hipotética que envolvería una estrella para capturar toda su energía radiada, marcando una civilización de tipo II en la escala Kardashev.",
+      "thumbnailTitle": "Envolver una Estrella",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "principio-de-huygens-cada-punto-de-una-onda-es-una-fuente",
+      "title": "Principio de Huygens: Cada punto de una onda es una fuente",
+      "order": 357,
+      "description": "Entendemos el principio de Huygens que establece que cada punto de un frente de onda actúa como una fuente puntual de ondas secundarias, explicando la propagación de la luz.",
+      "thumbnailTitle": "Ondas Dentro de Ondas",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "principio-de-fermat-la-luz-siempre-elige-el-camino-mas-rapido",
+      "title": "Principio de Fermat: La luz siempre elige el camino más rápido",
+      "order": 358,
+      "description": "Descubrimos el principio de Fermat que establece que la luz viaja siempre por el camino que minimiza el tiempo de recorrido, explicando elegantemente la reflexión y la refracción.",
+      "thumbnailTitle": "Atajo de la Luz",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "interferometria-de-muy-larga-base-un-telescopio-del-tamano-de-la-tierra",
+      "title": "Interferometría de Muy Larga Base: Un telescopio del tamaño de la Tierra",
+      "order": 359,
+      "description": "Exploramos la interferometría VLBI, la técnica que sincroniza radiotelescopios en distintos continentes para crear un telescopio virtual del tamaño de la Tierra con resolución extrema.",
+      "thumbnailTitle": "Telescopio Planetario",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "telescopio-james-webb-mirando-el-amanecer-del-universo",
+      "title": "Telescopio James Webb: Mirando el amanecer del universo",
+      "order": 360,
+      "description": "Celebramos el telescopio James Webb, el observatorio espacial infrarrojo más poderoso jamás construido que observa las primeras galaxias formadas tras el Big Bang.",
+      "thumbnailTitle": "Ojos del Cosmos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "optica-adaptativa-corrigiendo-la-turbulencia-atmosferica",
+      "title": "Óptica Adaptativa: Corrigiendo la turbulencia atmosférica",
+      "order": 361,
+      "description": "Conocemos la óptica adaptativa, tecnología que deforma espejos en tiempo real para corregir la distorsión atmosférica y lograr imágenes telescópicas nítidas desde la superficie terrestre.",
+      "thumbnailTitle": "Espejos Inteligentes",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "paradoja-del-barco-de-teseo-la-identidad-en-la-fisica",
+      "title": "Paradoja del Barco de Teseo: La identidad en la física",
+      "order": 362,
+      "description": "Reflexionamos sobre la paradoja del barco de Teseo desde la perspectiva de la física cuántica, donde las partículas idénticas no tienen identidad individual desafiando nuestro concepto de objeto.",
+      "thumbnailTitle": "Identidad Cuántica",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "constantes-fundamentales-los-numeros-magicos-del-universo",
+      "title": "Constantes Fundamentales: Los números mágicos del universo",
+      "order": 363,
+      "description": "Recorremos las constantes fundamentales del universo como la velocidad de la luz, la carga del electrón y la constante gravitacional, números fijos que definen toda la realidad física.",
+      "thumbnailTitle": "Números del Cosmos",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "constante-de-estructura-fina-el-numero-que-nadie-puede-explicar",
+      "title": "Constante de Estructura Fina: El número que nadie puede explicar",
+      "order": 364,
+      "description": "Investigamos la constante de estructura fina, el misterioso número adimensional que gobierna la fuerza electromagnética y cuyo valor exacto ninguna teoría ha logrado predecir aún.",
+      "thumbnailTitle": "El Número Misterioso",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
+    },
+    {
+      "slug": "preguntas-abiertas-los-mayores-misterios-sin-resolver",
+      "title": "Preguntas Abiertas: Los mayores misterios sin resolver",
+      "order": 365,
+      "description": "Cerramos este viaje recorriendo las mayores preguntas abiertas de la física actual: la naturaleza de la materia oscura, la gravedad cuántica y el origen de la consciencia física.",
+      "thumbnailTitle": "Misterios Pendientes",
+      "draft": true,
+      "audioUrl": "",
+      "videoUrl": ""
     }
   ]
 }
