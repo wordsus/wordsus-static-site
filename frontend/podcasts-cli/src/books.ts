@@ -27,6 +27,7 @@ const allBooks: BookConfig[] = [
     locale: "es",
     order: 1,
     podcast: "Física para Mortales Podcast",
+    disabled: false,
   },
   {
     alias: "2qui",

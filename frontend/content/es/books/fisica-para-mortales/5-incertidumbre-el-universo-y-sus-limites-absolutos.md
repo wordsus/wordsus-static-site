@@ -1,5 +1,3 @@
-# Incertidumbre: El universo y sus límites absolutos
-
 *Analizamos el principio de incertidumbre de Heisenberg para entender por qué resulta totalmente imposible medir con precisión absoluta nuestro universo.*
 
 ---

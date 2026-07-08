@@ -1,5 +1,3 @@
-# Contracción Espacial: El universo encogiéndose
-
 *Descubre la fascinante contracción de la longitud, donde los objetos veloces se comprimen físicamente desde el punto de vista del observador externo.*
 
 ---

@@ -1,5 +1,3 @@
-# Doble Rendija: Entre el mundo de ondas y partículas
-
 *Descubre la extraña dualidad onda-partícula con el experimento de la doble rendija y cómo la simple observación altera el comportamiento de la materia.*
 
 ---

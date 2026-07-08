@@ -1,5 +1,3 @@
-# Fluctuación del Vacío: La nada originando cosmos
-
 *El vacío absoluto no existe. Exploramos las fluctuaciones del vacío y cómo pares de partículas y antipartículas aparecen y desaparecen constantemente.*
 
 ---

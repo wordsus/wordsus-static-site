@@ -1,5 +1,3 @@
-# Cómputo Cuántico: El gran futuro del poder de cálculo
-
 *Adéntrate en la computación cuántica y descubre cómo los qubits permiten resolver en segundos problemas que tomarían milenios a sistemas tradicionales.*
 
 ---

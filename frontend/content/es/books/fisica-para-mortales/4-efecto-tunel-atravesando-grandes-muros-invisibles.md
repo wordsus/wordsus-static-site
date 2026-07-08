@@ -1,5 +1,3 @@
-# Efecto Túnel: Atravesando grandes muros invisibles
-
 *Conoce el efecto túnel, un fenómeno donde las partículas subatómicas logran atravesar barreras físicas impenetrables como si fueran simples fantasmas.*
 
 ---

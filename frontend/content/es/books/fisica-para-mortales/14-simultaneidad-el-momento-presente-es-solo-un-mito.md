@@ -1,5 +1,3 @@
-# Simultaneidad: El momento presente es solo un mito
-
 *Comprendemos la ilusión de la simultaneidad temporal: cómo dos eventos que ocurren al mismo tiempo para alguien, suceden en momentos distintos para otro.*
 
 ---

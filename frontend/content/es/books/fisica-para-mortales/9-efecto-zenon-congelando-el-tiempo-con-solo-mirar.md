@@ -1,5 +1,3 @@
-# Efecto Zenón: Congelando el tiempo con solo mirar
-
 *Descifra el asombroso efecto Zenón cuántico, que demuestra cómo un sistema cuántico puede detener su decaimiento simplemente al ser observado de cerca.*
 
 ---

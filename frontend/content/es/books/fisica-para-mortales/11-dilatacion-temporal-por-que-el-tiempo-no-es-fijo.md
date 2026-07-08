@@ -1,5 +1,3 @@
-# Dilatación Temporal: Por qué el tiempo no es fijo
-
 *Exploramos la dilatación del tiempo de la relatividad, donde moverse más rápido provoca que los relojes avancen mucho más lento para un observador local.*
 
 ---

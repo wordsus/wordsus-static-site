@@ -1,5 +1,3 @@
-# Espuma Cuántica: El turbulento tejido del universo
-
 *Viajamos a la diminuta escala de Planck para entender la espuma cuántica, donde el espacio y el tiempo se transforman en una marea turbulenta y caótica.*
 
 ---

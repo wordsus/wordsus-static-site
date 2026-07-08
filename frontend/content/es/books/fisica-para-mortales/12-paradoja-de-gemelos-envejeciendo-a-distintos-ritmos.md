@@ -1,5 +1,3 @@
-# Paradoja de Gemelos: Envejeciendo a distintos ritmos
-
 *Analizamos la famosa paradoja de los gemelos, mostrando cómo viajar a velocidades cercanas a la de la luz genera grandes diferencias biológicas de edad.*
 
 ---

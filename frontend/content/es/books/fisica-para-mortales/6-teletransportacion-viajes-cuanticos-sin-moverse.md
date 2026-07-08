@@ -1,5 +1,3 @@
-# Teletransportación: Viajes cuánticos sin moverse
-
 *Aprende sobre la teletransportación cuántica, un método real que transfiere información exacta entre partículas distantes sin mover materia físicamente.*
 
 ---

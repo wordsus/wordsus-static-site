@@ -12,7 +12,7 @@ export const config = {
    * Path to the wordsus-static-site content directory.
    * Used to read book.json files.
    */
-  contentDir: process.env.PODCASTS_CONTENT_DIR ?? "/Users/fabian/Documents/CodeProjects/github.com/wordsus/wordsus-static-site/content",
+  contentDir: process.env.PODCASTS_CONTENT_DIR ?? "/Users/fabian/Documents/CodeProjects/github.com/wordsus/wordsus-static-site/frontend/content",
 
   /**
    * Number of episode-generation sessions to keep backup zip files.
@@ -44,13 +44,21 @@ export const config = {
      * Each subsequent episode is scheduled on the next available publish day.
      * Derived from: episode 16 → May 15, 2026 → baseDate = April 30, 2026.
      */
-    baseDate: "2026-06-10",
+    baseDate: "2026-07-06",
     /**
      * Weekdays on which to publish episodes.
      * Can be an array of English weekday strings (e.g. ["Tuesday", "Friday"]).
      * Case-insensitive, supports short/long names, and falls back to all days if empty.
      */
-    publishDays: ["Wednesday"],
+    publishDays: [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
     /**
      * Fixed upload time shown in the YouTube info file.
      * Format: 12-hour clock with AM/PM, e.g. "3:30 PM".

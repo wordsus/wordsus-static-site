@@ -1,5 +1,3 @@
-# Fórmula de Einstein: La energía oculta de la masa
-
 *Desglosamos la famosa ecuación de equivalencia masa-energía, revelando que una pequeñísima fracción de materia contiene un poder sumamente gigantesco.*
 
 ---
