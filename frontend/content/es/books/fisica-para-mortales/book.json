@@ -44,7 +44,7 @@
       "order": 3,
       "description": "Descubre la extraña dualidad onda-partícula con el experimento de la doble rendija y cómo la simple observación altera el comportamiento de la materia.",
       "thumbnailTitle": "¿Onda o Partícula?",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -54,7 +54,7 @@
       "order": 4,
       "description": "Conoce el efecto túnel, un fenómeno donde las partículas subatómicas logran atravesar barreras físicas impenetrables como si fueran simples fantasmas.",
       "thumbnailTitle": "Traspasando Muros",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -64,7 +64,7 @@
       "order": 5,
       "description": "Analizamos el principio de incertidumbre de Heisenberg para entender por qué resulta totalmente imposible medir con precisión absoluta nuestro universo.",
       "thumbnailTitle": "Límites del Cosmos",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -74,7 +74,7 @@
       "order": 6,
       "description": "Aprende sobre la teletransportación cuántica, un método real que transfiere información exacta entre partículas distantes sin mover materia físicamente.",
       "thumbnailTitle": "Teletransporte Real",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -84,7 +84,7 @@
       "order": 7,
       "description": "Adéntrate en la computación cuántica y descubre cómo los qubits permiten resolver en segundos problemas que tomarían milenios a sistemas tradicionales.",
       "thumbnailTitle": "PCs del Futuro",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -94,7 +94,7 @@
       "order": 8,
       "description": "El vacío absoluto no existe. Exploramos las fluctuaciones del vacío y cómo pares de partículas y antipartículas aparecen y desaparecen constantemente.",
       "thumbnailTitle": "La Nada no Existe",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -104,7 +104,7 @@
       "order": 9,
       "description": "Descifra el asombroso efecto Zenón cuántico, que demuestra cómo un sistema cuántico puede detener su decaimiento simplemente al ser observado de cerca.",
       "thumbnailTitle": "Mirada Congelante",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -114,7 +114,7 @@
       "order": 10,
       "description": "Viajamos a la diminuta escala de Planck para entender la espuma cuántica, donde el espacio y el tiempo se transforman en una marea turbulenta y caótica.",
       "thumbnailTitle": "El Tejido del Espacio",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -124,7 +124,7 @@
       "order": 11,
       "description": "Exploramos la dilatación del tiempo de la relatividad, donde moverse más rápido provoca que los relojes avancen mucho más lento para un observador local.",
       "thumbnailTitle": "El Tiempo es Relativo",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -134,7 +134,7 @@
       "order": 12,
       "description": "Analizamos la famosa paradoja de los gemelos, mostrando cómo viajar a velocidades cercanas a la de la luz genera grandes diferencias biológicas de edad.",
       "thumbnailTitle": "Gemelos Desiguales",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -144,7 +144,7 @@
       "order": 13,
       "description": "Descubre la fascinante contracción de la longitud, donde los objetos veloces se comprimen físicamente desde el punto de vista del observador externo.",
       "thumbnailTitle": "Espacio Encogido",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -154,7 +154,7 @@
       "order": 14,
       "description": "Comprendemos la ilusión de la simultaneidad temporal: cómo dos eventos que ocurren al mismo tiempo para alguien, suceden en momentos distintos para otro.",
       "thumbnailTitle": "El Presente Falso",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
@@ -164,7 +164,7 @@
       "order": 15,
       "description": "Desglosamos la famosa ecuación de equivalencia masa-energía, revelando que una pequeñísima fracción de materia contiene un poder sumamente gigantesco.",
       "thumbnailTitle": "Poder de la Materia",
-      "draft": true,
+      "draft": false,
       "audioUrl": "",
       "videoUrl": ""
     },
