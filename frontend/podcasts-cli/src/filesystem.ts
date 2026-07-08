@@ -6,6 +6,7 @@ import path from "path";
 import archiver from "archiver";
 import { config } from "./config.js";
 import { log } from "./logger.js";
+import { books } from "./books.js";
 
 // ─── Directory paths ─────────────────────────────────────────────────────────
 
@@ -107,8 +108,9 @@ export function discoverEpisodes(): EpisodeDiscoveryInfo[] {
       // Basic processable check
       const hasAudio = findAudioFile(alias) !== null;
       const hasImage = findImageFile(alias) !== null;
+      const isActive = books.some((b) => b.alias === alias);
 
-      if (hasAudio && hasImage) {
+      if (isActive && hasAudio && hasImage) {
         try {
           const content = fs.readFileSync(jsonPath, "utf-8");
           const data = JSON.parse(content);

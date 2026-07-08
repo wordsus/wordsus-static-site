@@ -9,6 +9,7 @@
  *  - locale:  Language code ("es" | "en")
  *  - order:   Display order in menus (lower numbers appear first)
  *  - podcast: Human-readable podcast show name used in audio prompts
+ *  - disabled: Optional. If true, the book is ignored by the CLI tool.
  */
 export interface BookConfig {
   alias: string;
@@ -16,9 +17,10 @@ export interface BookConfig {
   locale: "es" | "en";
   order: number;
   podcast: string;
+  disabled?: boolean;
 }
 
-export const books: BookConfig[] = [
+const allBooks: BookConfig[] = [
   {
     alias: "1fis",
     slug: "fisica-para-mortales",
@@ -32,6 +34,7 @@ export const books: BookConfig[] = [
     locale: "es",
     order: 2,
     podcast: "Química para Mortales Podcast",
+    disabled: true,
   },
   {
     alias: "3ast",
@@ -39,6 +42,7 @@ export const books: BookConfig[] = [
     locale: "es",
     order: 3,
     podcast: "Astronomía para Mortales Podcast",
+    disabled: true,
   },
   {
     alias: "4bio",
@@ -46,6 +50,7 @@ export const books: BookConfig[] = [
     locale: "es",
     order: 4,
     podcast: "Biología para Mortales Podcast",
+    disabled: true,
   },
   {
     alias: "5con",
@@ -53,6 +58,7 @@ export const books: BookConfig[] = [
     locale: "es",
     order: 5,
     podcast: "La Biblia en Contexto Podcast",
+    disabled: true,
   },
   {
     alias: "6nut",
@@ -60,6 +66,7 @@ export const books: BookConfig[] = [
     locale: "es",
     order: 6,
     podcast: "Nutrición para Mortales Podcast",
+    disabled: true,
   },
   {
     alias: "7psi",
@@ -67,6 +74,7 @@ export const books: BookConfig[] = [
     locale: "es",
     order: 7,
     podcast: "Psicología para Mortales Podcast",
+    disabled: true,
   },
   {
     alias: "8eco",
@@ -74,6 +82,7 @@ export const books: BookConfig[] = [
     locale: "es",
     order: 8,
     podcast: "Economía Austríaca Podcast",
+    disabled: true,
   },
   {
     alias: "9phy",
@@ -81,6 +90,7 @@ export const books: BookConfig[] = [
     locale: "en",
     order: 9,
     podcast: "Physics for Mortals Podcast",
+    disabled: true,
   },
   {
     alias: "10che",
@@ -88,6 +98,7 @@ export const books: BookConfig[] = [
     locale: "en",
     order: 10,
     podcast: "Chemistry for Mortals Podcast",
+    disabled: true,
   },
   {
     alias: "11ast",
@@ -95,6 +106,7 @@ export const books: BookConfig[] = [
     locale: "en",
     order: 11,
     podcast: "Astronomy for Mortals Podcast",
+    disabled: true,
   },
   {
     alias: "12bio",
@@ -102,6 +114,7 @@ export const books: BookConfig[] = [
     locale: "en",
     order: 12,
     podcast: "Biology for Mortals Podcast",
+    disabled: true,
   },
   {
     alias: "13con",
@@ -109,6 +122,7 @@ export const books: BookConfig[] = [
     locale: "en",
     order: 13,
     podcast: "The Bible in Context Podcast",
+    disabled: true,
   },
   {
     alias: "14nut",
@@ -116,6 +130,7 @@ export const books: BookConfig[] = [
     locale: "en",
     order: 14,
     podcast: "Nutrition for Mortals Podcast",
+    disabled: true,
   },
   {
     alias: "15psy",
@@ -123,6 +138,7 @@ export const books: BookConfig[] = [
     locale: "en",
     order: 15,
     podcast: "Psychology for Mortals Podcast",
+    disabled: true,
   },
   {
     alias: "16eco",
@@ -130,7 +146,12 @@ export const books: BookConfig[] = [
     locale: "en",
     order: 16,
     podcast: "Austrian Economics Podcast",
+    disabled: true,
   },
   // Add more books as needed. Remember to also add template overrides in
   // podcasts-cli/templates/<alias>/ if the book needs custom prompts.
 ];
+
+export const books: BookConfig[] = allBooks.filter((b) => !b.disabled);
+
+
